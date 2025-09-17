@@ -823,20 +823,59 @@ $totalCategories = count($categories);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>資格試験問題集</title>
+    <script>
+        document.documentElement.classList.add('js-enabled');
+    </script>
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 <div class="app">
     <header>
-        <h1>資格試験問題集</h1>
+        <div class="header-top">
+            <h1>資格試験問題集</h1>
+            <button type="button" class="sidebar-toggle" id="sidebarToggle" aria-controls="categorySidebar" aria-expanded="false">
+                <span class="sr-only">カテゴリメニューを開く</span>
+                <span class="hamburger" aria-hidden="true">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </button>
+        </div>
         <p>JSON形式で管理された問題データから出題する学習支援アプリです。</p>
     </header>
 
-    <?php foreach ($errorMessages as $message): ?>
-        <div class="alert error"><?php echo h($message); ?></div>
-    <?php endforeach; ?>
+    <div class="layout">
+        <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+        <aside class="category-sidebar" id="categorySidebar" aria-label="カテゴリ一覧" tabindex="-1">
+            <div class="sidebar-header">
+                <h2>カテゴリ</h2>
+                <button type="button" class="sidebar-close" id="sidebarClose" aria-label="カテゴリメニューを閉じる">&times;</button>
+            </div>
+            <?php if (!empty($categories)): ?>
+                <form method="post" class="category-form">
+                    <input type="hidden" name="action" value="change_category">
+                    <input type="hidden" name="difficulty" value="<?php echo h($selectedDifficulty); ?>">
+                    <div class="category-list">
+                        <?php foreach ($categories as $categoryId => $category): ?>
+                            <?php $categoryExamCount = count(examIdsForCategory($categories, $exams, $categoryId)); ?>
+                            <button type="submit" name="category_id" value="<?php echo h($categoryId); ?>" class="category-button<?php echo $categoryId === $selectedCategoryId ? ' active' : ''; ?>" aria-label="<?php echo h(sprintf('%s（%d件の試験）', $category['name'], $categoryExamCount)); ?>">
+                                <span class="category-name"><?php echo h($category['name']); ?></span>
+                                <span class="category-count" aria-hidden="true"><?php echo $categoryExamCount; ?></span>
+                            </button>
+                        <?php endforeach; ?>
+                    </div>
+                </form>
+            <?php else: ?>
+                <p class="empty-message">カテゴリが登録されていません。</p>
+            <?php endif; ?>
+        </aside>
+        <main class="main-content">
+            <?php foreach ($errorMessages as $message): ?>
+                <div class="alert error"><?php echo h($message); ?></div>
+            <?php endforeach; ?>
 
-    <?php if ($view === 'home'): ?>
+            <?php if ($view === 'home'): ?>
         <?php if ($totalExams === 0): ?>
             <div class="form-card">
                 <h2>問題データが見つかりません</h2>
@@ -848,18 +887,17 @@ $totalCategories = count($categories);
                 <h2>問題を開始する</h2>
                 <form method="post">
                     <input type="hidden" name="action" value="start_quiz" id="form_action">
-                    <div class="form-field">
-                        <label for="category_id">カテゴリ</label>
-                        <select name="category_id" id="category_id" onchange="document.getElementById('form_action').value='change_category'; this.form.submit();">
-                            <?php foreach ($categories as $categoryId => $category): ?>
-                                <option value="<?php echo h($categoryId); ?>" <?php echo $categoryId === $selectedCategoryId ? 'selected' : ''; ?>>
-                                    <?php echo h($category['name']); ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
-                        <?php if ($selectedCategory): ?>
-                            <small class="field-hint">このカテゴリには <?php echo count($categoryExamIds); ?> 件の試験が登録されています。</small>
-                        <?php endif; ?>
+                    <input type="hidden" name="category_id" value="<?php echo h($selectedCategoryId); ?>">
+                    <div class="form-field static-field">
+                        <label>選択中のカテゴリ</label>
+                        <div class="selected-category-display">
+                            <?php if ($selectedCategory): ?>
+                                <span class="selected-category-name"><?php echo h($selectedCategory['name']); ?></span>
+                                <span class="selected-category-count">登録試験: <?php echo count($categoryExamIds); ?> 件</span>
+                            <?php else: ?>
+                                <span class="selected-category-name">カテゴリが選択されていません。</span>
+                            <?php endif; ?>
+                        </div>
                     </div>
                     <div class="form-field">
                         <label for="exam_id">資格試験</label>
@@ -1118,6 +1156,51 @@ $totalCategories = count($categories);
             </form>
         </div>
     <?php endif; ?>
+        </main>
+    </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const html = document.documentElement;
+        const toggleButton = document.getElementById('sidebarToggle');
+        const closeButton = document.getElementById('sidebarClose');
+        const backdrop = document.getElementById('sidebarBackdrop');
+        const sidebar = document.getElementById('categorySidebar');
+
+        if (!toggleButton || !sidebar || !backdrop || !closeButton) {
+            return;
+        }
+
+        const openSidebar = function () {
+            html.classList.add('sidebar-open');
+            toggleButton.setAttribute('aria-expanded', 'true');
+            sidebar.focus();
+        };
+
+        const closeSidebar = function () {
+            html.classList.remove('sidebar-open');
+            toggleButton.setAttribute('aria-expanded', 'false');
+            toggleButton.focus();
+        };
+
+        toggleButton.addEventListener('click', function () {
+            if (html.classList.contains('sidebar-open')) {
+                closeSidebar();
+            } else {
+                openSidebar();
+            }
+        });
+
+        closeButton.addEventListener('click', closeSidebar);
+        backdrop.addEventListener('click', closeSidebar);
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && html.classList.contains('sidebar-open')) {
+                event.preventDefault();
+                closeSidebar();
+            }
+        });
+    });
+</script>
 </body>
 </html>
