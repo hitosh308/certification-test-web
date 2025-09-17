@@ -483,8 +483,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $postedExamId = isset($_POST['exam_id']) ? (string)$_POST['exam_id'] : '';
     if ($postedExamId !== '' && isset($exams[$postedExamId])) {
-        $selectedExamId = $postedExamId;
-        $selectedCategoryId = $exams[$postedExamId]['meta']['category']['id'];
+        if ($action !== 'change_category') {
+            $selectedExamId = $postedExamId;
+            $selectedCategoryId = $exams[$postedExamId]['meta']['category']['id'];
+        }
     }
 
     if (isset($_POST['question_count'])) {
@@ -493,6 +495,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     switch ($action) {
         case 'change_category':
+            $selectedExamId = '';
             $questionCountInput = '';
             $view = 'home';
             break;
