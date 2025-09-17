@@ -929,13 +929,23 @@ $totalExams = count($exams);
                         <div class="selected-exam-display">
                             <?php if ($selectedExam): ?>
                                 <span class="selected-exam-name"><?php echo h($selectedExam['meta']['title']); ?></span>
-                                <button type="button" class="open-sidebar-button" data-sidebar-target="categorySidebar">別の試験を選ぶ</button>
+                                <div class="exam-meta">
+                                    <span><strong>カテゴリ:</strong> <?php echo h($selectedExam['meta']['category']['name']); ?></span>
+                                    <?php if ($selectedExam['meta']['version'] !== ''): ?>
+                                        <span><strong>バージョン:</strong> <?php echo h($selectedExam['meta']['version']); ?></span>
+                                    <?php endif; ?>
+                                    <?php if ($selectedExam['meta']['description'] !== ''): ?>
+                                        <span class="exam-meta-description"><strong>概要:</strong> <?php echo nl2brSafe($selectedExam['meta']['description']); ?></span>
+                                    <?php endif; ?>
+                                    <span><strong>問題数:</strong> <?php echo (int)$selectedExam['meta']['question_count']; ?> 問</span>
+                                    <span><strong>データファイル:</strong> <?php echo h($selectedExam['meta']['source_file']); ?></span>
+                                </div>
                             <?php else: ?>
                                 <span class="selected-exam-name">試験が選択されていません。</span>
-                                <button type="button" class="open-sidebar-button" data-sidebar-target="categorySidebar">試験を選択する</button>
+                                <span class="selected-exam-placeholder">下のボタンから試験を選択してください。</span>
                             <?php endif; ?>
                         </div>
-                        <small class="field-hint">左のメニューから試験を選択してください。</small>
+                        <small class="field-hint">左のメニューまたは下のボタンから試験を選択してください。</small>
                     </div>
                     <div class="form-field">
                         <label for="difficulty">難易度</label>
@@ -968,21 +978,10 @@ $totalExams = count($exams);
                             <?php endif; ?>
                         <?php endif; ?>
                     </div>
-                    <?php if ($selectedExam): ?>
-                        <div class="exam-meta">
-                            <span><strong>カテゴリ:</strong> <?php echo h($selectedExam['meta']['category']['name']); ?></span>
-                            <span><strong>試験名:</strong> <?php echo h($selectedExam['meta']['title']); ?></span>
-                            <?php if ($selectedExam['meta']['version'] !== ''): ?>
-                                <span><strong>バージョン:</strong> <?php echo h($selectedExam['meta']['version']); ?></span>
-                            <?php endif; ?>
-                            <?php if ($selectedExam['meta']['description'] !== ''): ?>
-                                <span><strong>概要:</strong> <?php echo nl2brSafe($selectedExam['meta']['description']); ?></span>
-                            <?php endif; ?>
-                            <span><strong>問題数:</strong> <?php echo (int)$selectedExam['meta']['question_count']; ?> 問</span>
-                            <span><strong>データファイル:</strong> <?php echo h($selectedExam['meta']['source_file']); ?></span>
-                        </div>
-                    <?php endif; ?>
-                    <button type="submit" <?php echo $canStartQuiz ? '' : 'disabled'; ?>>問題を開始</button>
+                    <div class="form-actions">
+                        <button type="submit" <?php echo $canStartQuiz ? '' : 'disabled'; ?>>問題を開始</button>
+                        <button type="button" class="open-sidebar-button" data-sidebar-target="categorySidebar"><?php echo $selectedExam ? '別の試験を選ぶ' : '試験を選択する'; ?></button>
+                    </div>
                 </form>
             </div>
         <?php endif; ?>
