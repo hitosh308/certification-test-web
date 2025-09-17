@@ -6,7 +6,7 @@ session_start();
 const DATA_DIRECTORY = __DIR__ . '/data';
 
 /**
- * @return array{exams: array<string, array{meta: array{id: string, title: string, description: string, version: string, question_count: int, source_file: string}, questions: array<int, array{id: string, question: string, choices: array<int, array{key: string, text: string}>, answer: string, explanation: string}>}>, errors: string[]}
+ * @return array{exams: array<string, array{meta: array{id: string, title: string, description: string, version: string, question_count: int, source_file: string}, questions: array<int, array{id: string, question: string, choices: array<int, array{key: string, text: string, explanation: array{text: string, reference: string, reference_label: string}}>, answer: string, explanation: array{text: string, reference: string, reference_label: string}}>}>, errors: string[]}
  */
 function loadExamCatalog(): array
 {
@@ -73,7 +73,17 @@ function loadExamCatalog(): array
             $questionText = isset($questionData['question']) ? trim((string)$questionData['question']) : '';
             $rawChoices = $questionData['choices'] ?? null;
             $answer = isset($questionData['answer']) ? (string)$questionData['answer'] : '';
-            $explanation = isset($questionData['explanation']) ? (string)$questionData['explanation'] : '';
+
+            $questionExplanation = normalizeExplanation($questionData['explanation'] ?? null);
+
+            $choiceExplanations = [];
+            if (isset($questionData['choice_explanations']) && is_array($questionData['choice_explanations'])) {
+                foreach ($questionData['choice_explanations'] as $choiceKey => $explanationData) {
+                    if (is_string($choiceKey) || is_int($choiceKey)) {
+                        $choiceExplanations[(string)$choiceKey] = normalizeExplanation($explanationData);
+                    }
+                }
+            }
 
             if ($questionText === '' || !is_array($rawChoices) || empty($rawChoices) || $answer === '') {
                 $skipped++;
@@ -89,9 +99,18 @@ function loadExamCatalog(): array
                 if (is_array($choiceData)) {
                     $key = isset($choiceData['key']) ? (string)$choiceData['key'] : '';
                     $text = isset($choiceData['text']) ? (string)$choiceData['text'] : '';
+                    $choiceExplanationRaw = $choiceData['explanation'] ?? null;
+                    if ($choiceExplanationRaw === null && (isset($choiceData['reference']) || isset($choiceData['reference_label']))) {
+                        $choiceExplanationRaw = [
+                            'text' => $choiceData['detail'] ?? '',
+                            'reference' => $choiceData['reference'] ?? '',
+                            'reference_label' => $choiceData['reference_label'] ?? '',
+                        ];
+                    }
                 } else {
                     $key = '';
                     $text = (string)$choiceData;
+                    $choiceExplanationRaw = null;
                 }
 
                 if ($key === '') {
@@ -113,6 +132,7 @@ function loadExamCatalog(): array
                 $choices[] = [
                     'key' => $key,
                     'text' => $text,
+                    'explanation' => normalizeExplanation($choiceExplanationRaw ?? ($choiceExplanations[$key] ?? null)),
                 ];
             }
 
@@ -132,7 +152,7 @@ function loadExamCatalog(): array
                 'question' => $questionText,
                 'choices' => $choices,
                 'answer' => $answer,
-                'explanation' => trim($explanation),
+                'explanation' => $questionExplanation,
             ];
         }
 
@@ -182,6 +202,61 @@ function h(?string $value): string
 function nl2brSafe(string $text): string
 {
     return nl2br(h($text), false);
+}
+
+/**
+ * @param mixed $value
+ * @return array{text: string, reference: string, reference_label: string}
+ */
+function normalizeExplanation($value): array
+{
+    if ($value === null) {
+        return ['text' => '', 'reference' => '', 'reference_label' => ''];
+    }
+
+    if (is_string($value)) {
+        return ['text' => trim($value), 'reference' => '', 'reference_label' => ''];
+    }
+
+    $text = '';
+    $reference = '';
+    $referenceLabel = '';
+
+    if (is_array($value)) {
+        if (isset($value['text'])) {
+            $text = trim((string)$value['text']);
+        } elseif (isset($value['description'])) {
+            $text = trim((string)$value['description']);
+        }
+
+        if (isset($value['reference'])) {
+            $reference = trim((string)$value['reference']);
+        } elseif (isset($value['url'])) {
+            $reference = trim((string)$value['url']);
+        } elseif (isset($value['link'])) {
+            $reference = trim((string)$value['link']);
+        }
+
+        if (isset($value['reference_label'])) {
+            $referenceLabel = trim((string)$value['reference_label']);
+        } elseif (isset($value['label'])) {
+            $referenceLabel = trim((string)$value['label']);
+        }
+    }
+
+    return [
+        'text' => $text,
+        'reference' => $reference,
+        'reference_label' => $referenceLabel,
+    ];
+}
+
+/**
+ * @param array{text: string, reference: string, reference_label: string} $explanation
+ */
+function hasExplanationContent(array $explanation): bool
+{
+    return trim($explanation['text']) !== '' || trim($explanation['reference']) !== '' || trim($explanation['reference_label']) !== '';
 }
 
 function buildInputId(string $questionId, string $choiceKey): string
@@ -489,12 +564,68 @@ $totalExams = count($exams);
                                 <span>（選択）</span>
                             <?php endif; ?>
                         </li>
-                    <?php endforeach; ?>
+                        <?php endforeach; ?>
                 </ul>
-                <div class="explanation">
-                    <strong>解説:</strong>
-                    <p><?php echo nl2brSafe($question['explanation']); ?></p>
-                </div>
+                <?php
+                $questionExplanation = is_array($question['explanation']) ? $question['explanation'] : normalizeExplanation($question['explanation']);
+                $choiceExplanationItems = [];
+                foreach ($question['choices'] as $choiceForExplanation) {
+                    $choiceExplanationValue = $choiceForExplanation['explanation'] ?? null;
+                    if (!is_array($choiceExplanationValue)) {
+                        $choiceExplanationValue = normalizeExplanation($choiceExplanationValue);
+                    }
+                    if (hasExplanationContent($choiceExplanationValue)) {
+                        $choiceForExplanation['explanation'] = $choiceExplanationValue;
+                        $choiceExplanationItems[] = $choiceForExplanation;
+                    }
+                }
+                $hasQuestionExplanation = hasExplanationContent($questionExplanation);
+                ?>
+                <?php if ($hasQuestionExplanation || !empty($choiceExplanationItems)): ?>
+                    <div class="explanation">
+                        <?php if ($hasQuestionExplanation): ?>
+                            <div class="explanation-block">
+                                <h4>問題全体の解説</h4>
+                                <?php if ($questionExplanation['text'] !== ''): ?>
+                                    <p><?php echo nl2brSafe($questionExplanation['text']); ?></p>
+                                <?php endif; ?>
+                                <?php if ($questionExplanation['reference'] !== ''): ?>
+                                    <?php $questionReferenceLabel = $questionExplanation['reference_label'] !== '' ? $questionExplanation['reference_label'] : '公式資料'; ?>
+                                    <p class="explanation-reference">
+                                        <a href="<?php echo h($questionExplanation['reference']); ?>" target="_blank" rel="noopener noreferrer"><?php echo h($questionReferenceLabel); ?></a>
+                                    </p>
+                                <?php endif; ?>
+                            </div>
+                        <?php endif; ?>
+                        <?php if (!empty($choiceExplanationItems)): ?>
+                            <div class="explanation-block">
+                                <h4>選択肢ごとの解説</h4>
+                                <ul class="choice-explanations">
+                                    <?php foreach ($choiceExplanationItems as $choiceExplanationItem): ?>
+                                        <?php $choiceExplanation = $choiceExplanationItem['explanation']; ?>
+                                        <li class="choice-explanation-item">
+                                            <span class="option-key"><?php echo h($choiceExplanationItem['key']); ?>.</span>
+                                            <div class="choice-explanation-body">
+                                                <?php if ($choiceExplanationItem['text'] !== ''): ?>
+                                                    <p class="choice-statement"><?php echo h($choiceExplanationItem['text']); ?></p>
+                                                <?php endif; ?>
+                                                <?php if ($choiceExplanation['text'] !== ''): ?>
+                                                    <p><?php echo nl2brSafe($choiceExplanation['text']); ?></p>
+                                                <?php endif; ?>
+                                                <?php if ($choiceExplanation['reference'] !== ''): ?>
+                                                    <?php $choiceReferenceLabel = $choiceExplanation['reference_label'] !== '' ? $choiceExplanation['reference_label'] : '公式資料'; ?>
+                                                    <p class="explanation-reference">
+                                                        <a href="<?php echo h($choiceExplanation['reference']); ?>" target="_blank" rel="noopener noreferrer"><?php echo h($choiceReferenceLabel); ?></a>
+                                                    </p>
+                                                <?php endif; ?>
+                                            </div>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                <?php endif; ?>
             </div>
         <?php endforeach; ?>
         <div class="actions">
