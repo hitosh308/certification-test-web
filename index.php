@@ -1069,29 +1069,31 @@ $totalCategories = count($categories);
                         <?php endif; ?>
                         <?php if (!empty($choiceExplanationItems)): ?>
                             <div class="explanation-block">
-                                <h4>選択肢ごとの解説</h4>
-                                <ul class="choice-explanations">
-                                    <?php foreach ($choiceExplanationItems as $choiceExplanationItem): ?>
-                                        <?php $choiceExplanation = $choiceExplanationItem['explanation']; ?>
-                                        <li class="choice-explanation-item">
-                                            <span class="option-key"><?php echo h($choiceExplanationItem['key']); ?>.</span>
-                                            <div class="choice-explanation-body">
-                                                <?php if ($choiceExplanationItem['text'] !== ''): ?>
-                                                    <p class="choice-statement"><?php echo h($choiceExplanationItem['text']); ?></p>
-                                                <?php endif; ?>
-                                                <?php if ($choiceExplanation['text'] !== ''): ?>
-                                                    <p><?php echo nl2brSafe($choiceExplanation['text']); ?></p>
-                                                <?php endif; ?>
-                                                <?php if ($choiceExplanation['reference'] !== ''): ?>
-                                                    <?php $choiceReferenceLabel = $choiceExplanation['reference_label'] !== '' ? $choiceExplanation['reference_label'] : '公式資料'; ?>
-                                                    <p class="explanation-reference">
-                                                        <a href="<?php echo h($choiceExplanation['reference']); ?>" target="_blank" rel="noopener noreferrer"><?php echo h($choiceReferenceLabel); ?></a>
-                                                    </p>
-                                                <?php endif; ?>
-                                            </div>
-                                        </li>
-                                    <?php endforeach; ?>
-                                </ul>
+                                <details class="choice-explanations-toggle">
+                                    <summary>選択肢ごとの解説</summary>
+                                    <ul class="choice-explanations">
+                                        <?php foreach ($choiceExplanationItems as $choiceExplanationItem): ?>
+                                            <?php $choiceExplanation = $choiceExplanationItem['explanation']; ?>
+                                            <li class="choice-explanation-item">
+                                                <span class="option-key"><?php echo h($choiceExplanationItem['key']); ?>.</span>
+                                                <div class="choice-explanation-body">
+                                                    <?php if ($choiceExplanationItem['text'] !== ''): ?>
+                                                        <p class="choice-statement"><?php echo h($choiceExplanationItem['text']); ?></p>
+                                                    <?php endif; ?>
+                                                    <?php if ($choiceExplanation['text'] !== ''): ?>
+                                                        <p><?php echo nl2brSafe($choiceExplanation['text']); ?></p>
+                                                    <?php endif; ?>
+                                                    <?php if ($choiceExplanation['reference'] !== ''): ?>
+                                                        <?php $choiceReferenceLabel = $choiceExplanation['reference_label'] !== '' ? $choiceExplanation['reference_label'] : '公式資料'; ?>
+                                                        <p class="explanation-reference">
+                                                            <a href="<?php echo h($choiceExplanation['reference']); ?>" target="_blank" rel="noopener noreferrer"><?php echo h($choiceReferenceLabel); ?></a>
+                                                        </p>
+                                                    <?php endif; ?>
+                                                </div>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </details>
                             </div>
                         <?php endif; ?>
                     </div>
