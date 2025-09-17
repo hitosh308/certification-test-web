@@ -615,6 +615,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $view = 'home';
             break;
 
+        case 'select_exam':
+            $questionCountInput = '';
+            $view = 'home';
+            break;
+
         case 'change_difficulty':
             $questionCountInput = '';
             $view = 'home';
@@ -852,19 +857,39 @@ $totalExams = count($exams);
                 <button type="button" class="sidebar-close" id="sidebarClose" aria-label="カテゴリメニューを閉じる">&times;</button>
             </div>
             <?php if (!empty($categories)): ?>
-                <form method="post" class="category-form">
-                    <input type="hidden" name="action" value="change_category">
-                    <input type="hidden" name="difficulty" value="<?php echo h($selectedDifficulty); ?>">
-                    <div class="category-list">
-                        <?php foreach ($categories as $categoryId => $category): ?>
-                            <?php $categoryExamCount = count(examIdsForCategory($categories, $exams, $categoryId)); ?>
-                            <button type="submit" name="category_id" value="<?php echo h($categoryId); ?>" class="category-button<?php echo $categoryId === $selectedCategoryId ? ' active' : ''; ?>" aria-label="<?php echo h(sprintf('%s（%d件の試験）', $category['name'], $categoryExamCount)); ?>">
+                <div class="category-accordion">
+                    <?php foreach ($categories as $categoryId => $category): ?>
+                        <?php $examIds = examIdsForCategory($categories, $exams, $categoryId); ?>
+                        <?php $categoryExamCount = count($examIds); ?>
+                        <?php $isActiveCategory = $categoryId === $selectedCategoryId; ?>
+                        <details class="category-item"<?php echo $isActiveCategory ? ' open' : ''; ?>>
+                            <summary class="category-summary">
                                 <span class="category-name"><?php echo h($category['name']); ?></span>
                                 <span class="category-count" aria-hidden="true"><?php echo $categoryExamCount; ?></span>
-                            </button>
-                        <?php endforeach; ?>
-                    </div>
-                </form>
+                                <span class="accordion-icon" aria-hidden="true"></span>
+                            </summary>
+                            <?php if ($categoryExamCount > 0): ?>
+                                <div class="exam-list">
+                                    <?php foreach ($examIds as $examId): ?>
+                                        <?php if (!isset($exams[$examId])) { continue; } ?>
+                                        <?php $exam = $exams[$examId]; ?>
+                                        <?php $isActiveExam = $examId === $selectedExamId; ?>
+                                        <form method="post" class="exam-select-form">
+                                            <input type="hidden" name="action" value="select_exam">
+                                            <input type="hidden" name="difficulty" value="<?php echo h($selectedDifficulty); ?>">
+                                            <input type="hidden" name="category_id" value="<?php echo h($categoryId); ?>">
+                                            <button type="submit" name="exam_id" value="<?php echo h($examId); ?>" class="exam-button<?php echo $isActiveExam ? ' active' : ''; ?>">
+                                                <span class="exam-title"><?php echo h($exam['meta']['title']); ?></span>
+                                            </button>
+                                        </form>
+                                    <?php endforeach; ?>
+                                </div>
+                            <?php else: ?>
+                                <p class="empty-message accordion-empty">このカテゴリには試験が登録されていません。</p>
+                            <?php endif; ?>
+                        </details>
+                    <?php endforeach; ?>
+                </div>
             <?php else: ?>
                 <p class="empty-message">カテゴリが登録されていません。</p>
             <?php endif; ?>
@@ -887,6 +912,7 @@ $totalExams = count($exams);
                 <form method="post">
                     <input type="hidden" name="action" value="start_quiz" id="form_action">
                     <input type="hidden" name="category_id" value="<?php echo h($selectedCategoryId); ?>">
+                    <input type="hidden" name="exam_id" value="<?php echo h($selectedExamId); ?>">
                     <div class="form-field static-field">
                         <label>選択中のカテゴリ</label>
                         <div class="selected-category-display">
@@ -898,21 +924,18 @@ $totalExams = count($exams);
                             <?php endif; ?>
                         </div>
                     </div>
-                    <div class="form-field">
-                        <label for="exam_id">資格試験</label>
-                        <select name="exam_id" id="exam_id" required <?php echo empty($categoryExamIds) ? 'disabled' : ''; ?>>
-                            <?php if (!empty($categoryExamIds)): ?>
-                                <?php foreach ($categoryExamIds as $examId): ?>
-                                    <?php if (!isset($exams[$examId])) { continue; } ?>
-                                    <?php $exam = $exams[$examId]; ?>
-                                    <option value="<?php echo h($examId); ?>" <?php echo $examId === $selectedExamId ? 'selected' : ''; ?>>
-                                        <?php echo h($exam['meta']['title']); ?>
-                                    </option>
-                                <?php endforeach; ?>
+                    <div class="form-field static-field">
+                        <label>選択中の試験</label>
+                        <div class="selected-exam-display">
+                            <?php if ($selectedExam): ?>
+                                <span class="selected-exam-name"><?php echo h($selectedExam['meta']['title']); ?></span>
+                                <button type="button" class="open-sidebar-button" data-sidebar-target="categorySidebar">別の試験を選ぶ</button>
                             <?php else: ?>
-                                <option value="" disabled>このカテゴリには試験が登録されていません。</option>
+                                <span class="selected-exam-name">試験が選択されていません。</span>
+                                <button type="button" class="open-sidebar-button" data-sidebar-target="categorySidebar">試験を選択する</button>
                             <?php endif; ?>
-                        </select>
+                        </div>
+                        <small class="field-hint">左のメニューから試験を選択してください。</small>
                     </div>
                     <div class="form-field">
                         <label for="difficulty">難易度</label>
@@ -1149,6 +1172,26 @@ $totalExams = count($exams);
             toggleButton.setAttribute('aria-expanded', 'false');
             toggleButton.focus();
         };
+
+        const accordionItems = sidebar.querySelectorAll('.category-item');
+        accordionItems.forEach(function (item) {
+            item.addEventListener('toggle', function () {
+                if (item.open) {
+                    accordionItems.forEach(function (other) {
+                        if (other !== item) {
+                            other.open = false;
+                        }
+                    });
+                }
+            });
+        });
+
+        const externalSidebarButtons = document.querySelectorAll('[data-sidebar-target="categorySidebar"]');
+        externalSidebarButtons.forEach(function (button) {
+            button.addEventListener('click', function () {
+                openSidebar();
+            });
+        });
 
         toggleButton.addEventListener('click', function () {
             if (html.classList.contains('sidebar-open')) {
