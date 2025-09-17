@@ -528,6 +528,24 @@ button.secondary:disabled:hover {
   cursor: not-allowed;
 }
 
+button.danger-action {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+button.danger-action:hover {
+  background: var(--danger);
+  border-color: var(--danger);
+  color: #fff;
+}
+
+button.danger-action:disabled,
+button.danger-action:disabled:hover {
+  background: #f3f4f6;
+  color: #9ca3af;
+  border-color: #d1d5db;
+}
+
 .exam-meta {
   display: flex;
   flex-direction: column;
@@ -888,6 +906,12 @@ button.secondary:disabled:hover {
   color: var(--primary-dark);
 }
 
+.saved-results-note {
+  margin: 8px 0 4px;
+  font-size: 0.9rem;
+  color: #475569;
+}
+
 .saved-results-status {
   min-height: 1.25rem;
   margin: 8px 0 12px;
@@ -928,14 +952,19 @@ button.secondary:disabled:hover {
 
 .saved-result-header {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 .saved-result-title {
   font-weight: 600;
   color: var(--primary-dark);
+}
+
+.saved-result-header .saved-result-timestamp {
+  margin-left: auto;
 }
 
 .saved-result-summary,
@@ -955,6 +984,57 @@ button.secondary:disabled:hover {
   color: #4b5563;
 }
 
+.saved-result-mistakes {
+  border-top: 1px solid var(--border);
+  padding-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.saved-result-subtitle {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+}
+
+.saved-result-no-mistakes {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--success);
+}
+
+.incorrect-question-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.incorrect-question-item {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 8px 10px;
+}
+
+.incorrect-question-title {
+  margin: 0 0 4px;
+  font-size: 0.9rem;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.incorrect-question-answer {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #4b5563;
+}
+
 .saved-results-empty {
   margin: 0;
   padding: 16px;
@@ -963,28 +1043,6 @@ button.secondary:disabled:hover {
   background: #f9fafb;
   text-align: center;
   color: #4b5563;
-}
-
-.save-result-button {
-  white-space: nowrap;
-}
-
-.saved-result-delete {
-  border-color: var(--danger);
-  color: var(--danger);
-}
-
-.saved-result-delete:hover {
-  background: var(--danger);
-  border-color: var(--danger);
-  color: #fff;
-}
-
-.saved-result-delete:disabled,
-.saved-result-delete:disabled:hover {
-  background: #f3f4f6;
-  border-color: #d1d5db;
-  color: #9ca3af;
 }
 
 .actions {

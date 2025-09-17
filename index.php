@@ -695,6 +695,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $questionResults = [];
             $correctCount = 0;
+            $incorrectDetails = [];
             foreach ($currentQuiz['questions'] as $index => $question) {
                 $questionId = $question['id'];
                 $userAnswer = null;
@@ -704,6 +705,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $isCorrect = $userAnswer !== null && $userAnswer === $question['answer'];
                 if ($isCorrect) {
                     $correctCount++;
+                } else {
+                    $incorrectDetails[] = [
+                        'number' => $index + 1,
+                        'question' => $question['question'],
+                        'correct_answer' => $question['answer'],
+                        'user_answer' => $userAnswer,
+                    ];
                 }
                 $questionResults[] = [
                     'number' => $index + 1,
@@ -718,12 +726,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ];
             }
 
+            $incorrectCount = count($incorrectDetails);
+            $resultId = '';
+            try {
+                $resultId = bin2hex(random_bytes(16));
+            } catch (Exception $exception) {
+                $resultId = uniqid('result_', true);
+            }
+
             $results = [
                 'exam' => $currentQuiz['meta'],
                 'total' => count($questionResults),
                 'correct' => $correctCount,
                 'questions' => $questionResults,
                 'difficulty' => $currentQuiz['difficulty'] ?? DIFFICULTY_RANDOM,
+                'incorrect' => $incorrectCount,
+                'incorrect_questions' => $incorrectDetails,
+                'completed_at' => date(DATE_ATOM),
+                'result_id' => $resultId,
             ];
 
             $selectedExamId = $currentQuiz['exam_id'];
@@ -1150,13 +1170,34 @@ $totalExams = count($exams);
     $currentResultForStorage = null;
     if ($view === 'results' && $results) {
         $resultsDifficultyForStorage = sanitizeDifficultySelection($results['difficulty'] ?? DIFFICULTY_RANDOM);
+        $incorrectQuestionsForStorage = [];
+        if (!empty($results['incorrect_questions']) && is_array($results['incorrect_questions'])) {
+            foreach ($results['incorrect_questions'] as $incorrectQuestion) {
+                if (!is_array($incorrectQuestion)) {
+                    continue;
+                }
+                $incorrectQuestionsForStorage[] = [
+                    'number' => isset($incorrectQuestion['number']) ? (int)$incorrectQuestion['number'] : 0,
+                    'question' => isset($incorrectQuestion['question']) ? (string)$incorrectQuestion['question'] : '',
+                    'correctAnswer' => isset($incorrectQuestion['correct_answer']) ? (string)$incorrectQuestion['correct_answer'] : '',
+                    'userAnswer' => isset($incorrectQuestion['user_answer']) ? (string)$incorrectQuestion['user_answer'] : '',
+                ];
+            }
+        }
+
+        $completedAt = isset($results['completed_at']) && is_string($results['completed_at']) ? $results['completed_at'] : date(DATE_ATOM);
         $currentResultForStorage = [
+            'resultId' => (string)($results['result_id'] ?? ''),
             'examId' => (string)($results['exam']['id'] ?? ''),
             'examTitle' => (string)($results['exam']['title'] ?? ''),
+            'categoryId' => (string)($results['exam']['category']['id'] ?? ''),
             'categoryName' => (string)($results['exam']['category']['name'] ?? ''),
             'difficulty' => $resultsDifficultyForStorage,
             'correct' => (int)($results['correct'] ?? 0),
+            'incorrect' => (int)($results['incorrect'] ?? max(0, (int)($results['total'] ?? 0) - (int)($results['correct'] ?? 0))),
             'total' => (int)($results['total'] ?? 0),
+            'completedAt' => $completedAt,
+            'incorrectQuestions' => $incorrectQuestionsForStorage,
         ];
     }
     ?>
@@ -1168,14 +1209,13 @@ $totalExams = count($exams);
         }
         ?>>
             <div class="saved-results-header">
-                <h2>保存した結果</h2>
-                <?php if ($currentResultForStorage !== null): ?>
-                    <button type="button" class="save-result-button" data-save-result>この結果を保存</button>
-                <?php endif; ?>
+                <h2>受験履歴</h2>
+                <button type="button" class="secondary danger-action" data-clear-history>履歴をすべて削除</button>
             </div>
+            <p class="saved-results-note">最新の結果は自動的に保存されます。</p>
             <p class="saved-results-status" data-save-status aria-live="polite"></p>
             <ul class="saved-results-list" data-saved-list>
-                <li class="saved-results-empty" data-empty-message>保存された結果はありません。</li>
+                <li class="saved-results-empty" data-empty-message>保存された履歴はありません。</li>
             </ul>
         </section>
     <?php endif; ?>
@@ -1247,11 +1287,10 @@ $totalExams = count($exams);
             return;
         }
 
-        const saveButton = savedResultsCard.querySelector('[data-save-result]');
+        const clearButton = savedResultsCard.querySelector('[data-clear-history]');
         const statusElement = savedResultsCard.querySelector('[data-save-status]');
         const listElement = savedResultsCard.querySelector('[data-saved-list]');
         const emptyElement = savedResultsCard.querySelector('[data-empty-message]');
-        const originalSaveButtonText = saveButton ? saveButton.textContent : '';
         const difficultyLabels = {
             easy: '優しい',
             normal: '普通',
@@ -1272,9 +1311,9 @@ $totalExams = count($exams);
         }
 
         if (!isIndexedDBAvailable) {
-            if (saveButton) {
-                saveButton.disabled = true;
-                saveButton.title = 'このブラウザでは保存機能を利用できません。';
+            if (clearButton) {
+                clearButton.disabled = true;
+                clearButton.title = 'このブラウザでは履歴機能を利用できません。';
             }
             if (emptyElement) {
                 emptyElement.textContent = 'このブラウザでは保存機能を利用できません。';
@@ -1292,10 +1331,6 @@ $totalExams = count($exams);
                 console.error('Failed to parse result data', error);
                 setStatus('結果データの読み込みに失敗しました。', 'error');
             }
-        }
-
-        if (!currentResult && saveButton) {
-            saveButton.disabled = true;
         }
 
         const DB_NAME = 'quizResults';
@@ -1343,7 +1378,7 @@ $totalExams = count($exams);
                 return new Promise(function (resolve, reject) {
                     const transaction = db.transaction(STORE_NAME, 'readwrite');
                     const store = transaction.objectStore(STORE_NAME);
-                    store.add(result);
+                    store.put(result);
 
                     transaction.addEventListener('complete', function () {
                         resolve();
@@ -1355,6 +1390,28 @@ $totalExams = count($exams);
 
                     transaction.addEventListener('abort', function () {
                         reject(transaction.error || new Error('結果の保存が中断されました。'));
+                    });
+                });
+            });
+        }
+
+        function clearAllResults() {
+            return openDatabase().then(function (db) {
+                return new Promise(function (resolve, reject) {
+                    const transaction = db.transaction(STORE_NAME, 'readwrite');
+                    const store = transaction.objectStore(STORE_NAME);
+                    store.clear();
+
+                    transaction.addEventListener('complete', function () {
+                        resolve();
+                    });
+
+                    transaction.addEventListener('error', function () {
+                        reject(transaction.error || new Error('履歴の削除に失敗しました。'));
+                    });
+
+                    transaction.addEventListener('abort', function () {
+                        reject(transaction.error || new Error('履歴の削除が中断されました。'));
                     });
                 });
             });
@@ -1378,28 +1435,6 @@ $totalExams = count($exams);
             });
         }
 
-        function removeResult(id) {
-            return openDatabase().then(function (db) {
-                return new Promise(function (resolve, reject) {
-                    const transaction = db.transaction(STORE_NAME, 'readwrite');
-                    const store = transaction.objectStore(STORE_NAME);
-                    store.delete(id);
-
-                    transaction.addEventListener('complete', function () {
-                        resolve();
-                    });
-
-                    transaction.addEventListener('error', function () {
-                        reject(transaction.error || new Error('結果の削除に失敗しました。'));
-                    });
-
-                    transaction.addEventListener('abort', function () {
-                        reject(transaction.error || new Error('結果の削除が中断されました。'));
-                    });
-                });
-            });
-        }
-
         function calculateScorePercent(correct, total) {
             const totalNumber = Number(total);
             const correctNumber = Number(correct);
@@ -1413,7 +1448,7 @@ $totalExams = count($exams);
             return difficultyLabels[value] || value;
         }
 
-        function formatSavedAt(value) {
+        function formatDateTime(value) {
             if (!value) {
                 return '不明';
             }
@@ -1426,7 +1461,8 @@ $totalExams = count($exams);
                 month: '2-digit',
                 day: '2-digit',
                 hour: '2-digit',
-                minute: '2-digit'
+                minute: '2-digit',
+                second: '2-digit'
             });
         }
 
@@ -1435,22 +1471,6 @@ $totalExams = count($exams);
                 return window.crypto.randomUUID();
             }
             return 'result-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 8);
-        }
-
-        function handleDelete(id, button) {
-            if (!id) {
-                return;
-            }
-            button.disabled = true;
-            setStatus('保存済みの結果を削除しています...', 'info');
-            removeResult(id).then(function () {
-                setStatus('保存済みの結果を削除しました。', 'success');
-                renderSavedResults();
-            }).catch(function (error) {
-                console.error('Failed to delete saved result', error);
-                setStatus('結果の削除に失敗しました。', 'error');
-                button.disabled = false;
-            });
         }
 
         function createListItem(result) {
@@ -1465,54 +1485,111 @@ $totalExams = count($exams);
             title.textContent = result.examTitle || '不明な試験';
             header.appendChild(title);
 
-            const deleteButton = document.createElement('button');
-            deleteButton.type = 'button';
-            deleteButton.className = 'secondary saved-result-delete';
-            deleteButton.textContent = '削除';
-            deleteButton.addEventListener('click', function () {
-                handleDelete(result.id, deleteButton);
-            });
-            header.appendChild(deleteButton);
+            const timestamp = document.createElement('span');
+            timestamp.className = 'saved-result-timestamp';
+            timestamp.textContent = '受験日時: ' + formatDateTime(result.completedAt || result.savedAt);
+            header.appendChild(timestamp);
 
             item.appendChild(header);
 
             const correctNumber = Number(result.correct) || 0;
             const totalNumber = Number(result.total) || 0;
+            const incorrectNumberRaw = Number(result.incorrect);
+            const incorrectNumber = Number.isFinite(incorrectNumberRaw)
+                ? incorrectNumberRaw
+                : Math.max(totalNumber - correctNumber, 0);
             const scorePercent = typeof result.scorePercent === 'number'
                 ? result.scorePercent
                 : calculateScorePercent(correctNumber, totalNumber);
 
             const summary = document.createElement('p');
             summary.className = 'saved-result-summary';
-            summary.textContent = '正答数 ' + correctNumber + ' / ' + totalNumber + '（正答率 ' + scorePercent + '%）';
+            summary.textContent = '成績: 正解 ' + correctNumber + '問 / 不正解 ' + incorrectNumber + '問（正答率 ' + scorePercent + '%）';
             item.appendChild(summary);
 
             const metaLine = document.createElement('p');
             metaLine.className = 'saved-result-meta';
-            const metaParts = ['難易度: ' + formatDifficulty(result.difficulty || '')];
+            const metaParts = [];
             if (result.categoryName) {
                 metaParts.push('カテゴリ: ' + result.categoryName);
             }
-            metaLine.textContent = metaParts.join(' / ');
-            item.appendChild(metaLine);
+            if (result.difficulty) {
+                metaParts.push('難易度: ' + formatDifficulty(result.difficulty));
+            }
+            if (metaParts.length) {
+                metaLine.textContent = metaParts.join(' / ');
+                item.appendChild(metaLine);
+            }
 
-            const timestamp = document.createElement('p');
-            timestamp.className = 'saved-result-timestamp';
-            timestamp.textContent = '保存日時: ' + formatSavedAt(result.savedAt);
-            item.appendChild(timestamp);
+            const incorrectQuestions = Array.isArray(result.incorrectQuestions) ? result.incorrectQuestions : [];
+            if (incorrectQuestions.length) {
+                const mistakesContainer = document.createElement('div');
+                mistakesContainer.className = 'saved-result-mistakes';
+
+                const mistakesTitle = document.createElement('p');
+                mistakesTitle.className = 'saved-result-subtitle';
+                mistakesTitle.textContent = '間違えた問題';
+                mistakesContainer.appendChild(mistakesTitle);
+
+                const mistakesList = document.createElement('ul');
+                mistakesList.className = 'incorrect-question-list';
+
+                incorrectQuestions.forEach(function (question) {
+                    if (!question || typeof question !== 'object') {
+                        return;
+                    }
+                    const listItem = document.createElement('li');
+                    listItem.className = 'incorrect-question-item';
+
+                    const number = typeof question.number === 'number' && !Number.isNaN(question.number)
+                        ? question.number
+                        : 0;
+                    const questionText = typeof question.question === 'string' ? question.question : '';
+                    const correctAnswer = typeof question.correctAnswer === 'string' ? question.correctAnswer : '';
+                    const userAnswerRaw = typeof question.userAnswer === 'string' ? question.userAnswer : '';
+                    const userAnswer = userAnswerRaw !== '' ? userAnswerRaw : '未回答';
+
+                    const titleLine = document.createElement('p');
+                    titleLine.className = 'incorrect-question-title';
+                    const questionLabel = number > 0 ? 'Q' + number + '. ' : '';
+                    titleLine.textContent = questionLabel + (questionText || '問題文がありません。');
+                    listItem.appendChild(titleLine);
+
+                    const answerLine = document.createElement('p');
+                    answerLine.className = 'incorrect-question-answer';
+                    const correctLabel = correctAnswer !== '' ? correctAnswer : '不明';
+                    answerLine.textContent = '正解: ' + correctLabel + ' / あなたの回答: ' + userAnswer;
+                    listItem.appendChild(answerLine);
+
+                    mistakesList.appendChild(listItem);
+                });
+
+                mistakesContainer.appendChild(mistakesList);
+                item.appendChild(mistakesContainer);
+            } else {
+                const allCorrect = document.createElement('p');
+                allCorrect.className = 'saved-result-no-mistakes';
+                allCorrect.textContent = '間違えた問題はありません。';
+                item.appendChild(allCorrect);
+            }
 
             return item;
         }
 
         function renderSavedResults() {
             if (!listElement) {
-                return;
+                if (clearButton) {
+                    clearButton.disabled = true;
+                }
+                return Promise.resolve();
             }
 
-            fetchAllResults().then(function (results) {
+            return fetchAllResults().then(function (results) {
                 const sortedResults = results.slice().sort(function (a, b) {
-                    const aTime = a && a.savedAt ? new Date(a.savedAt).getTime() : 0;
-                    const bTime = b && b.savedAt ? new Date(b.savedAt).getTime() : 0;
+                    const aTimeSource = a && (a.completedAt || a.savedAt) ? (a.completedAt || a.savedAt) : null;
+                    const bTimeSource = b && (b.completedAt || b.savedAt) ? (b.completedAt || b.savedAt) : null;
+                    const aTime = aTimeSource ? new Date(aTimeSource).getTime() : 0;
+                    const bTime = bTimeSource ? new Date(bTimeSource).getTime() : 0;
                     return bTime - aTime;
                 });
 
@@ -1520,8 +1597,11 @@ $totalExams = count($exams);
 
                 if (!sortedResults.length) {
                     if (emptyElement) {
-                        emptyElement.textContent = '保存された結果はありません。';
+                        emptyElement.textContent = '保存された履歴はありません。';
                         listElement.appendChild(emptyElement);
+                    }
+                    if (clearButton) {
+                        clearButton.disabled = true;
                     }
                     return;
                 }
@@ -1529,6 +1609,9 @@ $totalExams = count($exams);
                 sortedResults.forEach(function (result) {
                     listElement.appendChild(createListItem(result));
                 });
+                if (clearButton) {
+                    clearButton.disabled = false;
+                }
             }).catch(function (error) {
                 console.error('Failed to load saved results', error);
                 if (emptyElement) {
@@ -1537,44 +1620,102 @@ $totalExams = count($exams);
                     listElement.appendChild(emptyElement);
                 }
                 setStatus('保存済みの結果を読み込めませんでした。', 'error');
+                if (clearButton) {
+                    clearButton.disabled = true;
+                }
             });
         }
 
-        if (saveButton && currentResult) {
-            saveButton.addEventListener('click', function () {
-                if (!currentResult) {
+        function normalizeIncorrectQuestions(questions) {
+            if (!Array.isArray(questions)) {
+                return [];
+            }
+            return questions.map(function (question) {
+                if (!question || typeof question !== 'object') {
+                    return null;
+                }
+                return {
+                    number: typeof question.number === 'number' ? question.number : 0,
+                    question: typeof question.question === 'string' ? question.question : '',
+                    correctAnswer: typeof question.correctAnswer === 'string' ? question.correctAnswer : '',
+                    userAnswer: typeof question.userAnswer === 'string' ? question.userAnswer : ''
+                };
+            }).filter(function (question) {
+                return question !== null;
+            });
+        }
+
+        function saveCurrentResult() {
+            if (!currentResult) {
+                return;
+            }
+
+            const correctNumber = Number(currentResult.correct) || 0;
+            const totalNumber = Number(currentResult.total) || 0;
+            const incorrectNumberRaw = Number(currentResult.incorrect);
+            const incorrectNumber = Number.isFinite(incorrectNumberRaw)
+                ? incorrectNumberRaw
+                : Math.max(totalNumber - correctNumber, 0);
+
+            const normalizedIncorrectQuestions = normalizeIncorrectQuestions(currentResult.incorrectQuestions);
+
+            const resultToSave = {
+                id: currentResult.resultId || generateId(),
+                resultId: currentResult.resultId || '',
+                examId: currentResult.examId || '',
+                examTitle: currentResult.examTitle || '',
+                categoryId: currentResult.categoryId || '',
+                categoryName: currentResult.categoryName || '',
+                difficulty: currentResult.difficulty || '',
+                correct: correctNumber,
+                incorrect: incorrectNumber,
+                total: totalNumber,
+                scorePercent: calculateScorePercent(correctNumber, totalNumber),
+                completedAt: currentResult.completedAt || new Date().toISOString(),
+                savedAt: new Date().toISOString(),
+                incorrectQuestions: normalizedIncorrectQuestions
+            };
+
+            setStatus('最新の結果を保存しています...', 'info');
+
+            addResult(resultToSave).then(function () {
+                setStatus('最新の結果を保存しました。', 'success');
+                renderSavedResults();
+            }).catch(function (error) {
+                console.error('Failed to save result', error);
+                setStatus('結果の保存に失敗しました。', 'error');
+            });
+        }
+
+        if (clearButton) {
+            clearButton.addEventListener('click', function () {
+                if (clearButton.disabled) {
                     return;
                 }
-
-                saveButton.disabled = true;
-                setStatus('結果を保存しています...', 'info');
-
-                const resultToSave = {
-                    id: generateId(),
-                    examId: currentResult.examId || '',
-                    examTitle: currentResult.examTitle || '',
-                    categoryName: currentResult.categoryName || '',
-                    difficulty: currentResult.difficulty || '',
-                    correct: Number(currentResult.correct) || 0,
-                    total: Number(currentResult.total) || 0,
-                    scorePercent: calculateScorePercent(currentResult.correct, currentResult.total),
-                    savedAt: new Date().toISOString()
-                };
-
-                addResult(resultToSave).then(function () {
-                    setStatus('結果を保存しました。', 'success');
-                    saveButton.textContent = '保存済み';
-                    renderSavedResults();
+                const confirmed = window.confirm('保存されている受験履歴をすべて削除しますか？');
+                if (!confirmed) {
+                    return;
+                }
+                clearButton.disabled = true;
+                setStatus('履歴を削除しています...', 'info');
+                clearAllResults().then(function () {
+                    setStatus('履歴を削除しました。', 'success');
+                    return renderSavedResults();
                 }).catch(function (error) {
-                    console.error('Failed to save result', error);
-                    setStatus('結果の保存に失敗しました。', 'error');
-                    saveButton.disabled = false;
-                    saveButton.textContent = originalSaveButtonText;
+                    console.error('Failed to clear saved results', error);
+                    setStatus('履歴の削除に失敗しました。', 'error');
+                    if (clearButton) {
+                        clearButton.disabled = false;
+                    }
                 });
             });
         }
 
         renderSavedResults();
+
+        if (currentResult) {
+            saveCurrentResult();
+        }
     });
 </script>
 </body>
