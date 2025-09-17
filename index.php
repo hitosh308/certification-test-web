@@ -815,7 +815,6 @@ if ($questionCountInput === '' || $questionCountInput === '0') {
 $difficultyOptions = getDifficultyOptions(true);
 
 $totalExams = count($exams);
-$totalCategories = count($categories);
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -962,38 +961,6 @@ $totalCategories = count($categories);
                     <?php endif; ?>
                     <button type="submit" <?php echo $canStartQuiz ? '' : 'disabled'; ?>>問題を開始</button>
                 </form>
-            </div>
-            <div class="section-card">
-                <h2>登録済みの資格試験 (<?php echo $totalExams; ?>)</h2>
-                <?php if ($totalCategories > 0): ?>
-                    <p class="category-summary">カテゴリ数: <?php echo $totalCategories; ?></p>
-                <?php endif; ?>
-                <?php foreach ($categories as $category): ?>
-                    <?php $categoryExamIdsForList = examIdsForCategory($categories, $exams, $category['id']); ?>
-                    <?php if (empty($categoryExamIdsForList)) { continue; } ?>
-                    <div class="category-group">
-                        <h3 class="category-title"><?php echo h($category['name']); ?>（<?php echo count($categoryExamIdsForList); ?>）</h3>
-                        <ul class="exam-list">
-                            <?php foreach ($categoryExamIdsForList as $examId): ?>
-                                <?php if (!isset($exams[$examId])) { continue; } ?>
-                                <?php $exam = $exams[$examId]; ?>
-                                <li>
-                                    <h4><?php echo h($exam['meta']['title']); ?></h4>
-                                    <?php if ($exam['meta']['description'] !== ''): ?>
-                                        <p><?php echo nl2brSafe($exam['meta']['description']); ?></p>
-                                    <?php endif; ?>
-                                    <p class="meta">
-                                        <?php if ($exam['meta']['version'] !== ''): ?>
-                                            バージョン: <?php echo h($exam['meta']['version']); ?> /
-                                        <?php endif; ?>
-                                        問題数: <?php echo (int)$exam['meta']['question_count']; ?> 問 /
-                                        ファイル: <?php echo h($exam['meta']['source_file']); ?>
-                                    </p>
-                                </li>
-                            <?php endforeach; ?>
-                        </ul>
-                    </div>
-                <?php endforeach; ?>
             </div>
         <?php endif; ?>
     <?php elseif ($view === 'quiz' && $currentQuiz): ?>
