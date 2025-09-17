@@ -581,6 +581,13 @@ if ($selectedExamId === '' && !empty($exams)) {
     }
 }
 
+if (!$currentQuiz) {
+    $requestedView = isset($_GET['view']) ? (string)$_GET['view'] : '';
+    if ($requestedView === 'history') {
+        $view = 'history';
+    }
+}
+
 $questionCountInput = '';
 $selectedDifficulty = sanitizeDifficultySelection($_SESSION['last_selected_difficulty'] ?? null);
 
@@ -840,6 +847,52 @@ if ($questionCountInput === '' || $questionCountInput === '0') {
 $difficultyOptions = getDifficultyOptions(true);
 
 $totalExams = count($exams);
+
+$currentResultForStorage = null;
+if ($view === 'results' && $results) {
+    $resultsDifficultyForStorage = sanitizeDifficultySelection($results['difficulty'] ?? DIFFICULTY_RANDOM);
+    $incorrectQuestionsForStorage = [];
+    if (!empty($results['incorrect_questions']) && is_array($results['incorrect_questions'])) {
+        foreach ($results['incorrect_questions'] as $incorrectQuestion) {
+            if (!is_array($incorrectQuestion)) {
+                continue;
+            }
+            $incorrectQuestionsForStorage[] = [
+                'number' => isset($incorrectQuestion['number']) ? (int)$incorrectQuestion['number'] : 0,
+                'question' => isset($incorrectQuestion['question']) ? (string)$incorrectQuestion['question'] : '',
+                'correctAnswer' => isset($incorrectQuestion['correct_answer']) ? (string)$incorrectQuestion['correct_answer'] : '',
+                'userAnswer' => isset($incorrectQuestion['user_answer']) ? (string)$incorrectQuestion['user_answer'] : '',
+            ];
+        }
+    }
+
+    $completedAt = isset($results['completed_at']) && is_string($results['completed_at'])
+        ? $results['completed_at']
+        : date(DATE_ATOM);
+
+    $currentResultForStorage = [
+        'resultId' => (string)($results['result_id'] ?? ''),
+        'examId' => (string)($results['exam']['id'] ?? ''),
+        'examTitle' => (string)($results['exam']['title'] ?? ''),
+        'categoryId' => (string)($results['exam']['category']['id'] ?? ''),
+        'categoryName' => (string)($results['exam']['category']['name'] ?? ''),
+        'difficulty' => $resultsDifficultyForStorage,
+        'correct' => (int)($results['correct'] ?? 0),
+        'incorrect' => (int)($results['incorrect'] ?? max(0, (int)($results['total'] ?? 0) - (int)($results['correct'] ?? 0))),
+        'total' => (int)($results['total'] ?? 0),
+        'completedAt' => $completedAt,
+        'incorrectQuestions' => $incorrectQuestionsForStorage,
+    ];
+}
+
+$isHistoryView = ($view === 'history');
+$appAttributes = ' data-view="' . h($view) . '"';
+if ($currentResultForStorage !== null) {
+    $currentResultJson = json_encode($currentResultForStorage, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    if (is_string($currentResultJson)) {
+        $appAttributes .= ' data-current-result="' . h($currentResultJson) . '"';
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -853,7 +906,7 @@ $totalExams = count($exams);
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-<div class="app">
+<div class="app"<?php echo $appAttributes; ?>>
     <header>
         <div class="header-top">
             <h1>資格試験問題集</h1>
@@ -871,47 +924,56 @@ $totalExams = count($exams);
 
     <div class="layout">
         <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
-        <aside class="category-sidebar" id="categorySidebar" aria-label="カテゴリ一覧" tabindex="-1">
+        <aside class="category-sidebar" id="categorySidebar" aria-label="メニュー" tabindex="-1">
             <div class="sidebar-header">
-                <h2>カテゴリ</h2>
+                <h2>メニュー</h2>
                 <button type="button" class="sidebar-close" id="sidebarClose" aria-label="カテゴリメニューを閉じる">&times;</button>
             </div>
-            <?php if (!empty($categories)): ?>
-                <div class="category-accordion">
-                    <?php foreach ($categories as $categoryId => $category): ?>
-                        <?php $examIds = examIdsForCategory($categories, $exams, $categoryId); ?>
-                        <?php $categoryExamCount = count($examIds); ?>
-                        <?php $isActiveCategory = $categoryId === $selectedCategoryId; ?>
-                        <details class="category-item"<?php echo $isActiveCategory ? ' open' : ''; ?>>
-                            <summary class="category-summary">
-                                <span class="category-name"><?php echo h($category['name']); ?></span>
-                                <span class="category-count" aria-hidden="true"><?php echo $categoryExamCount; ?></span>
-                                <span class="accordion-icon" aria-hidden="true"></span>
-                            </summary>
-                            <?php if ($categoryExamCount > 0): ?>
-                                <div class="exam-list">
-                                    <?php foreach ($examIds as $examId): ?>
-                                        <?php if (!isset($exams[$examId])) { continue; } ?>
-                                        <?php $exam = $exams[$examId]; ?>
-                                        <?php $isActiveExam = $examId === $selectedExamId; ?>
-                                        <form method="post" class="exam-select-form">
-                                            <input type="hidden" name="action" value="select_exam">
-                                            <input type="hidden" name="difficulty" value="<?php echo h($selectedDifficulty); ?>">
-                                            <input type="hidden" name="category_id" value="<?php echo h($categoryId); ?>">
-                                            <button type="submit" name="exam_id" value="<?php echo h($examId); ?>" class="exam-button<?php echo $isActiveExam ? ' active' : ''; ?>">
-                                                <span class="exam-title"><?php echo h($exam['meta']['title']); ?></span>
-                                            </button>
-                                        </form>
-                                    <?php endforeach; ?>
-                                </div>
-                            <?php else: ?>
-                                <p class="empty-message accordion-empty">このカテゴリには試験が登録されていません。</p>
-                            <?php endif; ?>
-                        </details>
-                    <?php endforeach; ?>
-                </div>
+            <nav class="sidebar-nav" aria-label="ページ切り替え">
+                <a href="./" class="sidebar-nav-link<?php echo $isHistoryView ? '' : ' active'; ?>">学習トップ</a>
+                <a href="?view=history" class="sidebar-nav-link<?php echo $isHistoryView ? ' active' : ''; ?>">受験履歴</a>
+            </nav>
+            <?php if (!$isHistoryView): ?>
+                <h3 class="sidebar-section-title">カテゴリ</h3>
+                <?php if (!empty($categories)): ?>
+                    <div class="category-accordion">
+                        <?php foreach ($categories as $categoryId => $category): ?>
+                            <?php $examIds = examIdsForCategory($categories, $exams, $categoryId); ?>
+                            <?php $categoryExamCount = count($examIds); ?>
+                            <?php $isActiveCategory = $categoryId === $selectedCategoryId; ?>
+                            <details class="category-item"<?php echo $isActiveCategory ? ' open' : ''; ?>>
+                                <summary class="category-summary">
+                                    <span class="category-name"><?php echo h($category['name']); ?></span>
+                                    <span class="category-count" aria-hidden="true"><?php echo $categoryExamCount; ?></span>
+                                    <span class="accordion-icon" aria-hidden="true"></span>
+                                </summary>
+                                <?php if ($categoryExamCount > 0): ?>
+                                    <div class="exam-list">
+                                        <?php foreach ($examIds as $examId): ?>
+                                            <?php if (!isset($exams[$examId])) { continue; } ?>
+                                            <?php $exam = $exams[$examId]; ?>
+                                            <?php $isActiveExam = $examId === $selectedExamId; ?>
+                                            <form method="post" class="exam-select-form">
+                                                <input type="hidden" name="action" value="select_exam">
+                                                <input type="hidden" name="difficulty" value="<?php echo h($selectedDifficulty); ?>">
+                                                <input type="hidden" name="category_id" value="<?php echo h($categoryId); ?>">
+                                                <button type="submit" name="exam_id" value="<?php echo h($examId); ?>" class="exam-button<?php echo $isActiveExam ? ' active' : ''; ?>">
+                                                    <span class="exam-title"><?php echo h($exam['meta']['title']); ?></span>
+                                                </button>
+                                            </form>
+                                        <?php endforeach; ?>
+                                    </div>
+                                <?php else: ?>
+                                    <p class="empty-message accordion-empty">このカテゴリには試験が登録されていません。</p>
+                                <?php endif; ?>
+                            </details>
+                        <?php endforeach; ?>
+                    </div>
+                <?php else: ?>
+                    <p class="empty-message">カテゴリが登録されていません。</p>
+                <?php endif; ?>
             <?php else: ?>
-                <p class="empty-message">カテゴリが登録されていません。</p>
+                <p class="sidebar-hint">カテゴリの選択は学習トップで行えます。</p>
             <?php endif; ?>
         </aside>
         <main class="main-content">
@@ -1005,6 +1067,49 @@ $totalExams = count($exams);
                 </form>
             </div>
         <?php endif; ?>
+    <?php elseif ($view === 'history'): ?>
+        <section class="section-card history-card" data-history-root>
+            <div class="history-header">
+                <div class="history-header-text">
+                    <h2>受験履歴</h2>
+                    <p class="history-description">保存された受験結果を検索、並べ替え、絞り込みできます。</p>
+                </div>
+                <button type="button" class="secondary danger-action" data-clear-history>履歴をすべて削除</button>
+            </div>
+            <form class="history-filters" aria-label="受験履歴の絞り込み">
+                <div class="history-filter-group">
+                    <label for="historySearch">キーワード</label>
+                    <input type="search" id="historySearch" name="search" placeholder="試験名やカテゴリで検索">
+                </div>
+                <div class="history-filter-group">
+                    <label for="historyDifficulty">難易度</label>
+                    <select id="historyDifficulty" name="difficulty">
+                        <option value="">すべて</option>
+                        <?php foreach ($difficultyOptions as $difficultyKey => $difficultyText): ?>
+                            <option value="<?php echo h($difficultyKey); ?>"><?php echo h($difficultyText); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="history-filter-group">
+                    <label for="historySort">ソート</label>
+                    <select id="historySort" name="sort">
+                        <option value="date_desc">受験日時（新しい順）</option>
+                        <option value="date_asc">受験日時（古い順）</option>
+                        <option value="score_desc">正答率（高い順）</option>
+                        <option value="score_asc">正答率（低い順）</option>
+                    </select>
+                </div>
+            </form>
+            <p class="history-status" data-history-status aria-live="polite"></p>
+            <p class="history-count" data-history-count></p>
+            <p class="history-empty" data-history-empty hidden>保存された履歴はありません。</p>
+            <ul class="history-list saved-results-list" data-history-list></ul>
+            <div class="history-pagination" data-history-pagination hidden>
+                <button type="button" class="secondary" data-pagination-prev aria-label="前のページ">前へ</button>
+                <span class="history-page-info" data-pagination-info>1 / 1</span>
+                <button type="button" class="secondary" data-pagination-next aria-label="次のページ">次へ</button>
+            </div>
+        </section>
     <?php elseif ($view === 'quiz' && $currentQuiz): ?>
         <?php $quizDifficulty = $currentQuiz['difficulty'] ?? DIFFICULTY_RANDOM; ?>
         <div class="quiz-header">
@@ -1163,62 +1268,10 @@ $totalExams = count($exams);
                 <input type="hidden" name="difficulty" value="<?php echo h($resultsDifficulty); ?>">
                 <button type="submit" class="secondary">別の試験を選ぶ</button>
             </form>
+            <a class="link-button" href="?view=history">受験履歴ページを開く</a>
         </div>
     <?php endif; ?>
 
-    <?php
-    $currentResultForStorage = null;
-    if ($view === 'results' && $results) {
-        $resultsDifficultyForStorage = sanitizeDifficultySelection($results['difficulty'] ?? DIFFICULTY_RANDOM);
-        $incorrectQuestionsForStorage = [];
-        if (!empty($results['incorrect_questions']) && is_array($results['incorrect_questions'])) {
-            foreach ($results['incorrect_questions'] as $incorrectQuestion) {
-                if (!is_array($incorrectQuestion)) {
-                    continue;
-                }
-                $incorrectQuestionsForStorage[] = [
-                    'number' => isset($incorrectQuestion['number']) ? (int)$incorrectQuestion['number'] : 0,
-                    'question' => isset($incorrectQuestion['question']) ? (string)$incorrectQuestion['question'] : '',
-                    'correctAnswer' => isset($incorrectQuestion['correct_answer']) ? (string)$incorrectQuestion['correct_answer'] : '',
-                    'userAnswer' => isset($incorrectQuestion['user_answer']) ? (string)$incorrectQuestion['user_answer'] : '',
-                ];
-            }
-        }
-
-        $completedAt = isset($results['completed_at']) && is_string($results['completed_at']) ? $results['completed_at'] : date(DATE_ATOM);
-        $currentResultForStorage = [
-            'resultId' => (string)($results['result_id'] ?? ''),
-            'examId' => (string)($results['exam']['id'] ?? ''),
-            'examTitle' => (string)($results['exam']['title'] ?? ''),
-            'categoryId' => (string)($results['exam']['category']['id'] ?? ''),
-            'categoryName' => (string)($results['exam']['category']['name'] ?? ''),
-            'difficulty' => $resultsDifficultyForStorage,
-            'correct' => (int)($results['correct'] ?? 0),
-            'incorrect' => (int)($results['incorrect'] ?? max(0, (int)($results['total'] ?? 0) - (int)($results['correct'] ?? 0))),
-            'total' => (int)($results['total'] ?? 0),
-            'completedAt' => $completedAt,
-            'incorrectQuestions' => $incorrectQuestionsForStorage,
-        ];
-    }
-    ?>
-
-    <?php if ($view !== 'quiz'): ?>
-        <section class="section-card saved-results-card" id="savedResultsCard"<?php
-        if ($currentResultForStorage !== null) {
-            echo ' data-current-result="' . h(json_encode($currentResultForStorage, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)) . '"';
-        }
-        ?>>
-            <div class="saved-results-header">
-                <h2>受験履歴</h2>
-                <button type="button" class="secondary danger-action" data-clear-history>履歴をすべて削除</button>
-            </div>
-            <p class="saved-results-note">最新の結果は自動的に保存されます。</p>
-            <p class="saved-results-status" data-save-status aria-live="polite"></p>
-            <ul class="saved-results-list" data-saved-list>
-                <li class="saved-results-empty" data-empty-message>保存された履歴はありません。</li>
-            </ul>
-        </section>
-    <?php endif; ?>
         </main>
     </div>
 </div>
@@ -1282,32 +1335,87 @@ $totalExams = count($exams);
             });
         }
 
-        const savedResultsCard = document.getElementById('savedResultsCard');
-        if (!savedResultsCard) {
+        const appElement = document.querySelector('.app');
+        if (!appElement) {
             return;
         }
 
-        const clearButton = savedResultsCard.querySelector('[data-clear-history]');
-        const statusElement = savedResultsCard.querySelector('[data-save-status]');
-        const listElement = savedResultsCard.querySelector('[data-saved-list]');
-        const emptyElement = savedResultsCard.querySelector('[data-empty-message]');
+        const resultDataRaw = appElement.getAttribute('data-current-result');
+        let currentResult = null;
+        if (resultDataRaw) {
+            try {
+                currentResult = JSON.parse(resultDataRaw);
+            } catch (error) {
+                console.error('Failed to parse result data', error);
+            }
+        }
+
         const difficultyLabels = {
             easy: '優しい',
             normal: '普通',
             hard: '難しい',
             random: 'ランダム'
         };
+
+        const historyRoot = document.querySelector('[data-history-root]');
+        const statusElement = document.querySelector('[data-history-status]');
+        const summaryElement = document.querySelector('[data-history-count]');
+        const listElement = document.querySelector('[data-history-list]');
+        const emptyElement = document.querySelector('[data-history-empty]');
+        const paginationElement = document.querySelector('[data-history-pagination]');
+        const prevButton = paginationElement ? paginationElement.querySelector('[data-pagination-prev]') : null;
+        const nextButton = paginationElement ? paginationElement.querySelector('[data-pagination-next]') : null;
+        const pageInfoElement = paginationElement ? paginationElement.querySelector('[data-pagination-info]') : null;
+        const clearButton = historyRoot ? historyRoot.querySelector('[data-clear-history]') : document.querySelector('[data-clear-history]');
+        const searchInput = document.getElementById('historySearch');
+        const difficultyFilter = document.getElementById('historyDifficulty');
+        const sortSelect = document.getElementById('historySort');
+        const filtersForm = document.querySelector('.history-filters');
+
         const isIndexedDBAvailable = typeof indexedDB !== 'undefined';
+        const isHistoryPage = Boolean(historyRoot);
+        const PAGE_SIZE = 5;
 
         function setStatus(message, type) {
             if (!statusElement) {
                 return;
             }
-            statusElement.textContent = message;
-            statusElement.className = 'saved-results-status';
+            statusElement.textContent = message || '';
+            statusElement.className = 'history-status';
             if (type) {
                 statusElement.classList.add('status-' + type);
             }
+        }
+
+        function updateSummary(total, visible) {
+            if (!summaryElement) {
+                return;
+            }
+            if (!total) {
+                summaryElement.textContent = '';
+                return;
+            }
+            summaryElement.textContent = '全' + total + '件中' + visible + '件を表示しています。';
+        }
+
+        function updateEmptyState(show, message) {
+            if (!emptyElement) {
+                return;
+            }
+            if (show) {
+                if (typeof message === 'string' && message !== '') {
+                    emptyElement.textContent = message;
+                }
+                emptyElement.hidden = false;
+            } else {
+                emptyElement.hidden = true;
+            }
+        }
+
+        if (filtersForm) {
+            filtersForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+            });
         }
 
         if (!isIndexedDBAvailable) {
@@ -1315,22 +1423,11 @@ $totalExams = count($exams);
                 clearButton.disabled = true;
                 clearButton.title = 'このブラウザでは履歴機能を利用できません。';
             }
-            if (emptyElement) {
-                emptyElement.textContent = 'このブラウザでは保存機能を利用できません。';
+            if (isHistoryPage) {
+                updateEmptyState(true, 'このブラウザでは履歴機能を利用できません。');
             }
-            setStatus('このブラウザでは保存機能を利用できません。', 'error');
+            setStatus('このブラウザでは履歴機能を利用できません。', 'error');
             return;
-        }
-
-        const resultDataRaw = savedResultsCard.getAttribute('data-current-result');
-        let currentResult = null;
-        if (resultDataRaw) {
-            try {
-                currentResult = JSON.parse(resultDataRaw);
-            } catch (error) {
-                console.error('Failed to parse result data', error);
-                setStatus('結果データの読み込みに失敗しました。', 'error');
-            }
         }
 
         const DB_NAME = 'quizResults';
@@ -1445,6 +1542,9 @@ $totalExams = count($exams);
         }
 
         function formatDifficulty(value) {
+            if (!value) {
+                return '未設定';
+            }
             return difficultyLabels[value] || value;
         }
 
@@ -1473,159 +1573,6 @@ $totalExams = count($exams);
             return 'result-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 8);
         }
 
-        function createListItem(result) {
-            const item = document.createElement('li');
-            item.className = 'saved-result-item';
-
-            const header = document.createElement('div');
-            header.className = 'saved-result-header';
-
-            const title = document.createElement('span');
-            title.className = 'saved-result-title';
-            title.textContent = result.examTitle || '不明な試験';
-            header.appendChild(title);
-
-            const timestamp = document.createElement('span');
-            timestamp.className = 'saved-result-timestamp';
-            timestamp.textContent = '受験日時: ' + formatDateTime(result.completedAt || result.savedAt);
-            header.appendChild(timestamp);
-
-            item.appendChild(header);
-
-            const correctNumber = Number(result.correct) || 0;
-            const totalNumber = Number(result.total) || 0;
-            const incorrectNumberRaw = Number(result.incorrect);
-            const incorrectNumber = Number.isFinite(incorrectNumberRaw)
-                ? incorrectNumberRaw
-                : Math.max(totalNumber - correctNumber, 0);
-            const scorePercent = typeof result.scorePercent === 'number'
-                ? result.scorePercent
-                : calculateScorePercent(correctNumber, totalNumber);
-
-            const summary = document.createElement('p');
-            summary.className = 'saved-result-summary';
-            summary.textContent = '成績: 正解 ' + correctNumber + '問 / 不正解 ' + incorrectNumber + '問（正答率 ' + scorePercent + '%）';
-            item.appendChild(summary);
-
-            const metaLine = document.createElement('p');
-            metaLine.className = 'saved-result-meta';
-            const metaParts = [];
-            if (result.categoryName) {
-                metaParts.push('カテゴリ: ' + result.categoryName);
-            }
-            if (result.difficulty) {
-                metaParts.push('難易度: ' + formatDifficulty(result.difficulty));
-            }
-            if (metaParts.length) {
-                metaLine.textContent = metaParts.join(' / ');
-                item.appendChild(metaLine);
-            }
-
-            const incorrectQuestions = Array.isArray(result.incorrectQuestions) ? result.incorrectQuestions : [];
-            if (incorrectQuestions.length) {
-                const mistakesContainer = document.createElement('div');
-                mistakesContainer.className = 'saved-result-mistakes';
-
-                const mistakesTitle = document.createElement('p');
-                mistakesTitle.className = 'saved-result-subtitle';
-                mistakesTitle.textContent = '間違えた問題';
-                mistakesContainer.appendChild(mistakesTitle);
-
-                const mistakesList = document.createElement('ul');
-                mistakesList.className = 'incorrect-question-list';
-
-                incorrectQuestions.forEach(function (question) {
-                    if (!question || typeof question !== 'object') {
-                        return;
-                    }
-                    const listItem = document.createElement('li');
-                    listItem.className = 'incorrect-question-item';
-
-                    const number = typeof question.number === 'number' && !Number.isNaN(question.number)
-                        ? question.number
-                        : 0;
-                    const questionText = typeof question.question === 'string' ? question.question : '';
-                    const correctAnswer = typeof question.correctAnswer === 'string' ? question.correctAnswer : '';
-                    const userAnswerRaw = typeof question.userAnswer === 'string' ? question.userAnswer : '';
-                    const userAnswer = userAnswerRaw !== '' ? userAnswerRaw : '未回答';
-
-                    const titleLine = document.createElement('p');
-                    titleLine.className = 'incorrect-question-title';
-                    const questionLabel = number > 0 ? 'Q' + number + '. ' : '';
-                    titleLine.textContent = questionLabel + (questionText || '問題文がありません。');
-                    listItem.appendChild(titleLine);
-
-                    const answerLine = document.createElement('p');
-                    answerLine.className = 'incorrect-question-answer';
-                    const correctLabel = correctAnswer !== '' ? correctAnswer : '不明';
-                    answerLine.textContent = '正解: ' + correctLabel + ' / あなたの回答: ' + userAnswer;
-                    listItem.appendChild(answerLine);
-
-                    mistakesList.appendChild(listItem);
-                });
-
-                mistakesContainer.appendChild(mistakesList);
-                item.appendChild(mistakesContainer);
-            } else {
-                const allCorrect = document.createElement('p');
-                allCorrect.className = 'saved-result-no-mistakes';
-                allCorrect.textContent = '間違えた問題はありません。';
-                item.appendChild(allCorrect);
-            }
-
-            return item;
-        }
-
-        function renderSavedResults() {
-            if (!listElement) {
-                if (clearButton) {
-                    clearButton.disabled = true;
-                }
-                return Promise.resolve();
-            }
-
-            return fetchAllResults().then(function (results) {
-                const sortedResults = results.slice().sort(function (a, b) {
-                    const aTimeSource = a && (a.completedAt || a.savedAt) ? (a.completedAt || a.savedAt) : null;
-                    const bTimeSource = b && (b.completedAt || b.savedAt) ? (b.completedAt || b.savedAt) : null;
-                    const aTime = aTimeSource ? new Date(aTimeSource).getTime() : 0;
-                    const bTime = bTimeSource ? new Date(bTimeSource).getTime() : 0;
-                    return bTime - aTime;
-                });
-
-                listElement.innerHTML = '';
-
-                if (!sortedResults.length) {
-                    if (emptyElement) {
-                        emptyElement.textContent = '保存された履歴はありません。';
-                        listElement.appendChild(emptyElement);
-                    }
-                    if (clearButton) {
-                        clearButton.disabled = true;
-                    }
-                    return;
-                }
-
-                sortedResults.forEach(function (result) {
-                    listElement.appendChild(createListItem(result));
-                });
-                if (clearButton) {
-                    clearButton.disabled = false;
-                }
-            }).catch(function (error) {
-                console.error('Failed to load saved results', error);
-                if (emptyElement) {
-                    emptyElement.textContent = '保存済みの結果を読み込めませんでした。';
-                    listElement.innerHTML = '';
-                    listElement.appendChild(emptyElement);
-                }
-                setStatus('保存済みの結果を読み込めませんでした。', 'error');
-                if (clearButton) {
-                    clearButton.disabled = true;
-                }
-            });
-        }
-
         function normalizeIncorrectQuestions(questions) {
             if (!Array.isArray(questions)) {
                 return [];
@@ -1642,6 +1589,366 @@ $totalExams = count($exams);
                 };
             }).filter(function (question) {
                 return question !== null;
+            });
+        }
+
+        const historyState = {
+            results: [],
+            filtered: [],
+            page: 1,
+            pageSize: PAGE_SIZE,
+            sort: sortSelect ? sortSelect.value : 'date_desc',
+            search: searchInput ? searchInput.value : '',
+            difficulty: difficultyFilter ? difficultyFilter.value : ''
+        };
+
+        function createHistoryListItem(result) {
+            const item = document.createElement('li');
+            item.className = 'saved-result-item history-list-item';
+
+            const details = document.createElement('details');
+            details.className = 'history-entry';
+
+            const summary = document.createElement('summary');
+            summary.className = 'history-summary';
+
+            const summaryMain = document.createElement('div');
+            summaryMain.className = 'history-summary-main';
+
+            const title = document.createElement('span');
+            title.className = 'history-summary-title';
+            title.textContent = result.examTitle || '不明な試験';
+            summaryMain.appendChild(title);
+
+            const timestamp = document.createElement('span');
+            timestamp.className = 'history-summary-timestamp';
+            timestamp.textContent = '受験日時: ' + formatDateTime(result.completedAt || result.savedAt);
+            summaryMain.appendChild(timestamp);
+
+            const tags = document.createElement('div');
+            tags.className = 'history-summary-tags';
+            if (result.categoryName) {
+                const categoryTag = document.createElement('span');
+                categoryTag.className = 'history-tag';
+                categoryTag.textContent = result.categoryName;
+                tags.appendChild(categoryTag);
+            }
+            if (result.difficulty) {
+                const difficultyTag = document.createElement('span');
+                difficultyTag.className = 'history-tag';
+                difficultyTag.textContent = '難易度: ' + formatDifficulty(result.difficulty);
+                tags.appendChild(difficultyTag);
+            }
+            if (tags.childElementCount > 0) {
+                summaryMain.appendChild(tags);
+            }
+
+            const correctNumber = Number(result.correct) || 0;
+            const totalNumber = Number(result.total) || 0;
+            const incorrectNumberRaw = Number(result.incorrect);
+            const incorrectNumber = Number.isFinite(incorrectNumberRaw)
+                ? incorrectNumberRaw
+                : Math.max(totalNumber - correctNumber, 0);
+            const scorePercent = typeof result.scorePercent === 'number'
+                ? result.scorePercent
+                : calculateScorePercent(correctNumber, totalNumber);
+
+            const scoreLine = document.createElement('span');
+            scoreLine.className = 'history-summary-score';
+            scoreLine.textContent = '正解 ' + correctNumber + '問 / 不正解 ' + incorrectNumber + '問（正答率 ' + scorePercent + '%）';
+
+            summary.appendChild(summaryMain);
+            summary.appendChild(scoreLine);
+            details.appendChild(summary);
+
+            const detailsBody = document.createElement('div');
+            detailsBody.className = 'history-details';
+
+            const infoList = document.createElement('dl');
+            infoList.className = 'history-detail-info';
+
+            const infoItems = [
+                ['受験日時', formatDateTime(result.completedAt || result.savedAt)],
+                ['カテゴリ', result.categoryName || '未設定'],
+                ['難易度', formatDifficulty(result.difficulty)],
+                ['出題数', totalNumber + '問'],
+                ['正解数', correctNumber + '問'],
+                ['誤答数', incorrectNumber + '問']
+            ];
+
+            infoItems.forEach(function (entry) {
+                const wrapper = document.createElement('div');
+                wrapper.className = 'history-detail-item';
+                const dt = document.createElement('dt');
+                dt.textContent = entry[0];
+                const dd = document.createElement('dd');
+                dd.textContent = entry[1];
+                wrapper.appendChild(dt);
+                wrapper.appendChild(dd);
+                infoList.appendChild(wrapper);
+            });
+
+            detailsBody.appendChild(infoList);
+
+            const mistakesSection = document.createElement('div');
+            mistakesSection.className = 'history-detail-section';
+
+            const mistakesTitle = document.createElement('h4');
+            mistakesTitle.className = 'history-detail-title';
+            mistakesTitle.textContent = '間違えた問題';
+            mistakesSection.appendChild(mistakesTitle);
+
+            const incorrectQuestions = Array.isArray(result.incorrectQuestions) ? result.incorrectQuestions : [];
+
+            if (incorrectQuestions.length) {
+                const mistakesList = document.createElement('ul');
+                mistakesList.className = 'history-incorrect-list';
+
+                incorrectQuestions.forEach(function (question) {
+                    if (!question || typeof question !== 'object') {
+                        return;
+                    }
+
+                    const listItem = document.createElement('li');
+                    listItem.className = 'history-incorrect-item';
+
+                    const number = typeof question.number === 'number' && !Number.isNaN(question.number)
+                        ? question.number
+                        : 0;
+                    const questionText = typeof question.question === 'string' ? question.question : '';
+                    const correctAnswer = typeof question.correctAnswer === 'string' ? question.correctAnswer : '';
+                    const userAnswerRaw = typeof question.userAnswer === 'string' ? question.userAnswer : '';
+                    const userAnswer = userAnswerRaw !== '' ? userAnswerRaw : '未回答';
+
+                    const questionLine = document.createElement('p');
+                    questionLine.className = 'history-incorrect-question';
+                    const label = number > 0 ? 'Q' + number + '. ' : '';
+                    questionLine.textContent = label + (questionText || '問題文がありません。');
+                    listItem.appendChild(questionLine);
+
+                    const answerLine = document.createElement('p');
+                    answerLine.className = 'history-incorrect-answer';
+                    const correctLabel = correctAnswer !== '' ? correctAnswer : '不明';
+                    answerLine.textContent = '正解: ' + correctLabel + ' / あなたの回答: ' + userAnswer;
+                    listItem.appendChild(answerLine);
+
+                    mistakesList.appendChild(listItem);
+                });
+
+                mistakesSection.appendChild(mistakesList);
+            } else {
+                const allCorrect = document.createElement('p');
+                allCorrect.className = 'history-detail-note';
+                allCorrect.textContent = '間違えた問題はありません。';
+                mistakesSection.appendChild(allCorrect);
+            }
+
+            detailsBody.appendChild(mistakesSection);
+            details.appendChild(detailsBody);
+            item.appendChild(details);
+
+            return item;
+        }
+
+        function renderList() {
+            if (!listElement) {
+                return;
+            }
+            listElement.innerHTML = '';
+            const startIndex = (historyState.page - 1) * historyState.pageSize;
+            const endIndex = startIndex + historyState.pageSize;
+            historyState.filtered.slice(startIndex, endIndex).forEach(function (result) {
+                listElement.appendChild(createHistoryListItem(result));
+            });
+        }
+
+        function updatePagination() {
+            if (!paginationElement) {
+                return;
+            }
+
+            const totalItems = historyState.filtered.length;
+            const totalPages = Math.max(1, Math.ceil(totalItems / historyState.pageSize));
+
+            if (totalItems <= historyState.pageSize) {
+                paginationElement.hidden = true;
+                return;
+            }
+
+            paginationElement.hidden = false;
+            if (pageInfoElement) {
+                pageInfoElement.textContent = historyState.page + ' / ' + totalPages;
+            }
+            if (prevButton) {
+                prevButton.disabled = historyState.page <= 1;
+            }
+            if (nextButton) {
+                nextButton.disabled = historyState.page >= totalPages;
+            }
+        }
+
+        function applyFilters() {
+            const searchTerm = (historyState.search || '').trim().toLowerCase();
+            const difficultyValue = historyState.difficulty || '';
+            const sortKey = historyState.sort || 'date_desc';
+
+            const filtered = historyState.results.filter(function (result) {
+                if (!result || typeof result !== 'object') {
+                    return false;
+                }
+
+                let matchesSearch = true;
+                if (searchTerm) {
+                    const haystack = [
+                        result.examTitle || '',
+                        result.categoryName || '',
+                        formatDifficulty(result.difficulty || '')
+                    ].join(' ').toLowerCase();
+                    matchesSearch = haystack.indexOf(searchTerm) !== -1;
+                }
+
+                let matchesDifficulty = true;
+                if (difficultyValue) {
+                    matchesDifficulty = (result.difficulty || '') === difficultyValue;
+                }
+
+                return matchesSearch && matchesDifficulty;
+            });
+
+            const sorted = filtered.sort(function (a, b) {
+                const aTimeSource = a && (a.completedAt || a.savedAt) ? (a.completedAt || a.savedAt) : null;
+                const bTimeSource = b && (b.completedAt || b.savedAt) ? (b.completedAt || b.savedAt) : null;
+                const aTime = aTimeSource ? new Date(aTimeSource).getTime() : 0;
+                const bTime = bTimeSource ? new Date(bTimeSource).getTime() : 0;
+
+                const aScore = typeof a.scorePercent === 'number'
+                    ? a.scorePercent
+                    : calculateScorePercent(a.correct, a.total);
+                const bScore = typeof b.scorePercent === 'number'
+                    ? b.scorePercent
+                    : calculateScorePercent(b.correct, b.total);
+
+                switch (sortKey) {
+                    case 'date_asc':
+                        return aTime - bTime;
+                    case 'score_desc':
+                        if (bScore !== aScore) {
+                            return bScore - aScore;
+                        }
+                        return bTime - aTime;
+                    case 'score_asc':
+                        if (aScore !== bScore) {
+                            return aScore - bScore;
+                        }
+                        return aTime - bTime;
+                    case 'date_desc':
+                    default:
+                        return bTime - aTime;
+                }
+            });
+
+            historyState.filtered = sorted;
+
+            const totalResults = historyState.results.length;
+            const totalFiltered = sorted.length;
+
+            if (totalFiltered === 0) {
+                historyState.page = 1;
+            } else {
+                const totalPages = Math.max(1, Math.ceil(totalFiltered / historyState.pageSize));
+                if (historyState.page > totalPages) {
+                    historyState.page = totalPages;
+                }
+                if (historyState.page < 1) {
+                    historyState.page = 1;
+                }
+            }
+
+            if (clearButton) {
+                clearButton.disabled = totalResults === 0;
+            }
+
+            if (totalFiltered === 0) {
+                if (listElement) {
+                    listElement.innerHTML = '';
+                }
+                const message = totalResults === 0
+                    ? '保存された履歴はありません。'
+                    : '条件に一致する履歴はありません。';
+                updateEmptyState(true, message);
+                if (paginationElement) {
+                    paginationElement.hidden = true;
+                }
+            } else {
+                updateEmptyState(false);
+                renderList();
+                updatePagination();
+            }
+
+            updateSummary(totalResults, totalFiltered);
+        }
+
+        function loadResults() {
+            return fetchAllResults().then(function (results) {
+                historyState.results = Array.isArray(results) ? results : [];
+                historyState.page = 1;
+                applyFilters();
+            }).catch(function (error) {
+                console.error('Failed to load saved results', error);
+                setStatus('保存済みの結果を読み込めませんでした。', 'error');
+                if (listElement) {
+                    listElement.innerHTML = '';
+                }
+                updateEmptyState(true, '保存済みの結果を読み込めませんでした。');
+                if (clearButton) {
+                    clearButton.disabled = true;
+                }
+            });
+        }
+
+        if (searchInput) {
+            searchInput.addEventListener('input', function () {
+                historyState.search = searchInput.value;
+                historyState.page = 1;
+                applyFilters();
+            });
+        }
+
+        if (difficultyFilter) {
+            difficultyFilter.addEventListener('change', function () {
+                historyState.difficulty = difficultyFilter.value;
+                historyState.page = 1;
+                applyFilters();
+            });
+        }
+
+        if (sortSelect) {
+            sortSelect.addEventListener('change', function () {
+                historyState.sort = sortSelect.value;
+                historyState.page = 1;
+                applyFilters();
+            });
+        }
+
+        if (prevButton) {
+            prevButton.addEventListener('click', function () {
+                if (historyState.page > 1) {
+                    historyState.page -= 1;
+                    renderList();
+                    updatePagination();
+                }
+            });
+        }
+
+        if (nextButton) {
+            nextButton.addEventListener('click', function () {
+                const totalFiltered = historyState.filtered.length;
+                const totalPages = Math.max(1, Math.ceil(totalFiltered / historyState.pageSize));
+                if (historyState.page < totalPages) {
+                    historyState.page += 1;
+                    renderList();
+                    updatePagination();
+                }
             });
         }
 
@@ -1680,7 +1987,9 @@ $totalExams = count($exams);
 
             addResult(resultToSave).then(function () {
                 setStatus('最新の結果を保存しました。', 'success');
-                renderSavedResults();
+                if (isHistoryPage) {
+                    loadResults();
+                }
             }).catch(function (error) {
                 console.error('Failed to save result', error);
                 setStatus('結果の保存に失敗しました。', 'error');
@@ -1700,18 +2009,31 @@ $totalExams = count($exams);
                 setStatus('履歴を削除しています...', 'info');
                 clearAllResults().then(function () {
                     setStatus('履歴を削除しました。', 'success');
-                    return renderSavedResults();
+                    historyState.results = [];
+                    historyState.filtered = [];
+                    historyState.page = 1;
+                    if (paginationElement) {
+                        paginationElement.hidden = true;
+                    }
+                    updateEmptyState(true, '保存された履歴はありません。');
+                    updateSummary(0, 0);
                 }).catch(function (error) {
                     console.error('Failed to clear saved results', error);
                     setStatus('履歴の削除に失敗しました。', 'error');
-                    if (clearButton) {
+                    if (historyState.results.length) {
                         clearButton.disabled = false;
                     }
                 });
             });
         }
 
-        renderSavedResults();
+        if (clearButton && isHistoryPage) {
+            clearButton.disabled = true;
+        }
+
+        if (isHistoryPage) {
+            loadResults();
+        }
 
         if (currentResult) {
             saveCurrentResult();
