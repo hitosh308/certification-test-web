@@ -98,6 +98,10 @@ header p {
   color: #4b5563;
 }
 
+.field-hint.error {
+  color: var(--danger);
+}
+
 select,
 input[type="number"],
 button {
@@ -133,6 +137,13 @@ button:hover {
   background: var(--primary-dark);
 }
 
+button:disabled,
+button:disabled:hover {
+  background: #9ca3af;
+  color: #f9fafb;
+  cursor: not-allowed;
+}
+
 button.secondary {
   background: transparent;
   color: var(--primary);
@@ -142,6 +153,14 @@ button.secondary {
 button.secondary:hover {
   color: #fff;
   background: var(--primary);
+}
+
+button.secondary:disabled,
+button.secondary:disabled:hover {
+  background: #f3f4f6;
+  color: #9ca3af;
+  border-color: #d1d5db;
+  cursor: not-allowed;
 }
 
 .exam-meta {
@@ -240,6 +259,13 @@ button.secondary:hover {
   font-size: 0.95rem;
 }
 
+.quiz-difficulty,
+.results-difficulty {
+  margin: 0 0 8px;
+  color: #4b5563;
+  font-size: 0.95rem;
+}
+
 .quiz-form {
   display: flex;
   flex-direction: column;
@@ -271,6 +297,37 @@ button.secondary:hover {
 .question-card h3 {
   margin-top: 0;
   margin-bottom: 12px;
+}
+
+.difficulty-tag {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.difficulty-easy {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.difficulty-normal {
+  background: #e0f2fe;
+  color: #075985;
+}
+
+.difficulty-hard {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.difficulty-random {
+  background: #ede9fe;
+  color: #5b21b6;
 }
 
 .choice-list {

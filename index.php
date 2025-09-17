@@ -4,6 +4,14 @@ declare(strict_types=1);
 session_start();
 
 const DATA_DIRECTORY = __DIR__ . '/data';
+const DEFAULT_DIFFICULTY = 'normal';
+const DIFFICULTY_LEVELS = [
+    'easy' => '優しい',
+    'normal' => '普通',
+    'hard' => '難しい',
+];
+const DIFFICULTY_RANDOM = 'random';
+const DIFFICULTY_RANDOM_LABEL = 'ランダム';
 
 /**
  * @return array{
@@ -174,13 +182,16 @@ function loadExamCatalog(): array
                 continue;
             }
 
-            $questions[] = [
-                'id' => $questionId,
-                'question' => $questionText,
-                'choices' => $choices,
-                'answer' => $answer,
-                'explanation' => $questionExplanation,
-            ];
+        $difficulty = normalizeDifficulty($questionData['difficulty'] ?? null);
+
+        $questions[] = [
+            'id' => $questionId,
+            'question' => $questionText,
+            'choices' => $choices,
+            'answer' => $answer,
+            'explanation' => $questionExplanation,
+            'difficulty' => $difficulty,
+        ];
         }
 
         if ($skipped > 0) {
@@ -360,6 +371,89 @@ function normalizeCategory($value): array
     return ['id' => $id, 'name' => $name];
 }
 
+function getDifficultyOptions(bool $includeRandom = false): array
+{
+    $options = DIFFICULTY_LEVELS;
+    if ($includeRandom) {
+        $options[DIFFICULTY_RANDOM] = DIFFICULTY_RANDOM_LABEL;
+    }
+
+    return $options;
+}
+
+function difficultyLabel(string $difficulty): string
+{
+    if ($difficulty === DIFFICULTY_RANDOM) {
+        return DIFFICULTY_RANDOM_LABEL;
+    }
+
+    return DIFFICULTY_LEVELS[$difficulty] ?? DIFFICULTY_LEVELS[DEFAULT_DIFFICULTY];
+}
+
+/**
+ * @param mixed $value
+ */
+function sanitizeDifficultySelection($value): string
+{
+    $options = getDifficultyOptions(true);
+    if (is_string($value)) {
+        $trimmed = trim($value);
+        if ($trimmed !== '' && isset($options[$trimmed])) {
+            return $trimmed;
+        }
+    }
+
+    return DIFFICULTY_RANDOM;
+}
+
+/**
+ * @param mixed $value
+ */
+function normalizeDifficulty($value): string
+{
+    $default = DEFAULT_DIFFICULTY;
+
+    if (!is_string($value)) {
+        return $default;
+    }
+
+    $trimmed = trim($value);
+    if ($trimmed === '') {
+        return $default;
+    }
+
+    if (function_exists('mb_strtolower')) {
+        $normalized = mb_strtolower($trimmed, 'UTF-8');
+    } else {
+        $normalized = strtolower($trimmed);
+    }
+
+    $map = [
+        'easy' => 'easy',
+        'e' => 'easy',
+        'beginner' => 'easy',
+        'やさしい' => 'easy',
+        '優しい' => 'easy',
+        '簡単' => 'easy',
+        'normal' => 'normal',
+        'medium' => 'normal',
+        'standard' => 'normal',
+        'regular' => 'normal',
+        '普通' => 'normal',
+        '標準' => 'normal',
+        'hard' => 'hard',
+        'difficult' => 'hard',
+        'challenging' => 'hard',
+        '難しい' => 'hard',
+    ];
+
+    if (isset($map[$normalized])) {
+        return $map[$normalized];
+    }
+
+    return $default;
+}
+
 /**
  * @param mixed $value
  * @return array{text: string, reference: string, reference_label: string}
@@ -442,6 +536,22 @@ function examIdsForCategory(array $categories, array $exams, string $categoryId)
     return $ids;
 }
 
+/**
+ * @param array<int, array<string, mixed>> $questions
+ * @return array<int, array<string, mixed>>
+ */
+function filterQuestionsByDifficulty(array $questions, string $difficulty): array
+{
+    if ($difficulty === DIFFICULTY_RANDOM) {
+        return array_values($questions);
+    }
+
+    return array_values(array_filter($questions, static function (array $question) use ($difficulty): bool {
+        $questionDifficulty = $question['difficulty'] ?? DEFAULT_DIFFICULTY;
+        return $questionDifficulty === $difficulty;
+    }));
+}
+
 $catalog = loadExamCatalog();
 $exams = $catalog['exams'];
 $categories = $catalog['categories'];
@@ -472,9 +582,14 @@ if ($selectedExamId === '' && !empty($exams)) {
 }
 
 $questionCountInput = '';
+$selectedDifficulty = sanitizeDifficultySelection($_SESSION['last_selected_difficulty'] ?? null);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = isset($_POST['action']) ? (string)$_POST['action'] : '';
+
+    if (isset($_POST['difficulty'])) {
+        $selectedDifficulty = sanitizeDifficultySelection($_POST['difficulty']);
+    }
 
     $postedCategoryId = isset($_POST['category_id']) ? (string)$_POST['category_id'] : '';
     if ($postedCategoryId !== '' && isset($categories[$postedCategoryId])) {
@@ -500,6 +615,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $view = 'home';
             break;
 
+        case 'change_difficulty':
+            $questionCountInput = '';
+            $view = 'home';
+            break;
+
         case 'start_quiz':
             if ($postedExamId === '' || !isset($exams[$postedExamId])) {
                 $errorMessages[] = '選択した試験データが見つかりません。';
@@ -517,9 +637,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 break;
             }
 
-            $availableQuestions = $exams[$postedExamId]['questions'];
-            if ($questionCount > count($availableQuestions)) {
-                $errorMessages[] = sprintf('出題数が多すぎます。（最大 %d 問まで）', count($availableQuestions));
+            $availableQuestions = filterQuestionsByDifficulty($exams[$postedExamId]['questions'], $selectedDifficulty);
+            $availableCount = count($availableQuestions);
+            if ($availableCount === 0) {
+                if ($selectedDifficulty === DIFFICULTY_RANDOM) {
+                    $errorMessages[] = '出題できる問題が見つかりません。';
+                } else {
+                    $errorMessages[] = '選択した難易度の問題が登録されていません。';
+                }
+                $view = 'home';
+                break;
+            }
+
+            if ($questionCount > $availableCount) {
+                if ($selectedDifficulty === DIFFICULTY_RANDOM) {
+                    $errorMessages[] = sprintf('出題数が多すぎます。（最大 %d 問まで）', $availableCount);
+                } else {
+                    $errorMessages[] = sprintf('選択した難易度の問題が不足しています。（最大 %d 問まで）', $availableCount);
+                }
                 $view = 'home';
                 break;
             }
@@ -533,6 +668,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'meta' => $exams[$postedExamId]['meta'],
                 'questions' => $questions,
                 'started_at' => time(),
+                'difficulty' => $selectedDifficulty,
             ];
             $_SESSION['current_quiz'] = $currentQuiz;
             $view = 'quiz';
@@ -544,6 +680,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $view = 'home';
                 break;
             }
+
+            $selectedDifficulty = $currentQuiz['difficulty'] ?? $selectedDifficulty;
 
             $submittedAnswers = $_POST['answers'] ?? [];
             if (!is_array($submittedAnswers)) {
@@ -571,6 +709,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     'explanation' => $question['explanation'],
                     'user_answer' => $userAnswer,
                     'is_correct' => $isCorrect,
+                    'difficulty' => $question['difficulty'] ?? DEFAULT_DIFFICULTY,
                 ];
             }
 
@@ -579,6 +718,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'total' => count($questionResults),
                 'correct' => $correctCount,
                 'questions' => $questionResults,
+                'difficulty' => $currentQuiz['difficulty'] ?? DIFFICULTY_RANDOM,
             ];
 
             $selectedExamId = $currentQuiz['exam_id'];
@@ -593,6 +733,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($currentQuiz) {
                 $selectedExamId = $currentQuiz['exam_id'];
                 $selectedCategoryId = $currentQuiz['meta']['category']['id'] ?? $selectedCategoryId;
+                $selectedDifficulty = $currentQuiz['difficulty'] ?? $selectedDifficulty;
             }
             unset($_SESSION['current_quiz']);
             $currentQuiz = null;
@@ -603,6 +744,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // keep current view
             break;
     }
+
+    $_SESSION['last_selected_difficulty'] = $selectedDifficulty;
 }
 
 if ($view === 'quiz' && !$currentQuiz && isset($_SESSION['current_quiz'])) {
@@ -611,6 +754,14 @@ if ($view === 'quiz' && !$currentQuiz && isset($_SESSION['current_quiz'])) {
 
 if ($view === 'quiz' && !$currentQuiz) {
     $view = 'home';
+}
+
+if ($view === 'quiz' && $currentQuiz) {
+    $selectedDifficulty = $currentQuiz['difficulty'] ?? $selectedDifficulty;
+}
+
+if ($results) {
+    $selectedDifficulty = sanitizeDifficultySelection($results['difficulty'] ?? $selectedDifficulty);
 }
 
 if ($selectedCategoryId === '' || !isset($categories[$selectedCategoryId])) {
@@ -641,11 +792,16 @@ $selectedExam = ($selectedExamId !== '' && isset($exams[$selectedExamId])) ? $ex
 $selectedCategory = ($selectedCategoryId !== '' && isset($categories[$selectedCategoryId])) ? $categories[$selectedCategoryId] : $selectedCategory;
 $categoryExamIds = $selectedCategory ? examIdsForCategory($categories, $exams, $selectedCategoryId) : [];
 
+$availableQuestionsForSelectedDifficulty = $selectedExam ? filterQuestionsByDifficulty($selectedExam['questions'], $selectedDifficulty) : [];
+$availableQuestionCountForSelectedDifficulty = count($availableQuestionsForSelectedDifficulty);
+$questionCountMax = max(1, $availableQuestionCountForSelectedDifficulty);
+$canStartQuiz = $selectedExam !== null && $availableQuestionCountForSelectedDifficulty > 0;
+
 if ($questionCountInput === '' || $questionCountInput === '0') {
-    if ($selectedExam) {
-        $defaultCount = min(5, $selectedExam['meta']['question_count']);
+    if ($availableQuestionCountForSelectedDifficulty > 0) {
+        $defaultCount = min(5, $availableQuestionCountForSelectedDifficulty);
         if ($defaultCount < 1) {
-            $defaultCount = $selectedExam['meta']['question_count'];
+            $defaultCount = $availableQuestionCountForSelectedDifficulty;
         }
         if ($defaultCount < 1) {
             $defaultCount = 1;
@@ -655,6 +811,8 @@ if ($questionCountInput === '' || $questionCountInput === '0') {
         $questionCountInput = '1';
     }
 }
+
+$difficultyOptions = getDifficultyOptions(true);
 
 $totalExams = count($exams);
 $totalCategories = count($categories);
@@ -720,10 +878,34 @@ $totalCategories = count($categories);
                         </select>
                     </div>
                     <div class="form-field">
-                        <label for="question_count">出題数</label>
-                        <input type="number" id="question_count" name="question_count" min="1" max="<?php echo $selectedExam ? (int)$selectedExam['meta']['question_count'] : 1; ?>" value="<?php echo h($questionCountInput); ?>" <?php echo $selectedExam ? '' : 'disabled'; ?> required>
+                        <label for="difficulty">難易度</label>
+                        <select name="difficulty" id="difficulty" onchange="document.getElementById('form_action').value='change_difficulty'; this.form.submit();" <?php echo $selectedExam ? '' : 'disabled'; ?>>
+                            <?php foreach ($difficultyOptions as $difficultyKey => $difficultyText): ?>
+                                <option value="<?php echo h($difficultyKey); ?>" <?php echo $difficultyKey === $selectedDifficulty ? 'selected' : ''; ?>>
+                                    <?php echo h($difficultyText); ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
                         <?php if ($selectedExam): ?>
-                            <small>この試験には <?php echo (int)$selectedExam['meta']['question_count']; ?> 問登録されています。</small>
+                            <?php if ($selectedDifficulty === DIFFICULTY_RANDOM): ?>
+                                <small class="field-hint">この試験には <?php echo (int)$selectedExam['meta']['question_count']; ?> 問登録されています。</small>
+                            <?php else: ?>
+                                <small class="field-hint">この難易度の問題数: <?php echo $availableQuestionCountForSelectedDifficulty; ?> 問</small>
+                                <?php if (!$canStartQuiz): ?>
+                                    <small class="field-hint error">選択した難易度の問題が登録されていません。</small>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                    </div>
+                    <div class="form-field">
+                        <label for="question_count">出題数</label>
+                        <input type="number" id="question_count" name="question_count" min="1" max="<?php echo $questionCountMax; ?>" value="<?php echo h($questionCountInput); ?>" <?php echo $canStartQuiz ? '' : 'disabled'; ?> required>
+                        <?php if ($selectedExam): ?>
+                            <?php if ($selectedDifficulty === DIFFICULTY_RANDOM): ?>
+                                <small class="field-hint">最大 <?php echo (int)$selectedExam['meta']['question_count']; ?> 問まで選択できます。</small>
+                            <?php elseif ($availableQuestionCountForSelectedDifficulty > 0): ?>
+                                <small class="field-hint">この難易度では最大 <?php echo $availableQuestionCountForSelectedDifficulty; ?> 問まで選べます。</small>
+                            <?php endif; ?>
                         <?php endif; ?>
                     </div>
                     <?php if ($selectedExam): ?>
@@ -740,7 +922,7 @@ $totalCategories = count($categories);
                             <span><strong>データファイル:</strong> <?php echo h($selectedExam['meta']['source_file']); ?></span>
                         </div>
                     <?php endif; ?>
-                    <button type="submit" <?php echo $selectedExam ? '' : 'disabled'; ?>>問題を開始</button>
+                    <button type="submit" <?php echo $canStartQuiz ? '' : 'disabled'; ?>>問題を開始</button>
                 </form>
             </div>
             <div class="section-card">
@@ -777,17 +959,20 @@ $totalCategories = count($categories);
             </div>
         <?php endif; ?>
     <?php elseif ($view === 'quiz' && $currentQuiz): ?>
+        <?php $quizDifficulty = $currentQuiz['difficulty'] ?? DIFFICULTY_RANDOM; ?>
         <div class="quiz-header">
             <h2><?php echo h($currentQuiz['meta']['title']); ?></h2>
             <?php if (!empty($currentQuiz['meta']['category']['name'])): ?>
                 <p class="quiz-category">カテゴリ: <?php echo h($currentQuiz['meta']['category']['name']); ?></p>
             <?php endif; ?>
             <p>全 <?php echo (int)$currentQuiz['meta']['question_count']; ?> 問中から <?php echo count($currentQuiz['questions']); ?> 問を出題中です。</p>
+            <p class="quiz-difficulty">選択した難易度: <span class="difficulty-tag difficulty-<?php echo h($quizDifficulty); ?>"><?php echo h(difficultyLabel($quizDifficulty)); ?></span></p>
         </div>
         <form method="post" class="quiz-form">
             <?php foreach ($currentQuiz['questions'] as $index => $question): ?>
+                <?php $questionDifficulty = $question['difficulty'] ?? DEFAULT_DIFFICULTY; ?>
                 <div class="question-card">
-                    <h3>Q<?php echo $index + 1; ?>. <?php echo h($question['question']); ?></h3>
+                    <h3>Q<?php echo $index + 1; ?>. <?php echo h($question['question']); ?> <span class="difficulty-tag difficulty-<?php echo h($questionDifficulty); ?>"><?php echo h(difficultyLabel($questionDifficulty)); ?></span></h3>
                     <ul class="choice-list">
                         <?php foreach ($question['choices'] as $choice): ?>
                             <?php $inputId = buildInputId($question['id'], $choice['key']); ?>
@@ -809,16 +994,19 @@ $totalCategories = count($categories);
         </form>
     <?php elseif ($view === 'results' && $results): ?>
         <?php $scorePercent = $results['total'] > 0 ? round(($results['correct'] / $results['total']) * 100) : 0; ?>
+        <?php $resultsDifficulty = sanitizeDifficultySelection($results['difficulty'] ?? DIFFICULTY_RANDOM); ?>
         <div class="results-summary">
             <h2><?php echo h($results['exam']['title']); ?> の結果</h2>
             <?php if (!empty($results['exam']['category']['name'])): ?>
                 <p class="results-category">カテゴリ: <?php echo h($results['exam']['category']['name']); ?></p>
             <?php endif; ?>
+            <p class="results-difficulty">選択した難易度: <span class="difficulty-tag difficulty-<?php echo h($resultsDifficulty); ?>"><?php echo h(difficultyLabel($resultsDifficulty)); ?></span></p>
             <p><?php echo $results['correct']; ?> / <?php echo $results['total']; ?> 問正解（正答率 <?php echo $scorePercent; ?>%）</p>
         </div>
         <?php foreach ($results['questions'] as $question): ?>
+            <?php $questionDifficulty = $question['difficulty'] ?? DEFAULT_DIFFICULTY; ?>
             <div class="question-card <?php echo $question['is_correct'] ? 'correct' : 'incorrect'; ?>">
-                <h3>Q<?php echo $question['number']; ?>. <?php echo h($question['question']); ?></h3>
+                <h3>Q<?php echo $question['number']; ?>. <?php echo h($question['question']); ?> <span class="difficulty-tag difficulty-<?php echo h($questionDifficulty); ?>"><?php echo h(difficultyLabel($questionDifficulty)); ?></span></h3>
                 <?php if ($question['user_answer'] === null): ?>
                     <p class="no-answer">未回答</p>
                 <?php endif; ?>
@@ -916,12 +1104,14 @@ $totalCategories = count($categories);
                 <input type="hidden" name="category_id" value="<?php echo h($results['exam']['category']['id'] ?? ''); ?>">
                 <input type="hidden" name="exam_id" value="<?php echo h($results['exam']['id']); ?>">
                 <input type="hidden" name="question_count" value="<?php echo (int)$results['total']; ?>">
+                <input type="hidden" name="difficulty" value="<?php echo h($resultsDifficulty); ?>">
                 <button type="submit">同じ条件で再挑戦</button>
             </form>
             <form method="post">
                 <input type="hidden" name="action" value="reset_quiz">
                 <input type="hidden" name="category_id" value="<?php echo h($results['exam']['category']['id'] ?? ''); ?>">
                 <input type="hidden" name="exam_id" value="<?php echo h($results['exam']['id']); ?>">
+                <input type="hidden" name="difficulty" value="<?php echo h($resultsDifficulty); ?>">
                 <button type="submit" class="secondary">別の試験を選ぶ</button>
             </form>
         </div>
