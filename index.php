@@ -6,16 +6,42 @@ session_start();
 const DATA_DIRECTORY = __DIR__ . '/data';
 
 /**
- * @return array{exams: array<string, array{meta: array{id: string, title: string, description: string, version: string, question_count: int, source_file: string}, questions: array<int, array{id: string, question: string, choices: array<int, array{key: string, text: string, explanation: array{text: string, reference: string, reference_label: string}}>, answer: string, explanation: array{text: string, reference: string, reference_label: string}}>}>, errors: string[]}
+ * @return array{
+ *     exams: array<string, array{
+ *         meta: array{
+ *             id: string,
+ *             title: string,
+ *             description: string,
+ *             version: string,
+ *             question_count: int,
+ *             source_file: string,
+ *             category: array{id: string, name: string}
+ *         },
+ *         questions: array<int, array{
+ *             id: string,
+ *             question: string,
+ *             choices: array<int, array{
+ *                 key: string,
+ *                 text: string,
+ *                 explanation: array{text: string, reference: string, reference_label: string}
+ *             }>,
+ *             answer: string,
+ *             explanation: array{text: string, reference: string, reference_label: string}
+ *         }>
+ *     }>,
+ *     categories: array<string, array{id: string, name: string, exam_ids: string[]}>,
+ *     errors: string[]
+ * }
  */
 function loadExamCatalog(): array
 {
     $exams = [];
     $errors = [];
+    $categories = [];
 
     if (!is_dir(DATA_DIRECTORY)) {
         $errors[] = '問題データディレクトリが見つかりません。';
-        return ['exams' => [], 'errors' => $errors];
+        return ['exams' => [], 'categories' => [], 'errors' => $errors];
     }
 
     $files = glob(DATA_DIRECTORY . '/*.json') ?: [];
@@ -59,6 +85,7 @@ function loadExamCatalog(): array
             : $examId;
         $description = isset($examMeta['description']) && is_string($examMeta['description']) ? $examMeta['description'] : '';
         $version = isset($examMeta['version']) && is_string($examMeta['version']) ? $examMeta['version'] : '';
+        $categoryMeta = normalizeCategory($examMeta['category'] ?? null);
 
         $questions = [];
         $skipped = 0;
@@ -165,6 +192,23 @@ function loadExamCatalog(): array
             continue;
         }
 
+        $categoryId = $categoryMeta['id'];
+        if (!isset($categories[$categoryId])) {
+            $categories[$categoryId] = [
+                'id' => $categoryId,
+                'name' => $categoryMeta['name'],
+                'exam_ids' => [],
+            ];
+        } elseif ($categoryMeta['name'] !== '' && $categories[$categoryId]['name'] !== '' && $categories[$categoryId]['name'] !== $categoryMeta['name']) {
+            $errors[] = sprintf('カテゴリID "%s" の表示名が複数定義されています。（%s）', $categoryId, $fileName);
+        }
+
+        if ($categories[$categoryId]['name'] === '' && $categoryMeta['name'] !== '') {
+            $categories[$categoryId]['name'] = $categoryMeta['name'];
+        }
+
+        $categories[$categoryId]['exam_ids'][] = $examId;
+
         $exams[$examId] = [
             'meta' => [
                 'id' => $examId,
@@ -173,6 +217,7 @@ function loadExamCatalog(): array
                 'version' => $version,
                 'question_count' => count($questions),
                 'source_file' => $fileName,
+                'category' => $categoryMeta,
             ],
             'questions' => $questions,
         ];
@@ -191,7 +236,38 @@ function loadExamCatalog(): array
         return strcmp($aTitle, $bTitle);
     });
 
-    return ['exams' => $exams, 'errors' => $errors];
+    $categoryExamMap = [];
+    foreach ($exams as $examId => $exam) {
+        $categoryId = $exam['meta']['category']['id'];
+        if (!isset($categoryExamMap[$categoryId])) {
+            $categoryExamMap[$categoryId] = [];
+        }
+        $categoryExamMap[$categoryId][] = $examId;
+    }
+
+    foreach ($categories as $categoryId => &$category) {
+        $category['exam_ids'] = $categoryExamMap[$categoryId] ?? [];
+    }
+    unset($category);
+
+    $categories = array_filter($categories, static function (array $category): bool {
+        return !empty($category['exam_ids']);
+    });
+
+    uasort($categories, static function (array $a, array $b): int {
+        $aName = $a['name'];
+        $bName = $b['name'];
+        if (function_exists('mb_strtolower')) {
+            $aName = mb_strtolower($aName, 'UTF-8');
+            $bName = mb_strtolower($bName, 'UTF-8');
+        } else {
+            $aName = strtolower($aName);
+            $bName = strtolower($bName);
+        }
+        return strcmp($aName, $bName);
+    });
+
+    return ['exams' => $exams, 'categories' => $categories, 'errors' => $errors];
 }
 
 function h(?string $value): string
@@ -202,6 +278,86 @@ function h(?string $value): string
 function nl2brSafe(string $text): string
 {
     return nl2br(h($text), false);
+}
+
+function normalizeCategoryIdentifier(string $label): string
+{
+    $normalized = trim($label);
+    if ($normalized === '') {
+        return 'category';
+    }
+
+    $normalized = preg_replace('/[^a-zA-Z0-9_-]+/u', '_', $normalized) ?? '';
+    $normalized = trim($normalized, '_');
+    if ($normalized === '') {
+        $normalized = 'category';
+    }
+    $normalized = preg_replace('/_+/', '_', $normalized) ?? $normalized;
+
+    if (function_exists('mb_strtolower')) {
+        $normalized = mb_strtolower($normalized, 'UTF-8');
+    } else {
+        $normalized = strtolower($normalized);
+    }
+
+    return $normalized;
+}
+
+/**
+ * @param mixed $value
+ * @return array{id: string, name: string}
+ */
+function normalizeCategory($value): array
+{
+    $default = ['id' => 'uncategorized', 'name' => 'その他'];
+
+    if ($value === null) {
+        return $default;
+    }
+
+    if (is_string($value)) {
+        $name = trim($value);
+        if ($name === '') {
+            return $default;
+        }
+
+        return [
+            'id' => normalizeCategoryIdentifier($name),
+            'name' => $name,
+        ];
+    }
+
+    $id = '';
+    $name = '';
+
+    if (is_array($value)) {
+        if (isset($value['id']) && is_string($value['id'])) {
+            $id = trim($value['id']);
+        }
+        if (isset($value['name']) && is_string($value['name'])) {
+            $name = trim($value['name']);
+        } elseif (isset($value['title']) && is_string($value['title'])) {
+            $name = trim($value['title']);
+        } elseif (isset($value['label']) && is_string($value['label'])) {
+            $name = trim($value['label']);
+        }
+    }
+
+    if ($name === '' && $id !== '') {
+        $name = $id;
+    }
+
+    if ($id === '' && $name !== '') {
+        $id = normalizeCategoryIdentifier($name);
+    } elseif ($id !== '') {
+        $id = normalizeCategoryIdentifier($id);
+    }
+
+    if ($id === '' || $name === '') {
+        return $default;
+    }
+
+    return ['id' => $id, 'name' => $name];
 }
 
 /**
@@ -265,27 +421,70 @@ function buildInputId(string $questionId, string $choiceKey): string
     return 'choice_' . $normalized;
 }
 
+/**
+ * @param array<string, array{id: string, name: string, exam_ids: string[]}> $categories
+ * @param array<string, mixed> $exams
+ * @return string[]
+ */
+function examIdsForCategory(array $categories, array $exams, string $categoryId): array
+{
+    if (!isset($categories[$categoryId])) {
+        return [];
+    }
+
+    $ids = [];
+    foreach ($categories[$categoryId]['exam_ids'] as $categoryExamId) {
+        if (isset($exams[$categoryExamId])) {
+            $ids[] = $categoryExamId;
+        }
+    }
+
+    return $ids;
+}
+
 $catalog = loadExamCatalog();
 $exams = $catalog['exams'];
+$categories = $catalog['categories'];
 $errorMessages = $catalog['errors'];
 
 $currentQuiz = $_SESSION['current_quiz'] ?? null;
 $view = $currentQuiz ? 'quiz' : 'home';
 $results = null;
 
+$selectedCategoryId = '';
 $selectedExamId = '';
-if (!empty($exams)) {
-    $keys = array_keys($exams);
-    $selectedExamId = (string)array_shift($keys);
+
+if (!empty($categories)) {
+    $categoryKeys = array_keys($categories);
+    $selectedCategoryId = (string)array_shift($categoryKeys);
+    $initialExamIds = examIdsForCategory($categories, $exams, $selectedCategoryId);
+    if (!empty($initialExamIds)) {
+        $selectedExamId = (string)array_shift($initialExamIds);
+    }
+}
+
+if ($selectedExamId === '' && !empty($exams)) {
+    $examKeys = array_keys($exams);
+    $selectedExamId = (string)array_shift($examKeys);
+    if ($selectedExamId !== '' && isset($exams[$selectedExamId]['meta']['category']['id'])) {
+        $selectedCategoryId = $exams[$selectedExamId]['meta']['category']['id'];
+    }
 }
 
 $questionCountInput = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = isset($_POST['action']) ? (string)$_POST['action'] : '';
+
+    $postedCategoryId = isset($_POST['category_id']) ? (string)$_POST['category_id'] : '';
+    if ($postedCategoryId !== '' && isset($categories[$postedCategoryId])) {
+        $selectedCategoryId = $postedCategoryId;
+    }
+
     $postedExamId = isset($_POST['exam_id']) ? (string)$_POST['exam_id'] : '';
     if ($postedExamId !== '' && isset($exams[$postedExamId])) {
         $selectedExamId = $postedExamId;
+        $selectedCategoryId = $exams[$postedExamId]['meta']['category']['id'];
     }
 
     if (isset($_POST['question_count'])) {
@@ -293,12 +492,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     switch ($action) {
+        case 'change_category':
+            $questionCountInput = '';
+            $view = 'home';
+            break;
+
         case 'start_quiz':
             if ($postedExamId === '' || !isset($exams[$postedExamId])) {
                 $errorMessages[] = '選択した試験データが見つかりません。';
                 $view = 'home';
                 break;
             }
+
+            $selectedExamId = $postedExamId;
+            $selectedCategoryId = $exams[$postedExamId]['meta']['category']['id'];
 
             $questionCount = isset($_POST['question_count']) ? (int)$_POST['question_count'] : 0;
             if ($questionCount < 1) {
@@ -371,12 +578,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'questions' => $questionResults,
             ];
 
+            $selectedExamId = $currentQuiz['exam_id'];
+            $selectedCategoryId = $currentQuiz['meta']['category']['id'] ?? $selectedCategoryId;
+
             unset($_SESSION['current_quiz']);
             $currentQuiz = null;
             $view = 'results';
             break;
 
         case 'reset_quiz':
+            if ($currentQuiz) {
+                $selectedExamId = $currentQuiz['exam_id'];
+                $selectedCategoryId = $currentQuiz['meta']['category']['id'] ?? $selectedCategoryId;
+            }
             unset($_SESSION['current_quiz']);
             $currentQuiz = null;
             $view = 'home';
@@ -396,7 +610,33 @@ if ($view === 'quiz' && !$currentQuiz) {
     $view = 'home';
 }
 
+if ($selectedCategoryId === '' || !isset($categories[$selectedCategoryId])) {
+    if (!empty($categories)) {
+        $categoryKeys = array_keys($categories);
+        $selectedCategoryId = (string)array_shift($categoryKeys);
+    }
+}
+
+$selectedCategory = ($selectedCategoryId !== '' && isset($categories[$selectedCategoryId])) ? $categories[$selectedCategoryId] : null;
+$categoryExamIds = $selectedCategory ? examIdsForCategory($categories, $exams, $selectedCategoryId) : [];
+
+if ($selectedExamId === '' || !isset($exams[$selectedExamId]) || (!empty($categoryExamIds) && !in_array($selectedExamId, $categoryExamIds, true))) {
+    if (!empty($categoryExamIds)) {
+        $selectedExamId = (string)$categoryExamIds[0];
+    } elseif (!empty($exams)) {
+        $examKeys = array_keys($exams);
+        $selectedExamId = (string)array_shift($examKeys);
+        if ($selectedExamId !== '' && isset($exams[$selectedExamId]['meta']['category']['id'])) {
+            $selectedCategoryId = $exams[$selectedExamId]['meta']['category']['id'];
+            $selectedCategory = $categories[$selectedCategoryId] ?? $selectedCategory;
+            $categoryExamIds = $selectedCategory ? examIdsForCategory($categories, $exams, $selectedCategoryId) : [];
+        }
+    }
+}
+
 $selectedExam = ($selectedExamId !== '' && isset($exams[$selectedExamId])) ? $exams[$selectedExamId] : null;
+$selectedCategory = ($selectedCategoryId !== '' && isset($categories[$selectedCategoryId])) ? $categories[$selectedCategoryId] : $selectedCategory;
+$categoryExamIds = $selectedCategory ? examIdsForCategory($categories, $exams, $selectedCategoryId) : [];
 
 if ($questionCountInput === '' || $questionCountInput === '0') {
     if ($selectedExam) {
@@ -414,6 +654,7 @@ if ($questionCountInput === '' || $questionCountInput === '0') {
 }
 
 $totalExams = count($exams);
+$totalCategories = count($categories);
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -445,26 +686,46 @@ $totalExams = count($exams);
             <div class="form-card">
                 <h2>問題を開始する</h2>
                 <form method="post">
-                    <input type="hidden" name="action" value="start_quiz">
+                    <input type="hidden" name="action" value="start_quiz" id="form_action">
                     <div class="form-field">
-                        <label for="exam_id">資格試験</label>
-                        <select name="exam_id" id="exam_id" required>
-                            <?php foreach ($exams as $examId => $exam): ?>
-                                <option value="<?php echo h($examId); ?>" <?php echo $examId === $selectedExamId ? 'selected' : ''; ?>>
-                                    <?php echo h($exam['meta']['title']); ?>
+                        <label for="category_id">カテゴリ</label>
+                        <select name="category_id" id="category_id" onchange="document.getElementById('form_action').value='change_category'; this.form.submit();">
+                            <?php foreach ($categories as $categoryId => $category): ?>
+                                <option value="<?php echo h($categoryId); ?>" <?php echo $categoryId === $selectedCategoryId ? 'selected' : ''; ?>>
+                                    <?php echo h($category['name']); ?>
                                 </option>
                             <?php endforeach; ?>
+                        </select>
+                        <?php if ($selectedCategory): ?>
+                            <small class="field-hint">このカテゴリには <?php echo count($categoryExamIds); ?> 件の試験が登録されています。</small>
+                        <?php endif; ?>
+                    </div>
+                    <div class="form-field">
+                        <label for="exam_id">資格試験</label>
+                        <select name="exam_id" id="exam_id" required <?php echo empty($categoryExamIds) ? 'disabled' : ''; ?>>
+                            <?php if (!empty($categoryExamIds)): ?>
+                                <?php foreach ($categoryExamIds as $examId): ?>
+                                    <?php if (!isset($exams[$examId])) { continue; } ?>
+                                    <?php $exam = $exams[$examId]; ?>
+                                    <option value="<?php echo h($examId); ?>" <?php echo $examId === $selectedExamId ? 'selected' : ''; ?>>
+                                        <?php echo h($exam['meta']['title']); ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <option value="" disabled>このカテゴリには試験が登録されていません。</option>
+                            <?php endif; ?>
                         </select>
                     </div>
                     <div class="form-field">
                         <label for="question_count">出題数</label>
-                        <input type="number" id="question_count" name="question_count" min="1" max="<?php echo $selectedExam ? (int)$selectedExam['meta']['question_count'] : 1; ?>" value="<?php echo h($questionCountInput); ?>" required>
+                        <input type="number" id="question_count" name="question_count" min="1" max="<?php echo $selectedExam ? (int)$selectedExam['meta']['question_count'] : 1; ?>" value="<?php echo h($questionCountInput); ?>" <?php echo $selectedExam ? '' : 'disabled'; ?> required>
                         <?php if ($selectedExam): ?>
                             <small>この試験には <?php echo (int)$selectedExam['meta']['question_count']; ?> 問登録されています。</small>
                         <?php endif; ?>
                     </div>
                     <?php if ($selectedExam): ?>
                         <div class="exam-meta">
+                            <span><strong>カテゴリ:</strong> <?php echo h($selectedExam['meta']['category']['name']); ?></span>
                             <span><strong>試験名:</strong> <?php echo h($selectedExam['meta']['title']); ?></span>
                             <?php if ($selectedExam['meta']['version'] !== ''): ?>
                                 <span><strong>バージョン:</strong> <?php echo h($selectedExam['meta']['version']); ?></span>
@@ -476,33 +737,48 @@ $totalExams = count($exams);
                             <span><strong>データファイル:</strong> <?php echo h($selectedExam['meta']['source_file']); ?></span>
                         </div>
                     <?php endif; ?>
-                    <button type="submit">問題を開始</button>
+                    <button type="submit" <?php echo $selectedExam ? '' : 'disabled'; ?>>問題を開始</button>
                 </form>
             </div>
             <div class="section-card">
                 <h2>登録済みの資格試験 (<?php echo $totalExams; ?>)</h2>
-                <ul class="exam-list">
-                    <?php foreach ($exams as $exam): ?>
-                        <li>
-                            <h3><?php echo h($exam['meta']['title']); ?></h3>
-                            <?php if ($exam['meta']['description'] !== ''): ?>
-                                <p><?php echo nl2brSafe($exam['meta']['description']); ?></p>
-                            <?php endif; ?>
-                            <p class="meta">
-                                <?php if ($exam['meta']['version'] !== ''): ?>
-                                    バージョン: <?php echo h($exam['meta']['version']); ?> / 
-                                <?php endif; ?>
-                                問題数: <?php echo (int)$exam['meta']['question_count']; ?> 問 / 
-                                ファイル: <?php echo h($exam['meta']['source_file']); ?>
-                            </p>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
+                <?php if ($totalCategories > 0): ?>
+                    <p class="category-summary">カテゴリ数: <?php echo $totalCategories; ?></p>
+                <?php endif; ?>
+                <?php foreach ($categories as $category): ?>
+                    <?php $categoryExamIdsForList = examIdsForCategory($categories, $exams, $category['id']); ?>
+                    <?php if (empty($categoryExamIdsForList)) { continue; } ?>
+                    <div class="category-group">
+                        <h3 class="category-title"><?php echo h($category['name']); ?>（<?php echo count($categoryExamIdsForList); ?>）</h3>
+                        <ul class="exam-list">
+                            <?php foreach ($categoryExamIdsForList as $examId): ?>
+                                <?php if (!isset($exams[$examId])) { continue; } ?>
+                                <?php $exam = $exams[$examId]; ?>
+                                <li>
+                                    <h4><?php echo h($exam['meta']['title']); ?></h4>
+                                    <?php if ($exam['meta']['description'] !== ''): ?>
+                                        <p><?php echo nl2brSafe($exam['meta']['description']); ?></p>
+                                    <?php endif; ?>
+                                    <p class="meta">
+                                        <?php if ($exam['meta']['version'] !== ''): ?>
+                                            バージョン: <?php echo h($exam['meta']['version']); ?> /
+                                        <?php endif; ?>
+                                        問題数: <?php echo (int)$exam['meta']['question_count']; ?> 問 /
+                                        ファイル: <?php echo h($exam['meta']['source_file']); ?>
+                                    </p>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                <?php endforeach; ?>
             </div>
         <?php endif; ?>
     <?php elseif ($view === 'quiz' && $currentQuiz): ?>
         <div class="quiz-header">
             <h2><?php echo h($currentQuiz['meta']['title']); ?></h2>
+            <?php if (!empty($currentQuiz['meta']['category']['name'])): ?>
+                <p class="quiz-category">カテゴリ: <?php echo h($currentQuiz['meta']['category']['name']); ?></p>
+            <?php endif; ?>
             <p>全 <?php echo (int)$currentQuiz['meta']['question_count']; ?> 問中から <?php echo count($currentQuiz['questions']); ?> 問を出題中です。</p>
         </div>
         <form method="post" class="quiz-form">
@@ -532,6 +808,9 @@ $totalExams = count($exams);
         <?php $scorePercent = $results['total'] > 0 ? round(($results['correct'] / $results['total']) * 100) : 0; ?>
         <div class="results-summary">
             <h2><?php echo h($results['exam']['title']); ?> の結果</h2>
+            <?php if (!empty($results['exam']['category']['name'])): ?>
+                <p class="results-category">カテゴリ: <?php echo h($results['exam']['category']['name']); ?></p>
+            <?php endif; ?>
             <p><?php echo $results['correct']; ?> / <?php echo $results['total']; ?> 問正解（正答率 <?php echo $scorePercent; ?>%）</p>
         </div>
         <?php foreach ($results['questions'] as $question): ?>
@@ -631,12 +910,14 @@ $totalExams = count($exams);
         <div class="actions">
             <form method="post">
                 <input type="hidden" name="action" value="start_quiz">
+                <input type="hidden" name="category_id" value="<?php echo h($results['exam']['category']['id'] ?? ''); ?>">
                 <input type="hidden" name="exam_id" value="<?php echo h($results['exam']['id']); ?>">
                 <input type="hidden" name="question_count" value="<?php echo (int)$results['total']; ?>">
                 <button type="submit">同じ条件で再挑戦</button>
             </form>
             <form method="post">
                 <input type="hidden" name="action" value="reset_quiz">
+                <input type="hidden" name="category_id" value="<?php echo h($results['exam']['category']['id'] ?? ''); ?>">
                 <input type="hidden" name="exam_id" value="<?php echo h($results['exam']['id']); ?>">
                 <button type="submit" class="secondary">別の試験を選ぶ</button>
             </form>
