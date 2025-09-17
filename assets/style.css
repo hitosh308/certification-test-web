@@ -870,6 +870,123 @@ button.secondary:disabled:hover {
   font-size: 1rem;
 }
 
+.saved-results-card {
+  margin-top: 24px;
+}
+
+.saved-results-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.saved-results-header h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--primary-dark);
+}
+
+.saved-results-status {
+  min-height: 1.25rem;
+  margin: 8px 0 12px;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+.saved-results-status.status-success {
+  color: var(--success);
+}
+
+.saved-results-status.status-error {
+  color: var(--danger);
+}
+
+.saved-results-status.status-info {
+  color: var(--primary);
+}
+
+.saved-results-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.saved-result-item {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #f8fafc;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.saved-result-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.saved-result-title {
+  font-weight: 600;
+  color: var(--primary-dark);
+}
+
+.saved-result-summary,
+.saved-result-meta,
+.saved-result-timestamp {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #374151;
+}
+
+.saved-result-meta {
+  color: #475569;
+}
+
+.saved-result-timestamp {
+  font-size: 0.85rem;
+  color: #4b5563;
+}
+
+.saved-results-empty {
+  margin: 0;
+  padding: 16px;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  background: #f9fafb;
+  text-align: center;
+  color: #4b5563;
+}
+
+.save-result-button {
+  white-space: nowrap;
+}
+
+.saved-result-delete {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.saved-result-delete:hover {
+  background: var(--danger);
+  border-color: var(--danger);
+  color: #fff;
+}
+
+.saved-result-delete:disabled,
+.saved-result-delete:disabled:hover {
+  background: #f3f4f6;
+  border-color: #d1d5db;
+  color: #9ca3af;
+}
+
 .actions {
   display: flex;
   gap: 12px;
@@ -972,5 +1089,10 @@ button.secondary:disabled:hover {
 
   .actions {
     flex-direction: column;
+  }
+
+  .save-result-button,
+  .saved-result-delete {
+    width: auto;
   }
 }

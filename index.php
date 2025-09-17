@@ -1145,6 +1145,40 @@ $totalExams = count($exams);
             </form>
         </div>
     <?php endif; ?>
+
+    <?php
+    $currentResultForStorage = null;
+    if ($view === 'results' && $results) {
+        $resultsDifficultyForStorage = sanitizeDifficultySelection($results['difficulty'] ?? DIFFICULTY_RANDOM);
+        $currentResultForStorage = [
+            'examId' => (string)($results['exam']['id'] ?? ''),
+            'examTitle' => (string)($results['exam']['title'] ?? ''),
+            'categoryName' => (string)($results['exam']['category']['name'] ?? ''),
+            'difficulty' => $resultsDifficultyForStorage,
+            'correct' => (int)($results['correct'] ?? 0),
+            'total' => (int)($results['total'] ?? 0),
+        ];
+    }
+    ?>
+
+    <?php if ($view !== 'quiz'): ?>
+        <section class="section-card saved-results-card" id="savedResultsCard"<?php
+        if ($currentResultForStorage !== null) {
+            echo ' data-current-result="' . h(json_encode($currentResultForStorage, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)) . '"';
+        }
+        ?>>
+            <div class="saved-results-header">
+                <h2>保存した結果</h2>
+                <?php if ($currentResultForStorage !== null): ?>
+                    <button type="button" class="save-result-button" data-save-result>この結果を保存</button>
+                <?php endif; ?>
+            </div>
+            <p class="saved-results-status" data-save-status aria-live="polite"></p>
+            <ul class="saved-results-list" data-saved-list>
+                <li class="saved-results-empty" data-empty-message>保存された結果はありません。</li>
+            </ul>
+        </section>
+    <?php endif; ?>
         </main>
     </div>
 </div>
@@ -1156,59 +1190,391 @@ $totalExams = count($exams);
         const backdrop = document.getElementById('sidebarBackdrop');
         const sidebar = document.getElementById('categorySidebar');
 
-        if (!toggleButton || !sidebar || !backdrop || !closeButton) {
+        if (toggleButton && sidebar && backdrop && closeButton) {
+            const openSidebar = function () {
+                html.classList.add('sidebar-open');
+                toggleButton.setAttribute('aria-expanded', 'true');
+                sidebar.focus();
+            };
+
+            const closeSidebar = function () {
+                html.classList.remove('sidebar-open');
+                toggleButton.setAttribute('aria-expanded', 'false');
+                toggleButton.focus();
+            };
+
+            const accordionItems = sidebar.querySelectorAll('.category-item');
+            accordionItems.forEach(function (item) {
+                item.addEventListener('toggle', function () {
+                    if (item.open) {
+                        accordionItems.forEach(function (other) {
+                            if (other !== item) {
+                                other.open = false;
+                            }
+                        });
+                    }
+                });
+            });
+
+            const externalSidebarButtons = document.querySelectorAll('[data-sidebar-target="categorySidebar"]');
+            externalSidebarButtons.forEach(function (button) {
+                button.addEventListener('click', function () {
+                    openSidebar();
+                });
+            });
+
+            toggleButton.addEventListener('click', function () {
+                if (html.classList.contains('sidebar-open')) {
+                    closeSidebar();
+                } else {
+                    openSidebar();
+                }
+            });
+
+            closeButton.addEventListener('click', closeSidebar);
+            backdrop.addEventListener('click', closeSidebar);
+
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'Escape' && html.classList.contains('sidebar-open')) {
+                    event.preventDefault();
+                    closeSidebar();
+                }
+            });
+        }
+
+        const savedResultsCard = document.getElementById('savedResultsCard');
+        if (!savedResultsCard) {
             return;
         }
 
-        const openSidebar = function () {
-            html.classList.add('sidebar-open');
-            toggleButton.setAttribute('aria-expanded', 'true');
-            sidebar.focus();
+        const saveButton = savedResultsCard.querySelector('[data-save-result]');
+        const statusElement = savedResultsCard.querySelector('[data-save-status]');
+        const listElement = savedResultsCard.querySelector('[data-saved-list]');
+        const emptyElement = savedResultsCard.querySelector('[data-empty-message]');
+        const originalSaveButtonText = saveButton ? saveButton.textContent : '';
+        const difficultyLabels = {
+            easy: '優しい',
+            normal: '普通',
+            hard: '難しい',
+            random: 'ランダム'
         };
+        const isIndexedDBAvailable = typeof indexedDB !== 'undefined';
 
-        const closeSidebar = function () {
-            html.classList.remove('sidebar-open');
-            toggleButton.setAttribute('aria-expanded', 'false');
-            toggleButton.focus();
-        };
+        function setStatus(message, type) {
+            if (!statusElement) {
+                return;
+            }
+            statusElement.textContent = message;
+            statusElement.className = 'saved-results-status';
+            if (type) {
+                statusElement.classList.add('status-' + type);
+            }
+        }
 
-        const accordionItems = sidebar.querySelectorAll('.category-item');
-        accordionItems.forEach(function (item) {
-            item.addEventListener('toggle', function () {
-                if (item.open) {
-                    accordionItems.forEach(function (other) {
-                        if (other !== item) {
-                            other.open = false;
-                        }
+        if (!isIndexedDBAvailable) {
+            if (saveButton) {
+                saveButton.disabled = true;
+                saveButton.title = 'このブラウザでは保存機能を利用できません。';
+            }
+            if (emptyElement) {
+                emptyElement.textContent = 'このブラウザでは保存機能を利用できません。';
+            }
+            setStatus('このブラウザでは保存機能を利用できません。', 'error');
+            return;
+        }
+
+        const resultDataRaw = savedResultsCard.getAttribute('data-current-result');
+        let currentResult = null;
+        if (resultDataRaw) {
+            try {
+                currentResult = JSON.parse(resultDataRaw);
+            } catch (error) {
+                console.error('Failed to parse result data', error);
+                setStatus('結果データの読み込みに失敗しました。', 'error');
+            }
+        }
+
+        if (!currentResult && saveButton) {
+            saveButton.disabled = true;
+        }
+
+        const DB_NAME = 'quizResults';
+        const DB_VERSION = 1;
+        const STORE_NAME = 'results';
+        let databasePromise = null;
+
+        function openDatabase() {
+            if (databasePromise) {
+                return databasePromise;
+            }
+
+            databasePromise = new Promise(function (resolve, reject) {
+                const request = indexedDB.open(DB_NAME, DB_VERSION);
+
+                request.addEventListener('error', function () {
+                    databasePromise = null;
+                    reject(request.error || new Error('データベースのオープンに失敗しました。'));
+                });
+
+                request.addEventListener('upgradeneeded', function (event) {
+                    const db = event.target.result;
+                    if (!db.objectStoreNames.contains(STORE_NAME)) {
+                        db.createObjectStore(STORE_NAME, { keyPath: 'id' });
+                    }
+                });
+
+                request.addEventListener('success', function () {
+                    const db = request.result;
+                    db.addEventListener('close', function () {
+                        databasePromise = null;
                     });
+                    db.addEventListener('versionchange', function () {
+                        db.close();
+                    });
+                    resolve(db);
+                });
+            });
+
+            return databasePromise;
+        }
+
+        function addResult(result) {
+            return openDatabase().then(function (db) {
+                return new Promise(function (resolve, reject) {
+                    const transaction = db.transaction(STORE_NAME, 'readwrite');
+                    const store = transaction.objectStore(STORE_NAME);
+                    store.add(result);
+
+                    transaction.addEventListener('complete', function () {
+                        resolve();
+                    });
+
+                    transaction.addEventListener('error', function () {
+                        reject(transaction.error || new Error('結果の保存に失敗しました。'));
+                    });
+
+                    transaction.addEventListener('abort', function () {
+                        reject(transaction.error || new Error('結果の保存が中断されました。'));
+                    });
+                });
+            });
+        }
+
+        function fetchAllResults() {
+            return openDatabase().then(function (db) {
+                return new Promise(function (resolve, reject) {
+                    const transaction = db.transaction(STORE_NAME, 'readonly');
+                    const store = transaction.objectStore(STORE_NAME);
+                    const request = store.getAll();
+
+                    request.addEventListener('success', function () {
+                        resolve(request.result || []);
+                    });
+
+                    request.addEventListener('error', function () {
+                        reject(request.error || new Error('保存済みの結果を読み込めませんでした。'));
+                    });
+                });
+            });
+        }
+
+        function removeResult(id) {
+            return openDatabase().then(function (db) {
+                return new Promise(function (resolve, reject) {
+                    const transaction = db.transaction(STORE_NAME, 'readwrite');
+                    const store = transaction.objectStore(STORE_NAME);
+                    store.delete(id);
+
+                    transaction.addEventListener('complete', function () {
+                        resolve();
+                    });
+
+                    transaction.addEventListener('error', function () {
+                        reject(transaction.error || new Error('結果の削除に失敗しました。'));
+                    });
+
+                    transaction.addEventListener('abort', function () {
+                        reject(transaction.error || new Error('結果の削除が中断されました。'));
+                    });
+                });
+            });
+        }
+
+        function calculateScorePercent(correct, total) {
+            const totalNumber = Number(total);
+            const correctNumber = Number(correct);
+            if (!totalNumber) {
+                return 0;
+            }
+            return Math.round((correctNumber / totalNumber) * 100);
+        }
+
+        function formatDifficulty(value) {
+            return difficultyLabels[value] || value;
+        }
+
+        function formatSavedAt(value) {
+            if (!value) {
+                return '不明';
+            }
+            const date = new Date(value);
+            if (Number.isNaN(date.getTime())) {
+                return '不明';
+            }
+            return date.toLocaleString('ja-JP', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+
+        function generateId() {
+            if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+                return window.crypto.randomUUID();
+            }
+            return 'result-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 8);
+        }
+
+        function handleDelete(id, button) {
+            if (!id) {
+                return;
+            }
+            button.disabled = true;
+            setStatus('保存済みの結果を削除しています...', 'info');
+            removeResult(id).then(function () {
+                setStatus('保存済みの結果を削除しました。', 'success');
+                renderSavedResults();
+            }).catch(function (error) {
+                console.error('Failed to delete saved result', error);
+                setStatus('結果の削除に失敗しました。', 'error');
+                button.disabled = false;
+            });
+        }
+
+        function createListItem(result) {
+            const item = document.createElement('li');
+            item.className = 'saved-result-item';
+
+            const header = document.createElement('div');
+            header.className = 'saved-result-header';
+
+            const title = document.createElement('span');
+            title.className = 'saved-result-title';
+            title.textContent = result.examTitle || '不明な試験';
+            header.appendChild(title);
+
+            const deleteButton = document.createElement('button');
+            deleteButton.type = 'button';
+            deleteButton.className = 'secondary saved-result-delete';
+            deleteButton.textContent = '削除';
+            deleteButton.addEventListener('click', function () {
+                handleDelete(result.id, deleteButton);
+            });
+            header.appendChild(deleteButton);
+
+            item.appendChild(header);
+
+            const correctNumber = Number(result.correct) || 0;
+            const totalNumber = Number(result.total) || 0;
+            const scorePercent = typeof result.scorePercent === 'number'
+                ? result.scorePercent
+                : calculateScorePercent(correctNumber, totalNumber);
+
+            const summary = document.createElement('p');
+            summary.className = 'saved-result-summary';
+            summary.textContent = '正答数 ' + correctNumber + ' / ' + totalNumber + '（正答率 ' + scorePercent + '%）';
+            item.appendChild(summary);
+
+            const metaLine = document.createElement('p');
+            metaLine.className = 'saved-result-meta';
+            const metaParts = ['難易度: ' + formatDifficulty(result.difficulty || '')];
+            if (result.categoryName) {
+                metaParts.push('カテゴリ: ' + result.categoryName);
+            }
+            metaLine.textContent = metaParts.join(' / ');
+            item.appendChild(metaLine);
+
+            const timestamp = document.createElement('p');
+            timestamp.className = 'saved-result-timestamp';
+            timestamp.textContent = '保存日時: ' + formatSavedAt(result.savedAt);
+            item.appendChild(timestamp);
+
+            return item;
+        }
+
+        function renderSavedResults() {
+            if (!listElement) {
+                return;
+            }
+
+            fetchAllResults().then(function (results) {
+                const sortedResults = results.slice().sort(function (a, b) {
+                    const aTime = a && a.savedAt ? new Date(a.savedAt).getTime() : 0;
+                    const bTime = b && b.savedAt ? new Date(b.savedAt).getTime() : 0;
+                    return bTime - aTime;
+                });
+
+                listElement.innerHTML = '';
+
+                if (!sortedResults.length) {
+                    if (emptyElement) {
+                        emptyElement.textContent = '保存された結果はありません。';
+                        listElement.appendChild(emptyElement);
+                    }
+                    return;
                 }
+
+                sortedResults.forEach(function (result) {
+                    listElement.appendChild(createListItem(result));
+                });
+            }).catch(function (error) {
+                console.error('Failed to load saved results', error);
+                if (emptyElement) {
+                    emptyElement.textContent = '保存済みの結果を読み込めませんでした。';
+                    listElement.innerHTML = '';
+                    listElement.appendChild(emptyElement);
+                }
+                setStatus('保存済みの結果を読み込めませんでした。', 'error');
             });
-        });
+        }
 
-        const externalSidebarButtons = document.querySelectorAll('[data-sidebar-target="categorySidebar"]');
-        externalSidebarButtons.forEach(function (button) {
-            button.addEventListener('click', function () {
-                openSidebar();
+        if (saveButton && currentResult) {
+            saveButton.addEventListener('click', function () {
+                if (!currentResult) {
+                    return;
+                }
+
+                saveButton.disabled = true;
+                setStatus('結果を保存しています...', 'info');
+
+                const resultToSave = {
+                    id: generateId(),
+                    examId: currentResult.examId || '',
+                    examTitle: currentResult.examTitle || '',
+                    categoryName: currentResult.categoryName || '',
+                    difficulty: currentResult.difficulty || '',
+                    correct: Number(currentResult.correct) || 0,
+                    total: Number(currentResult.total) || 0,
+                    scorePercent: calculateScorePercent(currentResult.correct, currentResult.total),
+                    savedAt: new Date().toISOString()
+                };
+
+                addResult(resultToSave).then(function () {
+                    setStatus('結果を保存しました。', 'success');
+                    saveButton.textContent = '保存済み';
+                    renderSavedResults();
+                }).catch(function (error) {
+                    console.error('Failed to save result', error);
+                    setStatus('結果の保存に失敗しました。', 'error');
+                    saveButton.disabled = false;
+                    saveButton.textContent = originalSaveButtonText;
+                });
             });
-        });
+        }
 
-        toggleButton.addEventListener('click', function () {
-            if (html.classList.contains('sidebar-open')) {
-                closeSidebar();
-            } else {
-                openSidebar();
-            }
-        });
-
-        closeButton.addEventListener('click', closeSidebar);
-        backdrop.addEventListener('click', closeSidebar);
-
-        document.addEventListener('keydown', function (event) {
-            if (event.key === 'Escape' && html.classList.contains('sidebar-open')) {
-                event.preventDefault();
-                closeSidebar();
-            }
-        });
+        renderSavedResults();
     });
 </script>
 </body>
