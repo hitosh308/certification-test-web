@@ -929,9 +929,6 @@ if ($currentResultForStorage !== null) {
                 <h2>メニュー</h2>
                 <button type="button" class="sidebar-close" id="sidebarClose" aria-label="カテゴリメニューを閉じる">&times;</button>
             </div>
-            <nav class="sidebar-nav" aria-label="ページ切り替え">
-                <a href="?view=history" class="sidebar-nav-link<?php echo $isHistoryView ? ' active' : ''; ?>">受験履歴</a>
-            </nav>
             <h3 class="sidebar-section-title">試験カテゴリ</h3>
             <?php if (!empty($categories)): ?>
                 <div class="category-accordion">
@@ -970,6 +967,9 @@ if ($currentResultForStorage !== null) {
             <?php else: ?>
                 <p class="empty-message">カテゴリが登録されていません。</p>
             <?php endif; ?>
+            <nav class="sidebar-nav" aria-label="ページ切り替え">
+                <a href="?view=history" class="sidebar-nav-link<?php echo $isHistoryView ? ' active' : ''; ?>">受験履歴</a>
+            </nav>
         </aside>
         <main class="main-content">
             <?php foreach ($errorMessages as $message): ?>
