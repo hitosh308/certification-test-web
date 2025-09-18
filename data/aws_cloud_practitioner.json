@@ -254,6 +254,55 @@
                 "reference": "https://aws.amazon.com/jp/premiumsupport/plans/",
                 "reference_label": "AWS \u30b5\u30dd\u30fc\u30c8\u30d7\u30e9\u30f3"
             }
+        },
+        {
+            "id": "clf-q11",
+            "question": "AWSの責任共有モデルにおいて利用者が担うべき作業として適切なものを2つ選びなさい。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Amazon EC2インスタンスのオペレーティングシステムにセキュリティパッチを適用する",
+                    "explanation": {
+                        "text": "共有責任モデルでは、クラウド内で実行するOSやアプリケーションの設定・パッチ適用は利用者の責任領域です。",
+                        "reference": "https://aws.amazon.com/jp/compliance/shared-responsibility-model/",
+                        "reference_label": "AWS 共有責任モデル"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "AWSリージョンを跨ぐデータセンター間の物理的冗長構成を維持する",
+                    "explanation": {
+                        "text": "物理的な施設やネットワークの冗長化はAWSが担うインフラストラクチャ層の責任です。",
+                        "reference": "https://aws.amazon.com/jp/compliance/shared-responsibility-model/",
+                        "reference_label": "AWS 共有責任モデル"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "IAMユーザーやロールのアクセス権限を管理する",
+                    "explanation": {
+                        "text": "アイデンティティとアクセス管理はクラウド利用者が制御すべき事項として明示されています。",
+                        "reference": "https://aws.amazon.com/jp/compliance/shared-responsibility-model/",
+                        "reference_label": "AWS 共有責任モデル"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "データセンターへの物理的な侵入防止システムを運用する",
+                    "explanation": {
+                        "text": "施設の物理的セキュリティ対策はAWSの責任であり、利用者が直接実施する必要はありません。",
+                        "reference": "https://aws.amazon.com/jp/compliance/shared-responsibility-model/",
+                        "reference_label": "AWS 共有責任モデル"
+                    }
+                }
+            ],
+            "answers": ["A", "C"],
+            "explanation": {
+                "text": "利用者はクラウド内で実行するOSやアプリケーション、アイデンティティ管理などの in the cloud 領域を管理し、AWSは施設やハードウェアといった of the cloud 領域を担います。",
+                "reference": "https://aws.amazon.com/jp/compliance/shared-responsibility-model/",
+                "reference_label": "AWS 共有責任モデル"
+            }
         }
     ]
 }
