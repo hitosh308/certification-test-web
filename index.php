@@ -57,15 +57,33 @@ function loadExamCatalog(): array
 
     foreach ($files as $filePath) {
         $fileName = basename($filePath);
+        if (function_exists('error_clear_last')) {
+            error_clear_last();
+        }
         $json = @file_get_contents($filePath);
         if ($json === false) {
-            $errors[] = sprintf('%s を読み取れませんでした。', $fileName);
+            $lastError = error_get_last();
+            $detail = '';
+            if (is_array($lastError) && isset($lastError['message']) && $lastError['message'] !== '') {
+                $message = trim((string)$lastError['message']);
+                $message = preg_replace('/^file_get_contents\([^)]*\):\s*/', '', $message) ?? $message;
+                if ($message !== '') {
+                    $detail = sprintf('（詳細: %s）', $message);
+                }
+            }
+            $errors[] = sprintf('%s を読み取れませんでした。%s', $fileName, $detail);
             continue;
         }
 
         $data = json_decode($json, true);
         if (!is_array($data)) {
-            $errors[] = sprintf('%s のJSON形式が不正です。（%s）', $fileName, json_last_error_msg());
+            $jsonErrorCode = json_last_error();
+            $jsonErrorMessage = json_last_error_msg();
+            if ($jsonErrorCode !== JSON_ERROR_NONE && $jsonErrorMessage !== '') {
+                $errors[] = sprintf('%s のJSON形式が不正です。（詳細: %s）', $fileName, $jsonErrorMessage);
+            } else {
+                $errors[] = sprintf('%s のJSON形式が不正です。配列として読み取れません。', $fileName);
+            }
             continue;
         }
 
