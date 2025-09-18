@@ -532,9 +532,10 @@ header p {
 
 .header-top .sidebar-toggle {
   position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 0;
+  left: 0;
+  transform: none;
+  z-index: 1100;
 }
 
 .sidebar-toggle {
@@ -542,19 +543,20 @@ header p {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: var(--primary);
-  color: #fff;
-  border: none;
+  background: #fff;
+  color: var(--primary);
+  border: 1px solid var(--border);
   border-radius: 6px;
   padding: 8px 12px;
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 .sidebar-toggle:hover {
-  background: var(--primary-dark);
+  background: #f3f4f6;
+  color: var(--primary-dark);
 }
 
 .sidebar-toggle .hamburger {
@@ -1697,19 +1699,20 @@ button.danger-action:disabled:hover {
 
   .header-top,
   .app[data-view="landing"] .header-top {
-    justify-content: flex-start;
+    justify-content: center;
   }
 
   .header-top h1,
   .app[data-view="landing"] header h1 {
-    width: auto;
-    flex: 1;
-    text-align: left;
+    width: 100%;
+    flex: none;
+    text-align: center;
   }
 
   .header-top .sidebar-toggle {
-    order: -1;
-    position: static;
+    position: absolute;
+    top: 0;
+    left: 0;
     transform: none;
   }
 
