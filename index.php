@@ -1,6 +1,20 @@
 <?php
 declare(strict_types=1);
 
+$requestedSessionId = '';
+if (isset($_POST['session_id']) && is_string($_POST['session_id'])) {
+    $requestedSessionId = trim($_POST['session_id']);
+} elseif (isset($_GET['session_id']) && is_string($_GET['session_id'])) {
+    $requestedSessionId = trim($_GET['session_id']);
+}
+
+if ($requestedSessionId !== '' && preg_match('/^[a-zA-Z0-9,-]{6,}$/', $requestedSessionId) === 1) {
+    $sessionCookieName = session_name();
+    if ($sessionCookieName !== '' && (!isset($_COOKIE[$sessionCookieName]) || $_COOKIE[$sessionCookieName] === '')) {
+        session_id($requestedSessionId);
+    }
+}
+
 session_start();
 
 const DATA_DIRECTORY = __DIR__ . '/data';
@@ -321,6 +335,20 @@ function h(?string $value): string
 function nl2brSafe(string $text): string
 {
     return nl2br(h($text), false);
+}
+
+function sessionHiddenField(): string
+{
+    if (session_status() !== PHP_SESSION_ACTIVE) {
+        return '';
+    }
+
+    $id = session_id();
+    if (!is_string($id) || $id === '') {
+        return '';
+    }
+
+    return sprintf('<input type="hidden" name="session_id" value="%s">', h($id));
 }
 
 function normalizeCategoryIdentifier(string $label): string
@@ -1117,6 +1145,7 @@ if ($currentResultForStorage !== null) {
                                         <?php $exam = $exams[$examId]; ?>
                                         <?php $isActiveExam = $examId === $selectedExamId; ?>
                                         <form method="post" class="exam-select-form">
+                                            <?php echo sessionHiddenField(); ?>
                                             <input type="hidden" name="action" value="select_exam">
                                             <input type="hidden" name="difficulty" value="<?php echo h($selectedDifficulty); ?>">
                                             <input type="hidden" name="category_id" value="<?php echo h($categoryId); ?>">
@@ -1197,6 +1226,7 @@ if ($currentResultForStorage !== null) {
             <div class="form-card">
                 <h2>問題を開始する</h2>
                 <form method="post">
+                    <?php echo sessionHiddenField(); ?>
                     <input type="hidden" name="action" value="start_quiz" id="form_action">
                     <input type="hidden" name="category_id" value="<?php echo h($selectedCategoryId); ?>">
                     <input type="hidden" name="exam_id" value="<?php echo h($selectedExamId); ?>">
@@ -1326,6 +1356,7 @@ if ($currentResultForStorage !== null) {
             <p class="quiz-difficulty">選択した難易度: <span class="difficulty-tag difficulty-<?php echo h($quizDifficulty); ?>"><?php echo h(difficultyLabel($quizDifficulty)); ?></span></p>
         </div>
         <form method="post" class="quiz-form">
+            <?php echo sessionHiddenField(); ?>
             <?php foreach ($currentQuiz['questions'] as $index => $question): ?>
                 <?php
                 $questionDifficulty = $question['difficulty'] ?? DEFAULT_DIFFICULTY;
@@ -1497,6 +1528,7 @@ if ($currentResultForStorage !== null) {
         <?php endforeach; ?>
         <div class="actions">
             <form method="post">
+                <?php echo sessionHiddenField(); ?>
                 <input type="hidden" name="action" value="start_quiz">
                 <input type="hidden" name="category_id" value="<?php echo h($results['exam']['category']['id'] ?? ''); ?>">
                 <input type="hidden" name="exam_id" value="<?php echo h($results['exam']['id']); ?>">
@@ -1505,6 +1537,7 @@ if ($currentResultForStorage !== null) {
                 <button type="submit">同じ条件で再挑戦</button>
             </form>
             <form method="post">
+                <?php echo sessionHiddenField(); ?>
                 <input type="hidden" name="action" value="reset_quiz">
                 <input type="hidden" name="category_id" value="<?php echo h($results['exam']['category']['id'] ?? ''); ?>">
                 <input type="hidden" name="exam_id" value="<?php echo h($results['exam']['id']); ?>">
