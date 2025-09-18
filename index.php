@@ -2339,6 +2339,9 @@ if ($currentResultForStorage !== null) {
                     historyState.results = [];
                     historyState.filtered = [];
                     historyState.page = 1;
+                    if (listElement) {
+                        listElement.innerHTML = '';
+                    }
                     if (paginationElement) {
                         paginationElement.hidden = true;
                     }
