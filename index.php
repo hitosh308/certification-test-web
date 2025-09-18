@@ -737,6 +737,12 @@ if ($requestedView === 'landing' && !$isPostRequest) {
     }
 }
 
+if (!$isPostRequest && $view === 'landing') {
+    $selectedCategoryId = '';
+    $selectedExamId = '';
+    unset($_SESSION['last_selected_category_id'], $_SESSION['last_selected_exam_id']);
+}
+
 $questionCountInput = '';
 $selectedDifficulty = sanitizeDifficultySelection($_SESSION['last_selected_difficulty'] ?? null);
 
