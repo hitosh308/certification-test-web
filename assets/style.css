@@ -507,8 +507,14 @@ header p {
 .header-top {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 12px;
+  position: relative;
+}
+
+.header-top h1 {
+  width: 100%;
+  text-align: center;
 }
 
 .app[data-view="landing"] header {
@@ -522,6 +528,13 @@ header p {
 .app[data-view="landing"] header h1 {
   width: 100%;
   text-align: center;
+}
+
+.header-top .sidebar-toggle {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .sidebar-toggle {
@@ -1683,7 +1696,7 @@ button.danger-action:disabled:hover {
   }
 
   .header-top {
-    justify-content: flex-start;
+    justify-content: center;
   }
 
   .header-top .sidebar-toggle {
