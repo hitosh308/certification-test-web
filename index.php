@@ -1705,14 +1705,18 @@ if ($currentResultForStorage !== null) {
                     <?php foreach ($categories as $categoryId => $category): ?>
                         <?php $examIds = examIdsForCategory($categories, $exams, $categoryId); ?>
                         <?php $categoryExamCount = count($examIds); ?>
+                        <?php $categoryExamCountLabel = number_format($categoryExamCount); ?>
                         <?php $categoryQuestionCount = questionCountForCategory($categories, $exams, $categoryId); ?>
                         <?php $categoryQuestionCountLabel = number_format($categoryQuestionCount); ?>
                         <?php $isActiveCategory = $categoryId === $selectedCategoryId; ?>
                         <details class="category-item"<?php echo $isActiveCategory ? ' open' : ''; ?>>
                             <summary class="category-summary">
                                 <span class="category-name"><?php echo h($category['name']); ?></span>
-                                <span class="category-count" aria-hidden="true"><?php echo $categoryQuestionCountLabel; ?>問</span>
-                                <span class="sr-only">カテゴリ内の総問題数: <?php echo $categoryQuestionCountLabel; ?>問</span>
+                                <span class="category-counts" aria-hidden="true">
+                                    <span class="category-count"><?php echo $categoryExamCountLabel; ?>試験</span>
+                                    <span class="category-count"><?php echo $categoryQuestionCountLabel; ?>問</span>
+                                </span>
+                                <span class="sr-only">カテゴリ内の試験数: <?php echo $categoryExamCountLabel; ?>件、総問題数: <?php echo $categoryQuestionCountLabel; ?>問</span>
                                 <span class="accordion-icon" aria-hidden="true"></span>
                             </summary>
                             <?php if ($categoryExamCount > 0): ?>
