@@ -1025,6 +1025,22 @@ if ($questionCountInput === '' || $questionCountInput === '0') {
 
 $difficultyOptions = getDifficultyOptions(true);
 
+$historyExamOptions = [];
+foreach ($exams as $examId => $examData) {
+    $examMeta = isset($examData['meta']) && is_array($examData['meta']) ? $examData['meta'] : [];
+    $examTitle = isset($examMeta['title']) && is_string($examMeta['title']) && $examMeta['title'] !== ''
+        ? $examMeta['title']
+        : $examId;
+    $categoryMeta = isset($examMeta['category']) && is_array($examMeta['category']) ? $examMeta['category'] : [];
+    $examCategoryId = isset($categoryMeta['id']) ? (string)$categoryMeta['id'] : '';
+
+    $historyExamOptions[] = [
+        'id' => (string)$examId,
+        'title' => (string)$examTitle,
+        'categoryId' => $examCategoryId,
+    ];
+}
+
 $totalExams = count($exams);
 $totalCategories = count($categories);
 $totalQuestionCount = array_reduce($exams, static function (int $carry, array $exam): int {
@@ -1321,16 +1337,25 @@ if ($currentResultForStorage !== null) {
                     <input type="search" id="historySearch" name="search" placeholder="試験名やカテゴリで検索">
                 </div>
                 <div class="history-filter-group">
-                    <label for="historyDifficulty">難易度</label>
-                    <select id="historyDifficulty" name="difficulty">
+                    <label for="historyCategory">カテゴリ</label>
+                    <select id="historyCategory" name="category">
                         <option value="">すべて</option>
-                        <?php foreach ($difficultyOptions as $difficultyKey => $difficultyText): ?>
-                            <option value="<?php echo h($difficultyKey); ?>"><?php echo h($difficultyText); ?></option>
+                        <?php foreach ($categories as $categoryId => $categoryData): ?>
+                            <option value="<?php echo h((string)$categoryId); ?>"><?php echo h((string)($categoryData['name'] ?? $categoryId)); ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
                 <div class="history-filter-group">
-                    <label for="historySort">ソート</label>
+                    <label for="historyExam">試験</label>
+                    <select id="historyExam" name="exam">
+                        <option value="">すべて</option>
+                        <?php foreach ($historyExamOptions as $examOption): ?>
+                            <option value="<?php echo h($examOption['id']); ?>" data-category="<?php echo h($examOption['categoryId']); ?>"><?php echo h($examOption['title']); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="history-filter-group">
+                    <label for="historySort">並び順</label>
                     <select id="historySort" name="sort">
                         <option value="date_desc">受験日時（新しい順）</option>
                         <option value="date_asc">受験日時（古い順）</option>
@@ -1697,7 +1722,8 @@ if ($currentResultForStorage !== null) {
         const pageInfoElement = paginationElement ? paginationElement.querySelector('[data-pagination-info]') : null;
         const clearButton = historyRoot ? historyRoot.querySelector('[data-clear-history]') : document.querySelector('[data-clear-history]');
         const searchInput = document.getElementById('historySearch');
-        const difficultyFilter = document.getElementById('historyDifficulty');
+        const categoryFilter = document.getElementById('historyCategory');
+        const examFilter = document.getElementById('historyExam');
         const sortSelect = document.getElementById('historySort');
         const filtersForm = document.querySelector('.history-filters');
 
@@ -1928,8 +1954,46 @@ if ($currentResultForStorage !== null) {
             pageSize: PAGE_SIZE,
             sort: sortSelect ? sortSelect.value : 'date_desc',
             search: searchInput ? searchInput.value : '',
-            difficulty: difficultyFilter ? difficultyFilter.value : ''
+            category: categoryFilter ? categoryFilter.value : '',
+            exam: examFilter ? examFilter.value : ''
         };
+
+        function syncExamFilterOptions() {
+            if (!examFilter) {
+                return;
+            }
+
+            const selectedCategory = historyState.category || '';
+            let shouldResetExam = false;
+
+            Array.from(examFilter.options).forEach(function (option) {
+                if (!option || typeof option.value !== 'string') {
+                    return;
+                }
+
+                if (option.value === '') {
+                    option.hidden = false;
+                    option.disabled = false;
+                    return;
+                }
+
+                const optionCategory = option.getAttribute('data-category') || '';
+                const matchesCategory = !selectedCategory || optionCategory === selectedCategory;
+
+                option.hidden = !matchesCategory;
+                option.disabled = !matchesCategory;
+
+                if (!matchesCategory && option.selected) {
+                    option.selected = false;
+                    shouldResetExam = true;
+                }
+            });
+
+            if (shouldResetExam) {
+                examFilter.value = '';
+                historyState.exam = '';
+            }
+        }
 
         function createHistoryListItem(result) {
             const item = document.createElement('li');
@@ -2118,7 +2182,8 @@ if ($currentResultForStorage !== null) {
 
         function applyFilters() {
             const searchTerm = (historyState.search || '').trim().toLowerCase();
-            const difficultyValue = historyState.difficulty || '';
+            const categoryValue = historyState.category || '';
+            const examValue = historyState.exam || '';
             const sortKey = historyState.sort || 'date_desc';
 
             const filtered = historyState.results.filter(function (result) {
@@ -2136,12 +2201,17 @@ if ($currentResultForStorage !== null) {
                     matchesSearch = haystack.indexOf(searchTerm) !== -1;
                 }
 
-                let matchesDifficulty = true;
-                if (difficultyValue) {
-                    matchesDifficulty = (result.difficulty || '') === difficultyValue;
+                let matchesCategory = true;
+                if (categoryValue) {
+                    matchesCategory = (result.categoryId || '') === categoryValue;
                 }
 
-                return matchesSearch && matchesDifficulty;
+                let matchesExam = true;
+                if (examValue) {
+                    matchesExam = (result.examId || '') === examValue;
+                }
+
+                return matchesSearch && matchesCategory && matchesExam;
             });
 
             const sorted = filtered.sort(function (a, b) {
@@ -2243,13 +2313,24 @@ if ($currentResultForStorage !== null) {
             });
         }
 
-        if (difficultyFilter) {
-            difficultyFilter.addEventListener('change', function () {
-                historyState.difficulty = difficultyFilter.value;
+        if (categoryFilter) {
+            categoryFilter.addEventListener('change', function () {
+                historyState.category = categoryFilter.value;
+                historyState.page = 1;
+                syncExamFilterOptions();
+                applyFilters();
+            });
+        }
+
+        if (examFilter) {
+            examFilter.addEventListener('change', function () {
+                historyState.exam = examFilter.value;
                 historyState.page = 1;
                 applyFilters();
             });
         }
+
+        syncExamFilterOptions();
 
         if (sortSelect) {
             sortSelect.addEventListener('change', function () {
