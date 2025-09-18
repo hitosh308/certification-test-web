@@ -688,16 +688,22 @@ if ($selectedCategoryId !== '' && !isset($categories[$selectedCategoryId])) {
     $selectedCategoryId = '';
 }
 
-$view = $currentQuiz ? 'quiz' : 'landing';
+$requestedView = isset($_GET['view']) ? (string)$_GET['view'] : '';
 
-if (!$currentQuiz) {
-    $requestedView = isset($_GET['view']) ? (string)$_GET['view'] : '';
+if ($requestedView === 'landing') {
+    if ($currentQuiz) {
+        unset($_SESSION['current_quiz']);
+        $currentQuiz = null;
+    }
+    $view = 'landing';
+} elseif ($currentQuiz) {
+    $view = 'quiz';
+} else {
+    $view = 'landing';
     if ($requestedView === 'history') {
         $view = 'history';
     } elseif ($requestedView === 'home') {
         $view = 'home';
-    } elseif ($requestedView === 'landing') {
-        $view = 'landing';
     }
 }
 
@@ -1071,7 +1077,7 @@ if ($currentResultForStorage !== null) {
 <div class="app"<?php echo $appAttributes; ?>>
     <header>
         <div class="header-top">
-            <h1><a href="index.php">資格試験問題集</a></h1>
+            <h1><a href="index.php?view=landing">資格試験問題集</a></h1>
             <button type="button" class="sidebar-toggle" id="sidebarToggle" aria-controls="categorySidebar" aria-expanded="false">
                 <span class="sr-only">カテゴリメニューを開く</span>
                 <span class="hamburger" aria-hidden="true">
@@ -1130,7 +1136,7 @@ if ($currentResultForStorage !== null) {
                 <p class="empty-message">カテゴリが登録されていません。</p>
             <?php endif; ?>
             <nav class="sidebar-nav" aria-label="ページ切り替え">
-                <a href="index.php" class="sidebar-nav-link<?php echo $isLandingView ? ' active' : ''; ?>">トップ</a>
+                <a href="index.php?view=landing" class="sidebar-nav-link<?php echo $isLandingView ? ' active' : ''; ?>">トップ</a>
                 <a href="?view=home" class="sidebar-nav-link<?php echo $isExamView ? ' active' : ''; ?>">試験を選ぶ</a>
                 <a href="?view=history" class="sidebar-nav-link<?php echo $isHistoryView ? ' active' : ''; ?>">受験履歴</a>
             </nav>
