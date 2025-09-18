@@ -1366,10 +1366,11 @@ if ($currentResultForStorage !== null) {
         </div>
         <div class="results-filter" data-results-filter>
             <span class="results-filter-label">表示切替:</span>
-            <div class="results-filter-buttons" role="group" aria-label="結果の表示切替">
-                <button type="button" class="filter-toggle is-active" data-filter-button data-filter="unanswered" aria-pressed="true">未回答</button>
-                <button type="button" class="filter-toggle is-active" data-filter-button data-filter="correct" aria-pressed="true">正解</button>
-                <button type="button" class="filter-toggle is-active" data-filter-button data-filter="incorrect" aria-pressed="true">間違い</button>
+            <div class="results-filter-buttons" role="radiogroup" aria-label="結果の表示切替">
+                <button type="button" class="filter-toggle is-active" data-filter-button data-filter="all" role="radio" aria-checked="true">すべて</button>
+                <button type="button" class="filter-toggle" data-filter-button data-filter="correct" role="radio" aria-checked="false">正解</button>
+                <button type="button" class="filter-toggle" data-filter-button data-filter="incorrect" role="radio" aria-checked="false">不正解</button>
+                <button type="button" class="filter-toggle" data-filter-button data-filter="unanswered" role="radio" aria-checked="false">未回答</button>
             </div>
         </div>
         <?php foreach ($results['questions'] as $question): ?>
@@ -1598,55 +1599,48 @@ if ($currentResultForStorage !== null) {
             const filterButtons = Array.from(resultsFilters.querySelectorAll('[data-filter-button]'));
             const questionCards = Array.from(document.querySelectorAll('[data-question-card]'));
 
-            const getActiveFilters = function () {
-                return filterButtons
-                    .filter(function (button) {
-                        return button.classList.contains('is-active');
-                    })
-                    .map(function (button) {
-                        return button.getAttribute('data-filter');
-                    })
-                    .filter(function (value) {
-                        return Boolean(value);
-                    });
+            const getFilterFromButton = function (button) {
+                const value = button ? button.getAttribute('data-filter') : null;
+                return value && value !== '' ? value : 'all';
             };
 
-            const updateQuestionVisibility = function () {
-                const activeFilters = getActiveFilters();
+            const updateQuestionVisibility = function (activeFilter) {
+                const filter = typeof activeFilter === 'string' && activeFilter !== '' ? activeFilter : 'all';
                 questionCards.forEach(function (card) {
                     const status = card.getAttribute('data-question-status') || 'correct';
-                    if (activeFilters.length === 0) {
-                        card.hidden = false;
-                        return;
-                    }
-                    card.hidden = activeFilters.indexOf(status) === -1;
+                    card.hidden = filter !== 'all' && status !== filter;
+                });
+            };
+
+            const setActiveButton = function (activeButton) {
+                filterButtons.forEach(function (button) {
+                    const isActive = button === activeButton;
+                    button.classList.toggle('is-active', isActive);
+                    button.setAttribute('aria-checked', isActive ? 'true' : 'false');
                 });
             };
 
             filterButtons.forEach(function (button) {
                 button.addEventListener('click', function () {
-                    const isActive = button.classList.contains('is-active');
-                    const activeFilters = getActiveFilters();
-
-                    if (isActive && activeFilters.length <= 1) {
+                    if (button.classList.contains('is-active')) {
                         return;
                     }
 
-                    if (isActive) {
-                        button.classList.remove('is-active');
-                        button.setAttribute('aria-pressed', 'false');
-                    } else {
-                        button.classList.add('is-active');
-                        button.setAttribute('aria-pressed', 'true');
-                    }
-
-                    updateQuestionVisibility();
+                    setActiveButton(button);
+                    updateQuestionVisibility(getFilterFromButton(button));
                 });
-
-                button.setAttribute('aria-pressed', button.classList.contains('is-active') ? 'true' : 'false');
             });
 
-            updateQuestionVisibility();
+            const initialButton = filterButtons.find(function (button) {
+                return button.classList.contains('is-active');
+            }) || filterButtons[0];
+
+            if (initialButton) {
+                setActiveButton(initialButton);
+                updateQuestionVisibility(getFilterFromButton(initialButton));
+            } else {
+                updateQuestionVisibility('all');
+            }
         }
 
         const historyRoot = document.querySelector('[data-history-root]');
