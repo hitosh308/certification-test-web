@@ -676,6 +676,42 @@ function examIdsForCategory(array $categories, array $exams, string $categoryId)
 }
 
 /**
+ * @param array<string, mixed> $exam
+ */
+function questionCountForExam(array $exam): int
+{
+    $count = 0;
+
+    if (isset($exam['meta']['question_count'])) {
+        $count = (int)$exam['meta']['question_count'];
+    } elseif (isset($exam['questions']) && is_array($exam['questions'])) {
+        $count = count($exam['questions']);
+    }
+
+    return max(0, $count);
+}
+
+/**
+ * @param array<string, array{id: string, name: string, exam_ids: string[]}> $categories
+ * @param array<string, mixed> $exams
+ */
+function questionCountForCategory(array $categories, array $exams, string $categoryId): int
+{
+    $total = 0;
+
+    foreach (examIdsForCategory($categories, $exams, $categoryId) as $examId) {
+        $exam = $exams[$examId] ?? null;
+        if (!is_array($exam)) {
+            continue;
+        }
+
+        $total += questionCountForExam($exam);
+    }
+
+    return $total;
+}
+
+/**
  * @param array<int, array<string, mixed>> $questions
  * @return array<int, array<string, mixed>>
  */
@@ -1158,11 +1194,14 @@ if ($currentResultForStorage !== null) {
                     <?php foreach ($categories as $categoryId => $category): ?>
                         <?php $examIds = examIdsForCategory($categories, $exams, $categoryId); ?>
                         <?php $categoryExamCount = count($examIds); ?>
+                        <?php $categoryQuestionCount = questionCountForCategory($categories, $exams, $categoryId); ?>
+                        <?php $categoryQuestionCountLabel = number_format($categoryQuestionCount); ?>
                         <?php $isActiveCategory = $categoryId === $selectedCategoryId; ?>
                         <details class="category-item"<?php echo $isActiveCategory ? ' open' : ''; ?>>
                             <summary class="category-summary">
                                 <span class="category-name"><?php echo h($category['name']); ?></span>
-                                <span class="category-count" aria-hidden="true"><?php echo $categoryExamCount; ?></span>
+                                <span class="category-count" aria-hidden="true"><?php echo $categoryQuestionCountLabel; ?>問</span>
+                                <span class="sr-only">カテゴリ内の総問題数: <?php echo $categoryQuestionCountLabel; ?>問</span>
                                 <span class="accordion-icon" aria-hidden="true"></span>
                             </summary>
                             <?php if ($categoryExamCount > 0): ?>
@@ -1170,6 +1209,8 @@ if ($currentResultForStorage !== null) {
                                     <?php foreach ($examIds as $examId): ?>
                                         <?php if (!isset($exams[$examId])) { continue; } ?>
                                         <?php $exam = $exams[$examId]; ?>
+                                        <?php $examQuestionCount = questionCountForExam($exam); ?>
+                                        <?php $examQuestionCountLabel = number_format($examQuestionCount); ?>
                                         <?php $isActiveExam = $examId === $selectedExamId; ?>
                                         <form method="post" class="exam-select-form">
                                             <?php echo sessionHiddenField(); ?>
@@ -1178,6 +1219,8 @@ if ($currentResultForStorage !== null) {
                                             <input type="hidden" name="category_id" value="<?php echo h($categoryId); ?>">
                                             <button type="submit" name="exam_id" value="<?php echo h($examId); ?>" class="exam-button<?php echo $isActiveExam ? ' active' : ''; ?>">
                                                 <span class="exam-title"><?php echo h($exam['meta']['title']); ?></span>
+                                                <span class="exam-question-count" aria-hidden="true"><?php echo $examQuestionCountLabel; ?>問</span>
+                                                <span class="sr-only">（問題数: <?php echo $examQuestionCountLabel; ?>問）</span>
                                             </button>
                                         </form>
                                     <?php endforeach; ?>
