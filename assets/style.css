@@ -1909,10 +1909,13 @@ button.danger-action:disabled:hover {
   }
 
   .header-top .sidebar-toggle {
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: fixed;
+    top: 16px;
+    top: calc(env(safe-area-inset-top) + 16px);
+    left: 16px;
+    left: calc(env(safe-area-inset-left) + 16px);
     transform: none;
+    box-shadow: 0 12px 32px -20px rgba(15, 23, 42, 0.45);
   }
 
   .category-sidebar {
@@ -2029,6 +2032,11 @@ button.danger-action:disabled:hover {
 
   .landing-highlights {
     margin: 24px 0;
+  }
+
+  .header-top .sidebar-toggle {
+    left: 12px;
+    left: calc(env(safe-area-inset-left) + 12px);
   }
 
   .landing-search {
