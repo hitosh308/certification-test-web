@@ -1010,9 +1010,7 @@ if ($currentResultForStorage !== null) {
                         <p class="landing-lead">まだ問題データが登録されていません。data ディレクトリにJSONファイルを追加すると、ここから試験を選んで学習を始められます。</p>
                     <?php endif; ?>
                     <div class="landing-actions">
-                        <?php if ($totalExams > 0): ?>
-                            <a class="landing-button primary" href="?view=home">試験を選ぶ</a>
-                        <?php else: ?>
+                        <?php if ($totalExams === 0): ?>
                             <span class="landing-button disabled" role="text" aria-disabled="true">試験データを追加してください</span>
                         <?php endif; ?>
                         <a class="landing-button secondary" href="?view=history">受験履歴を見る</a>
