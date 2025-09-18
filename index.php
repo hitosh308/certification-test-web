@@ -33,8 +33,9 @@ const DIFFICULTY_RANDOM_LABEL = 'ランダム';
  *                 text: string,
  *                 explanation: array{text: string, reference: string, reference_label: string}
  *             }>,
- *             answer: string,
- *             explanation: array{text: string, reference: string, reference_label: string}
+ *             answers: string[],
+ *             explanation: array{text: string, reference: string, reference_label: string},
+ *             is_multiple_answer: bool,
  *         }>
  *     }>,
  *     categories: array<string, array{id: string, name: string, exam_ids: string[]}>,
@@ -133,7 +134,7 @@ function loadExamCatalog(): array
 
             $questionText = isset($questionData['question']) ? trim((string)$questionData['question']) : '';
             $rawChoices = $questionData['choices'] ?? null;
-            $answer = isset($questionData['answer']) ? (string)$questionData['answer'] : '';
+            $rawAnswer = $questionData['answers'] ?? ($questionData['answer'] ?? null);
 
             $questionExplanation = normalizeExplanation($questionData['explanation'] ?? null);
 
@@ -146,7 +147,7 @@ function loadExamCatalog(): array
                 }
             }
 
-            if ($questionText === '' || !is_array($rawChoices) || empty($rawChoices) || $answer === '') {
+            if ($questionText === '' || !is_array($rawChoices) || empty($rawChoices) || $rawAnswer === null || $rawAnswer === '') {
                 $skipped++;
                 $skippedIds[] = $questionId;
                 continue;
@@ -201,7 +202,8 @@ function loadExamCatalog(): array
             }
 
             $choiceKeys = array_map(static fn ($choice) => $choice['key'], $choices);
-            if (!in_array($answer, $choiceKeys, true)) {
+            $answers = normalizeAnswerKeys($rawAnswer, $choiceKeys);
+            if (empty($answers)) {
                 $skipped++;
                 $skippedIds[] = $questionId;
                 continue;
@@ -213,9 +215,10 @@ function loadExamCatalog(): array
             'id' => $questionId,
             'question' => $questionText,
             'choices' => $choices,
-            'answer' => $answer,
+            'answers' => $answers,
             'explanation' => $questionExplanation,
             'difficulty' => $difficulty,
+            'is_multiple_answer' => count($answers) > 1,
         ];
         }
 
@@ -531,6 +534,85 @@ function normalizeExplanation($value): array
 }
 
 /**
+ * @param mixed $value
+ * @return string[]
+ */
+function extractAnswerKeyCandidates($value): array
+{
+    if ($value === null) {
+        return [];
+    }
+
+    $rawValues = [];
+
+    if (is_array($value)) {
+        foreach ($value as $entry) {
+            if (is_array($entry)) {
+                continue;
+            }
+            $rawValues[] = (string)$entry;
+        }
+    } elseif (is_string($value) || is_numeric($value)) {
+        $rawValues[] = (string)$value;
+    } else {
+        return [];
+    }
+
+    $candidates = [];
+    foreach ($rawValues as $raw) {
+        $raw = trim($raw);
+        if ($raw === '') {
+            continue;
+        }
+        $parts = preg_split('/[\s,]+/u', $raw) ?: [];
+        if (count($parts) <= 1) {
+            $candidates[] = $raw;
+            continue;
+        }
+        foreach ($parts as $part) {
+            $part = trim($part);
+            if ($part === '') {
+                continue;
+            }
+            $candidates[] = $part;
+        }
+    }
+
+    return $candidates;
+}
+
+/**
+ * @param mixed $value
+ * @param string[] $validKeys
+ * @return string[]
+ */
+function normalizeAnswerKeys($value, array $validKeys): array
+{
+    if (empty($validKeys)) {
+        return [];
+    }
+
+    $candidates = extractAnswerKeyCandidates($value);
+    if (empty($candidates)) {
+        return [];
+    }
+
+    $candidateLookup = [];
+    foreach ($candidates as $candidate) {
+        $candidateLookup[$candidate] = true;
+    }
+
+    $normalized = [];
+    foreach ($validKeys as $validKey) {
+        if (isset($candidateLookup[$validKey]) && !in_array($validKey, $normalized, true)) {
+            $normalized[] = $validKey;
+        }
+    }
+
+    return $normalized;
+}
+
+/**
  * @param array{text: string, reference: string, reference_label: string} $explanation
  */
 function hasExplanationContent(array $explanation): bool
@@ -736,31 +818,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $incorrectDetails = [];
             foreach ($currentQuiz['questions'] as $index => $question) {
                 $questionId = $question['id'];
-                $userAnswer = null;
-                if (isset($submittedAnswers[$questionId]) && !is_array($submittedAnswers[$questionId])) {
-                    $userAnswer = (string)$submittedAnswers[$questionId];
-                }
-                $isCorrect = $userAnswer !== null && $userAnswer === $question['answer'];
+                $choices = is_array($question['choices']) ? $question['choices'] : [];
+                $choiceKeys = array_map(static fn ($choice) => (string)($choice['key'] ?? ''), $choices);
+                $correctAnswers = isset($question['answers']) && is_array($question['answers'])
+                    ? array_values(array_map('strval', $question['answers']))
+                    : [];
+
+                $userAnswerRaw = $submittedAnswers[$questionId] ?? null;
+                $userAnswers = normalizeAnswerKeys($userAnswerRaw, $choiceKeys);
+
+                $sortedCorrect = $correctAnswers;
+                sort($sortedCorrect);
+                $sortedUser = $userAnswers;
+                sort($sortedUser);
+
+                $isCorrect = !empty($sortedCorrect) && $sortedUser === $sortedCorrect;
                 if ($isCorrect) {
                     $correctCount++;
                 } else {
                     $incorrectDetails[] = [
                         'number' => $index + 1,
                         'question' => $question['question'],
-                        'correct_answer' => $question['answer'],
-                        'user_answer' => $userAnswer,
+                        'correct_answer' => implode(', ', $correctAnswers),
+                        'correct_answers' => $correctAnswers,
+                        'user_answer' => implode(', ', $userAnswers),
+                        'user_answers' => $userAnswers,
                     ];
                 }
+
                 $questionResults[] = [
                     'number' => $index + 1,
                     'id' => $questionId,
                     'question' => $question['question'],
-                    'choices' => $question['choices'],
-                    'answer' => $question['answer'],
+                    'choices' => $choices,
+                    'answers' => $correctAnswers,
                     'explanation' => $question['explanation'],
-                    'user_answer' => $userAnswer,
+                    'user_answers' => $userAnswers,
                     'is_correct' => $isCorrect,
                     'difficulty' => $question['difficulty'] ?? DEFAULT_DIFFICULTY,
+                    'is_multiple_answer' => count($correctAnswers) > 1,
                 ];
             }
 
@@ -907,11 +1003,25 @@ if ($view === 'results' && $results) {
             if (!is_array($incorrectQuestion)) {
                 continue;
             }
+            $correctAnswersForStorage = '';
+            if (!empty($incorrectQuestion['correct_answers']) && is_array($incorrectQuestion['correct_answers'])) {
+                $correctAnswersForStorage = implode(', ', array_map('strval', $incorrectQuestion['correct_answers']));
+            } elseif (isset($incorrectQuestion['correct_answer'])) {
+                $correctAnswersForStorage = (string)$incorrectQuestion['correct_answer'];
+            }
+
+            $userAnswersForStorage = '';
+            if (!empty($incorrectQuestion['user_answers']) && is_array($incorrectQuestion['user_answers'])) {
+                $userAnswersForStorage = implode(', ', array_map('strval', $incorrectQuestion['user_answers']));
+            } elseif (isset($incorrectQuestion['user_answer']) && $incorrectQuestion['user_answer'] !== null) {
+                $userAnswersForStorage = (string)$incorrectQuestion['user_answer'];
+            }
+
             $incorrectQuestionsForStorage[] = [
                 'number' => isset($incorrectQuestion['number']) ? (int)$incorrectQuestion['number'] : 0,
                 'question' => isset($incorrectQuestion['question']) ? (string)$incorrectQuestion['question'] : '',
-                'correctAnswer' => isset($incorrectQuestion['correct_answer']) ? (string)$incorrectQuestion['correct_answer'] : '',
-                'userAnswer' => isset($incorrectQuestion['user_answer']) ? (string)$incorrectQuestion['user_answer'] : '',
+                'correctAnswer' => $correctAnswersForStorage,
+                'userAnswer' => $userAnswersForStorage,
             ];
         }
     }
@@ -1211,14 +1321,24 @@ if ($currentResultForStorage !== null) {
         </div>
         <form method="post" class="quiz-form">
             <?php foreach ($currentQuiz['questions'] as $index => $question): ?>
-                <?php $questionDifficulty = $question['difficulty'] ?? DEFAULT_DIFFICULTY; ?>
+                <?php
+                $questionDifficulty = $question['difficulty'] ?? DEFAULT_DIFFICULTY;
+                $isMultipleAnswer = !empty($question['is_multiple_answer']) || (isset($question['answers']) && is_array($question['answers']) && count($question['answers']) > 1);
+                $inputName = 'answers[' . ($question['id'] ?? $index) . ']';
+                if ($isMultipleAnswer) {
+                    $inputName .= '[]';
+                }
+                ?>
                 <div class="question-card">
                     <h3>Q<?php echo $index + 1; ?>. <?php echo h($question['question']); ?> <span class="difficulty-tag difficulty-<?php echo h($questionDifficulty); ?>"><?php echo h(difficultyLabel($questionDifficulty)); ?></span></h3>
+                    <?php if ($isMultipleAnswer): ?>
+                        <p class="multi-answer-hint">該当する選択肢をすべて選択してください。</p>
+                    <?php endif; ?>
                     <ul class="choice-list">
                         <?php foreach ($question['choices'] as $choice): ?>
                             <?php $inputId = buildInputId($question['id'], $choice['key']); ?>
                             <li class="choice-item">
-                                <input type="radio" id="<?php echo h($inputId); ?>" name="answers[<?php echo h($question['id']); ?>]" value="<?php echo h($choice['key']); ?>">
+                                <input type="<?php echo $isMultipleAnswer ? 'checkbox' : 'radio'; ?>" id="<?php echo h($inputId); ?>" name="<?php echo h($inputName); ?>" value="<?php echo h($choice['key']); ?>">
                                 <label for="<?php echo h($inputId); ?>">
                                     <span class="option-key"><?php echo h($choice['key']); ?>.</span>
                                     <?php echo h($choice['text']); ?>
@@ -1245,23 +1365,32 @@ if ($currentResultForStorage !== null) {
             <p><?php echo $results['correct']; ?> / <?php echo $results['total']; ?> 問正解（正答率 <?php echo $scorePercent; ?>%）</p>
         </div>
         <?php foreach ($results['questions'] as $question): ?>
-            <?php $questionDifficulty = $question['difficulty'] ?? DEFAULT_DIFFICULTY; ?>
+            <?php
+            $questionDifficulty = $question['difficulty'] ?? DEFAULT_DIFFICULTY;
+            $correctAnswers = isset($question['answers']) && is_array($question['answers']) ? $question['answers'] : [];
+            $userAnswers = isset($question['user_answers']) && is_array($question['user_answers']) ? $question['user_answers'] : [];
+            $isMultipleAnswer = !empty($question['is_multiple_answer']) || count($correctAnswers) > 1;
+            ?>
             <div class="question-card <?php echo $question['is_correct'] ? 'correct' : 'incorrect'; ?>">
                 <h3>Q<?php echo $question['number']; ?>. <?php echo h($question['question']); ?> <span class="difficulty-tag difficulty-<?php echo h($questionDifficulty); ?>"><?php echo h(difficultyLabel($questionDifficulty)); ?></span></h3>
-                <?php if ($question['user_answer'] === null): ?>
+                <?php if ($isMultipleAnswer): ?>
+                    <p class="multi-answer-hint">この問題は複数の正解があります。</p>
+                <?php endif; ?>
+                <?php if (empty($userAnswers)): ?>
                     <p class="no-answer">未回答</p>
                 <?php endif; ?>
                 <ul class="choice-list">
                     <?php foreach ($question['choices'] as $choice): ?>
                         <?php
                         $class = 'choice-item';
-                        if ($choice['key'] === $question['answer']) {
+                        $isCorrectChoice = in_array($choice['key'], $correctAnswers, true);
+                        if ($isCorrectChoice) {
                             $class .= ' correct';
                         }
-                        $isSelected = $question['user_answer'] !== null && $choice['key'] === $question['user_answer'];
+                        $isSelected = in_array($choice['key'], $userAnswers, true);
                         if ($isSelected) {
                             $class .= ' selected';
-                            if ($choice['key'] !== $question['answer']) {
+                            if (!$isCorrectChoice) {
                                 $class .= ' incorrect';
                             }
                         }
@@ -1269,7 +1398,7 @@ if ($currentResultForStorage !== null) {
                         <li class="<?php echo h($class); ?>">
                             <span class="option-key"><?php echo h($choice['key']); ?>.</span>
                             <span><?php echo h($choice['text']); ?></span>
-                            <?php if ($choice['key'] === $question['answer']): ?>
+                            <?php if ($isCorrectChoice): ?>
                                 <span>（正解）</span>
                             <?php elseif ($isSelected): ?>
                                 <span>（選択）</span>
