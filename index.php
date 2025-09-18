@@ -1261,7 +1261,6 @@ if ($currentResultForStorage !== null) {
                                         <span class="exam-meta-description"><strong>概要:</strong> <?php echo nl2brSafe($selectedExam['meta']['description']); ?></span>
                                     <?php endif; ?>
                                     <span><strong>問題数:</strong> <?php echo (int)$selectedExam['meta']['question_count']; ?> 問</span>
-                                    <span><strong>データファイル:</strong> <?php echo h($selectedExam['meta']['source_file']); ?></span>
                                 </div>
                             <?php else: ?>
                                 <span class="selected-exam-name">試験が選択されていません。</span>
