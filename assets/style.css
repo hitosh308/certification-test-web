@@ -2011,9 +2011,10 @@ button.danger-action:disabled:hover {
   }
 
   .landing-search-controls {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 8px;
   }
 
   .landing-search-summary {
@@ -2031,6 +2032,12 @@ button.danger-action:disabled:hover {
 
   button:not(.sidebar-toggle):not(.sidebar-close) {
     width: 100%;
+  }
+
+  .landing-search-controls button {
+    width: auto;
+    flex: 0 0 auto;
+    white-space: nowrap;
   }
 
   .open-sidebar-button {
