@@ -1123,7 +1123,6 @@ if ($currentResultForStorage !== null) {
                 </span>
             </button>
         </div>
-        <p>JSON形式で管理された問題データから出題する学習支援アプリです。</p>
     </header>
 
     <div class="layout">
