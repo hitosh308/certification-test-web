@@ -1267,7 +1267,6 @@ if ($currentResultForStorage !== null) {
                                 <span class="selected-exam-placeholder">下のボタンから試験を選択してください。</span>
                             <?php endif; ?>
                         </div>
-                        <small class="field-hint">メニューまたは下のボタンから試験を選択してください。</small>
                     </div>
                     <div class="form-field">
                         <label for="difficulty">難易度</label>
