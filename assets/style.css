@@ -1142,6 +1142,60 @@ button.danger-action:disabled:hover {
   font-size: 1rem;
 }
 
+.results-filter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 0 0 24px;
+}
+
+.results-filter-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.results-filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter-toggle {
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.filter-toggle:hover,
+.filter-toggle:focus-visible {
+  border-color: var(--primary);
+  color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15);
+}
+
+.filter-toggle.is-active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+  box-shadow: 0 12px 30px -20px rgba(29, 78, 216, 0.6);
+}
+
+.filter-toggle.is-active:hover,
+.filter-toggle.is-active:focus-visible {
+  color: #fff;
+  border-color: var(--primary-dark);
+  background: var(--primary-dark);
+  box-shadow: 0 12px 30px -18px rgba(30, 64, 175, 0.55);
+}
+
 
 .history-card {
   margin-top: 0;
