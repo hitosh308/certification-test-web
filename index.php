@@ -1173,7 +1173,6 @@ if ($currentResultForStorage !== null) {
             <?php endif; ?>
             <nav class="sidebar-nav" aria-label="ページ切り替え">
                 <a href="index.php?view=landing" class="sidebar-nav-link<?php echo $isLandingView ? ' active' : ''; ?>">トップ</a>
-                <a href="?view=home" class="sidebar-nav-link<?php echo $isExamView ? ' active' : ''; ?>">試験を選ぶ</a>
                 <a href="?view=history" class="sidebar-nav-link<?php echo $isHistoryView ? ' active' : ''; ?>">受験履歴</a>
             </nav>
         </aside>
