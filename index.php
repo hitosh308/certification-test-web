@@ -717,8 +717,10 @@ if ($selectedCategoryId !== '' && !isset($categories[$selectedCategoryId])) {
 }
 
 $requestedView = isset($_GET['view']) ? (string)$_GET['view'] : '';
+$requestMethod = isset($_SERVER['REQUEST_METHOD']) ? strtoupper((string)$_SERVER['REQUEST_METHOD']) : 'GET';
+$isPostRequest = $requestMethod === 'POST';
 
-if ($requestedView === 'landing') {
+if ($requestedView === 'landing' && !$isPostRequest) {
     if ($currentQuiz) {
         unset($_SESSION['current_quiz']);
         $currentQuiz = null;
@@ -738,7 +740,7 @@ if ($requestedView === 'landing') {
 $questionCountInput = '';
 $selectedDifficulty = sanitizeDifficultySelection($_SESSION['last_selected_difficulty'] ?? null);
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($isPostRequest) {
     $action = isset($_POST['action']) ? (string)$_POST['action'] : '';
 
     if (isset($_POST['difficulty'])) {
