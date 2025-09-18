@@ -58,6 +58,8 @@ body {
   top: 24px;
   max-height: calc(100vh - 48px);
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .category-sidebar:focus {
@@ -73,6 +75,12 @@ body {
   margin-bottom: 16px;
 }
 
+.sidebar-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
 .sidebar-header h2 {
   margin: 0;
   font-size: 1.1rem;
@@ -83,7 +91,9 @@ body {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-bottom: 16px;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
 }
 
 .sidebar-nav-link {
