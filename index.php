@@ -115,12 +115,20 @@ function loadExamCatalog(): array
 
         $questions = [];
         $skipped = 0;
+        $skippedIds = [];
         $index = 0;
         foreach ($data['questions'] as $questionData) {
             $index++;
+            $questionId = sprintf('%s-q%d', $examId, $index);
+
             if (!is_array($questionData)) {
                 $skipped++;
+                $skippedIds[] = $questionId;
                 continue;
+            }
+
+            if (isset($questionData['id']) && is_string($questionData['id']) && $questionData['id'] !== '') {
+                $questionId = $questionData['id'];
             }
 
             $questionText = isset($questionData['question']) ? trim((string)$questionData['question']) : '';
@@ -140,12 +148,9 @@ function loadExamCatalog(): array
 
             if ($questionText === '' || !is_array($rawChoices) || empty($rawChoices) || $answer === '') {
                 $skipped++;
+                $skippedIds[] = $questionId;
                 continue;
             }
-
-            $questionId = isset($questionData['id']) && is_string($questionData['id']) && $questionData['id'] !== ''
-                ? $questionData['id']
-                : sprintf('%s-q%d', $examId, $index);
 
             $choices = [];
             foreach ($rawChoices as $choiceIndex => $choiceData) {
@@ -191,12 +196,14 @@ function loadExamCatalog(): array
 
             if (count($choices) < 2) {
                 $skipped++;
+                $skippedIds[] = $questionId;
                 continue;
             }
 
             $choiceKeys = array_map(static fn ($choice) => $choice['key'], $choices);
             if (!in_array($answer, $choiceKeys, true)) {
                 $skipped++;
+                $skippedIds[] = $questionId;
                 continue;
             }
 
@@ -213,7 +220,11 @@ function loadExamCatalog(): array
         }
 
         if ($skipped > 0) {
-            $errors[] = sprintf('%s で %d 問が読み込めませんでした。', $fileName, $skipped);
+            $message = sprintf('%s で %d 問が読み込めませんでした。', $fileName, $skipped);
+            if (!empty($skippedIds)) {
+                $message .= sprintf('（問題ID: %s）', implode(', ', $skippedIds));
+            }
+            $errors[] = $message;
         }
 
         if (empty($questions)) {
