@@ -727,6 +727,111 @@ function filterQuestionsByDifficulty(array $questions, string $difficulty): arra
     }));
 }
 
+function normalizeSearchText(string $text): string
+{
+    $normalized = trim($text);
+    if ($normalized === '') {
+        return '';
+    }
+
+    $normalized = preg_replace('/\s+/u', ' ', $normalized) ?? $normalized;
+
+    if (function_exists('mb_strtolower')) {
+        $normalized = mb_strtolower($normalized, 'UTF-8');
+    } else {
+        $normalized = strtolower($normalized);
+    }
+
+    return $normalized;
+}
+
+/**
+ * @return string[]
+ */
+function extractSearchKeywords(string $query): array
+{
+    $parts = preg_split('/[\p{Z}\s]+/u', $query, -1, PREG_SPLIT_NO_EMPTY) ?: [];
+    $keywords = [];
+
+    foreach ($parts as $part) {
+        $normalized = normalizeSearchText((string)$part);
+        if ($normalized === '' || in_array($normalized, $keywords, true)) {
+            continue;
+        }
+
+        $keywords[] = $normalized;
+    }
+
+    return $keywords;
+}
+
+/**
+ * @param array<string, mixed> $exam
+ */
+function buildExamSearchIndex(array $exam): string
+{
+    $meta = isset($exam['meta']) && is_array($exam['meta']) ? $exam['meta'] : [];
+    $segments = [];
+
+    foreach (['id', 'title', 'description', 'version'] as $metaKey) {
+        if (isset($meta[$metaKey]) && is_string($meta[$metaKey]) && $meta[$metaKey] !== '') {
+            $segments[] = $meta[$metaKey];
+        }
+    }
+
+    $category = isset($meta['category']) && is_array($meta['category']) ? $meta['category'] : [];
+    foreach (['id', 'name'] as $categoryKey) {
+        if (isset($category[$categoryKey]) && is_string($category[$categoryKey]) && $category[$categoryKey] !== '') {
+            $segments[] = $category[$categoryKey];
+        }
+    }
+
+    if (empty($segments)) {
+        return '';
+    }
+
+    return normalizeSearchText(implode(' ', $segments));
+}
+
+/**
+ * @param array<string, array<string, mixed>> $exams
+ * @return array<string, array<string, mixed>>
+ */
+function searchExamsByKeywords(array $exams, string $query): array
+{
+    $keywords = extractSearchKeywords($query);
+    if (empty($keywords)) {
+        return [];
+    }
+
+    $results = [];
+
+    foreach ($exams as $examId => $exam) {
+        if (!is_array($exam)) {
+            continue;
+        }
+
+        $searchIndex = buildExamSearchIndex($exam);
+        if ($searchIndex === '') {
+            continue;
+        }
+
+        $matched = true;
+        foreach ($keywords as $keyword) {
+            if (strpos($searchIndex, $keyword) === false) {
+                $matched = false;
+                break;
+            }
+        }
+
+        if ($matched) {
+            $results[$examId] = $exam;
+        }
+    }
+
+    return $results;
+}
+
 $catalog = loadExamCatalog();
 $exams = $catalog['exams'];
 $categories = $catalog['categories'];
@@ -777,6 +882,16 @@ if (!$isPostRequest && $view === 'landing') {
     $selectedCategoryId = '';
     $selectedExamId = '';
     unset($_SESSION['last_selected_category_id'], $_SESSION['last_selected_exam_id']);
+}
+
+$searchQuery = '';
+if (isset($_GET['search']) && is_string($_GET['search'])) {
+    $searchQuery = trim($_GET['search']);
+}
+
+$landingSearchResults = [];
+if ($view === 'landing' && $searchQuery !== '') {
+    $landingSearchResults = searchExamsByKeywords($exams, $searchQuery);
 }
 
 $questionCountInput = '';
@@ -1254,6 +1369,82 @@ if ($currentResultForStorage !== null) {
                         <?php endif; ?>
                         <a class="landing-button secondary" href="?view=history">受験履歴を見る</a>
                     </div>
+                </section>
+                <section class="landing-search" id="landingSearch">
+                    <h3>試験を検索</h3>
+                    <p class="landing-search-text">試験名やカテゴリ、説明のキーワードで検索できます。複数のキーワードはスペースで区切って入力してください。</p>
+                    <form class="landing-search-form" method="get" action="index.php" role="search" aria-label="試験検索">
+                        <input type="hidden" name="view" value="landing">
+                        <label class="landing-search-label" for="landingSearchInput">キーワード</label>
+                        <div class="landing-search-controls">
+                            <input type="search" id="landingSearchInput" name="search" placeholder="例: ネットワーク AWS" value="<?php echo h($searchQuery); ?>">
+                            <button type="submit">検索</button>
+                        </div>
+                    </form>
+                    <?php if ($searchQuery !== ''): ?>
+                        <?php $landingSearchResultCount = count($landingSearchResults); ?>
+                        <div class="landing-search-summary" aria-live="polite">
+                            <?php if ($landingSearchResultCount > 0): ?>
+                                <p class="landing-search-summary-text">「<?php echo h($searchQuery); ?>」に一致する試験が <strong><?php echo number_format($landingSearchResultCount); ?></strong> 件見つかりました。</p>
+                            <?php else: ?>
+                                <p class="landing-search-summary-text">「<?php echo h($searchQuery); ?>」に一致する試験は見つかりませんでした。</p>
+                            <?php endif; ?>
+                            <a class="link-button" href="index.php?view=landing">検索条件をリセット</a>
+                        </div>
+                    <?php endif; ?>
+                    <?php if (!empty($landingSearchResults)): ?>
+                        <ul class="search-result-list">
+                            <?php foreach ($landingSearchResults as $searchExamKey => $searchExam): ?>
+                                <?php
+                                $searchExamMeta = isset($searchExam['meta']) && is_array($searchExam['meta']) ? $searchExam['meta'] : [];
+                                $searchExamId = isset($searchExamMeta['id']) && is_string($searchExamMeta['id']) && $searchExamMeta['id'] !== ''
+                                    ? $searchExamMeta['id']
+                                    : (string)$searchExamKey;
+                                $searchExamTitle = isset($searchExamMeta['title']) && is_string($searchExamMeta['title']) && $searchExamMeta['title'] !== ''
+                                    ? $searchExamMeta['title']
+                                    : $searchExamId;
+                                $searchExamDescription = isset($searchExamMeta['description']) && is_string($searchExamMeta['description'])
+                                    ? $searchExamMeta['description']
+                                    : '';
+                                $searchExamVersion = isset($searchExamMeta['version']) && is_string($searchExamMeta['version'])
+                                    ? $searchExamMeta['version']
+                                    : '';
+                                $searchExamCategoryMeta = isset($searchExamMeta['category']) && is_array($searchExamMeta['category'])
+                                    ? $searchExamMeta['category']
+                                    : ['id' => '', 'name' => ''];
+                                $searchExamCategoryId = isset($searchExamCategoryMeta['id']) ? (string)$searchExamCategoryMeta['id'] : '';
+                                $searchExamCategoryName = isset($searchExamCategoryMeta['name']) ? (string)$searchExamCategoryMeta['name'] : '';
+                                $searchExamQuestionCount = questionCountForExam($searchExam);
+                                ?>
+                                <li class="search-result-card">
+                                    <div class="search-result-header">
+                                        <h4><?php echo h($searchExamTitle); ?></h4>
+                                        <p class="search-result-meta">
+                                            <?php if ($searchExamCategoryName !== ''): ?>
+                                                <span class="search-result-badge search-result-category">カテゴリ: <?php echo h($searchExamCategoryName); ?></span>
+                                            <?php endif; ?>
+                                            <span class="search-result-badge search-result-count"><?php echo number_format($searchExamQuestionCount); ?>問</span>
+                                            <?php if ($searchExamVersion !== ''): ?>
+                                                <span class="search-result-badge search-result-version">v<?php echo h($searchExamVersion); ?></span>
+                                            <?php endif; ?>
+                                        </p>
+                                    </div>
+                                    <?php if ($searchExamDescription !== ''): ?>
+                                        <p class="search-result-description"><?php echo nl2brSafe($searchExamDescription); ?></p>
+                                    <?php endif; ?>
+                                    <form method="post" class="search-result-form">
+                                        <?php echo sessionHiddenField(); ?>
+                                        <input type="hidden" name="action" value="select_exam">
+                                        <input type="hidden" name="category_id" value="<?php echo h($searchExamCategoryId); ?>">
+                                        <input type="hidden" name="difficulty" value="<?php echo h($selectedDifficulty); ?>">
+                                        <button type="submit" name="exam_id" value="<?php echo h($searchExamId); ?>">この試験を選択</button>
+                                    </form>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    <?php elseif ($searchQuery !== ''): ?>
+                        <p class="search-result-empty">キーワードを変えて再度お試しください。</p>
+                    <?php endif; ?>
                 </section>
                 <section class="landing-highlights">
                     <article class="landing-card">
