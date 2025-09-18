@@ -909,7 +909,7 @@ if ($currentResultForStorage !== null) {
 <div class="app"<?php echo $appAttributes; ?>>
     <header>
         <div class="header-top">
-            <h1>資格試験問題集</h1>
+            <h1><a href="index.php">資格試験問題集</a></h1>
             <button type="button" class="sidebar-toggle" id="sidebarToggle" aria-controls="categorySidebar" aria-expanded="false">
                 <span class="sr-only">カテゴリメニューを開く</span>
                 <span class="hamburger" aria-hidden="true">
