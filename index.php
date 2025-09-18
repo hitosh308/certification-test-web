@@ -648,6 +648,353 @@ function hasExplanationContent(array $explanation): bool
     return trim($explanation['text']) !== '' || trim($explanation['reference']) !== '' || trim($explanation['reference_label']) !== '';
 }
 
+/**
+ * @param mixed $choice
+ * @return array{key: string, text: string, explanation: array{text: string, reference: string, reference_label: string}}
+ */
+function normalizeResultChoice($choice): array
+{
+    if (!is_array($choice)) {
+        return [
+            'key' => '',
+            'text' => '',
+            'explanation' => normalizeExplanation(null),
+        ];
+    }
+
+    return [
+        'key' => isset($choice['key']) ? (string)$choice['key'] : '',
+        'text' => isset($choice['text']) ? (string)$choice['text'] : '',
+        'explanation' => normalizeExplanation($choice['explanation'] ?? null),
+    ];
+}
+
+/**
+ * @param mixed $value
+ * @return array{
+ *     number: int,
+ *     id: string,
+ *     question: string,
+ *     choices: array<int, array{key: string, text: string, explanation: array{text: string, reference: string, reference_label: string}}>,
+ *     answers: string[],
+ *     explanation: array{text: string, reference: string, reference_label: string},
+ *     user_answers: string[],
+ *     is_correct: bool,
+ *     difficulty: string,
+ *     is_multiple_answer: bool
+ * }
+ */
+function normalizeResultQuestion($value): array
+{
+    if (!is_array($value)) {
+        return [
+            'number' => 0,
+            'id' => '',
+            'question' => '',
+            'choices' => [],
+            'answers' => [],
+            'explanation' => normalizeExplanation(null),
+            'user_answers' => [],
+            'is_correct' => false,
+            'difficulty' => DEFAULT_DIFFICULTY,
+            'is_multiple_answer' => false,
+        ];
+    }
+
+    $choices = [];
+    if (!empty($value['choices']) && is_array($value['choices'])) {
+        foreach ($value['choices'] as $choice) {
+            $choices[] = normalizeResultChoice($choice);
+        }
+    }
+
+    $answers = [];
+    if (!empty($value['answers']) && is_array($value['answers'])) {
+        foreach ($value['answers'] as $answer) {
+            $answers[] = (string)$answer;
+        }
+    } elseif (isset($value['answer'])) {
+        $answers[] = (string)$value['answer'];
+    }
+
+    $userAnswers = [];
+    if (!empty($value['user_answers']) && is_array($value['user_answers'])) {
+        foreach ($value['user_answers'] as $userAnswer) {
+            $userAnswers[] = (string)$userAnswer;
+        }
+    } elseif (isset($value['user_answer']) && $value['user_answer'] !== null) {
+        $userAnswers[] = (string)$value['user_answer'];
+    }
+
+    $difficulty = normalizeDifficulty($value['difficulty'] ?? DEFAULT_DIFFICULTY);
+
+    $isCorrect = !empty($value['is_correct']);
+    if (!$isCorrect && $answers && $userAnswers) {
+        $sortedCorrect = $answers;
+        $sortedUser = $userAnswers;
+        sort($sortedCorrect);
+        sort($sortedUser);
+        $isCorrect = ($sortedCorrect === $sortedUser);
+    }
+
+    $isMultipleAnswer = !empty($value['is_multiple_answer']) || count($answers) > 1;
+
+    return [
+        'number' => isset($value['number']) ? (int)$value['number'] : 0,
+        'id' => isset($value['id']) ? (string)$value['id'] : '',
+        'question' => isset($value['question']) ? (string)$value['question'] : '',
+        'choices' => $choices,
+        'answers' => $answers,
+        'explanation' => normalizeExplanation($value['explanation'] ?? null),
+        'user_answers' => $userAnswers,
+        'is_correct' => $isCorrect,
+        'difficulty' => $difficulty,
+        'is_multiple_answer' => $isMultipleAnswer,
+    ];
+}
+
+/**
+ * @param mixed $value
+ * @return array{
+ *     number: int,
+ *     question: string,
+ *     correct_answer: string,
+ *     correct_answers: string[],
+ *     user_answer: string,
+ *     user_answers: string[]
+ * }
+ */
+function normalizeIncorrectQuestionForResult($value): array
+{
+    if (!is_array($value)) {
+        return [
+            'number' => 0,
+            'question' => '',
+            'correct_answer' => '',
+            'correct_answers' => [],
+            'user_answer' => '',
+            'user_answers' => [],
+        ];
+    }
+
+    $correctAnswers = [];
+    if (!empty($value['correct_answers']) && is_array($value['correct_answers'])) {
+        foreach ($value['correct_answers'] as $answer) {
+            $correctAnswers[] = (string)$answer;
+        }
+    }
+
+    $userAnswers = [];
+    if (!empty($value['user_answers']) && is_array($value['user_answers'])) {
+        foreach ($value['user_answers'] as $answer) {
+            $userAnswers[] = (string)$answer;
+        }
+    }
+
+    $correctAnswerText = isset($value['correct_answer']) ? (string)$value['correct_answer'] : '';
+    if ($correctAnswerText === '' && !empty($correctAnswers)) {
+        $correctAnswerText = implode(', ', $correctAnswers);
+    }
+
+    $userAnswerText = isset($value['user_answer']) ? (string)$value['user_answer'] : '';
+    if ($userAnswerText === '' && !empty($userAnswers)) {
+        $userAnswerText = implode(', ', $userAnswers);
+    }
+
+    return [
+        'number' => isset($value['number']) ? (int)$value['number'] : 0,
+        'question' => isset($value['question']) ? (string)$value['question'] : '',
+        'correct_answer' => $correctAnswerText,
+        'correct_answers' => $correctAnswers,
+        'user_answer' => $userAnswerText,
+        'user_answers' => $userAnswers,
+    ];
+}
+
+/**
+ * @param array<string, mixed> $results
+ */
+function buildClientResultPayload(array $results, string $difficulty, string $completedAt): array
+{
+    $questions = [];
+    if (!empty($results['questions']) && is_array($results['questions'])) {
+        foreach ($results['questions'] as $question) {
+            $questions[] = normalizeResultQuestion($question);
+        }
+    }
+
+    $incorrectQuestions = [];
+    if (!empty($results['incorrect_questions']) && is_array($results['incorrect_questions'])) {
+        foreach ($results['incorrect_questions'] as $incorrectQuestion) {
+            $incorrectQuestions[] = normalizeIncorrectQuestionForResult($incorrectQuestion);
+        }
+    }
+
+    $examMeta = isset($results['exam']) && is_array($results['exam']) ? $results['exam'] : [];
+    $categoryMeta = isset($examMeta['category']) && is_array($examMeta['category']) ? $examMeta['category'] : [];
+
+    $total = isset($results['total']) ? (int)$results['total'] : count($questions);
+    if ($total < count($questions)) {
+        $total = count($questions);
+    }
+
+    $correct = isset($results['correct']) ? (int)$results['correct'] : null;
+    if ($correct === null) {
+        $correct = 0;
+        foreach ($questions as $question) {
+            if (!empty($question['is_correct'])) {
+                $correct++;
+            }
+        }
+    }
+
+    $incorrectCount = isset($results['incorrect']) ? (int)$results['incorrect'] : max(0, $total - $correct);
+
+    return [
+        'exam' => [
+            'id' => (string)($examMeta['id'] ?? ''),
+            'title' => (string)($examMeta['title'] ?? ''),
+            'description' => isset($examMeta['description']) ? (string)$examMeta['description'] : '',
+            'version' => isset($examMeta['version']) ? (string)$examMeta['version'] : '',
+            'question_count' => isset($examMeta['question_count']) ? (int)$examMeta['question_count'] : count($questions),
+            'category' => [
+                'id' => (string)($categoryMeta['id'] ?? ''),
+                'name' => (string)($categoryMeta['name'] ?? ''),
+            ],
+        ],
+        'total' => $total,
+        'correct' => $correct,
+        'incorrect' => $incorrectCount,
+        'difficulty' => $difficulty,
+        'questions' => $questions,
+        'incorrect_questions' => $incorrectQuestions,
+        'completed_at' => $completedAt,
+        'result_id' => (string)($results['result_id'] ?? ''),
+    ];
+}
+
+/**
+ * @param mixed $payload
+ * @return array|null
+ */
+function normalizeHistoryResultPayload($payload): ?array
+{
+    if (!is_array($payload)) {
+        return null;
+    }
+
+    $questions = [];
+    if (!empty($payload['questions']) && is_array($payload['questions'])) {
+        foreach ($payload['questions'] as $question) {
+            $questions[] = normalizeResultQuestion($question);
+        }
+    }
+
+    if ($questions === []) {
+        return null;
+    }
+
+    $examMeta = [
+        'id' => '',
+        'title' => '',
+        'description' => '',
+        'version' => '',
+        'question_count' => 0,
+        'category' => [
+            'id' => '',
+            'name' => '',
+        ],
+    ];
+
+    if (isset($payload['exam']) && is_array($payload['exam'])) {
+        $examSource = $payload['exam'];
+        $categorySource = isset($examSource['category']) && is_array($examSource['category']) ? $examSource['category'] : [];
+        $examMeta['id'] = (string)($examSource['id'] ?? '');
+        $examMeta['title'] = (string)($examSource['title'] ?? '');
+        $examMeta['description'] = isset($examSource['description']) ? (string)$examSource['description'] : '';
+        $examMeta['version'] = isset($examSource['version']) ? (string)$examSource['version'] : '';
+        $examMeta['question_count'] = isset($examSource['question_count']) ? (int)$examSource['question_count'] : count($questions);
+        $examMeta['category'] = [
+            'id' => (string)($categorySource['id'] ?? ''),
+            'name' => (string)($categorySource['name'] ?? ''),
+        ];
+    } else {
+        $examMeta['id'] = isset($payload['examId']) ? (string)$payload['examId'] : '';
+        $examMeta['title'] = isset($payload['examTitle']) ? (string)$payload['examTitle'] : '';
+        $examMeta['question_count'] = count($questions);
+        $examMeta['category'] = [
+            'id' => isset($payload['categoryId']) ? (string)$payload['categoryId'] : '',
+            'name' => isset($payload['categoryName']) ? (string)$payload['categoryName'] : '',
+        ];
+    }
+
+    $total = isset($payload['total']) ? (int)$payload['total'] : count($questions);
+    if ($total < count($questions)) {
+        $total = count($questions);
+    }
+
+    $correct = isset($payload['correct']) ? (int)$payload['correct'] : null;
+    if ($correct === null) {
+        $correct = 0;
+        foreach ($questions as $question) {
+            if (!empty($question['is_correct'])) {
+                $correct++;
+            }
+        }
+    }
+
+    $incorrectCount = isset($payload['incorrect']) ? (int)$payload['incorrect'] : null;
+    if ($incorrectCount === null) {
+        $incorrectCount = max(0, $total - $correct);
+    }
+
+    $incorrectQuestions = [];
+    if (!empty($payload['incorrect_questions']) && is_array($payload['incorrect_questions'])) {
+        foreach ($payload['incorrect_questions'] as $incorrectQuestion) {
+            $incorrectQuestions[] = normalizeIncorrectQuestionForResult($incorrectQuestion);
+        }
+    }
+
+    if ($incorrectQuestions === []) {
+        foreach ($questions as $question) {
+            $sortedCorrect = $question['answers'];
+            $sortedUser = $question['user_answers'];
+            $sortedCorrectCopy = $sortedCorrect;
+            $sortedUserCopy = $sortedUser;
+            sort($sortedCorrectCopy);
+            sort($sortedUserCopy);
+            if ($sortedCorrectCopy !== $sortedUserCopy) {
+                $incorrectQuestions[] = [
+                    'number' => $question['number'],
+                    'question' => $question['question'],
+                    'correct_answer' => implode(', ', $sortedCorrect),
+                    'correct_answers' => $sortedCorrect,
+                    'user_answer' => implode(', ', $sortedUser),
+                    'user_answers' => $sortedUser,
+                ];
+            }
+        }
+    }
+
+    $difficulty = sanitizeDifficultySelection($payload['difficulty'] ?? null);
+    $completedAt = isset($payload['completed_at']) && is_string($payload['completed_at'])
+        ? $payload['completed_at']
+        : date(DATE_ATOM);
+    $resultId = isset($payload['result_id']) ? (string)$payload['result_id'] : '';
+
+    return [
+        'exam' => $examMeta,
+        'total' => $total,
+        'correct' => $correct,
+        'questions' => $questions,
+        'difficulty' => $difficulty,
+        'incorrect' => $incorrectCount,
+        'incorrect_questions' => $incorrectQuestions,
+        'completed_at' => $completedAt,
+        'result_id' => $resultId,
+    ];
+}
+
 function buildInputId(string $questionId, string $choiceKey): string
 {
     $normalized = preg_replace('/[^a-zA-Z0-9_-]/u', '_', $questionId . '_' . $choiceKey);
@@ -839,6 +1186,7 @@ $errorMessages = $catalog['errors'];
 
 $currentQuiz = $_SESSION['current_quiz'] ?? null;
 $results = null;
+$resultsFromHistory = false;
 
 $selectedCategoryId = isset($_SESSION['last_selected_category_id'])
     ? (string)$_SESSION['last_selected_category_id']
@@ -1081,6 +1429,53 @@ if ($isPostRequest) {
             $view = 'results';
             break;
 
+        case 'view_history_result':
+            $payloadRaw = isset($_POST['history_result_payload']) ? (string)$_POST['history_result_payload'] : '';
+            if ($payloadRaw === '') {
+                $errorMessages[] = '履歴の読み込みに失敗しました。';
+                $view = 'history';
+                break;
+            }
+
+            $decodedPayload = json_decode($payloadRaw, true);
+            if (!is_array($decodedPayload)) {
+                $errorMessages[] = '履歴の読み込みに失敗しました。';
+                $view = 'history';
+                break;
+            }
+
+            $normalizedResult = normalizeHistoryResultPayload($decodedPayload);
+            if ($normalizedResult === null) {
+                $errorMessages[] = '履歴の読み込みに失敗しました。';
+                $view = 'history';
+                break;
+            }
+
+            $results = $normalizedResult;
+            $resultsFromHistory = true;
+            $view = 'results';
+            unset($_SESSION['current_quiz']);
+            $currentQuiz = null;
+
+            $historyExamId = $results['exam']['id'] ?? '';
+            if ($historyExamId !== '' && isset($exams[$historyExamId])) {
+                $selectedExamId = $historyExamId;
+                $selectedCategoryId = $exams[$historyExamId]['meta']['category']['id'] ?? $selectedCategoryId;
+                $_SESSION['last_selected_exam_id'] = $selectedExamId;
+                if ($selectedCategoryId !== '') {
+                    $_SESSION['last_selected_category_id'] = $selectedCategoryId;
+                }
+            } else {
+                if ($historyExamId !== '') {
+                    $selectedExamId = $historyExamId;
+                }
+                $historyCategoryId = $results['exam']['category']['id'] ?? '';
+                if ($historyCategoryId !== '') {
+                    $selectedCategoryId = $historyCategoryId;
+                }
+            }
+            break;
+
         case 'reset_quiz':
             if ($currentQuiz) {
                 $selectedExamId = $currentQuiz['exam_id'];
@@ -1204,7 +1599,7 @@ $totalQuestionCount = array_reduce($exams, static function (int $carry, array $e
 }, 0);
 
 $currentResultForStorage = null;
-if ($view === 'results' && $results) {
+if ($view === 'results' && $results && !$resultsFromHistory) {
     $resultsDifficultyForStorage = sanitizeDifficultySelection($results['difficulty'] ?? DIFFICULTY_RANDOM);
     $incorrectQuestionsForStorage = [];
     if (!empty($results['incorrect_questions']) && is_array($results['incorrect_questions'])) {
@@ -1251,6 +1646,7 @@ if ($view === 'results' && $results) {
         'total' => (int)($results['total'] ?? 0),
         'completedAt' => $completedAt,
         'incorrectQuestions' => $incorrectQuestionsForStorage,
+        'fullResult' => buildClientResultPayload($results, $resultsDifficultyForStorage, $completedAt),
     ];
 }
 
@@ -1607,6 +2003,11 @@ if ($currentResultForStorage !== null) {
                 <span class="history-page-info" data-pagination-info>1 / 1</span>
                 <button type="button" class="secondary" data-pagination-next aria-label="次のページ">次へ</button>
             </div>
+            <form method="post" data-history-view-form class="history-view-form" hidden>
+                <?php echo sessionHiddenField(); ?>
+                <input type="hidden" name="action" value="view_history_result">
+                <input type="hidden" name="history_result_payload" value="">
+            </form>
         </section>
     <?php elseif ($view === 'quiz' && $currentQuiz): ?>
         <?php $quizDifficulty = $currentQuiz['difficulty'] ?? DIFFICULTY_RANDOM; ?>
@@ -1960,6 +2361,8 @@ if ($currentResultForStorage !== null) {
         const examFilter = document.getElementById('historyExam');
         const sortSelect = document.getElementById('historySort');
         const filtersForm = document.querySelector('.history-filters');
+        const viewForm = document.querySelector('[data-history-view-form]');
+        const viewFormInput = viewForm ? viewForm.querySelector('[name="history_result_payload"]') : null;
 
         const isIndexedDBAvailable = typeof indexedDB !== 'undefined';
         const isHistoryPage = Boolean(historyRoot);
@@ -2181,6 +2584,128 @@ if ($currentResultForStorage !== null) {
             });
         }
 
+        function hasDetailedResult(result) {
+            if (!result || typeof result !== 'object') {
+                return false;
+            }
+            const payload = result.fullResult && typeof result.fullResult === 'object'
+                ? result.fullResult
+                : (result.full_result && typeof result.full_result === 'object'
+                    ? result.full_result
+                    : null);
+            return Boolean(payload && Array.isArray(payload.questions) && payload.questions.length);
+        }
+
+        function getHistoryResultPayload(result) {
+            if (!result || typeof result !== 'object') {
+                return null;
+            }
+
+            const source = result.fullResult && typeof result.fullResult === 'object'
+                ? result.fullResult
+                : (result.full_result && typeof result.full_result === 'object'
+                    ? result.full_result
+                    : null);
+
+            if (!source || !Array.isArray(source.questions) || source.questions.length === 0) {
+                return null;
+            }
+
+            let cloned;
+            try {
+                if (typeof structuredClone === 'function') {
+                    cloned = structuredClone(source);
+                } else {
+                    cloned = JSON.parse(JSON.stringify(source));
+                }
+            } catch (error) {
+                console.error('Failed to clone history result payload', error);
+                return null;
+            }
+
+            if (!cloned || typeof cloned !== 'object') {
+                return null;
+            }
+
+            if (!cloned.exam || typeof cloned.exam !== 'object') {
+                cloned.exam = {};
+            }
+            if (!cloned.exam.category || typeof cloned.exam.category !== 'object') {
+                cloned.exam.category = {};
+            }
+
+            if (!cloned.exam.id) {
+                cloned.exam.id = result.examId || '';
+            }
+            if (!cloned.exam.title) {
+                cloned.exam.title = result.examTitle || '';
+            }
+            if (typeof cloned.exam.description !== 'string') {
+                cloned.exam.description = '';
+            }
+            if (typeof cloned.exam.version !== 'string') {
+                cloned.exam.version = '';
+            }
+            if (typeof cloned.exam.question_count !== 'number' || Number.isNaN(cloned.exam.question_count)) {
+                cloned.exam.question_count = cloned.questions.length;
+            }
+            if (!cloned.exam.category.id) {
+                cloned.exam.category.id = result.categoryId || '';
+            }
+            if (!cloned.exam.category.name) {
+                cloned.exam.category.name = result.categoryName || '';
+            }
+
+            if (typeof cloned.total !== 'number' || Number.isNaN(cloned.total)) {
+                cloned.total = cloned.questions.length;
+            }
+            if (typeof cloned.correct !== 'number' || Number.isNaN(cloned.correct)) {
+                cloned.correct = Number(result.correct) || 0;
+            }
+            if (typeof cloned.incorrect !== 'number' || Number.isNaN(cloned.incorrect)) {
+                cloned.incorrect = Math.max(0, cloned.total - cloned.correct);
+            }
+            if (!cloned.difficulty && result.difficulty) {
+                cloned.difficulty = result.difficulty;
+            }
+            if (!cloned.completed_at) {
+                cloned.completed_at = result.completedAt || result.savedAt || new Date().toISOString();
+            }
+            if (!cloned.result_id) {
+                cloned.result_id = result.resultId || result.id || '';
+            }
+            if (!Array.isArray(cloned.incorrect_questions)) {
+                cloned.incorrect_questions = [];
+            }
+
+            return cloned;
+        }
+
+        function submitHistoryResult(result) {
+            if (!viewForm || !viewFormInput) {
+                return;
+            }
+
+            const payload = getHistoryResultPayload(result);
+            if (!payload) {
+                setStatus('この履歴には詳細データが保存されていません。', 'error');
+                return;
+            }
+
+            let serializedPayload = '';
+            try {
+                serializedPayload = JSON.stringify(payload);
+            } catch (error) {
+                console.error('Failed to serialize history result payload', error);
+                setStatus('履歴の詳細データの準備に失敗しました。', 'error');
+                return;
+            }
+
+            viewFormInput.value = serializedPayload;
+            setStatus('選択した履歴を読み込んでいます...', 'info');
+            viewForm.submit();
+        }
+
         const historyState = {
             results: [],
             filtered: [],
@@ -2285,7 +2810,31 @@ if ($currentResultForStorage !== null) {
             scoreLine.textContent = '正解 ' + correctNumber + '問 / 不正解 ' + incorrectNumber + '問（正答率 ' + scorePercent + '%）';
 
             summary.appendChild(summaryMain);
-            summary.appendChild(scoreLine);
+
+            const summaryAside = document.createElement('div');
+            summaryAside.className = 'history-summary-aside';
+            summaryAside.appendChild(scoreLine);
+
+            if (viewForm && viewFormInput) {
+                const canViewDetail = hasDetailedResult(result);
+                const viewButton = document.createElement('button');
+                viewButton.type = 'button';
+                viewButton.className = 'secondary history-view-button';
+                viewButton.textContent = '結果画面を開く';
+                if (!canViewDetail) {
+                    viewButton.disabled = true;
+                    viewButton.title = 'この履歴には詳細データが保存されていません。';
+                } else {
+                    viewButton.addEventListener('click', function (event) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        submitHistoryResult(result);
+                    });
+                }
+                summaryAside.appendChild(viewButton);
+            }
+
+            summary.appendChild(summaryAside);
             details.appendChild(summary);
 
             const detailsBody = document.createElement('div');
@@ -2626,6 +3175,24 @@ if ($currentResultForStorage !== null) {
                 savedAt: new Date().toISOString(),
                 incorrectQuestions: normalizedIncorrectQuestions
             };
+
+            const detailedResultSource = currentResult.fullResult && typeof currentResult.fullResult === 'object'
+                ? currentResult.fullResult
+                : (currentResult.full_result && typeof currentResult.full_result === 'object'
+                    ? currentResult.full_result
+                    : null);
+
+            if (detailedResultSource) {
+                try {
+                    if (typeof structuredClone === 'function') {
+                        resultToSave.fullResult = structuredClone(detailedResultSource);
+                    } else {
+                        resultToSave.fullResult = JSON.parse(JSON.stringify(detailedResultSource));
+                    }
+                } catch (error) {
+                    console.error('Failed to clone detailed result payload', error);
+                }
+            }
 
             setStatus('最新の結果を保存しています...', 'info');
 
