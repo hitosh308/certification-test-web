@@ -1364,14 +1364,32 @@ if ($currentResultForStorage !== null) {
             <p class="results-difficulty">選択した難易度: <span class="difficulty-tag difficulty-<?php echo h($resultsDifficulty); ?>"><?php echo h(difficultyLabel($resultsDifficulty)); ?></span></p>
             <p><?php echo $results['correct']; ?> / <?php echo $results['total']; ?> 問正解（正答率 <?php echo $scorePercent; ?>%）</p>
         </div>
+        <div class="results-filter" data-results-filter>
+            <span class="results-filter-label">表示切替:</span>
+            <div class="results-filter-buttons" role="group" aria-label="結果の表示切替">
+                <button type="button" class="filter-toggle is-active" data-filter-button data-filter="unanswered" aria-pressed="true">未回答</button>
+                <button type="button" class="filter-toggle is-active" data-filter-button data-filter="correct" aria-pressed="true">正解</button>
+                <button type="button" class="filter-toggle is-active" data-filter-button data-filter="incorrect" aria-pressed="true">間違い</button>
+            </div>
+        </div>
         <?php foreach ($results['questions'] as $question): ?>
             <?php
             $questionDifficulty = $question['difficulty'] ?? DEFAULT_DIFFICULTY;
             $correctAnswers = isset($question['answers']) && is_array($question['answers']) ? $question['answers'] : [];
             $userAnswers = isset($question['user_answers']) && is_array($question['user_answers']) ? $question['user_answers'] : [];
             $isMultipleAnswer = !empty($question['is_multiple_answer']) || count($correctAnswers) > 1;
+            $questionStatus = 'incorrect';
+            if (!empty($question['is_correct'])) {
+                $questionStatus = 'correct';
+            } elseif (empty($userAnswers)) {
+                $questionStatus = 'unanswered';
+            }
+            $cardClasses = ['question-card', !empty($question['is_correct']) ? 'correct' : 'incorrect'];
+            if ($questionStatus === 'unanswered') {
+                $cardClasses[] = 'unanswered';
+            }
             ?>
-            <div class="question-card <?php echo $question['is_correct'] ? 'correct' : 'incorrect'; ?>">
+            <div class="<?php echo h(implode(' ', $cardClasses)); ?>" data-question-card data-question-status="<?php echo h($questionStatus); ?>">
                 <h3>Q<?php echo $question['number']; ?>. <?php echo h($question['question']); ?> <span class="difficulty-tag difficulty-<?php echo h($questionDifficulty); ?>"><?php echo h(difficultyLabel($questionDifficulty)); ?></span></h3>
                 <?php if ($isMultipleAnswer): ?>
                     <p class="multi-answer-hint">この問題は複数の正解があります。</p>
@@ -1574,6 +1592,62 @@ if ($currentResultForStorage !== null) {
             hard: '難しい',
             random: 'ランダム'
         };
+
+        const resultsFilters = document.querySelector('[data-results-filter]');
+        if (resultsFilters) {
+            const filterButtons = Array.from(resultsFilters.querySelectorAll('[data-filter-button]'));
+            const questionCards = Array.from(document.querySelectorAll('[data-question-card]'));
+
+            const getActiveFilters = function () {
+                return filterButtons
+                    .filter(function (button) {
+                        return button.classList.contains('is-active');
+                    })
+                    .map(function (button) {
+                        return button.getAttribute('data-filter');
+                    })
+                    .filter(function (value) {
+                        return Boolean(value);
+                    });
+            };
+
+            const updateQuestionVisibility = function () {
+                const activeFilters = getActiveFilters();
+                questionCards.forEach(function (card) {
+                    const status = card.getAttribute('data-question-status') || 'correct';
+                    if (activeFilters.length === 0) {
+                        card.hidden = false;
+                        return;
+                    }
+                    card.hidden = activeFilters.indexOf(status) === -1;
+                });
+            };
+
+            filterButtons.forEach(function (button) {
+                button.addEventListener('click', function () {
+                    const isActive = button.classList.contains('is-active');
+                    const activeFilters = getActiveFilters();
+
+                    if (isActive && activeFilters.length <= 1) {
+                        return;
+                    }
+
+                    if (isActive) {
+                        button.classList.remove('is-active');
+                        button.setAttribute('aria-pressed', 'false');
+                    } else {
+                        button.classList.add('is-active');
+                        button.setAttribute('aria-pressed', 'true');
+                    }
+
+                    updateQuestionVisibility();
+                });
+
+                button.setAttribute('aria-pressed', button.classList.contains('is-active') ? 'true' : 'false');
+            });
+
+            updateQuestionVisibility();
+        }
 
         const historyRoot = document.querySelector('[data-history-root]');
         const statusElement = document.querySelector('[data-history-status]');
