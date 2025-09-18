@@ -1,7 +1,7 @@
 :root {
   --primary: #1d4ed8;
   --primary-dark: #1e3a8a;
-  --bg: #f8fafc;
+  --bg: #ffffff;
   --text: #111827;
   --border: #d1d5db;
   --success: #15803d;
@@ -1695,12 +1695,22 @@ button.danger-action:disabled:hover {
     gap: 16px;
   }
 
-  .header-top {
-    justify-content: center;
+  .header-top,
+  .app[data-view="landing"] .header-top {
+    justify-content: flex-start;
+  }
+
+  .header-top h1,
+  .app[data-view="landing"] header h1 {
+    width: auto;
+    flex: 1;
+    text-align: left;
   }
 
   .header-top .sidebar-toggle {
     order: -1;
+    position: static;
+    transform: none;
   }
 
   .category-sidebar {
