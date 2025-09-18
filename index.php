@@ -558,33 +558,35 @@ $categories = $catalog['categories'];
 $errorMessages = $catalog['errors'];
 
 $currentQuiz = $_SESSION['current_quiz'] ?? null;
-$view = $currentQuiz ? 'quiz' : 'home';
 $results = null;
 
-$selectedCategoryId = '';
-$selectedExamId = '';
+$selectedCategoryId = isset($_SESSION['last_selected_category_id'])
+    ? (string)$_SESSION['last_selected_category_id']
+    : '';
+$selectedExamId = isset($_SESSION['last_selected_exam_id'])
+    ? (string)$_SESSION['last_selected_exam_id']
+    : '';
 
-if (!empty($categories)) {
-    $categoryKeys = array_keys($categories);
-    $selectedCategoryId = (string)array_shift($categoryKeys);
-    $initialExamIds = examIdsForCategory($categories, $exams, $selectedCategoryId);
-    if (!empty($initialExamIds)) {
-        $selectedExamId = (string)array_shift($initialExamIds);
-    }
+if ($selectedExamId !== '' && isset($exams[$selectedExamId])) {
+    $selectedCategoryId = $exams[$selectedExamId]['meta']['category']['id'] ?? $selectedCategoryId;
+} else {
+    $selectedExamId = '';
 }
 
-if ($selectedExamId === '' && !empty($exams)) {
-    $examKeys = array_keys($exams);
-    $selectedExamId = (string)array_shift($examKeys);
-    if ($selectedExamId !== '' && isset($exams[$selectedExamId]['meta']['category']['id'])) {
-        $selectedCategoryId = $exams[$selectedExamId]['meta']['category']['id'];
-    }
+if ($selectedCategoryId !== '' && !isset($categories[$selectedCategoryId])) {
+    $selectedCategoryId = '';
 }
+
+$view = $currentQuiz ? 'quiz' : 'landing';
 
 if (!$currentQuiz) {
     $requestedView = isset($_GET['view']) ? (string)$_GET['view'] : '';
     if ($requestedView === 'history') {
         $view = 'history';
+    } elseif ($requestedView === 'home') {
+        $view = 'home';
+    } elseif ($requestedView === 'landing') {
+        $view = 'landing';
     }
 }
 
@@ -780,6 +782,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['last_selected_difficulty'] = $selectedDifficulty;
 }
 
+if ($selectedExamId !== '' && isset($exams[$selectedExamId])) {
+    $selectedCategoryId = $exams[$selectedExamId]['meta']['category']['id'] ?? $selectedCategoryId;
+} else {
+    $selectedExamId = '';
+}
+
+if ($selectedCategoryId !== '' && !isset($categories[$selectedCategoryId])) {
+    $selectedCategoryId = '';
+}
+
 if ($view === 'quiz' && !$currentQuiz && isset($_SESSION['current_quiz'])) {
     $currentQuiz = $_SESSION['current_quiz'];
 }
@@ -796,33 +808,33 @@ if ($results) {
     $selectedDifficulty = sanitizeDifficultySelection($results['difficulty'] ?? $selectedDifficulty);
 }
 
-if ($selectedCategoryId === '' || !isset($categories[$selectedCategoryId])) {
-    if (!empty($categories)) {
-        $categoryKeys = array_keys($categories);
-        $selectedCategoryId = (string)array_shift($categoryKeys);
+$selectedExam = ($selectedExamId !== '' && isset($exams[$selectedExamId])) ? $exams[$selectedExamId] : null;
+
+if ($selectedExam) {
+    $examCategoryId = $selectedExam['meta']['category']['id'] ?? '';
+    if ($examCategoryId === '' || !isset($categories[$examCategoryId])) {
+        $selectedExam = null;
+        $selectedExamId = '';
+        $selectedCategoryId = '';
+    } elseif ($examCategoryId !== $selectedCategoryId) {
+        $selectedCategoryId = $examCategoryId;
     }
 }
 
 $selectedCategory = ($selectedCategoryId !== '' && isset($categories[$selectedCategoryId])) ? $categories[$selectedCategoryId] : null;
 $categoryExamIds = $selectedCategory ? examIdsForCategory($categories, $exams, $selectedCategoryId) : [];
 
-if ($selectedExamId === '' || !isset($exams[$selectedExamId]) || (!empty($categoryExamIds) && !in_array($selectedExamId, $categoryExamIds, true))) {
-    if (!empty($categoryExamIds)) {
-        $selectedExamId = (string)$categoryExamIds[0];
-    } elseif (!empty($exams)) {
-        $examKeys = array_keys($exams);
-        $selectedExamId = (string)array_shift($examKeys);
-        if ($selectedExamId !== '' && isset($exams[$selectedExamId]['meta']['category']['id'])) {
-            $selectedCategoryId = $exams[$selectedExamId]['meta']['category']['id'];
-            $selectedCategory = $categories[$selectedCategoryId] ?? $selectedCategory;
-            $categoryExamIds = $selectedCategory ? examIdsForCategory($categories, $exams, $selectedCategoryId) : [];
-        }
-    }
+if ($selectedCategoryId === '') {
+    unset($_SESSION['last_selected_category_id']);
+} else {
+    $_SESSION['last_selected_category_id'] = $selectedCategoryId;
 }
 
-$selectedExam = ($selectedExamId !== '' && isset($exams[$selectedExamId])) ? $exams[$selectedExamId] : null;
-$selectedCategory = ($selectedCategoryId !== '' && isset($categories[$selectedCategoryId])) ? $categories[$selectedCategoryId] : $selectedCategory;
-$categoryExamIds = $selectedCategory ? examIdsForCategory($categories, $exams, $selectedCategoryId) : [];
+if ($selectedExamId === '') {
+    unset($_SESSION['last_selected_exam_id']);
+} else {
+    $_SESSION['last_selected_exam_id'] = $selectedExamId;
+}
 
 $availableQuestionsForSelectedDifficulty = $selectedExam ? filterQuestionsByDifficulty($selectedExam['questions'], $selectedDifficulty) : [];
 $availableQuestionCountForSelectedDifficulty = count($availableQuestionsForSelectedDifficulty);
@@ -847,6 +859,15 @@ if ($questionCountInput === '' || $questionCountInput === '0') {
 $difficultyOptions = getDifficultyOptions(true);
 
 $totalExams = count($exams);
+$totalCategories = count($categories);
+$totalQuestionCount = array_reduce($exams, static function (int $carry, array $exam): int {
+    $questionCount = (int)($exam['meta']['question_count'] ?? 0);
+    if ($questionCount === 0 && isset($exam['questions']) && is_array($exam['questions'])) {
+        $questionCount = count($exam['questions']);
+    }
+
+    return $carry + $questionCount;
+}, 0);
 
 $currentResultForStorage = null;
 if ($view === 'results' && $results) {
@@ -886,6 +907,8 @@ if ($view === 'results' && $results) {
 }
 
 $isHistoryView = ($view === 'history');
+$isLandingView = ($view === 'landing');
+$isExamView = in_array($view, ['home', 'quiz', 'results'], true);
 $appAttributes = ' data-view="' . h($view) . '"';
 if ($currentResultForStorage !== null) {
     $currentResultJson = json_encode($currentResultForStorage, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
@@ -968,6 +991,8 @@ if ($currentResultForStorage !== null) {
                 <p class="empty-message">カテゴリが登録されていません。</p>
             <?php endif; ?>
             <nav class="sidebar-nav" aria-label="ページ切り替え">
+                <a href="index.php" class="sidebar-nav-link<?php echo $isLandingView ? ' active' : ''; ?>">トップ</a>
+                <a href="?view=home" class="sidebar-nav-link<?php echo $isExamView ? ' active' : ''; ?>">試験を選ぶ</a>
                 <a href="?view=history" class="sidebar-nav-link<?php echo $isHistoryView ? ' active' : ''; ?>">受験履歴</a>
             </nav>
         </aside>
@@ -976,7 +1001,49 @@ if ($currentResultForStorage !== null) {
                 <div class="alert error"><?php echo h($message); ?></div>
             <?php endforeach; ?>
 
-            <?php if ($view === 'home'): ?>
+            <?php if ($view === 'landing'): ?>
+                <section class="landing-hero">
+                    <h2>資格試験の学習をもっとスムーズに</h2>
+                    <?php if ($totalExams > 0): ?>
+                        <p class="landing-lead">カテゴリと難易度を切り替えながら、登録された問題データを使って効率よく演習できます。</p>
+                    <?php else: ?>
+                        <p class="landing-lead">まだ問題データが登録されていません。data ディレクトリにJSONファイルを追加すると、ここから試験を選んで学習を始められます。</p>
+                    <?php endif; ?>
+                    <div class="landing-actions">
+                        <?php if ($totalExams > 0): ?>
+                            <a class="landing-button primary" href="?view=home">試験を選ぶ</a>
+                        <?php else: ?>
+                            <span class="landing-button disabled" role="text" aria-disabled="true">試験データを追加してください</span>
+                        <?php endif; ?>
+                        <a class="landing-button secondary" href="?view=history">受験履歴を見る</a>
+                    </div>
+                </section>
+                <section class="landing-highlights">
+                    <article class="landing-card">
+                        <h3>登録試験数</h3>
+                        <p class="landing-metric"><?php echo number_format($totalExams); ?> 件</p>
+                        <p class="landing-text">カテゴリ別に整理された試験データから、自分に合った演習を選択できます。</p>
+                    </article>
+                    <article class="landing-card">
+                        <h3>カテゴリ</h3>
+                        <p class="landing-metric"><?php echo number_format($totalCategories); ?> 分類</p>
+                        <p class="landing-text">興味のある分野を絞り込み、目的に合わせた資格の問題を探せます。</p>
+                    </article>
+                    <article class="landing-card">
+                        <h3>登録問題数</h3>
+                        <p class="landing-metric"><?php echo number_format($totalQuestionCount); ?> 問</p>
+                        <p class="landing-text">出題数と難易度を調整しながら、必要なだけ演習を繰り返せます。</p>
+                    </article>
+                </section>
+                <section class="landing-steps">
+                    <h3>学習の流れ</h3>
+                    <ol class="landing-step-list">
+                        <li><strong>試験を選ぶ:</strong> 左側のメニューからカテゴリを開き、受験したい試験を選択します。</li>
+                        <li><strong>出題条件を設定:</strong> 難易度と出題数を決めて、演習を開始しましょう。</li>
+                        <li><strong>結果を振り返る:</strong> 採点結果は履歴に保存され、間違えた問題を後から復習できます。</li>
+                    </ol>
+                </section>
+            <?php elseif ($view === 'home'): ?>
         <?php if ($totalExams === 0): ?>
             <div class="form-card">
                 <h2>問題データが見つかりません</h2>
