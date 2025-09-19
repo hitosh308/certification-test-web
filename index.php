@@ -1074,6 +1074,26 @@ function filterQuestionsByDifficulty(array $questions, string $difficulty): arra
     }));
 }
 
+/**
+ * @param array<string, mixed> $exams
+ * @param array<string, array{id: string, name: string, exam_ids: string[]}> $categories
+ * @return array{0: string, 1: string}
+ */
+function normalizeSelectedIdentifiers(array $exams, array $categories, string $examId, string $categoryId): array
+{
+    if ($examId !== '' && isset($exams[$examId])) {
+        $categoryId = (string)($exams[$examId]['meta']['category']['id'] ?? $categoryId);
+    } else {
+        $examId = '';
+    }
+
+    if ($categoryId !== '' && !isset($categories[$categoryId])) {
+        $categoryId = '';
+    }
+
+    return [$examId, $categoryId];
+}
+
 function normalizeSearchText(string $text): string
 {
     $normalized = trim($text);
@@ -1195,15 +1215,12 @@ $selectedExamId = isset($_SESSION['last_selected_exam_id'])
     ? (string)$_SESSION['last_selected_exam_id']
     : '';
 
-if ($selectedExamId !== '' && isset($exams[$selectedExamId])) {
-    $selectedCategoryId = $exams[$selectedExamId]['meta']['category']['id'] ?? $selectedCategoryId;
-} else {
-    $selectedExamId = '';
-}
-
-if ($selectedCategoryId !== '' && !isset($categories[$selectedCategoryId])) {
-    $selectedCategoryId = '';
-}
+[$selectedExamId, $selectedCategoryId] = normalizeSelectedIdentifiers(
+    $exams,
+    $categories,
+    $selectedExamId,
+    $selectedCategoryId
+);
 
 $requestedView = isset($_GET['view']) ? (string)$_GET['view'] : '';
 $requestMethod = isset($_SERVER['REQUEST_METHOD']) ? strtoupper((string)$_SERVER['REQUEST_METHOD']) : 'GET';
@@ -1495,15 +1512,12 @@ if ($isPostRequest) {
     $_SESSION['last_selected_difficulty'] = $selectedDifficulty;
 }
 
-if ($selectedExamId !== '' && isset($exams[$selectedExamId])) {
-    $selectedCategoryId = $exams[$selectedExamId]['meta']['category']['id'] ?? $selectedCategoryId;
-} else {
-    $selectedExamId = '';
-}
-
-if ($selectedCategoryId !== '' && !isset($categories[$selectedCategoryId])) {
-    $selectedCategoryId = '';
-}
+[$selectedExamId, $selectedCategoryId] = normalizeSelectedIdentifiers(
+    $exams,
+    $categories,
+    $selectedExamId,
+    $selectedCategoryId
+);
 
 if ($view === 'quiz' && !$currentQuiz && isset($_SESSION['current_quiz'])) {
     $currentQuiz = $_SESSION['current_quiz'];
