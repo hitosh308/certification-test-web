@@ -1717,7 +1717,7 @@ if ($currentResultForStorage !== null) {
             <nav class="sidebar-nav" aria-label="ページ切り替え">
                 <a href="index.php?view=landing" class="sidebar-nav-link<?php echo $isLandingView ? ' active' : ''; ?>">トップ</a>
                 <a href="?view=manual" class="sidebar-nav-link<?php echo $isManualView ? ' active' : ''; ?>">利用マニュアル</a>
-                <a href="?view=history" class="sidebar-nav-link<?php echo $isHistoryView ? ' active' : ''; ?>">受験履歴</a>
+                <a href="?view=history" class="sidebar-nav-link<?php echo $isHistoryView ? ' active' : ''; ?>">履歴</a>
             </nav>
             <h3 class="sidebar-section-title">試験カテゴリ</h3>
             <?php if (!empty($categories)): ?>
@@ -1788,7 +1788,7 @@ if ($currentResultForStorage !== null) {
                         <?php if ($totalExams === 0): ?>
                             <span class="landing-button disabled" role="text" aria-disabled="true">試験データを追加してください</span>
                         <?php endif; ?>
-                        <a class="landing-button secondary" href="?view=history">受験履歴を見る</a>
+                        <a class="landing-button secondary" href="?view=history">履歴を見る</a>
                     </div>
                 </section>
                 <section class="landing-search" id="landingSearch">
@@ -2047,7 +2047,7 @@ if ($currentResultForStorage !== null) {
                                 <ul class="manual-list">
                                     <li>表示切り替えボタンで「正解」「不正解」「未回答」のみを絞り込めます。</li>
                                     <li>各問題には自分の回答と正解、解説・参考資料（登録されている場合）が表示されます。</li>
-                                    <li>結果は自動的に受験履歴へ保存され、後から再確認できます。</li>
+                                    <li>結果は自動的に履歴へ保存され、後から再確認できます。</li>
                                 </ul>
                             </div>
                         </li>
@@ -2100,7 +2100,7 @@ if ($currentResultForStorage !== null) {
                             </ul>
                         </article>
                         <article class="manual-card">
-                            <h4>受験履歴ページ</h4>
+                            <h4>履歴ページ</h4>
                             <p>保存された受験結果を一覧で確認し、再表示できます。</p>
                             <ul class="manual-list">
                                 <li>検索ボックスやカテゴリ・試験のプルダウンで履歴を絞り込めます。</li>
@@ -2196,7 +2196,7 @@ if ($currentResultForStorage !== null) {
                         </article>
                         <article class="manual-card">
                             <h4>結果データの保存について</h4>
-                            <p>受験履歴はブラウザーのローカルストレージに保存されます。同じ端末・ブラウザーであれば次回以降も結果を確認できます。</p>
+                            <p>履歴はブラウザーのローカルストレージに保存されます。同じ端末・ブラウザーであれば次回以降も結果を確認できます。</p>
                             <ul class="manual-list">
                                 <li>別の端末やブラウザーを利用すると履歴は共有されません。</li>
                                 <li>プライベートブラウジングや履歴削除を行うとデータが消える場合があります。</li>
@@ -2228,12 +2228,12 @@ if ($currentResultForStorage !== null) {
                             <p>選択している難易度の問題数が少ないと、指定できる出題数が制限されます。難易度を「ランダム」に切り替えるか、登録されている問題数の範囲内で数値を入力し直してください。</p>
                         </details>
                         <details class="manual-faq-item">
-                            <summary>受験履歴はどこに保存されていますか？</summary>
+                            <summary>履歴はどこに保存されていますか？</summary>
                             <p>履歴はお使いのブラウザーにのみ保存されます。同じ端末とブラウザーでアクセスした場合にだけ表示されるため、他の端末には引き継がれません。</p>
                         </details>
                         <details class="manual-faq-item">
                             <summary>結果を初期化したいときは？</summary>
-                            <p>「受験履歴」ページの右上にある「履歴をすべて削除」ボタンを押すと、保存されている結果をまとめて削除できます。削除後は元に戻せないためご注意ください。</p>
+                            <p>「履歴」ページの右上にある「履歴をすべて削除」ボタンを押すと、保存されている結果をまとめて削除できます。削除後は元に戻せないためご注意ください。</p>
                         </details>
                     </div>
                 </section>
@@ -2258,7 +2258,7 @@ if ($currentResultForStorage !== null) {
                     <p>マニュアルを参考に、実際に演習を進めてみましょう。操作に迷ったときはいつでもこのページに戻って確認できます。</p>
                     <div class="manual-cta">
                         <a class="landing-button primary" href="?view=home">試験を選んで演習する</a>
-                        <a class="landing-button secondary" href="?view=history">受験履歴を確認する</a>
+                        <a class="landing-button secondary" href="?view=history">履歴を確認する</a>
                     </div>
                 </section>
             <?php elseif ($view === 'home'): ?>
@@ -2350,7 +2350,7 @@ if ($currentResultForStorage !== null) {
         <section class="section-card history-card" data-history-root>
             <div class="history-header">
                 <div class="history-header-text">
-                    <h2>受験履歴</h2>
+                    <h2>履歴</h2>
                     <p class="history-description">保存された受験結果を検索、並べ替え、絞り込みできます。</p>
                 </div>
                 <button type="button" class="secondary danger-action" data-clear-history>履歴をすべて削除</button>
@@ -2602,7 +2602,7 @@ if ($currentResultForStorage !== null) {
                 <input type="hidden" name="difficulty" value="<?php echo h($resultsDifficulty); ?>">
                 <button type="submit" class="secondary">別の試験を選ぶ</button>
             </form>
-            <a class="link-button" href="?view=history">受験履歴ページを開く</a>
+            <a class="link-button" href="?view=history">履歴ページを開く</a>
         </div>
     <?php endif; ?>
 
@@ -3606,7 +3606,7 @@ if ($currentResultForStorage !== null) {
                 if (clearButton.disabled) {
                     return;
                 }
-                const confirmed = window.confirm('保存されている受験履歴をすべて削除しますか？');
+                const confirmed = window.confirm('保存されている履歴をすべて削除しますか？');
                 if (!confirmed) {
                     return;
                 }
