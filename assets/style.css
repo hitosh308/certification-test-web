@@ -1915,6 +1915,33 @@ button.danger-action:disabled:hover {
   font-size: 0.95rem;
 }
 
+.manual-hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 4px 0 4px;
+}
+
+.manual-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(37, 99, 235, 0.12);
+  color: var(--primary-dark);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.01em;
+  box-shadow: 0 14px 32px -26px rgba(29, 78, 216, 0.55);
+}
+
+.manual-hero-badge.is-accent {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  color: #fff;
+  box-shadow: 0 18px 40px -30px rgba(37, 99, 235, 0.65);
+}
+
 .manual-section {
   background: #fff;
   border: 1px solid var(--border);
@@ -1922,6 +1949,119 @@ button.danger-action:disabled:hover {
   padding: 28px;
   margin: 32px 0;
   box-shadow: 0 20px 48px -32px rgba(15, 23, 42, 0.4);
+}
+
+.manual-toc {
+  margin: 32px 0;
+}
+
+.manual-toc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.manual-toc-link {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-decoration: none;
+  background: linear-gradient(135deg, rgba(226, 232, 240, 0.3) 0%, rgba(241, 245, 249, 0.7) 100%);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 14px;
+  padding: 18px 20px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  color: #1f2937;
+  box-shadow: 0 22px 48px -34px rgba(15, 23, 42, 0.45);
+}
+
+.manual-toc-link:hover,
+.manual-toc-link:focus-visible {
+  transform: translateY(-2px);
+  border-color: var(--primary);
+  box-shadow: 0 28px 56px -32px rgba(29, 78, 216, 0.45);
+}
+
+.manual-toc-link:focus-visible {
+  outline: 3px solid rgba(59, 130, 246, 0.55);
+  outline-offset: 3px;
+}
+
+.manual-toc-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.manual-toc-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.22) 0%, rgba(29, 78, 216, 0.32) 100%);
+  color: var(--primary-dark);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.manual-toc-icon {
+  font-size: 1.3rem;
+}
+
+.manual-toc-title {
+  font-weight: 700;
+  color: var(--primary-dark);
+  font-size: 1rem;
+}
+
+.manual-toc-description {
+  color: #475569;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.manual-section-header {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.manual-section-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #1e40af 0%, #1d4ed8 100%);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.05rem;
+  box-shadow: 0 26px 58px -34px rgba(29, 78, 216, 0.55);
+}
+
+.manual-section-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.manual-section-header h3 {
+  margin: 0;
+  font-size: 1.35rem;
+  color: var(--primary-dark);
+}
+
+.manual-section-lead {
+  margin: 0;
+  color: #475569;
+  font-size: 0.95rem;
 }
 
 .manual-section h3 {
@@ -2146,9 +2286,27 @@ button.danger-action:disabled:hover {
     padding: 28px;
   }
 
+  .manual-toc {
+    margin: 24px 0;
+  }
+
+  .manual-toc-link {
+    padding: 16px 18px;
+  }
+
   .manual-section {
     padding: 24px;
     margin: 28px 0;
+  }
+
+  .manual-section-header {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .manual-section-number {
+    width: 48px;
+    height: 48px;
   }
 
   .manual-grid {
@@ -2293,6 +2451,18 @@ button.danger-action:disabled:hover {
     font-size: 1.6rem;
   }
 
+  .manual-toc-list {
+    grid-template-columns: 1fr;
+  }
+
+  .manual-toc-head {
+    align-items: flex-start;
+  }
+
+  .manual-toc-link {
+    padding: 14px 16px;
+  }
+
   .manual-hero-actions {
     flex-direction: column;
     align-items: stretch;
@@ -2319,6 +2489,11 @@ button.danger-action:disabled:hover {
   .manual-section {
     padding: 22px 18px;
     margin: 24px 0;
+  }
+
+  .manual-section-number {
+    width: 44px;
+    height: 44px;
   }
 
   .manual-step-list li {

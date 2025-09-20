@@ -1893,9 +1893,64 @@ if ($currentResultForStorage !== null) {
                     </ol>
                 </section>
             <?php elseif ($view === 'manual'): ?>
+                <?php
+                $manualSections = [
+                    [
+                        'id' => 'manual-flow',
+                        'title' => '基本的な操作の流れ',
+                        'description' => '試験の選び方から採点までの4つのステップを順番に確認します。',
+                        'icon' => '🧭',
+                    ],
+                    [
+                        'id' => 'manual-layout',
+                        'title' => '画面構成と主な機能',
+                        'description' => 'アプリに登場する各画面の役割と便利な機能をまとめました。',
+                        'icon' => '🗂️',
+                    ],
+                    [
+                        'id' => 'manual-practice',
+                        'title' => '演習をスムーズに進めるポイント',
+                        'description' => '効率的に学習を進めるためのコツやヒントをご紹介します。',
+                        'icon' => '⚡',
+                    ],
+                    [
+                        'id' => 'manual-results',
+                        'title' => '採点結果と履歴の活用方法',
+                        'description' => '結果画面と履歴ページの見方、活用方法を詳しくご説明します。',
+                        'icon' => '📊',
+                    ],
+                    [
+                        'id' => 'manual-faq',
+                        'title' => 'よくある質問',
+                        'description' => '操作で困ったときに役立つ質問と回答をまとめています。',
+                        'icon' => '❓',
+                    ],
+                    [
+                        'id' => 'manual-next',
+                        'title' => '次のステップ',
+                        'description' => 'マニュアルを読み終えた後のアクションを確認しましょう。',
+                        'icon' => '🚀',
+                    ],
+                ];
+
+                $manualSectionIndexMap = [];
+                $manualSectionMetaMap = [];
+                foreach ($manualSections as $index => $manualSectionMeta) {
+                    $sectionNumber = $index + 1;
+                    $manualSectionMeta['number'] = $sectionNumber;
+                    $manualSectionMeta['number_label'] = sprintf('%02d', $sectionNumber);
+                    $manualSections[$index] = $manualSectionMeta;
+                    $manualSectionIndexMap[$manualSectionMeta['id']] = $sectionNumber;
+                    $manualSectionMetaMap[$manualSectionMeta['id']] = $manualSectionMeta;
+                }
+                ?>
                 <section class="manual-hero" aria-labelledby="manualTitle">
                     <h2 id="manualTitle">ご利用マニュアル</h2>
                     <p>このページでは、「資格試験問題集」アプリの使い方を、初めての方にも安心してご利用いただけるようにまとめています。カテゴリから試験を探し、演習を行い、結果を振り返るまでの流れを丁寧にご案内します。</p>
+                    <div class="manual-hero-meta">
+                        <span class="manual-hero-badge">✨ 初めての方向け</span>
+                        <span class="manual-hero-badge is-accent">💡 実践的なヒント付き</span>
+                    </div>
                     <ul class="manual-hero-list">
                         <li>目的の試験を素早く見つける方法</li>
                         <li>難易度や出題数の設定手順</li>
@@ -1909,8 +1964,44 @@ if ($currentResultForStorage !== null) {
                         <a class="landing-button secondary" href="#manual-faq">よくある質問を見る</a>
                     </div>
                 </section>
+                <nav class="manual-toc" aria-label="マニュアルの目次">
+                    <ol class="manual-toc-list">
+                        <?php foreach ($manualSections as $manualSection): ?>
+                            <li class="manual-toc-item">
+                                <a class="manual-toc-link" href="#<?php echo h($manualSection['id']); ?>">
+                                    <span class="manual-toc-head">
+                                        <span class="manual-toc-number"><?php echo h($manualSection['number_label']); ?></span>
+                                        <?php if (!empty($manualSection['icon'])): ?>
+                                            <span class="manual-toc-icon" aria-hidden="true"><?php echo $manualSection['icon']; ?></span>
+                                        <?php endif; ?>
+                                        <span class="manual-toc-title"><?php echo h($manualSection['title']); ?></span>
+                                    </span>
+                                    <?php if (!empty($manualSection['description'])): ?>
+                                        <span class="manual-toc-description"><?php echo h($manualSection['description']); ?></span>
+                                    <?php endif; ?>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ol>
+                </nav>
                 <section class="manual-section" id="manual-flow">
-                    <h3>基本的な操作の流れ</h3>
+                    <?php
+                    $manualFlowMeta = $manualSectionMetaMap['manual-flow'] ?? ['title' => '基本的な操作の流れ', 'description' => '', 'number_label' => ''];
+                    $manualFlowTitle = $manualFlowMeta['title'] !== '' ? $manualFlowMeta['title'] : '基本的な操作の流れ';
+                    $manualFlowLead = $manualFlowMeta['description'] ?? '';
+                    $manualFlowNumberLabel = $manualFlowMeta['number_label'] ?? '';
+                    ?>
+                    <header class="manual-section-header">
+                        <?php if ($manualFlowNumberLabel !== ''): ?>
+                            <span class="manual-section-number"><?php echo h($manualFlowNumberLabel); ?></span>
+                        <?php endif; ?>
+                        <div class="manual-section-heading">
+                            <h3><?php echo h($manualFlowTitle); ?></h3>
+                            <?php if ($manualFlowLead !== ''): ?>
+                                <p class="manual-section-lead"><?php echo h($manualFlowLead); ?></p>
+                            <?php endif; ?>
+                        </div>
+                    </header>
                     <ol class="manual-step-list">
                         <li>
                             <span class="manual-step-number">1</span>
@@ -1963,7 +2054,23 @@ if ($currentResultForStorage !== null) {
                     </ol>
                 </section>
                 <section class="manual-section" id="manual-layout">
-                    <h3>画面構成と主な機能</h3>
+                    <?php
+                    $manualLayoutMeta = $manualSectionMetaMap['manual-layout'] ?? ['title' => '画面構成と主な機能', 'description' => '', 'number_label' => ''];
+                    $manualLayoutTitle = $manualLayoutMeta['title'] !== '' ? $manualLayoutMeta['title'] : '画面構成と主な機能';
+                    $manualLayoutLead = $manualLayoutMeta['description'] ?? '';
+                    $manualLayoutNumberLabel = $manualLayoutMeta['number_label'] ?? '';
+                    ?>
+                    <header class="manual-section-header">
+                        <?php if ($manualLayoutNumberLabel !== ''): ?>
+                            <span class="manual-section-number"><?php echo h($manualLayoutNumberLabel); ?></span>
+                        <?php endif; ?>
+                        <div class="manual-section-heading">
+                            <h3><?php echo h($manualLayoutTitle); ?></h3>
+                            <?php if ($manualLayoutLead !== ''): ?>
+                                <p class="manual-section-lead"><?php echo h($manualLayoutLead); ?></p>
+                            <?php endif; ?>
+                        </div>
+                    </header>
                     <div class="manual-grid">
                         <article class="manual-card">
                             <h4>カテゴリメニュー</h4>
@@ -2004,7 +2111,23 @@ if ($currentResultForStorage !== null) {
                     </div>
                 </section>
                 <section class="manual-section" id="manual-practice">
-                    <h3>演習をスムーズに進めるポイント</h3>
+                    <?php
+                    $manualPracticeMeta = $manualSectionMetaMap['manual-practice'] ?? ['title' => '演習をスムーズに進めるポイント', 'description' => '', 'number_label' => ''];
+                    $manualPracticeTitle = $manualPracticeMeta['title'] !== '' ? $manualPracticeMeta['title'] : '演習をスムーズに進めるポイント';
+                    $manualPracticeLead = $manualPracticeMeta['description'] ?? '';
+                    $manualPracticeNumberLabel = $manualPracticeMeta['number_label'] ?? '';
+                    ?>
+                    <header class="manual-section-header">
+                        <?php if ($manualPracticeNumberLabel !== ''): ?>
+                            <span class="manual-section-number"><?php echo h($manualPracticeNumberLabel); ?></span>
+                        <?php endif; ?>
+                        <div class="manual-section-heading">
+                            <h3><?php echo h($manualPracticeTitle); ?></h3>
+                            <?php if ($manualPracticeLead !== ''): ?>
+                                <p class="manual-section-lead"><?php echo h($manualPracticeLead); ?></p>
+                            <?php endif; ?>
+                        </div>
+                    </header>
                     <div class="manual-subsection">
                         <h4>カテゴリを切り替えて試験を探す</h4>
                         <p>学びたい分野が決まっている場合は、カテゴリ名から試験を絞り込むと目的の試験を素早く見つけられます。</p>
@@ -2037,7 +2160,23 @@ if ($currentResultForStorage !== null) {
                     </div>
                 </section>
                 <section class="manual-section" id="manual-results">
-                    <h3>採点結果と履歴の活用方法</h3>
+                    <?php
+                    $manualResultsMeta = $manualSectionMetaMap['manual-results'] ?? ['title' => '採点結果と履歴の活用方法', 'description' => '', 'number_label' => ''];
+                    $manualResultsTitle = $manualResultsMeta['title'] !== '' ? $manualResultsMeta['title'] : '採点結果と履歴の活用方法';
+                    $manualResultsLead = $manualResultsMeta['description'] ?? '';
+                    $manualResultsNumberLabel = $manualResultsMeta['number_label'] ?? '';
+                    ?>
+                    <header class="manual-section-header">
+                        <?php if ($manualResultsNumberLabel !== ''): ?>
+                            <span class="manual-section-number"><?php echo h($manualResultsNumberLabel); ?></span>
+                        <?php endif; ?>
+                        <div class="manual-section-heading">
+                            <h3><?php echo h($manualResultsTitle); ?></h3>
+                            <?php if ($manualResultsLead !== ''): ?>
+                                <p class="manual-section-lead"><?php echo h($manualResultsLead); ?></p>
+                            <?php endif; ?>
+                        </div>
+                    </header>
                     <div class="manual-grid">
                         <article class="manual-card">
                             <h4>採点結果画面で確認できること</h4>
@@ -2066,7 +2205,23 @@ if ($currentResultForStorage !== null) {
                     </div>
                 </section>
                 <section class="manual-section" id="manual-faq">
-                    <h3>よくある質問</h3>
+                    <?php
+                    $manualFaqMeta = $manualSectionMetaMap['manual-faq'] ?? ['title' => 'よくある質問', 'description' => '', 'number_label' => ''];
+                    $manualFaqTitle = $manualFaqMeta['title'] !== '' ? $manualFaqMeta['title'] : 'よくある質問';
+                    $manualFaqLead = $manualFaqMeta['description'] ?? '';
+                    $manualFaqNumberLabel = $manualFaqMeta['number_label'] ?? '';
+                    ?>
+                    <header class="manual-section-header">
+                        <?php if ($manualFaqNumberLabel !== ''): ?>
+                            <span class="manual-section-number"><?php echo h($manualFaqNumberLabel); ?></span>
+                        <?php endif; ?>
+                        <div class="manual-section-heading">
+                            <h3><?php echo h($manualFaqTitle); ?></h3>
+                            <?php if ($manualFaqLead !== ''): ?>
+                                <p class="manual-section-lead"><?php echo h($manualFaqLead); ?></p>
+                            <?php endif; ?>
+                        </div>
+                    </header>
                     <div class="manual-faq">
                         <details class="manual-faq-item">
                             <summary>出題数を変更できないときはどうすればよいですか？</summary>
@@ -2082,8 +2237,24 @@ if ($currentResultForStorage !== null) {
                         </details>
                     </div>
                 </section>
-                <section class="manual-section manual-next">
-                    <h3>次のステップ</h3>
+                <section class="manual-section manual-next" id="manual-next">
+                    <?php
+                    $manualNextMeta = $manualSectionMetaMap['manual-next'] ?? ['title' => '次のステップ', 'description' => '', 'number_label' => ''];
+                    $manualNextTitle = $manualNextMeta['title'] !== '' ? $manualNextMeta['title'] : '次のステップ';
+                    $manualNextLead = $manualNextMeta['description'] ?? '';
+                    $manualNextNumberLabel = $manualNextMeta['number_label'] ?? '';
+                    ?>
+                    <header class="manual-section-header">
+                        <?php if ($manualNextNumberLabel !== ''): ?>
+                            <span class="manual-section-number"><?php echo h($manualNextNumberLabel); ?></span>
+                        <?php endif; ?>
+                        <div class="manual-section-heading">
+                            <h3><?php echo h($manualNextTitle); ?></h3>
+                            <?php if ($manualNextLead !== ''): ?>
+                                <p class="manual-section-lead"><?php echo h($manualNextLead); ?></p>
+                            <?php endif; ?>
+                        </div>
+                    </header>
                     <p>マニュアルを参考に、実際に演習を進めてみましょう。操作に迷ったときはいつでもこのページに戻って確認できます。</p>
                     <div class="manual-cta">
                         <a class="landing-button primary" href="?view=home">試験を選んで演習する</a>
