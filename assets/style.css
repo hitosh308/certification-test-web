@@ -2532,13 +2532,13 @@ button.danger-action:disabled:hover {
   }
 
   .landing-search-controls {
-    flex-direction: column;
-    align-items: stretch;
     gap: 8px;
+    flex-wrap: nowrap;
   }
 
   .landing-search-controls input[type="search"] {
-    width: 100%;
+    flex: 1 1 auto;
+    min-width: 0;
   }
 
   .landing-search-summary {
@@ -2558,9 +2558,10 @@ button.danger-action:disabled:hover {
     width: 100%;
   }
 
-  .landing-search-controls button {
-    width: 100%;
-    flex: none;
+  .landing-search-controls button:not(.sidebar-toggle):not(.sidebar-close) {
+    width: auto;
+    flex: 0 0 auto;
+    white-space: nowrap;
   }
 
   .open-sidebar-button {
