@@ -1954,7 +1954,7 @@ if ($currentResultForStorage !== null) {
                     <ul class="manual-hero-list">
                         <li>目的の試験を素早く見つける方法</li>
                         <li>難易度や出題数の設定手順</li>
-                        <li>採点結果と受験履歴の活用方法</li>
+                        <li>採点結果と履歴の活用方法</li>
                     </ul>
                     <div class="manual-hero-actions">
                         <?php if ($currentQuiz): ?>
@@ -2187,7 +2187,7 @@ if ($currentResultForStorage !== null) {
                             </ul>
                         </article>
                         <article class="manual-card">
-                            <h4>受験履歴の便利な機能</h4>
+                            <h4>履歴の便利な機能</h4>
                             <ul class="manual-list">
                                 <li>キーワード検索で特定の試験だけを抽出できます。</li>
                                 <li>並び順を変更して最新の結果や高得点の結果を素早く確認できます。</li>
@@ -2355,7 +2355,7 @@ if ($currentResultForStorage !== null) {
                 </div>
                 <button type="button" class="secondary danger-action" data-clear-history>履歴をすべて削除</button>
             </div>
-            <form class="history-filters" aria-label="受験履歴の絞り込み">
+            <form class="history-filters" aria-label="履歴の絞り込み">
                 <div class="history-filter-group">
                     <label for="historySearch">キーワード</label>
                     <input type="search" id="historySearch" name="search" placeholder="試験名やカテゴリで検索">
