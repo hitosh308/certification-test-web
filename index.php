@@ -1232,6 +1232,8 @@ if ($requestedView === 'landing' && !$isPostRequest) {
         $currentQuiz = null;
     }
     $view = 'landing';
+} elseif ($requestedView === 'manual' && !$isPostRequest) {
+    $view = 'manual';
 } elseif ($currentQuiz) {
     $view = 'quiz';
 } else {
@@ -1240,6 +1242,8 @@ if ($requestedView === 'landing' && !$isPostRequest) {
         $view = 'history';
     } elseif ($requestedView === 'home') {
         $view = 'home';
+    } elseif ($requestedView === 'manual') {
+        $view = 'manual';
     }
 }
 
@@ -1666,6 +1670,7 @@ if ($view === 'results' && $results && !$resultsFromHistory) {
 
 $isHistoryView = ($view === 'history');
 $isLandingView = ($view === 'landing');
+$isManualView = ($view === 'manual');
 $isExamView = in_array($view, ['home', 'quiz', 'results'], true);
 $appAttributes = ' data-view="' . h($view) . '"';
 if ($currentResultForStorage !== null) {
@@ -1711,6 +1716,7 @@ if ($currentResultForStorage !== null) {
             </div>
             <nav class="sidebar-nav" aria-label="ページ切り替え">
                 <a href="index.php?view=landing" class="sidebar-nav-link<?php echo $isLandingView ? ' active' : ''; ?>">トップ</a>
+                <a href="?view=manual" class="sidebar-nav-link<?php echo $isManualView ? ' active' : ''; ?>">利用マニュアル</a>
                 <a href="?view=history" class="sidebar-nav-link<?php echo $isHistoryView ? ' active' : ''; ?>">受験履歴</a>
             </nav>
             <h3 class="sidebar-section-title">試験カテゴリ</h3>
@@ -1778,6 +1784,7 @@ if ($currentResultForStorage !== null) {
                         <p class="landing-lead">まだ問題データが登録されていません。data ディレクトリにJSONファイルを追加すると、ここから試験を選んで学習を始められます。</p>
                     <?php endif; ?>
                     <div class="landing-actions">
+                        <a class="landing-button primary" href="?view=manual">利用マニュアルを読む</a>
                         <?php if ($totalExams === 0): ?>
                             <span class="landing-button disabled" role="text" aria-disabled="true">試験データを追加してください</span>
                         <?php endif; ?>
@@ -1884,6 +1891,204 @@ if ($currentResultForStorage !== null) {
                         <li><strong>出題条件を設定:</strong> 難易度と出題数を決めて、演習を開始しましょう。</li>
                         <li><strong>結果を振り返る:</strong> 採点結果は履歴に保存され、間違えた問題を後から復習できます。</li>
                     </ol>
+                </section>
+            <?php elseif ($view === 'manual'): ?>
+                <section class="manual-hero" aria-labelledby="manualTitle">
+                    <h2 id="manualTitle">ご利用マニュアル</h2>
+                    <p>このページでは、「資格試験問題集」アプリの使い方を、初めての方にも安心してご利用いただけるようにまとめています。カテゴリから試験を探し、演習を行い、結果を振り返るまでの流れを丁寧にご案内します。</p>
+                    <ul class="manual-hero-list">
+                        <li>目的の試験を素早く見つける方法</li>
+                        <li>難易度や出題数の設定手順</li>
+                        <li>採点結果と受験履歴の活用方法</li>
+                    </ul>
+                    <div class="manual-hero-actions">
+                        <?php if ($currentQuiz): ?>
+                            <a class="landing-button secondary manual-return-button" href="index.php">途中の受験に戻る</a>
+                        <?php endif; ?>
+                        <a class="landing-button primary" href="#manual-flow">基本操作を確認する</a>
+                        <a class="landing-button secondary" href="#manual-faq">よくある質問を見る</a>
+                    </div>
+                </section>
+                <section class="manual-section" id="manual-flow">
+                    <h3>基本的な操作の流れ</h3>
+                    <ol class="manual-step-list">
+                        <li>
+                            <span class="manual-step-number">1</span>
+                            <div class="manual-step-content">
+                                <h4>カテゴリと試験を選ぶ</h4>
+                                <p>画面左側の「カテゴリメニュー」から興味のある分野を開き、受験したい試験を選択します。</p>
+                                <ul class="manual-list">
+                                    <li>カテゴリ名をクリックすると登録済みの試験一覧が表示されます。</li>
+                                    <li>試験名の右側に表示される数字は登録されている問題数です。</li>
+                                    <li>別のカテゴリを開くと、フォームに表示される試験情報も自動的に切り替わります。</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="manual-step-number">2</span>
+                            <div class="manual-step-content">
+                                <h4>出題条件を設定する</h4>
+                                <p>メイン画面の「問題を開始する」フォームで難易度と出題数を指定します。</p>
+                                <ul class="manual-list">
+                                    <li>難易度は「優しい」「普通」「難しい」「ランダム」から選択できます。</li>
+                                    <li>出題数は登録されている問題数の範囲で入力できます。入力欄の下に最大値の目安が表示されます。</li>
+                                    <li>条件を変更したいときは同じフォームでいつでも再設定できます。</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="manual-step-number">3</span>
+                            <div class="manual-step-content">
+                                <h4>問題に回答する</h4>
+                                <p>「問題を開始」ボタンを押すと、選択した条件で問題が表示されます。</p>
+                                <ul class="manual-list">
+                                    <li>選択肢はクリックまたはタップで選択できます。採点するまでは変更可能です。</li>
+                                    <li>複数選択が必要な問題では、チェックボックスが表示され「該当する選択肢をすべて選択してください」と案内されます。</li>
+                                    <li>途中で別の試験に切り替えたい場合は、採点前にサイドバーから新しい試験を選び直してください。</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="manual-step-number">4</span>
+                            <div class="manual-step-content">
+                                <h4>結果を確認して復習する</h4>
+                                <p>採点すると正答数や正答率が表示され、各問題の詳細を確認できます。</p>
+                                <ul class="manual-list">
+                                    <li>表示切り替えボタンで「正解」「不正解」「未回答」のみを絞り込めます。</li>
+                                    <li>各問題には自分の回答と正解、解説・参考資料（登録されている場合）が表示されます。</li>
+                                    <li>結果は自動的に受験履歴へ保存され、後から再確認できます。</li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ol>
+                </section>
+                <section class="manual-section" id="manual-layout">
+                    <h3>画面構成と主な機能</h3>
+                    <div class="manual-grid">
+                        <article class="manual-card">
+                            <h4>カテゴリメニュー</h4>
+                            <p>画面左側に表示されるサイドバーからカテゴリと試験を選択します。</p>
+                            <ul class="manual-list">
+                                <li>カテゴリをクリックして試験一覧を開閉できます。</li>
+                                <li>モバイル端末では右上のメニューアイコンからサイドバーを開閉します。</li>
+                                <li>試験名のボタンを押すと、ホーム画面のフォームにその試験が読み込まれます。</li>
+                            </ul>
+                        </article>
+                        <article class="manual-card">
+                            <h4>トップ / ホーム画面</h4>
+                            <p>試験を検索したり、出題条件を設定して演習を開始できます。</p>
+                            <ul class="manual-list">
+                                <li>トップ画面では登録されている試験の概要や検索フォームを利用できます。</li>
+                                <li>ホーム画面では選択中の試験情報、難易度、出題数を確認できます。</li>
+                                <li>「試験を選択する」ボタンから再度サイドバーを開いて試験を変更できます。</li>
+                            </ul>
+                        </article>
+                        <article class="manual-card">
+                            <h4>問題回答画面</h4>
+                            <p>選択した条件で出題された問題に回答します。</p>
+                            <ul class="manual-list">
+                                <li>問題文の下に難易度タグが表示されます。</li>
+                                <li>選択肢はラジオボタンまたはチェックボックスで表示され、回答済みかどうかが一目でわかります。</li>
+                                <li>画面下部のボタンから採点ややり直しが行えます。</li>
+                            </ul>
+                        </article>
+                        <article class="manual-card">
+                            <h4>受験履歴ページ</h4>
+                            <p>保存された受験結果を一覧で確認し、再表示できます。</p>
+                            <ul class="manual-list">
+                                <li>検索ボックスやカテゴリ・試験のプルダウンで履歴を絞り込めます。</li>
+                                <li>並び順を変更して最新順や高得点順に切り替えられます。</li>
+                                <li>不要な履歴は「履歴をすべて削除」ボタンからまとめて削除できます。</li>
+                            </ul>
+                        </article>
+                    </div>
+                </section>
+                <section class="manual-section" id="manual-practice">
+                    <h3>演習をスムーズに進めるポイント</h3>
+                    <div class="manual-subsection">
+                        <h4>カテゴリを切り替えて試験を探す</h4>
+                        <p>学びたい分野が決まっている場合は、カテゴリ名から試験を絞り込むと目的の試験を素早く見つけられます。</p>
+                    </div>
+                    <div class="manual-subsection">
+                        <h4>キーワード検索の活用</h4>
+                        <p>トップ画面の「試験を検索」フォームでは、試験名だけでなく説明文やカテゴリ名も検索対象です。</p>
+                        <ul class="manual-list">
+                            <li>複数のキーワードはスペースで区切って入力できます。</li>
+                            <li>検索結果から直接試験を選択してホーム画面に読み込めます。</li>
+                        </ul>
+                    </div>
+                    <div class="manual-subsection">
+                        <h4>難易度と出題数の調整</h4>
+                        <ul class="manual-list">
+                            <li>学習の初めは「優しい」や「普通」で基本を押さえ、慣れてきたら「難しい」で腕試しをしましょう。</li>
+                            <li>短時間で復習したい場合は少ない出題数を指定し、理解度を確認したいときは問題数を増やします。</li>
+                        </ul>
+                    </div>
+                    <div class="manual-subsection">
+                        <h4>回答画面で迷わないために</h4>
+                        <ul class="manual-list">
+                            <li>回答を変更したいときは選択肢を再度クリックするだけで切り替えられます。</li>
+                            <li>ブラウザーの戻るボタンではなく、画面内のボタンで操作することをおすすめします。</li>
+                        </ul>
+                    </div>
+                    <div class="manual-callout" role="note">
+                        <h4>ヒント</h4>
+                        <p>出題条件は演習中でも再設定できます。別の試験に切り替えるときは、ホーム画面の「試験を選択する」ボタンからサイドバーを開き直してください。</p>
+                    </div>
+                </section>
+                <section class="manual-section" id="manual-results">
+                    <h3>採点結果と履歴の活用方法</h3>
+                    <div class="manual-grid">
+                        <article class="manual-card">
+                            <h4>採点結果画面で確認できること</h4>
+                            <ul class="manual-list">
+                                <li>選択した難易度、出題数、正答率がひと目で確認できます。</li>
+                                <li>フィルター機能で正解・不正解・未回答の問題だけを表示できます。</li>
+                                <li>各問題に表示される解説や参考リンクで、理解を深められます。</li>
+                            </ul>
+                        </article>
+                        <article class="manual-card">
+                            <h4>受験履歴の便利な機能</h4>
+                            <ul class="manual-list">
+                                <li>キーワード検索で特定の試験だけを抽出できます。</li>
+                                <li>並び順を変更して最新の結果や高得点の結果を素早く確認できます。</li>
+                                <li>結果カードの「詳細を見る」ボタンから、採点時と同じ内容を再表示できます。</li>
+                            </ul>
+                        </article>
+                        <article class="manual-card">
+                            <h4>結果データの保存について</h4>
+                            <p>受験履歴はブラウザーのローカルストレージに保存されます。同じ端末・ブラウザーであれば次回以降も結果を確認できます。</p>
+                            <ul class="manual-list">
+                                <li>別の端末やブラウザーを利用すると履歴は共有されません。</li>
+                                <li>プライベートブラウジングや履歴削除を行うとデータが消える場合があります。</li>
+                            </ul>
+                        </article>
+                    </div>
+                </section>
+                <section class="manual-section" id="manual-faq">
+                    <h3>よくある質問</h3>
+                    <div class="manual-faq">
+                        <details class="manual-faq-item">
+                            <summary>出題数を変更できないときはどうすればよいですか？</summary>
+                            <p>選択している難易度の問題数が少ないと、指定できる出題数が制限されます。難易度を「ランダム」に切り替えるか、登録されている問題数の範囲内で数値を入力し直してください。</p>
+                        </details>
+                        <details class="manual-faq-item">
+                            <summary>受験履歴はどこに保存されていますか？</summary>
+                            <p>履歴はお使いのブラウザーにのみ保存されます。同じ端末とブラウザーでアクセスした場合にだけ表示されるため、他の端末には引き継がれません。</p>
+                        </details>
+                        <details class="manual-faq-item">
+                            <summary>結果を初期化したいときは？</summary>
+                            <p>「受験履歴」ページの右上にある「履歴をすべて削除」ボタンを押すと、保存されている結果をまとめて削除できます。削除後は元に戻せないためご注意ください。</p>
+                        </details>
+                    </div>
+                </section>
+                <section class="manual-section manual-next">
+                    <h3>次のステップ</h3>
+                    <p>マニュアルを参考に、実際に演習を進めてみましょう。操作に迷ったときはいつでもこのページに戻って確認できます。</p>
+                    <div class="manual-cta">
+                        <a class="landing-button primary" href="?view=home">試験を選んで演習する</a>
+                        <a class="landing-button secondary" href="?view=history">受験履歴を確認する</a>
+                    </div>
                 </section>
             <?php elseif ($view === 'home'): ?>
         <?php if ($totalExams === 0): ?>
