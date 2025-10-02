@@ -1,4 +1,5 @@
 <?php
+// テストコメント
 declare(strict_types=1);
 
 $requestedSessionId = '';
