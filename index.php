@@ -77,6 +77,39 @@ function extractPathParameters(): array
 /**
  * @param array<string, scalar|array|object|null> $query
  */
+function scriptNamePath(): string
+{
+    $scriptName = '/index.php';
+
+    if (isset($_SERVER['SCRIPT_NAME']) && is_string($_SERVER['SCRIPT_NAME']) && $_SERVER['SCRIPT_NAME'] !== '') {
+        $scriptName = str_replace('\\', '/', $_SERVER['SCRIPT_NAME']);
+        if ($scriptName[0] !== '/') {
+            $scriptName = '/' . $scriptName;
+        }
+    }
+
+    $normalized = preg_replace('#/+#', '/', $scriptName);
+
+    return is_string($normalized) && $normalized !== '' ? $normalized : '/index.php';
+}
+
+function scriptDirectoryPath(): string
+{
+    $scriptName = scriptNamePath();
+    $directory = str_replace('\\', '/', dirname($scriptName));
+    $directory = rtrim($directory, '/');
+
+    if ($directory === '' || $directory === '.') {
+        return '';
+    }
+
+    if ($directory[0] !== '/') {
+        return '/' . $directory;
+    }
+
+    return $directory;
+}
+
 function buildPath(string $view = '', string $categoryId = '', string $examId = '', array $query = []): string
 {
     $segments = [];
@@ -91,7 +124,7 @@ function buildPath(string $view = '', string $categoryId = '', string $examId = 
         }
     }
 
-    $path = 'index.php';
+    $path = rtrim(scriptNamePath(), '/');
     if (!empty($segments)) {
         $path .= '/' . implode('/', $segments);
     }
@@ -104,6 +137,21 @@ function buildPath(string $view = '', string $categoryId = '', string $examId = 
     }
 
     return $path;
+}
+
+function assetUrl(string $path): string
+{
+    $normalizedPath = ltrim(str_replace('\\', '/', $path), '/');
+    if ($normalizedPath === '') {
+        return '/';
+    }
+
+    $baseDirectory = scriptDirectoryPath();
+    if ($baseDirectory === '') {
+        return '/' . $normalizedPath;
+    }
+
+    return $baseDirectory . '/' . $normalizedPath;
 }
 
 /**
@@ -1834,7 +1882,7 @@ if ($currentResultForStorage !== null) {
     <script>
         document.documentElement.classList.add('js-enabled');
     </script>
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="<?php echo h(assetUrl('assets/style.css')); ?>">
 </head>
 <body>
 <div class="app"<?php echo $appAttributes; ?>>
