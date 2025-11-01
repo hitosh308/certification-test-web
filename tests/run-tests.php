@@ -134,6 +134,50 @@ test('searchExamsByKeywords returns exams matching all keywords case-insensitive
     assertSameValue([], searchExamsByKeywords($exams, 'security advanced'));
 });
 
+
+test('buildPath generates links relative to the executing script', function (): void {
+    $previousScriptName = $_SERVER['SCRIPT_NAME'] ?? null;
+
+    try {
+        $_SERVER['SCRIPT_NAME'] = '/practice/index.php';
+        assertSameValue('/practice/index.php', buildPath());
+        assertSameValue('/practice/index.php/landing', buildPath('landing'));
+        assertSameValue(
+            '/practice/index.php/home/cloud/aws',
+            buildPath('home', 'cloud', 'aws')
+        );
+
+        $_SERVER['SCRIPT_NAME'] = '/index.php';
+        assertSameValue('/index.php/history', buildPath('history'));
+    } finally {
+        if ($previousScriptName === null) {
+            unset($_SERVER['SCRIPT_NAME']);
+        } else {
+            $_SERVER['SCRIPT_NAME'] = $previousScriptName;
+        }
+    }
+});
+
+
+test('assetUrl resolves resources within the script directory', function (): void {
+    $previousScriptName = $_SERVER['SCRIPT_NAME'] ?? null;
+
+    try {
+        $_SERVER['SCRIPT_NAME'] = '/foo/bar/index.php';
+        assertSameValue('/foo/bar/assets/style.css', assetUrl('assets/style.css'));
+        assertSameValue('/foo/bar/images/logo.svg', assetUrl('/images/logo.svg'));
+
+        $_SERVER['SCRIPT_NAME'] = '/index.php';
+        assertSameValue('/assets/style.css', assetUrl('assets/style.css'));
+    } finally {
+        if ($previousScriptName === null) {
+            unset($_SERVER['SCRIPT_NAME']);
+        } else {
+            $_SERVER['SCRIPT_NAME'] = $previousScriptName;
+        }
+    }
+});
+
 // ---- Runner ----
 
 $passed = 0;
