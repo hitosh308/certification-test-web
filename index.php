@@ -1298,11 +1298,6 @@ if ($isPostRequest) {
             $view = 'home';
             break;
 
-        case 'select_exam':
-            $questionCountInput = '';
-            $view = 'home';
-            break;
-
         case 'change_difficulty':
             $questionCountInput = '';
             $view = 'home';
@@ -1512,6 +1507,26 @@ if ($isPostRequest) {
         default:
             // keep current view
             break;
+    }
+
+    $_SESSION['last_selected_difficulty'] = $selectedDifficulty;
+} else {
+    if (isset($_GET['difficulty'])) {
+        $selectedDifficulty = sanitizeDifficultySelection($_GET['difficulty']);
+    }
+
+    $requestedCategoryId = isset($_GET['category_id']) ? (string)$_GET['category_id'] : '';
+    if ($requestedCategoryId !== '' && isset($categories[$requestedCategoryId])) {
+        $selectedCategoryId = $requestedCategoryId;
+    }
+
+    $requestedExamId = isset($_GET['exam_id']) ? (string)$_GET['exam_id'] : '';
+    if ($requestedExamId !== '' && isset($exams[$requestedExamId])) {
+        $selectedExamId = $requestedExamId;
+        $selectedCategoryId = $exams[$requestedExamId]['meta']['category']['id'] ?? $selectedCategoryId;
+        $view = 'home';
+    } elseif ($requestedCategoryId !== '' && isset($categories[$requestedCategoryId])) {
+        $view = 'home';
     }
 
     $_SESSION['last_selected_difficulty'] = $selectedDifficulty;
@@ -1748,9 +1763,8 @@ if ($currentResultForStorage !== null) {
                                         <?php $examQuestionCount = questionCountForExam($exam); ?>
                                         <?php $examQuestionCountLabel = number_format($examQuestionCount); ?>
                                         <?php $isActiveExam = $examId === $selectedExamId; ?>
-                                        <form method="post" class="exam-select-form">
-                                            <?php echo sessionHiddenField(); ?>
-                                            <input type="hidden" name="action" value="select_exam">
+                                        <form method="get" class="exam-select-form">
+                                            <input type="hidden" name="view" value="home">
                                             <input type="hidden" name="difficulty" value="<?php echo h($selectedDifficulty); ?>">
                                             <input type="hidden" name="category_id" value="<?php echo h($categoryId); ?>">
                                             <button type="submit" name="exam_id" value="<?php echo h($examId); ?>" class="exam-button<?php echo $isActiveExam ? ' active' : ''; ?>">
@@ -1854,9 +1868,8 @@ if ($currentResultForStorage !== null) {
                                     <?php if ($searchExamDescription !== ''): ?>
                                         <p class="search-result-description"><?php echo nl2brSafe($searchExamDescription); ?></p>
                                     <?php endif; ?>
-                                    <form method="post" class="search-result-form">
-                                        <?php echo sessionHiddenField(); ?>
-                                        <input type="hidden" name="action" value="select_exam">
+                                    <form method="get" class="search-result-form">
+                                        <input type="hidden" name="view" value="home">
                                         <input type="hidden" name="category_id" value="<?php echo h($searchExamCategoryId); ?>">
                                         <input type="hidden" name="difficulty" value="<?php echo h($selectedDifficulty); ?>">
                                         <button type="submit" name="exam_id" value="<?php echo h($searchExamId); ?>">この試験を選択</button>
