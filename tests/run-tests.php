@@ -137,9 +137,11 @@ test('searchExamsByKeywords returns exams matching all keywords case-insensitive
 
 test('buildPath generates links relative to the executing script', function (): void {
     $previousScriptName = $_SERVER['SCRIPT_NAME'] ?? null;
+    $previousRequestUri = $_SERVER['REQUEST_URI'] ?? null;
 
     try {
         $_SERVER['SCRIPT_NAME'] = '/practice/index.php';
+        unset($_SERVER['REQUEST_URI']);
         assertSameValue('/practice/index.php', buildPath());
         assertSameValue('/practice/index.php/landing', buildPath('landing'));
         assertSameValue(
@@ -148,12 +150,49 @@ test('buildPath generates links relative to the executing script', function (): 
         );
 
         $_SERVER['SCRIPT_NAME'] = '/index.php';
+        unset($_SERVER['REQUEST_URI']);
         assertSameValue('/index.php/history', buildPath('history'));
     } finally {
         if ($previousScriptName === null) {
             unset($_SERVER['SCRIPT_NAME']);
         } else {
             $_SERVER['SCRIPT_NAME'] = $previousScriptName;
+        }
+
+        if ($previousRequestUri === null) {
+            unset($_SERVER['REQUEST_URI']);
+        } else {
+            $_SERVER['REQUEST_URI'] = $previousRequestUri;
+        }
+    }
+});
+
+
+test('buildPath omits index.php when using rewritten URLs', function (): void {
+    $previousScriptName = $_SERVER['SCRIPT_NAME'] ?? null;
+    $previousRequestUri = $_SERVER['REQUEST_URI'] ?? null;
+
+    try {
+        $_SERVER['SCRIPT_NAME'] = '/practice/index.php';
+        $_SERVER['REQUEST_URI'] = '/practice/history';
+        assertSameValue('/practice', buildPath());
+        assertSameValue('/practice/landing', buildPath('landing'));
+        assertSameValue('/practice/home/cloud/aws', buildPath('home', 'cloud', 'aws'));
+
+        $_SERVER['SCRIPT_NAME'] = '/index.php';
+        $_SERVER['REQUEST_URI'] = '/history';
+        assertSameValue('/landing', buildPath('landing'));
+    } finally {
+        if ($previousScriptName === null) {
+            unset($_SERVER['SCRIPT_NAME']);
+        } else {
+            $_SERVER['SCRIPT_NAME'] = $previousScriptName;
+        }
+
+        if ($previousRequestUri === null) {
+            unset($_SERVER['REQUEST_URI']);
+        } else {
+            $_SERVER['REQUEST_URI'] = $previousRequestUri;
         }
     }
 });

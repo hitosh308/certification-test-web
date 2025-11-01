@@ -110,6 +110,44 @@ function scriptDirectoryPath(): string
     return $directory;
 }
 
+function shouldHideScriptName(string $scriptName): bool
+{
+    if (!isset($_SERVER['REQUEST_URI']) || !is_string($_SERVER['REQUEST_URI']) || $_SERVER['REQUEST_URI'] === '') {
+        return false;
+    }
+
+    $requestPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    if (!is_string($requestPath) || $requestPath === '') {
+        return false;
+    }
+
+    $normalizedRequestPath = preg_replace('#/+#', '/', $requestPath);
+    if (!is_string($normalizedRequestPath) || $normalizedRequestPath === '') {
+        return false;
+    }
+
+    if (strncmp($normalizedRequestPath, $scriptName, strlen($scriptName)) === 0) {
+        return false;
+    }
+
+    $scriptDirectory = scriptDirectoryPath();
+
+    return $scriptDirectory === ''
+        || strncmp($normalizedRequestPath, $scriptDirectory, strlen($scriptDirectory)) === 0;
+}
+
+function applicationBasePath(): string
+{
+    $scriptName = scriptNamePath();
+
+    if (shouldHideScriptName($scriptName)) {
+        $directory = scriptDirectoryPath();
+        return $directory === '' ? '' : rtrim($directory, '/');
+    }
+
+    return rtrim($scriptName, '/');
+}
+
 function buildPath(string $view = '', string $categoryId = '', string $examId = '', array $query = []): string
 {
     $segments = [];
@@ -124,9 +162,14 @@ function buildPath(string $view = '', string $categoryId = '', string $examId = 
         }
     }
 
-    $path = rtrim(scriptNamePath(), '/');
+    $basePath = applicationBasePath();
+    $path = $basePath;
     if (!empty($segments)) {
         $path .= '/' . implode('/', $segments);
+    }
+
+    if ($path === '') {
+        $path = '/';
     }
 
     if (!empty($query)) {
