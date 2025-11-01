@@ -1788,15 +1788,12 @@ if ($examTitleForTitle === '' && $currentQuiz && is_array($currentQuiz)) {
     }
 }
 
-$pageTitleSegments = ['資格試験問題集'];
-if ($categoryNameForTitle !== '') {
-    $pageTitleSegments[] = $categoryNameForTitle;
-}
+$metaDescription = 'IT資格・クラウド・AIに特化した無料演習問題サイト。登録不要・ログイン不要で2,500問以上をカテゴリ・難易度・出題数で自在にカスタマイズ可能。通勤・休憩・スキマ時間に学び、現役社会人が合格力を効率的に高めるための資格試験問題集サイトです。';
+$baseSeoTitle = '無料で挑戦！資格試験演習問題集 – IT・クラウド・AI対応';
+$pageTitle = $baseSeoTitle;
 if ($examTitleForTitle !== '') {
-    $pageTitleSegments[] = $examTitleForTitle;
+    $pageTitle .= ' – ' . $examTitleForTitle;
 }
-
-$pageTitle = implode(' | ', $pageTitleSegments);
 
 $totalExams = count($exams);
 $totalCategories = count($categories);
@@ -1878,6 +1875,7 @@ if ($currentResultForStorage !== null) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="<?php echo h($metaDescription); ?>">
     <title><?php echo h($pageTitle); ?></title>
     <script>
         document.documentElement.classList.add('js-enabled');
