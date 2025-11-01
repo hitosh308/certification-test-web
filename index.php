@@ -182,6 +182,127 @@ function buildPath(string $view = '', string $categoryId = '', string $examId = 
     return $path;
 }
 
+function applicationOrigin(): string
+{
+    $host = '';
+
+    if (isset($_SERVER['HTTP_HOST']) && is_string($_SERVER['HTTP_HOST']) && $_SERVER['HTTP_HOST'] !== '') {
+        $host = trim($_SERVER['HTTP_HOST']);
+    } elseif (isset($_SERVER['SERVER_NAME']) && is_string($_SERVER['SERVER_NAME']) && $_SERVER['SERVER_NAME'] !== '') {
+        $host = trim($_SERVER['SERVER_NAME']);
+    }
+
+    if ($host === '') {
+        return '';
+    }
+
+    $scheme = 'http';
+
+    $httpsIndicator = isset($_SERVER['HTTPS']) ? (string)$_SERVER['HTTPS'] : '';
+    if ($httpsIndicator !== '' && strtolower($httpsIndicator) !== 'off') {
+        $scheme = 'https';
+    } elseif (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && is_string($_SERVER['HTTP_X_FORWARDED_PROTO'])) {
+        $forwardedProto = strtolower(trim($_SERVER['HTTP_X_FORWARDED_PROTO']));
+        if ($forwardedProto === 'https') {
+            $scheme = 'https';
+        }
+    } elseif (isset($_SERVER['SERVER_PORT']) && (int)$_SERVER['SERVER_PORT'] === 443) {
+        $scheme = 'https';
+    }
+
+    return $scheme . '://' . $host;
+}
+
+function applicationUrl(string $view = '', string $categoryId = '', string $examId = '', array $query = []): string
+{
+    $path = buildPath($view, $categoryId, $examId, $query);
+    $origin = applicationOrigin();
+
+    if ($origin === '') {
+        return $path;
+    }
+
+    if ($path === '') {
+        return rtrim($origin, '/') . '/';
+    }
+
+    if ($path[0] !== '/') {
+        $path = '/' . $path;
+    }
+
+    return rtrim($origin, '/') . $path;
+}
+
+/**
+ * @param array<string, array{id: string, name: string, exam_ids: string[]}> $categories
+ * @param array<string, mixed> $exams
+ * @return string[]
+ */
+function buildSitemapUrls(array $categories, array $exams): array
+{
+    $urls = [];
+
+    $append = static function (string $url) use (&$urls): void {
+        if ($url === '' || in_array($url, $urls, true)) {
+            return;
+        }
+
+        $urls[] = $url;
+    };
+
+    $append(applicationUrl());
+    $append(applicationUrl('landing'));
+    $append(applicationUrl('manual'));
+    $append(applicationUrl('history'));
+
+    foreach ($categories as $category) {
+        if (!is_array($category) || !isset($category['id'])) {
+            continue;
+        }
+
+        $categoryId = (string)$category['id'];
+        $append(applicationUrl('home', $categoryId));
+    }
+
+    foreach ($exams as $examId => $exam) {
+        if (!is_array($exam)) {
+            continue;
+        }
+
+        $categoryMeta = isset($exam['meta']['category']) && is_array($exam['meta']['category'])
+            ? $exam['meta']['category']
+            : [];
+        $categoryId = (string)($categoryMeta['id'] ?? '');
+        $append(applicationUrl('home', $categoryId, (string)$examId));
+    }
+
+    return $urls;
+}
+
+/**
+ * @param array<string, array{id: string, name: string, exam_ids: string[]}> $categories
+ * @param array<string, mixed> $exams
+ */
+function buildSitemapXml(array $categories, array $exams): string
+{
+    $urls = buildSitemapUrls($categories, $exams);
+
+    $lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    ];
+
+    foreach ($urls as $url) {
+        $lines[] = '  <url>';
+        $lines[] = '    <loc>' . htmlspecialchars($url, ENT_XML1 | ENT_COMPAT, 'UTF-8') . '</loc>';
+        $lines[] = '  </url>';
+    }
+
+    $lines[] = '</urlset>';
+
+    return implode("\n", $lines);
+}
+
 function assetUrl(string $path): string
 {
     $normalizedPath = ltrim(str_replace('\\', '/', $path), '/');
@@ -1382,6 +1503,33 @@ $pathParameters = extractPathParameters();
 $pathView = $pathParameters['view'];
 $pathCategoryId = $pathParameters['category_id'];
 $pathExamId = $pathParameters['exam_id'];
+
+$requestedSitemap = false;
+
+$requestPath = '';
+if (isset($_SERVER['REQUEST_URI']) && is_string($_SERVER['REQUEST_URI'])) {
+    $parsedPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    if (is_string($parsedPath)) {
+        $requestPath = $parsedPath;
+    }
+}
+
+if ($requestPath !== '' && preg_match('#/sitemap\.xml$#', $requestPath) === 1) {
+    $requestedSitemap = true;
+}
+
+$viewToken = $pathView !== '' ? $pathView : (isset($_GET['view']) ? (string)$_GET['view'] : '');
+if (in_array($viewToken, ['sitemap', 'sitemap.xml'], true)) {
+    $requestedSitemap = true;
+}
+
+if ($requestedSitemap) {
+    if (!headers_sent()) {
+        header('Content-Type: application/xml; charset=UTF-8');
+    }
+    echo buildSitemapXml($categories, $exams);
+    exit;
+}
 
 $selectedCategoryId = isset($_SESSION['last_selected_category_id'])
     ? (string)$_SESSION['last_selected_category_id']
