@@ -198,6 +198,109 @@ test('buildPath omits index.php when using rewritten URLs', function (): void {
 });
 
 
+test('applicationUrl builds absolute URLs when host information is available', function (): void {
+    $previousScriptName = $_SERVER['SCRIPT_NAME'] ?? null;
+    $previousRequestUri = $_SERVER['REQUEST_URI'] ?? null;
+    $previousHost = $_SERVER['HTTP_HOST'] ?? null;
+    $previousHttps = $_SERVER['HTTPS'] ?? null;
+
+    try {
+        $_SERVER['SCRIPT_NAME'] = '/index.php';
+        unset($_SERVER['REQUEST_URI']);
+        $_SERVER['HTTP_HOST'] = 'example.com';
+        $_SERVER['HTTPS'] = 'on';
+
+        assertSameValue('https://example.com/index.php/landing', applicationUrl('landing'));
+    } finally {
+        if ($previousScriptName === null) {
+            unset($_SERVER['SCRIPT_NAME']);
+        } else {
+            $_SERVER['SCRIPT_NAME'] = $previousScriptName;
+        }
+
+        if ($previousRequestUri === null) {
+            unset($_SERVER['REQUEST_URI']);
+        } else {
+            $_SERVER['REQUEST_URI'] = $previousRequestUri;
+        }
+
+        if ($previousHost === null) {
+            unset($_SERVER['HTTP_HOST']);
+        } else {
+            $_SERVER['HTTP_HOST'] = $previousHost;
+        }
+
+        if ($previousHttps === null) {
+            unset($_SERVER['HTTPS']);
+        } else {
+            $_SERVER['HTTPS'] = $previousHttps;
+        }
+    }
+});
+
+
+test('buildSitemapXml includes landing, manual, history, category, and exam URLs', function (): void {
+    $previousScriptName = $_SERVER['SCRIPT_NAME'] ?? null;
+    $previousRequestUri = $_SERVER['REQUEST_URI'] ?? null;
+    $previousHost = $_SERVER['HTTP_HOST'] ?? null;
+    $previousHttps = $_SERVER['HTTPS'] ?? null;
+
+    try {
+        $_SERVER['SCRIPT_NAME'] = '/practice/index.php';
+        unset($_SERVER['REQUEST_URI']);
+        $_SERVER['HTTP_HOST'] = 'example.com';
+        unset($_SERVER['HTTPS']);
+
+        $categories = [
+            'cloud' => ['id' => 'cloud', 'name' => 'Cloud', 'exam_ids' => ['aws']],
+        ];
+        $exams = [
+            'aws' => [
+                'meta' => [
+                    'id' => 'aws',
+                    'title' => 'AWS Cloud Practitioner',
+                    'category' => ['id' => 'cloud', 'name' => 'Cloud'],
+                ],
+            ],
+        ];
+
+        $xml = buildSitemapXml($categories, $exams);
+
+        assertTrue(strpos($xml, '<?xml version="1.0" encoding="UTF-8"?>') === 0);
+        assertTrue(strpos($xml, '<loc>http://example.com/practice/index.php</loc>') !== false);
+        assertTrue(strpos($xml, '<loc>http://example.com/practice/index.php/landing</loc>') !== false);
+        assertTrue(strpos($xml, '<loc>http://example.com/practice/index.php/manual</loc>') !== false);
+        assertTrue(strpos($xml, '<loc>http://example.com/practice/index.php/history</loc>') !== false);
+        assertTrue(strpos($xml, '<loc>http://example.com/practice/index.php/home/cloud</loc>') !== false);
+        assertTrue(strpos($xml, '<loc>http://example.com/practice/index.php/home/cloud/aws</loc>') !== false);
+    } finally {
+        if ($previousScriptName === null) {
+            unset($_SERVER['SCRIPT_NAME']);
+        } else {
+            $_SERVER['SCRIPT_NAME'] = $previousScriptName;
+        }
+
+        if ($previousRequestUri === null) {
+            unset($_SERVER['REQUEST_URI']);
+        } else {
+            $_SERVER['REQUEST_URI'] = $previousRequestUri;
+        }
+
+        if ($previousHost === null) {
+            unset($_SERVER['HTTP_HOST']);
+        } else {
+            $_SERVER['HTTP_HOST'] = $previousHost;
+        }
+
+        if ($previousHttps === null) {
+            unset($_SERVER['HTTPS']);
+        } else {
+            $_SERVER['HTTPS'] = $previousHttps;
+        }
+    }
+});
+
+
 test('assetUrl resolves resources within the script directory', function (): void {
     $previousScriptName = $_SERVER['SCRIPT_NAME'] ?? null;
 
