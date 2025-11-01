@@ -29,6 +29,84 @@ const DIFFICULTY_RANDOM = 'random';
 const DIFFICULTY_RANDOM_LABEL = 'ランダム';
 
 /**
+ * @return array{view: string, category_id: string, exam_id: string}
+ */
+function extractPathParameters(): array
+{
+    $path = '';
+
+    if (isset($_SERVER['PATH_INFO']) && is_string($_SERVER['PATH_INFO'])) {
+        $path = (string)$_SERVER['PATH_INFO'];
+    }
+
+    if ($path === '' && isset($_SERVER['REQUEST_URI']) && is_string($_SERVER['REQUEST_URI'])) {
+        $requestPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        if (is_string($requestPath)) {
+            $path = $requestPath;
+            $scriptName = isset($_SERVER['SCRIPT_NAME']) && is_string($_SERVER['SCRIPT_NAME'])
+                ? (string)$_SERVER['SCRIPT_NAME']
+                : '';
+
+            if ($scriptName !== '' && strncmp($path, $scriptName, strlen($scriptName)) === 0) {
+                $path = substr($path, strlen($scriptName));
+            } else {
+                $scriptDir = $scriptName !== '' ? rtrim(str_replace('\\', '/', dirname($scriptName)), '/') : '';
+                if ($scriptDir !== '' && strncmp($path, $scriptDir, strlen($scriptDir)) === 0) {
+                    $path = substr($path, strlen($scriptDir));
+                }
+            }
+        }
+    }
+
+    $path = trim((string)$path, '/');
+    if ($path === '') {
+        return ['view' => '', 'category_id' => '', 'exam_id' => ''];
+    }
+
+    $segments = array_map(static function (string $segment): string {
+        return rawurldecode($segment);
+    }, explode('/', $path));
+
+    return [
+        'view' => $segments[0] ?? '',
+        'category_id' => $segments[1] ?? '',
+        'exam_id' => $segments[2] ?? '',
+    ];
+}
+
+/**
+ * @param array<string, scalar|array|object|null> $query
+ */
+function buildPath(string $view = '', string $categoryId = '', string $examId = '', array $query = []): string
+{
+    $segments = [];
+
+    if ($view !== '') {
+        $segments[] = rawurlencode($view);
+        if ($categoryId !== '') {
+            $segments[] = rawurlencode($categoryId);
+            if ($examId !== '') {
+                $segments[] = rawurlencode($examId);
+            }
+        }
+    }
+
+    $path = 'index.php';
+    if (!empty($segments)) {
+        $path .= '/' . implode('/', $segments);
+    }
+
+    if (!empty($query)) {
+        $queryString = http_build_query($query);
+        if ($queryString !== '') {
+            $path .= '?' . $queryString;
+        }
+    }
+
+    return $path;
+}
+
+/**
  * @return array{
  *     exams: array<string, array{
  *         meta: array{
@@ -1209,6 +1287,11 @@ $currentQuiz = $_SESSION['current_quiz'] ?? null;
 $results = null;
 $resultsFromHistory = false;
 
+$pathParameters = extractPathParameters();
+$pathView = $pathParameters['view'];
+$pathCategoryId = $pathParameters['category_id'];
+$pathExamId = $pathParameters['exam_id'];
+
 $selectedCategoryId = isset($_SESSION['last_selected_category_id'])
     ? (string)$_SESSION['last_selected_category_id']
     : '';
@@ -1223,7 +1306,9 @@ $selectedExamId = isset($_SESSION['last_selected_exam_id'])
     $selectedCategoryId
 );
 
-$requestedView = isset($_GET['view']) ? (string)$_GET['view'] : '';
+$requestedView = $pathView !== ''
+    ? $pathView
+    : (isset($_GET['view']) ? (string)$_GET['view'] : '');
 $requestMethod = isset($_SERVER['REQUEST_METHOD']) ? strtoupper((string)$_SERVER['REQUEST_METHOD']) : 'GET';
 $isPostRequest = $requestMethod === 'POST';
 
@@ -1515,12 +1600,16 @@ if ($isPostRequest) {
         $selectedDifficulty = sanitizeDifficultySelection($_GET['difficulty']);
     }
 
-    $requestedCategoryId = isset($_GET['category_id']) ? (string)$_GET['category_id'] : '';
+    $requestedCategoryId = $pathCategoryId !== ''
+        ? $pathCategoryId
+        : (isset($_GET['category_id']) ? (string)$_GET['category_id'] : '');
     if ($requestedCategoryId !== '' && isset($categories[$requestedCategoryId])) {
         $selectedCategoryId = $requestedCategoryId;
     }
 
-    $requestedExamId = isset($_GET['exam_id']) ? (string)$_GET['exam_id'] : '';
+    $requestedExamId = $pathExamId !== ''
+        ? $pathExamId
+        : (isset($_GET['exam_id']) ? (string)$_GET['exam_id'] : '');
     if ($requestedExamId !== '' && isset($exams[$requestedExamId])) {
         $selectedExamId = $requestedExamId;
         $selectedCategoryId = $exams[$requestedExamId]['meta']['category']['id'] ?? $selectedCategoryId;
@@ -1621,6 +1710,46 @@ foreach ($exams as $examId => $examData) {
     ];
 }
 
+$categoryNameForTitle = '';
+$examTitleForTitle = '';
+
+if ($selectedExam) {
+    $categoryNameForTitle = (string)($selectedExam['meta']['category']['name'] ?? $categoryNameForTitle);
+    $examTitleForTitle = (string)($selectedExam['meta']['title'] ?? $examTitleForTitle);
+}
+
+if ($categoryNameForTitle === '' && $selectedCategory) {
+    $categoryNameForTitle = (string)($selectedCategory['name'] ?? $categoryNameForTitle);
+}
+
+if ($examTitleForTitle === '' && $results && isset($results['exam']) && is_array($results['exam'])) {
+    $resultsExamMeta = $results['exam'];
+    if (isset($resultsExamMeta['category']) && is_array($resultsExamMeta['category']) && $categoryNameForTitle === '') {
+        $categoryNameForTitle = (string)($resultsExamMeta['category']['name'] ?? $categoryNameForTitle);
+    }
+    $examTitleForTitle = (string)($resultsExamMeta['title'] ?? $examTitleForTitle);
+}
+
+if ($examTitleForTitle === '' && $currentQuiz && is_array($currentQuiz)) {
+    $quizMeta = isset($currentQuiz['meta']) && is_array($currentQuiz['meta']) ? $currentQuiz['meta'] : [];
+    if (isset($quizMeta['category']) && is_array($quizMeta['category']) && $categoryNameForTitle === '') {
+        $categoryNameForTitle = (string)($quizMeta['category']['name'] ?? $categoryNameForTitle);
+    }
+    if ($examTitleForTitle === '') {
+        $examTitleForTitle = (string)($quizMeta['title'] ?? $examTitleForTitle);
+    }
+}
+
+$pageTitleSegments = ['資格試験問題集'];
+if ($categoryNameForTitle !== '') {
+    $pageTitleSegments[] = $categoryNameForTitle;
+}
+if ($examTitleForTitle !== '') {
+    $pageTitleSegments[] = $examTitleForTitle;
+}
+
+$pageTitle = implode(' | ', $pageTitleSegments);
+
 $totalExams = count($exams);
 $totalCategories = count($categories);
 $totalQuestionCount = array_reduce($exams, static function (int $carry, array $exam): int {
@@ -1701,7 +1830,7 @@ if ($currentResultForStorage !== null) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>資格試験問題集</title>
+    <title><?php echo h($pageTitle); ?></title>
     <script>
         document.documentElement.classList.add('js-enabled');
     </script>
@@ -1711,7 +1840,7 @@ if ($currentResultForStorage !== null) {
 <div class="app"<?php echo $appAttributes; ?>>
     <header>
         <div class="header-top">
-            <h1><a href="index.php?view=landing">資格試験問題集</a></h1>
+            <h1><a href="<?php echo h(buildPath('landing')); ?>">資格試験問題集</a></h1>
             <button type="button" class="sidebar-toggle" id="sidebarToggle" aria-controls="categorySidebar" aria-expanded="false">
                 <span class="sr-only">カテゴリメニューを開く</span>
                 <span class="hamburger" aria-hidden="true">
@@ -1731,9 +1860,9 @@ if ($currentResultForStorage !== null) {
                 <button type="button" class="sidebar-close" id="sidebarClose" aria-label="カテゴリメニューを閉じる">&times;</button>
             </div>
             <nav class="sidebar-nav" aria-label="ページ切り替え">
-                <a href="index.php?view=landing" class="sidebar-nav-link<?php echo $isLandingView ? ' active' : ''; ?>">トップ</a>
-                <a href="?view=manual" class="sidebar-nav-link<?php echo $isManualView ? ' active' : ''; ?>">利用マニュアル</a>
-                <a href="?view=history" class="sidebar-nav-link<?php echo $isHistoryView ? ' active' : ''; ?>">履歴</a>
+                <a href="<?php echo h(buildPath('landing')); ?>" class="sidebar-nav-link<?php echo $isLandingView ? ' active' : ''; ?>">トップ</a>
+                <a href="<?php echo h(buildPath('manual')); ?>" class="sidebar-nav-link<?php echo $isManualView ? ' active' : ''; ?>">利用マニュアル</a>
+                <a href="<?php echo h(buildPath('history')); ?>" class="sidebar-nav-link<?php echo $isHistoryView ? ' active' : ''; ?>">履歴</a>
             </nav>
             <h3 class="sidebar-section-title">試験カテゴリ</h3>
             <?php if (!empty($categories)): ?>
@@ -1763,11 +1892,9 @@ if ($currentResultForStorage !== null) {
                                         <?php $examQuestionCount = questionCountForExam($exam); ?>
                                         <?php $examQuestionCountLabel = number_format($examQuestionCount); ?>
                                         <?php $isActiveExam = $examId === $selectedExamId; ?>
-                                        <form method="get" class="exam-select-form">
-                                            <input type="hidden" name="view" value="home">
+                                        <form method="get" action="<?php echo h(buildPath('home', $categoryId, $examId)); ?>" class="exam-select-form">
                                             <input type="hidden" name="difficulty" value="<?php echo h($selectedDifficulty); ?>">
-                                            <input type="hidden" name="category_id" value="<?php echo h($categoryId); ?>">
-                                            <button type="submit" name="exam_id" value="<?php echo h($examId); ?>" class="exam-button<?php echo $isActiveExam ? ' active' : ''; ?>">
+                                            <button type="submit" class="exam-button<?php echo $isActiveExam ? ' active' : ''; ?>">
                                                 <span class="exam-title"><?php echo h($exam['meta']['title']); ?></span>
                                                 <span class="exam-question-count" aria-hidden="true"><?php echo $examQuestionCountLabel; ?>問</span>
                                                 <span class="sr-only">（問題数: <?php echo $examQuestionCountLabel; ?>問）</span>
@@ -1799,18 +1926,17 @@ if ($currentResultForStorage !== null) {
                         <p class="landing-lead">まだ問題データが登録されていません。data ディレクトリにJSONファイルを追加すると、ここから試験を選んで学習を始められます。</p>
                     <?php endif; ?>
                     <div class="landing-actions">
-                        <a class="landing-button primary" href="?view=manual">利用マニュアルを読む</a>
+                        <a class="landing-button primary" href="<?php echo h(buildPath('manual')); ?>">利用マニュアルを読む</a>
                         <?php if ($totalExams === 0): ?>
                             <span class="landing-button disabled" role="text" aria-disabled="true">試験データを追加してください</span>
                         <?php endif; ?>
-                        <a class="landing-button secondary" href="?view=history">履歴を見る</a>
+                        <a class="landing-button secondary" href="<?php echo h(buildPath('history')); ?>">履歴を見る</a>
                     </div>
                 </section>
                 <section class="landing-search" id="landingSearch">
                     <h3>試験を検索</h3>
                     <p class="landing-search-text">試験名やカテゴリ、説明のキーワードで検索できます。複数のキーワードはスペースで区切って入力してください。</p>
-                    <form class="landing-search-form" method="get" action="index.php" role="search" aria-label="試験検索">
-                        <input type="hidden" name="view" value="landing">
+                    <form class="landing-search-form" method="get" action="<?php echo h(buildPath('landing')); ?>" role="search" aria-label="試験検索">
                         <label class="landing-search-label" for="landingSearchInput">キーワード</label>
                         <div class="landing-search-controls">
                             <input type="search" id="landingSearchInput" name="search" placeholder="例: ネットワーク AWS" value="<?php echo h($searchQuery); ?>">
@@ -1825,7 +1951,7 @@ if ($currentResultForStorage !== null) {
                             <?php else: ?>
                                 <p class="landing-search-summary-text">「<?php echo h($searchQuery); ?>」に一致する試験は見つかりませんでした。</p>
                             <?php endif; ?>
-                            <a class="link-button" href="index.php?view=landing">検索条件をリセット</a>
+                            <a class="link-button" href="<?php echo h(buildPath('landing')); ?>">検索条件をリセット</a>
                         </div>
                     <?php endif; ?>
                     <?php if (!empty($landingSearchResults)): ?>
@@ -1868,11 +1994,9 @@ if ($currentResultForStorage !== null) {
                                     <?php if ($searchExamDescription !== ''): ?>
                                         <p class="search-result-description"><?php echo nl2brSafe($searchExamDescription); ?></p>
                                     <?php endif; ?>
-                                    <form method="get" class="search-result-form">
-                                        <input type="hidden" name="view" value="home">
-                                        <input type="hidden" name="category_id" value="<?php echo h($searchExamCategoryId); ?>">
+                                    <form method="get" action="<?php echo h(buildPath('home', $searchExamCategoryId, $searchExamId)); ?>" class="search-result-form">
                                         <input type="hidden" name="difficulty" value="<?php echo h($selectedDifficulty); ?>">
-                                        <button type="submit" name="exam_id" value="<?php echo h($searchExamId); ?>">この試験を選択</button>
+                                        <button type="submit">この試験を選択</button>
                                     </form>
                                 </li>
                             <?php endforeach; ?>
@@ -2271,8 +2395,8 @@ if ($currentResultForStorage !== null) {
                     </header>
                     <p>マニュアルを参考に、実際に演習を進めてみましょう。操作に迷ったときはいつでもこのページに戻って確認できます。</p>
                     <div class="manual-cta">
-                        <a class="landing-button primary" href="?view=home">試験を選んで演習する</a>
-                        <a class="landing-button secondary" href="?view=history">履歴を確認する</a>
+                        <a class="landing-button primary" href="<?php echo h(buildPath('home')); ?>">試験を選んで演習する</a>
+                        <a class="landing-button secondary" href="<?php echo h(buildPath('history')); ?>">履歴を確認する</a>
                     </div>
                 </section>
             <?php elseif ($view === 'home'): ?>
@@ -2616,7 +2740,7 @@ if ($currentResultForStorage !== null) {
                 <input type="hidden" name="difficulty" value="<?php echo h($resultsDifficulty); ?>">
                 <button type="submit" class="secondary">別の試験を選ぶ</button>
             </form>
-            <a class="link-button" href="?view=history">履歴ページを開く</a>
+            <a class="link-button" href="<?php echo h(buildPath('history')); ?>">履歴ページを開く</a>
         </div>
     <?php endif; ?>
 
