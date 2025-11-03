@@ -1559,6 +1559,8 @@ if ($requestedView === 'landing' && !$isPostRequest) {
     $view = 'landing';
 } elseif ($requestedView === 'manual' && !$isPostRequest) {
     $view = 'manual';
+} elseif ($requestedView === 'notice' && !$isPostRequest) {
+    $view = 'notice';
 } elseif ($currentQuiz) {
     $view = 'quiz';
 } else {
@@ -1569,6 +1571,8 @@ if ($requestedView === 'landing' && !$isPostRequest) {
         $view = 'home';
     } elseif ($requestedView === 'manual') {
         $view = 'manual';
+    } elseif ($requestedView === 'notice') {
+        $view = 'notice';
     }
 }
 
@@ -2052,6 +2056,7 @@ if ($view === 'results' && $results && !$resultsFromHistory) {
 $isHistoryView = ($view === 'history');
 $isLandingView = ($view === 'landing');
 $isManualView = ($view === 'manual');
+$isNoticeView = ($view === 'notice');
 $isExamView = in_array($view, ['home', 'quiz', 'results'], true);
 $appAttributes = ' data-view="' . h($view) . '"';
 if ($currentResultForStorage !== null) {
@@ -2099,6 +2104,7 @@ if ($currentResultForStorage !== null) {
             <nav class="sidebar-nav" aria-label="ページ切り替え">
                 <a href="<?php echo h(buildPath('landing')); ?>" class="sidebar-nav-link<?php echo $isLandingView ? ' active' : ''; ?>">トップ</a>
                 <a href="<?php echo h(buildPath('manual')); ?>" class="sidebar-nav-link<?php echo $isManualView ? ' active' : ''; ?>">利用マニュアル</a>
+                <a href="<?php echo h(buildPath('notice')); ?>" class="sidebar-nav-link<?php echo $isNoticeView ? ' active' : ''; ?>">ご利用上の注意</a>
                 <a href="<?php echo h(buildPath('history')); ?>" class="sidebar-nav-link<?php echo $isHistoryView ? ' active' : ''; ?>">履歴</a>
             </nav>
             <h3 class="sidebar-section-title">試験カテゴリ</h3>
@@ -2167,6 +2173,7 @@ if ($currentResultForStorage !== null) {
                         <?php if ($totalExams === 0): ?>
                             <span class="landing-button disabled" role="text" aria-disabled="true">試験データを追加してください</span>
                         <?php endif; ?>
+                        <a class="landing-button secondary" href="<?php echo h(buildPath('notice')); ?>">サイトについて</a>
                         <a class="landing-button secondary" href="<?php echo h(buildPath('history')); ?>">履歴を見る</a>
                     </div>
                 </section>
@@ -2267,6 +2274,55 @@ if ($currentResultForStorage !== null) {
                         <li><strong>結果を振り返る:</strong> 採点結果は履歴に保存され、間違えた問題を後から復習できます。</li>
                     </ol>
                 </section>
+            <?php elseif ($view === 'notice'): ?>
+                <article class="notice-page" aria-labelledby="noticeTitle">
+                    <header class="notice-hero">
+                        <h2 id="noticeTitle">ご利用にあたっての大切なお知らせ</h2>
+                        <p>このサイトの問題や解説は生成AIを活用して作成されています。内容の正確性や最新性を保証するものではないため、重要な判断を行う際は必ず公式情報で確認してください。</p>
+                    </header>
+
+                    <section class="notice-section" id="notice-ai" aria-labelledby="noticeAiTitle">
+                        <div class="notice-section-head">
+                            <h3 id="noticeAiTitle">生成AIが作成したコンテンツについて</h3>
+                            <p class="notice-section-lead">便利に使っていただけるよう努めていますが、誤りや古い情報が含まれる可能性があります。</p>
+                        </div>
+                        <ul class="notice-list">
+                            <li>受験要項・公式シラバス・ベンダー資料などの一次情報と照らし合わせて理解を深めてください。</li>
+                            <li>疑問点や矛盾を感じた場合は、複数の信頼できる情報源を参照して補完してください。</li>
+                            <li>本サイトの情報を利用した結果については、ご自身の判断と責任でご対応ください。</li>
+                        </ul>
+                    </section>
+
+                    <section class="notice-section" id="notice-ads" aria-labelledby="noticeAdsTitle">
+                        <div class="notice-section-head">
+                            <h3 id="noticeAdsTitle">広告掲載について</h3>
+                            <p class="notice-section-lead">運営コストをまかなうために広告を掲載しています。広告表示によって学習コンテンツの品質が変動することはありません。</p>
+                        </div>
+                        <p>広告は外部の広告配信サービスを通じて表示されます。広告の内容やリンク先については各広告主の責任で提供されるものであり、本サイトが推奨・保証するものではありません。</p>
+                        <p class="notice-muted">広告が表示されることでブラウザの表示が重くなる場合があります。動作に支障がある場合は広告ブロッカーやシークレットウィンドウなどのご利用をご検討ください。</p>
+                    </section>
+
+                    <section class="notice-section" id="notice-safety" aria-labelledby="noticeSafetyTitle">
+                        <div class="notice-section-head">
+                            <h3 id="noticeSafetyTitle">安心してご利用いただくために</h3>
+                            <p class="notice-section-lead">学習を続けやすい環境づくりのため、次のポイントをご確認ください。</p>
+                        </div>
+                        <div class="notice-callout" role="note">
+                            <h4>サポートと免責</h4>
+                            <p>個別のご質問やトラブル対応については即時のご対応ができない場合があります。公開内容は予告なく変更・削除することがありますので、あらかじめご了承ください。</p>
+                        </div>
+                        <ul class="notice-list">
+                            <li>アカウント登録は不要ですが、端末やブラウザに保存された学習履歴のバックアップはご自身で行ってください。</li>
+                            <li>広告や外部リンクを利用する際は、遷移先のサイトで入力する情報や契約内容を必ずご確認ください。</li>
+                            <li>長時間の学習は適度に休憩を取り、端末やブラウザのセキュリティ更新をこまめに実施してください。</li>
+                        </ul>
+                        <div class="notice-actions">
+                            <a class="landing-button secondary" href="<?php echo h(buildPath('landing')); ?>">トップに戻る</a>
+                            <a class="landing-button primary" href="<?php echo h(buildPath('manual')); ?>">利用マニュアルを見る</a>
+                        </div>
+                    </section>
+                </article>
+
             <?php elseif ($view === 'manual'): ?>
                 <?php
                 $manualSections = [
