@@ -1983,7 +1983,49 @@ if ($examTitleForTitle === '' && $currentQuiz && is_array($currentQuiz)) {
     }
 }
 
-$metaDescription = 'IT資格・クラウド・AIに特化した無料演習問題サイト。登録不要・ログイン不要で2,500問以上をカテゴリ・難易度・出題数で自在にカスタマイズ可能。通勤・休憩・スキマ時間に学び、現役社会人が合格力を効率的に高めるための資格試験問題集サイトです。';
+$examQuestionCountForDescription = 0;
+if ($selectedExam) {
+    $examQuestionCountForDescription = questionCountForExam($selectedExam);
+}
+
+if ($examQuestionCountForDescription === 0 && $currentQuiz && is_array($currentQuiz)) {
+    $currentQuizExamId = isset($currentQuiz['exam_id']) ? (string)$currentQuiz['exam_id'] : '';
+    if ($currentQuizExamId !== '' && isset($exams[$currentQuizExamId]) && is_array($exams[$currentQuizExamId])) {
+        $examQuestionCountForDescription = questionCountForExam($exams[$currentQuizExamId]);
+    } else {
+        $examQuestionCountForDescription = (int)($currentQuiz['meta']['question_count'] ?? 0);
+    }
+}
+
+if ($examQuestionCountForDescription === 0 && $results && isset($results['exam']) && is_array($results['exam'])) {
+    $resultsExamId = isset($results['exam']['id']) ? (string)$results['exam']['id'] : '';
+    if ($resultsExamId !== '' && isset($exams[$resultsExamId]) && is_array($exams[$resultsExamId])) {
+        $examQuestionCountForDescription = questionCountForExam($exams[$resultsExamId]);
+    } else {
+        $examQuestionCountForDescription = (int)($results['exam']['question_count'] ?? 0);
+        if ($examQuestionCountForDescription === 0) {
+            $examQuestionCountForDescription = (int)($results['total'] ?? 0);
+        }
+    }
+}
+
+$examQuestionCountForDescription = max(0, $examQuestionCountForDescription);
+
+$defaultMetaDescription = 'IT資格・クラウド・AIに特化した無料演習問題サイト。登録不要・ログイン不要で2,500問以上をカテゴリ・難易度・出題数で自在にカスタマイズ可能。通勤・休憩・スキマ時間に学び、現役社会人が合格力を効率的に高めるための資格試験問題集サイトです。';
+$metaDescription = $defaultMetaDescription;
+
+if (
+    in_array($view, ['home', 'quiz', 'results'], true)
+    && $examTitleForTitle !== ''
+    && $examQuestionCountForDescription > 0
+) {
+    $metaDescription = sprintf(
+        'IT・クラウド・AI対応 模擬試験サイト｜登録問題数2,500問以上｜【%s】 模擬問題【%s】問＋解答・解説付きで本番形式にチャレンジ。初心者から上級者まで対応し、効率的に合格力を養成します。',
+        $examTitleForTitle,
+        number_format($examQuestionCountForDescription)
+    );
+}
+
 $baseSeoTitle = '無料で挑戦！資格試験演習問題集 – IT・クラウド・AI対応';
 $pageTitle = $baseSeoTitle;
 if ($examTitleForTitle !== '') {
