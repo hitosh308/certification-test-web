@@ -2121,7 +2121,9 @@ if ($currentResultForStorage !== null) {
     <link rel="stylesheet" href="<?php echo h(assetUrl('assets/style.css')); ?>">
 </head>
 <body>
-<div class="app"<?php echo $appAttributes; ?>>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5602068524621000"
+        crossorigin="anonymous"></script>
+    <div class="app"<?php echo $appAttributes; ?>>
     <header>
         <div class="header-top">
             <h1><a href="<?php echo h(buildPath('landing')); ?>">資格試験問題集</a></h1>
