@@ -2041,7 +2041,7 @@ if ($examQuestionCountForDescription === 0 && $results && isset($results['exam']
 
 $examQuestionCountForDescription = max(0, $examQuestionCountForDescription);
 
-$defaultMetaDescription = 'IT資格・クラウド・AIに特化した無料演習問題サイト。登録不要・ログイン不要で2,500問以上をカテゴリ・難易度・出題数で自在にカスタマイズ可能。通勤・休憩・スキマ時間に学び、現役社会人が合格力を効率的に高めるための資格試験問題集サイトです。';
+$defaultMetaDescription = 'IT資格・クラウド・AIに特化した無料演習問題サイト。登録不要・ログイン不要で2,500問以上をカテゴリ・難易度・出題数で自在にカスタマイズ可能。通勤・休憩・スキマ時間に学び、現役社会人が合格力を効率的に高めるためのIT資格試験問題集サイトです。';
 $metaDescription = $defaultMetaDescription;
 
 if (
@@ -2056,7 +2056,7 @@ if (
     );
 }
 
-$baseSeoTitle = '無料で挑戦！資格試験演習問題集 – IT・クラウド・AI対応';
+$baseSeoTitle = '無料で挑戦！IT資格試験演習問題集 – IT・クラウド・AI対応';
 $pageTitle = $baseSeoTitle;
 if ($examTitleForTitle !== '') {
     $pageTitle .= ' – ' . $examTitleForTitle;
@@ -2156,7 +2156,7 @@ if ($currentResultForStorage !== null) {
     <div class="app"<?php echo $appAttributes; ?>>
     <header>
         <div class="header-top">
-            <h1><a href="<?php echo h(buildPath('landing')); ?>">資格試験問題集</a></h1>
+            <h1><a href="<?php echo h(buildPath('landing')); ?>">IT資格試験問題集</a></h1>
             <button type="button" class="sidebar-toggle" id="sidebarToggle" aria-controls="categorySidebar" aria-expanded="false">
                 <span class="sr-only">カテゴリメニューを開く</span>
                 <span class="hamburger" aria-hidden="true">
@@ -2236,7 +2236,7 @@ if ($currentResultForStorage !== null) {
 
             <?php if ($view === 'landing'): ?>
                 <section class="landing-hero">
-                    <h2>資格試験の学習をもっとスムーズに</h2>
+                    <h2>IT資格試験の学習をもっとスムーズに</h2>
                     <?php if ($totalExams > 0): ?>
                         <p class="landing-lead">カテゴリと難易度を切り替えながら、登録された問題データを使って効率よく演習できます。</p>
                     <?php else: ?>
@@ -2332,7 +2332,7 @@ if ($currentResultForStorage !== null) {
                     <article class="landing-card">
                         <h3>カテゴリ</h3>
                         <p class="landing-metric"><?php echo number_format($totalCategories); ?> 分類</p>
-                        <p class="landing-text">興味のある分野を絞り込み、目的に合わせた資格の問題を探せます。</p>
+                        <p class="landing-text">興味のある分野を絞り込み、目的に合わせたIT資格の問題を探せます。</p>
                     </article>
                     <article class="landing-card">
                         <h3>登録問題数</h3>
@@ -2451,7 +2451,7 @@ if ($currentResultForStorage !== null) {
                 ?>
                 <section class="manual-hero" aria-labelledby="manualTitle">
                     <h2 id="manualTitle">ご利用マニュアル</h2>
-                    <p>このページでは、「資格試験問題集」アプリの使い方を、初めての方にも安心してご利用いただけるようにまとめています。カテゴリから試験を探し、演習を行い、結果を振り返るまでの流れを丁寧にご案内します。</p>
+                    <p>このページでは、「IT資格試験問題集」アプリの使い方を、初めての方にも安心してご利用いただけるようにまとめています。カテゴリから試験を探し、演習を行い、結果を振り返るまでの流れを丁寧にご案内します。</p>
                     <div class="manual-hero-meta">
                         <span class="manual-hero-badge">✨ 初めての方向け</span>
                         <span class="manual-hero-badge is-accent">💡 実践的なヒント付き</span>
@@ -2770,7 +2770,7 @@ if ($currentResultForStorage !== null) {
         <?php if ($totalExams === 0): ?>
             <div class="form-card">
                 <h2>問題データが見つかりません</h2>
-                <p>data ディレクトリに資格試験ごとのJSONファイルを配置してください。</p>
+                <p>data ディレクトリにIT資格試験ごとのJSONファイルを配置してください。</p>
                 <p>フォーマット例や詳細はREADMEをご覧ください。</p>
             </div>
         <?php else: ?>
