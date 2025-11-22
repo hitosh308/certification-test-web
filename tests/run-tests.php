@@ -227,6 +227,60 @@ test('buildPath omits index.php when using rewritten URLs', function (): void {
 });
 
 
+test('buildSitemapUrls lists static pages and exam entries', function (): void {
+    $previousScriptName = $_SERVER['SCRIPT_NAME'] ?? null;
+    $previousRequestUri = $_SERVER['REQUEST_URI'] ?? null;
+    $previousHttpHost = $_SERVER['HTTP_HOST'] ?? null;
+
+    try {
+        $_SERVER['SCRIPT_NAME'] = '/index.php';
+        $_SERVER['HTTP_HOST'] = 'example.com';
+        unset($_SERVER['REQUEST_URI']);
+
+        $categories = [
+            'cloud' => ['id' => 'cloud', 'name' => 'Cloud', 'exam_ids' => ['aws-clf']],
+        ];
+
+        $exams = [
+            'aws-clf' => [
+                'meta' => [
+                    'category' => ['id' => 'cloud', 'name' => 'Cloud'],
+                ],
+            ],
+        ];
+
+        $urls = buildSitemapUrls($categories, $exams);
+
+        assertTrue(in_array('http://example.com/index.php', $urls, true));
+        assertTrue(in_array('http://example.com/index.php/landing', $urls, true));
+        assertTrue(in_array('http://example.com/index.php/home', $urls, true));
+        assertTrue(in_array('http://example.com/index.php/manual', $urls, true));
+        assertTrue(in_array('http://example.com/index.php/notice', $urls, true));
+        assertTrue(in_array('http://example.com/index.php/history', $urls, true));
+        assertTrue(in_array('http://example.com/index.php/home/cloud', $urls, true));
+        assertTrue(in_array('http://example.com/index.php/home/cloud/aws-clf', $urls, true));
+    } finally {
+        if ($previousScriptName === null) {
+            unset($_SERVER['SCRIPT_NAME']);
+        } else {
+            $_SERVER['SCRIPT_NAME'] = $previousScriptName;
+        }
+
+        if ($previousRequestUri === null) {
+            unset($_SERVER['REQUEST_URI']);
+        } else {
+            $_SERVER['REQUEST_URI'] = $previousRequestUri;
+        }
+
+        if ($previousHttpHost === null) {
+            unset($_SERVER['HTTP_HOST']);
+        } else {
+            $_SERVER['HTTP_HOST'] = $previousHttpHost;
+        }
+    }
+});
+
+
 test('applicationUrl builds absolute URLs when host information is available', function (): void {
     $previousScriptName = $_SERVER['SCRIPT_NAME'] ?? null;
     $previousRequestUri = $_SERVER['REQUEST_URI'] ?? null;
