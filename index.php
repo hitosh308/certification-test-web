@@ -2800,26 +2800,26 @@ if ($currentResultForStorage !== null) {
                                 <table class="exam-meta-table">
                                     <tbody>
                                         <tr>
-                                            <th scope="row">カテゴリ</th>
+                                            <td class="exam-meta-label"><strong>カテゴリ</strong></td>
                                             <td><?php echo h($selectedExam['meta']['category']['name']); ?></td>
                                         </tr>
                                         <?php if ($selectedExam['meta']['version'] !== ''): ?>
                                             <tr>
-                                                <th scope="row">バージョン</th>
+                                                <td class="exam-meta-label"><strong>バージョン</strong></td>
                                                 <td><?php echo h($selectedExam['meta']['version']); ?></td>
                                             </tr>
                                         <?php endif; ?>
                                         <tr>
-                                            <th scope="row">難易度</th>
+                                            <td class="exam-meta-label"><strong>難易度</strong></td>
                                             <td><?php echo h($selectedExam['meta']['difficulty']); ?></td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">受験料</th>
+                                            <td class="exam-meta-label"><strong>受験料</strong></td>
                                             <td><?php echo h($selectedExam['meta']['price']); ?></td>
                                         </tr>
                                         <?php if ($selectedExam['meta']['official_site'] !== ''): ?>
                                             <tr>
-                                                <th scope="row">公式サイト</th>
+                                                <td class="exam-meta-label"><strong>公式サイト</strong></td>
                                                 <td>
                                                     <a href="<?php echo h($selectedExam['meta']['official_site']); ?>" target="_blank" rel="noopener noreferrer"><?php echo h($selectedExam['meta']['official_site']); ?></a>
                                                 </td>
@@ -2827,12 +2827,12 @@ if ($currentResultForStorage !== null) {
                                         <?php endif; ?>
                                         <?php if ($selectedExam['meta']['description'] !== ''): ?>
                                             <tr>
-                                                <th scope="row">概要</th>
+                                                <td class="exam-meta-label"><strong>概要</strong></td>
                                                 <td class="exam-meta-description"><?php echo nl2brSafe($selectedExam['meta']['description']); ?></td>
                                             </tr>
                                         <?php endif; ?>
                                         <tr>
-                                            <th scope="row">問題数</th>
+                                            <td class="exam-meta-label"><strong>問題数</strong></td>
                                             <td><?php echo (int)$selectedExam['meta']['question_count']; ?> 問</td>
                                         </tr>
                                     </tbody>
