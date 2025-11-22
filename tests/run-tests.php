@@ -135,6 +135,35 @@ test('searchExamsByKeywords returns exams matching all keywords case-insensitive
 });
 
 
+test('buildClientResultPayload keeps extended exam metadata', function (): void {
+    $completedAt = date(DATE_ATOM);
+    $results = [
+        'exam' => [
+            'id' => 'sample',
+            'title' => 'Sample Exam',
+            'description' => 'Desc',
+            'version' => 'v1',
+            'difficulty' => 'Advanced',
+            'price' => '12000',
+            'official_site' => 'https://example.com',
+            'question_count' => 1,
+            'category' => ['id' => 'cat', 'name' => 'Category'],
+        ],
+        'questions' => [],
+        'total' => 1,
+        'correct' => 1,
+        'incorrect' => 0,
+        'result_id' => 'r1',
+    ];
+
+    $payload = buildClientResultPayload($results, 'hard', $completedAt);
+
+    assertSameValue('Advanced', $payload['exam']['difficulty']);
+    assertSameValue('12000', $payload['exam']['price']);
+    assertSameValue('https://example.com', $payload['exam']['official_site']);
+});
+
+
 test('buildPath generates links relative to the executing script', function (): void {
     $previousScriptName = $_SERVER['SCRIPT_NAME'] ?? null;
     $previousRequestUri = $_SERVER['REQUEST_URI'] ?? null;
