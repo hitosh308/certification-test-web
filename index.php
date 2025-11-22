@@ -2797,30 +2797,46 @@ if ($currentResultForStorage !== null) {
                         <div class="selected-exam-display">
                             <?php if ($selectedExam): ?>
                                 <span class="selected-exam-name"><?php echo h($selectedExam['meta']['title']); ?></span>
-                                <dl class="exam-meta-list">
-                                    <dt>カテゴリ</dt>
-                                    <dd><?php echo h($selectedExam['meta']['category']['name']); ?></dd>
-                                    <?php if ($selectedExam['meta']['version'] !== ''): ?>
-                                        <dt>バージョン</dt>
-                                        <dd><?php echo h($selectedExam['meta']['version']); ?></dd>
-                                    <?php endif; ?>
-                                    <dt>難易度</dt>
-                                    <dd><?php echo h($selectedExam['meta']['difficulty']); ?></dd>
-                                    <dt>受験料</dt>
-                                    <dd><?php echo h($selectedExam['meta']['price']); ?></dd>
-                                    <?php if ($selectedExam['meta']['official_site'] !== ''): ?>
-                                        <dt>公式サイト</dt>
-                                        <dd>
-                                            <a href="<?php echo h($selectedExam['meta']['official_site']); ?>" target="_blank" rel="noopener noreferrer"><?php echo h($selectedExam['meta']['official_site']); ?></a>
-                                        </dd>
-                                    <?php endif; ?>
-                                    <?php if ($selectedExam['meta']['description'] !== ''): ?>
-                                        <dt>概要</dt>
-                                        <dd class="exam-meta-description"><?php echo nl2brSafe($selectedExam['meta']['description']); ?></dd>
-                                    <?php endif; ?>
-                                    <dt>問題数</dt>
-                                    <dd><?php echo (int)$selectedExam['meta']['question_count']; ?> 問</dd>
-                                </dl>
+                                <table class="exam-meta-table">
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">カテゴリ</th>
+                                            <td><?php echo h($selectedExam['meta']['category']['name']); ?></td>
+                                        </tr>
+                                        <?php if ($selectedExam['meta']['version'] !== ''): ?>
+                                            <tr>
+                                                <th scope="row">バージョン</th>
+                                                <td><?php echo h($selectedExam['meta']['version']); ?></td>
+                                            </tr>
+                                        <?php endif; ?>
+                                        <tr>
+                                            <th scope="row">難易度</th>
+                                            <td><?php echo h($selectedExam['meta']['difficulty']); ?></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">受験料</th>
+                                            <td><?php echo h($selectedExam['meta']['price']); ?></td>
+                                        </tr>
+                                        <?php if ($selectedExam['meta']['official_site'] !== ''): ?>
+                                            <tr>
+                                                <th scope="row">公式サイト</th>
+                                                <td>
+                                                    <a href="<?php echo h($selectedExam['meta']['official_site']); ?>" target="_blank" rel="noopener noreferrer"><?php echo h($selectedExam['meta']['official_site']); ?></a>
+                                                </td>
+                                            </tr>
+                                        <?php endif; ?>
+                                        <?php if ($selectedExam['meta']['description'] !== ''): ?>
+                                            <tr>
+                                                <th scope="row">概要</th>
+                                                <td class="exam-meta-description"><?php echo nl2brSafe($selectedExam['meta']['description']); ?></td>
+                                            </tr>
+                                        <?php endif; ?>
+                                        <tr>
+                                            <th scope="row">問題数</th>
+                                            <td><?php echo (int)$selectedExam['meta']['question_count']; ?> 問</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             <?php else: ?>
                                 <span class="selected-exam-name">試験が選択されていません。</span>
                                 <span class="selected-exam-placeholder">下のボタンから試験を選択してください。</span>
