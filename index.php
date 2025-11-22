@@ -252,7 +252,9 @@ function buildSitemapUrls(array $categories, array $exams): array
 
     $append(applicationUrl());
     $append(applicationUrl('landing'));
+    $append(applicationUrl('home'));
     $append(applicationUrl('manual'));
+    $append(applicationUrl('notice'));
     $append(applicationUrl('history'));
 
     foreach ($categories as $category) {
