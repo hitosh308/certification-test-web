@@ -417,6 +417,24 @@ function loadExamCatalog(): array
             : $examId;
         $description = isset($examMeta['description']) && is_string($examMeta['description']) ? $examMeta['description'] : '';
         $version = isset($examMeta['version']) && is_string($examMeta['version']) ? $examMeta['version'] : '';
+        $examDifficulty = '';
+        if (isset($examMeta['difficulty'])) {
+            $examDifficulty = trim((string)$examMeta['difficulty']);
+        }
+        $examPrice = '';
+        if (array_key_exists('price', $examMeta)) {
+            $examPriceRaw = $examMeta['price'];
+            if (is_numeric($examPriceRaw)) {
+                $examPrice = (string)$examPriceRaw;
+            } elseif (is_string($examPriceRaw)) {
+                $examPrice = trim($examPriceRaw);
+            }
+        }
+        $officialSite = '';
+        $officialSiteRaw = $examMeta['official-site'] ?? ($examMeta['official_site'] ?? ($examMeta['officialSite'] ?? null));
+        if (is_string($officialSiteRaw)) {
+            $officialSite = trim($officialSiteRaw);
+        }
         $categoryMeta = normalizeCategory($examMeta['category'] ?? null);
 
         $questions = [];
@@ -563,6 +581,9 @@ function loadExamCatalog(): array
                 'title' => $title,
                 'description' => $description,
                 'version' => $version,
+                'difficulty' => $examDifficulty,
+                'price' => $examPrice,
+                'official_site' => $officialSite,
                 'question_count' => count($questions),
                 'source_file' => $fileName,
                 'category' => $categoryMeta,
@@ -1147,6 +1168,9 @@ function buildClientResultPayload(array $results, string $difficulty, string $co
             'title' => (string)($examMeta['title'] ?? ''),
             'description' => isset($examMeta['description']) ? (string)$examMeta['description'] : '',
             'version' => isset($examMeta['version']) ? (string)$examMeta['version'] : '',
+            'difficulty' => isset($examMeta['difficulty']) ? (string)$examMeta['difficulty'] : '',
+            'price' => isset($examMeta['price']) ? (string)$examMeta['price'] : '',
+            'official_site' => isset($examMeta['official_site']) ? (string)$examMeta['official_site'] : '',
             'question_count' => isset($examMeta['question_count']) ? (int)$examMeta['question_count'] : count($questions),
             'category' => [
                 'id' => (string)($categoryMeta['id'] ?? ''),
@@ -1190,6 +1214,9 @@ function normalizeHistoryResultPayload($payload): ?array
         'title' => '',
         'description' => '',
         'version' => '',
+        'difficulty' => '',
+        'price' => '',
+        'official_site' => '',
         'question_count' => 0,
         'category' => [
             'id' => '',
@@ -1204,6 +1231,9 @@ function normalizeHistoryResultPayload($payload): ?array
         $examMeta['title'] = (string)($examSource['title'] ?? '');
         $examMeta['description'] = isset($examSource['description']) ? (string)$examSource['description'] : '';
         $examMeta['version'] = isset($examSource['version']) ? (string)$examSource['version'] : '';
+        $examMeta['difficulty'] = isset($examSource['difficulty']) ? (string)$examSource['difficulty'] : '';
+        $examMeta['price'] = isset($examSource['price']) ? (string)$examSource['price'] : '';
+        $examMeta['official_site'] = isset($examSource['official_site']) ? (string)$examSource['official_site'] : '';
         $examMeta['question_count'] = isset($examSource['question_count']) ? (int)$examSource['question_count'] : count($questions);
         $examMeta['category'] = [
             'id' => (string)($categorySource['id'] ?? ''),
@@ -2772,6 +2802,13 @@ if ($currentResultForStorage !== null) {
                                     <?php if ($selectedExam['meta']['version'] !== ''): ?>
                                         <span><strong>バージョン:</strong> <?php echo h($selectedExam['meta']['version']); ?></span>
                                     <?php endif; ?>
+                                    <span><strong>難易度:</strong> <?php echo h($selectedExam['meta']['difficulty']); ?></span>
+                                    <span><strong>受験料:</strong> <?php echo h($selectedExam['meta']['price']); ?></span>
+                                    <span><strong>公式サイト:</strong>
+                                        <?php if ($selectedExam['meta']['official_site'] !== ''): ?>
+                                            <a href="<?php echo h($selectedExam['meta']['official_site']); ?>" target="_blank" rel="noopener noreferrer"><?php echo h($selectedExam['meta']['official_site']); ?></a>
+                                        <?php endif; ?>
+                                    </span>
                                     <?php if ($selectedExam['meta']['description'] !== ''): ?>
                                         <span class="exam-meta-description"><strong>概要:</strong> <?php echo nl2brSafe($selectedExam['meta']['description']); ?></span>
                                     <?php endif; ?>
