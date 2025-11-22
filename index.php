@@ -2145,6 +2145,15 @@ if ($currentResultForStorage !== null) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="<?php echo h($metaDescription); ?>">
     <title><?php echo h($pageTitle); ?></title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HM7MN6D8R3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-HM7MN6D8R3');
+    </script>
     <script>
         document.documentElement.classList.add('js-enabled');
     </script>
