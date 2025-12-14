@@ -1,0 +1,2467 @@
+{
+    "exam": {
+        "id": "azure-ai-102",
+        "title": "Azure AI Engineer Associate",
+        "description": "この認定は、Microsoft Azure 上で AI ソリューション（画像・映像処理、自然言語処理、知識マイニング、生成 AI 等）を設計・実装できる技術を評価する中級（アソシエイト）レベルの資格です。候補者は AI エンジニアとして、要件定義から設計、開発、デプロイ、監視、運用まで一連のフェーズを経験し、REST API／SDK を用いた安全な AI ソリューション構築や責任ある AI（Responsible AI）原則の適用も問われます。",
+        "version": "2025年4月",
+        "price": "165 USD",
+        "difficulty": "普通",
+        "official-site": "https://learn.microsoft.com/ja-jp/credentials/certifications/azure-ai-engineer/",
+        "category": {
+            "id": "azure",
+            "name": "Azure"
+        }
+    },
+    "questions": [
+        {
+            "id": "azure-AI-102-q1",
+            "question": "Azure Cognitive Services の Text Analytics API を利用して文書から感情分析を行いたい。最も適切なエンドポイントはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "/text/analytics/v3.1/sentiment",
+                    "explanation": {
+                        "text": "感情分析を行う場合、Text Analytics API の /sentiment エンドポイントを利用する。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/language-service/sentiment-opinion-mining/overview",
+                        "reference_label": "Microsoft Docs - Sentiment Analysis"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "/text/analytics/v3.1/keyPhrases",
+                    "explanation": {
+                        "text": "keyPhrases はキーフレーズ抽出用のエンドポイントであり、感情分析ではない。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/language-service/key-phrase-extraction/overview",
+                        "reference_label": "Microsoft Docs - Key Phrase Extraction"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "/text/analytics/v3.1/languages",
+                    "explanation": {
+                        "text": "languages は言語検出用エンドポイントである。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/language-service/language-detection/overview",
+                        "reference_label": "Microsoft Docs - Language Detection"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "/text/analytics/v3.1/entities",
+                    "explanation": {
+                        "text": "entities はエンティティ認識用エンドポイントであり、感情分析には利用しない。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/language-service/entity-recognition/overview",
+                        "reference_label": "Microsoft Docs - Entity Recognition"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "感情分析は Text Analytics API の /sentiment エンドポイントで提供される。",
+                "reference": "https://learn.microsoft.com/azure/cognitive-services/language-service/sentiment-opinion-mining/overview",
+                "reference_label": "Microsoft Docs - Sentiment Analysis"
+            }
+        },
+        {
+            "id": "azure-AI-102-q2",
+            "question": "Azure Cognitive Search において、AI エンリッチメントを利用する主な目的はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "検索対象のドキュメントに対して構造化データを生成するため",
+                    "explanation": {
+                        "text": "AI エンリッチメントは非構造化データからメタデータや構造化情報を抽出する。",
+                        "reference": "https://learn.microsoft.com/azure/search/cognitive-search-concept-intro",
+                        "reference_label": "Microsoft Docs - AI Enrichment"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "検索インデックスのサイズを圧縮するため",
+                    "explanation": {
+                        "text": "AI エンリッチメントはデータ圧縮を目的としていない。",
+                        "reference": "https://learn.microsoft.com/azure/search/cognitive-search-concept-intro",
+                        "reference_label": "Microsoft Docs - AI Enrichment"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "検索クエリを最適化するため",
+                    "explanation": {
+                        "text": "クエリの最適化はエンリッチメントではなく検索エンジンの機能である。",
+                        "reference": "https://learn.microsoft.com/azure/search/",
+                        "reference_label": "Microsoft Docs - Azure Cognitive Search"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "検索結果のランキングを調整するため",
+                    "explanation": {
+                        "text": "ランキング調整はスコアリングプロファイルで実施される。",
+                        "reference": "https://learn.microsoft.com/azure/search/index-add-scoring-profiles",
+                        "reference_label": "Microsoft Docs - Scoring Profiles"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "AI エンリッチメントは非構造化データを処理し、構造化情報をインデックス化可能にする。",
+                "reference": "https://learn.microsoft.com/azure/search/cognitive-search-concept-intro",
+                "reference_label": "Microsoft Docs - AI Enrichment"
+            }
+        },
+        {
+            "id": "azure-AI-102-q3",
+            "question": "Custom Vision を利用して画像分類モデルを作成する場合、最初に必要となる作業はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "トレーニング用の画像をラベル付けしてアップロードする",
+                    "explanation": {
+                        "text": "Custom Vision は教師あり学習であるため、画像のラベル付けが必要。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier",
+                        "reference_label": "Microsoft Docs - Custom Vision Classifier"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "推論エンドポイントを構築する",
+                    "explanation": {
+                        "text": "推論エンドポイントはモデルをトレーニングした後に構築される。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier",
+                        "reference_label": "Microsoft Docs - Custom Vision Classifier"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "検索インデックスを作成する",
+                    "explanation": {
+                        "text": "これは Cognitive Search に関連する作業である。",
+                        "reference": "https://learn.microsoft.com/azure/search/search-what-is-azure-search",
+                        "reference_label": "Microsoft Docs - Cognitive Search"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Azure Kubernetes Service をデプロイする",
+                    "explanation": {
+                        "text": "Custom Vision モデルを AKS へデプロイすることは可能だが、初期作業ではない。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/custom-vision-service/export-model-overview",
+                        "reference_label": "Microsoft Docs - Custom Vision Deployment"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Custom Vision は教師あり学習を用いるため、ラベル付きデータをアップロードすることから始める。",
+                "reference": "https://learn.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier",
+                "reference_label": "Microsoft Docs - Custom Vision Classifier"
+            }
+        },
+        {
+            "id": "azure-AI-102-q4",
+            "question": "Azure Bot Service で作成したボットをユーザーに提供する際、複数のチャネル（Teams、Web Chat など）で利用可能にするために必要な設定はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Azure Bot Service のチャネル設定で各チャネルを有効化する",
+                    "explanation": {
+                        "text": "Azure Bot Service ではチャネルごとに有効化設定を行うことで、多様なプラットフォームに展開できる。",
+                        "reference": "https://learn.microsoft.com/azure/bot-service/bot-service-manage-channels",
+                        "reference_label": "Microsoft Docs - Manage channels"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Bot Framework SDK のコードを Teams 専用に書き換える",
+                    "explanation": {
+                        "text": "Bot Framework SDK はチャネルに依存せず、共通のコードで利用可能。",
+                        "reference": "https://learn.microsoft.com/azure/bot-service/bot-service-manage-channels",
+                        "reference_label": "Microsoft Docs - Manage channels"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Azure Functions でエンドポイントを作成し直す",
+                    "explanation": {
+                        "text": "ボットのチャネル設定に Functions の再作成は不要。",
+                        "reference": "https://learn.microsoft.com/azure/bot-service/bot-service-manage-channels",
+                        "reference_label": "Microsoft Docs - Manage channels"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Power Automate フローを追加する",
+                    "explanation": {
+                        "text": "Power Automate はワークフロー自動化であり、チャネル展開の必須要件ではない。",
+                        "reference": "https://learn.microsoft.com/azure/bot-service/bot-service-manage-channels",
+                        "reference_label": "Microsoft Docs - Manage channels"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Azure Bot Service ではポータル上でチャネルごとに有効化することで、Teams や Web Chat などに展開できる。",
+                "reference": "https://learn.microsoft.com/azure/bot-service/bot-service-manage-channels",
+                "reference_label": "Microsoft Docs - Manage channels"
+            }
+        },
+        {
+            "id": "azure-AI-102-q5",
+            "question": "Language Understanding (LUIS) を利用する際に、ユーザーの入力から特定のエンティティ（例: 日付や場所）を抽出する機能はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "エンティティ認識",
+                    "explanation": {
+                        "text": "LUIS は意図（Intent）に加えてエンティティを認識し、具体的な情報を抽出できる。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/luis/luis-concept-entity",
+                        "reference_label": "Microsoft Docs - Entities in LUIS"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "感情分析",
+                    "explanation": {
+                        "text": "感情分析は Text Analytics の機能であり、LUIS のエンティティ抽出とは異なる。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/language-service/sentiment-opinion-mining/overview",
+                        "reference_label": "Microsoft Docs - Sentiment Analysis"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "キーフレーズ抽出",
+                    "explanation": {
+                        "text": "キーフレーズ抽出は Text Analytics の機能であり、LUIS エンティティ認識とは異なる。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/language-service/key-phrase-extraction/overview",
+                        "reference_label": "Microsoft Docs - Key Phrase Extraction"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "クエリ拡張",
+                    "explanation": {
+                        "text": "クエリ拡張は検索エンジンの最適化に関連する概念である。",
+                        "reference": "https://learn.microsoft.com/azure/search/",
+                        "reference_label": "Microsoft Docs - Cognitive Search"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "LUIS のエンティティ認識はユーザー入力から日付や場所などの具体的データを抽出できる。",
+                "reference": "https://learn.microsoft.com/azure/cognitive-services/luis/luis-concept-entity",
+                "reference_label": "Microsoft Docs - Entities in LUIS"
+            }
+        },
+        {
+            "id": "azure-AI-102-q6",
+            "question": "Azure Machine Learning で自動機械学習（AutoML）を利用する主な利点はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "モデル選択やハイパーパラメータ調整を自動化できる",
+                    "explanation": {
+                        "text": "AutoML はモデル探索とチューニングを自動で行うため、開発効率を向上させる。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+                        "reference_label": "Microsoft Docs - Automated ML"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "モデルの推論速度を高速化できる",
+                    "explanation": {
+                        "text": "AutoML は推論速度の最適化を直接目的としていない。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+                        "reference_label": "Microsoft Docs - Automated ML"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "GPU を強制的に使用する",
+                    "explanation": {
+                        "text": "AutoML の利点は GPU 利用強制ではない。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+                        "reference_label": "Microsoft Docs - Automated ML"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Azure Functions に直接デプロイされる",
+                    "explanation": {
+                        "text": "AutoML はデプロイ先を自動で Functions に限定しない。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+                        "reference_label": "Microsoft Docs - Automated ML"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "AutoML の最大の利点はモデル選択やハイパーパラメータ調整を自動化し、最適なモデルを短時間で発見できること。",
+                "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+                "reference_label": "Microsoft Docs - Automated ML"
+            }
+        },
+        {
+            "id": "azure-AI-102-q7",
+            "question": "Azure Cognitive Services の Face API を利用する場合、検出可能な情報として正しいものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "顔の属性（年齢、感情など）",
+                    "explanation": {
+                        "text": "Face API は顔検出に加えて年齢や感情などの属性を返せる。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/face/overview",
+                        "reference_label": "Microsoft Docs - Face API Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "声紋の特徴",
+                    "explanation": {
+                        "text": "声紋は Speech Service が対象であり、Face API では検出されない。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/",
+                        "reference_label": "Microsoft Docs - Speech Service"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ドキュメント内のテキスト",
+                    "explanation": {
+                        "text": "ドキュメントテキストは Computer Vision OCR の機能である。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/computer-vision/overview-ocr",
+                        "reference_label": "Microsoft Docs - OCR"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "キーフレーズ",
+                    "explanation": {
+                        "text": "キーフレーズ抽出は Text Analytics の機能であり、Face API では利用できない。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/language-service/key-phrase-extraction/overview",
+                        "reference_label": "Microsoft Docs - Key Phrase Extraction"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Face API は顔検出に加えて、年齢推定や感情などの属性情報を提供できる。",
+                "reference": "https://learn.microsoft.com/azure/cognitive-services/face/overview",
+                "reference_label": "Microsoft Docs - Face API Overview"
+            }
+        },
+        {
+            "id": "azure-AI-102-q8",
+            "question": "Azure Cognitive Services の Translator サービスを利用する場合、主なユースケースはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "リアルタイムでのテキスト翻訳",
+                    "explanation": {
+                        "text": "Translator はテキストを多言語間で翻訳でき、リアルタイム翻訳も可能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/translator/",
+                        "reference_label": "Microsoft Docs - Translator Service"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "音声認識",
+                    "explanation": {
+                        "text": "音声認識は Speech Service の機能である。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/",
+                        "reference_label": "Microsoft Docs - Speech Service"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "顔認識",
+                    "explanation": {
+                        "text": "顔認識は Face API の機能である。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/face/overview",
+                        "reference_label": "Microsoft Docs - Face API Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "文書からキーフレーズ抽出",
+                    "explanation": {
+                        "text": "キーフレーズ抽出は Text Analytics の機能である。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/language-service/key-phrase-extraction/overview",
+                        "reference_label": "Microsoft Docs - Key Phrase Extraction"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Translator サービスはリアルタイムでテキストを翻訳するための API を提供している。",
+                "reference": "https://learn.microsoft.com/azure/cognitive-services/translator/",
+                "reference_label": "Microsoft Docs - Translator Service"
+            }
+        },
+        {
+            "id": "azure-AI-102-q9",
+            "question": "Azure Form Recognizer のレイアウト API を利用すると、どのような情報を抽出できるか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "文書のテーブルや段落構造",
+                    "explanation": {
+                        "text": "レイアウト API はテキストの位置、表、段落、チェックボックスなどの構造情報を抽出する。",
+                        "reference": "https://learn.microsoft.com/azure/applied-ai-services/form-recognizer/overview",
+                        "reference_label": "Microsoft Docs - Form Recognizer"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "文書の感情分析",
+                    "explanation": {
+                        "text": "感情分析は Text Analytics の機能であり、Form Recognizer では提供されない。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/language-service/sentiment-opinion-mining/overview",
+                        "reference_label": "Microsoft Docs - Sentiment Analysis"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "翻訳結果",
+                    "explanation": {
+                        "text": "翻訳は Translator サービスで行う。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/translator/",
+                        "reference_label": "Microsoft Docs - Translator Service"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "顔の特徴量",
+                    "explanation": {
+                        "text": "顔特徴は Face API が対象であり、Form Recognizer では扱わない。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/face/overview",
+                        "reference_label": "Microsoft Docs - Face API Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Form Recognizer のレイアウト API は、段落や表などの構造化情報を抽出できる。",
+                "reference": "https://learn.microsoft.com/azure/applied-ai-services/form-recognizer/overview",
+                "reference_label": "Microsoft Docs - Form Recognizer"
+            }
+        },
+        {
+            "id": "azure-AI-102-q10",
+            "question": "Azure Speech Service を使って音声をテキスト化する場合に利用する機能はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Speech to Text",
+                    "explanation": {
+                        "text": "Speech to Text 機能を用いることで音声をテキストに変換できる。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/index-speech-to-text",
+                        "reference_label": "Microsoft Docs - Speech to Text"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Text to Speech",
+                    "explanation": {
+                        "text": "Text to Speech は逆にテキストを音声に変換する機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/index-text-to-speech",
+                        "reference_label": "Microsoft Docs - Text to Speech"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Speaker Recognition",
+                    "explanation": {
+                        "text": "Speaker Recognition は話者の識別・認証に利用される。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/speaker-recognition-overview",
+                        "reference_label": "Microsoft Docs - Speaker Recognition"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Language Understanding",
+                    "explanation": {
+                        "text": "LUIS はテキストの意図を解析するサービスであり、音声のテキスト化自体は行わない。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/luis/what-is-luis",
+                        "reference_label": "Microsoft Docs - LUIS"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Azure Speech Service の Speech to Text 機能を利用することで、音声をリアルタイムにテキスト化できる。",
+                "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/index-speech-to-text",
+                "reference_label": "Microsoft Docs - Speech to Text"
+            }
+        },
+        {
+            "id": "azure-AI-102-q11",
+            "question": "Azure Cognitive Services の Computer Vision API を利用して、物体のタグ付けを行いたい場合に使用する機能はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Image Analysis",
+                    "explanation": {
+                        "text": "Image Analysis API で物体検出やタグ付けを行える。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/computer-vision/concept-tagging-images",
+                        "reference_label": "Microsoft Docs - Image Analysis"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "OCR",
+                    "explanation": {
+                        "text": "OCR はテキスト抽出用であり、タグ付けではない。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/computer-vision/overview-ocr",
+                        "reference_label": "Microsoft Docs - OCR"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Face Detection",
+                    "explanation": {
+                        "text": "Face Detection は顔認識機能である。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/face/overview",
+                        "reference_label": "Microsoft Docs - Face API Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Form Recognizer",
+                    "explanation": {
+                        "text": "Form Recognizer はドキュメント構造抽出に利用される。",
+                        "reference": "https://learn.microsoft.com/azure/applied-ai-services/form-recognizer/overview",
+                        "reference_label": "Microsoft Docs - Form Recognizer"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Computer Vision API の Image Analysis 機能を利用すると、物体検出やタグ付けを行える。",
+                "reference": "https://learn.microsoft.com/azure/cognitive-services/computer-vision/concept-tagging-images",
+                "reference_label": "Microsoft Docs - Image Analysis"
+            }
+        },
+        {
+            "id": "azure-AI-102-q12",
+            "question": "Azure Machine Learning のデザイナーを利用する主なメリットはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "コードを書かずにドラッグ＆ドロップで ML ワークフローを構築できる",
+                    "explanation": {
+                        "text": "Azure ML デザイナーは GUI ベースでワークフローを作成できる。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-designer",
+                        "reference_label": "Microsoft Docs - Designer"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "GPU を必ず利用できる",
+                    "explanation": {
+                        "text": "GPU の利用は選択可能だが必須ではない。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-designer",
+                        "reference_label": "Microsoft Docs - Designer"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Azure Functions と自動連携される",
+                    "explanation": {
+                        "text": "Functions との連携はオプションであり自動ではない。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-designer",
+                        "reference_label": "Microsoft Docs - Designer"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "モデルの解釈可能性が自動的に付与される",
+                    "explanation": {
+                        "text": "解釈可能性は別機能であり、デザイナー利用の主目的ではない。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-designer",
+                        "reference_label": "Microsoft Docs - Designer"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Azure Machine Learning デザイナーはノーコードで ML ワークフローを構築できる点が特徴。",
+                "reference": "https://learn.microsoft.com/azure/machine-learning/concept-designer",
+                "reference_label": "Microsoft Docs - Designer"
+            }
+        },
+        {
+            "id": "azure-AI-102-q13",
+            "question": "Azure Bot Framework Composer を利用すると何が可能になるか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "GUI で会話フローを設計できる",
+                    "explanation": {
+                        "text": "Composer はノーコードで会話フローを設計できる。",
+                        "reference": "https://learn.microsoft.com/composer/introduction",
+                        "reference_label": "Microsoft Docs - Bot Framework Composer"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "ボットを自動的にすべてのチャネルに公開する",
+                    "explanation": {
+                        "text": "チャネル公開は Azure Bot Service 側の設定が必要。",
+                        "reference": "https://learn.microsoft.com/composer/introduction",
+                        "reference_label": "Microsoft Docs - Bot Framework Composer"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "音声翻訳モデルをトレーニングする",
+                    "explanation": {
+                        "text": "翻訳モデルのトレーニングは Composer の機能ではない。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/translator/",
+                        "reference_label": "Microsoft Docs - Translator Service"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Azure Functions を必ず経由して会話処理する",
+                    "explanation": {
+                        "text": "Functions は必須ではなく、直接デプロイも可能。",
+                        "reference": "https://learn.microsoft.com/composer/introduction",
+                        "reference_label": "Microsoft Docs - Bot Framework Composer"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Composer を使うと GUI で会話フローを設計・管理でき、複雑なボットを容易に構築可能。",
+                "reference": "https://learn.microsoft.com/composer/introduction",
+                "reference_label": "Microsoft Docs - Bot Framework Composer"
+            }
+        },
+        {
+            "id": "azure-AI-102-q14",
+            "question": "Azure Cognitive Services の Anomaly Detector の用途はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "時系列データから異常を検出する",
+                    "explanation": {
+                        "text": "Anomaly Detector はセンサーやログなどの時系列データから異常パターンを検出する。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/anomaly-detector/overview",
+                        "reference_label": "Microsoft Docs - Anomaly Detector"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "自然言語を翻訳する",
+                    "explanation": {
+                        "text": "翻訳は Translator サービスの機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/translator/",
+                        "reference_label": "Microsoft Docs - Translator Service"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "顔認識を行う",
+                    "explanation": {
+                        "text": "顔認識は Face API の機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/face/overview",
+                        "reference_label": "Microsoft Docs - Face API Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "チャットボットの会話設計を行う",
+                    "explanation": {
+                        "text": "会話設計は Bot Framework Composer の機能。",
+                        "reference": "https://learn.microsoft.com/composer/introduction",
+                        "reference_label": "Microsoft Docs - Bot Framework Composer"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Anomaly Detector は時系列データに基づき異常を検知するために利用される。",
+                "reference": "https://learn.microsoft.com/azure/cognitive-services/anomaly-detector/overview",
+                "reference_label": "Microsoft Docs - Anomaly Detector"
+            }
+        },
+        {
+            "id": "azure-AI-102-q15",
+            "question": "Azure Machine Learning のパイプラインを利用する主な目的はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "機械学習ワークフローの自動化と再利用性向上",
+                    "explanation": {
+                        "text": "パイプラインを使うとデータ準備、学習、評価、デプロイのワークフローを自動化できる。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-ml-pipelines",
+                        "reference_label": "Microsoft Docs - ML Pipelines"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Azure Functions のイベント駆動処理を拡張する",
+                    "explanation": {
+                        "text": "これは Functions の用途であり、ML パイプラインの目的ではない。",
+                        "reference": "https://learn.microsoft.com/azure/azure-functions/",
+                        "reference_label": "Microsoft Docs - Azure Functions"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "検索インデックスを作成する",
+                    "explanation": {
+                        "text": "検索インデックスは Azure Cognitive Search の機能。",
+                        "reference": "https://learn.microsoft.com/azure/search/",
+                        "reference_label": "Microsoft Docs - Cognitive Search"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "アプリケーションの高可用性を実現する",
+                    "explanation": {
+                        "text": "高可用性はインフラ設計の要件であり、ML パイプラインの目的ではない。",
+                        "reference": "https://learn.microsoft.com/azure/architecture/framework/resiliency/",
+                        "reference_label": "Microsoft Docs - Resiliency Framework"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Azure ML パイプラインは機械学習ワークフローを自動化・再利用可能にする仕組み。",
+                "reference": "https://learn.microsoft.com/azure/machine-learning/concept-ml-pipelines",
+                "reference_label": "Microsoft Docs - ML Pipelines"
+            }
+        },
+        {
+            "id": "azure-AI-102-q16",
+            "question": "Azure Cognitive Services の Personalizer サービスの目的はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "ユーザー行動に基づいたパーソナライズされたコンテンツの提供",
+                    "explanation": {
+                        "text": "Personalizer は強化学習を用いてユーザーごとに最適化された体験を提供する。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/personalizer/what-is-personalizer",
+                        "reference_label": "Microsoft Docs - Personalizer"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "異常検知",
+                    "explanation": {
+                        "text": "異常検知は Anomaly Detector の機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/anomaly-detector/overview",
+                        "reference_label": "Microsoft Docs - Anomaly Detector"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "テキスト翻訳",
+                    "explanation": {
+                        "text": "翻訳は Translator サービスで提供される。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/translator/",
+                        "reference_label": "Microsoft Docs - Translator"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "顔検出",
+                    "explanation": {
+                        "text": "顔検出は Face API の機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/face/overview",
+                        "reference_label": "Microsoft Docs - Face API Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Personalizer はユーザーごとにパーソナライズされた推奨やコンテンツを提供する。",
+                "reference": "https://learn.microsoft.com/azure/cognitive-services/personalizer/what-is-personalizer",
+                "reference_label": "Microsoft Docs - Personalizer"
+            }
+        },
+        {
+            "id": "azure-AI-102-q17",
+            "question": "Azure Machine Learning でモデルをデプロイする際、低レイテンシ推論が求められる場合に最適なデプロイ先はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Azure Kubernetes Service (AKS)",
+                    "explanation": {
+                        "text": "AKS は低レイテンシかつ高スケーラビリティな推論環境を提供する。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-model-deployment",
+                        "reference_label": "Microsoft Docs - Model Deployment"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Azure Container Instances (ACI)",
+                    "explanation": {
+                        "text": "ACI は開発・テスト向けで、本番向け低レイテンシ用途には向かない。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-model-deployment",
+                        "reference_label": "Microsoft Docs - Model Deployment"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Azure Blob Storage",
+                    "explanation": {
+                        "text": "Blob Storage はモデルの格納場所には適しているが推論環境ではない。",
+                        "reference": "https://learn.microsoft.com/azure/storage/blobs/",
+                        "reference_label": "Microsoft Docs - Blob Storage"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Azure Functions",
+                    "explanation": {
+                        "text": "Functions はイベント駆動であり、低レイテンシ推論には適さない。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-model-deployment",
+                        "reference_label": "Microsoft Docs - Model Deployment"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "本番向けの低レイテンシ推論には AKS が推奨される。",
+                "reference": "https://learn.microsoft.com/azure/machine-learning/concept-model-deployment",
+                "reference_label": "Microsoft Docs - Model Deployment"
+            }
+        },
+        {
+            "id": "azure-AI-102-q18",
+            "question": "Azure Cognitive Services の QnA Maker はどのような目的で利用されるか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "FAQ ドキュメントを基に質問応答システムを構築する",
+                    "explanation": {
+                        "text": "QnA Maker は FAQ ドキュメントを基に知識ベースを作成し、質問応答ボットを提供できる。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/qnamaker/overview/overview",
+                        "reference_label": "Microsoft Docs - QnA Maker"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "リアルタイム翻訳を行う",
+                    "explanation": {
+                        "text": "翻訳は Translator サービスの機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/translator/",
+                        "reference_label": "Microsoft Docs - Translator"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "感情分析を行う",
+                    "explanation": {
+                        "text": "感情分析は Text Analytics の機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/language-service/sentiment-opinion-mining/overview",
+                        "reference_label": "Microsoft Docs - Sentiment Analysis"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "画像分類を行う",
+                    "explanation": {
+                        "text": "画像分類は Custom Vision の機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/custom-vision-service/overview",
+                        "reference_label": "Microsoft Docs - Custom Vision"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "QnA Maker は FAQ を基に知識ベースを作り、質問応答システムを提供できる。",
+                "reference": "https://learn.microsoft.com/azure/cognitive-services/qnamaker/overview/overview",
+                "reference_label": "Microsoft Docs - QnA Maker"
+            }
+        },
+        {
+            "id": "azure-AI-102-q19",
+            "question": "Azure Machine Learning においてモデル解釈性（Interpretability）を提供する目的はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "予測結果の根拠を明示する",
+                    "explanation": {
+                        "text": "解釈性ツールを用いることで、予測の根拠を可視化できる。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-machine-learning-interpretability",
+                        "reference_label": "Microsoft Docs - Interpretability"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "モデルの推論速度を最適化する",
+                    "explanation": {
+                        "text": "解釈性は速度最適化の機能ではない。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-machine-learning-interpretability",
+                        "reference_label": "Microsoft Docs - Interpretability"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "GPU 利用を強制する",
+                    "explanation": {
+                        "text": "GPU の利用有無は解釈性とは関係がない。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-machine-learning-interpretability",
+                        "reference_label": "Microsoft Docs - Interpretability"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Azure Functions と連携する",
+                    "explanation": {
+                        "text": "Functions 連携は解釈性の機能ではない。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-machine-learning-interpretability",
+                        "reference_label": "Microsoft Docs - Interpretability"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "解釈性の目的は予測根拠を説明し、モデルの透明性を高めること。",
+                "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-machine-learning-interpretability",
+                "reference_label": "Microsoft Docs - Interpretability"
+            }
+        },
+        {
+            "id": "azure-AI-102-q20",
+            "question": "Azure Cognitive Services の Language Service に統合された機能はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "LUIS、QnA Maker、Text Analytics",
+                    "explanation": {
+                        "text": "これらは Language Service に統合され、単一のサービスとして利用可能になった。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/language-service/overview",
+                        "reference_label": "Microsoft Docs - Language Service"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Translator、Form Recognizer、Face API",
+                    "explanation": {
+                        "text": "Translator や Form Recognizer は独立したサービスであり、Language Service には統合されていない。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/language-service/overview",
+                        "reference_label": "Microsoft Docs - Language Service"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Computer Vision、Custom Vision、OCR",
+                    "explanation": {
+                        "text": "これらは Vision 系サービスであり Language Service ではない。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/language-service/overview",
+                        "reference_label": "Microsoft Docs - Language Service"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Speech to Text、Text to Speech、Speaker Recognition",
+                    "explanation": {
+                        "text": "これらは Speech Service に含まれる。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/",
+                        "reference_label": "Microsoft Docs - Speech Service"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "LUIS、QnA Maker、Text Analytics は Language Service に統合された。",
+                "reference": "https://learn.microsoft.com/azure/cognitive-services/language-service/overview",
+                "reference_label": "Microsoft Docs - Language Service"
+            }
+        },
+        {
+            "id": "azure-AI-102-q21",
+            "question": "Azure Cognitive Services の Computer Vision OCR 機能を利用すると、どのような処理が可能か。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "画像や PDF からテキストを抽出する",
+                    "explanation": {
+                        "text": "OCR 機能を用いると画像や PDF 内のテキストを抽出できる。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/computer-vision/overview-ocr",
+                        "reference_label": "Microsoft Docs - OCR"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "翻訳を行う",
+                    "explanation": {
+                        "text": "翻訳は Translator サービスが担当する。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/translator/",
+                        "reference_label": "Microsoft Docs - Translator"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "音声をテキスト化する",
+                    "explanation": {
+                        "text": "音声のテキスト化は Speech to Text の機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/index-speech-to-text",
+                        "reference_label": "Microsoft Docs - Speech to Text"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "感情分析を行う",
+                    "explanation": {
+                        "text": "感情分析は Language Service の機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/language-service/sentiment-opinion-mining/overview",
+                        "reference_label": "Microsoft Docs - Sentiment Analysis"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Computer Vision OCR を使うと、画像や PDF からテキストを抽出できる。",
+                "reference": "https://learn.microsoft.com/azure/cognitive-services/computer-vision/overview-ocr",
+                "reference_label": "Microsoft Docs - OCR"
+            }
+        },
+        {
+            "id": "azure-AI-102-q22",
+            "question": "Azure Cognitive Services の Speech Translation を利用する主なユースケースはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "リアルタイム音声の翻訳",
+                    "explanation": {
+                        "text": "Speech Translation は音声を翻訳し、リアルタイムでテキストや音声に変換できる。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/speech-translation",
+                        "reference_label": "Microsoft Docs - Speech Translation"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "顔認識",
+                    "explanation": {
+                        "text": "顔認識は Face API の機能であり、Speech Translation では提供されない。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/face/overview",
+                        "reference_label": "Microsoft Docs - Face API Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "異常検知",
+                    "explanation": {
+                        "text": "異常検知は Anomaly Detector の機能である。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/anomaly-detector/overview",
+                        "reference_label": "Microsoft Docs - Anomaly Detector"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "FAQ ボットの作成",
+                    "explanation": {
+                        "text": "FAQ ボットは QnA Maker や Language Service を利用する。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/qnamaker/overview/overview",
+                        "reference_label": "Microsoft Docs - QnA Maker"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Speech Translation を使うと音声をリアルタイムで翻訳できる。",
+                "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/speech-translation",
+                "reference_label": "Microsoft Docs - Speech Translation"
+            }
+        },
+        {
+            "id": "azure-AI-102-q23",
+            "question": "Azure Cognitive Services の Metrics Advisor の主な用途はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "時系列データの監視と異常検知",
+                    "explanation": {
+                        "text": "Metrics Advisor は時系列データの監視と異常検知を行うサービス。",
+                        "reference": "https://learn.microsoft.com/azure/applied-ai-services/metrics-advisor/overview",
+                        "reference_label": "Microsoft Docs - Metrics Advisor"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "音声認識",
+                    "explanation": {
+                        "text": "音声認識は Speech Service の機能である。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/",
+                        "reference_label": "Microsoft Docs - Speech Service"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "画像分類",
+                    "explanation": {
+                        "text": "画像分類は Custom Vision の機能である。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/custom-vision-service/overview",
+                        "reference_label": "Microsoft Docs - Custom Vision"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "テキスト翻訳",
+                    "explanation": {
+                        "text": "翻訳は Translator サービスの機能である。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/translator/",
+                        "reference_label": "Microsoft Docs - Translator Service"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Metrics Advisor は時系列データの監視や異常検知を行うために利用される。",
+                "reference": "https://learn.microsoft.com/azure/applied-ai-services/metrics-advisor/overview",
+                "reference_label": "Microsoft Docs - Metrics Advisor"
+            }
+        },
+        {
+            "id": "azure-AI-102-q24",
+            "question": "Azure Cognitive Search のスキルセットに含まれる機能の例はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "OCR によるテキスト抽出",
+                    "explanation": {
+                        "text": "スキルセットには OCR、エンティティ抽出、翻訳などが含まれる。",
+                        "reference": "https://learn.microsoft.com/azure/search/cognitive-search-skill-ocr",
+                        "reference_label": "Microsoft Docs - OCR Skill"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "仮想マシンの自動スケーリング",
+                    "explanation": {
+                        "text": "これは Azure VM の機能であり、Cognitive Search のスキルセットとは関係がない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machines/",
+                        "reference_label": "Microsoft Docs - Virtual Machines"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "イベント駆動のサーバーレス処理",
+                    "explanation": {
+                        "text": "これは Azure Functions の用途である。",
+                        "reference": "https://learn.microsoft.com/azure/azure-functions/",
+                        "reference_label": "Microsoft Docs - Azure Functions"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ネットワークセキュリティグループの設定",
+                    "explanation": {
+                        "text": "NSG はネットワーク制御の設定であり、検索スキルセットには含まれない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/network-security-groups-overview",
+                        "reference_label": "Microsoft Docs - NSG Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Cognitive Search のスキルセットには OCR などの AI 機能が含まれる。",
+                "reference": "https://learn.microsoft.com/azure/search/cognitive-search-skill-ocr",
+                "reference_label": "Microsoft Docs - OCR Skill"
+            }
+        },
+        {
+            "id": "azure-AI-102-q25",
+            "question": "Azure Machine Learning のデータストア (Datastore) の役割はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "外部データソースをワークスペースに接続する",
+                    "explanation": {
+                        "text": "データストアは Blob や Data Lake などの外部データを AML ワークスペースに接続する。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-data",
+                        "reference_label": "Microsoft Docs - Datastores"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "データのクレンジングを行う",
+                    "explanation": {
+                        "text": "データ前処理は Dataset やパイプラインで行う。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-data",
+                        "reference_label": "Microsoft Docs - Datastores"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "学習モデルを格納する",
+                    "explanation": {
+                        "text": "モデルは Model Registry に格納する。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-model-management-and-deployment",
+                        "reference_label": "Microsoft Docs - Model Management"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "インデックスを作成する",
+                    "explanation": {
+                        "text": "インデックス作成は Cognitive Search の機能。",
+                        "reference": "https://learn.microsoft.com/azure/search/",
+                        "reference_label": "Microsoft Docs - Cognitive Search"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Datastore は AML ワークスペースを外部データソースに接続するための機能。",
+                "reference": "https://learn.microsoft.com/azure/machine-learning/concept-data",
+                "reference_label": "Microsoft Docs - Datastores"
+            }
+        },
+        {
+            "id": "azure-AI-102-q26",
+            "question": "Azure Cognitive Services の Custom Speech を利用する目的はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "特定の業務用語や固有名詞に最適化された音声認識モデルを作成する",
+                    "explanation": {
+                        "text": "Custom Speech を使うと業務用語などを含むドメイン特化モデルを作成できる。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/custom-speech-overview",
+                        "reference_label": "Microsoft Docs - Custom Speech"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "翻訳モデルを作成する",
+                    "explanation": {
+                        "text": "翻訳は Translator サービスで提供される。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/translator/",
+                        "reference_label": "Microsoft Docs - Translator Service"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "画像分類モデルを作成する",
+                    "explanation": {
+                        "text": "画像分類は Custom Vision の機能である。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/custom-vision-service/overview",
+                        "reference_label": "Microsoft Docs - Custom Vision"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "異常検知モデルを作成する",
+                    "explanation": {
+                        "text": "異常検知は Anomaly Detector の機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/anomaly-detector/overview",
+                        "reference_label": "Microsoft Docs - Anomaly Detector"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Custom Speech は特定業務に合わせた音声認識モデルを作成できる。",
+                "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/custom-speech-overview",
+                "reference_label": "Microsoft Docs - Custom Speech"
+            }
+        },
+        {
+            "id": "azure-AI-102-q27",
+            "question": "Azure Machine Learning において Dataset を利用する主な利点はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "データにバージョン管理を適用できる",
+                    "explanation": {
+                        "text": "Dataset を使うとデータをバージョン管理し、再現性のある実験が可能になる。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-data",
+                        "reference_label": "Microsoft Docs - Dataset"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "モデルの学習速度を自動で最適化する",
+                    "explanation": {
+                        "text": "Dataset 自体は速度最適化を目的としていない。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-data",
+                        "reference_label": "Microsoft Docs - Dataset"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "セキュリティポリシーを定義する",
+                    "explanation": {
+                        "text": "セキュリティポリシーは別の設定で行う。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-data",
+                        "reference_label": "Microsoft Docs - Dataset"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ネットワーク帯域を制御する",
+                    "explanation": {
+                        "text": "帯域制御はネットワーク構成の問題であり、Dataset では対応しない。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-data",
+                        "reference_label": "Microsoft Docs - Dataset"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Dataset を使うとデータにバージョン管理を適用でき、再現性のある ML 実験が可能になる。",
+                "reference": "https://learn.microsoft.com/azure/machine-learning/concept-data",
+                "reference_label": "Microsoft Docs - Dataset"
+            }
+        },
+        {
+            "id": "azure-AI-102-q28",
+            "question": "Azure Cognitive Services の Form Recognizer において、事前構築済みモデルの例はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "領収書、請求書、名刺",
+                    "explanation": {
+                        "text": "Form Recognizer には領収書、請求書、名刺の事前構築済みモデルが用意されている。",
+                        "reference": "https://learn.microsoft.com/azure/applied-ai-services/form-recognizer/concept-prebuilt",
+                        "reference_label": "Microsoft Docs - Prebuilt Models"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "顔画像",
+                    "explanation": {
+                        "text": "顔認識は Face API の機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/face/overview",
+                        "reference_label": "Microsoft Docs - Face API Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "リアルタイム翻訳",
+                    "explanation": {
+                        "text": "翻訳は Translator サービスで提供される。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/translator/",
+                        "reference_label": "Microsoft Docs - Translator Service"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "音声認識",
+                    "explanation": {
+                        "text": "音声認識は Speech Service の機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/",
+                        "reference_label": "Microsoft Docs - Speech Service"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Form Recognizer には領収書、請求書、名刺用の事前構築済みモデルがある。",
+                "reference": "https://learn.microsoft.com/azure/applied-ai-services/form-recognizer/concept-prebuilt",
+                "reference_label": "Microsoft Docs - Prebuilt Models"
+            }
+        },
+        {
+            "id": "azure-AI-102-q29",
+            "question": "Azure Cognitive Services の Custom Vision における Object Detection モデルの特徴はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "画像内の物体の位置とラベルを検出できる",
+                    "explanation": {
+                        "text": "Object Detection モデルは物体のクラスだけでなく、座標情報を返す。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/custom-vision-service/object-detection-overview",
+                        "reference_label": "Microsoft Docs - Custom Vision Object Detection"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "画像全体を1つのラベルに分類する",
+                    "explanation": {
+                        "text": "これは Image Classification モデルの機能である。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/custom-vision-service/overview",
+                        "reference_label": "Microsoft Docs - Custom Vision Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "OCR を行いテキストを抽出する",
+                    "explanation": {
+                        "text": "OCR は Computer Vision の機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/computer-vision/overview-ocr",
+                        "reference_label": "Microsoft Docs - OCR"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "音声入力から意図を推定する",
+                    "explanation": {
+                        "text": "意図推定は LUIS や Language Service の機能である。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/luis/what-is-luis",
+                        "reference_label": "Microsoft Docs - LUIS"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Custom Vision の Object Detection モデルは、物体の種類と位置を同時に検出できる。",
+                "reference": "https://learn.microsoft.com/azure/cognitive-services/custom-vision-service/object-detection-overview",
+                "reference_label": "Microsoft Docs - Custom Vision Object Detection"
+            }
+        },
+        {
+            "id": "azure-AI-102-q30",
+            "question": "Azure Machine Learning のモデル登録 (Model Registry) の役割はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "モデルをバージョン管理し、再利用可能にする",
+                    "explanation": {
+                        "text": "Model Registry に登録するとバージョン管理され、再利用やデプロイに利用できる。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-model-management-and-deployment",
+                        "reference_label": "Microsoft Docs - Model Registry"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "モデルのハイパーパラメータを自動調整する",
+                    "explanation": {
+                        "text": "ハイパーパラメータ調整は AutoML やチューニング機能で行う。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+                        "reference_label": "Microsoft Docs - AutoML"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "GPU の使用を最適化する",
+                    "explanation": {
+                        "text": "GPU の利用は学習環境の設定によるもので、Registry の機能ではない。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-model-management-and-deployment",
+                        "reference_label": "Microsoft Docs - Model Registry"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "データをクレンジングする",
+                    "explanation": {
+                        "text": "データ前処理は Dataset やパイプラインで行う。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-data",
+                        "reference_label": "Microsoft Docs - Dataset"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Model Registry はモデルをバージョン管理し、容易にデプロイ可能にする。",
+                "reference": "https://learn.microsoft.com/azure/machine-learning/concept-model-management-and-deployment",
+                "reference_label": "Microsoft Docs - Model Registry"
+            }
+        },
+        {
+            "id": "azure-AI-102-q31",
+            "question": "Azure Cognitive Services の Content Moderator の機能はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "不適切なコンテンツを検出する",
+                    "explanation": {
+                        "text": "Content Moderator はテキスト、画像、動画から不適切コンテンツを検出する。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/content-moderator/overview",
+                        "reference_label": "Microsoft Docs - Content Moderator"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "翻訳を行う",
+                    "explanation": {
+                        "text": "翻訳は Translator の機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/translator/",
+                        "reference_label": "Microsoft Docs - Translator"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "音声認識を行う",
+                    "explanation": {
+                        "text": "音声認識は Speech Service の機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/",
+                        "reference_label": "Microsoft Docs - Speech Service"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "異常検知を行う",
+                    "explanation": {
+                        "text": "異常検知は Anomaly Detector の機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/anomaly-detector/overview",
+                        "reference_label": "Microsoft Docs - Anomaly Detector"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Content Moderator は不適切なコンテンツを検出するためのサービス。",
+                "reference": "https://learn.microsoft.com/azure/cognitive-services/content-moderator/overview",
+                "reference_label": "Microsoft Docs - Content Moderator"
+            }
+        },
+        {
+            "id": "azure-AI-102-q32",
+            "question": "Azure Cognitive Services の Speech Synthesis Markup Language (SSML) を利用する利点はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "発話のピッチや速度を制御できる",
+                    "explanation": {
+                        "text": "SSML を利用すると、音声合成で発話のトーンや速度を調整できる。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/speech-synthesis-markup",
+                        "reference_label": "Microsoft Docs - SSML"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "画像を分類できる",
+                    "explanation": {
+                        "text": "画像分類は Custom Vision の機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/custom-vision-service/overview",
+                        "reference_label": "Microsoft Docs - Custom Vision"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "FAQ 応答を生成できる",
+                    "explanation": {
+                        "text": "FAQ 応答は QnA Maker や Language Service で行う。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/qnamaker/overview/overview",
+                        "reference_label": "Microsoft Docs - QnA Maker"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "異常を検出できる",
+                    "explanation": {
+                        "text": "異常検知は Anomaly Detector の機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/anomaly-detector/overview",
+                        "reference_label": "Microsoft Docs - Anomaly Detector"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "SSML を使うと音声合成でピッチや速度を制御できる。",
+                "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/speech-synthesis-markup",
+                "reference_label": "Microsoft Docs - SSML"
+            }
+        },
+        {
+            "id": "azure-AI-102-q33",
+            "question": "Azure Machine Learning のエンドポイントにおける Managed Online Endpoint の特徴はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "インフラを意識せずに本番用推論エンドポイントを提供できる",
+                    "explanation": {
+                        "text": "Managed Online Endpoint はフルマネージドでスケーラブルな推論エンドポイントを提供する。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-endpoints",
+                        "reference_label": "Microsoft Docs - Endpoints"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "常に GPU を利用する必要がある",
+                    "explanation": {
+                        "text": "GPU 利用はオプションであり、必須ではない。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-endpoints",
+                        "reference_label": "Microsoft Docs - Endpoints"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "バッチ推論専用である",
+                    "explanation": {
+                        "text": "Managed Online Endpoint はリアルタイム推論用であり、バッチ推論専用ではない。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-endpoints",
+                        "reference_label": "Microsoft Docs - Endpoints"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "データストアを必ず利用する必要がある",
+                    "explanation": {
+                        "text": "データストアは必須ではない。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-endpoints",
+                        "reference_label": "Microsoft Docs - Endpoints"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Managed Online Endpoint は本番向けのフルマネージド推論エンドポイント。",
+                "reference": "https://learn.microsoft.com/azure/machine-learning/concept-endpoints",
+                "reference_label": "Microsoft Docs - Endpoints"
+            }
+        },
+        {
+            "id": "azure-AI-102-q34",
+            "question": "Azure Cognitive Services の Speech Service における Speaker Recognition の用途はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "話者の識別や認証を行う",
+                    "explanation": {
+                        "text": "Speaker Recognition は音声から個人を識別・認証する機能を提供する。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/speaker-recognition-overview",
+                        "reference_label": "Microsoft Docs - Speaker Recognition"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "感情分析を行う",
+                    "explanation": {
+                        "text": "感情分析は Text Analytics の機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/language-service/sentiment-opinion-mining/overview",
+                        "reference_label": "Microsoft Docs - Sentiment Analysis"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "翻訳を行う",
+                    "explanation": {
+                        "text": "翻訳は Translator の機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/translator/",
+                        "reference_label": "Microsoft Docs - Translator"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "画像から物体検出を行う",
+                    "explanation": {
+                        "text": "物体検出は Computer Vision や Custom Vision の機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/computer-vision/",
+                        "reference_label": "Microsoft Docs - Computer Vision"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Speaker Recognition は音声を利用して話者の識別や認証を行う。",
+                "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/speaker-recognition-overview",
+                "reference_label": "Microsoft Docs - Speaker Recognition"
+            }
+        },
+        {
+            "id": "azure-AI-102-q35",
+            "question": "Azure Machine Learning の Responsible AI ダッシュボードの目的はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "公平性、透明性、説明可能性を可視化する",
+                    "explanation": {
+                        "text": "Responsible AI ダッシュボードは公平性、透明性、解釈可能性を評価できる。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-responsible-ai",
+                        "reference_label": "Microsoft Docs - Responsible AI"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "GPU の使用効率を高める",
+                    "explanation": {
+                        "text": "Responsible AI の目的は性能最適化ではない。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-responsible-ai",
+                        "reference_label": "Microsoft Docs - Responsible AI"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ストレージのコスト削減を行う",
+                    "explanation": {
+                        "text": "コスト最適化は Responsible AI の目的ではない。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-responsible-ai",
+                        "reference_label": "Microsoft Docs - Responsible AI"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ネットワークトラフィックを制御する",
+                    "explanation": {
+                        "text": "Responsible AI はネットワーク制御とは関係がない。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-responsible-ai",
+                        "reference_label": "Microsoft Docs - Responsible AI"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Responsible AI ダッシュボードは公平性・透明性・解釈可能性を評価するためのツール。",
+                "reference": "https://learn.microsoft.com/azure/machine-learning/concept-responsible-ai",
+                "reference_label": "Microsoft Docs - Responsible AI"
+            }
+        },
+        {
+            "id": "azure-AI-102-q36",
+            "question": "Azure Machine Learning のデプロイ先として Azure Container Instances (ACI) を選択する主な理由はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "開発・テスト用の軽量な推論環境を提供するため",
+                    "explanation": {
+                        "text": "ACI は開発やテストに適した軽量な環境であり、本番向けには AKS を利用する。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-model-deployment",
+                        "reference_label": "Microsoft Docs - Model Deployment"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "高スケーラビリティと低レイテンシを保証するため",
+                    "explanation": {
+                        "text": "これは AKS の特徴であり、ACI の用途ではない。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-model-deployment",
+                        "reference_label": "Microsoft Docs - Model Deployment"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "データの前処理を行うため",
+                    "explanation": {
+                        "text": "データ前処理はパイプラインやデータフローで行う。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-data",
+                        "reference_label": "Microsoft Docs - Data"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "GPU を必ず利用するため",
+                    "explanation": {
+                        "text": "GPU はオプションであり、ACI では必須ではない。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-model-deployment",
+                        "reference_label": "Microsoft Docs - Model Deployment"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "ACI はテストや小規模利用に最適な軽量デプロイ先である。",
+                "reference": "https://learn.microsoft.com/azure/machine-learning/concept-model-deployment",
+                "reference_label": "Microsoft Docs - Model Deployment"
+            }
+        },
+        {
+            "id": "azure-AI-102-q37",
+            "question": "Azure Cognitive Services の Face API を利用して個人を特定する場合に利用する機能はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Face Identification",
+                    "explanation": {
+                        "text": "Face Identification は検出した顔を既存の人物データと照合し個人を特定する。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/face/overview",
+                        "reference_label": "Microsoft Docs - Face API Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Face Detection",
+                    "explanation": {
+                        "text": "Face Detection は顔の位置を検出する機能であり、個人特定はできない。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/face/overview",
+                        "reference_label": "Microsoft Docs - Face API Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Face Attributes",
+                    "explanation": {
+                        "text": "Face Attributes は年齢や感情など属性を推定する機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/face/overview",
+                        "reference_label": "Microsoft Docs - Face API Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Face Verification",
+                    "explanation": {
+                        "text": "Verification は2つの顔が同一人物かを判定する機能であり、Identification とは異なる。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/face/overview",
+                        "reference_label": "Microsoft Docs - Face API Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Face Identification は既存データと照合し個人を特定できる機能。",
+                "reference": "https://learn.microsoft.com/azure/cognitive-services/face/overview",
+                "reference_label": "Microsoft Docs - Face API Overview"
+            }
+        },
+        {
+            "id": "azure-AI-102-q38",
+            "question": "Azure Machine Learning の Responsible AI における Fairness（公平性）の指標を確認する目的はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "特定の属性（性別や年齢など）による偏りを評価する",
+                    "explanation": {
+                        "text": "Fairness の評価ではモデルが特定のグループに対して不公平な出力をしていないかを確認する。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-responsible-ai",
+                        "reference_label": "Microsoft Docs - Responsible AI"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "モデルの推論速度を改善する",
+                    "explanation": {
+                        "text": "Fairness の目的は速度最適化ではない。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-responsible-ai",
+                        "reference_label": "Microsoft Docs - Responsible AI"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "データのストレージコストを削減する",
+                    "explanation": {
+                        "text": "Fairness はストレージコストとは関係がない。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-responsible-ai",
+                        "reference_label": "Microsoft Docs - Responsible AI"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "モデルを自動的に最適化する",
+                    "explanation": {
+                        "text": "Fairness は自動最適化の機能ではなく、偏りの有無を可視化するもの。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-responsible-ai",
+                        "reference_label": "Microsoft Docs - Responsible AI"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Fairness の評価は AI モデルの出力にグループ間の偏りがないかを確認するために行う。",
+                "reference": "https://learn.microsoft.com/azure/machine-learning/concept-responsible-ai",
+                "reference_label": "Microsoft Docs - Responsible AI"
+            }
+        },
+        {
+            "id": "azure-AI-102-q39",
+            "question": "Azure Cognitive Services の Computer Vision における Image Analysis の用途はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "画像からタグや説明文を生成する",
+                    "explanation": {
+                        "text": "Image Analysis は画像からタグや説明文、物体検出を行う。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/computer-vision/overview-image-analysis",
+                        "reference_label": "Microsoft Docs - Image Analysis"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "音声からテキストを抽出する",
+                    "explanation": {
+                        "text": "これは Speech to Text の機能である。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/index-speech-to-text",
+                        "reference_label": "Microsoft Docs - Speech to Text"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "翻訳を行う",
+                    "explanation": {
+                        "text": "翻訳は Translator サービスの機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/translator/",
+                        "reference_label": "Microsoft Docs - Translator"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "FAQ 応答を生成する",
+                    "explanation": {
+                        "text": "FAQ 応答は QnA Maker や Language Service の機能である。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/qnamaker/overview/overview",
+                        "reference_label": "Microsoft Docs - QnA Maker"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Image Analysis は画像からタグや説明文を抽出できる。",
+                "reference": "https://learn.microsoft.com/azure/cognitive-services/computer-vision/overview-image-analysis",
+                "reference_label": "Microsoft Docs - Image Analysis"
+            }
+        },
+        {
+            "id": "azure-AI-102-q40",
+            "question": "Azure Machine Learning でモデル監視を行う目的はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "データドリフトやモデル性能の低下を検出する",
+                    "explanation": {
+                        "text": "モデル監視は本番運用でデータドリフトや精度低下を検知するために利用される。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-model-monitoring",
+                        "reference_label": "Microsoft Docs - Model Monitoring"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "GPU の使用率を最大化する",
+                    "explanation": {
+                        "text": "モデル監視は GPU 利用効率の管理とは関係がない。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-model-monitoring",
+                        "reference_label": "Microsoft Docs - Model Monitoring"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ネットワーク帯域を制御する",
+                    "explanation": {
+                        "text": "ネットワーク制御は監視の目的ではない。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-model-monitoring",
+                        "reference_label": "Microsoft Docs - Model Monitoring"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "コスト最適化を行う",
+                    "explanation": {
+                        "text": "モデル監視はコスト削減ではなく、精度維持が目的。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-model-monitoring",
+                        "reference_label": "Microsoft Docs - Model Monitoring"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "モデル監視はデータドリフトや精度低下を早期に検出することを目的としている。",
+                "reference": "https://learn.microsoft.com/azure/machine-learning/concept-model-monitoring",
+                "reference_label": "Microsoft Docs - Model Monitoring"
+            }
+        },
+        {
+            "id": "azure-AI-102-q41",
+            "question": "Azure Cognitive Services の Translator サービスにおける Custom Translator の役割はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "特定ドメインに合わせた翻訳モデルをカスタマイズできる",
+                    "explanation": {
+                        "text": "Custom Translator を使うと業務用語に対応した翻訳モデルを作成できる。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/translator/custom-translator/overview",
+                        "reference_label": "Microsoft Docs - Custom Translator"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "音声認識を最適化する",
+                    "explanation": {
+                        "text": "音声認識のカスタマイズは Custom Speech の機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/custom-speech-overview",
+                        "reference_label": "Microsoft Docs - Custom Speech"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "画像分類を行う",
+                    "explanation": {
+                        "text": "画像分類は Custom Vision の機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/custom-vision-service/overview",
+                        "reference_label": "Microsoft Docs - Custom Vision"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "異常検知を行う",
+                    "explanation": {
+                        "text": "異常検知は Anomaly Detector の機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/anomaly-detector/overview",
+                        "reference_label": "Microsoft Docs - Anomaly Detector"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Custom Translator を使えばドメイン特化の翻訳モデルを作れる。",
+                "reference": "https://learn.microsoft.com/azure/cognitive-services/translator/custom-translator/overview",
+                "reference_label": "Microsoft Docs - Custom Translator"
+            }
+        },
+        {
+            "id": "azure-AI-102-q42",
+            "question": "Azure Bot Service の Direct Line チャネルを利用する目的はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "カスタムアプリケーションからボットと通信できるようにする",
+                    "explanation": {
+                        "text": "Direct Line は独自アプリとボット間の通信を可能にするチャネル。",
+                        "reference": "https://learn.microsoft.com/azure/bot-service/bot-service-channel-directline",
+                        "reference_label": "Microsoft Docs - Direct Line"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "音声を翻訳する",
+                    "explanation": {
+                        "text": "音声翻訳は Speech Translation の機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/speech-translation",
+                        "reference_label": "Microsoft Docs - Speech Translation"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ドキュメントから情報を抽出する",
+                    "explanation": {
+                        "text": "ドキュメント抽出は Form Recognizer の機能。",
+                        "reference": "https://learn.microsoft.com/azure/applied-ai-services/form-recognizer/overview",
+                        "reference_label": "Microsoft Docs - Form Recognizer"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "画像を分類する",
+                    "explanation": {
+                        "text": "画像分類は Custom Vision の機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/custom-vision-service/overview",
+                        "reference_label": "Microsoft Docs - Custom Vision"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Direct Line チャネルを使うとカスタムアプリケーションからボットと通信できる。",
+                "reference": "https://learn.microsoft.com/azure/bot-service/bot-service-channel-directline",
+                "reference_label": "Microsoft Docs - Direct Line"
+            }
+        },
+        {
+            "id": "azure-AI-102-q43",
+            "question": "Azure Machine Learning のデータドリフト検出機能を利用する主な理由はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "トレーニングデータと本番データの統計的な違いを検出するため",
+                    "explanation": {
+                        "text": "データドリフト検出は、学習時と運用時のデータ分布の変化を監視する。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/monitor-data-drift",
+                        "reference_label": "Microsoft Docs - Data Drift"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "GPU の使用状況を監視するため",
+                    "explanation": {
+                        "text": "GPU の使用監視はデータドリフトの目的ではない。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/monitor-data-drift",
+                        "reference_label": "Microsoft Docs - Data Drift"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "モデルのサイズを圧縮するため",
+                    "explanation": {
+                        "text": "データドリフト検出はモデルサイズとは関係がない。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/monitor-data-drift",
+                        "reference_label": "Microsoft Docs - Data Drift"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "翻訳精度を向上させるため",
+                    "explanation": {
+                        "text": "翻訳は Translator サービスの機能であり、データドリフトではない。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/translator/",
+                        "reference_label": "Microsoft Docs - Translator"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "データドリフト検出はトレーニングデータと本番データの統計的な違いを検出するために利用される。",
+                "reference": "https://learn.microsoft.com/azure/machine-learning/monitor-data-drift",
+                "reference_label": "Microsoft Docs - Data Drift"
+            }
+        },
+        {
+            "id": "azure-AI-102-q44",
+            "question": "Azure Cognitive Services の Computer Vision における Read API の役割はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "画像や PDF からテキストを抽出する",
+                    "explanation": {
+                        "text": "Read API は OCR 技術を使って画像や PDF 内のテキストを抽出する。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/computer-vision/overview-ocr",
+                        "reference_label": "Microsoft Docs - OCR"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "画像から物体を検出する",
+                    "explanation": {
+                        "text": "物体検出は Image Analysis の機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/computer-vision/overview-image-analysis",
+                        "reference_label": "Microsoft Docs - Image Analysis"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "翻訳を行う",
+                    "explanation": {
+                        "text": "翻訳は Translator サービスの機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/translator/",
+                        "reference_label": "Microsoft Docs - Translator"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "顔の属性を推定する",
+                    "explanation": {
+                        "text": "顔の属性は Face API の機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/face/overview",
+                        "reference_label": "Microsoft Docs - Face API Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Read API は OCR を利用して画像や PDF からテキストを抽出する。",
+                "reference": "https://learn.microsoft.com/azure/cognitive-services/computer-vision/overview-ocr",
+                "reference_label": "Microsoft Docs - OCR"
+            }
+        },
+        {
+            "id": "azure-AI-102-q45",
+            "question": "Azure Cognitive Services の Anomaly Detector の multivariate API を利用する利点はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "複数の変数間の相関を考慮して異常を検出できる",
+                    "explanation": {
+                        "text": "multivariate API は複数の時系列データを組み合わせて異常を検出する。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/anomaly-detector/concepts/multivariate",
+                        "reference_label": "Microsoft Docs - Multivariate Anomaly Detection"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "翻訳を同時に行う",
+                    "explanation": {
+                        "text": "翻訳は Translator サービスの機能であり、Anomaly Detector ではない。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/translator/",
+                        "reference_label": "Microsoft Docs - Translator"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "顔認識を行う",
+                    "explanation": {
+                        "text": "顔認識は Face API の機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/face/overview",
+                        "reference_label": "Microsoft Docs - Face API Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "画像分類を行う",
+                    "explanation": {
+                        "text": "画像分類は Custom Vision の機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/custom-vision-service/overview",
+                        "reference_label": "Microsoft Docs - Custom Vision"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "multivariate API を使うと複数の変数の関係性を考慮して異常検出が可能になる。",
+                "reference": "https://learn.microsoft.com/azure/cognitive-services/anomaly-detector/concepts/multivariate",
+                "reference_label": "Microsoft Docs - Multivariate Anomaly Detection"
+            }
+        },
+        {
+            "id": "azure-AI-102-q46",
+            "question": "Azure Bot Framework Emulator の主な用途はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "ローカル環境でボットをテストする",
+                    "explanation": {
+                        "text": "Emulator を使うとローカル環境でボットをテストできる。",
+                        "reference": "https://learn.microsoft.com/azure/bot-service/bot-service-debug-emulator",
+                        "reference_label": "Microsoft Docs - Bot Framework Emulator"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "音声を翻訳する",
+                    "explanation": {
+                        "text": "音声翻訳は Speech Translation の機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/speech-translation",
+                        "reference_label": "Microsoft Docs - Speech Translation"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "FAQ を自動的に生成する",
+                    "explanation": {
+                        "text": "FAQ 自動生成は QnA Maker や Language Service で行う。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/qnamaker/overview/overview",
+                        "reference_label": "Microsoft Docs - QnA Maker"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "異常を検出する",
+                    "explanation": {
+                        "text": "異常検出は Anomaly Detector の機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/anomaly-detector/overview",
+                        "reference_label": "Microsoft Docs - Anomaly Detector"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Bot Framework Emulator を使えばローカル環境でボットをテストできる。",
+                "reference": "https://learn.microsoft.com/azure/bot-service/bot-service-debug-emulator",
+                "reference_label": "Microsoft Docs - Bot Framework Emulator"
+            }
+        },
+        {
+            "id": "azure-AI-102-q47",
+            "question": "Azure Machine Learning におけるバッチ推論 (Batch Inference) を利用する適切なシナリオはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "大量のデータを非同期で処理する場合",
+                    "explanation": {
+                        "text": "バッチ推論は一度に大量のデータを処理する場合に適している。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-batch-inference",
+                        "reference_label": "Microsoft Docs - Batch Inference"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "低レイテンシの応答が必要なチャットボット",
+                    "explanation": {
+                        "text": "低レイテンシ応答にはオンライン推論が適している。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-batch-inference",
+                        "reference_label": "Microsoft Docs - Batch Inference"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "リアルタイム翻訳アプリ",
+                    "explanation": {
+                        "text": "翻訳のようなリアルタイム処理にはオンライン推論が必要。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-batch-inference",
+                        "reference_label": "Microsoft Docs - Batch Inference"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "音声認識システム",
+                    "explanation": {
+                        "text": "音声認識はリアルタイム処理を行うためバッチ推論には適さない。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-batch-inference",
+                        "reference_label": "Microsoft Docs - Batch Inference"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "バッチ推論は大量データを一括処理する際に利用される。",
+                "reference": "https://learn.microsoft.com/azure/machine-learning/concept-batch-inference",
+                "reference_label": "Microsoft Docs - Batch Inference"
+            }
+        },
+        {
+            "id": "azure-AI-102-q48",
+            "question": "Azure Cognitive Services の Text Analytics で利用できる機能はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "感情分析、エンティティ認識、キーフレーズ抽出",
+                    "explanation": {
+                        "text": "Text Analytics は感情分析、エンティティ認識、キーフレーズ抽出などを提供する。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/language-service/overview",
+                        "reference_label": "Microsoft Docs - Language Service Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "顔認識",
+                    "explanation": {
+                        "text": "顔認識は Face API の機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/face/overview",
+                        "reference_label": "Microsoft Docs - Face API Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "音声合成",
+                    "explanation": {
+                        "text": "音声合成は Speech Service の機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/",
+                        "reference_label": "Microsoft Docs - Speech Service"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "異常検知",
+                    "explanation": {
+                        "text": "異常検知は Anomaly Detector の機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/anomaly-detector/overview",
+                        "reference_label": "Microsoft Docs - Anomaly Detector"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Text Analytics では感情分析、エンティティ認識、キーフレーズ抽出が可能。",
+                "reference": "https://learn.microsoft.com/azure/cognitive-services/language-service/overview",
+                "reference_label": "Microsoft Docs - Language Service Overview"
+            }
+        },
+        {
+            "id": "azure-AI-102-q49",
+            "question": "Azure Machine Learning の MLflow との統合の主な利点はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "実験追跡とモデル管理を統一的に行える",
+                    "explanation": {
+                        "text": "MLflow を使うと Azure ML で実験追跡、モデル管理を統合的に行える。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-mlflow",
+                        "reference_label": "Microsoft Docs - MLflow"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "GPU の利用効率を改善する",
+                    "explanation": {
+                        "text": "MLflow は GPU 利用効率の最適化機能を提供しない。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-mlflow",
+                        "reference_label": "Microsoft Docs - MLflow"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "翻訳モデルをトレーニングする",
+                    "explanation": {
+                        "text": "翻訳は Translator サービスの機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/translator/",
+                        "reference_label": "Microsoft Docs - Translator"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "顔検出を行う",
+                    "explanation": {
+                        "text": "顔検出は Face API の機能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/face/overview",
+                        "reference_label": "Microsoft Docs - Face API Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "MLflow との統合により実験追跡とモデル管理を Azure ML で統一的に扱える。",
+                "reference": "https://learn.microsoft.com/azure/machine-learning/concept-mlflow",
+                "reference_label": "Microsoft Docs - MLflow"
+            }
+        },
+        {
+            "id": "azure-AI-102-q50",
+            "question": "Azure Cognitive Services の Custom Vision におけるエクスポート機能を利用するメリットはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "トレーニング済みモデルを ONNX や TensorFlow 形式でエクスポートし、エッジデバイスで利用できる",
+                    "explanation": {
+                        "text": "Custom Vision のエクスポート機能により、トレーニング済みモデルを ONNX/TensorFlow 形式で出力し、エッジデバイスやモバイルで利用可能。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model",
+                        "reference_label": "Microsoft Docs - Export a model"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "モデルの自動チューニングが行われる",
+                    "explanation": {
+                        "text": "エクスポートはモデル形式を変換する機能であり、チューニングは行わない。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model",
+                        "reference_label": "Microsoft Docs - Export a model"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "翻訳サービスと統合される",
+                    "explanation": {
+                        "text": "翻訳は Translator の機能であり、Custom Vision のエクスポートとは関係がない。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/translator/",
+                        "reference_label": "Microsoft Docs - Translator"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "GPU の利用効率を最適化する",
+                    "explanation": {
+                        "text": "GPU の最適化はエクスポート機能の目的ではない。",
+                        "reference": "https://learn.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model",
+                        "reference_label": "Microsoft Docs - Export a model"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Custom Vision のエクスポート機能を利用すれば、学習済みモデルを ONNX や TensorFlow Lite 形式でエクスポートし、エッジデバイスにデプロイできる。",
+                "reference": "https://learn.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model",
+                "reference_label": "Microsoft Docs - Export a model"
+            }
+        }
+    ]
+}

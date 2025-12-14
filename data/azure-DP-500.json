@@ -1,0 +1,2485 @@
+{
+  "exam": {
+    "id": "enterprise_data_analyst_associate",
+    "title": "Enterprise Data Analyst Associate",
+    "description": "「Microsoft Certified: Azure Enterprise Data Analyst Associate」は、企業規模のデータ分析ソリューションを、Microsoft Power BI や Azure Synapse Analytics 等のクラウド／データプラットフォームを用いて設計・構築・運用できるスキルを証明する認定資格です。具体的には、データ分析環境の構築、データの取得・変換、データモデルの実装・管理、さらに分析結果の可視化・共有といった一連のタスクを対象としています。企業内のデータ要件を整理し、ガバナンスやパフォーマンスも考慮したソリューションを提供できる人材を想定しています。",
+    "version": "廃止",
+    "price": "165 USD",
+    "difficulty": "難しい",
+    "official-site": "https://learn.microsoft.com/en-us/credentials/certifications/azure-enterprise-data-analyst-associate/",
+    "category": {
+      "id": "azure",
+      "name": "Azure"
+    }
+  },
+  "questions": [
+    {
+      "id": "azure-DP-500-q1",
+      "difficulty": "normal",
+      "question": "Azure Synapse Analytics の Dedicated SQL Pool と Serverless SQL Pool の主な違いとして正しいものはどれか。",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Dedicated SQL Pool はプロビジョンドされたコンピューティングリソースを専有し、Serverless SQL Pool はオンデマンドでリソースを使用する。",
+          "explanation": {
+            "text": "Dedicated SQL Pool は事前に割り当てたリソース (DWU 等) を持ち、常に一定の性能を約束する。一方 Serverless SQL Pool はクエリ実行時にのみリソースを使用するため、コスト効率と柔軟性が高いが、パフォーマンスが Dedicated 程度ではないことがある。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/on-demand-querying-overview",
+            "reference_label": "Azure Synapse Analytics Serverless SQL プール概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Serverless SQL Pool は読み込み専用で、書き込み操作をサポートしない。",
+          "explanation": {
+            "text": "これは誤り。Serverless SQL Pool は基本的にクエリ読み込み用途 (SELECT) が主だが、外部テーブル経由での data definition 操作等一部の操作は可能。ただし書き込み (INSERT/UPDATE) を専有する用途には Dedicated SQL Pool や他のサービスを使うことが多い。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/on-demand-querying-overview",
+            "reference_label": "Azure Synapse Analytics Serverless SQL プール概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Dedicated SQL Pool は自動的にスケーリングし、クエリ負荷に応じてリソースが上下する。",
+          "explanation": {
+            "text": "Dedicated SQL Pool のスケール操作は手動またはプログラム可能だが、自動で細かく上下するオートスケーリングは標準ではない。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/pools/resource-class-and-scale",
+            "reference_label": "Azure Synapse Analytics スケール管理"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Serverless SQL Pool は価格が固定で、使用状況に関わらず月額定額になる。",
+          "explanation": {
+            "text": "これは誤り。Serverless は使用した分だけ課金されるオンデマンド型で、定額ではない。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/on-demand-querying-overview",
+            "reference_label": "Azure Synapse Analytics Serverless SQL プール概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Dedicated SQL Pool はリソースを専有し、Serverless SQL Pool はオンデマンドで利用するため、リソース利用・コスト・スケーラビリティの違いが主な相違点です。",
+        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/on-demand-querying-overview",
+        "reference_label": "Azure Synapse Analytics Serverless SQL プール概要"
+      }
+    },
+    {
+      "id": "azure-DP-500-q2",
+      "difficulty": "hard",
+      "question": "Power BI における Row-Level Security (RLS) を実装する際、Azure Purview を用いた場合に得られる利点として最も適切なものはどれか。",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Purview によって RLS ロールを自動生成できる。",
+          "explanation": {
+            "text": "Purview はデータ資産カタログとガバナンスを支援するが、RLS ロールそのものを自動的に生成する機能は主目的ではない。",
+            "reference": "https://learn.microsoft.com/purview/data-catalog/overview",
+            "reference_label": "Microsoft Purview の概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データセットやデータフローの依存関係 (lineage) を可視化でき、どのレポートがどのデータに依存しているか把握できる。",
+          "explanation": {
+            "text": "Purview はデータの出所 (lineage) や依存関係を可視化する機能があり、変更が他の資産に与える影響を評価できるようになります。これは RLS の影響範囲を把握する上でも重要です。",
+            "reference": "https://learn.microsoft.com/purview/data-governance/lineage",
+            "reference_label": "Purview のデータリネージ機能"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Purview はユーザーの認証情報に基づいて動的に RLS の制限を変更する。",
+          "explanation": {
+            "text": "RLS の動的制限 (例えばユーザーの属性に基づく制限) は Power BI の実装で行うことが多く、Purview 自体はそのポリシー定義や分類、リネージ管理を主とする。",
+            "reference": "https://learn.microsoft.com/purview/data-governance/overview",
+            "reference_label": "Purview の主要機能"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Purview は複数の Power BI ワークスペースにまたがる RLS 設定を一元管理できるようにする。",
+          "explanation": {
+            "text": "Purview を使えば複数のデータ資産をガバナンス下に置き、ワークスペース間・ソリューション間でデータの依存性やデータ分類を管理できるが、RLS 設定自体のポリシーを Purview が直接一元化するわけではない。ユーザーやワークスペースごとに設定は Power BI 側でなされる。",
+            "reference": "https://learn.microsoft.com/purview/data-policy/overview",
+            "reference_label": "Purview のポリシー管理概要"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Purview の lineage / dependency 分析機能により、データセットやデータフローのどのデータがどのレポート／ダッシュボードに影響を与えるか可視化でき、RLS を含む変更の影響範囲を評価しやすくなる。",
+        "reference": "https://learn.microsoft.com/purview/data-governance/lineage",
+        "reference_label": "Purview のデータリネージ機能"
+      }
+    },
+    {
+      "id": "azure-DP-500-q3",
+      "difficulty": "easy",
+      "question": "Power BI における “Import” モードと “DirectQuery” モードの主な違いは何か。",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Import モードではデータが Power BI に取り込まれ、保持され、DirectQuery モードではクエリが都度ソースに問い合わせされる。",
+          "explanation": {
+            "text": "Import モードはデータを Power BI 内にキャッシュ／保存するため高速な読み込みが可能。DirectQuery はリアルタイム性を保つが、クエリ性能・ソースの制限に依存する。",
+            "reference": "https://learn.microsoft.com/power-bi/connect-directquery",
+            "reference_label": "Power BI: DirectQuery と Import の比較"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Import モードは常に最新のデータを表示し、DirectQuery はデータを更新する必要がある。",
+          "explanation": {
+            "text": "これは逆。Import はキャッシュされた時点のデータ、指定したリフレッシュ間隔でしか更新されない。DirectQuery はクエリ時点でソースにアクセスするため最新性は高い。",
+            "reference": "https://learn.microsoft.com/power-bi/connect-directquery",
+            "reference_label": "Power BI: DirectQuery と Import の比較"
+          }
+        },
+        {
+          "key": "C",
+          "text": "DirectQuery モードではデータ モデルのサイズ制限がないが、Import モードでは制限がある。",
+          "explanation": {
+            "text": "Import モードでは Power BI の容量制限やデータ モデルのメモリ制限を考慮する必要がある。DirectQuery でもシステム依存で制限が存在し得るが、Import モードの方が制限を意識する場面が多い。",
+            "reference": "https://learn.microsoft.com/power-bi/connect-directquery",
+            "reference_label": "Power BI: DirectQuery と Import の比較"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Import モードはライブ接続 (ライブ データ) をサポートするが、DirectQuery はサポートしない。",
+          "explanation": {
+            "text": "逆。DirectQuery がライブあるいはリアルタイムデータに近いソース問い合わせを行う。Import は静的なキャッシュで、更新はリフレッシュによる。",
+            "reference": "https://learn.microsoft.com/power-bi/connect-directquery",
+            "reference_label": "Power BI: DirectQuery と Import の比較"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Import モードではデータを Power BI に取り込んで保存し、DirectQuery モードではデータ要求が都度データソースに問い合わせされるので、速度・最新性・制限事項が異なります。",
+        "reference": "https://learn.microsoft.com/power-bi/connect-directquery",
+        "reference_label": "Power BI: DirectQuery と Import の比較"
+      }
+    },
+    {
+      "id": "azure-DP-500-q4",
+      "difficulty": "normal",
+      "question": "Azure Data Factory を使ってデータフロー (Data Flow) を構築する際、デバッグモード (Debug) とパイプライン実行モード (Pipeline run) の違いとして正しいものはどれか。",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Debug モードではデータフローの前処理や変換を試すための入出力サンプル／小さなデータで処理が実行されることがある。",
+          "explanation": {
+            "text": "Debug モードは検証やデバッグ用途で、完全なデータ量ではなくサンプルデータなどで実行されることがある。パイプライン実行モードではフルデータセットで実行される。",
+            "reference": "https://learn.microsoft.com/azure/data-factory/concepts-data-flow",
+            "reference_label": "Azure Data Factory Data Flows 概観"
+          }
+        },
+        {
+          "key": "B",
+          "text": "パイプライン実行モードでは常にコストがかからないが、Debug モードはコストがかかる。",
+          "explanation": {
+            "text": "逆。Debug モードは対話的な検証用であり、追加コストがかかることが多い。パイプライン定期実行は通常のラン時コストが発生する。",
+            "reference": "https://learn.microsoft.com/azure/data-factory/concepts-data-flow",
+            "reference_label": "Azure Data Factory Data Flows 概観"
+          }
+        },
+        {
+          "key": "C",
+            "text": "Debug モードではデータフローの定義のみをチェックし、実データの変換は行われない。",
+            "explanation": {
+              "text": "これは誤り。デバッグモードでも変換処理は実行される。サンプルデータまたは部分的なデータを用いることがあるが、処理は実際に行われる。",
+              "reference": "https://learn.microsoft.com/azure/data-factory/concepts-data-flow",
+              "reference_label": "Azure Data Factory Data Flows 概観"
+            }
+        },
+        {
+          "key": "D",
+            "text": "Pipeline run モードでは常に結果がキャッシュされるが、Debug モードはキャッシュされない。",
+          "explanation": {
+              "text": "キャッシュの有無は構成や実行環境に依存し、模式的に “常にキャッシュされる／されない” と明言できない。よってこの選択肢は正しくない。",
+              "reference": "https://learn.microsoft.com/azure/data-factory/concepts-data-flow",
+              "reference_label": "Azure Data Factory Data Flows 概観"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Debug は通常テスト・検証目的で小規模・サンプルデータで処理確認をすることが多く、Pipeline 実行は本番全データを扱うことを前提とすることが多いから。",
+        "reference": "https://learn.microsoft.com/azure/data-factory/concepts-data-flow",
+        "reference_label": "Azure Data Factory Data Flows 概観"
+      }
+    },
+    {
+      "id": "azure-DP-500-q5",
+      "difficulty": "hard",
+      "question": "大規模な Power BI モデルで DAX のパフォーマンスが悪くなってきたとき、どのような改善策が最も効果的か。(複数選択可)",
+      "choices": [
+        {
+          "key": "A",
+          "text": "計算列 (Calculated Columns) を可能な限り削減し、メジャー (Measure) を使う。",
+          "explanation": {
+            "text": "計算列はモデルの行数に比例してストレージと計算コストがかかる。メジャーは必要な時だけ計算されるため、モデルの効率性を上げることができる。",
+            "reference": "https://learn.microsoft.com/power-bi/optimize/model-performance",
+            "reference_label": "Power BI モデルのパフォーマンス最適化"
+          }
+        },
+        {
+          "key": "B",
+          "text": "不要な列や行をモデルに読み込まないようにフィルタリング・削除する。",
+          "explanation": {
+            "text": "モデルのサイズが大きいと読み込み・クエリ応答が遅くなるため、使われない列／行を削除してサイズ削減することは第一歩であり、非常に効果的。",
+            "reference": "https://learn.microsoft.com/power-bi/optimize/model-performance",
+            "reference_label": "Power BI モデルのパフォーマンス最適化"
+          }
+        },
+        {
+          "key": "C",
+          "text": "すべてのメジャーで CALCULATE 関数を使わずに、単純な集約関数のみを用いる。",
+          "explanation": {
+            "text": "CALCULATE は非常に強力だが、適切でない使い方をするとフィルタコンテキストの切り替えでコストが高くなる。とはいえ、すべて避けるのは非現実的であり、必要な場面では使うべき。改善よりは調整が必要。",
+            "reference": "https://learn.microsoft.com/power-bi/optimize/model-performance",
+            "reference_label": "Power BI モデルのパフォーマンス最適化"
+          }
+        },
+        {
+          "key": "D",
+          "text": "交差フィルター（Cross-filter）方向を明示的に設定し、不要な双方向フィルターを避ける。",
+          "explanation": {
+            "text": "双方向フィルタは便利だが、フィルタ伝播 (filter propagation) が複雑になり、クエリ性能に悪影響を及ぼすことがある。必要な箇所だけ使うよう設計すべき。",
+            "reference": "https://learn.microsoft.com/power-bi/optimize/model-performance",
+            "reference_label": "Power BI モデルのパフォーマンス最適化"
+          }
+        }
+      ],
+      "answer": "A, B, D",
+      "explanation": {
+        "text": "計算列を減らしメジャー中心にすること、不要なデータを読み込まないこと、フィルターの伝播を設計的に制御することが、モデルの反応速度とリソース消費を改善する主要な手段です。",
+        "reference": "https://learn.microsoft.com/power-bi/optimize/model-performance",
+        "reference_label": "Power BI モデルのパフォーマンス最適化"
+      }
+    },
+    {
+      "id": "azure-DP-500-q6",
+      "difficulty": "normal",
+      "question": "Power BI データフロー (Dataflow) を利用して Azure Data Lake Storage Gen2 にデータを保存する構成をとった場合の利点として、正しいものはどれか。",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Power BI サービス内のキャッシュ外でデータを保存できるので、複数の分析ツール間で共有しやすい。",
+          "explanation": {
+            "text": "Azure Data Lake Storage Gen2 に保存することで Power BI 以外のツール（例えば Spark／Synapse）からもアクセス可能となり、データの再利用性が高まる。",
+            "reference": "https://learn.microsoft.com/power-bi/dataflows/linking-entities-dataflow",
+            "reference_label": "Power BI Dataflows と Azure Data Lake Storage Gen2"
+          }
+        },
+        {
+          "key": "B",
+            "text": "ストレージのコストが常に Power BI の内部ストレージよりも安くなる。",
+          "explanation": {
+            "text": "ADLS Gen2 は大量データを保存・アクセスするのに適しており費用対効果が良い場合が多いが、必ず常に内部ストレージよりも安いわけではない。利用形態に依存する。",
+            "reference": "https://learn.microsoft.com/power-bi/dataflows/linking-entities-dataflow",
+            "reference_label": "Power BI Dataflows と Azure Data Lake Storage Gen2"
+          }
+        },
+        {
+          "key": "C",
+            "text": "Power BI レポートの読み込み性能を保証するために、すべてのクエリを Databricks SQL にリダイレクトする機能がある。",
+            "explanation": {
+              "text": "そのような機能は標準では Power BI Dataflow + ADLS Gen2 によっては提供されていない。クエリルーティングは構成次第。ただし Databricks 等と組み合わせることは可能。",
+              "reference": "https://learn.microsoft.com/power-bi/dataflows/linking-entities-dataflow",
+              "reference_label": "Power BI Dataflows と Azure Data Lake Storage Gen2"
+            }
+          },
+        {
+          "key": "D",
+          "text": "データフローはリアルタイム処理に向いており、ストリーミングデータをほぼ即時に ADLS に保存できる。",
+          "explanation": {
+            "text": "Dataflow は通常バッチ・スケジュール処理に使われ、リアルタイム／ストリーミング処理は Azure Synapse の他サービスや Azure Stream Analytics の方が向いている。",
+            "reference": "https:// learn.microsoft.com/power-bi/dataflows/linking-entities-dataflow",
+            "reference_label": "Power BI Dataflows と Azure Data Lake Storage Gen2"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ADLS Gen2 に保存すると、Power BI 以外のプラットフォームもデータを利用可能になるため、共有性と再利用性が向上します。",
+        "reference": "https://learn.microsoft.com/power-bi/dataflows/linking-entities-dataflow",
+        "reference_label": "Power BI Dataflows と Azure Data Lake Storage Gen2"
+      }
+    },
+    {
+      "id": "azure-DP-500-q7",
+      "difficulty": "normal",
+      "question": "大規模なデータ分析ソリューションにおいて、データの可観測性 (observability) を確保したい。監視 (monitoring) やログ取得に Azure で望ましいアプローチとして適切なものはどれか。",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Azure Synapse Analytics や Azure Data Factory の診断ログ (diagnostic logs) を Azure Monitor に送信する。",
+          "explanation": {
+            "text": "診断ログを Azure Monitor に連携することで、遅延、失敗、リソースの使用状況などの可視化・アラート設定が可能となる。",
+            "reference": "https://learn.microsoft.com/azure/data-factory/monitoring/log-analytics",
+            "reference_label": "Azure Data Factory のログと Azure Monitor"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Power BI のレポート実行時に必ずキャッシュを無効化することで常に最新のデータを可視化させる。",
+          "explanation": {
+            "text": "これは監視やログ取得とは異なり、パフォーマンス・コスト面で望ましいとは限らない。常に最新データを求める要求があれば別だが、キャッシュ無効化は多数のクエリ／ユーザーがいる環境では非効率となる。",
+            "reference": "https://learn.microsoft.com/power-bi/optimizer/refresh-caching",
+            "reference_label": "Power BI キャッシュ最適化"
+          }
+        },
+        {
+          "key": "C",
+            "text": "Power BI サービスのアクティビティ ログ (activity log) を無効にし、節約する。",
+            "explanation": {
+              "text": "アクティビティ ログを無効化すると、誰がいつ何をしたかの追跡ができなくなり、セキュリティ的にも監査的にも望ましくない。",
+              "reference": "https://learn.microsoft.com/power-bi/admin-monitoring/",
+              "reference_label": "Power BI のモニタリングと監査"
+            }
+          },
+        {
+          "key": "D",
+          "text": "Synapse や ADF のメトリクスをログ収集から除外し、Power BI のみを監視対象とする。",
+          "explanation": {
+              "text": "これも望ましくない。分析ソリューション全体の可観測性を確保するためには、データパイプライン／変換／ストレージ／レポート各層を監視対象とする必要があります。",
+              "reference": "https://learn.microsoft.com/azure/data-factory/monitoring/log-analytics",
+              "reference_label": "Azure Data Factory のログと Azure Monitor"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "監視可能性を高めるには、パイプライン／変換／ストレージなど、ソリューションを構成する各コンポーネントの診断ログ・メトリクスを取得し、Azure Monitor 等に集約することが重要です。",
+        "reference": "https://learn.microsoft.com/azure/data-factory/monitoring/log-analytics",
+        "reference_label": "Azure Data Factory のログと Azure Monitor"
+      }
+    },
+    {
+      "id": "azure-DP-500-q8",
+      "difficulty": "easy",
+      "question": "Power BI の Aggregations (集計テーブル) 機能を利用する目的として最も適切なものはどれか。",
+      "choices": [
+        {
+          "key": "A",
+          "text": "大規模データセットに対して事前計算済みの要約データを保持し、クエリ応答時間を短縮するため。",
+          "explanation": {
+            "text": "Aggregation テーブルを利用すると、クエリの多くが事前集計済みテーブルにヒットし、性能が大幅に改善する。",
+            "reference": "https://learn.microsoft.com/power-bi/transform-model/aggregations-advanced",
+            "reference_label": "Power BI Aggregations の概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データセットのセキュリティロールを自動生成するため。",
+          "explanation": {
+            "text": "Aggregation 機能はセキュリティロールの自動生成には関与しない。",
+            "reference": "https://learn.microsoft.com/power-bi/transform-model/aggregations-advanced",
+            "reference_label": "Power BI Aggregations の概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "DirectQuery を Import モードに変換するため。",
+          "explanation": {
+            "text": "DirectQuery のクエリの一部を Aggregation によって効率化できるが、Import モードに自動変換されるわけではない。",
+            "reference": "https://learn.microsoft.com/power-bi/transform-model/aggregations-advanced",
+            "reference_label": "Power BI Aggregations の概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Power BI Desktop の UI を高速化するためのキャッシュ機能。",
+          "explanation": {
+            "text": "Aggregation は UI 表示速度改善に寄与するが、本質はデータクエリ性能の改善である。",
+            "reference": "https://learn.microsoft.com/power-bi/transform-model/aggregations-advanced",
+            "reference_label": "Power BI Aggregations の概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Aggregations は事前集計テーブルを使って大規模データセットのクエリ性能を向上させる仕組みである。",
+        "reference": "https://learn.microsoft.com/power-bi/transform-model/aggregations-advanced",
+        "reference_label": "Power BI Aggregations の概要"
+      }
+    },
+    {
+      "id": "azure-DP-500-q9",
+      "difficulty": "normal",
+      "question": "Azure Analysis Services から Power BI Premium に移行する利点として正しいものはどれか。",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Power BI Premium は Analysis Services と同様の Tabular モデルをサポートし、かつレポート発行や共有機能が統合されている。",
+          "explanation": {
+            "text": "Premium は Tabular モデルをサポートしつつ、Power BI のエンドツーエンド機能と統合されているため、運用コスト削減や利便性向上につながる。",
+            "reference": "https://learn.microsoft.com/power-bi/enterprise/service-premium-as",
+            "reference_label": "Power BI Premium と Analysis Services"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Premium に移行するとすべてのクエリが自動的に Materialized View に変換される。",
+          "explanation": {
+            "text": "Materialized View の自動生成機能は Premium 固有のものではない。",
+            "reference": "https://learn.microsoft.com/power-bi/enterprise/service-premium-as",
+            "reference_label": "Power BI Premium と Analysis Services"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Premium では Direct Lake モードしか利用できない。",
+          "explanation": {
+            "text": "Premium では Import, DirectQuery, Direct Lake すべて利用可能であり、制限はない。",
+            "reference": "https://learn.microsoft.com/power-bi/enterprise/service-premium-as",
+            "reference_label": "Power BI Premium と Analysis Services"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Premium ではセキュリティ機能が不要になるため、RLS の設定を省略できる。",
+          "explanation": {
+            "text": "RLS 設定は Premium においても引き続き必要である。",
+            "reference": "https://learn.microsoft.com/power-bi/enterprise/service-premium-as",
+            "reference_label": "Power BI Premium と Analysis Services"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Power BI Premium は Tabular モデルを活用でき、Power BI のレポート・共有機能と一体的に運用できる点が大きなメリットである。",
+        "reference": "https://learn.microsoft.com/power-bi/enterprise/service-premium-as",
+        "reference_label": "Power BI Premium と Analysis Services"
+      }
+    },
+    {
+      "id": "azure-DP-500-q10",
+      "difficulty": "hard",
+      "question": "Azure Synapse Analytics において Materialized View を利用する利点はどれか。(複数選択可)",
+      "choices": [
+        {
+          "key": "A",
+          "text": "複雑な集計クエリを事前に計算・格納することでクエリ性能を大幅に改善できる。",
+          "explanation": {
+            "text": "Materialized View は事前計算により、頻出する集計クエリを高速化する。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql-data-warehouse/materialized-views-overview",
+            "reference_label": "Synapse Analytics のマテリアライズドビュー"
+          }
+        },
+        {
+          "key": "B",
+          "text": "基になるテーブルの更新があっても自動的に反映される。",
+          "explanation": {
+            "text": "Materialized View は自動的に更新されるが、即時ではなく、更新スケジュールやトリガーの影響を受ける。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql-data-warehouse/materialized-views-overview",
+            "reference_label": "Synapse Analytics のマテリアライズドビュー"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザーごとに異なるデータを返す Row-Level Security を自動で実装する。",
+          "explanation": {
+            "text": "RLS は Materialized View の機能ではない。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql-data-warehouse/materialized-views-overview",
+            "reference_label": "Synapse Analytics のマテリアライズドビュー"
+          }
+        },
+        {
+          "key": "D",
+          "text": "クエリプランの最適化を支援し、Synapse が自動で最適なビューを利用することができる。",
+          "explanation": {
+            "text": "Synapse のクエリ最適化エンジンは、利用可能な場合には Materialized View を自動で選択する。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql-data-warehouse/materialized-views-overview",
+            "reference_label": "Synapse Analytics のマテリアライズドビュー"
+          }
+        }
+      ],
+      "answer": "A, B, D",
+      "explanation": {
+        "text": "Materialized View は頻出クエリの性能改善に役立ち、基テーブル更新も反映され、クエリオプティマイザーが自動で選択してくれる点が大きな特徴である。",
+        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql-data-warehouse/materialized-views-overview",
+        "reference_label": "Synapse Analytics のマテリアライズドビュー"
+      }
+    },
+    {
+      "id": "azure-DP-500-q11",
+      "difficulty": "normal",
+      "question": "Power BI の Dataflows において “Linked Entities” を利用するメリットはどれか。",
+      "choices": [
+        {
+          "key": "A",
+          "text": "同じデータ変換ロジックを複数の Dataflow で再利用できる。",
+          "explanation": {
+            "text": "Linked Entities を使うと、ある Dataflow のエンティティを他の Dataflow で参照でき、変換処理の再利用が可能になる。",
+            "reference": "https://learn.microsoft.com/power-bi/transform-model/dataflows/linked-entities",
+            "reference_label": "Power BI Dataflows の Linked Entities"
+          }
+        },
+        {
+          "key": "B",
+          "text": "自動的に Azure Synapse にデータを同期する。",
+          "explanation": {
+            "text": "Linked Entities は変換ロジックの共有であり、Synapse への自動同期機能ではない。",
+            "reference": "https://learn.microsoft.com/power-bi/transform-model/dataflows/linked-entities",
+            "reference_label": "Power BI Dataflows の Linked Entities"
+          }
+        },
+        {
+          "key": "C",
+          "text": "RLS の設定を自動的に継承できる。",
+          "explanation": {
+            "text": "RLS 設定は Linked Entities によって自動継承されるものではない。",
+            "reference": "https://learn.microsoft.com/power-bi/transform-model/dataflows/linked-entities",
+            "reference_label": "Power BI Dataflows の Linked Entities"
+          }
+        },
+        {
+          "key": "D",
+          "text": "他のワークスペースのユーザーに Dataflow への管理権限を付与する。",
+          "explanation": {
+            "text": "Linked Entities はデータ変換の再利用に関する機能であり、権限管理機能ではない。",
+            "reference": "https://learn.microsoft.com/power-bi/transform-model/dataflows/linked-entities",
+            "reference_label": "Power BI Dataflows の Linked Entities"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Linked Entities を使えば複数の Dataflow で同じ変換ロジックを参照でき、再利用性と保守性が向上する。",
+        "reference": "https://learn.microsoft.com/power-bi/transform-model/dataflows/linked-entities",
+        "reference_label": "Power BI Dataflows の Linked Entities"
+      }
+    },
+    {
+      "id": "azure-DP-500-q12",
+      "difficulty": "easy",
+      "question": "Power BI Gateway の主な役割として正しいものはどれか。",
+      "choices": [
+        {
+          "key": "A",
+          "text": "オンプレミス データソースと Power BI サービスの間で安全にデータを転送する。",
+          "explanation": {
+            "text": "Gateway は暗号化されたチャネルでオンプレミスのデータを Power BI サービスに接続するために用いられる。",
+            "reference": "https://learn.microsoft.com/power-bi/connect-data/service-gateway-onprem",
+            "reference_label": "Power BI Gateway の概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Power BI レポートのキャッシュを管理する。",
+          "explanation": {
+            "text": "キャッシュ管理は Gateway の主機能ではない。",
+            "reference": "https://learn.microsoft.com/power-bi/connect-data/service-gateway-onprem",
+            "reference_label": "Power BI Gateway の概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Monitor へのメトリクス送信を自動化する。",
+          "explanation": {
+            "text": "Gateway はメトリクス送信機能を持たない。",
+            "reference": "https://learn.microsoft.com/power-bi/connect-data/service-gateway-onprem",
+            "reference_label": "Power BI Gateway の概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Power BI Desktop のライセンス認証を行う。",
+          "explanation": {
+            "text": "ライセンス認証は Gateway の役割ではない。",
+            "reference": "https://learn.microsoft.com/power-bi/connect-data/service-gateway-onprem",
+            "reference_label": "Power BI Gateway の概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Gateway の役割はオンプレミスとクラウドの安全なデータ接続である。",
+        "reference": "https://learn.microsoft.com/power-bi/connect-data/service-gateway-onprem",
+        "reference_label": "Power BI Gateway の概要"
+      }
+    },
+    {
+      "id": "azure-DP-500-q13",
+      "difficulty": "normal",
+      "question": "Azure Data Lake Storage Gen2 を利用する際のセキュリティベストプラクティスとして正しいものはどれか。(複数選択可)",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Azure AD ベースのアクセス制御を用いて、ロールに応じた権限を付与する。",
+          "explanation": {
+            "text": "ADLS Gen2 は Azure AD に統合されており、RBAC によるアクセス制御が推奨される。",
+            "reference": "https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-security-overview",
+            "reference_label": "ADLS Gen2 セキュリティの概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データを常に暗号化して保存する。",
+          "explanation": {
+            "text": "ADLS Gen2 は保存時暗号化 (encryption-at-rest) が標準で有効であり、セキュリティベストプラクティスの一つである。",
+            "reference": "https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-security-overview",
+            "reference_label": "ADLS Gen2 セキュリティの概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "匿名アクセスを既定で許可することで、利便性を高める。",
+          "explanation": {
+            "text": "匿名アクセスはセキュリティリスクが高いためベストプラクティスではない。",
+            "reference": "https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-security-overview",
+            "reference_label": "ADLS Gen2 セキュリティの概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ネットワーク制御を活用し、必要に応じて VNet 統合やファイアウォールルールを設定する。",
+          "explanation": {
+            "text": "ネットワークレベルの制御を組み合わせることはベストプラクティスである。",
+            "reference": "https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-security-overview",
+            "reference_label": "ADLS Gen2 セキュリティの概要"
+          }
+        }
+      ],
+      "answer": "A, B, D",
+      "explanation": {
+        "text": "Azure AD 認証、暗号化、ネットワーク制御の3点は ADLS Gen2 を安全に利用する上で推奨されるベストプラクティスである。",
+        "reference": "https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-security-overview",
+        "reference_label": "ADLS Gen2 セキュリティの概要"
+      }
+    },
+    {
+      "id": "azure-DP-500-q14",
+      "difficulty": "normal",
+      "question": "Azure Purview (現 Microsoft Purview) のデータ分類機能を利用する代表的な利点はどれか。",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データ資産を自動スキャンして機密情報や規制対象データを分類できる。",
+          "explanation": {
+            "text": "Purview の分類エンジンは機密データ (例: クレジットカード番号) を自動検出し、ガバナンス強化に役立つ。",
+            "reference": "https://learn.microsoft.com/azure/purview/concept-classifications",
+            "reference_label": "Purview データ分類の概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "スキャン結果は常に外部 SIEM に自動送信されるため、設定は不要。",
+          "explanation": {
+            "text": "外部送信は既定では行われない。Azure Monitor/Export API などで統合できるが自動送信ではない。",
+            "reference": "https://learn.microsoft.com/azure/purview/concept-classifications",
+            "reference_label": "Purview データ分類の概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Power BI データセットの RLS を自動生成する。",
+          "explanation": {
+            "text": "分類はメタデータ管理であり、RLS の自動生成は行わない。",
+            "reference": "https://learn.microsoft.com/azure/purview/concept-classifications",
+            "reference_label": "Purview データ分類の概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Purview に分類されたデータは自動的に暗号化される。",
+          "explanation": {
+            "text": "Purview はカタログと分類のサービスであり、暗号化機能は含まれない。",
+            "reference": "https://learn.microsoft.com/azure/purview/concept-classifications",
+            "reference_label": "Purview データ分類の概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Purview は機密データの自動検出・分類により、コンプライアンスやデータガバナンスを強化する。暗号化や RLS 自動生成は別サービスの機能である。",
+        "reference": "https://learn.microsoft.com/azure/purview/concept-classifications",
+        "reference_label": "Purview データ分類の概要"
+      }
+    },
+    {
+      "id": "azure-DP-500-q15",
+      "difficulty": "hard",
+      "question": "Power BI のインクリメンタル リフレッシュを大規模ファクトテーブルで利用する際の設計として最も適切なものはどれか。(複数選択可)",
+      "choices": [
+        {
+          "key": "A",
+          "text": "日付/日時列でパーティション化し、\"過去○年を格納\" と \"最近○日のデータを増分更新\" を設定する。",
+          "explanation": {
+            "text": "インクリメンタル リフレッシュは日付列に基づきパーティション化し、保存期間と増分期間を指定するのが基本設計。",
+            "reference": "https://learn.microsoft.com/power-bi/transform-model/incremental-refresh-overview",
+            "reference_label": "インクリメンタル リフレッシュの概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "増分期間のデータについてのみ、リアルタイムで DirectQuery に委譲するハイブリッド テーブルを利用できる。",
+          "explanation": {
+            "text": "インポートと DirectQuery を組み合わせるハイブリッド テーブルで最新領域をリアルタイム化できる。",
+            "reference": "https://learn.microsoft.com/power-bi/enterprise/real-time-hybrid-tables",
+            "reference_label": "リアルタイムのハイブリッド テーブル"
+          }
+        },
+        {
+          "key": "C",
+          "text": "インクリメンタル リフレッシュを有効化すると、リフレッシュ履歴は常に完全削除され再構築される。",
+          "explanation": {
+            "text": "インクリメンタルは完全再読み込みを避け、既存パーティションを維持して変更分のみ処理するのが目的であるため誤り。",
+            "reference": "https://learn.microsoft.com/power-bi/transform-model/incremental-refresh-overview",
+            "reference_label": "インクリメンタル リフレッシュの概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "インクリメンタル リフレッシュでは、ソース側のフィルタープッシュダウンを活用するための RangeStart/RangeEnd パラメーターを利用する。",
+          "explanation": {
+            "text": "RangeStart/RangeEnd パラメーターでクエリ フォールディングを促進し、ソース側で絞り込む。",
+            "reference": "https://learn.microsoft.com/power-bi/transform-model/incremental-refresh-configure",
+            "reference_label": "インクリメンタル リフレッシュの構成"
+          }
+        }
+      ],
+      "answer": "A, B, D",
+      "explanation": {
+        "text": "インクリメンタルは日付列によるパーティション化が前提で、RangeStart/RangeEnd によるフォールディングでソース負荷を最小化する。最新領域のリアルタイム性が必要ならハイブリッド テーブルを組み合わせる。",
+        "reference": "https://learn.microsoft.com/power-bi/transform-model/incremental-refresh-overview",
+        "reference_label": "インクリメンタル リフレッシュの概要"
+      }
+    },
+    {
+      "id": "azure-DP-500-q16",
+      "difficulty": "normal",
+      "question": "Azure Synapse Analytics の Dedicated SQL Pool で大規模なファクト テーブルを最適に格納するためのテーブル分散方式の選択として正しいものはどれか。",
+      "choices": [
+        {
+          "key": "A",
+          "text": "高カーディナリティで均等に分布しやすいキーを用いる場合は HASH 分散が有効。",
+          "explanation": {
+            "text": "HASH 分散は分散キーに基づいてデータをノードに均等配賦し、大規模ジョインや集計を高速化する。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/develop-tables-distribute",
+            "reference_label": "テーブルの分散戦略 (HASH/ROUND_ROBIN/REPLICATE)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "すべての参照テーブルに ROUND_ROBIN を選ぶとジョインが最速になる。",
+          "explanation": {
+            "text": "参照テーブルは REPLICATE を選ぶことでシャッフルを減らしジョインを高速化できる場合が多い。ROUND_ROBIN は均等散在だがジョインでデータ移動が発生しやすい。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/develop-tables-distribute",
+            "reference_label": "テーブルの分散戦略"
+          }
+        },
+        {
+          "key": "C",
+          "text": "小さなディメンション テーブルは REPLICATE 分散が推奨されることが多い。",
+          "explanation": {
+            "text": "REPLICATE は各ノードにコピーを持ち、ファクトとのジョインでデータ移動を抑制できる。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/develop-tables-distribute",
+            "reference_label": "テーブルの分散戦略"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ROUND_ROBIN 分散は常に最速で、ベストプラクティスとして推奨される。",
+          "explanation": {
+            "text": "ROUND_ROBIN はロードが簡易だがジョインでデータ移動が多くなり得るため“常に最速”ではない。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/develop-tables-distribute",
+            "reference_label": "テーブルの分散戦略"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "大規模ファクトは適切な分散キーを選べるなら HASH 分散が有効。小さなディメンションは REPLICATE を検討し、ROUND_ROBIN は汎用だが最速ではない。",
+        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/develop-tables-distribute",
+        "reference_label": "テーブルの分散戦略"
+      }
+    },
+    {
+      "id": "azure-DP-500-q17",
+      "difficulty": "easy",
+      "question": "Power BI の Deployment Pipelines を用いる主な目的はどれか。",
+      "choices": [
+        {
+          "key": "A",
+          "text": "開発→テスト→本番のステージ間でコンテンツを昇格させ、差分や依存関係を可視化したうえで安全にリリースするため。",
+          "explanation": {
+            "text": "Deployment Pipelines は各ステージの差分比較、昇格、ルールベースのパラメータ切替などを支援する。",
+            "reference": "https://learn.microsoft.com/power-bi/create-reports/deployment-pipelines-overview",
+            "reference_label": "Deployment pipelines の概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "DAX メジャーを自動生成するため。",
+          "explanation": {
+            "text": "パイプラインは運用プロモーション機能であり、DAX 自動生成は行わない。",
+            "reference": "https://learn.microsoft.com/power-bi/create-reports/deployment-pipelines-overview",
+            "reference_label": "Deployment pipelines の概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Power BI Desktop のライセンス配布を自動化するため。",
+          "explanation": {
+            "text": "ライセンス管理の機能ではない。",
+            "reference": "https://learn.microsoft.com/power-bi/create-reports/deployment-pipelines-overview",
+            "reference_label": "Deployment pipelines の概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ゲートウェイのインストールをリモート制御するため。",
+          "explanation": {
+            "text": "ゲートウェイの配備制御機能は含まれない。",
+            "reference": "https://learn.microsoft.com/power-bi/create-reports/deployment-pipelines-overview",
+            "reference_label": "Deployment pipelines の概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ステージごとの差分比較と安全な昇格により、本番リリースの品質と可視性を高めるのが主目的。",
+        "reference": "https://learn.microsoft.com/power-bi/create-reports/deployment-pipelines-overview",
+        "reference_label": "Deployment pipelines の概要"
+      }
+    },
+    {
+      "id": "azure-DP-500-q18",
+      "difficulty": "normal",
+      "question": "Power BI から Azure SQL Database や Synapse に DirectQuery 接続する際、Azure AD シングルサインオン (SSO) を用いた推奨構成として正しいものはどれか。",
+      "choices": [
+        {
+          "key": "A",
+          "text": "オンプレミス データ ゲートウェイ (標準モード) またはクラウド接続で Azure AD SSO を有効化し、ユーザーの委任を利用する。",
+          "explanation": {
+            "text": "サポート対象のソースでは、ゲートウェイ経由/クラウド接続における Azure AD SSO の有効化でユーザーごとの権限を委譲できる。",
+            "reference": "https://learn.microsoft.com/power-bi/connect-data/service-gateway-sso-ndc",
+            "reference_label": "ゲートウェイでの SSO (Azure AD) の使用"
+          }
+        },
+        {
+          "key": "B",
+          "text": "OAuth2 はサポートされないため、常にデータベース ユーザー名/パスワードを共有する。",
+          "explanation": {
+            "text": "Azure AD/OAuth2 ベースの SSO が推奨。認証情報の共有はセキュリティ上望ましくない。",
+            "reference": "https://learn.microsoft.com/power-bi/connect-data/service-gateway-sso-ndc",
+            "reference_label": "ゲートウェイでの SSO (Azure AD) の使用"
+          }
+        },
+        {
+          "key": "C",
+          "text": "DirectQuery では SSO が不要なので無効化するのがベストプラクティス。",
+          "explanation": {
+            "text": "DirectQuery こそユーザー コンテキストの委譲が重要で、SSO の活用が推奨される。",
+            "reference": "https://learn.microsoft.com/power-bi/connect-data/service-gateway-sso-ndc",
+            "reference_label": "ゲートウェイでの SSO (Azure AD) の使用"
+          }
+        },
+        {
+          "key": "D",
+          "text": "SSO を有効化すると、Power BI の RLS は不要になる。",
+          "explanation": {
+            "text": "SSO はデータソース認証の仕組みであり、モデル側の RLS 設計は別途必要。",
+            "reference": "https://learn.microsoft.com/power-bi/enterprise/service-admin-rls",
+            "reference_label": "Power BI の RLS 管理"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "DirectQuery ではユーザー コンテキストの委譲が鍵。Azure AD SSO を有効化した構成が推奨される。",
+        "reference": "https://learn.microsoft.com/power-bi/connect-data/service-gateway-sso-ndc",
+        "reference_label": "ゲートウェイでの SSO (Azure AD) の使用"
+      }
+    },
+    {
+      "id": "azure-DP-500-q19",
+      "difficulty": "normal",
+      "question": "Azure Data Factory (または Synapse パイプライン) の実行を Azure Monitor/Log Analytics で可観測化するために有効化すべき代表的な診断ログ カテゴリの組み合わせはどれか。",
+      "choices": [
+        {
+          "key": "A",
+          "text": "PipelineRuns, ActivityRuns, TriggerRuns",
+          "explanation": {
+            "text": "これらは実行・アクティビティ・トリガーの各イベントを記録し、失敗の特定や SLA 監視に有用。",
+            "reference": "https://learn.microsoft.com/azure/data-factory/monitor-using-azure-monitor",
+            "reference_label": "Azure Monitor を使用した監視"
+          }
+        },
+        {
+          "key": "B",
+          "text": "MetricsOnly",
+          "explanation": {
+            "text": "メトリクスのみでは詳細な失敗原因や実行履歴が追えない。",
+            "reference": "https://learn.microsoft.com/azure/data-factory/monitor-using-azure-monitor",
+            "reference_label": "Azure Monitor を使用した監視"
+          }
+        },
+        {
+          "key": "C",
+          "text": "IntegrationRuntimeLogs のみ",
+          "explanation": {
+            "text": "IR ログは重要だが、パイプライン/アクティビティ/トリガーのイベントも合わせて有効化すべき。",
+            "reference": "https://learn.microsoft.com/azure/data-factory/monitor-using-azure-monitor",
+            "reference_label": "Azure Monitor を使用した監視"
+          }
+        },
+        {
+          "key": "D",
+          "text": "GitAudit",
+          "explanation": {
+            "text": "リポジトリ監査は別領域。実行監視の主要カテゴリは PipelineRuns/ActivityRuns/TriggerRuns など。",
+            "reference": "https://learn.microsoft.com/azure/data-factory/monitor-using-azure-monitor",
+            "reference_label": "Azure Monitor を使用した監視"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "実運用の可観測性には、PipelineRuns/ActivityRuns/TriggerRuns の三点を Log Analytics に送るのが基本。",
+        "reference": "https://learn.microsoft.com/azure/data-factory/monitor-using-azure-monitor",
+        "reference_label": "Azure Monitor を使用した監視"
+      }
+    },
+    {
+      "id": "azure-DP-500-q20",
+      "difficulty": "easy",
+      "question": "Power BI Desktop の Performance Analyzer の目的として正しいものはどれか。",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ビジュアルごとのレンダリング時間や DAX クエリの実行時間を計測し、ボトルネックを特定する。",
+          "explanation": {
+            "text": "Performance Analyzer はビジュアルのクエリ/描画/他の時間を分解し、遅延要因を可視化する。",
+            "reference": "https://learn.microsoft.com/power-bi/transform-model/desktop-performance-analyzer",
+            "reference_label": "Performance Analyzer の使用"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Tabular Editor の外部ツール連携を有効化する。",
+          "explanation": {
+            "text": "外部ツール連携は別機能で、Performance Analyzer の目的ではない。",
+            "reference": "https://learn.microsoft.com/power-bi/transform-model/desktop-performance-analyzer",
+            "reference_label": "Performance Analyzer の使用"
+          }
+        },
+        {
+          "key": "C",
+          "text": "DirectQuery を Import に変換して速度比較できる。",
+          "explanation": {
+            "text": "接続モードの自動変換は行わない。計測によりボトルネック箇所を推定するための機能である。",
+            "reference": "https://learn.microsoft.com/power-bi/transform-model/desktop-performance-analyzer",
+            "reference_label": "Performance Analyzer の使用"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Power BI サービスのスロットリング制御を無効化する。",
+          "explanation": {
+            "text": "Performance Analyzer はデスクトップでの計測機能であり、サービスのスロットリング制御とは無関係。",
+            "reference": "https://learn.microsoft.com/power-bi/transform-model/desktop-performance-analyzer",
+            "reference_label": "Performance Analyzer の使用"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ビジュアル単位でクエリ/描画時間を可視化でき、DAX やモデル設計の最適化箇所を見つけやすくなる。",
+        "reference": "https://learn.microsoft.com/power-bi/transform-model/desktop-performance-analyzer",
+        "reference_label": "Performance Analyzer の使用"
+      }
+    },
+    {
+      "id": "azure-DP-500-q21",
+      "difficulty": "normal",
+      "question": "Power BI から Azure Databricks の Delta Lake に接続する場合の正しい説明はどれか。",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Power BI の Azure Databricks コネクタを用いて、Import と DirectQuery の両方に対応できる。",
+          "explanation": {
+            "text": "Databricks コネクタは Import/DirectQuery をサポートし、Delta Lake への接続に広く利用される。",
+            "reference": "https://learn.microsoft.com/power-bi/connect-data/desktop-connect-azure-databricks",
+            "reference_label": "Azure Databricks への接続"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Delta Lake への接続は常に CSV エクスポートを経由する必要がある。",
+          "explanation": {
+            "text": "コネクタにより直接接続でき、CSV などのエクスポートは不要。",
+            "reference": "https://learn.microsoft.com/power-bi/connect-data/desktop-connect-azure-databricks",
+            "reference_label": "Azure Databricks への接続"
+          }
+        },
+        {
+          "key": "C",
+          "text": "DirectQuery はサポートされないため、リアルタイム分析は不可能。",
+          "explanation": {
+            "text": "DirectQuery をサポートしており、要件次第でよりリアルタイム性の高い構成が可能。",
+            "reference": "https://learn.microsoft.com/power-bi/connect-data/desktop-connect-azure-databricks",
+            "reference_label": "Azure Databricks への接続"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Databricks への接続では、Power BI の RLS は自動的に Databricks ACL に同期される。",
+          "explanation": {
+            "text": "RLS と Databricks 側 ACL は別管理であり、自動同期はされない。",
+            "reference": "https://learn.microsoft.com/power-bi/connect-data/desktop-connect-azure-databricks",
+            "reference_label": "Azure Databricks への接続"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "公式コネクタで Import/DirectQuery の両方が利用でき、要件に応じて最新性や性能を調整できる。",
+        "reference": "https://learn.microsoft.com/power-bi/connect-data/desktop-connect-azure-databricks",
+        "reference_label": "Azure Databricks への接続"
+      }
+    },
+    {
+      "id": "azure-DP-500-q22",
+      "difficulty": "normal",
+      "question": "Azure Synapse Serverless SQL プールでデータレイク上のファイルを高性能かつ低コストでクエリするための推奨事項として最も適切なものはどれか。(複数選択可)",
+      "choices": [
+        {
+          "key": "A",
+          "text": "CSV よりも Parquet などの列指向・圧縮フォーマットを優先する。",
+          "explanation": {
+            "text": "列指向・圧縮フォーマットは I/O とスキャン量を削減し、課金対象のデータ処理量も抑えられる。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-best-practices",
+            "reference_label": "Serverless SQL プールのベストプラクティス"
+          }
+        },
+        {
+          "key": "B",
+          "text": "OPENROWSET を使うときはワイルドカードでディレクトリ全体を常に指定し、メタデータ管理を省略する。",
+          "explanation": {
+            "text": "無差別にワイルドカードを使うと不要なファイルまでスキャンしコスト増につながる。必要なパス・パーティションを明示するのが推奨。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/query-single-csv-file",
+            "reference_label": "OPENROWSET の使用とクエリ最適化"
+          }
+        },
+        {
+          "key": "C",
+          "text": "外部テーブル化 (CREATE EXTERNAL TABLE AS SELECT; CETAS) を活用して、再利用可能な派生データを作る。",
+          "explanation": {
+            "text": "CETAS により再利用される結果を Parquet 等で吐き出し、後続のクエリを高速化できる。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/develop-tables-cetas",
+            "reference_label": "CETAS の概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ファイルの列型は推測に任せ、明示的なスキーマ定義は避ける。",
+          "explanation": {
+            "text": "スキーマは可能な限り明示し、CAST も適切に行うことで型変換コストや誤推測を防げる。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-best-practices",
+            "reference_label": "Serverless SQL プールのベストプラクティス"
+          }
+        }
+      ],
+      "answer": "A, C",
+      "explanation": {
+        "text": "Parquet などの列指向フォーマットでスキャン量を抑え、よく使う結果は CETAS で外部テーブル化して再利用するのが性能・コスト両面で有効。",
+        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-best-practices",
+        "reference_label": "Serverless SQL プールのベストプラクティス"
+      }
+    },
+    {
+      "id": "azure-DP-500-q23",
+      "difficulty": "hard",
+      "question": "Power BI の複合モデル (Composite model) における Import / DirectQuery / (Premium での) Direct Lake の特性に関する説明のうち、正しいものはどれか。",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Import はデータをメモリに格納し高速だが、更新はリフレッシュに依存する。",
+          "explanation": {
+            "text": "Import は列ストアに圧縮保持され高速に動作する一方、データ鮮度はリフレッシュ サイクルに依存する。",
+            "reference": "https://learn.microsoft.com/power-bi/connect-data/desktop-directquery-about",
+            "reference_label": "Import と DirectQuery の比較"
+          }
+        },
+        {
+          "key": "B",
+          "text": "DirectQuery はクエリ時にソースへ照会するため鮮度は高いが、クエリ性能はソースやネットワークに依存する。",
+          "explanation": {
+            "text": "DirectQuery は常にバックエンドに問い合わせるため、最新だが性能はソース能力に左右される。",
+            "reference": "https://learn.microsoft.com/power-bi/connect-data/desktop-directquery-about",
+            "reference_label": "DirectQuery の概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Direct Lake は常に Import より遅いため、Premium でも利用は推奨されない。",
+          "explanation": {
+            "text": "Direct Lake は特定条件下でメモリ上の Delta/Parquet を直接クエリし高速化できるシナリオがある。常に Import より遅いわけではない。",
+            "reference": "https://learn.microsoft.com/power-bi/enterprise/directlake-overview",
+            "reference_label": "Direct Lake の概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "複合モデルでは Import と DirectQuery のテーブルを同一データセットに混在させることはできない。",
+          "explanation": {
+            "text": "複合モデルの目的は異なる格納モードの混在を可能にすることにあるため誤り。",
+            "reference": "https://learn.microsoft.com/power-bi/transform-model/desktop-composite-models",
+            "reference_label": "複合モデルの概要"
+          }
+        }
+      ],
+      "answer": "A, B",
+      "explanation": {
+        "text": "Import は高速・要リフレッシュ、DirectQuery は鮮度重視・性能はソース依存。Direct Lake は Premium 条件で有効な場合があり、複合モデルでは混在が可能。",
+        "reference": "https://learn.microsoft.com/power-bi/transform-model/desktop-composite-models",
+        "reference_label": "複合モデルの概要"
+      }
+    },
+    {
+      "id": "azure-DP-500-q24",
+      "difficulty": "normal",
+      "question": "Microsoft Purview を用いたデータ ガバナンスで、Power BI とリネージ (lineage) を統合する利点として最も適切なものはどれか。",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データセット/データフロー/レポート間の依存関係を可視化し、変更の影響分析 (impact analysis) を容易にする。",
+          "explanation": {
+            "text": "Purview のリネージにより上流・下流の関係が可視化され、変更管理や監査に役立つ。",
+            "reference": "https://learn.microsoft.com/purview/concept-lineage",
+            "reference_label": "Purview のリネージの概念"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Power BI の RLS ロールを Purview が自動生成してくれる。",
+          "explanation": {
+            "text": "Purview はカタログ/分類/リネージが主で、RLS ロールの自動生成機能はない。",
+            "reference": "https://learn.microsoft.com/purview/overview",
+            "reference_label": "Microsoft Purview 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Purview を使えば Power BI テナント設定を一元的に変更できる。",
+          "explanation": {
+            "text": "テナント設定は Power BI 管理ポータルで行う。Purview は設定変更のコントロールプレーンではない。",
+            "reference": "https://learn.microsoft.com/power-bi/admin/service-admin-portal",
+            "reference_label": "Power BI 管理ポータル"
+          }
+        },
+        {
+          "key": "D",
+          "text": "リネージにより Power BI のキャッシュを自動クリアできる。",
+          "explanation": {
+            "text": "リネージは可視化・追跡の機能であり、キャッシュ操作は行わない。",
+            "reference": "https://learn.microsoft.com/purview/concept-lineage",
+            "reference_label": "Purview のリネージの概念"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Purview のリネージ統合は影響範囲の把握と変更管理に直結するのが主要な価値。",
+        "reference": "https://learn.microsoft.com/purview/concept-lineage",
+        "reference_label": "Purview のリネージの概念"
+      }
+    },
+    {
+      "id": "azure-DP-500-q25",
+      "difficulty": "hard",
+      "question": "Power BI の感度ラベル (Microsoft Purview Information Protection: MIP) の適用に関する説明として正しいものはどれか。(複数選択可)",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ラベルはデータセット/レポート/ダッシュボードに適用でき、エクスポートや共有時の保護動作に影響する。",
+          "explanation": {
+            "text": "MIP ラベルは Power BI アーティファクトに適用でき、エクスポート禁止や暗号化などのポリシーが反映される。",
+            "reference": "https://learn.microsoft.com/power-bi/enterprise/service-security-sensitivity-label-overview",
+            "reference_label": "Power BI の感度ラベルの概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "感度ラベルは Power BI から Excel/PDF などへエクスポートした場合でも継承できるシナリオがある。",
+          "explanation": {
+            "text": "サポート対象の形式へエクスポート時にラベルや保護が継承される。",
+            "reference": "https://learn.microsoft.com/power-bi/enterprise/service-security-sensitivity-label-export",
+            "reference_label": "エクスポート時のラベル継承"
+          }
+        },
+        {
+          "key": "C",
+          "text": "感度ラベルは RLS 設定を自動生成する。",
+          "explanation": {
+            "text": "感度ラベルは情報保護/暗号化/アクセス制御のポリシーであり、RLS の自動生成機能はない。",
+            "reference": "https://learn.microsoft.com/power-bi/enterprise/service-security-sensitivity-label-overview",
+            "reference_label": "感度ラベルの概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Power BI Desktop でラベルを適用すると、発行後の Power BI サービスでもラベルは保持される。",
+          "explanation": {
+            "text": "Desktop で設定したラベルは発行時にサービス側へ引き継がれる。",
+            "reference": "https://learn.microsoft.com/power-bi/enterprise/service-security-sensitivity-label-overview",
+            "reference_label": "感度ラベルの概要"
+          }
+        }
+      ],
+      "answer": "A, B, D",
+      "explanation": {
+        "text": "MIP の感度ラベルはアーティファクトに適用されエクスポート時にも保護を継承でき、Desktop→サービス間でも維持される。RLS 生成は別物。",
+        "reference": "https://learn.microsoft.com/power-bi/enterprise/service-security-sensitivity-label-overview",
+        "reference_label": "感度ラベルの概要"
+      }
+    },
+    {
+      "id": "azure-DP-500-q26",
+      "difficulty": "normal",
+      "question": "オンプレミス データ ゲートウェイの高可用性 (HA) を確保する設計として正しいものはどれか。",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ゲートウェイをクラスター化し、同一データ ソースを複数ノードで処理できるようにする。",
+          "explanation": {
+            "text": "ゲートウェイ クラスターによりフェイルオーバーと負荷分散が可能となる。",
+            "reference": "https://learn.microsoft.com/power-bi/connect-data/service-gateway-high-availability-clusters",
+            "reference_label": "ゲートウェイの高可用性とクラスター"
+          }
+        },
+        {
+          "key": "B",
+          "text": "1 台構成でも Windows サービスを自動再起動に設定すれば HA とみなせる。",
+          "explanation": {
+            "text": "単一ノードは単一障害点 (SPOF) であり、真の高可用性とは言えない。",
+            "reference": "https://learn.microsoft.com/power-bi/connect-data/service-gateway-high-availability-clusters",
+            "reference_label": "ゲートウェイの高可用性"
+          }
+        },
+        {
+          "key": "C",
+          "text": "クラスター ノードは同一マシン上に複数インスタンスを立てるのが推奨である。",
+          "explanation": {
+            "text": "同一マシン内の冗長は同一障害ドメインを共有し HA にならない。別ホストに分散すべき。",
+            "reference": "https://learn.microsoft.com/power-bi/connect-data/service-gateway-high-availability-clusters",
+            "reference_label": "ゲートウェイの高可用性"
+          }
+        },
+        {
+          "key": "D",
+          "text": "クラスターではすべてのノードに同一データ ソース資格情報を構成しておく必要がある。",
+          "explanation": {
+            "text": "フェイルオーバー時に同一の接続/資格情報が必要になるため、各ノードで一致させる。",
+            "reference": "https://learn.microsoft.com/power-bi/connect-data/service-gateway-high-availability-clusters",
+            "reference_label": "ゲートウェイの高可用性"
+          }
+        }
+      ],
+      "answer": "A, D",
+      "explanation": {
+        "text": "HA にはクラスター構成とノード間での同一資格情報設定が必須。単一ノードや同一ホスト内冗長は SPOF を解消できない。",
+        "reference": "https://learn.microsoft.com/power-bi/connect-data/service-gateway-high-availability-clusters",
+        "reference_label": "ゲートウェイの高可用性"
+      }
+    },
+    {
+      "id": "azure-DP-500-q27",
+      "difficulty": "hard",
+      "question": "Synapse Dedicated SQL Pool でワークロード管理を行い、重要な ETL ジョブにリソースを優先配分したい。適切なアプローチはどれか。(複数選択可)",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ワークロード グループとワークロード クラシファイアを作成し、送信元/ログイン/クエリ ラベルに応じて割り当てを制御する。",
+          "explanation": {
+            "text": "ワークロード管理はグループとクラシファイアでメモリ/コンカレンシー/重要度を制御可能。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-isolation",
+            "reference_label": "ワークロード分離と管理"
+          }
+        },
+        {
+          "key": "B",
+          "text": "RESOURCE CLASS は Serverless に対してのみ効果があるため、Dedicated では無視される。",
+          "explanation": {
+            "text": "リソース クラスやワークロード管理は Dedicated で活用される。選択肢は誤り。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql-data-warehouse/resource-classes-for-workload-management",
+            "reference_label": "リソース クラスの概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "重要なジョブには高い重要度 (IMPORTANCE) を設定し、低重要度クエリより先にスケジュールされるようにする。",
+          "explanation": {
+            "text": "IMPORTANCE によりスケジューリング優先度を調整できる。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-importance",
+            "reference_label": "ワークロード重要度"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ワークロード管理を有効にするとスケール操作 (DWU) は使用できなくなる。",
+          "explanation": {
+            "text": "ワークロード管理と DWU スケールは併用できる。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-classification",
+            "reference_label": "ワークロード分類"
+          }
+        }
+      ],
+      "answer": "A, C",
+      "explanation": {
+        "text": "ETL など重要ジョブには専用グループと IMPORTANCE を設定し、クラシファイアで振り分けるのが定石。DWU との併用も可能。",
+        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-isolation",
+        "reference_label": "ワークロード分離と管理"
+      }
+    },
+    {
+      "id": "azure-DP-500-q28",
+      "difficulty": "easy",
+      "question": "Power BI テナント設定におけるベストプラクティスとして適切なものはどれか。",
+      "choices": [
+        {
+          "key": "A",
+          "text": "“パブリック Web への発行 (Publish to web)” は必要最小限のユーザーに限定し、既定で無効化してから申請ベースで許可する。",
+          "explanation": {
+            "text": "公開リンクは誰でもアクセス可能になりうるため、厳格に制御するのが推奨。",
+            "reference": "https://learn.microsoft.com/power-bi/admin/service-admin-portal#tenant-settings",
+            "reference_label": "Power BI 管理ポータル: テナント設定"
+          }
+        },
+        {
+          "key": "B",
+          "text": "外部共有は常に全ユーザーに許可し、監査ログで後追い管理する。",
+          "explanation": {
+            "text": "外部共有は組織ポリシーに合わせて限定・監視すべきで、無制限許可は避ける。",
+            "reference": "https://learn.microsoft.com/power-bi/admin/service-admin-portal#tenant-settings",
+            "reference_label": "テナント設定の管理"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Power BI 監査ログ (Microsoft 365 監査) を有効化し、アクティビティの可視化とコンプライアンスを担保する。",
+          "explanation": {
+            "text": "監査ログは誰がどの操作を行ったかの追跡に必須で、コンプライアンスに寄与する。",
+            "reference": "https://learn.microsoft.com/power-bi/admin/service-admin-auditing",
+            "reference_label": "Power BI の監査"
+          }
+        },
+        {
+          "key": "D",
+          "text": "エクスポート/印刷機能はビジネス要求とデータ分類に応じて制限する。",
+          "explanation": {
+            "text": "機密データの流出を防ぐため、感度ラベルやテナント設定でエクスポート制御を行うのが望ましい。",
+            "reference": "https://learn.microsoft.com/power-bi/enterprise/service-security-sensitivity-label-overview",
+            "reference_label": "感度ラベルとエクスポート制御"
+          }
+        }
+      ],
+      "answer": "A, C, D",
+      "explanation": {
+        "text": "“Publish to web” は厳格に、監査ログは有効化、エクスポートは分類に応じ制限するのが実務的ベストプラクティス。外部共有の無制限許可は避ける。",
+        "reference": "https://learn.microsoft.com/power-bi/admin/service-admin-portal#tenant-settings",
+        "reference_label": "テナント設定の管理"
+      }
+    },
+    {
+      "id": "azure-DP-500-q29",
+      "difficulty": "hard",
+      "question": "Power BI の Aggregations を DirectQuery ソースと組み合わせる際、クエリが Aggregation にヒットしやすくするための設計上の考慮点はどれか。(複数選択可)",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Aggregation テーブルのキー列は、詳細テーブルのキー列と正確に一致させる必要がある。",
+          "explanation": {
+            "text": "キー列が一致しないと Power BI はクエリを Aggregation にリダイレクトできない。",
+            "reference": "https://learn.microsoft.com/power-bi/transform-model/aggregations-advanced",
+            "reference_label": "Aggregations の設計"
+          }
+        },
+        {
+          "key": "B",
+          "text": "集計レベルが高すぎても低すぎてもヒット率が下がるため、典型的なクエリ パターンに合わせて設計する。",
+          "explanation": {
+            "text": "利用される粒度を見極めて設計することが Aggregation の効果に直結する。",
+            "reference": "https://learn.microsoft.com/power-bi/transform-model/aggregations-advanced",
+            "reference_label": "Aggregations の設計"
+          }
+        },
+        {
+          "key": "C",
+          "text": "詳細テーブルのデータ型は自由でよく、Aggregation 側で暗黙変換されるため設計の必要はない。",
+          "explanation": {
+            "text": "型不一致はヒット率低下の原因になるため、データ型の整合は重要。",
+            "reference": "https://learn.microsoft.com/power-bi/transform-model/aggregations-advanced",
+            "reference_label": "Aggregations の設計"
+          }
+        },
+        {
+          "key": "D",
+          "text": "DirectQuery のクエリ フォールディングを無効にすると Aggregation ヒット率が向上する。",
+          "explanation": {
+            "text": "フォールディングはソース効率を高めるものであり、無効化は逆効果になる。",
+            "reference": "https://learn.microsoft.com/power-bi/transform-model/aggregations-advanced",
+            "reference_label": "Aggregations の設計"
+          }
+        }
+      ],
+      "answer": "A, B",
+      "explanation": {
+        "text": "キー整合性とクエリ粒度の適合性が Aggregation のヒット率を大きく左右する。",
+        "reference": "https://learn.microsoft.com/power-bi/transform-model/aggregations-advanced",
+        "reference_label": "Aggregations の設計"
+      }
+    },
+    {
+      "id": "azure-DP-500-q30",
+      "difficulty": "normal",
+      "question": "Azure Synapse Dedicated SQL Pool でパーティション切り替え (partition switch) 戦略を採用する目的として正しいものはどれか。",
+      "choices": [
+        {
+          "key": "A",
+          "text": "大規模テーブルのロードを効率化し、古いパーティションを高速に入れ替えるため。",
+          "explanation": {
+            "text": "パーティション切り替えによりロード中断を避けつつ、大量データを即時に更新できる。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/develop-tables-partition",
+            "reference_label": "Synapse のパーティション戦略"
+          }
+        },
+        {
+          "key": "B",
+          "text": "RLS を自動生成する仕組みを提供するため。",
+          "explanation": {
+            "text": "RLS は別の機能であり、パーティション切り替えの目的ではない。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/develop-tables-partition",
+            "reference_label": "Synapse のパーティション戦略"
+          }
+        },
+        {
+          "key": "C",
+          "text": "クエリのメモリ使用量をゼロにするため。",
+          "explanation": {
+            "text": "メモリ消費はゼロにはならない。切り替えはロード効率や運用性のためのもの。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/develop-tables-partition",
+            "reference_label": "Synapse のパーティション戦略"
+          }
+        },
+        {
+          "key": "D",
+          "text": "パーティション切り替えは Synapse ではサポートされていない。",
+          "explanation": {
+            "text": "Synapse Dedicated SQL Pool ではパーティション切り替えがサポートされている。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/develop-tables-partition",
+            "reference_label": "Synapse のパーティション戦略"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "パーティション切り替えは大規模テーブルの差分ロードやローテーションに効果的。",
+        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/develop-tables-partition",
+        "reference_label": "Synapse のパーティション戦略"
+      }
+    },
+    {
+      "id": "azure-DP-500-q31",
+      "difficulty": "easy",
+      "question": "Power BI Dataflows を Azure Data Lake Storage Gen2 にリンクする利点はどれか。",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Power BI 以外のツール (例: Synapse, Databricks) でもデータを再利用できる。",
+          "explanation": {
+            "text": "ADLS Gen2 に保存することで複数の分析基盤から利用可能になる。",
+            "reference": "https://learn.microsoft.com/power-bi/transform-model/dataflows/dataflows-azure-data-lake-storage-integration",
+            "reference_label": "Dataflows と ADLS Gen2"
+          }
+        },
+        {
+          "key": "B",
+          "text": "保存時に常に RLS ポリシーが自動的に付与される。",
+          "explanation": {
+            "text": "保存先ストレージはポリシーを付与しない。RLS は Power BI 側で設定する。",
+            "reference": "https://learn.microsoft.com/power-bi/transform-model/dataflows/dataflows-azure-data-lake-storage-integration",
+            "reference_label": "Dataflows と ADLS Gen2"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ファイル形式は必ず CSV になる。",
+          "explanation": {
+            "text": "実際には Parquet 形式が利用され、効率的な列指向ストレージを実現する。",
+            "reference": "https://learn.microsoft.com/power-bi/transform-model/dataflows/dataflows-azure-data-lake-storage-integration",
+            "reference_label": "Dataflows と ADLS Gen2"
+          }
+        },
+        {
+          "key": "D",
+          "text": "保存時に Power BI のライセンス要件が不要になる。",
+          "explanation": {
+            "text": "Dataflows の利用には Power BI ライセンスが必要であり、保存先によって不要にはならない。",
+            "reference": "https://learn.microsoft.com/power-bi/transform-model/dataflows/dataflows-azure-data-lake-storage-integration",
+            "reference_label": "Dataflows と ADLS Gen2"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ADLS Gen2 と統合すれば Power BI を越えて Azure の分析サービス全般で活用可能になる。",
+        "reference": "https://learn.microsoft.com/power-bi/transform-model/dataflows/dataflows-azure-data-lake-storage-integration",
+        "reference_label": "Dataflows と ADLS Gen2"
+      }
+    },
+    {
+      "id": "azure-DP-500-q32",
+      "difficulty": "normal",
+      "question": "Power BI Premium の XMLA エンドポイントで “読み取り (Read)” 権限を付与することで可能になる操作はどれか。",
+      "choices": [
+        {
+          "key": "A",
+          "text": "外部ツールからメタデータを参照し、クエリを実行する。",
+          "explanation": {
+            "text": "Read 権限でメタデータ参照やクエリ実行が可能になる。",
+            "reference": "https://learn.microsoft.com/power-bi/enterprise/service-premium-connect-tools",
+            "reference_label": "XMLA エンドポイント権限"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Tabular Editor からモデル構造を変更する。",
+          "explanation": {
+            "text": "変更には “書き込み (Read/Write)” 権限が必要であり、Read のみではできない。",
+            "reference": "https://learn.microsoft.com/power-bi/enterprise/service-premium-connect-tools",
+            "reference_label": "XMLA エンドポイント権限"
+          }
+        },
+        {
+          "key": "C",
+          "text": "DAX メジャーを追加する。",
+          "explanation": {
+            "text": "追加・変更には Read/Write が必要。Read だけでは不可。",
+            "reference": "https://learn.microsoft.com/power-bi/enterprise/service-premium-connect-tools",
+            "reference_label": "XMLA エンドポイント権限"
+          }
+        },
+        {
+          "key": "D",
+          "text": "既存データセットを削除する。",
+          "explanation": {
+            "text": "削除操作も Read 権限だけではできない。",
+            "reference": "https://learn.microsoft.com/power-bi/enterprise/service-premium-connect-tools",
+            "reference_label": "XMLA エンドポイント権限"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Read 権限では外部ツールからの参照・クエリ実行が可能。変更系操作は Read/Write が必要。",
+        "reference": "https://learn.microsoft.com/power-bi/enterprise/service-premium-connect-tools",
+        "reference_label": "XMLA エンドポイント権限"
+      }
+    },
+    {
+      "id": "azure-DP-500-q33",
+      "difficulty": "easy",
+      "question": "Power BI サービスのアクティビティ ログで確認できる代表的な情報はどれか。",
+      "choices": [
+        {
+          "key": "A",
+          "text": "誰がどのレポートを表示・エクスポートしたか。",
+          "explanation": {
+            "text": "アクティビティ ログにはユーザー操作の記録 (表示・エクスポート・共有など) が含まれる。",
+            "reference": "https://learn.microsoft.com/power-bi/admin/service-security-auditing",
+            "reference_label": "Power BI の監査ログ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "DAX クエリの実行プラン詳細。",
+          "explanation": {
+            "text": "実行プランは Performance Analyzer 等で確認できる。アクティビティ ログには含まれない。",
+            "reference": "https://learn.microsoft.com/power-bi/admin/service-security-auditing",
+            "reference_label": "Power BI の監査ログ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure AD のディレクトリ同期状態。",
+          "explanation": {
+            "text": "AD 同期は Azure AD 管理の領域であり、Power BI アクティビティ ログには含まれない。",
+            "reference": "https://learn.microsoft.com/power-bi/admin/service-security-auditing",
+            "reference_label": "Power BI の監査ログ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データ ソースの CPU 使用率。",
+          "explanation": {
+            "text": "CPU 使用率はデータ ソース側のメトリクスであり、アクティビティ ログには含まれない。",
+            "reference": "https://learn.microsoft.com/power-bi/admin/service-security-auditing",
+            "reference_label": "Power BI の監査ログ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "アクティビティ ログはユーザー操作の監査が目的であり、レポート閲覧・エクスポートなどが追跡可能。",
+        "reference": "https://learn.microsoft.com/power-bi/admin/service-security-auditing",
+        "reference_label": "Power BI の監査ログ"
+      }
+    },
+    {
+      "id": "azure-DP-500-q34",
+      "difficulty": "normal",
+      "question": "Azure Monitor を用いて Synapse Analytics の監視を行う際、代表的に収集されるメトリクスはどれか。(複数選択可)",
+      "choices": [
+        {
+          "key": "A",
+          "text": "DWU 利用率 (Data Warehouse Unit usage)",
+          "explanation": {
+            "text": "DWU 利用率は性能調整やスケーリングの判断に役立つ主要メトリクス。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-monitoring",
+            "reference_label": "Synapse 監視メトリクス"
+          }
+        },
+        {
+          "key": "B",
+          "text": "クエリ待機時間 (Query Queue length)",
+          "explanation": {
+            "text": "クエリがリソース待ちでキューに滞留している時間も収集される。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-monitoring",
+            "reference_label": "Synapse 監視メトリクス"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure AD グループ メンバーシップ変更ログ",
+          "explanation": {
+            "text": "AD グループ管理は Azure AD の領域であり、Synapse メトリクスには含まれない。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-monitoring",
+            "reference_label": "Synapse 監視メトリクス"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ストレージ I/O (読み取り/書き込みバイト数)",
+          "explanation": {
+            "text": "ストレージ I/O は Synapse 利用効率の指標として監視できる。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-monitoring",
+            "reference_label": "Synapse 監視メトリクス"
+          }
+        }
+      ],
+      "answer": "A, B, D",
+      "explanation": {
+        "text": "DWU 使用率・クエリ待機時間・ストレージ I/O は代表的な監視メトリクス。AD グループ変更は別領域。",
+        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-monitoring",
+        "reference_label": "Synapse 監視メトリクス"
+      }
+    },
+    {
+      "id": "azure-DP-500-q35",
+      "difficulty": "hard",
+      "question": "Power BI の大規模データセット (Large models) 機能を利用する条件として正しいものはどれか。",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Premium または PPU 容量が必要である。",
+          "explanation": {
+            "text": "大規模データセットは Premium/PPU 容量の一部として提供される。",
+            "reference": "https://learn.microsoft.com/power-bi/enterprise/service-premium-large-models",
+            "reference_label": "大規模データセット"
+          }
+        },
+        {
+          "key": "B",
+          "text": "10 GB を超えるデータセットを保存できる。",
+          "explanation": {
+            "text": "標準上限 10 GB を超えて、容量リソースに依存して拡張可能になる。",
+            "reference": "https://learn.microsoft.com/power-bi/enterprise/service-premium-large-models",
+            "reference_label": "大規模データセット"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Power BI Desktop で作成・編集可能であり、発行後に容量要件を満たせば利用できる。",
+          "explanation": {
+            "text": "Desktop でも作成可能で、サービス側の容量要件を満たせば制限を超えて利用可能。",
+            "reference": "https://learn.microsoft.com/power-bi/enterprise/service-premium-large-models",
+            "reference_label": "大規模データセット"
+          }
+        },
+        {
+          "key": "D",
+          "text": "任意の環境で制限なく利用できる。",
+          "explanation": {
+            "text": "Premium/PPU 容量が前提であり、任意環境では利用できない。",
+            "reference": "https://learn.microsoft.com/power-bi/enterprise/service-premium-large-models",
+            "reference_label": "大規模データセット"
+          }
+        }
+      ],
+      "answer": "A, B, C",
+      "explanation": {
+        "text": "大規模データセットは Premium/PPU 容量前提で 10 GB 超を格納可能。Power BI Desktop で開発して発行後に容量条件を満たせば利用できる。",
+        "reference": "https://learn.microsoft.com/power-bi/enterprise/service-premium-large-models",
+        "reference_label": "大規模データセット"
+      }
+    },
+    {
+      "id": "azure-DP-500-q36",
+      "difficulty": "normal",
+      "question": "Power BI の Dual ストレージ モードの目的として正しいものはどれか。",
+      "choices": [
+        {
+          "key": "A",
+          "text": "同じテーブルをクエリ コンテキストに応じて Import と DirectQuery のいずれとしても動作させ、性能と最新性の両立を図る。",
+          "explanation": {
+            "text": "Dual はテーブルが参照される文脈により Import/DirectQuery として振る舞い、複合モデルでのパフォーマンス最適化に寄与する。",
+            "reference": "https://learn.microsoft.com/power-bi/transform-model/desktop-storage-mode",
+            "reference_label": "Power BI Desktop のストレージ モード"
+          }
+        },
+        {
+          "key": "B",
+          "text": "DirectQuery を完全に無効化して、すべてのテーブルをキャッシュさせる。",
+          "explanation": {
+            "text": "Dual は DirectQuery を無効化する機能ではない。必要に応じて DirectQuery としても動作する。",
+            "reference": "https://learn.microsoft.com/power-bi/transform-model/desktop-storage-mode",
+            "reference_label": "Power BI Desktop のストレージ モード"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Import テーブルを自動的に増分リフレッシュ対象へ変換する。",
+          "explanation": {
+            "text": "増分リフレッシュは別機能で、Dual の役割ではない。",
+            "reference": "https://learn.microsoft.com/power-bi/transform-model/desktop-storage-mode",
+            "reference_label": "Power BI Desktop のストレージ モード"
+          }
+        },
+        {
+          "key": "D",
+          "text": "RLS (行レベル セキュリティ) を不要にする。",
+          "explanation": {
+            "text": "Dual は記憶モードの制御であり、セキュリティ設定の代替ではない。",
+            "reference": "https://learn.microsoft.com/power-bi/transform-model/desktop-storage-mode",
+            "reference_label": "Power BI Desktop のストレージ モード"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Dual は Import と DirectQuery の利点を両立するためのモードで、複合モデルのキーテーブルに設定するとクエリ経路を柔軟化できる。",
+        "reference": "https://learn.microsoft.com/power-bi/transform-model/desktop-storage-mode",
+        "reference_label": "Power BI Desktop のストレージ モード"
+      }
+    },
+    {
+      "id": "azure-DP-500-q37",
+      "difficulty": "hard",
+      "question": "Azure Synapse Dedicated SQL Pool へ大容量データをロードする際のベストプラクティスとして正しいものはどれか。(複数選択可)",
+      "choices": [
+        {
+          "key": "A",
+          "text": "最優先で COPY 文の利用を検討する。",
+          "explanation": {
+            "text": "Dedicated SQL Pool では COPY INTO の利用が最高スループットになりやすい。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/data-loading-best-practices",
+            "reference_label": "Dedicated SQL Pool のデータ ロード ベストプラクティス"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ワイルドカード指定で大量のファイルを無差別に展開するのが性能面で最適。",
+          "explanation": {
+            "text": "ワイルドカードの過剰使用は不要スキャンを生み性能低下を招くため避けるのが望ましい。",
+            "reference": "https://learn.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest",
+            "reference_label": "COPY INTO (Transact-SQL) の注意事項"
+          }
+        },
+        {
+          "key": "C",
+          "text": "PolyBase を使う場合は事前に外部テーブル定義などの準備が必要になる。",
+          "explanation": {
+            "text": "PolyBase では外部データ ソース/ファイル形式/外部テーブルなどの定義が必要。",
+            "reference": "https://docs.azure.cn/en-us/synapse-analytics/sql-data-warehouse/design-elt-data-loading",
+            "reference_label": "Synapse での ELT 設計 (PolyBase の準備)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データ ロードでは分散方式は関係がないため、ROUND_ROBIN 固定が推奨される。",
+          "explanation": {
+            "text": "分散方式はクエリ性能に大きく影響し、ファクトは HASH、参照は REPLICATE などの選択が重要。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-distribute",
+            "reference_label": "分散テーブル設計"
+          }
+        }
+      ],
+      "answer": "A, C",
+      "explanation": {
+        "text": "最高スループットを狙うなら COPY をまず検討し、PolyBase を使う場合は外部テーブルなどの定義が必要。分散方式も別途最適化対象となる。",
+        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/data-loading-best-practices",
+        "reference_label": "Dedicated SQL Pool のデータ ロード ベストプラクティス"
+      }
+    },
+    {
+      "id": "azure-DP-500-q38",
+      "difficulty": "easy",
+      "question": "Power BI の“推奨/認定 (Endorsement: Promoted/Certified)”の主な目的はどれか。",
+      "choices": [
+        {
+          "key": "A",
+          "text": "信頼できる高品質コンテンツを識別し、発見性を高めるために明示的なラベル付けを行う。",
+          "explanation": {
+            "text": "推奨/認定は権威あるデータセットやレポートを識別して再利用性を高める仕組み。",
+            "reference": "https://learn.microsoft.com/power-bi/collaborate-share/service-endorsement-overview",
+            "reference_label": "Power BI の Endorsement 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "認定にすると自動的に RLS ポリシーが生成される。",
+          "explanation": {
+            "text": "Endorsement は品質指標であり、RLS 自動生成機能はない。",
+            "reference": "https://learn.microsoft.com/power-bi/collaborate-share/service-endorsement-overview",
+            "reference_label": "Power BI の Endorsement 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "推奨にするとインポート モードが DirectQuery に変わる。",
+          "explanation": {
+            "text": "接続モードの変更とは無関係。",
+            "reference": "https://learn.microsoft.com/power-bi/collaborate-share/service-endorse-content",
+            "reference_label": "推奨/認定の使い分け"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ラベルによって自動で増分リフレッシュが有効になる。",
+          "explanation": {
+            "text": "増分リフレッシュは別設定であり、Endorsement では切り替わらない。",
+            "reference": "https://learn.microsoft.com/power-bi/collaborate-share/service-endorse-content",
+            "reference_label": "推奨/認定の使い分け"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Endorsement は“信頼できるコンテンツの見つけやすさ”を上げるガバナンス機構であり、セキュリティや接続モードを変更しない。",
+        "reference": "https://learn.microsoft.com/power-bi/collaborate-share/service-endorsement-overview",
+        "reference_label": "Power BI の Endorsement 概要"
+      }
+    },
+    {
+      "id": "azure-DP-500-q39",
+      "difficulty": "normal",
+      "question": "Power BI REST API を用いてデータセットのリフレッシュをプログラムから開始したい。正しい説明はどれか。",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ワークスペースを指定して呼び出す場合は “Refresh Dataset In Group” エンドポイントを利用し、必要なスコープは通常 Dataset.ReadWrite.All である。",
+          "explanation": {
+            "text": "グループ (ワークスペース) 単位のリフレッシュ API と必要権限が定義されている。",
+            "reference": "https://learn.microsoft.com/rest/api/power-bi/datasets/refresh-dataset-in-group",
+            "reference_label": "REST API: Refresh Dataset In Group"
+          }
+        },
+        {
+          "key": "B",
+          "text": "API 呼び出しは常に個人のアクセストークンのみ使用でき、サービス プリンシパルは使えない。",
+          "explanation": {
+            "text": "サービス プリンシパル プロファイルの利用がサポートされている。",
+            "reference": "https://learn.microsoft.com/rest/api/power-bi/datasets/refresh-dataset-in-group",
+            "reference_label": "REST API: Refresh Dataset In Group"
+          }
+        },
+        {
+          "key": "C",
+          "text": "“Refresh Dataset” は My workspace でしか利用できないため、共有ワークスペースでは使えない。",
+          "explanation": {
+            "text": "共有ワークスペース向けには “In Group” エンドポイントが用意されている。",
+            "reference": "https://learn.microsoft.com/rest/api/power-bi/datasets/refresh-dataset",
+            "reference_label": "REST API: Refresh Dataset"
+          }
+        },
+        {
+          "key": "D",
+          "text": "API では常に完全リフレッシュのみが実行され、増分リフレッシュは実行できない。",
+          "explanation": {
+            "text": "API でトリガーした場合でも、モデル側に構成されたインクリメンタル ポリシーが適用される。",
+            "reference": "https://learn.microsoft.com/power-bi/connect-data/refresh-data",
+            "reference_label": "Power BI のデータ更新の種類"
+          }
+        }
+      ],
+      "answer": "A, C",
+      "explanation": {
+        "text": "共有ワークスペースは “In Group” を使用し、必要スコープは Dataset.ReadWrite.All が一般的。My workspace の単体 API も別途存在する。",
+        "reference": "https://learn.microsoft.com/rest/api/power-bi/datasets/refresh-dataset-in-group",
+        "reference_label": "REST API: Refresh Dataset In Group"
+      }
+    },
+    {
+      "id": "azure-DP-500-q40",
+      "difficulty": "normal",
+      "question": "Power BI の動的 RLS を実装する一般的な方法として最も適切なものはどれか。",
+      "choices": [
+        {
+          "key": "A",
+          "text": "DAX の USERPRINCIPALNAME() を利用し、ユーザーごとにフィルター対象のテーブルとユーザー マッピング テーブルをリレーションさせる。",
+          "explanation": {
+            "text": "UPN を返す DAX をロール式に用い、ユーザー→許可範囲の対応テーブルで動的に絞り込むのが典型。",
+            "reference": "https://learn.microsoft.com/fabric/security/service-admin-row-level-security",
+            "reference_label": "RLS の実装 (username()/userprincipalname())"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Power BI の認証方式を匿名に設定すれば、ユーザー別の制御は不要になる。",
+          "explanation": {
+            "text": "匿名はセキュリティを提供しないため RLS の代替にはならない。",
+            "reference": "https://learn.microsoft.com/fabric/security/service-admin-row-level-security",
+            "reference_label": "RLS の実装"
+          }
+        },
+        {
+          "key": "C",
+          "text": "RLS は Import モードでのみ有効で、DirectQuery では機能しない。",
+          "explanation": {
+            "text": "RLS は接続モードに依らず機能する (一部ソース側セキュリティとの併用設計は必要)。",
+            "reference": "https://learn.microsoft.com/fabric/security/service-admin-row-level-security",
+            "reference_label": "RLS の実装"
+          }
+        },
+        {
+          "key": "D",
+          "text": "RLS を有効にすると常に増分リフレッシュが不要になる。",
+          "explanation": {
+            "text": "RLS とリフレッシュは無関係。鮮度要件に応じて別途構成する。",
+            "reference": "https://learn.microsoft.com/power-bi/connect-data/refresh-data",
+            "reference_label": "Power BI のデータ更新"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ユーザー UPN と許可範囲をひも付けたディメンションを用意し、RLS 式に USERPRINCIPALNAME() を使う設計が代表的。",
+        "reference": "https://learn.microsoft.com/fabric/security/service-admin-row-level-security",
+        "reference_label": "RLS の実装 (username()/userprincipalname())"
+      }
+    },
+    {
+      "id": "azure-DP-500-q41",
+      "difficulty": "hard",
+      "question": "Synapse Serverless SQL でデータレイク上の Parquet を効率的にクエリするための設計として正しいものはどれか。(複数選択可)",
+      "choices": [
+        {
+          "key": "A",
+          "text": "フォルダー パスで日付パーティション (例: /year=/month=/day=) を持たせ、WHERE 句がその列に一致するようにすることでパーティション除外を促す。",
+          "explanation": {
+            "text": "パーティション列でのフィルターはスキャン対象のファイル数を削減し、課金対象の読み取り量も減る。",
+            "reference": "https://docs.azure.cn/en-us/synapse-analytics/sql/query-parquet-files",
+            "reference_label": "Serverless SQL での Parquet クエリ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "OPENROWSET でワイルドカードを多用し、まず全ファイルを読み込んでから WHERE 句で絞るのが高速。",
+          "explanation": {
+            "text": "不要なファイルまでスキャンして非効率。必要なパスや外部テーブルでのパーティション設計が望ましい。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-best-practices",
+            "reference_label": "Serverless SQL のベストプラクティス"
+          }
+        },
+        {
+          "key": "C",
+          "text": "外部テーブルを作成して、フォルダー列をパーティション列として定義する。",
+          "explanation": {
+            "text": "外部テーブルとパーティション列設計でパーティション除外 (folder elimination) を活用できる。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/develop-tables-external-tables",
+            "reference_label": "外部テーブルの利用"
+          }
+        },
+        {
+          "key": "D",
+          "text": "スキーマは常に自動推測に任せ、CAST などの明示的型変換は避ける。",
+          "explanation": {
+            "text": "明示スキーマや適切な型定義はパフォーマンスと正確性に寄与するため推奨される。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-best-practices",
+            "reference_label": "Serverless SQL のベストプラクティス"
+          }
+        }
+      ],
+      "answer": "A, C",
+      "explanation": {
+        "text": "パーティションの設計と外部テーブル化により不要スキャンを大幅削減できる。ワイルドカード多用やスキーマ自動推測任せは非効率になりがち。",
+        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/develop-tables-external-tables",
+        "reference_label": "外部テーブルの利用"
+      }
+    },
+    {
+      "id": "azure-DP-500-q42",
+      "difficulty": "easy",
+      "question": "Power BI の“データ更新 (Refresh)”における「OneDrive 更新」の正しい説明はどれか。",
+      "choices": [
+        {
+          "key": "A",
+          "text": "OneDrive/SharePoint に保存した PBIX/Excel の変更を Power BI サービスへ自動同期する仕組みで、データ ソースからの再取得とは異なる。",
+          "explanation": {
+            "text": "OneDrive 更新はファイルのメタデータ/定義の同期であり、データの取り込みや DirectQuery の問い合わせとは別。",
+            "reference": "https://learn.microsoft.com/power-bi/connect-data/refresh-data",
+            "reference_label": "Power BI のデータ更新の種類"
+          }
+        },
+        {
+          "key": "B",
+          "text": "OneDrive 更新を有効化すると、増分リフレッシュ ポリシーが自動作成される。",
+          "explanation": {
+            "text": "OneDrive 更新はファイル同期であり、増分リフレッシュは別途構成が必要。",
+            "reference": "https://learn.microsoft.com/power-bi/connect-data/refresh-data",
+            "reference_label": "Power BI のデータ更新の種類"
+          }
+        },
+        {
+          "key": "C",
+          "text": "OneDrive 更新は DirectQuery でのみ機能する。",
+          "explanation": {
+            "text": "DirectQuery 専用ではない。OneDrive に置いたファイルの定義同期の仕組み。",
+            "reference": "https://learn.microsoft.com/power-bi/connect-data/refresh-data",
+            "reference_label": "Power BI のデータ更新の種類"
+          }
+        },
+        {
+          "key": "D",
+          "text": "OneDrive 更新を使うと PBIX のローカル保存は禁止される。",
+          "explanation": {
+            "text": "ローカル保存の可否とは関係がない。",
+            "reference": "https://learn.microsoft.com/power-bi/connect-data/refresh-data",
+            "reference_label": "Power BI のデータ更新の種類"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "OneDrive 更新は“ファイルの中身や接続定義の同期”であり、データの再取得やモデル リフレッシュとは別物である点を理解しておく。",
+        "reference": "https://learn.microsoft.com/power-bi/connect-data/refresh-data",
+        "reference_label": "Power BI のデータ更新の種類"
+      }
+    },
+    {
+      "id": "azure-DP-500-q43",
+      "difficulty": "normal",
+      "question": "Power BI の XMLA エンドポイントにおける権限と容量要件の説明として正しいものはどれか。",
+      "choices": [
+        {
+          "key": "A",
+          "text": "XMLA エンドポイントでの Read/Write は Power BI Premium 容量または PPU (Premium Per User) が必要である。",
+          "explanation": {
+            "text": "モデル変更 (Read/Write) は Premium/PPU で提供され、外部ツールからのメタデータ変更が可能になる。",
+            "reference": "https://learn.microsoft.com/power-bi/enterprise/service-premium-connect-tools",
+            "reference_label": "XMLA エンドポイント: 接続と権限"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Power BI Pro ライセンスでも常に Read/Write が許可される。",
+          "explanation": {
+            "text": "Pro だけでは Read/Write は利用できない。Premium/PPU が必要。",
+            "reference": "https://learn.microsoft.com/power-bi/enterprise/service-premium-connect-tools",
+            "reference_label": "XMLA エンドポイント: 接続と権限"
+          }
+        },
+        {
+          "key": "C",
+          "text": "XMLA エンドポイントの Read は DirectQuery モードでのみ利用できる。",
+          "explanation": {
+            "text": "接続モードに依存しない。XMLA は Tabular モデル層への接続である。",
+            "reference": "https://learn.microsoft.com/power-bi/enterprise/service-premium-connect-tools",
+            "reference_label": "XMLA エンドポイント: 接続と権限"
+          }
+        },
+        {
+          "key": "D",
+          "text": "XMLA を使うと自動的に RLS が無効化される。",
+          "explanation": {
+            "text": "RLS は引き続き有効であり、XMLA 利用の有無と無関係。",
+            "reference": "https://learn.microsoft.com/power-bi/enterprise/service-premium-connect-tools",
+            "reference_label": "XMLA エンドポイント: 接続と権限"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "XMLA の Read/Write は Premium/PPU の提供機能。Pro のみではモデル変更のための書き込みはできない。",
+        "reference": "https://learn.microsoft.com/power-bi/enterprise/service-premium-connect-tools",
+        "reference_label": "XMLA エンドポイント: 接続と権限"
+      }
+    },
+    {
+      "id": "azure-DP-500-q44",
+      "difficulty": "hard",
+      "question": "Power BI の Direct Lake モードに関する説明として正しいものはどれか。(複数選択可)",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Direct Lake は OneLake 上の Delta/Parquet データをメモリ直読みすることで、高速かつ最新性の高いクエリを実現する。",
+          "explanation": {
+            "text": "Direct Lake は Import と DirectQuery の長所を組み合わせる新しいモードで、OneLake の Delta を前提とする。",
+            "reference": "https://learn.microsoft.com/power-bi/enterprise/directlake-overview",
+            "reference_label": "Direct Lake の概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Direct Lake を利用するには Fabric または Premium 容量が必要である。",
+          "explanation": {
+            "text": "Direct Lake は容量ベースで提供され、Fabric (F SKU) または Premium (P SKU/PPU) が前提。",
+            "reference": "https://learn.microsoft.com/power-bi/enterprise/directlake-overview",
+            "reference_label": "Direct Lake の概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "CSV のみをサポートし、Delta 形式は対象外である。",
+          "explanation": {
+            "text": "Direct Lake は Delta/Parquet を前提としており、CSV は適さない。",
+            "reference": "https://learn.microsoft.com/power-bi/enterprise/directlake-overview",
+            "reference_label": "Direct Lake の概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Direct Lake を有効化すると Import/DirectQuery は使用できなくなる。",
+          "explanation": {
+            "text": "複合モデルでの併用が可能で、用途に応じて使い分けできる。",
+            "reference": "https://learn.microsoft.com/power-bi/enterprise/directlake-overview",
+            "reference_label": "Direct Lake の概要"
+          }
+        }
+      ],
+      "answer": "A, B",
+      "explanation": {
+        "text": "Direct Lake は OneLake/Delta を高速に参照し、容量 (Fabric/Premium) 前提で提供される。CSV 専用ではなく、Import/DirectQuery の排他でもない。",
+        "reference": "https://learn.microsoft.com/power-bi/enterprise/directlake-overview",
+        "reference_label": "Direct Lake の概要"
+      }
+    },
+    {
+      "id": "azure-DP-500-q45",
+      "difficulty": "normal",
+      "question": "オンプレミスの SQL Server を Power BI から DirectQuery でユーザーごと権限委譲して利用したい。推奨構成はどれか。",
+      "choices": [
+        {
+          "key": "A",
+          "text": "オンプレミス データ ゲートウェイで Kerberos 制約付き委任 (KCD) を構成し、SSO を有効化する。",
+          "explanation": {
+            "text": "DirectQuery のユーザー コンテキストをオンプレミスに委譲する典型的アプローチはゲートウェイ + KCD での SSO。",
+            "reference": "https://learn.microsoft.com/power-bi/connect-data/service-gateway-sso-kerberos",
+            "reference_label": "ゲートウェイ SSO (Kerberos/KCD)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ゲートウェイを使わず、共有の SQL ログインを全員に配布する。",
+          "explanation": {
+            "text": "共有資格情報は監査/セキュリティ上不適切で、ユーザー委譲にもならない。",
+            "reference": "https://learn.microsoft.com/power-bi/connect-data/service-gateway-sso-kerberos",
+            "reference_label": "ゲートウェイ SSO (Kerberos/KCD)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Power BI の RLS を有効化すれば、オンプレミス側の権限は不要になる。",
+          "explanation": {
+            "text": "RLS はモデル側のフィルタであり、データベース権限の代替ではない。",
+            "reference": "https://learn.microsoft.com/fabric/security/service-admin-row-level-security",
+            "reference_label": "RLS の実装"
+          }
+        },
+        {
+          "key": "D",
+          "text": "SQL Server 側で Always On を有効化すれば自動的にユーザー委譲が実現する。",
+          "explanation": {
+            "text": "可用性の機能であり、認証の委譲とは無関係。",
+            "reference": "https://learn.microsoft.com/power-bi/connect-data/service-gateway-sso-kerberos",
+            "reference_label": "ゲートウェイ SSO (Kerberos/KCD)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "DirectQuery のユーザー コンテキスト委譲にはゲートウェイの Kerberos SSO (KCD) が推奨で、共有資格情報や DB 側可用性機能は代替にならない。",
+        "reference": "https://learn.microsoft.com/power-bi/connect-data/service-gateway-sso-kerberos",
+        "reference_label": "ゲートウェイ SSO (Kerberos/KCD)"
+      }
+    },
+    {
+      "id": "azure-DP-500-q46",
+      "difficulty": "normal",
+      "question": "Microsoft Fabric の Dataflows Gen2 の特徴として正しいものはどれか。(複数選択可)",
+      "choices": [
+        {
+          "key": "A",
+          "text": "取り込んだデータは既定で OneLake に Delta テーブルとして格納される。",
+          "explanation": {
+            "text": "Gen2 は OneLake/Delta を基盤とし、Fabric 内の他アイテムからも再利用しやすい。",
+            "reference": "https://learn.microsoft.com/fabric/data-engineering/dataflows-gen2-overview",
+            "reference_label": "Dataflows Gen2 の概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Classic Dataflows (Power BI) と同じく CDM (Common Data Model) フォルダーのみを出力する。",
+          "explanation": {
+            "text": "Gen2 は Delta を第一級で扱う。CDM フォルダー前提ではない。",
+            "reference": "https://learn.microsoft.com/fabric/data-engineering/dataflows-gen2-overview",
+            "reference_label": "Dataflows Gen2 の概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "同じワークスペース内の Lakehouse/Warehouse と密に連携でき、テーブルとして参照可能。",
+          "explanation": {
+            "text": "Gen2 の出力は Fabric 内でそのままテーブルとして活用できる。",
+            "reference": "https://learn.microsoft.com/fabric/data-engineering/dataflows-gen2-overview",
+            "reference_label": "Dataflows Gen2 の概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Power BI Desktop からのみ作成でき、ブラウザーでは作成できない。",
+          "explanation": {
+            "text": "Fabric ポータル (Web) で作成/管理可能であり、Desktop 限定ではない。",
+            "reference": "https://learn.microsoft.com/fabric/data-engineering/dataflows-gen2-overview",
+            "reference_label": "Dataflows Gen2 の概要"
+          }
+        }
+      ],
+      "answer": "A, C",
+      "explanation": {
+        "text": "Dataflows Gen2 は OneLake/Delta を基盤にし、Lakehouse/Warehouse と連携する。Classic の CDM フォルダー前提や Desktop 限定ではない。",
+        "reference": "https://learn.microsoft.com/fabric/data-engineering/dataflows-gen2-overview",
+        "reference_label": "Dataflows Gen2 の概要"
+      }
+    },
+    {
+      "id": "azure-DP-500-q47",
+      "difficulty": "normal",
+      "question": "探索的なデータ分析や前処理の段階で Azure Synapse での選択肢を比較したとき、一般的な特性の組み合わせとして最も適切なのはどれか。",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Apache Spark プールはノートブックでの反復的処理や機械学習に向き、Serverless SQL プールはデータレイク上のファイルに対する軽量なアドホック SQL に向く。",
+          "explanation": {
+            "text": "Spark は分散計算/ML/データ準備に強く、Serverless SQL はレイク上の Parquet/CSV 等に対する即席の SQL に適する。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/overview-what-is",
+            "reference_label": "Synapse のサービス概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Dedicated SQL プールはオンデマンド課金で、インスタンスの事前プロビジョニングは不要。",
+          "explanation": {
+            "text": "Dedicated はプロビジョンド (DWU) 型でオンデマンドではない。オンデマンドは Serverless SQL。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview",
+            "reference_label": "Serverless SQL プールの概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Serverless SQL は ETL の長時間バッチ処理に最適化されているため、探索用途には不向き。",
+          "explanation": {
+            "text": "Serverless SQL はアドホックや軽量集計に向く。長時間の重い ETL は Dedicated や Spark が適する場合が多い。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview",
+            "reference_label": "Serverless SQL プールの概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Spark プールは SQL を一切サポートしない。",
+          "explanation": {
+            "text": "Spark には Spark SQL があり、構造化データに対して SQL での操作が可能。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/spark/apache-spark-development-using-notebooks",
+            "reference_label": "Synapse の Spark ノートブック"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "探索/前処理では Spark と Serverless SQL を使い分けるのが定石。Dedicated はプロビジョンドで DWH 向き。",
+        "reference": "https://learn.microsoft.com/azure/synapse-analytics/overview-what-is",
+        "reference_label": "Synapse のサービス概要"
+      }
+    },
+    {
+      "id": "azure-DP-500-q48",
+      "difficulty": "easy",
+      "question": "Power BI の “Build” 権限の説明として正しいものはどれか。",
+      "choices": [
+        {
+          "key": "A",
+          "text": "共有データセットに対してレポート/ダッシュボードを作成できる権限で、データセット自体の編集権限ではない。",
+          "explanation": {
+            "text": "Build は“再利用して可視化を作る”ための権限で、データセットの所有・編集とは区別される。",
+            "reference": "https://learn.microsoft.com/power-bi/connect-data/service-datasets-build-permissions",
+            "reference_label": "Build 権限とは"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Build 権限があると XMLA でモデルを変更できる。",
+          "explanation": {
+            "text": "モデル変更は Read/Write 権限が必要で、Build だけでは不可。",
+            "reference": "https://learn.microsoft.com/power-bi/connect-data/service-datasets-build-permissions",
+            "reference_label": "Build 権限とは"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Build 権限は RLS を自動的に無効化する。",
+          "explanation": {
+            "text": "RLS は引き続き適用される。権限種別とは別の概念。",
+            "reference": "https://learn.microsoft.com/power-bi/connect-data/service-datasets-build-permissions",
+            "reference_label": "Build 権限とは"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Build 権限があれば、データセットの所有者に昇格できる。",
+          "explanation": {
+            "text": "所有者への昇格は別手続きであり、Build では行えない。",
+            "reference": "https://learn.microsoft.com/power-bi/connect-data/service-datasets-build-permissions",
+            "reference_label": "Build 権限とは"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Build は“共有データセットから新しいレポート等を作る”ための権限。編集や所有ではない点を区別する。",
+        "reference": "https://learn.microsoft.com/power-bi/connect-data/service-datasets-build-permissions",
+        "reference_label": "Build 権限とは"
+      }
+    },
+    {
+      "id": "azure-DP-500-q49",
+      "difficulty": "normal",
+      "question": "Power BI のページ分割 (Paginated) レポートを発行・共有するための要件として正しいものはどれか。",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Premium 容量または PPU (Premium Per User) が必要である。",
+          "explanation": {
+            "text": "Paginated レポートの発行/共有には Premium または PPU が要件となる。",
+            "reference": "https://learn.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi",
+            "reference_label": "Paginated レポートの要件"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Power BI Pro のみで誰でも無制限に共有できる。",
+          "explanation": {
+            "text": "共有スケールを想定した Paginated は Premium/PPU が前提。",
+            "reference": "https://learn.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi",
+            "reference_label": "Paginated レポートの要件"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Paginated レポートは DirectQuery 専用で、Import は非対応。",
+          "explanation": {
+            "text": "データ接続は多様で、DirectQuery 専用ではない。",
+            "reference": "https://learn.microsoft.com/power-bi/paginated-reports/paginated-reports-data-sources",
+            "reference_label": "Paginated レポートのデータ ソース"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Paginated レポートでは RDL ファイル形式が用いられる。",
+          "explanation": {
+            "text": "SSRS と同様に RDL 形式を用いるのが特徴。",
+            "reference": "https://learn.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi",
+            "reference_label": "Paginated レポートの概要"
+          }
+        }
+      ],
+      "answer": "A, D",
+      "explanation": {
+        "text": "Paginated は RDL 形式で、発行/共有には Premium/PPU が必要。",
+        "reference": "https://learn.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi",
+        "reference_label": "Paginated レポートの要件"
+      }
+    },
+    {
+      "id": "azure-DP-500-q50",
+      "difficulty": "hard",
+      "question": "【総合設計】グローバル小売の分析基盤。売上ファクトは毎時更新で 5 年分、参照ディメンションは小さく頻繁に参照。最新 3 日は“ほぼリアルタイム”、それ以前は高速応答が要件。Power BI で世界 5,000 ユーザーが閲覧。適切な設計の組み合わせはどれか。(複数選択可)",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ファクトはインクリメンタル リフレッシュで年次/日次パーティション化し、最新領域はハイブリッド テーブルで DirectQuery/Direct Lake を併用する。",
+          "explanation": {
+            "text": "保存期間と増分期間を分け、最新領域をハイブリッド化することで最新性と性能を両立できる。",
+            "reference": "https://learn.microsoft.com/power-bi/transform-model/incremental-refresh-overview",
+            "reference_label": "インクリメンタル リフレッシュ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "小さなディメンションは Aggregation テーブルにし、参照テーブルを REPLICATE 分散で Synapse に保持する。",
+          "explanation": {
+            "text": "Synapse 側では小さいディメンションの REPLICATE 分散がジョイン効率を高める。Aggregation は主に大きいファクトの要約に利用するため、ディメンションの集計化は効果が薄い。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/develop-tables-distribute",
+            "reference_label": "分散戦略 (REPLICATE/HASH/ROUND_ROBIN)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Power BI データセットで Aggregations を構成し、頻出の粒度 (国/週/カテゴリ等) を事前集計してヒット率を高める。",
+          "explanation": {
+            "text": "事前集計により多数ユーザーの共通クエリを高速化できる。",
+            "reference": "https://learn.microsoft.com/power-bi/transform-model/aggregations-advanced",
+            "reference_label": "Aggregations の設計"
+          }
+        },
+        {
+          "key": "D",
+          "text": "世界規模の同時アクセスに備えて Premium 容量 (あるいは Fabric 容量) を使用し、XMLA Read/Write で運用チューニング/自動化を行う。",
+          "explanation": {
+            "text": "大規模配信と運用自動化には容量ベース + XMLA が有効。容量メトリクスで監視も可能。",
+            "reference": "https://learn.microsoft.com/power-bi/enterprise/service-premium-what-is",
+            "reference_label": "Power BI Premium の概要"
+          }
+        },
+        {
+          "key": "E",
+          "text": "オンプレミス ERP 直結の参照はオンプレミス データ ゲートウェイをクラスター化し、必要に応じて Kerberos SSO を構成する。",
+          "explanation": {
+            "text": "HA クラスター + KCD により可用性とユーザー委譲を担保できる。",
+            "reference": "https://learn.microsoft.com/power-bi/connect-data/service-gateway-high-availability-clusters",
+            "reference_label": "ゲートウェイ高可用性"
+          }
+        },
+        {
+          "key": "F",
+          "text": "“Publish to web” を許可して全世界へ公開し、キャッシュ問題を回避する。",
+          "explanation": {
+            "text": "機密データの公開リスクが極めて高く、企業用途では推奨されない。",
+            "reference": "https://learn.microsoft.com/power-bi/admin/service-admin-portal#tenant-settings",
+            "reference_label": "テナント設定 (Publish to web)"
+          }
+        }
+      ],
+      "answer": "A, C, D, E",
+      "explanation": {
+        "text": "最新 3 日はハイブリッドで鮮度を確保し、過去はインポート + Aggregations で高速化。世界 5,000 ユーザー配信は Premium/Fabric 容量が現実的で、運用は XMLA とメトリクスで最適化。オンプレ参照はゲートウェイ HA + SSO で堅牢化。“Publish to web” は企業データには不適切。",
+        "reference": "https://learn.microsoft.com/power-bi/transform-model/incremental-refresh-overview",
+        "reference_label": "インクリメンタル リフレッシュ"
+      }
+    }
+  ]
+}

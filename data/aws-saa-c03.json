@@ -1,0 +1,1099 @@
+{
+    "exam": {
+        "id": "SAA-C03",
+        "title": "AWS Certified Solutions Architect – Associate",
+        "description": "この資格は、クラウド環境において、コスト・性能・可用性・セキュリティを総合的に最適化した設計ができるスキルを認定するもので、AWS のサービスを用いて『安全で・レジリエント（障害耐性）で・高性能かつコスト効率の高い』ソリューションを構築・改善できることを証明します。AWSのWell-Architectedフレームワークをベースに、要件を満たすための設計判断やサービス選定、既存構成の改善提案などが問われます。クラウド初心者ではなく、実務経験を持つIT／クラウド技術者が対象となる内容です。",
+        "version": "2022年8月",
+        "price": "150 USD",
+        "difficulty": "普通",
+        "official-site": "https://aws.amazon.com/certification/certified-solutions-architect-associate/",
+        "category": {
+            "id": "aws",
+            "name": "AWS"
+        }
+    },
+    "questions": [
+        {
+            "id": "aws-saa-c03-q1",
+            "question": "Amazon S3で、オブジェクト削除時に追加の認証を要求することで誤削除から保護する機能はどれですか？",
+            "difficulty": "easy",
+            "choices": [
+                { "key": "A", "text": "バージョニング", "explanation": { "text": "複数バージョンを保持し、削除や上書きから保護します。", "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html", "reference_label": "Amazon S3 バージョニング" } },
+                { "key": "B", "text": "オブジェクトロック", "explanation": { "text": "削除や上書きを禁止できますが、基本的な削除防止機能ではありません。", "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html", "reference_label": "Amazon S3 オブジェクトロック" } },
+                { "key": "C", "text": "MFA Delete", "explanation": { "text": "削除時にMFA認証を要求し、誤削除や悪意ある削除を防ぎます。", "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/MultiFactorAuthenticationDelete.html", "reference_label": "Amazon S3 MFA Delete" } },
+                { "key": "D", "text": "バケットポリシー", "explanation": { "text": "アクセス制御を行いますが、誤削除防止機能ではありません。", "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-policies.html", "reference_label": "Amazon S3 バケットポリシー" } }
+            ],
+            "answer": "C",
+            "explanation": { "text": "MFA Deleteは、削除操作に追加の認証を要求することで誤削除を防ぎます。", "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/MultiFactorAuthenticationDelete.html", "reference_label": "Amazon S3 MFA Delete" }
+        },
+        {
+            "id": "aws-saa-c03-q2",
+            "question": "分散アーキテクチャにおいて、マイクロサービス間の疎結合を実現するために利用すべきAWSサービスはどれですか？",
+            "difficulty": "easy",
+            "choices": [
+                { "key": "A", "text": "Amazon SQS", "explanation": { "text": "非同期メッセージングによりマイクロサービスを疎結合化します。", "reference": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html", "reference_label": "Amazon SQS ドキュメント" } },
+                { "key": "B", "text": "Amazon SNS", "explanation": { "text": "Pub/Sub通知を提供しますが、疎結合のためのキューイングには適しません。", "reference": "https://docs.aws.amazon.com/sns/latest/dg/welcome.html", "reference_label": "Amazon SNS ドキュメント" } },
+                { "key": "C", "text": "AWS Step Functions", "explanation": { "text": "ワークフローのオーケストレーションを行いますが、疎結合レイヤーではありません。", "reference": "https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html", "reference_label": "AWS Step Functions" } },
+                { "key": "D", "text": "Amazon CloudWatch", "explanation": { "text": "監視サービスであり、メッセージ基盤ではありません。", "reference": "https://docs.aws.amazon.com/cloudwatch/", "reference_label": "Amazon CloudWatch" } }
+            ],
+            "answer": "A",
+            "explanation": { "text": "Amazon SQSは、非同期通信でスケーラブルな疎結合アーキテクチャを構築できます。", "reference": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html", "reference_label": "Amazon SQS ドキュメント" }
+        },
+        {
+            "id": "aws-saa-c03-q3",
+            "question": "Amazon RDSで、DBインスタンス障害時に自動フェイルオーバーを提供する機能はどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                { "key": "A", "text": "マルチAZ配置", "explanation": { "text": "同期スタンバイレプリカを保持し、自動でフェイルオーバーします。", "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html", "reference_label": "Amazon RDS マルチAZ" } },
+                { "key": "B", "text": "リードレプリカ", "explanation": { "text": "読み取り負荷分散用であり、自動フェイルオーバーは行いません。", "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html", "reference_label": "Amazon RDS リードレプリカ" } },
+                { "key": "C", "text": "自動バックアップ", "explanation": { "text": "復元用の仕組みですが、フェイルオーバー機能はありません。", "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html", "reference_label": "Amazon RDS 自動バックアップ" } },
+                { "key": "D", "text": "DBスナップショット", "explanation": { "text": "手動バックアップであり、可用性やフェイルオーバーには関与しません。", "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CreateSnapshot.html", "reference_label": "Amazon RDS スナップショット" } }
+            ],
+            "answer": "A",
+            "explanation": { "text": "マルチAZ配置は、障害時にスタンバイへ自動フェイルオーバーします。", "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html", "reference_label": "Amazon RDS マルチAZ" }
+        },
+        {
+            "id": "aws-saa-c03-q4",
+            "question": "Amazon CloudFrontのオリジンアクセス制御（OAC）の目的は何ですか？",
+            "difficulty": "normal",
+            "choices": [
+                { "key": "A", "text": "オリジンへの直接アクセスを防ぎ、CloudFront経由でのみアクセス可能にする", "explanation": { "text": "OACは、CloudFrontからのリクエストのみを許可するセキュリティ機能です。", "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html", "reference_label": "CloudFront オリジンアクセス制御" } },
+                { "key": "B", "text": "CloudFrontキャッシュを暗号化する", "explanation": { "text": "キャッシュ暗号化はOACの目的ではありません。", "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html", "reference_label": "CloudFront オリジンアクセス制御" } },
+                { "key": "C", "text": "Lambda@Edge関数を自動的に適用する", "explanation": { "text": "Lambda@Edgeの管理機能ではありません。", "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-at-the-edge.html", "reference_label": "Lambda@Edge" } },
+                { "key": "D", "text": "キャッシュのTTLを制御する", "explanation": { "text": "TTL制御はOACの目的ではなく、キャッシュポリシーの設定です。", "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html", "reference_label": "CloudFront キャッシュポリシー" } }
+            ],
+            "answer": "A",
+            "explanation": { "text": "OACはS3などのオリジンへの直接アクセスを防ぎ、CloudFront経由でのみアクセス可能にします。", "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html", "reference_label": "CloudFront オリジンアクセス制御" }
+        },
+        {
+            "id": "aws-saa-c03-q5",
+            "question": "Amazon DynamoDBでパフォーマンスを安定させるために推奨される設計はどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                { "key": "A", "text": "パーティションキーのアクセスパターンを均等に分散させる", "explanation": { "text": "ホットパーティションを避け、スループットを最適化します。", "reference": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/best-practices.html", "reference_label": "DynamoDB ベストプラクティス" } },
+                { "key": "B", "text": "1つのパーティションキーに集中してアクセスする", "explanation": { "text": "ホットパーティションが発生し、パフォーマンスが低下します。", "reference": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/best-practices.html", "reference_label": "DynamoDB ベストプラクティス" } },
+                { "key": "C", "text": "複数のテーブルを1つのパーティションキーに統合する", "explanation": { "text": "これもホットパーティションを引き起こします。", "reference": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/best-practices.html", "reference_label": "DynamoDB ベストプラクティス" } },
+                { "key": "D", "text": "グローバルセカンダリインデックスを避ける", "explanation": { "text": "回避ではなく、適切に設計して活用することが推奨されます。", "reference": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/SecondaryIndexes.html", "reference_label": "DynamoDB GSI" } }
+            ],
+            "answer": "A",
+            "explanation": { "text": "DynamoDBではパーティションキーの分散設計が重要であり、アクセス集中を防ぐことでスループットが安定します。", "reference": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/best-practices.html", "reference_label": "DynamoDB ベストプラクティス" }
+        },
+        {
+            "id": "aws-saa-c03-q6",
+            "question": "Amazon EC2 Auto Scalingでスケーリングポリシーをトリガーする最も一般的なメトリクスはどれですか？",
+            "difficulty": "easy",
+            "choices": [
+                { "key": "A", "text": "CPU使用率", "explanation": { "text": "最も一般的に使用されるスケーリングメトリクスです。", "reference": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-monitoring.html", "reference_label": "Auto Scaling メトリクス" } },
+                { "key": "B", "text": "ディスク容量", "explanation": { "text": "ストレージ不足検知には使えますが、スケーリングの一般的指標ではありません。", "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/working_with_metrics.html", "reference_label": "CloudWatch メトリクス" } },
+                { "key": "C", "text": "アプリケーションログ数", "explanation": { "text": "ログはスケーリングメトリクスとしては一般的ではありません。", "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html", "reference_label": "CloudWatch Logs" } },
+                { "key": "D", "text": "IAMロール利用状況", "explanation": { "text": "IAMの利用状況はスケーリングとは無関係です。", "reference": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html", "reference_label": "IAM ポリシー" } }
+            ],
+            "answer": "A",
+            "explanation": { "text": "Auto Scalingのトリガーとして最も一般的なのはCPU使用率です。", "reference": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-monitoring.html", "reference_label": "Auto Scaling メトリクス" }
+        },
+        {
+            "id": "aws-saa-c03-q7",
+            "question": "VPCピアリング接続に関する正しい記述はどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                { "key": "A", "text": "異なるリージョン間でも利用可能である", "explanation": { "text": "VPCピアリングは同一リージョンだけでなく、異なるリージョン間でも可能です。", "reference": "https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html", "reference_label": "VPC ピアリング" } },
+                { "key": "B", "text": "トランジティブルーティングをサポートする", "explanation": { "text": "VPCピアリングはトランジティブルーティングをサポートしません。", "reference": "https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html", "reference_label": "VPC ピアリング" } },
+                { "key": "C", "text": "CIDRブロックが重複していても利用可能", "explanation": { "text": "CIDRが重複している場合は利用できません。", "reference": "https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html", "reference_label": "VPC ピアリング" } },
+                { "key": "D", "text": "必ずVPN接続が必要", "explanation": { "text": "VPN接続は不要です。AWS内部で直接接続します。", "reference": "https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html", "reference_label": "VPC ピアリング" } }
+            ],
+            "answer": "A",
+            "explanation": { "text": "VPCピアリングは異なるリージョン間でも利用可能ですが、トランジティブルーティングやCIDR重複はサポートされません。", "reference": "https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html", "reference_label": "VPC ピアリング" }
+        },
+        {
+            "id": "aws-saa-c03-q8",
+            "question": "Amazon Route 53のフェイルオーバールーティングポリシーの目的はどれですか？",
+            "difficulty": "easy",
+            "choices": [
+                { "key": "A", "text": "正常なリソースにトラフィックを誘導する", "explanation": { "text": "フェイルオーバーポリシーは、ヘルスチェックで異常が検出された場合に別のリソースへトラフィックを切り替えます。", "reference": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-failover", "reference_label": "Route 53 フェイルオーバー" } },
+                { "key": "B", "text": "トラフィックをランダムに分散させる", "explanation": { "text": "これは加重ルーティングやレイテンシールーティングの機能です。", "reference": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html", "reference_label": "Route 53 ルーティングポリシー" } },
+                { "key": "C", "text": "最も近いリージョンに誘導する", "explanation": { "text": "これはレイテンシーベースルーティングの機能です。", "reference": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html", "reference_label": "Route 53 ルーティングポリシー" } },
+                { "key": "D", "text": "複数のリソースに同時にトラフィックを送信する", "explanation": { "text": "これはマルチバリュー回答ルーティングの機能です。", "reference": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html", "reference_label": "Route 53 ルーティングポリシー" } }
+            ],
+            "answer": "A",
+            "explanation": { "text": "Route 53フェイルオーバールーティングは、プライマリ障害時にセカンダリリソースへ切り替えるために使用されます。", "reference": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-failover", "reference_label": "Route 53 フェイルオーバー" }
+        },
+        {
+            "id": "aws-saa-c03-q9",
+            "question": "AWS Elastic Beanstalkでアプリケーションの新バージョンをリリースする際、ゼロダウンタイムでの更新を可能にするデプロイ方式はどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                { "key": "A", "text": "ローリングデプロイ", "explanation": { "text": "一部のインスタンスを順番に更新し、アプリを停止させません。", "reference": "https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.deploy-existing-version.html", "reference_label": "Elastic Beanstalk デプロイ方式" } },
+                { "key": "B", "text": "すべて置き換え", "explanation": { "text": "全インスタンスを同時に置き換えるため、一時的な停止が発生します。", "reference": "https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.deploy-existing-version.html", "reference_label": "Elastic Beanstalk デプロイ方式" } },
+                { "key": "C", "text": "インプレース更新", "explanation": { "text": "全インスタンスを一括更新するためダウンタイムが発生します。", "reference": "https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.deploy-existing-version.html", "reference_label": "Elastic Beanstalk デプロイ方式" } },
+                { "key": "D", "text": "ブルー/グリーンデプロイ", "explanation": { "text": "新環境を構築して切り替えることで、ゼロダウンタイムを実現できます。", "reference": "https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.deploy-existing-version.html", "reference_label": "Elastic Beanstalk デプロイ方式" } }
+            ],
+            "answer": "D",
+            "explanation": { "text": "Elastic Beanstalkではブルー/グリーンデプロイがゼロダウンタイム更新を可能にします。", "reference": "https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.deploy-existing-version.html", "reference_label": "Elastic Beanstalk デプロイ方式" }
+        },
+        {
+            "id": "aws-saa-c03-q10",
+            "question": "Amazon ElastiCacheでセッション管理をスケーラブルに行うためによく利用されるエンジンはどれですか？",
+            "difficulty": "easy",
+            "choices": [
+                { "key": "A", "text": "Redis", "explanation": { "text": "Redisはインメモリデータストアとしてセッション管理に広く利用されます。", "reference": "https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.html", "reference_label": "Amazon ElastiCache for Redis" } },
+                { "key": "B", "text": "Memcached", "explanation": { "text": "Memcachedも利用可能ですが、永続化機能がないためセッション管理にはRedisが好まれます。", "reference": "https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/WhatIs.html", "reference_label": "Amazon ElastiCache for Memcached" } },
+                { "key": "C", "text": "Amazon RDS", "explanation": { "text": "RDSはデータベースであり、インメモリキャッシュとしては適しません。", "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html", "reference_label": "Amazon RDS" } },
+                { "key": "D", "text": "Amazon DynamoDB", "explanation": { "text": "DynamoDBはNoSQLデータベースであり、セッションキャッシュ用途には適しません。", "reference": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html", "reference_label": "Amazon DynamoDB" } }
+            ],
+            "answer": "A",
+            "explanation": { "text": "ElastiCache for Redisはセッション管理やリアルタイム分析に広く利用されます。", "reference": "https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.html", "reference_label": "Amazon ElastiCache for Redis" }
+        },
+        {
+            "id": "aws-saa-c03-q11",
+            "question": "Amazon EBSのスナップショットの特徴として正しいものはどれですか？",
+            "difficulty": "easy",
+            "choices": [
+                { "key": "A", "text": "スナップショットは差分バックアップであり、変更されたブロックのみ保存する", "explanation": { "text": "EBSスナップショットは増分型であり、効率的に保存されます。", "reference": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html", "reference_label": "Amazon EBS スナップショット" } },
+                { "key": "B", "text": "スナップショットはEC2インスタンスと同じリージョンでのみ使用できない", "explanation": { "text": "スナップショットはリージョン内で利用可能ですが、コピーすることで別リージョンにも転送できます。", "reference": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html", "reference_label": "Amazon EBS スナップショット" } },
+                { "key": "C", "text": "スナップショットは必ず暗号化される", "explanation": { "text": "暗号化は任意であり、デフォルトでは有効ではありません。", "reference": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html", "reference_label": "Amazon EBS 暗号化" } },
+                { "key": "D", "text": "スナップショットはS3上にユーザーが直接確認できるファイルとして保存される", "explanation": { "text": "スナップショットは内部的にS3に保存されますが、直接参照することはできません。", "reference": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html", "reference_label": "Amazon EBS スナップショット" } }
+            ],
+            "answer": "A",
+            "explanation": { "text": "EBSスナップショットは増分型で効率的に保存されるため、バックアップに最適です。", "reference": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html", "reference_label": "Amazon EBS スナップショット" }
+        },
+        {
+            "id": "aws-saa-c03-q12",
+            "question": "Amazon CloudWatchアラームの典型的な利用方法はどれですか？",
+            "difficulty": "easy",
+            "choices": [
+                { "key": "A", "text": "メトリクスに基づいて通知や自動アクションをトリガーする", "explanation": { "text": "CloudWatchアラームはメトリクスの閾値を監視し、SNS通知やAuto Scalingをトリガーできます。", "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html", "reference_label": "CloudWatch アラーム" } },
+                { "key": "B", "text": "アプリケーションのコードを自動的に修正する", "explanation": { "text": "CloudWatchは修正を行わず、イベントを通知するだけです。", "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html", "reference_label": "CloudWatch アラーム" } },
+                { "key": "C", "text": "リージョン間でトラフィックを自動的に分散する", "explanation": { "text": "これはRoute 53やGlobal Acceleratorの役割です。", "reference": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-dns-service.html", "reference_label": "Route 53" } },
+                { "key": "D", "text": "リソースにIAMポリシーを適用する", "explanation": { "text": "IAMポリシー管理はCloudWatchの機能ではありません。", "reference": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html", "reference_label": "IAM ポリシー" } }
+            ],
+            "answer": "A",
+            "explanation": { "text": "CloudWatchアラームは監視と自動化の要であり、SNS通知やAuto Scalingと組み合わせられます。", "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html", "reference_label": "CloudWatch アラーム" }
+        },
+        {
+            "id": "aws-saa-c03-q13",
+            "question": "Amazon VPCのNAT Gatewayを利用する主な目的はどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                { "key": "A", "text": "プライベートサブネット内のリソースがインターネットへアウトバウンド通信できるようにする", "explanation": { "text": "NAT Gatewayはプライベートサブネットからのインターネットアクセスを可能にします。", "reference": "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html", "reference_label": "NAT Gateway" } },
+                { "key": "B", "text": "インバウンド通信を受け付けるための固定IPを提供する", "explanation": { "text": "インバウンド通信には利用できません。Elastic IPを使う必要があります。", "reference": "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html", "reference_label": "NAT Gateway" } },
+                { "key": "C", "text": "異なるVPC間の通信を確立する", "explanation": { "text": "これはVPCピアリングやTransit Gatewayの役割です。", "reference": "https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html", "reference_label": "VPC ピアリング" } },
+                { "key": "D", "text": "プライベートサブネット内のDNSを解決する", "explanation": { "text": "DNS解決はRoute 53 Resolverの機能です。", "reference": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver.html", "reference_label": "Route 53 Resolver" } }
+            ],
+            "answer": "A",
+            "explanation": { "text": "NAT Gatewayはプライベートサブネットからインターネットアクセスを可能にし、セキュアな設計を実現します。", "reference": "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html", "reference_label": "NAT Gateway" }
+        },
+        {
+            "id": "aws-saa-c03-q14",
+            "question": "AWS IAMロールの主な利用目的はどれですか？",
+            "difficulty": "easy",
+            "choices": [
+                { "key": "A", "text": "AWSリソースに一時的なアクセス権限を付与する", "explanation": { "text": "IAMロールは一時的な認証情報を利用してアクセスを付与します。", "reference": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html", "reference_label": "IAM ロール" } },
+                { "key": "B", "text": "長期的な固定アクセスキーを発行する", "explanation": { "text": "固定キーはIAMユーザーに付与されます。ロールは一時認証情報を利用します。", "reference": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html", "reference_label": "IAM ロール" } },
+                { "key": "C", "text": "パスワードポリシーを管理する", "explanation": { "text": "パスワード管理はIAMユーザーに関連する機能です。", "reference": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html", "reference_label": "IAM パスワードポリシー" } },
+                { "key": "D", "text": "組織のOU（Organizational Unit）を管理する", "explanation": { "text": "OUの管理はAWS Organizationsの機能です。", "reference": "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_ous.html", "reference_label": "AWS Organizations" } }
+            ],
+            "answer": "A",
+            "explanation": { "text": "IAMロールはユーザーやサービスに一時的な権限を付与するために利用されます。", "reference": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html", "reference_label": "IAM ロール" }
+        },
+        {
+            "id": "aws-saa-c03-q15",
+            "question": "Amazon Auroraの特徴として正しいものはどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                { "key": "A", "text": "MySQLやPostgreSQL互換のフルマネージドリレーショナルデータベースである", "explanation": { "text": "AuroraはMySQL/PostgreSQL互換で高可用性を持つRDBです。", "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Welcome.html", "reference_label": "Amazon Aurora" } },
+                { "key": "B", "text": "NoSQLデータベースである", "explanation": { "text": "AuroraはRDBであり、NoSQLではありません。", "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Welcome.html", "reference_label": "Amazon Aurora" } },
+                { "key": "C", "text": "スキーマレスである", "explanation": { "text": "Auroraはリレーショナルデータベースなのでスキーマが必要です。", "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Welcome.html", "reference_label": "Amazon Aurora" } },
+                { "key": "D", "text": "手動でフェイルオーバー設定が必要である", "explanation": { "text": "Auroraは自動フェイルオーバー機能を持っています。", "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.html", "reference_label": "Amazon Aurora 高可用性" } }
+            ],
+            "answer": "A",
+            "explanation": { "text": "AuroraはMySQL/PostgreSQL互換のRDBで、自動フェイルオーバーと高いスケーラビリティを提供します。", "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Welcome.html", "reference_label": "Amazon Aurora" }
+        },
+        {
+            "id": "aws-saa-c03-q16",
+            "question": "Amazon S3のストレージクラスのうち、低頻度アクセスデータ向けでありながら即時アクセス可能なものはどれですか？",
+            "difficulty": "easy",
+            "choices": [
+                { "key": "A", "text": "S3 Standard-IA", "explanation": { "text": "低頻度アクセス向けであり、必要時には即時に取り出せます。", "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html", "reference_label": "Amazon S3 ストレージクラス" } },
+                { "key": "B", "text": "S3 Glacier", "explanation": { "text": "Glacierはアーカイブ用であり、取り出しに時間がかかります。", "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html", "reference_label": "Amazon S3 ストレージクラス" } },
+                { "key": "C", "text": "S3 One Zone-IA", "explanation": { "text": "低頻度アクセス向けですが、可用性は1つのAZに限定されます。", "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html", "reference_label": "Amazon S3 ストレージクラス" } },
+                { "key": "D", "text": "S3 Intelligent-Tiering", "explanation": { "text": "自動的にストレージクラスを切り替えますが、明示的に低頻度アクセス専用ではありません。", "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html", "reference_label": "Amazon S3 ストレージクラス" } }
+            ],
+            "answer": "A",
+            "explanation": { "text": "S3 Standard-IAは低頻度アクセスデータ向けで、即時取り出し可能です。", "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html", "reference_label": "Amazon S3 ストレージクラス" }
+        },
+        {
+            "id": "aws-saa-c03-q17",
+            "question": "AWS Lambda関数のタイムアウトの最大値はどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                { "key": "A", "text": "1分", "explanation": { "text": "初期の制限は短時間でしたが、現在はより長く設定できます。", "reference": "https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html", "reference_label": "Lambda 制限" } },
+                { "key": "B", "text": "5分", "explanation": { "text": "以前の制限値ですが、現在はさらに長い値を設定できます。", "reference": "https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html", "reference_label": "Lambda 制限" } },
+                { "key": "C", "text": "15分", "explanation": { "text": "現在の最大タイムアウト値です。", "reference": "https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html", "reference_label": "Lambda 制限" } },
+                { "key": "D", "text": "30分", "explanation": { "text": "Lambdaは30分までの実行はサポートしていません。", "reference": "https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html", "reference_label": "Lambda 制限" } }
+            ],
+            "answer": "C",
+            "explanation": { "text": "AWS Lambdaの最大実行タイムアウトは15分です。", "reference": "https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html", "reference_label": "Lambda 制限" }
+        },
+        {
+            "id": "aws-saa-c03-q18",
+            "question": "AWS Well-Architected Frameworkの5つの柱のうち、コストの最適化に直接関連するものはどれですか？",
+            "difficulty": "easy",
+            "choices": [
+                { "key": "A", "text": "運用上の優秀性", "explanation": { "text": "運用プロセスの最適化に関する柱です。", "reference": "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html", "reference_label": "AWS Well-Architected Framework" } },
+                { "key": "B", "text": "パフォーマンス効率", "explanation": { "text": "リソース効率を扱いますが、直接的なコスト最適化ではありません。", "reference": "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html", "reference_label": "AWS Well-Architected Framework" } },
+                { "key": "C", "text": "信頼性", "explanation": { "text": "システムの可用性を対象とします。", "reference": "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html", "reference_label": "AWS Well-Architected Framework" } },
+                { "key": "D", "text": "コスト最適化", "explanation": { "text": "リソース利用を最適化し、無駄なコストを削減することに焦点を当てています。", "reference": "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html", "reference_label": "AWS Well-Architected Framework" } }
+            ],
+            "answer": "D",
+            "explanation": { "text": "Well-Architected Frameworkの5本柱のひとつにコスト最適化があり、コスト効率を最大化することを目的としています。", "reference": "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html", "reference_label": "AWS Well-Architected Framework" }
+        },
+        {
+            "id": "aws-saa-c03-q19",
+            "question": "Amazon CloudFrontで、動的コンテンツに対するキャッシュを最適化するために利用できる機能はどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                { "key": "A", "text": "キャッシュキーとオリジンリクエストポリシー", "explanation": { "text": "ヘッダーやクエリ文字列をキャッシュキーに含め、動的コンテンツのキャッシュを最適化できます。", "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/working-with-policies.html", "reference_label": "CloudFront キャッシュポリシー" } },
+                { "key": "B", "text": "オリジンアクセス制御（OAC）", "explanation": { "text": "オリジンへの直接アクセス制御のための機能です。", "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html", "reference_label": "CloudFront OAC" } },
+                { "key": "C", "text": "レスポンスヘッダーポリシー", "explanation": { "text": "レスポンスのセキュリティヘッダーを制御するための機能です。", "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/response-headers-policies.html", "reference_label": "CloudFront レスポンスヘッダーポリシー" } },
+                { "key": "D", "text": "Lambda@Edge", "explanation": { "text": "コンテンツの動的処理は可能ですが、キャッシュ最適化の直接機能ではありません。", "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-at-the-edge.html", "reference_label": "Lambda@Edge" } }
+            ],
+            "answer": "A",
+            "explanation": { "text": "CloudFrontではキャッシュキーとオリジンリクエストポリシーを利用して、動的コンテンツのキャッシュを効率化できます。", "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/working-with-policies.html", "reference_label": "CloudFront キャッシュポリシー" }
+        },
+        {
+            "id": "aws-saa-c03-q20",
+            "question": "AWS Organizationsでサービスコントロールポリシー（SCP）の役割はどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                { "key": "A", "text": "アカウントやOU全体で利用可能なサービスやアクションを制限する", "explanation": { "text": "SCPはOUやアカウント単位で許可されるアクションを制御します。", "reference": "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html", "reference_label": "AWS Organizations SCP" } },
+                { "key": "B", "text": "ユーザーごとの詳細な権限を定義する", "explanation": { "text": "ユーザー単位の権限はIAMポリシーで管理します。", "reference": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html", "reference_label": "IAM ポリシー" } },
+                { "key": "C", "text": "請求情報を管理する", "explanation": { "text": "請求管理はSCPではなく、コンソリデーティッドビリングやCost Explorerで行います。", "reference": "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html", "reference_label": "AWS 請求管理" } },
+                { "key": "D", "text": "CloudTrailのログを強制的に有効化する", "explanation": { "text": "SCPでは直接ログを有効化できません。", "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html", "reference_label": "AWS CloudTrail" } }
+            ],
+            "answer": "A",
+            "explanation": { "text": "SCPはアカウントやOU全体で利用できるサービスやアクションを制限するために利用されます。", "reference": "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html", "reference_label": "AWS Organizations SCP" }
+        },
+        {
+            "id": "aws-saa-c03-q21",
+            "question": "Amazon EC2スポットインスタンスの特徴として正しいものはどれですか？",
+            "difficulty": "easy",
+            "choices": [
+                { "key": "A", "text": "オンデマンドインスタンスよりも低価格で提供される", "explanation": { "text": "スポットインスタンスは余剰キャパシティを利用するため、コストが大幅に低くなります。", "reference": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html", "reference_label": "Amazon EC2 スポットインスタンス" } },
+                { "key": "B", "text": "常に停止されない保証がある", "explanation": { "text": "AWSによりキャパシティが回収される可能性があり、停止保証はありません。", "reference": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html", "reference_label": "Amazon EC2 スポットインスタンス" } },
+                { "key": "C", "text": "長期利用に最適である", "explanation": { "text": "価格変動と中断リスクがあるため、長期利用や安定運用には不向きです。", "reference": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html", "reference_label": "Amazon EC2 スポットインスタンス" } },
+                { "key": "D", "text": "1年間または3年間の利用契約が必要", "explanation": { "text": "これはリザーブドインスタンスやSavings Plansの特徴です。", "reference": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-overview.html", "reference_label": "Amazon EC2 リザーブドインスタンス" } }
+            ],
+            "answer": "A",
+            "explanation": { "text": "スポットインスタンスは余剰リソースを利用するため、オンデマンドより安価に利用できますが中断リスクがあります。", "reference": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html", "reference_label": "Amazon EC2 スポットインスタンス" }
+        },
+        {
+            "id": "aws-saa-c03-q22",
+            "question": "Amazon Route 53のレイテンシーベースルーティングの目的はどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                { "key": "A", "text": "ユーザーに最も低い遅延を提供するリージョンへ誘導する", "explanation": { "text": "レイテンシーベースルーティングはユーザーに最適な応答時間を提供します。", "reference": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-latency", "reference_label": "Route 53 レイテンシールーティング" } },
+                { "key": "B", "text": "すべてのリージョンに均等に分散する", "explanation": { "text": "これは加重ルーティングの機能です。", "reference": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html", "reference_label": "Route 53 ルーティングポリシー" } },
+                { "key": "C", "text": "ランダムにリージョンを選択する", "explanation": { "text": "ランダム分散はRoute 53には存在しません。", "reference": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html", "reference_label": "Route 53 ルーティングポリシー" } },
+                { "key": "D", "text": "フェイルオーバーを行う", "explanation": { "text": "フェイルオーバーは別のルーティングポリシーです。", "reference": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-failover", "reference_label": "Route 53 フェイルオーバー" } }
+            ],
+            "answer": "A",
+            "explanation": { "text": "レイテンシーベースルーティングは、ユーザーに最小の遅延を持つリージョンのリソースに誘導します。", "reference": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-latency", "reference_label": "Route 53 レイテンシールーティング" }
+        },
+        {
+            "id": "aws-saa-c03-q23",
+            "question": "Amazon S3 Transfer Accelerationを利用する利点はどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                { "key": "A", "text": "エッジロケーションを介して高速にS3にデータをアップロードできる", "explanation": { "text": "Transfer AccelerationはCloudFrontのエッジロケーションを利用してアップロードを高速化します。", "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/transfer-acceleration.html", "reference_label": "S3 Transfer Acceleration" } },
+                { "key": "B", "text": "S3バケット間でのデータ転送が無料になる", "explanation": { "text": "転送料金が無料になるわけではありません。", "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/transfer-acceleration.html", "reference_label": "S3 Transfer Acceleration" } },
+                { "key": "C", "text": "S3の保存コストが削減される", "explanation": { "text": "ストレージ料金には影響しません。", "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/transfer-acceleration.html", "reference_label": "S3 Transfer Acceleration" } },
+                { "key": "D", "text": "S3の暗号化が自動で有効化される", "explanation": { "text": "暗号化は別機能であり、Transfer Accelerationでは設定されません。", "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/transfer-acceleration.html", "reference_label": "S3 Transfer Acceleration" } }
+            ],
+            "answer": "A",
+            "explanation": { "text": "S3 Transfer AccelerationはCloudFrontエッジロケーションを利用して、地理的に離れた場所からのアップロードを高速化します。", "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/transfer-acceleration.html", "reference_label": "S3 Transfer Acceleration" }
+        },
+        {
+            "id": "aws-saa-c03-q24",
+            "question": "Amazon RDSリードレプリカの主な利用目的はどれですか？",
+            "difficulty": "easy",
+            "choices": [
+                { "key": "A", "text": "読み取りトラフィックを分散させる", "explanation": { "text": "リードレプリカは読み取りスケーリングに利用されます。", "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html", "reference_label": "Amazon RDS リードレプリカ" } },
+                { "key": "B", "text": "自動フェイルオーバーを提供する", "explanation": { "text": "自動フェイルオーバーはマルチAZ構成が提供します。", "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html", "reference_label": "Amazon RDS マルチAZ" } },
+                { "key": "C", "text": "手動バックアップを取得する", "explanation": { "text": "スナップショットが手動バックアップの仕組みです。", "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CreateSnapshot.html", "reference_label": "Amazon RDS スナップショット" } },
+                { "key": "D", "text": "バックアップ保持期間を延長する", "explanation": { "text": "リードレプリカはバックアップ保持に影響しません。", "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Backup.html", "reference_label": "Amazon RDS バックアップ" } }
+            ],
+            "answer": "A",
+            "explanation": { "text": "リードレプリカは読み取り専用で、スケーラビリティを確保するために利用されます。", "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html", "reference_label": "Amazon RDS リードレプリカ" }
+        },
+        {
+            "id": "aws-saa-c03-q25",
+            "question": "AWS Elastic Load Balancer (ALB) がサポートするルーティング機能はどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                { "key": "A", "text": "パスベースルーティング", "explanation": { "text": "ALBはURLパスに基づいて異なるターゲットグループにルーティングできます。", "reference": "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html", "reference_label": "ALB ドキュメント" } },
+                { "key": "B", "text": "IPベースルーティング", "explanation": { "text": "ALBはIPルーティングを直接サポートしていません。", "reference": "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html", "reference_label": "ALB ドキュメント" } },
+                { "key": "C", "text": "ASNベースルーティング", "explanation": { "text": "ASNによるルーティングはサポートされません。", "reference": "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html", "reference_label": "ALB ドキュメント" } },
+                { "key": "D", "text": "リージョン間ルーティング", "explanation": { "text": "ALBは同一リージョン内でのみ動作します。", "reference": "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html", "reference_label": "ALB ドキュメント" } }
+            ],
+            "answer": "A",
+            "explanation": { "text": "ALBはパスベースおよびホストベースルーティングをサポートします。", "reference": "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html", "reference_label": "ALB ドキュメント" }
+        },
+        {
+            "id": "aws-saa-c03-q26",
+            "question": "Amazon CloudTrailの主な目的はどれですか？",
+            "difficulty": "easy",
+            "choices": [
+                { "key": "A", "text": "AWSアカウント内のAPIコールを記録し、監査ログを提供する", "explanation": { "text": "CloudTrailはAPIコールの履歴を記録し、セキュリティ監査やコンプライアンスに役立ちます。", "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html", "reference_label": "AWS CloudTrail" } },
+                { "key": "B", "text": "インフラの監視メトリクスを収集する", "explanation": { "text": "これはAmazon CloudWatchの役割です。", "reference": "https://docs.aws.amazon.com/cloudwatch/", "reference_label": "Amazon CloudWatch" } },
+                { "key": "C", "text": "アプリケーションログを集中管理する", "explanation": { "text": "これはCloudWatch Logsの機能です。", "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html", "reference_label": "CloudWatch Logs" } },
+                { "key": "D", "text": "EC2インスタンスの稼働状況を管理する", "explanation": { "text": "EC2管理はCloudTrailではなく、EC2サービス自体の機能です。", "reference": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html", "reference_label": "Amazon EC2" } }
+            ],
+            "answer": "A",
+            "explanation": { "text": "CloudTrailはAPIコールを記録することで、セキュリティ監査や問題調査に役立ちます。", "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html", "reference_label": "AWS CloudTrail" }
+        },
+        {
+            "id": "aws-saa-c03-q27",
+            "question": "Amazon S3クロスリージョンレプリケーション（CRR）の利用目的はどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                { "key": "A", "text": "別リージョンのバケットにオブジェクトを自動的にレプリケートする", "explanation": { "text": "CRRはS3オブジェクトを別リージョンのバケットへ複製します。", "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html", "reference_label": "Amazon S3 レプリケーション" } },
+                { "key": "B", "text": "オブジェクトの削除を自動的に復元する", "explanation": { "text": "削除復元機能はなく、バージョニングで管理します。", "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html", "reference_label": "Amazon S3 バージョニング" } },
+                { "key": "C", "text": "S3の保存コストを削減する", "explanation": { "text": "コスト削減ではなく、冗長化と災害対策が目的です。", "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html", "reference_label": "Amazon S3 レプリケーション" } },
+                { "key": "D", "text": "アップロード帯域幅を最適化する", "explanation": { "text": "転送速度の最適化にはS3 Transfer Accelerationを利用します。", "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/transfer-acceleration.html", "reference_label": "S3 Transfer Acceleration" } }
+            ],
+            "answer": "A",
+            "explanation": { "text": "CRRはリージョン間での耐障害性やコンプライアンス要件を満たすために利用されます。", "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html", "reference_label": "Amazon S3 レプリケーション" }
+        },
+        {
+            "id": "aws-saa-c03-q28",
+            "question": "Amazon VPCセキュリティグループの特徴はどれですか？",
+            "difficulty": "easy",
+            "choices": [
+                { "key": "A", "text": "ステートフルであり、インバウンドルールを許可するとアウトバウンドも自動的に許可される", "explanation": { "text": "セキュリティグループはステートフルであり、戻り通信を自動で許可します。", "reference": "https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html", "reference_label": "VPC セキュリティグループ" } },
+                { "key": "B", "text": "デフォルトですべてのトラフィックが許可される", "explanation": { "text": "デフォルトではすべて拒否され、明示的な許可ルールが必要です。", "reference": "https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html", "reference_label": "VPC セキュリティグループ" } },
+                { "key": "C", "text": "ルールに優先度があり、番号が小さいルールが優先される", "explanation": { "text": "これはネットワークACLの特徴です。セキュリティグループは優先度を持ちません。", "reference": "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html", "reference_label": "VPC ネットワークACL" } },
+                { "key": "D", "text": "送信トラフィックの制御はできない", "explanation": { "text": "送信トラフィックも制御可能です。", "reference": "https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html", "reference_label": "VPC セキュリティグループ" } }
+            ],
+            "answer": "A",
+            "explanation": { "text": "セキュリティグループはステートフルであり、インバウンドを許可するとアウトバウンドも自動的に許可されます。", "reference": "https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html", "reference_label": "VPC セキュリティグループ" }
+        },
+        {
+            "id": "aws-saa-c03-q29",
+            "question": "Amazon Elastic File System (EFS) の特徴として正しいものはどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                { "key": "A", "text": "複数のEC2インスタンスから同時にマウント可能である", "explanation": { "text": "EFSはマルチAZ対応の分散ファイルシステムであり、複数のインスタンスから同時利用できます。", "reference": "https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html", "reference_label": "Amazon EFS" } },
+                { "key": "B", "text": "ブロックストレージとして利用される", "explanation": { "text": "これはEBSの特徴です。", "reference": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html", "reference_label": "Amazon EBS" } },
+                { "key": "C", "text": "オブジェクトストレージである", "explanation": { "text": "これはAmazon S3の特徴です。", "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html", "reference_label": "Amazon S3" } },
+                { "key": "D", "text": "データは1つのAZにのみ保存される", "explanation": { "text": "EFSはマルチAZ冗長性を持っています。", "reference": "https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html", "reference_label": "Amazon EFS" } }
+            ],
+            "answer": "A",
+            "explanation": { "text": "EFSはマルチAZ分散型で、複数インスタンスからの同時アクセスをサポートします。", "reference": "https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html", "reference_label": "Amazon EFS" }
+        },
+        {
+            "id": "aws-saa-c03-q30",
+            "question": "AWS Global Acceleratorを利用する主な目的はどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                { "key": "A", "text": "ユーザーに最適なAWSエッジロケーション経由でアプリケーションに接続させる", "explanation": { "text": "Global AcceleratorはAnycast IPを提供し、最適なエッジロケーションにルーティングします。", "reference": "https://docs.aws.amazon.com/global-accelerator/latest/dg/what-is-global-accelerator.html", "reference_label": "AWS Global Accelerator" } },
+                { "key": "B", "text": "WebアプリケーションのDDoS防御を提供する", "explanation": { "text": "DDoS防御はAWS Shieldの役割です。", "reference": "https://docs.aws.amazon.com/waf/latest/developerguide/ddos-overview.html", "reference_label": "AWS Shield" } },
+                { "key": "C", "text": "リージョン間レプリケーションを自動化する", "explanation": { "text": "これはS3 CRRやRDSクロスリージョンリードレプリカの機能です。", "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html", "reference_label": "Amazon S3 レプリケーション" } },
+                { "key": "D", "text": "アプリケーションのコードを最適化する", "explanation": { "text": "コード最適化は開発者の責任であり、Global Acceleratorの機能ではありません。", "reference": "https://docs.aws.amazon.com/global-accelerator/latest/dg/what-is-global-accelerator.html", "reference_label": "AWS Global Accelerator" } }
+            ],
+            "answer": "A",
+            "explanation": { "text": "Global AcceleratorはAnycast IPとエッジロケーションを利用してアプリケーションの可用性とパフォーマンスを向上させます。", "reference": "https://docs.aws.amazon.com/global-accelerator/latest/dg/what-is-global-accelerator.html", "reference_label": "AWS Global Accelerator" }
+        },
+        {
+            "id": "aws-saa-c03-q31",
+            "question": "Amazon S3 Object Lockのコンプライアンスモードの特徴はどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                { "key": "A", "text": "ルートアカウントを含め誰もオブジェクトを削除できない", "explanation": { "text": "コンプライアンスモードでは保持期間中はルートユーザーでも削除できません。", "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock-overview.html", "reference_label": "S3 Object Lock" } },
+                { "key": "B", "text": "管理者はいつでも削除可能", "explanation": { "text": "管理者でも保持期間内は削除できません。", "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock-overview.html", "reference_label": "S3 Object Lock" } },
+                { "key": "C", "text": "削除できるが警告が表示される", "explanation": { "text": "警告だけで削除を許可する設定は存在しません。", "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock-overview.html", "reference_label": "S3 Object Lock" } },
+                { "key": "D", "text": "読み取り専用バケットポリシーと同等", "explanation": { "text": "Object Lockはポリシーとは異なる専用機能です。", "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock-overview.html", "reference_label": "S3 Object Lock" } }
+            ],
+            "answer": "A",
+            "explanation": { "text": "コンプライアンスモードでは保持期間中は誰もオブジェクトを削除できません。", "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock-overview.html", "reference_label": "S3 Object Lock" }
+        },
+        {
+            "id": "aws-saa-c03-q32",
+            "question": "Amazon RDSでマルチAZ配置を利用する主な利点はどれですか？",
+            "difficulty": "easy",
+            "choices": [
+                { "key": "A", "text": "障害発生時の自動フェイルオーバーを提供する", "explanation": { "text": "マルチAZはスタンバイDBへの自動フェイルオーバーを提供します。", "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html", "reference_label": "RDS マルチAZ" } },
+                { "key": "B", "text": "読み取りスケーリングを提供する", "explanation": { "text": "読み取りスケーリングはリードレプリカで実現します。", "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html", "reference_label": "RDS リードレプリカ" } },
+                { "key": "C", "text": "コストを削減する", "explanation": { "text": "マルチAZは冗長化による可用性向上が目的であり、コスト削減にはつながりません。", "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html", "reference_label": "RDS マルチAZ" } },
+                { "key": "D", "text": "データベースサイズを自動で拡張する", "explanation": { "text": "サイズ拡張はストレージ自動スケーリングの機能です。", "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.html", "reference_label": "RDS ストレージ" } }
+            ],
+            "answer": "A",
+            "explanation": { "text": "マルチAZ構成は高可用性を実現するための仕組みで、自動フェイルオーバーが特徴です。", "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html", "reference_label": "RDS マルチAZ" }
+        },
+        {
+            "id": "aws-saa-c03-q33",
+            "question": "Amazon CloudWatch Logs Insightsの目的はどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                { "key": "A", "text": "ログデータをクエリして分析できる", "explanation": { "text": "Logs Insightsはログを効率的に検索・分析するためのクエリエンジンです。", "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html", "reference_label": "CloudWatch Logs Insights" } },
+                { "key": "B", "text": "メトリクスを生成する", "explanation": { "text": "メトリクスはCloudWatch本体で作成します。", "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/working_with_metrics.html", "reference_label": "CloudWatch メトリクス" } },
+                { "key": "C", "text": "アプリケーションをデプロイする", "explanation": { "text": "デプロイはElastic BeanstalkやECS/EKSの役割です。", "reference": "https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/Welcome.html", "reference_label": "Elastic Beanstalk" } },
+                { "key": "D", "text": "データベースを監視する", "explanation": { "text": "データベース監視も可能ですがLogs Insightsの直接的な目的ではありません。", "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html", "reference_label": "CloudWatch Logs Insights" } }
+            ],
+            "answer": "A",
+            "explanation": { "text": "CloudWatch Logs Insightsはログクエリエンジンであり、ログからの洞察を得るために使用されます。", "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html", "reference_label": "CloudWatch Logs Insights" }
+        },
+        {
+            "id": "aws-saa-c03-q34",
+            "question": "Amazon API Gatewayでキャッシュを有効にする主な利点はどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                { "key": "A", "text": "バックエンドへのリクエスト数を減らしレイテンシーを低下させる", "explanation": { "text": "キャッシュにより同一リクエストのバックエンド呼び出しを減らせます。", "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-caching.html", "reference_label": "API Gateway キャッシュ" } },
+                { "key": "B", "text": "認証をバイパスできる", "explanation": { "text": "認証はIAMやCognitoなどで管理され、キャッシュは関与しません。", "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-control-access-to-api.html", "reference_label": "API Gateway 認証" } },
+                { "key": "C", "text": "APIのスロットリングを無効化できる", "explanation": { "text": "スロットリング制御とキャッシュは別機能です。", "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-request-throttling.html", "reference_label": "API Gateway スロットリング" } },
+                { "key": "D", "text": "APIキーの管理を簡素化する", "explanation": { "text": "APIキー管理はキャッシュとは関係ありません。", "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html", "reference_label": "API Gateway APIキー管理" } }
+            ],
+            "answer": "A",
+            "explanation": { "text": "API Gatewayのキャッシュはパフォーマンスを向上させ、バックエンド負荷を軽減します。", "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-caching.html", "reference_label": "API Gateway キャッシュ" }
+        },
+        {
+            "id": "aws-saa-c03-q35",
+            "question": "Amazon Kinesis Data Streamsの利用目的はどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                { "key": "A", "text": "リアルタイムデータを収集・処理する", "explanation": { "text": "Kinesis Data Streamsは秒単位のリアルタイム処理を可能にします。", "reference": "https://docs.aws.amazon.com/streams/latest/dev/introduction.html", "reference_label": "Kinesis Data Streams" } },
+                { "key": "B", "text": "データをバッチ処理する", "explanation": { "text": "バッチ処理は通常AthenaやEMRで行います。", "reference": "https://docs.aws.amazon.com/athena/latest/ug/what-is.html", "reference_label": "Amazon Athena" } },
+                { "key": "C", "text": "オブジェクトストレージに保存する", "explanation": { "text": "これはAmazon S3の役割です。", "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html", "reference_label": "Amazon S3" } },
+                { "key": "D", "text": "静的ウェブサイトをホスティングする", "explanation": { "text": "これはS3の機能です。", "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html", "reference_label": "Amazon S3 静的ウェブサイト" } }
+            ],
+            "answer": "A",
+            "explanation": { "text": "Kinesis Data Streamsはリアルタイムデータ収集・処理に適したサービスです。", "reference": "https://docs.aws.amazon.com/streams/latest/dev/introduction.html", "reference_label": "Kinesis Data Streams" }
+        },
+        {
+            "id": "aws-saa-c03-q36",
+            "question": "AWS Systems Manager Parameter Storeの利用目的はどれですか？",
+            "difficulty": "easy",
+            "choices": [
+                { "key": "A", "text": "構成データやシークレットを安全に保存・管理する", "explanation": { "text": "Parameter Storeは設定値や認証情報を安全に保存できます。", "reference": "https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html", "reference_label": "Systems Manager Parameter Store" } },
+                { "key": "B", "text": "ログをリアルタイムに監視する", "explanation": { "text": "これはCloudWatch Logsの役割です。", "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html", "reference_label": "CloudWatch Logs" } },
+                { "key": "C", "text": "インフラを自動的にスケーリングする", "explanation": { "text": "スケーリングはAuto Scalingの役割です。", "reference": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html", "reference_label": "EC2 Auto Scaling" } },
+                { "key": "D", "text": "EC2インスタンスを監視する", "explanation": { "text": "これはCloudWatchの機能です。", "reference": "https://docs.aws.amazon.com/cloudwatch/", "reference_label": "Amazon CloudWatch" } }
+            ],
+            "answer": "A",
+            "explanation": { "text": "Parameter Storeはセキュアに構成情報やシークレットを保存・参照するためのサービスです。", "reference": "https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html", "reference_label": "Systems Manager Parameter Store" }
+        },
+        {
+            "id": "aws-saa-c03-q37",
+            "question": "AWS CloudFormationのテンプレートでリソースの作成順序を制御する方法はどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                { "key": "A", "text": "DependsOn属性を使用する", "explanation": { "text": "DependsOnを指定することでリソース依存関係を明示できます。", "reference": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-dependson.html", "reference_label": "CloudFormation DependsOn" } },
+                { "key": "B", "text": "IAMロールを利用する", "explanation": { "text": "IAMロールは権限管理のための仕組みです。", "reference": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html", "reference_label": "IAM ロール" } },
+                { "key": "C", "text": "リソース名のアルファベット順で自動的に決まる", "explanation": { "text": "名前順で順序が決まることはありません。", "reference": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-dependson.html", "reference_label": "CloudFormation DependsOn" } },
+                { "key": "D", "text": "タグを利用する", "explanation": { "text": "タグはメタデータ管理用で、順序制御には利用できません。", "reference": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html", "reference_label": "CloudFormation タグ" } }
+            ],
+            "answer": "A",
+            "explanation": { "text": "CloudFormationで作成順序を制御するにはDependsOnを利用します。", "reference": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-dependson.html", "reference_label": "CloudFormation DependsOn" }
+        },
+        {
+            "id": "aws-saa-c03-q38",
+            "question": "Amazon SNSとSQSを組み合わせて利用する利点はどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                { "key": "A", "text": "SNSで複数の購読先に通知を送り、SQSで非同期処理を実現する", "explanation": { "text": "SNSはPub/Subを提供し、SQSはキューによる非同期処理を可能にします。", "reference": "https://docs.aws.amazon.com/sns/latest/dg/welcome.html", "reference_label": "Amazon SNS" } },
+                { "key": "B", "text": "両方ともデータベースの一種である", "explanation": { "text": "SNSとSQSはメッセージングサービスであり、データベースではありません。", "reference": "https://docs.aws.amazon.com/sns/latest/dg/welcome.html", "reference_label": "Amazon SNS" } },
+                { "key": "C", "text": "SNSが自動的にSQSのスケーリングを管理する", "explanation": { "text": "SQSは自動スケーリングしますが、SNSが制御するわけではありません。", "reference": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/working-with-queues.html", "reference_label": "Amazon SQS" } },
+                { "key": "D", "text": "両方を使うとメッセージの順序が常に保証される", "explanation": { "text": "FIFOキューを利用しない限り順序は保証されません。", "reference": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html", "reference_label": "SQS FIFO" } }
+            ],
+            "answer": "A",
+            "explanation": { "text": "SNSで通知を複数送信し、SQSでキュー処理することで拡張性と信頼性が高まります。", "reference": "https://docs.aws.amazon.com/sns/latest/dg/welcome.html", "reference_label": "Amazon SNS" }
+        },
+    {
+      "id": "aws-saa-c03-q39",
+      "question": "Amazon Elastic Beanstalkの環境ヘルスの監視は主にどのサービス／仕組みを用いて提供されていますか？",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Amazon CloudWatch（Enhanced health：healthdからのメトリクス連携を含む）",
+          "explanation": {
+            "text": "Elastic Beanstalkはhealthdエージェントやロードバランサの状態を取り込み、CloudWatchに公開されるメトリクス等を基に環境ヘルスを可視化します。",
+            "reference": "https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced.html",
+            "reference_label": "Elastic Beanstalk Enhanced health"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Amazon GuardDuty",
+          "explanation": {
+            "text": "GuardDutyは脅威検出サービスであり、Elastic Beanstalkのヘルス監視の仕組みではありません。",
+            "reference": "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html",
+            "reference_label": "Amazon GuardDuty 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "AWS Config",
+          "explanation": {
+            "text": "AWS Configはリソースの構成変更を記録・評価するサービスで、アプリ実行状態のヘルス監視とは用途が異なります。",
+            "reference": "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
+            "reference_label": "AWS Config とは"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AWS CloudTrail",
+          "explanation": {
+            "text": "CloudTrailはAPIコールの監査ログを提供するサービスで、環境ヘルスの算出・可視化の基盤ではありません。",
+            "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+            "reference_label": "AWS CloudTrail ユーザーガイド"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Elastic BeanstalkはEnhanced health機能により、インスタンス上のhealthdエージェントやELBの状態を取り込んでメトリクス化し、CloudWatch等を通じて環境ヘルスを提供します。",
+        "reference": "https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced.html",
+        "reference_label": "Elastic Beanstalk Enhanced health"
+      }
+    },
+    {
+      "id": "aws-saa-c03-q40",
+      "question": "Amazon S3のBlock Public Access（パブリックアクセスのブロック）の目的として最も適切な説明はどれですか？",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "アカウント/バケットレベルでパブリックACLやポリシーによるパブリックアクセスを一括で無効化する",
+          "explanation": {
+            "text": "Block Public AccessはACLやポリシーに起因する意図しない公開を防ぐガードレールを提供します（アカウント/バケット単位）。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html",
+            "reference_label": "S3 Block Public Access"
+          }
+        },
+        {
+          "key": "B",
+          "text": "IAMユーザーのパスワード強度を強制する",
+          "explanation": {
+            "text": "パスワードポリシーはIAMの機能であり、S3のBlock Public Accessとは無関係です。",
+            "reference": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html",
+            "reference_label": "IAM アカウントパスワードポリシー"
+          }
+        },
+        {
+          "key": "C",
+          "text": "CloudFrontのキャッシュを強制的に削除する",
+          "explanation": {
+            "text": "キャッシュ無効化はCloudFrontの機能（Invalidation）で、S3の公開制御とは別です。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html",
+            "reference_label": "CloudFront Invalidation"
+          }
+        },
+        {
+          "key": "D",
+          "text": "S3ライフサイクルでのストレージクラス移行を自動化する",
+          "explanation": {
+            "text": "ライフサイクル移行は別機能で、公開設定の制御ではありません。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html",
+            "reference_label": "S3 ライフサイクル管理"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "S3 Block Public Accessは、ACLやバケットポリシーによりパブリック公開されるリスクをアカウント/バケット単位で一括抑止する安全装置です。",
+        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html",
+        "reference_label": "S3 Block Public Access"
+      }
+    },
+    {
+      "id": "aws-saa-c03-q41",
+      "question": "Amazon S3のアーカイブ向けストレージクラスのうち、取り出しがほぼ即時で、低頻度アクセスの長期保管に向くのはどれですか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "S3 Glacier Instant Retrieval",
+          "explanation": {
+            "text": "ミリ秒オーダーの取り出しを提供するアーカイブ向けクラスで、低頻度アクセスかつ即時取り出しが必要なデータに適します。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html#sc-glacier-instant",
+            "reference_label": "S3 ストレージクラス概要（Glacier Instant Retrieval）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "S3 Glacier Flexible Retrieval",
+          "explanation": {
+            "text": "分単位〜数時間の取り出し時間がかかるため、即時性が必要なケースには不適です。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html#sc-glacier",
+            "reference_label": "S3 Glacier Flexible Retrieval"
+          }
+        },
+        {
+          "key": "C",
+          "text": "S3 Glacier Deep Archive",
+          "explanation": {
+            "text": "時間オーダーの取り出しで、最安だが即時取り出しには不向きです。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html#sc-glacier-deep-archive",
+            "reference_label": "S3 Glacier Deep Archive"
+          }
+        },
+        {
+          "key": "D",
+          "text": "S3 Standard-IA",
+          "explanation": {
+            "text": "低頻度アクセスだがアーカイブ用途ではなく、アーカイブ課金（取り出し課金体系など）や取り出し特性が異なります。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html#sc-infrequent-access",
+            "reference_label": "S3 Standard-IA"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "即時取り出しを要する長期保管にはS3 Glacier Instant Retrievalが最適です。Flexible/Deep Archiveは復元に時間がかかります。",
+        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html",
+        "reference_label": "S3 ストレージクラス概要"
+      }
+    },
+    {
+      "id": "aws-saa-c03-q42",
+      "question": "Amazon EFSのコスト最適化として推奨される構成はどれですか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "EFSライフサイクル管理でEFS Infrequent Access（EFS IA）への自動移行を有効化する",
+          "explanation": {
+            "text": "一定期間アクセスがないファイルを自動で低コスト階層に移行できます。",
+            "reference": "https://docs.aws.amazon.com/efs/latest/ug/lifecycle-management-efs.html",
+            "reference_label": "EFS ライフサイクル管理"
+          }
+        },
+        {
+          "key": "B",
+          "text": "スループットモードを常にプロビジョンドに固定",
+          "explanation": {
+            "text": "ワークロードによりバースト/プロビジョンドを選択するのが推奨で、常時プロビジョンドは不要なコスト増の可能性があります。",
+            "reference": "https://docs.aws.amazon.com/efs/latest/ug/performance.html#throughput-modes",
+            "reference_label": "EFS スループットモード"
+          }
+        },
+        {
+          "key": "C",
+          "text": "複数リージョンにEFSを手動複製",
+          "explanation": {
+            "text": "EFSはリージョン単位のサービスで、クロスリージョン複製は別手段が必要。コスト最適化とは直接関係しません。",
+            "reference": "https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html",
+            "reference_label": "EFS とは"
+          }
+        },
+        {
+          "key": "D",
+          "text": "EFSバックアップを常時オンデマンドで手動実行",
+          "explanation": {
+            "text": "自動バックアップをAWS Backupでスケジュール化するほうが運用・コスト面で有利です。",
+            "reference": "https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html",
+            "reference_label": "AWS Backup"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "EFS IAへの自動階層化により、アクセスが少ないデータの保管コストを下げられます。",
+        "reference": "https://docs.aws.amazon.com/efs/latest/ug/lifecycle-management-efs.html",
+        "reference_label": "EFS ライフサイクル管理"
+      }
+    },
+    {
+      "id": "aws-saa-c03-q43",
+      "question": "AWS Systems Manager Session Managerの利点として正しいものはどれですか？",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "インバウンドのSSH/RDPポートを開けずに管理アクセスができる",
+          "explanation": {
+            "text": "Session ManagerはエージェントとSSMエンドポイントを介した管理接続を提供し、踏み台やポート解放が不要です。",
+            "reference": "https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html",
+            "reference_label": "Session Manager 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "EC2のOSパッチを自動適用する唯一の方法である",
+          "explanation": {
+            "text": "パッチはSystems Manager Patch Managerで行います。Session Managerは接続手段です。",
+            "reference": "https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-patch.html",
+            "reference_label": "Patch Manager"
+          }
+        },
+        {
+          "key": "C",
+          "text": "VPCエンドポイントを利用できない",
+          "explanation": {
+            "text": "SSMはInterface型のVPCエンドポイントをサポートし、プライベート接続が可能です。",
+            "reference": "https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-create-vpc.html",
+            "reference_label": "SSM と VPC エンドポイント"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CloudTrailに痕跡を残さない",
+          "explanation": {
+            "text": "SSMの操作はCloudTrailで監査可能です。セキュアな運用に寄与します。",
+            "reference": "https://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-cloudtrail-logs.html",
+            "reference_label": "SSM と CloudTrail"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Session Managerはエージェント経由の管理アクセスを提供し、インバウンドポート解放や踏み台サーバーが不要です。",
+        "reference": "https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html",
+        "reference_label": "Session Manager 概要"
+      }
+    },
+    {
+      "id": "aws-saa-c03-q44",
+      "question": "VPCエンドポイントに関する正しい説明はどれですか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "S3やDynamoDBにはGateway型、ほか多くのサービスはInterface型エンドポイント（PrivateLink）を用いる",
+          "explanation": {
+            "text": "S3/DynamoDBはGateway型、他サービスはENIベースのInterface型が基本です。",
+            "reference": "https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints.html",
+            "reference_label": "VPC エンドポイント概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Interface型はインターネットゲートウェイ必須",
+          "explanation": {
+            "text": "インターネットを経由せずプライベートに接続します。IGWは不要です。",
+            "reference": "https://docs.aws.amazon.com/vpc/latest/privatelink/endpoint-services-overview.html",
+            "reference_label": "AWS PrivateLink"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Gateway型はセキュリティグループで制御する",
+          "explanation": {
+            "text": "Gateway型はルートテーブルで制御します。SGはInterface型に適用されます。",
+            "reference": "https://docs.aws.amazon.com/vpc/latest/privatelink/gateway-endpoints.html",
+            "reference_label": "Gateway エンドポイント"
+          }
+        },
+        {
+          "key": "D",
+          "text": "PrivateLinkはアカウントやVPCを跨いで公開できない",
+          "explanation": {
+            "text": "エンドポイントサービスを共有し、クロスアカウント/クロスVPCで利用可能です。",
+            "reference": "https://docs.aws.amazon.com/vpc/latest/privatelink/create-endpoint-service.html",
+            "reference_label": "エンドポイントサービスの共有"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "S3/DynamoDBはGateway型、それ以外はInterface型（PrivateLink）が一般的です。制御方法も異なります。",
+        "reference": "https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints.html",
+        "reference_label": "VPC エンドポイント概要"
+      }
+    },
+    {
+      "id": "aws-saa-c03-q45",
+      "question": "Amazon RDS Proxyを導入する主なメリットはどれですか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "接続プーリングによりDB接続のスパイクからデータベースを保護する",
+          "explanation": {
+            "text": "RDS Proxyは接続プール/マルチプレックスによりスケールと可用性を向上します。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-proxy.html",
+            "reference_label": "Amazon RDS Proxy"
+          }
+        },
+        {
+          "key": "B",
+          "text": "自動的にクエリを最適化して索引を作成する",
+          "explanation": {
+            "text": "クエリ最適化や自動インデックス作成はRDS Proxyの機能ではありません。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-proxy.html",
+            "reference_label": "Amazon RDS Proxy"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データ暗号化を無効化して性能を上げる",
+          "explanation": {
+            "text": "暗号化無効化は推奨されず、RDS Proxyの目的でもありません。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-proxy.html",
+            "reference_label": "Amazon RDS Proxy"
+          }
+        },
+        {
+          "key": "D",
+          "text": "アプリの接続文字列を不要にする",
+          "explanation": {
+            "text": "プロキシのエンドポイントに接続する必要があり、接続情報は依然必要です。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-proxy.html",
+            "reference_label": "Amazon RDS Proxy"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "RDS Proxyは接続プーリング/フェイルオーバー最適化でDBの耐性を高め、Lambda等からの接続スパイクにも有効です。",
+        "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-proxy.html",
+        "reference_label": "Amazon RDS Proxy"
+      }
+    },
+    {
+      "id": "aws-saa-c03-q46",
+      "question": "Amazon CloudFrontの署名付きURLと署名付きCookieの使い分けとして最も適切なのはどれですか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "単一オブジェクトのアクセス制御は署名付きURL、複数オブジェクトに跨る制御は署名付きCookieが向く",
+          "explanation": {
+            "text": "Cookieは同一ドメイン配下の複数パスに対して一括でアクセス制御を適用できます。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-signed-urls-signed-cookies.html",
+            "reference_label": "CloudFront 署名付きURL/クッキー"
+          }
+        },
+        {
+          "key": "B",
+          "text": "CookieはHTTPのみでHTTPSでは使えない",
+          "explanation": {
+            "text": "HTTPSでも署名付きCookieは利用可能です。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-signed-urls-signed-cookies.html",
+            "reference_label": "CloudFront ドキュメント"
+          }
+        },
+        {
+          "key": "C",
+          "text": "署名付きURLはモバイルアプリでは利用不可",
+          "explanation": {
+            "text": "モバイルアプリでもURLを配布可能で、制限はありません。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-signed-urls.html",
+            "reference_label": "署名付きURL"
+          }
+        },
+        {
+          "key": "D",
+          "text": "署名付きCookieは有効期限を設定できない",
+          "explanation": {
+            "text": "有効期限やIP制限などのポリシーを設定できます。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-setting-signed-cookie-canned-policy.html",
+            "reference_label": "Cookie のポリシー"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "URLは単体オブジェクト配布に、Cookieは同一ドメイン配下の複数オブジェクトに対して効率的に権限制御を適用できます。",
+        "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-signed-urls-signed-cookies.html",
+        "reference_label": "CloudFront 署名付きコンテンツ"
+      }
+    },
+    {
+      "id": "aws-saa-c03-q47",
+      "question": "Amazon SQSの可視性タイムアウト（Visibility Timeout）の説明として正しいものはどれですか？",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "コンシューマがメッセージを取得した後、指定時間は他のコンシューマから見えなくする",
+          "explanation": {
+            "text": "重複処理を避けるための仕組みで、処理完了前にDeleteMessageを行わないと再配信される可能性があります。",
+            "reference": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html",
+            "reference_label": "SQS Visibility Timeout"
+          }
+        },
+        {
+          "key": "B",
+          "text": "メッセージの保存期間（Retention Period）を指す",
+          "explanation": {
+            "text": "保存期間は別設定で、1分〜14日まで設定可能です。",
+            "reference": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-lifecycle.html",
+            "reference_label": "SQS メッセージライフサイクル"
+          }
+        },
+        {
+          "key": "C",
+          "text": "メッセージ本文の暗号化時間を指す",
+          "explanation": {
+            "text": "暗号化はKMS統合で行われ、Visibilityとは無関係です。",
+            "reference": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html",
+            "reference_label": "SQS サーバー側暗号化"
+          }
+        },
+        {
+          "key": "D",
+          "text": "メッセージ受信時に必ず自動的に削除されるまでの時間",
+          "explanation": {
+            "text": "SQSは明示的に削除APIを呼ばない限りメッセージを削除しません。",
+            "reference": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/working-with-messages.html",
+            "reference_label": "SQS メッセージ操作"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Visibility Timeoutはメッセージの一時的な不可視化であり、二重処理防止に用いられます。",
+        "reference": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html",
+        "reference_label": "SQS Visibility Timeout"
+      }
+    },
+    {
+      "id": "aws-saa-c03-q48",
+      "question": "Amazon API GatewayとAWS Lambdaで構築したAPIに対し、レイヤ7での一般的な攻撃から保護したい。最も適切なサービスはどれですか？",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AWS WAF",
+          "explanation": {
+            "text": "API GatewayやCloudFrontと連携し、レート制限やパターンベースのルールで攻撃を軽減できます。",
+            "reference": "https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html",
+            "reference_label": "AWS WAF 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AWS Shield Advanced のみ",
+          "explanation": {
+            "text": "Shieldは主にL3/L4のDDoS緩和。L7の細かなルールはWAFで実装します。",
+            "reference": "https://docs.aws.amazon.com/waf/latest/developerguide/ddos-overview.html",
+            "reference_label": "DDoS 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Amazon GuardDuty",
+          "explanation": {
+            "text": "脅威検出サービスであり、L7リクエストのブロックは行いません。",
+            "reference": "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html",
+            "reference_label": "GuardDuty 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AWS Firewall Manager のみ",
+          "explanation": {
+            "text": "組織全体のポリシー管理サービスで、実際のL7保護はWAFルールで行います。",
+            "reference": "https://docs.aws.amazon.com/waf/latest/developerguide/fms-chapter.html",
+            "reference_label": "Firewall Manager"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "L7の保護はWAFが担当し、API Gateway/CloudFront統合で効果的に悪性リクエストをブロックできます。",
+        "reference": "https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html",
+        "reference_label": "AWS WAF 概要"
+      }
+    },
+    {
+      "id": "aws-saa-c03-q49",
+      "question": "Amazon ECRでコンテナイメージの脆弱性スキャンを有効化したい。推奨される仕組みはどれですか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Amazon Inspector（Enhanced scanning）とECRの統合を有効化する",
+          "explanation": {
+            "text": "ECRはInspectorと統合し、プッシュ時/継続スキャンによる脆弱性検出を提供します。",
+            "reference": "https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html",
+            "reference_label": "ECR 画像スキャン"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ECS タスク定義にスキャンフラグを付けるだけで自動有効化",
+          "explanation": {
+            "text": "スキャンはECR側の設定です。タスク定義のフラグのみでは有効になりません。",
+            "reference": "https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html",
+            "reference_label": "ECR スキャン設定"
+          }
+        },
+        {
+          "key": "C",
+          "text": "CloudWatch Logsに出力されたログを手動で解析する",
+          "explanation": {
+            "text": "ログ解析はスキャンの代替ではありません。",
+            "reference": "https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html",
+            "reference_label": "ECR スキャン"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CodeBuildでDockerfileをLintするだけで十分",
+          "explanation": {
+            "text": "Lintはベストプラクティスチェックであり、脆弱性DBに基づくスキャンとは異なります。",
+            "reference": "https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html",
+            "reference_label": "ECR スキャン"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ECRはAmazon Inspectorと統合して脆弱性スキャンを提供します。Enhanced scanningを有効化するのが推奨です。",
+        "reference": "https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html",
+        "reference_label": "ECR 画像スキャン"
+      }
+    },
+    {
+      "id": "aws-saa-c03-q50",
+      "question": "Amazon EventBridgeのユースケースとして最も適切なのはどれですか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "SaaSやAWSサービスからのイベントをルールでフィルタし、複数ターゲットへルーティングする",
+          "explanation": {
+            "text": "EventBridgeはイベントバス/ルール/ターゲットで疎結合なイベント駆動連携を実現します。",
+            "reference": "https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html",
+            "reference_label": "EventBridge とは"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ファイルの長期保管とアーカイブ",
+          "explanation": {
+            "text": "長期保管はS3の役割で、EventBridgeはイベント配信基盤です。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
+            "reference_label": "Amazon S3 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "大規模バッチ処理の分散実行エンジン",
+          "explanation": {
+            "text": "バッチ処理はBatchやEMR等が適します。EventBridgeはイベントルーティングです。",
+            "reference": "https://docs.aws.amazon.com/batch/latest/userguide/what-is-batch.html",
+            "reference_label": "AWS Batch"
+          }
+        },
+        {
+          "key": "D",
+          "text": "アプリケーションコードの自動最適化とA/Bテスト",
+          "explanation": {
+            "text": "コード最適化/A-Bテストは別サービス領域で、EventBridgeの機能ではありません。",
+            "reference": "https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html",
+            "reference_label": "EventBridge 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "EventBridgeはイベント駆動連携の中心で、SaaS/AWS/カスタムイベントをルールでフィルタし、ターゲットに配信します。",
+        "reference": "https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html",
+        "reference_label": "EventBridge とは"
+      }
+    }
+  ]
+}

@@ -1,0 +1,2467 @@
+{
+    "exam": {
+        "id": "az-140",
+        "title": "Azure Virtual Desktop Specialty",
+        "description": "この認定は、Azure 上での仮想デスクトップ環境およびリモートアプリを設計・導入・管理・維持できるサーバー／デスクトップ管理者向けのスペシャリティ資格です。候補者は Azure Virtual Desktop（旧Windows Virtual Desktop）を任意のデバイスで提供する経験をもち、Azureのコンピュート、ネットワーク、アイデンティティ、ストレージ、回復性などの技術を理解し、ポータル・テンプレート・スクリプト・CLIなどを用いてユーザー環境を管理できる必要があります。",
+        "version": "2025年10月",
+        "price": "165 USD",
+        "difficulty": "普通",
+        "official-site": "https://learn.microsoft.com/en-us/credentials/certifications/azure-virtual-desktop-specialty/",
+        "category": {
+            "id": "azure",
+            "name": "Azure"
+        }
+    },
+    "questions": [
+        {
+            "id": "azure-AZ-140-q1",
+            "question": "Azure Virtual Desktopのホストプールで、セッションホストを水平方向にスケーリングするために推奨される構成はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "スケーリングを手動で行い、必要に応じてVMを追加する",
+                    "explanation": {
+                        "text": "手動スケーリングは柔軟性に欠け、推奨されません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/autoscale-scaling-plan",
+                        "reference_label": "Microsoft Docs - Autoscale in Azure Virtual Desktop"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Azure Virtual Desktop のスケーリングプランを使用する",
+                    "explanation": {
+                        "text": "スケーリングプランにより、自動で時間帯や負荷に応じたスケーリングが可能で、推奨される方法です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/autoscale-scaling-plan",
+                        "reference_label": "Microsoft Docs - Autoscale in Azure Virtual Desktop"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Azure Automation Runbook でスケジュールを作成する",
+                    "explanation": {
+                        "text": "以前は利用されていましたが、現在はスケーリングプランが推奨されています。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/autoscale-scaling-plan",
+                        "reference_label": "Microsoft Docs - Autoscale in Azure Virtual Desktop"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Azure Logic Apps でトリガーを作成する",
+                    "explanation": {
+                        "text": "Logic Apps を使う方法も可能ですが、公式の推奨ではありません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/autoscale-scaling-plan",
+                        "reference_label": "Microsoft Docs - Autoscale in Azure Virtual Desktop"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "Azure Virtual Desktopではスケーリングプランを利用するのが最新かつ推奨される方法です。これにより利用率に応じた効率的なコスト最適化が可能です。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/autoscale-scaling-plan",
+                "reference_label": "Microsoft Docs - Autoscale in Azure Virtual Desktop"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q2",
+            "question": "Azure Virtual Desktopの個人用デスクトップ割り当てで正しい特徴はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "ユーザーごとに専用のセッションホストが割り当てられる",
+                    "explanation": {
+                        "text": "個人用デスクトップでは、ユーザーに専用のVMが割り当てられます。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/provision-personal-desktops",
+                        "reference_label": "Microsoft Docs - Personal desktops in AVD"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "すべてのユーザーが同じセッションホストに接続する",
+                    "explanation": {
+                        "text": "これはプール型ホストプールの特徴です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/host-pools-personal-pooled",
+                        "reference_label": "Microsoft Docs - Host pool types"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "セッションホストは常にロードバランサーを経由する",
+                    "explanation": {
+                        "text": "ロードバランシングはプール型で利用されます。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/host-pools-personal-pooled",
+                        "reference_label": "Microsoft Docs - Host pool types"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "セッションごとに異なるVMが割り当てられる",
+                    "explanation": {
+                        "text": "セッション単位でVMが変わるのは正しくありません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/provision-personal-desktops",
+                        "reference_label": "Microsoft Docs - Personal desktops in AVD"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "個人用デスクトップではユーザー専用にVMが割り当てられ、常に同じホストを利用します。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/provision-personal-desktops",
+                "reference_label": "Microsoft Docs - Personal desktops in AVD"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q3",
+            "question": "Azure Virtual Desktop環境でFSLogixを利用する主な目的はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "ユーザーごとに一貫したプロファイル環境を提供する",
+                    "explanation": {
+                        "text": "FSLogixはユーザープロファイルをコンテナ化し、ログオン時にマウントして一貫性を提供します。",
+                        "reference": "https://learn.microsoft.com/fslogix/overview",
+                        "reference_label": "Microsoft Docs - FSLogix overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "VMのスケーリングを最適化する",
+                    "explanation": {
+                        "text": "これはスケーリングプランやオートスケールの役割です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/autoscale-scaling-plan",
+                        "reference_label": "Microsoft Docs - Autoscale"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ネットワーク帯域を暗号化する",
+                    "explanation": {
+                        "text": "暗号化はRDPプロトコルで行われます。FSLogixの目的ではありません。",
+                        "reference": "https://learn.microsoft.com/fslogix/overview",
+                        "reference_label": "Microsoft Docs - FSLogix overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "アプリケーションの自動配信を行う",
+                    "explanation": {
+                        "text": "これはMSIX App Attachの機能です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/app-attach",
+                        "reference_label": "Microsoft Docs - MSIX App Attach"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "FSLogixはユーザープロファイルをコンテナとして格納し、複数のセッション間で一貫性を確保します。",
+                "reference": "https://learn.microsoft.com/fslogix/overview",
+                "reference_label": "Microsoft Docs - FSLogix overview"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q4",
+            "question": "MSIX App AttachをAzure Virtual Desktopで利用するメリットはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "アプリケーションをユーザーごとに動的にアタッチできる",
+                    "explanation": {
+                        "text": "MSIX App Attachは、アプリケーションを仮想ディスクとして提供し、必要なユーザーにのみ割り当てられます。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/app-attach",
+                        "reference_label": "Microsoft Docs - MSIX App Attach"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "アプリケーションをOSイメージに恒久的にインストールする",
+                    "explanation": {
+                        "text": "これはMSIX App Attachの特徴ではなく、従来の方法です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/app-attach",
+                        "reference_label": "Microsoft Docs - MSIX App Attach"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "アプリケーションを常にすべてのユーザーに提供する",
+                    "explanation": {
+                        "text": "App Attachは必要なユーザーに対してのみ提供できます。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/app-attach",
+                        "reference_label": "Microsoft Docs - MSIX App Attach"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "アプリケーションごとに専用のセッションホストが必要になる",
+                    "explanation": {
+                        "text": "専用ホストは不要で、共通の環境でアプリケーションを提供できます。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/app-attach",
+                        "reference_label": "Microsoft Docs - MSIX App Attach"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "MSIX App Attachはアプリケーションを動的にユーザーに提供でき、管理性と柔軟性が向上します。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/app-attach",
+                "reference_label": "Microsoft Docs - MSIX App Attach"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q5",
+            "question": "Azure Virtual Desktopの接続方式に関する正しい説明はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "ユーザーはAzure AD認証を利用してセッションに接続できる",
+                    "explanation": {
+                        "text": "AVDはAzure AD JoinとAzure AD認証に対応しています。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/fundamentals-identity",
+                        "reference_label": "Microsoft Docs - Identity and authentication in AVD"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "オンプレミスADのみが必須である",
+                    "explanation": {
+                        "text": "最新のAVDはAzure AD Joinをサポートしており、オンプレミスADは必須ではありません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/fundamentals-identity",
+                        "reference_label": "Microsoft Docs - Identity and authentication in AVD"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ユーザーは必ずVPNを経由して接続する必要がある",
+                    "explanation": {
+                        "text": "VPNは不要で、インターネット経由で安全に接続可能です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/fundamentals-architecture",
+                        "reference_label": "Microsoft Docs - AVD architecture"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Azure AD認証は利用できない",
+                    "explanation": {
+                        "text": "AVDはAzure AD認証をサポートしています。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/fundamentals-identity",
+                        "reference_label": "Microsoft Docs - Identity and authentication in AVD"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "AVDはAzure AD JoinとAzure AD認証に対応しており、クラウドベースの認証が可能です。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/fundamentals-identity",
+                "reference_label": "Microsoft Docs - Identity and authentication in AVD"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q6",
+            "question": "AVDでAzure Monitorを活用するメリットはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "セッションホストのパフォーマンスと診断ログを収集できる",
+                    "explanation": {
+                        "text": "Azure Monitorはセッションホストのメトリクスや診断情報を収集・可視化します。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/insights",
+                        "reference_label": "Microsoft Docs - Azure Monitor for AVD insights"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "セッションホストの自動修復を行う",
+                    "explanation": {
+                        "text": "自動修復はAzure Monitorの機能ではありません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/insights",
+                        "reference_label": "Microsoft Docs - Azure Monitor for AVD insights"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ユーザーのパスワードをリセットできる",
+                    "explanation": {
+                        "text": "パスワード管理はAzure ADや管理者機能に依存します。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/insights",
+                        "reference_label": "Microsoft Docs - Azure Monitor for AVD insights"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Azure ADユーザーの作成を自動化する",
+                    "explanation": {
+                        "text": "ユーザー作成はAzure ADの機能であり、Azure Monitorの役割ではありません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/insights",
+                        "reference_label": "Microsoft Docs - Azure Monitor for AVD insights"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Azure Monitor for AVD Insightsを利用すると、セッションホストのパフォーマンスや診断ログを可視化でき、トラブルシューティングや最適化に役立ちます。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/insights",
+                "reference_label": "Microsoft Docs - Azure Monitor for AVD insights"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q7",
+            "question": "Azure Virtual Desktop環境でマルチセッションOSを利用する主な利点はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "複数ユーザーが同一VMを共有して利用できる",
+                    "explanation": {
+                        "text": "Windows 10/11 Enterprise マルチセッションは、複数のユーザーが1台のVMを共有できます。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/windows-11-multisession",
+                        "reference_label": "Microsoft Docs - Windows 11 Enterprise multi-session"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "ユーザーごとに専用のVMが割り当てられる",
+                    "explanation": {
+                        "text": "これは個人用デスクトップの特徴です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/host-pools-personal-pooled",
+                        "reference_label": "Microsoft Docs - Host pool types"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "OSライセンスが不要になる",
+                    "explanation": {
+                        "text": "ライセンスはMicrosoft 365やWindows E3/E5に含まれますが「不要」ではありません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/windows-11-multisession",
+                        "reference_label": "Microsoft Docs - Windows 11 Enterprise multi-session"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "VMごとに必ず1ユーザーしか接続できない",
+                    "explanation": {
+                        "text": "マルチセッションの特徴は複数ユーザー接続です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/windows-11-multisession",
+                        "reference_label": "Microsoft Docs - Windows 11 Enterprise multi-session"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "マルチセッションOSを利用することで、1台のVMに複数ユーザーが同時接続でき、コスト効率が向上します。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/windows-11-multisession",
+                "reference_label": "Microsoft Docs - Windows 11 Enterprise multi-session"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q8",
+            "question": "Azure Virtual Desktopでユーザーのサインイン時間を短縮するために推奨されるプロファイル管理方法はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "FSLogix Profile Containersを利用する",
+                    "explanation": {
+                        "text": "FSLogixを利用するとプロファイルが仮想ディスクとして格納され、ログイン時に即時マウントされるため、サインイン時間を短縮できます。",
+                        "reference": "https://learn.microsoft.com/fslogix/overview",
+                        "reference_label": "Microsoft Docs - FSLogix overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "従来型のローミングプロファイルを利用する",
+                    "explanation": {
+                        "text": "従来のローミングプロファイルはパフォーマンスに課題があり、推奨されません。",
+                        "reference": "https://learn.microsoft.com/fslogix/overview",
+                        "reference_label": "Microsoft Docs - FSLogix overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ユーザープロファイルを各セッションホストに保存する",
+                    "explanation": {
+                        "text": "セッションホストごとに保存すると一貫性がなく、複数セッション環境で問題が発生します。",
+                        "reference": "https://learn.microsoft.com/fslogix/overview",
+                        "reference_label": "Microsoft Docs - FSLogix overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ユーザープロファイルをAzure Key Vaultに保存する",
+                    "explanation": {
+                        "text": "Key Vaultは秘密情報の管理用であり、プロファイル保存には利用されません。",
+                        "reference": "https://learn.microsoft.com/azure/key-vault/general/basic-concepts",
+                        "reference_label": "Microsoft Docs - Azure Key Vault"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "FSLogix Profile ContainersはAVDで標準的に推奨されるプロファイル管理方法で、サインイン高速化と一貫性の確保が可能です。",
+                "reference": "https://learn.microsoft.com/fslogix/overview",
+                "reference_label": "Microsoft Docs - FSLogix overview"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q9",
+            "question": "Azure Virtual Desktopの接続クライアントに関する正しい説明はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Windows, macOS, iOS, Androidで利用可能である",
+                    "explanation": {
+                        "text": "AVDはクロスプラットフォームのクライアントを提供しています。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/user-documentation",
+                        "reference_label": "Microsoft Docs - AVD clients"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Windows OSでのみ利用可能である",
+                    "explanation": {
+                        "text": "Windows専用ではなく、他のOS向けクライアントも提供されています。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/user-documentation",
+                        "reference_label": "Microsoft Docs - AVD clients"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ブラウザ経由の利用はできない",
+                    "explanation": {
+                        "text": "HTML5ベースのWebクライアントが利用可能です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/web-client",
+                        "reference_label": "Microsoft Docs - Web client"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Linux専用の公式クライアントがある",
+                    "explanation": {
+                        "text": "Linux向け公式クライアントは提供されていません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/user-documentation",
+                        "reference_label": "Microsoft Docs - AVD clients"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "AVDはWindows, macOS, iOS, Android, さらにブラウザ経由でも利用可能です。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/user-documentation",
+                "reference_label": "Microsoft Docs - AVD clients"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q10",
+            "question": "Azure Virtual Desktopでユーザーごとに異なるアプリケーションセットを提供する推奨方法はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "MSIX App Attachを利用して動的にアプリを割り当てる",
+                    "explanation": {
+                        "text": "MSIX App Attachによりユーザーごとに異なるアプリケーションを柔軟に提供できます。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/app-attach",
+                        "reference_label": "Microsoft Docs - MSIX App Attach"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "すべてのアプリをOSイメージにあらかじめインストールする",
+                    "explanation": {
+                        "text": "これでは柔軟性がなく、管理負担が増大します。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/app-attach",
+                        "reference_label": "Microsoft Docs - MSIX App Attach"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ユーザーごとに異なるセッションホストプールを作成する",
+                    "explanation": {
+                        "text": "これは非効率的で、推奨される方法ではありません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/app-attach",
+                        "reference_label": "Microsoft Docs - MSIX App Attach"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Azure AD条件付きアクセスポリシーでアプリ提供を制御する",
+                    "explanation": {
+                        "text": "条件付きアクセスは認証制御には使えますが、アプリ配信方法ではありません。",
+                        "reference": "https://learn.microsoft.com/azure/active-directory/conditional-access/",
+                        "reference_label": "Microsoft Docs - Conditional Access"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "MSIX App Attachを利用することで、柔軟にユーザーごとに異なるアプリセットを提供できます。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/app-attach",
+                "reference_label": "Microsoft Docs - MSIX App Attach"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q11",
+            "question": "Azure Virtual DesktopでAzure AD Joinを利用する主な利点はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "オンプレミスActive Directoryが不要になる",
+                    "explanation": {
+                        "text": "Azure AD Joinによりクラウド専用の環境を構築可能です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/azure-ad-join",
+                        "reference_label": "Microsoft Docs - Azure AD Join for AVD"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "ユーザーは必ずVPN経由で接続する必要がある",
+                    "explanation": {
+                        "text": "VPNは不要で、インターネット経由で接続可能です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/azure-ad-join",
+                        "reference_label": "Microsoft Docs - Azure AD Join for AVD"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Azure AD Joinを利用するとFSLogixが不要になる",
+                    "explanation": {
+                        "text": "FSLogixは依然として必要です。",
+                        "reference": "https://learn.microsoft.com/fslogix/overview",
+                        "reference_label": "Microsoft Docs - FSLogix overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Azure AD JoinはAzure Virtual Desktopではサポートされない",
+                    "explanation": {
+                        "text": "サポートされています。最新の構成で広く利用可能です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/azure-ad-join",
+                        "reference_label": "Microsoft Docs - Azure AD Join for AVD"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Azure AD Joinを利用するとオンプレADが不要となり、完全クラウドベースの構成が可能です。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/azure-ad-join",
+                "reference_label": "Microsoft Docs - Azure AD Join for AVD"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q12",
+            "question": "Azure Virtual Desktopで利用できるロードバランシングアルゴリズムはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Breadth-firstとDepth-first",
+                    "explanation": {
+                        "text": "AVDではBreadth-firstとDepth-firstの2つの方式が利用可能です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/host-pool-load-balancing",
+                        "reference_label": "Microsoft Docs - Load balancing in AVD"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Round-robinとLeast-connections",
+                    "explanation": {
+                        "text": "これらは一般的なLB方式ですが、AVDのロードバランシングでは利用されません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/host-pool-load-balancing",
+                        "reference_label": "Microsoft Docs - Load balancing in AVD"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "RandomとSticky-session",
+                    "explanation": {
+                        "text": "AVDでサポートされるアルゴリズムではありません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/host-pool-load-balancing",
+                        "reference_label": "Microsoft Docs - Load balancing in AVD"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "WeightedとPriority",
+                    "explanation": {
+                        "text": "これらはApplication Gatewayなどで利用可能ですが、AVDでは採用されていません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/host-pool-load-balancing",
+                        "reference_label": "Microsoft Docs - Load balancing in AVD"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "AVDではBreadth-first（均等分散）とDepth-first（セッション集中）の2種類が選択できます。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/host-pool-load-balancing",
+                "reference_label": "Microsoft Docs - Load balancing in AVD"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q13",
+            "question": "Azure Virtual Desktopのセッションホストをデプロイする際に推奨されるイメージ管理方法はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Azure Image Galleryを利用してカスタムイメージを管理する",
+                    "explanation": {
+                        "text": "Azure Compute Galleryを利用すると複数バージョン管理やリージョンレプリケーションが可能です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/set-up-image-versioning",
+                        "reference_label": "Microsoft Docs - AVD image management"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "各セッションホストを個別に手動で構成する",
+                    "explanation": {
+                        "text": "これは非効率的で推奨されません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/set-up-image-versioning",
+                        "reference_label": "Microsoft Docs - AVD image management"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Azure Backupを利用してVMの状態を保存する",
+                    "explanation": {
+                        "text": "バックアップは復旧用であり、イメージ管理の仕組みではありません。",
+                        "reference": "https://learn.microsoft.com/azure/backup/backup-overview",
+                        "reference_label": "Microsoft Docs - Azure Backup"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Azure DevOpsで毎回新規にOSを構築する",
+                    "explanation": {
+                        "text": "DevOpsでの構築は可能ですが、標準的な推奨方法ではありません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/set-up-image-versioning",
+                        "reference_label": "Microsoft Docs - AVD image management"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Azure Compute Galleryを利用すると、イメージのバージョン管理や複数リージョンへの配布が容易になり、AVDに最適です。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/set-up-image-versioning",
+                "reference_label": "Microsoft Docs - AVD image management"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q14",
+            "question": "Azure Virtual Desktopのセキュリティを強化するために推奨される設定はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "条件付きアクセスを利用して多要素認証を有効化する",
+                    "explanation": {
+                        "text": "条件付きアクセスとMFAは推奨されるセキュリティ強化策です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/security-guide",
+                        "reference_label": "Microsoft Docs - Security best practices for AVD"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "RDPポートをインターネットに直接公開する",
+                    "explanation": {
+                        "text": "これは重大なセキュリティリスクを引き起こすため推奨されません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/security-guide",
+                        "reference_label": "Microsoft Docs - Security best practices for AVD"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "すべてのユーザーに管理者権限を付与する",
+                    "explanation": {
+                        "text": "これは最小権限の原則に反します。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/security-guide",
+                        "reference_label": "Microsoft Docs - Security best practices for AVD"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Azure Virtual Networkを使用せず直接インターネット接続する",
+                    "explanation": {
+                        "text": "セキュリティ上、VNet統合が推奨されます。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/security-guide",
+                        "reference_label": "Microsoft Docs - Security best practices for AVD"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "条件付きアクセスとMFAを利用することで、AVD環境のセキュリティを大幅に強化できます。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/security-guide",
+                "reference_label": "Microsoft Docs - Security best practices for AVD"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q15",
+            "question": "Azure Virtual Desktopでセッションホストの更新を効率的に行う推奨方法はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Azure Compute Galleryを利用して新しいイメージを展開する",
+                    "explanation": {
+                        "text": "最新のイメージをCompute Galleryで管理・配布することで効率的に更新できます。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/set-up-image-versioning",
+                        "reference_label": "Microsoft Docs - AVD image management"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "既存のVMに直接手動でパッチを適用する",
+                    "explanation": {
+                        "text": "手動パッチは時間がかかり、環境ごとの差異が生まれるため推奨されません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/set-up-image-versioning",
+                        "reference_label": "Microsoft Docs - AVD image management"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "セッションホストを停止しない限り更新はできない",
+                    "explanation": {
+                        "text": "更新のために必ずしも停止は必要ではありません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/set-up-image-versioning",
+                        "reference_label": "Microsoft Docs - AVD image management"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Azure ADポリシーを使って自動的にOSを更新する",
+                    "explanation": {
+                        "text": "Azure ADポリシーはOS更新を制御する機能を持ちません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/set-up-image-versioning",
+                        "reference_label": "Microsoft Docs - AVD image management"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Compute Galleryを使ったカスタムイメージ管理がセッションホスト更新の推奨方法です。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/set-up-image-versioning",
+                "reference_label": "Microsoft Docs - AVD image management"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q16",
+            "question": "Azure Virtual Desktopで利用される接続方式の特徴として正しいものはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Reverse Connectによりセッションホストは外部からの直接接続を受けない",
+                    "explanation": {
+                        "text": "AVDはReverse Connect方式を利用し、セッションホストがAzure制御プレーンに接続する仕組みを採用しています。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/rdp-shortpath",
+                        "reference_label": "Microsoft Docs - AVD connection architecture"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "ユーザーは常にRDPポートに直接接続する必要がある",
+                    "explanation": {
+                        "text": "RDPポートの直接公開は不要であり、推奨されません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/rdp-shortpath",
+                        "reference_label": "Microsoft Docs - AVD connection architecture"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "セッションホストは常にVPNを経由してのみアクセス可能である",
+                    "explanation": {
+                        "text": "VPNは必須ではありません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/rdp-shortpath",
+                        "reference_label": "Microsoft Docs - AVD connection architecture"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Reverse Connectはオンプレミス環境でのみ利用可能である",
+                    "explanation": {
+                        "text": "Reverse ConnectはAVDのクラウド環境で利用される方式です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/rdp-shortpath",
+                        "reference_label": "Microsoft Docs - AVD connection architecture"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Reverse Connectによりセッションホストは外部から直接接続を受けず、Azure制御プレーン経由で通信します。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/rdp-shortpath",
+                "reference_label": "Microsoft Docs - AVD connection architecture"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q17",
+            "question": "Azure Virtual DesktopのセッションホストVMサイズを選定する際の推奨考慮事項はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "ユーザー数とワークロードの種類を考慮する",
+                    "explanation": {
+                        "text": "CPU、メモリ、ストレージIO要件はユーザー数やアプリの種類に依存します。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/sizing-host-pool",
+                        "reference_label": "Microsoft Docs - Sizing guidelines"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "常に最も大きなVMサイズを選択する",
+                    "explanation": {
+                        "text": "大きなVMはコストが高く、必ずしも必要ではありません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/sizing-host-pool",
+                        "reference_label": "Microsoft Docs - Sizing guidelines"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "常に最小のVMサイズを選択する",
+                    "explanation": {
+                        "text": "小さすぎるVMはパフォーマンス不足を招きます。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/sizing-host-pool",
+                        "reference_label": "Microsoft Docs - Sizing guidelines"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ストレージの種類のみを考慮すれば十分である",
+                    "explanation": {
+                        "text": "CPU、メモリ、ネットワーク帯域も重要な考慮要素です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/sizing-host-pool",
+                        "reference_label": "Microsoft Docs - Sizing guidelines"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "ユーザー数やワークロードに応じて最適なVMサイズを選ぶことが推奨されます。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/sizing-host-pool",
+                "reference_label": "Microsoft Docs - Sizing guidelines"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q18",
+            "question": "Azure Virtual Desktopでセッションホストを複数リージョンに展開する主な利点はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "ユーザーに地理的に近いリージョンから低遅延で接続できる",
+                    "explanation": {
+                        "text": "マルチリージョン展開によりユーザー体験が向上します。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/disaster-recovery",
+                        "reference_label": "Microsoft Docs - AVD DR and multi-region"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Azure ADの冗長性を向上させる",
+                    "explanation": {
+                        "text": "Azure AD自体はグローバル冗長性を持ち、セッションホスト展開とは直接関係ありません。",
+                        "reference": "https://learn.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis",
+                        "reference_label": "Microsoft Docs - Azure AD overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "アプリケーションの自動更新を保証する",
+                    "explanation": {
+                        "text": "アプリ更新は別の仕組みに依存します。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/disaster-recovery",
+                        "reference_label": "Microsoft Docs - AVD DR and multi-region"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "FSLogixの利用を不要にする",
+                    "explanation": {
+                        "text": "リージョン展開とFSLogixは無関係です。",
+                        "reference": "https://learn.microsoft.com/fslogix/overview",
+                        "reference_label": "Microsoft Docs - FSLogix overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "ユーザーに近いリージョンに展開することで遅延を低減し、体験を向上できます。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/disaster-recovery",
+                "reference_label": "Microsoft Docs - AVD DR and multi-region"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q19",
+            "question": "Azure Virtual Desktopでセッションホストに必要なWindowsライセンス要件はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Microsoft 365 E3/E5 または Windows 10/11 Enterprise E3/E5",
+                    "explanation": {
+                        "text": "これらのライセンスにAVD利用権が含まれています。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/windows-licenses",
+                        "reference_label": "Microsoft Docs - Windows license for AVD"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Windows Server Standardのみ",
+                    "explanation": {
+                        "text": "Windows Serverライセンスは異なるシナリオで利用されます。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/windows-licenses",
+                        "reference_label": "Microsoft Docs - Windows license for AVD"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Office 365 F3ライセンス",
+                    "explanation": {
+                        "text": "F3にはAVD利用権は含まれていません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/windows-licenses",
+                        "reference_label": "Microsoft Docs - Windows license for AVD"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Azure AD Premium P1ライセンス",
+                    "explanation": {
+                        "text": "これはID機能強化用であり、AVD利用権とは無関係です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/windows-licenses",
+                        "reference_label": "Microsoft Docs - Windows license for AVD"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Microsoft 365 E3/E5 または Windows Enterprise E3/E5にはAVD利用権が含まれています。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/windows-licenses",
+                "reference_label": "Microsoft Docs - Windows license for AVD"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q20",
+            "question": "Azure Virtual DesktopでセッションホストのディスクI/Oを最適化する推奨設定はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "プレミアムSSDを利用する",
+                    "explanation": {
+                        "text": "プレミアムSSDは高IOPS・低レイテンシを提供し、AVDに推奨されます。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machines/disks-types",
+                        "reference_label": "Microsoft Docs - Managed disks types"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "標準HDDを利用する",
+                    "explanation": {
+                        "text": "HDDは低コストですが、パフォーマンスが不足する可能性があります。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machines/disks-types",
+                        "reference_label": "Microsoft Docs - Managed disks types"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ゾーン冗長ストレージを利用する",
+                    "explanation": {
+                        "text": "これは可用性に関する選択肢で、直接的なI/O最適化ではありません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machines/disks-types",
+                        "reference_label": "Microsoft Docs - Managed disks types"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ディスクキャッシュを無効化する",
+                    "explanation": {
+                        "text": "キャッシュを無効にすると性能が低下することがあります。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machines/disks-types",
+                        "reference_label": "Microsoft Docs - Managed disks types"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "AVDのセッションホストには、プレミアムSSDを利用することでI/O性能を最適化できます。",
+                "reference": "https://learn.microsoft.com/azure/virtual-machines/disks-types",
+                "reference_label": "Microsoft Docs - Managed disks types"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q21",
+            "question": "Azure Virtual Desktopでセッションホストの監視に推奨されるソリューションはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Azure Monitor Insights for AVD",
+                    "explanation": {
+                        "text": "Azure Monitor Insightsはセッションホストのパフォーマンスやユーザーセッションを監視可能です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/insights",
+                        "reference_label": "Microsoft Docs - AVD insights"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Windows Event Viewerのみを利用する",
+                    "explanation": {
+                        "text": "Event Viewerは限定的であり、包括的な監視には不十分です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/insights",
+                        "reference_label": "Microsoft Docs - AVD insights"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "System Center Configuration Managerのみを利用する",
+                    "explanation": {
+                        "text": "SCCMも利用可能ですが、AVD専用の統合的監視にはAzure Monitorが推奨されます。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/insights",
+                        "reference_label": "Microsoft Docs - AVD insights"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ユーザーのフィードバックのみを利用する",
+                    "explanation": {
+                        "text": "ユーザーフィードバックは参考になりますが、監視手段としては不十分です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/insights",
+                        "reference_label": "Microsoft Docs - AVD insights"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Azure Monitor Insights for AVDを利用することで、包括的な監視と分析が可能です。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/insights",
+                "reference_label": "Microsoft Docs - AVD insights"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q22",
+            "question": "Azure Virtual Desktop環境で利用するセッションホストのドメイン参加方法として正しいものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Azure AD Join または ハイブリッドAzure AD Join",
+                    "explanation": {
+                        "text": "AVDはAzure AD JoinまたはハイブリッドAzure AD Joinに対応しています。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/azure-ad-join",
+                        "reference_label": "Microsoft Docs - Azure AD Join for AVD"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "オンプレミスAD Joinのみが必須",
+                    "explanation": {
+                        "text": "現在はAzure AD Joinを利用することも可能であり、必須ではありません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/azure-ad-join",
+                        "reference_label": "Microsoft Docs - Azure AD Join for AVD"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ワークグループのみで利用可能",
+                    "explanation": {
+                        "text": "ワークグループではAVDの要件を満たせません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/azure-ad-join",
+                        "reference_label": "Microsoft Docs - Azure AD Join for AVD"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ドメイン参加は不要である",
+                    "explanation": {
+                        "text": "AVDのセッションホストは必ずドメインに参加する必要があります。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/azure-ad-join",
+                        "reference_label": "Microsoft Docs - Azure AD Join for AVD"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Azure Virtual DesktopはAzure AD JoinまたはハイブリッドAzure AD Joinでの構成が可能です。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/azure-ad-join",
+                "reference_label": "Microsoft Docs - Azure AD Join for AVD"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q23",
+            "question": "Azure Virtual Desktopで短時間の接続遅延を低減するために利用できる機能はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "RDP Shortpath",
+                    "explanation": {
+                        "text": "RDP Shortpathを利用すると直接UDP接続により低遅延のセッションを提供可能です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/rdp-shortpath",
+                        "reference_label": "Microsoft Docs - RDP Shortpath"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "ExpressRoute",
+                    "explanation": {
+                        "text": "ExpressRouteはオンプレミスとAzure間の専用回線であり、AVD専用機能ではありません。",
+                        "reference": "https://learn.microsoft.com/azure/expressroute/expressroute-introduction",
+                        "reference_label": "Microsoft Docs - ExpressRoute overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Azure Front Door",
+                    "explanation": {
+                        "text": "Front DoorはWebアプリ向けのグローバル負荷分散であり、AVD接続には利用されません。",
+                        "reference": "https://learn.microsoft.com/azure/frontdoor/front-door-overview",
+                        "reference_label": "Microsoft Docs - Azure Front Door"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Azure Traffic Manager",
+                    "explanation": {
+                        "text": "Traffic ManagerはDNSベースのルーティングであり、AVDセッションの低遅延化には直接関与しません。",
+                        "reference": "https://learn.microsoft.com/azure/traffic-manager/traffic-manager-overview",
+                        "reference_label": "Microsoft Docs - Traffic Manager overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "RDP Shortpathを利用することでセッション接続遅延を低減できます。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/rdp-shortpath",
+                "reference_label": "Microsoft Docs - RDP Shortpath"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q24",
+            "question": "Azure Virtual Desktopのスケーリングプランで設定できる要素はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "スケジュールと最小・最大セッションホスト数",
+                    "explanation": {
+                        "text": "スケーリングプランではスケジュールや最小・最大ホスト数を定義可能です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/autoscale-scaling-plan",
+                        "reference_label": "Microsoft Docs - AVD scaling plan"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "ユーザーのパスワード有効期限",
+                    "explanation": {
+                        "text": "これはAzure ADポリシーで管理する要素です。",
+                        "reference": "https://learn.microsoft.com/azure/active-directory/fundamentals/active-directory-users-passwords-operations",
+                        "reference_label": "Microsoft Docs - Password policy"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "RDPポート番号の変更",
+                    "explanation": {
+                        "text": "ポート番号の変更はスケーリングプランとは無関係です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/autoscale-scaling-plan",
+                        "reference_label": "Microsoft Docs - AVD scaling plan"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Azure AD条件付きアクセスの割り当て",
+                    "explanation": {
+                        "text": "条件付きアクセスはID管理で設定します。",
+                        "reference": "https://learn.microsoft.com/azure/active-directory/conditional-access/",
+                        "reference_label": "Microsoft Docs - Conditional Access"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "スケーリングプランでスケジュールやセッションホスト数の制御が可能です。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/autoscale-scaling-plan",
+                "reference_label": "Microsoft Docs - AVD scaling plan"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q25",
+            "question": "Azure Virtual Desktop環境でMSIX App Attachを利用する場合の要件として正しいものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "アプリケーションはMSIX形式に変換されている必要がある",
+                    "explanation": {
+                        "text": "MSIX App AttachはアプリをMSIXパッケージ化することで利用可能です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/app-attach",
+                        "reference_label": "Microsoft Docs - MSIX App Attach"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "アプリケーションは必ずセッションホストに直接インストールする必要がある",
+                    "explanation": {
+                        "text": "App Attachはアプリを動的にマウントするため、直接インストールは不要です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/app-attach",
+                        "reference_label": "Microsoft Docs - MSIX App Attach"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "アプリケーションは仮想ディスク形式では利用できない",
+                    "explanation": {
+                        "text": "MSIX App AttachはVHD/VHDX形式をサポートしています。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/app-attach",
+                        "reference_label": "Microsoft Docs - MSIX App Attach"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "App Attach利用時はFSLogixを無効にする必要がある",
+                    "explanation": {
+                        "text": "FSLogixとApp Attachは共存可能です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/app-attach",
+                        "reference_label": "Microsoft Docs - MSIX App Attach"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "MSIX App Attachを利用するには、アプリがMSIX形式に変換されている必要があります。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/app-attach",
+                "reference_label": "Microsoft Docs - MSIX App Attach"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q26",
+            "question": "Azure Virtual Desktopでのネットワーク最適化策として推奨されるものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Azure Virtual Network内にセッションホストを配置する",
+                    "explanation": {
+                        "text": "セッションホストはVNetに配置するのが基本設計です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/fundamentals-networking",
+                        "reference_label": "Microsoft Docs - AVD networking"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "セッションホストをインターネットに直接公開する",
+                    "explanation": {
+                        "text": "セキュリティリスクが高く、推奨されません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/fundamentals-networking",
+                        "reference_label": "Microsoft Docs - AVD networking"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Azure Traffic Managerを必ず利用する",
+                    "explanation": {
+                        "text": "Traffic Managerは必須ではありません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/fundamentals-networking",
+                        "reference_label": "Microsoft Docs - AVD networking"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "セッションホストのNICを削除して管理する",
+                    "explanation": {
+                        "text": "NICは必要であり、削除すると通信できません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/fundamentals-networking",
+                        "reference_label": "Microsoft Docs - AVD networking"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "セッションホストはAzure Virtual Network内に配置し、ネットワーク最適化を行うのが推奨です。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/fundamentals-networking",
+                "reference_label": "Microsoft Docs - AVD networking"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q27",
+            "question": "Azure Virtual Desktopのユーザー接続における認証方式として推奨されるものはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Azure AD多要素認証 (MFA)",
+                    "explanation": {
+                        "text": "MFAを利用することでセキュリティを強化できます。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/security-guide",
+                        "reference_label": "Microsoft Docs - Security best practices for AVD"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "ユーザー名とパスワードのみ",
+                    "explanation": {
+                        "text": "パスワードのみの認証はリスクが高いため推奨されません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/security-guide",
+                        "reference_label": "Microsoft Docs - Security best practices for AVD"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "オンプレミスADのKerberos認証のみ",
+                    "explanation": {
+                        "text": "クラウド環境ではAzure ADとMFAが推奨です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/security-guide",
+                        "reference_label": "Microsoft Docs - Security best practices for AVD"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "認証なしでの直接接続",
+                    "explanation": {
+                        "text": "セキュリティ上認証なし接続は不可能です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/security-guide",
+                        "reference_label": "Microsoft Docs - Security best practices for AVD"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Azure AD MFAを利用するのが推奨される認証方式です。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/security-guide",
+                "reference_label": "Microsoft Docs - Security best practices for AVD"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q28",
+            "question": "Azure Virtual Desktopで利用できるFSLogixのストレージオプションとして正しいものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Azure Files または Azure NetApp Files",
+                    "explanation": {
+                        "text": "FSLogixプロファイルはAzure FilesやAzure NetApp Filesに格納可能です。",
+                        "reference": "https://learn.microsoft.com/fslogix/configure-storage-azure-files",
+                        "reference_label": "Microsoft Docs - FSLogix storage options"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Azure Blob Storage直接マウント",
+                    "explanation": {
+                        "text": "Blobを直接マウントする方法はサポートされていません。",
+                        "reference": "https://learn.microsoft.com/fslogix/configure-storage-azure-files",
+                        "reference_label": "Microsoft Docs - FSLogix storage options"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "オンプレミスNASのみ",
+                    "explanation": {
+                        "text": "クラウドオプションとしてAzure FilesやANFが利用可能です。",
+                        "reference": "https://learn.microsoft.com/fslogix/configure-storage-azure-files",
+                        "reference_label": "Microsoft Docs - FSLogix storage options"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Key Vault内に格納",
+                    "explanation": {
+                        "text": "Key Vaultは秘密情報管理用であり、FSLogixのストレージには利用できません。",
+                        "reference": "https://learn.microsoft.com/azure/key-vault/general/basic-concepts",
+                        "reference_label": "Microsoft Docs - Azure Key Vault"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "FSLogixはAzure FilesやAzure NetApp Filesを利用してプロファイルを格納可能です。",
+                "reference": "https://learn.microsoft.com/fslogix/configure-storage-azure-files",
+                "reference_label": "Microsoft Docs - FSLogix storage options"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q29",
+            "question": "Azure Virtual DesktopのホストプールでBreadth-first方式のロードバランシングを利用する利点はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "セッションを可能な限り均等に分散できる",
+                    "explanation": {
+                        "text": "Breadth-firstはセッションを均等に分散するアルゴリズムです。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/host-pool-load-balancing",
+                        "reference_label": "Microsoft Docs - Load balancing in AVD"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "すべてのセッションを最初のホストに集中させる",
+                    "explanation": {
+                        "text": "これはDepth-first方式の特徴です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/host-pool-load-balancing",
+                        "reference_label": "Microsoft Docs - Load balancing in AVD"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "セッションごとにランダムにホストを選択する",
+                    "explanation": {
+                        "text": "ランダム選択はAVDでサポートされていません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/host-pool-load-balancing",
+                        "reference_label": "Microsoft Docs - Load balancing in AVD"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ユーザーごとに専用ホストを割り当てる",
+                    "explanation": {
+                        "text": "これは個人用ホストプールの特徴です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/host-pool-load-balancing",
+                        "reference_label": "Microsoft Docs - Load balancing in AVD"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Breadth-first方式ではセッションが均等に分散され、ホストの利用効率が高まります。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/host-pool-load-balancing",
+                "reference_label": "Microsoft Docs - Load balancing in AVD"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q30",
+            "question": "Azure Virtual Desktop環境でユーザープロファイルを高速に読み込むための推奨ストレージオプションはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Azure Files Premium",
+                    "explanation": {
+                        "text": "Azure Files Premiumは低レイテンシと高スループットを提供し、FSLogixに推奨されます。",
+                        "reference": "https://learn.microsoft.com/fslogix/configure-storage-azure-files",
+                        "reference_label": "Microsoft Docs - FSLogix storage options"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Azure Blob Storage Cool Tier",
+                    "explanation": {
+                        "text": "Cool Tierはアーカイブ用途であり、プロファイル格納には適しません。",
+                        "reference": "https://learn.microsoft.com/fslogix/configure-storage-azure-files",
+                        "reference_label": "Microsoft Docs - FSLogix storage options"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "オンプレミスのローカルファイルサーバー",
+                    "explanation": {
+                        "text": "オンプレ環境でも可能ですが、クラウドネイティブのAzure Files Premiumが推奨です。",
+                        "reference": "https://learn.microsoft.com/fslogix/configure-storage-azure-files",
+                        "reference_label": "Microsoft Docs - FSLogix storage options"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Key Vault",
+                    "explanation": {
+                        "text": "Key Vaultは秘密情報管理用であり、プロファイル格納には利用できません。",
+                        "reference": "https://learn.microsoft.com/azure/key-vault/general/basic-concepts",
+                        "reference_label": "Microsoft Docs - Azure Key Vault"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "FSLogixを利用する際にはAzure Files Premiumが最も推奨されるストレージオプションです。",
+                "reference": "https://learn.microsoft.com/fslogix/configure-storage-azure-files",
+                "reference_label": "Microsoft Docs - FSLogix storage options"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q31",
+            "question": "Azure Virtual Desktop環境で利用可能なマルチセッションOSはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Windows 10/11 Enterprise マルチセッション",
+                    "explanation": {
+                        "text": "Windows 10/11 Enterprise マルチセッションがAVDで利用可能です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/windows-11-multisession",
+                        "reference_label": "Microsoft Docs - Windows multi-session"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Windows Server Essentials",
+                    "explanation": {
+                        "text": "Windows Server EssentialsはAVDでのマルチセッションOSとして利用できません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/windows-11-multisession",
+                        "reference_label": "Microsoft Docs - Windows multi-session"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Windows 7 Professional",
+                    "explanation": {
+                        "text": "Windows 7はサポート終了しており、AVDでは利用できません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/windows-11-multisession",
+                        "reference_label": "Microsoft Docs - Windows multi-session"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Windows 8.1 Enterprise",
+                    "explanation": {
+                        "text": "Windows 8.1はAVDでマルチセッションOSとして提供されません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/windows-11-multisession",
+                        "reference_label": "Microsoft Docs - Windows multi-session"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Windows 10/11 Enterprise マルチセッションはAVD特有の機能で、複数ユーザーの同時利用を可能にします。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/windows-11-multisession",
+                "reference_label": "Microsoft Docs - Windows multi-session"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q32",
+            "question": "Azure Virtual Desktopでセッションホストの高可用性を確保する推奨方法はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "複数の可用性ゾーンにセッションホストを配置する",
+                    "explanation": {
+                        "text": "可用性ゾーンを利用することでゾーン障害に耐えられる構成が可能です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/disaster-recovery",
+                        "reference_label": "Microsoft Docs - AVD DR and HA"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "セッションホストを1台だけデプロイする",
+                    "explanation": {
+                        "text": "単一ホストでは可用性が確保できません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/disaster-recovery",
+                        "reference_label": "Microsoft Docs - AVD DR and HA"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "オンプレミスのファイルサーバーに依存する",
+                    "explanation": {
+                        "text": "オンプレファイルサーバーは可用性に制約があります。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/disaster-recovery",
+                        "reference_label": "Microsoft Docs - AVD DR and HA"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "セッションホストのスケールセットを無効化する",
+                    "explanation": {
+                        "text": "スケールセットを無効化すると可用性が低下します。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/disaster-recovery",
+                        "reference_label": "Microsoft Docs - AVD DR and HA"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "複数可用性ゾーンに配置することでAVD環境の可用性を高められます。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/disaster-recovery",
+                "reference_label": "Microsoft Docs - AVD DR and HA"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q33",
+            "question": "Azure Virtual DesktopでMSIX App Attachを利用する場合の利点はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "アプリケーションを動的にユーザーへ割り当て可能である",
+                    "explanation": {
+                        "text": "MSIX App Attachにより必要なユーザーにのみアプリを提供可能です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/app-attach",
+                        "reference_label": "Microsoft Docs - MSIX App Attach"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "アプリケーションをOSイメージに直接インストールする必要がある",
+                    "explanation": {
+                        "text": "App Attachではイメージに直接インストールせず、仮想ディスクから提供します。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/app-attach",
+                        "reference_label": "Microsoft Docs - MSIX App Attach"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "アプリケーションは全ユーザーに必ず提供される",
+                    "explanation": {
+                        "text": "App Attachは対象ユーザーごとに制御可能です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/app-attach",
+                        "reference_label": "Microsoft Docs - MSIX App Attach"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "アプリケーションごとに専用VMが必要になる",
+                    "explanation": {
+                        "text": "専用VMは不要で、共有環境で利用可能です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/app-attach",
+                        "reference_label": "Microsoft Docs - MSIX App Attach"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "MSIX App Attachはアプリケーションを動的に割り当て可能で、管理の柔軟性を高めます。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/app-attach",
+                "reference_label": "Microsoft Docs - MSIX App Attach"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q34",
+            "question": "Azure Virtual Desktopで接続トラブルシューティングを行う際に利用できるツールはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "AVD Diagnostics",
+                    "explanation": {
+                        "text": "AVD Diagnosticsを利用して接続や構成のトラブルシューティングが可能です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/diagnostics-log-analytics",
+                        "reference_label": "Microsoft Docs - AVD diagnostics"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Azure Arc",
+                    "explanation": {
+                        "text": "Azure Arcはハイブリッド管理向けで、AVD専用ではありません。",
+                        "reference": "https://learn.microsoft.com/azure/azure-arc/overview",
+                        "reference_label": "Microsoft Docs - Azure Arc"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Microsoft Endpoint Managerのみ",
+                    "explanation": {
+                        "text": "Endpoint Managerはデバイス管理向けであり、AVD接続のトラブルシューティングには不十分です。",
+                        "reference": "https://learn.microsoft.com/mem/endpoint-manager-overview",
+                        "reference_label": "Microsoft Docs - Endpoint Manager overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Windows Server Update Services (WSUS)",
+                    "explanation": {
+                        "text": "WSUSは更新管理ツールであり、トラブルシューティングには利用できません。",
+                        "reference": "https://learn.microsoft.com/windows-server/administration/windows-server-update-services/get-started/windows-server-update-services-wsus",
+                        "reference_label": "Microsoft Docs - WSUS overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "AVD Diagnosticsは接続や環境構成の分析に利用される推奨ツールです。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/diagnostics-log-analytics",
+                "reference_label": "Microsoft Docs - AVD diagnostics"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q35",
+            "question": "Azure Virtual Desktopでユーザーごとに異なるアプリケーションセットを提供する場合のベストプラクティスはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "アプリケーションをMSIX App Attachで割り当てる",
+                    "explanation": {
+                        "text": "App Attachを利用するとユーザーごとに柔軟にアプリを提供可能です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/app-attach",
+                        "reference_label": "Microsoft Docs - MSIX App Attach"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "全アプリを1つのOSイメージにインストールする",
+                    "explanation": {
+                        "text": "これでは柔軟性に欠け、管理負担が増大します。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/app-attach",
+                        "reference_label": "Microsoft Docs - MSIX App Attach"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ユーザーごとに専用のホストプールを作成する",
+                    "explanation": {
+                        "text": "非効率で運用コストが高くなります。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/app-attach",
+                        "reference_label": "Microsoft Docs - MSIX App Attach"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "アプリ配信を手動で行う",
+                    "explanation": {
+                        "text": "手動配信はスケーラビリティに欠けます。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/app-attach",
+                        "reference_label": "Microsoft Docs - MSIX App Attach"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "MSIX App Attachを利用するのがユーザーごとに異なるアプリセットを提供する推奨方法です。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/app-attach",
+                "reference_label": "Microsoft Docs - MSIX App Attach"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q36",
+            "question": "Azure Virtual Desktopで利用できる認証方法として正しいものはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Azure AD認証と多要素認証",
+                    "explanation": {
+                        "text": "AVDはAzure AD認証をサポートし、多要素認証を組み合わせることでセキュリティを強化できます。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/fundamentals-identity",
+                        "reference_label": "Microsoft Docs - AVD identity and authentication"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "匿名アクセス",
+                    "explanation": {
+                        "text": "匿名アクセスはサポートされていません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/fundamentals-identity",
+                        "reference_label": "Microsoft Docs - AVD identity and authentication"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ローカルアカウント認証のみ",
+                    "explanation": {
+                        "text": "ローカルアカウントのみでの利用はできません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/fundamentals-identity",
+                        "reference_label": "Microsoft Docs - AVD identity and authentication"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "外部IdPなしの無認証接続",
+                    "explanation": {
+                        "text": "AVDには必ずAzure ADなどのIdPを利用した認証が必要です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/fundamentals-identity",
+                        "reference_label": "Microsoft Docs - AVD identity and authentication"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "AVDではAzure AD認証が利用でき、MFAと組み合わせてセキュリティを強化できます。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/fundamentals-identity",
+                "reference_label": "Microsoft Docs - AVD identity and authentication"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q37",
+            "question": "Azure Virtual DesktopのセッションホストにWindows Server OSを利用する場合の主な用途はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "リモートデスクトップサービス (RDS) アプリケーション互換性を確保する",
+                    "explanation": {
+                        "text": "Windows Serverは従来のRDSアプリケーションとの互換性を目的に利用されることがあります。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/windows-server",
+                        "reference_label": "Microsoft Docs - AVD with Windows Server"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Windows 7互換モードの提供",
+                    "explanation": {
+                        "text": "Windows 7はサポート終了しており、互換モード提供のためには利用されません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/windows-server",
+                        "reference_label": "Microsoft Docs - AVD with Windows Server"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Azure AD Joinの利用",
+                    "explanation": {
+                        "text": "Azure AD JoinはWindows Enterpriseでサポートされており、Server OSは対象外です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/windows-server",
+                        "reference_label": "Microsoft Docs - AVD with Windows Server"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "MSIX App Attachの無効化",
+                    "explanation": {
+                        "text": "Windows ServerでもMSIX App Attachは利用可能です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/windows-server",
+                        "reference_label": "Microsoft Docs - AVD with Windows Server"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Windows Server OSは従来のRDSアプリケーションの互換性を提供するために利用されることがあります。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/windows-server",
+                "reference_label": "Microsoft Docs - AVD with Windows Server"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q38",
+            "question": "Azure Virtual Desktopで利用するFSLogix Profile Containerの保存先として推奨されるのはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Azure Files または Azure NetApp Files",
+                    "explanation": {
+                        "text": "クラウド環境での推奨ストレージはAzure FilesまたはAzure NetApp Filesです。",
+                        "reference": "https://learn.microsoft.com/fslogix/configure-storage-azure-files",
+                        "reference_label": "Microsoft Docs - FSLogix storage"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "オンプレミスのローカルストレージ",
+                    "explanation": {
+                        "text": "利用可能ですが、クラウドネイティブ環境では推奨されません。",
+                        "reference": "https://learn.microsoft.com/fslogix/configure-storage-azure-files",
+                        "reference_label": "Microsoft Docs - FSLogix storage"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Azure Blob Archive",
+                    "explanation": {
+                        "text": "アーカイブストレージは遅延が高く、プロファイル保存には適しません。",
+                        "reference": "https://learn.microsoft.com/fslogix/configure-storage-azure-files",
+                        "reference_label": "Microsoft Docs - FSLogix storage"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Azure Key Vault",
+                    "explanation": {
+                        "text": "Key Vaultは秘密情報管理用であり、プロファイル保存には利用できません。",
+                        "reference": "https://learn.microsoft.com/azure/key-vault/general/basic-concepts",
+                        "reference_label": "Microsoft Docs - Azure Key Vault"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "FSLogix Profile Containerの保存先としてはAzure FilesまたはAzure NetApp Filesが推奨されます。",
+                "reference": "https://learn.microsoft.com/fslogix/configure-storage-azure-files",
+                "reference_label": "Microsoft Docs - FSLogix storage"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q39",
+            "question": "Azure Virtual Desktopのホストプールにセッションホストを追加する一般的な方法はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "ARMテンプレートまたはAzure Portalを利用する",
+                    "explanation": {
+                        "text": "Azure Resource ManagerテンプレートやAzure Portalからセッションホストを追加可能です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/expand-host-pool",
+                        "reference_label": "Microsoft Docs - Expand host pool"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "オンプレミスHyper-Vマネージャーで作成する",
+                    "explanation": {
+                        "text": "Hyper-VはAzure外であり、直接利用できません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/expand-host-pool",
+                        "reference_label": "Microsoft Docs - Expand host pool"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ユーザー自身がセッションホストを作成する",
+                    "explanation": {
+                        "text": "ユーザーはホストの作成権限を持ちません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/expand-host-pool",
+                        "reference_label": "Microsoft Docs - Expand host pool"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Azure ADポータルから直接作成する",
+                    "explanation": {
+                        "text": "Azure ADは認証管理のサービスであり、VM作成は行えません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/expand-host-pool",
+                        "reference_label": "Microsoft Docs - Expand host pool"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "ARMテンプレートやAzure Portalからセッションホストを追加するのが一般的な方法です。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/expand-host-pool",
+                "reference_label": "Microsoft Docs - Expand host pool"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q40",
+            "question": "Azure Virtual Desktopでセッションホストの監視に利用できるログ収集先はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Log Analytics ワークスペース",
+                    "explanation": {
+                        "text": "診断ログをLog Analyticsに送信して監視できます。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/diagnostics-log-analytics",
+                        "reference_label": "Microsoft Docs - AVD diagnostics with Log Analytics"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Azure Key Vault",
+                    "explanation": {
+                        "text": "Key Vaultは秘密情報管理用であり、ログ収集には利用されません。",
+                        "reference": "https://learn.microsoft.com/azure/key-vault/general/basic-concepts",
+                        "reference_label": "Microsoft Docs - Azure Key Vault"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Azure Blob Archive",
+                    "explanation": {
+                        "text": "Archiveはログ保存先には適さず、長期保存専用です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/diagnostics-log-analytics",
+                        "reference_label": "Microsoft Docs - AVD diagnostics with Log Analytics"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Microsoft To Do",
+                    "explanation": {
+                        "text": "これはタスク管理アプリであり、ログ収集先ではありません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/diagnostics-log-analytics",
+                        "reference_label": "Microsoft Docs - AVD diagnostics with Log Analytics"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Log Analyticsワークスペースを利用して診断ログを収集するのが推奨方法です。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/diagnostics-log-analytics",
+                "reference_label": "Microsoft Docs - AVD diagnostics with Log Analytics"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q41",
+            "question": "Azure Virtual Desktopのセッションホストの電源管理を最適化する推奨方法はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "スケーリングプランを利用して自動的にVMを起動・停止する",
+                    "explanation": {
+                        "text": "スケーリングプランを利用することで利用状況に応じて自動でVMを管理できます。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/autoscale-scaling-plan",
+                        "reference_label": "Microsoft Docs - AVD scaling plan"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "すべてのセッションホストを常に稼働させる",
+                    "explanation": {
+                        "text": "常時稼働はコストが高く非効率です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/autoscale-scaling-plan",
+                        "reference_label": "Microsoft Docs - AVD scaling plan"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ユーザーに手動でVMを起動させる",
+                    "explanation": {
+                        "text": "ユーザーに管理を委ねるのは推奨されません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/autoscale-scaling-plan",
+                        "reference_label": "Microsoft Docs - AVD scaling plan"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "PowerShellスクリプトを毎回手動で実行する",
+                    "explanation": {
+                        "text": "スクリプトは利用可能ですが、自動化されていないため非効率です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/autoscale-scaling-plan",
+                        "reference_label": "Microsoft Docs - AVD scaling plan"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "スケーリングプランを利用することでセッションホストの電源管理を最適化できます。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/autoscale-scaling-plan",
+                "reference_label": "Microsoft Docs - AVD scaling plan"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q42",
+            "question": "Azure Virtual Desktopでユーザー体験を向上させるための推奨ネットワーク設定はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "RDP Shortpathを有効化する",
+                    "explanation": {
+                        "text": "RDP Shortpathは低遅延接続を提供し、ユーザー体験を向上させます。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/rdp-shortpath",
+                        "reference_label": "Microsoft Docs - RDP Shortpath"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "すべてのトラフィックをVPN経由に制限する",
+                    "explanation": {
+                        "text": "VPN経由は必須ではなく、遅延を増加させる可能性があります。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/rdp-shortpath",
+                        "reference_label": "Microsoft Docs - RDP Shortpath"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "インターネットにRDPポートを直接公開する",
+                    "explanation": {
+                        "text": "これは重大なセキュリティリスクを招くため推奨されません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/rdp-shortpath",
+                        "reference_label": "Microsoft Docs - RDP Shortpath"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "NICを無効化してセキュリティを強化する",
+                    "explanation": {
+                        "text": "NICを無効化すると接続が不可能になります。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/rdp-shortpath",
+                        "reference_label": "Microsoft Docs - RDP Shortpath"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "RDP Shortpathを有効にすることでAVDの接続体験を改善できます。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/rdp-shortpath",
+                "reference_label": "Microsoft Docs - RDP Shortpath"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q43",
+            "question": "Azure Virtual Desktopでユーザーごとのセッションデータを一貫して保持するために推奨される技術はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "FSLogix Profile Container",
+                    "explanation": {
+                        "text": "FSLogixはユーザープロファイルを仮想ディスクとして格納し、セッション間で一貫性を提供します。",
+                        "reference": "https://learn.microsoft.com/fslogix/overview",
+                        "reference_label": "Microsoft Docs - FSLogix overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Azure Monitor",
+                    "explanation": {
+                        "text": "Azure Monitorは監視ツールであり、プロファイル管理機能は持ちません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/insights",
+                        "reference_label": "Microsoft Docs - AVD monitoring"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Azure Bastion",
+                    "explanation": {
+                        "text": "Bastionは管理者のVM接続をセキュアにするサービスです。",
+                        "reference": "https://learn.microsoft.com/azure/bastion/bastion-overview",
+                        "reference_label": "Microsoft Docs - Azure Bastion"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Key Vault",
+                    "explanation": {
+                        "text": "Key Vaultは秘密情報管理サービスであり、プロファイル格納には利用されません。",
+                        "reference": "https://learn.microsoft.com/azure/key-vault/general/basic-concepts",
+                        "reference_label": "Microsoft Docs - Azure Key Vault"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "FSLogix Profile Containerを利用することで、ユーザーのセッション間で一貫した環境を提供できます。",
+                "reference": "https://learn.microsoft.com/fslogix/overview",
+                "reference_label": "Microsoft Docs - FSLogix overview"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q44",
+            "question": "Azure Virtual Desktopのセッションホストにおける推奨セキュリティ対策はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "NSGでRDPポートをブロックする",
+                    "explanation": {
+                        "text": "セッションホストはReverse Connectを利用するため、直接RDP接続を許可する必要はなく、NSGでブロックするのが推奨です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/security-guide",
+                        "reference_label": "Microsoft Docs - AVD security best practices"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "セッションホストをインターネットに直接公開する",
+                    "explanation": {
+                        "text": "直接公開はセキュリティリスクが高いため推奨されません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/security-guide",
+                        "reference_label": "Microsoft Docs - AVD security best practices"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "すべてのユーザーに管理者権限を付与する",
+                    "explanation": {
+                        "text": "これは最小権限の原則に反するため推奨されません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/security-guide",
+                        "reference_label": "Microsoft Docs - AVD security best practices"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ウイルス対策を無効化してパフォーマンスを向上させる",
+                    "explanation": {
+                        "text": "ウイルス対策を無効化するのは重大なセキュリティリスクです。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/security-guide",
+                        "reference_label": "Microsoft Docs - AVD security best practices"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "セッションホストはAzure制御プレーン経由で通信するため、NSGでRDPポートをブロックするのが推奨です。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/security-guide",
+                "reference_label": "Microsoft Docs - AVD security best practices"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q45",
+            "question": "Azure Virtual Desktopのホストプールで利用できるアサイン方式はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "プール型と個人用型",
+                    "explanation": {
+                        "text": "AVDではユーザー共有型のプールと、専用VMを提供する個人用型が利用可能です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/host-pools-personal-pooled",
+                        "reference_label": "Microsoft Docs - Host pool assignment"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "ランダム型とスケジュール型",
+                    "explanation": {
+                        "text": "ランダムやスケジュール型という方式は存在しません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/host-pools-personal-pooled",
+                        "reference_label": "Microsoft Docs - Host pool assignment"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "グループ型と個別型",
+                    "explanation": {
+                        "text": "公式にはプール型と個人用型の2種類です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/host-pools-personal-pooled",
+                        "reference_label": "Microsoft Docs - Host pool assignment"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "オンプレ型とクラウド型",
+                    "explanation": {
+                        "text": "これはAVDのアサイン方式ではありません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/host-pools-personal-pooled",
+                        "reference_label": "Microsoft Docs - Host pool assignment"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Azure Virtual Desktopのホストプールにはプール型と個人用型の2種類のアサイン方式があります。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/host-pools-personal-pooled",
+                "reference_label": "Microsoft Docs - Host pool assignment"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q46",
+            "question": "Azure Virtual Desktopでアプリケーション配信を柔軟に行うために推奨される技術はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "MSIX App Attach",
+                    "explanation": {
+                        "text": "MSIX App Attachを使うことで動的にアプリを配信できます。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/app-attach",
+                        "reference_label": "Microsoft Docs - MSIX App Attach"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "アプリケーションをすべてセッションホストに手動インストールする",
+                    "explanation": {
+                        "text": "手動インストールは非効率で管理性が低下します。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/app-attach",
+                        "reference_label": "Microsoft Docs - MSIX App Attach"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Azure Key Vaultでアプリを管理する",
+                    "explanation": {
+                        "text": "Key Vaultはアプリ配信には利用されません。",
+                        "reference": "https://learn.microsoft.com/azure/key-vault/general/basic-concepts",
+                        "reference_label": "Microsoft Docs - Azure Key Vault"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ユーザーごとに異なるセッションホストを準備する",
+                    "explanation": {
+                        "text": "非効率でスケーラビリティが低いため推奨されません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/app-attach",
+                        "reference_label": "Microsoft Docs - MSIX App Attach"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "MSIX App Attachを利用することで動的かつ柔軟なアプリケーション配信が可能です。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/app-attach",
+                "reference_label": "Microsoft Docs - MSIX App Attach"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q47",
+            "question": "Azure Virtual Desktopの接続方式で利用されるReverse Connectの特徴はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "セッションホストがAzure制御プレーンに接続を開始する",
+                    "explanation": {
+                        "text": "Reverse ConnectではセッションホストからAzureに接続し、外部から直接の接続を不要にします。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/rdp-shortpath",
+                        "reference_label": "Microsoft Docs - Reverse Connect"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "ユーザーがセッションホストのRDPポートに直接接続する",
+                    "explanation": {
+                        "text": "直接RDPポートに接続することは推奨されず、利用されません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/rdp-shortpath",
+                        "reference_label": "Microsoft Docs - Reverse Connect"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "必ずVPNを経由して接続する必要がある",
+                    "explanation": {
+                        "text": "VPNは不要で、インターネット経由で安全に利用可能です。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/rdp-shortpath",
+                        "reference_label": "Microsoft Docs - Reverse Connect"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "セッションホストが常にインターネットに公開される",
+                    "explanation": {
+                        "text": "公開されることはなく、Azure制御プレーンを経由して通信します。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/rdp-shortpath",
+                        "reference_label": "Microsoft Docs - Reverse Connect"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Reverse ConnectはセッションホストからAzureに接続を開始する方式で、セキュリティと利便性を向上させます。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/rdp-shortpath",
+                "reference_label": "Microsoft Docs - Reverse Connect"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q48",
+            "question": "Azure Virtual Desktop環境でAzure Monitor Insightsを利用する利点はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "セッションホストのメトリクスと診断情報を可視化できる",
+                    "explanation": {
+                        "text": "Azure Monitor Insightsはパフォーマンスや診断情報の監視を提供します。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/insights",
+                        "reference_label": "Microsoft Docs - AVD insights"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "ユーザーのパスワードをリセットできる",
+                    "explanation": {
+                        "text": "パスワードリセットはAzure ADの機能であり、Monitorには含まれません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/insights",
+                        "reference_label": "Microsoft Docs - AVD insights"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "セッションホストの自動スケーリングを構成できる",
+                    "explanation": {
+                        "text": "スケーリングはスケーリングプランで構成します。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/insights",
+                        "reference_label": "Microsoft Docs - AVD insights"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Azure ADのライセンス管理を行える",
+                    "explanation": {
+                        "text": "ライセンス管理はAzure AD側で行います。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/insights",
+                        "reference_label": "Microsoft Docs - AVD insights"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Azure Monitor Insightsを利用すると、セッションホストのメトリクスや診断情報を視覚化でき、運用の最適化に役立ちます。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/insights",
+                "reference_label": "Microsoft Docs - AVD insights"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q49",
+            "question": "Azure Virtual Desktopでユーザー接続時の遅延を減らすために推奨されるネットワーク機能はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "RDP Shortpath",
+                    "explanation": {
+                        "text": "RDP ShortpathはUDPベースで直接接続を確立し、遅延を低減できます。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/rdp-shortpath",
+                        "reference_label": "Microsoft Docs - RDP Shortpath"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Azure Traffic Manager",
+                    "explanation": {
+                        "text": "Traffic ManagerはDNSベースのルーティングであり、セッション遅延低減の仕組みではありません。",
+                        "reference": "https://learn.microsoft.com/azure/traffic-manager/traffic-manager-overview",
+                        "reference_label": "Microsoft Docs - Traffic Manager"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Azure Front Door",
+                    "explanation": {
+                        "text": "Front DoorはWebアプリ向けのサービスであり、AVD接続には利用されません。",
+                        "reference": "https://learn.microsoft.com/azure/frontdoor/front-door-overview",
+                        "reference_label": "Microsoft Docs - Front Door overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ExpressRoute FastPath",
+                    "explanation": {
+                        "text": "FastPathはオンプレ接続最適化であり、AVDユーザー接続の最適化ではありません。",
+                        "reference": "https://learn.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways",
+                        "reference_label": "Microsoft Docs - ExpressRoute FastPath"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "RDP Shortpathを有効にすることでAVD接続の遅延を減らせます。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/rdp-shortpath",
+                "reference_label": "Microsoft Docs - RDP Shortpath"
+            }
+        },
+        {
+            "id": "azure-AZ-140-q50",
+            "question": "Azure Virtual Desktop環境でコストを最適化するための推奨策はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "スケーリングプランを利用して利用時間外にVMを停止する",
+                    "explanation": {
+                        "text": "スケーリングプランを活用することで、利用が少ない時間帯にVMを停止し、コストを削減できます。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/autoscale-scaling-plan",
+                        "reference_label": "Microsoft Docs - AVD scaling plan"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "すべてのセッションホストを常時稼働させる",
+                    "explanation": {
+                        "text": "常時稼働させるとコストが増加し、効率的ではありません。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/autoscale-scaling-plan",
+                        "reference_label": "Microsoft Docs - AVD scaling plan"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ユーザー数に関わらず最大数のVMをデプロイする",
+                    "explanation": {
+                        "text": "必要以上にVMをデプロイすると無駄なコストが発生します。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-desktop/autoscale-scaling-plan",
+                        "reference_label": "Microsoft Docs - AVD scaling plan"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Azure AD条件付きアクセスを利用してコスト削減する",
+                    "explanation": {
+                        "text": "条件付きアクセスはセキュリティ対策であり、コスト削減には直接的な効果がありません。",
+                        "reference": "https://learn.microsoft.com/azure/active-directory/conditional-access/",
+                        "reference_label": "Microsoft Docs - Conditional Access"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "スケーリングプランを利用して利用状況に応じたVMの自動起動・停止を行うことで、コストを最適化できます。",
+                "reference": "https://learn.microsoft.com/azure/virtual-desktop/autoscale-scaling-plan",
+                "reference_label": "Microsoft Docs - AVD scaling plan"
+            }
+        }
+    ]
+}

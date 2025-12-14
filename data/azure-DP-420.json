@@ -1,0 +1,2467 @@
+{
+  "exam": {
+    "id": "dp-420",
+    "title": "Azure Cosmos DB Developer Specialty",
+    "description": "この認定資格は、クラウドネイティブなアプリケーションでデータを保存・管理するための Azure Cosmos DB に関する専門知識を持つ開発者を対象としています。受験者は、データモデルや分散設計の構築、データのロード、ソリューションの最適化・保守などを担う技術を有している必要があります。また、SQL API や SDK を用いて効率的なクエリを作成し、適切なインデックス ポリシーを策定・管理できること、JSON の解釈、C#／Java コードの読解、PowerShell の使用などにも習熟していることが求められます。",
+    "version": "2025年1月",
+    "price": "165 USD",
+    "difficulty": "難しい",
+    "official-site": "https://learn.microsoft.com/credentials/certifications/azure-cosmos-db-developer-specialty/",
+    "category": {
+      "id": "azure",
+      "name": "Azure"
+    }
+  },
+  "questions": [
+    {
+      "id": "azure-DP-420-q1",
+      "question": "Azure Cosmos DBでコンテナのパーティションキーを設計する際の最も重要な考慮事項はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "パーティションキーの値が均等に分布すること",
+          "explanation": {
+            "text": "均等分布によりスループットが効率的に利用され、ホットパーティションを避けられます。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/partitioning-overview",
+            "reference_label": "Azure Cosmos DB パーティション設計"
+          }
+        },
+        {
+          "key": "B",
+          "text": "すべてのアイテムで同じパーティションキーを選択すること",
+          "explanation": {
+            "text": "すべて同じキーだと単一パーティションに集中し、スループットが制限されます。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/partitioning-overview",
+            "reference_label": "Azure Cosmos DB パーティション設計"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アイテムのサイズを小さくすること",
+          "explanation": {
+            "text": "アイテムサイズはストレージ効率に影響するが、パーティションキー設計の主要要素ではありません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/partitioning-overview",
+            "reference_label": "Azure Cosmos DB パーティション設計"
+          }
+        },
+        {
+          "key": "D",
+          "text": "コンテナに格納するドキュメント数を最小化すること",
+          "explanation": {
+            "text": "コンテナ内のドキュメント数は設計上重要ですが、パーティションキー選択の主要要件ではありません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/partitioning-overview",
+            "reference_label": "Azure Cosmos DB パーティション設計"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "パーティションキーはトラフィックを分散させるため、均等な分布が最重要です。ホットパーティションを防ぐことで、スループット効率とスケーラビリティが確保されます。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/partitioning-overview",
+        "reference_label": "Azure Cosmos DB パーティション設計"
+      }
+    },
+    {
+      "id": "azure-DP-420-q2",
+      "question": "Azure Cosmos DBでスループットをプロビジョニングする際、'Request Units (RU)'は何を表すか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ストレージに保存できるデータ容量",
+          "explanation": {
+            "text": "ストレージ容量はRUとは無関係です。RUはリソース消費を表します。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/request-units",
+            "reference_label": "Azure Cosmos DB RUモデル"
+          }
+        },
+        {
+          "key": "B",
+          "text": "操作のコストを一貫して測定するための単位",
+          "explanation": {
+            "text": "RUはクエリ、読み取り、書き込みなどすべての操作を共通基準で測定する単位です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/request-units",
+            "reference_label": "Azure Cosmos DB RUモデル"
+          }
+        },
+        {
+          "key": "C",
+          "text": "スループットの上限値を制御するキー",
+          "explanation": {
+            "text": "RUはスループットを測る単位ですが、キーではありません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/request-units",
+            "reference_label": "Azure Cosmos DB RUモデル"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データ転送時のネットワーク帯域幅",
+          "explanation": {
+            "text": "ネットワーク帯域幅はRUとは直接関係しません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/request-units",
+            "reference_label": "Azure Cosmos DB RUモデル"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "RUはAzure Cosmos DB内での操作（読み取り、書き込み、クエリなど）のリソース消費を一貫して表す単位です。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/request-units",
+        "reference_label": "Azure Cosmos DB RUモデル"
+      }
+    },
+    {
+      "id": "azure-DP-420-q3",
+      "question": "Cosmos DBにおける'Consistency Level'のうち、最も厳密な整合性モデルはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Strong",
+          "explanation": {
+            "text": "Strongは全リージョンで最新データが読み取れる最も厳密な整合性レベルです。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/consistency-levels",
+            "reference_label": "Azure Cosmos DB 一貫性レベル"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Session",
+          "explanation": {
+            "text": "Sessionはクライアントごとに一貫性を保証しますが、Strongほど厳密ではありません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/consistency-levels",
+            "reference_label": "Azure Cosmos DB 一貫性レベル"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Bounded Staleness",
+          "explanation": {
+            "text": "Bounded Stalenessは遅延を制御できますが、Strongほどの即時整合性はありません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/consistency-levels",
+            "reference_label": "Azure Cosmos DB 一貫性レベル"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Eventual",
+          "explanation": {
+            "text": "Eventualは最も緩い整合性モデルです。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/consistency-levels",
+            "reference_label": "Azure Cosmos DB 一貫性レベル"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Strong consistencyは常に最新のデータを返す唯一のモードであり、最も厳密な整合性レベルです。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/consistency-levels",
+        "reference_label": "Azure Cosmos DB 一貫性レベル"
+      }
+    },
+    {
+      "id": "azure-DP-420-q4",
+      "question": "Azure Cosmos DBで自動インデックス作成が有効になっている場合、デフォルトでインデックスされないデータ型はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "文字列",
+          "explanation": {
+            "text": "文字列はデフォルトでインデックスされます。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/index-overview",
+            "reference_label": "Azure Cosmos DB インデックス作成"
+          }
+        },
+        {
+          "key": "B",
+          "text": "数値",
+          "explanation": {
+            "text": "数値もデフォルトでインデックスされます。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/index-overview",
+            "reference_label": "Azure Cosmos DB インデックス作成"
+          }
+        },
+        {
+          "key": "C",
+          "text": "NULL値",
+          "explanation": {
+            "text": "NULLはインデックス対象外です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/index-overview",
+            "reference_label": "Azure Cosmos DB インデックス作成"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ブール値",
+          "explanation": {
+            "text": "ブール値はデフォルトでインデックスされます。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/index-overview",
+            "reference_label": "Azure Cosmos DB インデックス作成"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "Cosmos DBではデフォルトで文字列、数値、ブール値がインデックス対象となりますが、NULL値は対象外です。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/index-overview",
+        "reference_label": "Azure Cosmos DB インデックス作成"
+      }
+    },
+    {
+      "id": "azure-DP-420-q5",
+      "question": "Azure Cosmos DBのマルチリージョン書き込みを有効にした場合の主な利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "すべてのリージョンで読み取り専用アクセスが可能になる",
+          "explanation": {
+            "text": "マルチリージョン書き込みは読み取りだけでなく書き込みの分散を可能にします。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/how-to-multi-master",
+            "reference_label": "Azure Cosmos DB マルチマスター"
+          }
+        },
+        {
+          "key": "B",
+          "text": "グローバルに低レイテンシの書き込みが可能になる",
+          "explanation": {
+            "text": "複数リージョンで書き込みを処理でき、遅延が最小化されます。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/how-to-multi-master",
+            "reference_label": "Azure Cosmos DB マルチマスター"
+          }
+        },
+        {
+          "key": "C",
+          "text": "自動的にStrong Consistencyが保証される",
+          "explanation": {
+            "text": "整合性レベルは別途選択する必要があり、マルチマスターと直結しません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/how-to-multi-master",
+            "reference_label": "Azure Cosmos DB マルチマスター"
+          }
+        },
+        {
+          "key": "D",
+          "text": "RUのコストが半減する",
+          "explanation": {
+            "text": "コスト削減は直接の効果ではなく、むしろ追加のリージョンでコストが増える場合があります。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/how-to-multi-master",
+            "reference_label": "Azure Cosmos DB マルチマスター"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "マルチリージョン書き込みは、ユーザーに近いリージョンでの低レイテンシな書き込みを実現します。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/how-to-multi-master",
+        "reference_label": "Azure Cosmos DB マルチマスター"
+      }
+    },
+    {
+      "id": "azure-DP-420-q6",
+      "question": "Azure Cosmos DBにおけるトランザクションの範囲はどの単位で保証されるか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "アカウント単位",
+          "explanation": {
+            "text": "アカウント単位ではなく、より小さい単位で保証されます。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/transactions",
+            "reference_label": "Azure Cosmos DB トランザクション"
+          }
+        },
+        {
+          "key": "B",
+          "text": "コンテナ単位",
+          "explanation": {
+            "text": "コンテナ全体ではなく、さらに限定された範囲で保証されます。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/transactions",
+            "reference_label": "Azure Cosmos DB トランザクション"
+          }
+        },
+        {
+          "key": "C",
+          "text": "パーティションキー単位",
+          "explanation": {
+            "text": "Cosmos DBでは同一パーティションキー内でトランザクションが保証されます。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/transactions",
+            "reference_label": "Azure Cosmos DB トランザクション"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ドキュメント単位",
+          "explanation": {
+            "text": "ドキュメント単体に限定されるわけではなく、パーティションキー全体が対象です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/transactions",
+            "reference_label": "Azure Cosmos DB トランザクション"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "Cosmos DBのトランザクションは同じパーティションキー内でのみ保証されます。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/transactions",
+        "reference_label": "Azure Cosmos DB トランザクション"
+      }
+    },
+    {
+      "id": "azure-DP-420-q7",
+      "question": "Azure Cosmos DBのChange Feedを利用する主なユースケースはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "リアルタイム分析やイベント駆動アプリケーション",
+          "explanation": {
+            "text": "Change Feedはデータ変更を逐次取得でき、リアルタイム処理に有効です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/change-feed",
+            "reference_label": "Azure Cosmos DB Change Feed"
+          }
+        },
+        {
+          "key": "B",
+          "text": "バックアップと復元の自動化",
+          "explanation": {
+            "text": "バックアップはCosmos DBの自動機能であり、Change Feedの用途ではありません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/change-feed",
+            "reference_label": "Azure Cosmos DB Change Feed"
+          }
+        },
+        {
+          "key": "C",
+          "text": "パーティションキーの再設計",
+          "explanation": {
+            "text": "パーティションキー設計はChange Feedと関係ありません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/change-feed",
+            "reference_label": "Azure Cosmos DB Change Feed"
+          }
+        },
+        {
+          "key": "D",
+          "text": "リージョン間レプリケーションの設定",
+          "explanation": {
+            "text": "リージョン間レプリケーションはCosmos DBの基盤機能であり、Change Feedは使用しません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/change-feed",
+            "reference_label": "Azure Cosmos DB Change Feed"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Change Feedはデータ変更を逐次取得できるため、イベント駆動アプリやリアルタイム分析に利用されます。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/change-feed",
+        "reference_label": "Azure Cosmos DB Change Feed"
+      }
+    },
+    {
+      "id": "azure-DP-420-q8",
+      "question": "Azure Cosmos DBのGremlin APIは主にどのようなデータモデリングに使用されるか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "キー・バリュー型データ",
+          "explanation": {
+            "text": "キー・バリュー型データにはTable APIが適しています。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/graph-introduction",
+            "reference_label": "Azure Cosmos DB Graph API"
+          }
+        },
+        {
+          "key": "B",
+          "text": "グラフデータ",
+          "explanation": {
+            "text": "Gremlin APIはノードとエッジを表現するグラフデータ向けに設計されています。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/graph-introduction",
+            "reference_label": "Azure Cosmos DB Graph API"
+          }
+        },
+        {
+          "key": "C",
+          "text": "リレーショナルデータ",
+          "explanation": {
+            "text": "リレーショナルデータにはAzure SQL Databaseが適しています。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/graph-introduction",
+            "reference_label": "Azure Cosmos DB Graph API"
+          }
+        },
+        {
+          "key": "D",
+          "text": "時系列データ",
+          "explanation": {
+            "text": "時系列データはCosmos DBで扱えるが、Gremlin API特有の用途ではありません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/graph-introduction",
+            "reference_label": "Azure Cosmos DB Graph API"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Gremlin APIはソーシャルネットワークや推奨システムなどのグラフデータを扱うために最適化されています。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/graph-introduction",
+        "reference_label": "Azure Cosmos DB Graph API"
+      }
+    },
+    {
+      "id": "azure-DP-420-q9",
+      "question": "Azure Cosmos DBのマルチリージョン構成で、アプリケーションが自動的に最も近いリージョンに接続する機能はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Geo-fencing",
+          "explanation": {
+            "text": "Geo-fencingはネットワーク制御であり、Cosmos DBの接続機能ではありません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/distribute-data-globally",
+            "reference_label": "Azure Cosmos DB グローバル分散"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Multi-homing API",
+          "explanation": {
+            "text": "Multi-homing APIにより、アプリケーションは自動的に最寄りリージョンへ接続します。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/distribute-data-globally",
+            "reference_label": "Azure Cosmos DB グローバル分散"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Traffic Manager",
+          "explanation": {
+            "text": "Traffic ManagerはAzureのDNSベース負荷分散であり、Cosmos DBに特有ではありません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/distribute-data-globally",
+            "reference_label": "Azure Cosmos DB グローバル分散"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Load Balancer",
+          "explanation": {
+            "text": "Load Balancerはネットワークレベルの機能で、Cosmos DBのリージョン選択機能ではありません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/distribute-data-globally",
+            "reference_label": "Azure Cosmos DB グローバル分散"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Multi-homing APIを利用することで、アプリケーションは自動的に最も近いリージョンのCosmos DBエンドポイントに接続します。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/distribute-data-globally",
+        "reference_label": "Azure Cosmos DB グローバル分散"
+      }
+    },
+    {
+      "id": "azure-DP-420-q10",
+      "question": "Cosmos DBのRequest Units (RU)の消費に最も大きな影響を与える要因はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ドキュメントのサイズ",
+          "explanation": {
+            "text": "大きなドキュメントほどRU消費が増えます。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/request-units",
+            "reference_label": "Azure Cosmos DB RUモデル"
+          }
+        },
+        {
+          "key": "B",
+          "text": "リージョンの数",
+          "explanation": {
+            "text": "リージョン数はレプリケーションのコストに影響するが、RU消費の直接要因ではありません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/request-units",
+            "reference_label": "Azure Cosmos DB RUモデル"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザー数",
+          "explanation": {
+            "text": "ユーザー数は負荷に関係しますが、RU計算の直接要素ではありません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/request-units",
+            "reference_label": "Azure Cosmos DB RUモデル"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ネットワーク帯域幅",
+          "explanation": {
+            "text": "ネットワーク帯域幅はRU消費の基準ではありません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/request-units",
+            "reference_label": "Azure Cosmos DB RUモデル"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "RU消費は主にドキュメントサイズ、クエリの複雑さ、インデックス利用状況に依存します。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/request-units",
+        "reference_label": "Azure Cosmos DB RUモデル"
+      }
+    },
+    {
+      "id": "azure-DP-420-q11",
+      "question": "Azure Cosmos DBでChange Feed Processorを利用する場合、どのAzureサービスと統合してスケーラブルな処理を行うのが一般的か。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Azure Functions",
+          "explanation": {
+            "text": "Azure FunctionsはサーバーレスでChange Feedを処理する代表的な統合先です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/change-feed-processor",
+            "reference_label": "Azure Cosmos DB Change Feed Processor"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure DevOps",
+          "explanation": {
+            "text": "Azure DevOpsはCI/CD用途であり、Change Feed処理の統合には使用されません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/change-feed-processor",
+            "reference_label": "Azure Cosmos DB Change Feed Processor"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Monitor",
+          "explanation": {
+            "text": "Azure Monitorは監視用途であり、Change Feed処理には利用されません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/change-feed-processor",
+            "reference_label": "Azure Cosmos DB Change Feed Processor"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Key Vault",
+          "explanation": {
+            "text": "Key Vaultはシークレット管理用であり、Change Feed処理とは関係がありません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/change-feed-processor",
+            "reference_label": "Azure Cosmos DB Change Feed Processor"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Change Feed ProcessorはAzure Functionsと組み合わせてリアルタイムにデータ処理するのが一般的です。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/change-feed-processor",
+        "reference_label": "Azure Cosmos DB Change Feed Processor"
+      }
+    },
+    {
+      "id": "azure-DP-420-q12",
+      "question": "Cosmos DBの.NET SDKを利用する場合、推奨される接続モードはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Gatewayモード",
+          "explanation": {
+            "text": "Gatewayモードは利便性があるが、レイテンシが高くなる場合があります。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/sql-sdk-connection-modes",
+            "reference_label": "Azure Cosmos DB 接続モード"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Directモード",
+          "explanation": {
+            "text": "Directモードは最も低レイテンシかつ高スループットを実現する推奨モードです。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/sql-sdk-connection-modes",
+            "reference_label": "Azure Cosmos DB 接続モード"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Hybridモード",
+          "explanation": {
+            "text": "Hybridモードは存在せず、選択肢として正しくありません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/sql-sdk-connection-modes",
+            "reference_label": "Azure Cosmos DB 接続モード"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Randomモード",
+          "explanation": {
+            "text": "Randomモードは存在せず、Cosmos DBの接続設定ではありません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/sql-sdk-connection-modes",
+            "reference_label": "Azure Cosmos DB 接続モード"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "DirectモードはAzure Cosmos DB SDKで推奨される接続方式であり、低レイテンシを実現します。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/sql-sdk-connection-modes",
+        "reference_label": "Azure Cosmos DB 接続モード"
+      }
+    },
+    {
+      "id": "azure-DP-420-q13",
+      "question": "Cosmos DBのTime to Live (TTL) 機能を有効にした場合、ドキュメントはどうなるか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "指定時間経過後、自動的に削除される",
+          "explanation": {
+            "text": "TTLによりドキュメントは指定した時間が経過すると自動的に削除されます。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/time-to-live",
+            "reference_label": "Azure Cosmos DB TTL"
+          }
+        },
+        {
+          "key": "B",
+          "text": "指定時間経過後、自動的にインデックス対象外になる",
+          "explanation": {
+            "text": "TTLはインデックスではなくデータ削除の制御です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/time-to-live",
+            "reference_label": "Azure Cosmos DB TTL"
+          }
+        },
+        {
+          "key": "C",
+          "text": "指定時間経過後、読み取り専用になる",
+          "explanation": {
+            "text": "TTLは読み取り専用化ではなく削除を意味します。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/time-to-live",
+            "reference_label": "Azure Cosmos DB TTL"
+          }
+        },
+        {
+          "key": "D",
+          "text": "指定時間経過後、他リージョンへ移動される",
+          "explanation": {
+            "text": "TTLはリージョン移動ではなくデータ削除を目的とします。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/time-to-live",
+            "reference_label": "Azure Cosmos DB TTL"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "TTLを有効にすると、指定した秒数経過後にCosmos DBによってドキュメントが自動削除されます。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/time-to-live",
+        "reference_label": "Azure Cosmos DB TTL"
+      }
+    },
+    {
+      "id": "azure-DP-420-q14",
+      "question": "Azure Cosmos DBのサーバーレスオプションを利用する主な利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "RUをプロビジョニングせず、使用した分だけ支払う",
+          "explanation": {
+            "text": "サーバーレスはリソースを事前に予約せず、実際に使用したRU分だけ課金されます。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/serverless",
+            "reference_label": "Azure Cosmos DB サーバーレス"
+          }
+        },
+        {
+          "key": "B",
+          "text": "自動的にマルチリージョンが有効化される",
+          "explanation": {
+            "text": "サーバーレスはマルチリージョンを自動で有効化しません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/serverless",
+            "reference_label": "Azure Cosmos DB サーバーレス"
+          }
+        },
+        {
+          "key": "C",
+          "text": "すべてのリクエストが無料になる",
+          "explanation": {
+            "text": "サーバーレスでも使用分の課金は発生します。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/serverless",
+            "reference_label": "Azure Cosmos DB サーバーレス"
+          }
+        },
+        {
+          "key": "D",
+          "text": "RU消費が常にゼロになる",
+          "explanation": {
+            "text": "サーバーレスでもRUの概念は存在し、使用量に基づき課金されます。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/serverless",
+            "reference_label": "Azure Cosmos DB サーバーレス"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "サーバーレスは予測が難しいワークロードに適しており、実際に使用したリソース分のみ課金されます。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/serverless",
+        "reference_label": "Azure Cosmos DB サーバーレス"
+      }
+    },
+    {
+      "id": "azure-DP-420-q15",
+      "question": "Azure Cosmos DBのパーティションキーを変更したい場合の推奨アプローチはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "既存のコンテナでパーティションキーを直接変更する",
+          "explanation": {
+            "text": "既存コンテナのパーティションキーは変更できません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/partitioning-overview",
+            "reference_label": "Azure Cosmos DB パーティション設計"
+          }
+        },
+        {
+          "key": "B",
+          "text": "新しいパーティションキーを設定したコンテナを作成し、データを移行する",
+          "explanation": {
+            "text": "正しいアプローチ。新コンテナを作り、データ移行ツールを使う必要があります。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/partitioning-overview",
+            "reference_label": "Azure Cosmos DB パーティション設計"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Portalでパーティションキーを再設定する",
+          "explanation": {
+            "text": "Portalからパーティションキーを直接再設定することはできません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/partitioning-overview",
+            "reference_label": "Azure Cosmos DB パーティション設計"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Functionsを利用してパーティションキーを再生成する",
+          "explanation": {
+            "text": "Functionsで再生成はできません。データ移行が必要です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/partitioning-overview",
+            "reference_label": "Azure Cosmos DB パーティション設計"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Cosmos DBでは一度設定したパーティションキーを変更できないため、新しいコンテナを作成し、データを移行する必要があります。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/partitioning-overview",
+        "reference_label": "Azure Cosmos DB パーティション設計"
+      }
+    },
+    {
+      "id": "azure-DP-420-q16",
+      "question": "Cosmos DBでクエリ性能を最適化するために推奨される手法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "必要なプロパティのみをSELECT句で指定する",
+          "explanation": {
+            "text": "不要な列を取得しないことでRU消費を削減できます。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/sql-query-getting-started",
+            "reference_label": "Azure Cosmos DB SQL クエリ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "常にORDER BYを使用する",
+          "explanation": {
+            "text": "ORDER BYは追加コストを発生させるため、必要時のみ使用します。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/sql-query-getting-started",
+            "reference_label": "Azure Cosmos DB SQL クエリ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "すべてのクエリでクロスパーティションクエリを有効化する",
+          "explanation": {
+            "text": "クロスパーティションクエリはコスト増になるため、適切なパーティションキー設計で回避すべきです。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/sql-query-getting-started",
+            "reference_label": "Azure Cosmos DB SQL クエリ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "SELECT * を常に使用する",
+          "explanation": {
+            "text": "SELECT * は不要なデータ取得を増やし、RU消費が高くなります。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/sql-query-getting-started",
+            "reference_label": "Azure Cosmos DB SQL クエリ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cosmos DBではクエリ最適化の基本として、必要なフィールドのみを指定してデータを取得することが推奨されます。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/sql-query-getting-started",
+        "reference_label": "Azure Cosmos DB SQL クエリ"
+      }
+    },
+    {
+      "id": "azure-DP-420-q17",
+      "question": "Azure Cosmos DBのスループットをオートスケールで構成する場合の特徴はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "トラフィック量に応じて自動的にRU/sが調整される",
+          "explanation": {
+            "text": "オートスケールは負荷に応じてスループットを自動調整します。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/provision-throughput-autoscale",
+            "reference_label": "Azure Cosmos DB オートスケール"
+          }
+        },
+        {
+          "key": "B",
+          "text": "RU/sは常に一定値に固定される",
+          "explanation": {
+            "text": "これはプロビジョニングスループットの特徴です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/provision-throughput-autoscale",
+            "reference_label": "Azure Cosmos DB オートスケール"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザーはスループットの上限を設定できない",
+          "explanation": {
+            "text": "オートスケールでも最大RU/sを設定できます。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/provision-throughput-autoscale",
+            "reference_label": "Azure Cosmos DB オートスケール"
+          }
+        },
+        {
+          "key": "D",
+          "text": "オートスケールを利用するとマルチリージョンは無効化される",
+          "explanation": {
+            "text": "オートスケールとマルチリージョンは独立した機能です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/provision-throughput-autoscale",
+            "reference_label": "Azure Cosmos DB オートスケール"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "オートスケールでは、設定した最大RU/sの範囲で負荷に応じてスループットが自動調整されます。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/provision-throughput-autoscale",
+        "reference_label": "Azure Cosmos DB オートスケール"
+      }
+    },
+    {
+      "id": "azure-DP-420-q18",
+      "question": "Azure Cosmos DBのMongoDB APIを利用する場合、互換性のあるクエリ言語はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Gremlin",
+          "explanation": {
+            "text": "GremlinはGraph API用です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/mongodb/introduction",
+            "reference_label": "Azure Cosmos DB MongoDB API"
+          }
+        },
+        {
+          "key": "B",
+          "text": "T-SQL",
+          "explanation": {
+            "text": "T-SQLはSQL Server向けであり、MongoDB APIとは互換性がありません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/mongodb/introduction",
+            "reference_label": "Azure Cosmos DB MongoDB API"
+          }
+        },
+        {
+          "key": "C",
+          "text": "MongoDBクエリ言語",
+          "explanation": {
+            "text": "MongoDB APIはMongoDBクエリ言語と互換性があります。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/mongodb/introduction",
+            "reference_label": "Azure Cosmos DB MongoDB API"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CQL (Cassandra Query Language)",
+          "explanation": {
+            "text": "CQLはCassandra API用です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/mongodb/introduction",
+            "reference_label": "Azure Cosmos DB MongoDB API"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "Cosmos DBのMongoDB APIはMongoDBクエリ言語に対応し、既存アプリケーションとの互換性を保ちます。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/mongodb/introduction",
+        "reference_label": "Azure Cosmos DB MongoDB API"
+      }
+    },
+    {
+      "id": "azure-DP-420-q19",
+      "question": "Cosmos DBで複数ドキュメントを同時に更新するトランザクションを実行する場合の制約はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "同じパーティションキーに属する必要がある",
+          "explanation": {
+            "text": "トランザクションはパーティションキー単位で保証されます。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/transactions",
+            "reference_label": "Azure Cosmos DB トランザクション"
+          }
+        },
+        {
+          "key": "B",
+          "text": "すべてのドキュメントが同じサイズである必要がある",
+          "explanation": {
+            "text": "サイズはトランザクションの制約ではありません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/transactions",
+            "reference_label": "Azure Cosmos DB トランザクション"
+          }
+        },
+        {
+          "key": "C",
+          "text": "トランザクションは最大2つの操作までしか含められない",
+          "explanation": {
+            "text": "複数操作が可能であり、2つに限定されません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/transactions",
+            "reference_label": "Azure Cosmos DB トランザクション"
+          }
+        },
+        {
+          "key": "D",
+          "text": "トランザクションはリージョン間で分散できる",
+          "explanation": {
+            "text": "トランザクションはリージョンをまたいで実行されません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/transactions",
+            "reference_label": "Azure Cosmos DB トランザクション"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cosmos DBのトランザクションは同じパーティションキー内でのみ保証されます。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/transactions",
+        "reference_label": "Azure Cosmos DB トランザクション"
+      }
+    },
+    {
+      "id": "azure-DP-420-q20",
+      "question": "Cosmos DBでポイント読み取り（point read）が推奨される理由はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "クエリに比べて低いRUで高速にデータ取得できる",
+          "explanation": {
+            "text": "ポイント読み取りは最も効率的で低RUの操作です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/request-units",
+            "reference_label": "Azure Cosmos DB RUモデル"
+          }
+        },
+        {
+          "key": "B",
+          "text": "すべてのリージョンから即時に整合性が得られる",
+          "explanation": {
+            "text": "整合性はConsistency Levelに依存します。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/request-units",
+            "reference_label": "Azure Cosmos DB RUモデル"
+          }
+        },
+        {
+          "key": "C",
+          "text": "クエリプランを事前に最適化できる",
+          "explanation": {
+            "text": "クエリプランはSQLクエリでの概念であり、ポイント読み取りでは関係ありません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/request-units",
+            "reference_label": "Azure Cosmos DB RUモデル"
+          }
+        },
+        {
+          "key": "D",
+          "text": "インデックスを使用しないためコストがかからない",
+          "explanation": {
+            "text": "ポイント読み取りはインデックス利用ではなく、キーによる直接アクセスです。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/request-units",
+            "reference_label": "Azure Cosmos DB RUモデル"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ポイント読み取りはドキュメントIDとパーティションキーで直接アクセスできるため、最小RUで実行可能です。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/request-units",
+        "reference_label": "Azure Cosmos DB RUモデル"
+      }
+    },
+    {
+      "id": "azure-DP-420-q21",
+      "question": "Azure Cosmos DBの診断ログを活用する主な目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "アプリケーションのバージョン管理",
+          "explanation": {
+            "text": "バージョン管理はログの目的ではありません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/monitor-resource-logs",
+            "reference_label": "Azure Cosmos DB モニタリング"
+          }
+        },
+        {
+          "key": "B",
+          "text": "クエリの実行時間やRU消費を分析する",
+          "explanation": {
+            "text": "診断ログはパフォーマンスやコスト最適化のために利用されます。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/monitor-resource-logs",
+            "reference_label": "Azure Cosmos DB モニタリング"
+          }
+        },
+        {
+          "key": "C",
+          "text": "リージョン間レプリケーションの自動化",
+          "explanation": {
+            "text": "レプリケーションはCosmos DBの機能であり、ログでは管理しません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/monitor-resource-logs",
+            "reference_label": "Azure Cosmos DB モニタリング"
+          }
+        },
+        {
+          "key": "D",
+          "text": "パーティションキーを再設計する",
+          "explanation": {
+            "text": "パーティション設計はログから直接変更できません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/monitor-resource-logs",
+            "reference_label": "Azure Cosmos DB モニタリング"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Cosmos DBの診断ログは、クエリの実行時間やRU消費を分析してアプリケーションを最適化するために使用されます。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/monitor-resource-logs",
+        "reference_label": "Azure Cosmos DB モニタリング"
+      }
+    },
+    {
+      "id": "azure-DP-420-q22",
+      "question": "Cosmos DBのインデックス作成ポリシーで'consistent'モードを選択した場合の動作はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "書き込み操作と同時にインデックスが更新される",
+          "explanation": {
+            "text": "consistentモードでは、書き込み時にインデックスも更新されます。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/index-overview",
+            "reference_label": "Azure Cosmos DB インデックス作成"
+          }
+        },
+        {
+          "key": "B",
+          "text": "インデックスは非同期的に更新される",
+          "explanation": {
+            "text": "非同期更新はlazyモードの動作です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/index-overview",
+            "reference_label": "Azure Cosmos DB インデックス作成"
+          }
+        },
+        {
+          "key": "C",
+          "text": "インデックスは手動で更新が必要になる",
+          "explanation": {
+            "text": "インデックスは手動更新を必要とせず、自動的に更新されます。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/index-overview",
+            "reference_label": "Azure Cosmos DB インデックス作成"
+          }
+        },
+        {
+          "key": "D",
+          "text": "インデックスは無効化される",
+          "explanation": {
+            "text": "consistentモードでは無効化はされません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/index-overview",
+            "reference_label": "Azure Cosmos DB インデックス作成"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "consistentモードでは書き込みと同時にインデックスが更新され、一貫したクエリ結果が保証されます。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/index-overview",
+        "reference_label": "Azure Cosmos DB インデックス作成"
+      }
+    },
+    {
+      "id": "azure-DP-420-q23",
+      "question": "Cosmos DBのCassandra APIを利用する場合に使用できるクエリ言語はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "CQL (Cassandra Query Language)",
+          "explanation": {
+            "text": "Cassandra APIはCQLに対応しています。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/cassandra-introduction",
+            "reference_label": "Azure Cosmos DB Cassandra API"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Gremlin",
+          "explanation": {
+            "text": "GremlinはGraph API専用です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/cassandra-introduction",
+            "reference_label": "Azure Cosmos DB Cassandra API"
+          }
+        },
+        {
+          "key": "C",
+          "text": "MongoDBクエリ言語",
+          "explanation": {
+            "text": "MongoDBクエリ言語はMongoDB API専用です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/cassandra-introduction",
+            "reference_label": "Azure Cosmos DB Cassandra API"
+          }
+        },
+        {
+          "key": "D",
+          "text": "SQL",
+          "explanation": {
+            "text": "SQLはCosmos DBのCore (SQL) API専用です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/cassandra-introduction",
+            "reference_label": "Azure Cosmos DB Cassandra API"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cosmos DBのCassandra APIはCQLをサポートし、既存アプリケーションとの互換性を提供します。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/cassandra-introduction",
+        "reference_label": "Azure Cosmos DB Cassandra API"
+      }
+    },
+    {
+      "id": "azure-DP-420-q24",
+      "question": "Azure Cosmos DBでChange Feedを利用した処理において、過去の変更履歴をすべて再処理したい場合の方法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Change Feedの開始位置を最初に設定する",
+          "explanation": {
+            "text": "Change Feedは最初から読み取るオプションを設定可能です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/change-feed",
+            "reference_label": "Azure Cosmos DB Change Feed"
+          }
+        },
+        {
+          "key": "B",
+          "text": "バックアップから復元する",
+          "explanation": {
+            "text": "バックアップ復元は別機能であり、Change Feedの利用ではありません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/change-feed",
+            "reference_label": "Azure Cosmos DB Change Feed"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Consistency LevelをStrongに設定する",
+          "explanation": {
+            "text": "Consistency Levelは読み取りの一貫性制御であり、履歴再処理とは無関係です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/change-feed",
+            "reference_label": "Azure Cosmos DB Change Feed"
+          }
+        },
+        {
+          "key": "D",
+          "text": "TTLを延長する",
+          "explanation": {
+            "text": "TTLはデータ保持期間に関するもので、Change Feedの履歴処理とは無関係です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/change-feed",
+            "reference_label": "Azure Cosmos DB Change Feed"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Change Feedは開始位置を最初に指定することで、コンテナ内のすべての履歴データを再処理可能です。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/change-feed",
+        "reference_label": "Azure Cosmos DB Change Feed"
+      }
+    },
+    {
+      "id": "azure-DP-420-q25",
+      "question": "Cosmos DBの.NET SDKで推奨される接続プロトコルはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "HTTPS",
+          "explanation": {
+            "text": "HTTPSは汎用的に利用されますが、DirectモードではTCPが推奨されます。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/sql-sdk-connection-modes",
+            "reference_label": "Azure Cosmos DB 接続モード"
+          }
+        },
+        {
+          "key": "B",
+          "text": "TCP",
+          "explanation": {
+            "text": "DirectモードでのTCP接続は低レイテンシかつ高スループットの推奨構成です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/sql-sdk-connection-modes",
+            "reference_label": "Azure Cosmos DB 接続モード"
+          }
+        },
+        {
+          "key": "C",
+          "text": "gRPC",
+          "explanation": {
+            "text": "gRPCはCosmos DB SDKで利用されません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/sql-sdk-connection-modes",
+            "reference_label": "Azure Cosmos DB 接続モード"
+          }
+        },
+        {
+          "key": "D",
+          "text": "WebSocket",
+          "explanation": {
+            "text": "WebSocketはCosmos DBの通信プロトコルとして使用されません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/sql-sdk-connection-modes",
+            "reference_label": "Azure Cosmos DB 接続モード"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Cosmos DBの.NET SDKではDirectモードのTCP接続が推奨され、最も効率的な通信を実現します。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/sql-sdk-connection-modes",
+        "reference_label": "Azure Cosmos DB 接続モード"
+      }
+    },
+    {
+      "id": "azure-DP-420-q26",
+      "question": "Cosmos DBでコンテナをスキーマレスに設計できる利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "異なる構造のドキュメントを同じコンテナに保存できる",
+          "explanation": {
+            "text": "スキーマレス設計により、柔軟に異なる構造のデータを格納できます。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/introduction",
+            "reference_label": "Azure Cosmos DB 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "自動的に正規化が行われる",
+          "explanation": {
+            "text": "正規化はRDBMSの概念であり、Cosmos DBには当てはまりません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/introduction",
+            "reference_label": "Azure Cosmos DB 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "すべてのドキュメントが同じスキーマで保存される",
+          "explanation": {
+            "text": "スキーマレスであるため同じ構造を強制しません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/introduction",
+            "reference_label": "Azure Cosmos DB 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "自動的にインデックスが削除される",
+          "explanation": {
+            "text": "スキーマレス設計とインデックス削除は関係がありません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/introduction",
+            "reference_label": "Azure Cosmos DB 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cosmos DBはスキーマレスなため、異なる構造のデータを1つのコンテナに格納できます。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/introduction",
+        "reference_label": "Azure Cosmos DB 概要"
+      }
+    },
+    {
+      "id": "azure-DP-420-q27",
+      "question": "Cosmos DBの'Custom Indexing Policy'を使用する主な目的はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "不要なフィールドのインデックス作成を回避してRU消費を削減する",
+          "explanation": {
+            "text": "カスタムインデックスにより特定フィールドのみをインデックス対象にできます。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/index-overview",
+            "reference_label": "Azure Cosmos DB インデックス作成"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データの暗号化を制御する",
+          "explanation": {
+            "text": "暗号化はインデックスポリシーでは制御できません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/index-overview",
+            "reference_label": "Azure Cosmos DB インデックス作成"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Consistency Levelを自動的に変更する",
+          "explanation": {
+            "text": "Consistency Levelはインデックスとは無関係です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/index-overview",
+            "reference_label": "Azure Cosmos DB インデックス作成"
+          }
+        },
+        {
+          "key": "D",
+          "text": "リージョン間レプリケーションを制御する",
+          "explanation": {
+            "text": "リージョン間レプリケーションは別の機能です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/index-overview",
+            "reference_label": "Azure Cosmos DB インデックス作成"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Custom Indexing Policyにより、不要なフィールドをインデックスから除外し、RUコストを削減できます。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/index-overview",
+        "reference_label": "Azure Cosmos DB インデックス作成"
+      }
+    },
+    {
+      "id": "azure-DP-420-q28",
+      "question": "Azure Cosmos DBでエミュレーターを利用する主な目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ローカル環境でCosmos DBの開発とテストを行う",
+          "explanation": {
+            "text": "エミュレーターはローカルPCでCosmos DBを模倣し、開発やテストに利用できます。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/local-emulator",
+            "reference_label": "Azure Cosmos DB エミュレーター"
+          }
+        },
+        {
+          "key": "B",
+          "text": "本番環境のスループットを増加させる",
+          "explanation": {
+            "text": "エミュレーターはローカル専用であり、本番スループットには影響しません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/local-emulator",
+            "reference_label": "Azure Cosmos DB エミュレーター"
+          }
+        },
+        {
+          "key": "C",
+          "text": "リージョン間レプリケーションをシミュレーションする",
+          "explanation": {
+            "text": "エミュレーターはレプリケーション機能を提供しません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/local-emulator",
+            "reference_label": "Azure Cosmos DB エミュレーター"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Portalの管理操作を置き換える",
+          "explanation": {
+            "text": "エミュレーターはPortalの代替ではなく、ローカル環境でのテスト用途です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/local-emulator",
+            "reference_label": "Azure Cosmos DB エミュレーター"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cosmos DBエミュレーターはローカルPCで動作し、Azureに接続せずにアプリ開発とテストが可能です。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/local-emulator",
+        "reference_label": "Azure Cosmos DB エミュレーター"
+      }
+    },
+    {
+      "id": "azure-DP-420-q29",
+      "question": "Cosmos DBで'Partition Key'を選定する際に避けるべき設計はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "高いカーディナリティを持つプロパティを選択する",
+          "explanation": {
+            "text": "高カーディナリティのキーはデータ分散を促進するため良い設計です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/partitioning-overview",
+            "reference_label": "Azure Cosmos DB パーティション設計"
+          }
+        },
+        {
+          "key": "B",
+          "text": "すべてのデータで同じ値になるプロパティを選択する",
+          "explanation": {
+            "text": "同じ値だと単一パーティションに集中し、スケーラビリティを損ないます。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/partitioning-overview",
+            "reference_label": "Azure Cosmos DB パーティション設計"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アクセスパターンに基づいてキーを選択する",
+          "explanation": {
+            "text": "アクセスパターンを考慮した設計は適切です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/partitioning-overview",
+            "reference_label": "Azure Cosmos DB パーティション設計"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データ分布を均一化するプロパティを選択する",
+          "explanation": {
+            "text": "均一な分布は推奨される設計です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/partitioning-overview",
+            "reference_label": "Azure Cosmos DB パーティション設計"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "すべてのドキュメントで同じ値を持つプロパティをパーティションキーにするとホットパーティションが発生し、スケーラビリティが失われます。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/partitioning-overview",
+        "reference_label": "Azure Cosmos DB パーティション設計"
+      }
+    },
+    {
+      "id": "azure-DP-420-q30",
+      "question": "Cosmos DBのリソースにアクセスする際に推奨される認証方法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Azure ADによるロールベースのアクセス制御",
+          "explanation": {
+            "text": "Azure AD認証はセキュリティと管理性の観点から推奨されます。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/role-based-access-control",
+            "reference_label": "Azure Cosmos DB RBAC"
+          }
+        },
+        {
+          "key": "B",
+          "text": "マスターキーをすべてのアプリケーションで共有する",
+          "explanation": {
+            "text": "マスターキー共有はセキュリティリスクが高く推奨されません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/role-based-access-control",
+            "reference_label": "Azure Cosmos DB RBAC"
+          }
+        },
+        {
+          "key": "C",
+          "text": "クライアント側でユーザー名とパスワードをハードコードする",
+          "explanation": {
+            "text": "ハードコードはセキュリティリスクが大きいため推奨されません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/role-based-access-control",
+            "reference_label": "Azure Cosmos DB RBAC"
+          }
+        },
+        {
+          "key": "D",
+          "text": "匿名アクセスを許可する",
+          "explanation": {
+            "text": "匿名アクセスはCosmos DBでサポートされていません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/role-based-access-control",
+            "reference_label": "Azure Cosmos DB RBAC"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cosmos DBではAzure ADを利用したロールベースアクセス制御が推奨され、最小権限の原則を実現します。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/role-based-access-control",
+        "reference_label": "Azure Cosmos DB RBAC"
+      }
+    },
+    {
+      "id": "azure-DP-420-q31",
+      "question": "Cosmos DBの診断ログをAzure Monitorに送信することで可能になることはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "クエリのパフォーマンスとRU消費の可視化",
+          "explanation": {
+            "text": "Azure Monitorに送信することでクエリ性能やRU消費を分析できます。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/monitor-resource-logs",
+            "reference_label": "Azure Cosmos DB モニタリング"
+          }
+        },
+        {
+          "key": "B",
+          "text": "パーティションキーの再構成",
+          "explanation": {
+            "text": "パーティションキー設計はログでは変更できません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/monitor-resource-logs",
+            "reference_label": "Azure Cosmos DB モニタリング"
+          }
+        },
+        {
+          "key": "C",
+          "text": "マルチリージョン設定の自動化",
+          "explanation": {
+            "text": "リージョン設定はAzure PortalやCLIで行います。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/monitor-resource-logs",
+            "reference_label": "Azure Cosmos DB モニタリング"
+          }
+        },
+        {
+          "key": "D",
+          "text": "自動的なバックアップ構成",
+          "explanation": {
+            "text": "バックアップはCosmos DBの内部機能であり、ログでは制御しません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/monitor-resource-logs",
+            "reference_label": "Azure Cosmos DB モニタリング"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "診断ログをAzure Monitorに送信すると、RU消費やクエリの実行時間を可視化・分析できます。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/monitor-resource-logs",
+        "reference_label": "Azure Cosmos DB モニタリング"
+      }
+    },
+    {
+      "id": "azure-DP-420-q32",
+      "question": "Cosmos DBで'Consistency Level = Session'を使用する主な利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "クライアントごとに一貫性を維持できる",
+          "explanation": {
+            "text": "Sessionレベルではクライアント単位で一貫性を保証します。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/consistency-levels",
+            "reference_label": "Azure Cosmos DB 一貫性レベル"
+          }
+        },
+        {
+          "key": "B",
+          "text": "すべての読み取りが常に最新の書き込みを返す",
+          "explanation": {
+            "text": "これはStrongの特徴です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/consistency-levels",
+            "reference_label": "Azure Cosmos DB 一貫性レベル"
+          }
+        },
+        {
+          "key": "C",
+          "text": "最も緩い整合性であるため、レイテンシが最小になる",
+          "explanation": {
+            "text": "これはEventualの特徴です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/consistency-levels",
+            "reference_label": "Azure Cosmos DB 一貫性レベル"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Bounded Stalenessと同じ動作をする",
+          "explanation": {
+            "text": "Bounded Stalenessは遅延を制御可能な一貫性であり、Sessionとは異なります。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/consistency-levels",
+            "reference_label": "Azure Cosmos DB 一貫性レベル"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Session整合性は特定クライアントでの読み取りが自身の書き込みを必ず反映するため、ユーザー体験を損なわずに低レイテンシを実現できます。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/consistency-levels",
+        "reference_label": "Azure Cosmos DB 一貫性レベル"
+      }
+    },
+    {
+      "id": "azure-DP-420-q33",
+      "question": "Cosmos DBのChange Feedを利用してETL処理を実行する場合に適したサービスはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Azure Data Factory",
+          "explanation": {
+            "text": "Data FactoryはETL処理に利用でき、Change Feedと組み合わせ可能です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/change-feed",
+            "reference_label": "Azure Cosmos DB Change Feed"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure DevOps",
+          "explanation": {
+            "text": "DevOpsはCI/CD用途であり、ETL処理には適していません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/change-feed",
+            "reference_label": "Azure Cosmos DB Change Feed"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Policy",
+          "explanation": {
+            "text": "Policyはガバナンス用途であり、ETL処理には利用できません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/change-feed",
+            "reference_label": "Azure Cosmos DB Change Feed"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Key Vault",
+          "explanation": {
+            "text": "Key Vaultはシークレット管理であり、ETL処理には無関係です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/change-feed",
+            "reference_label": "Azure Cosmos DB Change Feed"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure Data FactoryとCosmos DB Change Feedを組み合わせることで、ETLパイプラインをリアルタイムに構築できます。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/change-feed",
+        "reference_label": "Azure Cosmos DB Change Feed"
+      }
+    },
+    {
+      "id": "azure-DP-420-q34",
+      "question": "Cosmos DBの'Analytical Store'の主なユースケースはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "トランザクション処理を低レイテンシで実行する",
+          "explanation": {
+            "text": "トランザクション処理は通常のストレージで行います。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/analytical-store-introduction",
+            "reference_label": "Azure Cosmos DB Analytical Store"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Power BIやSynapse Analyticsでの分析を効率化する",
+          "explanation": {
+            "text": "Analytical Storeは分析用途に最適化されています。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/analytical-store-introduction",
+            "reference_label": "Azure Cosmos DB Analytical Store"
+          }
+        },
+        {
+          "key": "C",
+          "text": "マルチリージョンレプリケーションを自動化する",
+          "explanation": {
+            "text": "レプリケーションはCosmos DBの標準機能です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/analytical-store-introduction",
+            "reference_label": "Azure Cosmos DB Analytical Store"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Consistency Levelを変更する",
+          "explanation": {
+            "text": "一貫性レベルは別の設定であり、Analytical Storeとは関係ありません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/analytical-store-introduction",
+            "reference_label": "Azure Cosmos DB Analytical Store"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Analytical StoreはCosmos DB内のデータを即座に分析基盤に連携でき、Power BIやSynapse Analyticsでの利用に適しています。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/analytical-store-introduction",
+        "reference_label": "Azure Cosmos DB Analytical Store"
+      }
+    },
+    {
+      "id": "azure-DP-420-q35",
+      "question": "Cosmos DBのバックアップ機能について正しい説明はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "バックアップは自動で取得され、手動で開始する必要はない",
+          "explanation": {
+            "text": "Cosmos DBは自動バックアップを提供し、ユーザーが開始する必要はありません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/online-backup-and-restore",
+            "reference_label": "Azure Cosmos DB バックアップ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーが必ず手動でバックアップを実行する必要がある",
+          "explanation": {
+            "text": "Cosmos DBは自動バックアップを提供しているため誤りです。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/online-backup-and-restore",
+            "reference_label": "Azure Cosmos DB バックアップ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "バックアップデータはAzure Storageアカウントに保存され、直接アクセスできる",
+          "explanation": {
+            "text": "ユーザーはバックアップデータに直接アクセスできません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/online-backup-and-restore",
+            "reference_label": "Azure Cosmos DB バックアップ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "バックアップは有効化する必要があり、デフォルトでは無効",
+          "explanation": {
+            "text": "Cosmos DBではバックアップは常に有効化されており、無効にはできません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/online-backup-and-restore",
+            "reference_label": "Azure Cosmos DB バックアップ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cosmos DBは自動バックアップを標準で提供し、ユーザーが明示的に実行する必要はありません。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/online-backup-and-restore",
+        "reference_label": "Azure Cosmos DB バックアップ"
+      }
+    },
+    {
+      "id": "azure-DP-420-q36",
+      "question": "Cosmos DBでトリガーを使用する主な目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ドキュメントの挿入や更新時に自動処理を実行する",
+          "explanation": {
+            "text": "トリガーはデータ操作に応じて自動的にコードを実行できます。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/stored-procedures-triggers-udfs",
+            "reference_label": "Azure Cosmos DB ストアドプロシージャ、トリガー、UDF"
+          }
+        },
+        {
+          "key": "B",
+          "text": "バックアップをスケジュール実行する",
+          "explanation": {
+            "text": "バックアップは自動で行われ、トリガーで制御しません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/stored-procedures-triggers-udfs",
+            "reference_label": "Azure Cosmos DB ストアドプロシージャ、トリガー、UDF"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Consistency Levelを切り替える",
+          "explanation": {
+            "text": "一貫性レベルはアカウントやクエリで設定され、トリガーで制御できません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/stored-procedures-triggers-udfs",
+            "reference_label": "Azure Cosmos DB ストアドプロシージャ、トリガー、UDF"
+          }
+        },
+        {
+          "key": "D",
+          "text": "リージョンレプリケーションを制御する",
+          "explanation": {
+            "text": "レプリケーションは基盤機能であり、トリガーでは制御できません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/stored-procedures-triggers-udfs",
+            "reference_label": "Azure Cosmos DB ストアドプロシージャ、トリガー、UDF"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "トリガーはドキュメント操作に連動して自動処理を実行する仕組みです。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/stored-procedures-triggers-udfs",
+        "reference_label": "Azure Cosmos DB ストアドプロシージャ、トリガー、UDF"
+      }
+    },
+    {
+      "id": "azure-DP-420-q37",
+      "question": "Cosmos DBの'User-Defined Function (UDF)'の利用目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "SQLクエリでカスタムロジックを実装する",
+          "explanation": {
+            "text": "UDFはSQLクエリに組み込めるカスタム関数です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/stored-procedures-triggers-udfs",
+            "reference_label": "Azure Cosmos DB ストアドプロシージャ、トリガー、UDF"
+          }
+        },
+        {
+          "key": "B",
+          "text": "バックアップポリシーを定義する",
+          "explanation": {
+            "text": "バックアップはCosmos DBが自動で行い、UDFで制御できません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/stored-procedures-triggers-udfs",
+            "reference_label": "Azure Cosmos DB ストアドプロシージャ、トリガー、UDF"
+          }
+        },
+        {
+          "key": "C",
+          "text": "リージョン間レプリケーションを制御する",
+          "explanation": {
+            "text": "レプリケーションは基盤機能であり、UDFで制御できません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/stored-procedures-triggers-udfs",
+            "reference_label": "Azure Cosmos DB ストアドプロシージャ、トリガー、UDF"
+          }
+        },
+        {
+          "key": "D",
+          "text": "インデックス作成を無効化する",
+          "explanation": {
+            "text": "インデックスはポリシーで制御され、UDFでは設定できません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/stored-procedures-triggers-udfs",
+            "reference_label": "Azure Cosmos DB ストアドプロシージャ、トリガー、UDF"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "UDFはSQLクエリの中で呼び出して独自の処理を組み込めます。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/stored-procedures-triggers-udfs",
+        "reference_label": "Azure Cosmos DB ストアドプロシージャ、トリガー、UDF"
+      }
+    },
+    {
+      "id": "azure-DP-420-q38",
+      "question": "Cosmos DBの'Change Feed Pull Model'の特徴はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "アプリケーションが変更を明示的に取得しにいく",
+          "explanation": {
+            "text": "Pull Modelはアプリがポーリングして変更を取得します。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/change-feed-pull-model",
+            "reference_label": "Azure Cosmos DB Change Feed Pull Model"
+          }
+        },
+        {
+          "key": "B",
+          "text": "変更は常にイベント駆動でプッシュされる",
+          "explanation": {
+            "text": "これはPush Modelの特徴です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/change-feed-pull-model",
+            "reference_label": "Azure Cosmos DB Change Feed Pull Model"
+          }
+        },
+        {
+          "key": "C",
+          "text": "バックアップをトリガーする",
+          "explanation": {
+            "text": "バックアップは別機能であり、Pull Modelでは制御しません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/change-feed-pull-model",
+            "reference_label": "Azure Cosmos DB Change Feed Pull Model"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Consistency Levelを自動で変更する",
+          "explanation": {
+            "text": "一貫性レベルは別の設定であり、Pull Modelの特徴ではありません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/change-feed-pull-model",
+            "reference_label": "Azure Cosmos DB Change Feed Pull Model"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Pull Modelはアプリケーションが自ら変更を取得しに行く方式で、柔軟な制御が可能です。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/change-feed-pull-model",
+        "reference_label": "Azure Cosmos DB Change Feed Pull Model"
+      }
+    },
+    {
+      "id": "azure-DP-420-q39",
+      "question": "Cosmos DBで'Partition Key'を選ぶ際に考慮すべきアクセスパターンはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "読み取りと書き込みが均等に分散されるようなキーを選ぶ",
+          "explanation": {
+            "text": "均等分散によりスループットの効率性が最大化されます。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/partitioning-overview",
+            "reference_label": "Azure Cosmos DB パーティション設計"
+          }
+        },
+        {
+          "key": "B",
+          "text": "すべてのリクエストが単一パーティションに集中するキーを選ぶ",
+          "explanation": {
+            "text": "単一パーティション集中はホットパーティションを招くため避けるべきです。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/partitioning-overview",
+            "reference_label": "Azure Cosmos DB パーティション設計"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アクセスパターンは考慮せずランダムに選ぶ",
+          "explanation": {
+            "text": "アクセスパターンを無視するとスケーラビリティに問題が出ます。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/partitioning-overview",
+            "reference_label": "Azure Cosmos DB パーティション設計"
+          }
+        },
+        {
+          "key": "D",
+          "text": "パーティションキーは常にNULLにする",
+          "explanation": {
+            "text": "NULLは許可されず、設計上無効です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/partitioning-overview",
+            "reference_label": "Azure Cosmos DB パーティション設計"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "パーティションキーはアクセスパターンに基づき、読み取り・書き込みが均等に分散するものを選ぶ必要があります。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/partitioning-overview",
+        "reference_label": "Azure Cosmos DB パーティション設計"
+      }
+    },
+    {
+      "id": "azure-DP-420-q40",
+      "question": "Cosmos DBでサーバーレスオプションを選ぶと適しているユースケースはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "予測不可能で間欠的なトラフィックのアプリケーション",
+          "explanation": {
+            "text": "サーバーレスは利用量に応じて課金され、間欠的なトラフィックに適しています。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/serverless",
+            "reference_label": "Azure Cosmos DB サーバーレス"
+          }
+        },
+        {
+          "key": "B",
+          "text": "常に高いスループットが必要なアプリケーション",
+          "explanation": {
+            "text": "高いスループットにはプロビジョニングスループットが適しています。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/serverless",
+            "reference_label": "Azure Cosmos DB サーバーレス"
+          }
+        },
+        {
+          "key": "C",
+          "text": "マルチリージョン書き込みが必須のアプリケーション",
+          "explanation": {
+            "text": "サーバーレスではマルチリージョン書き込みはサポートされません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/serverless",
+            "reference_label": "Azure Cosmos DB サーバーレス"
+          }
+        },
+        {
+          "key": "D",
+          "text": "RUを事前に予約する必要があるアプリケーション",
+          "explanation": {
+            "text": "事前予約はプロビジョニングスループットの特徴です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/serverless",
+            "reference_label": "Azure Cosmos DB サーバーレス"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "サーバーレスは間欠的なアクセスに向いており、使用した分だけ課金されます。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/serverless",
+        "reference_label": "Azure Cosmos DB サーバーレス"
+      }
+    },
+    {
+      "id": "azure-DP-420-q41",
+      "question": "Cosmos DBでマルチリージョン書き込みを有効にした場合に考慮すべき課題はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "コンフリクト解決の必要性",
+          "explanation": {
+            "text": "マルチリージョン書き込みでは同時更新が発生するため、解決ポリシーが必要です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/how-to-multi-master",
+            "reference_label": "Azure Cosmos DB マルチマスター"
+          }
+        },
+        {
+          "key": "B",
+          "text": "バックアップが無効になる",
+          "explanation": {
+            "text": "バックアップは無効化されません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/how-to-multi-master",
+            "reference_label": "Azure Cosmos DB マルチマスター"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Consistency Levelが自動的にStrongになる",
+          "explanation": {
+            "text": "一貫性レベルは別途設定が必要です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/how-to-multi-master",
+            "reference_label": "Azure Cosmos DB マルチマスター"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Change Feedが利用できなくなる",
+          "explanation": {
+            "text": "Change Feedはマルチリージョンでも利用可能です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/how-to-multi-master",
+            "reference_label": "Azure Cosmos DB マルチマスター"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "マルチリージョン書き込みでは同一データが同時に異なる場所で更新される可能性があるため、コンフリクト解決ポリシーが必要です。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/how-to-multi-master",
+        "reference_label": "Azure Cosmos DB マルチマスター"
+      }
+    },
+    {
+      "id": "azure-DP-420-q42",
+      "question": "Cosmos DBの'Point-in-time restore (PITR)'機能の特徴はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "指定した過去の時点にデータベースを復元できる",
+          "explanation": {
+            "text": "PITRは過去の任意の時点にデータを復元可能です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/point-in-time-restore",
+            "reference_label": "Azure Cosmos DB Point-in-time restore"
+          }
+        },
+        {
+          "key": "B",
+          "text": "常に最新データのみを復元できる",
+          "explanation": {
+            "text": "最新のみの復元は通常の復元であり、PITRの特徴ではありません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/point-in-time-restore",
+            "reference_label": "Azure Cosmos DB Point-in-time restore"
+          }
+        },
+        {
+          "key": "C",
+          "text": "マルチリージョン環境では利用できない",
+          "explanation": {
+            "text": "PITRはマルチリージョン環境でも利用可能です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/point-in-time-restore",
+            "reference_label": "Azure Cosmos DB Point-in-time restore"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザーが手動でバックアップを作成する必要がある",
+          "explanation": {
+            "text": "PITRは自動バックアップを基に動作し、手動バックアップは不要です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/point-in-time-restore",
+            "reference_label": "Azure Cosmos DB Point-in-time restore"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Point-in-time restoreは指定した時点までデータを復元できるため、誤操作やデータ破損からの復旧に役立ちます。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/point-in-time-restore",
+        "reference_label": "Azure Cosmos DB Point-in-time restore"
+      }
+    },
+    {
+      "id": "azure-DP-420-q43",
+      "question": "Cosmos DBの'Bulk Executor Library'を利用する主な目的はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "大量データの挿入や更新を効率的に行う",
+          "explanation": {
+            "text": "Bulk Executorは高スループットで大量データ処理を最適化します。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/bulk-executor-overview",
+            "reference_label": "Azure Cosmos DB Bulk Executor"
+          }
+        },
+        {
+          "key": "B",
+          "text": "バックアップを手動で実行する",
+          "explanation": {
+            "text": "バックアップは自動であり、Bulk Executorでは制御できません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/bulk-executor-overview",
+            "reference_label": "Azure Cosmos DB Bulk Executor"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Consistency Levelを変更する",
+          "explanation": {
+            "text": "一貫性レベルは別の設定であり、Bulk Executorの役割ではありません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/bulk-executor-overview",
+            "reference_label": "Azure Cosmos DB Bulk Executor"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Change Feedを監視する",
+          "explanation": {
+            "text": "Change Feedの監視はBulk Executorの用途ではありません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/bulk-executor-overview",
+            "reference_label": "Azure Cosmos DB Bulk Executor"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Bulk Executor Libraryは、大量データを効率的にCosmos DBに挿入・更新するためのツールです。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/bulk-executor-overview",
+        "reference_label": "Azure Cosmos DB Bulk Executor"
+      }
+    },
+    {
+      "id": "azure-DP-420-q44",
+      "question": "Cosmos DBの'Hierarchical Partition Keys'の利点はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "複数のプロパティを組み合わせてパーティショニングできる",
+          "explanation": {
+            "text": "Hierarchical Partition Keysにより複数プロパティを組み合わせられます。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/hierarchical-partition-keys",
+            "reference_label": "Azure Cosmos DB Hierarchical Partition Keys"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Consistency Levelを自動調整できる",
+          "explanation": {
+            "text": "一貫性レベルとは関係がありません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/hierarchical-partition-keys",
+            "reference_label": "Azure Cosmos DB Hierarchical Partition Keys"
+          }
+        },
+        {
+          "key": "C",
+          "text": "リージョン間レプリケーションを制御できる",
+          "explanation": {
+            "text": "レプリケーション制御は別機能です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/hierarchical-partition-keys",
+            "reference_label": "Azure Cosmos DB Hierarchical Partition Keys"
+          }
+        },
+        {
+          "key": "D",
+          "text": "バックアップを効率化できる",
+          "explanation": {
+            "text": "バックアップには関与しません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/hierarchical-partition-keys",
+            "reference_label": "Azure Cosmos DB Hierarchical Partition Keys"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Hierarchical Partition Keysは複数のプロパティを組み合わせることでパーティション分布を改善できます。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/hierarchical-partition-keys",
+        "reference_label": "Azure Cosmos DB Hierarchical Partition Keys"
+      }
+    },
+    {
+      "id": "azure-DP-420-q45",
+      "question": "Cosmos DBのインデックス作成において'Spatial Index'を利用する主な目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "地理空間データのクエリを効率化する",
+          "explanation": {
+            "text": "Spatial Indexは地理空間データの効率的なクエリに使用されます。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/spatial-indexes",
+            "reference_label": "Azure Cosmos DB Spatial Index"
+          }
+        },
+        {
+          "key": "B",
+          "text": "テキスト検索を最適化する",
+          "explanation": {
+            "text": "テキスト検索には別途Azure Cognitive Searchなどを利用します。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/spatial-indexes",
+            "reference_label": "Azure Cosmos DB Spatial Index"
+          }
+        },
+        {
+          "key": "C",
+          "text": "インデックスサイズを削減する",
+          "explanation": {
+            "text": "インデックスサイズ削減は目的ではありません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/spatial-indexes",
+            "reference_label": "Azure Cosmos DB Spatial Index"
+          }
+        },
+        {
+          "key": "D",
+          "text": "バックアップを効率化する",
+          "explanation": {
+            "text": "バックアップ機能には影響しません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/spatial-indexes",
+            "reference_label": "Azure Cosmos DB Spatial Index"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Spatial Indexは位置情報を扱うアプリで利用され、地理的な検索を高速化します。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/spatial-indexes",
+        "reference_label": "Azure Cosmos DB Spatial Index"
+      }
+    },
+    {
+      "id": "azure-DP-420-q46",
+      "question": "Cosmos DBの'Client-Side Request Diagnostics'を利用する主な利点はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "クライアントアプリケーション側でクエリの遅延や再試行を分析できる",
+          "explanation": {
+            "text": "Client-Side Diagnosticsはクライアントアプリでの詳細な遅延分析を可能にします。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/troubleshoot-dotnet-sdk",
+            "reference_label": "Azure Cosmos DB .NET SDK 診断"
+          }
+        },
+        {
+          "key": "B",
+          "text": "サーバー側のインデックス構成を変更できる",
+          "explanation": {
+            "text": "インデックス構成はサーバー側で設定し、診断では変更できません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/troubleshoot-dotnet-sdk",
+            "reference_label": "Azure Cosmos DB .NET SDK 診断"
+          }
+        },
+        {
+          "key": "C",
+          "text": "自動的にRU消費を削減できる",
+          "explanation": {
+            "text": "RU消費削減は診断の目的ではなく、分析によって最適化を行うものです。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/troubleshoot-dotnet-sdk",
+            "reference_label": "Azure Cosmos DB .NET SDK 診断"
+          }
+        },
+        {
+          "key": "D",
+          "text": "リージョン間レプリケーションを制御できる",
+          "explanation": {
+            "text": "レプリケーション制御は診断では行えません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/troubleshoot-dotnet-sdk",
+            "reference_label": "Azure Cosmos DB .NET SDK 診断"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Client-Side Request Diagnosticsはクエリ遅延や再試行回数を可視化し、アプリケーションのパフォーマンスチューニングに役立ちます。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/troubleshoot-dotnet-sdk",
+        "reference_label": "Azure Cosmos DB .NET SDK 診断"
+      }
+    },
+    {
+      "id": "azure-DP-420-q47",
+      "question": "Cosmos DBで'Conflicts'が発生した場合の解決方法として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "カスタムのConflict Resolutionポリシーを設定する",
+          "explanation": {
+            "text": "コンフリクトはポリシーやアプリケーションロジックで解決できます。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/conflict-resolution-policies",
+            "reference_label": "Azure Cosmos DB Conflict Resolution"
+          }
+        },
+        {
+          "key": "B",
+          "text": "バックアップから復元する",
+          "explanation": {
+            "text": "復元は解決策ではなく、データ保全の手段です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/conflict-resolution-policies",
+            "reference_label": "Azure Cosmos DB Conflict Resolution"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Consistency LevelをStrongに設定すれば発生しない",
+          "explanation": {
+            "text": "Strong整合性でも同時書き込みでコンフリクトは発生し得ます。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/conflict-resolution-policies",
+            "reference_label": "Azure Cosmos DB Conflict Resolution"
+          }
+        },
+        {
+          "key": "D",
+          "text": "すべてのコンフリクトは自動で削除される",
+          "explanation": {
+            "text": "自動削除は行われず、解決ポリシーが必要です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/conflict-resolution-policies",
+            "reference_label": "Azure Cosmos DB Conflict Resolution"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cosmos DBではLast-Writer-Winsやカスタムロジックを利用してコンフリクトを解決できます。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/conflict-resolution-policies",
+        "reference_label": "Azure Cosmos DB Conflict Resolution"
+      }
+    },
+    {
+      "id": "azure-DP-420-q48",
+      "question": "Cosmos DBで'Continuous Backup'を利用する場合の特徴はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "最大30日間の任意の時点に復元できる",
+          "explanation": {
+            "text": "Continuous Backupは最大30日間のポイントインタイムリストアをサポートします。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/continuous-backup-restore-introduction",
+            "reference_label": "Azure Cosmos DB Continuous Backup"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーが手動でバックアップを作成する必要がある",
+          "explanation": {
+            "text": "バックアップは自動で取得されます。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/continuous-backup-restore-introduction",
+            "reference_label": "Azure Cosmos DB Continuous Backup"
+          }
+        },
+        {
+          "key": "C",
+          "text": "バックアップは無期限に保持される",
+          "explanation": {
+            "text": "無期限保持ではなく、保持期間は最大30日です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/continuous-backup-restore-introduction",
+            "reference_label": "Azure Cosmos DB Continuous Backup"
+          }
+        },
+        {
+          "key": "D",
+          "text": "リージョンをまたいだ復元はできない",
+          "explanation": {
+            "text": "Continuous Backupはリージョンをまたいだ復元も可能です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/continuous-backup-restore-introduction",
+            "reference_label": "Azure Cosmos DB Continuous Backup"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Continuous Backupを有効にすると、30日間のポイントインタイムリストアが可能です。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/continuous-backup-restore-introduction",
+        "reference_label": "Azure Cosmos DB Continuous Backup"
+      }
+    },
+    {
+      "id": "azure-DP-420-q49",
+      "question": "Cosmos DBで'Analytical TTL'を設定する主な目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "分析ストア内のデータを一定期間後に自動削除する",
+          "explanation": {
+            "text": "Analytical TTLは分析ストアのデータ保持期間を制御します。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/analytical-store-introduction",
+            "reference_label": "Azure Cosmos DB Analytical Store"
+          }
+        },
+        {
+          "key": "B",
+          "text": "トランザクションデータを自動削除する",
+          "explanation": {
+            "text": "トランザクションデータ削除には通常のTTLを利用します。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/analytical-store-introduction",
+            "reference_label": "Azure Cosmos DB Analytical Store"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Consistency Levelを変更する",
+          "explanation": {
+            "text": "一貫性制御はTTLとは無関係です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/analytical-store-introduction",
+            "reference_label": "Azure Cosmos DB Analytical Store"
+          }
+        },
+        {
+          "key": "D",
+          "text": "リージョン間レプリケーションを制御する",
+          "explanation": {
+            "text": "レプリケーションはTTL設定とは関係がありません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/analytical-store-introduction",
+            "reference_label": "Azure Cosmos DB Analytical Store"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Analytical TTLを設定すると、分析ストアのデータを一定期間保持した後に自動的に削除できます。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/analytical-store-introduction",
+        "reference_label": "Azure Cosmos DB Analytical Store"
+      }
+    },
+    {
+      "id": "azure-DP-420-q50",
+      "question": "Cosmos DBの'Role-Based Access Control (RBAC)'を利用する主な利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "最小権限の原則に基づきアクセス権限を付与できる",
+          "explanation": {
+            "text": "RBACを使うことでユーザーやアプリに必要最小限の権限を与えることができます。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/role-based-access-control",
+            "reference_label": "Azure Cosmos DB ロールベースアクセス制御"
+          }
+        },
+        {
+          "key": "B",
+          "text": "バックアップをユーザー単位で制御できる",
+          "explanation": {
+            "text": "バックアップはCosmos DBが自動で管理し、RBACでは制御できません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/role-based-access-control",
+            "reference_label": "Azure Cosmos DB ロールベースアクセス制御"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Consistency Levelをユーザーごとに設定できる",
+          "explanation": {
+            "text": "一貫性レベルはアカウントまたはリクエスト単位で設定され、RBACとは無関係です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/role-based-access-control",
+            "reference_label": "Azure Cosmos DB ロールベースアクセス制御"
+          }
+        },
+        {
+          "key": "D",
+          "text": "インデックス作成ポリシーをユーザーごとに管理できる",
+          "explanation": {
+            "text": "インデックス作成ポリシーはコンテナ単位で設定され、RBACでは管理しません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/role-based-access-control",
+            "reference_label": "Azure Cosmos DB ロールベースアクセス制御"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "RBACを利用することでAzure ADと統合され、最小権限の原則に基づいたきめ細かいアクセス制御が可能になります。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/role-based-access-control",
+        "reference_label": "Azure Cosmos DB ロールベースアクセス制御"
+      }
+    }
+  ]
+}

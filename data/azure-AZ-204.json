@@ -1,0 +1,2467 @@
+{
+  "exam": {
+    "id": "azure_developer_associate",
+    "title": "Azure Developer Associate",
+    "description": "Azure Developer Associate試験は、クラウド環境でのアプリケーション設計・構築・テスト・保守に関するスキルを認定するための試験です。候補者は、Azure SDK、Azure CLI／PowerShell、ストレージ、API、認証・認可、コンテナ・コンピュート、モニタリング・トラブルシューティングといった開発者向けのクラウド機能を活用できることが求められます。ソフトウェア開発者・クラウドエンジニアとして、要件定義から設計・実装・運用・チューニングまで一貫して対応できる能力を証明するものです。",
+    "version": "2025年7月",
+    "price": "165 USD",
+    "difficulty": "普通",
+    "official-site": "https://learn.microsoft.com/en-us/credentials/certifications/azure-developer/",
+    "category": {
+      "id": "azure",
+      "name": "Azure"
+    }
+  },
+  "questions": [
+    {
+      "id": "azure-AZ-204-q1",
+      "question": "Azure Functions を使って HTTP トリガーと Blob ストレージへの出力バインディングを組み合わせた関数を作成する必要がある。関数アプリの構成で正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "functions.json に \"blob\" 出力バインディングを定義し、環境変数で接続文字列 (connection string) を指定する",
+          "explanation": {
+            "text": "Function のバインディング定義は functions.json（または関数の属性／注釈）で行い、Blob 出力バインディングに対してはストレージアカウントへの接続文字列を指定する必要がある。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-storage-blob-output",
+            "reference_label": "Azure Functions の Blob 出力バインディング"
+          }
+        },
+        {
+          "key": "B",
+          "text": "関数コード内で直接 Azure CLI を呼び出して Blob に書き込むことを HTTP バインドの代わりに使う",
+          "explanation": {
+            "text": "この方法は可能だが、バインディングを使う方が構成が簡潔で関数のモデルに沿っており、HTTP + 出力バインディングの組み合わせの意図を逸脱する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-best-practices",
+            "reference_label": "Azure Functions のベスト プラクティス"
+          }
+        },
+        {
+          "key": "C",
+          "text": "出力バインディングの種類に \"storageBlobTrigger\" を使う",
+          "explanation": {
+            "text": "\"storageBlobTrigger\" は入力トリガーとして使われ、出力バインディングではないため誤り。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-storage-blob#blob-trigger",
+            "reference_label": "Blob トリガー（入力）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Functions Premium プランでのみ出力バインディングが使える",
+          "explanation": {
+            "text": "出力バインディングは複数のプラン（Consumption, Premium, Dedicated など）でサポートされており、Premium プラン限定ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-scale",
+            "reference_label": "Azure Functions のスケーリングとプラン"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "正しい構成は A。functions.json（または対応フレームワークの設定）で Blob 出力バインディングを定義し、接続文字列などの設定を環境変数などで指定する。",
+        "reference": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-storage-blob-output",
+        "reference_label": "Azure Functions の Blob 出力バインディング"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q2",
+      "question": "Azure Cosmos DB を使ったアプリケーションで、一貫性 (consistency) レベルを選択すべき場面として最も適切なのはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "非常に低レイテンシで書き込み結果を即座に読み込みたいグローバル分散型アプリ（応答性が極めて重要）",
+          "explanation": {
+            "text": "このような要件では Strong 一貫性が最適。ただしグローバル分散時のレイテンシとコストを考慮する必要がある。",
+            "reference": "https://learn.microsoft.com/en-us/azure/cosmos-db/consistency-levels",
+            "reference_label": "Azure Cosmos DB の一貫性レベル"
+          }
+        },
+        {
+          "key": "B",
+          "text": "書き込みの最新状態を多少遅れてもよく、読み取りパフォーマンスを最大化したいアプリ",
+          "explanation": {
+            "text": "このようなシナリオでは Eventual 一貫性などを選ぶことができる。レプリケーション遅延を許容する代わりに読み込みスループットや可用性を改善できる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/cosmos-db/consistency-levels",
+            "reference_label": "Azure Cosmos DB の一貫性レベル"
+          }
+        },
+        {
+          "key": "C",
+          "text": "トランザクションを正確に保ちつつ、書き込みの副作用が他のリージョンに即座に反映される必要があるアプリ",
+          "explanation": {
+            "text": "このような場合は Strong consistency を選ぶべきだが、それがグローバルに即座に反映されるという要件があるなら、Azure Cosmos DB の設計とリージョン間通信の影響を慎重に見る必要がある。",
+            "reference": "https://learn.microsoft.com/en-us/azure/cosmos-db/consistency-levels",
+            "reference_label": "Azure Cosmos DB の一貫性レベル"
+          }
+        },
+        {
+          "key": "D",
+          "text": "グローバル分散アプリで、書き込みがすべての読み取りで一貫性を持つことは必須ではなく、可用性を優先する",
+          "explanation": {
+            "text": "このシナリオでは Session, Bounded Staleness, Eventual 等の一貫性を選ぶ可能性がある。Strong は可用性やレイテンシでトレードオフがある。",
+            "reference": "https://learn.microsoft.com/en-us/azure/cosmos-db/consistency-levels",
+            "reference_label": "Azure Cosmos DB の一貫性レベル"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "最も厳しい一貫性 (Strong) を選ぶのは、書き込み後の即時読み取りが必要で応答性が重要なグローバル分散型アプリの場合。ただしこれにはレイテンシとコストのトレードオフがある。",
+        "reference": "https://learn.microsoft.com/en-us/azure/cosmos-db/consistency-levels",
+        "reference_label": "Azure Cosmos DB の一貫性レベル"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q3",
+      "question": "Azure App Service の Web App をデプロイする際、自動スケーリング (autoscale) を構成したい。どのメトリックを使ってスケールアウトをトリガーするのが最も適切か。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "平均 CPU 使用率が 80% を超えたとき",
+          "explanation": {
+            "text": "CPU 使用率は一般的なスケーリング メトリックで、負荷増加を検出するために使われることが多い。",
+            "reference": "https://learn.microsoft.com/en-us/azure/app-service/manage-scale-settings",
+            "reference_label": "App Service のスケール設定"
+          }
+        },
+        {
+          "key": "B",
+          "text": "HTTP リクエストの待ち行列の長さ",
+          "explanation": {
+            "text": "このメトリックも有用だが、App Service の標準のオートスケーリング設定として使えるかは構成による。CPU 使用率ほど標準的でないことがある。",
+            "reference": "https://learn.microsoft.com/en-us/azure/app-service/manage-scale-settings",
+            "reference_label": "App Service のスケール設定"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Disk I/O が連続的に高い",
+          "explanation": {
+            "text": "ディスク I/O はケースによるが、App Service では CPU やメモリ使用率、HTTP キュー長やスケーラブルな指標（スループットなど）がより一般的。Disk I/O をトリガーに使えるかどうかは制限されることがある。",
+            "reference": "https://learn.microsoft.com/en-us/azure/app-service/monitor-instances-and-diagnostics",
+            "reference_label": "App Service の診断とモニタリング"
+          }
+        },
+        {
+          "key": "D",
+          "text": "メモリ使用率が低下したとき",
+          "explanation": {
+            "text": "通常スケールアウト（インスタンスを増やす）は負荷が増大したときなので、メモリ使用率の低下は逆のトリガーになることが多く、スケールインに使われる指標に近い。",
+            "reference": "https://learn.microsoft.com/en-us/azure/app-service/manage-scale-settings",
+            "reference_label": "App Service のスケール設定"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "CPU 使用率が高いことは処理能力が足りないことを示す標準的な指標なので、それを使ってスケールアウトをトリガーするのは一般的で効果的。",
+        "reference": "https://learn.microsoft.com/en-us/azure/app-service/manage-scale-settings",
+        "reference_label": "App Service のスケール設定"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q4",
+      "question": "Azure Key Vault を使ってアプリケーションのシークレットを保護する設計で、マネージド ID (Managed Identity) を利用する利点として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "キーやシークレットをコード内にハードコーディングしなくてよくなる",
+          "explanation": {
+            "text": "Managed Identity を使えば、コード内に接続文字列やシークレットを直接書かずに Azure リソース（Key Vault等）への認証が可能になる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview",
+            "reference_label": "Managed Identities の概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Managed Identity を使うと Key Vault 内のシークレットの自動ローテーションが完全に不要になる",
+          "explanation": {
+            "text": "Managed Identity は認証手段を提供するが、Key Vault のシークレット自体のローテーションは別途管理すべきで、自動化の仕組みを使うか手動で行う必要がある。",
+            "reference": "https://learn.microsoft.com/en-us/azure/key-vault/general/secure-your-key-vault",
+            "reference_label": "Key Vault のセキュリティベストプラクティス"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Managed Identity を使うと Azure Resource Manager テンプレート (ARM テンプレート) 内でのみ Key Vault のアクセス ポリシーを設定できるようになる",
+          "explanation": {
+            "text": "ARM テンプレートでアクセスポリシーを設定できますが、Managed Identity の利点はコード不要認証であり、それに限定されるわけではないし、テンプレート外からもアクセス可能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/key-vault/general/secure-your-key-vault",
+            "reference_label": "Key Vault のアクセス ポリシー"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Managed Identity を用いると Azure AD の認証情報 (credentials) を明示的に管理する必要がなくなる",
+          "explanation": {
+            "text": "Managed Identity を使えば、認証情報（シークレットや証明書）をアプリや VM の外部で明示的に持たせる必要がなくなる点が大きな利点である。",
+            "reference": "https://learn.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview",
+            "reference_label": "Managed Identities の概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Managed Identity の主な利点はコード内に認証情報をハードコーディングしないで済むこと。また、アプリや VM が Azure AD によるアイデンティティを持てることで Key Vault 等へのアクセスが安全にできる。",
+        "reference": "https://learn.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview",
+        "reference_label": "Managed Identities の概要"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q5",
+      "question": "Azure API Management (APIM) を使って API を公開し、呼び出しに対するアクセス制御を行いたい。OAuth 2.0 を使用するシナリオで API Management に必要な要素として正しいものはどれか (複数選択) 。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "API Management で OAuth 2.0 の認可サーバー (authorization server) を設定する",
+          "explanation": {
+            "text": "APIM は外部または内部の OAuth2 認可サーバーを設定し、アクセストークンを検証できる機能を持つ。",
+            "reference": "https://learn.microsoft.com/en-us/azure/api-management/api-management-howto-protect-backend-with-aad",
+            "reference_label": "API Management での AAD を使った保護"
+          }
+        },
+        {
+          "key": "B",
+          "text": "API Management のポリシー (policy) を使って JWT トークンの発行を行う",
+          "explanation": {
+            "text": "APIM のポリシーで JWT の検証はできるが、一般に JWT の発行 (issuer) は認可サーバー側の責任であり、APIM は発行元ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/api-management/api-management-howto-protect-backend-with-aad",
+            "reference_label": "API Management 保護の方法"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Back-end API に対してアクセストークンが有効かを APIM ポリシーで検証する",
+          "explanation": {
+            "text": "これは正しい。APIM のポリシーにより、JWT トークンの検証や発行者 (issuer)、クライアント ID、スコープなどを確認できる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/api-management/api-management-howto-protect-backend-with-aad",
+            "reference_label": "API Management 保護の方法"
+          }
+        },
+        {
+          "key": "D",
+          "text": "API の呼び出しを Azure Function に転送する際、関数アプリに対するアクセスを匿名に設定すること",
+          "explanation": {
+            "text": "アクセス制御を目的とするなら、バックエンドの関数アプリも認証を強制しなければならない。匿名アクセスはセキュリティ要件を満たさない場合がある。",
+            "reference": "https://learn.microsoft.com/en-us/azure/api-management/api-management-howto-protect-backend-with-aad",
+            "reference_label": "API Management 保護の方法"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "OAuth 2.0 を使ったアクセス制御では、APIM に認可サーバーの設定が必要 (発行されたアクセストークンの発行元) と、APIM ポリシーでそのトークンの検証を行うことが重要。発行自体は認可サーバーで、APIM が発行者ではない。",
+        "reference": "https://learn.microsoft.com/en-us/azure/api-management/api-management-howto-protect-backend-with-aad",
+        "reference_label": "API Management の AAD 保護"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q6",
+      "question": "Azure Event Grid と Azure Event Hubs の違いとして正しい説明はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Event Grid はイベントの配信に焦点を当て、Event Hubs は大規模なテレメトリ／ログのストリーミングにより適している",
+          "explanation": {
+            "text": "Event Grid はイベント駆動アプリケーションでイベント通知を配信するためのサービス。一方 Event Hubs は大量のデータを高速に取り込むストリーミング用に設計されている。",
+            "reference": "https://learn.microsoft.com/en-us/azure/event-grid/overview",
+            "reference_label": "Azure Event Grid の概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Event Hubs はイベントのサブスクリプションごとに配信を保証するが、Event Grid は保証しない",
+          "explanation": {
+            "text": "配信保証のモデルが異なる。Event Grid は “at least once” モデル。Event Hubs はストリーミングの取り込み中心で複数のコンシューマーグループをサポートするが、サブスクリプションごとに配信 “保証” をするものではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/event-hubs/event-hubs-overview",
+            "reference_label": "Azure Event Hubs の概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Event Grid は大容量のテレメトリ データの蓄積と再生 (replay) に優れている",
+          "explanation": {
+            "text": "蓄積や再生は Event Hubs や Azure Storage, Azure Data Explorer 等の他サービスが得意で、Event Grid はイベント通知を即時配信する用途が主であり、再生や蓄積には向かない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/event-grid/overview",
+            "reference_label": "Azure Event Grid の特徴"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Event Hubs を使えば各イベントを複数のサブスクリプションに配信できる",
+          "explanation": {
+            "text": "Event Hubs は複数のコンシューマーグループをサポートし、同じイベントストリームを複数の消費者が読むことはできるが、Event Grid のサブスクリプションモデルとは異なる用途・特性がある。",
+            "reference": "https://learn.microsoft.com/en-us/azure/event-hubs/event-hubs-overview",
+            "reference_label": "Azure Event Hubs の概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Event Grid はイベント通知型（軽量・即時の配信が目的）、Event Hubs は大量データの取り込み・ストリーミング処理が目的であり、用途が異なる。",
+        "reference": "https://learn.microsoft.com/en-us/azure/event-grid/overview",
+        "reference_label": "Azure Event Grid の概要"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q7",
+      "question": "Application Insights を使って Azure App Service のレスポンス時間の遅延を監視したい。どの設定または構成が最も役立つか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "リクエスト テレメトリを有効にし、タイム テイクン (time taken) メトリクスを収集する",
+          "explanation": {
+            "text": "Application Insights のリクエスト テレメトリは各リクエストの処理時間を計測するので、レスポンス時間遅延の検知に役立つ。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-monitor/app/request-telemetry",
+            "reference_label": "Application Insights のリクエストテレメトリ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "依存関係 (dependency) テレメトリを無効にし、ログ レベルを Debug に設定する",
+          "explanation": {
+            "text": "依存関係テレメトリは外部サービス呼び出しなどの遅延分析に役立つが、遅延そのものを検出するにはリクエスト テレメトリの方が直接的。ログ レベルを Debug にするとノイズが増えコスト・量が大きくなる可能性あり。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-monitor/app/monitor-app-performance",
+            "reference_label": "Application Insights のパフォーマンス監視"
+          }
+        },
+        {
+          "key": "C",
+          "text": "App Service のスロット (deployment slots) を遅延のテスト用に使う",
+          "explanation": {
+            "text": "スロットは新バージョンのテストやトラフィックの段階的切り替えに使えるが、レスポンス遅延の継続的監視にはテレメトリの収集とアラート設定がより直接的である。",
+            "reference": "https://learn.microsoft.com/en-us/azure/app-service/deploy-staging-slots",
+            "reference_label": "App Service のデプロイ スロット"
+          }
+        },
+        {
+          "key": "D",
+          "text": "App Service の FTP ログを定期的ポーリングして遅延を分析する",
+          "explanation": {
+            "text": "FTP ログはアクセスやデプロイ用であり、通常パフォーマンス遅延のモニタリングには使われない。遅延分析には Application Insights のテレメトリやログが適している。",
+            "reference": "https://learn.microsoft.com/en-us/azure/app-service/manage-scale-settings",
+            "reference_label": "App Service のモニタリング"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "レスポンス遅延を検知するにはリクエスト テレメトリで time taken を収集し、閾値を超えたらアラート等を設定するのが基本かつ有効。",
+        "reference": "https://learn.microsoft.com/en-us/azure/azure-monitor/app/request-telemetry",
+        "reference_label": "Application Insights のリクエストテレメトリ"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q8",
+      "question": "Azure Logic Apps を利用してオンプレミスのデータベースに接続する場合、必要となるコンポーネントはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "On-premises Data Gateway",
+          "explanation": {
+            "text": "Logic Apps からオンプレミス データベースへ安全に接続するには On-premises Data Gateway が必要。",
+            "reference": "https://learn.microsoft.com/en-us/azure/logic-apps/logic-apps-gateway-connection",
+            "reference_label": "Logic Apps とオンプレミスデータゲートウェイ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure Relay Hybrid Connection",
+          "explanation": {
+            "text": "Hybrid Connections は App Service とオンプレ資源の接続に使うが、Logic Apps のオンプレDB接続には通常 Data Gateway を利用。",
+            "reference": "https://learn.microsoft.com/en-us/azure/app-service/app-service-hybrid-connections",
+            "reference_label": "Hybrid Connections"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure ExpressRoute",
+          "explanation": {
+            "text": "専用線接続だが、Logic Apps からオンプレDB接続の標準的要件ではなく追加ネットワークレベルのオプション。",
+            "reference": "https://learn.microsoft.com/en-us/azure/expressroute/expressroute-introduction",
+            "reference_label": "ExpressRoute"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure API Management",
+          "explanation": {
+            "text": "APIM は API を公開・管理するサービスであり、Logic Apps とオンプレDBを直接繋ぐためには不要。",
+            "reference": "https://learn.microsoft.com/en-us/azure/api-management/api-management-key-concepts",
+            "reference_label": "API Management 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Logic Apps がオンプレDBに接続するには On-premises Data Gateway を利用する。",
+        "reference": "https://learn.microsoft.com/en-us/azure/logic-apps/logic-apps-gateway-connection",
+        "reference_label": "Logic Apps とオンプレミスデータゲートウェイ"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q9",
+      "question": "Azure Storage Queue と Azure Service Bus Queue の違いとして正しいのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Storage Queue はシンプルなメッセージングを提供し、Service Bus Queue は高度な機能（セッション、順序保証、トランザクション）を提供する",
+          "explanation": {
+            "text": "この説明が正しい。Service Bus Queue は Storage Queue よりも高機能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queue-vs-storage-queue",
+            "reference_label": "Storage Queue と Service Bus Queue の比較"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Storage Queue は FIFO を保証するが、Service Bus Queue は順序保証を提供しない",
+          "explanation": {
+            "text": "逆である。Service Bus Queue はセッションや順序制御ができる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queue-vs-storage-queue",
+            "reference_label": "キューの比較"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Storage Queue は 1MB を超えるメッセージサイズをサポートする",
+          "explanation": {
+            "text": "Storage Queue の最大メッセージサイズは 64KB (Base64 encoding 時は 48KB)。大きなペイロードは Blob に格納する必要がある。",
+            "reference": "https://learn.microsoft.com/en-us/rest/api/storageservices/understanding-the-queue-service-data-model",
+            "reference_label": "Storage Queue 制限"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Service Bus Queue はメッセージの重複検出を行えない",
+          "explanation": {
+            "text": "Service Bus Queue には重複検出機能があるため誤り。",
+            "reference": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/duplicate-detection",
+            "reference_label": "Service Bus Queue の重複検出"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Storage Queue は軽量メッセージング向け、Service Bus Queue は高度なエンタープライズ機能を提供する。",
+        "reference": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queue-vs-storage-queue",
+        "reference_label": "Storage Queue と Service Bus Queue の比較"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q10",
+      "question": "Azure Durable Functions の Orchestrator 関数の特徴として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Orchestrator 関数は await/async を使って非同期呼び出しを順序制御できる",
+          "explanation": {
+            "text": "Durable Functions Orchestrator では await を使ってアクティビティ呼び出しの順序や並列化を制御できる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview",
+            "reference_label": "Durable Functions 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Orchestrator 関数はステートレスであり、実行履歴を保存しない",
+          "explanation": {
+            "text": "誤り。Durable Functions の強みは実行履歴を状態管理として保存する点。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview",
+            "reference_label": "Durable Functions 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Orchestrator 関数は直接外部サービスへの HTTP 呼び出しを行う",
+          "explanation": {
+            "text": "誤り。外部呼び出しはアクティビティ関数を通じて行う。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview",
+            "reference_label": "Durable Functions 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Orchestrator 関数は長時間の遅延処理をサポートしない",
+          "explanation": {
+            "text": "誤り。Durable Functions の特徴は長時間ワークフローをサポートできること。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview",
+            "reference_label": "Durable Functions 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Orchestrator 関数は await/async パターンを用いてアクティビティ呼び出しを制御する。",
+        "reference": "https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview",
+        "reference_label": "Durable Functions 概要"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q11",
+      "question": "Azure Container Instances (ACI) を利用する利点はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "仮想マシンを作成せずにコンテナを実行できる",
+          "explanation": {
+            "text": "ACI は VM 管理なしにコンテナをすぐに実行できる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/container-instances/container-instances-overview",
+            "reference_label": "ACI 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Kubernetes の完全なオーケストレーション機能を提供する",
+          "explanation": {
+            "text": "ACI は軽量コンテナ実行サービスであり、Kubernetes の全機能は提供しない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/container-instances/container-instances-overview",
+            "reference_label": "ACI 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "常に VNET 経由でしかアクセスできない",
+          "explanation": {
+            "text": "ACI はパブリックIPでもアクセス可能。VNET 統合も可能だが限定されない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/container-instances/container-instances-overview",
+            "reference_label": "ACI 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "状態を持つ永続コンテナのみ実行できる",
+          "explanation": {
+            "text": "ACI はステートレスなコンテナも実行可能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/container-instances/container-instances-overview",
+            "reference_label": "ACI 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ACI の最大の特徴は、VM や Kubernetes クラスターを準備せずに単一コンテナを即座に実行できること。",
+        "reference": "https://learn.microsoft.com/en-us/azure/container-instances/container-instances-overview",
+        "reference_label": "ACI 概要"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q12",
+      "question": "Azure App Configuration を利用する利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "アプリケーション設定を集中管理でき、Feature Flags も提供する",
+          "explanation": {
+            "text": "App Configuration は集中型設定ストアで、Feature Flags 機能もある。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-app-configuration/overview",
+            "reference_label": "App Configuration 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ソースコードのバージョン管理を行う",
+          "explanation": {
+            "text": "これは Git などの機能であり、App Configuration の役割ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-app-configuration/overview",
+            "reference_label": "App Configuration 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アプリケーションの完全な監視機能を提供する",
+          "explanation": {
+            "text": "監視は Application Insights や Azure Monitor の役割。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-app-configuration/overview",
+            "reference_label": "App Configuration 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "セキュリティトークンの管理を行う",
+          "explanation": {
+            "text": "セキュリティトークンやシークレット管理は Azure Key Vault の役割。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-app-configuration/overview",
+            "reference_label": "App Configuration 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "App Configuration はアプリケーション設定を一元管理し、Feature Flags 機能も持つ。",
+        "reference": "https://learn.microsoft.com/en-us/azure/azure-app-configuration/overview",
+        "reference_label": "App Configuration 概要"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q13",
+      "question": "Azure Monitor のアラートルールを構成するとき、条件として設定できるものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "メトリックの閾値を超えたとき",
+          "explanation": {
+            "text": "Azure Monitor は CPU 使用率などメトリックに基づいてアラート可能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/alerts-metric",
+            "reference_label": "メトリックアラート"
+          }
+        },
+        {
+          "key": "B",
+          "text": "リソースのタグが変更されたとき",
+          "explanation": {
+            "text": "タグ変更は Azure Policy や Activity Log で監視できるが、アラート条件の直接的対象ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/alerts-overview",
+            "reference_label": "アラートの概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "リソースグループの名前を変更したとき",
+          "explanation": {
+            "text": "リソースグループ名の変更は通常不可。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal",
+            "reference_label": "リソースグループの管理"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Portal にログインしたユーザー数",
+          "explanation": {
+            "text": "ユーザーログインは Azure AD サインインログに基づき、Azure Monitor のアラート条件とは直接関係ない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/alerts-overview",
+            "reference_label": "アラートの概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure Monitor アラートの最も基本的な使用例は、メトリックが閾値を超えたときの通知。",
+        "reference": "https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/alerts-metric",
+        "reference_label": "メトリックアラート"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q14",
+      "question": "Azure Cognitive Services の Computer Vision API を利用して画像からテキストを抽出したい。最も適切な機能はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "OCR (Optical Character Recognition)",
+          "explanation": {
+            "text": "OCR 機能を利用すると画像から文字を抽出できる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/cognitive-services/computer-vision/overview-ocr",
+            "reference_label": "Computer Vision OCR"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Image Classification",
+          "explanation": {
+            "text": "これは画像をカテゴリ分類する機能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/cognitive-services/computer-vision/overview-image-classification",
+            "reference_label": "Computer Vision Image Classification"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Object Detection",
+          "explanation": {
+            "text": "これは画像内のオブジェクトを検出する機能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/cognitive-services/computer-vision/overview-object-detection",
+            "reference_label": "Computer Vision Object Detection"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Face Detection",
+          "explanation": {
+            "text": "顔の位置や特徴を抽出する機能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/cognitive-services/computer-vision/overview-face-detection",
+            "reference_label": "Computer Vision Face Detection"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "画像からテキスト抽出を行うには OCR 機能を利用する。",
+        "reference": "https://learn.microsoft.com/en-us/azure/cognitive-services/computer-vision/overview-ocr",
+        "reference_label": "Computer Vision OCR"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q15",
+      "question": "Azure Functions から Azure Blob Storage へ安全に書き込む設計として最も推奨されるのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "関数アプリのシステム割り当てマネージド ID に Blob データ ロールを割り当て、Azure AD(OAuth2)で認可する",
+          "explanation": {
+            "text": "Microsoft Entra ID(Azure AD) を利用した RBAC により、キー共有なしで Blob データ アクセスを授与できる。関数のマネージド ID に Storage Blob Data Contributor などを割り当てる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/storage/blobs/authorize-access-azure-active-directory",
+            "reference_label": "Authorize access to blobs using Microsoft Entra ID"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ストレージ アカウント キーをアプリ設定に保存して接続する",
+          "explanation": {
+            "text": "アカウントキー共有はリスクが高く最小権限を満たしにくい。推奨は Azure AD + RBAC。",
+            "reference": "https://learn.microsoft.com/en-us/azure/storage/blobs/authorize-access-azure-active-directory",
+            "reference_label": "Azure AD による認可（推奨）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "常時有効なサービス SAS を発行し、関数コードにハードコードする",
+          "explanation": {
+            "text": "SAS は短期・最小権限が前提。ハードコードや長期有効は非推奨。",
+            "reference": "https://learn.microsoft.com/en-us/azure/storage/common/storage-sas-overview",
+            "reference_label": "SAS の概要と推奨事項"
+          }
+        },
+        {
+          "key": "D",
+          "text": "匿名アクセスをコンテナーに許可し、認証を省略する",
+          "explanation": {
+            "text": "匿名アクセスはセキュリティ要件を満たさない。プライベート コンテナーとトークン/ロールで制御すべき。",
+            "reference": "https://learn.microsoft.com/en-us/azure/storage/blobs/authorize-access-azure-active-directory",
+            "reference_label": "Azure AD による認可（推奨）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "最小権限・キー非共有を実現する推奨は、マネージド ID に対する Azure RBAC での Blob データ ロール付与＋Azure AD 認可である。",
+        "reference": "https://learn.microsoft.com/en-us/azure/storage/blobs/assign-azure-role-data-access",
+        "reference_label": "Assign an Azure role for access to blob data"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q16",
+      "question": "Web アプリから特定の Blob への短時間・限定的なアクセスを委任したい。ストレージ アカウント キーは共有したくない。最も適切な選択はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ユーザー委任 SAS (User Delegation SAS) を発行する",
+          "explanation": {
+            "text": "ユーザー委任 SAS はアカウント キーではなく Entra 資格情報に基づき署名され、よりセキュアとされる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/storage/common/authorize-data-access",
+            "reference_label": "Authorize operations for data access"
+          }
+        },
+        {
+          "key": "B",
+          "text": "サービス SAS をアカウント キーで署名して 1 年間有効にする",
+          "explanation": {
+            "text": "長期有効なキー署名 SAS はリスクが高い。可能ならユーザー委任 SAS が推奨。",
+            "reference": "https://learn.microsoft.com/en-us/azure/storage/common/storage-sas-overview",
+            "reference_label": "SAS の概要（ベストプラクティス）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アカウント SAS を使い、すべてのサービスにフル権限を付与する",
+          "explanation": {
+            "text": "アカウント SAS は強力で誤用リスクが高い。最小権限・短期付与が原則。",
+            "reference": "https://learn.microsoft.com/en-us/azure/storage/common/storage-sas-overview",
+            "reference_label": "SAS の種類と権限"
+          }
+        },
+        {
+          "key": "D",
+          "text": "匿名公開コンテナーに移動してアクセスさせる",
+          "explanation": {
+            "text": "セキュア要件に反する。認可付きアクセスを使うべき。",
+            "reference": "https://learn.microsoft.com/en-us/azure/storage/common/storage-sas-overview",
+            "reference_label": "安全なアクセスのための SAS"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ユーザー委任 SAS は Entra 資格情報で署名され、推奨セキュリティ。短期・限定アクセスの要件に適合する。",
+        "reference": "https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-user-delegation-sas-create-dotnet",
+        "reference_label": "Create a user delegation SAS (推奨)"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q17",
+      "question": "Event Grid のイベント配信で到達先エンドポイントが一時的に失敗する場合の動作と設計として正しいものを 2 つ選べ。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Event Grid は既定の再試行ポリシーで再送する",
+          "explanation": {
+            "text": "Event Grid はエンドポイントが ACK しない場合にポリシーに従い再試行を行う。",
+            "reference": "https://learn.microsoft.com/en-us/azure/event-grid/delivery-and-retry",
+            "reference_label": "Event Grid delivery and retry"
+          }
+        },
+        {
+          "key": "B",
+          "text": "デッドレター先を構成しない場合でもイベントは必ず保持される",
+          "explanation": {
+            "text": "誤り。デッドレターを構成しない場合、一定条件でイベントはドロップされ得る。",
+            "reference": "https://learn.microsoft.com/en-us/azure/event-grid/delivery-and-retry",
+            "reference_label": "配信と再試行（未構成時のドロップ）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "イベント サブスクリプションでデッドレター先（例: Storage）を設定できる",
+          "explanation": {
+            "text": "配信失敗時の保全先としてデッドレター ストレージ等を構成可能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/event-grid/manage-event-delivery",
+            "reference_label": "Dead letter and retry policies"
+          }
+        },
+        {
+          "key": "D",
+          "text": "再試行・デッドレターはトピック側にしか設定できない",
+          "explanation": {
+            "text": "誤り。設定はイベント サブスクリプション単位で行う。",
+            "reference": "https://learn.microsoft.com/en-us/azure/event-grid/manage-event-delivery",
+            "reference_label": "Event subscription 設定"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "Event Grid は既定で再試行し、さらにイベント サブスクリプションでデッドレター先を構成できる。未設定だと状況によってイベントはドロップされ得る。",
+        "reference": "https://learn.microsoft.com/en-us/azure/event-grid/delivery-and-retry",
+        "reference_label": "配信と再試行の動作"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q18",
+      "question": "Azure Service Bus Queue で処理順序の都合により、いま受信したメッセージを“後で取り出すためにキューにとどめておきたい”。適切な操作はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Abandon",
+          "explanation": {
+            "text": "ロックを解除して再配信可能にする。すぐに再配信されるため“後で取り出す”には不向き。",
+            "reference": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-transfers-locks-settlement",
+            "reference_label": "ロックとセトルメント"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Complete",
+          "explanation": {
+            "text": "処理完了としてメッセージを削除する。後で取り出せない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-transfers-locks-settlement",
+            "reference_label": "Complete 操作"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Defer",
+          "explanation": {
+            "text": "メッセージを延期し、通常受信からは配信されなくなる。シーケンス番号を指定して後で取得可能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-deferral",
+            "reference_label": "Message deferral"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Dead-letter",
+          "explanation": {
+            "text": "配信不能や検証失敗時に使用。DLQ に移動し、後の調査・再送用。",
+            "reference": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-dead-letter-queues",
+            "reference_label": "Dead-letter キュー"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "“後で取り出す”要件には Deferral が合致する。シーケンス番号で明示取得でき、順序制御に役立つ。",
+        "reference": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-deferral",
+        "reference_label": "Message deferral（延期）"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q19",
+      "question": "Azure Cosmos DB (NoSQL) の Transactional Batch の制約として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "同一コンテナー内であれば異なるパーティション キーの項目も 1 つのバッチにできる",
+          "explanation": {
+            "text": "誤り。Transactional Batch は同一パーティション キーに限定される。",
+            "reference": "https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/transactional-batch",
+            "reference_label": "Transactional batch (同一 PK 制約)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "すべての操作は同一のパーティション キーを共有しなければならない",
+          "explanation": {
+            "text": "正しい。バッチは同一 PK 内で原子的にコミット／ロールバックされる。",
+            "reference": "https://learn.microsoft.com/en-us/rest/api/cosmos-db/transactional-batch",
+            "reference_label": "REST: Transactional batch（同一 PK）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Read 操作はバッチに含められない",
+          "explanation": {
+            "text": "誤り。サポートされる操作に read も含まれる。",
+            "reference": "https://learn.microsoft.com/en-us/rest/api/cosmos-db/transactional-batch",
+            "reference_label": "サポート操作一覧"
+          }
+        },
+        {
+          "key": "D",
+          "text": "部分成功が許容され、失敗項目だけロールバックできる",
+          "explanation": {
+            "text": "誤り。いずれか失敗時はバッチ全体がロールバックされる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/transactional-batch",
+            "reference_label": "オールオアナッシングの語義"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Transactional Batch は“同一パーティション キー”が必須で、全成功か全失敗のいずれかとなる。",
+        "reference": "https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/transactional-batch",
+        "reference_label": "Transactional batch の基本"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q20",
+      "question": ".NET の Azure Functions における“in-process”モデルと“.NET Isolated”モデルの違いとして正しい説明はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Isolated は Functions ランタイムと別プロセスで動作し、.NET Generic Host による DI/Middleware 構成が可能",
+          "explanation": {
+            "text": "Isolated は独立プロセスで柔軟なホスティングが可能。Generic Host を活用できる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-functions/dotnet-isolated-in-process-differences",
+            "reference_label": "Differences: in-process vs isolated"
+          }
+        },
+        {
+          "key": "B",
+          "text": "in-process のサポートは 2025 年に終了した",
+          "explanation": {
+            "text": "誤り。公式には 2026-11-10 に in-process のサポート終了が予定と明記されている。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-functions/dotnet-isolated-in-process-differences",
+            "reference_label": "サポート終了日 (2026-11-10)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Isolated ではトリガー/バインディングが使えない",
+          "explanation": {
+            "text": "誤り。Isolated でも各種トリガー/バインディングをサポート（実装は異なる）。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-functions/dotnet-isolated-process-guide",
+            "reference_label": "Guide for .NET isolated"
+          }
+        },
+        {
+          "key": "D",
+          "text": "in-process は Functions ランタイムとは別プロセスで動く",
+          "explanation": {
+            "text": "誤り。in-process はランタイムと同一プロセスで動作する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-functions/dotnet-isolated-in-process-differences",
+            "reference_label": "モデルの違い"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Isolated は別プロセス動作と Generic Host による DI/Middleware などの柔軟性が特徴。in-process は 2026-11-10 にサポート終了予定。",
+        "reference": "https://learn.microsoft.com/en-us/azure/azure-functions/dotnet-isolated-in-process-differences",
+        "reference_label": "公式の差分とスケジュール"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q21",
+      "question": "Azure Static Web Apps で組み込み認証を使い、特定ルートをサインイン済みユーザー（指定ロール）に限定したい。何をどのように構成するか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "staticwebapp.config.json の routes で認可ルール（allowedRoles など）を定義する",
+          "explanation": {
+            "text": "SWA は組み込み認証とルートベースの認可を提供し、構成は staticwebapp.config.json で行う。",
+            "reference": "https://learn.microsoft.com/en-us/azure/static-web-apps/authentication-authorization",
+            "reference_label": "Authenticate and authorize Static Web Apps"
+          }
+        },
+        {
+          "key": "B",
+          "text": "App Service の認証/認可(“Easy Auth”) を有効化する",
+          "explanation": {
+            "text": "SWA と App Service は別サービス。SWA では独自の認証統合を持ち、Easy Auth は対象外。",
+            "reference": "https://learn.microsoft.com/en-us/azure/static-web-apps/authentication-authorization",
+            "reference_label": "SWA の認証モデル"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure API Management のポリシーで JWT 検証を強制する",
+          "explanation": {
+            "text": "APIM は別用途。SWA の静的ルート保護はアプリ構成で制御するのが基本。",
+            "reference": "https://learn.microsoft.com/en-us/azure/static-web-apps/authentication-authorization",
+            "reference_label": "SWA 認証/認可"
+          }
+        },
+        {
+          "key": "D",
+          "text": "GitHub Actions で OIDC を構成し、ビルド時に保護する",
+          "explanation": {
+            "text": "OIDC はデプロイの信頼連携の話であり、実行時のルート認可とは別。",
+            "reference": "https://learn.microsoft.com/en-us/azure/static-web-apps/authentication-authorization",
+            "reference_label": "実行時の認可設定"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "SWA は GitHub/Microsoft Entra の組み込み認証と、staticwebapp.config.json によるルート認可（allowedRoles など）で保護を構成する。",
+        "reference": "https://learn.microsoft.com/en-us/azure/static-web-apps/authentication-authorization",
+        "reference_label": "公式: 認証と認可"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q22",
+      "question": "Azure Functions の Consumption プランの特徴として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "実行時間に応じた従量課金で、アイドル時にコストは発生しない",
+          "explanation": {
+            "text": "Consumption プランは関数が実行された時間に応じて課金され、アイドル時は課金されない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-functions/consumption-plan",
+            "reference_label": "Azure Functions Consumption プラン"
+          }
+        },
+        {
+          "key": "B",
+          "text": "常に固定料金であり、実行回数に関係なくコストが一定",
+          "explanation": {
+            "text": "固定料金ではなく、従量課金モデルである。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-functions/consumption-plan",
+            "reference_label": "Consumption プラン概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Premium プランでしか利用できない拡張機能が必須",
+          "explanation": {
+            "text": "Premium プランは VNET 統合や無制限実行時間などの機能を提供するが、Consumption プランの必須要件ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-scale",
+            "reference_label": "Azure Functions スケーリング"
+          }
+        },
+        {
+          "key": "D",
+          "text": "常時ウォームアップされており、コールドスタートは発生しない",
+          "explanation": {
+            "text": "Consumption プランではコールドスタートが発生する可能性がある。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-scale",
+            "reference_label": "コールドスタートについて"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Consumption プランは従量課金で、アイドル時に料金は発生しない。コールドスタートは発生し得る。",
+        "reference": "https://learn.microsoft.com/en-us/azure/azure-functions/consumption-plan",
+        "reference_label": "Azure Functions Consumption プラン"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q23",
+      "question": "Azure SignalR Service を利用する目的として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "クライアントとサーバー間でリアルタイム通信を容易に実装する",
+          "explanation": {
+            "text": "SignalR Service はリアルタイム通知やチャットなど双方向通信を簡単に構築できる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-signalr/signalr-overview",
+            "reference_label": "Azure SignalR Service 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "メッセージの順序保証とトランザクション処理を提供する",
+          "explanation": {
+            "text": "これは Service Bus の特徴であり、SignalR の主目的ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messaging-overview",
+            "reference_label": "Service Bus 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "大規模なデータレイクの蓄積を実現する",
+          "explanation": {
+            "text": "データレイクは Azure Data Lake Storage などで行う。",
+            "reference": "https://learn.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-introduction",
+            "reference_label": "Azure Data Lake 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "画像処理のための GPU バックエンドを提供する",
+          "explanation": {
+            "text": "SignalR Service は GPU ベース処理を提供しない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-signalr/signalr-overview",
+            "reference_label": "SignalR 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "SignalR Service はリアルタイム通信を容易にし、チャットや通知アプリの実装に適する。",
+        "reference": "https://learn.microsoft.com/en-us/azure/azure-signalr/signalr-overview",
+        "reference_label": "Azure SignalR Service 概要"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q24",
+      "question": "Azure App Service にデプロイした Web アプリが接続文字列を取得する推奨方法はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Azure App Service のアプリケーション設定 (Application Settings) から取得する",
+          "explanation": {
+            "text": "接続文字列や機密情報はアプリ設定に保存し、環境変数として参照するのが推奨。",
+            "reference": "https://learn.microsoft.com/en-us/azure/app-service/configure-common",
+            "reference_label": "App Service 設定と環境変数"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Web.config に平文で保存する",
+          "explanation": {
+            "text": "平文保存はセキュリティリスクが高い。",
+            "reference": "https://learn.microsoft.com/en-us/azure/app-service/configure-common",
+            "reference_label": "セキュリティの観点"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Monitor のメトリックに保存する",
+          "explanation": {
+            "text": "Azure Monitor は監視サービスであり、接続文字列を保存する用途ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-monitor/overview",
+            "reference_label": "Azure Monitor 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "アプリコードにハードコードする",
+          "explanation": {
+            "text": "セキュリティとメンテナンスの観点から非推奨。",
+            "reference": "https://learn.microsoft.com/en-us/azure/app-service/configure-common",
+            "reference_label": "App Service ベストプラクティス"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "接続文字列はアプリケーション設定に保存し、環境変数経由で参照するのが推奨。",
+        "reference": "https://learn.microsoft.com/en-us/azure/app-service/configure-common",
+        "reference_label": "App Service 設定とセキュリティ"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q25",
+      "question": "Azure Cognitive Search でインデックスを作成する際に必要な要素はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "フィールド定義 (検索対象となる項目)",
+          "explanation": {
+            "text": "インデックスはフィールド定義を持ち、それぞれ検索可能かどうかを指定する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/search/search-what-is-an-index",
+            "reference_label": "Azure Cognitive Search インデックス"
+          }
+        },
+        {
+          "key": "B",
+          "text": "仮想ネットワーク サブネットの指定",
+          "explanation": {
+            "text": "ネットワーク制御はセキュリティ設定であり、インデックス定義の必須要素ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/search/service-create-index",
+            "reference_label": "インデックス作成"
+          }
+        },
+        {
+          "key": "C",
+          "text": "マネージド ID の設定",
+          "explanation": {
+            "text": "データ取得時の認証には関係するが、インデックス作成の必須項目ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/search/search-what-is-an-index",
+            "reference_label": "インデックス作成要素"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Key Vault へのアクセス権限",
+          "explanation": {
+            "text": "Key Vault はシークレット管理であり、インデックス自体の要件ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/search/search-what-is-an-index",
+            "reference_label": "インデックス定義"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cognitive Search のインデックスにはフィールド定義が必須である。",
+        "reference": "https://learn.microsoft.com/en-us/azure/search/search-what-is-an-index",
+        "reference_label": "インデックスの基本"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q26",
+      "question": "Azure Kubernetes Service (AKS) のマネージド ID を利用するときのメリットはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Pod がシークレットをコードに含めずに Azure リソースへアクセスできる",
+          "explanation": {
+            "text": "マネージド ID を使うと Pod が Azure リソースへ安全にアクセス可能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/aks/use-managed-identity",
+            "reference_label": "AKS でのマネージド ID"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure Functions 専用の認証機能",
+          "explanation": {
+            "text": "Functions でも利用可能だが、AKS に限定されるわけではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview",
+            "reference_label": "Managed Identities 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Kubernetes Secrets の暗号化を提供する",
+          "explanation": {
+            "text": "暗号化は Kubernetes 自体や Key Vault CSI ドライバーで行うもので、マネージド ID の機能ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/aks/csi-secrets-store-driver",
+            "reference_label": "Secrets Store CSI Driver"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Service Bus の重複検出を有効化する",
+          "explanation": {
+            "text": "Service Bus の機能であり、AKS マネージド ID とは無関係。",
+            "reference": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/duplicate-detection",
+            "reference_label": "重複検出"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "マネージド ID を使えば、Pod が資格情報を明示的に保持せず Azure リソースにアクセスできる。",
+        "reference": "https://learn.microsoft.com/en-us/azure/aks/use-managed-identity",
+        "reference_label": "AKS でのマネージド ID"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q27",
+      "question": "Azure Cache for Redis を利用する代表的なシナリオはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "セッション状態の保存と高速キャッシュ",
+          "explanation": {
+            "text": "Redis はセッション状態管理やキャッシュとして適している。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-cache-for-redis/cache-overview",
+            "reference_label": "Azure Cache for Redis 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "大規模 ETL 処理の実行",
+          "explanation": {
+            "text": "ETL は Data Factory などのサービスを使う。",
+            "reference": "https://learn.microsoft.com/en-us/azure/data-factory/introduction",
+            "reference_label": "Data Factory 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "動画の長期保存",
+          "explanation": {
+            "text": "長期保存は Blob Storage や Media Services を利用する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction",
+            "reference_label": "Blob Storage 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "認証トークンの発行",
+          "explanation": {
+            "text": "認証は Azure AD などが担当する。Redis の役割ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-whatis",
+            "reference_label": "Azure AD 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure Cache for Redis はキャッシュやセッション管理などの低レイテンシデータ格納に適する。",
+        "reference": "https://learn.microsoft.com/en-us/azure/azure-cache-for-redis/cache-overview",
+        "reference_label": "Azure Cache for Redis 概要"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q28",
+      "question": "Azure Event Hubs を利用する典型的なユースケースはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "大量のテレメトリ データをストリーミングで取り込む",
+          "explanation": {
+            "text": "Event Hubs は IoT データやログの高速ストリーミング取り込みに最適。",
+            "reference": "https://learn.microsoft.com/en-us/azure/event-hubs/event-hubs-about",
+            "reference_label": "Event Hubs 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "リクエスト/レスポンス型の API 管理",
+          "explanation": {
+            "text": "これは API Management の用途。",
+            "reference": "https://learn.microsoft.com/en-us/azure/api-management/api-management-key-concepts",
+            "reference_label": "API Management 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "画像分類モデルの推論",
+          "explanation": {
+            "text": "これは Cognitive Services や ML モデルの利用シナリオ。",
+            "reference": "https://learn.microsoft.com/en-us/azure/cognitive-services/",
+            "reference_label": "Cognitive Services"
+          }
+        },
+        {
+          "key": "D",
+          "text": "セッション管理のためのインメモリ キャッシュ",
+          "explanation": {
+            "text": "これは Redis の用途。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-cache-for-redis/cache-overview",
+            "reference_label": "Redis 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Event Hubs は大規模なデータストリームをリアルタイムで取り込むのに適している。",
+        "reference": "https://learn.microsoft.com/en-us/azure/event-hubs/event-hubs-about",
+        "reference_label": "Event Hubs 概要"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q29",
+      "question": "Azure API Management (APIM) のキャッシュ機能を有効活用する利点はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "バックエンド API への呼び出し回数を減らし、応答を高速化できる",
+          "explanation": {
+            "text": "APIM ではレスポンスをキャッシュすることでバックエンド負荷を軽減し、パフォーマンスを向上できる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/api-management/api-management-caching-policies",
+            "reference_label": "APIM キャッシュ ポリシー"
+          }
+        },
+        {
+          "key": "B",
+          "text": "API のスロットリング (throttling) を強制できる",
+          "explanation": {
+            "text": "スロットリングはレート制限ポリシーであり、キャッシュの役割ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/api-management/api-management-access-restriction-policies",
+            "reference_label": "APIM 制御ポリシー"
+          }
+        },
+        {
+          "key": "C",
+          "text": "API のスキーマを自動生成できる",
+          "explanation": {
+            "text": "スキーマ生成は OpenAPI 仕様の取り込みなどで行うもので、キャッシュとは無関係。",
+            "reference": "https://learn.microsoft.com/en-us/azure/api-management/api-management-get-started",
+            "reference_label": "APIM の概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "API バージョニングを簡単に実現できる",
+          "explanation": {
+            "text": "バージョニングはルーティングや製品管理で実現するもので、キャッシュの目的ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/api-management/api-management-versions",
+            "reference_label": "API バージョニング"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "APIM のキャッシュを利用すると、レスポンスをキャッシュしてバックエンド呼び出しを減らし、応答速度とコスト効率を改善できる。",
+        "reference": "https://learn.microsoft.com/en-us/azure/api-management/api-management-caching-policies",
+        "reference_label": "APIM キャッシュ ポリシー"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q30",
+      "question": "Azure Front Door の主な用途として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "グローバル負荷分散とアプリケーション層の高速化",
+          "explanation": {
+            "text": "Front Door はグローバルにトラフィックを分散し、アプリケーション高速化（CDN 機能を含む）を提供する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/frontdoor/front-door-overview",
+            "reference_label": "Azure Front Door 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure VM のパッチ適用を自動化する",
+          "explanation": {
+            "text": "VM のパッチ管理は Azure Update Management の機能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/automation/update-management/overview",
+            "reference_label": "Update Management 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "SQL データベースのフェールオーバーを制御する",
+          "explanation": {
+            "text": "これは Azure SQL Database の Geo-Replication や Failover Group の機能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-sql/database/auto-failover-group-overview",
+            "reference_label": "SQL 自動フェールオーバー"
+          }
+        },
+        {
+          "key": "D",
+          "text": "アプリケーションコードの継続的デプロイを行う",
+          "explanation": {
+            "text": "継続的デプロイは GitHub Actions や Azure DevOps Pipelines の機能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/devops/pipelines/get-started/what-is-azure-pipelines",
+            "reference_label": "Azure Pipelines 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure Front Door はグローバル負荷分散とアプリ層高速化を提供する。",
+        "reference": "https://learn.microsoft.com/en-us/azure/frontdoor/front-door-overview",
+        "reference_label": "Azure Front Door 概要"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q31",
+      "question": "Azure Monitor Application Insights のサンプリング機能を利用する主な理由は何か。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "テレメトリデータ量を削減しコストを抑える",
+          "explanation": {
+            "text": "サンプリングはデータ量を減らし、コストとパフォーマンスを最適化するために利用される。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-monitor/app/sampling",
+            "reference_label": "Application Insights サンプリング"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ログイン失敗時のアラートを自動生成する",
+          "explanation": {
+            "text": "アラートはサンプリングではなくアラートルールで構成する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/alerts-overview",
+            "reference_label": "Azure Monitor アラート"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アプリケーションの新しいバージョンを自動デプロイする",
+          "explanation": {
+            "text": "デプロイは CI/CD の範囲であり、サンプリング機能の目的ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/devops/pipelines/",
+            "reference_label": "Azure DevOps Pipelines"
+          }
+        },
+        {
+          "key": "D",
+          "text": "コードのバグを自動修正する",
+          "explanation": {
+            "text": "サンプリングはテレメトリ制御機能であり、コード修正は対象外。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-monitor/app/sampling",
+            "reference_label": "Application Insights サンプリング"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "サンプリングの主な目的はテレメトリデータ量を減らし、コスト削減と処理効率化を行うこと。",
+        "reference": "https://learn.microsoft.com/en-us/azure/azure-monitor/app/sampling",
+        "reference_label": "Application Insights サンプリング"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q32",
+      "question": "Azure Service Bus Topic を利用する利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "複数サブスクライバーに対して 1 つのメッセージを配信できる",
+          "explanation": {
+            "text": "Topic は publish/subscribe モデルを提供し、複数サブスクリプションへメッセージを届けられる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions",
+            "reference_label": "Service Bus Topics 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "FIFO 保証が強制される",
+          "explanation": {
+            "text": "FIFO は標準機能ではなく、セッションを使う場合にのみ順序制御が可能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-sessions",
+            "reference_label": "Service Bus メッセージ セッション"
+          }
+        },
+        {
+          "key": "C",
+          "text": "匿名アクセスでサブスクライブできる",
+          "explanation": {
+            "text": "アクセスは Azure AD などの認証で制御され、匿名利用は不可。",
+            "reference": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-authentication-and-authorization",
+            "reference_label": "Service Bus 認証と認可"
+          }
+        },
+        {
+          "key": "D",
+          "text": "SQL Database のレプリケーション機能を提供する",
+          "explanation": {
+            "text": "これは完全に別サービスの機能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-sql/database/auto-failover-group-overview",
+            "reference_label": "SQL Database レプリケーション"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Service Bus Topic の強みは 1 対多のメッセージ配信を可能にすること。",
+        "reference": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions",
+        "reference_label": "Service Bus Topics 概要"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q33",
+      "question": "Azure App Service でスロット (deployment slots) を使うメリットはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ゼロダウンタイムで本番環境に切り替えられる",
+          "explanation": {
+            "text": "スロットを使えば、ステージングから本番へシームレスに切り替え可能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/app-service/deploy-staging-slots",
+            "reference_label": "App Service Deployment Slots"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データベースのスキーマを自動的に更新する",
+          "explanation": {
+            "text": "スロットはアプリデプロイ用途であり、データベーススキーマ更新は対象外。",
+            "reference": "https://learn.microsoft.com/en-us/azure/app-service/deploy-staging-slots",
+            "reference_label": "Deployment Slots 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アプリケーションコードを暗号化する",
+          "explanation": {
+            "text": "暗号化はスロット機能ではなく、別のセキュリティ対策が必要。",
+            "reference": "https://learn.microsoft.com/en-us/azure/app-service/deploy-staging-slots",
+            "reference_label": "Deployment Slots 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "オートスケーリングを自動構成する",
+          "explanation": {
+            "text": "オートスケーリングは App Service プランの設定で行うもので、スロット機能とは無関係。",
+            "reference": "https://learn.microsoft.com/en-us/azure/app-service/manage-scale-settings",
+            "reference_label": "App Service スケール設定"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Deployment Slots を利用すると、ゼロダウンタイムで本番切り替えが可能となる。",
+        "reference": "https://learn.microsoft.com/en-us/azure/app-service/deploy-staging-slots",
+        "reference_label": "App Service Deployment Slots"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q34",
+      "question": "Azure Cosmos DB で Change Feed を利用する典型的なシナリオはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "新しいデータの挿入や更新をトリガーとしてリアルタイム処理を行う",
+          "explanation": {
+            "text": "Change Feed は挿入・更新を追跡してリアルタイム処理や ETL に利用できる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/cosmos-db/change-feed",
+            "reference_label": "Cosmos DB Change Feed"
+          }
+        },
+        {
+          "key": "B",
+          "text": "削除されたドキュメントを完全に復元する",
+          "explanation": {
+            "text": "Change Feed は削除イベントを提供しないため誤り。",
+            "reference": "https://learn.microsoft.com/en-us/azure/cosmos-db/change-feed",
+            "reference_label": "Change Feed の制約"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Cosmos DB のストレージ使用量を自動的に縮小する",
+          "explanation": {
+            "text": "ストレージ管理は Change Feed の機能外。",
+            "reference": "https://learn.microsoft.com/en-us/azure/cosmos-db/change-feed",
+            "reference_label": "Cosmos DB Change Feed"
+          }
+        },
+        {
+          "key": "D",
+          "text": "バックアップポリシーを構成する",
+          "explanation": {
+            "text": "バックアップは別途構成が必要であり、Change Feed ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/cosmos-db/online-backup-and-restore",
+            "reference_label": "Cosmos DB バックアップ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Change Feed はリアルタイム ETL、イベント駆動処理、同期用途でよく利用される。",
+        "reference": "https://learn.microsoft.com/en-us/azure/cosmos-db/change-feed",
+        "reference_label": "Cosmos DB Change Feed"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q35",
+      "question": "Azure Container Apps の特徴として正しいのはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Kubernetes を直接操作せずに、イベント駆動・スケーラブルなコンテナ実行を提供する",
+          "explanation": {
+            "text": "Container Apps は Kubernetes 上に構築されているが、開発者は直接 Kubernetes を扱う必要がない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/container-apps/overview",
+            "reference_label": "Azure Container Apps 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "常に仮想マシンをプロビジョニングして利用する必要がある",
+          "explanation": {
+            "text": "Container Apps はサーバーレス的に動作し、VM 管理を必要としない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/container-apps/overview",
+            "reference_label": "Container Apps 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "App Service 専用のデプロイメント スロットを利用する",
+          "explanation": {
+            "text": "スロットは App Service の機能であり、Container Apps にはない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/container-apps/overview",
+            "reference_label": "Container Apps 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Functions しかホストできない",
+          "explanation": {
+            "text": "Container Apps は任意のコンテナ化アプリをホスト可能で、Functions 専用ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/container-apps/overview",
+            "reference_label": "Container Apps 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure Container Apps は Kubernetes 上のマネージド サービスで、開発者は直接 Kubernetes を操作せずイベント駆動・スケーラブルなコンテナ実行を利用できる。",
+        "reference": "https://learn.microsoft.com/en-us/azure/container-apps/overview",
+        "reference_label": "Azure Container Apps 概要"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q36",
+      "question": "Azure Key Vault と統合する際、アプリケーションがマネージド ID を利用するメリットはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "アプリコードに資格情報を保存せずに Key Vault にアクセスできる",
+          "explanation": {
+            "text": "マネージド ID を使うことで資格情報をアプリに埋め込む必要がなくなる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/key-vault/general/authentication",
+            "reference_label": "Key Vault 認証オプション"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Key Vault の SLA を向上させる",
+          "explanation": {
+            "text": "マネージド ID は SLA に影響しない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/key-vault/general/basic-concepts",
+            "reference_label": "Key Vault 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Key Vault 内のシークレットを自動的に暗号化する",
+          "explanation": {
+            "text": "暗号化は Key Vault の機能であり、マネージド ID の機能ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/key-vault/general/basic-concepts",
+            "reference_label": "Key Vault 暗号化"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Key Vault をグローバルに複製する",
+          "explanation": {
+            "text": "Key Vault のレプリケーションはサービス自体の仕組みで、マネージド ID とは無関係。",
+            "reference": "https://learn.microsoft.com/en-us/azure/key-vault/general/overview",
+            "reference_label": "Key Vault 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "マネージド ID を使えばアプリコードに資格情報を保持せずに Key Vault にアクセスでき、セキュリティが向上する。",
+        "reference": "https://learn.microsoft.com/en-us/azure/key-vault/general/authentication",
+        "reference_label": "Key Vault 認証オプション"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q37",
+      "question": "Azure Durable Functions のエンティティ関数 (Entity Function) の特徴として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "小さな状態を管理し、操作をシリアル化して実行できる",
+          "explanation": {
+            "text": "エンティティ関数はステートフルなオブジェクトを Durable Functions 上で実装するために利用される。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-entities",
+            "reference_label": "Durable Functions エンティティ関数"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Durable Functions の Orchestrator 関数の代わりに長時間ワークフローを実行する",
+          "explanation": {
+            "text": "長時間ワークフローは Orchestrator 関数の役割であり、Entity Function の役割ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview",
+            "reference_label": "Durable Functions 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "HTTP トリガー専用でしか呼び出せない",
+          "explanation": {
+            "text": "エンティティ関数は Orchestrator やクライアント関数からも呼び出せるため誤り。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-entities",
+            "reference_label": "Entity Functions の利用"
+          }
+        },
+        {
+          "key": "D",
+          "text": "状態を保存するために Azure SQL Database が必須である",
+          "explanation": {
+            "text": "Durable Functions は内部的に Azure Storage を利用する。SQL は必須ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview",
+            "reference_label": "Durable Functions 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Entity Function は小さな状態管理に特化し、操作をシリアル化して安全に実行できる。",
+        "reference": "https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-entities",
+        "reference_label": "Durable Functions エンティティ関数"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q38",
+      "question": "Azure Storage Table と Cosmos DB Table API の違いについて正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Cosmos DB Table API はグローバル分散と低レイテンシ SLA を提供する",
+          "explanation": {
+            "text": "Cosmos DB Table API はグローバル分散、低レイテンシ SLA を提供するのが特徴。",
+            "reference": "https://learn.microsoft.com/en-us/azure/cosmos-db/table/table-api-overview",
+            "reference_label": "Cosmos DB Table API"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Storage Table はグローバル分散をサポートする",
+          "explanation": {
+            "text": "Storage Table は地域冗長レプリケーションはあるが、Cosmos DB のようなグローバル分散はサポートしない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/storage/tables/table-storage-overview",
+            "reference_label": "Azure Table Storage 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Cosmos DB Table API は無料であり課金は発生しない",
+          "explanation": {
+            "text": "Cosmos DB は課金が発生する。無料ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/cosmos-db/table/table-api-overview",
+            "reference_label": "Cosmos DB 課金モデル"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Storage Table は低レイテンシ SLA を提供する",
+          "explanation": {
+            "text": "低レイテンシ SLA は Cosmos DB の強みであり、Storage Table にはない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/storage/tables/table-storage-overview",
+            "reference_label": "Azure Table Storage 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cosmos DB Table API は Storage Table と互換性がありつつ、グローバル分散と SLA を提供する。",
+        "reference": "https://learn.microsoft.com/en-us/azure/cosmos-db/table/table-api-overview",
+        "reference_label": "Cosmos DB Table API"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q39",
+      "question": "Azure Logic Apps でエラー処理を実装する一般的な方法はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "アクションに対して再試行ポリシーとエラー分岐を設定する",
+          "explanation": {
+            "text": "Logic Apps はアクション単位で再試行や失敗時の別ルート処理を設定できる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/logic-apps/logic-apps-exception-handling",
+            "reference_label": "Logic Apps 例外処理"
+          }
+        },
+        {
+          "key": "B",
+          "text": "コードに try-catch を追加する",
+          "explanation": {
+            "text": "Logic Apps はローコード環境であり、直接 try-catch コードを記述する方式ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/logic-apps/logic-apps-exception-handling",
+            "reference_label": "Logic Apps エラー処理"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アプリサービスの Web.config にリトライ設定を書く",
+          "explanation": {
+            "text": "Web.config は Logic Apps の仕組みには関係しない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/logic-apps/logic-apps-overview",
+            "reference_label": "Logic Apps 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Monitor で自動修復を有効化する",
+          "explanation": {
+            "text": "Azure Monitor は監視サービスであり、Logic Apps のエラー分岐には直接関与しない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/logic-apps/logic-apps-exception-handling",
+            "reference_label": "Logic Apps エラー処理"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Logic Apps のエラー処理は再試行ポリシーと条件分岐によって設計するのが一般的。",
+        "reference": "https://learn.microsoft.com/en-us/azure/logic-apps/logic-apps-exception-handling",
+        "reference_label": "Logic Apps エラー処理"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q40",
+      "question": "Azure Event Hubs のパーティションの目的は何か。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "スループットをスケールアウトし、複数のコンシューマーが並行処理できるようにする",
+          "explanation": {
+            "text": "パーティションによりイベントが分散され、スループットが向上し並行処理が可能になる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/event-hubs/event-hubs-features",
+            "reference_label": "Event Hubs パーティション"
+          }
+        },
+        {
+          "key": "B",
+          "text": "イベントを暗号化する",
+          "explanation": {
+            "text": "暗号化はストレージ側の機能であり、パーティションの目的ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/event-hubs/event-hubs-encryption",
+            "reference_label": "Event Hubs 暗号化"
+          }
+        },
+        {
+          "key": "C",
+          "text": "イベントの保持期間を延長する",
+          "explanation": {
+            "text": "保持期間は構成で制御するが、パーティションの目的ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/event-hubs/event-hubs-retention",
+            "reference_label": "Event Hubs 保持期間"
+          }
+        },
+        {
+          "key": "D",
+          "text": "イベントの順序保証を完全に実現する",
+          "explanation": {
+            "text": "順序保証はパーティションキー内に限定される。完全順序保証は提供されない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/event-hubs/event-hubs-features",
+            "reference_label": "Event Hubs パーティションキー"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "パーティションはイベントの分散処理を可能にし、スループットのスケーリングに役立つ。",
+        "reference": "https://learn.microsoft.com/en-us/azure/event-hubs/event-hubs-features",
+        "reference_label": "Event Hubs パーティション"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q41",
+      "question": "Azure Functions の Durable Timer の用途はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "長時間待機を非同期に処理し、Orchestrator 関数を中断せずに継続させる",
+          "explanation": {
+            "text": "Durable Timer を使うと長時間待機も効率的に扱える。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview",
+            "reference_label": "Durable Functions タイマー"
+          }
+        },
+        {
+          "key": "B",
+          "text": "トリガー関数を 1 秒ごとに実行する",
+          "explanation": {
+            "text": "これは Timer Trigger の役割であり、Durable Timer ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-timer",
+            "reference_label": "Timer Trigger"
+          }
+        },
+        {
+          "key": "C",
+          "text": "HTTP 要求を遅延させる",
+          "explanation": {
+            "text": "Durable Timer は HTTP 遅延用ではなく、Orchestrator 内での待機に使う。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview",
+            "reference_label": "Durable Functions 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "アクティビティ関数を並列で実行する",
+          "explanation": {
+            "text": "並列実行は await Task.WhenAll で行い、Durable Timer の用途ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview",
+            "reference_label": "並列実行"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Durable Timer は長時間待機を非同期に処理し、Orchestrator を効率的に継続させるために使う。",
+        "reference": "https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview",
+        "reference_label": "Durable Functions タイマー"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q42",
+      "question": "Azure Event Grid と Azure Service Bus を統合する場合の正しい設計はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Event Grid のサブスクリプションのエンドポイントとして Service Bus Queue または Topic を利用する",
+          "explanation": {
+            "text": "Event Grid は Service Bus Queue/Topic をイベントハンドラーとして利用可能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/event-grid/event-handlers",
+            "reference_label": "Event Grid ハンドラー"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Service Bus から Event Grid へ直接イベントを自動送信する",
+          "explanation": {
+            "text": "Service Bus は Event Grid への直接公開機能を持たない。統合は逆方向。",
+            "reference": "https://learn.microsoft.com/en-us/azure/event-grid/event-handlers",
+            "reference_label": "Event Grid ハンドラー"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Event Grid のイベントは Service Bus で必ず順序保証される",
+          "explanation": {
+            "text": "順序保証は必ずしも行われない。Service Bus のセッション機能を使えば順序を制御できるが必須ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-sessions",
+            "reference_label": "Service Bus メッセージ セッション"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Service Bus を利用する場合、Event Grid の再試行ポリシーは無効になる",
+          "explanation": {
+            "text": "Event Grid の再試行ポリシーは有効なままである。",
+            "reference": "https://learn.microsoft.com/en-us/azure/event-grid/delivery-and-retry",
+            "reference_label": "Event Grid 再試行"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Event Grid は Service Bus Queue または Topic をイベントハンドラーとして利用でき、統合によりメッセージング処理を拡張できる。",
+        "reference": "https://learn.microsoft.com/en-us/azure/event-grid/event-handlers",
+        "reference_label": "Event Grid ハンドラー"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q43",
+      "question": "Azure Application Gateway の Web Application Firewall (WAF) 機能の目的として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "一般的な Web 攻撃 (SQL インジェクション, XSS など) からアプリを保護する",
+          "explanation": {
+            "text": "WAF は OWASP Top 10 に代表される一般的な攻撃からアプリを保護する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/web-application-firewall/ag/ag-overview",
+            "reference_label": "Application Gateway WAF 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "アプリケーションのパフォーマンスを最適化する CDN キャッシュ機能",
+          "explanation": {
+            "text": "CDN キャッシュは Azure Front Door や Azure CDN の機能であり、WAF の目的ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/cdn/cdn-overview",
+            "reference_label": "Azure CDN 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アプリケーションのデプロイを自動化する",
+          "explanation": {
+            "text": "デプロイ自動化は DevOps や ARM テンプレートの範囲であり、WAF の役割ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/overview",
+            "reference_label": "ARM テンプレート"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データベースのスケーリングを自動化する",
+          "explanation": {
+            "text": "データベース スケーリングは Azure SQL や Cosmos DB の機能で、WAF とは関係ない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-sql/database/auto-failover-group-overview",
+            "reference_label": "Azure SQL 自動フェールオーバー"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "WAF は OWASP Top 10 を含む一般的な Web 攻撃を防御する役割を持つ。",
+        "reference": "https://learn.microsoft.com/en-us/azure/web-application-firewall/ag/ag-overview",
+        "reference_label": "Application Gateway WAF 概要"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q44",
+      "question": "Azure Functions における Durable Functions のファンアウト/ファンイン パターンの用途はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "複数のアクティビティ関数を並列で実行し、すべて完了した後に結果を集約する",
+          "explanation": {
+            "text": "ファンアウト/ファンインは並列化処理の典型的パターンであり、すべての結果を集約して次に進む。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview",
+            "reference_label": "Durable Functions パターン"
+          }
+        },
+        {
+          "key": "B",
+          "text": "エラー発生時に別の関数を呼び出す",
+          "explanation": {
+            "text": "これはエラーハンドリングの仕組みであり、ファンアウト/ファンインの定義ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview",
+            "reference_label": "Durable Functions 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "イベント駆動で単一のアクティビティ関数を呼び出す",
+          "explanation": {
+            "text": "単一呼び出しはパターンではなく通常の利用方法。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview",
+            "reference_label": "Durable Functions 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "タイマーを使って処理を一定時間遅延させる",
+          "explanation": {
+            "text": "タイマー遅延は Durable Timer の利用であり、ファンアウト/ファンインではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview",
+            "reference_label": "Durable Timer"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Durable Functions のファンアウト/ファンインは並列化と結果集約に利用される典型パターン。",
+        "reference": "https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview",
+        "reference_label": "Durable Functions パターン"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q45",
+      "question": "Azure Cognitive Services Translator の主な用途はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "テキストを多言語に翻訳する",
+          "explanation": {
+            "text": "Translator はテキスト翻訳 API を提供する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/cognitive-services/translator/translator-overview",
+            "reference_label": "Translator 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "音声から感情を検出する",
+          "explanation": {
+            "text": "感情検出は Speech または Emotion Analysis の領域。",
+            "reference": "https://learn.microsoft.com/en-us/azure/cognitive-services/speech-service/overview",
+            "reference_label": "Speech Service 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "画像内の物体を検出する",
+          "explanation": {
+            "text": "物体検出は Computer Vision の機能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/cognitive-services/computer-vision/",
+            "reference_label": "Computer Vision"
+          }
+        },
+        {
+          "key": "D",
+          "text": "リアルタイム ビデオストリーミングを処理する",
+          "explanation": {
+            "text": "Translator はテキスト翻訳 API であり、動画処理機能はない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/cognitive-services/translator/translator-overview",
+            "reference_label": "Translator 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Translator の目的はテキスト翻訳である。",
+        "reference": "https://learn.microsoft.com/en-us/azure/cognitive-services/translator/translator-overview",
+        "reference_label": "Translator 概要"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q46",
+      "question": "Azure Storage Queue でメッセージを削除する正しい方法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "メッセージを取得後、DeleteMessage 操作を呼び出す",
+          "explanation": {
+            "text": "キューから取得したメッセージは DeleteMessage 操作で明示的に削除する必要がある。",
+            "reference": "https://learn.microsoft.com/en-us/rest/api/storageservices/delete-message",
+            "reference_label": "Storage Queue DeleteMessage"
+          }
+        },
+        {
+          "key": "B",
+          "text": "メッセージは自動的に削除されるため操作は不要",
+          "explanation": {
+            "text": "Peek 取得や非削除取得では自動削除されない。明示的に削除が必要。",
+            "reference": "https://learn.microsoft.com/en-us/rest/api/storageservices/get-messages",
+            "reference_label": "Get Messages（非表示タイムアウト）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "キュー全体を削除する",
+          "explanation": {
+            "text": "キュー全体を削除するとすべてのメッセージが消えるが通常の処理方法ではない。",
+            "reference": "https://learn.microsoft.com/en-us/rest/api/storageservices/delete-queue3",
+            "reference_label": "Delete Queue"
+          }
+        },
+        {
+          "key": "D",
+          "text": "非表示タイムアウトが切れるまで待機する",
+          "explanation": {
+            "text": "非表示タイムアウトが切れると再度見えるようになるだけで削除はされない。",
+            "reference": "https://learn.microsoft.com/en-us/rest/api/storageservices/get-messages",
+            "reference_label": "Get Messages（非表示タイムアウト）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "メッセージは取得後 DeleteMessage 操作で明示的に削除する必要がある。",
+        "reference": "https://learn.microsoft.com/en-us/rest/api/storageservices/delete-message",
+        "reference_label": "Storage Queue DeleteMessage"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q47",
+      "question": "Azure API Management (APIM) でポリシーを使う目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "API の動作を制御する (例: レート制限, キャッシュ, 認証)",
+          "explanation": {
+            "text": "ポリシーは API の制御や変換、セキュリティ強化に利用される。",
+            "reference": "https://learn.microsoft.com/en-us/azure/api-management/api-management-policies",
+            "reference_label": "APIM ポリシー"
+          }
+        },
+        {
+          "key": "B",
+          "text": "API のスキーマを生成する",
+          "explanation": {
+            "text": "スキーマ生成はポリシーではなく OpenAPI の取り込み等で行う。",
+            "reference": "https://learn.microsoft.com/en-us/azure/api-management/api-management-key-concepts",
+            "reference_label": "APIM 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "API のバージョニングを管理する",
+          "explanation": {
+            "text": "バージョニングは別の仕組みで、ポリシーの機能ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/api-management/api-management-versions",
+            "reference_label": "APIM バージョニング"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ソースコードをリポジトリに保存する",
+          "explanation": {
+            "text": "コード保存は DevOps や Git の領域であり、APIM ポリシーではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/devops/repos/git/",
+            "reference_label": "Azure Repos"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "APIM ポリシーは API の制御、セキュリティ、変換を柔軟に行える。",
+        "reference": "https://learn.microsoft.com/en-us/azure/api-management/api-management-policies",
+        "reference_label": "APIM ポリシー"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q48",
+      "question": "Azure Cosmos DB のプロビジョンド スループット モードの特徴はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "リクエスト ユニット (RU/s) を指定して予測可能なパフォーマンスを確保できる",
+          "explanation": {
+            "text": "プロビジョンド スループットは RU/s 単位で予約し、安定した性能を保証する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/cosmos-db/provision-throughput",
+            "reference_label": "Cosmos DB プロビジョンド スループット"
+          }
+        },
+        {
+          "key": "B",
+          "text": "サーバーレス モードと同じくリクエストごとに課金される",
+          "explanation": {
+            "text": "これはサーバーレス モードの特徴であり、プロビジョンド スループットではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/cosmos-db/serverless",
+            "reference_label": "Cosmos DB サーバーレス"
+          }
+        },
+        {
+          "key": "C",
+          "text": "スループットは常に自動でスケーリングされる",
+          "explanation": {
+            "text": "自動スケーリングは autoscale オプションを有効化した場合であり、通常は固定値。",
+            "reference": "https://learn.microsoft.com/en-us/azure/cosmos-db/provision-throughput-autoscale",
+            "reference_label": "Autoscale 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "読み取りと書き込みのスループットを別々に指定する必要がある",
+          "explanation": {
+            "text": "Cosmos DB の RU/s は読み取りと書き込みを統合して管理する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/cosmos-db/provision-throughput",
+            "reference_label": "プロビジョンド スループット"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "プロビジョンド スループット モードでは RU/s を指定し、予測可能で安定したパフォーマンスを確保できる。",
+        "reference": "https://learn.microsoft.com/en-us/azure/cosmos-db/provision-throughput",
+        "reference_label": "Cosmos DB プロビジョンド スループット"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q49",
+      "question": "Azure Storage Blob の Soft Delete 機能を有効化すると何が可能になるか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "削除された Blob を一定期間復元できる",
+          "explanation": {
+            "text": "Soft Delete を有効化すると保持期間内は削除した Blob を復元可能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/storage/blobs/soft-delete-blob-overview",
+            "reference_label": "Blob Soft Delete"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Blob を暗号化する",
+          "explanation": {
+            "text": "暗号化はストレージの既定機能であり、Soft Delete とは別の機能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/storage/blobs/storage-service-encryption",
+            "reference_label": "Blob 暗号化"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Blob を別リージョンに複製する",
+          "explanation": {
+            "text": "リージョン冗長はレプリケーションであり、Soft Delete の機能ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy",
+            "reference_label": "ストレージ冗長性"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Blob のアクセス権を自動的に管理する",
+          "explanation": {
+            "text": "アクセス制御は RBAC や SAS で行い、Soft Delete ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction",
+            "reference_label": "Blob 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Soft Delete は削除した Blob を一定期間復元できる機能である。",
+        "reference": "https://learn.microsoft.com/en-us/azure/storage/blobs/soft-delete-blob-overview",
+        "reference_label": "Blob Soft Delete"
+      }
+    },
+    {
+      "id": "azure-AZ-204-q50",
+      "question": "Azure Monitor Logs をクエリするための言語はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Kusto Query Language (KQL)",
+          "explanation": {
+            "text": "Azure Monitor Logs（Log Analytics）は KQL を用いてログやメトリックをクエリ・分析する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/",
+            "reference_label": "Kusto Query Language (KQL) ドキュメント"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Transact-SQL (T-SQL)",
+          "explanation": {
+            "text": "T-SQL は Azure SQL Database などのリレーショナル DB 用言語であり、Azure Monitor Logs のクエリ言語ではない。",
+            "reference": "https://learn.microsoft.com/en-us/sql/t-sql/language-reference",
+            "reference_label": "T-SQL 言語リファレンス"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Splunk Search Processing Language (SPL)",
+          "explanation": {
+            "text": "SPL は Splunk 製品のクエリ言語であり、Azure Monitor Logs では使用しない。",
+            "reference": "https://docs.splunk.com/Documentation/Splunk/latest/Search/AbouttheSearchProcessingLanguage",
+            "reference_label": "Splunk SPL 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "SQL-92",
+          "explanation": {
+            "text": "SQL-92 は標準 SQL 仕様であり、Azure Monitor Logs のネイティブクエリ言語は KQL。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/log-query-overview",
+            "reference_label": "Azure Monitor Logs: クエリの概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure Monitor Logs は Kusto Query Language (KQL) によってテレメトリを探索・分析する。",
+        "reference": "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/log-query-overview",
+        "reference_label": "Azure Monitor Logs: クエリの概要"
+      }
+    }
+  ]
+}

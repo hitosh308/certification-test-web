@@ -1,0 +1,2512 @@
+{
+  "exam": {
+    "id": "security_supporter",
+    "title": "情報処理安全確保支援士試験",
+    "description": "情報処理安全確保支援士は、サイバー攻撃の高度化や社会のIT依存の進展を受け、情報セキュリティの専門知識・技能を持つ人材を国家レベルで認定する資格です。所管は独立行政法人 情報処理推進機構（IPA）で、企業のセキュリティ体制構築や運用、リスク管理などを担える人材を育成・証明することを目的としています。資格は名称独占資格であり、セキュリティ分野での信頼性やキャリアの裏付けとして広く活用されています。",
+    "version": "2024",
+    "price": "7,500円",
+    "difficulty": "難しい",
+    "official-site": "https://www.ipa.go.jp/shiken/kubun/sc.html",
+    "category": {
+      "id": "it",
+      "name": "情報処理技術者"
+    }
+  },
+  "questions": [
+    {
+      "id": "it-SS-q1",
+      "question": "ゼロトラストモデルの設計思想として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "すべてのアクセスは検証されるべきであり、内部ネットワークも信用しない。",
+          "explanation": {
+            "text": "ゼロトラストの核心概念は“内部を含めて信用しない”ことである。",
+            "reference": "https://www.ipa.go.jp/security/zero-trust/",
+            "reference_label": "IPA ゼロトラストモデル"
+          }
+        },
+        {
+          "key": "B",
+          "text": "社内ネットワークは安全である前提で運用する。",
+          "explanation": {
+            "text": "従来型の境界防御の考え方でありゼロトラストではない。",
+            "reference": "https://www.ipa.go.jp/security/zero-trust/",
+            "reference_label": "IPA ゼロトラストモデル"
+          }
+        },
+        {
+          "key": "C",
+          "text": "すべての通信は暗号化しなくてもよい。",
+          "explanation": {
+            "text": "ゼロトラストでは暗号化は推奨される。",
+            "reference": "https://www.ipa.go.jp/security/zero-trust/",
+            "reference_label": "IPA ゼロトラストモデル"
+          }
+        },
+        {
+          "key": "D",
+          "text": "認証は初回接続時だけ行えばよい。",
+          "explanation": {
+            "text": "継続的な検証がゼロトラストのポイントである。",
+            "reference": "https://www.ipa.go.jp/security/zero-trust/",
+            "reference_label": "IPA ゼロトラストモデル"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ゼロトラストは内部外部を問わず“常に検証する”思想で構築される。",
+        "reference": "https://www.ipa.go.jp/security/zero-trust/",
+        "reference_label": "IPA ゼロトラストモデル"
+      }
+    },
+
+    {
+      "id": "it-SS-q2",
+      "question": "サプライチェーン攻撃の特徴として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "攻撃者がソフトウェア更新に偽装してマルウェアを配布する可能性がある。",
+          "explanation": {
+            "text": "SolarWinds 事案のようにアップデートに悪意のコードが混入する例が典型である。",
+            "reference": "https://www.ipa.go.jp/security/ciadr/supply-chain/",
+            "reference_label": "IPA サプライチェーン攻撃"
+          }
+        },
+        {
+          "key": "B",
+          "text": "攻撃は必ず物理デバイスを破壊する。",
+          "explanation": {
+            "text": "物理破壊は必須ではなく、情報窃取が目的のことも多い。",
+            "reference": "https://www.ipa.go.jp/security/ciadr/supply-chain/",
+            "reference_label": "IPA サプライチェーン攻撃"
+          }
+        },
+        {
+          "key": "C",
+          "text": "攻撃はユーザのキーボード操作を常時監視することで成立する。",
+          "explanation": {
+            "text": "キーロガーは攻撃手法の一つであり、サプライチェーン特有ではない。",
+            "reference": "https://www.ipa.go.jp/security/ciadr/supply-chain/",
+            "reference_label": "IPA サプライチェーン攻撃"
+          }
+        },
+        {
+          "key": "D",
+          "text": "企業 LAN 外では攻撃が成立しない。",
+          "explanation": {
+            "text": "クラウドや更新配布経路を狙うためネットワークに依存しない。",
+            "reference": "https://www.ipa.go.jp/security/ciadr/supply-chain/",
+            "reference_label": "IPA サプライチェーン攻撃"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "サプライチェーン攻撃はソフトウェア更新経路が悪用される点が重要である。",
+        "reference": "https://www.ipa.go.jp/security/ciadr/supply-chain/",
+        "reference_label": "IPA サプライチェーン攻撃"
+      }
+    },
+
+    {
+      "id": "it-SS-q3",
+      "question": "TLS1.3 に関する説明として適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "RSA キー交換を必須としている。",
+          "explanation": {
+            "text": "TLS1.3 では RSA キー交換は廃止されている。",
+            "reference": "https://datatracker.ietf.org/doc/rfc8446/",
+            "reference_label": "RFC8446"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ハンドシェイクを簡略化し 1-RTT を実現している。",
+          "explanation": {
+            "text": "TLS1.3 の大きな特徴であり接続時間が短縮される。",
+            "reference": "https://datatracker.ietf.org/doc/rfc8446/",
+            "reference_label": "RFC8446"
+          }
+        },
+        {
+          "key": "C",
+          "text": "安全性の理由から暗号化通信を禁止している。",
+          "explanation": {
+            "text": "TLSは暗号化通信を提供するプロトコルであり逆である。",
+            "reference": "https://datatracker.ietf.org/doc/rfc8446/",
+            "reference_label": "RFC8446"
+          }
+        },
+        {
+          "key": "D",
+          "text": "MD5 を主要アルゴリズムとしている。",
+          "explanation": {
+            "text": "MD5 は脆弱性により廃止済み。",
+            "reference": "https://datatracker.ietf.org/doc/rfc8446/",
+            "reference_label": "RFC8446"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "TLS1.3 はハンドシェイクの軽量化により高速化を実現している。",
+        "reference": "https://datatracker.ietf.org/doc/rfc8446/",
+        "reference_label": "RFC8446"
+      }
+    },
+
+    {
+      "id": "it-SS-q4",
+      "question": "CSIRT の役割として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "インシデント対応手順の整備や組織的対応を担う。",
+          "explanation": {
+            "text": "CSIRT の主要任務はインシデント対応計画と調整である。",
+            "reference": "https://www.ipa.go.jp/security/csirt/",
+            "reference_label": "IPA CSIRT"
+          }
+        },
+        {
+          "key": "B",
+          "text": "財務諸表の監査を行う。",
+          "explanation": {
+            "text": "財務監査はCSIRTの範囲外。",
+            "reference": "https://www.ipa.go.jp/security/csirt/",
+            "reference_label": "IPA CSIRT"
+          }
+        },
+        {
+          "key": "C",
+          "text": "社内の全システムを開発する。",
+          "explanation": {
+            "text": "CSIRTはセキュリティ対応組織であり開発組織ではない。",
+            "reference": "https://www.ipa.go.jp/security/csirt/",
+            "reference_label": "IPA CSIRT"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ネットワークの物理配線を管理する。",
+          "explanation": {
+            "text": "物理管理は通常インフラ担当部署の仕事である。",
+            "reference": "https://www.ipa.go.jp/security/csirt/",
+            "reference_label": "IPA CSIRT"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "CSIRT は組織内のインシデント対応計画と調整の中心となる。",
+        "reference": "https://www.ipa.go.jp/security/csirt/",
+        "reference_label": "IPA CSIRT"
+      }
+    },
+
+    {
+      "id": "it-SS-q5",
+      "question": "EDR が重視される理由として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "マルウェアを物理的に破壊できるため。",
+          "explanation": {
+            "text": "物理破壊は EDR の目的ではない。",
+            "reference": "https://www.ipa.go.jp/security/endpoint/",
+            "reference_label": "IPA エンドポイントセキュリティ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "定義ファイルのみで全攻撃を防止できるため。",
+          "explanation": {
+            "text": "EDR は定義ファイル依存ではなく振る舞い検知を重視する。",
+            "reference": "https://www.ipa.go.jp/security/endpoint/",
+            "reference_label": "IPA エンドポイントセキュリティ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "侵害後の挙動監視や調査により影響を最小化できるため。",
+          "explanation": {
+            "text": "侵害前提の監視と迅速な対応が EDR の主目的。",
+            "reference": "https://www.ipa.go.jp/security/endpoint/",
+            "reference_label": "IPA エンドポイントセキュリティ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ネットワーク全体の通信を遮断するため。",
+          "explanation": {
+            "text": "EDRは通信遮断製品ではない。",
+            "reference": "https://www.ipa.go.jp/security/endpoint/",
+            "reference_label": "IPA エンドポイントセキュリティ"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "EDR は感染後の動作監視や分析により被害拡大を防ぐ点が重要である。",
+        "reference": "https://www.ipa.go.jp/security/endpoint/",
+        "reference_label": "IPA エンドポイントセキュリティ"
+      }
+    },
+
+    {
+      "id": "it-SS-q6",
+      "question": "前方秘匿性（PFS）の正しい説明はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "古いセッション鍵が漏洩しても過去通信が解読されない性質。",
+          "explanation": {
+            "text": "PFS は過去の鍵漏洩による通信解読を防ぐ性質である。",
+            "reference": "https://datatracker.ietf.org/doc/rfc8446/",
+            "reference_label": "RFC8446"
+          }
+        },
+        {
+          "key": "B",
+          "text": "将来の暗号方式を必ず予測できる性質。",
+          "explanation": {
+            "text": "PFS は将来予測とは関係ない。",
+            "reference": "https://datatracker.ietf.org/doc/rfc8446/",
+            "reference_label": "RFC8446"
+          }
+        },
+        {
+          "key": "C",
+          "text": "セッション鍵をすべて固定化する仕組み。",
+          "explanation": {
+            "text": "固定鍵は危険でありPFSと真逆の概念。",
+            "reference": "https://datatracker.ietf.org/doc/rfc8446/",
+            "reference_label": "RFC8446"
+          }
+        },
+        {
+          "key": "D",
+          "text": "鍵共有を暗号化しないことで高速化する方式。",
+          "explanation": {
+            "text": "暗号化しない方式はセキュリティ上不適切。",
+            "reference": "https://datatracker.ietf.org/doc/rfc8446/",
+            "reference_label": "RFC8446"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "前方秘匿性は過去のセッションが後から解読されないようにする重要な性質である。",
+        "reference": "https://datatracker.ietf.org/doc/rfc8446/",
+        "reference_label": "RFC8446"
+      }
+    },
+    {
+      "id": "it-SS-q7",
+      "question": "ログ管理に関する説明のうち、情報処理安全確保支援士として最も適切な方針はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ストレージ節約のため、ログは可能な限り短期間で自動削除する。",
+          "explanation": {
+            "text": "ログはインシデント調査や不正検知に必要であり、一律に短期間で削除するのは不適切である。",
+            "reference": "https://www.ipa.go.jp/security/ciadr/log/",
+            "reference_label": "IPA ログの適切な管理・活用"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ログは平文で保存し、だれでも参照できるようにすることで透明性を高める。",
+          "explanation": {
+            "text": "ログには個人情報や機密情報が含まれる場合があり、アクセス制御や保護が必要である。",
+            "reference": "https://www.ipa.go.jp/security/ciadr/log/",
+            "reference_label": "IPA ログの適切な管理・活用"
+          }
+        },
+        {
+          "key": "C",
+          "text": "インシデント対応や監査を想定し、必要な期間ログを保全しつつ改ざん防止・アクセス制御を行う。",
+          "explanation": {
+            "text": "ログは保全期間・保管方法・改ざん防止・アクセス制御を含めたポリシーに基づき管理する必要がある。",
+            "reference": "https://www.ipa.go.jp/security/ciadr/log/",
+            "reference_label": "IPA ログの適切な管理・活用"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ログはインシデント発生時だけオンにし、平常時は出力しない。",
+          "explanation": {
+            "text": "平常時からのログがないと、インシデント発生時の原因追跡や影響範囲の特定が困難になる。",
+            "reference": "https://www.ipa.go.jp/security/ciadr/log/",
+            "reference_label": "IPA ログの適切な管理・活用"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "ログ管理はインシデント対応や監査を見据え、保全期間・改ざん防止・アクセス制御を含むポリシーに基づいて適切に運用することが求められる。",
+        "reference": "https://www.ipa.go.jp/security/ciadr/log/",
+        "reference_label": "IPA ログの適切な管理・活用"
+      }
+    },
+    {
+      "id": "it-SS-q8",
+      "question": "公開鍵基盤（PKI）において、認証局（CA）の主な役割として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "秘密鍵を利用者に配布し、暗号化処理を代行する。",
+          "explanation": {
+            "text": "秘密鍵は利用者自身が厳重に管理すべきものであり、CA が配布するものではない。",
+            "reference": "https://www.ipa.go.jp/security/fy13/reports/pki/",
+            "reference_label": "IPA PKI解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "暗号アルゴリズムそのものを設計・標準化する。",
+          "explanation": {
+            "text": "アルゴリズム設計・標準化は標準化団体等の役割であり、CA の役割ではない。",
+            "reference": "https://www.ipa.go.jp/security/fy13/reports/pki/",
+            "reference_label": "IPA PKI解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "電子証明書の失効情報（CRL/OCSP）を管理し、常に最新の状態に保つ。",
+          "explanation": {
+            "text": "失効証明書情報を提供することも CA の重要な役割だが、主な役割は証明書の発行と失効管理を含む信頼の根となることである。",
+            "reference": "https://www.ipa.go.jp/security/fy13/reports/pki/",
+            "reference_label": "IPA PKI解説"
+          }
+        },
+        {
+          "key": "D",
+          "text": "利用者の公開鍵と身元を確認し、電子証明書として署名・発行することで信頼を与える。",
+          "explanation": {
+            "text": "CA は公開鍵と主体の結び付きを確認し、署名付き証明書として発行することで第三者に対して“この公開鍵はこの主体に属する”と保証する。",
+            "reference": "https://www.ipa.go.jp/security/fy13/reports/pki/",
+            "reference_label": "IPA PKI解説"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "PKI における CA の中心的な役割は、公開鍵と主体の対応関係を確認し、電子証明書として署名・発行することで信頼の連鎖（信頼の根）を提供することである。",
+        "reference": "https://www.ipa.go.jp/security/fy13/reports/pki/",
+        "reference_label": "IPA PKI解説"
+      }
+    },
+    {
+      "id": "it-SS-q9",
+      "question": "ソフトウェア開発プロジェクトにおいて SBOM（Software Bill of Materials）を導入する主な目的として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "開発者の作業時間をすべて記録し、工数管理を徹底するため。",
+          "explanation": {
+            "text": "工数管理は SBOM の目的ではなく、プロジェクト管理の領域である。",
+            "reference": "https://www.ipa.go.jp/security/software/supply-chain/",
+            "reference_label": "IPA ソフトウェアサプライチェーンセキュリティ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "利用しているライブラリやコンポーネントの一覧を明確化し、脆弱性発見時に影響範囲を迅速に把握できるようにするため。",
+          "explanation": {
+            "text": "SBOM はソフトウェアの“部品表”であり、依存コンポーネントの管理・脆弱性対応に役立つ。",
+            "reference": "https://www.ipa.go.jp/security/software/supply-chain/",
+            "reference_label": "IPA ソフトウェアサプライチェーンセキュリティ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "実行ファイルのサイズを最小化するため。",
+          "explanation": {
+            "text": "サイズ最適化はビルドやコンパイルの設定に関する話であり、SBOM の目的ではない。",
+            "reference": "https://www.ipa.go.jp/security/software/supply-chain/",
+            "reference_label": "IPA ソフトウェアサプライチェーンセキュリティ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ソースコードをすべて暗号化し、開発者にも見えないようにするため。",
+          "explanation": {
+            "text": "SBOM は透明性を高める仕組みであり、コードを隠すことが目的ではない。",
+            "reference": "https://www.ipa.go.jp/security/software/supply-chain/",
+            "reference_label": "IPA ソフトウェアサプライチェーンセキュリティ"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "SBOM はソフトウェアに含まれるコンポーネントの一覧を明確にし、特定ライブラリに脆弱性が発見された際に、どのシステムが影響を受けるかを迅速に判断するために用いられる。",
+        "reference": "https://www.ipa.go.jp/security/software/supply-chain/",
+        "reference_label": "IPA ソフトウェアサプライチェーンセキュリティ"
+      }
+    },
+    {
+      "id": "it-SS-q10",
+      "question": "リスクマネジメントにおける“残留リスク（Residual Risk）”の説明として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "リスク対策を実施する前に存在していたリスクの総量。",
+          "explanation": {
+            "text": "これは“固有リスク（Inherent Risk）”に相当する概念である。",
+            "reference": "https://www.ipa.go.jp/security/isms/isms.html",
+            "reference_label": "IPA ISMS ユーザーズガイド"
+          }
+        },
+        {
+          "key": "B",
+          "text": "リスクをすべて保険会社に移転したあとのリスクの総量。",
+          "explanation": {
+            "text": "移転しても完全にリスクがゼロになるわけではなく、移転後にも残るリスクが存在しうる。",
+            "reference": "https://www.ipa.go.jp/security/isms/isms.html",
+            "reference_label": "IPA ISMS ユーザーズガイド"
+          }
+        },
+        {
+          "key": "C",
+          "text": "さまざまな対策を講じた後でも、なお組織が受容せざるを得ないリスク。",
+          "explanation": {
+            "text": "残留リスクとは、対策を実施した後も完全には除去されず、組織として受容することになるリスクを指す。",
+            "reference": "https://www.ipa.go.jp/security/isms/isms.html",
+            "reference_label": "IPA ISMS ユーザーズガイド"
+          }
+        },
+        {
+          "key": "D",
+          "text": "将来必ず発生すると予測されるリスク。",
+          "explanation": {
+            "text": "残留リスクは“必ず発生する”ことを意味するものではない。",
+            "reference": "https://www.ipa.go.jp/security/isms/isms.html",
+            "reference_label": "IPA ISMS ユーザーズガイド"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "残留リスクは、リスクを特定・評価し、低減・移転・回避などの対応を行った後でも、なお残って組織が受容するリスクのことである。",
+        "reference": "https://www.ipa.go.jp/security/isms/isms.html",
+        "reference_label": "IPA ISMS ユーザーズガイド"
+      }
+    },
+    {
+      "id": "it-SS-q11",
+      "question": "認証方式として WebAuthn の特徴として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "公開鍵暗号方式を用いてパスワードレス認証を実現できる。",
+          "explanation": {
+            "text": "WebAuthn は公開鍵暗号に基づく FIDO2 認証でパスワードレスを可能とする。",
+            "reference": "https://www.w3.org/TR/webauthn-2/",
+            "reference_label": "W3C WebAuthn Level2"
+          }
+        },
+        {
+          "key": "B",
+          "text": "生体認証情報がサーバに送信される仕様である。",
+          "explanation": {
+            "text": "生体情報は端末内に留まり、サーバへ送られない点が重要。",
+            "reference": "https://www.w3.org/TR/webauthn-2/",
+            "reference_label": "W3C WebAuthn Level2"
+          }
+        },
+        {
+          "key": "C",
+          "text": "TLS を使用しないことを前提とした認証方式である。",
+          "explanation": {
+            "text": "TLS との併用が通常であり TLS 非使用前提ではない。",
+            "reference": "https://www.w3.org/TR/webauthn-2/",
+            "reference_label": "W3C WebAuthn Level2"
+          }
+        },
+        {
+          "key": "D",
+          "text": "秘密鍵はサーバ側に保存される。",
+          "explanation": {
+            "text": "秘密鍵はクライアントデバイスで生成・保持される。",
+            "reference": "https://www.w3.org/TR/webauthn-2/",
+            "reference_label": "W3C WebAuthn Level2"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "WebAuthn は公開鍵暗号にもとづきパスワードレス認証を実現する。",
+        "reference": "https://www.w3.org/TR/webauthn-2/",
+        "reference_label": "W3C WebAuthn Level2"
+      }
+    },
+
+    {
+      "id": "it-SS-q12",
+      "question": "脅威インテリジェンス（CTI）の利用目的として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "攻撃者の名前を常に特定するため。",
+          "explanation": {
+            "text": "攻撃者の特定は目的ではなく、攻撃傾向分析などが重視される。",
+            "reference": "https://www.ipa.go.jp/security/ciadr/threat-intelligence/",
+            "reference_label": "IPA CTI 解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "攻撃手法やIOCの共有により防御力を高めるため。",
+          "explanation": {
+            "text": "CTI は IOC や攻撃テクニックの共有で対策に役立てる。",
+            "reference": "https://www.ipa.go.jp/security/ciadr/threat-intelligence/",
+            "reference_label": "IPA CTI 解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "企業の資産台帳を作成するため。",
+          "explanation": {
+            "text": "資産台帳はリスク管理の作業であり CTI ではない。",
+            "reference": "https://www.ipa.go.jp/security/ciadr/threat-intelligence/",
+            "reference_label": "IPA CTI 解説"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IPv6 アドレスの割り当てルールを決めるため。",
+          "explanation": {
+            "text": "アドレス管理は CTI の領域ではない。",
+            "reference": "https://www.ipa.go.jp/security/ciadr/threat-intelligence/",
+            "reference_label": "IPA CTI 解説"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "CTI は攻撃者の手法や IOC を共有し、防御行動に活用することが主目的である。",
+        "reference": "https://www.ipa.go.jp/security/ciadr/threat-intelligence/",
+        "reference_label": "IPA CTI 解説"
+      }
+    },
+
+    {
+      "id": "it-SS-q13",
+      "question": "リスク分析手法の1つである STRIDE の説明として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "サービス品質を評価するフレームワークである。",
+          "explanation": {
+            "text": "サービス品質ではなく脅威分類手法である。",
+            "reference": "https://learn.microsoft.com/en-us/security/compass/threat-modeling-stride",
+            "reference_label": "Microsoft STRIDE"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Spoofing など6種類の脅威カテゴリで分析を行う手法である。",
+          "explanation": {
+            "text": "STRIDE は Microsoft が定義した6分類の脅威モデルである。",
+            "reference": "https://learn.microsoft.com/en-us/security/compass/threat-modeling-stride",
+            "reference_label": "Microsoft STRIDE"
+          }
+        },
+        {
+          "key": "C",
+          "text": "攻撃者の国籍を分類する手法である。",
+          "explanation": {
+            "text": "攻撃者の属性分類とは無関係。",
+            "reference": "https://learn.microsoft.com/en-us/security/compass/threat-modeling-stride",
+            "reference_label": "Microsoft STRIDE"
+          }
+        },
+        {
+          "key": "D",
+          "text": "リスクを金額換算する方法として使われる。",
+          "explanation": {
+            "text": "金額換算は ROI や ALE などで行う。",
+            "reference": "https://learn.microsoft.com/en-us/security/compass/threat-modeling-stride",
+            "reference_label": "Microsoft STRIDE"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "STRIDE は Spoofing など6分類に基づき脅威を整理するモデルである。",
+        "reference": "https://learn.microsoft.com/en-us/security/compass/threat-modeling-stride",
+        "reference_label": "Microsoft STRIDE"
+      }
+    },
+
+    {
+      "id": "it-SS-q14",
+      "question": "フォレンジック調査の初動対応として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "システムの電源を直ちに切断し、すべてのログを削除する。",
+          "explanation": {
+            "text": "ログ削除は証拠毀損であり不適切。",
+            "reference": "https://www.ipa.go.jp/security/incident/forensics/",
+            "reference_label": "IPA デジタルフォレンジック"
+          }
+        },
+        {
+          "key": "B",
+          "text": "証拠保全のため、メモリ・ログ・ストレージを可能な限り改変せず取得する。",
+          "explanation": {
+            "text": "フォレンジックで最重要なのは証拠保全である。",
+            "reference": "https://www.ipa.go.jp/security/incident/forensics/",
+            "reference_label": "IPA デジタルフォレンジック"
+          }
+        },
+        {
+          "key": "C",
+          "text": "端末利用者に状況説明を求め、記憶に頼ってログ記録を再作成させる。",
+          "explanation": {
+            "text": "記憶に頼ったログ再現は信頼性が低い。",
+            "reference": "https://www.ipa.go.jp/security/incident/forensics/",
+            "reference_label": "IPA デジタルフォレンジック"
+          }
+        },
+        {
+          "key": "D",
+          "text": "証拠として撮影するため、端末をあらゆる角度から撮影するだけでよい。",
+          "explanation": {
+            "text": "写真のみではデジタル証拠として不十分。",
+            "reference": "https://www.ipa.go.jp/security/incident/forensics/",
+            "reference_label": "IPA デジタルフォレンジック"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "フォレンジックの初動は証拠保全を最優先とする。",
+        "reference": "https://www.ipa.go.jp/security/incident/forensics/",
+        "reference_label": "IPA デジタルフォレンジック"
+      }
+    },
+
+    {
+      "id": "it-SS-q15",
+      "question": "DNSSEC の目的として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "DNS 応答が改ざんされていないことを検証する。",
+          "explanation": {
+            "text": "DNSSEC は DNS 応答の完全性を保証する仕組みである。",
+            "reference": "https://www.nic.ad.jp/ja/basics/dns/dnssec/",
+            "reference_label": "JPRS DNSSEC"
+          }
+        },
+        {
+          "key": "B",
+          "text": "DNS の通信を暗号化することでプライバシー保護を実現する。",
+          "explanation": {
+            "text": "暗号化は DoH/DoT の領域であり DNSSEC ではない。",
+            "reference": "https://www.nic.ad.jp/ja/basics/dns/dnssec/",
+            "reference_label": "JPRS DNSSEC"
+          }
+        },
+        {
+          "key": "C",
+          "text": "DNS サーバのハードウェア故障を検知する。",
+          "explanation": {
+            "text": "ハード障害検知は DNSSEC の目的外。",
+            "reference": "https://www.nic.ad.jp/ja/basics/dns/dnssec/",
+            "reference_label": "JPRS DNSSEC"
+          }
+        },
+        {
+          "key": "D",
+          "text": "DNS ドメインの更新作業を自動化する。",
+          "explanation": {
+            "text": "更新自動化を目的とした技術ではない。",
+            "reference": "https://www.nic.ad.jp/ja/basics/dns/dnssec/",
+            "reference_label": "JPRS DNSSEC"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "DNSSEC は DNS 応答が正当であることを署名で保証する。",
+        "reference": "https://www.nic.ad.jp/ja/basics/dns/dnssec/",
+        "reference_label": "JPRS DNSSEC"
+      }
+    },
+
+    {
+      "id": "it-SS-q16",
+      "question": "WAF の主な目的として適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "不正な Web アプリケーションへの攻撃を検知・遮断する。",
+          "explanation": {
+            "text": "WAF は Web アプリケーション層の攻撃を防ぐ専用製品である。",
+            "reference": "https://www.ipa.go.jp/security/vuln/websecurity/",
+            "reference_label": "IPA Webセキュリティ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ネットワーク配線を物理的に遮断する。",
+          "explanation": {
+            "text": "物理遮断は WAF ではなくネットワーク機器の役割。",
+            "reference": "https://www.ipa.go.jp/security/vuln/websecurity/",
+            "reference_label": "IPA Webセキュリティ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ウイルスを検体解析する。",
+          "explanation": {
+            "text": "マルウェア解析は WAF の機能ではない。",
+            "reference": "https://www.ipa.go.jp/security/vuln/websecurity/",
+            "reference_label": "IPA Webセキュリティ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Eメールのスパム検知を行う。",
+          "explanation": {
+            "text": "メールフィルタリングとは別の技術である。",
+            "reference": "https://www.ipa.go.jp/security/vuln/websecurity/",
+            "reference_label": "IPA Webセキュリティ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "WAF は Webアプリケーション層への攻撃（SQLi/XSS 等）を防御する。",
+        "reference": "https://www.ipa.go.jp/security/vuln/websecurity/",
+        "reference_label": "IPA Webセキュリティ"
+      }
+    },
+
+    {
+      "id": "it-SS-q17",
+      "question": "多要素認証（MFA）の構成要素として適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "知識要素、所有要素、生体要素のいずれか複数を組み合わせる。",
+          "explanation": {
+            "text": "MFA は複数カテゴリの要素を組み合わせる方式である。",
+            "reference": "https://www.nist.gov/",
+            "reference_label": "NIST デジタル認証"
+          }
+        },
+        {
+          "key": "B",
+          "text": "すべての要素が生体要素でなければならない。",
+          "explanation": {
+            "text": "生体のみの組合せは MFA として不十分。",
+            "reference": "https://www.nist.gov/",
+            "reference_label": "NIST デジタル認証"
+          }
+        },
+        {
+          "key": "C",
+          "text": "要素は必ず3つ以上必要である。",
+          "explanation": {
+            "text": "2要素でもMFAである。",
+            "reference": "https://www.nist.gov/",
+            "reference_label": "NIST デジタル認証"
+          }
+        },
+        {
+          "key": "D",
+          "text": "認証はパスワードのみで行う。",
+          "explanation": {
+            "text": "パスワードのみは単要素認証である。",
+            "reference": "https://www.nist.gov/",
+            "reference_label": "NIST デジタル認証"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "MFA は複数カテゴリーの要素（知識/所有/生体）を使う認証方式である。",
+        "reference": "https://www.nist.gov/",
+        "reference_label": "NIST デジタル認証"
+      }
+    },
+
+    {
+      "id": "it-SS-q18",
+      "question": "クラウド環境における共有責任モデルの説明として適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "クラウド事業者がすべてのセキュリティ責任を負うモデルである。",
+          "explanation": {
+            "text": "ユーザ側にも設定・運用の責任がある。",
+            "reference": "https://aws.amazon.com/jp/compliance/shared-responsibility-model/",
+            "reference_label": "AWS Shared Responsibility"
+          }
+        },
+        {
+          "key": "B",
+          "text": "クラウド事業者と利用者が責任を分担するモデルである。",
+          "explanation": {
+            "text": "IaaS/SaaS などサービス形態で責任範囲は変化する。",
+            "reference": "https://aws.amazon.com/jp/compliance/shared-responsibility-model/",
+            "reference_label": "AWS Shared Responsibility"
+          }
+        },
+        {
+          "key": "C",
+          "text": "利用者のみがセキュリティの全責任を負う。",
+          "explanation": {
+            "text": "物理インフラ等は事業者が担う。",
+            "reference": "https://aws.amazon.com/jp/compliance/shared-responsibility-model/",
+            "reference_label": "AWS Shared Responsibility"
+          }
+        },
+        {
+          "key": "D",
+          "text": "セキュリティ責任が存在しないモデルである。",
+          "explanation": {
+            "text": "クラウドでも責任分担は必ず存在する。",
+            "reference": "https://aws.amazon.com/jp/compliance/shared-responsibility-model/",
+            "reference_label": "AWS Shared Responsibility"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "共有責任モデルはクラウド事業者と利用者が責任を分担する方式である。",
+        "reference": "https://aws.amazon.com/jp/compliance/shared-responsibility-model/",
+        "reference_label": "AWS Shared Responsibility"
+      }
+    },
+
+    {
+      "id": "it-SS-q19",
+      "question": "脆弱性診断におけるブラックボックステストの特徴として適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "システム内部構造を知らず外部からの攻撃視点で診断する。",
+          "explanation": {
+            "text": "ブラックボックスは外部攻撃者視点で行うテストである。",
+            "reference": "https://www.ipa.go.jp/security/vuln/penetration-test/",
+            "reference_label": "IPA ペネトレーションテスト"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ソースコードをすべて解析して脆弱性を検出する。",
+          "explanation": {
+            "text": "コード解析はホワイトボックステスト。",
+            "reference": "https://www.ipa.go.jp/security/vuln/penetration-test/",
+            "reference_label": "IPA ペネトレーションテスト"
+          }
+        },
+        {
+          "key": "C",
+          "text": "必ず内部ネットワークに接続して実施する必要がある。",
+          "explanation": {
+            "text": "外部公開サービスは外部から診断することもある。",
+            "reference": "https://www.ipa.go.jp/security/vuln/penetration-test/",
+            "reference_label": "IPA ペネトレーションテスト"
+          }
+        },
+        {
+          "key": "D",
+          "text": "対象システムを停止して実施することが前提である。",
+          "explanation": {
+            "text": "停止前提ではなく非停止で実施する場合も多い。",
+            "reference": "https://www.ipa.go.jp/security/vuln/penetration-test/",
+            "reference_label": "IPA ペネトレーションテスト"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ブラックボックステストは外部攻撃者視点で内部構造を知らずに診断する。",
+        "reference": "https://www.ipa.go.jp/security/vuln/penetration-test/",
+        "reference_label": "IPA ペネトレーションテスト"
+      }
+    },
+
+    {
+      "id": "it-SS-q20",
+      "question": "パケットフィルタリングファイアウォールの特徴として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "パケットの送信元・宛先情報などで通信を許可/拒否する。",
+          "explanation": {
+            "text": "パケットフィルタはIP/ポート/プロトコルで制御する方式である。",
+            "reference": "https://www.ipa.go.jp/security/outline/",
+            "reference_label": "IPA セキュリティ基本"
+          }
+        },
+        {
+          "key": "B",
+          "text": "アプリケーションの内部処理内容を詳細に解析する。",
+          "explanation": {
+            "text": "アプリ層解析は WAF や次世代FW の領域である。",
+            "reference": "https://www.ipa.go.jp/security/outline/",
+            "reference_label": "IPA セキュリティ基本"
+          }
+        },
+        {
+          "key": "C",
+          "text": "暗号化通信のみを許可する。",
+          "explanation": {
+            "text": "暗号化通信のみの許可はパケットフィルタ固有の動作ではない。",
+            "reference": "https://www.ipa.go.jp/security/outline/",
+            "reference_label": "IPA セキュリティ基本"
+          }
+        },
+        {
+          "key": "D",
+          "text": "攻撃者の意図をAIで分析し自動で防御する。",
+          "explanation": {
+            "text": "AI分析は次世代FWやEDRの領域であり単純PFではない。",
+            "reference": "https://www.ipa.go.jp/security/outline/",
+            "reference_label": "IPA セキュリティ基本"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "パケットフィルタはIP/ポート等のヘッダ情報で通信を制御する。",
+        "reference": "https://www.ipa.go.jp/security/outline/",
+        "reference_label": "IPA セキュリティ基本"
+      }
+    },
+    {
+      "id": "it-SS-q21",
+      "question": "SQLインジェクション対策として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "プリペアドステートメントを使用してパラメータ化する。",
+          "explanation": {
+            "text": "SQL 文をパラメータ化し、ユーザ入力を直接埋め込まないのが有効対策。",
+            "reference": "https://www.ipa.go.jp/security/vuln/websecurity/",
+            "reference_label": "IPA Web セキュリティ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SQL文をすべてログに記録する。",
+          "explanation": {
+            "text": "ログは補助的であり対策そのものにはならない。",
+            "reference": "https://www.ipa.go.jp/security/vuln/websecurity/",
+            "reference_label": "IPA Web セキュリティ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データベースを暗号化するだけで十分である。",
+          "explanation": {
+            "text": "暗号化はデータ保護であり SQLi 防止にはならない。",
+            "reference": "https://www.ipa.go.jp/security/vuln/websecurity/",
+            "reference_label": "IPA Web セキュリティ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Web サーバの物理アクセスを制限すれば良い。",
+          "explanation": {
+            "text": "物理アクセスは別のセキュリティ領域。",
+            "reference": "https://www.ipa.go.jp/security/vuln/websecurity/",
+            "reference_label": "IPA Web セキュリティ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "SQLインジェクション対策の最重要点はパラメータ化されたクエリの使用である。",
+        "reference": "https://www.ipa.go.jp/security/vuln/websecurity/",
+        "reference_label": "IPA Web セキュリティ"
+      }
+    },
+
+    {
+      "id": "it-SS-q22",
+      "question": "XSS（クロスサイトスクリプティング）対策として最も重要なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "入力されたスクリプトをそのまま画面に表示する。",
+          "explanation": {
+            "text": "スクリプトを無加工で表示するのは XSS の原因そのもの。",
+            "reference": "https://www.ipa.go.jp/security/vuln/websecurity/",
+            "reference_label": "IPA Web セキュリティ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "出力時に HTML エスケープを行う。",
+          "explanation": {
+            "text": "XSS は出力エスケープが最重要対策。",
+            "reference": "https://www.ipa.go.jp/security/vuln/websecurity/",
+            "reference_label": "IPA Web セキュリティ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Web サーバを最新 OS に更新するだけで解決する。",
+          "explanation": {
+            "text": "OS 更新は直接の対策ではない。",
+            "reference": "https://www.ipa.go.jp/security/vuln/websecurity/",
+            "reference_label": "IPA Web セキュリティ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "バックアップを頻繁に取得する。",
+          "explanation": {
+            "text": "バックアップは可用性対策であり XSS とは関係が薄い。",
+            "reference": "https://www.ipa.go.jp/security/vuln/websecurity/",
+            "reference_label": "IPA Web セキュリティ"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "XSS はスクリプトの出力エスケープが最も効果的な対策である。",
+        "reference": "https://www.ipa.go.jp/security/vuln/websecurity/",
+        "reference_label": "IPA Web セキュリティ"
+      }
+    },
+
+    {
+      "id": "it-SS-q23",
+      "question": "ブルートフォース攻撃の対策として適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ログイン試行回数に制限を設ける。",
+          "explanation": {
+            "text": "試行回数制限は最も基本的な対策の一つである。",
+            "reference": "https://www.ipa.go.jp/security/vuln/password/",
+            "reference_label": "IPA パスワード対策"
+          }
+        },
+        {
+          "key": "B",
+          "text": "通信ログをすべて削除しておく。",
+          "explanation": {
+            "text": "ログ削除は攻撃検知を困難にし逆効果。",
+            "reference": "https://www.ipa.go.jp/security/vuln/password/",
+            "reference_label": "IPA パスワード対策"
+          }
+        },
+        {
+          "key": "C",
+          "text": "すべてのユーザに同じパスワードを設定する。",
+          "explanation": {
+            "text": "共通パスワードは重大なリスク。",
+            "reference": "https://www.ipa.go.jp/security/vuln/password/",
+            "reference_label": "IPA パスワード対策"
+          }
+        },
+        {
+          "key": "D",
+          "text": "攻撃元 IP の DNS 情報をすべて公開する。",
+          "explanation": {
+            "text": "DNS 公開は対策にならない。",
+            "reference": "https://www.ipa.go.jp/security/vuln/password/",
+            "reference_label": "IPA パスワード対策"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ブルートフォース攻撃の基本的対策は試行回数制限である。",
+        "reference": "https://www.ipa.go.jp/security/vuln/password/",
+        "reference_label": "IPA パスワード対策"
+      }
+    },
+
+    {
+      "id": "it-SS-q24",
+      "question": "IAM（Identity and Access Management）の重要な原則はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "すべてのユーザに管理者権限を与える。",
+          "explanation": {
+            "text": "原則に反し、過剰権限は重大リスク。",
+            "reference": "https://www.nist.gov/",
+            "reference_label": "NIST IAM"
+          }
+        },
+        {
+          "key": "B",
+          "text": "最小権限の原則に基づき必要最小限のアクセス権を付与する。",
+          "explanation": {
+            "text": "IAM の中核原則は最小権限。",
+            "reference": "https://www.nist.gov/",
+            "reference_label": "NIST IAM"
+          }
+        },
+        {
+          "key": "C",
+          "text": "役職が高い人には必ず全権限を与える。",
+          "explanation": {
+            "text": "役職と権限は一致すべきではない。",
+            "reference": "https://www.nist.gov/",
+            "reference_label": "NIST IAM"
+          }
+        },
+        {
+          "key": "D",
+          "text": "認証よりも匿名アクセスを優先させる。",
+          "explanation": {
+            "text": "匿名アクセスはリスクを高める。",
+            "reference": "https://www.nist.gov/",
+            "reference_label": "NIST IAM"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "IAM の基本は“最小権限”であり必要最低限の権限のみ与える。",
+        "reference": "https://www.nist.gov/",
+        "reference_label": "NIST IAM"
+      }
+    },
+
+    {
+      "id": "it-SS-q25",
+      "question": "DoS 攻撃の説明として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "サービスを過負荷にし、正規利用を妨害する攻撃である。",
+          "explanation": {
+            "text": "DoS はサービス拒否攻撃の略称。",
+            "reference": "https://www.ipa.go.jp/security/ciadr/ddos/",
+            "reference_label": "IPA DoS/DDoS"
+          }
+        },
+        {
+          "key": "B",
+          "text": "暗号化通信の内容を盗聴する攻撃である。",
+          "explanation": {
+            "text": "これは盗聴攻撃で DoS ではない。",
+            "reference": "https://www.ipa.go.jp/security/ciadr/ddos/",
+            "reference_label": "IPA DoS/DDoS"
+          }
+        },
+        {
+          "key": "C",
+          "text": "パスワードを総当たりする攻撃である。",
+          "explanation": {
+            "text": "これはブルートフォース攻撃。",
+            "reference": "https://www.ipa.go.jp/security/ciadr/ddos/",
+            "reference_label": "IPA DoS/DDoS"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Web サイトを改ざんする攻撃である。",
+          "explanation": {
+            "text": "改ざんは DoS ではない。",
+            "reference": "https://www.ipa.go.jp/security/ciadr/ddos/",
+            "reference_label": "IPA DoS/DDoS"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "DoS 攻撃とはリソース枯渇を狙いサービス提供を妨害する攻撃である。",
+        "reference": "https://www.ipa.go.jp/security/ciadr/ddos/",
+        "reference_label": "IPA DoS/DDoS"
+      }
+    },
+
+    {
+      "id": "it-SS-q26",
+      "question": "フィッシング攻撃の特徴として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "利用者を偽サイトへ誘導して情報を盗み取る。",
+          "explanation": {
+            "text": "フィッシングの最も代表的な手法である。",
+            "reference": "https://www.ipa.go.jp/security/ciadr/phishing/",
+            "reference_label": "IPA フィッシング"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ハードウェアの故障を検出する攻撃である。",
+          "explanation": {
+            "text": "攻撃の目的とは関係ない。",
+            "reference": "https://www.ipa.go.jp/security/ciadr/phishing/",
+            "reference_label": "IPA フィッシング"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データベースの暗号化強度を下げる攻撃である。",
+          "explanation": {
+            "text": "暗号強度低下とは関係ない。",
+            "reference": "https://www.ipa.go.jp/security/ciadr/phishing/",
+            "reference_label": "IPA フィッシング"
+          }
+        },
+        {
+          "key": "D",
+          "text": "OS の脆弱性を直接悪用する攻撃である。",
+          "explanation": {
+            "text": "OS 脆弱性悪用は別の攻撃手法。",
+            "reference": "https://www.ipa.go.jp/security/ciadr/phishing/",
+            "reference_label": "IPA フィッシング"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "フィッシングは利用者を騙して偽サイトへ誘導し情報窃取を行う攻撃。",
+        "reference": "https://www.ipa.go.jp/security/ciadr/phishing/",
+        "reference_label": "IPA フィッシング"
+      }
+    },
+
+    {
+      "id": "it-SS-q27",
+      "question": "DNSリバインディング攻撃の説明として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "DNS 応答をすり替えることでブラウザから内部ネットワークにアクセスさせる攻撃。",
+          "explanation": {
+            "text": "DNSリバインディングは同一生成元制限をすり抜け内部に到達させる攻撃。",
+            "reference": "https://www.ipa.go.jp/security/",
+            "reference_label": "IPA セキュリティ情報"
+          }
+        },
+        {
+          "key": "B",
+          "text": "DNS サーバに物理的に侵入して設定を書き換える攻撃。",
+          "explanation": {
+            "text": "これは物理侵入でありリバインディングではない。",
+            "reference": "https://www.ipa.go.jp/security/",
+            "reference_label": "IPA セキュリティ情報"
+          }
+        },
+        {
+          "key": "C",
+          "text": "DNS 流量を増大させサーバを停止させる攻撃。",
+          "explanation": {
+            "text": "これは DNS アンプリファイ攻撃。",
+            "reference": "https://www.ipa.go.jp/security/",
+            "reference_label": "IPA セキュリティ情報"
+          }
+        },
+        {
+          "key": "D",
+          "text": "DNS の暗号化方式を強制変更させる攻撃。",
+          "explanation": {
+            "text": "DNSSEC/DoH などとは関係しない。",
+            "reference": "https://www.ipa.go.jp/security/",
+            "reference_label": "IPA セキュリティ情報"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "DNS リバインディングはブラウザの同一生成元制限を回避する手法である。",
+        "reference": "https://www.ipa.go.jp/security/",
+        "reference_label": "IPA セキュリティ情報"
+      }
+    },
+
+    {
+      "id": "it-SS-q28",
+      "question": "メモリフォレンジックで重視される項目として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "プロセス情報やネットワークソケットの状態など揮発性情報の取得。",
+          "explanation": {
+            "text": "メモリは揮発性情報を含むため、取得が重要。",
+            "reference": "https://www.ipa.go.jp/security/incident/forensics/",
+            "reference_label": "IPA フォレンジック"
+          }
+        },
+        {
+          "key": "B",
+          "text": "HDD のセクタ単位での完全コピーのみを取得する。",
+          "explanation": {
+            "text": "これはストレージ解析でありメモリフォレンジックではない。",
+            "reference": "https://www.ipa.go.jp/security/incident/forensics/",
+            "reference_label": "IPA フォレンジック"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ファイル拡張子の一覧だけを収集する。",
+          "explanation": {
+            "text": "フォレンジックとして不十分。",
+            "reference": "https://www.ipa.go.jp/security/incident/forensics/",
+            "reference_label": "IPA フォレンジック"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ログファイルのタイムスタンプのみを確認する。",
+          "explanation": {
+            "text": "メモリ解析とは関係が薄い。",
+            "reference": "https://www.ipa.go.jp/security/incident/forensics/",
+            "reference_label": "IPA フォレンジック"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "メモリフォレンジックでは揮発性情報（プロセス・通信など）が重要。",
+        "reference": "https://www.ipa.go.jp/security/incident/forensics/",
+        "reference_label": "IPA フォレンジック"
+      }
+    },
+
+    {
+      "id": "it-SS-q29",
+      "question": "APT 攻撃の特徴として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "長期間にわたり潜伏し継続的に攻撃を行う。",
+          "explanation": {
+            "text": "APT は持続的標的型攻撃であり長期潜伏が特徴。",
+            "reference": "https://www.ipa.go.jp/security/ciadr/apt/",
+            "reference_label": "IPA APT 解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "攻撃は必ず大量トラフィックを使用する。",
+          "explanation": {
+            "text": "APT はステルス性重視で大量トラフィックとは限らない。",
+            "reference": "https://www.ipa.go.jp/security/ciadr/apt/",
+            "reference_label": "IPA APT 解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "攻撃者は必ず物理侵入を行う。",
+          "explanation": {
+            "text": "物理侵入は必須ではない。",
+            "reference": "https://www.ipa.go.jp/security/ciadr/apt/",
+            "reference_label": "IPA APT 解説"
+          }
+        },
+        {
+          "key": "D",
+          "text": "攻撃目的は Web サイト改ざんのみである。",
+          "explanation": {
+            "text": "目的は情報窃取・破壊など多岐にわたる。",
+            "reference": "https://www.ipa.go.jp/security/ciadr/apt/",
+            "reference_label": "IPA APT 解説"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "APT は長期潜伏し標的組織へ継続的に攻撃する点が特徴である。",
+        "reference": "https://www.ipa.go.jp/security/ciadr/apt/",
+        "reference_label": "IPA APT 解説"
+      }
+    },
+
+    {
+      "id": "it-SS-q30",
+      "question": "セキュアブートの目的として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "起動時に信頼できるソフトウェアのみを実行させる。",
+          "explanation": {
+            "text": "セキュアブートは署名検証により信頼された OS のみ起動させる技術。",
+            "reference": "https://www.microsoft.com/",
+            "reference_label": "Microsoft Secure Boot"
+          }
+        },
+        {
+          "key": "B",
+          "text": "OS 起動後のアプリの動きを監視する。",
+          "explanation": {
+            "text": "これは EDR やサンドボックスの役割。",
+            "reference": "https://www.microsoft.com/",
+            "reference_label": "Microsoft Secure Boot"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データベースの完全性を保証する。",
+          "explanation": {
+            "text": "DB 完全性とは別領域。",
+            "reference": "https://www.microsoft.com/",
+            "reference_label": "Microsoft Secure Boot"
+          }
+        },
+        {
+          "key": "D",
+          "text": "通信経路の暗号化を行う。",
+          "explanation": {
+            "text": "通信暗号化は TLS などの役割。",
+            "reference": "https://www.microsoft.com/",
+            "reference_label": "Microsoft Secure Boot"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "セキュアブートは起動時に署名を検証し信頼されたソフトウェアのみ実行させる。",
+        "reference": "https://www.microsoft.com/",
+        "reference_label": "Microsoft Secure Boot"
+      }
+    },
+    {
+      "id": "it-SS-q31",
+      "question": "ISMS（ISO/IEC 27001）におけるリスク対応の考え方として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "すべてのリスクを受容し、コストを最小化する。",
+          "explanation": {
+            "text": "リスクを一律に受容するのは ISMS の考え方ではない。",
+            "reference": "https://www.ipa.go.jp/security/isms/isms.html",
+            "reference_label": "IPA ISMS ユーザーズガイド"
+          }
+        },
+        {
+          "key": "B",
+          "text": "リスクは金銭的損失が見込まれる場合のみ評価対象とする。",
+          "explanation": {
+            "text": "ISMS では機密性・完全性・可用性など幅広く評価する。",
+            "reference": "https://www.ipa.go.jp/security/isms/isms.html",
+            "reference_label": "IPA ISMS ユーザーズガイド"
+          }
+        },
+        {
+          "key": "C",
+          "text": "リスクを受容・低減・回避・移転などの手段から適切に選択する。",
+          "explanation": {
+            "text": "ISO/IEC 27001 ではリスク対応として複数の選択肢から方針を決める。",
+            "reference": "https://www.ipa.go.jp/security/isms/isms.html",
+            "reference_label": "IPA ISMS ユーザーズガイド"
+          }
+        },
+        {
+          "key": "D",
+          "text": "リスク対応は技術的対策の導入のみで十分である。",
+          "explanation": {
+            "text": "組織的・人的・物理的対策も含めた包括的対応が必要である。",
+            "reference": "https://www.ipa.go.jp/security/isms/isms.html",
+            "reference_label": "IPA ISMS ユーザーズガイド"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "ISMS におけるリスク対応は、受容・低減・回避・移転などの手段から最適な組合せを選択するプロセスである。",
+        "reference": "https://www.ipa.go.jp/security/isms/isms.html",
+        "reference_label": "IPA ISMS ユーザーズガイド"
+      }
+    },
+
+    {
+      "id": "it-SS-q32",
+      "question": "SIEM（Security Information and Event Management）の主な目的として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "すべてのネットワークトラフィックを自動的に暗号化する。",
+          "explanation": {
+            "text": "暗号化は SIEM の機能ではなく、プロトコルやゲートウェイの役割である。",
+            "reference": "https://www.ipa.go.jp/security/outline/",
+            "reference_label": "IPA セキュリティ対策概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "脆弱性スキャンを自動で実行し、パッチを当てる。",
+          "explanation": {
+            "text": "脆弱性管理ツールの役割であり、SIEM の中心機能ではない。",
+            "reference": "https://www.ipa.go.jp/security/outline/",
+            "reference_label": "IPA セキュリティ対策概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "バックアップデータの整合性を検証する。",
+          "explanation": {
+            "text": "バックアップ検証は別の仕組みで行う。",
+            "reference": "https://www.ipa.go.jp/security/outline/",
+            "reference_label": "IPA セキュリティ対策概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "多数のログを集中管理し、相関分析によりインシデントを検知する。",
+          "explanation": {
+            "text": "SIEM はログの集約・相関分析・アラート生成により検知精度を高めるための仕組みである。",
+            "reference": "https://www.ipa.go.jp/security/outline/",
+            "reference_label": "IPA セキュリティ対策概要"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "SIEM は多様な機器・システムのログを統合し、相関分析でインシデントを検知することを目的とする。",
+        "reference": "https://www.ipa.go.jp/security/outline/",
+        "reference_label": "IPA セキュリティ対策概要"
+      }
+    },
+
+    {
+      "id": "it-SS-q33",
+      "question": "ランサムウェア対策としてのバックアップ戦略で最も適切な考え方はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "バックアップは同一サーバ内の別ディレクトリにのみ保存する。",
+          "explanation": {
+            "text": "同一サーバ上ではランサムウェアにより同時に暗号化されるリスクが高い。",
+            "reference": "https://www.ipa.go.jp/security/ransomware/",
+            "reference_label": "IPA ランサムウェア対策"
+          }
+        },
+        {
+          "key": "B",
+          "text": "オフラインや別ネットワークに隔離されたバックアップを定期的に取得する。",
+          "explanation": {
+            "text": "ランサムウェアから保護するにはオフライン・分離されたバックアップが有効である。",
+            "reference": "https://www.ipa.go.jp/security/ransomware/",
+            "reference_label": "IPA ランサムウェア対策"
+          }
+        },
+        {
+          "key": "C",
+          "text": "バックアップは取得するが復元テストは不要である。",
+          "explanation": {
+            "text": "復元できなければ意味がないため、復元テストは重要である。",
+            "reference": "https://www.ipa.go.jp/security/ransomware/",
+            "reference_label": "IPA ランサムウェア対策"
+          }
+        },
+        {
+          "key": "D",
+          "text": "バックアップ世代を1つに限定し、古いバックアップは即時削除する。",
+          "explanation": {
+            "text": "感染後に取得したバックアップしか残らない恐れがあるため望ましくない。",
+            "reference": "https://www.ipa.go.jp/security/ransomware/",
+            "reference_label": "IPA ランサムウェア対策"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ランサムウェアからの復旧にはオフラインやネットワーク分離されたバックアップが重要であり、複数世代の保持も推奨される。",
+        "reference": "https://www.ipa.go.jp/security/ransomware/",
+        "reference_label": "IPA ランサムウェア対策"
+      }
+    },
+
+    {
+      "id": "it-SS-q34",
+      "question": "OAuth 2.0 と OpenID Connect の関係として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "OAuth 2.0 は認可の枠組みであり、OpenID Connect はその上に構築された認証プロトコルである。",
+          "explanation": {
+            "text": "OAuth 2.0 はアクセストークンによる認可を扱い、OpenID Connect は ID トークンにより認証を拡張する仕様である。",
+            "reference": "https://openid.net/specs/openid-connect-core-1_0.html",
+            "reference_label": "OpenID Connect Core 1.0"
+          }
+        },
+        {
+          "key": "B",
+          "text": "OAuth 2.0 は暗号化プロトコルであり、OpenID Connect はハッシュ関数である。",
+          "explanation": {
+            "text": "どちらも暗号原語そのものではなく、認可・認証のプロトコル仕様である。",
+            "reference": "https://datatracker.ietf.org/doc/rfc6749/",
+            "reference_label": "RFC6749 OAuth 2.0"
+          }
+        },
+        {
+          "key": "C",
+          "text": "OpenID Connect が認可、OAuth 2.0 が認証を担当する。",
+          "explanation": {
+            "text": "役割が逆であり誤りである。",
+            "reference": "https://openid.net/specs/openid-connect-core-1_0.html",
+            "reference_label": "OpenID Connect Core 1.0"
+          }
+        },
+        {
+          "key": "D",
+          "text": "両者は互換性がなく同時利用はできない。",
+          "explanation": {
+            "text": "OpenID Connect は OAuth 2.0 を前提として設計されている。",
+            "reference": "https://openid.net/specs/openid-connect-core-1_0.html",
+            "reference_label": "OpenID Connect Core 1.0"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "OAuth 2.0 は認可フレームワークであり、OpenID Connect はその上で認証を行う拡張仕様である。",
+        "reference": "https://openid.net/specs/openid-connect-core-1_0.html",
+        "reference_label": "OpenID Connect Core 1.0"
+      }
+    },
+
+    {
+      "id": "it-SS-q35",
+      "question": "コンテナ環境のセキュリティ対策として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "すべてのコンテナを root 権限で実行する。",
+          "explanation": {
+            "text": "root コンテナは特権昇格時の影響が大きく、避けるべきである。",
+            "reference": "https://kubernetes.io/docs/concepts/security/pod-security-standards/",
+            "reference_label": "Kubernetes Pod Security Standards"
+          }
+        },
+        {
+          "key": "B",
+          "text": "コンテナイメージは一度取得したら更新せず使い続ける。",
+          "explanation": {
+            "text": "脆弱性対応のためにイメージの更新と再ビルドが必要である。",
+            "reference": "https://kubernetes.io/docs/concepts/security/overview/",
+            "reference_label": "Kubernetes Security Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ホスト OS のパッチ適用は不要となる。",
+          "explanation": {
+            "text": "コンテナでもホスト OS の脆弱性が悪用される可能性があるためパッチ適用は必要。",
+            "reference": "https://kubernetes.io/docs/concepts/security/overview/",
+            "reference_label": "Kubernetes Security Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "イメージの脆弱性スキャンや署名検証を行い、信頼できるイメージのみを利用する。",
+          "explanation": {
+            "text": "コンテナレジストリでのスキャン・署名検証はコンテナセキュリティの重要な対策である。",
+            "reference": "https://kubernetes.io/docs/concepts/security/overview/",
+            "reference_label": "Kubernetes Security Overview"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "コンテナセキュリティではイメージの脆弱性スキャンや署名検証により、信頼できるイメージのみを利用することが推奨される。",
+        "reference": "https://kubernetes.io/docs/concepts/security/overview/",
+        "reference_label": "Kubernetes Security Overview"
+      }
+    },
+
+    {
+      "id": "it-SS-q36",
+      "question": "無線 LAN のセキュリティに関する記述のうち、最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "WEP は現在も強度の高い暗号方式として推奨されている。",
+          "explanation": {
+            "text": "WEP は既に深刻な脆弱性が知られており使用は推奨されない。",
+            "reference": "https://www.ipa.go.jp/security/awareness/vendor/program/contents/clinics/0002.html",
+            "reference_label": "IPA 無線LANセキュリティ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SSID をステルスにすれば盗聴は不可能になる。",
+          "explanation": {
+            "text": "SSID ステルスは盗聴防止策にはならない。",
+            "reference": "https://www.ipa.go.jp/security/awareness/vendor/program/contents/clinics/0002.html",
+            "reference_label": "IPA 無線LANセキュリティ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "WPA3 などの強固な暗号方式と強いパスフレーズを用いることが重要である。",
+          "explanation": {
+            "text": "現行では WPA2/WPA3 と十分な強度のパスフレーズを用いることが推奨される。",
+            "reference": "https://www.ipa.go.jp/security/awareness/vendor/program/contents/clinics/0002.html",
+            "reference_label": "IPA 無線LANセキュリティ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "MAC アドレスフィルタリングだけで十分なセキュリティが確保できる。",
+          "explanation": {
+            "text": "MAC アドレスは容易に偽装できるため、それだけでは不十分である。",
+            "reference": "https://www.ipa.go.jp/security/awareness/vendor/program/contents/clinics/0002.html",
+            "reference_label": "IPA 無線LANセキュリティ"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "無線 LAN では WPA2/WPA3 などの強固な暗号方式と十分な長さのパスフレーズを使用することが重要である。",
+        "reference": "https://www.ipa.go.jp/security/awareness/vendor/program/contents/clinics/0002.html",
+        "reference_label": "IPA 無線LANセキュリティ"
+      }
+    },
+
+    {
+      "id": "it-SS-q37",
+      "question": "BCP/DR（事業継続計画・災害復旧計画）における RPO（Recovery Point Objective）の説明として適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "許容できるデータ損失量を時間で表した目標である。",
+          "explanation": {
+            "text": "RPO はどの時点までデータを戻せればよいかを示す指標である。",
+            "reference": "https://www.ipa.go.jp/security/fy24/reports/bcp.html",
+            "reference_label": "IPA 事業継続と情報セキュリティ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "システムを復旧するまでに許容される時間の目標である。",
+          "explanation": {
+            "text": "これは RTO（Recovery Time Objective）の説明である。",
+            "reference": "https://www.ipa.go.jp/security/fy24/reports/bcp.html",
+            "reference_label": "IPA 事業継続と情報セキュリティ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "災害発生確率を示す指標である。",
+          "explanation": {
+            "text": "RPO は確率ではなく復旧時点を表す。",
+            "reference": "https://www.ipa.go.jp/security/fy24/reports/bcp.html",
+            "reference_label": "IPA 事業継続と情報セキュリティ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "復旧にかかる総コストの上限を示す指標である。",
+          "explanation": {
+            "text": "コスト上限は別途定義されるものであり RPO ではない。",
+            "reference": "https://www.ipa.go.jp/security/fy24/reports/bcp.html",
+            "reference_label": "IPA 事業継続と情報セキュリティ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "RPO は障害発生時にどの時点までデータが戻ればよいかという許容可能なデータ損失時間を表す指標である。",
+        "reference": "https://www.ipa.go.jp/security/fy24/reports/bcp.html",
+        "reference_label": "IPA 事業継続と情報セキュリティ"
+      }
+    },
+
+    {
+      "id": "it-SS-q38",
+      "question": "NIST SP 800-61 に示されるインシデント対応ライフサイクルに含まれるフェーズとして適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "財務報告フェーズ",
+          "explanation": {
+            "text": "インシデント対応ライフサイクルには含まれない。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final",
+            "reference_label": "NIST SP 800-61r2"
+          }
+        },
+        {
+          "key": "B",
+          "text": "検知・分析フェーズ",
+          "explanation": {
+            "text": "準備、検知・分析、封じ込め・根絶・復旧、事後対応が主なフェーズとして定義されている。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final",
+            "reference_label": "NIST SP 800-61r2"
+          }
+        },
+        {
+          "key": "C",
+          "text": "製品マーケティングフェーズ",
+          "explanation": {
+            "text": "インシデントレスポンスとは無関係である。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final",
+            "reference_label": "NIST SP 800-61r2"
+          }
+        },
+        {
+          "key": "D",
+          "text": "人事評価フェーズ",
+          "explanation": {
+            "text": "人事評価はインシデント対応のフェーズには含まれない。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final",
+            "reference_label": "NIST SP 800-61r2"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "NIST SP 800-61 ではインシデント対応ライフサイクルのフェーズとして「準備」「検知・分析」「封じ込め・根絶・復旧」「事後対応」が定義されている。",
+        "reference": "https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final",
+        "reference_label": "NIST SP 800-61r2"
+      }
+    },
+
+    {
+      "id": "it-SS-q39",
+      "question": "個人情報を分析用に利用する際のプライバシー保護技術として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "すべての個人情報を公開 Web に掲載する。",
+          "explanation": {
+            "text": "プライバシー保護の観点から不適切である。",
+            "reference": "https://www.ppc.go.jp/personalinfo/legal/",
+            "reference_label": "個人情報保護委員会 個人情報保護法"
+          }
+        },
+        {
+          "key": "B",
+          "text": "識別子を削除せずにそのまま分析基盤に投入する。",
+          "explanation": {
+            "text": "氏名や住所などをそのまま利用すると漏えい時の影響が大きい。",
+            "reference": "https://www.ppc.go.jp/personalinfo/legal/",
+            "reference_label": "個人情報保護委員会 個人情報保護法"
+          }
+        },
+        {
+          "key": "C",
+          "text": "匿名加工情報や仮名加工情報など、個人が特定されにくい形に加工して利用する。",
+          "explanation": {
+            "text": "個人情報保護法では匿名加工情報・仮名加工情報として適切な加工を行うことで分析利用しやすくする仕組みが定められている。",
+            "reference": "https://www.ppc.go.jp/personalinfo/legal/",
+            "reference_label": "個人情報保護委員会 個人情報保護法"
+          }
+        },
+        {
+          "key": "D",
+          "text": "アクセス制御を一切行わず、社内の誰でも閲覧可能とする。",
+          "explanation": {
+            "text": "不要なアクセス権の付与は漏えいリスクを増大させる。",
+            "reference": "https://www.ppc.go.jp/personalinfo/legal/",
+            "reference_label": "個人情報保護委員会 個人情報保護法"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "個人情報を分析に用いる際は匿名加工情報や仮名加工情報として個人が特定されにくい状態にして利用することが有効である。",
+        "reference": "https://www.ppc.go.jp/personalinfo/legal/",
+        "reference_label": "個人情報保護委員会 個人情報保護法"
+      }
+    },
+
+    {
+      "id": "it-SS-q40",
+      "question": "DevSecOps の考え方として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "セキュリティは本番リリース直前のテストフェーズでのみ実施すればよいという考え方である。",
+          "explanation": {
+            "text": {
+              "text": "DevSecOps は開発ライフサイクル全体へセキュリティを組み込む考え方であり、末端フェーズだけで行うものではない。",
+              "reference": "https://owasp.org/www-project-devsecops-guideline/",
+              "reference_label": "OWASP DevSecOps Guideline"
+            },
+            "reference": "https://owasp.org/www-project-devsecops-guideline/",
+            "reference_label": "OWASP DevSecOps Guideline"
+          }
+        },
+        {
+          "key": "B",
+          "text": "セキュリティ担当者を開発プロジェクトから完全に分離する考え方である。",
+          "explanation": {
+            "text": "DevSecOps では開発・運用・セキュリティが協調することが重視される。",
+            "reference": "https://owasp.org/www-project-devsecops-guideline/",
+            "reference_label": "OWASP DevSecOps Guideline"
+          }
+        },
+        {
+          "key": "C",
+          "text": "セキュリティレビューを⼀度だけ集中実施し、後は自動化しない考え方である。",
+          "explanation": {
+            "text": "継続的インテグレーション／デリバリと同様に継続的なセキュリティ活動が重視される。",
+            "reference": "https://owasp.org/www-project-devsecops-guideline/",
+            "reference_label": "OWASP DevSecOps Guideline"
+          }
+        },
+        {
+          "key": "D",
+          "text": "開発・運用プロセスの早い段階からセキュリティを組み込み、自動化と継続的改善を行う考え方である。",
+          "explanation": {
+            "text": "DevSecOps は“Security as Code”などを通じて、開発初期からパイプラインにセキュリティを統合し継続的に改善するアプローチである。",
+            "reference": "https://owasp.org/www-project-devsecops-guideline/",
+            "reference_label": "OWASP DevSecOps Guideline"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "DevSecOps は開発・運用にセキュリティを横断的に組み込み、パイプラインの自動化と継続的改善を行う考え方である。",
+        "reference": "https://owasp.org/www-project-devsecops-guideline/",
+        "reference_label": "OWASP DevSecOps Guideline"
+      }
+    },
+    {
+      "id": "it-SS-q41",
+      "question": "SOC と CSIRT の役割の違いとして最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "SOC は監視・検知が中心で、CSIRT はインシデント対応・調整が中心である。",
+          "explanation": {
+            "text": "SOC は監視、CSIRT は対応が主担当という整理が一般的。",
+            "reference": "https://www.ipa.go.jp/security/outline/",
+            "reference_label": "IPA セキュリティ対策概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SOC は物理警備を担当し、CSIRT はクラウド請求管理を担当する。",
+          "explanation": {
+            "text": "どちらも役割と関係がない。",
+            "reference": "https://www.ipa.go.jp/security/outline/",
+            "reference_label": "IPA セキュリティ対策概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "SOC は必ず外部委託で構築し、CSIRT は必ず社内構築が必要である。",
+          "explanation": {
+            "text": "どちらも組織方針によって内部・外部を選択可能である。",
+            "reference": "https://www.ipa.go.jp/security/outline/",
+            "reference_label": "IPA セキュリティ対策概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "SOC はインシデント後の監査を担当する。",
+          "explanation": {
+            "text": "監査業務は SOC の担当ではない。",
+            "reference": "https://www.ipa.go.jp/security/outline/",
+            "reference_label": "IPA セキュリティ対策概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "SOC は監視・検知、CSIRT はインシデント対応が主な役割分担である。",
+        "reference": "https://www.ipa.go.jp/security/outline/",
+        "reference_label": "IPA セキュリティ対策概要"
+      }
+    },
+
+    {
+      "id": "it-SS-q42",
+      "question": "パスワード管理に関する NIST SP 800-63B の推奨に最も合致するものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "定期的なパスワード強制変更ではなく、漏えいが疑われる場合に変更を求める。",
+          "explanation": {
+            "text": "NIST は不要な定期変更を推奨しない方針を採用している。",
+            "reference": "https://pages.nist.gov/800-63-3/sp800-63b.html",
+            "reference_label": "NIST SP 800-63B"
+          }
+        },
+        {
+          "key": "B",
+          "text": "英数字記号を必ずすべて含め、変更は毎月実施が必須である。",
+          "explanation": {
+            "text": "複雑性強制や頻繁な変更は推奨されなくなっている。",
+            "reference": "https://pages.nist.gov/800-63-3/sp800-63b.html",
+            "reference_label": "NIST SP 800-63B"
+          }
+        },
+        {
+          "key": "C",
+          "text": "辞書攻撃を防ぐため、パスワードの長さは固定で 8 文字に制限する。",
+          "explanation": {
+            "text": "NIST は長いパスワード（スペース含むことも可）を推奨する。",
+            "reference": "https://pages.nist.gov/800-63-3/sp800-63b.html",
+            "reference_label": "NIST SP 800-63B"
+          }
+        },
+        {
+          "key": "D",
+          "text": "パスワードは利用者に覚えさせず、毎回ランダム生成して紙で配布する。",
+          "explanation": {
+            "text": "覚えられないパスワードは利用者行動のリスクを高める。",
+            "reference": "https://pages.nist.gov/800-63-3/sp800-63b.html",
+            "reference_label": "NIST SP 800-63B"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "NIST 推奨では強制的な定期変更を行わず、漏えい・不正利用が疑われる場合の変更を求める。",
+        "reference": "https://pages.nist.gov/800-63-3/sp800-63b.html",
+        "reference_label": "NIST SP 800-63B"
+      }
+    },
+
+    {
+      "id": "it-SS-q43",
+      "question": "IAM におけるロールベースアクセス制御（RBAC）の特徴として適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "利用者ごとに完全に独立したアクセス制御ルールを作成する。",
+          "explanation": {
+            "text": "RBAC は役割単位で権限を割り当てる仕組みであり個別設定ではない。",
+            "reference": "https://csrc.nist.gov/Projects/Role-Based-Access-Control",
+            "reference_label": "NIST RBAC"
+          }
+        },
+        {
+          "key": "B",
+          "text": "業務上の役割に基づき権限を割り当て、管理負担を軽減できる。",
+          "explanation": {
+            "text": "RBAC は役割が中心で、権限管理を効率化できる。",
+            "reference": "https://csrc.nist.gov/Projects/Role-Based-Access-Control",
+            "reference_label": "NIST RBAC"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アクセス制御を IP アドレスのみで管理する。",
+          "explanation": {
+            "text": "ネットワークベース制御であり RBAC とは異なる。",
+            "reference": "https://csrc.nist.gov/Projects/Role-Based-Access-Control",
+            "reference_label": "NIST RBAC"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザが自由に役割を変更できるようにする必要がある。",
+          "explanation": {
+            "text": "役割変更は管理者の統制下で行う必要がある。",
+            "reference": "https://csrc.nist.gov/Projects/Role-Based-Access-Control",
+            "reference_label": "NIST RBAC"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "RBAC は役割（ロール）単位で権限をまとめ、利用者へ割り当てることで管理の効率化を図る。",
+        "reference": "https://csrc.nist.gov/Projects/Role-Based-Access-Control",
+        "reference_label": "NIST RBAC"
+      }
+    },
+
+    {
+      "id": "it-SS-q44",
+      "question": "ハニーポットの目的として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "攻撃者を誘導し、攻撃手法の分析に利用する。",
+          "explanation": {
+            "text": "ハニーポットは攻撃行動や手法の収集・分析を目的としている。",
+            "reference": "https://www.ipa.go.jp/security/ciadr/honeypot/",
+            "reference_label": "IPA ハニーポット"
+          }
+        },
+        {
+          "key": "B",
+          "text": "業務アプリケーションの性能を改善する。",
+          "explanation": {
+            "text": "性能改善とは無関係。",
+            "reference": "https://www.ipa.go.jp/security/ciadr/honeypot/",
+            "reference_label": "IPA ハニーポット"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ランサムウェアの暗号鍵を自動生成する。",
+          "explanation": {
+            "text": "暗号鍵生成などはハニーポットの目的ではない。",
+            "reference": "https://www.ipa.go.jp/security/ciadr/honeypot/",
+            "reference_label": "IPA ハニーポット"
+          }
+        },
+        {
+          "key": "D",
+          "text": "高負荷処理を肩代わりする負荷分散装置として利用する。",
+          "explanation": {
+            "text": "負荷分散とは別の技術である。",
+            "reference": "https://www.ipa.go.jp/security/ciadr/honeypot/",
+            "reference_label": "IPA ハニーポット"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ハニーポットは攻撃を誘い込み挙動を観測することで手法分析に利用される。",
+        "reference": "https://www.ipa.go.jp/security/ciadr/honeypot/",
+        "reference_label": "IPA ハニーポット"
+      }
+    },
+
+    {
+      "id": "it-SS-q45",
+      "question": "マルウェアの難読化（Obfuscation）の目的として適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "プログラムを高速化するため。",
+          "explanation": {
+            "text": "難読化は性能向上ではなく、解析妨害が目的である。",
+            "reference": "https://www.ipa.go.jp/security/virus/analysis/",
+            "reference_label": "IPA マルウェア分析"
+          }
+        },
+        {
+          "key": "B",
+          "text": "プログラムの可読性を高めるため。",
+          "explanation": {
+            "text": "難読化は可読性を下げる処理であり逆の目的。",
+            "reference": "https://www.ipa.go.jp/security/virus/analysis/",
+            "reference_label": "IPA マルウェア分析"
+          }
+        },
+        {
+          "key": "C",
+          "text": "逆解析を困難にし、検知や分析を妨害するため。",
+          "explanation": {
+            "text": "難読化はアンチリバースエンジニアリング手法の一つである。",
+            "reference": "https://www.ipa.go.jp/security/virus/analysis/",
+            "reference_label": "IPA マルウェア分析"
+          }
+        },
+        {
+          "key": "D",
+          "text": "マルウェアを自動的に無害化するため。",
+          "explanation": {
+            "text": "難読化は無害化目的ではない。",
+            "reference": "https://www.ipa.go.jp/security/virus/analysis/",
+            "reference_label": "IPA マルウェア分析"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "難読化は逆解析や検知を困難にし、攻撃者がマルウェアを隠蔽するために用いられる。",
+        "reference": "https://www.ipa.go.jp/security/virus/analysis/",
+        "reference_label": "IPA マルウェア分析"
+      }
+    },
+
+    {
+      "id": "it-SS-q46",
+      "question": "クラウド環境における暗号鍵管理として適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "暗号鍵はアプリケーションソースコード内に直接記述する。",
+          "explanation": {
+            "text": "鍵のハードコーディングは最悪のアンチパターンである。",
+            "reference": "https://cloudsecurityalliance.org/",
+            "reference_label": "CSA Best Practices"
+          }
+        },
+        {
+          "key": "B",
+          "text": "鍵管理サービス（KMS）などを利用し安全に保管・更新する。",
+          "explanation": {
+            "text": "KMS の利用は鍵の保護・ローテーションに有効である。",
+            "reference": "https://cloudsecurityalliance.org/",
+            "reference_label": "CSA Best Practices"
+          }
+        },
+        {
+          "key": "C",
+          "text": "鍵を共有ストレージに置き、全員がアクセスできるようにする。",
+          "explanation": {
+            "text": "共有鍵は漏えいリスクが極めて高い。",
+            "reference": "https://cloudsecurityalliance.org/",
+            "reference_label": "CSA Best Practices"
+          }
+        },
+        {
+          "key": "D",
+          "text": "鍵を永続的に固定し、ローテーションをしない。",
+          "explanation": {
+            "text": "ローテーションはセキュリティ向上に不可欠である。",
+            "reference": "https://cloudsecurityalliance.org/",
+            "reference_label": "CSA Best Practices"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "クラウドでは KMS を利用し、鍵の安全な保管・アクセス制御・ローテーションを行うのが推奨される。",
+        "reference": "https://cloudsecurityalliance.org/",
+        "reference_label": "CSA Best Practices"
+      }
+    },
+
+    {
+      "id": "it-SS-q47",
+      "question": "フォレンジックにおける証拠チェーン（Chain of Custody）の目的として適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "証拠が採取から保管・提出まで正しく扱われたことを記録し、改ざんの疑いを排除するため。",
+          "explanation": {
+            "text": "証拠の真正性を示すため、管理者や保管状況を追跡する仕組みである。",
+            "reference": "https://www.ipa.go.jp/security/incident/forensics/",
+            "reference_label": "IPA フォレンジック"
+          }
+        },
+        {
+          "key": "B",
+          "text": "証拠データをすべて暗号化して破棄するため。",
+          "explanation": {
+            "text": "破棄ではなく保全するためのプロセスである。",
+            "reference": "https://www.ipa.go.jp/security/incident/forensics/",
+            "reference_label": "IPA フォレンジック"
+          }
+        },
+        {
+          "key": "C",
+          "text": "証拠を即時公開し透明性を高めるため。",
+          "explanation": {
+            "text": "公開は目的ではない。",
+            "reference": "https://www.ipa.go.jp/security/incident/forensics/",
+            "reference_label": "IPA フォレンジック"
+          }
+        },
+        {
+          "key": "D",
+          "text": "証拠を匿名化して誰が扱ったか分からなくするため。",
+          "explanation": {
+            "text": "扱った人物を明確に記録することが目的である。",
+            "reference": "https://www.ipa.go.jp/security/incident/forensics/",
+            "reference_label": "IPA フォレンジック"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Chain of Custody は証拠の取扱履歴を明確にし、法的な証拠能力を確保する目的がある。",
+        "reference": "https://www.ipa.go.jp/security/incident/forensics/",
+        "reference_label": "IPA フォレンジック"
+      }
+    },
+
+    {
+      "id": "it-SS-q48",
+      "question": "HTTP セキュリティヘッダである HSTS（HTTP Strict Transport Security）の役割として適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ブラウザに対し、一定期間 HTTPS のみを使用するよう強制する。",
+          "explanation": {
+            "text": "HSTS は HTTPS 強制によりダウングレード攻撃を防止する仕組み。",
+            "reference": "https://datatracker.ietf.org/doc/rfc6797/",
+            "reference_label": "RFC6797 HSTS"
+          }
+        },
+        {
+          "key": "B",
+          "text": "HTTP 通信そのものを禁止し、Web サーバを強制停止する。",
+          "explanation": {
+            "text": "停止ではなく HTTPS 強制が目的。",
+            "reference": "https://datatracker.ietf.org/doc/rfc6797/",
+            "reference_label": "RFC6797 HSTS"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ブラウザキャッシュを常に削除する。",
+          "explanation": {
+            "text": "HSTS はキャッシュ制御とは関係ない。",
+            "reference": "https://datatracker.ietf.org/doc/rfc6797/",
+            "reference_label": "RFC6797 HSTS"
+          }
+        },
+        {
+          "key": "D",
+          "text": "HTTP ヘッダの暗号化方式を動的に変更する。",
+          "explanation": {
+            "text": "暗号化方式変更とは無関係である。",
+            "reference": "https://datatracker.ietf.org/doc/rfc6797/",
+            "reference_label": "RFC6797 HSTS"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "HSTS はブラウザに HTTPS 利用を強制し、SSL Stripping などの攻撃を防止する。",
+        "reference": "https://datatracker.ietf.org/doc/rfc6797/",
+        "reference_label": "RFC6797 HSTS"
+      }
+    },
+
+    {
+      "id": "it-SS-q49",
+      "question": "マイクロセグメンテーションの目的として適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ネットワークを細分化し、内部横移動（Lateral Movement）を抑止する。",
+          "explanation": {
+            "text": "マイクロセグメンテーションはゼロトラストの文脈でも横移動防止に有効。",
+            "reference": "https://www.ipa.go.jp/security/zero-trust/",
+            "reference_label": "IPA ゼロトラスト"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ネットワークの帯域幅を増加させる。",
+          "explanation": {
+            "text": "帯域改善ではない。",
+            "reference": "https://www.ipa.go.jp/security/zero-trust/",
+            "reference_label": "IPA ゼロトラスト"
+          }
+        },
+        {
+          "key": "C",
+          "text": "DNS の応答速度を最適化する。",
+          "explanation": {
+            "text": "DNS 最適化とは無関係。",
+            "reference": "https://www.ipa.go.jp/security/zero-trust/",
+            "reference_label": "IPA ゼロトラスト"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ルーターの設定を自動化し、VPN を不要とする。",
+          "explanation": {
+            "text": "VPN 不要化が目的ではない。",
+            "reference": "https://www.ipa.go.jp/security/zero-trust/",
+            "reference_label": "IPA ゼロトラスト"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "マイクロセグメンテーションは内部移動の抑止により侵害範囲を最小化するために行われる。",
+        "reference": "https://www.ipa.go.jp/security/zero-trust/",
+        "reference_label": "IPA ゼロトラスト"
+      }
+    },
+
+    {
+      "id": "it-SS-q50",
+      "question": "可用性を高めるための冗長化手法として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "単一障害点（SPOF）を排除するため、複数の機器・経路を持つ構成にする。",
+          "explanation": {
+            "text": "冗長化の基本は単一障害点の排除である。",
+            "reference": "https://www.ipa.go.jp/security/outline/",
+            "reference_label": "IPA セキュリティ基本"
+          }
+        },
+        {
+          "key": "B",
+          "text": "バックアップを全く取得しない。",
+          "explanation": {
+            "text": "バックアップなしは可用性を著しく損なう。",
+            "reference": "https://www.ipa.go.jp/security/outline/",
+            "reference_label": "IPA セキュリティ基本"
+          }
+        },
+        {
+          "key": "C",
+          "text": "すべての機器を 1 台に統合し管理を簡易化する。",
+          "explanation": {
+            "text": "統合は SPOF を形成し危険である。",
+            "reference": "https://www.ipa.go.jp/security/outline/",
+            "reference_label": "IPA セキュリティ基本"
+          }
+        },
+        {
+          "key": "D",
+          "text": "障害発生時にのみ手作業で増設する。",
+          "explanation": {
+            "text": "事前冗長化が重要であり、障害後の増設では遅い。",
+            "reference": "https://www.ipa.go.jp/security/outline/",
+            "reference_label": "IPA セキュリティ基本"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "可用性確保のためには単一障害点の排除が重要であり、冗長化構成が必須である。",
+        "reference": "https://www.ipa.go.jp/security/outline/",
+        "reference_label": "IPA セキュリティ基本"
+      }
+    }
+  ]
+}

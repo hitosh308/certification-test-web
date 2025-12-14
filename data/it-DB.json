@@ -1,0 +1,2512 @@
+{
+    "exam": {
+        "id": "it-db",
+        "title": "データベーススペシャリスト試験",
+        "description": "データベーススペシャリスト試験は、情報処理推進機構（IPA）が主催する国家試験「情報処理技術者試験」の一区分で、企業のデータベース管理者やインフラエンジニアを目指す人向けの高度試験です。大規模なデータベースの設計・構築・運用・保守、データ資源管理、データモデリング、セキュリティ対策など、実務に直結したデータベースの専門知識と応用力が問われます。午前Ⅰ・午前Ⅱ・午後Ⅰ・午後Ⅱの四セクション構成で、選択式から記述式まで幅広い形式で出題されます。",
+        "version": "2024",
+        "price": "7,500",
+        "difficulty": "難しい",
+        "official-site": "https://www.ipa.go.jp/shiken/kubun/db.html",
+        "category": {
+            "id": "it",
+            "name": "情報処理技術者"
+        }
+    },
+    "questions": [
+        {
+            "id": "it-db-1",
+            "question": "関係データベースにおいて、第3正規形(3NF)が満たすべき条件はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "すべての非キー属性が、候補キーに完全関数従属していること",
+                    "explanation": {
+                        "text": "3NFでは、非キー属性が候補キーに対して完全関数従属し、かつ非キー属性間で推移的従属がないことが求められます。",
+                        "reference": "https://www.ipa.go.jp/shiken/",
+                        "reference_label": "IPA データベース技術 シラバス"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "すべての属性が主キーに部分関数従属していること",
+                    "explanation": {
+                        "text": "部分関数従属は第2正規形で排除されるべきものであり、3NFを満たす条件ではありません。",
+                        "reference": "https://www.ipa.go.jp/shiken/",
+                        "reference_label": "IPA データベース技術 シラバス"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "全ての属性が相互に関数従属していること",
+                    "explanation": {
+                        "text": "全属性の相互関数従属は正規形とは関係ありません。",
+                        "reference": "https://www.ipa.go.jp/shiken/",
+                        "reference_label": "IPA データベース技術 シラバス"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "主キーが単一属性であること",
+                    "explanation": {
+                        "text": "主キーが単一であるかどうかは正規形とは無関係です。",
+                        "reference": "https://www.ipa.go.jp/shiken/",
+                        "reference_label": "IPA データベース技術 シラバス"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "3NFでは、非キー属性が候補キーに完全関数従属し、推移的従属が存在しないことが要件となります。",
+                "reference": "https://www.ipa.go.jp/shiken/",
+                "reference_label": "IPA公式シラバス（データベース）"
+            }
+        },
+
+        {
+            "id": "it-db-2",
+            "question": "インデックススキャンに比べてフルテーブルスキャンの方が有利になるケースはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "検索対象の行が表全体の大部分を占める場合",
+                    "explanation": {
+                        "text": "行数の大部分を読み取る場合、インデックスよりフルテーブルスキャンが効率的です。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/",
+                        "reference_label": "MySQL 公式ドキュメント"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "検索条件が主キーに対する等価検索である場合",
+                    "explanation": {
+                        "text": "主キー等価検索はインデックスアクセスが最適です。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/",
+                        "reference_label": "MySQL 公式ドキュメント"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "WHERE句が存在しない場合",
+                    "explanation": {
+                        "text": "WHERE句が無い場合でも、インデックスは利用されないためフルスキャンとなりますが、インデックススキャンが有利となるケースではありません。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/",
+                        "reference_label": "MySQL 公式ドキュメント"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "行数が非常に少ないテーブルでの検索",
+                    "explanation": {
+                        "text": "行数が少ない場合はオーバーヘッドが小さいため、いずれでも速度差は小さいですが、フルスキャンが有利とは限りません。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/",
+                        "reference_label": "MySQL 公式ドキュメント"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "検索範囲が広い（全体の30%以上など）場合、インデックス経由よりフルスキャンの方が効率的であることが多いです。",
+                "reference": "https://dev.mysql.com/doc/refman/8.0/en/",
+                "reference_label": "MySQL 公式ドキュメント"
+            }
+        },
+
+        {
+            "id": "it-db-3",
+            "question": "ACID特性のうち、Isolation が意味するものはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "トランザクションが互いに独立して実行されること",
+                    "explanation": {
+                        "text": "Isolation はトランザクションが相互に干渉しないことを保証します。",
+                        "reference": "https://www.postgresql.org/docs/current/",
+                        "reference_label": "PostgreSQL Documentation"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "データベースが障害時でも復旧できること",
+                    "explanation": {
+                        "text": "これはDurabilityの説明です。",
+                        "reference": "https://www.postgresql.org/docs/current/",
+                        "reference_label": "PostgreSQL Documentation"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "トランザクションが完全に成功するか失敗するかのどちらかであること",
+                    "explanation": {
+                        "text": "これはAtomicityの説明です。",
+                        "reference": "https://www.postgresql.org/docs/current/",
+                        "reference_label": "PostgreSQL Documentation"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "データが常に整合性制約に従うこと",
+                    "explanation": {
+                        "text": "これはConsistencyの説明です。",
+                        "reference": "https://www.postgresql.org/docs/current/",
+                        "reference_label": "PostgreSQL Documentation"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Isolation は並行実行時にトランザクションが互いに干渉しないことを保証します。",
+                "reference": "https://www.postgresql.org/docs/current/",
+                "reference_label": "PostgreSQL Documentation"
+            }
+        },
+
+        {
+            "id": "it-db-4",
+            "question": "デッドロックが発生する主な原因として最も適切なのはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "複数のトランザクションが互いに必要なロックを保持したまま待機するため",
+                    "explanation": {
+                        "text": "デッドロックは相互待機により発生します。",
+                        "reference": "https://www.postgresql.org/docs/current/",
+                        "reference_label": "PostgreSQL Developer's Guide"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "トランザクションが長時間コミットされないため",
+                    "explanation": {
+                        "text": "長時間トランザクションはデッドロックの確率を上げますが直接原因ではありません。",
+                        "reference": "https://www.postgresql.org/docs/current/",
+                        "reference_label": "PostgreSQL Developer's Guide"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "インデックスが断片化しているため",
+                    "explanation": {
+                        "text": "インデックス断片化は性能問題でありデッドロックの直接原因にはなりません。",
+                        "reference": "https://www.postgresql.org/docs/current/",
+                        "reference_label": "PostgreSQL Developer's Guide"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "更新回数が多いテーブルを扱うため",
+                    "explanation": {
+                        "text": "更新頻度が高いこと自体はデッドロックの直接原因ではありません。",
+                        "reference": "https://www.postgresql.org/docs/current/",
+                        "reference_label": "PostgreSQL Developer's Guide"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "互いに必要なロックを保持し合う状況がデッドロックを生みます。",
+                "reference": "https://www.postgresql.org/docs/current/",
+                "reference_label": "PostgreSQL Developer's Guide"
+            }
+        },
+
+        {
+            "id": "it-db-5",
+            "question": "実行計画において Nested Loop Join が最も有効に機能する状況はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "外側テーブルが小さく、内側テーブルに適切なインデックスがある場合",
+                    "explanation": {
+                        "text": "Nested Loop は小さな外側集合とインデックスのある内側集合が最適です。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/explain-output.html",
+                        "reference_label": "MySQL EXPLAIN ドキュメント"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "両テーブルが非常に大きい場合",
+                    "explanation": {
+                        "text": "両方が大きい場合は Hash Join や Merge Join が適します。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/explain-output.html",
+                        "reference_label": "MySQL EXPLAIN ドキュメント"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "結合キーがソート済みの場合",
+                    "explanation": {
+                        "text": "ソート済みは Merge Join に有利な条件です。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/explain-output.html",
+                        "reference_label": "MySQL EXPLAIN ドキュメント"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "結合対象がキャッシュに完全に乗るほど小さい場合",
+                    "explanation": {
+                        "text": "これも利点ではありますが、最適条件はインデックスがある場合です。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/explain-output.html",
+                        "reference_label": "MySQL EXPLAIN ドキュメント"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Nested Loop Join は外側が小さく内側にインデックスがある場合に最も効率的に動作します。",
+                "reference": "https://dev.mysql.com/doc/refman/8.0/en/explain-output.html",
+                "reference_label": "MySQL EXPLAIN ドキュメント"
+            }
+        },
+        {
+            "id": "it-db-6",
+            "question": "データベースのトランザクション分離レベルにおいて、Repeatable Read で発生可能な現象はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "ファントムリード",
+                    "explanation": {
+                        "text": "Repeatable Read は非再現読みに対応しますが、条件に一致する行の増減（ファントム）は防げない実装があります。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/innodb-transaction-isolation-levels.html",
+                        "reference_label": "MySQL Isolation Levels"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "ダーティリード",
+                    "explanation": {
+                        "text": "ダーティリードは Read Uncommitted でのみ発生します。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/innodb-transaction-isolation-levels.html",
+                        "reference_label": "MySQL Isolation Levels"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "非再現読みによる更新喪失",
+                    "explanation": {
+                        "text": "Repeatable Read では同じ行の連続読み取りは一致するため非再現読みによる問題は防止されます。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/innodb-transaction-isolation-levels.html",
+                        "reference_label": "MySQL Isolation Levels"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "コミット済みデータの読めずに失敗する現象",
+                    "explanation": {
+                        "text": "コミット済みデータを読めないという現象は分離レベルとは直接関係ありません。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/innodb-transaction-isolation-levels.html",
+                        "reference_label": "MySQL Isolation Levels"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Repeatable Read では同じ行の再読取りは保証されますが、検索条件に合致する行の増減（ファントムリード）は発生する可能性があります。",
+                "reference": "https://dev.mysql.com/doc/refman/8.0/en/innodb-transaction-isolation-levels.html",
+                "reference_label": "MySQL Isolation Levels"
+            }
+        },
+
+        {
+            "id": "it-db-7",
+            "question": "B+ 木インデックスの特徴として正しいものはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "すべてのデータは葉ノードに格納される",
+                    "explanation": {
+                        "text": "B+木では全データが葉ノードに集約され、内部ノードは検索用ポインタのみを持ちます。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/innodb-index-types.html",
+                        "reference_label": "MySQL InnoDB Index Types"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "内部ノードにデータとポインタが混在する",
+                    "explanation": {
+                        "text": "これはB木の特徴であり、B+木では内部ノードは検索のためのキーとポインタのみを保持します。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/innodb-index-types.html",
+                        "reference_label": "MySQL InnoDB Index Types"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "探索時間はデータ件数に比例する",
+                    "explanation": {
+                        "text": "B+木は平衡木であり、探索時間は O(log N) に抑えられます。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/innodb-index-types.html",
+                        "reference_label": "MySQL InnoDB Index Types"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "葉ノード同士はリンクされない",
+                    "explanation": {
+                        "text": "B+木の葉ノードは連結されており、範囲検索が高速です。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/innodb-index-types.html",
+                        "reference_label": "MySQL InnoDB Index Types"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "B+ 木では内部ノードは検索用、葉ノードに全データが格納され、範囲検索が高速に行えます。",
+                "reference": "https://dev.mysql.com/doc/refman/8.0/en/innodb-index-types.html",
+                "reference_label": "MySQL InnoDB Index Types"
+            }
+        },
+
+        {
+            "id": "it-db-8",
+            "question": "SQL 最適化において、SELECT * を避けるべき主な理由はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "不要な列まで読み込むため I/O が増加する",
+                    "explanation": {
+                        "text": "SELECT * は使われない列まで全て読み込むため無駄な I/O を発生させます。",
+                        "reference": "https://use-the-index-luke.com/",
+                        "reference_label": "Use The Index, Luke!"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "必ず全表スキャンが発生するため",
+                    "explanation": {
+                        "text": "SELECT * でもインデックスが利用されることがあり、全表スキャンが必ず起こるわけではありません。",
+                        "reference": "https://use-the-index-luke.com/",
+                        "reference_label": "Use The Index, Luke!"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "SQL標準で非推奨となっているため",
+                    "explanation": {
+                        "text": "SQL 標準では SELECT * は認められており非推奨ではありません。",
+                        "reference": "https://use-the-index-luke.com/",
+                        "reference_label": "Use The Index, Luke!"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ORDER BY が必須となるため",
+                    "explanation": {
+                        "text": "SELECT * と ORDER BY には関係はありません。",
+                        "reference": "https://use-the-index-luke.com/",
+                        "reference_label": "Use The Index, Luke!"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "実務では SELECT * により無駄な列まで読み込み、I/O やネットワーク転送量を増やすため避けるべきとされます。",
+                "reference": "https://use-the-index-luke.com/",
+                "reference_label": "Use The Index, Luke!"
+            }
+        },
+
+        {
+            "id": "it-db-9",
+            "question": "ER 図における多対多 (M:N) 関係を関係データベースで表現するために一般的に行われる方法はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "中間テーブルを設けて2つの外部キーを持つ形に分解する",
+                    "explanation": {
+                        "text": "M:N の関係は中間テーブルを利用して 1:N と N:1 に分解するのが標準的手法です。",
+                        "reference": "https://www.ipa.go.jp/shiken/",
+                        "reference_label": "高度情報処理試験 データベースシラバス"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "両テーブルを単純に結合し1つのテーブルにまとめる",
+                    "explanation": {
+                        "text": "冗長性が高まり正規形を損なうため不適切です。",
+                        "reference": "https://www.ipa.go.jp/shiken/",
+                        "reference_label": "高度情報処理試験 データベースシラバス"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "どちらかのテーブルに相手テーブルの主キーを複数格納する",
+                    "explanation": {
+                        "text": "リスト形式を属性に持つのは正規化違反となるため不適切です。",
+                        "reference": "https://www.ipa.go.jp/shiken/",
+                        "reference_label": "高度情報処理試験 データベースシラバス"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "関係スキーマを変更せずそのまま扱う",
+                    "explanation": {
+                        "text": "リレーショナルモデルでは M:N をそのまま表現できず、中間テーブルが必要です。",
+                        "reference": "https://www.ipa.go.jp/shiken/",
+                        "reference_label": "高度情報処理試験 データベースシラバス"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "M:N の関係は中間テーブルで 1:N と N:1 に分解するのがリレーショナルモデルの基本です。",
+                "reference": "https://www.ipa.go.jp/shiken/",
+                "reference_label": "高度情報処理試験 データベースシラバス"
+            }
+        },
+
+        {
+            "id": "it-db-10",
+            "question": "データウェアハウス構築で利用されるスター・スキーマの特徴として正しいものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "ファクトテーブルが中心にあり、周囲にディメンションテーブルが配置される",
+                    "explanation": {
+                        "text": "スター・スキーマの基本構造で、分析処理に最適化されています。",
+                        "reference": "https://cloud.google.com/bigquery/docs",
+                        "reference_label": "BigQuery Data Modeling Guide"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "全テーブルを完全に正規化して結合関係を最小化する",
+                    "explanation": {
+                        "text": "スター・スキーマは正規化を緩めて分析性能を高めるアプローチです。",
+                        "reference": "https://cloud.google.com/bigquery/docs",
+                        "reference_label": "BigQuery Data Modeling Guide"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "階層構造を表現するためディメンションを多段に正規化する",
+                    "explanation": {
+                        "text": "階層化した場合はスノーフレークスキーマとなります。",
+                        "reference": "https://cloud.google.com/bigquery/docs",
+                        "reference_label": "BigQuery Data Modeling Guide"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "各ディメンションは必ず主キーを複合キーで持つ",
+                    "explanation": {
+                        "text": "ディメンションキーは通常単一キーで管理されます。",
+                        "reference": "https://cloud.google.com/bigquery/docs",
+                        "reference_label": "BigQuery Data Modeling Guide"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "スター・スキーマは中心にファクトテーブル、周囲にディメンションを配置し OLAP に最適化されたモデルです。",
+                "reference": "https://cloud.google.com/bigquery/docs",
+                "reference_label": "BigQuery Data Modeling Guide"
+            }
+        },
+        {
+            "id": "it-db-11",
+            "question": "データベースログのうち、REDO ログが主に担う役割として最も適切なものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "コミット済み更新の再実行による整合性の回復",
+                    "explanation": {
+                        "text": "REDO ログは障害発生時、コミット済みの更新を再実行して状態を復元するために用いられます。",
+                        "reference": "https://www.oracle.com/database/technologies/",
+                        "reference_label": "Oracle Database Documentation"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "未コミットの変更を巻き戻すためのログ",
+                    "explanation": {
+                        "text": "未コミット変更の取り消しは UNDO ログの役割です。",
+                        "reference": "https://www.oracle.com/database/technologies/",
+                        "reference_label": "Oracle Database Documentation"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "メタデータの変更履歴のみを保持するログ",
+                    "explanation": {
+                        "text": "REDO ログはデータ更新を含み、メタデータ専用ではありません。",
+                        "reference": "https://www.oracle.com/database/technologies/",
+                        "reference_label": "Oracle Database Documentation"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "インデックス構造の変更のみを対象とするログ",
+                    "explanation": {
+                        "text": "インデックスに限らずデータ全体の更新が対象です。",
+                        "reference": "https://www.oracle.com/database/technologies/",
+                        "reference_label": "Oracle Database Documentation"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "REDO ログは、コミット済みの更新を障害時に再適用することで整合性を回復します。",
+                "reference": "https://www.oracle.com/database/technologies/",
+                "reference_label": "Oracle Database Documentation"
+            }
+        },
+
+        {
+            "id": "it-db-12",
+            "question": "索引の選択度（selectivity）が低い場合に起こりやすいことはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "インデックスが利用されずフルテーブルスキャンを選択されやすい",
+                    "explanation": {
+                        "text": "選択度が低い（重複が多い）とインデックス利用のメリットが小さく、フルスキャンが選ばれます。",
+                        "reference": "https://use-the-index-luke.com/",
+                        "reference_label": "Use The Index, Luke!"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "常にインデックススキャンが最適となる",
+                    "explanation": {
+                        "text": "選択度が高い場合にインデックスが有利になります。",
+                        "reference": "https://use-the-index-luke.com/",
+                        "reference_label": "Use The Index, Luke!"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "結合順序を変更できなくなる",
+                    "explanation": {
+                        "text": "選択度は結合順序の固定には影響しません。",
+                        "reference": "https://use-the-index-luke.com/",
+                        "reference_label": "Use The Index, Luke!"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "統計情報の更新が不要になる",
+                    "explanation": {
+                        "text": "選択度が低くても統計情報の更新は必要です。",
+                        "reference": "https://use-the-index-luke.com/",
+                        "reference_label": "Use The Index, Luke!"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "選択度が低い＝重複値が多い場合、インデックスの効果が薄くフルスキャンが選択されやすくなります。",
+                "reference": "https://use-the-index-luke.com/",
+                "reference_label": "Use The Index, Luke!"
+            }
+        },
+
+        {
+            "id": "it-db-13",
+            "question": "分散データベースにおける二相コミット（2PC）の第1フェーズで行われる処理はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "各参加ノードへのコミット準備要求（prepare）の送信",
+                    "explanation": {
+                        "text": "2PC の第1フェーズは準備フェーズで、コーディネータが各ノードに prepare を送信します。",
+                        "reference": "https://www.postgresql.org/docs/current/",
+                        "reference_label": "PostgreSQL 2PC Documentation"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "全ノードへのコミット命令の送信",
+                    "explanation": {
+                        "text": "コミット命令は第2フェーズで行われます。",
+                        "reference": "https://www.postgresql.org/docs/current/",
+                        "reference_label": "PostgreSQL 2PC Documentation"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "未コミットデータのロールバック実行",
+                    "explanation": {
+                        "text": "ロールバックは投票結果が否となった場合の第2フェーズの処理です。",
+                        "reference": "https://www.postgresql.org/docs/current/",
+                        "reference_label": "PostgreSQL 2PC Documentation"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "トランザクションログの削除",
+                    "explanation": {
+                        "text": "ログ削除は2PCとは無関係です。",
+                        "reference": "https://www.postgresql.org/docs/current/",
+                        "reference_label": "PostgreSQL 2PC Documentation"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "2PC の第1フェーズは Prepare フェーズで、各ノードに準備要求を送ります。",
+                "reference": "https://www.postgresql.org/docs/current/",
+                "reference_label": "PostgreSQL 2PC Documentation"
+            }
+        },
+
+        {
+            "id": "it-db-14",
+            "question": "ローリングアップグレードを可能にするために必要となるデータベースクラスタ構成の特徴として適切なものはどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "複数ノード間でプロトコル互換性が保たれていること",
+                    "explanation": {
+                        "text": "ローリングアップグレードでは異バージョンのノードが混在するため、プロトコル互換性が必須です。",
+                        "reference": "https://www.postgresql.org/docs/current/",
+                        "reference_label": "PostgreSQL Release Notes"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "全ノードを停止して一斉に更新できること",
+                    "explanation": {
+                        "text": "全停止はローリングアップグレードの対義です。",
+                        "reference": "https://www.postgresql.org/docs/current/",
+                        "reference_label": "PostgreSQL Release Notes"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "すべてのノードが同時にログを共有していること",
+                    "explanation": {
+                        "text": "ログの完全共有は要件ではありません。",
+                        "reference": "https://www.postgresql.org/docs/current/",
+                        "reference_label": "PostgreSQL Release Notes"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "バックアップが不要であること",
+                    "explanation": {
+                        "text": "アップグレード前のバックアップは必須です。",
+                        "reference": "https://www.postgresql.org/docs/current/",
+                        "reference_label": "PostgreSQL Release Notes"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "ローリングアップグレードではノード間で互換性を維持しながら段階的に更新できる必要があります。",
+                "reference": "https://www.postgresql.org/docs/current/",
+                "reference_label": "PostgreSQL Release Notes"
+            }
+        },
+
+        {
+            "id": "it-db-15",
+            "question": "クエリオプティマイザがコストベースで結合順序を決定する際に使用する主な情報はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "テーブルおよび列ごとの統計情報",
+                    "explanation": {
+                        "text": "コストベース最適化では選択度や行数など統計情報を利用します。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/table-statistics.html",
+                        "reference_label": "MySQL Statistics"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "アプリケーションのUI応答速度",
+                    "explanation": {
+                        "text": "UI 速度はオプティマイザの対象外です。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/table-statistics.html",
+                        "reference_label": "MySQL Statistics"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ネットワークケーブルの種類",
+                    "explanation": {
+                        "text": "物理ネットワーク構成は結合順序に影響しません。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/table-statistics.html",
+                        "reference_label": "MySQL Statistics"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "SQL文の記述順序",
+                    "explanation": {
+                        "text": "結合順序は論理ではなく統計情報とコストによって決まります。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/table-statistics.html",
+                        "reference_label": "MySQL Statistics"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "行数・選択度・分布などの統計を元に結合順序を最適化します。",
+                "reference": "https://dev.mysql.com/doc/refman/8.0/en/table-statistics.html",
+                "reference_label": "MySQL Statistics"
+            }
+        },
+
+        {
+            "id": "it-db-16",
+            "question": "OLTP システムに比べて OLAP システムが持つ特徴として正しいものはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "集計中心の処理が多く、大量データの参照が発生する",
+                    "explanation": {
+                        "text": "OLAP は集計・分析中心で大量読み取りが特徴です。",
+                        "reference": "https://cloud.google.com/bigquery/docs",
+                        "reference_label": "BigQuery Data Modeling"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "短いトランザクションを大量に処理する",
+                    "explanation": {
+                        "text": "短い更新中心は OLTP の特徴です。",
+                        "reference": "https://cloud.google.com/bigquery/docs",
+                        "reference_label": "BigQuery Data Modeling"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "行レベルロックを多用する",
+                    "explanation": {
+                        "text": "行ロックは OLTP で使用されます。",
+                        "reference": "https://cloud.google.com/bigquery/docs",
+                        "reference_label": "BigQuery Data Modeling"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "リアルタイム性を最重視する",
+                    "explanation": {
+                        "text": "リアルタイム性重視は OLTP の特徴です。",
+                        "reference": "https://cloud.google.com/bigquery/docs",
+                        "reference_label": "BigQuery Data Modeling"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "OLAP は大量データの集計・分析処理が中心で、読み取り主体です。",
+                "reference": "https://cloud.google.com/bigquery/docs",
+                "reference_label": "BigQuery Data Modeling"
+            }
+        },
+
+        {
+            "id": "it-db-17",
+            "question": "MVCC（Multi-Version Concurrency Control）の利点として適切なものはどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "読取り処理がロックを待たずに実行できる",
+                    "explanation": {
+                        "text": "MVCC はスナップショット読み取りにより読取りロック待ちを回避します。",
+                        "reference": "https://www.postgresql.org/docs/current/mvcc.html",
+                        "reference_label": "PostgreSQL MVCC"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "書き込み同士の競合が完全になくなる",
+                    "explanation": {
+                        "text": "書き込み同士の競合は MVCC でも発生します。",
+                        "reference": "https://www.postgresql.org/docs/current/mvcc.html",
+                        "reference_label": "PostgreSQL MVCC"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ストレージ消費が非常に小さくなる",
+                    "explanation": {
+                        "text": "MVCC はバージョン管理のためストレージが増えがちです。",
+                        "reference": "https://www.postgresql.org/docs/current/mvcc.html",
+                        "reference_label": "PostgreSQL MVCC"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ガベージコレクションが不要になる",
+                    "explanation": {
+                        "text": "不要バージョンの回収が必要です。",
+                        "reference": "https://www.postgresql.org/docs/current/mvcc.html",
+                        "reference_label": "PostgreSQL MVCC"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "MVCC は読取りをロック待ちにしないため高い並行性を提供します。",
+                "reference": "https://www.postgresql.org/docs/current/mvcc.html",
+                "reference_label": "PostgreSQL MVCC"
+            }
+        },
+
+        {
+            "id": "it-db-18",
+            "question": "データベースのスロークエリ調査で、実行計画の変化を引き起こす主な原因として適切なものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "統計情報の更新・変化",
+                    "explanation": {
+                        "text": "統計の変化によりオプティマイザが別の実行計画を選択することがあります。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/optimizer-statistics.html",
+                        "reference_label": "MySQL Optimizer Statistics"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "SQL文の長さが短くなること",
+                    "explanation": {
+                        "text": "長さは計画選択に影響しません。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/optimizer-statistics.html",
+                        "reference_label": "MySQL Optimizer Statistics"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "必要な権限が増減すること",
+                    "explanation": {
+                        "text": "権限と実行計画は無関係です。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/optimizer-statistics.html",
+                        "reference_label": "MySQL Optimizer Statistics"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "文字コード設定の変更",
+                    "explanation": {
+                        "text": "文字コードは実行計画に直接影響しません。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/optimizer-statistics.html",
+                        "reference_label": "MySQL Optimizer Statistics"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "統計情報が変化すると、オプティマイザは異なる実行計画を選ぶことがあります。",
+                "reference": "https://dev.mysql.com/doc/refman/8.0/en/optimizer-statistics.html",
+                "reference_label": "MySQL Optimizer Statistics"
+            }
+        },
+
+        {
+            "id": "it-db-19",
+            "question": "シャーディング構成のデメリットとして適切なものはどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "シャード間結合が高コストになる",
+                    "explanation": {
+                        "text": "シャードを跨ぐ結合は分散処理となり高コストです。",
+                        "reference": "https://cloud.google.com/spanner/docs",
+                        "reference_label": "Google Spanner Architecture"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "単一ノード障害で全体が停止する",
+                    "explanation": {
+                        "text": "シャーディングはスケールアウト用途で単一障害点を減らす構成です。",
+                        "reference": "https://cloud.google.com/spanner/docs",
+                        "reference_label": "Google Spanner Architecture"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "データの一貫性が完全に保証される",
+                    "explanation": {
+                        "text": "分散環境では整合性を保つための仕組みが必要です。",
+                        "reference": "https://cloud.google.com/spanner/docs",
+                        "reference_label": "Google Spanner Architecture"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "スケールアウトが不可能になる",
+                    "explanation": {
+                        "text": "シャーディングはスケールアウトのための手法です。",
+                        "reference": "https://cloud.google.com/spanner/docs",
+                        "reference_label": "Google Spanner Architecture"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "シャード間結合は分散クエリとなり高コストです。",
+                "reference": "https://cloud.google.com/spanner/docs",
+                "reference_label": "Google Spanner Architecture"
+            }
+        },
+
+        {
+            "id": "it-db-20",
+            "question": "クエリキャッシュが有効に機能するケースとして最も適切なものはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "同じSQLが繰り返し実行され結果が頻繁に変化しない場合",
+                    "explanation": {
+                        "text": "クエリキャッシュは結果が変化しない繰り返しクエリに効果を発揮します。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/query-cache.html",
+                        "reference_label": "MySQL Query Cache"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "更新頻度が非常に高いテーブルの検索",
+                    "explanation": {
+                        "text": "更新が多いとキャッシュが無効化されやすく逆効果です。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/query-cache.html",
+                        "reference_label": "MySQL Query Cache"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ランダムに毎回異なる SQL が発行される場合",
+                    "explanation": {
+                        "text": "キャッシュヒット率が低く効果がありません。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/query-cache.html",
+                        "reference_label": "MySQL Query Cache"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "結合を多数含む複雑な分析クエリの場合",
+                    "explanation": {
+                        "text": "複雑性は関係ありませんが、分析系は変更が多くキャッシュ向きではありません。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/query-cache.html",
+                        "reference_label": "MySQL Query Cache"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "更新が少なく同じ結果が再利用できるクエリはキャッシュ効果が高いです。",
+                "reference": "https://dev.mysql.com/doc/refman/8.0/en/query-cache.html",
+                "reference_label": "MySQL Query Cache"
+            }
+        },
+        {
+            "id": "it-db-21",
+            "question": "データベースにおけるヒープファイル組織の特徴として正しいものはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "常に主キー順で格納される",
+                    "explanation": {
+                        "text": "ヒープファイルでは順序付けは行われません。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/",
+                        "reference_label": "MySQL Documentation"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "特定の順序を持たず、挿入時に空き領域へ格納される",
+                    "explanation": {
+                        "text": "ヒープファイルの基本的特徴で、順序管理のオーバーヘッドがありません。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/",
+                        "reference_label": "MySQL Documentation"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "常に B+木と併用される",
+                    "explanation": {
+                        "text": "ヒープファイルは必ずしもインデックス構造とセットではありません。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/",
+                        "reference_label": "MySQL Documentation"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "検索性能が常に最も高い",
+                    "explanation": {
+                        "text": "順序のない格納方式のため高速検索に向きません。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/",
+                        "reference_label": "MySQL Documentation"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "ヒープファイルは順序を持たず、挿入のたびに空き領域へ格納する方式です。",
+                "reference": "https://dev.mysql.com/doc/refman/8.0/en/",
+                "reference_label": "MySQL Documentation"
+            }
+        },
+
+        {
+            "id": "it-db-22",
+            "question": "ビットマップインデックスが最も適した用途はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "高いカーディナリティを持つ属性",
+                    "explanation": {
+                        "text": "ビットマップは低カーディナリティ属性に適します。",
+                        "reference": "https://docs.oracle.com/en/",
+                        "reference_label": "Oracle Data Warehousing Guide"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "値の種類が少ない（低カーディナリティ）属性",
+                    "explanation": {
+                        "text": "ビットマップインデックスは OR / AND の高速処理ができ、値の種類が少ない属性に有効です。",
+                        "reference": "https://docs.oracle.com/en/",
+                        "reference_label": "Oracle Data Warehousing Guide"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "頻繁に更新が行われる列",
+                    "explanation": {
+                        "text": "更新コストが高いため不向きです。",
+                        "reference": "https://docs.oracle.com/en/",
+                        "reference_label": "Oracle Data Warehousing Guide"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ユニーク制約のみを持つ主キー列",
+                    "explanation": {
+                        "text": "主キーは通常 B+木インデックスで管理されます。",
+                        "reference": "https://docs.oracle.com/en/",
+                        "reference_label": "Oracle Data Warehousing Guide"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "ビットマップインデックスは低カーディナリティ属性に最も適します。",
+                "reference": "https://docs.oracle.com/en/",
+                "reference_label": "Oracle Data Warehousing Guide"
+            }
+        },
+
+        {
+            "id": "it-db-23",
+            "question": "SQLのHAVING句が主に使用される目的として最も適切なものはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "行単位の条件を指定する",
+                    "explanation": {
+                        "text": "行単位の条件はWHEREが担当します。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/select.html",
+                        "reference_label": "MySQL SELECT Manual"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "集計結果に対して条件を指定する",
+                    "explanation": {
+                        "text": "HAVING句は GROUP BY の結果に対する条件を記述します。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/select.html",
+                        "reference_label": "MySQL SELECT Manual"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "結合条件を記述する",
+                    "explanation": {
+                        "text": "結合条件はON句で行います。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/select.html",
+                        "reference_label": "MySQL SELECT Manual"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "検索対象列を指定する",
+                    "explanation": {
+                        "text": "検索対象列はSELECT句で指定します。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/select.html",
+                        "reference_label": "MySQL SELECT Manual"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "HAVING句は集計結果に対する条件を表すための句です。",
+                "reference": "https://dev.mysql.com/doc/refman/8.0/en/select.html",
+                "reference_label": "MySQL SELECT Manual"
+            }
+        },
+
+        {
+            "id": "it-db-24",
+            "question": "NoSQLデータベースの特徴として、カラム指向ストア（Column Family Store）の利点として適切なものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "強整合性を常に保証できる",
+                    "explanation": {
+                        "text": "NoSQL では可用性優先のモデルも多く、強整合性が保証されるとは限りません。",
+                        "reference": "https://cassandra.apache.org/doc/latest/",
+                        "reference_label": "Apache Cassandra Documentation"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "分析用途で特定列の高速スキャンに優れる",
+                    "explanation": {
+                        "text": "カラム指向は列単位アクセスが高速で、分析系に向きます。",
+                        "reference": "https://cassandra.apache.org/doc/latest/",
+                        "reference_label": "Apache Cassandra Documentation"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "常にスキーマレスである",
+                    "explanation": {
+                        "text": "カラム指向ストアでもスキーマの定義は存在します。",
+                        "reference": "https://cassandra.apache.org/doc/latest/",
+                        "reference_label": "Apache Cassandra Documentation"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "行単位の更新に特化している",
+                    "explanation": {
+                        "text": "行単位更新はロウストアが向いています。",
+                        "reference": "https://cassandra.apache.org/doc/latest/",
+                        "reference_label": "Apache Cassandra Documentation"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "カラム指向DBは列単位アクセスが得意で、DWH・分析用途に強い特徴があります。",
+                "reference": "https://cassandra.apache.org/doc/latest/",
+                "reference_label": "Apache Cassandra Documentation"
+            }
+        },
+
+        {
+            "id": "it-db-25",
+            "question": "外部結合における RIGHT OUTER JOIN の特徴として正しいものはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "左のテーブルの一致しない行を含める",
+                    "explanation": {
+                        "text": "これは LEFT JOIN の特徴です。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/join.html",
+                        "reference_label": "MySQL JOIN Manual"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "右のテーブルの一致しない行を含める",
+                    "explanation": {
+                        "text": "RIGHT JOIN は右側のテーブルを優先し、一致しない行も保持します。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/join.html",
+                        "reference_label": "MySQL JOIN Manual"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "両テーブルの一致しない行をすべて含める",
+                    "explanation": {
+                        "text": "これは FULL OUTER JOIN の特徴です。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/join.html",
+                        "reference_label": "MySQL JOIN Manual"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "常に高速な結合方式である",
+                    "explanation": {
+                        "text": "外部結合は内部結合より重いことが多いです。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/join.html",
+                        "reference_label": "MySQL JOIN Manual"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "RIGHT OUTER JOIN は右側テーブルの全行を保持し一致しない行も含めます。",
+                "reference": "https://dev.mysql.com/doc/refman/8.0/en/join.html",
+                "reference_label": "MySQL JOIN Manual"
+            }
+        },
+
+        {
+            "id": "it-db-26",
+            "question": "トランザクションの直列化可能性（Serializability）を実現するために必要な条件として適切なものはどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "デッドロックを完全に排除すること",
+                    "explanation": {
+                        "text": "直列化可能性はデッドロック排除とは無関係です。",
+                        "reference": "https://www.postgresql.org/docs/current/",
+                        "reference_label": "PostgreSQL Concurrency Control"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "スケジュールが直列スケジュールと結果が等価であること",
+                    "explanation": {
+                        "text": "直列化可能性は、並行実行の結果が直列実行と同一であることを指します。",
+                        "reference": "https://www.postgresql.org/docs/current/",
+                        "reference_label": "PostgreSQL Concurrency Control"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "必ずタイムスタンプ順に実行すること",
+                    "explanation": {
+                        "text": "タイムスタンプ方式は直列化可能性実現手法のひとつで必須条件ではありません。",
+                        "reference": "https://www.postgresql.org/docs/current/",
+                        "reference_label": "PostgreSQL Concurrency Control"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "行レベルロックを使用しないこと",
+                    "explanation": {
+                        "text": "ロック方式は直列化可能性に必要なものの一部です。",
+                        "reference": "https://www.postgresql.org/docs/current/",
+                        "reference_label": "PostgreSQL Concurrency Control"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "直列化可能性の要件は、並行実行結果が何らかの直列実行と同一となることです。",
+                "reference": "https://www.postgresql.org/docs/current/",
+                "reference_label": "PostgreSQL Concurrency Control"
+            }
+        },
+
+        {
+            "id": "it-db-27",
+            "question": "ビュー（VIEW）の利用目的として最も適切なものはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "データの保管形式を最適化するため",
+                    "explanation": {
+                        "text": "ビューは物理データの格納方式とは無関係です。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/views.html",
+                        "reference_label": "MySQL View Documentation"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "複雑なクエリを抽象化し再利用しやすくするため",
+                    "explanation": {
+                        "text": "ビューは抽象化・簡略化・セキュリティ向上などの目的で利用されます。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/views.html",
+                        "reference_label": "MySQL View Documentation"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "インデックスを物理的に増やすため",
+                    "explanation": {
+                        "text": "ビューにはインデックスを直接持てない場合が多いです。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/views.html",
+                        "reference_label": "MySQL View Documentation"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "データのバージョン管理を行うため",
+                    "explanation": {
+                        "text": "ビューはバージョン管理機構ではありません。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/views.html",
+                        "reference_label": "MySQL View Documentation"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "ビューは抽象化とセキュリティ確保に利用され、複雑なクエリの管理を容易にします。",
+                "reference": "https://dev.mysql.com/doc/refman/8.0/en/views.html",
+                "reference_label": "MySQL View Documentation"
+            }
+        },
+
+        {
+            "id": "it-db-28",
+            "question": "ストアドプロシージャ利用の利点として適切なものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "SQLの実行計画を強制的に固定できる",
+                    "explanation": {
+                        "text": "プロシージャは必ずしも計画固定を保証しません。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/",
+                        "reference_label": "MySQL Stored Programs"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "アプリケーションとDB間の通信量を削減できる",
+                    "explanation": {
+                        "text": "ロジックをDB側に置くことで往復通信を減らす効果があります。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/",
+                        "reference_label": "MySQL Stored Programs"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "SQL文の記述が不要になる",
+                    "explanation": {
+                        "text": "内部ではSQLを使用します。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/",
+                        "reference_label": "MySQL Stored Programs"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "障害復旧機能を強化できる",
+                    "explanation": {
+                        "text": "復旧機能はトランザクションログの役割です。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/",
+                        "reference_label": "MySQL Stored Programs"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "ストアドプロシージャはDB側で処理でき、アプリとの通信量削減に有効です。",
+                "reference": "https://dev.mysql.com/doc/refman/8.0/en/",
+                "reference_label": "MySQL Stored Programs"
+            }
+        },
+
+        {
+            "id": "it-db-29",
+            "question": "正規化の目的として適切なものはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "テーブルの数を可能な限り減らすこと",
+                    "explanation": {
+                        "text": "目的は表数削減ではありません。",
+                        "reference": "https://www.ipa.go.jp/shiken/",
+                        "reference_label": "IPA データベースシラバス"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "データの冗長性を排除し更新異常を防ぐこと",
+                    "explanation": {
+                        "text": "正規化は冗長性削減と更新異常防止が主目的です。",
+                        "reference": "https://www.ipa.go.jp/shiken/",
+                        "reference_label": "IPA データベースシラバス"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "クエリの実行速度を最大化すること",
+                    "explanation": {
+                        "text": "正規化と性能は直接ではありません。",
+                        "reference": "https://www.ipa.go.jp/shiken/",
+                        "reference_label": "IPA データベースシラバス"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "インデックス数を最小化すること",
+                    "explanation": {
+                        "text": "インデックス管理は正規化の範囲外です。",
+                        "reference": "https://www.ipa.go.jp/shiken/",
+                        "reference_label": "IPA データベースシラバス"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "正規化は冗長性削減と更新異常排除を目的としたデータモデリング手法です。",
+                "reference": "https://www.ipa.go.jp/shiken/",
+                "reference_label": "IPA データベースシラバス"
+            }
+        },
+
+        {
+            "id": "it-db-30",
+            "question": "トリガー（TRIGGER）の利用上の注意点として適切なものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "アプリケーション側で必ず明示的に呼び出す必要がある",
+                    "explanation": {
+                        "text": "トリガーはDBが自動実行するため明示呼び出しは不要です。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/triggers.html",
+                        "reference_label": "MySQL Trigger Manual"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "過度に利用すると原因追跡が難しくなる",
+                    "explanation": {
+                        "text": "トリガーは隠れた処理となるため、依存しすぎるとデバッグが困難になります。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/triggers.html",
+                        "reference_label": "MySQL Trigger Manual"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "DDL文でのみ発火する",
+                    "explanation": {
+                        "text": "INSERT/UPDATE/DELETE が一般的トリガー対象です。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/triggers.html",
+                        "reference_label": "MySQL Trigger Manual"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "インデックスの再構築を自動化できる唯一の仕組みである",
+                    "explanation": {
+                        "text": "インデックス再構築はトリガーとは無関係です。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/triggers.html",
+                        "reference_label": "MySQL Trigger Manual"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "トリガーはブラックボックス化しやすく、過度利用はデバッグ困難を招きます。",
+                "reference": "https://dev.mysql.com/doc/refman/8.0/en/triggers.html",
+                "reference_label": "MySQL Trigger Manual"
+            }
+        },
+        {
+            "id": "it-db-31",
+            "question": "外部キー制約における ON DELETE CASCADE の動作として正しいものはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "親テーブルの削除を常に禁止する。",
+                    "explanation": {
+                        "text": "親行の削除を禁止する動作は ON DELETE RESTRICT / NO ACTION に相当します。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html",
+                        "reference_label": "MySQL 8.0 外部キーリファレンス"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "親テーブルの削除時に子テーブルの外部キー値を NULL にする。",
+                    "explanation": {
+                        "text": "外部キー値を NULL にするのは ON DELETE SET NULL の動作です。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html",
+                        "reference_label": "MySQL 8.0 外部キーリファレンス"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "親テーブルの行削除時に、関連する子テーブルの行も自動的に削除する。",
+                    "explanation": {
+                        "text": "ON DELETE CASCADE は親行削除に連鎖して子行も削除します。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html",
+                        "reference_label": "MySQL 8.0 外部キーリファレンス"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "親テーブルの行更新時に、トランザクションを強制的にロールバックする。",
+                    "explanation": {
+                        "text": "更新時のロールバックは外部キーの ON DELETE とは関係ありません。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html",
+                        "reference_label": "MySQL 8.0 外部キーリファレンス"
+                    }
+                }
+            ],
+            "answer": "C",
+            "explanation": {
+                "text": "ON DELETE CASCADE は参照整合性を保つため、親行削除時に関連する子行も連動して削除します。",
+                "reference": "https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html",
+                "reference_label": "MySQL 8.0 外部キーリファレンス"
+            }
+        },
+
+        {
+            "id": "it-db-32",
+            "question": "テーブルの水平パーティショニング（レンジパーティションなど）を行う主な利点として最も適切なものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "アプリケーションから見える論理スキーマを単純化できる。",
+                    "explanation": {
+                        "text": "パーティションは通常アプリケーションからは透過的であり、論理スキーマを単純化する目的ではありません。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/partitioning-overview.html",
+                        "reference_label": "MySQL パーティショニング概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "トランザクション分離レベルを自動的に引き上げられる。",
+                    "explanation": {
+                        "text": "パーティショニングと分離レベルは別の機能です。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/partitioning-overview.html",
+                        "reference_label": "MySQL パーティショニング概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "SQL文を書き換えなくてもクエリ結果を自動キャッシュできる。",
+                    "explanation": {
+                        "text": "クエリキャッシュ機構とは別であり、自動キャッシュとは関係しません。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/partitioning-overview.html",
+                        "reference_label": "MySQL パーティショニング概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "対象パーティションのみにアクセスさせることで、特定範囲の検索・削除を高速化できる。",
+                    "explanation": {
+                        "text": "パーティションプルーニングにより、必要なパーティションだけを読むことでI/Oを削減できます。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/partitioning-pruning.html",
+                        "reference_label": "MySQL パーティションプルーニング"
+                    }
+                }
+            ],
+            "answer": "D",
+            "explanation": {
+                "text": "水平パーティショニングは、特定の範囲に対するアクセスを対象パーティションに限定することで性能向上や運用効率化を図るために用います。",
+                "reference": "https://dev.mysql.com/doc/refman/8.0/en/partitioning-pruning.html",
+                "reference_label": "MySQL パーティションプルーニング"
+            }
+        },
+
+        {
+            "id": "it-db-33",
+            "question": "実行計画において「カバリングインデックス（covering index）」と呼ばれる状態を最もよく表しているものはどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "インデックス列がすべて主キーで構成されている状態。",
+                    "explanation": {
+                        "text": "主キーのみで構成されていても、参照する列がインデックスに含まれていなければカバリングとは言えません。",
+                        "reference": "https://use-the-index-luke.com/",
+                        "reference_label": "Use The Index, Luke!（インデックス設計）"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "WHERE句に使用される列だけをインデックスに含めた状態。",
+                    "explanation": {
+                        "text": "WHERE句だけでなく SELECT 句や JOIN 句で参照される列を含む必要があります。",
+                        "reference": "https://use-the-index-luke.com/",
+                        "reference_label": "Use The Index, Luke!（インデックス設計）"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "クエリで参照する列がすべてインデックスに含まれており、テーブルデータへのアクセスが不要な状態。",
+                    "explanation": {
+                        "text": "カバリングインデックスとは、インデックスだけでクエリ結果を返せる状態を指します。",
+                        "reference": "https://use-the-index-luke.com/",
+                        "reference_label": "Use The Index, Luke!（インデックス設計）"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "インデックスの統計情報が常に最新に保たれている状態。",
+                    "explanation": {
+                        "text": "統計情報の更新はオプティマイザのためのもので、カバリングインデックスの定義とは異なります。",
+                        "reference": "https://use-the-index-luke.com/",
+                        "reference_label": "Use The Index, Luke!（インデックス設計）"
+                    }
+                }
+            ],
+            "answer": "C",
+            "explanation": {
+                "text": "カバリングインデックスは、インデックスだけで必要な列を取得できるためテーブルアクセスを省略できる状態を指し、I/O削減に大きく寄与します。",
+                "reference": "https://use-the-index-luke.com/",
+                "reference_label": "Use The Index, Luke!（インデックス設計）"
+            }
+        },
+
+        {
+            "id": "it-db-34",
+            "question": "ポイントインタイムリカバリ（PITR）を可能にするバックアップ戦略として、最も適切な組み合わせはどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "定期フルバックアップのみを取得する。",
+                    "explanation": {
+                        "text": "フルバックアップだけでは取得時点にしか戻れず、任意時点への復旧はできません。",
+                        "reference": "https://www.postgresql.org/docs/current/continuous-archiving.html",
+                        "reference_label": "PostgreSQL 連続アーカイブとPITR"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "差分バックアップのみを頻繁に取得する。",
+                    "explanation": {
+                        "text": "差分バックアップだけではベースとなるフルバックアップがなく、完全な復旧はできません。",
+                        "reference": "https://www.postgresql.org/docs/current/continuous-archiving.html",
+                        "reference_label": "PostgreSQL 連続アーカイブとPITR"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "トランザクションログだけをアーカイブする。",
+                    "explanation": {
+                        "text": "ログだけでは開始時点の完全なベースイメージがなく復旧できません。",
+                        "reference": "https://www.postgresql.org/docs/current/continuous-archiving.html",
+                        "reference_label": "PostgreSQL 連続アーカイブとPITR"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ベースとなるフルバックアップに加え、トランザクションログを継続的にアーカイブする。",
+                    "explanation": {
+                        "text": "フルバックアップ＋ログアーカイブにより、ログを指定時点まで適用することで任意時点へ復旧できます。",
+                        "reference": "https://www.postgresql.org/docs/current/continuous-archiving.html",
+                        "reference_label": "PostgreSQL 連続アーカイブとPITR"
+                    }
+                }
+            ],
+            "answer": "D",
+            "explanation": {
+                "text": "PITR ではベースイメージとなるフルバックアップと、その後のトランザクションログを組み合わせることで、任意の時刻に巻き戻すことができます。",
+                "reference": "https://www.postgresql.org/docs/current/continuous-archiving.html",
+                "reference_label": "PostgreSQL 連続アーカイブとPITR"
+            }
+        },
+
+        {
+            "id": "it-db-35",
+            "question": "ウィンドウ関数 ROW_NUMBER() の特徴として最も適切な説明はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "同順位の行に同じ番号を付与し、順位の欠番を許容しない。",
+                    "explanation": {
+                        "text": "これは DENSE_RANK() の特徴です。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/window-function-descriptions.html",
+                        "reference_label": "MySQL 8.0 ウィンドウ関数"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "同順位の行に同じ番号を付与し、順位の欠番が発生することがある。",
+                    "explanation": {
+                        "text": "これは RANK() の特徴で、同順位の後に欠番が生じます。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/window-function-descriptions.html",
+                        "reference_label": "MySQL 8.0 ウィンドウ関数"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "同一パーティション内で、行ごとに一意な連番を付与する。",
+                    "explanation": {
+                        "text": "ROW_NUMBER() はパーティション内で1から始まる連番を各行に一意に付与します。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/window-function-descriptions.html",
+                        "reference_label": "MySQL 8.0 ウィンドウ関数"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "集計結果に対してのみ使用でき、明細行には使用できない。",
+                    "explanation": {
+                        "text": "ウィンドウ関数は集計と異なり明細行にも利用可能です。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/window-functions-usage.html",
+                        "reference_label": "MySQL 8.0 ウィンドウ関数使用方法"
+                    }
+                }
+            ],
+            "answer": "C",
+            "explanation": {
+                "text": "ROW_NUMBER() はパーティションごと・並び順ごとに一意な連番を割り振るウィンドウ関数で、重複順位が発生しません。",
+                "reference": "https://dev.mysql.com/doc/refman/8.0/en/window-function-descriptions.html",
+                "reference_label": "MySQL 8.0 ウィンドウ関数"
+            }
+        },
+
+        {
+            "id": "it-db-36",
+            "question": "SQLインジェクション対策として最も効果的な方法はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "SQL文をアプリケーションログに詳細に出力する。",
+                    "explanation": {
+                        "text": "ログ出力は調査には有用ですが、インジェクション自体の防止策にはなりません。",
+                        "reference": "https://owasp.org/www-community/attacks/SQL_Injection",
+                        "reference_label": "OWASP SQL Injection"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "ユーザ入力に対してトリム処理のみを行う。",
+                    "explanation": {
+                        "text": "空白削除だけでは不正な SQL 断片の混入を防げません。",
+                        "reference": "https://owasp.org/www-community/attacks/SQL_Injection",
+                        "reference_label": "OWASP SQL Injection"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "SQL文を文字列連結で生成するが、シングルクォートを二重にする。",
+                    "explanation": {
+                        "text": "エスケープに頼る方法は漏れやミスのリスクが高く、推奨されません。",
+                        "reference": "https://owasp.org/www-community/attacks/SQL_Injection",
+                        "reference_label": "OWASP SQL Injection"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "プレースホルダ付きのプリペアドステートメント（バインド変数）を利用する。",
+                    "explanation": {
+                        "text": "SQLとデータを分離することで、入力が文法要素として解釈されることを防ぎます。",
+                        "reference": "https://owasp.org/www-community/attacks/SQL_Injection",
+                        "reference_label": "OWASP SQL Injection"
+                    }
+                }
+            ],
+            "answer": "D",
+            "explanation": {
+                "text": "SQLインジェクション対策の基本は、プレースホルダ付きのプリペアドステートメントを利用して、ユーザ入力をパラメータとして扱うことです。",
+                "reference": "https://owasp.org/www-community/attacks/SQL_Injection",
+                "reference_label": "OWASP SQL Injection"
+            }
+        },
+
+        {
+            "id": "it-db-37",
+            "question": "マスタ・スレーブ型の非同期レプリケーション構成におけるスレーブ（レプリカ）の特徴として最も適切なものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "マスタとスレーブ間で常に強整合性が保証される。",
+                    "explanation": {
+                        "text": "非同期レプリケーションでは遅延があるため、強整合性は保証されません。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/replication-async.html",
+                        "reference_label": "MySQL 非同期レプリケーション"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "スレーブ側で更新しても自動的にマスタへ反映される。",
+                    "explanation": {
+                        "text": "一般的なマスタ・スレーブ構成では更新はマスタのみに行い、スレーブは読み取り専用です。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/replication-configuration.html",
+                        "reference_label": "MySQL レプリケーション構成"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "マスタでコミットされた変更が、遅延を伴って反映されるため、読取り結果にラグが生じることがある。",
+                    "explanation": {
+                        "text": "非同期レプリケーションでは、スレーブへの適用が遅れることで読み取り結果が古くなる可能性があります。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/replication-async.html",
+                        "reference_label": "MySQL 非同期レプリケーション"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ネットワーク断が発生するとスレーブ側のデータは自動的にロールバックされる。",
+                    "explanation": {
+                        "text": "ネットワーク断が発生してもスレーブ側のコミット済みデータが自動ロールバックされるわけではありません。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/replication-async.html",
+                        "reference_label": "MySQL 非同期レプリケーション"
+                    }
+                }
+            ],
+            "answer": "C",
+            "explanation": {
+                "text": "非同期レプリケーションではマスタの更新がスレーブに遅れて反映されるため、スレーブでの読み取りは古い状態を返す可能性があります。",
+                "reference": "https://dev.mysql.com/doc/refman/8.0/en/replication-async.html",
+                "reference_label": "MySQL 非同期レプリケーション"
+            }
+        },
+
+        {
+            "id": "it-db-38",
+            "question": "表の列に対する CHECK 制約の主な役割として適切なものはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "他表との参照整合性を保証する。",
+                    "explanation": {
+                        "text": "他表との整合性は外部キー制約（FOREIGN KEY）が担います。",
+                        "reference": "https://www.postgresql.org/docs/current/ddl-constraints.html",
+                        "reference_label": "PostgreSQL 制約の概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "列の値が一意であることを保証する。",
+                    "explanation": {
+                        "text": "一意性は UNIQUE 制約または PRIMARY KEY 制約が担います。",
+                        "reference": "https://www.postgresql.org/docs/current/ddl-constraints.html",
+                        "reference_label": "PostgreSQL 制約の概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "列に NULL を許容しないことを保証する。",
+                    "explanation": {
+                        "text": "NULL の禁止は NOT NULL 制約が担います。",
+                        "reference": "https://www.postgresql.org/docs/current/ddl-constraints.html",
+                        "reference_label": "PostgreSQL 制約の概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "列の値が特定の条件式を満たすことを保証する。",
+                    "explanation": {
+                        "text": "CHECK 制約は論理式で表される条件を定義し、その条件を満たさない値の格納を禁止します。",
+                        "reference": "https://www.postgresql.org/docs/current/ddl-constraints.html",
+                        "reference_label": "PostgreSQL 制約の概要"
+                    }
+                }
+            ],
+            "answer": "D",
+            "explanation": {
+                "text": "CHECK 制約は「0 <= 在庫数」や「開始日 <= 終了日」のような任意の条件式で列や行の妥当性をチェックするための制約です。",
+                "reference": "https://www.postgresql.org/docs/current/ddl-constraints.html",
+                "reference_label": "PostgreSQL 制約の概要"
+            }
+        },
+
+        {
+            "id": "it-db-39",
+            "question": "EXPLAIN 文を用いて実行計画を確認する主な目的として、最も適切なものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "トランザクションの分離レベルを変更するため。",
+                    "explanation": {
+                        "text": "分離レベルの変更は SET TRANSACTION などで行い、EXPLAIN の役割ではありません。",
+                        "reference": "https://www.postgresql.org/docs/current/sql-explain.html",
+                        "reference_label": "PostgreSQL EXPLAIN"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "SQL文の構文エラーを自動修正するため。",
+                    "explanation": {
+                        "text": "EXPLAIN は構文エラーが無い SQL に対して計画を表示するものであり、修正は行いません。",
+                        "reference": "https://www.postgresql.org/docs/current/sql-explain.html",
+                        "reference_label": "PostgreSQL EXPLAIN"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "オプティマイザが選択したアクセスパスや結合順序を把握し、ボトルネックを特定するため。",
+                    "explanation": {
+                        "text": "EXPLAIN はテーブルアクセス方法や結合手法、推定コストなどを確認し、チューニングの手掛かりを得るために使用します。",
+                        "reference": "https://www.postgresql.org/docs/current/sql-explain.html",
+                        "reference_label": "PostgreSQL EXPLAIN"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "SQL文を自動的に最適化された形に書き換えるため。",
+                    "explanation": {
+                        "text": "EXPLAIN はあくまで計画を表示するだけで、自動書き換えは行いません。",
+                        "reference": "https://www.postgresql.org/docs/current/sql-explain.html",
+                        "reference_label": "PostgreSQL EXPLAIN"
+                    }
+                }
+            ],
+            "answer": "C",
+            "explanation": {
+                "text": "EXPLAIN によりアクセスパス・結合順序・コストなどを確認し、インデックスやSQLの改善ポイントを把握できます。",
+                "reference": "https://www.postgresql.org/docs/current/sql-explain.html",
+                "reference_label": "PostgreSQL EXPLAIN"
+            }
+        },
+
+        {
+            "id": "it-db-40",
+            "question": "リレーショナル代数における射影（π：projection）の操作を最もよく表しているものはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "条件を満たすタプル（行）のみを取り出す操作。",
+                    "explanation": {
+                        "text": "行を絞り込む操作は選択（σ：selection）に相当します。",
+                        "reference": "https://www.ipa.go.jp/shiken/",
+                        "reference_label": "IPA データベースシラバス（理論）"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "2つの関係を共通属性で結合する操作。",
+                    "explanation": {
+                        "text": "これは結合（join）に相当し、射影ではありません。",
+                        "reference": "https://www.ipa.go.jp/shiken/",
+                        "reference_label": "IPA データベースシラバス（理論）"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "2つの関係の集合差を求める操作。",
+                    "explanation": {
+                        "text": "これは差集合（－）の演算であり、射影ではありません。",
+                        "reference": "https://www.ipa.go.jp/shiken/",
+                        "reference_label": "IPA データベースシラバス（理論）"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "指定した属性（列）だけを取り出し、同じ組合せの重複を除去する操作。",
+                    "explanation": {
+                        "text": "射影は列の取り出しと重複除去を行う演算であり、SQL の SELECT 句＋DISTINCT に相当します。",
+                        "reference": "https://www.ipa.go.jp/shiken/",
+                        "reference_label": "IPA データベースシラバス（理論）"
+                    }
+                }
+            ],
+            "answer": "D",
+            "explanation": {
+                "text": "射影は列方向の絞り込みと重複除去を行う演算であり、選択（行方向の絞り込み）とは区別されます。",
+                "reference": "https://www.ipa.go.jp/shiken/",
+                "reference_label": "IPA データベースシラバス（理論）"
+            }
+        },
+        {
+            "id": "it-db-41",
+            "question": "トランザクションの READ COMMITTED 分離レベルで発生する可能性がある現象はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "不可視の未コミットデータを読み取るダーティリード",
+                    "explanation": {
+                        "text": "READ COMMITTED はダーティリードを防止します。",
+                        "reference": "https://www.postgresql.org/docs/current/transaction-iso.html",
+                        "reference_label": "PostgreSQL Isolation Levels"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "同一クエリを2回発行したときに異なる結果が返る非再現読取",
+                    "explanation": {
+                        "text": "READ COMMITTED では再読取の際に他トランザクションのコミット済み変更が見えるため非再現読取が起こり得ます。",
+                        "reference": "https://www.postgresql.org/docs/current/transaction-iso.html",
+                        "reference_label": "PostgreSQL Isolation Levels"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "検索条件に一致する行数が変化するファントムリード",
+                    "explanation": {
+                        "text": "ファントムリードは READ COMMITTED でも発生する可能性はありますが、より典型的には REPEATABLE READ では防げない現象です。",
+                        "reference": "https://www.postgresql.org/docs/current/transaction-iso.html",
+                        "reference_label": "PostgreSQL Isolation Levels"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "全ての並行実行が直列化される直列化可能性の完全保証",
+                    "explanation": {
+                        "text": "これは SERIALIZABLE の特徴です。",
+                        "reference": "https://www.postgresql.org/docs/current/transaction-iso.html",
+                        "reference_label": "PostgreSQL Isolation Levels"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "READ COMMITTED は非再現読取が起こり得る代表的な分離レベルです。",
+                "reference": "https://www.postgresql.org/docs/current/transaction-iso.html",
+                "reference_label": "PostgreSQL Isolation Levels"
+            }
+        },
+
+        {
+            "id": "it-db-42",
+            "question": "データベースにおけるホットスポットの発生要因として最も適切なものはどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "同一データへの更新が特定トランザクションに集中すること",
+                    "explanation": {
+                        "text": "ホットスポットは特定の行・ページ・インデックスに更新が集中することでロック競合や遅延が発生する現象です。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html",
+                        "reference_label": "MySQL InnoDB Locking"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "データベースが分散構成で動作していること",
+                    "explanation": {
+                        "text": "分散構成はホットスポットの原因ではありません。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html",
+                        "reference_label": "MySQL InnoDB Locking"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "全文検索インデックスを利用していること",
+                    "explanation": {
+                        "text": "全文検索はホットスポットとは無関係です。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/fulltext-search.html",
+                        "reference_label": "MySQL Full-text Search"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "定期的に統計情報を更新していること",
+                    "explanation": {
+                        "text": "統計更新は計画最適化のためでありホットスポットの原因ではありません。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html",
+                        "reference_label": "MySQL InnoDB Locking"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "更新集中によるロック競合・遅延は典型的なホットスポット発生要因です。",
+                "reference": "https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html",
+                "reference_label": "MySQL InnoDB Locking"
+            }
+        },
+
+        {
+            "id": "it-db-43",
+            "question": "クラスタインデックス（Clustered Index）の特徴として正しいものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "データ行はインデックスとは無関係にランダムに格納される。",
+                    "explanation": {
+                        "text": "クラスタインデックスはインデックス順にデータ行を物理配置します。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/innodb-index-types.html",
+                        "reference_label": "MySQL InnoDB Index Types"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "行データがインデックスのリーフノードに格納されるため、範囲検索に強い。",
+                    "explanation": {
+                        "text": "クラスタインデックスはB+木でリーフノードに行データを配置し、範囲検索が高速になります。",
+                        "reference": "https://dev/mysql.com/doc/refman/8.0/en/innodb-index-types.html",
+                        "reference_label": "MySQL InnoDB Index Types"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "1つのテーブルに複数のクラスタインデックスを持てる。",
+                    "explanation": {
+                        "text": "一般にクラスタインデックスはテーブルにつき1つです。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/innodb-index-types.html",
+                        "reference_label": "MySQL InnoDB Index Types"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "必ずユニーク制約とセットで作成される。",
+                    "explanation": {
+                        "text": "ユニーク制約とは別で、非ユニークでもクラスタインデックスは存在します。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/innodb-index-types.html",
+                        "reference_label": "MySQL InnoDB Index Types"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "クラスタインデックスは物理配置と論理キーが一致するため、範囲検索や主キーアクセスに強い特徴があります。",
+                "reference": "https://dev.mysql.com/doc/refman/8.0/en/innodb-index-types.html",
+                "reference_label": "MySQL InnoDB Index Types"
+            }
+        },
+
+        {
+            "id": "it-db-44",
+            "question": "複合インデックス（Composite Index）における「左側先頭一致（Leftmost Prefix）」ルールの正しい説明はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "複合インデックスは指定されたすべての列を使わない限り利用できない。",
+                    "explanation": {
+                        "text": "複合インデックスは、左端の列から順に条件利用されている場合のみ利用できます。",
+                        "reference": "https://use-the-index-luke.com/",
+                        "reference_label": "Use The Index, Luke!"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "WHERE句で左端の列を条件に含めると、他の列を条件に含めなくてもインデックスが使用される。",
+                    "explanation": {
+                        "text": "左端一致ルールにより、先頭列を条件に含めればインデックス利用が可能です。",
+                        "reference": "https://use-the-index-luke.com/",
+                        "reference_label": "Use The Index, Luke!"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "複合インデックス内の列順序はクエリ実行時に自動最適化される。",
+                    "explanation": {
+                        "text": "列順序は作成時に固定され、自動調整されません。",
+                        "reference": "https://use-the-index-luke.com/",
+                        "reference_label": "Use The Index, Luke!"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "左端以外の列だけを使ってもインデックススキャンが常に可能。",
+                    "explanation": {
+                        "text": "左端列を使わないとインデックスが利用されないのが Leftmost Prefix ルールです。",
+                        "reference": "https://use-the-index-luke.com/",
+                        "reference_label": "Use The Index, Luke!"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "複合インデックスは先頭列を条件に使用している場合に限り、それ以降の列も利用できます。",
+                "reference": "https://use-the-index-luke.com/",
+                "reference_label": "Use The Index, Luke!"
+            }
+        },
+
+        {
+            "id": "it-db-45",
+            "question": "データベースの行レベルロックとページレベルロックの違いとして最も適切なものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "ページロックは常に行ロックより競合が少ない。",
+                    "explanation": {
+                        "text": "ページロックは複数行を含むため競合が増えやすい側です。",
+                        "reference": "https://www.postgresql.org/docs/current/explicit-locking.html",
+                        "reference_label": "PostgreSQL Locking"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "行ロックは特定行のみをロックするため高い並行性を実現する。",
+                    "explanation": {
+                        "text": "行ロックは最小単位のロックであり並行性能が高いのが特徴です。",
+                        "reference": "https://www.postgresql.org/docs/current/explicit-locking.html",
+                        "reference_label": "PostgreSQL Locking"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ページロックは物理ファイル全体をロックする。",
+                    "explanation": {
+                        "text": "ファイル全体ロックではなく、ページ単位のロックです。",
+                        "reference": "https://www.postgresql.org/docs/current/explicit-locking.html",
+                        "reference_label": "PostgreSQL Locking"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "行ロックはインデックスのみをロックしデータ行はロックしない。",
+                    "explanation": {
+                        "text": "行ロックは行データそのものをロックします。",
+                        "reference": "https://www.postgresql.org/docs/current/explicit-locking.html",
+                        "reference_label": "PostgreSQL Locking"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "行ロックは競合が少なく、並行性を最大化できるロック方式として広く採用されています。",
+                "reference": "https://www.postgresql.org/docs/current/explicit-locking.html",
+                "reference_label": "PostgreSQL Locking"
+            }
+        },
+
+        {
+            "id": "it-db-46",
+            "question": "リードレプリカ（読み取り専用レプリカ）を用いたスケールアウトの特徴として正しいものはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "書き込み性能が向上する。",
+                    "explanation": {
+                        "text": "リードレプリカは読み取り専用であり、書き込み性能は向上しません。",
+                        "reference": "https://cloud.google.com/spanner/docs/replication",
+                        "reference_label": "Google Cloud Spanner Replication"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "読み取り処理を複数ノードに分散することで、読み取り負荷を軽減できる。",
+                    "explanation": {
+                        "text": "典型的なスケールアウト手法であり、読み取り性能の向上が主目的です。",
+                        "reference": "https://cloud.google.com/spanner/docs/replication",
+                        "reference_label": "Google Cloud Spanner Replication"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "必ず強整合性が保証される。",
+                    "explanation": {
+                        "text": "非同期レプリケーションの場合、整合性遅延があります。",
+                        "reference": "https://cloud.google.com/spanner/docs/replication",
+                        "reference_label": "Google Cloud Spanner Replication"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "レプリカで更新してもマスタに反映される。",
+                    "explanation": {
+                        "text": "通常レプリカは読み取り専用で更新は許可されません。",
+                        "reference": "https://cloud.google.com/spanner/docs/replication",
+                        "reference_label": "Google Cloud Spanner Replication"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "リードレプリカは読み取りを水平分散することでスケールアウトを実現します。",
+                "reference": "https://cloud.google.com/spanner/docs/replication",
+                "reference_label": "Google Cloud Spanner Replication"
+            }
+        },
+
+        {
+            "id": "it-db-47",
+            "question": "OR マッピング（ORM）における N+1 問題の典型的な例として最も適切なものはどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "全てのテーブルに対して毎回フルスキャンが発生する。",
+                    "explanation": {
+                        "text": "N+1問題とは異なります。",
+                        "reference": "https://hibernate.org/orm/",
+                        "reference_label": "Hibernate ORM Documentation"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "親レコード一覧取得後、各親ごとに子レコードを個別に追加クエリで取得する。",
+                    "explanation": {
+                        "text": "代表的なN+1問題で、1回の一覧+N回の追加クエリが実行される状況です。",
+                        "reference": "https://hibernate.org/orm/",
+                        "reference_label": "Hibernate ORM Documentation"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "全ての子レコードをまとめて取得するために大量メモリが必要になる。",
+                    "explanation": {
+                        "text": "N+1問題の本質は過剰クエリ数であり、メモリ問題とは別です。",
+                        "reference": "https://hibernate.org/orm/",
+                        "reference_label": "Hibernate ORM Documentation"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "SQLインジェクションが発生しやすくなる。",
+                    "explanation": {
+                        "text": "ORMはSQLインジェクション対策に強い側です。",
+                        "reference": "https://hibernate.org/orm/",
+                        "reference_label": "Hibernate ORM Documentation"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "N+1問題は関連データの遅延取得が原因でクエリ回数が爆発する典型的な問題です。",
+                "reference": "https://hibernate.org/orm/",
+                "reference_label": "Hibernate ORM Documentation"
+            }
+        },
+
+        {
+            "id": "it-db-48",
+            "question": "メタデータ管理の仕組みとして、データカタログ（Data Catalog）の主な役割はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "DBサーバのCPU使用率を監視する。",
+                    "explanation": {
+                        "text": "CPU監視はモニタリングの領域です。",
+                        "reference": "https://cloud.google.com/data-catalog/docs",
+                        "reference_label": "Google Cloud Data Catalog"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "スキーマやデータセットのメタ情報を体系的に管理し、検索性を高める。",
+                    "explanation": {
+                        "text": "データカタログはメタデータの中央集約管理・検索性向上を担います。",
+                        "reference": "https://cloud.google.com/data-catalog/docs",
+                        "reference_label": "Google Cloud Data Catalog"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "DBのスケールアウトを自動制御する。",
+                    "explanation": {
+                        "text": "スケール管理は別の仕組みです。",
+                        "reference": "https://cloud.google.com/data-catalog/docs",
+                        "reference_label": "Google Cloud Data Catalog"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "アプリケーションコードを自動生成する。",
+                    "explanation": {
+                        "text": "コード生成はカタログの役割ではありません。",
+                        "reference": "https://cloud.google.com/data-catalog/docs",
+                        "reference_label": "Google Cloud Data Catalog"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "データカタログはデータ資産のメタデータ管理と検索性向上を実現します。",
+                "reference": "https://cloud.google.com/data-catalog/docs",
+                "reference_label": "Google Cloud Data Catalog"
+            }
+        },
+
+        {
+            "id": "it-db-49",
+            "question": "データベースのスロークエリ解析で有効なアプローチとして最も適切なものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "クエリの実行時間だけを確認し、理由は調べない。",
+                    "explanation": {
+                        "text": "原因分析をしなければ改善ができません。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/slow-query-log.html",
+                        "reference_label": "MySQL Slow Query Log"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "スロークエリログを確認し、実行計画を分析してボトルネックを特定する。",
+                    "explanation": {
+                        "text": "スロークエリログ→EXPLAIN分析が標準的な手順です。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/slow-query-log.html",
+                        "reference_label": "MySQL Slow Query Log"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "インデックスをすべて削除し、テーブルフルスキャンに統一する。",
+                    "explanation": {
+                        "text": "性能が極端に低下します。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/slow-query-log.html",
+                        "reference_label": "MySQL Slow Query Log"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "CPUのクロック数だけを上げて対処する。",
+                    "explanation": {
+                        "text": "根本的な性能改善にはつながりません。",
+                        "reference": "https://dev.mysql.com/doc/refman/8.0/en/slow-query-log.html",
+                        "reference_label": "MySQL Slow Query Log"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "スロークエリはログで特定し、EXPLAINでボトルネック分析するのが標準手法です。",
+                "reference": "https://dev.mysql.com/doc/refman/8.0/en/slow-query-log.html",
+                "reference_label": "MySQL Slow Query Log"
+            }
+        },
+
+        {
+            "id": "it-db-50",
+            "question": "ETL処理におけるトランスフォーム（Transform）工程の主な役割として正しいものはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "データを外部システムから抽出する。",
+                    "explanation": {
+                        "text": "抽出は Extract の役割です。",
+                        "reference": "https://cloud.google.com/bigquery/docs",
+                        "reference_label": "BigQuery Data Processing"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "データをターゲットのデータストアにロードする。",
+                    "explanation": {
+                        "text": "ロードは Load の役割です。",
+                        "reference": "https://cloud.google.com/bigquery/docs",
+                        "reference_label": "BigQuery Data Processing"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "抽出したデータを整形・加工し、目的に沿ったデータ構造へ変換する。",
+                    "explanation": {
+                        "text": "Transform はデータ加工の工程で、クレンジング・集計・変換などを行います。",
+                        "reference": "https://cloud.google.com/bigquery/docs",
+                        "reference_label": "BigQuery Data Processing"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "データベースのスキーマを自動生成する。",
+                    "explanation": {
+                        "text": "スキーマ生成はETLのT工程とは無関係です。",
+                        "reference": "https://cloud.google.com/bigquery/docs",
+                        "reference_label": "BigQuery Data Processing"
+                    }
+                }
+            ],
+            "answer": "C",
+            "explanation": {
+                "text": "Transform は分析やロードに適した形へデータを加工・変換する工程です。",
+                "reference": "https://cloud.google.com/bigquery/docs",
+                "reference_label": "BigQuery Data Processing"
+            }
+        }
+
+    ]
+}

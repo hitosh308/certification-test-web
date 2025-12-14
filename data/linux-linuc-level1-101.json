@@ -1,0 +1,2485 @@
+{
+  "exam": {
+    "id": "linuc_level1_101",
+    "title": "LinuC レベル1 101試験",
+    "description": "本試験は、仮想マシンやコンテナを含む Linux 環境において、インストール・起動・接続・停止やファイル・ディレクトリ操作、ユーザー・グループ管理、パッケージ管理、ハードウェア・ディスク・ファイルシステム、さらに基本的なネットワーク／セキュリティ等、基礎的な Linux 運用・管理能力を問うものです。出題数は約60問、試験時間は90分（実質85分程度）、コンピュータ方式（CBT）で実施されます。初心者でも Linux 操作を体系的に学んでいれば合格を目指せる資格です。",
+    "version": "10.0",
+    "price": "16,500円",
+    "difficulty": "易しい",
+    "official-site": "https://linuc.org/linuc1/",
+    "category": {
+      "id": "linux",
+      "name": "Linux技術者認定"
+    }
+  },
+  "questions": [
+    {
+      "id": "linuc-level1-101-01",
+      "question": "systemd を用いるディストリビューションで、次回起動時のデフォルトターゲットを GUI なしのマルチユーザモード（従来のランレベル3相当）に変更したい。最も適切なコマンドはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "sudo systemctl set-default multi-user.target",
+          "explanation": {
+            "text": "systemctl set-default は default.target のシンボリックリンク先を変更し、次回以降の起動時に利用されるターゲットを恒久的に変更します。multi-user.target は非グラフィカルなマルチユーザモードを表します。",
+            "reference": "https://docs.redhat.com/ja/documentation/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-managing_services_with_systemd-targets",
+            "reference_label": "Red Hat Enterprise Linux 7 System Administrator’s Guide - systemdターゲット"
+          }
+        },
+        {
+          "key": "B",
+          "text": "sudo systemctl isolate multi-user.target",
+          "explanation": {
+            "text": "systemctl isolate は現在のターゲットを一時的に切り替えるコマンドであり、次回起動時のデフォルトターゲットは変更されません。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+            "reference_label": "systemctl(1) manページ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "sudo systemctl set-default graphical.target",
+          "explanation": {
+            "text": "graphical.target は GUI を含むマルチユーザモードに相当し、GUI なしのマルチユーザモードにしたいという要件には合致しません。",
+            "reference": "https://pystyle.info/linux-systemd-target/",
+            "reference_label": "Linux – systemd のターゲットについて解説"
+          }
+        },
+        {
+          "key": "D",
+          "text": "sudo systemctl get-default",
+          "explanation": {
+            "text": "systemctl get-default は現在のデフォルトターゲットを表示するだけで、ターゲットの変更は行いません。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+            "reference_label": "systemctl(1) manページ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "GUI なしのマルチユーザモードは multi-user.target で表され、これを次回以降のデフォルトにするには systemctl set-default multi-user.target を使用します。isolate は一時的な切替であり、get-default は確認のみです。",
+        "reference": "https://docs.redhat.com/ja/documentation/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-managing_services_with_systemd-targets",
+        "reference_label": "Red Hat Enterprise Linux 7 System Administrator’s Guide - systemdターゲット"
+      }
+    },
+    {
+      "id": "linuc-level1-101-02",
+      "question": "従来の SysV init のランレベル3（テキストログインのマルチユーザモード）に相当する systemd のターゲットはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "multi-user.target",
+          "explanation": {
+            "text": "multi-user.target は非グラフィカルなマルチユーザ環境を提供し、従来のランレベル3に相当すると説明されています。",
+            "reference": "https://docs.redhat.com/ja/documentation/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-managing_services_with_systemd-targets",
+            "reference_label": "Red Hat Enterprise Linux 7 System Administrator’s Guide - SysVランレベルとの対応表"
+          }
+        },
+        {
+          "key": "B",
+          "text": "graphical.target",
+          "explanation": {
+            "text": "graphical.target は GUI を含むマルチユーザモードであり、従来のランレベル5に相当します。",
+            "reference": "https://pystyle.info/linux-systemd-target/",
+            "reference_label": "Linux – systemd のターゲットについて解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "rescue.target",
+          "explanation": {
+            "text": "rescue.target はシングルユーザモードに相当する救援モードであり、ランレベル1に対応します。",
+            "reference": "https://pystyle.info/linux-systemd-target/",
+            "reference_label": "Linux – systemd のターゲットについて解説"
+          }
+        },
+        {
+          "key": "D",
+          "text": "emergency.target",
+          "explanation": {
+            "text": "emergency.target は最小限のサービスだけを起動する緊急モードで、ランレベル3に相当するものではありません。",
+            "reference": "https://pystyle.info/linux-systemd-target/",
+            "reference_label": "Linux – systemd のターゲットについて解説"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "systemd では従来のランレベル3に相当するのが multi-user.target と定義されています。graphical.target は GUI を含むランレベル5相当のターゲットです。",
+        "reference": "https://docs.redhat.com/ja/documentation/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-managing_services_with_systemd-targets",
+        "reference_label": "Red Hat Enterprise Linux 7 System Administrator’s Guide - SysVランレベルとの対応表"
+      }
+    },
+    {
+      "id": "linuc-level1-101-03",
+      "question": "仮想マシンとコンテナの違いに関する説明として、最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "仮想マシンはハードウェアを仮想化しゲストごとに独立したOSを持つが、コンテナはホストとカーネルを共有しプロセスを分離する。",
+          "explanation": {
+            "text": "一般的に、仮想マシンはハイパーバイザー上でハードウェアを仮想化し、各ゲストOSを実行します。一方コンテナはホストOSのカーネルを共有し、ユーザ空間を分離する仕組みです。",
+            "reference": "https://www.redhat.com/en/topics/containers/containers-vs-vms",
+            "reference_label": "Red Hat - Containers vs VMs"
+          }
+        },
+        {
+          "key": "B",
+          "text": "仮想マシンはホストOSのカーネルを共有し、コンテナはゲストごとに独立したOSを持つ。",
+          "explanation": {
+            "text": "この説明は仮想マシンとコンテナの特徴が逆になっており誤りです。カーネルを共有するのはコンテナです。",
+            "reference": "https://cloud.google.com/discover/containers-vs-vms",
+            "reference_label": "Google Cloud - Containers vs VMs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "仮想マシンもコンテナも、どちらもホストカーネルを共有せず独自のカーネルを持つ。",
+          "explanation": {
+            "text": "独自のカーネルを持つのは仮想マシンのみであり、コンテナはホストカーネルを共有します。",
+            "reference": "https://www.wiz.io/academy/containerization-vs-virtualization",
+            "reference_label": "Wiz Academy - Containerization vs virtualization"
+          }
+        },
+        {
+          "key": "D",
+          "text": "コンテナは仮想マシンよりも起動が遅く、リソース消費も重い。",
+          "explanation": {
+            "text": "コンテナはOS全体を起動する必要がなく、一般に仮想マシンよりも軽量かつ高速に起動できます。",
+            "reference": "https://www.redhat.com/en/topics/containers/containers-vs-vms",
+            "reference_label": "Red Hat - Containers vs VMs"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "LinuC 101 の 1.01.2 で学ぶように、仮想マシンはハードウェアを仮想化してゲストOSを動かし、コンテナはホストカーネルを共有してアプリケーション実行環境を分離します。",
+        "reference": "https://linuc.org/linuc1/range/101.html",
+        "reference_label": "LinuCレベル1 101試験 出題範囲 - 1.01.2 仮想マシン・コンテナの概念と利用"
+      }
+    },
+    {
+      "id": "linuc-level1-101-04",
+      "question": "次のうち、Linux システムでプロセス一覧を表示し、CPU使用率の高い順に並べて先頭数件のみを確認する目的に最も適したコマンドはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ps aux --sort=-%cpu | head",
+          "explanation": {
+            "text": "ps aux はすべてのプロセスを表示し、--sort=-%cpu でCPU使用率の降順ソートを行い、head で先頭行だけを表示できます。",
+            "reference": "https://man7.org/linux/man-pages/man1/ps.1.html",
+            "reference_label": "ps(1) Linux manページ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ps -ef | tail",
+          "explanation": {
+            "text": "ps -ef はすべてのプロセスを表示しますが、CPU使用率でのソートも行わず、tail では末尾の行が表示されるため目的に適しません。",
+            "reference": "https://man7.org/linux/man-pages/man1/ps.1.html",
+            "reference_label": "ps(1) Linux manページ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "top -b -n 1 | head",
+          "explanation": {
+            "text": "top もCPU使用率順でプロセスを表示できますが、バッチモード出力をそのまま head するとヘッダ行などが混在し、シンプルな一覧にはなりません。",
+            "reference": "https://man7.org/linux/man-pages/man1/top.1.html",
+            "reference_label": "top(1) Linux manページ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "kill -l",
+          "explanation": {
+            "text": "kill -l はシグナル一覧を表示するオプションであり、プロセスの一覧やCPU使用率の確認とは関係がありません。",
+            "reference": "https://man7.org/linux/man-pages/man1/kill.1.html",
+            "reference_label": "kill(1) Linux manページ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ps aux --sort=-%cpu で全プロセスをCPU使用率の降順に並べ、head で先頭数件に絞るのが、利用者の負荷の高いプロセスを一覧で確認するのにわかりやすい方法です。",
+        "reference": "https://man7.org/linux/man-pages/man1/ps.1.html",
+        "reference_label": "ps(1) Linux manページ"
+      }
+    },
+    {
+      "id": "linuc-level1-101-05",
+      "question": "あるファイルのパーミッション表示が \"-rwxr-x---\" となっている。このとき、所有者・グループ・その他の権限の組み合わせとして正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "所有者: 読み/書き/実行, グループ: 読み/実行, その他: なし",
+          "explanation": {
+            "text": "\"-rwxr-x---\" は所有者 rwx(7)、グループ r-x(5)、その他 --- (0) を意味します。",
+            "reference": "https://man7.org/linux/man-pages/man1/ls.1.html",
+            "reference_label": "ls(1) Linux manページ - パーミッション表示"
+          }
+        },
+        {
+          "key": "B",
+          "text": "所有者: 読み/実行, グループ: 読み/書き/実行, その他: なし",
+          "explanation": {
+            "text": "2番目の3文字は所有者ではなくグループを表すため、この読み方は誤りです。またグループは \"r-x\" で書き込み権限はありません。",
+            "reference": "https://man7.org/linux/man-pages/man1/ls.1.html",
+            "reference_label": "ls(1) Linux manページ - パーミッション表示"
+          }
+        },
+        {
+          "key": "C",
+          "text": "所有者: 読み/書き, グループ: 読み/実行, その他: 読み/実行",
+          "explanation": {
+            "text": "表示の最後の \"---\" が示すとおり、その他にはいかなる権限も付与されていません。",
+            "reference": "https://man7.org/linux/man-pages/man1/ls.1.html",
+            "reference_label": "ls(1) Linux manページ - パーミッション表示"
+          }
+        },
+        {
+          "key": "D",
+          "text": "所有者: 読み/書き/実行, グループ: なし, その他: 読み/実行",
+          "explanation": {
+            "text": "2番目の3文字が \"r-x\" であることから、グループには読みと実行権限があり、「なし」ではありません。",
+            "reference": "https://man7.org/linux/man-pages/man1/ls.1.html",
+            "reference_label": "ls(1) Linux manページ - パーミッション表示"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "パーミッション表示は、1文字目がファイル種別、続く3文字ごとに所有者・グループ・その他の権限を表します。\"-rwxr-x---\" は 7-5-0 となるため、所有者: rwx、グループ: r-x、その他: --- です。",
+        "reference": "https://linuxcommand.org/lc3_lts0090.php",
+        "reference_label": "LinuxCommand.org - 権限とlsの表示"
+      }
+    },
+    {
+      "id": "linuc-level1-101-06",
+      "question": "既存ファイル /var/log/app.log へのシンボリックリンクを /home/user/app.log という名前で作成したい。最も適切なコマンドはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ln -s /var/log/app.log /home/user/app.log",
+          "explanation": {
+            "text": "ln コマンドに -s オプションを付けるとシンボリックリンクが作成されます。第一引数にターゲット、第二引数にリンク名を指定します。",
+            "reference": "https://linuxjm.sourceforge.io/info/GNU_coreutils/coreutils-ja_86.html",
+            "reference_label": "GNU coreutils 日本語マニュアル - ln: ファイル間のリンクを作成する"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ln /var/log/app.log /home/user/app.log",
+          "explanation": {
+            "text": "-s オプションがない ln はハードリンクを作成するのがデフォルトであり、シンボリックリンクではありません。",
+            "reference": "https://linuxjm.sourceforge.io/info/GNU_coreutils/coreutils-ja_86.html",
+            "reference_label": "GNU coreutils 日本語マニュアル - ln: デフォルトはハードリンク"
+          }
+        },
+        {
+          "key": "C",
+          "text": "cp -s /var/log/app.log /home/user/app.log",
+          "explanation": {
+            "text": "cp コマンドの -s オプションは一部の環境でシンボリックリンクを作ることもありますが、一般的でなく、LinuC の範囲では ln -s を押さえるのが基本です。",
+            "reference": "https://man7.org/linux/man-pages/man1/cp.1.html",
+            "reference_label": "cp(1) Linux manページ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ln --hard /var/log/app.log /home/user/app.log",
+          "explanation": {
+            "text": "これはハードリンクを作成する指定であり、問題文の「シンボリックリンク」に合致しません。",
+            "reference": "https://man7.org/linux/man-pages/man1/ln.1.html",
+            "reference_label": "ln(1) Linux manページ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "シンボリックリンクを作成するには ln -s ターゲット リンク名 の形式を利用します。LinuC では ln のデフォルトがハードリンク、-s でシンボリックリンクになることを確実に押さえておく必要があります。",
+        "reference": "https://linuxjm.sourceforge.io/info/GNU_coreutils/coreutils-ja_86.html",
+        "reference_label": "GNU coreutils 日本語マニュアル - ln: ファイル間のリンクを作成する"
+      }
+    },
+    {
+      "id": "linuc-level1-101-07",
+      "question": "/etc 以下から拡張子が \".conf\" のファイルのみを再帰的に検索して一覧表示したい。最も適切なコマンドはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "find /etc -name \"*.conf\"",
+          "explanation": {
+            "text": "find で -name を用いると、パターンにマッチするファイル名を持つファイルやディレクトリを再帰的に検索できます。\"*.conf\" で拡張子 .conf を指定します。",
+            "reference": "https://man7.org/linux/man-pages/man1/find.1.html",
+            "reference_label": "find(1) Linux manページ - -name オプション"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ls /etc/*.conf",
+          "explanation": {
+            "text": "ls /etc/*.conf では /etc 直下の .conf ファイルしか表示されず、サブディレクトリ配下は検索されません。",
+            "reference": "https://man7.org/linux/man-pages/man1/ls.1.html",
+            "reference_label": "ls(1) Linux manページ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "grep \"*.conf\" -r /etc",
+          "explanation": {
+            "text": "grep はファイル内容を検索するコマンドであり、ファイル名のパターンマッチには通常 find を利用します。",
+            "reference": "https://man7.org/linux/man-pages/man1/grep.1.html",
+            "reference_label": "grep(1) Linux manページ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "find /etc -path \"*.conf\"",
+          "explanation": {
+            "text": "-path はパス全体に対するマッチであり、\"*.conf\" と書くと意図した結果にならない場合があります。ファイル名でマッチさせるには -name を使うのが基本です。",
+            "reference": "https://man7.org/linux/man-pages/man1/find.1.html",
+            "reference_label": "find(1) Linux manページ - -path と -name"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "LinuC 101 の 1.02.4 では find によるファイル検索が重要です。/etc 全体を再帰的に検索し、ファイル名が *.conf に一致するものを探す場合は find /etc -name \"*.conf\" が素直な解法です。",
+        "reference": "https://linuc.org/linuc1/range/101.html",
+        "reference_label": "LinuCレベル1 101試験 出題範囲 - 1.02.4 ファイルの配置と検索"
+      }
+    },
+    {
+      "id": "linuc-level1-101-08",
+      "question": "現在のディレクトリにあるテキストファイル access.log から、文字列 \"ERROR\" を含む行の数だけを調べたい。最も適切なコマンドはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "grep \"ERROR\" access.log | wc -l",
+          "explanation": {
+            "text": "grep で \"ERROR\" を含む行だけを抽出し、その出力を wc -l にパイプで渡すことで、マッチした行数をカウントできます。",
+            "reference": "https://www.gnu.org/software/coreutils/manual/html_node/wc-invocation.html",
+            "reference_label": "GNU coreutils manual - wc: Print newline, word, and byte counts"
+          }
+        },
+        {
+          "key": "B",
+          "text": "grep -c \"ERROR\" access.log",
+          "explanation": {
+            "text": "grep -c はマッチした行数を直接数えるオプションであり、これでも目的は達成できますが、問題文はパイプ処理の理解を問う意図があるため別解です。",
+            "reference": "https://man7.org/linux/man-pages/man1/grep.1.html",
+            "reference_label": "grep(1) Linux manページ - -c オプション"
+          }
+        },
+        {
+          "key": "C",
+          "text": "wc -l access.log",
+          "explanation": {
+            "text": "wc -l access.log はファイル全体の行数を数えるだけであり、\"ERROR\" を含む行だけに限定しません。",
+            "reference": "https://man7.org/linux/man-pages/man1/wc.1.html",
+            "reference_label": "wc(1) Linux manページ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "grep \"ERROR\" -l access.log",
+          "explanation": {
+            "text": "-l オプションはマッチしたファイル名のみを表示するもので、行数を数えるものではありません。",
+            "reference": "https://man7.org/linux/man-pages/man1/grep.1.html",
+            "reference_label": "grep(1) Linux manページ - -l オプション"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "LinuC 101 の 1.03.2/1.03.3 ではフィルタコマンドとパイプの組み合わせが頻出です。grep で絞り込み、wc -l で行数を数えるパターンは必ず身につけておきましょう。",
+        "reference": "https://linuc.org/linuc1/range/101.html",
+        "reference_label": "LinuCレベル1 101試験 出題範囲 - 1.03 GNUとUnixのコマンド"
+      }
+    },
+    {
+      "id": "linuc-level1-101-09",
+      "question": "コマンドの標準出力をファイル result.txt に追記（既存内容を保持したまま末尾に追加）したい。最も適切なリダイレクトの指定はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "command >> result.txt",
+          "explanation": {
+            "text": ">> は標準出力をファイルに追記するリダイレクト演算子で、既存の内容を消さずに末尾に追加します。",
+            "reference": "https://www.gnu.org/s/bash/manual/html_node/Redirections.html",
+            "reference_label": "Bash Reference Manual - Appending Redirected Output (>>)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "command > result.txt",
+          "explanation": {
+            "text": "単一の > は（noclobber を無効にしている場合）ファイルを上書きする挙動となり、既存の内容は失われます。",
+            "reference": "https://www.gnu.org/s/bash/manual/html_node/Redirections.html",
+            "reference_label": "Bash Reference Manual - Redirecting Standard Output (>)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "command < result.txt",
+          "explanation": {
+            "text": "< は標準入力へのリダイレクトであり、出力をファイルに保存する挙動ではありません。",
+            "reference": "https://www.gnu.org/s/bash/manual/html_node/Redirections.html",
+            "reference_label": "Bash Reference Manual - Redirecting Input (<)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "command &> result.txt",
+          "explanation": {
+            "text": "&> は標準出力と標準エラーの両方を result.txt に上書き保存する構文であり、「追記」にはなりません。",
+            "reference": "https://www.gnu.org/s/bash/manual/html_node/Redirections.html",
+            "reference_label": "Bash Reference Manual - Redirecting Standard Output and Standard Error (&>)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Bash のリダイレクトでは > が上書き、>> が追記です。ログファイルなどを扱う際に誤って > を使うと内容が消えてしまうため、挙動の違いを確実に区別しておく必要があります。",
+        "reference": "https://www.gnu.org/s/bash/manual/html_node/Redirections.html",
+        "reference_label": "Bash Reference Manual - Redirections"
+      }
+    },
+    {
+      "id": "linuc-level1-101-10",
+      "question": "grep を用いて、行頭が \"#\" で始まる行のみを設定ファイル config.txt から抽出したい。最も適切なコマンドはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "grep \"^#\" config.txt",
+          "explanation": {
+            "text": "正規表現において ^ は行頭を表し、\"^#\" は行の先頭に # がある行にマッチします。",
+            "reference": "https://man7.org/linux/man-pages/man1/grep.1.html",
+            "reference_label": "grep(1) Linux manページ - 正規表現"
+          }
+        },
+        {
+          "key": "B",
+          "text": "grep \"#\" config.txt",
+          "explanation": {
+            "text": "単に \"#\" を指定すると行のどこかに # を含むすべての行にマッチし、行頭に限定できません。",
+            "reference": "https://man7.org/linux/man-pages/man1/grep.1.html",
+            "reference_label": "grep(1) Linux manページ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "grep \"#$\" config.txt",
+          "explanation": {
+            "text": "$ は行末を表すため、\"#$\" は行の末尾が # で終わる行にマッチし、行頭の # にはなりません。",
+            "reference": "https://man7.org/linux/man-pages/man7/regex.7.html",
+            "reference_label": "regex(7) Linux manページ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "grep \"\\^#\" config.txt",
+          "explanation": {
+            "text": "シェルで ^ をエスケープすると、正規表現としての行頭ではなく文字 \"^\" と \"#\" の並びにマッチする扱いとなり、意図した条件にはなりません。",
+            "reference": "https://man7.org/linux/man-pages/man7/regex.7.html",
+            "reference_label": "regex(7) Linux manページ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "LinuC 101 の 1.03.4 では正規表現の基本が問われます。行頭は ^、行末は $、任意の1文字は . といったメタ文字の意味をしっかり理解しておくことが重要です。",
+        "reference": "https://linuc.org/linuc1/range/101.html",
+        "reference_label": "LinuCレベル1 101試験 出題範囲 - 1.03.4 正規表現を使用したテキストファイルの検索"
+      }
+    },
+    {
+      "id": "linuc-level1-101-11",
+      "question": "カーネルリングバッファの内容を確認するために使用するコマンドとして最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "dmesg",
+          "explanation": {
+            "text": "dmesg はカーネルリングバッファに記録されたメッセージを表示するコマンドです。ブート時のメッセージやハードウェア認識状況の確認に利用します。",
+            "reference": "https://man7.org/linux/man-pages/man1/dmesg.1.html",
+            "reference_label": "dmesg(1) Linux manページ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "journalctl -u kernel",
+          "explanation": {
+            "text": "kernel というユニットは存在せず、journalctl の一般的なユニットログ確認方法ではありません。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/journalctl.html",
+            "reference_label": "journalctl(1) manページ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "sysctl -a",
+          "explanation": {
+            "text": "sysctl はカーネルパラメータの表示や設定に使用するもので、リングバッファの内容表示ではありません。",
+            "reference": "https://man7.org/linux/man-pages/man8/sysctl.8.html",
+            "reference_label": "sysctl(8) manページ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "uname -r",
+          "explanation": {
+            "text": "uname -r はカーネルバージョンを表示するだけであり、カーネルメッセージの確認ではありません。",
+            "reference": "https://man7.org/linux/man-pages/man1/uname.1.html",
+            "reference_label": "uname(1) manページ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "カーネルリングバッファの確認には dmesg を用います。ハードウェアイベントやブートログ確認で特によく使われます。",
+        "reference": "https://man7.org/linux/man-pages/man1/dmesg.1.html",
+        "reference_label": "dmesg(1) manページ"
+      }
+    },
+
+    {
+      "id": "linuc-level1-101-12",
+      "question": "ユーザ taro のパスワードを管理者が変更したい。最も適切なコマンドはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "sudo passwd taro",
+          "explanation": {
+            "text": "passwd ユーザ名 で指定ユーザのパスワードを変更します。管理者権限が必要なため sudo を付けます。",
+            "reference": "https://man7.org/linux/man-pages/man1/passwd.1.html",
+            "reference_label": "passwd(1) manページ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "passwd",
+          "explanation": {
+            "text": "引数なしで passwd を実行すると、実行ユーザ自身のパスワード変更になります。",
+            "reference": "https://man7.org/linux/man-pages/man1/passwd.1.html",
+            "reference_label": "passwd(1) manページ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "sudo usermod -p taro",
+          "explanation": {
+            "text": "usermod -p は暗号化済みパスワードの設定であり、平文パスワードを直接変更する用途ではありません。",
+            "reference": "https://man7.org/linux/man-pages/man8/usermod.8.html",
+            "reference_label": "usermod(8) manページ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "sudo chage -d 0 taro",
+          "explanation": {
+            "text": "chage -d 0 は次回ログイン時に“変更を強制”するだけで、パスワードを直接変更するコマンドではありません。",
+            "reference": "https://man7.org/linux/man-pages/man1/chage.1.html",
+            "reference_label": "chage(1) manページ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "管理者が他ユーザのパスワードを変更するには sudo passwd username を使うのが基本です。",
+        "reference": "https://man7.org/linux/man-pages/man1/passwd.1.html",
+        "reference_label": "passwd(1) manページ"
+      }
+    },
+
+    {
+      "id": "linuc-level1-101-13",
+      "question": "ファイル /etc/hosts の更新日時を保持したままコピーを作成したい。最も適切な cp オプションはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "cp -p /etc/hosts ./hosts.bak",
+          "explanation": {
+            "text": "-p オプションは所有者・グループ・パーミッション・タイムスタンプを保持してコピーします。",
+            "reference": "https://man7.org/linux/man-pages/man1/cp.1.html",
+            "reference_label": "cp(1) manページ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "cp -a /etc/hosts ./hosts.bak",
+          "explanation": {
+            "text": "-a は -p と再帰コピーなどを含むアーカイブモードであり、単一ファイルでも利用できますが、問題文は属性保持だけを問うため最適解ではありません。",
+            "reference": "https://man7.org/linux/man-pages/man1/cp.1.html",
+            "reference_label": "cp(1) manページ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "cp -u /etc/hosts ./hosts.bak",
+          "explanation": {
+            "text": "-u は更新されたファイルのみコピーするオプションで属性保持には関係がありません。",
+            "reference": "https://man7.org/linux/man-pages/man1/cp.1.html",
+            "reference_label": "cp(1) manページ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "cp -R /etc/hosts ./hosts.bak",
+          "explanation": {
+            "text": "-R はディレクトリの再帰コピーに使うもので、単一ファイルには不要です。",
+            "reference": "https://man7.org/linux/man-pages/man1/cp.1.html",
+            "reference_label": "cp(1) manページ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ファイル属性やタイムスタンプを保持したコピーを行う場合、cp -p が基本です。",
+        "reference": "https://man7.org/linux/man-pages/man1/cp.1.html",
+        "reference_label": "cp(1) manページ"
+      }
+    },
+
+    {
+      "id": "linuc-level1-101-14",
+      "question": "一時的にネットワーク設定を確認したところ、インタフェース名が ens33 と表示された。これは近年の Linux で採用されている命名方式である。この方式として正しい名前はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Predictable Network Interface Names",
+          "explanation": {
+            "text": "systemd/udev による予測可能なインターフェース名方式であり、ens33 のような命名が行われます。",
+            "reference": "https://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames/",
+            "reference_label": "systemd - Predictable Network Interface Names"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Legacy ethX Naming Scheme",
+          "explanation": {
+            "text": "従来方式では eth0 などの ethX 命名でしたが、問題文の ens33 とは異なります。",
+            "reference": "https://www.kernel.org/doc/Documentation/networking/ethernet.txt",
+            "reference_label": "Linux Kernel Documentation - Ethernet"
+          }
+        },
+        {
+          "key": "C",
+          "text": "MAC-based Interface Names",
+          "explanation": {
+            "text": "MAC アドレスに基づく方式も存在しますが、ens33 のような PCIスロット位置由来の名前とは異なります。",
+            "reference": "https://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames/",
+            "reference_label": "systemd - Predictable Network Interface Names"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IP-based Interface Naming",
+          "explanation": {
+            "text": "IPアドレスに基づいてネットワークインターフェース名を決める方式は存在しません。",
+            "reference": "https://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames/",
+            "reference_label": "systemd - Predictable Network Interface Names"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ens33 のように PCI bus 位置を元に命名されるのは Predictable Network Interface Names 方式です。",
+        "reference": "https://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames/",
+        "reference_label": "systemd - Predictable Network Interface Names"
+      }
+    },
+
+    {
+      "id": "linuc-level1-101-15",
+      "question": "システム上で現在有効な環境変数の一覧を表示したい。最も適切なコマンドはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "env",
+          "explanation": {
+            "text": "env は環境変数の一覧を表示する基本コマンドです。",
+            "reference": "https://man7.org/linux/man-pages/man1/env.1.html",
+            "reference_label": "env(1) manページ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "set",
+          "explanation": {
+            "text": "set はシェル変数と環境変数の両方を表示しますが、問題文は「環境変数の一覧」としているため env がより適切です。",
+            "reference": "https://www.gnu.org/software/bash/manual/bash.html#Bourne-Shell-Builtins",
+            "reference_label": "Bash Builtins"
+          }
+        },
+        {
+          "key": "C",
+          "text": "export",
+          "explanation": {
+            "text": "export は環境変数の設定に用いるものであり、一覧表示には通常用いません。",
+            "reference": "https://man7.org/linux/man-pages/man1/bash.1.html",
+            "reference_label": "bash(1) manページ - export"
+          }
+        },
+        {
+          "key": "D",
+          "text": "printenv -s",
+          "explanation": {
+            "text": "-s は printenv には存在しないオプションです。",
+            "reference": "https://man7.org/linux/man-pages/man1/printenv.1.html",
+            "reference_label": "printenv(1) manページ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "環境変数のみの一覧表示には env を使用するのが最も一般的です。",
+        "reference": "https://man7.org/linux/man-pages/man1/env.1.html",
+        "reference_label": "env(1) manページ"
+      }
+    },
+
+    {
+      "id": "linuc-level1-101-16",
+      "question": "カレントディレクトリ内に存在する通常ファイルの総容量を合計して表示したい。最も適切なコマンドはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "du -sh .",
+          "explanation": {
+            "text": "du -sh . はディレクトリ全体のサイズを表示し、サブディレクトリを含めた容量を確認できます。",
+            "reference": "https://man7.org/linux/man-pages/man1/du.1.html",
+            "reference_label": "du(1) manページ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "du -sh *",
+          "explanation": {
+            "text": "du -sh * はカレント内のファイル・ディレクトリごとにサイズを表示しますが、合計値を得るには向きません。",
+            "reference": "https://man7.org/linux/man-pages/man1/du.1.html",
+            "reference_label": "du(1) manページ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ls -l | awk '{sum += $5} END {print sum}'",
+          "explanation": {
+            "text": "通常ファイルのサイズ列($5)を合計するため、最も問題文の要件を正確に満たします。",
+            "reference": "https://man7.org/linux/man-pages/man1/ls.1.html",
+            "reference_label": "ls(1) manページ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "df -h .",
+          "explanation": {
+            "text": "df はファイルシステム全体の空き容量や使用量を表示し、カレント内のファイル総容量ではありません。",
+            "reference": "https://man7.org/linux/man-pages/man1/df.1.html",
+            "reference_label": "df(1) manページ"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "du はディレクトリ単位で容量を計算するため、単純なファイル総容量ではない場合があります。ls と awk の組み合わせがより正確です。",
+        "reference": "https://man7.org/linux/man-pages/man1/ls.1.html",
+        "reference_label": "ls(1) manページ"
+      }
+    },
+
+    {
+      "id": "linuc-level1-101-17",
+      "question": "ハードリンクの特徴として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "同一 inode を参照する複数のディレクトリエントリである。",
+          "explanation": {
+            "text": "ハードリンクは同じ inode を参照するため、元ファイルが削除されても内容が保持されます。",
+            "reference": "https://man7.org/linux/man-pages/man1/ln.1.html",
+            "reference_label": "ln(1) manページ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ファイルシステムを跨いで作成できる。",
+          "explanation": {
+            "text": "ハードリンクは同一ファイルシステム内でしか作成できません。",
+            "reference": "https://man7.org/linux/man-pages/man1/ln.1.html",
+            "reference_label": "ln(1) manページ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "リンク先が削除されるとリンクも無効になる。",
+          "explanation": {
+            "text": "ハードリンクはどれが“元”という概念がなく、1つ消えても inode が残る限り問題ありません。",
+            "reference": "https://man7.org/linux/man-pages/man1/ln.1.html",
+            "reference_label": "ln(1) manページ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "シンボリックリンクより作成が遅い。",
+          "explanation": {
+            "text": "ハードリンクは単純な inode 参照の追加であり、特に遅いわけではありません。",
+            "reference": "https://man7.org/linux/man-pages/man1/ln.1.html",
+            "reference_label": "ln(1) manページ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ハードリンクは inode を共有する複数のエントリであり、ファイルシステム内でしか作れない、どれが元なのかという概念がない点が特徴です。",
+        "reference": "https://man7.org/linux/man-pages/man1/ln.1.html",
+        "reference_label": "ln(1) manページ"
+      }
+    },
+
+    {
+      "id": "linuc-level1-101-18",
+      "question": "sed を利用してファイル config.txt の中の \"enabled\" を \"disabled\" に置換して標準出力へ表示したい。最も適切なコマンドはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "sed 's/enabled/disabled/' config.txt",
+          "explanation": {
+            "text": "sed の s/pattern/replace/ は置換を意味し、標準出力へ結果を出力します。",
+            "reference": "https://man7.org/linux/man-pages/man1/sed.1.html",
+            "reference_label": "sed(1) manページ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "sed -i 's/enabled/disabled/' config.txt",
+          "explanation": {
+            "text": "-i はファイルを書き換えるオプションで、標準出力への表示ではありません。",
+            "reference": "https://man7.org/linux/man-pages/man1/sed.1.html",
+            "reference_label": "sed(1) manページ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "sed 'enabled → disabled' config.txt",
+          "explanation": {
+            "text": "sed の置換構文として誤りです。",
+            "reference": "https://man7.org/linux/man-pages/man1/sed.1.html",
+            "reference_label": "sed(1) manページ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "sed /enabled/disabled/ config.txt",
+          "explanation": {
+            "text": "置換構文には s/ が必要なため誤りです。",
+            "reference": "https://man7.org/linux/man-pages/man1/sed.1.html",
+            "reference_label": "sed(1) manページ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "sed は s/置換前/置換後/ で置換を行い、結果は標準出力に表示されます。",
+        "reference": "https://man7.org/linux/man-pages/man1/sed.1.html",
+        "reference_label": "sed(1) manページ"
+      }
+    },
+
+    {
+      "id": "linuc-level1-101-19",
+      "question": "次のコマンドで作成されるディレクトリ構造として正しいものはどれか。\n\nmkdir -p /tmp/test/a/b",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "/tmp/test/a/b の全階層が存在しない場合、すべて作成される。",
+          "explanation": {
+            "text": "-p は親ディレクトリを含めて一括作成します。",
+            "reference": "https://man7.org/linux/man-pages/man1/mkdir.1.html",
+            "reference_label": "mkdir(1) manページ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "b だけが作成され、a と test は作成されない。",
+          "explanation": {
+            "text": "mkdir -p は親も作るため誤りです。",
+            "reference": "https://man7.org/linux/man-pages/man1/mkdir.1.html",
+            "reference_label": "mkdir(1) manページ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "既存ディレクトリがあるとエラーになる。",
+          "explanation": {
+            "text": "-p を付けると既存でもエラーになりません。",
+            "reference": "https://man7.org/linux/man-pages/man1/mkdir.1.html",
+            "reference_label": "mkdir(1) manページ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "相対パスのときのみ親ディレクトリが作成される。",
+          "explanation": {
+            "text": "絶対パスでも -p の動作は変わりません。",
+            "reference": "https://man7.org/linux/man-pages/man1/mkdir.1.html",
+            "reference_label": "mkdir(1) manページ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "mkdir -p は階層を一括作成するため、/tmp/test/a/b が存在しなければすべてを生成します。",
+        "reference": "https://man7.org/linux/man-pages/man1/mkdir.1.html",
+        "reference_label": "mkdir(1) manページ"
+      }
+    },
+
+    {
+      "id": "linuc-level1-101-20",
+      "question": "SSH で秘密鍵を利用して接続する際、デフォルトで読み込まれる秘密鍵ファイルはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "~/.ssh/id_rsa",
+          "explanation": {
+            "text": "OpenSSH では従来 ~/.ssh/id_rsa がデフォルト秘密鍵として利用されていました。",
+            "reference": "https://man7.org/linux/man-pages/man1/ssh.1.html",
+            "reference_label": "ssh(1) manページ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "~/.ssh/id_pub",
+          "explanation": {
+            "text": "拡張子 .pub は公開鍵であり、秘密鍵ではありません。",
+            "reference": "https://man7.org/linux/man-pages/man1/ssh.1.html",
+            "reference_label": "ssh(1) manページ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "~/.ssh/authorized_keys",
+          "explanation": {
+            "text": "authorized_keys は接続を許可する公開鍵リストであり、秘密鍵ではありません。",
+            "reference": "https://man7.org/linux/man-pages/man5/authorized_keys.5.html",
+            "reference_label": "authorized_keys(5) manページ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "/etc/ssh/ssh_config",
+          "explanation": {
+            "text": "ssh_config は SSH クライアント設定ファイルです。",
+            "reference": "https://man7.org/linux/man-pages/man5/ssh_config.5.html",
+            "reference_label": "ssh_config(5) manページ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "SSH クライアントは ~/.ssh/id_rsa（または id_ed25519 など）をデフォルトの秘密鍵として参照します。",
+        "reference": "https://man7.org/linux/man-pages/man1/ssh.1.html",
+        "reference_label": "ssh(1) manページ"
+      }
+    },
+    {
+      "id": "linuc-level1-101-21",
+      "question": "現在ログイン中のユーザ名だけを簡単に表示したい。最も適切なコマンドはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "whoami",
+          "explanation": {
+            "text": "whoami は実効ユーザ名（現在のユーザ名）を1行で表示するコマンドです。",
+            "reference": "https://man7.org/linux/man-pages/man1/whoami.1.html",
+            "reference_label": "whoami(1) manページ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "who",
+          "explanation": {
+            "text": "who は現在ログインしているすべてのユーザの一覧を表示します。",
+            "reference": "https://man7.org/linux/man-pages/man1/who.1.html",
+            "reference_label": "who(1) manページ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "id -g",
+          "explanation": {
+            "text": "id -g はユーザのグループIDを表示し、ユーザ名を表示するものではありません。",
+            "reference": "https://man7.org/linux/man-pages/man1/id.1.html",
+            "reference_label": "id(1) manページ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "users",
+          "explanation": {
+            "text": "users は現在ログインしているユーザ名を列挙しますが、同一ユーザが複数回表示されることもあります。",
+            "reference": "https://man7.org/linux/man-pages/man1/users.1.html",
+            "reference_label": "users(1) manページ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ログイン中の自分のユーザ名を手軽に確認するには whoami を利用します。",
+        "reference": "https://man7.org/linux/man-pages/man1/whoami.1.html",
+        "reference_label": "whoami(1) manページ"
+      }
+    },
+    {
+      "id": "linuc-level1-101-22",
+      "question": "ファイル sample.txt の先頭10行だけを表示したい。最も適切なコマンドはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "head sample.txt",
+          "explanation": {
+            "text": "head はデフォルトで先頭10行を表示します。",
+            "reference": "https://man7.org/linux/man-pages/man1/head.1.html",
+            "reference_label": "head(1) manページ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "tail sample.txt",
+          "explanation": {
+            "text": "tail は末尾10行を表示するコマンドです。",
+            "reference": "https://man7.org/linux/man-pages/man1/tail.1.html",
+            "reference_label": "tail(1) manページ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "head -n 5 sample.txt",
+          "explanation": {
+            "text": "-n 5 は先頭5行のみを表示します。問題文は10行なので不適切です。",
+            "reference": "https://man7.org/linux/man-pages/man1/head.1.html",
+            "reference_label": "head(1) manページ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "more -10 sample.txt",
+          "explanation": {
+            "text": "more はページャであり、-10 は1ページの行数指定で、単純に10行だけ表示して終了する動きではありません。",
+            "reference": "https://man7.org/linux/man-pages/man1/more.1.html",
+            "reference_label": "more(1) manページ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ファイルの先頭部分を確認するには head を使用し、引数なしなら10行が表示されます。",
+        "reference": "https://man7.org/linux/man-pages/man1/head.1.html",
+        "reference_label": "head(1) manページ"
+      }
+    },
+    {
+      "id": "linuc-level1-101-23",
+      "question": "現在の作業ディレクトリ（フルパス）を確認したいときに使うコマンドとして正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "pwd",
+          "explanation": {
+            "text": "pwd は現在の作業ディレクトリの絶対パスを表示します。",
+            "reference": "https://man7.org/linux/man-pages/man1/pwd.1.html",
+            "reference_label": "pwd(1) manページ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "cd",
+          "explanation": {
+            "text": "cd はカレントディレクトリを変更するコマンドで、パスを表示するものではありません。",
+            "reference": "https://man7.org/linux/man-pages/man1/bash.1.html",
+            "reference_label": "bash(1) manページ - cd"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ls -d .",
+          "explanation": {
+            "text": "ls -d . は「.」というエントリ名を表示するだけで、絶対パスではありません。",
+            "reference": "https://man7.org/linux/man-pages/man1/ls.1.html",
+            "reference_label": "ls(1) manページ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "echo $OLDPWD",
+          "explanation": {
+            "text": "OLDPWD は直前にいたディレクトリを指す環境変数であり、現在の作業ディレクトリではありません。",
+            "reference": "https://www.gnu.org/software/bash/manual/bash.html#index-OLDPWD",
+            "reference_label": "Bash manual - OLDPWD"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "LinuC の基本として、pwd で現在のディレクトリを確認できることを押さえておきます。",
+        "reference": "https://man7.org/linux/man-pages/man1/pwd.1.html",
+        "reference_label": "pwd(1) manページ"
+      }
+    },
+    {
+      "id": "linuc-level1-101-24",
+      "question": "ファイル list.txt の内容をアルファベット順にソートして表示したい。最も適切なコマンドはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "sort list.txt",
+          "explanation": {
+            "text": "sort は行を並び替えるコマンドで、デフォルトでは辞書順に昇順ソートします。",
+            "reference": "https://man7.org/linux/man-pages/man1/sort.1.html",
+            "reference_label": "sort(1) manページ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "uniq list.txt",
+          "explanation": {
+            "text": "uniq は隣接する重複行を削除するコマンドで、ソートは行いません。",
+            "reference": "https://man7.org/linux/man-pages/man1/uniq.1.html",
+            "reference_label": "uniq(1) manページ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "grep list.txt",
+          "explanation": {
+            "text": "grep はパターン検索のコマンドでソート機能はありません。",
+            "reference": "https://man7.org/linux/man-pages/man1/grep.1.html",
+            "reference_label": "grep(1) manページ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "sort -r -n list.txt",
+          "explanation": {
+            "text": "-n は数値として比較し、-r は降順になるため、「アルファベット順に昇順」とは異なります。",
+            "reference": "https://man7.org/linux/man-pages/man1/sort.1.html",
+            "reference_label": "sort(1) manページ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "文字列を単純に昇順でソートしたい場合は sort ファイル名 だけで十分です。",
+        "reference": "https://man7.org/linux/man-pages/man1/sort.1.html",
+        "reference_label": "sort(1) manページ"
+      }
+    },
+    {
+      "id": "linuc-level1-101-25",
+      "question": "プロセスID 1234 のプロセスに対して、通常の終了（ソフトな終了）を依頼する最も一般的なシグナルはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "kill -TERM 1234",
+          "explanation": {
+            "text": "TERM はプロセスに通常終了を依頼するシグナルで、デフォルトのシグナルでもあります。",
+            "reference": "https://man7.org/linux/man-pages/man7/signal.7.html",
+            "reference_label": "signal(7) シグナル一覧"
+          }
+        },
+        {
+          "key": "B",
+          "text": "kill -KILL 1234",
+          "explanation": {
+            "text": "KILL はプロセスを即座に強制終了するシグナルで、クリーンアップ処理の機会を与えません。",
+            "reference": "https://man7.org/linux/man-pages/man7/signal.7.html",
+            "reference_label": "signal(7) シグナル一覧"
+          }
+        },
+        {
+          "key": "C",
+          "text": "kill -STOP 1234",
+          "explanation": {
+            "text": "STOP はプロセスを一時停止させるシグナルです。",
+            "reference": "https://man7.org/linux/man-pages/man7/signal.7.html",
+            "reference_label": "signal(7) シグナル一覧"
+          }
+        },
+        {
+          "key": "D",
+          "text": "kill -CONT 1234",
+          "explanation": {
+            "text": "CONT は停止しているプロセスを再開させるシグナルです。",
+            "reference": "https://man7.org/linux/man-pages/man7/signal.7.html",
+            "reference_label": "signal(7) シグナル一覧"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "プロセスを丁寧に終了させたいときは TERM を送り、プロセス側で終了処理を行うのが一般的です。",
+        "reference": "https://man7.org/linux/man-pages/man7/signal.7.html",
+        "reference_label": "signal(7) シグナル一覧"
+      }
+    },
+    {
+      "id": "linuc-level1-101-26",
+      "question": "圧縮ファイル archive.tar.gz の内容を展開せずに一覧表示したい。最も適切なコマンドはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "tar tzf archive.tar.gz",
+          "explanation": {
+            "text": "t は一覧表示、z はgzip圧縮、f はファイル指定を意味し、tar.gz の内容を一覧できます。",
+            "reference": "https://man7.org/linux/man-pages/man1/tar.1.html",
+            "reference_label": "tar(1) manページ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "tar xzf archive.tar.gz",
+          "explanation": {
+            "text": "x は展開（抽出）であり、一覧表示ではありません。",
+            "reference": "https://man7.org/linux/man-pages/man1/tar.1.html",
+            "reference_label": "tar(1) manページ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "gzip -l archive.tar.gz",
+          "explanation": {
+            "text": "gzip -l は圧縮率や元サイズを表示しますが、tar 内の個々のファイル一覧は表示しません。",
+            "reference": "https://man7.org/linux/man-pages/man1/gzip.1.html",
+            "reference_label": "gzip(1) manページ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ls archive.tar.gz",
+          "explanation": {
+            "text": "ls ではアーカイブの中身ではなく、アーカイブファイル自身しか表示されません。",
+            "reference": "https://man7.org/linux/man-pages/man1/ls.1.html",
+            "reference_label": "ls(1) manページ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "tar の t オプションを使うと、展開せずにアーカイブ内ファイルの一覧だけを確認できます。",
+        "reference": "https://man7.org/linux/man-pages/man1/tar.1.html",
+        "reference_label": "tar(1) manページ"
+      }
+    },
+    {
+      "id": "linuc-level1-101-27",
+      "question": "cron による定期実行設定をユーザ単位で編集したい。最も適切なコマンドはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "crontab -e",
+          "explanation": {
+            "text": "crontab -e は実行ユーザの crontab を編集し、ユーザ単位の定期実行設定を行います。",
+            "reference": "https://man7.org/linux/man-pages/man1/crontab.1.html",
+            "reference_label": "crontab(1) manページ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "vi /etc/crontab",
+          "explanation": {
+            "text": "/etc/crontab はシステム全体の設定であり、通常 root が編集します。ユーザ専用 crontab ではありません。",
+            "reference": "https://man7.org/linux/man-pages/man5/crontab.5.html",
+            "reference_label": "crontab(5) manページ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "systemctl edit cron.service",
+          "explanation": {
+            "text": "これは cron デーモンの systemd ユニットのオーバーライド設定であり、ジョブの登録ではありません。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+            "reference_label": "systemctl(1) manページ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "cron -e",
+          "explanation": {
+            "text": "cron に -e オプションはありません。",
+            "reference": "https://man7.org/linux/man-pages/man8/cron.8.html",
+            "reference_label": "cron(8) manページ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ユーザごとの cron 設定は crontab コマンドで管理し、-e でエディタが起動します。",
+        "reference": "https://man7.org/linux/man-pages/man1/crontab.1.html",
+        "reference_label": "crontab(1) manページ"
+      }
+    },
+    {
+      "id": "linuc-level1-101-28",
+      "question": "シェルで、直前に実行したコマンドをもう一度実行したい。最も簡単な入力方法はどれか。（Bash を想定）",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "!!",
+          "explanation": {
+            "text": "!! は直前のコマンドライン全体を履歴から展開して再実行する履歴展開の構文です。",
+            "reference": "https://www.gnu.org/software/bash/manual/bash.html#History-Interaction",
+            "reference_label": "Bash manual - History Interaction"
+          }
+        },
+        {
+          "key": "B",
+          "text": "!$",
+          "explanation": {
+            "text": "!$ は直前のコマンドの“最後の引数”を展開する構文です。",
+            "reference": "https://www.gnu.org/software/bash/manual/bash.html#History-Interaction",
+            "reference_label": "Bash manual - !$"
+          }
+        },
+        {
+          "key": "C",
+          "text": "history 1",
+          "explanation": {
+            "text": "history は履歴を表示するコマンドであり、再実行にはさらに指定が必要です。",
+            "reference": "https://www.gnu.org/software/bash/manual/bash.html#Bash-History-Builtins",
+            "reference_label": "Bash manual - history"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CTRL+U",
+          "explanation": {
+            "text": "CTRL+U は現在の行の内容を削除するキーバインドです。",
+            "reference": "https://www.gnu.org/software/bash/manual/bash.html#Commands-For-Killing",
+            "reference_label": "Bash manual - Killing text"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Bash の履歴展開では !! が「一つ前のコマンド」を再利用する基本構文です。",
+        "reference": "https://www.gnu.org/software/bash/manual/bash.html#History-Interaction",
+        "reference_label": "Bash manual - History Interaction"
+      }
+    },
+    {
+      "id": "linuc-level1-101-29",
+      "question": "シンボリックリンク link.txt が /data/file.txt を指している。ls -l link.txt の表示で、リンクの「中身」（どのパスを指しているか）を確認するのに最も適したコマンドはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ls -l link.txt",
+          "explanation": {
+            "text": "ls -l でシンボリックリンクを見ると、リンク名 -> 参照先パス の形で表示されます。",
+            "reference": "https://man7.org/linux/man-pages/man1/ls.1.html",
+            "reference_label": "ls(1) manページ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "cat link.txt",
+          "explanation": {
+            "text": "cat はリンク先ファイルの内容を表示し、リンクがどこを指しているかの情報は直接表示しません。",
+            "reference": "https://man7.org/linux/man-pages/man1/cat.1.html",
+            "reference_label": "cat(1) manページ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "file link.txt",
+          "explanation": {
+            "text": "file はファイル種別を表示しますが、リンクの参照先パスを詳細に表示する用途ではありません。",
+            "reference": "https://man7.org/linux/man-pages/man1/file.1.html",
+            "reference_label": "file(1) manページ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ln link.txt",
+          "explanation": {
+            "text": "ln だけではリンク作成コマンドであり、パスの確認は行いません。",
+            "reference": "https://man7.org/linux/man-pages/man1/ln.1.html",
+            "reference_label": "ln(1) manページ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "シンボリックリンクの向き先パスは ls -l で簡単に確認できます。",
+        "reference": "https://man7.org/linux/man-pages/man1/ls.1.html",
+        "reference_label": "ls(1) manページ"
+      }
+    },
+    {
+      "id": "linuc-level1-101-30",
+      "question": "ファイル sample.txt の行数・単語数・バイト数をまとめて確認したい。最も適切なコマンドはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "wc sample.txt",
+          "explanation": {
+            "text": "wc はデフォルトで行数・単語数・バイト数を表示します。",
+            "reference": "https://man7.org/linux/man-pages/man1/wc.1.html",
+            "reference_label": "wc(1) manページ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "wc -l sample.txt",
+          "explanation": {
+            "text": "-l を付けると行数だけの表示となり、単語数・バイト数は表示されません。",
+            "reference": "https://man7.org/linux/man-pages/man1/wc.1.html",
+            "reference_label": "wc(1) manページ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "wc -c sample.txt",
+          "explanation": {
+            "text": "-c はバイト数のみを表示します。",
+            "reference": "https://man7.org/linux/man-pages/man1/wc.1.html",
+            "reference_label": "wc(1) manページ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "wc -w -l sample.txt",
+          "explanation": {
+            "text": "オプションを付けるとその種類の値だけを表示します。行数・単語数までは出ますが、バイト数は含まれません。",
+            "reference": "https://man7.org/linux/man-pages/man1/wc.1.html",
+            "reference_label": "wc(1) manページ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "wc にオプションを付けない場合、行・単語・バイト数を一度に確認できます。",
+        "reference": "https://man7.org/linux/man-pages/man1/wc.1.html",
+        "reference_label": "wc(1) manページ"
+      }
+    },
+    {
+      "id": "linuc-level1-101-31",
+      "question": "umask の役割についての説明として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "新規に作成されるファイルやディレクトリのデフォルトパーミッションから“禁止するビット”を指定するマスク値である。",
+          "explanation": {
+            "text": "umask は許可ではなく“禁止”するパーミッションビットを指定するためのマスクです。",
+            "reference": "https://man7.org/linux/man-pages/man2/umask.2.html",
+            "reference_label": "umask(2) Linux manページ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "既存ファイルのパーミッションを直接書き換えるコマンドである。",
+          "explanation": {
+            "text": "既存ファイルのパーミッション変更には chmod を使用し、umask は新規作成時にのみ影響します。",
+            "reference": "https://man7.org/linux/man-pages/man1/chmod.1.html",
+            "reference_label": "chmod(1) Linux manページ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ACL（アクセス制御リスト）を設定するためのマスク値である。",
+          "explanation": {
+            "text": "ACL のマスクは setfacl などで扱い、umask とは別の概念です。",
+            "reference": "https://man7.org/linux/man-pages/man5/acl.5.html",
+            "reference_label": "acl(5) Linux manページ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "プロセスの最大数を制限するための値である。",
+          "explanation": {
+            "text": "プロセス最大数制限は ulimit や /etc/security/limits.conf などで設定します。",
+            "reference": "https://man7.org/linux/man-pages/man1/ulimit.1p.html",
+            "reference_label": "ulimit(1p) POSIX manページ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "umask は“禁止する”ビットを指定するマスクで、新規ファイル・ディレクトリ作成時の最大許可値（666, 777など）から差し引いたものが実際のパーミッションになります。",
+        "reference": "https://man7.org/linux/man-pages/man2/umask.2.html",
+        "reference_label": "umask(2) Linux manページ"
+      }
+    },
+    {
+      "id": "linuc-level1-101-32",
+      "question": "数値モード 750 を chmod に指定した場合、グループの権限として正しい組み合わせはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "読み取り・実行のみ",
+          "explanation": {
+            "text": "750 の各桁は、7=所有者(rwx)、5=グループ(r-x)、0=その他(---) を表し、グループは読み取りと実行のみ可能です。",
+            "reference": "https://man7.org/linux/man-pages/man1/chmod.1.html",
+            "reference_label": "chmod(1) Linux manページ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "読み取り・書き込み・実行",
+          "explanation": {
+            "text": "読み取り・書き込み・実行の組み合わせは 7(rwx) であり、グループ桁の 5 とは一致しません。",
+            "reference": "https://man7.org/linux/man-pages/man1/chmod.1.html",
+            "reference_label": "chmod(1) Linux manページ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "読み取りのみ",
+          "explanation": {
+            "text": "読み取りのみは 4(r--) であり、5(r-x) には実行権限も含まれます。",
+            "reference": "https://linuxcommand.org/lc3_lts0090.php",
+            "reference_label": "LinuxCommand.org - パーミッションの数値表現"
+          }
+        },
+        {
+          "key": "D",
+          "text": "権限なし",
+          "explanation": {
+            "text": "権限なしは 0 --- であり、750 のグループ桁は 5 なので当てはまりません。",
+            "reference": "https://linuxcommand.org/lc3_lts0090.php",
+            "reference_label": "LinuxCommand.org - パーミッションの数値表現"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "数値モードは r=4, w=2, x=1 の合計で表現します。5=4+1 なので r-x、つまり読み取り・実行のみです。",
+        "reference": "https://linuxcommand.org/lc3_lts0090.php",
+        "reference_label": "LinuxCommand.org - パーミッションの数値表現"
+      }
+    },
+    {
+      "id": "linuc-level1-101-33",
+      "question": "システムの現在のタイムゾーン設定を確認するために、systemd ベースのディストリビューションで利用できる最も適切なコマンドはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "timedatectl",
+          "explanation": {
+            "text": "timedatectl は systemd の時間関連ユーティリティで、タイムゾーンやNTP設定などを表示できます。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/timedatectl.html",
+            "reference_label": "timedatectl(1) manページ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "date --timezone",
+          "explanation": {
+            "text": "GNU date には --timezone オプションもありますが、システム設定の確認用途としては timedatectl が一般的です。",
+            "reference": "https://man7.org/linux/man-pages/man1/date.1.html",
+            "reference_label": "date(1) Linux manページ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "tzselect",
+          "explanation": {
+            "text": "tzselect は対話式にタイムゾーンを選択するツールで、現在の設定確認専用ではありません。",
+            "reference": "https://man7.org/linux/man-pages/man8/tzselect.8.html",
+            "reference_label": "tzselect(8) manページ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "hwclock --list-timezones",
+          "explanation": {
+            "text": "hwclock はハードウェアクロックを扱うコマンドで、タイムゾーン一覧を表示するものではありません。",
+            "reference": "https://man7.org/linux/man-pages/man8/hwclock.8.html",
+            "reference_label": "hwclock(8) manページ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "timedatectl を引数なしで実行すると、ローカル時刻・UTC・タイムゾーン・NTP設定などがまとめて表示されます。",
+        "reference": "https://www.freedesktop.org/software/systemd/man/timedatectl.html",
+        "reference_label": "timedatectl(1) manページ"
+      }
+    },
+    {
+      "id": "linuc-level1-101-34",
+      "question": "ディスク使用量をファイルシステム単位で確認したい。最も適切なコマンドはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "df -h",
+          "explanation": {
+            "text": "df はファイルシステムごとの使用量と空き容量を表示し、-h で人間に読みやすい単位になります。",
+            "reference": "https://man7.org/linux/man-pages/man1/df.1.html",
+            "reference_label": "df(1) manページ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "du -h /",
+          "explanation": {
+            "text": "du はディレクトリ階層ごとの使用量を表示するコマンドで、ファイルシステム単位ではありません。",
+            "reference": "https://man7.org/linux/man-pages/man1/du.1.html",
+            "reference_label": "du(1) manページ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "lsblk",
+          "explanation": {
+            "text": "lsblk はブロックデバイスの一覧を表示しますが、ファイルシステムの使用率までは表示しません（環境によりFILESYSTEM列などはあります）。",
+            "reference": "https://man7.org/linux/man-pages/man8/lsblk.8.html",
+            "reference_label": "lsblk(8) manページ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "free -h",
+          "explanation": {
+            "text": "free はメモリやスワップの使用状況を表示するコマンドです。",
+            "reference": "https://man7.org/linux/man-pages/man1/free.1.html",
+            "reference_label": "free(1) manページ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ファイルシステム単位の使用率・空き容量を確認する標準的なコマンドは df です。",
+        "reference": "https://man7.org/linux/man-pages/man1/df.1.html",
+        "reference_label": "df(1) manページ"
+      }
+    },
+    {
+      "id": "linuc-level1-101-35",
+      "question": "スワップ領域の利用状況を確認するコマンドとして最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "swapon -s",
+          "explanation": {
+            "text": "swapon -s は有効なスワップデバイスと使用量の一覧を表示します。",
+            "reference": "https://man7.org/linux/man-pages/man8/swapon.8.html",
+            "reference_label": "swapon(8) manページ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "swapoff -a",
+          "explanation": {
+            "text": "swapoff はスワップを無効化するコマンドであり、確認専用ではありません。",
+            "reference": "https://man7.org/linux/man-pages/man8/swapon.8.html",
+            "reference_label": "swapon/swapoff(8) manページ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "mount | grep swap",
+          "explanation": {
+            "text": "mount の出力からスワップを推測することもできますが、使用量など詳細確認には不向きです。",
+            "reference": "https://man7.org/linux/man-pages/man8/mount.8.html",
+            "reference_label": "mount(8) manページ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ls /proc/swaps",
+          "explanation": {
+            "text": "/proc/swaps はスワップ情報を保持する疑似ファイルですが、そのまま ls するだけでは内容は表示されません。",
+            "reference": "https://www.kernel.org/doc/Documentation/filesystems/proc.txt",
+            "reference_label": "/proc filesystem documentation"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "swapon -s または cat /proc/swaps で、スワップデバイスと使用量を確認するのが一般的です。",
+        "reference": "https://man7.org/linux/man-pages/man8/swapon.8.html",
+        "reference_label": "swapon(8) manページ"
+      }
+    },
+    {
+      "id": "linuc-level1-101-36",
+      "question": "システム起動時に自動的にマウントされるファイルシステムの設定が記述されているファイルはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "/etc/fstab",
+          "explanation": {
+            "text": "/etc/fstab はファイルシステムのデバイス、マウントポイント、オプションなどの情報を定義し、起動時の自動マウントにも使用されます。",
+            "reference": "https://man7.org/linux/man-pages/man5/fstab.5.html",
+            "reference_label": "fstab(5) manページ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "/etc/mtab",
+          "explanation": {
+            "text": "/etc/mtab（または /proc/self/mounts）は現在マウントされているファイルシステムの情報であり、設定ファイルではありません。",
+            "reference": "https://man7.org/linux/man-pages/man5/fstab.5.html",
+            "reference_label": "fstab(5) manページ - /etc/mtab との違い"
+          }
+        },
+        {
+          "key": "C",
+          "text": "/etc/inittab",
+          "explanation": {
+            "text": "/etc/inittab は伝統的な SysV init の設定ファイルで、systemd では通常使用されません。ファイルシステムのマウント設定ではありません。",
+            "reference": "https://man7.org/linux/man-pages/man5/inittab.5.html",
+            "reference_label": "inittab(5) manページ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "/etc/filesystems",
+          "explanation": {
+            "text": "/etc/filesystems は利用可能なファイルシステムタイプの一覧として使われることがありますが、マウント設定そのものではありません。",
+            "reference": "https://man7.org/linux/man-pages/man5/filesystems.5.html",
+            "reference_label": "filesystems(5) manページ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "起動時自動マウントや mount -a で参照されるファイルは /etc/fstab です。",
+        "reference": "https://man7.org/linux/man-pages/man5/fstab.5.html",
+        "reference_label": "fstab(5) manページ"
+      }
+    },
+    {
+      "id": "linuc-level1-101-37",
+      "question": "プロセスをバックグラウンドで実行し、ログアウト後も継続させたい。最も適切な組み合わせはどれか。（Bash を想定）",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "nohup command &",
+          "explanation": {
+            "text": "nohup はハングアップシグナルを無視させ、& でバックグラウンド実行にすることで、ログアウト後も継続させる典型的な方法です。",
+            "reference": "https://man7.org/linux/man-pages/man1/nohup.1.html",
+            "reference_label": "nohup(1) manページ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "command &",
+          "explanation": {
+            "text": "単なる & はバックグラウンド実行ですが、ログアウト時に SIGHUP が送られ、プロセスが終了する場合があります。",
+            "reference": "https://www.gnu.org/software/bash/manual/bash.html#Job-Control-Basics",
+            "reference_label": "Bash manual - ジョブ制御"
+          }
+        },
+        {
+          "key": "C",
+          "text": "bg command",
+          "explanation": {
+            "text": "bg は停止中のジョブをバックグラウンドに移す組み込みコマンドで、直接新しいコマンドを引数に取る使い方はしません。",
+            "reference": "https://www.gnu.org/software/bash/manual/bash.html#Job-Control-Builtins",
+            "reference_label": "Bash manual - bg"
+          }
+        },
+        {
+          "key": "D",
+          "text": "disown command",
+          "explanation": {
+            "text": "disown は既存のジョブをシェルのジョブテーブルから外すためのコマンドで、新たに実行するコマンドに対して使うものではありません。",
+            "reference": "https://www.gnu.org/software/bash/manual/bash.html#Job-Control-Builtins",
+            "reference_label": "Bash manual - disown"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "nohup と & の組み合わせは、「ログアウトしても動き続けるバックグラウンドジョブ」の基本パターンとして覚えておきます。",
+        "reference": "https://man7.org/linux/man-pages/man1/nohup.1.html",
+        "reference_label": "nohup(1) manページ"
+      }
+    },
+    {
+      "id": "linuc-level1-101-38",
+      "question": "systemd ベースのシステムで、サービス httpd.service の起動状態（active か inactive かなど）を確認したい。最も適切なコマンドはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "systemctl status httpd.service",
+          "explanation": {
+            "text": "systemctl status ユニット名 で、active/inactive などの状態や最近のログを確認できます。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+            "reference_label": "systemctl(1) manページ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "service httpd status-all",
+          "explanation": {
+            "text": "service コマンドの標準的な書式ではなく、多くのディストリでは存在しないサブコマンドです。",
+            "reference": "https://man7.org/linux/man-pages/man8/service.8.html",
+            "reference_label": "service(8) manページ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "systemctl list-units --type=socket httpd.service",
+          "explanation": {
+            "text": "list-units はユニット一覧を表示するサブコマンドであり、特定サービスの詳細状態確認には status の方が適切です。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+            "reference_label": "systemctl(1) manページ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "journalctl httpd.service",
+          "explanation": {
+            "text": "journalctl だけではユニット名を指定する構文として不十分で、-u オプションなどが必要です。そもそも状態確認よりログ閲覧向けです。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/journalctl.html",
+            "reference_label": "journalctl(1) manページ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "systemd でサービスの状態を確認する基本は systemctl status ユニット名 です。",
+        "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+        "reference_label": "systemctl(1) manページ"
+      }
+    },
+    {
+      "id": "linuc-level1-101-39",
+      "question": "RPM ベースのディストリビューションで、インストール済みパッケージ httpd の情報（バージョンや概要）を表示したい。最も適切なコマンドはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "rpm -qi httpd",
+          "explanation": {
+            "text": "rpm -q でクエリモード、-i で情報表示を意味し、インストール済み httpd パッケージの詳細情報を表示します。",
+            "reference": "https://man7.org/linux/man-pages/man8/rpm.8.html",
+            "reference_label": "rpm(8) manページ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "rpm -qa httpd",
+          "explanation": {
+            "text": "-qa はインストール済みパッケージを全件列挙するオプションで、httpd にマッチするエントリは表示されますが詳細情報は出ません。",
+            "reference": "https://man7.org/linux/man-pages/man8/rpm.8.html",
+            "reference_label": "rpm(8) manページ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "rpm -Uvh httpd",
+          "explanation": {
+            "text": "-Uvh はパッケージのアップグレードインストールであり、情報表示ではありません。",
+            "reference": "https://man7.org/linux/man-pages/man8/rpm.8.html",
+            "reference_label": "rpm(8) manページ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "rpm -e httpd",
+          "explanation": {
+            "text": "-e はパッケージのアンインストールを意味します。",
+            "reference": "https://man7.org/linux/man-pages/man8/rpm.8.html",
+            "reference_label": "rpm(8) manページ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "RPM クエリで情報を確認するときは rpm -qi パッケージ名 を利用します。",
+        "reference": "https://man7.org/linux/man-pages/man8/rpm.8.html",
+        "reference_label": "rpm(8) manページ"
+      }
+    },
+    {
+      "id": "linuc-level1-101-40",
+      "question": "Debian/Ubuntu 系ディストリビューションで、パッケージ openssh-server がインストール済みかどうかを確認したい。最も適切なコマンドはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "dpkg -l openssh-server",
+          "explanation": {
+            "text": "dpkg -l は指定パッケージのインストール状態を一覧表示し、インストール済みなら先頭列が「ii」となります。",
+            "reference": "https://man7.org/linux/man-pages/man1/dpkg.1.html",
+            "reference_label": "dpkg(1) manページ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "apt-get install openssh-server",
+          "explanation": {
+            "text": "apt-get install はパッケージをインストールするコマンドで、単純な確認のために使うものではありません。",
+            "reference": "https://man7.org/linux/man-pages/man8/apt-get.8.html",
+            "reference_label": "apt-get(8) manページ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "apt-cache search openssh-server",
+          "explanation": {
+            "text": "apt-cache search はリポジトリ内のパッケージ検索であり、既にインストール済みかどうかはわかりません。",
+            "reference": "https://man7.org/linux/man-pages/man8/apt-cache.8.html",
+            "reference_label": "apt-cache(8) manページ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "dpkg -i openssh-server",
+          "explanation": {
+            "text": "-i は .deb ファイルからのインストールを意味します。",
+            "reference": "https://man7.org/linux/man-pages/man1/dpkg.1.html",
+            "reference_label": "dpkg(1) manページ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "dpkg -l パッケージ名 で、インストール済みなら ii、削除済みなら rc などのステータスが確認できます。",
+        "reference": "https://man7.org/linux/man-pages/man1/dpkg.1.html",
+        "reference_label": "dpkg(1) manページ"
+      }
+    },
+    {
+      "id": "linuc-level1-101-41",
+      "question": "Bash で変数 PATH の内容を確認したい。最も適切なコマンドはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "echo $PATH",
+          "explanation": {
+            "text": "echo に変数展開 $PATH を渡すことで、PATH 環境変数の値を表示できます。",
+            "reference": "https://www.gnu.org/software/bash/manual/bash.html#Shell-Parameters",
+            "reference_label": "Bash manual - Shell Parameters"
+          }
+        },
+        {
+          "key": "B",
+          "text": "print PATH",
+          "explanation": {
+            "text": "print は Bash の標準コマンドではなく PATH 内容表示用途には使いません。",
+            "reference": "https://www.gnu.org/software/bash/manual/bash.html",
+            "reference_label": "Bash manual"
+          }
+        },
+        {
+          "key": "C",
+          "text": "env PATH",
+          "explanation": {
+            "text": "env PATH とすると PATH というコマンドを実行しようとするため誤りです。",
+            "reference": "https://man7.org/linux/man-pages/man1/env.1.html",
+            "reference_label": "env(1) manページ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "export PATH",
+          "explanation": {
+            "text": "export は変数を環境変数化するコマンドであり、表示専用ではありません。",
+            "reference": "https://man7.org/linux/man-pages/man1/bash.1.html",
+            "reference_label": "bash(1) manページ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "PATH の確認には echo $PATH を用いるのが最も基本的な方法です。",
+        "reference": "https://www.gnu.org/software/bash/manual/bash.html#Shell-Parameters",
+        "reference_label": "Bash manual - Shell Parameters"
+      }
+    },
+
+    {
+      "id": "linuc-level1-101-42",
+      "question": "プロセスが使用しているファイルやソケットを確認したい。最も適切なコマンドはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "lsof",
+          "explanation": {
+            "text": "lsof は開いているファイルやソケットを一覧するための代表的なツールです。",
+            "reference": "https://man7.org/linux/man-pages/man8/lsof.8.html",
+            "reference_label": "lsof(8) manページ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ps -f",
+          "explanation": {
+            "text": "ps はプロセス情報を表示しますが、ファイルディスクリプタまでは表示しません。",
+            "reference": "https://man7.org/linux/man-pages/man1/ps.1.html",
+            "reference_label": "ps(1) manページ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "fdisk -l",
+          "explanation": {
+            "text": "fdisk -l はディスクパーティション一覧を表示するコマンドです。",
+            "reference": "https://man7.org/linux/man-pages/man8/fdisk.8.html",
+            "reference_label": "fdisk(8) manページ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "uname -a",
+          "explanation": {
+            "text": "uname はシステム情報を表示するコマンドであり、プロセスが開いているファイル一覧には無関係です。",
+            "reference": "https://man7.org/linux/man-pages/man1/uname.1.html",
+            "reference_label": "uname(1) manページ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "lsof はプロセスが使用しているファイル・ソケットなどの情報を確認するツールとして定番です。",
+        "reference": "https://man7.org/linux/man-pages/man8/lsof.8.html",
+        "reference_label": "lsof(8) manページ"
+      }
+    },
+
+    {
+      "id": "linuc-level1-101-43",
+      "question": "Bash の設定ファイルのうち、ログインシェル起動時に最初に読み込まれるものとして最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "/etc/profile",
+          "explanation": {
+            "text": "/etc/profile はログインシェル開始時に最初に読み込まれるシステム全体の設定ファイルです。",
+            "reference": "https://www.gnu.org/software/bash/manual/bash.html#Bash-Startup-Files",
+            "reference_label": "Bash manual - Startup Files"
+          }
+        },
+        {
+          "key": "B",
+          "text": "~/.bash_profile",
+          "explanation": {
+            "text": "ユーザごとの設定ですが /etc/profile の後に読み込まれます。",
+            "reference": "https://www.gnu.org/software/bash/manual/bash.html#Bash-Startup-Files",
+            "reference_label": "Bash manual - Startup Files"
+          }
+        },
+        {
+          "key": "C",
+          "text": "~/.bashrc",
+          "explanation": {
+            "text": "~/.bashrc は非ログインシェルで読み込まれ、ログインシェルの最初ではありません。",
+            "reference": "https://www.gnu.org/software/bash/manual/bash.html#Bash-Startup-Files",
+            "reference_label": "Bash manual - Startup Files"
+          }
+        },
+        {
+          "key": "D",
+          "text": "/etc/bashrc",
+          "explanation": {
+            "text": "/etc/bashrc は主に非ログインシェルで読み込まれます。",
+            "reference": "https://www.gnu.org/software/bash/manual/bash.html#Bash-Startup-Files",
+            "reference_label": "Bash manual - Startup Files"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "/etc/profile → ~/.bash_profile → ~/.bashrc の順に読み込まれます。",
+        "reference": "https://www.gnu.org/software/bash/manual/bash.html#Bash-Startup-Files",
+        "reference_label": "Bash manual - Startup Files"
+      }
+    },
+
+    {
+      "id": "linuc-level1-101-44",
+      "question": "IPv4 アドレス 192.168.1.10/24 のネットワークアドレスとして正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "192.168.1.0",
+          "explanation": {
+            "text": "/24 は 255.255.255.0 であり、ホスト部が 0 のアドレスがネットワークアドレスとなります。",
+            "reference": "https://datatracker.ietf.org/doc/html/rfc4632",
+            "reference_label": "RFC 4632 - Classless Inter-domain Routing"
+          }
+        },
+        {
+          "key": "B",
+          "text": "192.168.1.1",
+          "explanation": {
+            "text": "192.168.1.1 は通常ゲートウェイとして使われることもありますがネットワークアドレスではありません。",
+            "reference": "https://datatracker.ietf.org/doc/html/rfc4632",
+            "reference_label": "RFC 4632"
+          }
+        },
+        {
+          "key": "C",
+          "text": "192.168.0.0",
+          "explanation": {
+            "text": "/24 は 256 アドレス分で第三オクテットは変わりません。",
+            "reference": "https://datatracker.ietf.org/doc/html/rfc4632",
+            "reference_label": "RFC 4632"
+          }
+        },
+        {
+          "key": "D",
+          "text": "192.168.1.255",
+          "explanation": {
+            "text": "これはブロードキャストアドレスです。",
+            "reference": "https://datatracker.ietf.org/doc/html/rfc4632",
+            "reference_label": "RFC 4632"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "/24 は最後のオクテットがホスト部となるため、ネットワークアドレスは 192.168.1.0 です。",
+        "reference": "https://datatracker.ietf.org/doc/html/rfc4632",
+        "reference_label": "RFC 4632"
+      }
+    },
+
+    {
+      "id": "linuc-level1-101-45",
+      "question": "ログファイルの末尾を監視し、更新があればリアルタイムで表示したい。最も適切なコマンドはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "tail -f /var/log/messages",
+          "explanation": {
+            "text": "-f オプションはファイルの末尾を監視し続けます。",
+            "reference": "https://man7.org/linux/man-pages/man1/tail.1.html",
+            "reference_label": "tail(1) manページ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "head -f /var/log/messages",
+          "explanation": {
+            "text": "head に -f はありません。",
+            "reference": "https://man7.org/linux/man-pages/man1/head.1.html",
+            "reference_label": "head(1) manページ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "watch /var/log/messages",
+          "explanation": {
+            "text": "watch はコマンドの繰り返し実行ですがファイル監視には向きません。",
+            "reference": "https://man7.org/linux/man-pages/man1/watch.1.html",
+            "reference_label": "watch(1) manページ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "less /var/log/messages",
+          "explanation": {
+            "text": "less には +F によるフォロー機能もありますが、標準解としては tail -f が最適です。",
+            "reference": "https://man7.org/linux/man-pages/man1/less.1.html",
+            "reference_label": "less(1) manページ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ログのリアルタイム監視では tail -f が最も一般的に利用されます。",
+        "reference": "https://man7.org/linux/man-pages/man1/tail.1.html",
+        "reference_label": "tail(1) manページ"
+      }
+    },
+
+    {
+      "id": "linuc-level1-101-46",
+      "question": "Linux システムの起動直後のメッセージやカーネルログを確認したい。最も適切な確認方法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "journalctl -k",
+          "explanation": {
+            "text": "-k はカーネルメッセージ（dmesg 相当）を journal から抽出します。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/journalctl.html",
+            "reference_label": "journalctl(1) manページ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "journalctl -u sshd",
+          "explanation": {
+            "text": "これは sshd サービスのログのみです。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/journalctl.html",
+            "reference_label": "journalctl(1) manページ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "journalctl --reboot=now",
+          "explanation": {
+            "text": "--reboot はブートIDで区切る機能ですが、now を付けてもカーネルログを直接示すわけではありません。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/journalctl.html",
+            "reference_label": "journalctl(1) manページ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ls /var/log",
+          "explanation": {
+            "text": "ログディレクトリを列挙するだけで内容確認にはなりません。",
+            "reference": "https://man7.org/linux/man-pages/man1/ls.1.html",
+            "reference_label": "ls(1) manページ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "systemd ベースでは journalctl -k がカーネル関連ログ確認の基本です。",
+        "reference": "https://www.freedesktop.org/software/systemd/man/journalctl.html",
+        "reference_label": "journalctl(1) manページ"
+      }
+    },
+
+    {
+      "id": "linuc-level1-101-47",
+      "question": "Linux でハードウェア情報（CPU、メモリ、デバイスなど）を包括的に確認できるコマンドとして最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "lshw",
+          "explanation": {
+            "text": "lshw はシステムのハードウェア構成を詳細に一覧表示するコマンドです。",
+            "reference": "https://man7.org/linux/man-pages/man1/lshw.1.html",
+            "reference_label": "lshw(1) manページ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "free",
+          "explanation": {
+            "text": "free はメモリ使用量のみを表示します。",
+            "reference": "https://man7.org/linux/man-pages/man1/free.1.html",
+            "reference_label": "free(1) manページ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "cat /proc/cpuinfo",
+          "explanation": {
+            "text": "/proc/cpuinfo は CPU の詳細だけで全ハード情報ではありません。",
+            "reference": "https://www.kernel.org/doc/Documentation/filesystems/proc.txt",
+            "reference_label": "/proc filesystem"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ifconfig -a",
+          "explanation": {
+            "text": "ifconfig はネットワーク設定のみです。",
+            "reference": "https://man7.org/linux/man-pages/man8/ifconfig.8.html",
+            "reference_label": "ifconfig(8) manページ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "CPU、メモリ、PCIデバイスなどをまとめて確認できるのは lshw が適切です。",
+        "reference": "https://man7.org/linux/man-pages/man1/lshw.1.html",
+        "reference_label": "lshw(1) manページ"
+      }
+    },
+
+    {
+      "id": "linuc-level1-101-48",
+      "question": "ss コマンドを使用して、LISTEN している TCP ポートを一覧表示したい。最も適切なオプションはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ss -tln",
+          "explanation": {
+            "text": "-t は TCP、-l は LISTEN のみ、-n は名前解決を省略するため高速表示になります。",
+            "reference": "https://man7.org/linux/man-pages/man8/ss.8.html",
+            "reference_label": "ss(8) manページ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ss -uap",
+          "explanation": {
+            "text": "-u は UDP のため TCP LISTEN の一覧には不適です。",
+            "reference": "https://man7.org/linux/man-pages/man8/ss.8.html",
+            "reference_label": "ss(8) manページ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ss -r",
+          "explanation": {
+            "text": "-r はルートソケット情報で LISTEN 専用ではありません。",
+            "reference": "https://man7.org/linux/man-pages/man8/ss.8.html",
+            "reference_label": "ss(8) manページ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ss --all",
+          "explanation": {
+            "text": "--all はすべてのソケットを表示し、LISTEN 絞り込みではありません。",
+            "reference": "https://man7.org/linux/man-pages/man8/ss.8.html",
+            "reference_label": "ss(8) manページ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "TCP の LISTEN ポート確認では ss -tln が標準的なコマンドです。",
+        "reference": "https://man7.org/linux/man-pages/man8/ss.8.html",
+        "reference_label": "ss(8) manページ"
+      }
+    },
+
+    {
+      "id": "linuc-level1-101-49",
+      "question": "システムで最近インストールされたパッケージの履歴を確認したい。RPM ベースの環境で適切なコマンドはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "rpm -qa --last",
+          "explanation": {
+            "text": "rpm -qa --last はインストール日時順にパッケージ一覧を表示します。",
+            "reference": "https://man7.org/linux/man-pages/man8/rpm.8.html",
+            "reference_label": "rpm(8) manページ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "rpm -ql",
+          "explanation": {
+            "text": "-ql はパッケージのファイル一覧であり、履歴ではありません。",
+            "reference": "https://man7.org/linux/man-pages/man8/rpm.8.html",
+            "reference_label": "rpm(8) manページ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "dnf upgrade",
+          "explanation": {
+            "text": "アップグレードの実行コマンドで履歴表示ではありません。",
+            "reference": "https://man7.org/linux/man-pages/man8/dnf.8.html",
+            "reference_label": "dnf(8) manページ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "yum list history",
+          "explanation": {
+            "text": "yum history は履歴確認の仕組みですが、list history というサブコマンドは存在しません。",
+            "reference": "https://man7.org/linux/man-pages/man8/yum.8.html",
+            "reference_label": "yum(8) manページ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "RPM システムでインストール日時順にパッケージ一覧を見るには rpm -qa --last を使用します。",
+        "reference": "https://man7.org/linux/man-pages/man8/rpm.8.html",
+        "reference_label": "rpm(8) manページ"
+      }
+    },
+
+    {
+      "id": "linuc-level1-101-50",
+      "question": "SELinux が現在有効かどうかを確認したい。最も適切なコマンドはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "getenforce",
+          "explanation": {
+            "text": "getenforce は SELinux の現在の状態（Enforcing / Permissive / Disabled）を表示します。",
+            "reference": "https://man7.org/linux/man-pages/man8/getenforce.8.html",
+            "reference_label": "getenforce(8) manページ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "setenforce",
+          "explanation": {
+            "text": "setenforce は SELinux モード変更コマンドであり、確認専用ではありません。",
+            "reference": "https://man7.org/linux/man-pages/man8/setenforce.8.html",
+            "reference_label": "setenforce(8) manページ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "semanage enforce",
+          "explanation": {
+            "text": "semanage は SELinux ポリシー管理であり、モード確認コマンドではありません。",
+            "reference": "https://man7.org/linux/man-pages/man8/semanage.8.html",
+            "reference_label": "semanage(8) manページ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "getenforce -a",
+          "explanation": {
+            "text": "getenforce に -a オプションは存在しません。",
+            "reference": "https://man7.org/linux/man-pages/man8/getenforce.8.html",
+            "reference_label": "getenforce(8) manページ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "SELinux の動作モード確認は getenforce が最も簡単で確実です。",
+        "reference": "https://man7.org/linux/man-pages/man8/getenforce.8.html",
+        "reference_label": "getenforce(8) manページ"
+      }
+    }
+  ]
+}

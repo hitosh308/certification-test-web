@@ -1,0 +1,2467 @@
+{
+  "exam": {
+    "id": "SAP-C02",
+    "title": "AWS Certified Solutions Architect – Professional",
+    "description": "AWS Certified Solutions Architect – Professional は、AWS 環境で複雑なクラウドアーキテクチャを設計・実装・最適化するための上級技術力を認定する資格です。信頼性・可用性・コスト最適化・パフォーマンス・セキュリティといった観点から、組織の複雑な要求に応える設計ができるかを問います。",
+    "version": "2022年11月",
+    "price": "300 USD",
+    "difficulty": "難しい",
+    "official-site": "https://aws.amazon.com/certification/certified-solutions-architect-professional/",
+    "category": {
+      "id": "aws",
+      "name": "AWS"
+    }
+  },
+  "questions": [
+    {
+      "id": "aws-sap-c02-q1",
+      "question": "ある企業はオンプレミスのデータセンターからAWSへの段階的移行を計画しています。AWSに移行するワークロードは数百台のVMで構成されており、ダウンタイムを最小化したいと考えています。この要件を最も効率的に満たすサービスはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AWS Snowball Edge",
+          "explanation": {
+            "text": "Snowball Edgeは大量データの物理転送には有効ですが、数百台のVMを最小ダウンタイムで移行するユースケースには最適ではありません。",
+            "reference": "https://docs.aws.amazon.com/snowball/index.html",
+            "reference_label": "AWS Snowball Documentation"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AWS Application Migration Service (AWS MGN)",
+          "explanation": {
+            "text": "AWS MGNはオンプレミスのサーバをAWSにレプリケーションし、最小限のダウンタイムでカットオーバーできるため最適解です。",
+            "reference": "https://docs.aws.amazon.com/mgn/index.html",
+            "reference_label": "AWS Application Migration Service Documentation"
+          }
+        },
+        {
+          "key": "C",
+          "text": "AWS Database Migration Service (AWS DMS)",
+          "explanation": {
+            "text": "DMSはデータベース移行専用であり、VM全体の移行には対応していません。",
+            "reference": "https://docs.aws.amazon.com/dms/index.html",
+            "reference_label": "AWS Database Migration Service Documentation"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AWS DataSync",
+          "explanation": {
+            "text": "DataSyncはストレージ間のデータ転送に適しており、サーバやVM移行のユースケースには不向きです。",
+            "reference": "https://docs.aws.amazon.com/datasync/index.html",
+            "reference_label": "AWS DataSync Documentation"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "AWS Application Migration Serviceは、物理・仮想サーバをAWSにレプリケーションし、短時間のダウンタイムで移行できるため、大規模VM移行に最も適したサービスです。",
+        "reference": "https://docs.aws.amazon.com/mgn/index.html",
+        "reference_label": "AWS Application Migration Service Documentation"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q2",
+      "question": "ある企業はグローバルユーザーに低レイテンシでコンテンツを配信したいと考えています。セキュリティ要件として、オリジンサーバ（S3バケット）への直接アクセスを禁止し、CloudFront経由のみでアクセスさせたい。この場合に使用するべき機能はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "S3 バケットポリシーでIP制限を行う",
+          "explanation": {
+            "text": "IP制限は柔軟性に欠け、CloudFront経由の制御としては最適ではありません。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-overview.html",
+            "reference_label": "Amazon S3 Access Control Documentation"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Origin Access Identity (OAI) または Origin Access Control (OAC)",
+          "explanation": {
+            "text": "OAI または OACを使うことでCloudFrontからのアクセスのみを許可し、直接アクセスを防ぐことができます。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html",
+            "reference_label": "Restricting Access to S3 via CloudFront"
+          }
+        },
+        {
+          "key": "C",
+          "text": "S3 Block Public Accessを有効化する",
+          "explanation": {
+            "text": "Block Public Accessは外部からの直接アクセスを防ぎますが、CloudFront専用アクセスの制御には不十分です。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html",
+            "reference_label": "S3 Block Public Access"
+          }
+        },
+        {
+          "key": "D",
+          "text": "VPCエンドポイントを利用する",
+          "explanation": {
+            "text": "VPCエンドポイントはVPC内部のアクセス制御に有効ですが、CloudFrontとS3の直接制御には利用されません。",
+            "reference": "https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-endpoints.html",
+            "reference_label": "Amazon VPC Endpoints Documentation"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "CloudFront経由のみでS3にアクセスさせる場合、Origin Access Identity (OAI) または最新のOrigin Access Control (OAC)を利用するのがベストプラクティスです。",
+        "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html",
+        "reference_label": "Restricting Access to S3 via CloudFront"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q3",
+      "question": "ある金融企業はAmazon RDS for PostgreSQLを利用しています。災害対策として高可用性を確保したいが、同一リージョン内の可用性ゾーン障害にも耐えたい。この要件を満たす構成はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "単一AZに配置したRDSインスタンス",
+          "explanation": {
+            "text": "単一AZでは可用性ゾーン障害に対応できません。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html",
+            "reference_label": "Amazon RDS Multi-AZ Documentation"
+          }
+        },
+        {
+          "key": "B",
+          "text": "マルチAZ配置のRDSインスタンス",
+          "explanation": {
+            "text": "マルチAZ構成にすることで自動フェイルオーバーが可能になり、AZ障害にも耐性があります。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html",
+            "reference_label": "Amazon RDS Multi-AZ Documentation"
+          }
+        },
+        {
+          "key": "C",
+          "text": "リードレプリカを同一AZに配置",
+          "explanation": {
+            "text": "同一AZのリードレプリカは災害対策には効果がありません。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html",
+            "reference_label": "Amazon RDS Read Replica Documentation"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Aurora Global Databaseを利用",
+          "explanation": {
+            "text": "Aurora Global Databaseはクロスリージョンの災害対策に有効ですが、シンプルなマルチAZ構成の代替にはなりません。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html",
+            "reference_label": "Aurora Global Database Documentation"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "RDSのマルチAZ構成はAZ障害に対応できる最適解です。AWSが自動で同期レプリケーションとフェイルオーバーを実行します。",
+        "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html",
+        "reference_label": "Amazon RDS Multi-AZ Documentation"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q4",
+      "question": "ある企業はAmazon S3をデータレイクとして利用しており、機密データを保存しています。セキュリティチームはすべてのオブジェクトに対して暗号化を必須とする要件を設定しました。これを実現する最も効率的な方法はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "アプリケーションコードで暗号化を実装",
+          "explanation": {
+            "text": "アプリケーションに依存する方法は管理が複雑になり、ベストプラクティスではありません。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/serv-side-encryption.html",
+            "reference_label": "Amazon S3 Server-Side Encryption"
+          }
+        },
+        {
+          "key": "B",
+          "text": "S3バケットのデフォルト暗号化を有効化",
+          "explanation": {
+            "text": "S3のデフォルト暗号化を有効化することで、アップロードされるすべてのオブジェクトが自動的に暗号化されます。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html",
+            "reference_label": "Amazon S3 Default Encryption"
+          }
+        },
+        {
+          "key": "C",
+          "text": "CloudTrailログで暗号化を監視",
+          "explanation": {
+            "text": "監視は暗号化を強制する方法ではありません。",
+            "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-log-file-validation-intro.html",
+            "reference_label": "AWS CloudTrail Documentation"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IAMポリシーで暗号化を強制",
+          "explanation": {
+            "text": "IAMポリシーで暗号化ヘッダーを必須にすることは可能ですが、バケットレベルのデフォルト暗号化を設定する方が効率的です。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html",
+            "reference_label": "Amazon S3 Default Encryption"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "S3のデフォルト暗号化を設定すれば、すべての新規オブジェクトが自動的に暗号化されるため効率的です。",
+        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html",
+        "reference_label": "Amazon S3 Default Encryption"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q5",
+      "question": "企業がAWS上で稼働するWebアプリケーションを運用しています。ユーザー数の増加に伴い、アプリケーション層のスケーリングが課題となっています。ステートレスな設計を維持しつつ、自動スケーリングを効率的に行う方法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "EC2 Auto Scalingグループを利用",
+          "explanation": {
+            "text": "Auto Scalingグループを利用することでステートレスなWebアプリケーションを効率的にスケーリングできます。",
+            "reference": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
+            "reference_label": "Amazon EC2 Auto Scaling"
+          }
+        },
+        {
+          "key": "B",
+          "text": "単一EC2インスタンスのサイズを大きくする",
+          "explanation": {
+            "text": "垂直スケーリングは限界があり、可用性も低下します。",
+            "reference": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/scaling.html",
+            "reference_label": "AWS Scaling Whitepaper"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Elastic Beanstalkを利用しスケーリング",
+          "explanation": {
+            "text": "Elastic Beanstalkでもスケーリング可能ですが、EC2 Auto Scalingの直接利用がより制御性が高いです。",
+            "reference": "https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.managing.as.html",
+            "reference_label": "Elastic Beanstalk Auto Scaling"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Lambdaにアプリケーションを移行",
+          "explanation": {
+            "text": "Lambdaはイベント駆動型アーキテクチャには有効ですが、既存のWebアプリの移行には大規模なリファクタリングが必要です。",
+            "reference": "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html",
+            "reference_label": "AWS Lambda Documentation"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Webアプリケーションをステートレスに設計すれば、EC2 Auto Scalingを利用して効率的にスケールアウトできます。",
+        "reference": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
+        "reference_label": "Amazon EC2 Auto Scaling"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q6",
+      "question": "ある企業はAmazon VPC内でWebアプリケーションを稼働させています。インターネットからのアクセスはALB経由に限定したいが、アプリケーションサーバに直接アクセスされるリスクを排除したい。これを実現する最も適切な方法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "セキュリティグループでALBからのトラフィックのみ許可",
+          "explanation": {
+            "text": "アプリケーションサーバのセキュリティグループをALBのSGからのトラフィックに限定するのがベストプラクティスです。",
+            "reference": "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-security-groups.html",
+            "reference_label": "ALB Security Groups"
+          }
+        },
+        {
+          "key": "B",
+          "text": "NACLでインターネットアクセスを制限",
+          "explanation": {
+            "text": "NACLは粗い制御しかできず、セキュリティグループの利用が推奨されます。",
+            "reference": "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html",
+            "reference_label": "Amazon VPC NACL Documentation"
+          }
+        },
+        {
+          "key": "C",
+          "text": "WAFで不正アクセスをブロック",
+          "explanation": {
+            "text": "WAFはアプリ層の脅威対策には有効ですが、直接アクセス制御には不向きです。",
+            "reference": "https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html",
+            "reference_label": "AWS WAF Documentation"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Route 53でALBのエイリアスレコードを作成",
+          "explanation": {
+            "text": "DNSルーティングだけでは直接アクセスを防止できません。",
+            "reference": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-elb-load-balancer.html",
+            "reference_label": "Amazon Route 53 with ALB"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "セキュリティグループを用いてALBからのトラフィックのみ許可することで、アプリケーションサーバへの直接アクセスを防止できます。",
+        "reference": "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-security-groups.html",
+        "reference_label": "ALB Security Groups"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q7",
+      "question": "ある企業はAmazon S3上で大量のログデータを保存しており、コスト削減を求めています。古いデータは頻繁にアクセスされないが、監査要件により数年間保持する必要があります。この要件を最も効率的に満たすストレージクラス戦略はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "S3 Standardに保存し続ける",
+          "explanation": {
+            "text": "コストが高く、非効率です。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html",
+            "reference_label": "Amazon S3 Storage Classes"
+          }
+        },
+        {
+          "key": "B",
+          "text": "S3 Glacier または S3 Glacier Deep Archiveに移行",
+          "explanation": {
+            "text": "アクセス頻度が低く保持期間が長いデータにはS3 Glacier系ストレージが最適です。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html",
+            "reference_label": "Amazon S3 Storage Classes"
+          }
+        },
+        {
+          "key": "C",
+          "text": "S3 One Zone-IAに保存",
+          "explanation": {
+            "text": "One Zone-IAは安価ですが、AZ障害に弱いため長期保存には適していません。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html",
+            "reference_label": "Amazon S3 Storage Classes"
+          }
+        },
+        {
+          "key": "D",
+          "text": "S3 Intelligent-Tieringを利用",
+          "explanation": {
+            "text": "Intelligent-Tieringはアクセスパターンが不明な場合に有効ですが、明確に低頻度なデータはGlacierの方が安価です。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html",
+            "reference_label": "Amazon S3 Storage Classes"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "古いログのように長期保存かつ低頻度アクセスのデータはS3 GlacierまたはDeep Archiveが最適です。",
+        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html",
+        "reference_label": "Amazon S3 Storage Classes"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q8",
+      "question": "ある企業はマルチアカウント戦略を採用しており、数十のAWSアカウントを管理しています。セキュリティチームは、すべてのアカウントで統一されたIAMポリシーとガバナンスを適用したいと考えています。最も効率的な方法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "各アカウントに個別にIAMポリシーを設定",
+          "explanation": {
+            "text": "運用負荷が高く、スケーラブルではありません。",
+            "reference": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html",
+            "reference_label": "IAM Policies"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AWS OrganizationsとService Control Policies (SCPs)を利用",
+          "explanation": {
+            "text": "SCPを使うことで組織全体にポリシーを強制でき、統一したガバナンスが可能です。",
+            "reference": "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html",
+            "reference_label": "Service Control Policies"
+          }
+        },
+        {
+          "key": "C",
+          "text": "AWS Configを利用しポリシー違反を監視",
+          "explanation": {
+            "text": "Configは監視には有効ですが、直接的にIAM権限を制御することはできません。",
+            "reference": "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
+            "reference_label": "AWS Config"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CloudFormation StackSetsを利用してIAMポリシーをデプロイ",
+          "explanation": {
+            "text": "StackSetsで共通設定を配布できますが、強制力はSCPほど強くありません。",
+            "reference": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/what-is-cfnstacksets.html",
+            "reference_label": "CloudFormation StackSets"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "AWS OrganizationsのSCPを使えば、複数アカウントに統一的にIAMポリシーを適用できるため効率的です。",
+        "reference": "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html",
+        "reference_label": "Service Control Policies"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q9",
+      "question": "グローバル展開しているECサイトがあり、各リージョンのユーザーに対して最も近いリージョンで処理を行いたい。ユーザーのトラフィックを地理的に最適なエンドポイントへルーティングする最も適切な方法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Route 53 レイテンシーベースルーティング",
+          "explanation": {
+            "text": "レイテンシーベースルーティングは最も低レイテンシのリージョンへ振り分けるため、要件に合致します。",
+            "reference": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html",
+            "reference_label": "Amazon Route 53 Routing Policies"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Route 53 フェイルオーバールーティング",
+          "explanation": {
+            "text": "フェイルオーバーは災害対策用であり、レイテンシ最適化には不向きです。",
+            "reference": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover.html",
+            "reference_label": "DNS Failover"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Route 53 ジオロケーションルーティング",
+          "explanation": {
+            "text": "ジオロケーションは国や地域ごとにルーティングしますが、レイテンシを考慮しません。",
+            "reference": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html",
+            "reference_label": "Amazon Route 53 Routing Policies"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Route 53 加重ルーティング",
+          "explanation": {
+            "text": "加重ルーティングはトラフィックの割合を制御するものです。",
+            "reference": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html",
+            "reference_label": "Amazon Route 53 Routing Policies"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Route 53のレイテンシーベースルーティングを使うことで、ユーザーを最も低レイテンシのリージョンへ誘導できます。",
+        "reference": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html",
+        "reference_label": "Amazon Route 53 Routing Policies"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q10",
+      "question": "企業はVPC内で数百のマイクロサービスを稼働させています。サービス間通信を安全にし、きめ細かい認証・暗号化を導入したい。最も適切なソリューションはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "VPCピアリング",
+          "explanation": {
+            "text": "VPC間接続は可能ですが、マイクロサービスの通信制御には向きません。",
+            "reference": "https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html",
+            "reference_label": "VPC Peering"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AWS PrivateLink",
+          "explanation": {
+            "text": "PrivateLinkは特定サービスへのプライベートアクセスに有効ですが、サービス間の認証や暗号化の仕組みは提供しません。",
+            "reference": "https://docs.aws.amazon.com/vpc/latest/privatelink/what-is-privatelink.html",
+            "reference_label": "AWS PrivateLink"
+          }
+        },
+        {
+          "key": "C",
+          "text": "サービスメッシュ（AWS App Mesh）",
+          "explanation": {
+            "text": "App Meshはサービス間通信をmTLSで保護し、きめ細かい制御や監視を可能にします。",
+            "reference": "https://docs.aws.amazon.com/app-mesh/latest/userguide/what-is-app-mesh.html",
+            "reference_label": "AWS App Mesh"
+          }
+        },
+        {
+          "key": "D",
+          "text": "セキュリティグループで通信を制御",
+          "explanation": {
+            "text": "基本的な制御は可能ですが、認証や暗号化は提供されません。",
+            "reference": "https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html",
+            "reference_label": "Amazon VPC Security Groups"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "AWS App Meshはサービスメッシュを構築し、サービス間通信をmTLSで暗号化・認証できるため最適です。",
+        "reference": "https://docs.aws.amazon.com/app-mesh/latest/userguide/what-is-app-mesh.html",
+        "reference_label": "AWS App Mesh"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q11",
+      "question": "オンプレミスとAWSをハイブリッド接続している企業が、Direct Connect接続の冗長化を求めています。高可用性を確保する最適なアプローチはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "単一のDirect Connect接続を利用",
+          "explanation": {
+            "text": "単一接続では冗長性が確保できません。",
+            "reference": "https://docs.aws.amazon.com/directconnect/latest/UserGuide/Welcome.html",
+            "reference_label": "AWS Direct Connect Documentation"
+          }
+        },
+        {
+          "key": "B",
+          "text": "複数のDirect Connect接続を異なるロケーションで利用",
+          "explanation": {
+            "text": "複数ロケーションに冗長化するのがAWSの推奨ベストプラクティスです。",
+            "reference": "https://docs.aws.amazon.com/directconnect/latest/UserGuide/Welcome.html",
+            "reference_label": "AWS Direct Connect Documentation"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Direct ConnectとVPNを組み合わせる",
+          "explanation": {
+            "text": "Direct Connectが停止した場合にVPNをフェイルオーバー用として利用するのも選択肢ですが、最も堅牢なのは複数のDX接続です。",
+            "reference": "https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html",
+            "reference_label": "AWS VPN Documentation"
+          }
+        },
+        {
+          "key": "D",
+          "text": "単一のDirect Connect Gatewayを利用",
+          "explanation": {
+            "text": "Direct Connect Gatewayは複数VPCへの接続を可能にしますが、冗長化とは直接関係ありません。",
+            "reference": "https://docs.aws.amazon.com/directconnect/latest/UserGuide/direct-connect-gateways.html",
+            "reference_label": "Direct Connect Gateway"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "高可用性を確保するには、複数のDirect Connect接続を異なるロケーションに設置するのがベストプラクティスです。",
+        "reference": "https://docs.aws.amazon.com/directconnect/latest/UserGuide/Welcome.html",
+        "reference_label": "AWS Direct Connect Documentation"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q12",
+      "question": "企業はIoTデバイスからAWSにデータを収集しています。セキュリティ要件として、すべてのデバイスとクラウド間通信を暗号化し、デバイスごとに認証を行いたい。この要件を満たすAWSサービスはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Amazon Kinesis Data Streams",
+          "explanation": {
+            "text": "データストリーム処理は可能ですが、デバイス認証は提供しません。",
+            "reference": "https://docs.aws.amazon.com/streams/latest/dev/introduction.html",
+            "reference_label": "Amazon Kinesis Data Streams"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AWS IoT Core",
+          "explanation": {
+            "text": "IoT Coreはデバイス認証とTLS暗号化を標準で提供し、セキュアな通信が可能です。",
+            "reference": "https://docs.aws.amazon.com/iot/latest/developerguide/what-is-aws-iot.html",
+            "reference_label": "AWS IoT Core"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Amazon SQS",
+          "explanation": {
+            "text": "SQSはメッセージングサービスであり、IoTデバイス認証は提供しません。",
+            "reference": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html",
+            "reference_label": "Amazon SQS"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Amazon EventBridge",
+          "explanation": {
+            "text": "EventBridgeはイベントルーティングに使えますが、IoTデバイス認証は行えません。",
+            "reference": "https://docs.aws.amazon.com/eventbridge/latest/userguide/what-is-amazon-eventbridge.html",
+            "reference_label": "Amazon EventBridge"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "AWS IoT Coreはデバイスごとの認証と暗号化通信を提供し、セキュリティ要件を満たします。",
+        "reference": "https://docs.aws.amazon.com/iot/latest/developerguide/what-is-aws-iot.html",
+        "reference_label": "AWS IoT Core"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q13",
+      "question": "ある企業はAWS Lambdaを利用したサーバレスアプリケーションを運用しています。ユーザー数が増加し、Lambdaのコールドスタートがパフォーマンスに影響を与えています。これを軽減するための最適な方法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Lambda関数のメモリを増やす",
+          "explanation": {
+            "text": "メモリを増やすことで処理速度は向上しますが、コールドスタート自体の回避にはつながりません。",
+            "reference": "https://docs.aws.amazon.com/lambda/latest/dg/configuration-memory.html",
+            "reference_label": "AWS Lambda Memory Configuration"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Provisioned Concurrencyを利用",
+          "explanation": {
+            "text": "Provisioned Concurrencyを設定することで、常に初期化済みインスタンスを確保し、コールドスタートを防げます。",
+            "reference": "https://docs.aws.amazon.com/lambda/latest/dg/provisioned-concurrency.html",
+            "reference_label": "AWS Lambda Provisioned Concurrency"
+          }
+        },
+        {
+          "key": "C",
+          "text": "CloudWatchイベントで定期的にLambdaを呼び出す",
+          "explanation": {
+            "text": "ウォームアップには効果がありますが、スケーラビリティが低く、ベストプラクティスではありません。",
+            "reference": "https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html",
+            "reference_label": "Lambda Event Source Mapping"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Lambda@Edgeを利用",
+          "explanation": {
+            "text": "Lambda@EdgeはCloudFrontの分散処理に利用されますが、コールドスタート対策ではありません。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-at-the-edge.html",
+            "reference_label": "Lambda@Edge"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Provisioned Concurrencyを利用することで、Lambda関数が常に初期化済み状態になり、コールドスタート問題を解決できます。",
+        "reference": "https://docs.aws.amazon.com/lambda/latest/dg/provisioned-concurrency.html",
+        "reference_label": "AWS Lambda Provisioned Concurrency"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q14",
+      "question": "企業はAWS上でマルチテナントSaaSアプリケーションを運用しています。各テナントのデータを論理的に分離しつつ、コスト効率を最大化したい。この場合に最も推奨されるアプローチはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "各テナントごとに専用のAWSアカウントを作成",
+          "explanation": {
+            "text": "完全分離は可能ですが、コストと管理のオーバーヘッドが増加します。",
+            "reference": "https://docs.aws.amazon.com/whitepapers/latest/saas-tenant-isolation-strategies/introduction.html",
+            "reference_label": "SaaS Tenant Isolation Strategies"
+          }
+        },
+        {
+          "key": "B",
+          "text": "単一データベースにすべてのテナントデータを保存し、テナントIDで分離",
+          "explanation": {
+            "text": "コスト効率は高いですが、セキュリティリスクが増大します。",
+            "reference": "https://docs.aws.amazon.com/whitepapers/latest/saas-tenant-isolation-strategies/introduction.html",
+            "reference_label": "SaaS Tenant Isolation Strategies"
+          }
+        },
+        {
+          "key": "C",
+          "text": "同一データベースにスキーマを分離して保存",
+          "explanation": {
+            "text": "スキーマ分離はコスト効率とセキュリティのバランスを取る推奨アプローチです。",
+            "reference": "https://docs.aws.amazon.com/whitepapers/latest/saas-tenant-isolation-strategies/introduction.html",
+            "reference_label": "SaaS Tenant Isolation Strategies"
+          }
+        },
+        {
+          "key": "D",
+          "text": "各テナントごとに専用のデータベースを用意",
+          "explanation": {
+            "text": "セキュリティ分離は強固ですが、スケーラビリティとコスト効率に欠けます。",
+            "reference": "https://docs.aws.amazon.com/whitepapers/latest/saas-tenant-isolation-strategies/introduction.html",
+            "reference_label": "SaaS Tenant Isolation Strategies"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "マルチテナントSaaSではスキーマ分離がコスト効率とセキュリティのバランスを取るために推奨される手法です。",
+        "reference": "https://docs.aws.amazon.com/whitepapers/latest/saas-tenant-isolation-strategies/introduction.html",
+        "reference_label": "SaaS Tenant Isolation Strategies"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q15",
+      "question": "ある企業は分析基盤としてAmazon Redshiftを利用しています。クエリのパフォーマンスが低下しており、ストレージコストも増加しています。Redshiftのパフォーマンスとコスト効率を改善する最も適切な方法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Redshift Spectrumを利用してS3データを直接クエリ",
+          "explanation": {
+            "text": "S3に保存したデータをSpectrumで直接クエリすることで、Redshiftクラスターへの負荷を軽減できます。",
+            "reference": "https://docs.aws.amazon.com/redshift/latest/dg/c-using-spectrum.html",
+            "reference_label": "Amazon Redshift Spectrum"
+          }
+        },
+        {
+          "key": "B",
+          "text": "クラスターを垂直スケーリング",
+          "explanation": {
+            "text": "一時的には性能改善しますが、コスト効率は低くなります。",
+            "reference": "https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html",
+            "reference_label": "Managing Clusters"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データをS3 Glacierに移動",
+          "explanation": {
+            "text": "Glacierはアーカイブ用ストレージであり、分析クエリには利用できません。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html",
+            "reference_label": "Amazon S3 Storage Classes"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Redshiftのデータ分散スタイルを変更",
+          "explanation": {
+            "text": "適切な分散スタイルを選択することでクエリ性能は改善しますが、ストレージコスト削減には直接つながりません。",
+            "reference": "https://docs.aws.amazon.com/redshift/latest/dg/c_choosing_dist_sort.html",
+            "reference_label": "Amazon Redshift Distribution Styles"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Redshift Spectrumを利用することで、S3にあるデータを直接参照し、クラスターのストレージ負荷を減らすことでパフォーマンスとコスト効率を改善できます。",
+        "reference": "https://docs.aws.amazon.com/redshift/latest/dg/c-using-spectrum.html",
+        "reference_label": "Amazon Redshift Spectrum"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q16",
+      "question": "ある企業はAmazon ECSを利用してコンテナ化されたアプリケーションを稼働しています。コンテナの起動時間を短縮し、インフラ管理を最小化したい。この要件を満たす最適な実行オプションはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ECS on EC2",
+          "explanation": {
+            "text": "EC2インスタンスを管理する必要があり、インフラ管理の負担が残ります。",
+            "reference": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html",
+            "reference_label": "Amazon ECS Launch Types"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ECS on Fargate",
+          "explanation": {
+            "text": "Fargateを利用すればサーバ管理不要で、コンテナ起動が迅速に行えます。",
+            "reference": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html",
+            "reference_label": "Amazon ECS on Fargate"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ECS Anywhere",
+          "explanation": {
+            "text": "オンプレミスでコンテナを実行するオプションであり、クラウドでの起動時間短縮には関係ありません。",
+            "reference": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-anywhere.html",
+            "reference_label": "Amazon ECS Anywhere"
+          }
+        },
+        {
+          "key": "D",
+          "text": "EKS on EC2",
+          "explanation": {
+            "text": "Kubernetesの制御が可能ですが、EC2の管理負荷は残ります。",
+            "reference": "https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html",
+            "reference_label": "Amazon EKS"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ECS on Fargateはインフラ管理を排除し、コンテナ起動を迅速化できるため最適です。",
+        "reference": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html",
+        "reference_label": "Amazon ECS on Fargate"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q17",
+      "question": "ある企業はAWS LambdaとAPI Gatewayを利用したサーバレスAPIを構築しています。セキュリティ要件として、特定のクライアントアプリケーションのみにアクセスを制御したい。この要件に最も適した方法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "API GatewayでAPIキーを利用",
+          "explanation": {
+            "text": "APIキーでクライアントごとのアクセス制御が可能ですが、強固な認証には不十分です。",
+            "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html",
+            "reference_label": "API Gateway Usage Plans and API Keys"
+          }
+        },
+        {
+          "key": "B",
+          "text": "IAMロールベース認証を利用",
+          "explanation": {
+            "text": "IAM認証を利用することで、特定のIAMユーザーやロールのみにアクセスを制御できます。",
+            "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-control-access-to-api.html",
+            "reference_label": "Access Control in API Gateway"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Cognito User Poolsを利用した認証",
+          "explanation": {
+            "text": "Cognitoを使えば特定のアプリケーションやユーザー認証を柔軟に制御できます。",
+            "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-integrate-with-cognito.html",
+            "reference_label": "API Gateway and Cognito Integration"
+          }
+        },
+        {
+          "key": "D",
+          "text": "リソースポリシーでIP制限",
+          "explanation": {
+            "text": "IP制限は柔軟性に欠け、クライアントアプリケーション単位の制御には適しません。",
+            "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-resource-policies.html",
+            "reference_label": "API Gateway Resource Policies"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "Amazon CognitoとAPI Gatewayを組み合わせることで、特定アプリケーションの認証とアクセス制御を実現できます。",
+        "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-integrate-with-cognito.html",
+        "reference_label": "API Gateway and Cognito Integration"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q18",
+      "question": "ある企業はAmazon Aurora MySQLを利用しています。読み取りトラフィックが急増しており、アプリケーションのパフォーマンスが低下しています。最適なスケーリング戦略はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Auroraリードレプリカを追加",
+          "explanation": {
+            "text": "リードレプリカを追加することで読み取りトラフィックを分散でき、パフォーマンス改善に直結します。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Replication.html",
+            "reference_label": "Aurora Replication"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Auroraのストレージ自動スケーリングを有効化",
+          "explanation": {
+            "text": "ストレージスケーリングは容量の拡張には有効ですが、読み取り性能の改善には効果がありません。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-storage-auto-scaling.html",
+            "reference_label": "Aurora Storage Auto Scaling"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Aurora Global Databaseを利用",
+          "explanation": {
+            "text": "クロスリージョンのレプリケーションに有効ですが、単一リージョン内の読み取り性能向上には直接関係しません。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html",
+            "reference_label": "Aurora Global Database"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Aurora Multi-Masterを利用",
+          "explanation": {
+            "text": "Multi-Masterは書き込み性能を改善するユースケースに有効です。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html",
+            "reference_label": "Aurora Multi-Master"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Auroraリードレプリカを追加するのが、読み取りトラフィック急増に対する最適なスケーリング方法です。",
+        "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Replication.html",
+        "reference_label": "Aurora Replication"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q19",
+      "question": "ある企業は機械学習の推論APIを提供しています。推論リクエストは時間帯によって大きく変動します。コストを最小化しつつ、自動スケーリングと高可用性を実現する最適な実行環境はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "EC2 Auto Scaling グループ",
+          "explanation": {
+            "text": "スケーリング可能ですが、アイドル時のコストが高くなります。",
+            "reference": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
+            "reference_label": "Amazon EC2 Auto Scaling"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AWS Lambda",
+          "explanation": {
+            "text": "Lambdaはイベント駆動でスケーリングしますが、大規模な機械学習推論には実行時間やメモリ制限があります。",
+            "reference": "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html",
+            "reference_label": "AWS Lambda"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Amazon ECS on Fargate",
+          "explanation": {
+            "text": "Fargateはアイドルコストがなく、自動スケーリング可能で推論APIに適しています。",
+            "reference": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html",
+            "reference_label": "Amazon ECS on Fargate"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Amazon SageMaker Real-Time Inference",
+          "explanation": {
+            "text": "リアルタイム推論に最適化され、自動スケーリング機能もあり、コスト効率に優れています。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/realtime-endpoints.html",
+            "reference_label": "SageMaker Real-Time Inference"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "機械学習推論APIにはAmazon SageMaker Real-Time Inferenceが最適で、自動スケーリングとコスト最適化が可能です。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/realtime-endpoints.html",
+        "reference_label": "SageMaker Real-Time Inference"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q20",
+      "question": "ある企業はオンプレミスからAWSへのデータ転送を行っています。データは大量かつ継続的に生成され、セキュアに低レイテンシで転送したい。このユースケースに最も適したサービスはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AWS Snowball",
+          "explanation": {
+            "text": "Snowballはバッチ的な大量データ移行には適していますが、継続的なデータ転送には不向きです。",
+            "reference": "https://docs.aws.amazon.com/snowball/index.html",
+            "reference_label": "AWS Snowball"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AWS DataSync",
+          "explanation": {
+            "text": "DataSyncはオンプレとAWS間の継続的かつセキュアなデータ転送に最適です。",
+            "reference": "https://docs.aws.amazon.com/datasync/latest/userguide/what-is-datasync.html",
+            "reference_label": "AWS DataSync"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Amazon Kinesis Data Firehose",
+          "explanation": {
+            "text": "リアルタイムストリーミングには有効ですが、オンプレからAWSへの直接転送には通常利用されません。",
+            "reference": "https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html",
+            "reference_label": "Amazon Kinesis Data Firehose"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Amazon S3 Transfer Acceleration",
+          "explanation": {
+            "text": "インターネット経由の高速転送に有効ですが、継続的データ同期にはDataSyncが最適です。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/transfer-acceleration.html",
+            "reference_label": "S3 Transfer Acceleration"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "AWS DataSyncはオンプレミスからAWSへの継続的・セキュア・低レイテンシ転送に最適です。",
+        "reference": "https://docs.aws.amazon.com/datasync/latest/userguide/what-is-datasync.html",
+        "reference_label": "AWS DataSync"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q21",
+      "question": "ある企業はAmazon CloudFrontを利用してWebサイトを配信しています。セキュリティ要件として、DDoS攻撃対策を強化したい。この要件に最も適したサービスはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AWS WAF",
+          "explanation": {
+            "text": "WAFはアプリケーション層攻撃に有効ですが、DDoS対策全般を担うのはShieldです。",
+            "reference": "https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html",
+            "reference_label": "AWS WAF"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AWS Shield",
+          "explanation": {
+            "text": "AWS ShieldはDDoS攻撃からの保護を提供するサービスです。CloudFrontと統合して利用できます。",
+            "reference": "https://docs.aws.amazon.com/waf/latest/developerguide/ddos-overview.html",
+            "reference_label": "AWS Shield Documentation"
+          }
+        },
+        {
+          "key": "C",
+          "text": "GuardDuty",
+          "explanation": {
+            "text": "GuardDutyは脅威検出サービスであり、直接的なDDoS防御は行いません。",
+            "reference": "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html",
+            "reference_label": "Amazon GuardDuty"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CloudTrail",
+          "explanation": {
+            "text": "CloudTrailは監査ログサービスであり、DDoS対策とは関係ありません。",
+            "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+            "reference_label": "AWS CloudTrail"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "DDoS攻撃対策にはAWS Shieldが最適です。特にCloudFrontと統合することで強力な防御を実現できます。",
+        "reference": "https://docs.aws.amazon.com/waf/latest/developerguide/ddos-overview.html",
+        "reference_label": "AWS Shield Documentation"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q22",
+      "question": "ある企業はAmazon S3を利用して機密文書を保存しています。要件として、オブジェクトの削除後も一定期間は復元できるようにしたい。この要件を最も効率的に満たすS3の機能はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "S3 バージョニング",
+          "explanation": {
+            "text": "バージョニングを有効化すると、削除マーカーが付与され、オブジェクトを復元可能になります。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html",
+            "reference_label": "Amazon S3 Versioning"
+          }
+        },
+        {
+          "key": "B",
+          "text": "S3 オブジェクトロック",
+          "explanation": {
+            "text": "オブジェクトロックは改ざん防止機能であり、削除後の復元には適していません。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html",
+            "reference_label": "Amazon S3 Object Lock"
+          }
+        },
+        {
+          "key": "C",
+          "text": "S3 バケットポリシー",
+          "explanation": {
+            "text": "ポリシーでは削除防止は可能ですが、削除後の復元機能はありません。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-iam-policies.html",
+            "reference_label": "Amazon S3 Policies"
+          }
+        },
+        {
+          "key": "D",
+          "text": "S3 Transfer Acceleration",
+          "explanation": {
+            "text": "Transfer Accelerationは転送速度向上機能であり、復元機能には関係しません。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/transfer-acceleration.html",
+            "reference_label": "S3 Transfer Acceleration"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "S3のバージョニングを有効化すると、削除済みオブジェクトを復元でき、要件を満たします。",
+        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html",
+        "reference_label": "Amazon S3 Versioning"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q23",
+      "question": "ある企業は複数リージョンに分散したユーザーに対し、低レイテンシでアプリケーションを提供したい。AWS Global Acceleratorを利用する利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "アプリケーションをCloudFrontに自動的に統合できる",
+          "explanation": {
+            "text": "CloudFrontとは異なるサービスであり、自動統合はされません。",
+            "reference": "https://docs.aws.amazon.com/global-accelerator/latest/dg/what-is-global-accelerator.html",
+            "reference_label": "AWS Global Accelerator"
+          }
+        },
+        {
+          "key": "B",
+          "text": "静的コンテンツ配信を最適化する",
+          "explanation": {
+            "text": "静的コンテンツ配信にはCloudFrontが適しており、Global Acceleratorは対象外です。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html",
+            "reference_label": "Amazon CloudFront"
+          }
+        },
+        {
+          "key": "C",
+          "text": "AWS グローバルネットワークを利用して最適なエンドポイントにルーティング",
+          "explanation": {
+            "text": "Global AcceleratorはAWSグローバルネットワークを利用して最適なエンドポイントにユーザーを誘導します。",
+            "reference": "https://docs.aws.amazon.com/global-accelerator/latest/dg/what-is-global-accelerator.html",
+            "reference_label": "AWS Global Accelerator"
+          }
+        },
+        {
+          "key": "D",
+          "text": "S3に保存したデータの転送速度を向上",
+          "explanation": {
+            "text": "S3の高速転送はTransfer Accelerationで実現します。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/transfer-acceleration.html",
+            "reference_label": "S3 Transfer Acceleration"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "Global AcceleratorはAWSのグローバルネットワークを利用し、ユーザーを最も近いエンドポイントにルーティングして低レイテンシを実現します。",
+        "reference": "https://docs.aws.amazon.com/global-accelerator/latest/dg/what-is-global-accelerator.html",
+        "reference_label": "AWS Global Accelerator"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q24",
+      "question": "ある企業はAmazon DynamoDBを利用しています。読み取りスループットの変動が激しく、手動でキャパシティを調整するのが困難です。最適な解決策はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "オンデマンドキャパシティモードを有効化",
+          "explanation": {
+            "text": "オンデマンドモードを利用すれば、スループットを自動調整でき、変動の激しいワークロードに最適です。",
+            "reference": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html",
+            "reference_label": "DynamoDB Capacity Modes"
+          }
+        },
+        {
+          "key": "B",
+          "text": "プロビジョンドキャパシティでAuto Scalingを設定",
+          "explanation": {
+            "text": "Auto Scalingも有効ですが、オンデマンドモードの方が運用負荷が低く効率的です。",
+            "reference": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/AutoScaling.html",
+            "reference_label": "DynamoDB Auto Scaling"
+          }
+        },
+        {
+          "key": "C",
+          "text": "グローバルテーブルを利用",
+          "explanation": {
+            "text": "グローバルテーブルはリージョン間レプリケーション用であり、スループット変動対策には直接関係ありません。",
+            "reference": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GlobalTables.html",
+            "reference_label": "DynamoDB Global Tables"
+          }
+        },
+        {
+          "key": "D",
+          "text": "DAXを導入してキャッシュ",
+          "explanation": {
+            "text": "キャッシュは一部の読み取り負荷を軽減しますが、キャパシティ調整問題の直接解決にはなりません。",
+            "reference": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DAX.html",
+            "reference_label": "DynamoDB Accelerator (DAX)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "オンデマンドキャパシティモードを利用することで、変動の激しい読み取りワークロードを効率的に処理できます。",
+        "reference": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html",
+        "reference_label": "DynamoDB Capacity Modes"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q25",
+      "question": "企業はEC2ベースのアプリケーションを運用しており、インスタンスのパッチ適用を自動化したい。最も適したAWSサービスはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AWS Systems Manager Patch Manager",
+          "explanation": {
+            "text": "Patch Managerを利用すればEC2インスタンスへのパッチ適用を自動化できます。",
+            "reference": "https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-patch.html",
+            "reference_label": "AWS Systems Manager Patch Manager"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AWS Config",
+          "explanation": {
+            "text": "Configは設定監視を行うサービスであり、パッチ適用機能はありません。",
+            "reference": "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
+            "reference_label": "AWS Config"
+          }
+        },
+        {
+          "key": "C",
+          "text": "AWS Inspector",
+          "explanation": {
+            "text": "Inspectorは脆弱性評価を行いますが、パッチの自動適用は行いません。",
+            "reference": "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html",
+            "reference_label": "Amazon Inspector"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AWS Trusted Advisor",
+          "explanation": {
+            "text": "Trusted Advisorはベストプラクティスチェックを行いますが、パッチ適用は行いません。",
+            "reference": "https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor.html",
+            "reference_label": "AWS Trusted Advisor"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "AWS Systems Manager Patch Managerを利用すれば、EC2インスタンスへのパッチ適用を自動化できます。",
+        "reference": "https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-patch.html",
+        "reference_label": "AWS Systems Manager Patch Manager"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q26",
+      "question": "企業はAmazon EKSを利用してコンテナを稼働しています。セキュリティ要件として、Pod間通信を制御し、ゼロトラストネットワークを実現したい。最適な方法はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "EKSのセキュリティグループを利用",
+          "explanation": {
+            "text": "SGはノードレベルの制御には有効ですが、Pod間通信のきめ細かい制御はできません。",
+            "reference": "https://docs.aws.amazon.com/eks/latest/userguide/sec-group-pods.html",
+            "reference_label": "Security groups for pods"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Network Policiesを利用",
+          "explanation": {
+            "text": "KubernetesのNetwork Policyを利用すれば、Pod間通信を制御できます。",
+            "reference": "https://kubernetes.io/docs/concepts/services-networking/network-policies/",
+            "reference_label": "Kubernetes Network Policies"
+          }
+        },
+        {
+          "key": "C",
+          "text": "AWS WAFを導入",
+          "explanation": {
+            "text": "WAFはアプリケーション層の脅威対策であり、Pod間通信制御には利用されません。",
+            "reference": "https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html",
+            "reference_label": "AWS WAF"
+          }
+        },
+        {
+          "key": "D",
+          "text": "VPC NACLを利用",
+          "explanation": {
+            "text": "NACLはサブネット単位の制御であり、Pod間通信のきめ細かい制御には不向きです。",
+            "reference": "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html",
+            "reference_label": "Amazon VPC NACL"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Pod間通信を制御するにはKubernetes Network Policyを利用するのが最適です。",
+        "reference": "https://kubernetes.io/docs/concepts/services-networking/network-policies/",
+        "reference_label": "Kubernetes Network Policies"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q27",
+      "question": "企業は複数のAWSアカウントを運用しており、すべてのアカウントのセキュリティイベントを一元的に収集したい。この目的に最適なサービスはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AWS CloudTrail",
+          "explanation": {
+            "text": "CloudTrailは監査ログを収集しますが、セキュリティイベントの集約分析には不十分です。",
+            "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+            "reference_label": "AWS CloudTrail"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Amazon GuardDuty",
+          "explanation": {
+            "text": "GuardDutyは脅威検知に有効ですが、イベントの集中管理はできません。",
+            "reference": "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html",
+            "reference_label": "Amazon GuardDuty"
+          }
+        },
+        {
+          "key": "C",
+          "text": "AWS Security Hub",
+          "explanation": {
+            "text": "Security Hubは複数アカウントからセキュリティイベントを集約し、一元管理できます。",
+            "reference": "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html",
+            "reference_label": "AWS Security Hub"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AWS Inspector",
+          "explanation": {
+            "text": "Inspectorは脆弱性スキャンであり、セキュリティイベント集約には利用されません。",
+            "reference": "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html",
+            "reference_label": "Amazon Inspector"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "AWS Security Hubを利用すれば、複数アカウントのセキュリティイベントを一元的に収集・可視化できます。",
+        "reference": "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html",
+        "reference_label": "AWS Security Hub"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q28",
+      "question": "企業はAmazon S3に保存された大量の非構造化データを分析したい。サーバレスかつSQLで直接クエリを実行できるサービスはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Amazon Redshift",
+          "explanation": {
+            "text": "Redshiftはデータウェアハウスであり、直接S3に保存されたデータを分析するにはSpectrumが必要です。",
+            "reference": "https://docs.aws.amazon.com/redshift/latest/dg/c-using-spectrum.html",
+            "reference_label": "Amazon Redshift Spectrum"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Amazon EMR",
+          "explanation": {
+            "text": "EMRはビッグデータ処理に利用できますが、SQLによるシンプルなクエリにはAthenaが適しています。",
+            "reference": "https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-what-is-emr.html",
+            "reference_label": "Amazon EMR"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Amazon Athena",
+          "explanation": {
+            "text": "AthenaはS3上のデータに直接SQLでクエリ可能なサーバレスサービスです。",
+            "reference": "https://docs.aws.amazon.com/athena/latest/ug/what-is.html",
+            "reference_label": "Amazon Athena"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Amazon OpenSearch Service",
+          "explanation": {
+            "text": "OpenSearchは検索やログ分析に最適ですが、SQLによる汎用クエリには不向きです。",
+            "reference": "https://docs.aws.amazon.com/opensearch-service/latest/developerguide/what-is.html",
+            "reference_label": "Amazon OpenSearch Service"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "Amazon Athenaを使えば、S3の非構造化データに対してSQLで直接クエリ可能です。",
+        "reference": "https://docs.aws.amazon.com/athena/latest/ug/what-is.html",
+        "reference_label": "Amazon Athena"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q29",
+      "question": "企業はオンプレミスのアプリケーションを段階的にAWSへ移行しています。移行中はオンプレとクラウドの両方から同じデータベースにアクセスできる必要があります。このユースケースに最も適したサービスはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Amazon RDS Proxy",
+          "explanation": {
+            "text": "RDS Proxyは接続管理を効率化しますが、オンプレとクラウドの両方からのアクセス要件には直接対応しません。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-proxy.html",
+            "reference_label": "Amazon RDS Proxy"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AWS Database Migration Service (DMS)",
+          "explanation": {
+            "text": "DMSを利用すれば、オンプレとAWS間でデータをレプリケートし、移行中も両環境から利用可能です。",
+            "reference": "https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html",
+            "reference_label": "AWS DMS"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Amazon Aurora Global Database",
+          "explanation": {
+            "text": "Aurora Global Databaseはクロスリージョン用途であり、オンプレとのハイブリッドには適しません。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html",
+            "reference_label": "Aurora Global Database"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Amazon S3 Transfer Acceleration",
+          "explanation": {
+            "text": "S3へのデータ転送高速化機能であり、データベース移行には利用できません。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/transfer-acceleration.html",
+            "reference_label": "S3 Transfer Acceleration"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "AWS DMSを使えば、オンプレとAWS間で継続的なレプリケーションが可能になり、移行中もアプリケーションを止めずに運用できます。",
+        "reference": "https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html",
+        "reference_label": "AWS DMS"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q30",
+      "question": "ある企業はEC2インスタンスに保存された機密データを暗号化しています。セキュリティチームは、KMSキーの利用をきめ細かく監査したいと考えています。この要件に最も適した方法はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "CloudTrailでKMS APIコールを記録",
+          "explanation": {
+            "text": "CloudTrailはKMS APIコールを記録するため、鍵利用を監査可能です。",
+            "reference": "https://docs.aws.amazon.com/kms/latest/developerguide/monitoring-cloudtrail.html",
+            "reference_label": "KMS and CloudTrail"
+          }
+        },
+        {
+          "key": "B",
+          "text": "CloudWatchメトリクスを利用",
+          "explanation": {
+            "text": "CloudWatchはメトリクス監視用であり、KMSキー利用の詳細な監査には不向きです。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html",
+            "reference_label": "Amazon CloudWatch"
+          }
+        },
+        {
+          "key": "C",
+          "text": "AWS Configルールを利用",
+          "explanation": {
+            "text": "Configはリソース設定の追跡には有効ですが、キー利用状況の詳細監査には不向きです。",
+            "reference": "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
+            "reference_label": "AWS Config"
+          }
+        },
+        {
+          "key": "D",
+          "text": "GuardDutyを有効化",
+          "explanation": {
+            "text": "GuardDutyは脅威検出サービスであり、KMSキー利用の監査機能はありません。",
+            "reference": "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html",
+            "reference_label": "Amazon GuardDuty"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "CloudTrailでKMS APIコールを記録することで、KMSキーの利用を監査可能です。",
+        "reference": "https://docs.aws.amazon.com/kms/latest/developerguide/monitoring-cloudtrail.html",
+        "reference_label": "KMS and CloudTrail"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q31",
+      "question": "企業はAmazon SQSを利用して非同期処理を実装しています。重複メッセージの影響を最小化し、確実に1回のみ処理を行いたい。この要件を満たす最も適したキュータイプはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Standard Queue",
+          "explanation": {
+            "text": "Standard Queueは高スループットを提供しますが、重複や順序保証はありません。",
+            "reference": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html",
+            "reference_label": "Amazon SQS Standard Queues"
+          }
+        },
+        {
+          "key": "B",
+          "text": "FIFO Queue",
+          "explanation": {
+            "text": "FIFO QueueはExactly-Once Processingを提供し、重複排除と順序保証が可能です。",
+            "reference": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html",
+            "reference_label": "Amazon SQS FIFO Queues"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Dead Letter Queue",
+          "explanation": {
+            "text": "Dead Letter Queueは失敗メッセージを保存する仕組みであり、重複処理防止はできません。",
+            "reference": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html",
+            "reference_label": "Amazon SQS Dead Letter Queues"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Delay Queue",
+          "explanation": {
+            "text": "Delay Queueはメッセージ処理を遅延させる機能であり、重複処理防止には関係しません。",
+            "reference": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-delay-queues.html",
+            "reference_label": "Amazon SQS Delay Queues"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "SQS FIFOキューはExactly-Once Processingを提供し、重複メッセージを防ぐため最適です。",
+        "reference": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html",
+        "reference_label": "Amazon SQS FIFO Queues"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q32",
+      "question": "企業はAmazon CloudWatch Logsを利用しています。セキュリティチームは、特定のログイベントに基づいて自動で通知を受け取りたい。この要件を満たす最適な方法はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "CloudWatch Logs Insightsで定期的にクエリ",
+          "explanation": {
+            "text": "Logs Insightsはクエリによる分析機能であり、リアルタイム通知はできません。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html",
+            "reference_label": "CloudWatch Logs Insights"
+          }
+        },
+        {
+          "key": "B",
+          "text": "CloudWatch Logs Metric Filterとアラームを設定",
+          "explanation": {
+            "text": "Metric Filterを使って特定ログイベントをメトリクス化し、アラーム経由で通知できます。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/MonitoringLogData.html",
+            "reference_label": "CloudWatch Logs Metric Filters"
+          }
+        },
+        {
+          "key": "C",
+          "text": "AWS Configルールを利用",
+          "explanation": {
+            "text": "Configはリソース設定監査用であり、ログイベント通知には適しません。",
+            "reference": "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
+            "reference_label": "AWS Config"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Amazon GuardDutyを利用",
+          "explanation": {
+            "text": "GuardDutyは脅威検知用であり、特定ログイベントの通知には適しません。",
+            "reference": "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html",
+            "reference_label": "Amazon GuardDuty"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "CloudWatch Logs Metric Filterとアラームを利用すれば、特定ログイベントをリアルタイムに検知して通知可能です。",
+        "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/MonitoringLogData.html",
+        "reference_label": "CloudWatch Logs Metric Filters"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q33",
+      "question": "ある企業はAmazon Route 53を利用してWebアプリケーションを運用しています。セキュリティチームはDNSクエリの解決をログに記録し、分析したいと考えています。この要件を満たす機能はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Route 53 Resolver Query Logging",
+          "explanation": {
+            "text": "Resolver Query Loggingを有効化すると、VPC内のDNSクエリをログとして収集できます。",
+            "reference": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver-query-logs.html",
+            "reference_label": "Route 53 Resolver Query Logging"
+          }
+        },
+        {
+          "key": "B",
+          "text": "CloudTrailを利用",
+          "explanation": {
+            "text": "CloudTrailはAPIコール監査用であり、DNSクエリログは取得できません。",
+            "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+            "reference_label": "AWS CloudTrail"
+          }
+        },
+        {
+          "key": "C",
+          "text": "VPC Flow Logsを利用",
+          "explanation": {
+            "text": "Flow Logsはネットワークトラフィックを記録しますが、DNSクエリ内容までは記録できません。",
+            "reference": "https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html",
+            "reference_label": "Amazon VPC Flow Logs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "GuardDutyを利用",
+          "explanation": {
+            "text": "GuardDutyは脅威検知サービスであり、DNSクエリログを直接収集することはできません。",
+            "reference": "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html",
+            "reference_label": "Amazon GuardDuty"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Route 53 Resolver Query Loggingを使えば、DNSクエリを収集・分析できます。",
+        "reference": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver-query-logs.html",
+        "reference_label": "Route 53 Resolver Query Logging"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q34",
+      "question": "企業はAmazon Kinesis Data Streamsを利用してリアルタイムデータを収集しています。データを順序通りに処理する必要があります。この要件に最適な設計はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "シャード数を1に固定する",
+          "explanation": {
+            "text": "シャード数を1にすれば順序は保証されますが、スケーラビリティが失われます。",
+            "reference": "https://docs.aws.amazon.com/streams/latest/dev/key-concepts.html",
+            "reference_label": "Kinesis Data Streams Concepts"
+          }
+        },
+        {
+          "key": "B",
+          "text": "パーティションキーを利用して関連データを同じシャードに送信",
+          "explanation": {
+            "text": "Kinesisではシャード内の順序が保証されるため、同じパーティションキーを使えば順序処理が可能です。",
+            "reference": "https://docs.aws.amazon.com/streams/latest/dev/key-concepts.html",
+            "reference_label": "Kinesis Data Streams Concepts"
+          }
+        },
+        {
+          "key": "C",
+          "text": "複数シャードを利用し、アプリケーション側で順序を制御",
+          "explanation": {
+            "text": "アプリ側で制御は可能ですが、運用が複雑化します。",
+            "reference": "https://docs.aws.amazon.com/streams/latest/dev/key-concepts.html",
+            "reference_label": "Kinesis Data Streams Concepts"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Firehoseに送信してS3に保存",
+          "explanation": {
+            "text": "Firehoseはデータ配信専用であり、順序保証は行いません。",
+            "reference": "https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html",
+            "reference_label": "Amazon Kinesis Data Firehose"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Kinesis Data Streamsでは、同じパーティションキーを持つデータは同じシャードに送られ、順序が保証されます。",
+        "reference": "https://docs.aws.amazon.com/streams/latest/dev/key-concepts.html",
+        "reference_label": "Kinesis Data Streams Concepts"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q35",
+      "question": "企業はAmazon CloudFrontを利用して動画配信を行っています。ユーザーが一定時間だけコンテンツにアクセスできるよう制御したい。この要件を満たす方法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Origin Access Control (OAC) を利用",
+          "explanation": {
+            "text": "OACはオリジンアクセス制御に使われますが、有効期限付きアクセス制御には適していません。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html",
+            "reference_label": "CloudFront Origin Access"
+          }
+        },
+        {
+          "key": "B",
+          "text": "署名付きURLまたは署名付きCookieを利用",
+          "explanation": {
+            "text": "署名付きURLやCookieを利用することで、指定期間のみユーザーにコンテンツアクセスを許可できます。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-signed-urls.html",
+            "reference_label": "CloudFront Signed URLs and Cookies"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Lambda@Edgeを利用してヘッダーを追加",
+          "explanation": {
+            "text": "Lambda@Edgeは柔軟な制御が可能ですが、シンプルに時間制限を設けるには署名付きURL/Cookieの方が適しています。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-at-the-edge.html",
+            "reference_label": "Lambda@Edge"
+          }
+        },
+        {
+          "key": "D",
+          "text": "S3バケットポリシーでアクセスを制御",
+          "explanation": {
+            "text": "S3バケットポリシーでは時間制御ができません。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-overview.html",
+            "reference_label": "Amazon S3 Access Control"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "CloudFrontの署名付きURLまたは署名付きCookieを利用すれば、有効期限付きのアクセス制御が可能です。",
+        "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-signed-urls.html",
+        "reference_label": "CloudFront Signed URLs and Cookies"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q36",
+      "question": "ある企業はAmazon VPCを利用しています。セキュリティチームは、特定のリージョンからのトラフィックのみをVPCに許可したいと考えています。この要件を満たすために最適な方法はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "VPCセキュリティグループでリージョンを指定して制御",
+          "explanation": {
+            "text": "セキュリティグループはIPやポート単位の制御は可能ですが、リージョン単位の制御はできません。",
+            "reference": "https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html",
+            "reference_label": "Amazon VPC Security Groups"
+          }
+        },
+        {
+          "key": "B",
+          "text": "VPC NACLでリージョンを制御",
+          "explanation": {
+            "text": "NACLもIPベースの制御しかできず、リージョン指定はできません。",
+            "reference": "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html",
+            "reference_label": "Amazon VPC NACLs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "AWS WAFでジオマッチ条件を利用",
+          "explanation": {
+            "text": "AWS WAFのジオマッチ条件を利用すれば、指定リージョンからのアクセスを制御可能です。",
+            "reference": "https://docs.aws.amazon.com/waf/latest/developerguide/waf-rule-statement-type-geo-match.html",
+            "reference_label": "AWS WAF Geo Match"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CloudTrailでアクセスログを監視",
+          "explanation": {
+            "text": "CloudTrailは監査用であり、アクセス制御機能は提供しません。",
+            "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+            "reference_label": "AWS CloudTrail"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "AWS WAFのジオマッチ条件を使うことで、特定リージョンからのアクセスのみを許可することができます。",
+        "reference": "https://docs.aws.amazon.com/waf/latest/developerguide/waf-rule-statement-type-geo-match.html",
+        "reference_label": "AWS WAF Geo Match"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q37",
+      "question": "企業はAmazon Aurora PostgreSQLを利用しています。分析クエリが頻繁に実行され、本番トランザクションのパフォーマンスに影響を与えています。最適な解決策はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Auroraリードレプリカに分析クエリをオフロード",
+          "explanation": {
+            "text": "リードレプリカを使うことで読み取り負荷を分散し、本番トランザクションの性能を保護できます。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Replication.html",
+            "reference_label": "Aurora Replication"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Aurora Multi-Masterを導入",
+          "explanation": {
+            "text": "Multi-Masterは書き込みのスケーリングに有効ですが、分析クエリの負荷軽減には直接つながりません。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html",
+            "reference_label": "Aurora Multi-Master"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Aurora Global Databaseを利用",
+          "explanation": {
+            "text": "Global Databaseはクロスリージョン用であり、分析クエリの負荷軽減には適していません。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html",
+            "reference_label": "Aurora Global Database"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Aurora Serverlessに移行",
+          "explanation": {
+            "text": "Serverlessはスケーラビリティに優れますが、分析クエリの分離には直接役立ちません。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html",
+            "reference_label": "Aurora Serverless"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Auroraリードレプリカに分析クエリをオフロードすることで、本番トランザクションのパフォーマンスを守ることができます。",
+        "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Replication.html",
+        "reference_label": "Aurora Replication"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q38",
+      "question": "企業はAWS Organizationsを利用して複数アカウントを管理しています。コストを可視化し、部門ごとに分けてレポートを作成したい。この要件を満たすAWSサービスはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AWS Budgets",
+          "explanation": {
+            "text": "Budgetsはコスト管理には有効ですが、詳細な部門別レポート機能はありません。",
+            "reference": "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html",
+            "reference_label": "AWS Budgets"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AWS Cost Explorer",
+          "explanation": {
+            "text": "Cost Explorerはコストを可視化し、部門ごとのタグ付けレポートも可能です。",
+            "reference": "https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html",
+            "reference_label": "AWS Cost Explorer"
+          }
+        },
+        {
+          "key": "C",
+          "text": "AWS Trusted Advisor",
+          "explanation": {
+            "text": "Trusted Advisorはベストプラクティスに基づく推奨を提供しますが、コストレポート作成には向きません。",
+            "reference": "https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor.html",
+            "reference_label": "AWS Trusted Advisor"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AWS Config",
+          "explanation": {
+            "text": "Configはリソース監査用であり、コストレポート機能は提供していません。",
+            "reference": "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
+            "reference_label": "AWS Config"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "AWS Cost Explorerは部門別のタグを使ってコストを可視化・レポート可能です。",
+        "reference": "https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html",
+        "reference_label": "AWS Cost Explorer"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q39",
+      "question": "企業はAmazon CloudWatchを利用しています。アプリケーションのメトリクスをより詳細に収集し、1秒間隔で可視化したい。この要件を満たす最適な方法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "標準メトリクスを利用",
+          "explanation": {
+            "text": "標準メトリクスは1分間隔の収集であり、1秒間隔では取得できません。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/working_with_metrics.html",
+            "reference_label": "CloudWatch Metrics"
+          }
+        },
+        {
+          "key": "B",
+          "text": "詳細モニタリングを有効化",
+          "explanation": {
+            "text": "EC2詳細モニタリングは1分間隔でのメトリクス収集が可能ですが、1秒単位ではありません。",
+            "reference": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch-new.html",
+            "reference_label": "EC2 Detailed Monitoring"
+          }
+        },
+        {
+          "key": "C",
+          "text": "カスタムメトリクスを送信",
+          "explanation": {
+            "text": "カスタムメトリクスを利用すれば、1秒間隔でメトリクスを収集できます。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html",
+            "reference_label": "Publishing Custom Metrics"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CloudTrailを利用",
+          "explanation": {
+            "text": "CloudTrailはAPIログ監査用であり、メトリクス収集には利用できません。",
+            "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+            "reference_label": "AWS CloudTrail"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "CloudWatchカスタムメトリクスを利用することで、1秒間隔でアプリケーションの詳細なメトリクスを収集可能です。",
+        "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html",
+        "reference_label": "Publishing Custom Metrics"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q40",
+      "question": "ある企業はAmazon S3をデータレイクとして利用しています。新たに保存されるデータに対し、自動的にメタデータを抽出し、カタログ化したい。この要件を満たすAWSサービスはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AWS Glue Data Catalog",
+          "explanation": {
+            "text": "Glue Data Catalogを利用すれば、S3データを自動的にクローリングしてスキーマを作成できます。",
+            "reference": "https://docs.aws.amazon.com/glue/latest/dg/populate-data-catalog.html",
+            "reference_label": "AWS Glue Data Catalog"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Amazon Athena",
+          "explanation": {
+            "text": "Athenaはクエリサービスであり、メタデータの自動抽出はGlueと連携して行います。",
+            "reference": "https://docs.aws.amazon.com/athena/latest/ug/what-is.html",
+            "reference_label": "Amazon Athena"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Amazon Redshift Spectrum",
+          "explanation": {
+            "text": "SpectrumはS3データのクエリに使えますが、カタログ化にはGlueを利用します。",
+            "reference": "https://docs.aws.amazon.com/redshift/latest/dg/c-using-spectrum.html",
+            "reference_label": "Amazon Redshift Spectrum"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AWS Lake Formation",
+          "explanation": {
+            "text": "Lake Formationはデータレイク管理サービスであり、Glue Data Catalogと統合して利用します。",
+            "reference": "https://docs.aws.amazon.com/lake-formation/latest/dg/what-is-lake-formation.html",
+            "reference_label": "AWS Lake Formation"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "AWS Glue Data Catalogを利用すれば、S3上の新しいデータからメタデータを自動抽出してカタログ化できます。",
+        "reference": "https://docs.aws.amazon.com/glue/latest/dg/populate-data-catalog.html",
+        "reference_label": "AWS Glue Data Catalog"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q41",
+      "question": "企業はAWS Transit Gatewayを利用して複数VPCを接続しています。セキュリティチームは特定のVPC間トラフィックを制御したいと考えています。この要件を満たすための最適な方法はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "セキュリティグループを利用",
+          "explanation": {
+            "text": "セキュリティグループはVPC内部のリソース単位制御であり、VPC間ルーティング制御には適しません。",
+            "reference": "https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html",
+            "reference_label": "Amazon VPC Security Groups"
+          }
+        },
+        {
+          "key": "B",
+          "text": "NACLを利用",
+          "explanation": {
+            "text": "NACLはサブネット単位の制御ですが、Transit Gateway経由のVPC間制御には直接使えません。",
+            "reference": "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html",
+            "reference_label": "Amazon VPC NACLs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Transit Gateway Route Tableを分離",
+          "explanation": {
+            "text": "Transit Gatewayのルートテーブルを分離することで、特定VPC間のトラフィック制御が可能です。",
+            "reference": "https://docs.aws.amazon.com/vpc/latest/tgw/what-is-transit-gateway.html",
+            "reference_label": "AWS Transit Gateway"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Direct Connect Gatewayを利用",
+          "explanation": {
+            "text": "Direct Connect Gatewayはオンプレ接続用であり、VPC間制御には利用できません。",
+            "reference": "https://docs.aws.amazon.com/directconnect/latest/UserGuide/direct-connect-gateways.html",
+            "reference_label": "Direct Connect Gateway"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "Transit Gatewayのルートテーブルを分離することで、VPC間のトラフィック制御が可能になります。",
+        "reference": "https://docs.aws.amazon.com/vpc/latest/tgw/what-is-transit-gateway.html",
+        "reference_label": "AWS Transit Gateway"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q42",
+      "question": "企業はAmazon RDS MySQLを利用しています。バックアップウィンドウ外でも継続的にポイントインタイムリカバリを実現したい。この要件を満たす最適な機能はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "スナップショットを定期的に取得",
+          "explanation": {
+            "text": "スナップショットは時点リカバリには有効ですが、継続的なPITRには不十分です。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithSnapshots.html",
+            "reference_label": "Amazon RDS Snapshots"
+          }
+        },
+        {
+          "key": "B",
+          "text": "RDSの自動バックアップを有効化",
+          "explanation": {
+            "text": "自動バックアップを有効化すると、トランザクションログを利用したポイントインタイムリカバリが可能です。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIT.html",
+            "reference_label": "Amazon RDS PITR"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Aurora Global Databaseを利用",
+          "explanation": {
+            "text": "Global Databaseはリージョン間災害対策用であり、PITRには直接関係しません。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html",
+            "reference_label": "Aurora Global Database"
+          }
+        },
+        {
+          "key": "D",
+          "text": "DMSを利用してデータをレプリケート",
+          "explanation": {
+            "text": "DMSは移行用であり、RDSのPITR機能には関与しません。",
+            "reference": "https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html",
+            "reference_label": "AWS DMS"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "RDSの自動バックアップを有効化すれば、トランザクションログを利用してポイントインタイムリカバリを実現できます。",
+        "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIT.html",
+        "reference_label": "Amazon RDS PITR"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q43",
+      "question": "ある企業はAmazon S3をデータレイクとして利用しています。セキュリティ要件として、すべてのアクセスを暗号化された通信経由に制限したい。この要件を満たす方法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "S3 Block Public Accessを有効化",
+          "explanation": {
+            "text": "Block Public Accessはパブリックアクセスを防ぎますが、通信の暗号化を強制する機能はありません。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html",
+            "reference_label": "S3 Block Public Access"
+          }
+        },
+        {
+          "key": "B",
+          "text": "S3バケットポリシーでaws:SecureTransportを条件に設定",
+          "explanation": {
+            "text": "バケットポリシーでSecureTransportを条件とすることで、HTTPSのみを許可できます。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-iam-policies.html",
+            "reference_label": "Amazon S3 Bucket Policy Examples"
+          }
+        },
+        {
+          "key": "C",
+          "text": "CloudTrailでアクセスを監査",
+          "explanation": {
+            "text": "CloudTrailは監査機能であり、暗号化通信を強制することはできません。",
+            "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+            "reference_label": "AWS CloudTrail"
+          }
+        },
+        {
+          "key": "D",
+          "text": "S3バケットのデフォルト暗号化を有効化",
+          "explanation": {
+            "text": "デフォルト暗号化はオブジェクト保存時の暗号化であり、通信経路の暗号化とは関係しません。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html",
+            "reference_label": "Amazon S3 Default Encryption"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "S3バケットポリシーでaws:SecureTransportを必須条件にすることで、HTTPS経由のみアクセスを許可できます。",
+        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-iam-policies.html",
+        "reference_label": "Amazon S3 Bucket Policy Examples"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q44",
+      "question": "企業はAWS上で高可用性を持つWebアプリケーションを運用しています。可用性ゾーン全体が障害となった場合でもアプリを稼働させたい。この要件に最適な構成はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "単一AZにAuto Scalingグループを配置",
+          "explanation": {
+            "text": "単一AZに依存しているため、AZ障害に耐えられません。",
+            "reference": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-add-availability-zone.html",
+            "reference_label": "EC2 Auto Scaling AZs"
+          }
+        },
+        {
+          "key": "B",
+          "text": "複数AZにAuto Scalingグループを配置",
+          "explanation": {
+            "text": "複数AZにインスタンスを分散させることで、AZ障害時でも高可用性を維持できます。",
+            "reference": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-add-availability-zone.html",
+            "reference_label": "EC2 Auto Scaling AZs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "複数リージョンにAuto Scalingグループを配置",
+          "explanation": {
+            "text": "クロスリージョン構成は有効ですが、リージョン障害対策であり、AZ障害に対しては過剰です。",
+            "reference": "https://docs.aws.amazon.com/whitepapers/latest/aws-ha-reliability/ha-architecture.html",
+            "reference_label": "AWS HA Architecture"
+          }
+        },
+        {
+          "key": "D",
+          "text": "単一インスタンスをスケールアップ",
+          "explanation": {
+            "text": "スケールアップは可用性を改善できず、単一障害点を残します。",
+            "reference": "https://docs.aws.amazon.com/whitepapers/latest/aws-ha-reliability/ha-architecture.html",
+            "reference_label": "AWS HA Architecture"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Auto Scalingグループを複数AZに展開することで、AZ障害時でもシステムを稼働し続けられます。",
+        "reference": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-add-availability-zone.html",
+        "reference_label": "EC2 Auto Scaling AZs"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q45",
+      "question": "企業はAmazon EKS上で機密性の高いアプリケーションを稼働しています。Kubernetesシークレットを安全に管理するために推奨される方法はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ConfigMapにシークレットを保存",
+          "explanation": {
+            "text": "ConfigMapは暗号化を行わず、機密情報の保存には適しません。",
+            "reference": "https://kubernetes.io/docs/concepts/configuration/configmap/",
+            "reference_label": "Kubernetes ConfigMap"
+          }
+        },
+        {
+          "key": "B",
+          "text": "EKSとAWS Secrets Managerを統合",
+          "explanation": {
+            "text": "Secrets Managerを使うことで安全にシークレットを管理し、EKSから利用可能です。",
+            "reference": "https://docs.aws.amazon.com/secretsmanager/latest/userguide/integrating_csi_driver.html",
+            "reference_label": "AWS Secrets Manager with EKS"
+          }
+        },
+        {
+          "key": "C",
+          "text": "IAMロールに直接シークレットを埋め込む",
+          "explanation": {
+            "text": "IAMロールは認証用であり、シークレットの格納には利用できません。",
+            "reference": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html",
+            "reference_label": "IAM Roles"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ECRにシークレットを保存",
+          "explanation": {
+            "text": "ECRはコンテナイメージ管理サービスであり、シークレット管理には利用できません。",
+            "reference": "https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html",
+            "reference_label": "Amazon ECR"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "EKSとSecrets Managerを統合し、Kubernetesシークレットを安全に管理するのが推奨方法です。",
+        "reference": "https://docs.aws.amazon.com/secretsmanager/latest/userguide/integrating_csi_driver.html",
+        "reference_label": "AWS Secrets Manager with EKS"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q46",
+      "question": "企業はAmazon CloudFrontを利用して静的Webサイトを配信しています。セキュリティ要件として、特定の国からのアクセスを拒否したい。この要件に最適な方法はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "S3バケットポリシーでIP制限を設定",
+          "explanation": {
+            "text": "バケットポリシーは国ごとのアクセス制御には対応していません。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-iam-policies.html",
+            "reference_label": "S3 Bucket Policies"
+          }
+        },
+        {
+          "key": "B",
+          "text": "CloudFrontのジオ制限機能を利用",
+          "explanation": {
+            "text": "CloudFrontのジオ制限を使うことで、特定の国からのアクセスを拒否できます。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/georestrictions.html",
+            "reference_label": "CloudFront Geo Restriction"
+          }
+        },
+        {
+          "key": "C",
+          "text": "WAFのIP制限ルールを利用",
+          "explanation": {
+            "text": "WAFでIP制御は可能ですが、国ごとの制御にはジオ制限機能がより効率的です。",
+            "reference": "https://docs.aws.amazon.com/waf/latest/developerguide/waf-rule-statement-type-geo-match.html",
+            "reference_label": "AWS WAF Geo Match"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Route 53でレコードを削除",
+          "explanation": {
+            "text": "DNSレコード削除はグローバルに影響し、国単位制御には適していません。",
+            "reference": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html",
+            "reference_label": "Amazon Route 53 Routing Policies"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "CloudFrontのジオ制限機能を使えば、特定国からのアクセスを効率的に拒否できます。",
+        "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/georestrictions.html",
+        "reference_label": "CloudFront Geo Restriction"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q47",
+      "question": "企業はAmazon RDSを利用しています。セキュリティチームはデータベースへのアクセス試行をすべて記録し、分析したいと考えています。この要件に最適な方法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "RDS Performance Insightsを有効化",
+          "explanation": {
+            "text": "Performance Insightsはパフォーマンス分析用であり、アクセス試行の監査には適していません。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html",
+            "reference_label": "RDS Performance Insights"
+          }
+        },
+        {
+          "key": "B",
+          "text": "RDS Enhanced Monitoringを有効化",
+          "explanation": {
+            "text": "Enhanced MonitoringはOSレベルのメトリクスを収集しますが、アクセスログには対応していません。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html",
+            "reference_label": "RDS Enhanced Monitoring"
+          }
+        },
+        {
+          "key": "C",
+          "text": "RDS Database Activity Streamsを有効化",
+          "explanation": {
+            "text": "Database Activity Streamsはすべてのデータベースアクセスを記録し、監査ログとして利用可能です。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/DBActivityStreams.html",
+            "reference_label": "RDS Database Activity Streams"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CloudTrailでRDS APIコールを記録",
+          "explanation": {
+            "text": "CloudTrailはAPIレベルの監査を行えますが、SQLクエリレベルのログは収集できません。",
+            "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+            "reference_label": "AWS CloudTrail"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "RDS Database Activity Streamsを利用することで、データベースアクセスを詳細に記録・分析できます。",
+        "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/DBActivityStreams.html",
+        "reference_label": "RDS Database Activity Streams"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q48",
+      "question": "企業はAmazon API Gatewayを利用しています。トラフィック急増時にバックエンドを保護するため、同一クライアントからのリクエスト数を制限したい。この要件に最適な方法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "API Gateway Usage Planとスロットリングを設定",
+          "explanation": {
+            "text": "Usage Planを設定することでクライアントごとのリクエスト数を制御できます。",
+            "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-usage-plans.html",
+            "reference_label": "API Gateway Usage Plans"
+          }
+        },
+        {
+          "key": "B",
+          "text": "CloudFrontキャッシュを利用",
+          "explanation": {
+            "text": "キャッシュはバックエンド負荷を軽減しますが、リクエスト数制限はできません。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html",
+            "reference_label": "Amazon CloudFront"
+          }
+        },
+        {
+          "key": "C",
+          "text": "WAFでIP制限を設定",
+          "explanation": {
+            "text": "WAFで特定IPを制限できますが、クライアント単位のスロットリングはできません。",
+            "reference": "https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html",
+            "reference_label": "AWS WAF"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IAMポリシーで制御",
+          "explanation": {
+            "text": "IAMポリシーは認証制御には有効ですが、リクエスト数制限はできません。",
+            "reference": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html",
+            "reference_label": "IAM Policies"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "API Gateway Usage Planとスロットリングを利用することで、クライアント単位のリクエスト制御が可能です。",
+        "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-usage-plans.html",
+        "reference_label": "API Gateway Usage Plans"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q49",
+      "question": "企業はAmazon CloudWatchを利用してアプリケーションログを監視しています。セキュリティ要件として、ログを改ざん不可能な形で保存したい。この要件に最適な方法はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "S3に保存し、バージョニングを有効化",
+          "explanation": {
+            "text": "バージョニングは復元性を提供しますが、改ざん防止には不十分です。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html",
+            "reference_label": "Amazon S3 Versioning"
+          }
+        },
+        {
+          "key": "B",
+          "text": "S3 Object Lockを利用",
+          "explanation": {
+            "text": "Object Lockを利用すればWORMストレージを実現し、ログ改ざんを防止できます。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html",
+            "reference_label": "Amazon S3 Object Lock"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Kinesis FirehoseでS3に転送",
+          "explanation": {
+            "text": "Firehoseは転送機能であり、改ざん防止には寄与しません。",
+            "reference": "https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html",
+            "reference_label": "Amazon Kinesis Firehose"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CloudTrailで監査ログを有効化",
+          "explanation": {
+            "text": "CloudTrailは監査用であり、アプリログの改ざん防止機能はありません。",
+            "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+            "reference_label": "AWS CloudTrail"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "S3 Object Lockを利用すればログを改ざん不可の形で保持でき、セキュリティ要件を満たします。",
+        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html",
+        "reference_label": "Amazon S3 Object Lock"
+      }
+    },
+    {
+      "id": "aws-sap-c02-q50",
+      "question": "企業はAWS Lambdaを利用してイベント駆動型アプリケーションを構築しています。セキュリティチームは、Lambda関数の実行権限を最小化したいと考えています。この要件に最も適した方法はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "管理者権限を持つIAMロールを割り当てる",
+          "explanation": {
+            "text": "管理者権限は最小権限の原則に反します。",
+            "reference": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html",
+            "reference_label": "IAM Policies"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Lambdaに必要なアクションのみを許可するIAMロールを割り当てる",
+          "explanation": {
+            "text": "必要最小限のIAMポリシーをLambdaにアタッチするのが最適です。",
+            "reference": "https://docs.aws.amazon.com/lambda/latest/dg/access-control-identity-based.html",
+            "reference_label": "Lambda IAM Permissions"
+          }
+        },
+        {
+          "key": "C",
+          "text": "すべてのサービスアクセスを拒否するIAMポリシーを割り当てる",
+          "explanation": {
+            "text": "拒否だけではLambdaが必要な処理を実行できなくなります。",
+            "reference": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html",
+            "reference_label": "IAM Policies"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Lambda関数の環境変数に権限情報を保存",
+          "explanation": {
+            "text": "環境変数に権限を保存するのはセキュリティリスクが高く、推奨されません。",
+            "reference": "https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html",
+            "reference_label": "Lambda Environment Variables"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Lambdaに必要なアクションのみ許可するIAMロールを割り当てることで、最小権限の原則を実現できます。",
+        "reference": "https://docs.aws.amazon.com/lambda/latest/dg/access-control-identity-based.html",
+        "reference_label": "Lambda IAM Permissions"
+      }
+    }
+  ]
+}

@@ -1,0 +1,2467 @@
+{
+  "exam": {
+    "id": "fe",
+    "title": "基本情報技術者試験",
+    "description": "「基本情報技術者試験」は、情報処理推進機構（IPA）が運営するIT系国家試験で、ITエンジニアとして必要となる基礎的な知識と技能を幅広く問う試験です。システム企画・要件定義・設計・開発・運用といったIT活用の流れに関して、上位者の指導のもとで参加可能な役割を果たせる知見を持つことが期待されます。近年はCBT方式による通年試験化が図られ、受験者の利便性が高まっています。業界入りやキャリアアップを目指す方にとって登竜門的な資格です。",
+    "version": "Ver.9.1",
+    "price": "7,500円",
+    "difficulty": "普通",
+    "official-site": "https://www.ipa.go.jp/shiken/kubun/fe.html",
+    "category": {
+      "id": "it",
+      "name": "情報処理技術者"
+    }
+  },
+  "questions": [
+    {
+      "id": "it-FE-q001",
+      "question": "機械学習における過学習（overfitting）の説明として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "訓練データには高精度だが未知データで性能が低下する状態を指す。",
+          "explanation": {
+            "text": "過学習は汎化性能の低下を伴う。訓練データへの適合が強すぎることが原因。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（AI・機械学習：汎化・過学習・交差検証）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデルが単純すぎて訓練データにも適合できない状態を指す。",
+          "explanation": {
+            "text": "これは過学習ではなく「学習不足（アンダーフィッティング）」に相当する。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（AI基礎用語）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "推論時にのみ発生する数値丸め誤差の総称である。",
+          "explanation": {
+            "text": "過学習は誤差の種別ではなく学習の適合度に関する概念である。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（数値計算と誤差／AIのあらまし）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "学習率を高く設定したことで勾配が発散する現象をいう。",
+          "explanation": {
+            "text": "学習率の不適切さによる発散は最適化の問題であり、過学習の定義とは異なる。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（ディープラーニングと学習の仕組み）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "過学習は訓練データにはよく当てはまる一方、未知データでは性能が落ちる状態で、汎化性能の低下として表れる。対策として交差検証や正則化、早期終了などがある。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+        "reference_label": "基本情報技術者試験 シラバス Ver.9.0（AI：汎化・過学習・交差検証）"
+      }
+    },
+    {
+      "id": "it-FE-q002",
+      "question": "TCPの3ウェイハンドシェイクに関する記述として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "SYN、SYN-ACK、ACKの交換により接続が確立される。",
+          "explanation": {
+            "text": "TCPはコネクション型で、3段階の制御セグメント交換で接続を確立する。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（通信プロトコルの基本とTCP）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ACK、ACK-ACK、FINの順で接続が確立される。",
+          "explanation": {
+            "text": "FINは接続の終了で用いる。ACK-ACKという制御は定義されていない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（TCPの接続・終了）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "UDPと同様に接続確立は不要である。",
+          "explanation": {
+            "text": "UDPはコネクションレスだがTCPは接続型であり事前の確立が必要。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（TCP/UDPの特徴）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "SYNとACKを同時に送る1往復だけで接続が確立される。",
+          "explanation": {
+            "text": "3ウェイで3段階の交換が必要。1往復では足りない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（通信：接続制御）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "TCPは信頼性の高い伝送を提供するため、SYN→SYN-ACK→ACKの3段階で接続を確立する。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+        "reference_label": "基本情報技術者試験 シラバス Ver.9.0（通信プロトコル：TCP）"
+      }
+    },
+    {
+      "id": "it-FE-q003",
+      "question": "関係データベースの正規化に関する説明として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "重複や更新異常を抑えるため、属性の依存関係に基づき表を分解する手法である。",
+          "explanation": {
+            "text": "正規化は関数従属性などに基づきスキーマを整理し、冗長性と異常を低減する。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（データベース設計・正規化）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "検索性能を最大化するため、全ての表を1つに結合する最適化手法である。",
+          "explanation": {
+            "text": "結合による単一表化は正規化の目的と逆で、冗長性を増やす恐れがある。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（DB設計の目的）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "障害時の復旧のため、更新前イメージを常に保存する仕組みである。",
+          "explanation": {
+            "text": "これはログやリカバリの説明であり、正規化の定義ではない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（トランザクション・障害回復）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データ暗号化の方式の一つで、列単位で鍵を管理する方法である。",
+          "explanation": {
+            "text": "暗号化は情報セキュリティの領域であり、正規化の説明ではない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（セキュリティ基礎と暗号）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "正規化は関数従属性などを手掛かりに表を分解して冗長性や更新・挿入・削除異常を抑える設計手法である。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+        "reference_label": "基本情報技術者試験 シラバス Ver.9.0（データベース：正規化）"
+      }
+    },
+    {
+      "id": "it-FE-q004",
+      "question": "情報セキュリティのCIAにおける“C（Confidentiality）”を高める対策の例として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "保存データの暗号化とアクセス制御の強化",
+          "explanation": {
+            "text": "機密性は認可された主体だけが情報にアクセスできる状態。暗号化とアクセス制御は直接的対策。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（セキュリティ管理・CIA）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "バックアップとジャーナルによる復旧性の向上",
+          "explanation": {
+            "text": "これは可用性や保全性の向上に資するが、機密性そのものの強化ではない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（可用性・復旧）"
+          }
+        },
+        {
+            "key": "C",
+            "text": "ハッシュ関数による改ざん検出",
+            "explanation": {
+              "text": "ハッシュは完全性（Integrity）確認に用いられることが多い。",
+              "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+              "reference_label": "基本情報技術者試験 シラバス Ver.9.0（暗号・ハッシュと完全性）"
+            }
+        },
+        {
+          "key": "D",
+          "text": "冗長構成によるSPOF排除",
+          "explanation": {
+            "text": "冗長化は可用性（Availability）を高める対策である。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（可用性・冗長化）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "機密性は暗号化や厳格な認証・認可で実現する。可用性や完全性の対策と混同しないこと。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+        "reference_label": "基本情報技術者試験 シラバス Ver.9.0（セキュリティの基本概念）"
+      }
+    },
+    {
+      "id": "it-FE-q005",
+      "question": "アジャイル開発に関する説明として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "短い反復で価値を継続的に提供し、要求変更への迅速な適応を重視する。",
+          "explanation": {
+            "text": "アジャイルは反復・インクリメンタル、変化への適応、フィードバック重視が特徴。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（ソフトウェア開発プロセス：アジャイル）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "全工程を厳密に逐次実施し、途中の要求変更は原則認めない。",
+          "explanation": {
+            "text": "これはウォーターフォール型の特徴であり、アジャイルの説明ではない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（開発プロセス：ウォーターフォール）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "テスト工程は最終リリースの直前に一括して行うのが原則である。",
+          "explanation": {
+            "text": "アジャイルでは継続的テストと自動化（CI/CD）が推奨される。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（品質保証・CI/CDの概念）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "進捗評価は文書の完備性を主指標とし、動作するソフトウェアは重視しない。",
+          "explanation": {
+            "text": "アジャイルでは「動くソフトウェア」が進捗の主要な尺度とされる。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（アジャイルの価値観）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "アジャイルは短いイテレーションで価値を届け、変更に適応し続ける開発手法である。CI/CDや自動テストと相性が良い。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+        "reference_label": "基本情報技術者試験 シラバス Ver.9.0（ソフトウェア開発とアジャイル）"
+      }
+    },
+    {
+      "id": "it-FE-q006",
+      "question": "仮想記憶方式に関する説明として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "プログラムに大きな連続アドレス空間を提供し、実主記憶と補助記憶をページ単位で入れ替える。",
+          "explanation": {
+            "text": "ページングにより主記憶の物理容量を超えるプログラム実行を可能にする。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（OS：記憶管理・仮想記憶）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "CPUの命令セットを書き換えてアドレスを拡張する方式である。",
+          "explanation": {
+            "text": "命令セットの変更ではなく、メモリ管理機構（MMUなど）で実現される。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（OSとハードウェア支援）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "スワップはキャッシュメモリ間のデータ交換を指す用語である。",
+          "explanation": {
+            "text": "スワップは主記憶と補助記憶間での入れ替えを指し、キャッシュとは異なる。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（記憶階層・スワップ）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ページフォールトは性能向上のため意図的に発生させる。",
+          "explanation": {
+            "text": "ページフォールトは必要ページ不在時に発生する例外で、性能を低下させる。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（ページングと例外処理）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "仮想記憶はページング等で実主記憶と補助記憶を連携し、大きな仮想アドレス空間を提供する仕組みである。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+        "reference_label": "基本情報技術者試験 シラバス Ver.9.0（OS：記憶管理）"
+      }
+    },
+    {
+      "id": "it-FE-q007",
+      "question": "統計におけるp値（有意確率）に関する説明として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "帰無仮説が正しいと仮定したとき、観測結果以上に極端な結果が得られる確率である。",
+          "explanation": {
+            "text": "p値はデータの稀さの尺度であり、帰無仮説が正しい前提で計算される。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（統計：仮説検定・p値）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "帰無仮説が真である確率そのものを表す。",
+          "explanation": {
+            "text": "p値は仮説の真偽確率ではない。データの極端さの確率である。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（統計：仮説検定の解釈）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "検出力（検定力）と常に等しい値になる。",
+          "explanation": {
+            "text": "検出力は1−βで定義され、p値とは概念も算出法も異なる。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（統計：第1種・第2種の誤りと検出力）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "有意水準より小さければ、対立仮説が必ず真であることを意味する。",
+          "explanation": {
+            "text": "有意とは統計的基準を満たしたことを示すが、真偽を保証するものではない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（統計：有意水準と解釈）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "p値は帰無仮説のもとで観測以上の極端な結果が起きる確率であり、仮説が真である確率ではない。誤解しやすい点を押さえることが重要。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+        "reference_label": "基本情報技術者試験 シラバス Ver.9.0（統計：仮説検定）"
+      }
+    },
+    {
+      "id": "it-FE-q008",
+      "question": "プロジェクトマネジメントにおけるクリティカルパスの説明として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "プロジェクト全体の最短完了時間を決定する作業経路である。",
+          "explanation": {
+            "text": "クリティカルパスは余裕時間がゼロの作業経路で、遅延は全体の遅延に直結する。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（PM：工程管理・クリティカルパス）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "最もコストのかかる作業を優先的に並べた経路である。",
+          "explanation": {
+            "text": "コストではなく所要時間が基準である。コスト管理とは別概念。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（プロジェクトコスト管理）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "品質リスクを最も多く含む作業経路である。",
+          "explanation": {
+            "text": "品質リスクはクリティカルパスの定義要素ではない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（リスクマネジメント）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "プロジェクト開始時に必ず最初に着手する作業経路である。",
+          "explanation": {
+            "text": "開始順序ではなく、所要時間で決まる最長経路がクリティカルパスである。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（工程計画）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "クリティカルパスは最長経路であり、余裕時間がなく全体納期に直結する。プロジェクトマネジメントにおいて最重要の分析手法。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+        "reference_label": "基本情報技術者試験 シラバス Ver.9.0（PM：工程管理）"
+      }
+    },
+    {
+      "id": "it-FE-q009",
+      "question": "情報システムにおけるゼロトラストモデルの特徴として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "内部ネットワークも信頼せず、全てのアクセスに認証と検証を行う。",
+          "explanation": {
+            "text": "ゼロトラストは境界防御に依存せず、常時検証を原則とする。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（セキュリティ：ゼロトラスト）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "VPNを使用すれば全てのアクセスが自動的に信頼される。",
+          "explanation": {
+            "text": "VPN利用だけで無条件に信頼する設計はゼロトラストの考え方と逆である。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（セキュリティモデル）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "内部ネットワーク内では認証を不要とするのが基本である。",
+          "explanation": {
+            "text": "ゼロトラストでは内部ネットワークも信頼せず認証を必須とする。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（セキュリティ概念）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ファイアウォールを強化すればゼロトラストと同等の効果が得られる。",
+          "explanation": {
+            "text": "ファイアウォール強化は境界防御の一部であり、ゼロトラストの本質とは異なる。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（ゼロトラストと従来モデルの違い）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ゼロトラストは“Never Trust, Always Verify”を原則とし、内部も外部も区別なく検証する。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+        "reference_label": "基本情報技術者試験 シラバス Ver.9.0（セキュリティ：ゼロトラスト）"
+      }
+    },
+    {
+      "id": "it-FE-q010",
+      "question": "オブジェクト指向設計におけるカプセル化の説明として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データとそれを操作する手続きを一体化し、外部からの直接的なアクセスを制御する。",
+          "explanation": {
+            "text": "カプセル化はオブジェクトの内部構造を隠蔽し、インタフェースを通じてのみ操作可能にする。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（ソフトウェア工学：オブジェクト指向）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "複数のクラスをまとめて一つのモジュールにすること。",
+          "explanation": {
+            "text": "これはモジュール化の説明であり、カプセル化とは異なる。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（モジュール化）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "スーパークラスからサブクラスに属性や操作を継承させること。",
+          "explanation": {
+            "text": "これは継承の説明であり、カプセル化とは異なる。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（継承）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "同じ操作名で複数の実装を持つこと。",
+          "explanation": {
+            "text": "これは多態性（ポリモーフィズム）の説明である。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（ポリモーフィズム）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "カプセル化は情報隠蔽を実現するための仕組みで、クラス内のデータと操作を一体化して管理する。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+        "reference_label": "基本情報技術者試験 シラバス Ver.9.0（オブジェクト指向設計）"
+      }
+    },
+    {
+      "id": "it-FE-q011",
+      "question": "ディジタル署名の主な目的として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "送信者の認証とデータの改ざん検出",
+          "explanation": {
+            "text": "ディジタル署名は公開鍵暗号を用いて本人性と完全性を保証する。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（セキュリティ：ディジタル署名）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "通信データの暗号化による秘匿性の確保",
+          "explanation": {
+            "text": "秘匿性は暗号化の目的であり、署名の役割は本人性・完全性にある。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（暗号と署名の違い）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "通信路の混雑を回避する仕組み",
+          "explanation": {
+            "text": "これはネットワーク制御の説明であり、署名の目的ではない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（ネットワーク制御）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CPU負荷を軽減するためのアルゴリズム",
+          "explanation": {
+            "text": "署名は負荷軽減ではなく、セキュリティの保証に関わる技術である。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（暗号技術）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ディジタル署名は送信者の認証と改ざん検出を目的とする。秘匿性とは異なる点を区別する必要がある。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+        "reference_label": "基本情報技術者試験 シラバス Ver.9.0（セキュリティ：署名と暗号）"
+      }
+    },
+    {
+      "id": "it-FE-q012",
+      "question": "AI分野で用いられる教師あり学習の例として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "過去のデータと正解ラベルを用いた画像分類モデルの学習",
+          "explanation": {
+            "text": "教師あり学習は入力と正解のペアを基にモデルを学習させる。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（AI：教師あり学習）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "教師データを用いずクラスタリングする手法",
+          "explanation": {
+            "text": "これは教師なし学習の例である。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（AI：教師なし学習）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "報酬を最大化するための行動選択を学習する手法",
+          "explanation": {
+            "text": "これは強化学習の説明である。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（AI：強化学習）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "学習を行わずルールベースで処理する手法",
+          "explanation": {
+            "text": "ルールベースは推論システムの一種であり、教師あり学習ではない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "基本情報技術者試験 シラバス Ver.9.0（AI：知識表現と推論）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "教師あり学習は入力と正解のペアを用いてモデルを学習させる典型的な手法であり、画像分類やスパム判定などに利用される。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+        "reference_label": "基本情報技術者試験 シラバス Ver.9.0（AI：教師あり学習）"
+      }
+    },
+    {
+      "id": "it-FE-q013",
+      "question": "ソフトウェアテストにおけるブラックボックステストの特徴として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "仕様に基づき、入力と出力の対応関係を検証する。",
+          "explanation": {
+            "text": "ブラックボックステストは内部構造を考慮せず、仕様や機能要求を基準にテストする方法。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバス Ver.9.0（ソフトウェア開発技術：テスト技法）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ソースコードの分岐網羅を目的とする。",
+          "explanation": {
+            "text": "これはホワイトボックステストの説明であり、ブラックボックスとは異なる。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバス Ver.9.0（テスト：ホワイトボックス技法）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "モジュールの内部構造を理解しなければ実施できない。",
+          "explanation": {
+            "text": "内部構造は不要で、外部仕様を基に実施可能なのがブラックボックステストの特徴。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバス Ver.9.0（外部仕様に基づくテスト）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "実施は不可能であり、理論的な概念にとどまる。",
+          "explanation": {
+            "text": "実際に広く利用されている手法であり“不可能”ではない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "試験要綱（テスト技法）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ブラックボックステストは外部仕様に基づき、入力と出力の正しさを確認する技法。内部構造を参照しない点でホワイトボックスと対比される。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+        "reference_label": "FEシラバス Ver.9.0（テスト技法）"
+      }
+    },
+    {
+      "id": "it-FE-q014",
+      "question": "アルゴリズムの時間計算量に関する説明として最も適切なものはどれか。入力サイズ n に対して、二重ループで内外ともに n 回ずつ反復する処理の漸近的時間計算量はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "O(n)",
+          "explanation": {
+            "text": "一重ループ相当の次数。二重ループにはならないため不適切。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（アルゴリズムと計算量の概念）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "O(log n)",
+          "explanation": {
+            "text": "二分探索など対数時間の例であり、二重ループの一般形には当てはまらない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（計算量の種類）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "O(n^2)",
+          "explanation": {
+            "text": "外側 n × 内側 n で反復回数は概ね n^2 に比例するため適切。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（反復構造と計算量の見積り）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "O(n!)",
+          "explanation": {
+            "text": "巡回セールスマンの全列挙などに見られる階乗時間であり、本件とは異なる。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（複雑さのオーダ）"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "内外がそれぞれ n 回回る二重ループは反復回数が n×n となるため、漸近的に O(n^2) で評価する。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+        "reference_label": "FEシラバスVer.9.0（アルゴリズムと計算量）"
+      }
+    },
+    {
+      "id": "it-FE-q015",
+      "question": "IPv6の特徴に関する記述のうち、最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "アドレス長は128ビットであり、表記では0の連続を“::”で一度だけ省略できる。",
+          "explanation": {
+            "text": "IPv6は128ビットアドレスを採用し、ゼロ圧縮“::”は1回に限り使用可能。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（ネットワーク：IPv6の基礎）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "アドレス長は64ビットで、必ずクラスA/B/Cに分類される。",
+          "explanation": {
+            "text": "IPv6はクラスレスで128ビット。クラスA/B/CはIPv4の概念。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（アドレス体系）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "NATの導入が前提であり、エンドツーエンド通信は想定しない。",
+          "explanation": {
+            "text": "IPv6は原則エンドツーエンドを志向し、NATは前提ではない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（IPv6の設計思想）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ブロードキャストを強化し、全ノードへの一斉送信を標準化した。",
+          "explanation": {
+            "text": "IPv6ではブロードキャストは廃止され、マルチキャスト等が用いられる。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（IPv6：通信方式）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "IPv6は128ビットで、アドレス表記では0の連続を“::”で1回だけ省略できる。ブロードキャストは廃止されている点も要点。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+        "reference_label": "IPA 試験要綱・シラバス（IPv6関連の出題範囲）"
+      }
+    },
+    {
+      "id": "it-FE-q016",
+      "question": "データベースのトランザクション特性ACIDのうち、“I（Isolation）”を最も適切に説明しているものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "各トランザクションは互いに干渉せず、並行実行でも直列実行と同じ結果となる。",
+          "explanation": {
+            "text": "直列化可能性の概念に対応し、干渉を制御して一貫した結果を保証する性質。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（DB：トランザクションとACID）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "障害発生後でも更新内容が失われないようにする性質である。",
+          "explanation": {
+            "text": "これは耐久性（Durability）の説明であり、Isolationではない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（DB：ログと耐久性）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "トランザクション開始前と終了後で整合性制約を満たす性質である。",
+          "explanation": {
+            "text": "これは一貫性（Consistency）の説明である。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（DB：整合性制約）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "トランザクションは全て実行するか、全く実行しないかのどちらかである。",
+          "explanation": {
+            "text": "これは原子性（Atomicity）の説明である。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（DB：ACIDの概要）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Isolationは並行制御によりトランザクション間の干渉を抑え、直列実行と同等の結果を保証する性質である（直列化可能性）。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+        "reference_label": "FEシラバスVer.9.0（トランザクション管理）"
+      }
+    },
+    {
+      "id": "it-FE-q017",
+      "question": "プロジェクトマネジメントのEVM（Earned Value Management）において、SV（Schedule Variance）< 0 かつ CV（Cost Variance）> 0 の状況を最も適切に表すものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "進捗は遅れているが、コストは予算内である。",
+          "explanation": {
+            "text": "SV<0 は進捗遅延、CV>0 はコスト効率が良い（コストアンダー）ことを示す。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（PM：EVMの指標）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "進捗は順調だが、コストが超過している。",
+          "explanation": {
+            "text": "SV<0 では順調とは言えない。CV>0 は超過ではなく有利を意味する。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（EVM：解釈）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "進捗もコストも計画どおりである。",
+          "explanation": {
+            "text": "SV=0 かつ CV=0 が計画どおり。条件に合致しない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（EVMの基礎）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "進捗は先行しているが、コストは予算超過である。",
+          "explanation": {
+            "text": "SV<0 は先行ではなく遅延を示す。CV>0 は予算内で有利。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（PM指標の符号の読み方）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "EVMでは SV=EV−PV、CV=EV−AC。SV<0 は進捗遅延、CV>0 はコスト効率良好（予算内）を表すため「遅れているがコストは良好」と解釈する。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+        "reference_label": "IPA 試験要綱・シラバス（PM：EVM項目）"
+      }
+    },
+    {
+      "id": "it-FE-q018",
+      "question": "OSのプロセススケジューリング方式の説明として最も適切なものはどれか。対話型システムで応答性を高める目的で一般的に採用される方式はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ラウンドロビン方式",
+          "explanation": {
+            "text": "タイムクオンタムで各プロセスにCPUを周回的に割り当て、対話型での応答性を高めやすい。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（OS：スケジューリング）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "先着順（FCFS）方式",
+          "explanation": {
+            "text": "長い処理が先に来ると待ち時間が増えやすく、対話型の応答性には不向き。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（FCFSの特徴）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "最短ジョブ優先（SJF）方式",
+          "explanation": {
+            "text": "平均待ち時間は小さくできるが、長いジョブが飢餓に陥る恐れがあり対話型重視には必ずしも適さない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（SJFの特徴）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "優先度逆転方式",
+          "explanation": {
+            "text": "優先度逆転は問題状況の名称であり、スケジューリング方式ではない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（優先度制御）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "対話型システムでは応答性が重要であり、一定のクオンタムでCPUを順番に割り当てるラウンドロビンが有効である。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+        "reference_label": "FEシラバスVer.9.0（スケジューリングと応答性）"
+      }
+    },
+    {
+      "id": "it-FE-q019",
+      "question": "UMLシーケンス図の要素に関する説明として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "アクティベーション（実行仕様）はオブジェクトが処理を実行している区間を示す縦長の矩形で表す。",
+          "explanation": {
+            "text": "ライフライン上の細長い矩形で処理中を表現するのがアクティベーションである。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（UML：シーケンス図の読み方）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "破線矢印は同期メッセージを表し、戻りは実線矢印で表す。",
+          "explanation": {
+            "text": "一般に呼出し（同期）は実線矢印、戻りは破線で表すのが基本で、記述が逆になっている。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（UML：メッセージ表記）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ライフラインは水平方向の帯で、時間は左から右へ進む。",
+          "explanation": {
+            "text": "シーケンス図では時間は上から下へ、ライフラインは縦方向に描画するのが基本。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（UML図法の基本）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "生成メッセージは破線矢印で表し、対象のライフラインは既に存在している。",
+          "explanation": {
+            "text": "生成メッセージは実線矢印で表し、対象のライフラインはメッセージで生成されて出現する。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（UML：オブジェクト生成）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "シーケンス図では時間は上から下へ流れ、ライフライン上の細長い矩形が実行区間（アクティベーション）を示す。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+        "reference_label": "IPA 試験要綱・シラバス（UML出題範囲）"
+      }
+    },
+    {
+      "id": "it-FE-q020",
+      "question": "情報セキュリティにおける多要素認証（MFA）の構成要素の組合せとして、最も適切な例はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "パスワード＋スマートフォンのワンタイムパスコード（TOTP）",
+          "explanation": {
+            "text": "知識要素（パスワード）と所持要素（生成器/端末）で異なる要素を組み合わせているためMFAの要件に合致する。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（認証方式と要素）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "パスワード＋秘密の質問の答え",
+          "explanation": {
+            "text": "いずれも知識要素であり、多要素（異種要素の組合せ）の要件を満たさない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（MFAの要件）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "スマートカード＋ICカード",
+          "explanation": {
+            "text": "いずれも所持要素であり、同一要素の組合せはMFAとは言えない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（認証要素の分類）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "指紋認証＋顔画像の静止画アップロード",
+          "explanation": {
+            "text": "指紋は生体要素だが、静止画アップロードは真正性が低く認証要素として不適切。通常はデバイス内生体やライブネス検知を伴う。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（生体認証の留意点）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "MFAは知識・所持・生体など“異なるカテゴリ”を組み合わせる。パスワード＋TOTPは代表例である。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+        "reference_label": "FEシラバスVer.9.0（認証方式）"
+      }
+    },
+    {
+      "id": "it-FE-q021",
+      "question": "二分探索（binary search）の適用条件と計算量に関する説明として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データがあらかじめ整列済みであれば適用でき、平均・最悪計算量は O(log n) である。",
+          "explanation": {
+            "text": "二分探索は整列済み配列に対して中央要素と比較を繰り返すため、探索回数は要素数に対して対数オーダになる。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバス Ver.9.0（アルゴリズム：探索と計算量）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "整列の有無に関係なく適用でき、計算量は O(1) である。",
+          "explanation": {
+            "text": "二分探索は整列が前提。また O(1) ではない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバス Ver.9.0（探索の前提条件）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ハッシュ表を用いるため、衝突が起きると計算量が O(n) になる。",
+          "explanation": {
+            "text": "これはハッシュ探索の話であり、二分探索の説明ではない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバス Ver.9.0（データ構造：ハッシュ法の概念）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "木構造でのみ適用でき、配列には適用できない。",
+          "explanation": {
+            "text": "配列（整列済み）に対する典型的な探索手法が二分探索である。木に対しては二分探索木が別概念としてある。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバス Ver.9.0（配列と探索）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "二分探索は整列済みデータを対象とし、探索回数はおおむね log2(n) 回に比例するため O(log n) で評価される。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+        "reference_label": "FEシラバス Ver.9.0（アルゴリズム：探索）"
+      }
+    },
+    {
+      "id": "it-FE-q022",
+      "question": "エンディアン（endian）の説明として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "数値のバイト列をメモリに格納する際の上位バイト・下位バイトの並び順に関する方式である。",
+          "explanation": {
+            "text": "ビッグエンディアンは上位バイトを低位アドレスに、リトルエンディアンは下位バイトを低位アドレスに置く方式を指す。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバス Ver.9.0（コンピュータ構成要素：データ表現）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ネットワーク上のパケットの到着順序を制御する方式のこと。",
+          "explanation": {
+            "text": "パケット順序制御はトランスポート層などの話で、エンディアンの定義ではない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "IPA 試験要綱・シラバス（ネットワークの基礎）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "浮動小数点数の丸めモード（最近接/ゼロ方向など）を指す用語である。",
+          "explanation": {
+            "text": "丸めモードは浮動小数点演算の仕様であり、エンディアンとは異なる概念。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "IPA 試験要綱・シラバス（数値計算の基礎）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Unicodeの文字正規化形式（NFC/NFDなど）を指す用語である。",
+          "explanation": {
+            "text": "Unicode正規化は文字列処理の話題であり、エンディアンは数値のバイト並びの話。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "IPA 試験要綱・シラバス（データ表現の概要）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "エンディアンは整数などのバイト列の並び方を規定する概念で、アーキテクチャ間のデータ交換で注意が必要になる。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+        "reference_label": "FEシラバス Ver.9.0（データ表現）"
+      }
+    },
+    {
+      "id": "it-FE-q023",
+      "question": "DNSリソースレコードに関する説明のうち、最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Aレコードはホスト名をIPv4アドレスに対応付け、AAAAレコードはIPv6アドレスに対応付ける。",
+          "explanation": {
+            "text": "AはIPv4、AAAAはIPv6に対応する基本的なリソースレコードである。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "IPA 試験要綱・シラバス（インターネット技術：DNSの基礎）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "CNAMEレコードはメール配送先を示し、MXレコードは別名（エイリアス）を示す。",
+          "explanation": {
+            "text": "役割が逆。MXがメール交換、CNAMEが別名（正規名への別名）を示す。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "IPA 試験要綱・シラバス（DNSレコードの種類）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "NSレコードはネットワークセグメントの帯域幅を表す。",
+          "explanation": {
+            "text": "NSは権威DNSサーバを示すレコードであり、帯域幅とは無関係。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "IPA 試験要綱・シラバス（DNSの役割）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "TXTレコードは暗号鍵しか格納できない。",
+          "explanation": {
+            "text": "TXTは任意テキストを格納でき、SPFやDKIMなどで用いられるが暗号鍵専用ではない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "IPA 試験要綱・シラバス（DNS：運用例）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "AはIPv4、AAAAはIPv6に対応する。CNAME・MX・NS・TXTの役割も区別して覚える。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+        "reference_label": "IPA 試験要綱・シラバス（DNSの基礎）"
+      }
+    },
+    {
+      "id": "it-FE-q024",
+      "question": "境界値分析（Boundary Value Analysis）を用いて、入力が0以上999以下の整数であることを検証するテストデータの組合せとして最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "-1, 0, 1, 998, 999, 1000",
+          "explanation": {
+            "text": "下限・上限の直前/直後と境界値を含み、代表的な境界値分析のデータ選定である。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバス Ver.9.0（ソフトウェアテスト技法：同値分割・境界値分析）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "0, 1, 2, 3",
+          "explanation": {
+            "text": "境界外（-1, 1000）や上限付近（999）を含まず、境界値分析の観点が弱い。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバス Ver.9.0（テスト設計の基本）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "100, 200, 300, 400",
+          "explanation": {
+            "text": "中間値のみで境界を検証できない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバス Ver.9.0（ブラックボックステスト）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "-2, -1, 0, 1",
+          "explanation": {
+            "text": "上限側の境界（999, 1000）を含まないため不十分。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバス Ver.9.0（境界値分析）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "境界値分析では下限・上限の“直前・境界・直後”を含めて異常/正常の切れ目を重点的に検証する。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+        "reference_label": "FEシラバス Ver.9.0（テスト技法）"
+      }
+    },
+    {
+      "id": "it-FE-q025",
+      "question": "Webアプリケーションの脆弱性対策として最も適切な対応を選べ。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "SQLインジェクション対策にはプレースホルダ（パラメータ化クエリ）を用いる。",
+          "explanation": {
+            "text": "入力文字列をSQL文に直接連結せず、DBドライバのバインド機構でクエリとデータを分離するのが基本対策。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "IPA 試験要綱・シラバス（情報セキュリティ：アプリケーション対策）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "XSS対策には入力値をすべて削除する。",
+          "explanation": {
+            "text": "適切なのは出力時エスケープ（コンテキスト適合のエンコード）やテンプレートの自動エスケープ設定であり、単純な削除では可用性を損ねやすい。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "IPA 試験要綱・シラバス（Webセキュリティの基本概念）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "CSRF対策には同一生成の固定トークンを全ユーザに配布する。",
+          "explanation": {
+            "text": "CSRFトークンはユーザセッションごとにランダムで不可推測にする必要がある。固定配布は無効。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "IPA 試験要綱・シラバス（CSRFの対策）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "クリックジャッキング対策にはCookieのSecure属性を付ける。",
+          "explanation": {
+            "text": "クリックジャッキングにはX-Frame-Optionsやフレーミング制御（CSP frame-ancestors）が有効。Secure属性は通信経路の保護で目的が異なる。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "IPA 試験要綱・シラバス（Webの脅威とHTTPヘッダ）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "アプリケーションの代表的脆弱性対策として、SQLインジェクションはパラメータ化、XSSは出力エスケープ、CSRFはセッション固有トークンが基本となる。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+        "reference_label": "IPA 試験要綱・シラバス（アプリケーションセキュリティ）"
+      }
+    },
+    {
+      "id": "it-FE-q026",
+      "question": "最短経路問題に関する記述として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ダイクストラ法は非負の重みのグラフで正しく機能し、負辺があると正しく求まらないことがある。",
+          "explanation": {
+            "text": "ダイクストラ法は負辺が存在すると最短性の保証が崩れるため不適切。負辺がある場合はベルマン–フォード法などを検討する。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバス Ver.9.0（グラフアルゴリズムの基礎）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ベルマン–フォード法は負閉路がある場合でも常に最短経路を求められる。",
+          "explanation": {
+            "text": "負閉路があると最短経路は定義できず、ベルマン–フォード法は負閉路の検出に用いられる。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバス Ver.9.0（アルゴリズム：最短路と負閉路）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ワーシャル–フロイド法は木構造専用で、一般のグラフには使えない。",
+          "explanation": {
+            "text": "全点対間最短経路を求める動的計画法であり、一般の有向/無向グラフで利用できる（負辺は可、負閉路は不可）。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバス Ver.9.0（グラフアルゴリズム：全点対間最短路）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ダイクストラ法は優先度付きキューを用いる実装でも計算量は必ず O(n) である。",
+          "explanation": {
+            "text": "優先度付きキューを用いた実装は一般に O((n+m) log n) 程度（nは頂点数、mは辺数）で、O(n) ではない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバス Ver.9.0（計算量の見積り）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ダイクストラ法は非負重みの前提で正しく機能する。負辺がある場合はベルマン–フォード法の適用や負閉路有無の確認が必要。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+        "reference_label": "FEシラバス Ver.9.0（グラフアルゴリズム）"
+      }
+    },
+    {
+      "id": "it-FE-q027",
+      "question": "確率・統計の基本に関する記述として最も適切なものはどれか。母平均の95%信頼区間の幅を半分にしたい場合、必要な標本サイズの近似的な扱いとして正しいものを選べ（他の条件は同一、標準偏差既知とする）。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "標本サイズを4倍に増やす。",
+          "explanation": {
+            "text": "信頼区間幅は標本数の平方根に反比例（∝1/√n）するため、幅を1/2にするには n を4倍にする必要がある。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "IPA 試験要綱・シラバス（統計の基礎：推定と区間推定）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "標本サイズを2倍に増やす。",
+          "explanation": {
+            "text": "2倍では幅は約1/√2倍であり、半分にはならない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "IPA 試験要綱・シラバス（統計：標本サイズの影響）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "標本サイズは不変で、信頼水準を99%に上げれば幅は半分になる。",
+          "explanation": {
+            "text": "信頼水準を上げると臨界値が増え、むしろ区間は広がる。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "IPA 試験要綱・シラバス（統計：信頼水準と幅）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "標本サイズを8倍に増やす必要がある。",
+          "explanation": {
+            "text": "幅∝1/√n より、半分にする条件は n を4倍。8倍は過大である。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "IPA 試験要綱・シラバス（推定量の性質）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "区間幅は標本誤差に比例し、標本誤差は1/√nに比例する。よって幅を1/2にするには n を4倍にすればよい。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+        "reference_label": "IPA 試験要綱・シラバス（統計の基礎）"
+      }
+    },
+    {
+      "id": "it-FE-q028",
+      "question": "CPUのパイプライン処理におけるハザードの説明として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "命令間の依存関係や制御の影響でパイプラインが停止・遅延する現象である。",
+          "explanation": {
+            "text": "データハザード・制御ハザード・構造ハザードが代表例であり、パイプライン効率を下げる要因となる。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバス Ver.9.0（コンピュータ構成要素：パイプライン処理）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "CPUがキャッシュを使わず主記憶に直接アクセスする現象である。",
+          "explanation": {
+            "text": "これはキャッシュミスに関する説明であり、ハザードとは異なる。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "IPA 試験要綱・シラバス（記憶階層）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "プロセッサの消費電力が動作周波数の2乗に比例して増大する現象である。",
+          "explanation": {
+            "text": "これは消費電力に関する一般原則であり、パイプラインハザードではない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "IPA 試験要綱・シラバス（ハードウェア基礎）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CPUが仮想記憶から実記憶への変換に失敗する現象である。",
+          "explanation": {
+            "text": "これはページフォールトの説明であり、パイプラインハザードとは異なる。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "IPA 試験要綱・シラバス（OSとメモリ管理）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "パイプラインハザードは命令間の依存関係や分岐予測の失敗などにより処理が停滞する現象である。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+        "reference_label": "FEシラバス Ver.9.0（CPUのパイプライン処理）"
+      }
+    },
+    {
+      "id": "it-FE-q029",
+      "question": "クラウドコンピューティングのサービスモデルに関する説明のうち、最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "SaaSは利用者がアプリケーションを直接利用する形態である。",
+          "explanation": {
+            "text": "SaaSはソフトウェアをサービスとして提供し、利用者は管理不要で利用できる。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "IPA 試験要綱・シラバス（クラウドサービスモデル）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "IaaSは利用者がOSやミドルウェアを提供し、ベンダーはアプリケーションを管理する。",
+          "explanation": {
+            "text": "IaaSではベンダーはインフラ（仮想マシンやネットワーク）を提供し、OS以降は利用者が管理する。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "IPA 試験要綱・シラバス（IaaSの管理範囲）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "PaaSは利用者が物理サーバを直接管理できる形態である。",
+          "explanation": {
+            "text": "PaaSは開発環境やミドルウェアをサービスとして提供する。物理管理はできない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "IPA 試験要綱・シラバス（PaaSの特徴）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "SaaSは利用者がアプリケーションのバージョン管理をすべて担当する。",
+          "explanation": {
+            "text": "SaaSはベンダーがアプリケーションの運用・更新を行い、利用者はそのまま利用する。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "IPA 試験要綱・シラバス（SaaSと利用者の役割）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "SaaSはアプリケーションをサービスとして提供するモデルで、利用者は運用や更新を意識せずに利用できる。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+        "reference_label": "IPA 試験要綱・シラバス（クラウドサービスモデル）"
+      }
+    },
+    {
+      "id": "it-FE-q030",
+      "question": "システム監査の目的として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "情報システムの有効性・効率性・信頼性を評価し、改善を助言すること。",
+          "explanation": {
+            "text": "システム監査は独立的立場からシステムの妥当性を評価し、改善に資する提言を行う活動。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "IPA 試験要綱・シラバス（システム監査）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "プログラムのバグを発見し、修正すること。",
+          "explanation": {
+            "text": "これはテストやデバッグの目的であり、監査の目的とは異なる。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "IPA 試験要綱・シラバス（開発工程と監査の違い）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ネットワークトラフィックの暗号化を保証すること。",
+          "explanation": {
+            "text": "暗号化はセキュリティ設計の一部であり、監査の直接目的ではない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "IPA 試験要綱・シラバス（セキュリティと監査）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "最新のプログラミング技術を習得させること。",
+          "explanation": {
+            "text": "教育の目的であり、システム監査とは無関係。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "IPA 試験要綱・シラバス（監査の目的）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "システム監査は組織のシステムが有効かつ効率的で信頼できる運用をしているかを独立した立場で評価する。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+        "reference_label": "IPA 試験要綱・シラバス（システム監査の役割）"
+      }
+    },
+    {
+      "id": "it-FE-q031",
+      "question": "バッファオーバーフロー攻撃の防止策として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "入力値の境界チェックを行い、想定外のサイズを排除する。",
+          "explanation": {
+            "text": "入力の検証は最も基本的かつ有効な防止策である。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "IPA 試験要綱・シラバス（ソフトウェア脆弱性）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "暗号化アルゴリズムを強化する。",
+          "explanation": {
+            "text": "暗号化の強化はバッファオーバーフローとは直接関係しない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "IPA 試験要綱・シラバス（暗号と脆弱性の違い）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "CPUクロックを下げて処理速度を落とす。",
+          "explanation": {
+            "text": "処理速度は脆弱性対策にはならない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "IPA 試験要綱・シラバス（セキュリティ対策）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ファイルのバックアップを定期的に行う。",
+          "explanation": {
+            "text": "バックアップは可用性対策であり、攻撃防止策ではない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "IPA 試験要綱・シラバス（可用性とセキュリティ）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "バッファオーバーフローは入力チェック不足に起因するため、境界チェックと安全な言語やライブラリの利用が防止策となる。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+        "reference_label": "IPA 試験要綱・シラバス（脆弱性対策）"
+      }
+    },
+    {
+      "id": "it-FE-q032",
+      "question": "機械学習における混同行列（Confusion Matrix）の “真陽性（True Positive）” の意味として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "実際に正例であり、モデルも正例と予測した件数。",
+          "explanation": {
+            "text": "真陽性は実際に正で予測も正の一致ケースを指す。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバス Ver.9.0（AI：性能評価指標）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "実際に負例だが、モデルは正例と予測した件数。",
+          "explanation": {
+            "text": "これは偽陽性（False Positive）の定義である。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバス Ver.9.0（AI評価指標）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "実際に正例だが、モデルは負例と予測した件数。",
+          "explanation": {
+            "text": "これは偽陰性（False Negative）の定義である。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバス Ver.9.0（AI評価指標）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "実際に負例であり、モデルも負例と予測した件数。",
+          "explanation": {
+            "text": "これは真陰性（True Negative）の定義である。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバス Ver.9.0（AI評価指標）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "真陽性（TP）は実際の正例を正しく予測した件数を指し、分類モデルの性能評価に用いる。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+        "reference_label": "FEシラバス Ver.9.0（AI性能評価指標）"
+      }
+    },
+    {
+      "id": "it-FE-q033",
+      "question": "平均計算量が O(n log n) であるソートアルゴリズムとして最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "クイックソート",
+          "explanation": {
+            "text": "クイックソートは平均計算量 O(n log n)、ただし最悪計算量は O(n^2)。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバス Ver.9.0（アルゴリズム：整列）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "バブルソート",
+          "explanation": {
+            "text": "バブルソートは平均 O(n^2) と遅いソート手法である。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバス Ver.9.0（基本ソート）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "選択ソート",
+          "explanation": {
+            "text": "選択ソートは O(n^2) であり効率は低い。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバス Ver.9.0（基本ソート）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "線形探索",
+          "explanation": {
+            "text": "線形探索は探索アルゴリズムであり、ソートアルゴリズムではない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "試験要綱（探索と整列の違い）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "整列アルゴリズムの代表例として、クイックソートやマージソートは平均 O(n log n)。バブルソートや選択ソートは O(n^2) と非効率。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+        "reference_label": "FEシラバス Ver.9.0（アルゴリズム）"
+      }
+    },
+    {
+      "id": "it-FE-q034",
+      "question": "再帰アルゴリズムにおけるスタック使用量（空間計算量）に関する説明として最も適切なものはどれか。サイズ n の入力に対して深さ n の単純再帰（末尾最適化なし）を行う関数のスタック使用量のオーダはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "O(1)",
+          "explanation": {
+            "text": "末尾再帰最適化が効く言語処理系であれば O(1) になる場合もあるが、前提にないため不適切。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（アルゴリズム・計算量の基礎）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "O(log n)",
+          "explanation": {
+            "text": "分割統治で深さが対数になる場合の例であり、本問の“深さ n の単純再帰”には該当しない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（計算量の見積り）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "O(n)",
+          "explanation": {
+            "text": "呼出しごとに1フレーム積まれ、深さ n に比例してスタックを消費するため妥当である。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（アルゴリズム：再帰と資源使用量）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "O(n^2)",
+          "explanation": {
+            "text": "1段に複数フレームを同時保持するわけではなく、深さに線形で増えるのが一般的である。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（計算量の基本）"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "末尾最適化を前提としない単純再帰では、呼出し深さに比例してコールスタックを消費するため O(n) となる。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+        "reference_label": "FEシラバスVer.9.0（アルゴリズム：再帰）"
+      }
+    },
+    {
+      "id": "it-FE-q035",
+      "question": "HTTPS通信の特徴として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "TLSによりサーバ認証・暗号化・改ざん検出を提供する。",
+          "explanation": {
+            "text": "HTTPSはHTTPをTLS上で動作させ、機密性・完全性・（サーバの）真正性を確保する。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "試験要綱・シラバス（ネットワーク：HTTP/TLSの基礎）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "HTTPヘッダのみ暗号化し、ボディは平文のまま送る。",
+          "explanation": {
+            "text": "TLSはトランスポート層でアプリケーションデータ全体を保護する。ヘッダのみ暗号化ではない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "試験要綱・シラバス（通信の保護）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "証明書はクライアント側のみが保有し、サーバ側では不要である。",
+          "explanation": {
+            "text": "一般的なHTTPSはサーバ証明書を用いたサーバ認証が前提である。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "試験要綱・シラバス（公開鍵基盤の基礎）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "TLSを用いると必ず通信速度が上がる。",
+          "explanation": {
+            "text": "TLSは暗号・ハンドシェイクのオーバーヘッドを伴い、速度向上を保証するものではない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "試験要綱・シラバス（性能とセキュリティのトレードオフ）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "HTTPSはTLSにより暗号化と改ざん検出、サーバ認証を提供する。クライアント証明書は相互認証構成時に用いる。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+        "reference_label": "試験要綱・シラバス（HTTP/TLS）"
+      }
+    },
+    {
+      "id": "it-FE-q036",
+      "question": "正規表現に関する説明として最も適切なものはどれか。量指定子の意味として正しいものを選べ。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "a+ は直前の a が1回以上連続することを表す。",
+          "explanation": {
+            "text": "+ は1回以上の繰り返しを意味する標準的な量指定子である。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "試験要綱・シラバス（形式言語・文字列処理の基礎）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "a* は直前の a が0回は許されない。",
+          "explanation": {
+            "text": "* は0回以上の繰り返しを意味するため、0回も許容される。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "試験要綱・シラバス（正規表現の基本）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "a? は直前の a が2回以上連続することを表す。",
+          "explanation": {
+            "text": "? は0回または1回の出現を意味し、2回以上ではない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "試験要綱・シラバス（パターンマッチング）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "a{2,3} は a が1回以上の任意回数を表す。",
+          "explanation": {
+            "text": "{m,n} は m〜n回の繰り返し。{2,3} は2回または3回に限定される。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "試験要綱・シラバス（正規表現の量指定子）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "量指定子の基本：*は0回以上、+は1回以上、?は0/1回、{m,n}はm〜n回。問では a+ が正しい。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+        "reference_label": "試験要綱・シラバス（文字列処理）"
+      }
+    },
+    {
+      "id": "it-FE-q037",
+      "question": "データベースの隔離性（Isolation）に関する記述のうち、現象と対策の組合せとして最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ダーティリード：未コミット値の読み取り → 対策にコミット済みデータのみ参照する分離レベル（例：Read Committed）。",
+          "explanation": {
+            "text": "Read Committed以上では未コミット行は読めないため、ダーティリードを防げる。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（DB：トランザクション分離性）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ファントムリード：同一問合せで結果集合の順序が変わる → 対策に書込み禁止。",
+          "explanation": {
+            "text": "ファントムは挿入・削除で結果集合自体が変化する現象。単なる“書込み禁止”ではない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（分離レベルと現象）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ノンリピータブルリード：同一行の値が変化 → 対策にRead Uncommitted。",
+          "explanation": {
+            "text": "Read Uncommittedは最も緩い分離で、むしろ現象を許容する。不適切。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（分離レベルの比較）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ファントムリード：結果集合に行が増減 → 対策にシリアライザブルや範囲ロック。",
+          "explanation": {
+            "text": "シリアライザブルや範囲ロックで挿入・削除を抑え、ファントムを抑制できる。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（直列化可能性とロック）"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "代表的現象：ダーティリード（未コミット読取）、ノンリピータブル（同一行値の変化）、ファントム（行の増減）。ファントム抑制にはシリアライザブルや範囲ロックが有効。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+        "reference_label": "FEシラバスVer.9.0（トランザクション管理）"
+      }
+    },
+    {
+      "id": "it-FE-q038",
+      "question": "ER図において、1対多（1:N）関係を正しく表す組合せとして最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "親エンティティの主キーが子エンティティに外部キーとして含まれる。",
+          "explanation": {
+            "text": "1:Nでは子側が親の主キーを外部キーとして保持する正規的な実装パターンである。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "試験要綱・シラバス（データベース設計：ERと関係スキーマ）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "子エンティティの主キーが親エンティティに外部キーとして含まれる。",
+          "explanation": {
+            "text": "1:Nでは逆方向に外部キーを置くのは一般的でない（多側が外部キーを持つ）。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "試験要綱・シラバス（ERの基礎）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "中間エンティティを必ず設け、親・子ともに外部キーは持たない。",
+          "explanation": {
+            "text": "中間表は多対多（M:N）で用いるのが一般的で、1:Nでは不要であることが多い。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "試験要綱・シラバス（関係の表現）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "1:Nでは親と子の両方が互いの主キーを持つ。",
+          "explanation": {
+            "text": "相互参照は冗長で整合性管理が難しくなるため適切ではない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "試験要綱・シラバス（正規化と実装）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "1:Nは“多”側（子）が“1”側（親）の主キーを外部キーとして参照する設計が基本となる。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+        "reference_label": "試験要綱・シラバス（データベース設計）"
+      }
+    },
+    {
+      "id": "it-FE-q039",
+      "question": "テストレベルと主目的の組合せとして最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "単体テスト：モジュール内部のロジックや分岐の正しさを検証する。",
+          "explanation": {
+            "text": "単体（コンポーネント）テストは最小単位の実装を対象に内部ロジックを検証する。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（ソフトウェアテスト：レベルと目的）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "結合テスト：受入基準に照らした業務要件の満足度を評価する。",
+          "explanation": {
+            "text": "受入基準に対する評価は“受入テスト”の目的である。結合はインタフェース検証が主眼。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（テストレベルの定義）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "システムテスト：モジュールの私的実装詳細を確認する。",
+          "explanation": {
+            "text": "システムテストは統合されたシステムの仕様適合や非機能要件の確認が目的で、内部実装の私的詳細は対象外。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（システムテスト）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "受入テスト：モジュール間インタフェースの不具合を検出するのが主目的。",
+          "explanation": {
+            "text": "インタフェース不具合検出は結合テストの主目的。受入はユーザ観点の適合性評価が中心。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（受入テスト）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "テストレベルの要点：単体＝内部ロジック、結合＝インタフェース、システム＝全体仕様・非機能、受入＝ユーザ受入基準。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+        "reference_label": "FEシラバスVer.9.0（ソフトウェアテスト）"
+      }
+    },
+    {
+      "id": "it-FE-q040",
+      "question": "暗号ハッシュ関数の性質として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "原像計算困難性：与えられたハッシュ値から元の入力を見つけることが計算的に困難である。",
+          "explanation": {
+            "text": "暗号学的ハッシュの3性質の1つで、他に第二原像困難性・衝突困難性がある。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバスVer.9.0（情報セキュリティ：ハッシュ関数）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ハッシュ値は必ず元のデータより長くなる。",
+          "explanation": {
+            "text": "ハッシュは固定長出力であり、元データより短いことが多い。必ず長いわけではない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "試験要綱・シラバス（暗号・ハッシュの基礎）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "同じハッシュ値になる別入力（衝突）は理論的に発生しない。",
+          "explanation": {
+            "text": "有限長出力である以上、入力空間との関係から衝突は理論上存在する（衝突困難性は“見つけにくさ”）。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "試験要綱・シラバス（ハッシュの性質）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ハッシュは暗号化の一種であり、元のデータに戻せる。",
+          "explanation": {
+            "text": "ハッシュは不可逆変換であり、復号はできない。暗号化とは異なる概念。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "試験要綱・シラバス（暗号とハッシュの違い）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "暗号学的ハッシュの基本性質は原像困難性・第二原像困難性・衝突困難性。改ざん検出や署名で用いられる。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+        "reference_label": "FEシラバスVer.9.0（セキュリティ：ハッシュ関数）"
+      }
+    },
+    {
+      "id": "it-FE-q041",
+      "question": "コンテナ型仮想化とハイパーバイザ型仮想化の違いとして最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "コンテナはホストOSのカーネルを共有し、プロセス分離で軽量に動作する。",
+          "explanation": {
+            "text": "名前空間・cgroups等により隔離し、イメージ起動が軽量であるのが特徴。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "IPA 試験要綱・シラバス（仮想化技術の基礎）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "コンテナは各ゲストごとに独自カーネルを必ず持つ。",
+          "explanation": {
+            "text": "コンテナはホストのカーネルを共有するため“独自カーネル”ではない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "シラバス（OS仮想化）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ハイパーバイザ型はアプリケーションのみを配布し、OSは不要である。",
+          "explanation": {
+            "text": "ハイパーバイザ型はゲストOSごと仮想化する。OSが不要という説明は誤り。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "シラバス（仮想マシン方式）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "コンテナはハードウェア仮想化支援（VT-x等）が必須でないため、I/Oは必ず遅い。",
+          "explanation": {
+            "text": "I/O性能はワークロード依存で“必ず遅い”は誤り。むしろ軽量な場合が多い。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "シラバス（仮想化の長所・短所）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "コンテナはホストOSのカーネル共有により軽量・高速起動、ハイパーバイザはゲストOS単位で分離度が高い。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+        "reference_label": "IPA 試験要綱・シラバス（仮想化の種類）"
+      }
+    },
+    {
+      "id": "it-FE-q042",
+      "question": "RAIDの特徴に関する説明として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "RAID 1 はミラーリングにより耐障害性を高めるが、使用効率は50%程度になる。",
+          "explanation": {
+            "text": "2台構成で同一データを保持するため、冗長性の代償として容量効率は低い。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "シラバス（入出力装置と記憶装置）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "RAID 0 はパリティで誤り訂正を行い、1台故障しても継続運用できる。",
+          "explanation": {
+            "text": "RAID 0 はストライピングのみ。冗長性はなく、故障で全体が停止し得る。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "シラバス（RAID方式）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "RAID 5 はパリティを専用ディスクに集中して保存する。",
+          "explanation": {
+            "text": "RAID 5 はパリティを分散配置する。集中はRAID 4 の説明に近い。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "シラバス（RAIDの分散パリティ）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "RAID 6 はミラー2重化を意味し、読み取り性能は常に低下する。",
+          "explanation": {
+            "text": "RAID 6 は二重パリティでありミラーではない。読み取りは分散により向上する場合もある。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "シラバス（RAIDの冗長性）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "RAID 1 はミラー構成で耐障害性を高める。RAID 0 に冗長性はなく、RAID 5 は分散パリティ、RAID 6 は二重パリティ。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+        "reference_label": "IPA 試験要綱・シラバス（RAIDの基礎）"
+      }
+    },
+    {
+      "id": "it-FE-q043",
+      "question": "2の補数表現（twos’ complement）で、8ビット符号付き整数の表現可能範囲はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "-128 〜 +127",
+          "explanation": {
+            "text": "nビットの2の補数では −2^{n−1} 〜 +（2^{n−1}−1）。n=8 なら −128〜+127。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバス Ver.9.0（データ表現と整数の範囲）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "-127 〜 +128",
+          "explanation": {
+            "text": "上限・下限が逆。2の補数では正の最大は +127（8ビット）。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "シラバス（数値表現）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "-255 〜 +255",
+          "explanation": {
+            "text": "8ビットの符号なしの最大が255。符号付きの範囲ではない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "シラバス（2の補数）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "0 〜 +255",
+          "explanation": {
+            "text": "これは8ビット符号なし整数の範囲である。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "シラバス（整数表現）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "2の補数の範囲は −2^{n−1} 〜 +（2^{n−1}−1）。8ビットでは −128〜+127 となる。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+        "reference_label": "FEシラバス Ver.9.0（データの表現）"
+      }
+    },
+    {
+      "id": "it-FE-q044",
+      "question": "プロジェクトリスク対応戦略の例として“回避（avoid）”に該当するものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "高リスクの外部API連携を要件から除外してスコープを変更する。",
+          "explanation": {
+            "text": "リスクの原因となる要因を取り除き、発生確率をゼロに近づけるのが回避。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "シラバス（プロジェクトリスク管理）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "損害が発生した場合に備えて保険に加入する。",
+          "explanation": {
+            "text": "これは移転（transfer）の例である。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "シラバス（リスク対応）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "発生確率を下げるため、レビュー回数を増やす。",
+          "explanation": {
+            "text": "これは軽減（mitigate）の例である。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "シラバス（リスク軽減）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "発生しても受け入れ可能と判断して何もしない。",
+          "explanation": {
+            "text": "これは受容（accept）であり、回避ではない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "シラバス（リスク受容）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "回避はリスク源を取り除く戦略。スコープ変更などが典型例で、移転・軽減・受容と区別する。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+        "reference_label": "IPA 試験要綱・シラバス（PM：リスク対応）"
+      }
+    },
+    {
+      "id": "it-FE-q045",
+      "question": "CPUキャッシュの局所性（locality）に関する説明として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "時間的局所性は最近アクセスしたデータに再度アクセスする傾向を指す。",
+          "explanation": {
+            "text": "時間的局所性（temporal locality）の定義。空間的局所性と対で理解する。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "シラバス（記憶階層とキャッシュ）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "空間的局所性はアドレスがランダムであるほど高くなる性質を指す。",
+          "explanation": {
+            "text": "空間的局所性は近接アドレスへのアクセスが連続する傾向のこと。ランダムは逆。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "シラバス（局所性）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "局所性はキャッシュメモリの設計とは無関係である。",
+          "explanation": {
+            "text": "局所性こそがキャッシュの有効性の前提であり、密接に関係する。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "シラバス（キャッシュの原理）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "時間的局所性は命令には適用できない。",
+          "explanation": {
+            "text": "ループなどで同一命令が繰り返し実行されるため、命令にも時間的局所性はある。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "シラバス（命令キャッシュ）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "局所性の2本柱：時間的（最近使ったものを再利用）と空間的（近いアドレスを続けて使う）。キャッシュ設計の基礎概念。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+        "reference_label": "IPA 試験要綱・シラバス（記憶階層）"
+      }
+    },
+    {
+      "id": "it-FE-q046",
+      "question": "トランザクションログを用いたデータベースの障害回復で、REDO と UNDO の説明として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "REDOはコミット済み更新を再適用し、UNDOは未コミット更新を取り消す。",
+          "explanation": {
+            "text": "クラッシュリカバリの基本。ログの順序に基づいて再実行／取り消しを行う。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+            "reference_label": "FEシラバス Ver.9.0（障害回復とログ）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "REDOは未コミット更新を確定させ、UNDOはコミット済み更新を元に戻す。",
+          "explanation": {
+            "text": "役割が逆である。未コミットは取り消す（UNDO）。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "シラバス（トランザクション回復）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "REDO/UNDOはいずれもスナップショットバックアップのみを対象とする。",
+          "explanation": {
+            "text": "スナップショットに限定されない。ログと組み合わせて整合性回復を行う。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "シラバス（バックアップと回復）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "REDO は読み取り専用トランザクションに対してのみ適用する。",
+          "explanation": {
+            "text": "REDOは更新系トランザクションのコミット済み変更を対象とする。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "シラバス（ログの利用）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "クラッシュリカバリの原理：コミット済みは失われないよう REDO、未コミットはロールバックで UNDO。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/nq6ept00000014dv-att/syllabus_fe_ver9_0_henkou.pdf",
+        "reference_label": "FEシラバス Ver.9.0（DB：障害回復）"
+      }
+    },
+    {
+      "id": "it-FE-q047",
+      "question": "ソフトウェア見積りで用いられるCOCOMO（Basic/Original）の基本的な考え方として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ソース規模（KDSI/KSLOC）を入力として、経験式により工数や開発期間を見積もる。",
+          "explanation": {
+            "text": "COCOMOは規模に対する経験的モデルで、係数・指数はプロジェクト種別（組込み／半独立／有機的）で変わる。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "シラバス（見積り技法の概要）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "機能点（FP）から直接プログラムのバグ件数を確定的に算出する。",
+          "explanation": {
+            "text": "COCOMOはバグ件数の確定計算モデルではない。FPは別系統の規模指標。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "シラバス（見積り指標）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "過去の燃費データからサーバ電力量を推定してコストを見積もる。",
+          "explanation": {
+            "text": "インフラ電力見積りの話であり、COCOMOの範囲外。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "シラバス（見積りの範囲）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "チームメンバーの主観評価を多数決で集計し工数を決める。",
+          "explanation": {
+            "text": "これはプランニングポーカー等の相対見積りに近い。COCOMOは経験式に基づく数量モデル。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "シラバス（見積り手法の種類）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "COCOMOはKSLOC等の規模を入力に工数・期間を算出する経験モデル。プロジェクト種別によりパラメータを変えるのが基本。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+        "reference_label": "IPA 試験要綱・シラバス（ソフトウェア見積り）"
+      }
+    },
+    {
+      "id": "it-FE-q048",
+      "question": "IPv6のアドレス表記に関する説明として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "連続するゼロの16進数表記は“::”で1回だけ省略できる。",
+          "explanation": {
+            "text": "IPv6ではアドレスの簡略化ルールとして“::”が1回のみ使用可能。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "シラバス（ネットワーク：IPv6）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "先頭のゼロは必ず省略してはいけない。",
+          "explanation": {
+            "text": "IPv6の表記では先頭ゼロを省略できる。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "シラバス（IPv6表記ルール）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "“::”はアドレス中で複数回使用可能である。",
+          "explanation": {
+            "text": "“::”は1アドレス内で1回しか使えない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "シラバス（IPv6省略ルール）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IPv6は必ず10進数で表記しなければならない。",
+          "explanation": {
+            "text": "IPv6は16進数で表記する。10進数ではない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "シラバス（アドレス表記法）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "IPv6表記ルールは“先頭ゼロ省略可”“連続ゼロは::で一度だけ圧縮可”が基本。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+        "reference_label": "試験要綱・シラバス（ネットワーク）"
+      }
+    },
+    {
+      "id": "it-FE-q049",
+      "question": "クラウド利用におけるシャドーITのリスクとして最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "セキュリティポリシーを逸脱したクラウド利用が情報漏洩の原因となる。",
+          "explanation": {
+            "text": "シャドーITは管理部門が把握していないクラウド利用であり、セキュリティ統制外となる危険性がある。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "シラバス（情報セキュリティ管理）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "クラウドサービスの稼働率が常に100%保証される。",
+          "explanation": {
+            "text": "可用性100%は保証されない。リスクではなく誤認。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "シラバス（可用性の考え方）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "オンプレミスに比べて常に低コストである。",
+          "explanation": {
+            "text": "コストは利用形態に依存し、必ず低コストではない。リスクの説明でもない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "シラバス（クラウドのコスト）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "社内規定に従って利用する場合、リスクは存在しない。",
+          "explanation": {
+            "text": "リスクは常に存在する。リスクゼロはあり得ない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "シラバス（リスクマネジメント）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "シャドーITは組織の管理外利用により統制が効かず、情報漏洩やコンプライアンス違反を招くリスクがある。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+        "reference_label": "IPA 試験要綱・シラバス（クラウドとリスク管理）"
+      }
+    },
+    {
+      "id": "it-FE-q050",
+      "question": "アジャイル開発手法の特徴として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "短いイテレーションを繰り返し、顧客との協調を重視する。",
+          "explanation": {
+            "text": "アジャイルは反復・協調・適応を重視し、短いスプリントで成果物を積み重ねる。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "シラバス（アジャイル開発手法）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "プロジェクト開始時に全工程の成果物を厳密に固定する。",
+          "explanation": {
+            "text": "これはウォーターフォール型の特徴である。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "シラバス（開発プロセス比較）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "顧客との関与を最小限に抑えることを原則とする。",
+          "explanation": {
+            "text": "アジャイルは顧客との協調を重視する。逆の説明。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "シラバス（アジャイルの原則）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "工程ごとに一度だけテストを行う。",
+          "explanation": {
+            "text": "アジャイルでは継続的にテストを行う。テストは繰り返し伴う。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "シラバス（テストとアジャイル）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "アジャイル開発は反復的進化型のプロセスであり、顧客と密接に協力して変化に柔軟に対応する。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+        "reference_label": "IPA 試験要綱・シラバス（アジャイル）"
+      }
+    }
+  ]
+}

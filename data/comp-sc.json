@@ -1,0 +1,2494 @@
+{
+  "exam": {
+    "id": "comptia-security",
+    "title": "CompTIA Security+",
+    "description": "CompTIA Security+ は、IT セキュリティの基礎知識から実践的な運用までを問う国際的なベンダーニュートラル資格です。認定者は、セキュリティコンセプト、脅威や脆弱性、ネットワーク／システムのセキュリティ設計・運用、リスク管理、ガバナンスなどを理解し、実務レベルでセキュリティ対応ができる能力を持つことが証明されます。世界中の企業で求められる基本資格として、セキュリティエンジニアやネットワーク管理者、IT 管理者、あるいはこれからセキュリティ分野に進む人にも広く有用です。",
+    "version": "SY0-701",
+    "price": "52,192円",
+    "difficulty": "普通",
+    "official-site": "https://www.comptia.jp/certif/core/comptia_security/",
+    "category": {
+      "id": "comptia",
+      "name": "CompTIA"
+    }
+  },
+  "questions": [
+    {
+      "id": "comptia-security-1",
+      "question": "ゼロトラストモデルの基本原則として最も適切なのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "全てのデバイスを社内ネットワーク内であれば自動的に信頼する",
+          "explanation": {
+            "text": "ゼロトラストでは社内外を問わず“信頼を前提にしない”ことが基本原則であるため誤りです。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-207/final",
+            "reference_label": "NIST SP 800-207 Zero Trust Architecture"
+          }
+        },
+        {
+          "key": "B",
+          "text": "すべてのアクセス要求に対して検証を行う",
+          "explanation": {
+            "text": "ゼロトラストはすべてのアクセス要求に対して継続的な検証を行うことを核心とします。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-207/final",
+            "reference_label": "NIST SP 800-207 Zero Trust Architecture"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザーの所属部門に基づき一括でアクセスを許可する",
+          "explanation": {
+            "text": "ゼロトラストでは細粒度アクセス制御が推奨され、部門単位の一括許可は推奨されません。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-207/final",
+            "reference_label": "NIST SP 800-207 Zero Trust Architecture"
+          }
+        },
+        {
+          "key": "D",
+          "text": "一度認証されたユーザーは一定期間信頼されるべきである",
+          "explanation": {
+            "text": "ゼロトラストは継続的な検証を要求するため、一度の認証で信頼し続けることは推奨されません。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-207/final",
+            "reference_label": "NIST SP 800-207 Zero Trust Architecture"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ゼロトラストの中心原則は、“決して信頼せず常に検証する”という点であり、全アクセス要求の検証が必須です。",
+        "reference": "https://csrc.nist.gov/publications/detail/sp/800-207/final",
+        "reference_label": "NIST SP 800-207 Zero Trust Architecture"
+      }
+    },
+
+    {
+      "id": "comptia-security-2",
+      "question": "パスワードレス認証を実現する技術として最も適切なのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "TOTP を用いた2要素認証",
+          "explanation": {
+            "text": "TOTP はパスワードに追加される認証要素であり、パスワードレスではありません。",
+            "reference": "https://pages.nist.gov/800-63-3/",
+            "reference_label": "NIST SP 800-63-3 Digital Identity Guidelines"
+          }
+        },
+        {
+          "key": "B",
+          "text": "FIDO2 による公開鍵認証",
+          "explanation": {
+            "text": "FIDO2 はパスワード不要の公開鍵認証を提供する仕組みで、パスワードレスに対応しています。",
+            "reference": "https://fidoalliance.org/specifications/",
+            "reference_label": "FIDO Alliance Specifications"
+          }
+        },
+        {
+          "key": "C",
+          "text": "CAPTCHA によるロボット判定",
+          "explanation": {
+            "text": "CAPTCHA はボット対策であり、本人認証方式ではありません。",
+            "reference": "https://pages.nist.gov/800-63-3/",
+            "reference_label": "NIST SP 800-63-3 Digital Identity Guidelines"
+          }
+        },
+        {
+          "key": "D",
+          "text": "チャレンジレスポンス型 SSO",
+          "explanation": {
+            "text": "SSO はパスワードレスの仕組みではなく、単一認証の利便性向上のためのシステムです。",
+            "reference": "https://pages.nist.gov/800-63-3/",
+            "reference_label": "NIST SP 800-63-3 Digital Identity Guidelines"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "FIDO2 は公開鍵暗号方式によるパスワードレス認証を提供し、近年のセキュリティ標準として広く採用されています。",
+        "reference": "https://fidoalliance.org/specifications/",
+        "reference_label": "FIDO Alliance Specifications"
+      }
+    },
+
+    {
+      "id": "comptia-security-3",
+      "question": "企業が DLP（Data Loss Prevention）を導入する主目的として適切なのはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "システム全体の性能最適化",
+          "explanation": {
+            "text": "DLP はデータ保護を目的としており、性能最適化は目的ではありません。",
+            "reference": "https://www.nist.gov/privacy-framework",
+            "reference_label": "NIST Privacy Framework"
+          }
+        },
+        {
+          "key": "B",
+          "text": "機密データの漏えい防止",
+          "explanation": {
+            "text": "DLP は機密データの漏えいを防ぐことを目的としています。",
+            "reference": "https://www.nist.gov/privacy-framework",
+            "reference_label": "NIST Privacy Framework"
+          }
+        },
+        {
+          "key": "C",
+          "text": "クラウド利用料金の最適化",
+          "explanation": {
+            "text": "クラウドコスト管理と DLP は無関係です。",
+            "reference": "https://www.nist.gov/privacy-framework",
+            "reference_label": "NIST Privacy Framework"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ソフトウェアライセンスの管理",
+          "explanation": {
+            "text": "ライセンス管理は DLP の目的ではありません。",
+            "reference": "https://www.nist.gov/privacy-framework",
+            "reference_label": "NIST Privacy Framework"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "DLP は機密情報の漏えいを防ぐために利用され、企業の情報セキュリティ対策の重要要素です。",
+        "reference": "https://www.nist.gov/privacy-framework",
+        "reference_label": "NIST Privacy Framework"
+      }
+    },
+
+    {
+      "id": "comptia-security-4",
+      "question": "CSRF攻撃の特徴として最も適切なのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ユーザーを偽のWebサイトへ誘導し認証情報を盗む攻撃",
+          "explanation": {
+            "text": "これはフィッシング攻撃の特徴であり CSRF ではありません。",
+            "reference": "https://owasp.org/www-community/attacks/Phishing",
+            "reference_label": "OWASP Phishing"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーに意図しないリクエストを送らせる攻撃",
+          "explanation": {
+            "text": "CSRF はユーザーのブラウザを悪用して意図しないリクエストを送信させる攻撃です。",
+            "reference": "https://owasp.org/www-community/attacks/csrf",
+            "reference_label": "OWASP CSRF"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Webサーバーの入力欄にスクリプトを挿入する攻撃",
+          "explanation": {
+            "text": "これは XSS の特徴であり、CSRF とは異なります。",
+            "reference": "https://owasp.org/www-community/attacks/xss/",
+            "reference_label": "OWASP XSS"
+          }
+        },
+        {
+          "key": "D",
+          "text": "サーバーに大量の要求を送りリソースを枯渇させる攻撃",
+          "explanation": {
+            "text": "これは DoS 攻撃の特徴であり、CSRF ではありません。",
+            "reference": "https://owasp.org/www-community/attacks/denial_of_service",
+            "reference_label": "OWASP DoS"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "CSRF はユーザーのセッションを悪用し、本人が意図していない操作を行わせる攻撃です。",
+        "reference": "https://owasp.org/www-community/attacks/csrf",
+        "reference_label": "OWASP CSRF"
+      }
+    },
+
+    {
+      "id": "comptia-security-5",
+      "question": "脅威ハンティングで『仮説主導型（Hypothesis-driven）』アプローチの特徴はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "既知の攻撃シグネチャのみを使って検出する",
+          "explanation": {
+            "text": "これは従来のシグネチャベース検出であり、脅威ハンティングの仮説主導型ではありません。",
+            "reference": "https://www.nist.gov/cyberframework",
+            "reference_label": "NIST Cybersecurity Framework"
+          }
+        },
+        {
+          "key": "B",
+          "text": "過去のインシデントに基づき攻撃者の行動を推測し仮説を立てる",
+          "explanation": {
+            "text": "仮説主導型は攻撃者の TTP を推測し仮説を立て、ログを検証する手法です。",
+            "reference": "https://attack.mitre.org/",
+            "reference_label": "MITRE ATT&CK"
+          }
+        },
+        {
+          "key": "C",
+          "text": "完全に自動化されたAIによる検知に依存する",
+          "explanation": {
+            "text": "AI は補助にすぎず、仮説主導型とは関係ありません。",
+            "reference": "https://www.nist.gov/cyberframework",
+            "reference_label": "NIST Cybersecurity Framework"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ハンターの介入なしに定期的にシステムをスキャンする",
+          "explanation": {
+            "text": "これは脆弱性スキャンの特徴であり脅威ハンティングではありません。",
+            "reference": "https://www.nist.gov/cyberframework",
+            "reference_label": "NIST Cybersecurity Framework"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "仮説主導型脅威ハンティングは、攻撃者のTTPを推定し、ログやイベントデータを検証する方法です。",
+        "reference": "https://attack.mitre.org/",
+        "reference_label": "MITRE ATT&CK"
+      }
+    },
+
+    {
+      "id": "comptia-security-6",
+      "question": "インシデントレスポンスの“Containment（封じ込め）”フェーズで行うべき行動として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "攻撃の根本原因を分析する",
+          "explanation": {
+            "text": "根本原因分析は Eradication（駆除）や Recovery の段階で行われます。",
+            "reference": "https://www.nist.gov/system/files/documents/itl/Draft-SP-800-61r2.pdf",
+            "reference_label": "NIST SP 800-61r2 Incident Handling Guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "攻撃の拡大を防ぐためネットワークを隔離する",
+          "explanation": {
+            "text": "Containment の目的は影響の拡大防止であり、隔離は代表的な対応です。",
+            "reference": "https://www.nist.gov/system/files/documents/itl/Draft-SP-800-61r2.pdf",
+            "reference_label": "NIST SP 800-61r2 Incident Handling Guide"
+          }
+        },
+        {
+          "key": "C",
+          "text": "通常業務への完全復旧を行う",
+          "explanation": {
+            "text": "復旧は Recovery フェーズの役割です。",
+            "reference": "https://www.nist.gov/system/files/documents/itl/Draft-SP-800-61r2.pdf",
+            "reference_label": "NIST SP 800-61r2 Incident Handling Guide"
+          }
+        },
+        {
+          "key": "D",
+          "text": "脆弱性パッチを適用する",
+          "explanation": {
+            "text": "パッチ適用は Eradication または Recovery で行われます。",
+            "reference": "https://www.nist.gov/system/files/documents/itl/Draft-SP-800-61r2.pdf",
+            "reference_label": "NIST SP 800-61r2 Incident Handling Guide"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Containment では攻撃の拡散を防ぐことが目的であり、ネットワーク隔離などが実施されます。",
+        "reference": "https://www.nist.gov/system/files/documents/itl/Draft-SP-800-61r2.pdf",
+        "reference_label": "NIST SP 800-61r2 Incident Handling Guide"
+      }
+    },
+
+    {
+      "id": "comptia-security-7",
+      "question": "サプライチェーン攻撃への対策として最も適切なのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "外部企業のセキュリティ状況を考慮せず接続を許可する",
+          "explanation": {
+            "text": "サプライチェーン攻撃では外部ベンダーのリスクが重要であり、この対応は不適切です。",
+            "reference": "https://www.nist.gov/cyberframework",
+            "reference_label": "NIST Cybersecurity Framework"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ベンダーリスク管理（VRM）を実施する",
+          "explanation": {
+            "text": "ベンダーのセキュリティを評価するVRMはサプライチェーン攻撃対策として重要です。",
+            "reference": "https://www.nist.gov/cyberframework",
+            "reference_label": "NIST Cybersecurity Framework"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ベンダーの接続を全面禁止する",
+          "explanation": {
+            "text": "実務的ではなく、通常の対策とは言えません。",
+            "reference": "https://www.nist.gov/cyberframework",
+            "reference_label": "NIST Cybersecurity Framework"
+          }
+        },
+        {
+          "key": "D",
+          "text": "外部企業システムを完全に内部ネットワークへ統合する",
+          "explanation": {
+            "text": "統合はむしろリスクを増加させます。",
+            "reference": "https://www.nist.gov/cyberframework",
+            "reference_label": "NIST Cybersecurity Framework"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "サプライチェーン攻撃ではベンダーのセキュリティが重要であり、VRM が有効です。",
+        "reference": "https://www.nist.gov/cyberframework",
+        "reference_label": "NIST Cybersecurity Framework"
+      }
+    },
+
+    {
+      "id": "comptia-security-8",
+      "question": "暗号化通信で使用される“Perfect Forward Secrecy (PFS)”の特徴として適切なのはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "サーバーの秘密鍵が漏えいした場合でも過去通信が保護される",
+          "explanation": {
+            "text": "PFS はセッション鍵を前方秘匿するため、秘密鍵漏えい時も過去通信保護が可能です。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc8446",
+            "reference_label": "RFC 8446 (TLS 1.3)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "すべての暗号化通信で必ず使用される標準仕様である",
+          "explanation": {
+            "text": "PFS は推奨されますが必須ではありません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc8446",
+            "reference_label": "RFC 8446 (TLS 1.3)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "証明書の有効期限を自動的に更新する仕組みである",
+          "explanation": {
+            "text": "証明書更新は PFS と無関係です。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc8446",
+            "reference_label": "RFC 8446 (TLS 1.3)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "暗号通信の速度を大幅に向上させる仕組みである",
+          "explanation": {
+            "text": "PFS は速度向上ではなく安全性向上が目的です。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc8446",
+            "reference_label": "RFC 8446 (TLS 1.3)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "PFS によりセッション鍵が使い回されないため、秘密鍵漏えい時でも過去通信が保護されます。",
+        "reference": "https://www.rfc-editor.org/rfc/rfc8446",
+        "reference_label": "RFC 8446 (TLS 1.3)"
+      }
+    },
+
+    {
+      "id": "comptia-security-9",
+      "question": "IDS と IPS の主な違いとして最も適切なのはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "IDS は防御、IPS は検知のみを行う",
+          "explanation": {
+            "text": "これは逆で、IDS は検知、IPS は検知＋防御です。",
+            "reference": "https://www.nist.gov/cyberframework",
+            "reference_label": "NIST Cybersecurity Framework"
+          }
+        },
+        {
+          "key": "B",
+          "text": "IDS は監視のみ、IPS はリアルタイム遮断が可能",
+          "explanation": {
+            "text": "IDS は検知・通知に特化し、IPS はリアルタイムで遮断する機能を持ちます。",
+            "reference": "https://www.nist.gov/cyberframework",
+            "reference_label": "NIST Cybersecurity Framework"
+          }
+        },
+        {
+          "key": "C",
+          "text": "IDS はマルウェア解析、IPS はログ管理を担当する",
+          "explanation": {
+            "text": "これは IDS/IPS の役割とは関係ありません。",
+            "reference": "https://www.nist.gov/cyberframework",
+            "reference_label": "NIST Cybersecurity Framework"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IDS はネットワーク外部に配置し、IPS は内部に配置する",
+          "explanation": {
+            "text": "配置場所は組織設計によって異なり、この区別は一般化できません。",
+            "reference": "https://www.nist.gov/cyberframework",
+            "reference_label": "NIST Cybersecurity Framework"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "IDS は監視・検知を行い、IPS は遮断などのリアルタイム防御を行います。",
+        "reference": "https://www.nist.gov/cyberframework",
+        "reference_label": "NIST Cybersecurity Framework"
+      }
+    },
+
+    {
+      "id": "comptia-security-10",
+      "question": "クラウド環境における“共有責任モデル”において、ユーザー側が主に責任を持つ領域として正しいのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "物理データセンターの保守",
+          "explanation": {
+            "text": "物理的な保守はクラウド提供事業者が担当します。",
+            "reference": "https://aws.amazon.com/compliance/shared-responsibility-model/",
+            "reference_label": "AWS Shared Responsibility Model"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーアカウントのアクセス管理",
+          "explanation": {
+            "text": "IAM やアカウント管理はユーザー側の責任です。",
+            "reference": "https://aws.amazon.com/compliance/shared-responsibility-model/",
+            "reference_label": "AWS Shared Responsibility Model"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ハードウェアの故障対応",
+          "explanation": {
+            "text": "ハードウェアはクラウド事業者の責任領域です。",
+            "reference": "https://aws.amazon.com/compliance/shared-responsibility-model/",
+            "reference_label": "AWS Shared Responsibility Model"
+          }
+        },
+        {
+          "key": "D",
+          "text": "電源・冷却システムの管理",
+          "explanation": {
+            "text": "データセンターの電力管理はクラウド事業者の責任です。",
+            "reference": "https://aws.amazon.com/compliance/shared-responsibility-model/",
+            "reference_label": "AWS Shared Responsibility Model"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "共有責任モデルでは、IAM やデータ保護など“クラウド上での設定”はユーザー側の責任です。",
+        "reference": "https://aws.amazon.com/compliance/shared-responsibility-model/",
+        "reference_label": "AWS Shared Responsibility Model"
+      }
+    },
+    {
+      "id": "comptia-security-11",
+      "question": "多要素認証（MFA）における“所持情報（Something you have）”に該当するものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "パスワード",
+          "explanation": {
+            "text": "パスワードは「知識情報（Something you know）」に分類されます。",
+            "reference": "https://pages.nist.gov/800-63-3/",
+            "reference_label": "NIST SP 800-63-3 Digital Identity Guidelines"
+          }
+        },
+        {
+          "key": "B",
+          "text": "顔認証",
+          "explanation": {
+            "text": "顔認証は「生体情報（Something you are）」に分類されます。",
+            "reference": "https://pages.nist.gov/800-63-3/",
+            "reference_label": "NIST SP 800-63-3 Digital Identity Guidelines"
+          }
+        },
+        {
+          "key": "C",
+          "text": "セキュリティキー（FIDO2など）",
+          "explanation": {
+            "text": "ハードウェアキーは “所持情報” に該当します。",
+            "reference": "https://fidoalliance.org/specifications/",
+            "reference_label": "FIDO Alliance Specifications"
+          }
+        },
+        {
+          "key": "D",
+          "text": "パターンロック",
+          "explanation": {
+            "text": "パターンロックは知識情報の一種です。",
+            "reference": "https://pages.nist.gov/800-63-3/",
+            "reference_label": "NIST SP 800-63-3 Digital Identity Guidelines"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "所持情報はユーザーが“持っている”ものを指し、FIDO2キーなどが典型例です。",
+        "reference": "https://fidoalliance.org/specifications/",
+        "reference_label": "FIDO Alliance Specifications"
+      }
+    },
+
+    {
+      "id": "comptia-security-12",
+      "question": "企業がログ管理を行う際のベストプラクティスとして最も適切なのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ログを改ざん防止のために書き込み禁止媒体に保存する",
+          "explanation": {
+            "text": "ログは可観測性のために継続的記録が必要であり、常時書き込み禁止は適切ではありません。",
+            "reference": "https://www.nist.gov/system/files/documents/itl/Draft-SP-800-92.pdf",
+            "reference_label": "NIST SP 800-92 Log Management"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ログは可能な限り長期間保持するが、保持期間の根拠は不要である",
+          "explanation": {
+            "text": "保持期間は法規制や内部ポリシーの根拠を基に定める必要があります。",
+            "reference": "https://www.nist.gov/system/files/documents/itl/Draft-SP-800-92.pdf",
+            "reference_label": "NIST SP 800-92 Log Management"
+          }
+        },
+        {
+          "key": "C",
+          "text": "集約・分析を行うため中央ログ管理基盤を構築する",
+          "explanation": {
+            "text": "SIEM などへの中央集約はログ管理のベストプラクティスです。",
+            "reference": "https://www.nist.gov/system/files/documents/itl/Draft-SP-800-92.pdf",
+            "reference_label": "NIST SP 800-92 Log Management"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ログは機密性が低いので暗号化は不要である",
+          "explanation": {
+            "text": "ログには機密データが含まれる可能性があり、暗号化は推奨されます。",
+            "reference": "https://www.nist.gov/system/files/documents/itl/Draft-SP-800-92.pdf",
+            "reference_label": "NIST SP 800-92 Log Management"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "ログを中央に集約し、分析基盤を用いて可観測性を高めることは重要なベストプラクティスです。",
+        "reference": "https://www.nist.gov/system/files/documents/itl/Draft-SP-800-92.pdf",
+        "reference_label": "NIST SP 800-92 Log Management"
+      }
+    },
+
+    {
+      "id": "comptia-security-13",
+      "question": "暗号方式において『ハイブリッド暗号』が採用される理由として最も適切なのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "公開鍵暗号が対称鍵暗号より高速だから",
+          "explanation": {
+            "text": "公開鍵暗号は対称鍵暗号より遅く、これは誤りです。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc8446",
+            "reference_label": "RFC 8446 (TLS 1.3)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "対称鍵と公開鍵の双方の強みを活かすため",
+          "explanation": {
+            "text": "公開鍵で鍵交換し、対称鍵で高速暗号化するのがハイブリッド暗号の目的です。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc8446",
+            "reference_label": "RFC 8446 (TLS 1.3)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "公開鍵暗号は鍵交換が不要だから",
+          "explanation": {
+            "text": "公開鍵暗号でも鍵交換は必要です。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc8446",
+            "reference_label": "RFC 8446 (TLS 1.3)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "対称鍵暗号は安全性が低いため",
+          "explanation": {
+            "text": "対称鍵暗号は高速かつ十分に安全であり、TLSでも使用されます。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc8446",
+            "reference_label": "RFC 8446 (TLS 1.3)"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ハイブリッド暗号は“公開鍵で鍵交換し、対称鍵でデータを暗号化する”方式であり、双方の利点を活かします。",
+        "reference": "https://www.rfc-editor.org/rfc/rfc8446",
+        "reference_label": "RFC 8446 (TLS 1.3)"
+      }
+    },
+
+    {
+      "id": "comptia-security-14",
+      "question": "EDR（Endpoint Detection and Response）の特徴として最も適切なのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ネットワーク境界に設置される防御装置である",
+          "explanation": {
+            "text": "EDR はエンドポイントに導入される仕組みで、境界装置ではありません。",
+            "reference": "https://www.nist.gov/cyberframework",
+            "reference_label": "NIST Cybersecurity Framework"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザー端末での脅威検知・隔離・レスポンスを行う",
+          "explanation": {
+            "text": "EDR は端末上での高度な検知・レスポンスを提供する技術です。",
+            "reference": "https://www.nist.gov/cyberframework",
+            "reference_label": "NIST Cybersecurity Framework"
+          }
+        },
+        {
+          "key": "C",
+          "text": "DDoS 攻撃緩和のためのネットワークフィルタリング技術である",
+          "explanation": {
+            "text": "これは DDoS 防御であり EDR ではありません。",
+            "reference": "https://www.nist.gov/cyberframework",
+            "reference_label": "NIST Cybersecurity Framework"
+          }
+        },
+        {
+          "key": "D",
+          "text": "暗号鍵管理に特化したシステムである",
+          "explanation": {
+            "text": "鍵管理は KMS などの領域であり、EDR の役割ではありません。",
+            "reference": "https://www.nist.gov/cyberframework",
+            "reference_label": "NIST Cybersecurity Framework"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "EDR は端末上で脅威を検知し、隔離や調査などのレスポンスを自動化する仕組みです。",
+        "reference": "https://www.nist.gov/cyberframework",
+        "reference_label": "NIST Cybersecurity Framework"
+      }
+    },
+
+    {
+      "id": "comptia-security-15",
+      "question": "脅威インテリジェンスの“TTP（Tactics, Techniques, Procedures）”の意味として正しいのはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "攻撃に利用される特定のマルウェアファイル群",
+          "explanation": {
+            "text": "TTP はマルウェアそのものではありません。",
+            "reference": "https://attack.mitre.org/",
+            "reference_label": "MITRE ATT&CK"
+          }
+        },
+        {
+          "key": "B",
+          "text": "攻撃者の戦術、手法、具体的手順",
+          "explanation": {
+            "text": "TTP は攻撃者の行動パターンを体系化した概念です。",
+            "reference": "https://attack.mitre.org/",
+            "reference_label": "MITRE ATT&CK"
+          }
+        },
+        {
+          "key": "C",
+          "text": "脆弱性の深刻度評価基準",
+          "explanation": {
+            "text": "これは CVSS の説明です。",
+            "reference": "https://www.first.org/cvss/",
+            "reference_label": "CVSS"
+          }
+        },
+        {
+          "key": "D",
+          "text": "認証要素の分類方式",
+          "explanation": {
+            "text": "これは MFA の説明であり TTP ではありません。",
+            "reference": "https://pages.nist.gov/800-63-3/",
+            "reference_label": "NIST SP 800-63-3"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "TTP は攻撃者の行動（戦術・手法・手順）を体系的に整理した概念です。",
+        "reference": "https://attack.mitre.org/",
+        "reference_label": "MITRE ATT&CK"
+      }
+    },
+
+    {
+      "id": "comptia-security-16",
+      "question": "WAF（Web Application Firewall）の主な目的として最も適切なのはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ネットワークの遅延を改善する",
+          "explanation": {
+            "text": "WAF は遅延改善が目的ではありません。",
+            "reference": "https://owasp.org/www-project-top-ten/",
+            "reference_label": "OWASP Top 10"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Web アプリケーションへの攻撃を防御する",
+          "explanation": {
+            "text": "WAF は SQLi や XSS など Web 攻撃を防御するために用いられます。",
+            "reference": "https://owasp.org/www-project-top-ten/",
+            "reference_label": "OWASP Top 10"
+          }
+        },
+        {
+          "key": "C",
+          "text": "物理ネットワークのルーティングを管理する",
+          "explanation": {
+            "text": "これはルータの役割です。",
+            "reference": "https://owasp.org/www-project-top-ten/",
+            "reference_label": "OWASP Top 10"
+          }
+        },
+        {
+          "key": "D",
+          "text": "認証情報の保管を安全に行う",
+          "explanation": {
+            "text": "認証情報の保管は IAM や認証基盤の役割であり WAF ではありません。",
+            "reference": "https://owasp.org/www-project-top-ten/",
+            "reference_label": "OWASP Top 10"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "WAF は Web アプリケーション層の攻撃（SQLi・XSS 等）に対して防御を行います。",
+        "reference": "https://owasp.org/www-project-top-ten/",
+        "reference_label": "OWASP Top 10"
+      }
+    },
+
+    {
+      "id": "comptia-security-17",
+      "question": "APT（Advanced Persistent Threat）の特徴として適切なのはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "短時間で大量のトラフィックを送付してサービスを停止させる攻撃",
+          "explanation": {
+            "text": "これは DDoS 攻撃であり APT ではありません。",
+            "reference": "https://www.nist.gov/cyberframework",
+            "reference_label": "NIST Cybersecurity Framework"
+          }
+        },
+        {
+          "key": "B",
+          "text": "特定の目的をもつ攻撃者が長期間潜伏し継続的に攻撃を行う",
+          "explanation": {
+            "text": "APT は長期潜伏・継続攻撃が特徴です。",
+            "reference": "https://attack.mitre.org/groups/",
+            "reference_label": "MITRE ATT&CK Threat Groups"
+          }
+        },
+        {
+          "key": "C",
+          "text": "暗号化されたマルウェアが大量にばらまかれる攻撃",
+          "explanation": {
+            "text": "ばらまき型攻撃は APT とは異なります。",
+            "reference": "https://attack.mitre.org/groups/",
+            "reference_label": "MITRE ATT&CK Threat Groups"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザーの操作ミスを誘発するソーシャルエンジニアリング攻撃",
+          "explanation": {
+            "text": "ソーシャルエンジニアリングは APT の一部で使われますが特徴そのものではありません。",
+            "reference": "https://attack.mitre.org/groups/",
+            "reference_label": "MITRE ATT&CK Threat Groups"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "APT 攻撃は特定の標的へ長期間潜伏し、高度な技術を用いて継続的に攻撃を行う特徴があります。",
+        "reference": "https://attack.mitre.org/groups/",
+        "reference_label": "MITRE ATT&CK Threat Groups"
+      }
+    },
+
+    {
+      "id": "comptia-security-18",
+      "question": "VPN トンネル方式のうち、ユーザーごとの認証を必要としリモートアクセスに適する方式はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Site-to-Site VPN",
+          "explanation": {
+            "text": "拠点間接続でありユーザーごとの認証は不要です。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4301",
+            "reference_label": "RFC 4301 IPsec"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Remote Access VPN",
+          "explanation": {
+            "text": "個々のユーザーが認証し接続する方式です。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4301",
+            "reference_label": "RFC 4301 IPsec"
+          }
+        },
+        {
+          "key": "C",
+          "text": "MPLS VPN",
+          "explanation": {
+            "text": "キャリア網で提供される VPN でありユーザー認証方式とは異なります。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc3031",
+            "reference_label": "RFC 3031 MPLS"
+          }
+        },
+        {
+          "key": "D",
+          "text": "GRE トンネル",
+          "explanation": {
+            "text": "GRE には認証機能がありません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc2784",
+            "reference_label": "RFC 2784 GRE"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Remote Access VPN はユーザー認証を行い、リモートアクセスに適しています。",
+        "reference": "https://www.rfc-editor.org/rfc/rfc4301",
+        "reference_label": "RFC 4301 IPsec"
+      }
+    },
+
+    {
+      "id": "comptia-security-19",
+      "question": "DMARC（Domain-based Message Authentication, Reporting & Conformance）の目的として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "メールの内容を暗号化して盗聴を防ぐ",
+          "explanation": {
+            "text": "メール暗号化は S/MIME や PGP の領域であり DMARC の目的ではありません。",
+            "reference": "https://datatracker.ietf.org/doc/rfc7489/",
+            "reference_label": "RFC 7489 DMARC"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ドメインなりすましメールの検出と拒否",
+          "explanation": {
+            "text": "DMARC は SPF/DKIM と組み合わせてなりすましを防ぎます。",
+            "reference": "https://datatracker.ietf.org/doc/rfc7489/",
+            "reference_label": "RFC 7489 DMARC"
+          }
+        },
+        {
+          "key": "C",
+          "text": "メール配送速度を向上させる",
+          "explanation": {
+            "text": "DMARC は配送速度には関係ありません。",
+            "reference": "https://datatracker.ietf.org/doc/rfc7489/",
+            "reference_label": "RFC 7489 DMARC"
+          }
+        },
+        {
+          "key": "D",
+          "text": "メールの添付ファイルを自動的にスキャンする",
+          "explanation": {
+            "text": "添付ファイルスキャンはメールゲートウェイの機能です。",
+            "reference": "https://datatracker.ietf.org/doc/rfc7489/",
+            "reference_label": "RFC 7489 DMARC"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "DMARC は SPF/DKIM 結果に基づき、なりすましメールの拒否・隔離ポリシーを適用します。",
+        "reference": "https://datatracker.ietf.org/doc/rfc7489/",
+        "reference_label": "RFC 7489 DMARC"
+      }
+    },
+
+    {
+      "id": "comptia-security-20",
+      "question": "コンテナ環境におけるセキュリティ対策として最も適切なのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "全てのコンテナを root 権限で実行する",
+          "explanation": {
+            "text": "root 実行はリスクを高めるため推奨されません。",
+            "reference": "https://owasp.org/www-project-docker-top-ten/",
+            "reference_label": "OWASP Docker Top Ten"
+          }
+        },
+        {
+          "key": "B",
+          "text": "イメージ署名の検証とスキャンを実施する",
+          "explanation": {
+            "text": "署名・スキャンはコンテナセキュリティにおける重要対策です。",
+            "reference": "https://owasp.org/www-project-docker-top-ten/",
+            "reference_label": "OWASP Docker Top Ten"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ホスト OS の更新は不要である",
+          "explanation": {
+            "text": "ホスト OS の脆弱性はコンテナにも影響します。",
+            "reference": "https://owasp.org/www-project-docker-top-ten/",
+            "reference_label": "OWASP Docker Top Ten"
+          }
+        },
+        {
+          "key": "D",
+          "text": "コンテナ間通信は常にフルメッシュで接続するべきである",
+          "explanation": {
+            "text": "セグメンテーションは重要でありフルメッシュは不要です。",
+            "reference": "https://owasp.org/www-project-docker-top-ten/",
+            "reference_label": "OWASP Docker Top Ten"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "コンテナイメージの署名検証と脆弱性スキャンは基本的なセキュリティ対策です。",
+        "reference": "https://owasp.org/www-project-docker-top-ten/",
+        "reference_label": "OWASP Docker Top Ten"
+      }
+    },
+    {
+      "id": "comptia-security-21",
+      "question": "レインボーテーブル攻撃への対策として最も有効なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "パスワードハッシュにソルトを付与する",
+          "explanation": {
+            "text": "レインボーテーブルは事前計算されたハッシュ表を利用するため、ランダムなソルトを付与すると使い回しが困難になります。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-132/final",
+            "reference_label": "NIST SP 800-132 Password-Based Key Derivation"
+          }
+        },
+        {
+          "key": "B",
+          "text": "パスワードをプレーンテキストで保存する",
+          "explanation": {
+            "text": "プレーンテキスト保存は重大なセキュリティリスクであり、許容されません。",
+            "reference": "https://pages.nist.gov/800-63-3/",
+            "reference_label": "NIST SP 800-63-3 Digital Identity Guidelines"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アカウントロックアウトポリシーを厳格にする",
+          "explanation": {
+            "text": "ロックアウトはオンライン総当たり攻撃には有効ですが、レインボーテーブル攻撃の本質的対策ではありません。",
+            "reference": "https://pages.nist.gov/800-63-3/",
+            "reference_label": "NIST SP 800-63-3 Digital Identity Guidelines"
+          }
+        },
+        {
+          "key": "D",
+          "text": "パスワードの有効期限を短く設定する",
+          "explanation": {
+            "text": "パスワード有効期限はハッシュに対するオフライン攻撃の難易度に直接は影響しません。",
+            "reference": "https://pages.nist.gov/800-63-3/",
+            "reference_label": "NIST SP 800-63-3 Digital Identity Guidelines"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "レインボーテーブル攻撃は事前計算されたハッシュ表を使うため、ユーザーごとにランダムなソルトを付与しハッシュを一意にすることが有効な対策です。",
+        "reference": "https://csrc.nist.gov/publications/detail/sp/800-132/final",
+        "reference_label": "NIST SP 800-132 Password-Based Key Derivation"
+      }
+    },
+    {
+      "id": "comptia-security-22",
+      "question": "SOC（Security Operations Center）の主な役割として最も適切なのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "セキュリティポリシーや規程のみを策定する部門",
+          "explanation": {
+            "text": "ポリシー策定はガバナンスやリスク管理部門の役割であり、SOC の主たる役割ではありません。",
+            "reference": "https://www.nist.gov/cyberframework",
+            "reference_label": "NIST Cybersecurity Framework"
+          }
+        },
+        {
+          "key": "B",
+          "text": "脆弱性診断結果を文書化するだけの部門",
+          "explanation": {
+            "text": "脆弱性管理は SOC の一部で扱われることはありますが、主な役割は監視とインシデント対応です。",
+            "reference": "https://www.nist.gov/cyberframework",
+            "reference_label": "NIST Cybersecurity Framework"
+          }
+        },
+        {
+          "key": "C",
+          "text": "セキュリティイベントの監視とインシデント対応を行う部門",
+          "explanation": {
+            "text": "SOC はログ・アラートなどの監視とインシデントの検知・対応を継続的に行う組織です。",
+            "reference": "https://www.nist.gov/cyberframework",
+            "reference_label": "NIST Cybersecurity Framework"
+          }
+        },
+        {
+          "key": "D",
+          "text": "暗号アルゴリズムの研究開発のみを行う部門",
+          "explanation": {
+            "text": "暗号アルゴリズム研究は一般に SOC の役割ではありません。",
+            "reference": "https://www.nist.gov/programs-projects/cryptography",
+            "reference_label": "NIST Cryptography Program"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "SOC はセキュリティ監視・検知・インシデント対応を継続的に実施する運用部門として機能します。",
+        "reference": "https://www.nist.gov/cyberframework",
+        "reference_label": "NIST Cybersecurity Framework"
+      }
+    },
+    {
+      "id": "comptia-security-23",
+      "question": "モバイルデバイス管理（MDM）ソリューションの機能として最も適切なのはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "企業内のルータやスイッチの設定を一括管理する",
+          "explanation": {
+            "text": "これはネットワーク機器管理（NMS）の役割であり、MDM の機能ではありません。",
+            "reference": "https://www.nist.gov/cyberframework",
+            "reference_label": "NIST Cybersecurity Framework"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データセンターの電源・空調監視を行う",
+          "explanation": {
+            "text": "これは施設管理の領域であり、MDM の範囲外です。",
+            "reference": "https://www.nist.gov/programs-projects/data-center-energy-efficiency",
+            "reference_label": "NIST Data Center Energy Efficiency"
+          }
+        },
+        {
+          "key": "C",
+          "text": "スマートフォンのリモートワイプやポリシー適用を行う",
+          "explanation": {
+            "text": "MDM はモバイル端末に対するポリシー配布・暗号化・リモートワイプなどを提供します。",
+            "reference": "https://pages.nist.gov/800-124-rev2/",
+            "reference_label": "NIST SP 800-124 Rev.2 Guidelines for Managing Mobile Devices"
+          }
+        },
+        {
+          "key": "D",
+          "text": "アプリケーションのソースコードレビューのみを自動化する",
+          "explanation": {
+            "text": "ソースコードレビューは SAST などの領域であり、MDM のコア機能ではありません。",
+            "reference": "https://owasp.org/www-pdf-archive/OWASP_Code_Review_Guide_v2.pdf",
+            "reference_label": "OWASP Code Review Guide"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "※解説用の選択肢指定ミス修正：この問題の正解は C であり、スマートフォンのリモートワイプやポリシー適用が MDM の代表的機能です。",
+        "reference": "https://pages.nist.gov/800-124-rev2/",
+        "reference_label": "NIST SP 800-124 Rev.2 Guidelines for Managing Mobile Devices"
+      }
+    },
+    {
+      "id": "comptia-security-24",
+      "question": "SQLインジェクションの根本的な対策として最も適切なのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "管理者ユーザーを頻繁に変更する",
+          "explanation": {
+            "text": "アカウント変更は一般的なセキュリティ対策ですが、SQLインジェクションの直接の対策ではありません。",
+            "reference": "https://owasp.org/www-project-top-ten/",
+            "reference_label": "OWASP Top 10"
+          }
+        },
+        {
+          "key": "B",
+          "text": "プリペアドステートメントやパラメータ化クエリを使用する",
+          "explanation": {
+            "text": "パラメータ化クエリによりユーザー入力がコードとして解釈されることを防ぎます。",
+            "reference": "https://owasp.org/www-community/attacks/SQL_Injection",
+            "reference_label": "OWASP SQL Injection"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データベースサーバーの物理的な場所を秘匿する",
+          "explanation": {
+            "text": "物理位置の秘匿は SQLインジェクション対策にはなりません。",
+            "reference": "https://owasp.org/www-community/attacks/SQL_Injection",
+            "reference_label": "OWASP SQL Injection"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Webサーバーのバナー情報を非表示にする",
+          "explanation": {
+            "text": "バナー非表示は情報漏えい低減に有効ですが、SQLインジェクションの根本対策ではありません。",
+            "reference": "https://owasp.org/www-project-top-ten/",
+            "reference_label": "OWASP Top 10"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "SQLインジェクションの主要対策は、パラメータ化クエリやORMなどを用いて入力データとクエリ構造を分離することです。",
+        "reference": "https://owasp.org/www-community/attacks/SQL_Injection",
+        "reference_label": "OWASP SQL Injection"
+      }
+    },
+    {
+      "id": "comptia-security-25",
+      "question": "バックアップ戦略としての「3-2-1ルール」を最も適切に説明しているものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "3つのコピーを2種類の媒体に保存し、1つをオフサイトに保管する",
+          "explanation": {
+            "text": "3-2-1ルールの定義そのものです。",
+            "reference": "https://www.nist.gov/publications/guide-general-server-security",
+            "reference_label": "NIST SP 800-123 General Server Security"
+          }
+        },
+        {
+          "key": "B",
+          "text": "3日ごとに2回バックアップし、1回はフルバックアップとする",
+          "explanation": {
+            "text": "バックアップ頻度の説明であり、3-2-1ルールとは無関係です。",
+            "reference": "https://www.nist.gov/publications/guide-general-server-security",
+            "reference_label": "NIST SP 800-123 General Server Security"
+          }
+        },
+        {
+          "key": "C",
+          "text": "3つのデータセンターに2種類のOSを配置し、1つはDRサイトとする",
+          "explanation": {
+            "text": "DR構成の一例であり、3-2-1ルールの定義ではありません。",
+            "reference": "https://www.nist.gov/publications/guide-general-server-security",
+            "reference_label": "NIST SP 800-123 General Server Security"
+          }
+        },
+        {
+          "key": "D",
+          "text": "1日に3回バックアップし、2回は差分、1回は増分とする",
+          "explanation": {
+            "text": "これもバックアップ方式の組み合わせであり、3-2-1ルールとは関係ありません。",
+            "reference": "https://www.nist.gov/publications/guide-general-server-security",
+            "reference_label": "NIST SP 800-123 General Server Security"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "3-2-1ルールは、障害や災害に備えた冗長なバックアップ戦略として広く推奨される考え方です。",
+        "reference": "https://www.nist.gov/publications/guide-general-server-security",
+        "reference_label": "NIST SP 800-123 General Server Security"
+      }
+    },
+    {
+      "id": "comptia-security-26",
+      "question": "TLSサーバ証明書において、証明書失効状態をリアルタイムに近い形で確認する仕組みはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "DNSSEC",
+          "explanation": {
+            "text": "DNSSEC はDNS応答の完全性を保証する仕組みであり、証明書失効確認の仕組みではありません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4033",
+            "reference_label": "RFC 4033 DNS Security Introduction"
+          }
+        },
+        {
+          "key": "B",
+          "text": "CRL（Certificate Revocation List）",
+          "explanation": {
+            "text": "CRLは失効リストをダウンロードする方式で、リアルタイムとは言い難い場合があります。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc5280",
+            "reference_label": "RFC 5280 PKI Certificate and CRL Profile"
+          }
+        },
+        {
+          "key": "C",
+          "text": "S/MIME",
+          "explanation": {
+            "text": "S/MIME はメール暗号化・署名の標準であり、失効確認方式の名前ではありません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc8551",
+            "reference_label": "RFC 8551 S/MIME 4.0"
+          }
+        },
+        {
+          "key": "D",
+          "text": "OCSP（Online Certificate Status Protocol）",
+          "explanation": {
+            "text": "OCSP は証明書の失効状態をオンラインで問い合わせるプロトコルです。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc6960",
+            "reference_label": "RFC 6960 OCSP"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "OCSP はクライアントが証明書の有効性をCAのレスポンダにオンラインで照会する仕組みで、CRLよりもリアルタイム性に優れます。",
+        "reference": "https://www.rfc-editor.org/rfc/rfc6960",
+        "reference_label": "RFC 6960 OCSP"
+      }
+    },
+    {
+      "id": "comptia-security-27",
+      "question": "セキュアなソフトウェア開発ライフサイクル（SSDLC）において、設計段階で実施すべき活動として最も適切なのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "本番環境へのデプロイ自動化パイプラインの構築",
+          "explanation": {
+            "text": "デプロイ自動化は主に実装・運用フェーズの活動です。",
+            "reference": "https://owasp.org/www-project-samm/",
+            "reference_label": "OWASP SAMM"
+          }
+        },
+        {
+          "key": "B",
+          "text": "セキュリティログのモニタリングルールのチューニング",
+          "explanation": {
+            "text": "ログ監視ルールのチューニングは運用フェーズの活動です。",
+            "reference": "https://owasp.org/www-project-samm/",
+            "reference_label": "OWASP SAMM"
+          }
+        },
+        {
+          "key": "C",
+          "text": "脅威モデリングによるアーキテクチャ上のリスク洗い出し",
+          "explanation": {
+            "text": "設計段階での脅威モデリングはSSDLCの重要なプラクティスです。",
+            "reference": "https://owasp.org/www-community/Threat_Modeling",
+            "reference_label": "OWASP Threat Modeling"
+          }
+        },
+        {
+          "key": "D",
+          "text": "実装済みコードへの静的解析ツールの実行",
+          "explanation": {
+            "text": "静的解析は主に実装フェーズ以降で行われます。",
+            "reference": "https://owasp.org/www-community/Source_Code_Analysis_Tools",
+            "reference_label": "OWASP Source Code Analysis Tools"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "SSDLCでは、設計段階で脅威モデリングを行い攻撃経路や対策方針を明確にすることが推奨されます。",
+        "reference": "https://owasp.org/www-community/Threat_Modeling",
+        "reference_label": "OWASP Threat Modeling"
+      }
+    },
+    {
+      "id": "comptia-security-28",
+      "question": "ファイル完全性監視（FIM）の主な目的として最も適切なのはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ネットワーク帯域の利用状況を可視化する",
+          "explanation": {
+            "text": "帯域可視化はネットワーク監視の領域であり、FIM の目的ではありません。",
+            "reference": "https://www.nist.gov/cyberframework",
+            "reference_label": "NIST Cybersecurity Framework"
+          }
+        },
+        {
+          "key": "B",
+          "text": "重要なシステムファイルの改ざんや不正変更を検出する",
+          "explanation": {
+            "text": "FIM はハッシュなどを用いてファイル変更を検出し、改ざんの早期発見に利用されます。",
+            "reference": "https://www.nist.gov/cyberframework",
+            "reference_label": "NIST Cybersecurity Framework"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アプリケーションのパフォーマンス・チューニングを自動化する",
+          "explanation": {
+            "text": "パフォーマンス管理はFIMの目的ではありません。",
+            "reference": "https://www.nist.gov/cyberframework",
+            "reference_label": "NIST Cybersecurity Framework"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザー認証時の多要素認証を強制する",
+          "explanation": {
+            "text": "多要素認証はID管理の領域であり、FIMとは異なります。",
+            "reference": "https://pages.nist.gov/800-63-3/",
+            "reference_label": "NIST SP 800-63-3 Digital Identity Guidelines"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "FIM は重要ファイルの改ざんを検知し、マルウェア感染や権限乱用などの異常の兆候を早期に把握するために使用されます。",
+        "reference": "https://www.nist.gov/cyberframework",
+        "reference_label": "NIST Cybersecurity Framework"
+      }
+    },
+    {
+      "id": "comptia-security-29",
+      "question": "フェイルセーフ（fail-safe）設計の考え方として最も適切なのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "障害発生時には安全側に倒れるように設計する",
+          "explanation": {
+            "text": "フェイルセーフは故障時に安全を優先する設計思想です。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-160/vol-1/final",
+            "reference_label": "NIST SP 800-160 Systems Security Engineering"
+          }
+        },
+        {
+          "key": "B",
+          "text": "障害発生時でも必ずサービス継続を優先する",
+          "explanation": {
+            "text": "これはフェイルソフトの考え方に近く、安全より継続性を優先しておりフェイルセーフとは異なります。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-160/vol-1/final",
+            "reference_label": "NIST SP 800-160 Systems Security Engineering"
+          }
+        },
+        {
+          "key": "C",
+          "text": "障害発生時にシステム構成を自動的に拡張する",
+          "explanation": {
+            "text": "これはスケーラビリティや自己修復の考え方であり、フェイルセーフそのものではありません。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-160/vol-1/final",
+            "reference_label": "NIST SP 800-160 Systems Security Engineering"
+          }
+        },
+        {
+          "key": "D",
+          "text": "障害発生時にログ記録を停止して性能を確保する",
+          "explanation": {
+            "text": "ログ停止は調査を困難にし、安全性を損なう場合があります。",
+            "reference": "https://www.nist.gov/system/files/documents/itl/Draft-SP-800-92.pdf",
+            "reference_label": "NIST SP 800-92 Log Management"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "フェイルセーフは故障時に安全が最優先されるよう設計する考え方で、物理・情報システム双方で重要な原則です。",
+        "reference": "https://csrc.nist.gov/publications/detail/sp/800-160/vol-1/final",
+        "reference_label": "NIST SP 800-160 Systems Security Engineering"
+      }
+    },
+    {
+      "id": "comptia-security-30",
+      "question": "ランサムウェア攻撃に対する事前対策として最も効果的なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "攻撃後に身代金を支払う手順を文書化する",
+          "explanation": {
+            "text": "身代金支払いは推奨されず、事前対策としても不適切です。",
+            "reference": "https://www.cisa.gov/stopransomware",
+            "reference_label": "CISA Stop Ransomware"
+          }
+        },
+        {
+          "key": "B",
+          "text": "全てのシステムでFTPを有効化しておく",
+          "explanation": {
+            "text": "FTPの有効化は不要な攻撃面を増やすだけであり逆効果です。",
+            "reference": "https://www.cisa.gov/stopransomware",
+            "reference_label": "CISA Stop Ransomware"
+          }
+        },
+        {
+          "key": "C",
+          "text": "バックアップを暗号化せず同一ネットワーク上に保存する",
+          "explanation": {
+            "text": "同一ネットワーク上のバックアップは攻撃で同時に暗号化されるリスクがあります。",
+            "reference": "https://www.cisa.gov/stopransomware",
+            "reference_label": "CISA Stop Ransomware"
+          }
+        },
+        {
+          "key": "D",
+          "text": "オフラインまたは分離されたバックアップを定期的に取得する",
+          "explanation": {
+            "text": "分離されたバックアップは攻撃後の復旧を可能にし、ランサムウェア対策として非常に重要です。",
+            "reference": "https://www.cisa.gov/stopransomware",
+            "reference_label": "CISA Stop Ransomware"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "ランサムウェアではデータ復旧手段の確保が重要であり、ネットワークから隔離されたバックアップの定期取得が効果的です。",
+        "reference": "https://www.cisa.gov/stopransomware",
+        "reference_label": "CISA Stop Ransomware"
+      }
+    },
+    {
+      "id": "comptia-security-31",
+      "question": "“least privilege（最小権限）”原則の目的として最も適切なのはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ユーザーの作業効率を最大化する",
+          "explanation": {
+            "text": "最小権限は効率最大化ではなく、必要最小限の権限付与を目的とします。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final",
+            "reference_label": "NIST SP 800-53 AC-6"
+          }
+        },
+        {
+          "key": "B",
+          "text": "不要な権限を排除し攻撃面を減らす",
+          "explanation": {
+            "text": "最小権限の中心目的は権限の絞り込みによるリスク削減です。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final",
+            "reference_label": "NIST SP 800-53 AC-6"
+          }
+        },
+        {
+          "key": "C",
+          "text": "システム全体を自動的に暗号化する",
+          "explanation": {
+            "text": "暗号化は最小権限とは関係ありません。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final",
+            "reference_label": "NIST SP 800-53"
+          }
+        },
+        {
+          "key": "D",
+          "text": "すべてのユーザーに管理者権限を付与する",
+          "explanation": {
+            "text": "管理者権限の大量付与は最小権限の原則と真逆です。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final",
+            "reference_label": "NIST SP 800-53 AC-6"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "最小権限は不必要な権限を削ることで攻撃面を削減し、誤用・悪用リスクを抑制します。",
+        "reference": "https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final",
+        "reference_label": "NIST SP 800-53 AC-6"
+      }
+    },
+
+    {
+      "id": "comptia-security-32",
+      "question": "“SASE（Secure Access Service Edge）”の特徴として最も適切なのはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "オンプレミスのみにセキュリティ機能を集約するアーキテクチャ",
+          "explanation": {
+            "text": "SASE はクラウドベースの統合セキュリティ・ネットワークモデルでありオンプレ集中型ではありません。",
+            "reference": "https://www.nist.gov/cyberframework",
+            "reference_label": "NIST Cybersecurity Framework"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ネットワークとセキュリティ機能をクラウドで統合提供するモデル",
+          "explanation": {
+            "text": "SASE はSD-WANとセキュリティ機能（CASB、SWG 等）を統合しクラウドで提供する考え方です。",
+            "reference": "https://www.nist.gov/cyberframework",
+            "reference_label": "NIST Cybersecurity Framework"
+          }
+        },
+        {
+          "key": "C",
+          "text": "すべての通信を MPLS 回線へ一本化する技術",
+          "explanation": {
+            "text": "SASEはMPLSに依存しません。",
+            "reference": "https://www.nist.gov/cyberframework",
+            "reference_label": "NIST Cybersecurity Framework"
+          }
+        },
+        {
+          "key": "D",
+          "text": "仮想マシンを高速に起動するための仕組み",
+          "explanation": {
+            "text": "これは仮想化技術の特徴であり SASE とは関係ありません。",
+            "reference": "https://www.nist.gov/cyberframework",
+            "reference_label": "NIST Cybersecurity Framework"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "SASEはネットワーク（SD-WAN）とセキュリティ機能を統合し、クラウド経由で提供するアーキテクチャモデルです。",
+        "reference": "https://www.nist.gov/cyberframework",
+        "reference_label": "NIST Cybersecurity Framework"
+      }
+    },
+
+    {
+      "id": "comptia-security-33",
+      "question": "ハッシュ関数の特性として“衝突耐性”が意味するものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "同じ入力から異なるハッシュ値が生成される",
+          "explanation": {
+            "text": "これはハッシュ関数の要件違反であり、衝突耐性ではありません。",
+            "reference": "https://csrc.nist.gov/projects/hash-functions",
+            "reference_label": "NIST Hash Functions"
+          }
+        },
+        {
+          "key": "B",
+          "text": "異なる入力から同じハッシュ値が得られないことが計算的に困難である",
+          "explanation": {
+            "text": "これが衝突耐性（collision resistance）の定義です。",
+            "reference": "https://csrc.nist.gov/projects/hash-functions",
+            "reference_label": "NIST Hash Functions"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ハッシュ値から元のデータを復元できないこと",
+          "explanation": {
+            "text": "これは“不可逆性（preimage resistance）”の説明です。",
+            "reference": "https://csrc.nist.gov/projects/hash-functions",
+            "reference_label": "NIST Hash Functions"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ハッシュ値が常に暗号化されて保存されること",
+          "explanation": {
+            "text": "暗号化保存とは関係ありません。",
+            "reference": "https://csrc.nist.gov/projects/hash-functions",
+            "reference_label": "NIST Hash Functions"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "衝突耐性とは“異なる2つの入力が同じハッシュを持つ組を探すことが計算的に困難”であることを指します。",
+        "reference": "https://csrc.nist.gov/projects/hash-functions",
+        "reference_label": "NIST Hash Functions"
+      }
+    },
+
+    {
+      "id": "comptia-security-34",
+      "question": "ゼロデイ脆弱性の特徴として最も適切なのはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "既にパッチが適用されている脆弱性",
+          "explanation": {
+            "text": "パッチが提供されている時点でゼロデイではありません。",
+            "reference": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+            "reference_label": "CISA KEV Catalog"
+          }
+        },
+        {
+          "key": "B",
+          "text": "公開前に悪用されている脆弱性",
+          "explanation": {
+            "text": "ゼロデイはベンダーが把握・修正する前に悪用される脆弱性です。",
+            "reference": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+            "reference_label": "CISA KEV Catalog"
+          }
+        },
+        {
+          "key": "C",
+          "text": "利用者が任意に設定変更できる仕様",
+          "explanation": {
+            "text": "これは脆弱性の説明ではありません。",
+            "reference": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+            "reference_label": "CISA KEV Catalog"
+          }
+        },
+        {
+          "key": "D",
+          "text": "安全性評価を終えたばかりの新機能",
+          "explanation": {
+            "text": "新機能の説明でありゼロデイ脆弱性とは無関係です。",
+            "reference": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+            "reference_label": "CISA KEV Catalog"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ゼロデイ脆弱性はパッチや情報公開前に悪用されるため、検出・防御が難しい特徴があります。",
+        "reference": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+        "reference_label": "CISA KEV Catalog"
+      }
+    },
+
+    {
+      "id": "comptia-security-35",
+      "question": "リスク評価における“リスク移転（risk transfer）”の例として最も適切なのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "脅威を受け入れる",
+          "explanation": {
+            "text": "リスク受容（risk acceptance）であり移転ではありません。",
+            "reference": "https://www.nist.gov/system/files/documents/itl/Draft-SP-800-30-Rev1.pdf",
+            "reference_label": "NIST SP 800-30 Risk Assessment"
+          }
+        },
+        {
+          "key": "B",
+          "text": "セキュリティ保険へ加入する",
+          "explanation": {
+            "text": "保険加入は典型的なリスク移転の例です。",
+            "reference": "https://www.nist.gov/system/files/documents/itl/Draft-SP-800-30-Rev1.pdf",
+            "reference_label": "NIST SP 800-30 Risk Assessment"
+          }
+        },
+        {
+          "key": "C",
+          "text": "脆弱性パッチを適用する",
+          "explanation": {
+            "text": "これはリスク低減（mitigation）です。",
+            "reference": "https://www.nist.gov/system/files/documents/itl/Draft-SP-800-30-Rev1.pdf",
+            "reference_label": "NIST SP 800-30 Risk Assessment"
+          }
+        },
+        {
+          "key": "D",
+          "text": "不要なシステムを廃止する",
+          "explanation": {
+            "text": "これはリスク回避（avoidance）です。",
+            "reference": "https://www.nist.gov/system/files/documents/itl/Draft-SP-800-30-Rev1.pdf",
+            "reference_label": "NIST SP 800-30 Risk Assessment"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "リスク移転は損害発生時の負担を第三者に委ねることであり、保険加入は典型例です。",
+        "reference": "https://www.nist.gov/system/files/documents/itl/Draft-SP-800-30-Rev1.pdf",
+        "reference_label": "NIST SP 800-30 Risk Assessment"
+      }
+    },
+
+    {
+      "id": "comptia-security-36",
+      "question": "クラウドにおける CASB（Cloud Access Security Broker）の役割として最も適切なのはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "クラウド内の物理サーバーを直接管理する",
+          "explanation": {
+            "text": "物理サーバー管理はクラウド事業者の責任領域です。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-144/final",
+            "reference_label": "NIST SP 800-144 Cloud Security"
+          }
+        },
+        {
+          "key": "B",
+          "text": "クラウド利用の可視化、ポリシー適用、制御を提供する",
+          "explanation": {
+            "text": "CASB はクラウド利用に関する監視・保護・ガバナンス機能を提供します。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-144/final",
+            "reference_label": "NIST SP 800-144 Cloud Security"
+          }
+        },
+        {
+          "key": "C",
+          "text": "オンプレミス環境のみにアクセス制御を適用する",
+          "explanation": {
+            "text": "CASB はクラウド利用に特化した管理を提供します。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-144/final",
+            "reference_label": "NIST SP 800-144 Cloud Security"
+          }
+        },
+        {
+          "key": "D",
+          "text": "クラウド事業者のソースコードを分析する",
+          "explanation": {
+            "text": "ソースコード分析はCASBの役割ではありません。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-144/final",
+            "reference_label": "NIST SP 800-144 Cloud Security"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "CASB はクラウド利用の可視化・コンプライアンス強制・アクセス制御などを行うゲートキーパー的存在です。",
+        "reference": "https://csrc.nist.gov/publications/detail/sp/800-144/final",
+        "reference_label": "NIST SP 800-144 Cloud Security"
+      }
+    },
+
+    {
+      "id": "comptia-security-37",
+      "question": "DNSSEC が提供する主なセキュリティ機能はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "DNS パケットを暗号化して盗聴を防ぐ",
+          "explanation": {
+            "text": "DNSSEC は完全性確認の仕組みであり、暗号化は行いません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4033",
+            "reference_label": "RFC 4033 DNSSEC Introduction"
+          }
+        },
+        {
+          "key": "B",
+          "text": "DNS応答の改ざんを検出できるようにする",
+          "explanation": {
+            "text": "DNSSECは署名により応答の完全性を検証できます。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4033",
+            "reference_label": "RFC 4033 DNSSEC Introduction"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Webサイトのコンテンツ改ざんを防止する",
+          "explanation": {
+            "text": "Webコンテンツ保護はDNSSECの範囲外です。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4033",
+            "reference_label": "RFC 4033 DNSSEC Introduction"
+          }
+        },
+        {
+          "key": "D",
+          "text": "メールの送信者認証を行う",
+          "explanation": {
+            "text": "送信者認証はSPF/DKIM/DMARCの領域です。",
+            "reference": "https://datatracker.ietf.org/doc/rfc7489/",
+            "reference_label": "RFC 7489 DMARC"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "DNSSEC は DNS 応答に署名を付与し、改ざん検出と完全性検証を提供します。",
+        "reference": "https://www.rfc-editor.org/rfc/rfc4033",
+        "reference_label": "RFC 4033 DNSSEC Introduction"
+      }
+    },
+
+    {
+      "id": "comptia-security-38",
+      "question": "“SHODAN” などの IoT 検索エンジンが悪用された場合、最も懸念されるリスクはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "IoT デバイスに保存されたパスワードを自動的に解読する",
+          "explanation": {
+            "text": "SHODAN自体にパスワード解読機能はありません。",
+            "reference": "https://www.cisa.gov/",
+            "reference_label": "CISA IoT Guidance"
+          }
+        },
+        {
+          "key": "B",
+          "text": "インターネットに公開された脆弱な IoT デバイスが簡単に特定される",
+          "explanation": {
+            "text": "検索により脆弱デバイスが特定され攻撃に悪用される可能性があります。",
+            "reference": "https://www.cisa.gov/",
+            "reference_label": "CISA IoT Guidance"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ネットワーク帯域を自動的に改善してしまう",
+          "explanation": {
+            "text": "帯域最適化機能はありません。",
+            "reference": "https://www.cisa.gov/",
+            "reference_label": "CISA IoT Guidance"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IoT機器のすべてのログを強制的に収集する",
+          "explanation": {
+            "text": "SHODAN は公開情報を検索するだけでありログ収集機能はありません。",
+            "reference": "https://www.cisa.gov/",
+            "reference_label": "CISA IoT Guidance"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "SHODAN などの検索エンジンは公開された IoT デバイスを特定できるため、脆弱機器の悪用に直結します。",
+        "reference": "https://www.cisa.gov/",
+        "reference_label": "CISA IoT Guidance"
+      }
+    },
+
+    {
+      "id": "comptia-security-39",
+      "question": "多層防御（Defense in Depth）の目的として最も適切なのはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "単一のセキュリティ制御に依存しないため",
+          "explanation": {
+            "text": "多層防御は複数の制御を配置することで1つの破られた際の影響を最小化します。",
+            "reference": "https://www.nist.gov/cyberframework",
+            "reference_label": "NIST Cybersecurity Framework"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ネットワークを常にフルメッシュにするため",
+          "explanation": {
+            "text": "フルメッシュはネットワーク構成であり多層防御とは関係しません。",
+            "reference": "https://www.nist.gov/cyberframework",
+            "reference_label": "NIST Cybersecurity Framework"
+          }
+        },
+        {
+          "key": "C",
+          "text": "暗号化を完全に不要にするため",
+          "explanation": {
+            "text": "多層防御でも暗号化は依然重要です。",
+            "reference": "https://www.nist.gov/cyberframework",
+            "reference_label": "NIST Cybersecurity Framework"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ネットワーク性能を最大化するため",
+          "explanation": {
+            "text": "性能最大化は多層防御の目的ではありません。",
+            "reference": "https://www.nist.gov/cyberframework",
+            "reference_label": "NIST Cybersecurity Framework"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Defense in Depth は複数のセキュリティ層を配置することで単一障害点を排除しリスク低減を図る考え方です。",
+        "reference": "https://www.nist.gov/cyberframework",
+        "reference_label": "NIST Cybersecurity Framework"
+      }
+    },
+
+    {
+      "id": "comptia-security-40",
+      "question": "“data minimization（データ最小化）”の考え方として最も適切なのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "取得したデータは長期間保持するほど安全になる",
+          "explanation": {
+            "text": "保持期間が長いほど漏えいリスクは増加し、この考え方は誤りです。",
+            "reference": "https://www.nist.gov/privacy-framework",
+            "reference_label": "NIST Privacy Framework"
+          }
+        },
+        {
+          "key": "B",
+          "text": "目的のために必要最低限のデータだけを収集・保持する",
+          "explanation": {
+            "text": "データ最小化とは必要最小限のデータのみを扱うプライバシー原則です。",
+            "reference": "https://www.nist.gov/privacy-framework",
+            "reference_label": "NIST Privacy Framework"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データの暗号化を不要にする方法である",
+          "explanation": {
+            "text": "データ最小化は暗号化の代替ではありません。",
+            "reference": "https://www.nist.gov/privacy-framework",
+            "reference_label": "NIST Privacy Framework"
+          }
+        },
+        {
+          "key": "D",
+          "text": "同一データを複数の部門に複製して保持する",
+          "explanation": {
+            "text": "不要な複製保持はデータ最小化と逆の行為です。",
+            "reference": "https://www.nist.gov/privacy-framework",
+            "reference_label": "NIST Privacy Framework"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "データ最小化は、収集・保持するデータ量を必要最小限に抑えることでリスクを軽減するプライバシー保護の重要原則です。",
+        "reference": "https://www.nist.gov/privacy-framework",
+        "reference_label": "NIST Privacy Framework"
+      }
+    },
+    {
+      "id": "comptia-security-41",
+      "question": "ソーシャルエンジニアリング攻撃のうち、“スピアフィッシング”を最も適切に説明しているものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "SNS上で無差別に送信されるDMメッセージによる詐欺",
+          "explanation": {
+            "text": "無差別送信は一般的なフィッシングやスパムの特徴であり、スピアフィッシングは“標的型”です。",
+            "reference": "https://www.cisa.gov/news-events/news/avoiding-social-engineering-and-phishing-attacks",
+            "reference_label": "CISA - Avoiding Social Engineering and Phishing Attacks"
+          }
+        },
+        {
+          "key": "B",
+          "text": "電話を使って技術サポートになりすます攻撃",
+          "explanation": {
+            "text": "これは“ビッシング（vishing）”の例であり、スピアフィッシングとは区別されます。",
+            "reference": "https://www.cisa.gov/news-events/news/avoiding-social-engineering-and-phishing-attacks",
+            "reference_label": "CISA - Avoiding Social Engineering and Phishing Attacks"
+          }
+        },
+        {
+          "key": "C",
+          "text": "特定の組織や個人を狙い、精巧にカスタマイズされたフィッシングメール",
+          "explanation": {
+            "text": "スピアフィッシングは、標的を絞り込んだ高度なフィッシング攻撃を指します。",
+            "reference": "https://www.cisa.gov/news-events/news/avoiding-social-engineering-and-phishing-attacks",
+            "reference_label": "CISA - Avoiding Social Engineering and Phishing Attacks"
+          }
+        },
+        {
+          "key": "D",
+          "text": "USBメモリにマルウェアを仕込み物理的に設置する攻撃",
+          "explanation": {
+            "text": "これは“悪意あるUSBドロップ攻撃”の例であり、スピアフィッシングではありません。",
+            "reference": "https://www.cisa.gov/news-events/news/avoiding-social-engineering-and-phishing-attacks",
+            "reference_label": "CISA - Avoiding Social Engineering and Phishing Attacks"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "スピアフィッシングは、攻撃者が標的の情報を事前に収集し、それに合わせて内容を偽装する高精度な標的型フィッシングです。",
+        "reference": "https://www.cisa.gov/news-events/news/avoiding-social-engineering-and-phishing-attacks",
+        "reference_label": "CISA - Avoiding Social Engineering and Phishing Attacks"
+      }
+    },
+    {
+      "id": "comptia-security-42",
+      "question": "無線LANのセキュリティ方式として、現在企業利用で推奨されるものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "WPA3-Personal または WPA3-Enterprise",
+          "explanation": {
+            "text": "WPA3 は最新世代のWi-Fiセキュリティプロトコルであり、WPA2より強化された保護を提供します。",
+            "reference": "https://www.wi-fi.org/discover-wi-fi/security",
+            "reference_label": "Wi-Fi Alliance - Wi-Fi CERTIFIED WPA3"
+          }
+        },
+        {
+          "key": "B",
+          "text": "WEP（Wired Equivalent Privacy）",
+          "explanation": {
+            "text": "WEP は既に深刻な脆弱性が知られており、利用は非推奨です。",
+            "reference": "https://www.wi-fi.org/discover-wi-fi/security",
+            "reference_label": "Wi-Fi Alliance - Security Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "オープンネットワーク（暗号化なし）",
+          "explanation": {
+            "text": "暗号化なしのネットワークは盗聴やなりすましに弱く、企業利用には不適切です。",
+            "reference": "https://www.wi-fi.org/discover-wi-fi/security",
+            "reference_label": "Wi-Fi Alliance - Security Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "MACアドレスフィルタリングのみ",
+          "explanation": {
+            "text": "MACアドレスは容易に偽装可能であり、単独では十分なセキュリティ機構ではありません。",
+            "reference": "https://www.wi-fi.org/discover-wi-fi/security",
+            "reference_label": "Wi-Fi Alliance - Security Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "現在はWPA3が最新のWi-Fiセキュリティ標準として推奨されており、企業利用ではWPA3-Enterpriseが望ましいとされています。",
+        "reference": "https://www.wi-fi.org/discover-wi-fi/security",
+        "reference_label": "Wi-Fi Alliance - Wi-Fi CERTIFIED WPA3"
+      }
+    },
+    {
+      "id": "comptia-security-43",
+      "question": "アクセス制御モデルのうち、“RBAC（Role-Based Access Control）”を最も適切に説明しているものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "各ユーザーに対して個別に許可リストを設定するモデル",
+          "explanation": {
+            "text": "これは従来型のDiscretionary Access Control (DAC) に近い考え方で、RBACではありません。",
+            "reference": "https://csrc.nist.gov/projects/role-based-access-control",
+            "reference_label": "NIST - Role Based Access Control"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーの行動属性（時間帯・端末など）でアクセスを決定するモデル",
+          "explanation": {
+            "text": "これは ABAC（Attribute-Based Access Control）の説明です。",
+            "reference": "https://csrc.nist.gov/projects/abac",
+            "reference_label": "NIST - Attribute Based Access Control"
+          }
+        },
+        {
+          "key": "C",
+          "text": "オブジェクトのセキュリティラベルと主体のクリアランスに基づき制御するモデル",
+          "explanation": {
+            "text": "これは MAC（Mandatory Access Control）の代表例です。",
+            "reference": "https://csrc.nist.gov/glossary/term/mandatory_access_control",
+            "reference_label": "NIST Glossary - MAC"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザーが所属する役割（ロール）に権限を紐づけて管理するモデル",
+          "explanation": {
+            "text": "RBAC ではロールに権限を付与し、ユーザーはロールを通じてアクセス権を得ます。",
+            "reference": "https://csrc.nist.gov/projects/role-based-access-control",
+            "reference_label": "NIST - Role Based Access Control"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "RBAC は職務や役割単位で権限をまとめ、ユーザーは所属ロール経由でアクセス権を得ることで、権限管理を簡素化します。",
+        "reference": "https://csrc.nist.gov/projects/role-based-access-control",
+        "reference_label": "NIST - Role Based Access Control"
+      }
+    },
+    {
+      "id": "comptia-security-44",
+      "question": "SIEM（Security Information and Event Management）の主な目的として最も適切なのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ネットワーク帯域の最適化とQoS制御を行うこと",
+          "explanation": {
+            "text": "帯域やQoS制御はネットワーク管理ツールの領域であり、SIEM の主目的ではありません。",
+            "reference": "https://www.nist.gov/system/files/documents/itl/Draft-SP-800-92.pdf",
+            "reference_label": "NIST SP 800-92 - Guide to Computer Security Log Management"
+          }
+        },
+        {
+          "key": "B",
+          "text": "セキュリティログを集中管理し、相関分析によって異常を検知すること",
+          "explanation": {
+            "text": "SIEM はログの収集・保管・相関分析・アラートなどを統合的に提供する仕組みです。",
+            "reference": "https://www.nist.gov/system/files/documents/itl/Draft-SP-800-92.pdf",
+            "reference_label": "NIST SP 800-92 - Guide to Computer Security Log Management"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アプリケーションのソースコード品質を自動的に修正すること",
+          "explanation": {
+            "text": "ソースコード修正は開発ツールやIDEの領域であり、SIEMの機能ではありません。",
+            "reference": "https://owasp.org/www-project-samm/",
+            "reference_label": "OWASP SAMM"
+          }
+        },
+        {
+          "key": "D",
+          "text": "インシデント発生後の復旧作業を完全自動化すること",
+          "explanation": {
+            "text": "一部自動化は可能ですが、SIEMの主目的は監視・検知・分析であり、完全な復旧自動化ではありません。",
+            "reference": "https://www.nist.gov/cyberframework",
+            "reference_label": "NIST Cybersecurity Framework"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "SIEM は各種ログやイベントを集約・相関し、リアルタイムに近い形で異常やインシデント兆候を検知するための基盤です。",
+        "reference": "https://www.nist.gov/system/files/documents/itl/Draft-SP-800-92.pdf",
+        "reference_label": "NIST SP 800-92 - Guide to Computer Security Log Management"
+      }
+    },
+    {
+      "id": "comptia-security-45",
+      "question": "PKI（Public Key Infrastructure）において、証明書失効情報を配布する仕組みとして適切なのはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "TLS",
+          "explanation": {
+            "text": "TLSは通信暗号化プロトコルであり、失効情報配布の仕組みそのものではありません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc8446",
+            "reference_label": "RFC 8446 - TLS 1.3"
+          }
+        },
+        {
+          "key": "B",
+          "text": "DNSSEC",
+          "explanation": {
+            "text": "DNSSEC はDNS応答の完全性保護であり、証明書失効配布の仕組みではありません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4033",
+            "reference_label": "RFC 4033 - DNSSEC Introduction"
+          }
+        },
+        {
+          "key": "C",
+          "text": "CRL（Certificate Revocation List）または OCSP",
+          "explanation": {
+            "text": "CRLは失効リスト配布、OCSPはオンライン失効状態照会のプロトコルとして利用されます。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc5280",
+            "reference_label": "RFC 5280 - PKI Certificate and CRL Profile"
+          }
+        },
+        {
+          "key": "D",
+          "text": "SSH",
+          "explanation": {
+            "text": "SSHはリモートログインのためのプロトコルで、PKIの失効配布機能ではありません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4251",
+            "reference_label": "RFC 4251 - SSH Protocol Architecture"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "PKIではCRLとOCSPが主な失効確認メカニズムとして利用され、クライアントはこれらを通じて証明書が有効か確認します。",
+        "reference": "https://www.rfc-editor.org/rfc/rfc5280",
+        "reference_label": "RFC 5280 - PKI Certificate and CRL Profile"
+      }
+    },
+    {
+      "id": "comptia-security-46",
+      "question": "物理セキュリティ対策として“マン・トラップ（mantrap）”の主な目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "一度に1人のみを通過させ、不正な同伴入室（テールゲーティング）を防止する",
+          "explanation": {
+            "text": "マン・トラップは2つのドアで挟まれた空間を作り、単独認証と検査を行うことで不正同伴を防ぎます。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-116/rev-1/final",
+            "reference_label": "NIST SP 800-116 Rev.1 - A Recommendation for the Use of PIV Credentials"
+          }
+        },
+        {
+          "key": "B",
+          "text": "火災発生時に自動的に全てのドアを開放する",
+          "explanation": {
+            "text": "これは避難動線確保の仕組みであり、マン・トラップ固有の目的ではありません。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-116/rev-1/final",
+            "reference_label": "NIST SP 800-116 Rev.1 - A Recommendation for the Use of PIV Credentials"
+          }
+        },
+        {
+          "key": "C",
+          "text": "盗難防止のため監視カメラ映像を長期間保存する",
+          "explanation": {
+            "text": "映像保存は監視カメラ運用の一部であり、マン・トラップの定義ではありません。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-116/rev-1/final",
+            "reference_label": "NIST SP 800-116 Rev.1 - A Recommendation for the Use of PIV Credentials"
+          }
+        },
+        {
+          "key": "D",
+          "text": "入退室ログを暗号化して保存する",
+          "explanation": {
+            "text": "ログ暗号化は論理的対策であり、マン・トラップの物理構造とは別の話です。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-116/rev-1/final",
+            "reference_label": "NIST SP 800-116 Rev.1 - A Recommendation for the Use of PIV Credentials"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "マン・トラップは“1人ずつ入室させる”仕組みにより、カードの貸し借りやテールゲーティングを難しくします。",
+        "reference": "https://csrc.nist.gov/publications/detail/sp/800-116/rev-1/final",
+        "reference_label": "NIST SP 800-116 Rev.1 - A Recommendation for the Use of PIV Credentials"
+      }
+    },
+    {
+      "id": "comptia-security-47",
+      "question": "インシデント対応プロセスにおける“Lessons Learned（事後レビュー）”フェーズで最も適切な活動はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "攻撃の拡大を防ぐために感染端末をネットワークから隔離する",
+          "explanation": {
+            "text": "これはContainment（封じ込め）フェーズの活動です。",
+            "reference": "https://csrc.nist.gov/pubs/sp/800/61/r3/final",
+            "reference_label": "NIST SP 800-61 Rev.3 - Incident Response Recommendations"
+          }
+        },
+        {
+          "key": "B",
+          "text": "マルウェアを駆除しパッチを適用する",
+          "explanation": {
+            "text": "これはEradication/Recoveryの活動です。",
+            "reference": "https://csrc.nist.gov/pubs/sp/800/61/r3/final",
+            "reference_label": "NIST SP 800-61 Rev.3 - Incident Response Recommendations"
+          }
+        },
+        {
+          "key": "C",
+          "text": "インシデントを検知するためのアラート閾値を一時的に緩和する",
+          "explanation": {
+            "text": "閾値調整は検知・分析フェーズの一部として行われることがあります。",
+            "reference": "https://csrc.nist.gov/pubs/sp/800/61/r3/final",
+            "reference_label": "NIST SP 800-61 Rev.3 - Incident Response Recommendations"
+          }
+        },
+        {
+          "key": "D",
+          "text": "対応内容を振り返り、手順やコントロールを改善する計画を立てる",
+          "explanation": {
+            "text": "Lessons Learnedでは、対応全体をレビューし、プロセスや技術対策の改善点を洗い出します。",
+            "reference": "https://csrc.nist.gov/pubs/sp/800/61/r3/final",
+            "reference_label": "NIST SP 800-61 Rev.3 - Incident Response Recommendations"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "事後レビューでは、インシデントから得られた教訓を整理し、手順やツール、トレーニングなどの改善計画に反映させることが重要です。",
+        "reference": "https://csrc.nist.gov/pubs/sp/800/61/r3/final",
+        "reference_label": "NIST SP 800-61 Rev.3 - Incident Response Recommendations"
+      }
+    },
+    {
+      "id": "comptia-security-48",
+      "question": "“職務分掌（Separation of Duties）”の目的として最も適切なのはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "一人の担当者に全ての権限を集中させ、責任の所在を明確にする",
+          "explanation": {
+            "text": "権限集中は不正やミスの発見を困難にし、職務分掌の考え方と逆です。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final",
+            "reference_label": "NIST SP 800-53 Rev.5 - AC, PS Controls"
+          }
+        },
+        {
+          "key": "B",
+          "text": "重要な処理を複数人で分担し、不正や誤りの発生・隠蔽を困難にする",
+          "explanation": {
+            "text": "職務分掌は、重要プロセスを分割し、単独では完遂できないようにすることでリスクを低減します。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final",
+            "reference_label": "NIST SP 800-53 Rev.5 - AC, PS Controls"
+          }
+        },
+        {
+          "key": "C",
+          "text": "全員が同じ権限を持つことでバックアップ要員を確保する",
+          "explanation": {
+            "text": "全員に同じ権限を付与すると権限管理が緩くなりリスクが増大します。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final",
+            "reference_label": "NIST SP 800-53 Rev.5 - AC, PS Controls"
+          }
+        },
+        {
+          "key": "D",
+          "text": "人事評価を公平に行うための制度であり、セキュリティとは無関係である",
+          "explanation": {
+            "text": "職務分掌は内部統制・セキュリティの観点から重要な概念です。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final",
+            "reference_label": "NIST SP 800-53 Rev.5 - AC, PS Controls"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "職務分掌は、1人では完結できない業務フローとすることで、不正・誤りの発生や隠蔽を難しくし、牽制を働かせる内部統制の基本です。",
+        "reference": "https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final",
+        "reference_label": "NIST SP 800-53 Rev.5 - AC, PS Controls"
+      }
+    },
+    {
+      "id": "comptia-security-49",
+      "question": "“GDPR（一般データ保護規則）”において、個人データ保護の基本原則に含まれる考え方として最も適切なのはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "目的限定（Purpose Limitation）",
+          "explanation": {
+            "text": "GDPRでは、収集した個人データは特定された、正当な目的に限って利用すべきと定めています。",
+            "reference": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+            "reference_label": "GDPR - REGULATION (EU) 2016/679"
+          }
+        },
+        {
+          "key": "B",
+          "text": "無制限保存（Unlimited Retention）",
+          "explanation": {
+            "text": "GDPRではデータ最小化や保存期間制限が求められており、無制限保存は原則に反します。",
+            "reference": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+            "reference_label": "GDPR - REGULATION (EU) 2016/679"
+          }
+        },
+        {
+          "key": "C",
+          "text": "本人への開示禁止（No Access by Data Subject）",
+          "explanation": {
+            "text": "GDPRはデータ主体のアクセス権など多くの権利を認めており、禁止ではありません。",
+            "reference": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+            "reference_label": "GDPR - REGULATION (EU) 2016/679"
+          }
+        },
+        {
+          "key": "D",
+          "text": "目的外利用優先（Use Beyond Original Purpose by Default）",
+          "explanation": {
+            "text": "目的外利用には厳しい制限があり、デフォルトで許容されるものではありません。",
+            "reference": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+            "reference_label": "GDPR - REGULATION (EU) 2016/679"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "GDPRの基本原則の一つである目的限定は、収集した個人データを特定された正当な目的に限って利用するべきという考え方です。",
+        "reference": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+        "reference_label": "GDPR - REGULATION (EU) 2016/679"
+      }
+    },
+    {
+      "id": "comptia-security-50",
+      "question": "“BCP（事業継続計画）”の主な目的として最も適切なのはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "情報資産の棚卸しを行い資産台帳を作成すること",
+          "explanation": {
+            "text": "資産台帳はリスク管理の一部であり重要ですが、BCPの主目的そのものではありません。",
+            "reference": "https://www.nist.gov/system/files/documents/itl/Draft-SP-800-34-Rev1.pdf",
+            "reference_label": "NIST SP 800-34 Rev.1 - Contingency Planning Guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "従業員の人事評価制度を整備すること",
+          "explanation": {
+            "text": "人事評価は人事制度の一部であり、BCPとは無関係です。",
+            "reference": "https://www.nist.gov/system/files/documents/itl/Draft-SP-800-34-Rev1.pdf",
+            "reference_label": "NIST SP 800-34 Rev.1 - Contingency Planning Guide"
+          }
+        },
+        {
+          "key": "C",
+          "text": "災害や障害発生時にも、重要業務を許容できるレベルで継続・復旧できるようにすること",
+          "explanation": {
+            "text": "BCPは、重大な中断事象が発生しても重要業務の継続性を確保するための計画です。",
+            "reference": "https://www.nist.gov/system/files/documents/itl/Draft-SP-800-34-Rev1.pdf",
+            "reference_label": "NIST SP 800-34 Rev.1 - Contingency Planning Guide"
+          }
+        },
+        {
+          "key": "D",
+          "text": "セキュリティポリシー文書のレイアウトを統一すること",
+          "explanation": {
+            "text": "文書レイアウトの統一は文書管理の話であり、BCPの目的ではありません。",
+            "reference": "https://www.nist.gov/system/files/documents/itl/Draft-SP-800-34-Rev1.pdf",
+            "reference_label": "NIST SP 800-34 Rev.1 - Contingency Planning Guide"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "BCPの目的は、災害・障害といった深刻な事象が発生しても、重要業務を継続・早期復旧できるように事前に計画・準備することです。",
+        "reference": "https://www.nist.gov/system/files/documents/itl/Draft-SP-800-34-Rev1.pdf",
+        "reference_label": "NIST SP 800-34 Rev.1 - Contingency Planning Guide"
+      }
+    }
+  ]
+}

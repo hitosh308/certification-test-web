@@ -1,0 +1,2467 @@
+{
+  "exam": {
+    "id": "ccie",
+    "title": "Cisco Certified Internetwork Expert（CCIE）",
+    "description": "CCIEは、Cisco Systems が提供するネットワーク分野における最上位のエキスパート認定資格で、世界中で高度なネットワーク設計・構築・運用・障害対応能力を証明できるものです。取得には、筆記による「コア（Core）試験」と、実機を使った8時間の「ラボ（Lab）試験」の両方に合格する必要があり、理論だけでなく実践スキルも厳しく評価されます。これにより、複雑なエンタープライズネットワークやデータセンター、セキュリティ、無線インフラなどを包括的に扱えるエキスパートとして認められます。",
+    "version": "2023",
+    "price": "コア　400USD／ラボ　1400USD",
+    "difficulty": "難しい",
+    "official-site": "https://www.cisco.com/c/ja_jp/training-events/training-certifications/certifications/expert/ccie-enterprise-infrastructure.html",
+    "category": {
+      "id": "cisco",
+      "name": "Cisco"
+    }
+  },
+  "questions": [
+    {
+      "id": "ccie-1",
+      "question": "OSPFv2 で隣接関係が確立されない典型的な原因として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Hello/Dead インターバルがセグメント内のルータ間で一致していない",
+          "explanation": {
+            "text": "OSPF では同一ネットワーク上のルータで Hello タイマと Dead タイマなどのインターフェイスパラメータが一致していないと隣接関係は形成されません。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/switches/lan/c9000/lyr3-fwd/ospf/ospf-configuration-guide/ospf.html",
+            "reference_label": "Cisco Catalyst 9000 OSPF Configuration Guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ルータ ID が重複していない",
+          "explanation": {
+            "text": "ルータ ID の重複は望ましくありませんが、重複していないこと自体は隣接が張れない原因にはなりません。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/ip-routing/b-ip-routing/m_1712-iro-ospf.html",
+            "reference_label": "Cisco IOS XE 17.x IP Routing OSPF 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "エリア ID が 0 である",
+          "explanation": {
+            "text": "バックボーンエリア 0 の使用は一般的であり、それ自体は隣接を阻害する要因ではありません。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/ip-routing/b-ip-routing/m_1712-iro-ospf.html",
+            "reference_label": "Cisco IOS XE 17.x IP Routing OSPF 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ネットワークタイプが Broadcast に設定されている",
+          "explanation": {
+            "text": "Broadcast ネットワークタイプはマルチアクセスセグメントで標準的に利用される設定であり、隣接を阻害する要因ではありません。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/switches/lan/c9600/software/release/17-12/configuration_guide/rtng/b_1712_rtng_9600_cg/configuring_ospf.html",
+            "reference_label": "Cisco Catalyst 9600 OSPF 設定ガイド"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "OSPF では同一セグメント内のルータで Hello インターバルや Dead インターバルなどのインターフェイスパラメータが一致している必要があります。これらが一致しないと OSPF のネイバー関係は 2-Way 以上に遷移せず、隣接関係も確立されません。",
+        "reference": "https://www.cisco.com/c/en/us/td/docs/switches/lan/c9000/lyr3-fwd/ospf/ospf-configuration-guide/ospf.html",
+        "reference_label": "Cisco Catalyst 9000 OSPF Configuration Guide"
+      }
+    },
+    {
+      "id": "ccie-2",
+      "question": "OSPF の Stub エリアと NSSA（Not-So-Stubby Area）を比較したときの正しい記述はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Stub エリアでは外部経路（Type-5 LSA）を ASBR から再配布できるが、NSSA ではできない",
+          "explanation": {
+            "text": "Stub エリアでは ASBR を配置できず、外部経路の再配布は行えません。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_ospf/configuration/xe-16/iro-xe-16-book/iro-cfg.html",
+            "reference_label": "Cisco IOS XE OSPF Configuration Guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "NSSA では ASBR を配置して外部経路を Type-7 LSA としてエリア内に流せる",
+          "explanation": {
+            "text": "NSSA では Stub の制限を緩和し、エリア内の ASBR からの外部経路を Type-7 LSA として流し、ABR で Type-5 に変換できます。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_ospf/configuration/xe-16/iro-xe-16-book/iro-cfg.html",
+            "reference_label": "Cisco IOS XE OSPF Configuration Guide（Stub/NSSA）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Stub エリアと NSSA のいずれもデフォルトルートを広報できない",
+          "explanation": {
+            "text": "Stub や NSSA に対して ABR がデフォルトルートを広報する設計は一般的です。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_ospf/configuration/xe-16/iro-xe-16-book/iro-cfg.html",
+            "reference_label": "Cisco IOS XE OSPF Configuration Guide"
+          }
+        },
+        {
+          "key": "D",
+          "text": "NSSA では Type-3 LSA が禁止されている",
+          "explanation": {
+            "text": "NSSA では Type-3 LSA は許可されており、禁止されるのは特定の外部 LSA タイプです。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_ospf/configuration/xe-16/iro-xe-16-book/iro-cfg.html",
+            "reference_label": "Cisco IOS XE OSPF Configuration Guide"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "NSSA は Stub エリアの制限を一部緩和し、エリア内に ASBR を配置して外部経路を再配布できます。このとき外部経路は Type-7 LSA として NSSA 内に流れ、ABR で Type-5 LSA に変換されて OSPF ドメイン全体に広がります。",
+        "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_ospf/configuration/xe-16/iro-xe-16-book/iro-cfg.html",
+        "reference_label": "Cisco IOS XE OSPF Configuration Guide"
+      }
+    },
+    {
+      "id": "ccie-3",
+      "question": "Cisco IOS における BGP の経路選択アルゴリズムで、最初に評価される属性として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "最小 MED（Multi-Exit Discriminator）",
+          "explanation": {
+            "text": "MED はローカル優先度や AS パスより後段で評価される属性です。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/ip-routing/b-ip-routing.html",
+            "reference_label": "Cisco IOS XE 17.x BGP Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "最短 AS パス長",
+          "explanation": {
+            "text": "AS パス長は Local Preference の後に評価されます。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/iosxr/cisco8000/bgp/b-bgp-config-cisco8000.html",
+            "reference_label": "Cisco 8000 Series BGP Configuration Guide（Path Selection）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "最大 LOCAL_PREF（Local Preference）",
+          "explanation": {
+            "text": "Cisco BGP の経路選択では、まず最も高い Local Preference を持つ経路が選好されます。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/iosxr/cisco8000/bgp/b-bgp-config-cisco8000.html",
+            "reference_label": "Cisco 8000 Series BGP Configuration Guide（Path Selection）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "最小 IGP メトリック（次ホップまで）",
+          "explanation": {
+            "text": "IGP メトリックは AS パス長やオリジンタイプ、MED などの評価より後で参照されます。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/ip-routing/b-ip-routing.html",
+            "reference_label": "Cisco IOS XE 17.x BGP Overview（Best Path）"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "Cisco BGP 実装では、まず最大 Local Preference、次に最短 AS パス長、最も低いオリジンタイプ、最小 MED といった順序で経路選択が行われます。そのため最初に評価されるのは LOCAL_PREF です。",
+        "reference": "https://www.cisco.com/c/en/us/td/docs/iosxr/cisco8000/bgp/b-bgp-config-cisco8000.html",
+        "reference_label": "Cisco 8000 Series BGP Configuration Guide（BGP Path Selection）"
+      }
+    },
+    {
+      "id": "ccie-4",
+      "question": "Cisco ルータで BGP NSF/Graceful Restart を利用してコントロールプレーンの再起動時にデータプレーン中断を最小化したい。正しい前提条件はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ルータは必ずシングル RP（Route Processor）構成である必要がある",
+          "explanation": {
+            "text": "NSF は冗長 RP 構成での利用が一般的であり、シングル RP でなければならないわけではありません。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_bgp/configuration/xe-16/irg-xe-16-book/irg-bgp-nsf.html",
+            "reference_label": "Cisco IOS XE BGP Nonstop Forwarding"
+          }
+        },
+        {
+          "key": "B",
+          "text": "BGP ピアは必ず同じ ASN でなければならない",
+          "explanation": {
+            "text": "NSF/Graceful Restart のサポート有無は ASN とは無関係で、機能サポートと設定に依存します。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_bgp/configuration/xe-16/irg-xe-16-book/irg-bgp-nsf.html",
+            "reference_label": "Cisco IOS XE BGP Nonstop Forwarding"
+          }
+        },
+        {
+          "key": "C",
+          "text": "NSF/Graceful Restart は単一の BGP ピアだけがサポートしていればよい",
+          "explanation": {
+            "text": "Graceful Restart では、隣接ルータ側にも対応機能のサポートと設定が必要です。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_bgp/configuration/xe-16/irg-xe-16-book/irg-bgp-nsf.html",
+            "reference_label": "Cisco IOS XE BGP Nonstop Forwarding"
+          }
+        },
+        {
+          "key": "D",
+          "text": "再起動するルータとその BGP ピアの双方で Graceful Restart をサポートし、有効化している必要がある",
+          "explanation": {
+            "text": "Graceful Restart では、再起動側とピアの双方が対応機能をサポートし、設定されていることが前提条件です。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_bgp/configuration/xe-16/irg-xe-16-book/irg-bgp-nsf.html",
+            "reference_label": "Cisco IOS XE BGP Nonstop Forwarding"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "BGP NSF/Graceful Restart では、再起動側ルータが Graceful Restart Capability を広告し、ピア側もそれを理解して保持タイマの間、経路を保持する必要があります。そのため両端で機能のサポートと設定が必要です。",
+        "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_bgp/configuration/xe-16/irg-xe-16-book/irg-bgp-nsf.html",
+        "reference_label": "Cisco IOS XE BGP Nonstop Forwarding"
+      }
+    },
+    {
+      "id": "ccie-5",
+      "question": "Cisco IOS XE で MQC（Modular QoS CLI）を用いてトラフィックを分類・マーキングする場合の一般的な構成要素の組み合わせとして正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "class-map、policy-map、service-policy",
+          "explanation": {
+            "text": "MQC 構成では class-map でトラフィックを分類し、policy-map でアクションを定義し、service-policy でインターフェイスに適用します。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/qos/b-quality-of-service/m_qos-apply.html",
+            "reference_label": "Cisco IOS XE QoS MQC Structure"
+          }
+        },
+        {
+          "key": "B",
+          "text": "access-group、route-map、ip sla",
+          "explanation": {
+            "text": "access-list や route-map は様々な場面で利用できますが、MQC の三要素そのものではありません。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/qos/b-quality-of-service.html",
+            "reference_label": "Cisco IOS XE QoS Configuration Guide"
+          }
+        },
+        {
+          "key": "C",
+          "text": "policy-list、qos-group、traffic-class",
+          "explanation": {
+            "text": "qos-group などは内部マーキングに利用されますが、MQC の標準 3 コンポーネントではありません。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/qos/b-quality-of-service.html",
+            "reference_label": "Cisco IOS XE QoS Configuration Guide"
+          }
+        },
+        {
+          "key": "D",
+          "text": "profile-map、queue-set、wred-policy",
+          "explanation": {
+            "text": "これらはプラットフォーム固有機能の名前として登場する場合がありますが、MQC の基本構造そのものではありません。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/qos/b-quality-of-service.html",
+            "reference_label": "Cisco IOS XE QoS Configuration Guide"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "MQC では class-map でマッチ条件を定義し、policy-map でクラスごとのアクション（マーキングや整形など）を定義し、service-policy でそれをインターフェイスの入力または出力方向に適用するのが基本構造です。",
+        "reference": "https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/qos/b-quality-of-service/m_qos-apply.html",
+        "reference_label": "Cisco IOS XE QoS MQC Structure"
+      }
+    },
+    {
+      "id": "ccie-6",
+      "question": "QoS におけるポリシング（policing）とシェーピング（shaping）の違いとして最も適切な説明はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "両者ともトラフィックをバッファリングして帯域を平滑化するメカニズムであり、実装上の違いはない",
+          "explanation": {
+            "text": "ポリシングは超過トラフィックを破棄またはダウンマーキングするのに対し、シェーピングはバッファリングして平滑化する点が異なります。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/qos/b-quality-of-service.html",
+            "reference_label": "Cisco IOS XE QoS Configuration Guide（Policing and Shaping）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ポリシングはしきい値を超えたトラフィックを破棄またはダウンマーキングし、シェーピングはバッファリングして送信レートを平滑化する",
+          "explanation": {
+            "text": "Cisco QoS ではポリシングは瞬間的なレート超過をドロップやマーキング変更で制御し、シェーピングはバッファを使ってレートを平滑化します。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/qos/b-quality-of-service.html",
+            "reference_label": "Cisco IOS XE QoS Configuration Guide（Policing and Shaping）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ポリシングは出力方向のみで使用でき、シェーピングは入力方向のみで使用できる",
+          "explanation": {
+            "text": "ポリシング/シェーピングともに方向はプラットフォームと機能によって異なり、このような一対一の制限はありません。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/qos/b-quality-of-service.html",
+            "reference_label": "Cisco IOS XE QoS Configuration Guide"
+          }
+        },
+        {
+          "key": "D",
+          "text": "シェーピングは L2 スイッチでのみ使用でき、ポリシングはルータでのみ使用できる",
+          "explanation": {
+            "text": "どちらもスイッチおよびルータでサポートされる機能であり、このような役割分担はありません。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-9/configuration_guide/qos/b_179_qos_9300_cg/configuring_qos.html",
+            "reference_label": "Cisco Catalyst 9300 QoS Configuration Guide"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ポリシングは設定したレートを超えるトラフィックを即座に破棄またはダウンマーキングして帯域を強制します。一方シェーピングはバッファを用いて一時的にトラフィックを蓄積し、設定レートに合わせて平滑化して送出する仕組みです。",
+        "reference": "https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/qos/b-quality-of-service.html",
+        "reference_label": "Cisco IOS XE QoS Configuration Guide（Policing and Shaping）"
+      }
+    },
+    {
+      "id": "ccie-7",
+      "question": "現在の Cisco CCIE 認定を新規取得するために必要な試験要件として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "コア試験 1 科目のみ（選択したトラックに限定）",
+          "explanation": {
+            "text": "CCIE はコア試験に加えて 8 時間ラボ試験が必要であり、コア試験だけでは認定されません。",
+            "reference": "https://www.cisco.com/site/us/en/learn/training-certifications/certifications/expert/exams-training.html",
+            "reference_label": "Cisco Expert Certifications Exams and Training"
+          }
+        },
+        {
+          "key": "B",
+          "text": "アソシエイト試験、プロフェッショナル試験、ラボ試験の 3 段階を順番に全て合格する",
+          "explanation": {
+            "text": "現行の CCIE では CCNA や CCNP の取得は前提条件ではなく、コア試験＋ラボ試験で完結します。",
+            "reference": "https://www.cisco.com/site/us/en/learn/training-certifications/certifications/expert/index.html",
+            "reference_label": "Cisco Expert Certifications 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "対応するコア試験と 8 時間のハンズオン ラボ（または実技）試験の両方に合格する",
+          "explanation": {
+            "text": "CCIE 認定はいずれのトラックでも、コア試験と 8 時間ハンズオンラボ/実技試験を両方合格することが要件です。",
+            "reference": "https://www.cisco.com/site/us/en/learn/training-certifications/certifications/expert/exams-training.html",
+            "reference_label": "Cisco Expert Certifications Exams and Training"
+          }
+        },
+        {
+          "key": "D",
+          "text": "筆記試験 2 科目と 4 時間ラボ試験に合格する",
+          "explanation": {
+            "text": "旧制度では筆記試験＋ラボ試験といった構成でしたが、現行体系ではコア試験と 8 時間ラボ試験に再定義されています。",
+            "reference": "https://www.cisco.com/site/us/en/learn/training-certifications/certifications/expert/index.html",
+            "reference_label": "Cisco Expert Certifications 概要"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "Cisco の現行 CCIE 認定では、対応するテクノロジートラックのコア試験に合格し、さらに 8 時間のハンズオン ラボ（または実技）試験に合格することが必須要件です。アソシエイトやプロフェッショナル認定は前提条件ではありません。",
+        "reference": "https://www.cisco.com/site/us/en/learn/training-certifications/certifications/expert/exams-training.html",
+        "reference_label": "Cisco Expert Certifications Exams and Training"
+      }
+    },
+    {
+      "id": "ccie-8",
+      "question": "CCIE Enterprise Infrastructure 認定の主な対象スキルとして最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "オンプレミスのコラボレーション（音声・ビデオ）設計と運用",
+          "explanation": {
+            "text": "コラボレーションは CCIE Collaboration や関連認定の領域です。",
+            "reference": "https://www.cisco.com/site/us/en/learn/training-certifications/certifications/index.html",
+            "reference_label": "Cisco Certifications Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データセンターファブリック、ストレージネットワークの設計と運用",
+          "explanation": {
+            "text": "データセンターのファブリックやストレージは CCIE Data Center トラックの範囲です。",
+            "reference": "https://www.cisco.com/site/us/en/learn/training-certifications/certifications/datacenter/ccie-data-center/index.html",
+            "reference_label": "CCIE Data Center certification"
+          }
+        },
+        {
+          "key": "C",
+          "text": "サービスプロバイダ MPLS コアと BGP ベースのエッジ設計",
+          "explanation": {
+            "text": "サービスプロバイダ向けのコアルーティングは CCIE Service Provider の領域です。",
+            "reference": "https://www.cisco.com/site/us/en/learn/training-certifications/certifications/service-provider/ccie-service-provider/index.html",
+            "reference_label": "CCIE Service Provider certification"
+          }
+        },
+        {
+          "key": "D",
+          "text": "エンタープライズネットワークの設計・導入・運用・最適化（SD-Access や SD-WAN を含む）",
+          "explanation": {
+            "text": "CCIE Enterprise Infrastructure は複雑なエンタープライズインフラストラクチャソリューション（SD-Access や SD-WAN を含む）の設計から運用までを対象としています。",
+            "reference": "https://www.cisco.com/c/ja_jp/training-events/training-certifications/certifications/expert/ccie-enterprise-infrastructure.html",
+            "reference_label": "CCIE Enterprise Infrastructure 認定ページ（日本語）"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "CCIE Enterprise Infrastructure は、エンタープライズネットワークインフラ（有線/無線、SD-Access、SD-WAN など）の設計・導入・運用・最適化のスキルを証明する認定です。",
+        "reference": "https://www.cisco.com/c/ja_jp/training-events/training-certifications/certifications/expert/ccie-enterprise-infrastructure.html",
+        "reference_label": "CCIE Enterprise Infrastructure 認定ページ（日本語）"
+      }
+    },
+    {
+      "id": "ccie-9",
+      "question": "Cisco IOS XE における Model-Driven Telemetry（MDT）の特徴として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "YANG モデルに基づき、NETCONF/RESTCONF/gNMI などを使ってサブスクリプションしたデータをストリーミングする",
+          "explanation": {
+            "text": "MDT は YANG モデルに基づいたデータを NETCONF、RESTCONF、gNMI などのプロトコルを通じてサブスクリプションし、ストリーミングする仕組みです。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/prog/configuration/1718/b-1718-programmability-cg/model-driven-telemetry.html",
+            "reference_label": "Cisco IOS XE Programmability – Model-Driven Telemetry"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SNMPv2c のみを使用し、ポーリングベースでメトリクスを取得する",
+          "explanation": {
+            "text": "MDT は SNMP ポーリングではなく、YANG ベースのストリーミングテレメトリを提供する技術です。",
+            "reference": "https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-9300-series-switches/model-driven-telemetry-wp.html",
+            "reference_label": "Model-Driven Telemetry White Paper"
+          }
+        },
+        {
+          "key": "C",
+          "text": "CLI で show コマンドを定期的に実行し、その結果を自動的に syslog に送信するメカニズムである",
+          "explanation": {
+            "text": "MDT は CLI の自動実行ではなく、データモデルに基づくストリーミングインターフェースを提供します。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/prog/configuration/1718/b-1718-programmability-cg/model-driven-telemetry.html",
+            "reference_label": "Cisco IOS XE Programmability – Model-Driven Telemetry"
+          }
+        },
+        {
+          "key": "D",
+          "text": "RESTCONF のみを利用し、サブスクリプション機能は提供されない",
+          "explanation": {
+            "text": "MDT では NETCONF や gNMI なども利用でき、サブスクリプションによる継続的なストリームがサポートされています。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/prog/configuration/1718/b-1718-programmability-cg/model-driven-telemetry.html",
+            "reference_label": "Cisco IOS XE Programmability – Model-Driven Telemetry"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Model-Driven Telemetry は YANG モデルで定義されたデータをもとに、NETCONF/RESTCONF/gNMI などのプロトコルを通じてサブスクリプションし、ストリーミングで送信する仕組みです。ポーリングではなくプッシュ型で高頻度かつ効率的なモニタリングが可能になります。",
+        "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/prog/configuration/1718/b-1718-programmability-cg/model-driven-telemetry.html",
+        "reference_label": "Cisco IOS XE Programmability – Model-Driven Telemetry"
+      }
+    },
+    {
+      "id": "ccie-10",
+      "question": "NETCONF と RESTCONF に関する説明のうち、Cisco IOS XE の Programmability ガイドに沿った正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "NETCONF は HTTP ベースのプロトコルであり、REST スタイルの URI を使用する",
+          "explanation": {
+            "text": "NETCONF は SSH 上の XML RPC に基づくプロトコルであり、HTTP/REST ではありません。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/prog/configuration/1713/b_1713_programmability_cg/m_1713_prog_yang_netconf.html",
+            "reference_label": "Cisco IOS XE Programmability – NETCONF and YANG"
+          }
+        },
+        {
+          "key": "B",
+          "text": "NETCONF は SSH 上の XML RPC を利用し、RESTCONF は HTTP ベースで YANG モデルを RESTful にアクセスする",
+          "explanation": {
+            "text": "NETCONF は RPC ベースで XML を用い、RESTCONF は HTTP/REST を通じて YANG 定義のデータにアクセスするプロトコルとして定義されています。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/prog/configuration/1713/b_1713_programmability_cg/m_1713_prog_yang_netconf.html",
+            "reference_label": "Cisco IOS XE Programmability – NETCONF and YANG"
+          }
+        },
+        {
+          "key": "C",
+          "text": "RESTCONF は JSON のみをサポートし、XML はサポートしない",
+          "explanation": {
+            "text": "RESTCONF では JSON と XML の両方の表現が利用できます。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/prog/configuration/1715/b_1715_programmability_cg/m_1715_prog_restconf.html",
+            "reference_label": "Cisco IOS XE Programmability – RESTCONF Protocol"
+          }
+        },
+        {
+          "key": "D",
+          "text": "NETCONF/RESTCONF は YANG とは無関係であり、SNMP MIB をベースに動作する",
+          "explanation": {
+            "text": "NETCONF/RESTCONF は YANG データモデルと密接に連携し、SNMP MIB ベースではありません。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/prog/configuration/1713/b_1713_programmability_cg/m_1713_prog_yang_netconf.html",
+            "reference_label": "Cisco IOS XE Programmability – NETCONF and YANG"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "NETCONF は RFC 6241 で定義された XML/SSH ベースの RPC プロトコルであり、RESTCONF は HTTP ベースで YANG データモデルに対して RESTful な GET/POST/PATCH などを提供します。どちらも YANG と連携してモデル駆動型の運用自動化を実現します。",
+        "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/prog/configuration/1713/b_1713_programmability_cg/m_1713_prog_yang_netconf.html",
+        "reference_label": "Cisco IOS XE Programmability – NETCONF and YANG"
+      }
+    },
+    {
+      "id": "ccie-11",
+      "question": "Cisco Catalyst SD-WAN のオーバレイアーキテクチャにおけるコントロールプレーンとデータプレーンの関係として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "コントロールプレーンとデータプレーンは同一デバイス内でのみ分離され、ネットワーク全体では分離されない",
+          "explanation": {
+            "text": "Catalyst SD-WAN では OMP とコントローラを用いてネットワーク全体でコントロールプレーンとデータプレーンを分離します。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/routing/ios-xe-17/routing-book-xe/m-unicast-routing.html",
+            "reference_label": "Cisco Catalyst SD-WAN Routing Configuration Guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データプレーンの経路情報は vSmart などの集中コントローラには一切広告されない",
+          "explanation": {
+            "text": "SD-WAN では OMP を通じてコントロールプレーン情報と関連ポリシーが集中コントローラに分散されます。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/routing/ios-xe-17/routing-book-xe/m-unicast-routing.html",
+            "reference_label": "Cisco Catalyst SD-WAN Routing Configuration Guide"
+          }
+        },
+        {
+          "key": "C",
+          "text": "OMP によってコントロールプレーン情報が集中管理され、データプレーンはエッジ間トンネル上で分散転送される",
+          "explanation": {
+            "text": "OMP はコントロールプレーン情報とポリシーを集中コントローラで管理し、データは WAN Edge 間のトンネル上で直接転送されます。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/routing/ios-xe-17/routing-book-xe/m-unicast-routing.html",
+            "reference_label": "Cisco Catalyst SD-WAN Routing Configuration Guide"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Catalyst SD-WAN ではコントロールプレーンとデータプレーンの分離は行われず、従来型ルータと同等である",
+          "explanation": {
+            "text": "Catalyst SD-WAN の設計のコアコンセプトがコントロールプレーンとデータプレーンの分離です。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/solutions/CVD/SDWAN/cisco-sdwan-design-guide.html",
+            "reference_label": "Cisco Catalyst SD-WAN Design Guide"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "Cisco Catalyst SD-WAN では OMP と集中コントローラによりコントロールプレーン情報とポリシーを集中管理し、データプレーンは WAN Edge ルータ間の IPsec などのトンネル上で分散転送されます。これにより一貫したポリシー制御と柔軟なトポロジ設計が可能になります。",
+        "reference": "https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/routing/ios-xe-17/routing-book-xe/m-unicast-routing.html",
+        "reference_label": "Cisco Catalyst SD-WAN Routing Configuration Guide"
+      }
+    },
+    {
+      "id": "ccie-12",
+      "question": "Cisco Catalyst SD-WAN のセキュアなコントロールプレーン接続を確立するために使用されるプロトコルとして正しい組み合わせはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "IPsec のみ",
+          "explanation": {
+            "text": "IPsec はデータプレーンでの暗号化に主に用いられ、コントロールプレーンの TLS/DTLS とは役割が異なります。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/security/ios-xe-17/security-book-xe/security-overview.html",
+            "reference_label": "Cisco Catalyst SD-WAN Security Configuration Guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SSH および Telnet",
+          "explanation": {
+            "text": "SSH/Telnet は管理アクセス向けであり、SD-WAN コントロールプレーンの基本トランスポートではありません。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/security/ios-xe-17/security-book-xe/security-overview.html",
+            "reference_label": "Cisco Catalyst SD-WAN Security Configuration Guide"
+          }
+        },
+        {
+          "key": "C",
+          "text": "L2TP および PPTP",
+          "explanation": {
+            "text": "L2TP や PPTP は SD-WAN コントロールプレーンのトランスポートとして使用されません。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/security/ios-xe-17/security-book-xe/security-overview.html",
+            "reference_label": "Cisco Catalyst SD-WAN Security Configuration Guide"
+          }
+        },
+        {
+          "key": "D",
+          "text": "DTLS または TLS に基づく暗号化トンネル",
+          "explanation": {
+            "text": "Catalyst SD-WAN のコントロールプレーンは DTLS または TLS に基づくセキュアなトンネルで保護されています。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/security/ios-xe-17/security-book-xe/security-overview.html",
+            "reference_label": "Cisco Catalyst SD-WAN Security Configuration Guide"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "Cisco Catalyst SD-WAN のコントロールプレーンは DTLS または TLS による暗号化トンネルで保護され、コントローラとエッジ間のコントロール接続の機密性と完全性を確保します。",
+        "reference": "https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/security/ios-xe-17/security-book-xe/security-overview.html",
+        "reference_label": "Cisco Catalyst SD-WAN Security Configuration Guide"
+      }
+    },
+    {
+      "id": "ccie-13",
+      "question": "Cisco SD-Access（SDA）ファブリックのアーキテクチャにおいて、コントロールプレーンとデータプレーンの技術組み合わせとして正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "コントロールプレーン：LISP、データプレーン：VXLAN",
+          "explanation": {
+            "text": "Cisco SD-Access では LISP をコントロールプレーン、VXLAN をデータプレーンとして利用します。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/solutions/CVD/Campus/cisco-sda-design-guide.html",
+            "reference_label": "Cisco Software-Defined Access Solution Design Guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "コントロールプレーン：OSPF、データプレーン：MPLS L3VPN",
+          "explanation": {
+            "text": "OSPF/MPLS L3VPN は従来のエンタープライズや SP エッジで利用されますが、SDA のコントロール/データプレーンではありません。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/solutions/CVD/Campus/cisco-sda-design-guide.html",
+            "reference_label": "Cisco SD-Access Design Guide"
+          }
+        },
+        {
+          "key": "C",
+          "text": "コントロールプレーン：BGP EVPN、データプレーン：MPLS",
+          "explanation": {
+            "text": "BGP EVPN + MPLS は DC ファブリックや SP で利用されることが多く、SDA ファブリックとは異なるアーキテクチャです。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/solutions/CVD/Campus/cisco-sda-design-guide.html",
+            "reference_label": "Cisco SD-Access Design Guide"
+          }
+        },
+        {
+          "key": "D",
+          "text": "コントロールプレーン：IS-IS、データプレーン：GRE",
+          "explanation": {
+            "text": "IS-IS/GRE の組み合わせは SDA ファブリックの正式なアーキテクチャではありません。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/solutions/CVD/Campus/cisco-sda-design-guide.html",
+            "reference_label": "Cisco SD-Access Design Guide"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cisco SD-Access では、LISP によりエンドポイント ID とロケータのマッピングを管理するコントロールプレーンを構成し、VXLAN を用いたカプセル化でオーバレイデータプレーンを実現します。",
+        "reference": "https://www.cisco.com/c/en/us/td/docs/solutions/CVD/Campus/cisco-sda-design-guide.html",
+        "reference_label": "Cisco Software-Defined Access Solution Design Guide"
+      }
+    },
+    {
+      "id": "ccie-14",
+      "question": "OSPF Nonstop Routing（NSR）機能の主な目的として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "OSPF の SPF 計算の頻度を増やし、収束時間を短縮する",
+          "explanation": {
+            "text": "NSR は SPF 計算の頻度制御ではなく、RP スイッチオーバ時の継続性を提供する機能です。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/ip-routing/b-ip-routing/m_iro-nsr-ospf-0.html",
+            "reference_label": "Cisco IOS XE OSPF Nonstop Routing"
+          }
+        },
+        {
+          "key": "B",
+          "text": "OSPF の LSA タイプを自動変換して、Stub エリアと NSSA を混在させる",
+          "explanation": {
+            "text": "LSA タイプ変換は ABR の役割であり、NSR の主目的ではありません。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_ospf/configuration/xe-16/iro-xe-16-book/iro-cfg.html",
+            "reference_label": "Cisco IOS XE OSPF Configuration Guide"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アクティブ RP からスタンバイ RP へ OSPF 状態をチェックポイントし、スイッチオーバー時も隣接を維持する",
+          "explanation": {
+            "text": "OSPF NSR はアクティブ RP の状態をスタンバイ RP に同期し、スイッチオーバ後も OSPF 隣接と状態を維持します。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/ip-routing/b-ip-routing/m_iro-nsr-ospf-0.html",
+            "reference_label": "Cisco IOS XE OSPF Nonstop Routing"
+          }
+        },
+        {
+          "key": "D",
+          "text": "OSPFv2 と OSPFv3 の相互運用性を向上させるためのデュアルスタック機能である",
+          "explanation": {
+            "text": "NSR は冗長 RP 環境での高可用性機能であり、v2/v3 の相互運用機能ではありません。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/ip-routing/b-ip-routing/m_iro-nsr-ospf-0.html",
+            "reference_label": "Cisco IOS XE OSPF Nonstop Routing"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "OSPF Nonstop Routing は冗長 RP を持つデバイスで、アクティブ RP の OSPF 状態をスタンバイ RP にチェックポイントすることで、RP スイッチオーバ時にも OSPF 隣接とルーティング状態を維持し、トラフィックの中断を最小化することを目的としています。",
+        "reference": "https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/ip-routing/b-ip-routing/m_iro-nsr-ospf-0.html",
+        "reference_label": "Cisco IOS XE OSPF Nonstop Routing"
+      }
+    },
+    {
+      "id": "ccie-15",
+      "question": "BGP を用いたインターネット接続において、単一ホーミングのエンタープライズが自 AS からプレフィックスを広告するために必要な基本設定として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "network コマンドまたは再配布により、広告したいプレフィックスを BGP テーブルにインストールする",
+          "explanation": {
+            "text": "BGP は network コマンドや再配布により、広告対象のプレフィックスを BGP テーブルに取り込んでから広告します。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_bgp/configuration/xe-16/irg-xe-16-book/configuring-a-basic-bgp-network.html",
+            "reference_label": "Cisco IOS XE – Configuring a Basic BGP Network"
+          }
+        },
+        {
+          "key": "B",
+          "text": "OSPF のエリア 0 に経路を投入するだけで BGP が自動的に経路を広告する",
+          "explanation": {
+            "text": "OSPF と BGP は独立したプロトコルであり、明示的な再配布や network 設定なしに自動広告は行われません。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_bgp/configuration/xe-16/irg-xe-16-book/configuring-a-basic-bgp-network.html",
+            "reference_label": "Cisco IOS XE – Configuring a Basic BGP Network"
+          }
+        },
+        {
+          "key": "C",
+          "text": "AS パス長を 0 に設定し、デフォルトルートだけを広告する",
+          "explanation": {
+            "text": "AS パス長は BGP により自動的に管理され、0 に設定することはありません。また自 AS プレフィックス広告とは別問題です。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/ip-routing/b-ip-routing.html",
+            "reference_label": "Cisco IOS XE BGP Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ルータ ID を ISP と同じ値に設定する必要がある",
+          "explanation": {
+            "text": "ルータ ID は BGP セッション識別に用いられますが、ISP と揃える必要はありません。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/iosxr/cisco8000/bgp/b-bgp-config-cisco8000.html",
+            "reference_label": "Cisco 8000 Series BGP Configuration Guide"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "エンタープライズが自 AS からプレフィックスを広告するには、BGP プロセスに対して network コマンドや再配布を用いて広告対象プレフィックスを BGP テーブルにインストールし、そのうえで外向きピアに対して広告する必要があります。",
+        "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_bgp/configuration/xe-16/irg-xe-16-book/configuring-a-basic-bgp-network.html",
+        "reference_label": "Cisco IOS XE – Configuring a Basic BGP Network"
+      }
+    },
+    {
+      "id": "ccie-16",
+      "question": "QoS 設計において、リアルタイム音声トラフィックに対して一般的に推奨されるキューイング手法として Cisco のガイドラインに沿ったものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ベストエフォートキューのみを使用し、音声には特別な優遇を行わない",
+          "explanation": {
+            "text": "リアルタイム音声は遅延やジッタに敏感であり、ベストエフォートのみでは品質が保証できません。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/qos/b-quality-of-service.html",
+            "reference_label": "Cisco IOS XE QoS Configuration Guide（Queuing）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "WRED のみを用いて輻輳時のドロップ優先度を調整する",
+          "explanation": {
+            "text": "WRED は主に TCP トラフィック向けの早期ドロップ制御であり、音声に対しては Priority Queuing などが推奨されます。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/qos/b-quality-of-service.html",
+            "reference_label": "Cisco IOS XE QoS Configuration Guide（Queuing and WRED）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "低遅延キュー（LLQ）などの Strict Priority Queue を用いて音声トラフィックに優先帯域を保障する",
+          "explanation": {
+            "text": "Cisco の QoS ベストプラクティスでは、音声に対して LLQ などの優先キューイングを用いて帯域と遅延特性を保障することが推奨されています。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/qos/b-quality-of-service.html",
+            "reference_label": "Cisco IOS XE QoS Configuration Guide（Priority Queuing）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ポリシングで音声トラフィックを厳しく制限し、帯域超過分をドロップする",
+          "explanation": {
+            "text": "音声トラフィックに対してはポリシングよりもシェーピングや優先キューイングが一般的に推奨されます。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/qos/b-quality-of-service.html",
+            "reference_label": "Cisco IOS XE QoS Configuration Guide"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "リアルタイム音声は遅延とジッタに敏感なため、Cisco の QoS ベストプラクティスでは LLQ などの Strict Priority Queue を用いて音声トラフィックを優先的に処理し、必要な帯域を保障する設計が推奨されています。",
+        "reference": "https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/qos/b-quality-of-service.html",
+        "reference_label": "Cisco IOS XE QoS Configuration Guide（Priority Queuing）"
+      }
+    },
+    {
+      "id": "ccie-17",
+      "question": "Cisco IOS XE デバイスを自動プロビジョニングする際、モデル駆動型プログラマビリティを活用したゼロタッチの構成展開を実現するために中核となる技術の組み合わせとして最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "YANG モデルと NETCONF/RESTCONF による API ベースの構成",
+          "explanation": {
+            "text": "Cisco IOS XE では YANG モデルと NETCONF/RESTCONF を用いてプログラマブルな構成管理とゼロタッチプロビジョニングを実現できます。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/prog/configuration/1714/b_1714_programmability_cg/m_1714_new_changed_cg.html",
+            "reference_label": "Cisco IOS XE Programmability – New and Changed Features"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SNMPv1 と CLI テルネットマクロ",
+          "explanation": {
+            "text": "SNMPv1 や Telnet マクロはレガシー手法であり、モデル駆動型プログラマビリティの中心ではありません。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/prog/configuration/1714/b_1714_programmability_cg/m_1714_new_changed_cg.html",
+            "reference_label": "Cisco IOS XE Programmability – New and Changed Features"
+          }
+        },
+        {
+          "key": "C",
+          "text": "TFTP ブートのみを利用したコンフィグファイル配布",
+          "explanation": {
+            "text": "TFTP ブートは基本的なプロビジョニング手法ですが、モデル駆動型の API ベース展開とは異なります。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/prog/configuration/1714/b_1714_programmability_cg/m_1714_new_changed_cg.html",
+            "reference_label": "Cisco IOS XE Programmability – New and Changed Features"
+          }
+        },
+        {
+          "key": "D",
+          "text": "RMON と NetFlow を用いたパッシブモニタリング",
+          "explanation": {
+            "text": "RMON や NetFlow はトラフィック可視化向けであり、構成プロビジョニングを行う技術ではありません。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/prog/configuration/1714/b_1714_programmability_cg/m_1714_new_changed_cg.html",
+            "reference_label": "Cisco IOS XE Programmability – New and Changed Features"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cisco IOS XE では YANG モデルと NETCONF/RESTCONF をベースにしたモデル駆動型プログラマビリティが提供されており、ゼロタッチプロビジョニングや自動構成展開の中心となる技術です。",
+        "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/prog/configuration/1714/b_1714_programmability_cg/m_1714_new_changed_cg.html",
+        "reference_label": "Cisco IOS XE Programmability – New and Changed Features"
+      }
+    },
+    {
+      "id": "ccie-18",
+      "question": "エンタープライズで EVPN/VXLAN を使用してデータセンターファブリックを構築する場合、L2/L3 VPN サービスを提供するための標準的なコントロールプレーンとして最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "OSPFv3 を使用した LSA ベースのオーバレイルーティング",
+          "explanation": {
+            "text": "EVPN/VXLAN の標準的なコントロールプレーンは BGP EVPN であり、OSPFv3 ではありません。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/unicast/configuration/guide/b-cisco-nexus-9000-series-nx-os-unicast-routing-configuration-guide-93x/m-n9k-configuring-basic-bgp-93x.html",
+            "reference_label": "Cisco Nexus 9000 BGP Configuration Guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "LISP を使用して ID/ロケータ分離を行う",
+          "explanation": {
+            "text": "LISP は SDA などでコントロールプレーンとして利用されますが、EVPN/VXLAN では BGP EVPN が標準です。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/solutions/CVD/Campus/cisco-sda-design-guide.html",
+            "reference_label": "Cisco SD-Access Design Guide"
+          }
+        },
+        {
+          "key": "C",
+          "text": "BGP EVPN を用いて VXLAN の MAC/IP リーチャビリティを広告する",
+          "explanation": {
+            "text": "EVPN/VXLAN では BGP EVPN が MAC/IP リーチャビリティ情報を交換するための標準コントロールプレーンとして用いられます。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/unicast/configuration/guide/b-cisco-nexus-9000-series-nx-os-unicast-routing-configuration-guide-93x/m-n9k-configuring-basic-bgp-93x.html",
+            "reference_label": "Cisco Nexus 9000 BGP Configuration Guide（EVPN 概要を含む）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IS-IS を使用し、MAC アドレスを TLV で直接広告する",
+          "explanation": {
+            "text": "IS-IS は IP ルーティングで広く使われますが、EVPN/VXLAN の MAC/IP 広告には BGP EVPN が用いられます。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/iosxr/cisco8000/bgp/b-bgp-config-cisco8000.html",
+            "reference_label": "Cisco 8000 Series BGP Configuration Guide"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "EVPN/VXLAN ファブリックでは BGP EVPN をコントロールプレーンとし、MAC アドレスや IP プレフィックスなどのリーチャビリティを NLRI として交換するのが標準的な設計です。",
+        "reference": "https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/unicast/configuration/guide/b-cisco-nexus-9000-series-nx-os-unicast-routing-configuration-guide-93x/m-n9k-configuring-basic-bgp-93x.html",
+        "reference_label": "Cisco Nexus 9000 BGP Configuration Guide（EVPN）"
+      }
+    },
+    {
+      "id": "ccie-19",
+      "question": "エンタープライズネットワークで Cisco TrustSec を利用する主な目的として、最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ルーティングプロトコル間の再配布を自動化する",
+          "explanation": {
+            "text": "TrustSec はセキュリティとセグメンテーションの技術であり、再配布自動化のための機能ではありません。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/solutions/CVD/Campus/cisco-sda-design-guide.html",
+            "reference_label": "Cisco SD-Access Design Guide（TrustSec）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "QoS のクラスマップを自動生成し、音声トラフィックを識別する",
+          "explanation": {
+            "text": "TrustSec は構造化されたセキュリティグループベースのポリシー適用であり、QoS クラスマップ生成機能ではありません。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/solutions/CVD/Campus/cisco-sda-design-guide.html",
+            "reference_label": "Cisco SD-Access Design Guide（Policy Plane）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "SGT（Security Group Tag）に基づくポリシーベースアクセス制御とセグメンテーションを実現する",
+          "explanation": {
+            "text": "TrustSec は SGT を用いて論理的なセグメンテーションとポリシーベースのアクセス制御を提供することを目的としています。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/solutions/CVD/Campus/cisco-sda-design-guide.html",
+            "reference_label": "Cisco SD-Access Design Guide（Policy Plane – TrustSec）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "VRRP のフォールオーバー時間を短縮する",
+          "explanation": {
+            "text": "VRRP は冗長ゲートウェイのプロトコルであり、TrustSec とは別の機能領域です。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/solutions/CVD/Campus/cisco-sda-design-guide.html",
+            "reference_label": "Cisco SD-Access Design Guide"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "Cisco TrustSec は SGT（Security Group Tag）を用いてユーザやデバイスを論理グループ化し、ネットワーク全体で一貫したポリシーベースアクセス制御とセグメンテーションを実現することを目的としています。",
+        "reference": "https://www.cisco.com/c/en/us/td/docs/solutions/CVD/Campus/cisco-sda-design-guide.html",
+        "reference_label": "Cisco SD-Access Solution Design Guide（Policy Plane – TrustSec）"
+      }
+    },
+    {
+      "id": "ccie-20",
+      "question": "Cisco CCIE レベルの設計において、エンタープライズエッジでインターネット向けと WAN 向けの BGP を分離する一般的な理由として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "OSPF と IS-IS の相互再配布数を減らすため",
+          "explanation": {
+            "text": "インターネット BGP と WAN BGP の分離は主にポリシーやスケーラビリティの観点であり、IGP 間再配布数とは直接関係しません。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_bgp/configuration/xe-16/irg-xe-16-book/configuring-a-basic-bgp-network.html",
+            "reference_label": "Cisco IOS XE – BGP Design Considerations"
+          }
+        },
+        {
+          "key": "B",
+          "text": "QoS キューの数を減らすため",
+          "explanation": {
+            "text": "ルーティングプレーンの設計と QoS キューの数は直接的な因果関係はありません。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/ip-routing/b-ip-routing.html",
+            "reference_label": "Cisco IOS XE IP Routing Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "インターネットとプライベート WAN の経路ポリシーや障害ドメインを分離してスケーラビリティとセキュリティを高めるため",
+          "explanation": {
+            "text": "インターネット BGP とプライベート WAN BGP を分離することで、経路ポリシーや障害ドメインを分け、セキュリティとスケーラビリティを向上させる設計が一般的です。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/solutions/CVD/SDWAN/cisco-sdwan-design-guide.html",
+            "reference_label": "Cisco SD-WAN Design Guide（Edge Design Considerations）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "OSPF を完全に排除して BGP のみで IGP を置き換えるため",
+          "explanation": {
+            "text": "BGP を IGP の代替として利用する設計もありますが、インターネット/WAN BGP 分離の主目的ではありません。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/ip-routing/b-ip-routing.html",
+            "reference_label": "Cisco IOS XE IP Routing Overview"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "CCIE レベルのエンタープライズ設計では、インターネット向け BGP とプライベート WAN BGP を論理的・物理的に分離することで、経路ポリシーの複雑さや障害ドメインを分け、スケーラビリティとセキュリティを高めるアーキテクチャがよく採用されます。",
+        "reference": "https://www.cisco.com/c/en/us/td/docs/solutions/CVD/SDWAN/cisco-sdwan-design-guide.html",
+        "reference_label": "Cisco SD-WAN Design Guide（Edge Design Considerations）"
+      }
+    },
+    {
+      "id": "ccie-21",
+      "question": "MPLS L3VPN において、異なる顧客 VRF 間の経路の「輸出・輸入」を制御するために主に利用される BGP 属性はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Route Distinguisher（RD）",
+          "explanation": {
+            "text": "RD は各 VPNv4 経路を一意に識別するために付与される 64bit の値であり、VPN 間の経路の輸出・輸入ポリシーを制御するものではありません。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/multiprotocol-label-switching-mpls/mpls/20059-mpls-vpn-basic.html",
+            "reference_label": "Cisco – MPLS VPN Basics"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Route Target（RT）",
+          "explanation": {
+            "text": "RT は BGP Extended Community として付与され、ある VRF からエクスポートされた経路を、どの VRF がインポートするかを制御するために使用されます。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/multiprotocol-label-switching-mpls/mpls/20059-mpls-vpn-basic.html",
+            "reference_label": "Cisco – MPLS VPN Basics（Route Target）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Multi-Exit Discriminator（MED）",
+          "explanation": {
+            "text": "MED は複数出口を持つ AS 間で好ましいパスを示すための BGP 属性であり、L3VPN の VRF 間輸出・輸入の制御には用いられません。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/ip-routing/b-ip-routing.html",
+            "reference_label": "Cisco IOS XE – BGP Path Selection Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "BGP Communities（通常 Community のみ）",
+          "explanation": {
+            "text": "通常の Community もポリシー制御に使われますが、L3VPN の標準的な VRF 間の輸出・輸入制御には RT（Extended Community）が利用されます。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/multiprotocol-label-switching-mpls/mpls/20059-mpls-vpn-basic.html",
+            "reference_label": "Cisco – MPLS VPN Basics"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "MPLS L3VPN では RD が経路の一意性を、RT が VRF 間の経路の輸出・輸入関係を制御します。RT により、特定 VRF からエクスポートされた経路を別の VRF がインポートすることでハブ＆スポークやフルメッシュなどのトポロジを柔軟に構成できます。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/multiprotocol-label-switching-mpls/mpls/20059-mpls-vpn-basic.html",
+        "reference_label": "Cisco – MPLS VPN Basics（Route Distinguisher and Route Target）"
+      }
+    },
+    {
+      "id": "ccie-22",
+      "question": "Segment Routing（SR-MPLS）を利用して MPLS コアのシンプル化を図る場合の特徴として、Cisco の設計ガイドに沿った正しい説明はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ラベル配布プロトコルとして LDP と RSVP-TE を併用することが必須である",
+          "explanation": {
+            "text": "SR-MPLS では、専用のラベル配布プロトコルを不要とし、IGP を通じて Segment ID（SID）を配布することが特徴です。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/seg-routing/configuration/xe-16/sr-xe-16-book/segment-routing-overview.html",
+            "reference_label": "Cisco IOS XE – Segment Routing Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "LSR 間の RSVP シグナリングにより、各フローごとに状態を維持する必要がある",
+          "explanation": {
+            "text": "SR はステートレスなトンネル制御を目指しており、RSVP-TE のような中間ノードの per-LSP 状態を不要とします。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/seg-routing/configuration/xe-16/sr-xe-16-book/segment-routing-overview.html",
+            "reference_label": "Cisco Segment Routing Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データプレーンでは MPLS ラベルを使用せず、IPv6 拡張ヘッダのみでパス制御を行う",
+          "explanation": {
+            "text": "SR-MPLS は MPLS ラベルスタックを利用します。IPv6 拡張ヘッダを利用するのは SRv6 のアプローチです。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/seg-routing/configuration/xe-16/sr-xe-16-book/segment-routing-overview.html",
+            "reference_label": "Cisco Segment Routing – SR-MPLS and SRv6"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IGP（OSPF/IS-IS）を介して SID を配布し、中間ノードの状態を最小化しながらラベルスタックでパスを定義する",
+          "explanation": {
+            "text": "SR-MPLS では IGP が SID 情報を配布し、ヘッドエンドがラベルスタックを決定することで、コアでの per-LSP 状態維持を不要とし、ネットワークを簡素化します。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/seg-routing/configuration/xe-16/sr-xe-16-book/segment-routing-overview.html",
+            "reference_label": "Cisco IOS XE – Segment Routing Overview"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "Segment Routing（SR-MPLS）は IGP（OSPF/IS-IS）を通じてノード SID やアドジャセンシ SID を配布し、ヘッドエンドでラベルスタックを形成します。これにより RSVP-TE のような中間ノードにおける per-LSP 状態を不要とし、制御プレーンを簡素化します。",
+        "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/seg-routing/configuration/xe-16/sr-xe-16-book/segment-routing-overview.html",
+        "reference_label": "Cisco IOS XE – Segment Routing Overview"
+      }
+    },
+    {
+      "id": "ccie-23",
+      "question": "IPv6 ホストがルータ広告（RA）のみを用いてアドレス自動設定を行い、DNS サーバ情報は DHCPv6 で配布する構成（いわゆる SLAAC + Stateless DHCPv6）を実現するために、RA に設定すべきフラグの組み合わせとして正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "M フラグ = 0、O フラグ = 1",
+          "explanation": {
+            "text": "M=0 はステートレスアドレス自動設定（SLAAC）を示し、O=1 によりその他の情報（DNS など）を DHCPv6 から取得することを示します。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipv6/configuration/xe-17/ip6-xe-17-book/ip6-addr-config.html",
+            "reference_label": "Cisco IOS XE – IPv6 Addressing and RA Flags"
+          }
+        },
+        {
+          "key": "B",
+          "text": "M フラグ = 1、O フラグ = 0",
+          "explanation": {
+            "text": "M=1 はステートフル DHCPv6 によるアドレス配布を意味し、SLAAC のみの構成とは異なります。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipv6/configuration/xe-17/ip6-xe-17-book/ip6-addr-config.html",
+            "reference_label": "Cisco – IPv6 RA Flags Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "M フラグ = 1、O フラグ = 1",
+          "explanation": {
+            "text": "M=1 かつ O=1 はアドレスもその他情報も DHCPv6 で提供する構成を意味します。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipv6/configuration/xe-17/ip6-xe-17-book/ip6-addr-config.html",
+            "reference_label": "Cisco IOS XE – IPv6 RA Flags"
+          }
+        },
+        {
+          "key": "D",
+          "text": "M フラグ = 0、O フラグ = 0",
+          "explanation": {
+            "text": "M=0, O=0 の場合、ホストは SLAAC のみを使用し、DHCPv6 を利用しない構成を意味します。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipv6/configuration/xe-17/ip6-xe-17-book/ip6-addr-config.html",
+            "reference_label": "Cisco IOS XE – IPv6 Addressing"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "SLAAC + Stateless DHCPv6 構成では、アドレス自動設定は RA に含まれるプレフィックス情報で行い（M=0）、DNS などの追加情報のみ DHCPv6 から取得します。これを示すために RA の Managed（M）フラグを 0、Other（O）フラグを 1 に設定します。",
+        "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipv6/configuration/xe-17/ip6-xe-17-book/ip6-addr-config.html",
+        "reference_label": "Cisco IOS XE – IPv6 Addressing and RA Flags"
+      }
+    },
+    {
+      "id": "ccie-24",
+      "question": "PIM-SM（Protocol Independent Multicast – Sparse Mode）ネットワークにおける Rendezvous Point（RP）の主な役割として、最も適切な説明はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "全てのマルチキャストトラフィックを常に RP 経由で転送し続ける最終中継点である",
+          "explanation": {
+            "text": "PIM-SM では初期フェーズで RP を経由しますが、最終的にはショートカットされた SPT（Shortest Path Tree）に切り替わるのが一般的です。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/ip-multicast/118054-config-PIM-00.html",
+            "reference_label": "Cisco – PIM-SM Configuration and Concepts"
+          }
+        },
+        {
+          "key": "B",
+          "text": "PIM-DM（Dense Mode）ネットワークでのみ使用される特殊なルータである",
+          "explanation": {
+            "text": "RP は PIM-SM のコンセプトであり、PIM-DM では RP は利用されません。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/ip-multicast/118054-config-PIM-00.html",
+            "reference_label": "Cisco – PIM Dense and Sparse Mode"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ソースとレシーバのジョイン情報を集約し、共有ツリー（(*,G)）のルートとして機能する",
+          "explanation": {
+            "text": "RP は PIM-SM の共有ツリー (*,G) のルートとなり、ソース登録とレシーバの Join を集約する中心的役割を担います。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/ip-multicast/118054-config-PIM-00.html",
+            "reference_label": "Cisco – Understanding PIM-SM RP"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IGMP クエリアとしてレシーバのメンバーシップを直接管理する",
+          "explanation": {
+            "text": "IGMP クエリアは L2 セグメント上でホストメンバーシップを管理する役割であり、RP の役割とは異なります。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/ip-multicast/118054-config-PIM-00.html",
+            "reference_label": "Cisco – PIM and IGMP Overview"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "PIM-SM における RP は、ソースからの登録（Register）とレシーバ側からの Join を集約し、共有ツリー (*,G) のルートとして機能します。その後、トラフィック量やポリシーに応じて各受信 DR が最短パスツリー (S,G) に切り替えるのが一般的な動作です。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/ip/ip-multicast/118054-config-PIM-00.html",
+        "reference_label": "Cisco – PIM-SM RP Overview"
+      }
+    },
+    {
+      "id": "ccie-25",
+      "question": "エンタープライズのデフォルトゲートウェイ冗長化プロトコルとして HSRP、VRRP、GLBP を比較したとき、GLBP 固有の特徴として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "標準化された IETF プロトコルとして複数ベンダで実装されている",
+          "explanation": {
+            "text": "標準化され複数ベンダで実装されているのは VRRP です。GLBP は Cisco 独自プロトコルです。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/hot-standby-router-protocol-hsrp/9234-3.html",
+            "reference_label": "Cisco – HSRP/VRRP/GLBP Comparison"
+          }
+        },
+        {
+          "key": "B",
+          "text": "複数のアクティブゲートウェイを用いて自動的な負荷分散を行える",
+          "explanation": {
+            "text": "GLBP は 1 つのグループ内で複数の AVF（Active Virtual Forwarder）を持ち、クライアントから見たデフォルトゲートウェイを分散することで負荷分散を行うのが大きな特徴です。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/hot-standby-router-protocol-hsrp/9234-3.html",
+            "reference_label": "Cisco – GLBP Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "単一のアクティブ・スタンバイ構成でのみ動作し、負荷分散は行わない",
+          "explanation": {
+            "text": "単一アクティブ・スタンバイで動作するのは典型的な HSRP/VRRP 構成であり、GLBP は負荷分散が特徴です。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/hot-standby-router-protocol-hsrp/9234-3.html",
+            "reference_label": "Cisco – HSRP and GLBP Features"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IPv6 をサポートせず、IPv4 のみで利用できる",
+          "explanation": {
+            "text": "GLBP for IPv6 も存在し、IPv6 アドレスでの冗長・負荷分散が可能です。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipapp/configuration/xe-17/iap-xe-17-book/glbp-ipv6.html",
+            "reference_label": "Cisco IOS XE – GLBP for IPv6"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "GLBP は Cisco 独自プロトコルで、1 つの GLBP グループに対して複数の AVF を持ち、クライアントに配布する仮想 MAC を分散させることでデフォルトゲートウェイの負荷分散を提供する点が HSRP/VRRP と大きく異なります。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/ip/hot-standby-router-protocol-hsrp/9234-3.html",
+        "reference_label": "Cisco – GLBP Overview and Comparison"
+      }
+    },
+    {
+      "id": "ccie-26",
+      "question": "Cisco Catalyst ワイヤレスネットワークで 802.11ax（Wi-Fi 6）の導入を検討している。802.11ax の特徴として正しい説明はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "CSMA/CA を廃止し、完全な予約ベース MAC に置き換える",
+          "explanation": {
+            "text": "802.11ax でも基本は CSMA/CA を継続利用しつつ、OFDMA などの機能を追加しています。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/enterprise-networks/wi-fi-6/index.html",
+            "reference_label": "Cisco – Wi-Fi 6 Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "5GHz のみをサポートし、2.4GHz はサポートしない",
+          "explanation": {
+            "text": "802.11ax は 2.4GHz/5GHz の両バンドをサポートします。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/enterprise-networks/wi-fi-6/index.html",
+            "reference_label": "Cisco – Wi-Fi 6 Technology"
+          }
+        },
+        {
+          "key": "C",
+          "text": "チャネル幅を必ず 160MHz に固定しなければならない",
+          "explanation": {
+            "text": "160MHz はオプションであり、環境に応じて 20/40/80/160MHz を選択できます。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/enterprise-networks/wi-fi-6/index.html",
+            "reference_label": "Cisco – Wi-Fi 6 Best Practices"
+          }
+        },
+        {
+          "key": "D",
+          "text": "OFDMA や BSS カラーリングにより、高密度環境での効率とスループットを向上させる",
+          "explanation": {
+            "text": "802.11ax のコア機能として OFDMA、BSS カラーリング、Target Wake Time などがあり、高密度環境での効率改善が目的です。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/enterprise-networks/wi-fi-6/index.html",
+            "reference_label": "Cisco – Wi-Fi 6 (802.11ax) Technology Overview"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "802.11ax（Wi-Fi 6）は特に高密度・高トラフィック環境での効率向上を目的とし、OFDMA、BSS カラーリング、MU-MIMO の拡張などの機能を導入しています。これにより、セル干渉を抑えつつスループットと利用効率を向上させます。",
+        "reference": "https://www.cisco.com/c/en/us/solutions/enterprise-networks/wi-fi-6/index.html",
+        "reference_label": "Cisco – Wi-Fi 6 (802.11ax) Overview"
+      }
+    },
+    {
+      "id": "ccie-27",
+      "question": "エンタープライズ有線 LAN において Cisco ISE と 802.1X 認証を導入する主なメリットとして最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ユーザやデバイスのアイデンティティに基づくダイナミックなポリシー適用とネットワークアクセス制御が可能になる",
+          "explanation": {
+            "text": "ISE と 802.1X によって、ユーザ/デバイス属性に基づく VLAN 割り当てや SGT 付与など、きめ細かなアクセス制御が可能になります。",
+            "reference": "https://www.cisco.com/c/en/us/products/security/identity-services-engine/index.html",
+            "reference_label": "Cisco Identity Services Engine Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "全てのスイッチで STP を完全に無効化できる",
+          "explanation": {
+            "text": "ISE/802.1X はアクセス制御の仕組みであり、STP を置き換えるものではありません。",
+            "reference": "https://www.cisco.com/c/en/us/products/security/identity-services-engine/index.html",
+            "reference_label": "Cisco ISE – Use Cases"
+          }
+        },
+        {
+          "key": "C",
+          "text": "WAN 帯域の圧縮と最適化を自動的に行う",
+          "explanation": {
+            "text": "WAN 最適化は別のソリューションであり、ISE/802.1X の目的ではありません。",
+            "reference": "https://www.cisco.com/c/en/us/products/security/identity-services-engine/index.html",
+            "reference_label": "Cisco ISE – Capabilities"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IP アドレス管理（IPAM）機能が統合され、DHCP サーバが不要になる",
+          "explanation": {
+            "text": "ISE は DHCP サーバや IPAM の代替ではなく、認証・認可・アカウンティングとポリシーエンジンを提供します。",
+            "reference": "https://www.cisco.com/c/en/us/products/security/identity-services-engine/index.html",
+            "reference_label": "Cisco ISE – Product Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cisco ISE と 802.1X を組み合わせることで、ユーザ名・端末タイプ・場所などのアイデンティティ情報に基づいたダイナミックな VLAN 割り当てや SGT 付与が可能となり、ゼロトラストに向けたきめ細かいネットワークアクセス制御が実現できます。",
+        "reference": "https://www.cisco.com/c/en/us/products/security/identity-services-engine/index.html",
+        "reference_label": "Cisco Identity Services Engine – Overview and Use Cases"
+      }
+    },
+    {
+      "id": "ccie-28",
+      "question": "Cisco Secure Firewall（旧 Firepower Threat Defense, FTD）をエンタープライズ境界に導入する主なセキュリティ機能として、次の説明のうち最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "L2 スイッチングのみを提供し、L3/L4 レベルのフィルタリング機能は持たない",
+          "explanation": {
+            "text": "FTD は L3/L4 のステートフル検査に加え、アプリケーションレベルの可視化と制御も提供します。",
+            "reference": "https://www.cisco.com/c/en/us/products/security/firewalls/secure-firewall-threat-defense/index.html",
+            "reference_label": "Cisco Secure Firewall Threat Defense Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "スタティック NAT のみを提供し、PAT やポリシーベース NAT はサポートしない",
+          "explanation": {
+            "text": "FTD はスタティック NAT、ダイナミック NAT、PAT など複数の NAT オプションを提供します。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/security/firepower-ngfw/216074-configuring-nat-in-firepower-threat-defe.html",
+            "reference_label": "Cisco – Configuring NAT in Firepower Threat Defense"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アプリケーション可視化・侵入防御・URL フィルタリングなどを統合し、NGFW としての機能を提供する",
+          "explanation": {
+            "text": "Cisco Secure Firewall（FTD）は NGFW として、L7 アプリケーション識別、IPS、URL フィルタリング、マルウェア対策などの機能を統合しています。",
+            "reference": "https://www.cisco.com/c/en/us/products/security/firewalls/secure-firewall-threat-defense/index.html",
+            "reference_label": "Cisco Secure Firewall Threat Defense – Features"
+          }
+        },
+        {
+          "key": "D",
+          "text": "BGP/OSPF 等の動的ルーティング機能は提供されない",
+          "explanation": {
+            "text": "FTD は OSPF/BGP/EIGRP などの動的ルーティングをサポートし、大規模ネットワークへ統合可能です。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/security/firepower-ngfw/215023-routing-overview-for-firepower-threat-de.html",
+            "reference_label": "Cisco – Routing Overview for Firepower Threat Defense"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "Cisco Secure Firewall Threat Defense は次世代ファイアウォール（NGFW）として、ステートフルパケット検査に加えてアプリケーション可視化・制御、侵入防御（IPS）、URL フィルタリング、マルウェア防御などの統合セキュリティ機能を提供します。",
+        "reference": "https://www.cisco.com/c/en/us/products/security/firewalls/secure-firewall-threat-defense/index.html",
+        "reference_label": "Cisco Secure Firewall Threat Defense – Overview and Features"
+      }
+    },
+    {
+      "id": "ccie-29",
+      "question": "AAA 設計において、Cisco デバイスの管理者ログインに TACACS+ を用いることの主な利点として、RADIUS と比較したときの正しい説明はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "TACACS+ は認証・認可・アカウンティングをすべて同じ TCP ポート 1812 で扱う",
+          "explanation": {
+            "text": "ポート番号 1812 は一般的に RADIUS 認証に使用されるポートです。TACACS+ は TCP 49 を用います。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/security-vpn/remote-authentication-dial-user-service-radius/13838-10.html",
+            "reference_label": "Cisco – TACACS+ and RADIUS Comparison"
+          }
+        },
+        {
+          "key": "B",
+          "text": "TACACS+ はコマンド単位の認可が可能であり、ネットワーク機器管理に適した細粒度の制御ができる",
+          "explanation": {
+            "text": "TACACS+ は認証・認可・アカウンティングを分離し、特に CLI コマンド単位の認可制御が可能であるため、機器管理用途に適しています。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/security-vpn/remote-authentication-dial-user-service-radius/13838-10.html",
+            "reference_label": "Cisco – TACACS+ vs RADIUS"
+          }
+        },
+        {
+          "key": "C",
+          "text": "TACACS+ は UDP ベースであり、遅延に強い",
+          "explanation": {
+            "text": "TACACS+ は TCP ベースであり、再送制御などを TCP に依存します。UDP ベースなのは RADIUS です。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/security-vpn/remote-authentication-dial-user-service-radius/13838-10.html",
+            "reference_label": "Cisco – TACACS+ and RADIUS Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "TACACS+ はパスワードのみ暗号化され、その他の属性は平文で送信される",
+          "explanation": {
+            "text": "RADIUS では通常パスワードのみ暗号化されますが、TACACS+ はペイロード全体が暗号化されます。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/security-vpn/remote-authentication-dial-user-service-radius/13838-10.html",
+            "reference_label": "Cisco – TACACS+/RADIUS Security Characteristics"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "TACACS+ は TCP 49 を使用し、認証・認可・アカウンティングを分離して処理できることに加え、CLI コマンド単位での細粒度な認可制御が可能です。このためネットワーク機器の管理アクセス制御に広く用いられます。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/security-vpn/remote-authentication-dial-user-service-radius/13838-10.html",
+        "reference_label": "Cisco – TACACS+ and RADIUS Comparison"
+      }
+    },
+    {
+      "id": "ccie-30",
+      "question": "キャンパスネットワークで Cisco Catalyst スイッチを用いて STP の高速収束を実現したい。Rapid PVST+ の特徴として、Cisco の推奨に沿った正しい説明はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Rapid PVST+ では STP が完全に無効化され、ループ検出は UDLD のみで行われる",
+          "explanation": {
+            "text": "Rapid PVST+ は IEEE 802.1w ベースの高速 STP 実装であり、STP を無効化するものではありません。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/24062-146.html",
+            "reference_label": "Cisco – Understanding Rapid PVST+"
+          }
+        },
+        {
+          "key": "B",
+          "text": "MST（Multiple Spanning Tree）と比べて VLAN 単位のインスタンス数を削減できる",
+          "explanation": {
+            "text": "Rapid PVST+ は VLAN ごとに STP インスタンスを持つため、スケーラビリティの観点では MST の方がインスタンス数を削減できます。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/24062-146.html",
+            "reference_label": "Cisco – PVST+/Rapid PVST+/MST Comparison"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ブロッキングポートは常に 30 秒の待機後にフォワーディングへ遷移する",
+          "explanation": {
+            "text": "Rapid STP では提案/合意メカニズムにより、適切な条件下で迅速にフォワーディング状態に移行できます。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/24062-146.html",
+            "reference_label": "Cisco – Rapid PVST+ Convergence"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IEEE 802.1w ベースの高速収束アルゴリズムを VLAN ごとのインスタンスで動作させる",
+          "explanation": {
+            "text": "Rapid PVST+ は 802.1w（Rapid STP）に基づき、VLAN ごとに独立したインスタンスとして動作する Cisco 拡張 STP 実装です。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/24062-146.html",
+            "reference_label": "Cisco – Rapid PVST+ Overview"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "Rapid PVST+ は 802.1w（Rapid STP）をベースにしつつ、PVST+ と同様に VLAN 単位で個別の STP インスタンスを持つ Cisco 拡張実装です。提案/合意メカニズムなどにより、従来の 802.1D より高速な収束を提供します。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/24062-146.html",
+        "reference_label": "Cisco – PVST+, Rapid PVST+, and MST"
+      }
+    },
+    {
+      "id": "ccie-31",
+      "question": "Cisco ACI で Endpoint Group（EPG）が提供する機能として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "物理スイッチごとに VLAN を動的に割り当てる方式であり、アプリケーション単位の抽象化は行わない",
+          "explanation": {
+            "text": "ACI の EPG はアプリケーション単位の抽象化を提供するため、VLAN ベースの単純な物理グルーピングではありません。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+            "reference_label": "Cisco ACI – Solution Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "同一 EPG 内の通信は常に制限され、Contract を用いなければ許可されない",
+          "explanation": {
+            "text": "同一 EPG 内の通信はデフォルトで許可されます。Contract は EPG 間通信に必要です。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+            "reference_label": "Cisco ACI – Policy Model"
+          }
+        },
+        {
+          "key": "C",
+          "text": "共通のポリシー（Contract）を適用するために、アプリケーションまたはワークロードをグループ化する単位として使用される",
+          "explanation": {
+            "text": "EPG はアプリケーション単位のグルーピングであり、Contract を用いて通信やセキュリティポリシーを適用する論理単位です。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+            "reference_label": "Cisco ACI – EPG and Contract"
+          }
+        },
+        {
+          "key": "D",
+          "text": "EPG はファブリック内の Spine スイッチにのみ紐づき、Leaf スイッチとは無関係である",
+          "explanation": {
+            "text": "EPG は Leaf に接続されるエンドポイントに関連づき、Spine は ACI のファブリック転送機能を担います。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+            "reference_label": "Cisco ACI – Architecture Overview"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "EPG は ACI のアプリケーション中心型設計の基本単位であり、同一属性のワークロードをまとめて Contract によるポリシーを適用します。",
+        "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+        "reference_label": "Cisco ACI – Policy Model"
+      }
+    },
+    {
+      "id": "ccie-32",
+      "question": "Cisco ACI ファブリックで VXLAN の VNI（VXLAN Network Identifier）が果たす役割として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ACI Spine 間で使用されるコントロールプレーンの暗号化キーとして動作する",
+          "explanation": {
+            "text": "VNI はオーバレイネットワーク識別子であり、暗号化キーの役割は持ちません。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/white-paper-c11-731497.html",
+            "reference_label": "Cisco ACI – VXLAN Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "L2/L3 の論理セグメントを仮想的に識別し、EPG や Bridge Domain と紐付けるために使用される",
+          "explanation": {
+            "text": "ACI では VXLAN を拡張し、VNI が Bridge Domain や VRF に対応するオーバレイ識別子として機能します。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/white-paper-c11-731497.html",
+            "reference_label": "Cisco ACI – VXLAN in ACI"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Spine スイッチ間の ECMP 経路制御情報として利用される",
+          "explanation": {
+            "text": "ECMP は IP ルーティングに基づくもので、VNI とは別物です。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/white-paper-c11-731497.html",
+            "reference_label": "Cisco ACI – VXLAN Architecture"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IP アドレスの自動割り当てを行うための DHCP オプションである",
+          "explanation": {
+            "text": "VNI は VXLAN の識別子であり、DHCP のオプションではありません。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/white-paper-c11-731497.html",
+            "reference_label": "Cisco ACI – VXLAN Functions"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ACI では VXLAN を拡張し、VNI を EPG/BD/VRFに関連付けることで大規模な論理セグメンテーションを柔軟に実現します。",
+        "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/white-paper-c11-731497.html",
+        "reference_label": "Cisco ACI – VXLAN Overview"
+      }
+    },
+    {
+      "id": "ccie-33",
+      "question": "Cisco ACI の Contract における Filter の役割として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "トンネルカプセル化方式を選択する",
+          "explanation": {
+            "text": "カプセル化方式は Fabric ポリシーで扱われ、Filter では扱いません。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+            "reference_label": "Cisco ACI Policy Elements"
+          }
+        },
+        {
+          "key": "B",
+          "text": "EPG 間で許可する L4/L3/L2 条件を定義する ACL に相当する要素である",
+          "explanation": {
+            "text": "Filter はポート番号やプロトコルなどを定義し、EPG 間通信を制御します。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+            "reference_label": "Cisco ACI Filter and Contract"
+          }
+        },
+        {
+          "key": "C",
+          "text": "EPG をどの Leaf に配置するかを決定する",
+          "explanation": {
+            "text": "Filter は通信条件の定義であり、配置の決定ではありません。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+            "reference_label": "Cisco ACI – EPG Mapping"
+          }
+        },
+        {
+          "key": "D",
+          "text": "EPG 内のマイクロセグメンテーションに対して自動で ACL を生成する",
+          "explanation": {
+            "text": "マイクロセグメンテーションは別途 uSeg を用いる機能です。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+            "reference_label": "Cisco ACI Features"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Contract の Filter は ACL に相当し、IP/ポート/プロトコルの組み合わせで通信制御を行う要素です。",
+        "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+        "reference_label": "Cisco ACI – Contract and Filter"
+      }
+    },
+    {
+      "id": "ccie-34",
+      "question": "Cisco ACI の VRF（Tenant VRF）の役割として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "EPG を自動的に L2 ブロードキャストドメインにまとめる",
+          "explanation": {
+            "text": "L2 ドメインは Bridge Domain（BD）が定義します。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+            "reference_label": "Cisco ACI – VRF and BD Roles"
+          }
+        },
+        {
+          "key": "B",
+          "text": "L3 セグメントを分離し、Tenant 内でのルーティングドメインを提供する",
+          "explanation": {
+            "text": "VRF は ACI 内の L3 ドメイン分離を担当します。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+            "reference_label": "Cisco ACI VRF Definition"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Leaf 間のトンネルを形成するための VXLAN ID を定義する",
+          "explanation": {
+            "text": "VXLAN ID（VNI）は BD や EPG と関連付けられます。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+            "reference_label": "ACI VXLAN"
+          }
+        },
+        {
+          "key": "D",
+          "text": "APIC と Spine 間のコントロールプレーン通信を制御する",
+          "explanation": {
+            "text": "VRF はテナントの L3 分離であり、ファブリック管理とは別です。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+            "reference_label": "ACI Architecture"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ACI VRF は L3 ルーティングドメインを分離し、異なる VRF 間ではルーティングが行われません。",
+        "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+        "reference_label": "Cisco ACI – VRF Overview"
+      }
+    },
+    {
+      "id": "ccie-35",
+      "question": "Cisco ACI の Bridge Domain（BD）が提供する機能として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "L3 ルーティングドメインを提供し、VRF と 1:1 対応する",
+          "explanation": {
+            "text": "L3 ドメインは VRF が担当し、BD は L2 ブロードキャストドメインです。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+            "reference_label": "Cisco ACI – Bridge Domain"
+          }
+        },
+        {
+          "key": "B",
+          "text": "L2 ブロードキャストドメインを提供し、IP や ARP の転送ポリシーを設定できる",
+          "explanation": {
+            "text": "BD は L2 セグメントの定義であり、ARP Flooding や Unknown Unicast などの動作設定を含みます。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+            "reference_label": "ACI BD Features"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Tenant の管理権限を細分化する RBAC 機能を提供する",
+          "explanation": {
+            "text": "RBAC は ACI 管理機能であり、BD とは無関係です。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+            "reference_label": "ACI RBAC"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Spine スイッチでの ECMP パス制御を最適化する",
+          "explanation": {
+            "text": "ECMP は IP ルーティングの機能であり、BD は関与しません。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+            "reference_label": "ACI Routing"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Bridge Domain は ACI における L2 ドメインの基本単位で、Flooding ポリシーや ARP 処理などの動作を決定します。",
+        "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+        "reference_label": "Cisco ACI – Bridge Domain Overview"
+      }
+    },
+    {
+      "id": "ccie-36",
+      "question": "ACI Leaf/Spine アーキテクチャの特徴として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Leaf は Leaf 同士で相互接続され、Spine は Spine 同士で相互接続される",
+          "explanation": {
+            "text": "ACI の Spine-Leaf では Leaf 同士・Spine 同士は直接接続しません。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+            "reference_label": "ACI Fabric Architecture"
+          }
+        },
+        {
+          "key": "B",
+          "text": "全ての Leaf は全ての Spine に接続することが推奨されている",
+          "explanation": {
+            "text": "Leaf は全 Spine と接続する全結合が ACI の推奨設計です。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+            "reference_label": "ACI Spine-Leaf Connectivity"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Spine はエンドホスト接続に使用される",
+          "explanation": {
+            "text": "エンドホストは Leaf に接続され、Spine はファブリックコアのみを担います。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+            "reference_label": "ACI Leaf Role"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Leaf は L3 ルーティングを行わず、Spine のみがルーティングを担当する",
+          "explanation": {
+            "text": "ACI は Leaf で L2/L3 処理を行い、Spine は高速転送を担います。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+            "reference_label": "ACI Roles Overview"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ACI では Leaf は全ての Spine に接続する Clos トポロジを採用し、一貫した低遅延・高帯域を提供します。",
+        "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+        "reference_label": "ACI Spine-Leaf Architecture"
+      }
+    },
+    {
+      "id": "ccie-37",
+      "question": "Cisco ACI の Policy-Based Redirect（PBR）の主目的として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "EPG を別の VRF に自動的に移動させる",
+          "explanation": {
+            "text": "PBR はサービスチェイニングで使用する機能であり、VRF 移動ではありません。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/switches/datacenter/aci/apic/5x/virtualization/cisco-apic-virtualization-guide-50x/m-service-redirect.html",
+            "reference_label": "Cisco ACI – Service Redirect/PBR"
+          }
+        },
+        {
+          "key": "B",
+          "text": "通信ポリシーに基づいて特定トラフィックを外部のサービスデバイスへ誘導する",
+          "explanation": {
+            "text": "PBR は Contract と組み合わせて特定トラフィックを FW/IDS などへ誘導する機能です。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/switches/datacenter/aci/apic/5x/virtualization/cisco-apic-virtualization-guide-50x/m-service-redirect.html",
+            "reference_label": "Cisco ACI – Policy-Based Redirect"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Leaf 間の ECMP 経路を強制的に固定化する",
+          "explanation": {
+            "text": "PBR はサービス経路制御であり、ECMP 制御ではありません。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/switches/datacenter/aci/apic/5x/virtualization/cisco-apic-virtualization-guide-50x/m-service-redirect.html",
+            "reference_label": "ACI Redirect"
+          }
+        },
+        {
+          "key": "D",
+          "text": "EPG 内のマイクロセグメンテーションを自動化する",
+          "explanation": {
+            "text": "マイクロセグメンテーションは uSeg による機能です。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+            "reference_label": "ACI Microsegmentation"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ACI の PBR は Contract に基づいてトラフィックを外部のサービス機器（FW/IPS）へ誘導するためのサービスチェイニング機能です。",
+        "reference": "https://www.cisco.com/c/en/us/td/docs/switches/datacenter/aci/apic/5x/virtualization/cisco-apic-virtualization-guide-50x/m-service-redirect.html",
+        "reference_label": "Cisco ACI – PBR Overview"
+      }
+    },
+    {
+      "id": "ccie-38",
+      "question": "Cisco ACI Fabric のテナントモデルにおいて、Tenant が提供する分離のレベルとして正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Tenant は L2 ドメインのみを分離し、L3 は共有される",
+          "explanation": {
+            "text": "Tenant は VRF と BD を含み、L2/L3 の両方を分離します。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+            "reference_label": "ACI Tenant Model"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Tenant はポリシー、L2/L3 ネットワーク、セキュリティを含む完全な論理的分離を提供する",
+          "explanation": {
+            "text": "Tenant は VRF/BD/EPG を含む論理的な完全分離ドメインです。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+            "reference_label": "Cisco ACI Tenant Architecture"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Tenant 間で VRF は必ず共有される",
+          "explanation": {
+            "text": "VRF は Tenant 内で固有です。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+            "reference_label": "ACI VRF Isolation"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Tenant 間の通信は Contract を使えば常に自動で許可される",
+          "explanation": {
+            "text": "Tenant を跨ぐ Contract は明示的な設定が必要です。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+            "reference_label": "ACI Tenant Communication"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ACI Tenant はセキュリティ・L2/L3 ネットワーク・ポリシーを完全に分離する論理コンテナです。",
+        "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+        "reference_label": "Cisco ACI Tenant Model"
+      }
+    },
+    {
+      "id": "ccie-39",
+      "question": "ACI Leaf での L3Out における BGP ルートプロファイルの目的として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Leaf 間での VXLAN トンネル形成に必要な鍵交換を行う",
+          "explanation": {
+            "text": "鍵交換は行われず、VXLAN トンネル形成とは無関係です。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+            "reference_label": "ACI Routing"
+          }
+        },
+        {
+          "key": "B",
+          "text": "BGP で広告・受信する経路をフィルタし、外部とのルーティングポリシーを制御する",
+          "explanation": {
+            "text": "ルートプロファイルはインポート・エクスポートの経路制御のための要素です。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+            "reference_label": "ACI L3Out BGP"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ACI ファブリック管理用アドレスの割り当てを行う",
+          "explanation": {
+            "text": "ファブリック管理は APIC のインフラ VRF により管理されます。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+            "reference_label": "ACI Fabric Infra"
+          }
+        },
+        {
+          "key": "D",
+          "text": "BGP セッション確立時にコントラクトを自動生成する",
+          "explanation": {
+            "text": "Contract は別途設定が必要です。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+            "reference_label": "ACI Contracts"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "BGP ルートプロファイルは ACI の L3Out における経路インポート/エクスポートの制御に利用されます。",
+        "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+        "reference_label": "ACI L3Out BGP Overview"
+      }
+    },
+    {
+      "id": "ccie-40",
+      "question": "Cisco ACI における uSeg（Micro-Segmentation）機能の特徴として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "EPG 間ではなく、EPG 内部のエンドポイント同士の通信制御をポリシーで細分化できる",
+          "explanation": {
+            "text": "uSeg は EPG 内の端末を属性ベースで分類し、細粒度のポリシーを適用する仕組みです。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+            "reference_label": "ACI Microsegmentation"
+          }
+        },
+        {
+          "key": "B",
+          "text": "EPG 間通信をすべて完全に遮断するための仕組みである",
+          "explanation": {
+            "text": "EPG 間通信の制御は Contract で行います。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+            "reference_label": "ACI Contracts"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Spine スイッチで VXLAN VNI を動的生成する",
+          "explanation": {
+            "text": "uSeg はポリシー機能であり、VNI 生成とは関係しません。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+            "reference_label": "ACI VXLAN"
+          }
+        },
+        {
+          "key": "D",
+          "text": "L3Out における外部経路のフィルタとして使用される",
+          "explanation": {
+            "text": "外部経路フィルタはルートプロファイルで設定します。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+            "reference_label": "ACI BGP Routing"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "uSeg は VM 属性や IP/MAC などをもとに EPG 内でさらに細かくグルーピングし、より細粒度のポリシーを適用する ACI のマイクロセグメンテーション機能です。",
+        "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html",
+        "reference_label": "Cisco ACI – Microsegmentation"
+      }
+    },
+    {
+      "id": "ccie-41",
+      "question": "Cisco ACI と外部 L2 ネットワークを接続する場合、L2Out を利用する典型的なユースケースとして最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "外部ルータと BGP で経路交換し、L3 でテナント VRF を拡張する場合",
+          "explanation": {
+            "text": "これは L3Out のユースケースであり、L2Out ではなく L3Out を用いて経路交換します。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/switches/datacenter/aci/apic/sw/5-x/virtualization/cisco-apic-layer-2-external-bridged-network.html",
+            "reference_label": "Cisco ACI – Layer 2 External Bridged Network"
+          }
+        },
+        {
+          "key": "B",
+          "text": "外部 L2 セグメントと ACI Bridge Domain を同一のブロードキャストドメインとして拡張する場合",
+          "explanation": {
+            "text": "L2Out は外部スイッチと VLAN を共有し、ACI BD の L2 セグメントを外部に拡張する際に利用されます。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/switches/datacenter/aci/apic/sw/5-x/virtualization/cisco-apic-layer-2-external-bridged-network.html",
+            "reference_label": "Cisco ACI – L2Out（Bridged Network）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "インターネット向けデフォルトルートを外部 FW に集約する場合",
+          "explanation": {
+            "text": "インターネットへのルーティング集約は通常 L3Out（External Routed Network）で行います。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/switches/datacenter/aci/apic/sw/5-x/routing/cisco-apic-layer-3-external-routed-network.html",
+            "reference_label": "Cisco ACI – Layer 3 External Routed Network"
+          }
+        },
+        {
+          "key": "D",
+          "text": "外部の MPLS VPN と VRF 間で経路を相互再配布する場合",
+          "explanation": {
+            "text": "MPLS VPN との連携は BGP/L3Out を用いた L3 接続が前提となり、L2Out のユースケースではありません。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/switches/datacenter/aci/apic/sw/5-x/routing/cisco-apic-layer-3-external-routed-network.html",
+            "reference_label": "Cisco ACI – External Routed Connectivity"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "L2Out は ACI の Bridge Domain を外部スイッチの VLAN とブリッジし、同一の L2 ブロードキャストドメインとして拡張するために使用されます。L3 経路交換やインターネット接続などは L3Out のユースケースです。",
+        "reference": "https://www.cisco.com/c/en/us/td/docs/switches/datacenter/aci/apic/sw/5-x/virtualization/cisco-apic-layer-2-external-bridged-network.html",
+        "reference_label": "Cisco ACI – Layer 2 External Bridged Network"
+      }
+    },
+    {
+      "id": "ccie-42",
+      "question": "Cisco ACI で L3Out を用いて外部ルータと BGP ピアリングを行う際、外部経路を特定テナント VRF に取り込むために必須となる要素として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "L3Out が ACI の infra Tenant にのみ所属していること",
+          "explanation": {
+            "text": "L3Out はユーザテナント内にも定義でき、VRF と関連付けることでそのテナントの L3 ドメインに外部経路を取り込みます。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/switches/datacenter/aci/apic/sw/5-x/routing/cisco-apic-layer-3-external-routed-network.html",
+            "reference_label": "Cisco ACI – L3Out Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "L3Out が紐付く VRF と BGP ルートプロファイルのインポート設定",
+          "explanation": {
+            "text": "L3Out は特定 VRF に紐付き、その VRF に対する BGP ルートプロファイルにより、どの外部経路をインポートするか制御します。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/switches/datacenter/aci/apic/sw/5-x/routing/cisco-apic-layer-3-external-routed-network.html",
+            "reference_label": "Cisco ACI – L3Out BGP Route Profiles"
+          }
+        },
+        {
+          "key": "C",
+          "text": "外部ルータ側でのみデフォルトルートを広告していればよい（ACI 側の設定は不要）",
+          "explanation": {
+            "text": "ACI VRF に経路を取り込むには L3Out とルートプロファイル等の設定が必要で、外部ルータの広告だけでは不十分です。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/switches/datacenter/aci/apic/sw/5-x/routing/cisco-apic-layer-3-external-routed-network.html",
+            "reference_label": "Cisco ACI – External Routing"
+          }
+        },
+        {
+          "key": "D",
+          "text": "同一テナント内の全ての Bridge Domain を L3Out に紐付けること",
+          "explanation": {
+            "text": "L3Out に紐付ける BD は設計に応じて選択され、全 BD を必ず紐付ける必要はありません。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/switches/datacenter/aci/apic/sw/5-x/routing/cisco-apic-layer-3-external-routed-network.html",
+            "reference_label": "Cisco ACI – L3Out Design"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "外部ルータと BGP ピアリングした経路を特定テナント VRF に取り込むには、その VRF に紐づく L3Out と BGP ルートプロファイルのインポート設定が必要です。これにより、受信した経路をどの VRF にインストールするか細かく制御できます。",
+        "reference": "https://www.cisco.com/c/en/us/td/docs/switches/datacenter/aci/apic/sw/5-x/routing/cisco-apic-layer-3-external-routed-network.html",
+        "reference_label": "Cisco ACI – L3Out BGP Route Profiles"
+      }
+    },
+    {
+      "id": "ccie-43",
+      "question": "Cisco ACI で Multi-Pod アーキテクチャを導入する主な目的として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "1 つのデータセンター内でのみ Spine 数を増やしてスケールアウトするため",
+          "explanation": {
+            "text": "Spine 数のスケールアウトは単独ファブリック内でも可能であり、Multi-Pod の主目的ではありません。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/white-paper-c11-739389.html",
+            "reference_label": "Cisco ACI Multi-Pod – Design Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "複数の物理サイト（データセンター）にまたがる ACI ポッドを単一のファブリックとして運用し、障害分離とスケーラビリティを高めるため",
+          "explanation": {
+            "text": "Multi-Pod は Inter-Pod Network（IPN）経由で複数ポッドを単一ファブリックとして扱い、DC 間のレイテンシ条件内でスケーラビリティと冗長性を高めるアーキテクチャです。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/white-paper-c11-739389.html",
+            "reference_label": "Cisco ACI – Multi-Pod Architecture"
+          }
+        },
+        {
+          "key": "C",
+          "text": "異なるテナントごとに独立した ACI ファブリックを構築するため",
+          "explanation": {
+            "text": "テナント分離は単一ファブリック内の論理分離で実現でき、Multi-Pod の必須要件ではありません。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/white-paper-c11-739389.html",
+            "reference_label": "Cisco ACI – Multi-Pod Use Cases"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IPN を利用して ACI ファブリックをインターネットに直接公開するため",
+          "explanation": {
+            "text": "IPN はポッド間接続用であり、インターネット公開の仕組みではありません。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/white-paper-c11-739389.html",
+            "reference_label": "Cisco ACI – Multi-Pod Design"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ACI Multi-Pod は複数の ACI ポッドを Inter-Pod Network で接続し、単一のロジカルファブリックとして運用することで、大規模スケールと障害分離、地理的冗長性を実現するアーキテクチャです。",
+        "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/white-paper-c11-739389.html",
+        "reference_label": "Cisco ACI – Multi-Pod Architecture and Use Cases"
+      }
+    },
+    {
+      "id": "ccie-44",
+      "question": "Cisco ACI とパブリッククラウド（例：AWS/Azure）を統合するためのソリューションとして、Cisco が提供しているものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Cisco ACI Cloud APIC を利用したマルチクラウドネットワーキング",
+          "explanation": {
+            "text": "Cloud APIC はパブリッククラウド環境とオンプレミス ACI を統合し、ポリシー一貫性を提供するためのコントローラです。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/cloud/aci-multi-cloud/index.html",
+            "reference_label": "Cisco ACI Multi-Cloud Networking with Cloud APIC"
+          }
+        },
+        {
+          "key": "B",
+          "text": "クラウドネイティブ STP（cnSTP）を用いた L2 拡張ソリューション",
+          "explanation": {
+            "text": "クラウドへの統合は L3/オーバレイベースで行われ、STP をベースにした公式ソリューションは提供されていません。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/cloud/aci-multi-cloud/index.html",
+            "reference_label": "Cisco ACI – Multi-Cloud Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Cisco TrustSec のみを用いた SGT ベースの L2 トンネリング",
+          "explanation": {
+            "text": "TrustSec はポリシーとタグ付けの仕組みであり、クラウド統合ソリューション単独ではありません。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/cloud/aci-multi-cloud/index.html",
+            "reference_label": "Cisco ACI Multi-Cloud Networking"
+          }
+        },
+        {
+          "key": "D",
+          "text": "クラウド側のルータに HSRP を導入してオンプレミス ACI と冗長化する",
+          "explanation": {
+            "text": "HSRP は L2/L3 冗長プロトコルであり、クラウド連携の公式マルチクラウドソリューションとは別物です。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/cloud/aci-multi-cloud/index.html",
+            "reference_label": "Cisco ACI – Multi-Cloud Solutions"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cisco ACI は Cloud APIC を用いて AWS や Azure と統合し、オンプレミスとクラウドをまたぐ一貫したポリシー管理とネットワークセグメンテーションを提供するマルチクラウドソリューションを提供しています。",
+        "reference": "https://www.cisco.com/c/en/us/solutions/cloud/aci-multi-cloud/index.html",
+        "reference_label": "Cisco ACI – Multi-Cloud Networking with Cloud APIC"
+      }
+    },
+    {
+      "id": "ccie-45",
+      "question": "エンタープライズネットワークで、IPv4/IPv6 デュアルスタック環境におけるマルチキャストを設計している。Cisco の推奨に沿った設計として適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "PIM-SM for IPv4 と PIM-SM for IPv6 をそれぞれ独立に設計し、RP を IPv4/IPv6 で別々に定義する",
+          "explanation": {
+            "text": "IPv4/IPv6 マルチキャストでは、v4/v6 で独立した PIM ドメインと RP を設計するのが一般的です。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/ip-multicast/116089-technote-ipv6-multicast-00.html",
+            "reference_label": "Cisco – IPv6 Multicast and PIM-SM Design"
+          }
+        },
+        {
+          "key": "B",
+          "text": "IPv6 マルチキャストは必ず MLD Snooping のみで制御し、PIM は使用しない",
+          "explanation": {
+            "text": "MLD Snooping は L2 ドメインでの制御であり、L3 マルチキャストには PIM for IPv6（PIM6）が使用されます。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/ip-multicast/116089-technote-ipv6-multicast-00.html",
+            "reference_label": "Cisco – IPv6 Multicast Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "IPv4 の PIM-SM 設定を IPv6 アドレスにそのまま流用する",
+          "explanation": {
+            "text": "IPv4 と IPv6 の PIM は設定が似ていますが、別々に設定が必要です。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/ip-multicast/116089-technote-ipv6-multicast-00.html",
+            "reference_label": "Cisco – IPv6 PIM-SM Configuration"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IPv4/IPv6 で RP を共有するため、RP アドレスには必ず IPv4 マップド IPv6 アドレスを用いる",
+          "explanation": {
+            "text": "RP は各アドレスファミリごとに定義され、IPv4 マップドアドレスを使って共有する設計は一般的ではありません。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/ip-multicast/116089-technote-ipv6-multicast-00.html",
+            "reference_label": "Cisco – Dual-Stack Multicast Design"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "デュアルスタック環境では IPv4 と IPv6 のマルチキャストを論理的に分離し、それぞれ PIM-SM ドメインと RP を設計するのが一般的です。L2 側では IGMP Snooping と MLD Snooping を併用し、L3 では PIM-SM for IPv4/IPv6 を設定します。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/ip/ip-multicast/116089-technote-ipv6-multicast-00.html",
+        "reference_label": "Cisco – IPv6 Multicast and Dual-Stack Design"
+      }
+    },
+    {
+      "id": "ccie-46",
+      "question": "Cisco SD-WAN（Catalyst SD-WAN）で、アプリケーションに応じて複数のトランスポート（MPLS/Internet/LTE）を選択し、SLA に基づいて動的に経路切り替えを行うために用いられる機能はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "OMP の Route Reflector 機能",
+          "explanation": {
+            "text": "OMP はコントロールプレーンプロトコルですが、アプリケーションの SLA ベース経路制御機能そのものではありません。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/transport/ios-xe-17/transport-book-xe/m-app-aware-routing.html",
+            "reference_label": "Cisco SD-WAN – OMP and AAR"
+          }
+        },
+        {
+          "key": "B",
+          "text": "App-Aware Routing（アプリケーション認識ルーティング）",
+          "explanation": {
+            "text": "App-Aware Routing は遅延・損失・ジッタなどの SLA チェックに基づいて、アプリケーションごとに最適なトランスポートパスを選択します。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/transport/ios-xe-17/transport-book-xe/m-app-aware-routing.html",
+            "reference_label": "Cisco SD-WAN – App-Aware Routing"
+          }
+        },
+        {
+          "key": "C",
+          "text": "NBAR ベースの QoS ポリシング機能",
+          "explanation": {
+            "text": "NBAR はアプリケーション識別に使用されますが、パス選択そのものは AAR などのポリシーで制御します。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/policies/ios-xe-17/policies-book-xe/m-application-aware-routing-policy.html",
+            "reference_label": "Cisco SD-WAN – Application-Aware Policies"
+          }
+        },
+        {
+          "key": "D",
+          "text": "VRRP ベースのデフォルトゲートウェイ切り替え機能",
+          "explanation": {
+            "text": "VRRP は L2/デフォルトゲートウェイ冗長であり、SD-WAN でのマルチトランスポート制御とは異なります。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/transport/ios-xe-17/transport-book-xe/m-app-aware-routing.html",
+            "reference_label": "Cisco SD-WAN – Transport-Aware Policies"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Cisco SD-WAN の App-Aware Routing は、アプリケーションクラスごとに WAN トランスポートの遅延・損失・ジッタなどを監視し、SLA を満たす最適なパスを動的に選択する機能です。",
+        "reference": "https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/transport/ios-xe-17/transport-book-xe/m-app-aware-routing.html",
+        "reference_label": "Cisco SD-WAN – App-Aware Routing Feature Guide"
+      }
+    },
+    {
+      "id": "ccie-47",
+      "question": "Cisco SD-WAN で vManage による集中管理を行う場合、デバイス設定をテンプレート化して一括管理する主な利点として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "各デバイスに対して CLI でのみ設定を投入できるようになり、誤設定が防げる",
+          "explanation": {
+            "text": "vManage テンプレートは GUI/API ベースでの集中管理を可能にし、CLI のみという制約はありません。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/manage/ios-xe-17/manage-book-xe/m-configuration-templates.html",
+            "reference_label": "Cisco SD-WAN – Configuration Templates"
+          }
+        },
+        {
+          "key": "B",
+          "text": "共通設定をテンプレート化し、拠点ごとに変数を使って自動展開することで、運用負荷とヒューマンエラーを大幅に削減できる",
+          "explanation": {
+            "text": "vManage のテンプレートは機器ごとの差分を変数として扱うことで、大規模拠点への一貫した設定配布と自動化を可能にします。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/manage/ios-xe-17/manage-book-xe/m-configuration-templates.html",
+            "reference_label": "Cisco SD-WAN – Template-Based Configuration"
+          }
+        },
+        {
+          "key": "C",
+          "text": "オンプレミスデバイスの設定変更は不可能になり、クラウド上の vManage のみが設定を保持する",
+          "explanation": {
+            "text": "ローカル CLI も利用可能であり、vManage との同期に注意が必要ですが、完全に禁止されるわけではありません。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/manage/ios-xe-17/manage-book-xe/m-configuration-templates.html",
+            "reference_label": "Cisco SD-WAN – vManage and Device Configuration"
+          }
+        },
+        {
+          "key": "D",
+          "text": "セキュリティ上の理由から、全デバイスが同一設定でなければならなくなる",
+          "explanation": {
+            "text": "テンプレートにはローカル変数やデバイス固有テンプレートを組み合わせることで拠点ごとの差異を持たせることができます。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/manage/ios-xe-17/manage-book-xe/m-configuration-templates.html",
+            "reference_label": "Cisco SD-WAN – Centralized Configuration Management"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "vManage のテンプレートは共通部分を抽象化し、サイト ID や IP アドレスなどの固有部分を変数として扱うことで、多数の枝局への一貫した設定展開と運用自動化を実現し、ヒューマンエラーを削減できます。",
+        "reference": "https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/manage/ios-xe-17/manage-book-xe/m-configuration-templates.html",
+        "reference_label": "Cisco SD-WAN – Configuration Templates Overview"
+      }
+    },
+    {
+      "id": "ccie-48",
+      "question": "Cisco IOS XE ルータで VRF-Lite を用いてマルチテナント環境を構成している。VRF 間の通信を制御する一般的な方法として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "各 VRF のルーティングテーブルは必ず完全に分離され、相互通信は一切不可能である",
+          "explanation": {
+            "text": "VRF 間通信はルートリーク（静的ルートやルーティングプロトコル再配布）により実現可能です。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/ip-routing/23684-143.html",
+            "reference_label": "Cisco – VRF-Lite Inter-VRF Routing"
+          }
+        },
+        {
+          "key": "B",
+          "text": "route-target を利用して VRF 間で経路を自動的に交換する",
+          "explanation": {
+            "text": "route-target は MPLS L3VPN で利用される仕組みであり、VRF-Lite では通常使用しません。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/ip-routing/23684-143.html",
+            "reference_label": "Cisco – VRF-Lite Design"
+          }
+        },
+        {
+          "key": "C",
+          "text": "静的ルートやルーティングプロトコルの再配布を用いて特定のプレフィックスのみ VRF 間でリークする",
+          "explanation": {
+            "text": "VRF-Lite では、inter-VRF routing を静的ルートや再配布ポリシーで制御するのが一般的です。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/ip-routing/23684-143.html",
+            "reference_label": "Cisco – Inter-VRF Routing with VRF-Lite"
+          }
+        },
+        {
+          "key": "D",
+          "text": "VRF-Lite を使用する場合、常に全 VRF 間がフルメッシュで相互に経路を共有する",
+          "explanation": {
+            "text": "VRF-Lite では設計に応じて必要なプレフィックスのみをリークし、フルメッシュ共有は必須ではありません。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/ip-routing/23684-143.html",
+            "reference_label": "Cisco – VRF-Lite Inter-VRF Options"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "VRF-Lite は単純な VRF 分離機能であり、VRF 間通信が必要な場合、静的ルートや動的ルーティングの再配布ポリシーを用いて特定プレフィックスだけをリークする設計が一般的です。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/ip/ip-routing/23684-143.html",
+        "reference_label": "Cisco – VRF-Lite Inter-VRF Routing Design"
+      }
+    },
+    {
+      "id": "ccie-49",
+      "question": "Cisco IOS XE スイッチで Private VLAN（PVLAN）を利用する主な目的として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "異なる VLAN 間で L3 ルーティングを高速化する",
+          "explanation": {
+            "text": "PVLAN は L2 セキュリティ分離の仕組みであり、L3 ルーティング高速化が目的ではありません。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6500-series-switches/10588-3.html",
+            "reference_label": "Cisco – Private VLAN Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "同一 IP サブネット内でホスト間の L2 通信を制御し、特定ポート間のみ通信を許可する",
+          "explanation": {
+            "text": "PVLAN は同一 VLAN（サブネット）内で Isolated/Community/Promiscuous ポートを用いてホスト間の直接通信を制御します。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6500-series-switches/10588-3.html",
+            "reference_label": "Cisco – PVLAN Concepts and Configuration"
+          }
+        },
+        {
+          "key": "C",
+          "text": "MAC アドレステーブルのサイズを拡張する",
+          "explanation": {
+            "text": "PVLAN は MAC テーブルのサイズとは無関係です。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6500-series-switches/10588-3.html",
+            "reference_label": "Cisco – Private VLAN Design"
+          }
+        },
+        {
+          "key": "D",
+          "text": "VLAN Trunk の数を減らすためにタグ無しポートを統合する",
+          "explanation": {
+            "text": "Trunk の最適化とは関係なく、PVLAN の目的はサブネット内の L2 セキュリティ分離です。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6500-series-switches/10588-3.html",
+            "reference_label": "Cisco – PVLAN Use Cases"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Private VLAN は同一ブロードキャストドメイン内でホスト間の L2 通信を制御し、Isolated ポート同士の通信禁止や特定サーバ（Promiscuous ポート）へのみ到達させるなど、セキュリティ分離を実現するために利用されます。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6500-series-switches/10588-3.html",
+        "reference_label": "Cisco – Private VLAN Concepts and Use Cases"
+      }
+    },
+    {
+      "id": "ccie-50",
+      "question": "Cisco スイッチで 802.1X 認証と MAB（MAC Authentication Bypass）を併用する典型的な理由として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "802.1X をサポートしない端末（プリンタや IP 電話など）に対して、MAC アドレスベースで代替認証を行うため",
+          "explanation": {
+            "text": "MAB は 802.1X 非対応機器を認証するためのフォールバック機構として広く用いられます。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/116680-configure-ise-00.html",
+            "reference_label": "Cisco – 802.1X and MAB Deployment Guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "802.1X 対応端末の証明書検証を省略してパフォーマンスを向上させるため",
+          "explanation": {
+            "text": "MAB は証明書検証を置き換えるものではなく、あくまで 802.1X 非対応端末向けの代替認証です。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/116680-configure-ise-00.html",
+            "reference_label": "Cisco – Identity-Based Networking with 802.1X/MAB"
+          }
+        },
+        {
+          "key": "C",
+          "text": "802.1X 認証済み端末もすべて MAC アドレスで再認証させるため",
+          "explanation": {
+            "text": "802.1X 対応端末は通常 EAP ベースで認証され、MAB はフォールバックとしてのみ利用されます。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/116680-configure-ise-00.html",
+            "reference_label": "Cisco – 802.1X and MAB Policy Design"
+          }
+        },
+        {
+          "key": "D",
+          "text": "スイッチのポートセキュリティ機能を無効化する目的で使用する",
+          "explanation": {
+            "text": "MAB は認証手段であり、ポートセキュリティの無効化目的ではありません。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/116680-configure-ise-00.html",
+            "reference_label": "Cisco – MAB and 802.1X Integration"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "802.1X は PC やモバイルなどのクライアント OS による EAP ベース認証を前提としますが、プリンタや IP 電話など 802.1X 非対応端末も存在します。これらに対しては MAB による MAC ベース認証をフォールバックさせる設計が一般的です。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/116680-configure-ise-00.html",
+        "reference_label": "Cisco – 802.1X with MAB Fallback Deployment"
+      }
+    }
+  ]
+}

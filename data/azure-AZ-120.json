@@ -1,0 +1,2467 @@
+{
+  "exam": {
+    "id": "azure-AZ-120",
+    "title": "Azure for SAP Workloads Specialty",
+    "description": "Microsoft Azure上でのSAPソリューションの設計・移行・運用に関する専門的なスキルを検証する「Azure for SAP Workloads Specialty」は、SAP HANA、SAP Business Suite、SAP NetWeaverなどのSAPアプリケーションと、Azureインフラ／ストレージ／ネットワーク／可用性／災害復旧(DR)の知識を融合させた資格です。候補者は、Azureポータル、Resource Managerテンプレート、SAP認定の仮想マシン、Azure Marketplaceを活用し、ミッションクリティカルなSAPワークロードをAzure上で信頼性・性能・コスト効率を持って実装・運用できる能力が求められます。クラウド管理者・データベース管理者・顧客と協働しながら、SAP環境の最適化・監視・自動化を実現するプロフェッショナル向けの認定です。",
+    "version": "2025年4月",
+    "price": "165 USD",
+    "difficulty": "難しい",
+    "official-site": "https://learn.microsoft.com/en-us/credentials/certifications/azure-for-sap-workloads-specialty/",
+    "category": {
+      "id": "azure",
+      "name": "Azure"
+    }
+  },
+  "questions": [
+    {
+      "id": "azure-AZ-120-q01",
+      "question": "Azure で SAP HANA を可用性(HA: High Availability)構成にする際、推奨される構成はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "共有ストレージを使って 2 台の VM をクラスタ化する",
+          "explanation": {
+            "text": "SAP HANA on Azure VM では、共有ストレージを使ったクラスタリングはサポートされておらず、代わりに SAP HANA System Replication を使う必要がある。これはドキュメントで明確に述べられている。:contentReference[oaicite:0]{index=0}",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/sap-hana-high-availability",
+            "reference_label": "SAP HANA HA on Azure VM"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SAP HANA System Replication を使い、プライマリとセカンダリノードで同期または非同期レプリケーションをする",
+          "explanation": {
+            "text": "Azure VM 上での SAP HANA の高可用性は、現在SAP HANA System Replicationのみがサポートされており、プライマリと少なくとも1つのセカンダリノードで構成すること。:contentReference[oaicite:1]{index=1}",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/sap-hana-high-availability",
+            "reference_label": "SAP HANA HA on Azure VM"
+          }
+        },
+        {
+          "key": "C",
+          "text": "単一可用性ゾーン内にすべてのノードを配置し、仮想ネットワークで高帯域を確保する",
+          "explanation": {
+            "text": "単一の可用性ゾーン (Availability Zone) 内では、そのゾーン単位での災害やゾーン停止の影響を受けるため、HAを完全に担保する構成とはならない。ドキュメントでは複数ゾーンに跨る構成が推奨されている。:contentReference[oaicite:2]{index=2}",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/high-availability-zones",
+            "reference_label": "SAP workload configurations with Availability Zones"
+          }
+        },
+        {
+          "key": "D",
+          "text": "アプリケーション層のみを高可用構成にし、データベースは単一ノードで運用することでコストを抑える",
+          "explanation": {
+            "text": "これはコスト削減にはなるが、データベース層が障害点 (single point of failure) となるため HA 要件を満たさない。公式ドキュメントでは DB 層も HA を考慮すべきとされている。:contentReference[oaicite:3]{index=3}",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/high-availability-zones",
+            "reference_label": "SAP workload configs with AZ"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "SAP HANA の HA を Azure VM 上で実装するためには、SAP HANA System Replication を用いてプライマリとセカンダリノードを構成し、同期または非同期レプリケーションを行う構成がサポートされており推奨されている。:contentReference[oaicite:4]{index=4}",
+        "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/sap-hana-high-availability",
+        "reference_label": "SAP HANA HA on Azure VM"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q02",
+      "question": "Azure Availability Zones を用いた SAP ワークロードの配置で考慮すべき事項として誤っているものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "可用性ゾーンを跨いで VM を配置することで、電源・ネットワーク・冷却等のインフラ障害に対する耐性が高まる",
+          "explanation": {
+            "text": "可用性ゾーンは物理的に分離されたデータセンタを含み、ゾーン単位のインフラ障害に対する耐性を提供する。これは公式ドキュメントにも明記されている。:contentReference[oaicite:5]{index=5}",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/high-availability-zones",
+            "reference_label": "SAP workload configurations with Availability Zones"
+          }
+        },
+        {
+          "key": "B",
+          "text": "可用性セット (Availability Set) を使えば、ゾーン停止にも耐えられる",
+          "explanation": {
+            "text": "可用性セットは同一ゾーンまたはデータセンタ内のフォルトドメインを分けるが、ゾーン全体の停止（ゾーン障害）には対応できない。可用性ゾーンを跨ぐ構成が必要。:contentReference[oaicite:6]{index=6}",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/high-availability-zones",
+            "reference_label": "SAP workload configurations with Availability Zones"
+          }
+        },
+        {
+          "key": "C",
+          "text": "可用性ゾーン間でのネットワーク遅延 (latency) が、同一ゾーン内よりも必ずしも大きくなるとは限らない",
+          "explanation": {
+            "text": "遅延は物理距離だけでなく、接続設備（ケーブル、ネットワークパス）やルーティングに依存するため、可用性ゾーンを跨ぐ配置でも許容できるレベルの遅延になることがある。ドキュメントで「ネットワーク round-trip latency は物理的な距離だけではない」と述べられている。:contentReference[oaicite:7]{index=7}",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/high-availability-zones",
+            "reference_label": "SAP workload configurations with AZ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "可用性ゾーンを跨いだ VM 配置では、管理ディスク (Managed Disks) を使用する必要がある",
+          "explanation": {
+            "text": "可用性ゾーンを跨ぐ配置では、Managed Disks の使用が要求されている。公式ドキュメントで明記。:contentReference[oaicite:8]{index=8}",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/high-availability-zones",
+            "reference_label": "SAP workload configurations with Availability Zones"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "可用性セットではゾーン停止には耐えられない。可用性ゾーンを跨ぐことで電源・冷却・ネットワークのインフラ障害に対する耐性を持たせる構成が推奨される。:contentReference[oaicite:9]{index=9}",
+        "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/high-availability-zones",
+        "reference_label": "SAP workload configurations with Availability Zones"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q03",
+      "question": "Azure Center for SAP solutions を使って S/4HANA インフラをデプロイする際、HA (High Availability) アーキテクチャを選択できるオプションとして正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "単一サーバー (Single Server) 構成のみ可能であり、HA 構成は非対応",
+          "explanation": {
+            "text": "これは誤り。Azure Center for SAP solutions では、プロダクション用途には Distributed with High Availability (HA) の構成が推奨されており、HAオプションが提供されている。:contentReference[oaicite:10]{index=10}",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/center-sap-solutions/deploy-s4hana",
+            "reference_label": "Deploy S/4HANA infrastructure with Azure Center for SAP solutions"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Distributed with High Availability（HA）構成",
+          "explanation": {
+            "text": "公式ドキュメントで、プロダクション用途の場合は Distributed HA 構成が推奨されている。:contentReference[oaicite:11]{index=11}",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/center-sap-solutions/deploy-s4hana",
+            "reference_label": "Deploy S/4HANA infrastructure with Azure Center for SAP solutions"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Distributed non-HA 構成",
+          "explanation": {
+            "text": "HA 要件を外してコストを抑えるために、Distributed non-HA 構成も選択肢として提供されている。:contentReference[oaicite:12]{index=12}",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/center-sap-solutions/deploy-s4hana",
+            "reference_label": "Deploy S/4HANA infrastructure with Azure Center for SAP solutions"
+          }
+        },
+        {
+          "key": "D",
+          "text": "すべての環境で Large Instances を使った Bare-metal 構成のみ",
+          "explanation": {
+            "text": "これは誤り。Large Instances（専用ブレードサーバ）は一つの選択肢ではあるが、「すべて」で使うわけではない。VMベースの構成や他のオプションも公式にサポートされている。:contentReference[oaicite:13]{index=13}",
+            "reference": "https://learn.microsoft.com/en-us/azure/architecture/solution-ideas/articles/sap-s4-hana-on-hli-with-ha-and-dr",
+            "reference_label": "SAP S/4 HANA for Large Instances architecture"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Azure Center for SAP Solutions では、プロダクション用途には Distributed with High Availability (HA) が選択肢としてあり、推奨されている。:contentReference[oaicite:14]{index=14}",
+        "reference": "https://learn.microsoft.com/en-us/azure/sap/center-sap-solutions/deploy-s4hana",
+        "reference_label": "Deploy S/4HANA infrastructure with Azure Center for SAP solutions"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q04",
+      "question": "SAP ワークロードを Azure に移行 (Migration) する際、AZ-120 試験のスキル要件に含まれる項目として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "オンプレミス SAP データベースを Azure の仮想ネットワークとストレージに移すだけで済む簡単なプロセスのみを問う",
+          "explanation": {
+            "text": "AZ-120 の “Migrate SAP workloads to Azure” スキルには、単にデータを移すだけでなくアーキテクチャ設計、安全性、性能、コスト、サイズ、運用の考慮を含む。:contentReference[oaicite:15]{index=15}",
+            "reference": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-120",
+            "reference_label": "Study guide for AZ-120 Skills Measured"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SAP ワークロードの運用保守を含む維持管理 (Maintain SAP workloads on Azure)",
+          "explanation": {
+            "text": "AZ-120 スキル項目には “Maintain SAP workloads on Azure” が含まれている。:contentReference[oaicite:16]{index=16}",
+            "reference": "https://learn.microsoft.com/en-us/credentials/certifications/azure-for-sap-workloads-specialty/",
+            "reference_label": "Certification AZ-120 page"
+          }
+        },
+        {
+          "key": "C",
+          "text": "災害復旧 (Disaster Recovery) の設計および実装を問う",
+          "explanation": {
+            "text": "AZ-120 のスキル項目には “Design and implement high availability and disaster recovery (HA/DR)” が含まれている。:contentReference[oaicite:17]{index=17}",
+            "reference": "https://learn.microsoft.com/en-us/credentials/certifications/azure-for-sap-workloads-specialty/",
+            "reference_label": "Certification AZ-120 page"
+          }
+        },
+        {
+          "key": "D",
+          "text": "SAP アプリケーションのコードレベルの開発内容（ABAP／UI5 等）の設計詳細",
+          "explanation": {
+            "text": "AZ-120 試験はインフラ、運用、移行、可用性、DR など SAP ワークロードを Azure 上で扱う設計・管理に焦点があり、アプリケーションコード（例: ABAP／UI5）の詳細設計や開発内容は主題ではない。:contentReference[oaicite:18]{index=18}",
+            "reference": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-120",
+            "reference_label": "Study guide for AZ-120 Skills Measured"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "コードレベル開発 (例 ABAP/UI5) の設計詳細は AZ-120 のスキル範囲には含まれておらず、主にインフラ／移行／可用性／運用などが中心である。:contentReference[oaicite:19]{index=19}",
+        "reference": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-120",
+        "reference_label": "Study guide for AZ-120 Skills Measured"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q05",
+      "question": "SAP S/4HANA on Azure VM を設計する際、ストレージのベストプラクティスとして誤っているものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "トランザクションログや Redo/Undo ファイルには低レイテンシーのディスクを使う",
+          "explanation": {
+            "text": "トランザクションログ／Redolog 等は書き込み遅延に敏感なので、高速なディスクを使用することが推奨されている。公式ガイドでも premium / ultra ディスク等が選ばれる理由としてこの点が挙げられている。:contentReference[oaicite:20]{index=20}",
+            "reference": "https://learn.microsoft.com/en-us/azure/architecture/guide/sap/sap-s4hana",
+            "reference_label": "SAP S/4HANA in Linux on Azure architecture guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ストレージの暗号化 (encryption at rest) を無効化してパフォーマンスを最大化する",
+          "explanation": {
+            "text": "パフォーマンス最適化は重要だが、暗号化を完全に無効にすることはセキュリティ／コンプライアンス上リスクが高く、公式ガイドラインでは暗号化を維持することが求められている。:contentReference[oaicite:21]{index=21}",
+            "reference": "https://learn.microsoft.com/en-us/azure/architecture/guide/sap/sap-s4hana",
+            "reference_label": "SAP S/4HANA on Azure architecture guide"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ストレージタイプとして Premium SSD または Ultra Disk をトランザクション系に使う",
+          "explanation": {
+            "text": "Premium/Ultra ディスクは IOPS／レイテンシー要求が高い SAP トランザクション用や redo/log 用に推奨されている。:contentReference[oaicite:22]{index=22}",
+            "reference": "https://learn.microsoft.com/en-us/azure/architecture/guide/sap/sap-s4hana",
+            "reference_label": "SAP S/4HANA in Linux on Azure architecture guide"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データベースデータファイルを格納するストレージはレプリケーション機能を持たない低コストの一般的な HDD ベースのストレージを使う",
+          "explanation": {
+            "text": "データベースデータファイルには性能・信頼性・冗長性が求められるため、レプリケーションなしの低コスト HDD ストレージを使うことはベストプラクティスに反する。公式ドキュメントでは、オプションとしてはあるが性能／可用性の観点で慎重に考慮すべきとされている。:contentReference[oaicite:23]{index=23}",
+            "reference": "https://learn.microsoft.com/en-us/azure/architecture/guide/sap/sap-s4hana",
+            "reference_label": "SAP S/4HANA in Linux on Azure architecture guide"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "暗号化を無効にするのはセキュリティおよびコンプライアンス上問題があり、公式の SAP on Azure のガイドラインでは暗号化を含めた安全設計が推奨されている。パフォーマンスだけでなくセキュリティ要件も満たす設計が必要。:contentReference[oaicite:24]{index=24}",
+        "reference": "https://learn.microsoft.com/en-us/azure/architecture/guide/sap/sap-s4hana",
+        "reference_label": "SAP S/4HANA on Azure architecture guide"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q06",
+      "question": "SAP ワークロードを Azure 上で長期間安定運用するためのモニタリング／メンテナンスに関して、最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Azure Monitor と Log Analytics を使って VM、OS、SAP アプリケーションのメトリックとログを集約する",
+          "explanation": {
+            "text": "公式トレーニング／ドキュメントで、SAP on Azure のモニタリングには Azure Monitor と Log Analytics が使われることが推奨されており、VM や OS、ワークロードレベルでの可観測性 (observability) を確保することが重要とされる。:contentReference[oaicite:25]{index=25}",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/center-sap-solutions/deploy-s4hana",
+            "reference_label": "SAP S/4HANA in Linux on Azure architecture guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "計画的なメンテナンス時やアップデート時には、可用性ゾーンを活用して全システムを停止させずに実施する",
+          "explanation": {
+            "text": "Azure の可用性ゾーンや他の冗長構成を用いて、アップデートやパッチ時にシステム全体を停止させないための戦略を取ることがベストプラクティス。:contentReference[oaicite:26]{index=26}",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/high-availability-zones",
+            "reference_label": "SAP workload configurations with AZ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "モニタリングは OS レベルだけで十分。SAP レベルの監視はプラットフォーム側任せでよい",
+          "explanation": {
+            "text": "誤り。SAP アプリケーションレベルの監視や、DB のレプリケーション／ログ遅延などワークロード固有の監視指標も重要。ドキュメントでワークロードレベルのメトリクスの収集が推奨されている。:contentReference[oaicite:27]{index=27}",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/sap-hana-high-availability",
+            "reference_label": "SAP HANA HA docs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "SAP HANA System Replication の遅延 (latency) は気にしなくて良い、非同期でも十分な可用性が実現できるため",
+          "explanation": {
+              "text": "遅延は同期 vs 非同期の選定において重要な要素。業務要件によっては同期レプリケーションが必要となる。非同期では遅延が発生する可能性があり、それを無視するのはリスクがある。公式資料でもこの点が強調されている。:contentReference[oaicite:28]{index=28}",
+              "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/sap-hana-high-availability",
+              "reference_label": "SAP HANA HA on Azure VM"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "OS レベルだけの監視では、SAP アプリケーション／データベースの健全性（レプリケーション遅延、ログ遅延、DB応答時間など）を把握できない。ワークロードレベルのモニタリングが必要である。:contentReference[oaicite:29]{index=29}",
+        "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/sap-hana-high-availability",
+        "reference_label": "SAP HANA HA docs"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q07",
+      "question": "Azure の SAP ワークロードにおけるネットワーク設計で、ExpressRoute と比較して一般的に正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ExpressRoute は Azure とオンプレミス間をプライベート接続で結ぶことにより、一貫した低レイテンシと高セキュリティを提供する",
+          "explanation": {
+            "text": "ExpressRoute は Microsoft とオンプレミス環境をプライベートなネットワークで接続するサービスで、インターネットを通さないためセキュリティ／遅延の観点で有利。複数のドキュメントで SAP on Azure と連携して使用される構成として紹介されている。:contentReference[oaicite:30]{index=30}",
+            "reference": "https://learn.microsoft.com/en-us/azure/architecture/solution-ideas/articles/sap-s4-hana-on-hli-with-ha-and-dr",
+            "reference_label": "SAP S/4 HANA for Large Instances architecture"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ExpressRoute は設定が簡単で、ネットワークトラフィックの監視・制御は不要である",
+          "explanation": {
+            "text": "誤り。ExpressRoute を導入してもネットワークの監視／トラフィック制御／セキュリティ設定などは設計の重要部分であり、省略すべきではない。公式ドキュメントでもネットワーク設計と監視が強調されている。:contentReference[oaicite:31]{index=31}",
+            "reference": "https://learn.microsoft.com/en-us/azure/architecture/guide/sap/sap-s4hana",
+            "reference_label": "SAP S/4HANA architecture guide"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ExpressRoute 回線はオンプレミスと Azure 間を接続するが、Azureリージョン間のレプリケーションには影響しない",
+          "explanation": {
+            "text": "ExpressRoute はオンプレミスと Azure をつなぐためのものであり、Azure 内リージョン間の通信やリージョン間レプリケーションの帯域や遅延は別途設計が必要である。:contentReference[oaicite:32]{index=32}",
+            "reference": "https://learn.microsoft.com/en-us/azure/architecture/solution-ideas/articles/sap-s4-hana-on-hli-with-ha-and-dr",
+            "reference_label": "SAP S/4 HANA for Large Instances architecture"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ExpressRoute は必ず全ての SAP インスタンスで使用するべきであり、VPN 接続やインターネット接続では不適切である",
+          "explanation": {
+            "text": "必ずしもそうではない。コストや用途（テスト／開発 vs 本番）によっては VPN や他の接続方式でも許容できるケースがある。ExpressRoute は本番用途で要件が高い場合に推奨されるが、すべてのインスタンスで必須とされている訳ではない。:contentReference[oaicite:33]{index=33}",
+            "reference": "https://learn.microsoft.com/en-us/azure/architecture/guide/sap/sap-s4hana",
+            "reference_label": "SAP S/4HANA architecture guide"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ExpressRoute はプライベート接続を用い、オンプレミスと Azure 間の低レイテンシかつ高セキュリティな通信を提供する。AZ-120 のネットワーク設計スキルにもこのような接続方式が含まれている。:contentReference[oaicite:34]{index=34}",
+        "reference": "https://learn.microsoft.com/en-us/azure/architecture/solution-ideas/articles/sap-s4-hana-on-hli-with-ha-and-dr",
+        "reference_label": "SAP S/4 HANA for Large Instances architecture"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q08",
+      "question": "Azure 上で SAP HANA を導入する際、ストレージの種類と構成で推奨されるものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "/hana/data を Premium SSD／Ultra disk、/hana/log を低コストの Standard HDD にする",
+          "explanation": {
+            "text": "誤り。/hana/log はトランザクションログ等 I/O 遅延に敏感なので、遅い HDD は適さない。公式ドキュメントでは Ultra disk や Premium SSD など低レイテンシのストレージを使うことが推奨されている。 :contentReference[oaicite:0]{index=0}",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-operations-storage",
+            "reference_label": "SAP HANA Azure virtual machine storage configurations"
+          }
+        },
+        {
+          "key": "B",
+          "text": "/hana/data と /hana/log の両方を Azure NetApp Files または Ultra disk など認定されたストレージにする",
+          "explanation": {
+            "text": "正しい。公式で、/hana/data と /hana/log を SAP HANA 認定ストレージ（Premium SSD／Ultra disk／ANF＝Azure NetApp Files 等）とする構成が推奨されている。 :contentReference[oaicite:1]{index=1}",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-operations-storage",
+            "reference_label": "SAP HANA Azure virtual machine storage configurations"
+          }
+        },
+        {
+          "key": "C",
+          "text": "/hana/log は Ultra disk、/hana/data は標準の Premium SSD V1 で十分である",
+          "explanation": {
+            "text": "部分的には正しいが十分とは限らない。/hana/data の読み取り性能や savepoints の書き込みによって必要スループット・IOPS が増えるので、データパスの性能を見極めて Ultra disk の検討が必要なケースが多い。公式推奨は “認定ストレージ” を使うことである。 :contentReference[oaicite:2]{index=2}",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-operations-storage",
+            "reference_label": "SAP HANA VM storage configurations"
+          }
+        },
+        {
+          "key": "D",
+          "text": "/hana/shared を Azure NetApp Files (NFS) や Azure Files 経由の NFS にして、他のパスはブロックストレージを使う",
+          "explanation": {
+            "text": "正しい構成のひとつとして公式に挙げられている。/hana/shared の共有ディレクトリに ANF や NFS サービスを使い、/hana/data／/hana/log は認定ブロックストレージを使うことで性能と共有性を兼ねる。 :contentReference[oaicite:3]{index=3}",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-operations-storage",
+            "reference_label": "SAP HANA VM storage configurations"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "最も安全で推奨されるのは、/hana/data と /hana/log の両方を SAP HANA 認定ストレージ（Premium SSD や Ultra disk、ANF など）で構成すること。性能要件や遅延を抑える観点でこの構成が公式に支持されている。 :contentReference[oaicite:4]{index=4}",
+        "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-operations-storage",
+        "reference_label": "SAP HANA VM storage configurations"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q09",
+      "question": "SAP ワークロードの災害復旧 (Disaster Recovery, DR) を設計する際のベストプラクティスとして正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Azure Site Recovery を使ってすべての DB のレプリケーションを行うことが常に推奨される",
+          "explanation": {
+            "text": "誤り。DB に関してはネイティブな DB レプリケーション技術（SAP HANA System Replication 等）を使う方が整合性（consistency）やレプリケーション重複制御で優れており、Azure Site Recovery は VM／ディスクレプリケーションに強みはあるが、DBの整合性を保つ用途では限定される。公式ドキュメントでこの区別が明確。 :contentReference[oaicite:5]{index=5}",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/disaster-recovery-sap-guide",
+            "reference_label": "Disaster Recovery recommendation for SAP workload"
+          }
+        },
+        {
+          "key": "B",
+          "text": "DR 計画は、Active Directory や DNS などの依存サービスを DR サイトで復旧可能であることを含めて設計する",
+          "explanation": {
+            "text": "正しい。公式には AD や DNS といった依存するサービスを DR サイトで先に復旧させることが DR プラン設計の一部として推奨されている。 :contentReference[oaicite:6]{index=6}",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/disaster-recovery-sap-guide",
+            "reference_label": "Disaster Recovery recommendation for SAP workload"
+          }
+        },
+        {
+          "key": "C",
+          "text": "DR サイトではすべての仮想マシン (VM) はスタンバイ状態にしておき、常にアクティブにする必要がある",
+          "explanation": {
+            "text": "誤り。スタンバイ状態 (quiesced or inactive) の VM を準備することが一般的だが、常に全てアクティブである必要はない。コストや運用面から通常はフェイルオーバー時にアクティブ化する。公式ガイドでもこうしたアプローチが記載されている。 :contentReference[oaicite:7]{index=7}",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/disaster-recovery-overview-guide",
+            "reference_label": "Disaster Recovery overview guide"
+          }
+        },
+        {
+          "key": "D",
+          "text": "定期的なフェイルオーバー・テストを行い、DR 手順を文書化・微調整すること",
+          "explanation": {
+            "text": "正しい。DR 計画を作るだけでなく、定期的にテスト（failover drills）を実施し、手順や依存関係を検証、文書化して更新することが強く推奨されている。 :contentReference[oaicite:8]{index=8}",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/disaster-recovery-sap-guide",
+            "reference_label": "Disaster Recovery recommendation for SAP workload"
+          }
+        }
+      ],
+      "answer": "B,D",
+      "explanation": {
+        "text": "依存するサービス（AD, DNS 等）の復旧を含むこと、および定期的なフェイルオーバーテストと DR 手順の文書化と更新がベストプラクティス。一方、DB のレプリケーションはネイティブ技術を使うことが望ましく、すべての VM を常にアクティブにしておく必要はない。 :contentReference[oaicite:9]{index=9}",
+        "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/disaster-recovery-sap-guide",
+        "reference_label": "Disaster Recovery recommendation for SAP workload"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q10",
+      "question": "SAP HANA を Azure VM 上で運用する際、VM 種類 (SKU) 選定に関する正しい要件はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "プロダクション用途では SAP 認定済み VM SKU を使う必要があり、たとえば Mシリーズ／Mv2シリーズなどの大型メモリ最適化 VM を検討すること",
+          "explanation": {
+            "text": "正しい。公式ドキュメントで、SAP HANA on Azure においてプロダクション用途では SAP が認定した VM タイプを使う必要があり、大きなメモリ容量を持つ VM、メモリ最適化シリーズなどが推奨されている。 :contentReference[oaicite:10]{index=10}",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-operations",
+            "reference_label": "SAP HANA infrastructure configurations and operations on Azure"
+          }
+        },
+        {
+          "key": "B",
+          "text": "非本番環境では任意の VM を使っても良いが、性能テストを行ってから本番展開すること",
+          "explanation": {
+            "text": "正しい。非本番環境であれば柔軟性があるが、本番環境と似た条件でテストして性能を確認することが推奨されている。公式ガイドにもそのような記述がある。 :contentReference[oaicite:11]{index=11}",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-operations",
+            "reference_label": "SAP HANA infrastructure configurations and operations on Azure"
+          }
+        },
+        {
+          "key": "C",
+          "text": "VM SKU は仮想マシンの IOPS やスループット上限よりもストレージの速度だけを見て選べば良い",
+          "explanation": {
+            "text": "誤り。VM 自体にも IOPS／ネットワークスループットの制限があり、ストレージ速度だけ見て選ぶと、VM 側のボトルネックで性能が出ない可能性がある。公式ドキュメントで VM のスループット制限を考慮すべきとされている。 :contentReference[oaicite:12]{index=12}",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-operations-storage",
+            "reference_label": "SAP HANA VM storage configurations & operations"
+          }
+        },
+        {
+          "key": "D",
+          "text": "リージョンによっては Ultra Disk が使えない VM SKU があるため、SKU とストレージの可用性リージョンを事前に確認する必要がある",
+          "explanation": {
+            "text": "正しい。Ultra disk や他の特定ストレージタイプはすべてのリージョンで利用可能ではなく、また VM SKU によってはサポート外の組み合わせもある。公式ドキュメントで可用性リージョンとサポートされている VM-ストレージの組み合わせを確認する必要があるとされている。 :contentReference[oaicite:13]{index=13}",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-operations-storage",
+            "reference_label": "SAP HANA VM storage configurations"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "プロダクション用途では認定済の VM SKU を使う必要があり、非本番では柔軟性あり。ただし、Ultra Disk 含めストレージの可用性はリージョン／SKU によって異なるため事前確認が必要。ストレージ速度だけでなく VM の IOPS／スループット限界も重要。公式ガイドに記載。 :contentReference[oaicite:14]{index=14}",
+        "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-operations-storage",
+        "reference_label": "SAP HANA VM storage configurations"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q11",
+      "question": "SAP ワークロードを Azure に配置する際のネットワーク設計で、ExpressRoute／VPN 接続について正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "本番 SAP 環境ではオンプレミスと Azure 間の接続には ExpressRoute の専用回線を使うことが推奨される",
+          "explanation": {
+            "text": "正しい。VPN・ExpressRoute などでオンプレミスとの通信を確実にすることは、Azure VM 上で SAP HANA を運用する公式ドキュメントにも記述されており、特に本番用途では ExpressRoute が推奨されることが多い。 :contentReference[oaicite:15]{index=15}",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-operations",
+            "reference_label": "SAP HANA infrastructure configurations and operations on Azure"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ExpressRoute 接続を使えばネットワーク遅延 (latency) を完全に無視できる",
+          "explanation": {
+            "text": "誤り。ExpressRoute はインターネットを経由しない専用回線で遅延やセキュリティに優れるが、遅延が “ゼロ” になるわけではない。単にインターネットを介する VPN 接続よりは遅延が少ないという比較。公式では遅延の見積もり・許容範囲を設計時に考慮することを強調している。 :contentReference[oaicite:16]{index=16}",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-operations",
+            "reference_label": "SAP HANA infrastructure configurations & operations"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ExpressRoute は冗長化されたエンドポイントを持ち、プライマリとセカンダリ Azure リージョンの両方と接続できるよう設定することが望ましい",
+          "explanation": {
+            "text": "正しい。DR やリージョン間フェイルオーバーを考えると、プライマリ／セカンダリ（DR）両方に接続できるネットワーク接続を持たせる設計が推奨されている。 :contentReference[oaicite:17]{index=17}",
+            "reference": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/sap/eslz-business-continuity-and-disaster-recovery",
+            "reference_label": "BCDR guidance for SAP migration on Azure"
+          }
+        },
+        {
+          "key": "D",
+          "text": "VPN の接続だけで本番 SAP 環境のネットワーク要件を満たすことが常に可能である",
+          "explanation": {
+            "text": "誤り。本番環境では VPN 接続だけでは帯域・遅延・信頼性で限界があることが多く、ExpressRoute のような専用回線を使うか冗長構成を組むことが推奨されている。公式ドキュメントにこれらの設計注意点が記載されている。 :contentReference[oaicite:18]{index=18}",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-operations",
+            "reference_label": "SAP HANA VM operations"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "本番用途では ExpressRoute 等を使った専用接続が推奨され、かつプライマリ／DR リージョン両方への接続や冗長性を設けることが設計のベストプラクティスである。VPN のみでは遅延／帯域／信頼性で制約がある。 :contentReference[oaicite:19]{index=19}",
+        "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-operations",
+        "reference_label": "SAP HANA infrastructure configurations and operations"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q12",
+      "question": "Azure 上で SAP ワークロードの “Business Continuity and Disaster Recovery (BCDR)” を計画する際、考慮すべき RTO (Recovery Time Objective)／RPO (Recovery Point Objective) に関する設計判断として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "RPO や RTO はシステムの規模やビジネスの要件に応じて設定すればよく、すべての SAP 環境で同期レプリケーションを使う必要はない",
+          "explanation": {
+            "text": "正しい。RPO／RTO は事業リスク、コスト、距離／遅延などを勘案して決める。同期レプリケーションは低遅延・低 RPO を実現できるがコストや技術的制約があるためすべてで使うわけではない。公式ガイドでもこのバランスが強調されている。 :contentReference[oaicite:20]{index=20}",
+            "reference": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/sap/eslz-business-continuity-and-disaster-recovery",
+            "reference_label": "BCDR guidance for SAP migration on Azure"
+          }
+        },
+        {
+          "key": "B",
+          "text": "RPO をゼロにするためには、遠距離リージョン間でも常に同期レプリケーションを使うべきである",
+          "explanation": {
+            "text": "誤り。遠距離リージョン間での同期レプリケーションはレイテンシおよびコストの観点で制約が多く、実用的でない場合がある。公式ドキュメントで非同期レプリケーションも選択肢として扱われている。 :contentReference[oaicite:21]{index=21}",
+            "reference": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/sap/eslz-business-continuity-and-disaster-recovery",
+            "reference_label": "BCDR guidance for SAP migration on Azure"
+          }
+        },
+        {
+          "key": "C",
+            "text": "RTO が短いほどコストが上がることを認め、設計時に過去のダウンタイム履歴を参照して適切な数値を設定する",
+          "explanation": {
+            "text": "正しい。RTO と RPO の改善は冗長性・ストレージ／レプリケーション構成・運用プロセス等にコスト・複雑さを伴う。過去の障害／業務中断の履歴を参照することも推奨されている。 :contentReference[oaicite:22]{index=22}",
+            "reference": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/sap/eslz-business-continuity-and-disaster-recovery",
+            "reference_label": "BCDR guidance for SAP migration on Azure"
+          }
+        },
+        {
+          "key": "D",
+          "text": "RTO をゼロにすることは常に可能であり、設計コスト以外のデメリットはない",
+          "explanation": {
+            "text": "誤り。RTO = 0 は理論上可能な構成（例えば完全同期クラスタ／アクティブ-アクティブ構成等）だが、そのコスト・技術的制約・遅延・複雑性などのデメリットが大きいため、常に選ぶものではない。公式ガイドでもこのトレードオフを説明している。 :contentReference[oaicite:23]{index=23}",
+            "reference": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/sap/eslz-business-continuity-and-disaster-recovery",
+            "reference_label": "BCDR guidance for SAP migration on Azure"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "RPO／RTO はビジネスの要件とコストや技術的制約に応じて設定すべきであり、同期レプリケーションが最良とは限らない。過去の障害履歴を参照しつつ、適切な値を選ぶと共に見直しを行うこと。 :contentReference[oaicite:24]{index=24}",
+        "reference": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/sap/eslz-business-continuity-and-disaster-recovery",
+        "reference_label": "BCDR guidance for SAP migration on Azure"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q13",
+      "question": "SAP NetWeaver の三層構成 (Web／App／DB) を DR 対策する際、Azure Site Recovery を使うことに関する正しい説明はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Azure Site Recovery は VM およびそれに紐づくディスクの複製を DR サイトに提供できるので、DB においてデータ整合性の問題なしに使用できる",
+          "explanation": {
+            "text": "誤り。VM／ディスクの複製は可能だが、データベースの整合性 (consistency) を完全に保証するものではなく、ネイティブ DB レプリケーション技術を使う方が望ましい。公式ドキュメントではこの点を明確にしている。 :contentReference[oaicite:25]{index=25}",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/disaster-recovery-sap-guide",
+            "reference_label": "Disaster Recovery recommendation for SAP workload"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Web 層と App 層の VM は Azure Site Recovery による複製を使って DR サイトに準備できる",
+          "explanation": {
+            "text": "正しい。Web Dispatcher／アプリケーションサーバ VM は VM 複製を通じて DR サイトに準備できることが公式で述べられている。 :contentReference[oaicite:26]{index=26}",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/disaster-recovery-sap-guide",
+            "reference_label": "Disaster Recovery recommendation for SAP workload"
+          }
+        },
+        {
+          "key": "C",
+          "text": "DB レイヤーは ALWAYS Azure Site Recovery を使用すべての障害シナリオにおいて初期手段とすべきである",
+          "explanation": {
+            "text": "誤り。同じく、DB のレベルではネイティブのレプリケーション技術を使用することがより適切とされ、ASR (Azure Site Recovery) は補助用途や VM／ディスクレベルの復旧に用いることが多い。公式に “Use replication method offered by the database” とされている。 :contentReference[oaicite:27]{index=27}",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/disaster-recovery-sap-guide",
+            "reference_label": "Disaster Recovery recommendation for SAP workload"
+          }
+        },
+        {
+          "key": "D",
+          "text": "DR サイトでのネットワーク設定（仮想ネットワーク VNet、IP レンジなど）はプライマリと重複しないようにすることが望ましい",
+          "explanation": {
+            "text": "正しい。VNet CIDR の重複はフェイルオーバー時に問題を起こす可能性があるため、公式ガイドで設計考慮項目として挙げられている。 :contentReference[oaicite:28]{index=28}",
+            "reference": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/sap/eslz-business-continuity-and-disaster-recovery",
+            "reference_label": "BCDR guidance for SAP migration on Azure"
+          }
+        }
+      ],
+      "answer": "B,D",
+      "explanation": {
+        "text": "Web 層／App 層 VM は ASR で複製可。DB 層はネイティブレプリケーションを使う方が整合性確保の点でより良い。また、DR サイトの仮想ネットワーク・IP 設計など重複を避けることは運用時トラブル回避のための設計ベストプラクティス。 :contentReference[oaicite:29]{index=29}",
+        "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/disaster-recovery-sap-guide",
+        "reference_label": "Disaster Recovery recommendation for SAP workload"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q14",
+      "question": "SAP on Azure ワークロードの運用中におけるストレージ性能維持について、推奨される管理・監視の方法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ストレージの IOPS とスループット使用率を定期的にモニタリングし、ストレージ • VM の制限を超えそうな場合はアップグレードまたは構成変更を行う",
+          "explanation": {
+            "text": "正しい。公式ドキュメントでストレージ構成は VM の制限（IOPS／帯域など）を超えないことが重要であり、性能モニタリングによって性能ボトルネックを早期検知することが推奨されている。 :contentReference[oaicite:30]{index=30}",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-operations-storage",
+            "reference_label": "SAP HANA VM storage configurations"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ストレージの遅延 (latency) が予め公式のレベルを満たしていれば、その後の監視は不要である",
+          "explanation": {
+            "text": "誤り。遅延・IOPS・スループットは使用状況の変化（負荷増・データボリューム増など）によって悪化する可能性があり、運用中も監視が必要。公式ガイドでもモニタリングを継続することが述べられている。 :contentReference[oaicite:31]{index=31}",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-operations-storage",
+            "reference_label": "SAP HANA VM storage configurations"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ログ書き込み性能（/hana/log）に注目し、savepoint 時やクラッシュ復旧時の負荷をテストする",
+          "explanation": {
+            "text": "正しい。/hana/log はトランザクションログ等の書き込み遅延に敏感であり、savepoint や復旧時の I/O パターンを把握することが性能維持に重要。公式ドキュメントがこのようなテストを推奨している。 :contentReference[oaicite:32]{index=32}",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-operations-storage",
+            "reference_label": "SAP HANA VM storage configurations"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ストレージの IO 要件が低い用途には、Standard HDD を用いてコストを最適化することが常に良い選択である",
+          "explanation": {
+            "text": "誤り。IO 要件が低い用途であればコスト面で HDD を使うことはありうるが、SAP HANA のトランザクションログやデータベース・アプリケーションの重要なパスには適さない。性能／遅延のトレードオフを良く検討すべき。公式に “認定ストレージ” として Premium／Ultra／ANF を使うことが強調されており、Standard HDD を “常に良い” 選択とはされていない。 :contentReference[oaicite:33]{index=33}",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-operations-storage",
+            "reference_label": "SAP HANA VM storage configurations"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "運用中でもストレージ性能監視（IOPS, スループット, 遅延）を定期的に行い、重要な I/O パス（例 /hana/log, savepoint 等）について負荷時テストを実施／設計変更を行うことがベストプラクティスである。公式ドキュメントで述べられている。 :contentReference[oaicite:34]{index=34}",
+        "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-operations-storage",
+        "reference_label": "SAP HANA VM storage configurations"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q15",
+      "question": "SAP HANA を Azure VM 上で稼働させている。Azure Backup を用いたバックアップ方式として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Azure Backup の SAP HANA 連携を用い、Recovery Services コンテナーにアプリケーション一貫性バックアップを取得できる",
+          "explanation": {
+            "text": "Azure Backup は HANA 向けの拡張を提供し、アプリケーション一貫性のあるバックアップと復元を実施できる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/backup/backup-azure-sap-hana-database",
+            "reference_label": "Back up SAP HANA databases in Azure VMs"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure Backup は OS スナップショットのみで、DB 一貫性は保証されないため HANA には使えない",
+          "explanation": {
+            "text": "HANA 連携を使えば DB 一貫性を保てるため誤り。",
+            "reference": "https://learn.microsoft.com/en-us/azure/backup/sap-hana-database-about",
+            "reference_label": "About SAP HANA database backup on Azure VMs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "バックアップデータは同一リージョンにしか保存できない",
+          "explanation": {
+            "text": "Recovery Services コンテナーで GRS などを選べば、リージョン冗長保管が可能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/backup/backup-azure-sap-hana-database",
+            "reference_label": "Back up SAP HANA databases in Azure VMs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Backup は HANA のインメモリ内容をリアルタイムでレプリケーションする",
+          "explanation": {
+            "text": "Azure Backup はスケジュールバックアップ。リアルタイムレプリケーションではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/backup/backup-azure-sap-hana-database",
+            "reference_label": "Back up SAP HANA databases in Azure VMs"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure Backup は SAP HANA とネイティブに統合し、Recovery Services コンテナーへアプリケーション一貫性バックアップを取得できる。",
+        "reference": "https://learn.microsoft.com/en-us/azure/backup/backup-azure-sap-hana-database",
+        "reference_label": "Back up SAP HANA databases in Azure VMs"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q16",
+      "question": "SAP on Azure の管理アクセスと東西/南北トラフィックの保護について、推奨されるネットワークセキュリティ設計はどれか。（複数選択）",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "運用効率のため、すべての VM にパブリック IP を付与して直接 RDP/SSH する",
+          "explanation": {
+            "text": "不要なパブリック公開は非推奨。安全なジャンプ経路を使うべき。",
+            "reference": "https://learn.microsoft.com/en-us/azure/security/fundamentals/network-best-practices",
+            "reference_label": "Azure network security best practices"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure Bastion もしくはジャンプボックス経由での管理アクセスを設ける",
+          "explanation": {
+            "text": "Bastion は VM を公開せずに RDP/SSH を提供するマネージド PaaS。",
+            "reference": "https://learn.microsoft.com/en-us/azure/bastion/bastion-overview",
+            "reference_label": "About Azure Bastion"
+          }
+        },
+        {
+          "key": "C",
+          "text": "東西トラフィックは信頼できるので NSG ルールは省略する",
+          "explanation": {
+            "text": "VM 間通信も NSG でフィルタリングすべき。",
+            "reference": "https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview",
+            "reference_label": "Network security groups overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Firewall/WAF を導入し、アプリ層も含めたトラフィック検査を行う",
+          "explanation": {
+            "text": "Azure Firewall は東西/南北の検査、WAF は L7 保護を提供する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/firewall/overview",
+            "reference_label": "What is Azure Firewall?"
+          }
+        }
+      ],
+      "answer": "B,D",
+      "explanation": {
+        "text": "管理面は Bastion などの安全な経路を採用し、アプリ層保護に Firewall/WAF を併用するのがベストプラクティス。",
+        "reference": "https://learn.microsoft.com/en-us/azure/security/fundamentals/network-best-practices",
+        "reference_label": "Azure network security best practices"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q17",
+      "question": "SAP と Microsoft Entra ID（旧 Azure AD）の統合について、正しい記述はどれか。（複数選択）",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "SAP HANA や NetWeaver と Entra ID を SAML/OAuth で連携し SSO を実現できる",
+          "explanation": {
+            "text": "ギャラリーから SAP HANA／NetWeaver を追加して SSO 構成が可能。",
+            "reference": "https://learn.microsoft.com/en-us/entra/identity/saas-apps/saphana-tutorial",
+            "reference_label": "Configure SSO: SAP HANA & Entra ID"
+          }
+        },
+        {
+          "key": "B",
+          "text": "オンプレ AD との同期はできず、SAP 連携には使えない",
+          "explanation": {
+            "text": "Entra Connect（旧 AD Connect）でハイブリッド ID 同期が可能。",
+            "reference": "https://learn.microsoft.com/en-us/entra/identity/hybrid/connect/whatis-azure-ad-connect",
+            "reference_label": "What is Microsoft Entra Connect"
+          }
+        },
+        {
+          "key": "C",
+          "text": "条件付きアクセスや MFA を適用して SAP へのアクセス制御を強化できる",
+          "explanation": {
+            "text": "条件付きアクセスは Entra のゼロトラスト中核機能。",
+            "reference": "https://learn.microsoft.com/en-us/entra/identity/conditional-access/overview",
+            "reference_label": "What is Conditional Access?"
+          }
+        },
+        {
+          "key": "D",
+          "text": "連携には ABAP コードの大幅改修が必須である",
+          "explanation": {
+            "text": "通常はアイデンティティ連携の設定で対処でき、コード改修は不要。",
+            "reference": "https://learn.microsoft.com/en-us/entra/identity/saas-apps/sap-netweaver-tutorial",
+            "reference_label": "Configure SSO: SAP NetWeaver & Entra ID"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "SAP と Entra ID の SSO 連携により MFA/条件付きアクセスを適用できる。オンプレ AD 連携も Entra Connect で可能。",
+        "reference": "https://learn.microsoft.com/en-us/entra/identity/saas-apps/saphana-tutorial",
+        "reference_label": "Configure SSO: SAP HANA & Entra ID"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q18",
+      "question": "SAP HANA Large Instances (HLI) を採用する際の考慮点として正しいものはどれか。（複数選択）",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "HLI は Azure データセンター内の専用ベアメタルで、OS/DB の管理は顧客責任である",
+          "explanation": {
+            "text": "HLI（BareMetal Infrastructure）は VM と異なり、顧客が OS/DB を管理する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/large-instances/hana-architecture",
+            "reference_label": "Architecture of SAP HANA on Azure (Large Instances)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "HLI は Azure VNet とネイティブ統合され、NSG を直接適用できる",
+          "explanation": {
+            "text": "誤り。HLI は主に ExpressRoute で接続し、NSG を直接当てる対象ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/architecture/solution-ideas/articles/sap-s4-hana-on-hli-with-ha-and-dr",
+            "reference_label": "SAP S/4HANA for Large Instances (architecture idea)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "バックアップや DR は顧客が計画・実装すべき責任範囲である",
+          "explanation": {
+            "text": "HLI ではバックアップ／レプリケーション／DR 設計は顧客が担う。",
+            "reference": "https://learn.microsoft.com/en-us/azure/architecture/solution-ideas/articles/sap-s4-hana-on-hli-with-ha-and-dr",
+            "reference_label": "SAP S/4HANA for Large Instances (architecture idea)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "VM と全く同一の SLA/機能が適用される",
+          "explanation": {
+            "text": "誤り。HLI は別サービスであり SLA/運用は異なる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/large-instances/hana-architecture",
+            "reference_label": "Architecture of SAP HANA on Azure (Large Instances)"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "HLI は専用ベアメタル。OS/DB/バックアップ/DR は顧客責任で、VM と同一の扱いではない。",
+        "reference": "https://learn.microsoft.com/en-us/azure/sap/large-instances/hana-architecture",
+        "reference_label": "Architecture of SAP HANA on Azure (Large Instances)"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q19",
+      "question": "SAP ワークロードのクラウドコスト最適化に関する推奨事項として適切なものはどれか。（複数選択）",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "非本番 VM に自動シャットダウンを設定し、稼働時間を削減する",
+          "explanation": {
+            "text": "VM の Auto-shutdown は簡易に停止スケジュールを設定可能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/virtual-machines/auto-shutdown-vm",
+            "reference_label": "Auto-shutdown a virtual machine"
+          }
+        },
+        {
+          "key": "B",
+          "text": "長期かつ安定利用の計算リソースに対して Azure Savings Plan/予約を活用する",
+          "explanation": {
+            "text": "1年/3年コミットで従量課金より大幅にコスト削減が可能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/cost-management-billing/savings-plan/decide-between-savings-plan-reservation",
+            "reference_label": "Decide between a savings plan and a reservation"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ストレージ/VM の性能要件を無視し、最も安い SKU に統一する",
+          "explanation": {
+            "text": "誤り。SAP では性能要件を満たす適正サイズ/適正ストレージ選定が必要。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/deployment-checklist",
+            "reference_label": "SAP workloads on Azure: deployment checklist"
+          }
+        },
+        {
+          "key": "D",
+          "text": "FinOps 文化を根付かせ、請求の高額要因レビューや継続的な最適化を行う",
+          "explanation": {
+            "text": "Microsoft のチェックリストは FinOps と継続的最適化を推奨。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/deployment-checklist",
+            "reference_label": "SAP workloads on Azure: deployment checklist"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "停止スケジュール・長期コミット割引・FinOps による継続最適化が推奨。性能要件を無視した極端なダウンサイジングは不可。",
+        "reference": "https://learn.microsoft.com/en-us/azure/cost-management-billing/savings-plan/decide-between-savings-plan-reservation",
+        "reference_label": "Decide between a savings plan and a reservation"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q20",
+      "question": "Azure Monitor for SAP solutions（AMS/AMfS）の特徴として正しいものはどれか。（複数選択）",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Azure ネイティブの監視サービスで、SAP HANA などのプロバイダーを構成してメトリクス/ログを収集できる",
+          "explanation": {
+            "text": "AMfS は Azure Monitor 基盤を用い、HANA 等の“プロバイダー”を通じてデータ収集する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/monitor/about-azure-monitor-sap-solutions",
+            "reference_label": "What is Azure Monitor for SAP solutions?"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Log Analytics との連携により Kusto クエリで可視化・分析でき、アラートも構成できる",
+          "explanation": {
+            "text": "AMfS リソースの Logs から Kusto クエリ実行、Azure Monitor アラートも設定可能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/monitor/about-azure-monitor-sap-solutions",
+            "reference_label": "What is Azure Monitor for SAP solutions?"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure 以外のクラウドやオンプレのみで動く SAP には利用できない",
+          "explanation": {
+            "text": "誤り。AMfS は Azure のリソースとして動作し、Azure 上の SAP を対象にする設計。HLI も対象になるが“Azure 以外のみ”の環境を直接監視するサービスではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/monitor/about-azure-monitor-sap-solutions",
+            "reference_label": "What is Azure Monitor for SAP solutions?"
+          }
+        },
+        {
+          "key": "D",
+          "text": "複数種類のプロバイダー（HANA など）を 1 つの AMfS リソースに追加できる",
+          "explanation": {
+            "text": "1つの SAP モニター リソースに複数プロバイダーを構成可能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/monitor/providers",
+            "reference_label": "Providers in Azure Monitor for SAP solutions"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "AMfS は Azure ネイティブの監視。プロバイダーを追加し、Log Analytics と連携して分析・アラートが可能。",
+        "reference": "https://learn.microsoft.com/en-us/azure/sap/monitor/about-azure-monitor-sap-solutions",
+        "reference_label": "What is Azure Monitor for SAP solutions?"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q21",
+      "question": "SAP のアプリケーション層と DB 層間のレイテンシ最小化および HA 設計について、正しい説明はどれか。（複数選択）",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Proximity Placement Group (PPG) を用いてアプリ/DB VM を物理的に近接配置し、往復遅延を抑える",
+          "explanation": {
+            "text": "PPG は低遅延が求められるワークロード向けに近接配置を保証する論理グループ。",
+            "reference": "https://learn.microsoft.com/en-us/azure/virtual-machines/co-location",
+            "reference_label": "Proximity placement groups"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Accelerated Networking を有効化して VM 間のジッター/CPU 負荷を低減する",
+          "explanation": {
+            "text": "SAP では Accelerated Networking の有効化が推奨（多くの SKU で既定で有効）。",
+            "reference": "https://learn.microsoft.com/en-us/azure/well-architected/sap/design-areas/networking-and-connectivity",
+            "reference_label": "SAP networking & connectivity (Accelerated Networking)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "HANA System Replication のフェンシング/フェイルオーバー用に Pacemaker の構成ガイドに従う",
+          "explanation": {
+            "text": "SLES/RHEL 向けに Pacemaker の公式手順が提供されている。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/high-availability-guide-suse-pacemaker",
+            "reference_label": "Set up Pacemaker on SLES in Azure"
+          }
+        },
+        {
+          "key": "D",
+          "text": "可用性セット(Availability Set)を使えばゾーン障害にも自動的に耐えられるため、PPG は不要",
+          "explanation": {
+            "text": "可用性セットはゾーン障害には耐えない。低遅延最適化とも目的が異なる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/virtual-machines/co-location",
+            "reference_label": "Proximity placement groups（PPG の目的）"
+          }
+        }
+      ],
+      "answer": "A,B,C",
+      "explanation": {
+        "text": "レイテンシは PPG と Accelerated Networking で最小化を図る。HA/フェイルオーバーは Pacemaker ガイドに従い適切に構成する。",
+        "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/high-availability-zones",
+        "reference_label": "SAP workloads with Availability Zones（関連設計ガイダンス）"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q22",
+      "question": "Azure NetApp Files (ANF) を SAP の共有ディレクトリに利用する設計について、正しいものはどれか。（複数選択）",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "/sapmnt や /usr/sap/trans、/hana/shared などの共有に NFS (v3/v4.1) で ANF を利用できる",
+          "explanation": {
+            "text": "ANF は NFS を提供し、SAP の共有ディレクトリで一般的に用いられる。SAP on Azure の公式設計で推奨パターンとして示される。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/plan-azure-netapp-files",
+            "reference_label": "Plan Azure NetApp Files for SAP"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ANF のスナップショットは即時に作成・クローンでき、テスト/リフレッシュ用途に有効である",
+          "explanation": {
+            "text": "ANF のスナップショット/クローニングは高速で、クローンからの検証やリフレッシュに使える。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-snapshots-introduction",
+            "reference_label": "About Azure NetApp Files snapshots"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Linux ベースの SAP 共有には SMB を推奨するため、ANF は適合しない",
+          "explanation": {
+            "text": "誤り。Linux の SAP 共有は NFS が一般的で、ANF は NFS を提供する。SMB は主に Windows で利用される。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/plan-azure-netapp-files",
+            "reference_label": "Plan Azure NetApp Files for SAP"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ANF Volume Replication を使ってリージョン間に NFS ボリュームをレプリケーションできる",
+          "explanation": {
+            "text": "ANF はボリュームレプリケーション（クロスリージョン）を提供し、BCDR 設計に利用される。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-netapp-files/cross-region-replication-introduction",
+            "reference_label": "Cross-region replication for ANF volumes"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "Linux ベースの SAP 共有は NFS が標準的で、ANF は NFS・スナップショット/クローン・クロスリージョンレプリケーションを提供するため、共有/BCDR/検証用途に有効。",
+        "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/plan-azure-netapp-files",
+        "reference_label": "Plan Azure NetApp Files for SAP"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q23",
+      "question": "SAP HANA on Azure VM のディスク選定で適切な組み合わせはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "/hana/log は Ultra Disk、/hana/data は Premium SSD v2 もしくは Ultra を性能要件に応じて選択する",
+          "explanation": {
+            "text": "ログは低遅延が重要。/hana/data はスループット/IOPS要件次第で Premium SSD v2 または Ultra Disk を検討するのが推奨。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-operations-storage",
+            "reference_label": "SAP HANA (Azure VMs) storage guidance"
+          }
+        },
+        {
+          "key": "B",
+          "text": "/hana/log は Standard HDD、/hana/data は Premium SSD v1 で十分である",
+          "explanation": {
+            "text": "誤り。ログは低遅延が必須で HDD は不適。/hana/data も高いスループット/IOPSが必要。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-operations-storage",
+            "reference_label": "Storage guidance for HANA on Azure VMs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "/hana/shared は ANF や NFS 共有、/usr/sap は要件に応じてブロックまたは共有を使う構成が一般的",
+          "explanation": {
+            "text": "共有が必要な /hana/shared は ANF/NFS がよく使われる。/usr/sap は運用方針に応じて選択可能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-operations-storage",
+            "reference_label": "Storage layout examples for SAP HANA"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Premium SSD v2 は HANA では未サポートなので選択してはならない",
+          "explanation": {
+            "text": "誤り。Premium SSD v2 は HANA on Azure VM でも選択肢として言及される（地域/サイズ/性能要件の適合確認は必要）。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-operations-storage",
+            "reference_label": "Storage guidance (mentions Premium SSD v2/Ultra)"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "ログは Ultra Disk 等の低遅延、データは Premium SSD v2/Ultra を要件で選ぶのが基本。共有が必要なパスは ANF/NFS を用いるのが一般的。",
+        "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-operations-storage",
+        "reference_label": "SAP HANA storage guidance on Azure VMs"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q24",
+      "question": "SAP HANA のスケールアウト（複数ホスト）構成を Azure VM で設計する場合の正しい考慮点はどれか。（複数選択）",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "BW/4HANA など分析系でスケールアウトを採用し、スタンバイノードを用意してホスト自動フェイルオーバーを構成する",
+          "explanation": {
+            "text": "HANA スケールアウトは分析系で一般的。スタンバイ/フェイルオーバーの設計が必要。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-high-availability-scale-out",
+            "reference_label": "HANA scale-out HA on Azure VMs"
+          }
+        },
+        {
+          "key": "B",
+          "text": "近接配置（PPG）を使い、ノード間レイテンシを下げる",
+          "explanation": {
+            "text": "スケールアウトではノード間の低遅延が性能に直結。PPG が推奨される。",
+            "reference": "https://learn.microsoft.com/en-us/azure/virtual-machines/co-location",
+            "reference_label": "Proximity placement groups"
+          }
+        },
+        {
+          "key": "C",
+          "text": "スケールアウトでは /hana/data と /hana/log を 1 台の共有 NFS に集約するのが推奨である",
+          "explanation": {
+            "text": "誤り。/hana/data・/hana/log はブロックストレージでノードごとに高性能構成にするのが基本。単一NFS集約は推奨されない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-operations-storage",
+            "reference_label": "HANA storage do's and don'ts"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Pacemaker などのクラスターを用いてネームサーバなどの役割をフェイルオーバー可能にする",
+          "explanation": {
+            "text": "HANA スケールアウト HA には OS クラスタ（SLES/RHEL の Pacemaker）構成が伴う。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/high-availability-guide-suse-pacemaker",
+            "reference_label": "Set up Pacemaker for SAP HANA on SLES"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "分析系のスケールアウト＋スタンバイ、PPG による近接、Pacemaker による HA が定石。データ/ログを単一NFSへ集約するのは非推奨。",
+        "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-high-availability-scale-out",
+        "reference_label": "HANA scale-out HA on Azure VMs"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q25",
+      "question": "インターネット公開が必要な SAP Fiori/HTTP(S) トラフィックのフロントエンド設計として、より堅牢な構成はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "SAP Web Dispatcher の前段に Azure Application Gateway（WAF 有効）を配置し、L7 保護と TLS 終端を行う",
+          "explanation": {
+            "text": "Application Gateway のWAFはL7保護を提供し、Web Dispatcher と組み合わせて堅牢化できる参照アーキテクチャがある。",
+            "reference": "https://learn.microsoft.com/en-us/azure/architecture/solution-ideas/articles/sap-on-azure-with-application-gateway",
+            "reference_label": "SAP on Azure with Application Gateway (solution idea)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "NSG のみで外部公開し、WAF は不要",
+          "explanation": {
+            "text": "誤り。インターネット公開では L7 保護（WAF）を推奨。NSG はL3/4。",
+            "reference": "https://learn.microsoft.com/en-us/azure/web-application-firewall/overview",
+            "reference_label": "What is Azure Web Application Firewall?"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Front Door（WAF）を使い、グローバルエッジで L7 保護と接続性向上を図る選択肢もある",
+          "explanation": {
+            "text": "Front Door はグローバルWAF/CDN/Anycast を提供し、SAP Web 側の公開に活用可能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/frontdoor/front-door-overview",
+            "reference_label": "Azure Front Door overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "L7 保護は SAP Web Dispatcher が担うため、Azure の WAF は重複機能で意味がない",
+          "explanation": {
+            "text": "誤り。多層防御は推奨され、AppGW/Front Door のWAFは追加の保護を提供する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/architecture/framework/security/overview",
+            "reference_label": "Well-Architected Framework: Security"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "公開系は多層防御が有効。App Gateway（WAF）や Front Door（WAF）を前段に置く参照設計がある。",
+        "reference": "https://learn.microsoft.com/en-us/azure/architecture/solution-ideas/articles/sap-on-azure-with-application-gateway",
+        "reference_label": "SAP on Azure with Application Gateway"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q26",
+      "question": "Azure Backup による SAP HANA のバックアップ/復元に関して、正しいものはどれか。（複数選択）",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "完全/差分/ログ バックアップをスケジュールでき、ポイントインタイム復元 (PITR) を実現できる",
+          "explanation": {
+            "text": "Azure Backup の HANA 連携はログ含むバックアップで PITR をサポート。",
+            "reference": "https://learn.microsoft.com/en-us/azure/backup/backup-azure-sap-hana-database#restore",
+            "reference_label": "Restore SAP HANA databases backed up by Azure Backup"
+          }
+        },
+        {
+          "key": "B",
+          "text": "バックアップの保存は Recovery Services コンテナーで LRS/GRS を選べる",
+          "explanation": {
+            "text": "保管の冗長性を LRS/GRS などから選択可能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/backup/backup-overview#backup-storage-redundancy",
+            "reference_label": "Azure Backup overview: storage redundancy"
+          }
+        },
+        {
+          "key": "C",
+          "text": "HANA ログバックアップは Azure Backup では扱えないため、PITR は不可能",
+          "explanation": {
+            "text": "誤り。HANA ログバックアップを扱い、PITR をサポートする。",
+            "reference": "https://learn.microsoft.com/en-us/azure/backup/backup-azure-sap-hana-database",
+            "reference_label": "Back up SAP HANA databases in Azure VMs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "リストアは同一 VM のみをサポートし、別 VM への復元はできない",
+          "explanation": {
+            "text": "誤り。別 VM への復元シナリオもサポートされる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/backup/backup-azure-sap-hana-database#restore",
+            "reference_label": "Restore options"
+          }
+        }
+      ],
+      "answer": "A,B",
+      "explanation": {
+        "text": "Azure Backup は HANA の完全/差分/ログに対応し PITR を提供。保存冗長性は LRS/GRS 等から選択できる。",
+        "reference": "https://learn.microsoft.com/en-us/azure/backup/backup-azure-sap-hana-database",
+        "reference_label": "Back up SAP HANA databases in Azure VMs"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q27",
+      "question": "SAP の DR 設計で Azure Site Recovery (ASR) を用いる際の注意点として正しいものはどれか。（複数選択）",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "DB レイヤーの整合性はネイティブ レプリケーション（HANA System Replication など）を優先し、ASR はアプリ層の VM 複製などで補完する",
+          "explanation": {
+            "text": "Microsoft は DB 一貫性の観点から、DB はネイティブ機能を推奨し、ASR は VM/アプリ層向きと案内している。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/disaster-recovery-sap-guide",
+            "reference_label": "Disaster recovery guidance for SAP"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Pacemaker クラスターのレイヤーをレプリケートする場合は、フェンシング/IP/名前解決など復旧後の一貫性を検証する必要がある",
+          "explanation": {
+            "text": "クラスター環境のレプリケーションは復旧ステップやフェンシングなどの整合性確認が重要。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/high-availability-guide-suse-pacemaker",
+            "reference_label": "Pacemaker HA guide on Azure"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ASR を使えば DB 整合性が自動的に保証されるため、HANA System Replication は不要である",
+          "explanation": {
+            "text": "誤り。ASR はブロックレベル複製であり、DB 論理整合性は保証しない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/disaster-recovery-sap-guide",
+            "reference_label": "DR guidance for SAP"
+          }
+        },
+        {
+          "key": "D",
+          "text": "DR サイトの仮想ネットワークや IP アドレス設計はプライマリと重複しないよう計画する",
+          "explanation": {
+            "text": "重複 CIDR はフェイルオーバー時の接続問題を招くため設計時の重要事項。",
+            "reference": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/sap/eslz-business-continuity-and-disaster-recovery",
+            "reference_label": "BCDR for SAP in CAF"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "DB はネイティブ複製（HSR 等）が優先。ASR はアプリ層などで補完。クラスター整合性とネットワーク設計は DR 成功の鍵。",
+        "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/disaster-recovery-sap-guide",
+        "reference_label": "Disaster recovery guidance for SAP"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q28",
+      "question": "Azure Center for SAP solutions (ACSS) を利用して S/4HANA インフラをデプロイ/管理する際の要件として正しいものはどれか。（複数選択）",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "サブスクリプションで Microsoft.Workloads リソースプロバイダーを登録しておく必要がある",
+          "explanation": {
+            "text": "ACSS は Microsoft.Workloads RP を用いる。未登録だとリソース作成に失敗する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/center-sap-solutions/overview",
+            "reference_label": "Azure Center for SAP solutions: Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ACSS が作成する/利用するリソースに対して、必要な RBAC（例：Contributor など）の権限が必要",
+          "explanation": {
+            "text": "デプロイ実行用のアイデンティティ（ユーザー/マネージドID）に適切な RBAC が必要。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/center-sap-solutions/deploy-s4hana",
+            "reference_label": "Deploy S/4HANA with ACSS"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Policy によるガードレールの適用は ACSS では非対応であり、一切使えない",
+          "explanation": {
+            "text": "誤り。ACSS と併用して Azure Policy/Blueprint 類のガバナンスを適用できる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/sap/eslz-security-governance",
+            "reference_label": "CAF for SAP: security & governance"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ACSS は HANA の HA/DR 構成テンプレート（Distributed/HA など）を備えたデプロイオプションを提供する",
+          "explanation": {
+            "text": "ACSS のデプロイガイドに Distributed (HA) などの構成オプションが記載されている。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/center-sap-solutions/deploy-s4hana",
+            "reference_label": "ACSS: Deploy S/4HANA"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "ACSS では Microsoft.Workloads RP 登録、適切な RBAC、HA/DR オプションを含むデプロイ選択が要件。ガバナンスは Azure Policy を併用可能。",
+        "reference": "https://learn.microsoft.com/en-us/azure/sap/center-sap-solutions/overview",
+        "reference_label": "Azure Center for SAP solutions: Overview"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q29",
+      "question": "SAP HANA on Azure VM での高可用性設計に関して、可用性ゾーンを活用する際の正しい考慮点はどれか。（複数選択）",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "同一リージョン内の異なる可用性ゾーンに HANA VM を配置することで、ゾーン障害に耐えられる",
+          "explanation": {
+            "text": "可用性ゾーンは物理的に独立したデータセンターを提供するため、ゾーン障害への耐性を得られる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/high-availability-guide",
+            "reference_label": "High availability for SAP on Azure"
+          }
+        },
+        {
+          "key": "B",
+          "text": "可用性ゾーンを跨いだ場合、VM 間レイテンシが増加する可能性があるため、アプリ層と DB 層の通信要件を検証する必要がある",
+          "explanation": {
+            "text": "ゾーン間はリージョン内でも距離があるため、アプリ/DB 間のレイテンシ検証が必須。",
+            "reference": "https://learn.microsoft.com/en-us/azure/architecture/high-availability/building-blocks",
+            "reference_label": "Azure high availability building blocks"
+          }
+        },
+        {
+          "key": "C",
+          "text": "可用性ゾーン配置だけで HA が保証されるため、HANA System Replication のような DB レベル冗長化は不要",
+          "explanation": {
+            "text": "誤り。ゾーン障害を跨ぐ冗長化には DB レプリケーションや Pacemaker 構成も必要。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/high-availability-guide",
+            "reference_label": "High availability for SAP on Azure"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ゾーン障害を考慮する場合、/hana/data と /hana/log のディスクは各 VM にローカルで持たせる構成が推奨される",
+          "explanation": {
+            "text": "HANA ではディスクを VM ごとに持ち、レプリケーションで同期する設計が推奨される。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-operations-storage",
+            "reference_label": "SAP HANA VM storage guidance"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "可用性ゾーン分散はゾーン障害対策だが、DB 冗長化も併用する必要がある。VM ごとに認定ストレージを構成し、HANA SR 等で同期する。",
+        "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/high-availability-guide",
+        "reference_label": "High availability for SAP on Azure"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q30",
+      "question": "SAP ワークロードを Azure に移行する際、Azure Migrate を使う正しいシナリオはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "オンプレミスの VM をアセスメントし、Azure VM へのサイズ推奨を得る",
+          "explanation": {
+            "text": "Azure Migrate は VM の性能を分析し、Azure 上の適切な SKU を推奨できる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/migrate/migrate-overview",
+            "reference_label": "Azure Migrate overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "オンプレミスの HANA データを直接 Azure SQL Database に変換して移行する",
+          "explanation": {
+            "text": "誤り。Azure Migrate は DB の種類変換は行わない。HANA → SQL DB は別途移行設計が必要。",
+            "reference": "https://learn.microsoft.com/en-us/azure/migrate/migrate-overview",
+            "reference_label": "Azure Migrate overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アプリケーション依存関係を可視化し、移行計画を作成する",
+          "explanation": {
+            "text": "Azure Migrate には依存関係マッピング機能がある。",
+            "reference": "https://learn.microsoft.com/en-us/azure/migrate/concepts-dependency-visualization",
+            "reference_label": "Dependency visualization in Azure Migrate"
+          }
+        },
+        {
+          "key": "D",
+          "text": "本番 HANA DB のレプリケーションを自動的に Azure に構成する",
+          "explanation": {
+            "text": "誤り。Azure Migrate は DB レプリケーションを自動で構成しない。DB レベルの移行は専用ツールを使う。",
+            "reference": "https://learn.microsoft.com/en-us/azure/migrate/migrate-overview",
+            "reference_label": "Azure Migrate overview"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "Azure Migrate は VM アセスメントと依存関係の可視化に役立つが、DB の変換やレプリケーション自動化は行わない。",
+        "reference": "https://learn.microsoft.com/en-us/azure/migrate/migrate-overview",
+        "reference_label": "Azure Migrate overview"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q31",
+      "question": "SAP アプリケーション層の高可用性を Azure 上で実現する一般的な手法はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "SAP Application Server を複数 VM にデプロイし、Azure Load Balancer でトラフィックを分散する",
+          "explanation": {
+            "text": "正しい。アプリケーション層はスケールアウトでき、LB で負荷分散が一般的。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/high-availability-guide",
+            "reference_label": "HA for SAP on Azure"
+          }
+        },
+        {
+          "key": "B",
+          "text": "アプリ層は単一 VM でしか稼働できないため、冗長化は不可能",
+          "explanation": {
+            "text": "誤り。アプリ層は水平スケール可能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/high-availability-guide",
+            "reference_label": "HA for SAP on Azure"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure VM Scale Set を用いて自動スケールアウトを構成できる",
+          "explanation": {
+            "text": "正しい。アプリ層は VMSS でスケールアウト可能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/overview",
+            "reference_label": "VM Scale Sets overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "アプリ層 HA は OS レベルのクラスターでのみ実現可能",
+          "explanation": {
+            "text": "誤り。ロードバランサ＋多VMで十分。OSクラスタは必須ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/high-availability-guide",
+            "reference_label": "HA for SAP on Azure"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "アプリ層は水平スケール可能で、LB や VMSS を組み合わせた HA が一般的。",
+        "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/high-availability-guide",
+        "reference_label": "HA for SAP on Azure"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q32",
+      "question": "SAP HANA System Replication (HSR) を Azure 上で使う場合の正しい要件はどれか。（複数選択）",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "同期レプリケーションは低遅延が必須のため、同一リージョン内に配置するのが望ましい",
+          "explanation": {
+            "text": "同期 HSR は遅延に敏感で、同一リージョンや近接ゾーンで利用される。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-high-availability",
+            "reference_label": "SAP HANA HA on Azure VMs"
+          }
+        },
+        {
+          "key": "B",
+          "text": "非同期レプリケーションを使えば、長距離リージョン間 DR にも対応できる",
+          "explanation": {
+            "text": "非同期 HSR は遠隔リージョンへの DR に適用可能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/disaster-recovery-sap-guide",
+            "reference_label": "DR guidance for SAP"
+          }
+        },
+        {
+          "key": "C",
+          "text": "HSR を HA 目的で使う場合、OS クラスター（Pacemaker）と組み合わせて自動フェイルオーバーを構成する",
+          "explanation": {
+            "text": "HA では自動切替に OS クラスターが必要。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/high-availability-guide-suse-pacemaker",
+            "reference_label": "Pacemaker HA guide"
+          }
+        },
+        {
+          "key": "D",
+          "text": "HSR では /hana/data ディスクを共有化する必要がある",
+          "explanation": {
+            "text": "誤り。各ノードに専用ディスクを持たせ、レプリケーションで同期する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-operations-storage",
+            "reference_label": "SAP HANA storage guidance"
+          }
+        }
+      ],
+      "answer": "A,B,C",
+      "explanation": {
+        "text": "HSR は同期/非同期を選択可能。HA 用には OS クラスタで自動フェイルオーバーを組み合わせる。",
+        "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-high-availability",
+        "reference_label": "SAP HANA HA on Azure VMs"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q33",
+      "question": "SAP 移行時に Azure Well-Architected Framework のコスト最適化原則を適用する例として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "非本番システムを夜間自動停止するスケジュールを導入する",
+          "explanation": {
+            "text": "稼働時間削減は代表的なコスト最適化施策。",
+            "reference": "https://learn.microsoft.com/en-us/azure/architecture/framework/cost/overview",
+            "reference_label": "Cost optimization overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "最大規模の VM を常に利用してパフォーマンス問題を回避する",
+          "explanation": {
+            "text": "誤り。リソースの適正化が基本。常に最大サイズは非効率。",
+            "reference": "https://learn.microsoft.com/en-us/azure/architecture/framework/cost/overview",
+            "reference_label": "Cost optimization overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Reserved Instances や Savings Plan を利用して長期利用のコストを削減する",
+          "explanation": {
+            "text": "1年/3年契約による割引は代表的な手法。",
+            "reference": "https://learn.microsoft.com/en-us/azure/cost-management-billing/savings-plan/overview",
+            "reference_label": "Azure Savings Plan overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "パフォーマンス要件を満たすなら、より安価なストレージ階層を選択する",
+          "explanation": {
+            "text": "適材適所でストレージ選定はコスト最適化に直結。",
+            "reference": "https://learn.microsoft.com/en-us/azure/architecture/framework/cost/overview",
+            "reference_label": "Cost optimization overview"
+          }
+        }
+      ],
+      "answer": "A,C,D",
+      "explanation": {
+        "text": "自動停止・予約/Savings Plan・ストレージ階層選択はいずれも WAF のコスト最適化原則に合致する。",
+        "reference": "https://learn.microsoft.com/en-us/azure/architecture/framework/cost/overview",
+        "reference_label": "Cost optimization overview"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q34",
+      "question": "SAP ワークロードの監視に Azure Monitor for SAP solutions (AMfS) を導入する場合の前提条件として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "サブスクリプションで Microsoft.Workloads リソースプロバイダーを有効にしておく",
+          "explanation": {
+            "text": "AMfS の作成には Microsoft.Workloads RP 登録が必須。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/monitor/overview",
+            "reference_label": "Overview of AMfS"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Log Analytics ワークスペースを用意し、監視データを送信できるようにする",
+          "explanation": {
+            "text": "AMfS は収集データを Log Analytics に送る。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/monitor/overview",
+            "reference_label": "Overview of AMfS"
+          }
+        },
+        {
+          "key": "C",
+          "text": "監視対象 VM に専用のエージェントをインストールする必要がある",
+          "explanation": {
+            "text": "誤り。AMfS はマネージド ソリューションで、Provider VM を通じて収集する方式。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/monitor/providers",
+            "reference_label": "AMfS providers"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AMfS を利用するにはオンプレ SAP と Azure の ExpressRoute 接続が必須である",
+          "explanation": {
+            "text": "誤り。Azure 内の SAP を対象とする場合に ExpressRoute は不要。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/monitor/overview",
+            "reference_label": "Overview of AMfS"
+          }
+        }
+      ],
+      "answer": "A,B",
+      "explanation": {
+        "text": "AMfS には Microsoft.Workloads RP と Log Analytics の用意が前提。専用エージェントや ExpressRouteは必須ではない。",
+        "reference": "https://learn.microsoft.com/en-us/azure/sap/monitor/overview",
+        "reference_label": "Overview of AMfS"
+      }
+    },
+{
+  "id": "azure-AZ-120-q35",
+  "question": "Azure VM 上に SAP HANA をデプロイする際、ネットワーク性能を最適化するために推奨される構成はどれか。",
+  "difficulty": "normal",
+  "choices": [
+    {
+      "key": "A",
+      "text": "Accelerated Networking を有効化してレイテンシを低減しスループットを向上させる",
+      "explanation": {
+        "text": "Accelerated Networking は SR-IOV を利用し、ネットワーク性能を向上させ、ジッターを抑え、レイテンシを低減する。SAP HANA VM で推奨されている。",
+        "reference": "https://learn.microsoft.com/ja-jp/azure/virtual-network/create-vm-accelerated-networking-cli",
+        "reference_label": "Azure Accelerated Networking"
+      }
+    },
+    {
+      "key": "B",
+      "text": "シンプルさを優先して標準ネットワークのみを利用し、アクセラレーションは無効にする",
+      "explanation": {
+        "text": "標準ネットワークでも動作はするが、Accelerated Networking に比べて高いレイテンシと一貫性のないスループットとなる。",
+        "reference": "https://learn.microsoft.com/ja-jp/azure/virtual-network/create-vm-accelerated-networking-cli",
+        "reference_label": "Azure Accelerated Networking"
+      }
+    },
+    {
+      "key": "C",
+      "text": "Jumbo Frame を無効化し、パケットの分割を強制する",
+      "explanation": {
+        "text": "Jumbo Frame を無効にすると CPU 負荷が増加し、ネットワーク効率が低下するため、SAP ワークロードには推奨されない。",
+        "reference": "https://learn.microsoft.com/ja-jp/azure/virtual-network/virtual-network-tcpip-performance-tuning",
+        "reference_label": "Azure VM の TCP/IP パフォーマンスチューニング"
+      }
+    },
+    {
+      "key": "D",
+      "text": "リージョンの制約を避けるため Proximity Placement Group を使用しない",
+      "explanation": {
+        "text": "Proximity Placement Group (PPG) を使うことで SAP アプリケーション層とデータベース層間のネットワーク遅延を低減できる。使用しないと遅延が増加するため非推奨。",
+        "reference": "https://learn.microsoft.com/ja-jp/azure/virtual-machines/co-location",
+        "reference_label": "Proximity Placement Groups"
+      }
+    }
+  ],
+  "answer": "A,D",
+  "explanation": {
+    "text": "SAP HANA を Azure 上で最適に動作させるには、Accelerated Networking を有効化し、Proximity Placement Group を利用して SAP 各層間のネットワーク遅延を最小化する構成が推奨されている。",
+    "reference": "https://learn.microsoft.com/ja-jp/azure/virtual-machines/workloads/sap/get-started",
+    "reference_label": "SAP ワークロード on Azure - ベストプラクティス"
+  }
+},
+    {
+      "id": "azure-AZ-120-q36",
+      "question": "Azure NetApp Files (ANF) の Application Volume Group (AVG) を SAP HANA で活用する目的として最も適切なものはどれか。（複数選択）",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "/hana/data・/hana/log・/hana/shared 等の複数ボリュームを一貫したレイアウト/配置で一括作成する",
+          "explanation": {
+            "text": "AVG は HANA 用に関連ボリュームをテンプレート化し、整合した配置/性能で一括展開するための機能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-netapp-files/application-volume-group-introduction",
+            "reference_label": "Understand Azure NetApp Files application volume group for SAP HANA"
+          }
+        },
+        {
+          "key": "B",
+          "text": "HANA 向けの推奨エクスポートオプション/ボリュームサイズ/スループットの事前設定を簡素化する",
+          "explanation": {
+            "text": "AVG は SAP HANA 用のベストプラクティスに基づく事前定義を支援する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-netapp-files/application-volume-group-introduction",
+            "reference_label": "ANF AVG for SAP HANA"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ブロックストレージ（Managed Disks）の LVM 構成を自動生成する",
+          "explanation": {
+            "text": "誤り。ANF AVG は NFS ボリュームのグルーピング/配置に関する機能であり、Managed Disk の LVM 自動構成ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-netapp-files/application-volume-group-introduction",
+            "reference_label": "ANF AVG for SAP HANA"
+          }
+        },
+        {
+          "key": "D",
+          "text": "HANA ホスト間の OS クラスタ構成（Pacemaker）の自動化を提供する",
+          "explanation": {
+            "text": "誤り。AVG はストレージ側の機能で、OS クラスタの自動化は対象外。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-netapp-files/application-volume-group-introduction",
+            "reference_label": "ANF AVG for SAP HANA"
+          }
+        }
+      ],
+      "answer": "A,B",
+      "explanation": {
+        "text": "ANF の AVG は SAP HANA 向けの複数 NFS ボリュームを一括/一貫性ある形で展開し、推奨設定に沿った構成を容易にするための機能である。",
+        "reference": "https://learn.microsoft.com/en-us/azure/azure-netapp-files/application-volume-group-introduction",
+        "reference_label": "ANF AVG for SAP HANA"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q37",
+      "question": "ANF を用いた SAP 共有（/sapmnt・/usr/sap/trans・/hana/shared など）の DR 設計について、正しいものはどれか。（複数選択）",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ANF のクロスリージョンレプリケーションを用いて NFS ボリュームを別リージョンへ複製できる",
+          "explanation": {
+            "text": "ANF はボリュームレベルでのクロスリージョンレプリケーション機能を提供し、BCDR 設計に活用できる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-netapp-files/cross-region-replication-introduction",
+            "reference_label": "Cross-region replication for ANF volumes"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ANF のクロスリージョンレプリケーションは共有の RPO 短縮に寄与するが、DB の RPO は別設計（例: HANA System Replication）が必要",
+          "explanation": {
+            "text": "共有の複製と DB のレプリケーションは別レイヤー。DB 整合性は HSR などで担保する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/disaster-recovery-sap-guide",
+            "reference_label": "Disaster recovery guidance for SAP"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ANF レプリケーションがあれば、HANA のデータ/ログディスクも NFS 一元化でよく、ブロックストレージは不要",
+          "explanation": {
+            "text": "誤り。/hana/data と /hana/log は HANA 認定のブロックストレージ（Premium SSD v2/Ultra など）を各ノードに構成するのが基本。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-operations-storage",
+            "reference_label": "SAP HANA Azure VM storage configurations"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ANF のレプリケーションは即時双方向同期であり、RPO は常に 0 である",
+          "explanation": {
+            "text": "誤り。ANF のクロスリージョンは非同期レプリケーションで、RPO=0 を保証するものではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-netapp-files/cross-region-replication-introduction",
+            "reference_label": "Cross-region replication for ANF volumes"
+          }
+        }
+      ],
+      "answer": "A,B",
+      "explanation": {
+        "text": "ANF で NFS 共有をリージョン間複製できるが、DB 整合性/RPO は HSR 等の DB レプリケーションで設計する必要がある。",
+        "reference": "https://learn.microsoft.com/en-us/azure/azure-netapp-files/cross-region-replication-introduction",
+        "reference_label": "ANF cross-region replication"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q38",
+      "question": "SAP HANA on Azure VM のストレージ選定で Premium SSD v2 を選ぶ利点として正しいものはどれか。（複数選択）",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "容量・IOPS・スループットを独立して設定でき、ワークロードに合わせた調整が可能",
+          "explanation": {
+            "text": "Premium SSD v2 の特徴は容量/IOPS/スループットの独立スケーリング。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-premium-ssd-v2",
+            "reference_label": "SAP HANA Azure VM Premium SSD v2 guidance"
+          }
+        },
+        {
+          "key": "B",
+          "text": "HANA 認定ストレージに含まれ、/hana/data などで要件に応じて選択可能",
+          "explanation": {
+            "text": "HANA 認定ディスクとして Premium SSD v2/Ultra/ANF が挙げられている。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-operations-storage",
+            "reference_label": "HANA VM storage configurations (certified types)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "共有ディスク機能を持つため、/hana/log を複数 VM で同時マウントして書き込みできる",
+          "explanation": {
+            "text": "誤り。/hana/log の同時書き込み共有は推奨/想定されない。各ノードに専用ディスクを構成するのが基本。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-operations-storage",
+            "reference_label": "HANA storage do's and don'ts"
+          }
+        },
+        {
+          "key": "D",
+          "text": "一部リージョン/VM SKU で未対応があり、事前の適合確認が必要",
+          "explanation": {
+            "text": "Premium SSD v2 は地域/VM の対応状況に依存するため、可用性の確認が必要。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-premium-ssd-v2",
+            "reference_label": "Premium SSD v2 guidance & availability notes"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "Premium SSD v2 は柔軟なスケーリングが利点で、HANA 認定ストレージの一つ。対応リージョン/VM の適合確認は必須。",
+        "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-premium-ssd-v2",
+        "reference_label": "SAP HANA on Azure VM with Premium SSD v2"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q39",
+      "question": "Ultra Disk を SAP HANA のログ/データに用いる際の正しい特徴はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "高スループット/高 IOPS/低レイテンシを提供し、ワークロードに合わせて性能を動的に変更可能",
+          "explanation": {
+            "text": "Ultra Disk は極めて低いレイテンシと動的性能変更が特長。",
+            "reference": "https://learn.microsoft.com/en-us/azure/virtual-machines/disks-enable-ultra-ssd",
+            "reference_label": "Ultra disks for VMs"
+          }
+        },
+        {
+          "key": "B",
+          "text": "任意の VM/リージョンで常に利用可能",
+          "explanation": {
+            "text": "誤り。対応リージョン/VM に制約があるため、事前確認が必要。",
+            "reference": "https://learn.microsoft.com/en-us/azure/virtual-machines/disks-enable-ultra-ssd",
+            "reference_label": "Ultra disks: availability/constraints"
+          }
+        },
+        {
+          "key": "C",
+          "text": "HANA ログ（/hana/log）の低レイテンシ要件に適合する選択肢として推奨される",
+          "explanation": {
+            "text": "ログは書き込み遅延に敏感で Ultra Disk が適合するユースケースの代表。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-operations-storage",
+            "reference_label": "HANA VM storage guidance (performance)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "一度プロビジョニングした性能値は変更できない",
+          "explanation": {
+            "text": "誤り。Ultra Disk は性能をダウンタイムなしに調整可能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/virtual-machines/disks-enable-ultra-ssd",
+            "reference_label": "Ultra disks: change performance"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "Ultra Disk は低レイテンシ/高性能と動的性能変更が特長で、特に /hana/log のようなログ系に向いている。",
+        "reference": "https://learn.microsoft.com/en-us/azure/virtual-machines/disks-enable-ultra-ssd",
+        "reference_label": "Ultra disks for VMs"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q40",
+      "question": "SAP HANA のスケールアウト（複数ホスト）を Azure 上で高可用に設計する場合の正しい要素はどれか。（複数選択）",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "HANA System Replication（HSR）と Pacemaker を組み合わせて自動フェイルオーバーを構成する",
+          "explanation": {
+            "text": "スケールアウトでも HSR + Pacemaker 構成が公式手順として提供されている。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/sap-hana-high-availability-scale-out-hsr-rhel",
+            "reference_label": "HANA scale-out with HSR & Pacemaker (RHEL)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "共有ファイルシステム（/hana/shared 等）は ANF または Azure Files (NFS) で提供できる",
+          "explanation": {
+            "text": "公式手順では共有に ANF または Azure Files (NFS) を選択可能と明記。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/sap-hana-high-availability-scale-out-hsr-rhel",
+            "reference_label": "HANA scale-out with NFS shares"
+          }
+        },
+        {
+          "key": "C",
+          "text": "/hana/data と /hana/log は単一の NFS 共有に集約するのが推奨される",
+          "explanation": {
+            "text": "誤り。データ/ログは各ノードのブロックストレージ（認定ディスク）で構成するのが基本。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-operations-storage",
+            "reference_label": "HANA storage configurations"
+          }
+        },
+        {
+          "key": "D",
+          "text": "近接配置 (PPG) を用いてノード間レイテンシを低減する",
+          "explanation": {
+            "text": "スケールアウトではノード間遅延が性能に直結するため PPG が有効。",
+            "reference": "https://learn.microsoft.com/en-us/azure/virtual-machines/co-location",
+            "reference_label": "Proximity placement groups"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "スケールアウト HA は HSR+Pacemaker、共有は ANF/Azure Files(NFS)、ノード近接は PPG が定石。/hana/data・/hana/log はブロックで構成する。",
+        "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/sap-hana-high-availability-scale-out-hsr-rhel",
+        "reference_label": "HANA scale-out HA on Azure"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q41",
+      "question": "Azure Monitor for SAP solutions（AMfS）の前提/特徴として正しいものはどれか。（複数選択）",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Azure ネイティブの監視で、HANA などの“プロバイダー”を構成しメトリクス/ログを収集する",
+          "explanation": {
+            "text": "AMfS は Azure Monitor 基盤を利用し、プロバイダー経由でデータを収集するサービス。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/monitor/about-azure-monitor-sap-solutions",
+            "reference_label": "What is Azure Monitor for SAP solutions?"
+          }
+        },
+        {
+          "key": "B",
+          "text": "作成には Microsoft.Workloads リソースプロバイダー登録や Log Analytics ワークスペースの準備が必要",
+          "explanation": {
+            "text": "AMfS のクイックスタート/概要に前提条件として記載されている。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/monitor/quickstart-portal",
+            "reference_label": "Quickstart: Deploy AMfS via portal"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure 上の SAP VM と SAP HANA Large Instances (HLI) の両方に対応する",
+          "explanation": {
+            "text": "AMfS は Azure VM と HLI の両方の監視に対応する旨が明記されている。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/monitor/about-azure-monitor-sap-solutions",
+            "reference_label": "AMfS: supported landscapes"
+          }
+        },
+        {
+          "key": "D",
+          "text": "監視データは Log Analytics を経由せず、AMfS 独自ストアに保存される",
+          "explanation": {
+            "text": "誤り。AMfS は Log Analytics と統合する設計で、クエリ/アラートが可能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/monitor/about-azure-monitor-sap-solutions",
+            "reference_label": "AMfS & Log Analytics"
+          }
+        }
+      ],
+      "answer": "A,B,C",
+      "explanation": {
+        "text": "AMfS は Azure Monitor ネイティブで、プロバイダー構成・Microsoft.Workloads RP 登録・Log Analytics 連携が前提。Azure VM と HLI の両方を監視できる。",
+        "reference": "https://learn.microsoft.com/en-us/azure/sap/monitor/about-azure-monitor-sap-solutions",
+        "reference_label": "AMfS overview"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q42",
+      "question": "Azure Backup による SAP HANA（Azure VM 上）の復元機能について正しいものはどれか。（複数選択）",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "完全/差分/ログ バックアップを用いてポイントインタイム復元 (PITR) が可能",
+          "explanation": {
+            "text": "Azure Backup の HANA 連携はログを含む復元に対応し、PITR を提供する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/backup/sap-hana-database-restore",
+            "reference_label": "Restore SAP HANA databases on Azure VMs"
+          }
+        },
+        {
+          "key": "B",
+          "text": "復元先は同一 VM のみで、別 VM へのリストアは不可",
+          "explanation": {
+            "text": "誤り。別 VM への復元やコピー用途の復元もサポートされる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/backup/sap-hana-database-restore",
+            "reference_label": "Restore options (alternate/clone)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Recovery Services コンテナーにバックアップしたデータからポータル/CLI で復元操作が行える",
+          "explanation": {
+            "text": "ポータル/CLI の手順が公式に記載されている。",
+            "reference": "https://learn.microsoft.com/en-us/azure/backup/sap-hana-database-restore",
+            "reference_label": "Restore via portal/CLI"
+          }
+        },
+        {
+          "key": "D",
+          "text": "HANA System Replication 構成環境では、Azure Backup からの復元は利用できない",
+          "explanation": {
+            "text": "誤り。HSR 環境でも Azure Backup はサポートされ、復元後の役割/再同期など運用手順は別途考慮する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/backup/backup-azure-sap-hana-database",
+            "reference_label": "Back up SAP HANA databases in Azure VMs"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "Azure Backup は HANA の完全/差分/ログを用いた PITR を提供し、Recovery Services コンテナーからポータル/CLI で復元できる。別 VM への復元も可能で、HSR 環境でも利用できる。",
+        "reference": "https://learn.microsoft.com/en-us/azure/backup/sap-hana-database-restore",
+        "reference_label": "Restore SAP HANA databases on Azure VMs"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q43",
+      "question": "SAP ASCS/SCS（ENSA2, ERS2）を Azure VM で高可用にする際の仮想ホスト名/VIP の実装として正しいものはどれか。（複数選択）",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Azure Standard Load Balancer を用い、仮想 IP（フロントエンド）とヘルスプローブを構成して仮想ホスト名を提供する",
+          "explanation": {
+            "text": "Azure では仮想ホスト名に対応する VIP を提供するために Standard Load Balancer とヘルスプローブを用いるのがリファレンス手順。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/high-availability-guide-suse",
+            "reference_label": "High availability for SAP NetWeaver on SLES (Azure)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Public Load Balancer のみがサポートされ、Internal Load Balancer は使えない",
+          "explanation": {
+            "text": "誤り。内部向けの VIP には Internal（プライベート）Load Balancer を用いる参照構成が提供されている。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/high-availability-guide-suse",
+            "reference_label": "HA Guide: NetWeaver on SLES"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Pacemaker クラスタと組み合わせ、仮想ホスト名の稼働ノード切替時に VIP のルーティングが LB 経由で行われる",
+          "explanation": {
+            "text": "Pacemaker と LB を連携することで、ASCS/ERS の稼働ノードが切り替わっても VIP で疎通を維持できる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/high-availability-guide-rhel-pacemaker",
+            "reference_label": "Set up Pacemaker on RHEL in Azure"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ASCS/ERS の VIP は Azure DNS Private Zones が必須であり、Load Balancer は不要",
+          "explanation": {
+            "text": "誤り。VIP 自体は LB で提供し、名前解決は別途（DNS）構成。LB 不要ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/high-availability-guide-suse",
+            "reference_label": "HA Guide: NetWeaver on SLES"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "ASCS/ERS の仮想ホスト名/VIP は Standard（Internal）Load Balancer とヘルスプローブで実現し、Pacemaker により切替を制御するのが Azure の標準パターン。",
+        "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/high-availability-guide-suse",
+        "reference_label": "High availability for SAP NetWeaver on SLES (Azure)"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q44",
+      "question": "SAP HANA on Azure VM におけるストレージとホストキャッシュ設定の考え方として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "/hana/log は書き込み遅延に敏感のため、ディスクのホストキャッシュは基本的に無効（None）とする",
+          "explanation": {
+            "text": "ログはレイテンシに極めて敏感であり、HANA 用ストレージ ガイダンスではキャッシュ無しが基本とされる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-operations-storage",
+            "reference_label": "SAP HANA Azure VM storage configurations"
+          }
+        },
+        {
+          "key": "B",
+          "text": "/hana/data も安定性を優先してホストキャッシュを無効（None）とするのが一般的である",
+          "explanation": {
+            "text": "データ領域もキャッシュを前提にしない設計が推奨パターンとして示される（性能要件/検証により例外はあり得る）。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-operations-storage",
+            "reference_label": "HANA storage guidance on Azure VMs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "/usr/sap や OS ディスクは ReadOnly キャッシュが常に必須である",
+          "explanation": {
+            "text": "誤り。OS や /usr/sap へのキャッシュは“常に必須”ではなく、ワークロード/検証に依存する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-operations-storage",
+            "reference_label": "HANA storage guidance"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Premium SSD v2/Ultra Disk を選べばキャッシュ設定は性能に影響しない",
+          "explanation": {
+            "text": "誤り。キャッシュ設定はレイテンシ/一貫性に影響し、ディスク種別と独立ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-operations-storage",
+            "reference_label": "HANA storage guidance"
+          }
+        }
+      ],
+      "answer": "A,B",
+      "explanation": {
+        "text": "HANA のデータ/ログは一貫性と低遅延を重視し、一般にホストキャッシュは無効化する設計が推奨される（要件に応じ検証）。",
+        "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/hana-vm-operations-storage",
+        "reference_label": "SAP HANA Azure VM storage configurations"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q45",
+      "question": "SAP の DR サイト選定で Azure リージョンペア（paired regions）を考慮する際の正しい説明はどれか。（複数選択）",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Azure は地理内でリージョンペアを定義しており、広域障害時の復旧優先度などのプラットフォーム特性がある",
+          "explanation": {
+            "text": "リージョンペアはプラットフォーム側の復旧順序などの特性を持ち、BCDR 設計時に利点がある。",
+            "reference": "https://learn.microsoft.com/en-us/azure/reliability/regions-paired",
+            "reference_label": "Azure region pairs and nonpaired regions"
+          }
+        },
+        {
+          "key": "B",
+          "text": "すべての Azure サービスが常にペア間で自動的にレプリケーションされる",
+          "explanation": {
+            "text": "誤り。サービスによりクロスリージョンの提供/レプリケーションは異なり、個別確認が必要。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/disaster-recovery-overview-guide",
+            "reference_label": "DR overview & infra guidelines for SAP"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ペアドリージョンを選んでも、SAP DB レプリケーション（HSR など）の設計は別途必要",
+          "explanation": {
+            "text": "プラットフォームの特性と DB 一貫性は別物。DB レプリケーション方式は要件に応じて設計する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/disaster-recovery-sap-guide",
+            "reference_label": "Disaster Recovery recommendation for SAP"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ペアドリージョンを使うと、DR 試験（フェイルオーバー演習）は不要になる",
+          "explanation": {
+            "text": "誤り。定期的な DR テスト/手順検証は引き続き必要。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/disaster-recovery-sap-guide",
+            "reference_label": "DR recommendation for SAP"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "リージョンペアには復旧優先などの利点があるが、サービスごとの提供差や DB 一貫性設計は別途必要であり、DR テストも不可欠。",
+        "reference": "https://learn.microsoft.com/en-us/azure/reliability/regions-paired",
+        "reference_label": "Azure region pairs"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q46",
+      "question": "Azure Monitor for SAP solutions（AMfS）のプロバイダーとリソース構成について正しいものはどれか。（複数選択）",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "1つの SAP モニター（AMfS リソース）に複数種のプロバイダー（例：HANA と NetWeaver）を追加できる",
+          "explanation": {
+            "text": "AMfS は複数タイプ/複数個のプロバイダーを同一モニターに構成可能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/monitor/providers",
+            "reference_label": "Providers in Azure Monitor for SAP solutions"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AMfS は Azure VM と HANA Large Instances の両方を監視対象にできる",
+          "explanation": {
+            "text": "AMfS の対象に Azure VM と HLI が含まれることが明記されている。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/monitor/about-azure-monitor-sap-solutions",
+            "reference_label": "What is Azure Monitor for SAP solutions?"
+          }
+        },
+        {
+          "key": "C",
+          "text": "プロバイダーを追加するには、AMfS のクイックスタート（ポータル）手順に従って設定可能",
+          "explanation": {
+            "text": "ポータルからのデプロイ/プロバイダー設定手順が提供されている。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/monitor/quickstart-portal",
+            "reference_label": "Quickstart: Deploy AMfS by using Azure portal"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AMfS は Log Analytics を使用せずに独自ストレージだけでデータを保持する",
+          "explanation": {
+            "text": "誤り。AMfS は Azure Monitor/Log Analytics と統合してデータを保持/クエリする。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/monitor/about-azure-monitor-sap-solutions",
+            "reference_label": "AMfS overview (Log Analytics integration)"
+          }
+        }
+      ],
+      "answer": "A,B,C",
+      "explanation": {
+        "text": "AMfS は Azure ネイティブの監視で、複数プロバイダーを同一リソースに構成でき、Azure VM/HLI を対象に Log Analytics と連携して可視化する。",
+        "reference": "https://learn.microsoft.com/en-us/azure/sap/monitor/providers",
+        "reference_label": "AMfS providers"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q47",
+      "question": "SAP HANA の HA（SLES/RHEL, Pacemaker + HANA System Replication）で Azure 固有に必要となる設計要素として正しいものはどれか。（複数選択）",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "仮想ホスト名/VIP を実現するための内部 Load Balancer の構成",
+          "explanation": {
+            "text": "Azure の VIP は内部 LB で提供し、ヘルスプローブ/バックエンドを定義する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/sap-hana-high-availability",
+            "reference_label": "SAP HANA high availability on Azure (SLES)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Pacemaker リソースエージェント（SLES/RHEL for SAP）を用いた自動フェイルオーバー",
+          "explanation": {
+            "text": "Pacemaker は HANA/ASCS/ERS の制御に利用される。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/high-availability-guide-rhel-pacemaker",
+            "reference_label": "Pacemaker on RHEL in Azure"
+          }
+        },
+        {
+          "key": "C",
+          "text": "HSR の同期/非同期モード選定と、ネットワーク往復遅延に基づくレプリケーション設計",
+          "explanation": {
+            "text": "HSR はレイテンシに敏感で、同期は近距離・非同期は遠隔 DR に使う。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/disaster-recovery-sap-guide",
+            "reference_label": "DR recommendation for SAP"
+          }
+        },
+        {
+          "key": "D",
+          "text": "VIP は Azure では不要で、クライアントは常にホストの物理 IP に直参照させる",
+          "explanation": {
+            "text": "誤り。クライアント透過性のため VIP/仮想ホスト名が推奨される。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/sap-hana-high-availability",
+            "reference_label": "HANA HA on Azure"
+          }
+        }
+      ],
+      "answer": "A,B,C",
+      "explanation": {
+        "text": "Azure での HANA HA は VIP を LB で提供し、Pacemaker と HSR を組み合わせて自動切替/一貫性を確保するのが定石。",
+        "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/sap-hana-high-availability",
+        "reference_label": "HANA HA on Azure (SLES)"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q48",
+      "question": "コスト最適化の観点で、ASCS/SCS・ERS・HANA を同一 HA セットアップに同居させる設計（コロケーション）に関する正しい説明はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "RHEL の Pacemaker で HANA と ASCS/ERS を同一クラスタ上で管理するコスト最適化シナリオがドキュメント化されている",
+          "explanation": {
+            "text": "最小 VM 台数で単一 SAP システムを運用するシナリオとして解説がある。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/high-availability-guide-rhel-with-hana-ascs-ers-dialog-instance",
+            "reference_label": "Deploy ASCS/ERS with HANA HA on RHEL"
+          }
+        },
+        {
+          "key": "B",
+          "text": "同居構成ではクラスタの制約設計（順序/場所）やリソース競合に注意が必要である",
+          "explanation": {
+            "text": "コロケーションは節約効果がある一方で、フェイルオーバー挙動/性能競合に対する設計が必要。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/high-availability-guide-rhel-with-hana-ascs-ers-dialog-instance",
+            "reference_label": "RHEL with HANA+ASCS/ERS HA (cost-optimized)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "同居にすると HSR は不要になり、DB は単一ノードでよい",
+          "explanation": {
+            "text": "誤り。DB の HA は引き続き HSR 等で構成する必要がある。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/sap-hana-high-availability",
+            "reference_label": "HANA HA on Azure"
+          }
+        },
+        {
+          "key": "D",
+          "text": "同居構成は Azure ではサポート外である",
+          "explanation": {
+            "text": "誤り。公式に“コスト最適化シナリオ”としてガイドが提供されている。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/high-availability-guide-rhel-with-hana-ascs-ers-dialog-instance",
+            "reference_label": "RHEL with HANA+ASCS/ERS HA"
+          }
+        }
+      ],
+      "answer": "A,B",
+      "explanation": {
+        "text": "HANA と ASCS/ERS の同居はコスト最適化の一手だが、クラスタ制約/競合を丁寧に設計し、DB は HSR で HA を確保する。",
+        "reference": "https://learn.microsoft.com/en-us/azure/sap/workloads/high-availability-guide-rhel-with-hana-ascs-ers-dialog-instance",
+        "reference_label": "Deploy ASCS/ERS with HANA HA on RHEL"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q49",
+      "question": "Azure Backup を用いた SAP HANA（Azure VM 上）の復元シナリオについて正しいものはどれか。（複数選択）",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "完全/差分/ログ バックアップを組み合わせ、ログからのポイントインタイム復元（PITR）を実施できる",
+          "explanation": {
+            "text": "復元ポイント選択で Logs (Point in Time) を選び、指定時点に復元可能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/backup/sap-hana-database-restore",
+            "reference_label": "Restore SAP HANA databases on Azure VMs"
+          }
+        },
+        {
+          "key": "B",
+          "text": "systemdb（システムデータベース）の復元手順が用意されている",
+          "explanation": {
+            "text": "Recovery Services vault から systemdb を選び復元する手順が公開されている。",
+            "reference": "https://learn.microsoft.com/en-us/azure/backup/sap-hana-database-instances-restore",
+            "reference_label": "Restore SAP HANA database instances (systemdb)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "復元は同一 VM のみで、別 VM へのリストアはサポートされない",
+          "explanation": {
+            "text": "誤り。別 VM への復元（代替リストア）も可能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/backup/sap-hana-database-restore",
+            "reference_label": "Restore options (alternate/clone)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "スナップショット リストアのクイックスタートが提供され、ディスクをアタッチして検証に活用できる",
+          "explanation": {
+            "text": "スナップショット/ストレージスナップショットをディスクとして復元しターゲットへアタッチ可能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/backup/quick-sap-hana-database-instance-restore",
+            "reference_label": "Quickstart: Restore SAP HANA to a snapshot"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "Azure Backup は HANA の PITR、systemdb 復元、スナップショット リストア（ディスクアタッチ）など多様な復元シナリオを提供する。別 VM への復元もサポートされる。",
+        "reference": "https://learn.microsoft.com/en-us/azure/backup/sap-hana-database-restore",
+        "reference_label": "Restore SAP HANA databases on Azure VMs"
+      }
+    },
+    {
+      "id": "azure-AZ-120-q50",
+      "question": "SAP on Azure のセキュリティ設計において、Azure Key Vault を活用する正しいユースケースはどれか。（複数選択）",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "SAP アプリケーションや HANA の接続に用いる DB パスワードや証明書を安全に格納・管理する",
+          "explanation": {
+            "text": "Key Vault は秘密情報（パスワード、キー、証明書）のセキュアな管理に最適である。",
+            "reference": "https://learn.microsoft.com/en-us/azure/key-vault/general/basic-concepts",
+            "reference_label": "Azure Key Vault basics"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Key Vault に保存した秘密情報を、マネージドIDを通じて SAP ワークロードから安全に取得できる",
+          "explanation": {
+            "text": "Key Vault と Azure AD マネージド ID を連携し、アプリから秘密情報を安全に取得可能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/key-vault/general/authentication",
+            "reference_label": "Authenticate to Key Vault"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Key Vault は OS レベルの暗号化を自動で有効化するため、Azure Disk Encryption の代替として必須である",
+          "explanation": {
+            "text": "誤り。Disk Encryption と Key Vault は連携可能だが、代替ではない。用途が異なる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/security/fundamentals/encryption-atrest",
+            "reference_label": "Data encryption at rest in Azure"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Key Vault に保存されたシークレットは、SAP HANA のユーザーログインを直接管理・自動同期する",
+          "explanation": {
+            "text": "誤り。Key Vault はシークレットストアであり、HANA のユーザ管理機能とは直接連携しない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/key-vault/general/basic-concepts",
+            "reference_label": "Azure Key Vault basics"
+          }
+        }
+      ],
+      "answer": "A,B",
+      "explanation": {
+        "text": "Key Vault は DB パスワードや証明書の格納に適し、マネージドID連携で SAP ワークロードから安全に取得できる。暗号化やユーザ管理の代替ではない。",
+        "reference": "https://learn.microsoft.com/en-us/azure/key-vault/general/basic-concepts",
+        "reference_label": "Azure Key Vault basics"
+      }
+    }
+  ]
+}

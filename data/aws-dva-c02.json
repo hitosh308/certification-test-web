@@ -1,0 +1,2467 @@
+{
+    "exam": {
+        "id": "DVA-C02",
+        "title": "AWS Certified Developer – Associate",
+        "description": "AWS Certified Developer – Associate 試験は、AWSクラウド環境でのアプリケーション開発・デプロイ・保守の技術力を検証する認定資格です。高水準言語でのプログラミング経験を持ち、AWSサービス（API、CLI、SDK）を利用してサーバーレスやコンテナ、CI/CDワークフローを用いたアプリケーション開発ができることを証明します。試験では、サービスの選定、最適化、トラブルシューティングといった実践的な内容も問われ、クラウド開発者としての総合力を養う格好のステップです。AWS認定のアソシエイトレベルとして、IT／クラウド開発職に就きたい方のキャリア出発点としても適しています。",
+        "version": "2023年2月",
+        "price": "150 USD", 
+        "difficulty": "普通",
+        "official-site": "https://aws.amazon.com/certification/certified-developer-associate/",
+        "category": {
+            "id": "aws",
+            "name": "AWS"
+        }
+    },
+    "questions": [
+        {
+            "id": "aws-dva-c02-q1",
+            "question": "サーバーレスアプリケーションで自動スケーリングに対応したセッション状態の保存先として最適なサービスはどれか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Amazon S3",
+                    "explanation": {
+                        "text": "S3はオブジェクトストレージであり、低レイテンシーのセッション状態保存には最適化されていません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
+                        "reference_label": "Amazon S3 ドキュメント"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Amazon DynamoDB",
+                    "explanation": {
+                        "text": "DynamoDBは低レイテンシーでスケーラブルなNoSQLデータベースであり、サーバーレスアプリケーションのセッション管理に広く利用されています。",
+                        "reference": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html",
+                        "reference_label": "Amazon DynamoDB ドキュメント"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Amazon EBS",
+                    "explanation": {
+                        "text": "EBSは単一のEC2インスタンスに紐づくブロックストレージであり、サーバーレスには適しません。",
+                        "reference": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html",
+                        "reference_label": "Amazon EBS ドキュメント"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Amazon ElastiCache",
+                    "explanation": {
+                        "text": "ElastiCacheはインメモリキャッシュとして高速ですが、永続的なセッション状態の保存にはDynamoDBの方が適しています。",
+                        "reference": "https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.html",
+                        "reference_label": "Amazon ElastiCache ドキュメント"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "Amazon DynamoDBは完全マネージドでスケーラブルなNoSQLデータベースであり、サーバーレス環境でのセッション状態保存に最適です。",
+                "reference": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html",
+                "reference_label": "Amazon DynamoDB ドキュメント"
+            }
+        },
+        {
+            "id": "aws-dva-c02-q2",
+            "question": "開発者はS3バケットのオブジェクト作成イベントに応じてコードを実行する必要がある。この場合に使用する最適なサービスはどれか？",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Amazon EC2",
+                    "explanation": {
+                        "text": "EC2でコードは実行できるが、S3イベントを直接トリガーする機能はありません。",
+                        "reference": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
+                        "reference_label": "Amazon EC2 ドキュメント"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "AWS Lambda",
+                    "explanation": {
+                        "text": "LambdaはS3のイベント（オブジェクト作成など）を直接トリガーでき、即座にコードを実行可能です。",
+                        "reference": "https://docs.aws.amazon.com/lambda/latest/dg/with-s3.html",
+                        "reference_label": "AWS Lambda × Amazon S3 ドキュメント"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Amazon ECS",
+                    "explanation": {
+                        "text": "ECSはコンテナを実行できるが、S3イベントを直接トリガーする仕組みはありません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html",
+                        "reference_label": "Amazon ECS ドキュメント"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Amazon RDS",
+                    "explanation": {
+                        "text": "RDSはリレーショナルデータベースであり、S3イベントを処理する機能はありません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html",
+                        "reference_label": "Amazon RDS ドキュメント"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "AWS LambdaはS3とネイティブに統合されており、オブジェクト作成時に自動的に関数を実行できます。",
+                "reference": "https://docs.aws.amazon.com/lambda/latest/dg/with-s3.html",
+                "reference_label": "AWS Lambda × Amazon S3 ドキュメント"
+            }
+        },
+        {
+            "id": "aws-dva-c02-q3",
+            "question": "新しいアプリケーションバージョンを徐々にリリースし、トラフィックを少しずつ切り替えることでダウンタイムを最小化するデプロイ戦略はどれか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "一括デプロイ",
+                    "explanation": {
+                        "text": "一括デプロイは全インスタンスを同時に置き換えるため、リスクとダウンタイムが大きい。",
+                        "reference": "https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-steps.html",
+                        "reference_label": "AWS CodeDeploy デプロイ方法"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "ブルー/グリーンデプロイ",
+                    "explanation": {
+                        "text": "ブルー/グリーンは環境を切り替える方式で、段階的なトラフィック移行ではありません。",
+                        "reference": "https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-steps.html",
+                        "reference_label": "AWS CodeDeploy デプロイ方法"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "カナリアデプロイ",
+                    "explanation": {
+                        "text": "カナリアデプロイは一部のトラフィックだけを新バージョンに流し、徐々に割合を増やす方式でリスクを低減します。",
+                        "reference": "https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html",
+                        "reference_label": "AWS CodeDeploy デプロイ構成"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ローリングデプロイ",
+                    "explanation": {
+                        "text": "ローリングデプロイはバッチごとにインスタンスを入れ替える方式であり、トラフィック制御の柔軟性はカナリアほど高くありません。",
+                        "reference": "https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-steps.html",
+                        "reference_label": "AWS CodeDeploy デプロイ方法"
+                    }
+                }
+            ],
+            "answer": "C",
+            "explanation": {
+                "text": "カナリアデプロイは段階的に新バージョンへのトラフィックを増やすため、ダウンタイムを抑えて安全にリリースできます。",
+                "reference": "https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html",
+                "reference_label": "AWS CodeDeploy デプロイ構成"
+            }
+        },
+        {
+            "id": "aws-dva-c02-q4",
+            "question": "Amazon SQSを使用する利点として正しいものはどれか？",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "アプリケーション間の疎結合を実現できる",
+                    "explanation": {
+                        "text": "SQSはメッセージキューイングサービスであり、分散システム間を疎結合に保ちながら非同期通信を可能にします。",
+                        "reference": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html",
+                        "reference_label": "Amazon SQS ドキュメント"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "低レイテンシーのキャッシュとして利用できる",
+                    "explanation": {
+                        "text": "これはElastiCacheの利用シナリオです。SQSはキャッシュサービスではありません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.html",
+                        "reference_label": "Amazon ElastiCache ドキュメント"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "オブジェクトを永続的に保存できる",
+                    "explanation": {
+                        "text": "オブジェクトの永続保存にはAmazon S3が適しています。SQSはメッセージ保持に特化しています。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
+                        "reference_label": "Amazon S3 ドキュメント"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "アプリケーションのデプロイを自動化できる",
+                    "explanation": {
+                        "text": "これはAWS CodeDeployやCodePipelineのユースケースです。",
+                        "reference": "https://docs.aws.amazon.com/codedeploy/latest/userguide/welcome.html",
+                        "reference_label": "AWS CodeDeploy ドキュメント"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Amazon SQSは非同期メッセージングを可能にし、マイクロサービスや分散システムの疎結合化に最適です。",
+                "reference": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html",
+                "reference_label": "Amazon SQS ドキュメント"
+            }
+        },
+        {
+            "id": "aws-dva-c02-q5",
+            "question": "API Gatewayと統合する際に、AWS Lambda関数を効率的に呼び出すベストプラクティスはどれか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Lambda関数をVPC内にデプロイする",
+                    "explanation": {
+                        "text": "VPCにデプロイするとネットワークオーバーヘッドが増える可能性があり、必ずしも効率的ではありません。",
+                        "reference": "https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html",
+                        "reference_label": "AWS Lambda VPC ドキュメント"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "統合リクエストとレスポンスで変換を最小化する",
+                    "explanation": {
+                        "text": "不要なマッピングテンプレートを避けることで、パフォーマンスが向上します。",
+                        "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html",
+                        "reference_label": "API Gateway Lambda プロキシ統合"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "すべてのリクエストを一度S3に保存してから処理する",
+                    "explanation": {
+                        "text": "この方法は冗長であり、パフォーマンスを低下させます。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
+                        "reference_label": "Amazon S3 ドキュメント"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "API Gatewayキャッシュを無効化する",
+                    "explanation": {
+                        "text": "キャッシュを無効化すると不要なLambda呼び出しが増えるため効率的ではありません。",
+                        "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-caching.html",
+                        "reference_label": "API Gateway キャッシュ"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "API GatewayのLambdaプロキシ統合を利用し、リクエスト/レスポンス変換を最小化するのが推奨されるベストプラクティスです。",
+                "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html",
+                "reference_label": "API Gateway Lambda プロキシ統合"
+            }
+        },
+        {
+            "id": "aws-dva-c02-q6",
+            "question": "開発者は、アプリケーションログを集中管理し、リアルタイムで検索可能にしたい。最適なサービスはどれか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Amazon CloudWatch Logs",
+                    "explanation": {
+                        "text": "CloudWatch Logsはアプリケーションログを収集・保存・検索できるAWSのネイティブサービスです。",
+                        "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html",
+                        "reference_label": "Amazon CloudWatch Logs ドキュメント"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Amazon S3",
+                    "explanation": {
+                        "text": "S3にログを保存することは可能ですが、リアルタイム検索機能は提供されません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
+                        "reference_label": "Amazon S3 ドキュメント"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "AWS Step Functions",
+                    "explanation": {
+                        "text": "Step Functionsはワークフローオーケストレーションであり、ログ管理サービスではありません。",
+                        "reference": "https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html",
+                        "reference_label": "AWS Step Functions ドキュメント"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Amazon SQS",
+                    "explanation": {
+                        "text": "SQSはメッセージキューサービスであり、ログの保存や検索には適していません。",
+                        "reference": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html",
+                        "reference_label": "Amazon SQS ドキュメント"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Amazon CloudWatch Logsはアプリケーションやシステムログの収集・分析に最適で、リアルタイム検索も可能です。",
+                "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html",
+                "reference_label": "Amazon CloudWatch Logs ドキュメント"
+            }
+        },
+        {
+            "id": "aws-dva-c02-q7",
+            "question": "開発者は、Amazon DynamoDBで読み取り負荷をスケーラブルに処理したい。推奨される方法はどれか？",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "DynamoDB Accelerator (DAX) を利用する",
+                    "explanation": {
+                        "text": "DAXはDynamoDB用のインメモリキャッシュであり、読み取りパフォーマンスを大幅に向上させます。",
+                        "reference": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DAX.html",
+                        "reference_label": "Amazon DynamoDB DAX ドキュメント"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "DynamoDB Streamsを有効化する",
+                    "explanation": {
+                        "text": "Streamsはテーブルの変更イベントを処理するための機能であり、読み取りスループットの改善には直接寄与しません。",
+                        "reference": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.html",
+                        "reference_label": "Amazon DynamoDB Streams"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "S3にバックアップを取ってそこから参照する",
+                    "explanation": {
+                        "text": "S3はストレージであり、リアルタイム読み取りのスケーリングには適していません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
+                        "reference_label": "Amazon S3 ドキュメント"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "テーブルを手動でシャーディングする",
+                    "explanation": {
+                        "text": "DynamoDBは内部的にパーティショニングを管理しており、手動でシャーディングする必要はありません。",
+                        "reference": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.Partitions.html",
+                        "reference_label": "Amazon DynamoDB パーティション"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "DAXを利用すると、DynamoDBの読み取り性能をミリ秒からマイクロ秒レベルに短縮でき、スケーラブルなアプリケーションに適しています。",
+                "reference": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DAX.html",
+                "reference_label": "Amazon DynamoDB DAX ドキュメント"
+            }
+        },
+        {
+            "id": "aws-dva-c02-q8",
+            "question": "開発者はAmazon S3に保存されたデータを暗号化したい。サーバー側暗号化（SSE）のオプションのうち、AWSが提供するキー管理を利用する方式はどれか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "SSE-S3",
+                    "explanation": {
+                        "text": "SSE-S3はS3管理のキーを使用し、ユーザーの追加設定なしで自動的に暗号化されます。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingServerSideEncryption.html",
+                        "reference_label": "Amazon S3 サーバー側暗号化"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "SSE-C",
+                    "explanation": {
+                        "text": "SSE-Cはユーザーが独自に管理するカスタマー提供キーを利用します。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingServerSideEncryptionCustomerKeys.html",
+                        "reference_label": "Amazon S3 SSE-C"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "SSE-KMS",
+                    "explanation": {
+                        "text": "SSE-KMSはAWS KMSを利用してキー管理を行います。ユーザーはキーの利用ポリシーを制御できます。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html",
+                        "reference_label": "Amazon S3 SSE-KMS"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "クライアント側暗号化",
+                    "explanation": {
+                        "text": "クライアント側暗号化はデータをS3にアップロードする前にユーザー側で暗号化します。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingClientSideEncryption.html",
+                        "reference_label": "Amazon S3 クライアント側暗号化"
+                    }
+                }
+            ],
+            "answer": "C",
+            "explanation": {
+                "text": "SSE-KMSはAWS Key Management Serviceを利用して鍵を管理できるため、ユーザーがアクセス制御ポリシーを設定可能です。",
+                "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html",
+                "reference_label": "Amazon S3 SSE-KMS"
+            }
+        },
+        {
+            "id": "aws-dva-c02-q9",
+            "question": "開発者はAmazon API Gatewayでレート制限を設定し、バックエンドの過負荷を防ぎたい。この目的のために利用できる機能はどれか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "ステージ変数",
+                    "explanation": {
+                        "text": "ステージ変数は設定値の管理に利用されますが、レート制限には使用されません。",
+                        "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/stage-variables.html",
+                        "reference_label": "API Gateway ステージ変数"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "キャッシュ",
+                    "explanation": {
+                        "text": "キャッシュはレスポンスを高速化するための機能であり、レート制限には使えません。",
+                        "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-caching.html",
+                        "reference_label": "API Gateway キャッシュ"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "使用プラン（Usage Plan）",
+                    "explanation": {
+                        "text": "使用プランではAPIキーと紐づけてレート制限やクォータを設定できます。",
+                        "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html",
+                        "reference_label": "API Gateway 使用プラン"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "リソースポリシー",
+                    "explanation": {
+                        "text": "リソースポリシーはアクセス制御に利用されますが、レート制限には対応していません。",
+                        "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-resource-policies.html",
+                        "reference_label": "API Gateway リソースポリシー"
+                    }
+                }
+            ],
+            "answer": "C",
+            "explanation": {
+                "text": "API Gatewayの使用プランを利用することで、レート制限やクォータを柔軟に設定可能です。",
+                "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html",
+                "reference_label": "API Gateway 使用プラン"
+            }
+        },
+        {
+            "id": "aws-dva-c02-q10",
+            "question": "開発者はAWS Lambda関数のコールドスタートを最小化したい。推奨される方法はどれか？",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "関数のタイムアウトを短く設定する",
+                    "explanation": {
+                        "text": "タイムアウトは処理の最大時間を制御するだけで、コールドスタートには影響しません。",
+                        "reference": "https://docs.aws.amazon.com/lambda/latest/dg/configuration-function-common.html",
+                        "reference_label": "AWS Lambda 設定"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Lambda関数を常にVPCに配置する",
+                    "explanation": {
+                        "text": "VPCに配置するとENI作成が必要になり、むしろコールドスタートが遅くなる可能性があります。",
+                        "reference": "https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html",
+                        "reference_label": "AWS Lambda VPC 設定"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "プロビジョドコンカレンシーを設定する",
+                    "explanation": {
+                        "text": "プロビジョドコンカレンシーを利用すると、事前に初期化済みの関数環境を維持でき、コールドスタートを回避できます。",
+                        "reference": "https://docs.aws.amazon.com/lambda/latest/dg/provisioned-concurrency.html",
+                        "reference_label": "AWS Lambda プロビジョドコンカレンシー"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "メモリサイズを最小にする",
+                    "explanation": {
+                        "text": "メモリサイズを小さくするとリソースが制限され、パフォーマンスが低下する可能性があります。",
+                        "reference": "https://docs.aws.amazon.com/lambda/latest/dg/configuration-memory.html",
+                        "reference_label": "AWS Lambda メモリ設定"
+                    }
+                }
+            ],
+            "answer": "C",
+            "explanation": {
+                "text": "Lambdaのプロビジョドコンカレンシーは、コールドスタートを回避する公式の推奨方法です。",
+                "reference": "https://docs.aws.amazon.com/lambda/latest/dg/provisioned-concurrency.html",
+                "reference_label": "AWS Lambda プロビジョドコンカレンシー"
+            }
+        },
+        {
+            "id": "aws-dva-c02-q11",
+            "question": "開発者はアプリケーションからAWSサービスに安全にアクセスしたい。EC2インスタンスからS3にアクセスする場合、推奨される方法はどれか？",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "アクセスキーとシークレットキーをアプリケーションコードに埋め込む",
+                    "explanation": {
+                        "text": "これはセキュリティリスクが高く、推奨されません。",
+                        "reference": "https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html",
+                        "reference_label": "AWS アクセスキーのベストプラクティス"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "IAMロールをEC2インスタンスに割り当てる",
+                    "explanation": {
+                        "text": "IAMロールを利用すれば、アプリケーションコードに認証情報を埋め込む必要がなく、安全にS3へアクセスできます。",
+                        "reference": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html",
+                        "reference_label": "IAMロールを使用したEC2アクセス"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "S3バケットをパブリックにする",
+                    "explanation": {
+                        "text": "セキュリティ上推奨されません。パブリックアクセスはリスクがあります。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html",
+                        "reference_label": "Amazon S3 パブリックアクセス制御"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "クライアントごとに一時的に発行したキーを手動で配布する",
+                    "explanation": {
+                        "text": "手動でキーを配布する方法は管理が煩雑であり、推奨されません。",
+                        "reference": "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html",
+                        "reference_label": "IAM ベストプラクティス"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "EC2インスタンスにはIAMロールを割り当てることで、アプリケーションは安全にS3へアクセス可能です。",
+                "reference": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html",
+                "reference_label": "IAMロールを使用したEC2アクセス"
+            }
+        },
+        {
+            "id": "aws-dva-c02-q12",
+            "question": "開発者は、アプリケーションをAmazon SQSと統合し、重複するメッセージ処理を避けたい。最適な選択はどれか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "標準キュー",
+                    "explanation": {
+                        "text": "標準キューは高スループットだが、少なくとも一度配送（at-least-once delivery）のため、重複の可能性があります。",
+                        "reference": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/standard-queues.html",
+                        "reference_label": "Amazon SQS 標準キュー"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "FIFOキュー",
+                    "explanation": {
+                        "text": "FIFOキューはExactly-Once処理を保証し、メッセージの順序も保持します。",
+                        "reference": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html",
+                        "reference_label": "Amazon SQS FIFOキュー"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Amazon SNS",
+                    "explanation": {
+                        "text": "SNSはPub/Sub通知サービスであり、重複排除には対応していません。",
+                        "reference": "https://docs.aws.amazon.com/sns/latest/dg/welcome.html",
+                        "reference_label": "Amazon SNS ドキュメント"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Amazon Kinesis Data Streams",
+                    "explanation": {
+                        "text": "Kinesisはリアルタイムストリーミングデータ処理サービスであり、メッセージ重複排除は保証されません。",
+                        "reference": "https://docs.aws.amazon.com/streams/latest/dev/introduction.html",
+                        "reference_label": "Amazon Kinesis Data Streams"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "Amazon SQS FIFOキューは重複排除（Exactly-Once処理）を保証し、メッセージ順序も保持できます。",
+                "reference": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html",
+                "reference_label": "Amazon SQS FIFOキュー"
+            }
+        },
+        {
+            "id": "aws-dva-c02-q13",
+            "question": "Amazon RDSのマルチAZ配置を利用する主な目的はどれか？",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "読み取り性能を向上させる",
+                    "explanation": {
+                        "text": "マルチAZは冗長化のためであり、読み取り性能の向上にはリードレプリカを利用します。",
+                        "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html",
+                        "reference_label": "Amazon RDS マルチAZ"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "高可用性とフェイルオーバーを実現する",
+                    "explanation": {
+                        "text": "マルチAZ配置はプライマリDBの障害時に自動的にスタンバイへフェイルオーバーします。",
+                        "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html",
+                        "reference_label": "Amazon RDS マルチAZ"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ストレージコストを削減する",
+                    "explanation": {
+                        "text": "マルチAZは冗長性確保のためコストが増加します。",
+                        "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html",
+                        "reference_label": "Amazon RDS マルチAZ"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "データベーススキーマを自動的に最適化する",
+                    "explanation": {
+                        "text": "スキーマ最適化はマルチAZの機能ではありません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html",
+                        "reference_label": "Amazon RDS マルチAZ"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "RDSのマルチAZは高可用性を実現するための機能で、障害発生時にはスタンバイインスタンスへフェイルオーバーします。",
+                "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html",
+                "reference_label": "Amazon RDS マルチAZ"
+            }
+        },
+        {
+            "id": "aws-dva-c02-q14",
+            "question": "Amazon CloudFrontのオリジンアクセス制御（OAC）の利用目的はどれか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "CloudFrontからのリクエストのみをS3に許可する",
+                    "explanation": {
+                        "text": "OACを利用すると、S3バケットをパブリックにせずにCloudFront経由でのみアクセス可能にできます。",
+                        "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html",
+                        "reference_label": "Amazon CloudFront OAC"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "S3のバージョニングを有効化する",
+                    "explanation": {
+                        "text": "バージョニングはS3の機能であり、CloudFront OACとは関係ありません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html",
+                        "reference_label": "Amazon S3 バージョニング"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "キャッシュヒット率を向上させる",
+                    "explanation": {
+                        "text": "キャッシュヒット率はキャッシュポリシーやTTL設定で制御されます。",
+                        "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html",
+                        "reference_label": "CloudFront キャッシュ設定"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "動的コンテンツを生成する",
+                    "explanation": {
+                        "text": "CloudFrontはCDNであり、動的コンテンツ生成は行いません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html",
+                        "reference_label": "Amazon CloudFront ドキュメント"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "OACを利用すると、CloudFrontからのリクエストだけをS3が受け入れるように制御できます。",
+                "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html",
+                "reference_label": "Amazon CloudFront OAC"
+            }
+        },
+        {
+            "id": "aws-dva-c02-q15",
+            "question": "開発者は、複数のAWSアカウントからAmazon S3バケットにアクセスさせたい。この場合に推奨される方法はどれか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "各アカウントのIAMユーザーにS3のアクセスキーを共有する",
+                    "explanation": {
+                        "text": "セキュリティリスクが高く、推奨されません。",
+                        "reference": "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html",
+                        "reference_label": "IAM ベストプラクティス"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "S3バケットポリシーでクロスアカウントアクセスを許可する",
+                    "explanation": {
+                        "text": "S3バケットポリシーを利用すれば、安全に複数アカウントからアクセスを制御できます。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html",
+                        "reference_label": "Amazon S3 バケットポリシー"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "S3をパブリックに設定する",
+                    "explanation": {
+                        "text": "パブリック設定はセキュリティリスクが高く、推奨されません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html",
+                        "reference_label": "Amazon S3 パブリックアクセス制御"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "各アカウントに別々のS3バケットを作成してデータをコピーする",
+                    "explanation": {
+                        "text": "効率が悪く、不要なコストが発生します。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
+                        "reference_label": "Amazon S3 ドキュメント"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "クロスアカウントアクセスはS3バケットポリシーを利用して安全に制御するのが推奨されます。",
+                "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html",
+                "reference_label": "Amazon S3 バケットポリシー"
+            }
+        },
+        {
+            "id": "aws-dva-c02-q16",
+            "question": "Amazon DynamoDBで強い整合性を持つ読み取りを行うときの特徴はどれか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "最新の書き込みを必ず反映したデータを返す",
+                    "explanation": {
+                        "text": "強い整合性を持つ読み取りでは、最新の書き込みが必ず反映されます。",
+                        "reference": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadConsistency.html",
+                        "reference_label": "DynamoDB 読み取り整合性"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "レイテンシーが常に最小になる",
+                    "explanation": {
+                        "text": "強い整合性読み取りはレイテンシーが増加する場合があります。",
+                        "reference": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadConsistency.html",
+                        "reference_label": "DynamoDB 読み取り整合性"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "結果整合性よりも読み取りキャパシティ消費が少ない",
+                    "explanation": {
+                        "text": "強い整合性の方がキャパシティユニット消費が大きくなります。",
+                        "reference": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadCapacityMode.html",
+                        "reference_label": "DynamoDB 読み取りキャパシティ"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "一貫性は保証されない",
+                    "explanation": {
+                        "text": "これは誤りです。強い整合性は一貫性を保証します。",
+                        "reference": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadConsistency.html",
+                        "reference_label": "DynamoDB 読み取り整合性"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "強い整合性読み取りでは、最新の書き込みが必ず反映されたデータが返されます。",
+                "reference": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadConsistency.html",
+                "reference_label": "DynamoDB 読み取り整合性"
+            }
+        },
+        {
+            "id": "aws-dva-c02-q17",
+            "question": "開発者はAWS Lambda関数の実行時間を短縮したい。効果的な方法はどれか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "コード内で不要な依存関係を削除する",
+                    "explanation": {
+                        "text": "不要なライブラリを削除することで、デプロイパッケージが軽量化され、実行速度が向上します。",
+                        "reference": "https://docs.aws.amazon.com/lambda/latest/dg/best-practices.html",
+                        "reference_label": "AWS Lambda ベストプラクティス"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "関数のタイムアウトを短く設定する",
+                    "explanation": {
+                        "text": "タイムアウトを短縮しても実行速度は改善されません。",
+                        "reference": "https://docs.aws.amazon.com/lambda/latest/dg/configuration-function-common.html",
+                        "reference_label": "AWS Lambda 設定"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "メモリ割り当てを増加させる",
+                    "explanation": {
+                        "text": "メモリ割り当てを増やすとCPUリソースも増加し、処理速度が向上します。",
+                        "reference": "https://docs.aws.amazon.com/lambda/latest/dg/configuration-memory.html",
+                        "reference_label": "AWS Lambda メモリ設定"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "関数を常にVPCに配置する",
+                    "explanation": {
+                        "text": "VPC内に配置するとネットワークオーバーヘッドが発生し、むしろ遅延が増加する可能性があります。",
+                        "reference": "https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html",
+                        "reference_label": "AWS Lambda VPC 設定"
+                    }
+                }
+            ],
+            "answer": "A,C",
+            "explanation": {
+                "text": "不要な依存関係を削除し、メモリ割り当てを増やすことで、Lambda関数の実行時間を短縮できます。",
+                "reference": "https://docs.aws.amazon.com/lambda/latest/dg/best-practices.html",
+                "reference_label": "AWS Lambda ベストプラクティス"
+            }
+        },
+        {
+            "id": "aws-dva-c02-q18",
+            "question": "Amazon API Gatewayで、クライアント認証を行うために利用できる機能はどれか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "使用プラン",
+                    "explanation": {
+                        "text": "使用プランはレート制限やクォータの制御には使えますが、認証には利用できません。",
+                        "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html",
+                        "reference_label": "API Gateway 使用プラン"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "リソースポリシー",
+                    "explanation": {
+                        "text": "リソースポリシーはアクセス許可制御ですが、ユーザー認証には適していません。",
+                        "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-resource-policies.html",
+                        "reference_label": "API Gateway リソースポリシー"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "カスタムオーソライザー",
+                    "explanation": {
+                        "text": "カスタムオーソライザーを利用すると、Lambda関数でトークンや認証情報を検証できます。",
+                        "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html",
+                        "reference_label": "API Gateway カスタムオーソライザー"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "キャッシュポリシー",
+                    "explanation": {
+                        "text": "キャッシュポリシーはレスポンスキャッシュに関する設定であり、認証には関与しません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html",
+                        "reference_label": "CloudFront キャッシュポリシー"
+                    }
+                }
+            ],
+            "answer": "C",
+            "explanation": {
+                "text": "カスタムオーソライザーを利用することで、API Gatewayはクライアントリクエストの認証を行えます。",
+                "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html",
+                "reference_label": "API Gateway カスタムオーソライザー"
+            }
+        },
+        {
+            "id": "aws-dva-c02-q19",
+            "question": "AWS CodePipelineの利用目的として最も適切なものはどれか？",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "アプリケーションのCI/CDを自動化する",
+                    "explanation": {
+                        "text": "CodePipelineは継続的インテグレーションとデプロイメントを自動化するサービスです。",
+                        "reference": "https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html",
+                        "reference_label": "AWS CodePipeline ドキュメント"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "アプリケーションログを収集・分析する",
+                    "explanation": {
+                        "text": "これはCloudWatch Logsの機能です。",
+                        "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html",
+                        "reference_label": "Amazon CloudWatch Logs"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "大量のデータをリアルタイム処理する",
+                    "explanation": {
+                        "text": "これはAmazon Kinesisのユースケースです。",
+                        "reference": "https://docs.aws.amazon.com/streams/latest/dev/introduction.html",
+                        "reference_label": "Amazon Kinesis Data Streams"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "セッション状態を保存する",
+                    "explanation": {
+                        "text": "これはDynamoDBやElastiCacheのユースケースです。",
+                        "reference": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html",
+                        "reference_label": "Amazon DynamoDB ドキュメント"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "AWS CodePipelineはCI/CDの自動化を目的としたサービスです。",
+                "reference": "https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html",
+                "reference_label": "AWS CodePipeline ドキュメント"
+            }
+        },
+        {
+            "id": "aws-dva-c02-q20",
+            "question": "AWS X-Rayの主な利用目的はどれか？",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "アプリケーションのパフォーマンスを可視化する",
+                    "explanation": {
+                        "text": "X-Rayは分散アプリケーションのリクエストをトレースし、ボトルネックを特定できます。",
+                        "reference": "https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html",
+                        "reference_label": "AWS X-Ray ドキュメント"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "アプリケーションコードを自動デプロイする",
+                    "explanation": {
+                        "text": "これはCodeDeployやCodePipelineの機能です。",
+                        "reference": "https://docs.aws.amazon.com/codedeploy/latest/userguide/welcome.html",
+                        "reference_label": "AWS CodeDeploy ドキュメント"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "大規模データをバッチ処理する",
+                    "explanation": {
+                        "text": "これはAWS BatchやEMRの機能です。",
+                        "reference": "https://docs.aws.amazon.com/batch/latest/userguide/what-is-batch.html",
+                        "reference_label": "AWS Batch ドキュメント"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "インフラをコードで管理する",
+                    "explanation": {
+                        "text": "これはCloudFormationのユースケースです。",
+                        "reference": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html",
+                        "reference_label": "AWS CloudFormation"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "AWS X-Rayはアプリケーションのリクエストをエンドツーエンドでトレースし、パフォーマンスの可視化に役立ちます。",
+                "reference": "https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html",
+                "reference_label": "AWS X-Ray ドキュメント"
+            }
+        },
+        {
+            "id": "aws-dva-c02-q21",
+            "question": "AWS Elastic Beanstalkで環境を更新する際に、アプリケーションのダウンタイムを最小化するデプロイ方式はどれか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "全インスタンス一括更新",
+                    "explanation": {
+                        "text": "一括更新はすべてのインスタンスを同時に更新するため、ダウンタイムが発生します。",
+                        "reference": "https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.deploy-existing-version.html",
+                        "reference_label": "Elastic Beanstalk デプロイオプション"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "ローリング更新",
+                    "explanation": {
+                        "text": "インスタンスをバッチごとに更新する方式で、ダウンタイムを軽減できます。",
+                        "reference": "https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.deploy-existing-version.html",
+                        "reference_label": "Elastic Beanstalk デプロイオプション"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ブルー/グリーンデプロイ",
+                    "explanation": {
+                        "text": "新しい環境を作成してトラフィックを切り替える方式で、ダウンタイムをほぼゼロにできます。",
+                        "reference": "https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environmentmgmt-updates-deployment.html",
+                        "reference_label": "Elastic Beanstalk デプロイ方式"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "手動デプロイ",
+                    "explanation": {
+                        "text": "手動デプロイは効率が悪く、ダウンタイムも発生しやすいです。",
+                        "reference": "https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.deploy-existing-version.html",
+                        "reference_label": "Elastic Beanstalk デプロイオプション"
+                    }
+                }
+            ],
+            "answer": "C",
+            "explanation": {
+                "text": "Elastic Beanstalkのブルー/グリーンデプロイは新環境を構築してトラフィックを切り替えるため、ダウンタイムを最小化できます。",
+                "reference": "https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environmentmgmt-updates-deployment.html",
+                "reference_label": "Elastic Beanstalk デプロイ方式"
+            }
+        },
+        {
+            "id": "aws-dva-c02-q22",
+            "question": "Amazon Cognitoのユーザープールを利用する目的はどれか？",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "アプリケーションのユーザー認証を管理する",
+                    "explanation": {
+                        "text": "ユーザープールはユーザーのサインアップ、サインイン、認証を管理します。",
+                        "reference": "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html",
+                        "reference_label": "Amazon Cognito ユーザープール"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "アプリケーションの設定値を保存する",
+                    "explanation": {
+                        "text": "これはAWS Systems Manager Parameter Storeの機能です。",
+                        "reference": "https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html",
+                        "reference_label": "AWS Parameter Store"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "機械学習モデルをホスティングする",
+                    "explanation": {
+                        "text": "これはAmazon SageMakerのユースケースです。",
+                        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/whatis.html",
+                        "reference_label": "Amazon SageMaker"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "アプリケーションコードをデプロイする",
+                    "explanation": {
+                        "text": "これはCodeDeployやElastic Beanstalkの機能です。",
+                        "reference": "https://docs.aws.amazon.com/codedeploy/latest/userguide/welcome.html",
+                        "reference_label": "AWS CodeDeploy"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Amazon Cognitoユーザープールは、アプリケーションのユーザー認証を管理するサービスです。",
+                "reference": "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html",
+                "reference_label": "Amazon Cognito ユーザープール"
+            }
+        },
+        {
+            "id": "aws-dva-c02-q23",
+            "question": "開発者はAWS SDKを利用してアプリケーションを実装している。SDKが自動的に認証情報を取得する優先順位として正しい順序はどれか？",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "環境変数 → EC2 IAMロール → 設定ファイル",
+                    "explanation": {
+                        "text": "AWS SDKは環境変数、AWS CLI設定ファイル、IAMロールの順で認証情報を取得します。",
+                        "reference": "https://docs.aws.amazon.com/sdkref/latest/guide/creds-config-files.html",
+                        "reference_label": "AWS SDK 認証情報取得順序"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "IAMロール → 設定ファイル → 環境変数",
+                    "explanation": {
+                        "text": "IAMロールは最後にチェックされます。",
+                        "reference": "https://docs.aws.amazon.com/sdkref/latest/guide/creds-config-files.html",
+                        "reference_label": "AWS SDK 認証情報取得順序"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "環境変数 → 設定ファイル → IAMロール",
+                    "explanation": {
+                        "text": "正しい順序は環境変数、設定ファイル、IAMロールです。",
+                        "reference": "https://docs.aws.amazon.com/sdkref/latest/guide/creds-config-files.html",
+                        "reference_label": "AWS SDK 認証情報取得順序"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "設定ファイル → 環境変数 → IAMロール",
+                    "explanation": {
+                        "text": "設定ファイルが環境変数より先に利用されることはありません。",
+                        "reference": "https://docs.aws.amazon.com/sdkref/latest/guide/creds-config-files.html",
+                        "reference_label": "AWS SDK 認証情報取得順序"
+                    }
+                }
+            ],
+            "answer": "C",
+            "explanation": {
+                "text": "AWS SDKは認証情報を環境変数、設定ファイル、IAMロールの順に探します。",
+                "reference": "https://docs.aws.amazon.com/sdkref/latest/guide/creds-config-files.html",
+                "reference_label": "AWS SDK 認証情報取得順序"
+            }
+        },
+        {
+            "id": "aws-dva-c02-q24",
+            "question": "Amazon S3イベント通知を利用してLambda関数を呼び出す場合に必要な設定はどれか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "バケットポリシーでLambdaを明示的に許可する",
+                    "explanation": {
+                        "text": "S3からLambdaを呼び出すには権限設定が必要です。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/NotificationHowTo.html",
+                        "reference_label": "Amazon S3 イベント通知"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "IAMユーザーに直接権限を付与する",
+                    "explanation": {
+                        "text": "IAMユーザーに付与するのではなく、サービス間の権限付与が必要です。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/NotificationHowTo.html",
+                        "reference_label": "Amazon S3 イベント通知"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "CloudTrailログを有効化する",
+                    "explanation": {
+                        "text": "CloudTrailは監査サービスであり、イベント通知には不要です。",
+                        "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+                        "reference_label": "AWS CloudTrail"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Step Functionsを呼び出す",
+                    "explanation": {
+                        "text": "Step Functionsはワークフロー管理であり、直接必須ではありません。",
+                        "reference": "https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html",
+                        "reference_label": "AWS Step Functions"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "S3イベント通知でLambdaを呼び出すには、S3がLambdaを呼び出す権限をバケットポリシーで許可する必要があります。",
+                "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/NotificationHowTo.html",
+                "reference_label": "Amazon S3 イベント通知"
+            }
+        },
+        {
+            "id": "aws-dva-c02-q25",
+            "question": "開発者はAPI Gatewayで特定のエンドポイントに対してリクエストの認可を制御したい。この場合に利用する機能はどれか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "API Gateway リソースポリシー",
+                    "explanation": {
+                        "text": "リソースポリシーを使うと、IPアドレスやVPCエンドポイントに基づくアクセス制御が可能です。",
+                        "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-resource-policies.html",
+                        "reference_label": "API Gateway リソースポリシー"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "API Gateway 使用プラン",
+                    "explanation": {
+                        "text": "使用プランはレート制限やクォータの設定であり、認可制御ではありません。",
+                        "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html",
+                        "reference_label": "API Gateway 使用プラン"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "CloudWatch アラーム",
+                    "explanation": {
+                        "text": "アラームは監視用であり、認可制御には使えません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html",
+                        "reference_label": "CloudWatch アラーム"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "S3 バケットポリシー",
+                    "explanation": {
+                        "text": "S3バケットポリシーはS3へのアクセス制御であり、API Gatewayには適用されません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html",
+                        "reference_label": "Amazon S3 バケットポリシー"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "API Gatewayリソースポリシーは、IP制限やVPCエンドポイント制御など、エンドポイントごとのアクセス制御に利用されます。",
+                "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-resource-policies.html",
+                "reference_label": "API Gateway リソースポリシー"
+            }
+        },
+        {
+            "id": "aws-dva-c02-q26",
+            "question": "開発者は、Amazon SQSからメッセージを受信して処理するLambda関数を作成した。処理が失敗したメッセージを追跡するために推奨される方法はどれか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "再試行を無効化する",
+                    "explanation": {
+                        "text": "再試行を無効化するとメッセージが失われる可能性があり、推奨されません。",
+                        "reference": "https://docs.aws.amazon.com/lambda/latest/dg/invocation-retries.html",
+                        "reference_label": "AWS Lambda 再試行"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "デッドレターキュー（DLQ）を設定する",
+                    "explanation": {
+                        "text": "DLQを設定すると、処理に失敗したメッセージを追跡して再処理できます。",
+                        "reference": "https://docs.aws.amazon.com/lambda/latest/dg/dlq.html",
+                        "reference_label": "AWS Lambda デッドレターキュー"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "メッセージをS3に保存する",
+                    "explanation": {
+                        "text": "手動でS3に保存するのは非効率であり、推奨されません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
+                        "reference_label": "Amazon S3 ドキュメント"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "CloudWatchメトリクスを有効化する",
+                    "explanation": {
+                        "text": "CloudWatchで失敗は監視できますが、失敗メッセージ自体を保持することはできません。",
+                        "reference": "https://docs.aws.amazon.com/lambda/latest/dg/monitoring-metrics.html",
+                        "reference_label": "AWS Lambda メトリクス"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "Amazon SQSとLambdaを組み合わせる際には、失敗メッセージをDLQに送るのが推奨されます。",
+                "reference": "https://docs.aws.amazon.com/lambda/latest/dg/dlq.html",
+                "reference_label": "AWS Lambda デッドレターキュー"
+            }
+        },
+        {
+            "id": "aws-dva-c02-q27",
+            "question": "開発者は、複数のマイクロサービス間でイベント駆動の非同期通信を実現したい。最も適したサービスはどれか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Amazon SNS",
+                    "explanation": {
+                        "text": "SNSはPub/Subモデルを提供し、複数の購読者にイベントを通知できます。",
+                        "reference": "https://docs.aws.amazon.com/sns/latest/dg/welcome.html",
+                        "reference_label": "Amazon SNS ドキュメント"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Amazon EC2",
+                    "explanation": {
+                        "text": "EC2は計算リソースであり、イベント駆動通信には適していません。",
+                        "reference": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html",
+                        "reference_label": "Amazon EC2 ドキュメント"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Amazon RDS",
+                    "explanation": {
+                        "text": "RDSはデータベースであり、イベント駆動型通信には不向きです。",
+                        "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html",
+                        "reference_label": "Amazon RDS ドキュメント"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "AWS Batch",
+                    "explanation": {
+                        "text": "Batchはバッチ処理のためのサービスであり、リアルタイムのイベント駆動には不向きです。",
+                        "reference": "https://docs.aws.amazon.com/batch/latest/userguide/what-is-batch.html",
+                        "reference_label": "AWS Batch ドキュメント"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Amazon SNSはマイクロサービス間の非同期通信に最適なPub/Subモデルを提供します。",
+                "reference": "https://docs.aws.amazon.com/sns/latest/dg/welcome.html",
+                "reference_label": "Amazon SNS ドキュメント"
+            }
+        },
+        {
+            "id": "aws-dva-c02-q28",
+            "question": "Amazon DynamoDBでトランザクションを実現するために利用できる機能はどれか？",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "DynamoDB Streams",
+                    "explanation": {
+                        "text": "Streamsはデータ変更のキャプチャであり、トランザクション制御には利用できません。",
+                        "reference": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.html",
+                        "reference_label": "DynamoDB Streams"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "トランザクションAPI",
+                    "explanation": {
+                        "text": "DynamoDBはTransactWriteItemsやTransactGetItemsを提供し、ACIDトランザクションを実現できます。",
+                        "reference": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/transaction-apis.html",
+                        "reference_label": "DynamoDB トランザクションAPI"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Global Tables",
+                    "explanation": {
+                        "text": "Global Tablesはマルチリージョンレプリケーション機能であり、トランザクション機能ではありません。",
+                        "reference": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GlobalTables.html",
+                        "reference_label": "DynamoDB Global Tables"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Time to Live (TTL)",
+                    "explanation": {
+                        "text": "TTLはデータの自動削除機能であり、トランザクションには関与しません。",
+                        "reference": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TTL.html",
+                        "reference_label": "DynamoDB TTL"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "DynamoDBのトランザクションAPIを利用すると、複数の項目に対してACID特性を保証した操作を実行できます。",
+                "reference": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/transaction-apis.html",
+                "reference_label": "DynamoDB トランザクションAPI"
+            }
+        },
+        {
+            "id": "aws-dva-c02-q29",
+            "question": "開発者は、アプリケーションからAmazon S3にアップロードするファイルサイズが数百MBに達することを想定している。推奨されるアップロード方法はどれか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "単一PUTリクエスト",
+                    "explanation": {
+                        "text": "PUTリクエストは最大5GBまで利用できますが、大きなファイルには非効率です。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/upload-objects.html",
+                        "reference_label": "Amazon S3 オブジェクトアップロード"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "マルチパートアップロード",
+                    "explanation": {
+                        "text": "大きなファイルを複数パートに分割して並列アップロードでき、推奨される方式です。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html",
+                        "reference_label": "Amazon S3 マルチパートアップロード"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "S3 Select",
+                    "explanation": {
+                        "text": "S3 Selectはデータの一部だけを取得する機能であり、アップロード方法ではありません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/selecting-content-from-objects.html",
+                        "reference_label": "Amazon S3 Select"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Amazon SQSを介してアップロードする",
+                    "explanation": {
+                        "text": "SQSはメッセージングサービスであり、アップロード方法ではありません。",
+                        "reference": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html",
+                        "reference_label": "Amazon SQS ドキュメント"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "大きなオブジェクトを効率的にS3にアップロードするにはマルチパートアップロードを利用します。",
+                "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html",
+                "reference_label": "Amazon S3 マルチパートアップロード"
+            }
+        },
+        {
+            "id": "aws-dva-c02-q30",
+            "question": "AWS Lambda関数で外部ライブラリを利用する場合のベストプラクティスはどれか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "依存関係を含めてデプロイパッケージを作成する",
+                    "explanation": {
+                        "text": "外部ライブラリはデプロイパッケージに含める必要があります。",
+                        "reference": "https://docs.aws.amazon.com/lambda/latest/dg/python-package.html",
+                        "reference_label": "AWS Lambda パッケージ化"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "コード内に外部ライブラリのソースをコピーする",
+                    "explanation": {
+                        "text": "これは管理が煩雑で推奨されません。",
+                        "reference": "https://docs.aws.amazon.com/lambda/latest/dg/best-practices.html",
+                        "reference_label": "AWS Lambda ベストプラクティス"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "外部ライブラリをS3に保存し、毎回ダウンロードする",
+                    "explanation": {
+                        "text": "毎回ダウンロードするとパフォーマンスに悪影響があります。",
+                        "reference": "https://docs.aws.amazon.com/lambda/latest/dg/best-practices.html",
+                        "reference_label": "AWS Lambda ベストプラクティス"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "外部ライブラリはLambdaで利用できない",
+                    "explanation": {
+                        "text": "これは誤りです。外部ライブラリは利用可能です。",
+                        "reference": "https://docs.aws.amazon.com/lambda/latest/dg/python-package.html",
+                        "reference_label": "AWS Lambda パッケージ化"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "外部ライブラリを利用する場合は、依存関係を含めたデプロイパッケージを作成するのがベストプラクティスです。",
+                "reference": "https://docs.aws.amazon.com/lambda/latest/dg/python-package.html",
+                "reference_label": "AWS Lambda パッケージ化"
+            }
+        },
+        {
+            "id": "aws-dva-c02-q31",
+            "question": "AWS Lambda関数のログを確認するために最も一般的に利用されるサービスはどれか？",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Amazon CloudWatch Logs",
+                    "explanation": {
+                        "text": "LambdaはデフォルトでCloudWatch Logsにログを出力します。",
+                        "reference": "https://docs.aws.amazon.com/lambda/latest/dg/monitoring-cloudwatchlogs.html",
+                        "reference_label": "AWS Lambda ログ出力"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Amazon SQS",
+                    "explanation": {
+                        "text": "SQSはメッセージングサービスであり、ログ保存には利用されません。",
+                        "reference": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html",
+                        "reference_label": "Amazon SQS ドキュメント"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "AWS Step Functions",
+                    "explanation": {
+                        "text": "Step Functionsはワークフロー管理であり、ログの保存には利用されません。",
+                        "reference": "https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html",
+                        "reference_label": "AWS Step Functions"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Amazon Cognito",
+                    "explanation": {
+                        "text": "Cognitoは認証サービスであり、ログ管理とは無関係です。",
+                        "reference": "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html",
+                        "reference_label": "Amazon Cognito"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Lambda関数の実行ログはデフォルトでAmazon CloudWatch Logsに送信されます。",
+                "reference": "https://docs.aws.amazon.com/lambda/latest/dg/monitoring-cloudwatchlogs.html",
+                "reference_label": "AWS Lambda ログ出力"
+            }
+        },
+        {
+            "id": "aws-dva-c02-q32",
+            "question": "Amazon API Gatewayでキャッシュを有効化する主な利点はどれか？",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "バックエンドへの呼び出し回数を削減できる",
+                    "explanation": {
+                        "text": "キャッシュを有効化するとレスポンスを保存し、不要なバックエンド呼び出しを削減できます。",
+                        "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-caching.html",
+                        "reference_label": "API Gateway キャッシュ"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "リソースポリシーを簡単に管理できる",
+                    "explanation": {
+                        "text": "リソースポリシーは認可制御であり、キャッシュとは関係ありません。",
+                        "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-resource-policies.html",
+                        "reference_label": "API Gateway リソースポリシー"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "CloudTrailログを自動的に生成できる",
+                    "explanation": {
+                        "text": "CloudTrailはAPI呼び出しの監査用サービスであり、キャッシュ機能とは関係ありません。",
+                        "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+                        "reference_label": "AWS CloudTrail"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "レスポンスを自動的に暗号化できる",
+                    "explanation": {
+                        "text": "暗号化はキャッシュ機能とは直接関係ありません。",
+                        "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-caching.html",
+                        "reference_label": "API Gateway キャッシュ"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "API Gatewayのキャッシュを利用することで、バックエンドの負荷を軽減し、レスポンス時間を短縮できます。",
+                "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-caching.html",
+                "reference_label": "API Gateway キャッシュ"
+            }
+        },
+        {
+            "id": "aws-dva-c02-q33",
+            "question": "Amazon CloudWatchアラームを設定する主な目的はどれか？",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "特定のメトリクスが閾値を超えた場合に通知する",
+                    "explanation": {
+                        "text": "CloudWatchアラームはメトリクスを監視し、しきい値を超えた場合にアクションを実行します。",
+                        "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html",
+                        "reference_label": "CloudWatch アラーム"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "アプリケーションコードを自動デプロイする",
+                    "explanation": {
+                        "text": "これはCodeDeployやCodePipelineの機能です。",
+                        "reference": "https://docs.aws.amazon.com/codedeploy/latest/userguide/welcome.html",
+                        "reference_label": "AWS CodeDeploy"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "データベースを自動スケーリングする",
+                    "explanation": {
+                        "text": "RDSやDynamoDBのオートスケーリングと組み合わせて利用できますが、直接の目的ではありません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html",
+                        "reference_label": "CloudWatch アラーム"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "オブジェクトストレージを管理する",
+                    "explanation": {
+                        "text": "これはS3の役割です。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
+                        "reference_label": "Amazon S3"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "CloudWatchアラームはメトリクスを監視し、しきい値を超えた場合にSNS通知などを行います。",
+                "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html",
+                "reference_label": "CloudWatch アラーム"
+            }
+        },
+        {
+            "id": "aws-dva-c02-q34",
+            "question": "開発者はアプリケーションをコンテナ化してAWS上にデプロイしたい。フルマネージドでコンテナ実行基盤を提供するサービスはどれか？",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Amazon ECS",
+                    "explanation": {
+                        "text": "ECSはフルマネージドのコンテナオーケストレーションサービスです。",
+                        "reference": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html",
+                        "reference_label": "Amazon ECS"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Amazon S3",
+                    "explanation": {
+                        "text": "S3はオブジェクトストレージであり、コンテナ実行には利用できません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
+                        "reference_label": "Amazon S3"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Amazon RDS",
+                    "explanation": {
+                        "text": "RDSはリレーショナルデータベースであり、コンテナ実行基盤ではありません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html",
+                        "reference_label": "Amazon RDS"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Amazon CloudFront",
+                    "explanation": {
+                        "text": "CloudFrontはCDNであり、コンテナ実行とは関係ありません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html",
+                        "reference_label": "Amazon CloudFront"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Amazon ECSはフルマネージドでコンテナをデプロイ・管理できるサービスです。",
+                "reference": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html",
+                "reference_label": "Amazon ECS"
+            }
+        },
+        {
+            "id": "aws-dva-c02-q35",
+            "question": "開発者はAmazon S3にアップロードされたオブジェクトを自動的に圧縮して保存したい。推奨される方法はどれか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Amazon S3の標準機能で自動圧縮を有効化する",
+                    "explanation": {
+                        "text": "S3には自動圧縮の機能はありません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
+                        "reference_label": "Amazon S3"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "AWS LambdaをS3イベント通知で起動し、オブジェクトを圧縮する",
+                    "explanation": {
+                        "text": "S3イベント通知とLambdaを組み合わせることで、自動的にファイルを圧縮できます。",
+                        "reference": "https://docs.aws.amazon.com/lambda/latest/dg/with-s3.html",
+                        "reference_label": "S3イベントでLambdaを起動"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Amazon CloudFrontでオブジェクトを変換する",
+                    "explanation": {
+                        "text": "CloudFrontはキャッシュ配信サービスであり、圧縮変換は行いません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html",
+                        "reference_label": "Amazon CloudFront"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Amazon RDSでトリガーを設定して圧縮する",
+                    "explanation": {
+                        "text": "RDSはデータベースであり、S3オブジェクトの圧縮処理には使えません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html",
+                        "reference_label": "Amazon RDS"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "S3イベント通知でLambdaを起動し、アップロードされたオブジェクトを自動的に処理するのが推奨される方法です。",
+                "reference": "https://docs.aws.amazon.com/lambda/latest/dg/with-s3.html",
+                "reference_label": "S3イベントでLambdaを起動"
+            }
+        },
+        {
+            "id": "aws-dva-c02-q36",
+            "question": "開発者は、アプリケーションのレスポンス時間を短縮するためにAmazon DynamoDBのキャッシュを利用したい。推奨されるサービスはどれか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Amazon ElastiCache",
+                    "explanation": {
+                        "text": "ElastiCacheは一般的なインメモリキャッシュですが、DynamoDB専用の統合機能はありません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.html",
+                        "reference_label": "Amazon ElastiCache"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "DynamoDB Accelerator (DAX)",
+                    "explanation": {
+                        "text": "DAXはDynamoDB専用のインメモリキャッシュであり、読み取りパフォーマンスを大幅に改善します。",
+                        "reference": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DAX.html",
+                        "reference_label": "DynamoDB Accelerator (DAX)"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Amazon CloudFront",
+                    "explanation": {
+                        "text": "CloudFrontはコンテンツ配信ネットワークであり、DynamoDBキャッシュには利用できません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html",
+                        "reference_label": "Amazon CloudFront"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "AWS Glue",
+                    "explanation": {
+                        "text": "GlueはETLサービスであり、DynamoDBキャッシュには不適切です。",
+                        "reference": "https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html",
+                        "reference_label": "AWS Glue"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "DynamoDB Accelerator (DAX) はDynamoDB専用のキャッシュであり、レスポンスをミリ秒からマイクロ秒レベルに短縮します。",
+                "reference": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DAX.html",
+                "reference_label": "DynamoDB Accelerator (DAX)"
+            }
+        },
+        {
+            "id": "aws-dva-c02-q37",
+            "question": "AWS Step Functionsを利用する主な目的はどれか？",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "分散アプリケーションのワークフローをオーケストレーションする",
+                    "explanation": {
+                        "text": "Step Functionsは複数のサービスやタスクを統合してワークフローを構築できます。",
+                        "reference": "https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html",
+                        "reference_label": "AWS Step Functions"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "大規模データをストリーミング処理する",
+                    "explanation": {
+                        "text": "これはAmazon Kinesisのユースケースです。",
+                        "reference": "https://docs.aws.amazon.com/streams/latest/dev/introduction.html",
+                        "reference_label": "Amazon Kinesis Data Streams"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ユーザー認証を管理する",
+                    "explanation": {
+                        "text": "これはAmazon Cognitoのユースケースです。",
+                        "reference": "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html",
+                        "reference_label": "Amazon Cognito"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "アプリケーションログを保存する",
+                    "explanation": {
+                        "text": "これはCloudWatch Logsのユースケースです。",
+                        "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html",
+                        "reference_label": "Amazon CloudWatch Logs"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Step Functionsは複数のAWSサービスやLambdaを組み合わせて分散アプリケーションのワークフローを構築するために利用されます。",
+                "reference": "https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html",
+                "reference_label": "AWS Step Functions"
+            }
+        },
+        {
+            "id": "aws-dva-c02-q38",
+            "question": "Amazon S3のイベント通知を利用して、SNSトピックに通知を送信したい。この設定で必要なものはどれか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "S3バケットポリシーでSNSトピックへのアクセス許可を設定する",
+                    "explanation": {
+                        "text": "S3がSNSトピックにイベントを発行できるように、ポリシーで許可する必要があります。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/NotificationHowTo.html",
+                        "reference_label": "Amazon S3 イベント通知"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "CloudFrontディストリビューションを設定する",
+                    "explanation": {
+                        "text": "CloudFrontはCDNサービスであり、SNS通知には関係しません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html",
+                        "reference_label": "Amazon CloudFront"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "CloudFormationテンプレートを必ず使用する",
+                    "explanation": {
+                        "text": "CloudFormationはインフラ自動化のためのサービスであり、必須ではありません。",
+                        "reference": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html",
+                        "reference_label": "AWS CloudFormation"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "DynamoDBテーブルを作成する",
+                    "explanation": {
+                        "text": "DynamoDBは通知設定には関係しません。",
+                        "reference": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html",
+                        "reference_label": "Amazon DynamoDB"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "S3イベントをSNSに通知するには、SNSトピックに対してS3からのアクセスを許可するポリシーが必要です。",
+                "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/NotificationHowTo.html",
+                "reference_label": "Amazon S3 イベント通知"
+            }
+        },
+        {
+            "id": "aws-dva-c02-q39",
+            "question": "開発者はAmazon RDSで読み取りスループットを向上させたい。推奨される方法はどれか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "マルチAZ配置を有効化する",
+                    "explanation": {
+                        "text": "マルチAZは高可用性のための機能であり、読み取りスループット向上には寄与しません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html",
+                        "reference_label": "Amazon RDS マルチAZ"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "リードレプリカを作成する",
+                    "explanation": {
+                        "text": "リードレプリカを作成することで、読み取り負荷を分散できます。",
+                        "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html",
+                        "reference_label": "Amazon RDS リードレプリカ"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "RDSスナップショットを増やす",
+                    "explanation": {
+                        "text": "スナップショットはバックアップのための機能であり、読み取り性能とは無関係です。",
+                        "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CreateSnapshot.html",
+                        "reference_label": "Amazon RDS スナップショット"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "CloudWatchアラームを設定する",
+                    "explanation": {
+                        "text": "アラームは監視機能であり、読み取りスループットを直接改善するものではありません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html",
+                        "reference_label": "CloudWatch アラーム"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "RDSのリードレプリカを利用すると、読み取りリクエストを分散でき、スループットが向上します。",
+                "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html",
+                "reference_label": "Amazon RDS リードレプリカ"
+            }
+        },
+        {
+            "id": "aws-dva-c02-q40",
+            "question": "AWS CodeCommitを利用する主な目的はどれか？",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "ソースコードのバージョン管理を行う",
+                    "explanation": {
+                        "text": "CodeCommitはフルマネージドのソースコード管理サービスです。",
+                        "reference": "https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html",
+                        "reference_label": "AWS CodeCommit"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "アプリケーションを自動デプロイする",
+                    "explanation": {
+                        "text": "これはCodeDeployのユースケースです。",
+                        "reference": "https://docs.aws.amazon.com/codedeploy/latest/userguide/welcome.html",
+                        "reference_label": "AWS CodeDeploy"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ログを収集する",
+                    "explanation": {
+                        "text": "これはCloudWatch Logsのユースケースです。",
+                        "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html",
+                        "reference_label": "Amazon CloudWatch Logs"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "機械学習モデルを学習させる",
+                    "explanation": {
+                        "text": "これはAmazon SageMakerのユースケースです。",
+                        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/whatis.html",
+                        "reference_label": "Amazon SageMaker"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "AWS CodeCommitはソースコードのバージョン管理を行うためのサービスです。",
+                "reference": "https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html",
+                "reference_label": "AWS CodeCommit"
+            }
+        },
+    {
+      "id": "aws-dva-c02-q41",
+      "question": "開発者は、アプリケーションの設定情報を安全に保存し、動的に取得したい。最適なサービスはどれか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AWS Systems Manager Parameter Store",
+          "explanation": {
+            "text": "Parameter Storeは設定値やシークレットを安全に格納・取得でき、IAMやKMSと統合できます。",
+            "reference": "https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html",
+            "reference_label": "AWS Systems Manager Parameter Store"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Amazon S3",
+          "explanation": {
+            "text": "S3はオブジェクトストレージであり、設定管理専用の機能（型・階層・パラメータポリシー）はありません。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
+            "reference_label": "Amazon S3"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Amazon DynamoDB",
+          "explanation": {
+            "text": "DynamoDBで実装は可能ですが、設定管理に特化した組み込みの機能はParameter StoreやAppConfigに劣ります。",
+            "reference": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html",
+            "reference_label": "Amazon DynamoDB"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Amazon CloudWatch",
+          "explanation": {
+            "text": "CloudWatchは監視サービスで、設定情報の保管には適しません。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html",
+            "reference_label": "Amazon CloudWatch"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "アプリ設定やシークレットの保管にはParameter Store（またはAppConfig）が推奨です。IAM・KMSと統合し安全に取得できます。",
+        "reference": "https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html",
+        "reference_label": "AWS Systems Manager Parameter Store"
+      }
+    },
+    {
+      "id": "aws-dva-c02-q42",
+      "question": "Amazon API Gatewayのステージ変数を利用する主な目的はどれか？",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "環境ごとに異なるエンドポイントや設定値を切り替える",
+          "explanation": {
+            "text": "ステージ変数で統合先エンドポイントやパラメータを環境（dev/stg/prod）ごとに切り替えられます。",
+            "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/stage-variables.html",
+            "reference_label": "API Gateway ステージ変数"
+          }
+        },
+        {
+          "key": "B",
+          "text": "APIのレート制限を設定する",
+          "explanation": {
+            "text": "レート制限は使用プランで管理します。",
+            "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html",
+            "reference_label": "API Gateway 使用プラン"
+          }
+        },
+        {
+          "key": "C",
+          "text": "APIのアクセス制御（認可）を設定する",
+          "explanation": {
+            "text": "アクセス制御はリソースポリシーやオーソライザーで行います。",
+            "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-resource-policies.html",
+            "reference_label": "API Gateway リソースポリシー"
+          }
+        },
+        {
+          "key": "D",
+          "text": "レスポンスのキャッシュTTLを設定する",
+          "explanation": {
+            "text": "キャッシュTTLはキャッシュ設定で行い、ステージ変数の主目的ではありません。",
+            "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-caching.html",
+            "reference_label": "API Gateway キャッシュ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ステージ変数は環境切替などに利用し、統合リクエストで参照できます。",
+        "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/stage-variables.html",
+        "reference_label": "API Gateway ステージ変数"
+      }
+    },
+    {
+      "id": "aws-dva-c02-q43",
+      "question": "Amazon S3でオブジェクトのバージョニングを有効にすると得られる利点はどれか？",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "削除や上書きからデータを保護できる（過去バージョンを保持）",
+          "explanation": {
+            "text": "バージョニングは過去バージョンを保持し、誤削除・上書きから復旧できます。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html",
+            "reference_label": "Amazon S3 バージョニング"
+          }
+        },
+        {
+          "key": "B",
+          "text": "オブジェクトサイズを自動的に縮小できる",
+          "explanation": {
+            "text": "サイズ縮小機能はありません。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html",
+            "reference_label": "Amazon S3 バージョニング"
+          }
+        },
+        {
+          "key": "C",
+          "text": "サーバー側暗号化が自動的に有効化される",
+          "explanation": {
+            "text": "暗号化は別設定（SSE-S3, SSE-KMS等）です。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingServerSideEncryption.html",
+            "reference_label": "Amazon S3 サーバー側暗号化"
+          }
+        },
+        {
+          "key": "D",
+          "text": "転送中データを自動的に圧縮できる",
+          "explanation": {
+            "text": "圧縮はバージョニングの機能ではありません。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html",
+            "reference_label": "Amazon S3 バージョニング"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "S3のバージョニングは過去バージョンを保持し、誤操作からの復旧を容易にします。",
+        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html",
+        "reference_label": "Amazon S3 バージョニング"
+      }
+    },
+    {
+      "id": "aws-dva-c02-q44",
+      "question": "AWS Lambdaのレイヤー機能を利用する利点はどれか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "外部ライブラリや共通コードを複数の関数で再利用できる",
+          "explanation": {
+            "text": "レイヤーは依存関係・共通コードの共有を容易にします。",
+            "reference": "https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html",
+            "reference_label": "AWS Lambda Layers"
+          }
+        },
+        {
+          "key": "B",
+          "text": "関数を常時稼働させる",
+          "explanation": {
+            "text": "常時稼働はレイヤーの機能ではありません（必要ならプロビジョドコンカレンシー）。",
+            "reference": "https://docs.aws.amazon.com/lambda/latest/dg/provisioned-concurrency.html",
+            "reference_label": "AWS Lambda プロビジョドコンカレンシー"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ログを分離保存する",
+          "explanation": {
+            "text": "ログはCloudWatch Logsに送られます。",
+            "reference": "https://docs.aws.amazon.com/lambda/latest/dg/monitoring-cloudwatchlogs.html",
+            "reference_label": "AWS Lambda ログ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "関数のスケーリングを無効化する",
+          "explanation": {
+            "text": "スケーリング制御はレイヤーの目的ではありません。",
+            "reference": "https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html",
+            "reference_label": "AWS Lambda Layers"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "レイヤーに依存関係を分離することで、デプロイサイズ削減と再利用性を高められます。",
+        "reference": "https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html",
+        "reference_label": "AWS Lambda Layers"
+      }
+    },
+    {
+      "id": "aws-dva-c02-q45",
+      "question": "Amazon CloudFrontのキャッシュポリシーを設定する目的はどれか？",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "キャッシュキーに含めるリクエスト属性（ヘッダー・クエリ・Cookie）を制御する",
+          "explanation": {
+            "text": "キャッシュポリシーでキャッシュキーを構成する要素を指定します。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html",
+            "reference_label": "CloudFront キャッシュキー/ポリシー"
+          }
+        },
+        {
+          "key": "B",
+          "text": "CloudFrontをVPC内に配置する",
+          "explanation": {
+            "text": "CloudFrontはグローバルCDNでVPC内配置は行いません。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html",
+            "reference_label": "Amazon CloudFront 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザー認証を管理する",
+          "explanation": {
+            "text": "認証はキャッシュポリシーの機能ではありません。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html",
+            "reference_label": "CloudFront キャッシュキー/ポリシー"
+          }
+        },
+        {
+          "key": "D",
+          "text": "S3バケットのバージョニングを制御する",
+          "explanation": {
+            "text": "S3のバージョニング設定はCloudFrontから制御しません。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html",
+            "reference_label": "Amazon S3 バージョニング"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "キャッシュキーの構成を最適化することで、キャッシュヒット率と正確性を両立できます。",
+        "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html",
+        "reference_label": "CloudFront キャッシュキー/ポリシー"
+      }
+    },
+    {
+      "id": "aws-dva-c02-q46",
+      "question": "Amazon RDS Proxyを利用する利点はどれか？",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データベース接続の効率化（接続プーリング）とアプリの可用性向上",
+          "explanation": {
+            "text": "RDS Proxyは接続プールを提供し、スパイク時のDB接続を保護します。IAM認証/KMSとも統合可能です。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-proxy.html",
+            "reference_label": "Amazon RDS Proxy"
+          }
+        },
+        {
+          "key": "B",
+          "text": "自動バックアップとポイントインタイムリカバリの提供",
+          "explanation": {
+            "text": "自動バックアップはRDSの機能で、Proxyの機能ではありません。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIT.html",
+            "reference_label": "RDS PITR"
+          }
+        },
+        {
+          "key": "C",
+          "text": "読み取りレプリカの自動スケーリング",
+          "explanation": {
+            "text": "読み取りレプリカはRDSの機能で、Proxyは接続管理を行います。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html",
+            "reference_label": "RDS リードレプリカ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データベースエンジンの自動パッチ適用",
+          "explanation": {
+            "text": "パッチ適用はRDS側のメンテナンスに属します。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Upgrading.html",
+            "reference_label": "RDS メンテナンス"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "RDS ProxyはアプリとDB間の接続を最適化し、スパイクやLambdaの同時実行に強い構成を実現します。",
+        "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-proxy.html",
+        "reference_label": "Amazon RDS Proxy"
+      }
+    },
+    {
+      "id": "aws-dva-c02-q47",
+      "question": "Amazon SQSの可視性タイムアウトの主な目的はどれか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "処理中メッセージを一時的に非表示にして重複処理を防ぐ",
+          "explanation": {
+            "text": "コンシューマが処理している間、他のコンシューマに見えないようにします。",
+            "reference": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html",
+            "reference_label": "SQS 可視性タイムアウト"
+          }
+        },
+        {
+          "key": "B",
+          "text": "メッセージ保持期間を設定する",
+          "explanation": {
+            "text": "保持期間は別設定（message retention period）です。",
+            "reference": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-lifecycle.html",
+            "reference_label": "SQS メッセージライフサイクル"
+          }
+        },
+        {
+          "key": "C",
+          "text": "メッセージサイズ上限を引き上げる",
+          "explanation": {
+            "text": "サイズ上限は属性であり、可視性タイムアウトとは無関係です。",
+            "reference": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/quotas-messages.html",
+            "reference_label": "SQS クォータ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "メッセージ順序を保証する",
+          "explanation": {
+            "text": "順序保証はFIFOキューの機能です。",
+            "reference": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html",
+            "reference_label": "SQS FIFO"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "可視性タイムアウトで処理中メッセージの重複処理を防ぎ、失敗時はタイムアウト後に再配信されます。",
+        "reference": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html",
+        "reference_label": "SQS 可視性タイムアウト"
+      }
+    },
+    {
+      "id": "aws-dva-c02-q48",
+      "question": "Amazon CognitoのIDプール（Federated Identities）の主な目的はどれか？",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "認証済みユーザーに一時的なAWS認証情報（STS）を付与して、クライアントから直接AWSリソースにアクセスさせる",
+          "explanation": {
+            "text": "IDプールは外部IdPやユーザープールと連携し、ロールを介して一時認証情報を払い出します。",
+            "reference": "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html",
+            "reference_label": "Amazon Cognito Federated Identities"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーのサインアップ・サインイン・MFAを提供する",
+          "explanation": {
+            "text": "これはCognitoユーザープールの機能です。",
+            "reference": "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html",
+            "reference_label": "Cognito ユーザープール"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アプリケーション設定を段階的にデプロイする",
+          "explanation": {
+            "text": "設定の段階的リリースはAppConfigの機能です。",
+            "reference": "https://docs.aws.amazon.com/appconfig/latest/userguide/what-is-appconfig.html",
+            "reference_label": "AWS AppConfig"
+          }
+        },
+        {
+          "key": "D",
+          "text": "APIリクエストをレート制限する",
+          "explanation": {
+            "text": "レート制限はAPI Gateway使用プランで行います。",
+            "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html",
+            "reference_label": "API Gateway 使用プラン"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "IDプールはフェデレーテッド認証を行い、IAMロールを通じて一時認証情報を払い出し、S3等へクライアントから直接アクセスさせます。",
+        "reference": "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html",
+        "reference_label": "Amazon Cognito Federated Identities"
+      }
+    },
+    {
+      "id": "aws-dva-c02-q49",
+      "question": "ブラウザからAmazon S3へ大きなファイルを安全に直接アップロードさせたい。最適な方法はどれか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "事前署名付きURL（または署名付きPOSTポリシー）を発行してクライアントに渡す",
+          "explanation": {
+            "text": "プリサインドURL/POSTでクライアントが一時的に認可され、サーバーを経由せず安全にS3へアップロードできます。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/PresignedUrlUploadObject.html",
+            "reference_label": "S3 事前署名付きURLでのアップロード"
+          }
+        },
+        {
+          "key": "B",
+          "text": "S3バケットをパブリックにして直接PUTを許可する",
+          "explanation": {
+            "text": "パブリック書き込みは重大なセキュリティリスクです。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html",
+            "reference_label": "S3 パブリックアクセスブロック"
+          }
+        },
+        {
+          "key": "C",
+          "text": "CloudFrontサインドクッキーを使う",
+          "explanation": {
+            "text": "サインドクッキーは主に配信（ダウンロード）制御で、S3アップロード用途ではありません。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-signed-cookies.html",
+            "reference_label": "CloudFront サインドクッキー"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IAMユーザーの長期アクセスキーをフロントエンドに埋め込む",
+          "explanation": {
+            "text": "キー露出は厳禁で、ベストプラクティスに反します。",
+            "reference": "https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html",
+            "reference_label": "アクセスキーのベストプラクティス"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "事前署名付きURL/POSTは一時的な権限でS3へ直接アップロードさせる推奨手法です。大容量はマルチパートと併用します。",
+        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/PresignedUrlUploadObject.html",
+        "reference_label": "S3 事前署名付きURLでのアップロード"
+      }
+    },
+    {
+      "id": "aws-dva-c02-q50",
+      "question": "サービス間の疎結合なイベント連携を実現し、ルールでターゲット（Lambda, SQS, Step Functionsなど）へルーティングしたい。最適なサービスはどれか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Amazon EventBridge",
+          "explanation": {
+            "text": "EventBridgeはイベントバスとルールで、SaaSやAWSサービス・自作アプリのイベントを柔軟にルーティングします。スケジュール機能も提供。",
+            "reference": "https://docs.aws.amazon.com/eventbridge/latest/userguide/what-is-amazon-eventbridge.html",
+            "reference_label": "Amazon EventBridge 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Amazon SNS（単一トピックへのPub/Sub）",
+          "explanation": {
+            "text": "SNSはPub/Subだが、詳細なパターンマッチや複数バス/ルールによる高度なルーティングはEventBridgeが得意です。",
+            "reference": "https://docs.aws.amazon.com/sns/latest/dg/welcome.html",
+            "reference_label": "Amazon SNS"
+          }
+        },
+        {
+          "key": "C",
+          "text": "AWS Step Functions",
+          "explanation": {
+            "text": "Step Functionsは状態遷移ベースのワークフローであり、イベントバスではありません。",
+            "reference": "https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html",
+            "reference_label": "AWS Step Functions"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Amazon SQS",
+          "explanation": {
+            "text": "SQSはキューであり、イベントパターンでのルーティングやスケジュールは行いません。",
+            "reference": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html",
+            "reference_label": "Amazon SQS"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "EventBridgeはイベントバス＋ルールで多様なターゲットにイベントを配信し、疎結合なアーキテクチャを実現します。",
+        "reference": "https://docs.aws.amazon.com/eventbridge/latest/userguide/what-is-amazon-eventbridge.html",
+        "reference_label": "Amazon EventBridge 概要"
+      }
+    }
+  ]
+}

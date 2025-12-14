@@ -1,0 +1,2217 @@
+{
+  "exam": {
+    "id": "e-shikaku",
+    "title": "E資格",
+    "description": "ディープラーニングの理論を理解し、適切な手法を選び実装できる能力を持つエンジニアを認定する資格です。試験は全国の指定会場にて120分、100問程度の多肢選択式（CBT方式）で実施され、出題範囲は「数学的基礎」「機械学習」「深層学習」「開発・運用環境」など幅広い分野を網羅しています。受験には、日本ディープラーニング協会 (JDLA) 認定プログラムの修了が過去2年以内に必要です。",
+    "version": "E資格2024#2",
+    "price": "33,000円（割引あり）",
+    "difficulty": "難しい",
+    "official-site": "https://www.jdla.org/certificate/engineer/",
+    "category": {
+      "id": "ai",
+      "name": "AI"
+    }
+  },
+  "questions": [
+    {
+      "id": "ai-e-q1",
+      "question": "勾配消失問題（vanishing gradient problem）が深刻になりやすいのはどのような状況か。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "活性化関数にReLUを用いた場合",
+          "explanation": {
+            "text": "ReLUは勾配消失を軽減するために広く使われています。ゼロ未満では勾配が消える（dying ReLU）問題はあるが、勾配消失問題そのものは起こりにくいです。",
+            "reference": "https://deeplearning.jp/activation-functions/"
+          }
+        },
+        {
+          "key": "B",
+          "text": "活性化関数にシグモイドを多層で用いた場合",
+          "explanation": {
+            "text": "シグモイド関数は出力が0付近または1付近に飽和しやすく、勾配が非常に小さくなるため、層が深いと勾配消失問題が深刻になります。",
+            "reference": "https://deeplearning.jp/activation-functions/"
+          }
+        },
+        {
+          "key": "C",
+          "text": "入力層が浅い場合",
+          "explanation": {
+            "text": "浅いネットワークでは勾配消失は深刻になりません。主に深層ネットワークで問題となります。",
+            "reference": "https://deeplearning.jp/activation-functions/"
+          }
+        },
+        {
+          "key": "D",
+          "text": "正則化を強くかけた場合",
+          "explanation": {
+            "text": "正則化は過学習を防ぐための手法であり、直接的に勾配消失を引き起こすものではありません。",
+            "reference": "https://deeplearning.jp/activation-functions/"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "勾配消失問題は主にシグモイドやtanhのような飽和する活性化関数を多層で用いたときに発生します。これにより学習が進まなくなります。",
+        "reference": "https://deeplearning.jp/activation-functions/"
+      }
+    },
+    {
+      "id": "ai-e-q2",
+      "question": "畳み込みニューラルネットワーク（CNN）におけるプーリング層の主な役割はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "パラメータ数を増やす",
+          "explanation": {
+            "text": "プーリング層はパラメータを学習しないため、パラメータ数を増やすことはありません。",
+            "reference": "https://cs231n.github.io/convolutional-networks/"
+          }
+        },
+        {
+          "key": "B",
+          "text": "特徴マップの空間的サイズを縮小する",
+          "explanation": {
+            "text": "プーリングは特徴マップのダウンサンプリングを行い、計算量削減と位置ずれへのロバスト性を獲得します。",
+            "reference": "https://cs231n.github.io/convolutional-networks/"
+          }
+        },
+        {
+          "key": "C",
+          "text": "勾配消失を防ぐ",
+          "explanation": {
+            "text": "勾配消失問題の緩和は主に活性化関数や重み初期化に依存し、プーリング自体の目的ではありません。",
+            "reference": "https://cs231n.github.io/convolutional-networks/"
+          }
+        },
+        {
+          "key": "D",
+          "text": "学習率を自動調整する",
+          "explanation": {
+            "text": "学習率調整はオプティマイザの役割であり、プーリングとは無関係です。",
+            "reference": "https://cs231n.github.io/convolutional-networks/"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "プーリング層は特徴マップのサイズを縮小し、位置の変化に強い特徴を抽出します。",
+        "reference": "https://cs231n.github.io/convolutional-networks/"
+      }
+    },
+    {
+      "id": "ai-e-q3",
+      "question": "Batch Normalizationの主な効果として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "重みの初期化を不要にする",
+          "explanation": {
+            "text": "初期化は依然として重要ですが、BatchNormはその依存度を低減する効果はあります。",
+            "reference": "https://arxiv.org/abs/1502.03167"
+          }
+        },
+        {
+          "key": "B",
+          "text": "内部共変量シフトを抑制する",
+          "explanation": {
+            "text": "Batch Normalizationは各層の出力分布を正規化し、内部共変量シフトを抑制することで学習を安定化させます。",
+            "reference": "https://arxiv.org/abs/1502.03167"
+          }
+        },
+        {
+          "key": "C",
+          "text": "オーバーフィッティングを必ず防ぐ",
+          "explanation": {
+            "text": "BatchNormは正則化効果を持つこともあるが、過学習を必ず防ぐわけではありません。",
+            "reference": "https://arxiv.org/abs/1502.03167"
+          }
+        },
+        {
+          "key": "D",
+          "text": "勾配消失を完全に解決する",
+          "explanation": {
+            "text": "BatchNormは勾配消失のリスクを軽減するが、完全に解決するものではありません。",
+            "reference": "https://arxiv.org/abs/1502.03167"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Batch Normalizationは層ごとに出力を正規化し、内部共変量シフトを抑制して学習を高速かつ安定化します。",
+        "reference": "https://arxiv.org/abs/1502.03167"
+      }
+    },
+    {
+      "id": "ai-e-q4",
+      "question": "転移学習（Transfer Learning）において一般的に正しい利用方法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "大規模データセットで学習済みモデルを、小規模データに適用する",
+          "explanation": {
+            "text": "転移学習は、大規模データで学習したモデルの知識を小規模データのタスクに利用する手法です。",
+            "reference": "https://cs231n.github.io/transfer-learning/"
+          }
+        },
+        {
+          "key": "B",
+          "text": "教師なし学習のみに使われる",
+          "explanation": {
+            "text": "転移学習は教師あり・教師なし両方で活用可能です。",
+            "reference": "https://cs231n.github.io/transfer-learning/"
+          }
+        },
+        {
+          "key": "C",
+          "text": "必ず全結合層を削除する必要がある",
+          "explanation": {
+            "text": "全結合層を置き換えるケースは多いですが、必ず削除が必要というわけではありません。",
+            "reference": "https://cs231n.github.io/transfer-learning/"
+          }
+        },
+        {
+          "key": "D",
+          "text": "学習済みモデルの重みは再利用できない",
+          "explanation": {
+            "text": "転移学習の本質は学習済み重みの再利用にあります。",
+            "reference": "https://cs231n.github.io/transfer-learning/"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "転移学習は、大規模データで学習したモデルを小規模データに適用して精度を向上させる一般的な手法です。",
+        "reference": "https://cs231n.github.io/transfer-learning/"
+      }
+    },
+    {
+      "id": "ai-e-q5",
+      "question": "Attention機構に関する説明として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "入力ベクトル全てを等しく扱う仕組み",
+          "explanation": {
+            "text": "Attentionは入力の重要度を学習し、全てを等しく扱うわけではありません。",
+            "reference": "https://arxiv.org/abs/1706.03762"
+          }
+        },
+        {
+          "key": "B",
+          "text": "入力の一部に重みをつけて強調する仕組み",
+          "explanation": {
+            "text": "Attentionは入力系列の一部に重みを与え、重要な情報を強調して処理します。",
+            "reference": "https://arxiv.org/abs/1706.03762"
+          }
+        },
+        {
+          "key": "C",
+          "text": "出力層の正則化手法の一種",
+          "explanation": {
+            "text": "Attentionは正則化手法ではなく、情報選択のための仕組みです。",
+            "reference": "https://arxiv.org/abs/1706.03762"
+          }
+        },
+        {
+          "key": "D",
+          "text": "勾配消失を直接防ぐ技術",
+          "explanation": {
+            "text": "Attentionは勾配消失の直接的な解決法ではなく、長距離依存性を捉えるための仕組みです。",
+            "reference": "https://arxiv.org/abs/1706.03762"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Attentionは入力の重要度を学習して一部を強調し、系列データの依存関係を効果的に表現します。",
+        "reference": "https://arxiv.org/abs/1706.03762"
+      }
+    },
+    {
+      "id": "ai-e-q6",
+      "question": "過学習を防ぐための一般的な手法として適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ドロップアウト（Dropout）の利用",
+          "explanation": {
+            "text": "Dropoutはランダムにノードを無効化して汎化性能を向上させる手法です。",
+            "reference": "https://jmlr.org/papers/v15/srivastava14a.html"
+          }
+        },
+        {
+          "key": "B",
+          "text": "学習データのラベルをランダムに入れ替える",
+          "explanation": {
+            "text": "ラベルをランダムに入れ替えると学習が破壊され、過学習防止ではなく性能劣化につながります。",
+            "reference": "https://jmlr.org/papers/v15/srivastava14a.html"
+          }
+        },
+        {
+          "key": "C",
+          "text": "学習率を極端に大きくする",
+          "explanation": {
+            "text": "学習率が大きすぎると収束せず、過学習防止にはなりません。",
+            "reference": "https://jmlr.org/papers/v15/srivastava14a.html"
+          }
+        },
+        {
+          "key": "D",
+          "text": "パラメータ数を増やす",
+          "explanation": {
+            "text": "パラメータを増やすと過学習しやすくなります。",
+            "reference": "https://jmlr.org/papers/v15/srivastava14a.html"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "過学習防止の代表的手法としてDropoutがあり、ニューラルネットワークの汎化性能を向上させます。",
+        "reference": "https://jmlr.org/papers/v15/srivastava14a.html"
+      }
+    },
+    {
+      "id": "ai-e-q7",
+      "question": "勾配降下法において学習率が大きすぎる場合に起こりやすい現象はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "局所解に早く収束する",
+          "explanation": {
+            "text": "学習率が大きすぎると収束せず、むしろ発散しやすくなります。",
+            "reference": "https://cs231n.github.io/optimization-1/"
+          }
+        },
+        {
+          "key": "B",
+          "text": "損失が収束せず振動・発散する",
+          "explanation": {
+            "text": "学習率が大きいと損失が安定せず、収束せずに振動・発散することがあります。",
+            "reference": "https://cs231n.github.io/optimization-1/"
+          }
+        },
+        {
+          "key": "C",
+          "text": "勾配消失が発生する",
+          "explanation": {
+            "text": "勾配消失は活性化関数や深さに依存し、学習率の大きさとは直接関係ありません。",
+            "reference": "https://cs231n.github.io/optimization-1/"
+          }
+        },
+        {
+          "key": "D",
+          "text": "必ず最適解に到達する",
+          "explanation": {
+            "text": "学習率が大きいと安定性を失い、最適解に到達しにくくなります。",
+            "reference": "https://cs231n.github.io/optimization-1/"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "学習率が大きすぎると損失が振動・発散し、学習が安定しません。",
+        "reference": "https://cs231n.github.io/optimization-1/"
+      }
+    },
+    {
+      "id": "ai-e-q8",
+      "question": "RNNにおいて長期依存関係を学習しにくい理由として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "入力系列が固定長だから",
+          "explanation": {
+            "text": "RNNは可変長の入力を扱えるため、この理由は不正確です。",
+            "reference": "https://colah.github.io/posts/2015-08-Understanding-LSTMs/"
+          }
+        },
+        {
+          "key": "B",
+          "text": "勾配消失や勾配爆発が起こるから",
+          "explanation": {
+            "text": "RNNでは系列が長くなると勾配が指数的に消失または発散し、長期依存の学習が難しくなります。",
+            "reference": "https://colah.github.io/posts/2015-08-Understanding-LSTMs/"
+          }
+        },
+        {
+          "key": "C",
+          "text": "非線形活性化関数を利用できないから",
+          "explanation": {
+            "text": "RNNではtanhやReLUなどの非線形活性化関数を利用可能です。",
+            "reference": "https://colah.github.io/posts/2015-08-Understanding-LSTMs/"
+          }
+        },
+        {
+          "key": "D",
+          "text": "学習率を調整できないから",
+          "explanation": {
+            "text": "学習率の調整は可能であり、RNN特有の制約ではありません。",
+            "reference": "https://colah.github.io/posts/2015-08-Understanding-LSTMs/"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "RNNは系列が長くなると勾配消失・爆発が発生しやすく、長期依存関係を学習しにくくなります。",
+        "reference": "https://colah.github.io/posts/2015-08-Understanding-LSTMs/"
+      }
+    },
+    {
+      "id": "ai-e-q9",
+      "question": "Adamオプティマイザの特徴として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "勾配の移動平均とその二乗の移動平均を利用する",
+          "explanation": {
+            "text": "Adamは一次モーメント（勾配の平均）と二次モーメント（勾配の二乗の平均）を利用します。",
+            "reference": "https://arxiv.org/abs/1412.6980"
+          }
+        },
+        {
+          "key": "B",
+          "text": "学習率を一定に固定する",
+          "explanation": {
+            "text": "Adamは適応的に学習率を調整します。",
+            "reference": "https://arxiv.org/abs/1412.6980"
+          }
+        },
+        {
+          "key": "C",
+          "text": "正則化を自動で行う",
+          "explanation": {
+            "text": "Adamそのものは正則化を行わず、別途正則化手法が必要です。",
+            "reference": "https://arxiv.org/abs/1412.6980"
+          }
+        },
+        {
+          "key": "D",
+          "text": "常にSGDより高精度になる",
+          "explanation": {
+            "text": "Adamは収束が速い傾向にあるが、常にSGDより高精度になるとは限りません。",
+            "reference": "https://arxiv.org/abs/1412.6980"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Adamは勾配の一次モーメントと二次モーメントを利用して学習率を適応的に調整する最適化手法です。",
+        "reference": "https://arxiv.org/abs/1412.6980"
+      }
+    },
+    {
+      "id": "ai-e-q10",
+      "question": "自己教師あり学習（self-supervised learning）の代表的な利用例はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ラベルの完全な教師データで分類する",
+          "explanation": {
+            "text": "これは教師あり学習に該当します。",
+            "reference": "https://ai.googleblog.com/2020/04/self-supervised-learning.html"
+          }
+        },
+        {
+          "key": "B",
+          "text": "入力の一部を隠して予測させる",
+          "explanation": {
+            "text": "自己教師あり学習では入力の一部を隠して復元させるタスクが一般的です（例：BERTのマスク言語モデル）。",
+            "reference": "https://ai.googleblog.com/2020/04/self-supervised-learning.html"
+          }
+        },
+        {
+          "key": "C",
+          "text": "教師信号を一切使わない",
+          "explanation": {
+            "text": "完全に教師信号を使わないのは教師なし学習です。自己教師あり学習では入力から擬似ラベルを作成します。",
+            "reference": "https://ai.googleblog.com/2020/04/self-supervised-learning.html"
+          }
+        },
+        {
+          "key": "D",
+          "text": "強化学習の報酬信号を利用する",
+          "explanation": {
+            "text": "報酬信号を使うのは強化学習であり、自己教師あり学習とは異なります。",
+            "reference": "https://ai.googleblog.com/2020/04/self-supervised-learning.html"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "自己教師あり学習は入力の一部を隠して復元させるタスクに代表され、自然言語処理や画像認識で活用されています。",
+        "reference": "https://ai.googleblog.com/2020/04/self-supervised-learning.html"
+      }
+    },
+    {
+      "id": "ai-e-q11",
+      "question": "生成モデルに属するものとして正しいのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "サポートベクターマシン（SVM）",
+          "explanation": {
+            "text": "SVMは識別モデルであり生成モデルではありません。",
+            "reference": "https://www.deeplearningbook.org/"
+          }
+        },
+        {
+          "key": "B",
+          "text": "GAN（Generative Adversarial Network）",
+          "explanation": {
+            "text": "GANは生成モデルの代表例であり、新しいデータを生成可能です。",
+            "reference": "https://arxiv.org/abs/1406.2661"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ロジスティック回帰",
+          "explanation": {
+            "text": "ロジスティック回帰は識別モデルです。",
+            "reference": "https://www.deeplearningbook.org/"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ランダムフォレスト",
+          "explanation": {
+            "text": "ランダムフォレストは識別や回帰のためのモデルであり生成モデルではありません。",
+            "reference": "https://www.deeplearningbook.org/"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "生成モデルの代表例としてGANがあり、画像や音声などの新しいデータを生成可能です。",
+        "reference": "https://arxiv.org/abs/1406.2661"
+      }
+    },
+    {
+      "id": "ai-e-q12",
+      "question": "オートエンコーダの潜在変数（latent variable）が持つ役割として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "入力データを低次元に圧縮した表現",
+          "explanation": {
+            "text": "オートエンコーダは入力データを低次元に圧縮し、潜在空間に表現します。",
+            "reference": "https://www.deeplearningbook.org/"
+          }
+        },
+        {
+          "key": "B",
+          "text": "正則化項の役割を果たす",
+          "explanation": {
+            "text": "潜在変数は正則化項ではありません。",
+            "reference": "https://www.deeplearningbook.org/"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ラベル情報を保存する",
+          "explanation": {
+            "text": "オートエンコーダはラベル情報を扱いません。",
+            "reference": "https://www.deeplearningbook.org/"
+          }
+        },
+        {
+          "key": "D",
+          "text": "学習率を決定する",
+          "explanation": {
+            "text": "学習率はオプティマイザに依存するもので、潜在変数とは関係ありません。",
+            "reference": "https://www.deeplearningbook.org/"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "オートエンコーダの潜在変数は入力を低次元に圧縮した表現であり、特徴抽出や生成に利用されます。",
+        "reference": "https://www.deeplearningbook.org/"
+      }
+    },
+    {
+      "id": "ai-e-q13",
+      "question": "強化学習において価値関数（value function）の役割はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "状態の良し悪しを数値で評価する",
+          "explanation": {
+            "text": "価値関数は状態の期待報酬を数値で表す役割を持ちます。",
+            "reference": "http://incompleteideas.net/book/the-book.html"
+          }
+        },
+        {
+          "key": "B",
+          "text": "行動の選択を直接決定する",
+          "explanation": {
+            "text": "行動の選択は方策（policy）によって決定されます。",
+            "reference": "http://incompleteideas.net/book/the-book.html"
+          }
+        },
+        {
+          "key": "C",
+          "text": "報酬の割引率を調整する",
+          "explanation": {
+            "text": "割引率はアルゴリズム設計のパラメータであり、価値関数の役割ではありません。",
+            "reference": "http://incompleteideas.net/book/the-book.html"
+          }
+        },
+        {
+          "key": "D",
+          "text": "探索と利用のバランスを制御する",
+          "explanation": {
+            "text": "探索と利用の制御は方策に依存します。",
+            "reference": "http://incompleteideas.net/book/the-book.html"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "価値関数は状態や状態-行動ペアの良さを数値化し、強化学習における意思決定の基盤となります。",
+        "reference": "http://incompleteideas.net/book/the-book.html"
+      }
+    },
+    {
+      "id": "ai-e-q14",
+      "question": "ハイパーパラメータチューニングにおいてグリッドサーチの特徴として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "探索範囲をランダムに選ぶ",
+          "explanation": {
+            "text": "これはランダムサーチの特徴です。",
+            "reference": "https://scikit-learn.org/stable/modules/grid_search.html"
+          }
+        },
+        {
+          "key": "B",
+          "text": "全てのパラメータ組み合わせを試す",
+          "explanation": {
+            "text": "グリッドサーチは指定した範囲の全ての組み合わせを網羅的に探索します。",
+            "reference": "https://scikit-learn.org/stable/modules/grid_search.html"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ニューラルネット専用の探索手法",
+          "explanation": {
+            "text": "グリッドサーチは汎用的であり、ニューラルネット専用ではありません。",
+            "reference": "https://scikit-learn.org/stable/modules/grid_search.html"
+          }
+        },
+        {
+          "key": "D",
+          "text": "学習率を自動で最適化するアルゴリズム",
+          "explanation": {
+            "text": "グリッドサーチは探索手法であり、学習率の自動最適化機能ではありません。",
+            "reference": "https://scikit-learn.org/stable/modules/grid_search.html"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "グリッドサーチは全ての組み合わせを網羅的に探索する手法です。",
+        "reference": "https://scikit-learn.org/stable/modules/grid_search.html"
+      }
+    },
+    {
+      "id": "ai-e-q15",
+      "question": "ディープラーニングにおけるドロップアウトの仕組みとして正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "学習中に一部のノードをランダムに無効化する",
+          "explanation": {
+            "text": "ドロップアウトは過学習防止のために学習中にランダムにノードを無効化する手法です。",
+            "reference": "https://jmlr.org/papers/v15/srivastava14a.html"
+          }
+        },
+        {
+          "key": "B",
+          "text": "学習率を動的に調整する",
+          "explanation": {
+            "text": "学習率の調整はオプティマイザの役割です。",
+            "reference": "https://jmlr.org/papers/v15/srivastava14a.html"
+          }
+        },
+        {
+          "key": "C",
+          "text": "重みを正則化する",
+          "explanation": {
+            "text": "L1/L2正則化は重みを制約しますが、ドロップアウトは異なる仕組みです。",
+            "reference": "https://jmlr.org/papers/v15/srivastava14a.html"
+          }
+        },
+        {
+          "key": "D",
+          "text": "勾配爆発を防ぐ",
+          "explanation": {
+            "text": "勾配爆発の防止は主に勾配クリッピングで行われます。",
+            "reference": "https://jmlr.org/papers/v15/srivastava14a.html"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ドロップアウトはランダムにノードを無効化し、過学習を防ぐ手法です。",
+        "reference": "https://jmlr.org/papers/v15/srivastava14a.html"
+      }
+    },
+    {
+      "id": "ai-e-q16",
+      "question": "勾配爆発（exploding gradient）を防ぐ一般的な手法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "勾配クリッピング",
+          "explanation": {
+            "text": "勾配が一定値を超えないように制限する手法が勾配クリッピングです。",
+            "reference": "https://arxiv.org/abs/1211.5063"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ドロップアウト",
+          "explanation": {
+            "text": "ドロップアウトは過学習防止であり、勾配爆発防止とは異なります。",
+            "reference": "https://arxiv.org/abs/1211.5063"
+          }
+        },
+        {
+          "key": "C",
+          "text": "正則化の強化",
+          "explanation": {
+            "text": "正則化は汎化性能に影響するが、勾配爆発の直接的対策ではありません。",
+            "reference": "https://arxiv.org/abs/1211.5063"
+          }
+        },
+        {
+          "key": "D",
+          "text": "学習率を極端に大きくする",
+          "explanation": {
+            "text": "学習率を大きくすると発散のリスクが高まり逆効果です。",
+            "reference": "https://arxiv.org/abs/1211.5063"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "勾配爆発は勾配クリッピングで抑制することが一般的です。",
+        "reference": "https://arxiv.org/abs/1211.5063"
+      }
+    },
+    {
+      "id": "ai-e-q17",
+      "question": "LSTMが標準的なRNNよりも長期依存関係を扱いやすい理由はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "パラメータ数が少ないため",
+          "explanation": {
+            "text": "LSTMは標準RNNよりパラメータ数が多いです。",
+            "reference": "https://colah.github.io/posts/2015-08-Understanding-LSTMs/"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ゲート構造により情報を制御できるため",
+          "explanation": {
+            "text": "LSTMは入力ゲート・忘却ゲート・出力ゲートにより情報を保持・忘却でき、長期依存関係を学習可能です。",
+            "reference": "https://colah.github.io/posts/2015-08-Understanding-LSTMs/"
+          }
+        },
+        {
+          "key": "C",
+          "text": "活性化関数にシグモイドを使わないため",
+          "explanation": {
+            "text": "LSTMでもシグモイドやtanhを利用します。",
+            "reference": "https://colah.github.io/posts/2015-08-Understanding-LSTMs/"
+          }
+        },
+        {
+          "key": "D",
+          "text": "勾配降下法を使わないため",
+          "explanation": {
+            "text": "LSTMも勾配降下法で学習します。",
+            "reference": "https://colah.github.io/posts/2015-08-Understanding-LSTMs/"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "LSTMはゲート機構により長期依存関係を保持できるため、標準的なRNNの勾配消失問題を軽減します。",
+        "reference": "https://colah.github.io/posts/2015-08-Understanding-LSTMs/"
+      }
+    },
+    {
+      "id": "ai-e-q18",
+      "question": "敵対的生成ネットワーク（GAN）における識別器の役割はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ノイズからデータを生成する",
+          "explanation": {
+            "text": "これは生成器の役割です。",
+            "reference": "https://arxiv.org/abs/1406.2661"
+          }
+        },
+        {
+          "key": "B",
+          "text": "生成データと実データを区別する",
+          "explanation": {
+            "text": "識別器は生成データか実データかを判定する役割を持ちます。",
+            "reference": "https://arxiv.org/abs/1406.2661"
+          }
+        },
+        {
+          "key": "C",
+          "text": "潜在空間を正則化する",
+          "explanation": {
+            "text": "潜在空間の正則化はVAEなどで行われます。",
+            "reference": "https://arxiv.org/abs/1406.2661"
+          }
+        },
+        {
+          "key": "D",
+          "text": "勾配を計算しない",
+          "explanation": {
+            "text": "識別器も勾配を計算して学習します。",
+            "reference": "https://arxiv.org/abs/1406.2661"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "GANの識別器は生成データと実データを判定する役割を担い、生成器の学習を促します。",
+        "reference": "https://arxiv.org/abs/1406.2661"
+      }
+    },
+    {
+      "id": "ai-e-q19",
+      "question": "TransformerにおいてPositional Encodingを導入する理由はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "系列データの順序情報を表現するため",
+          "explanation": {
+            "text": "Transformerは順序を持たないアーキテクチャのため、Positional Encodingにより系列の位置情報を付与します。",
+            "reference": "https://arxiv.org/abs/1706.03762"
+          }
+        },
+        {
+          "key": "B",
+          "text": "勾配消失を防ぐため",
+          "explanation": {
+            "text": "Positional Encodingは勾配問題とは直接関係ありません。",
+            "reference": "https://arxiv.org/abs/1706.03762"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Attentionの計算を高速化するため",
+          "explanation": {
+            "text": "Positional Encodingは計算速度改善ではなく位置情報付与のための仕組みです。",
+            "reference": "https://arxiv.org/abs/1706.03762"
+          }
+        },
+        {
+          "key": "D",
+          "text": "モデルのパラメータ数を削減するため",
+          "explanation": {
+            "text": "Positional Encodingはパラメータ数削減が目的ではありません。",
+            "reference": "https://arxiv.org/abs/1706.03762"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Positional Encodingは系列データの順序情報を付与し、Transformerが順序を認識できるようにします。",
+        "reference": "https://arxiv.org/abs/1706.03762"
+      }
+    },
+    {
+      "id": "ai-e-q20",
+      "question": "勾配降下法におけるミニバッチ学習の利点として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "常に最適解に到達できる",
+          "explanation": {
+            "text": "最適解に必ず到達できるとは限りません。",
+            "reference": "https://cs231n.github.io/optimization-1/"
+          }
+        },
+        {
+          "key": "B",
+          "text": "計算効率と収束の安定性を両立できる",
+          "explanation": {
+            "text": "ミニバッチ学習はバッチ学習とオンライン学習の中間であり、効率と安定性のバランスを取ります。",
+            "reference": "https://cs231n.github.io/optimization-1/"
+          }
+        },
+        {
+          "key": "C",
+          "text": "パラメータ更新が不要になる",
+          "explanation": {
+            "text": "パラメータ更新は必要です。",
+            "reference": "https://cs231n.github.io/optimization-1/"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ラベルが不要になる",
+          "explanation": {
+            "text": "教師あり学習ではラベルが必要です。",
+            "reference": "https://cs231n.github.io/optimization-1/"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ミニバッチ学習は計算効率と収束の安定性を両立するため、広く使われます。",
+        "reference": "https://cs231n.github.io/optimization-1/"
+      }
+    },
+    {
+      "id": "ai-e-q21",
+      "question": "深層学習モデルで一般的に利用される活性化関数ReLUの特徴はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "常に線形変換を行う",
+          "explanation": {
+            "text": "ReLUは非線形関数です。",
+            "reference": "https://deeplearning.jp/activation-functions/"
+          }
+        },
+        {
+          "key": "B",
+          "text": "0未満では出力が0になる",
+          "explanation": {
+            "text": "ReLUは入力が0未満なら0、0以上ならそのまま出力します。",
+            "reference": "https://deeplearning.jp/activation-functions/"
+          }
+        },
+        {
+          "key": "C",
+          "text": "全ての入力に対して微分不可能である",
+          "explanation": {
+            "text": "ReLUは0の点を除いて微分可能です。",
+            "reference": "https://deeplearning.jp/activation-functions/"
+          }
+        },
+        {
+          "key": "D",
+          "text": "シグモイドより勾配消失が発生しやすい",
+          "explanation": {
+            "text": "ReLUは勾配消失を軽減するために設計されました。",
+            "reference": "https://deeplearning.jp/activation-functions/"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ReLUは0未満では出力が0になり、勾配消失を軽減するために広く利用されています。",
+        "reference": "https://deeplearning.jp/activation-functions/"
+      }
+    },
+    {
+      "id": "ai-e-q22",
+      "question": "残差ネットワーク（ResNet）が深層学習で有効である理由として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "活性化関数を不要にできる",
+          "explanation": {
+            "text": "ResNetでも活性化関数は必要です。",
+            "reference": "https://arxiv.org/abs/1512.03385"
+          }
+        },
+        {
+          "key": "B",
+          "text": "勾配消失を緩和できる",
+          "explanation": {
+            "text": "残差接続により勾配が直接流れやすくなり、勾配消失問題が緩和されます。",
+            "reference": "https://arxiv.org/abs/1512.03385"
+          }
+        },
+        {
+          "key": "C",
+          "text": "全ての層を独立に学習できる",
+          "explanation": {
+            "text": "層は依然として順次学習されます。",
+            "reference": "https://arxiv.org/abs/1512.03385"
+          }
+        },
+        {
+          "key": "D",
+          "text": "計算コストを必ず削減できる",
+          "explanation": {
+            "text": "ResNetは計算コスト削減が目的ではなく、深い学習の安定化が目的です。",
+            "reference": "https://arxiv.org/abs/1512.03385"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ResNetの残差接続により勾配がスムーズに伝わり、深層ネットワークの学習が安定します。",
+        "reference": "https://arxiv.org/abs/1512.03385"
+      }
+    },
+    {
+      "id": "ai-e-q23",
+      "question": "CNNにおける畳み込み層の重み共有の利点として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "パラメータ数を削減できる",
+          "explanation": {
+            "text": "重みを共有することでパラメータ数が削減され、学習効率が向上します。",
+            "reference": "https://cs231n.github.io/convolutional-networks/"
+          }
+        },
+        {
+          "key": "B",
+          "text": "系列データの順序情報を保持できる",
+          "explanation": {
+            "text": "これはRNNやTransformerの役割であり、CNNの重み共有の効果ではありません。",
+            "reference": "https://cs231n.github.io/convolutional-networks/"
+          }
+        },
+        {
+          "key": "C",
+          "text": "勾配爆発を防ぐ",
+          "explanation": {
+            "text": "勾配爆発の防止は重み共有の直接的な目的ではありません。",
+            "reference": "https://cs231n.github.io/convolutional-networks/"
+          }
+        },
+        {
+          "key": "D",
+          "text": "学習率を自動調整できる",
+          "explanation": {
+            "text": "学習率調整はオプティマイザの役割です。",
+            "reference": "https://cs231n.github.io/convolutional-networks/"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "CNNの重み共有はパラメータ数を削減し、画像処理における効率性を向上させます。",
+        "reference": "https://cs231n.github.io/convolutional-networks/"
+      }
+    },
+    {
+      "id": "ai-e-q24",
+      "question": "ハイパーパラメータの探索においてベイズ最適化の特徴はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "全てのパラメータ組み合わせを網羅的に探索する",
+          "explanation": {
+            "text": "これはグリッドサーチの特徴です。",
+            "reference": "https://arxiv.org/abs/1206.2944"
+          }
+        },
+        {
+          "key": "B",
+          "text": "探索の履歴を利用して効率的に次の探索点を決定する",
+          "explanation": {
+            "text": "ベイズ最適化はガウス過程などを用いて探索履歴を活用します。",
+            "reference": "https://arxiv.org/abs/1206.2944"
+          }
+        },
+        {
+          "key": "C",
+          "text": "必ず最適解を保証する",
+          "explanation": {
+            "text": "ベイズ最適化は効率的ですが、最適解の保証はありません。",
+            "reference": "https://arxiv.org/abs/1206.2944"
+          }
+        },
+        {
+          "key": "D",
+          "text": "教師なし学習にのみ利用できる",
+          "explanation": {
+            "text": "ベイズ最適化は教師あり・なしを問わず利用可能です。",
+            "reference": "https://arxiv.org/abs/1206.2944"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ベイズ最適化は探索履歴を活用して効率的に探索点を決定する手法です。",
+        "reference": "https://arxiv.org/abs/1206.2944"
+      }
+    },
+    {
+      "id": "ai-e-q25",
+      "question": "クラスタリング手法の一つであるk-meansの特徴はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ラベル付きデータを必要とする",
+          "explanation": {
+            "text": "k-meansは教師なし学習でありラベルを必要としません。",
+            "reference": "https://scikit-learn.org/stable/modules/clustering.html#k-means"
+          }
+        },
+        {
+          "key": "B",
+          "text": "クラスタの数を事前に指定する必要がある",
+          "explanation": {
+            "text": "k-meansではクラスタ数kをあらかじめ設定する必要があります。",
+            "reference": "https://scikit-learn.org/stable/modules/clustering.html#k-means"
+          }
+        },
+        {
+          "key": "C",
+          "text": "距離計算を必要としない",
+          "explanation": {
+            "text": "k-meansはユークリッド距離などを用いてクラスタを割り当てます。",
+            "reference": "https://scikit-learn.org/stable/modules/clustering.html#k-means"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ニューラルネットワークに基づく手法である",
+          "explanation": {
+            "text": "k-meansは統計的手法でありニューラルネットワークではありません。",
+            "reference": "https://scikit-learn.org/stable/modules/clustering.html#k-means"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "k-meansではクラスタ数を事前に設定する必要があります。",
+        "reference": "https://scikit-learn.org/stable/modules/clustering.html#k-means"
+      }
+    },
+    {
+      "id": "ai-e-q26",
+      "question": "主成分分析（PCA）の目的として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データの次元を削減する",
+          "explanation": {
+            "text": "PCAはデータの分散が最大となる方向に基づいて次元削減を行います。",
+            "reference": "https://scikit-learn.org/stable/modules/decomposition.html#pca"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データをラベルに分類する",
+          "explanation": {
+            "text": "PCAは教師なし手法であり分類は行いません。",
+            "reference": "https://scikit-learn.org/stable/modules/decomposition.html#pca"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ニューラルネットワークの重みを最適化する",
+          "explanation": {
+            "text": "PCAは統計的手法でありNNの重み最適化は目的ではありません。",
+            "reference": "https://scikit-learn.org/stable/modules/decomposition.html#pca"
+          }
+        },
+        {
+          "key": "D",
+          "text": "クラスタリングを行う",
+          "explanation": {
+            "text": "PCAはクラスタリングではなく、次元削減のための手法です。",
+            "reference": "https://scikit-learn.org/stable/modules/decomposition.html#pca"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "PCAは次元削減手法であり、高次元データを低次元に圧縮して可視化や学習効率向上に使われます。",
+        "reference": "https://scikit-learn.org/stable/modules/decomposition.html#pca"
+      }
+    },
+    {
+      "id": "ai-e-q27",
+      "question": "強化学習における方策勾配法（policy gradient）の特徴はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "価値関数を必ず必要とする",
+          "explanation": {
+            "text": "方策勾配法は価値関数を用いないアプローチも存在します。",
+            "reference": "http://incompleteideas.net/book/the-book.html"
+          }
+        },
+        {
+          "key": "B",
+          "text": "方策そのものを確率的に最適化する",
+          "explanation": {
+            "text": "方策勾配法は方策（policy）のパラメータを直接最適化します。",
+            "reference": "http://incompleteideas.net/book/the-book.html"
+          }
+        },
+        {
+          "key": "C",
+          "text": "教師データが必要である",
+          "explanation": {
+            "text": "強化学習は報酬に基づき学習するため、教師データは不要です。",
+            "reference": "http://incompleteideas.net/book/the-book.html"
+          }
+        },
+        {
+          "key": "D",
+          "text": "探索と利用のバランスを自動で保証する",
+          "explanation": {
+            "text": "探索と利用のバランスはアルゴリズム設計に依存し、自動で保証されるわけではありません。",
+            "reference": "http://incompleteideas.net/book/the-book.html"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "方策勾配法は方策を確率的に定義し、そのパラメータを直接勾配で最適化する手法です。",
+        "reference": "http://incompleteideas.net/book/the-book.html"
+      }
+    },
+    {
+      "id": "ai-e-q28",
+      "question": "自然言語処理においてWord2VecのSkip-gramモデルの特徴はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "中心語から周辺語を予測する",
+          "explanation": {
+            "text": "Skip-gramモデルは中心語から周辺語を予測します。",
+            "reference": "https://arxiv.org/abs/1301.3781"
+          }
+        },
+        {
+          "key": "B",
+          "text": "周辺語から中心語を予測する",
+          "explanation": {
+            "text": "これはCBOWモデルの特徴です。",
+            "reference": "https://arxiv.org/abs/1301.3781"
+          }
+        },
+        {
+          "key": "C",
+          "text": "系列全体を予測する",
+          "explanation": {
+            "text": "Skip-gramは系列全体を対象にはしません。",
+            "reference": "https://arxiv.org/abs/1301.3781"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ラベル付きデータを必要とする",
+          "explanation": {
+            "text": "Word2Vecは教師なし学習でありラベルは不要です。",
+            "reference": "https://arxiv.org/abs/1301.3781"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Word2VecのSkip-gramモデルは中心語から周辺語を予測する手法です。",
+        "reference": "https://arxiv.org/abs/1301.3781"
+      }
+    },
+    {
+      "id": "ai-e-q29",
+      "question": "オートエンコーダにおけるボトルネック層の役割はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データを低次元に圧縮する",
+          "explanation": {
+            "text": "ボトルネック層は入力データを低次元に圧縮し、潜在表現を学習します。",
+            "reference": "https://www.deeplearningbook.org/"
+          }
+        },
+        {
+          "key": "B",
+          "text": "重みを初期化する",
+          "explanation": {
+            "text": "重みの初期化はボトルネック層の役割ではありません。",
+            "reference": "https://www.deeplearningbook.org/"
+          }
+        },
+        {
+          "key": "C",
+          "text": "活性化関数を置き換える",
+          "explanation": {
+            "text": "活性化関数の選択はボトルネック層とは独立です。",
+            "reference": "https://www.deeplearningbook.org/"
+          }
+        },
+        {
+          "key": "D",
+          "text": "正則化を行う",
+          "explanation": {
+            "text": "ボトルネック層そのものは正則化ではありません。",
+            "reference": "https://www.deeplearningbook.org/"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "オートエンコーダのボトルネック層は次元削減された潜在表現を学習する役割を持ちます。",
+        "reference": "https://www.deeplearningbook.org/"
+      }
+    },
+    {
+      "id": "ai-e-q30",
+      "question": "勾配消失問題を軽減するためにResNetで導入された仕組みはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "バッチ正規化",
+          "explanation": {
+            "text": "バッチ正規化は学習の安定化には寄与するが、ResNetの特徴的仕組みではありません。",
+            "reference": "https://arxiv.org/abs/1512.03385"
+          }
+        },
+        {
+          "key": "B",
+          "text": "残差接続（skip connection）",
+          "explanation": {
+            "text": "ResNetは残差接続により勾配を直接流し、勾配消失を軽減します。",
+            "reference": "https://arxiv.org/abs/1512.03385"
+          }
+        },
+        {
+          "key": "C",
+          "text": "プーリング層の削除",
+          "explanation": {
+            "text": "プーリング層削除はResNetの設計思想ではありません。",
+            "reference": "https://arxiv.org/abs/1512.03385"
+          }
+        },
+        {
+          "key": "D",
+          "text": "全結合層の縮小",
+          "explanation": {
+            "text": "全結合層の縮小はResNetの主要特徴ではありません。",
+            "reference": "https://arxiv.org/abs/1512.03385"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ResNetは残差接続を導入し、深いネットワークでも勾配が伝わりやすい構造を実現しました。",
+        "reference": "https://arxiv.org/abs/1512.03385"
+      }
+    },
+    {
+      "id": "ai-e-q31",
+      "question": "強化学習におけるQ学習の目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "状態遷移の確率を推定する",
+          "explanation": {
+            "text": "Q学習は状態遷移確率を直接推定しません。",
+            "reference": "http://incompleteideas.net/book/the-book.html"
+          }
+        },
+        {
+          "key": "B",
+          "text": "行動価値関数を学習する",
+          "explanation": {
+            "text": "Q学習は各状態-行動ペアに対して価値を学習する手法です。",
+            "reference": "http://incompleteideas.net/book/the-book.html"
+          }
+        },
+        {
+          "key": "C",
+          "text": "方策を直接最適化する",
+          "explanation": {
+            "text": "Q学習は価値ベース手法であり、方策を直接最適化するものではありません。",
+            "reference": "http://incompleteideas.net/book/the-book.html"
+          }
+        },
+        {
+          "key": "D",
+          "text": "報酬を手動で設定する",
+          "explanation": {
+            "text": "報酬は環境から与えられるものであり、Q学習の目的ではありません。",
+            "reference": "http://incompleteideas.net/book/the-book.html"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Q学習は行動価値関数を学習し、その最大化によって最適方策を導きます。",
+        "reference": "http://incompleteideas.net/book/the-book.html"
+      }
+    },
+    {
+      "id": "ai-e-q32",
+      "question": "VAE（変分オートエンコーダ）の特徴として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "潜在変数を確率分布として扱う",
+          "explanation": {
+            "text": "VAEは潜在変数をガウス分布などで表現し、確率的にサンプリングします。",
+            "reference": "https://arxiv.org/abs/1312.6114"
+          }
+        },
+        {
+          "key": "B",
+          "text": "必ず決定論的な表現を出力する",
+          "explanation": {
+            "text": "VAEの潜在表現は確率的です。",
+            "reference": "https://arxiv.org/abs/1312.6114"
+          }
+        },
+        {
+          "key": "C",
+          "text": "潜在変数を固定値に設定する",
+          "explanation": {
+            "text": "潜在変数は確率的に変動し、固定値ではありません。",
+            "reference": "https://arxiv.org/abs/1312.6114"
+          }
+        },
+        {
+          "key": "D",
+          "text": "正則化を行わない",
+          "explanation": {
+            "text": "VAEはKLダイバージェンスによる正則化を行います。",
+            "reference": "https://arxiv.org/abs/1312.6114"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "VAEは潜在変数を確率分布として扱い、サンプリングを通じて多様な生成が可能です。",
+        "reference": "https://arxiv.org/abs/1312.6114"
+      }
+    },
+    {
+      "id": "ai-e-q33",
+      "question": "ディープラーニングでデータ拡張（data augmentation）を行う主な目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "学習データの多様性を高める",
+          "explanation": {
+            "text": "データ拡張は回転や平行移動などでデータの多様性を高め、汎化性能を向上させます。",
+            "reference": "https://cs231n.github.io/data-augmentation/"
+          }
+        },
+        {
+          "key": "B",
+          "text": "計算コストを削減する",
+          "explanation": {
+            "text": "データ拡張は計算コスト削減を目的としません。",
+            "reference": "https://cs231n.github.io/data-augmentation/"
+          }
+        },
+        {
+          "key": "C",
+          "text": "勾配爆発を防ぐ",
+          "explanation": {
+            "text": "勾配爆発は学習の安定性の問題であり、データ拡張の目的ではありません。",
+            "reference": "https://cs231n.github.io/data-augmentation/"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ニューラルネットの深さを調整する",
+          "explanation": {
+            "text": "データ拡張はネットワーク構造の変更とは関係ありません。",
+            "reference": "https://cs231n.github.io/data-augmentation/"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "データ拡張は学習データの多様性を高め、過学習を防いで汎化性能を高めます。",
+        "reference": "https://cs231n.github.io/data-augmentation/"
+      }
+    },
+    {
+      "id": "ai-e-q34",
+      "question": "アンサンブル学習の代表的手法として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "バギング（Bagging）",
+          "explanation": {
+            "text": "バギングは複数モデルを独立に学習し、結果を統合する手法です。",
+            "reference": "https://scikit-learn.org/stable/modules/ensemble.html"
+          }
+        },
+        {
+          "key": "B",
+          "text": "勾配降下法",
+          "explanation": {
+            "text": "勾配降下法は最適化手法であり、アンサンブル学習ではありません。",
+            "reference": "https://scikit-learn.org/stable/modules/ensemble.html"
+          }
+        },
+        {
+          "key": "C",
+          "text": "正則化",
+          "explanation": {
+            "text": "正則化は単一モデルの汎化性能を改善する手法です。",
+            "reference": "https://scikit-learn.org/stable/modules/ensemble.html"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ドロップアウト",
+          "explanation": {
+            "text": "ドロップアウトは単一モデル内での過学習防止手法です。",
+            "reference": "https://scikit-learn.org/stable/modules/ensemble.html"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "アンサンブル学習の代表例としてバギングやブースティングがあり、精度を高める効果があります。",
+        "reference": "https://scikit-learn.org/stable/modules/ensemble.html"
+      }
+    },
+    {
+      "id": "ai-e-q35",
+      "question": "自然言語処理でBERTが採用している学習タスクの一つはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "マスク言語モデル（MLM）",
+          "explanation": {
+            "text": "BERTはMLMを採用し、入力の一部をマスクして予測させます。",
+            "reference": "https://arxiv.org/abs/1810.04805"
+          }
+        },
+        {
+          "key": "B",
+          "text": "教師なしクラスタリング",
+          "explanation": {
+            "text": "BERTは教師なしクラスタリングを行いません。",
+            "reference": "https://arxiv.org/abs/1810.04805"
+          }
+        },
+        {
+          "key": "C",
+          "text": "画像分類",
+          "explanation": {
+            "text": "BERTは自然言語処理用であり、画像分類には用いられません。",
+            "reference": "https://arxiv.org/abs/1810.04805"
+          }
+        },
+        {
+          "key": "D",
+          "text": "強化学習による探索",
+          "explanation": {
+            "text": "BERTは強化学習ベースではありません。",
+            "reference": "https://arxiv.org/abs/1810.04805"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "BERTはマスク言語モデルと次文予測（NSP）を学習タスクとして採用しています。",
+        "reference": "https://arxiv.org/abs/1810.04805"
+      }
+    },
+    {
+      "id": "ai-e-q36",
+      "question": "畳み込みニューラルネットワーク（CNN）でパディング（padding）を行う主な目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "特徴マップのサイズを保持する",
+          "explanation": {
+            "text": "パディングは畳み込み後に特徴マップのサイズが小さくなるのを防ぎます。",
+            "reference": "https://cs231n.github.io/convolutional-networks/"
+          }
+        },
+        {
+          "key": "B",
+          "text": "学習率を調整する",
+          "explanation": {
+            "text": "学習率調整はオプティマイザの役割であり、パディングの目的ではありません。",
+            "reference": "https://cs231n.github.io/convolutional-networks/"
+          }
+        },
+        {
+          "key": "C",
+          "text": "重みの数を増やす",
+          "explanation": {
+            "text": "パディングは重み数には影響を与えません。",
+            "reference": "https://cs231n.github.io/convolutional-networks/"
+          }
+        },
+        {
+          "key": "D",
+          "text": "過学習を防ぐ",
+          "explanation": {
+            "text": "過学習防止は正則化やドロップアウトなどで行います。",
+            "reference": "https://cs231n.github.io/convolutional-networks/"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "パディングは畳み込みによる特徴マップの縮小を防ぎ、入力情報を保持します。",
+        "reference": "https://cs231n.github.io/convolutional-networks/"
+      }
+    },
+    {
+      "id": "ai-e-q37",
+      "question": "勾配降下法の一種であるモーメンタム法の特徴はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "過去の勾配を利用して更新方向を滑らかにする",
+          "explanation": {
+            "text": "モーメンタム法は過去の勾配を考慮し、収束を加速・安定化させます。",
+            "reference": "https://cs231n.github.io/neural-networks-3/"
+          }
+        },
+        {
+          "key": "B",
+          "text": "常に学習率を増加させる",
+          "explanation": {
+            "text": "モーメンタム法は学習率を増加させるわけではありません。",
+            "reference": "https://cs231n.github.io/neural-networks-3/"
+          }
+        },
+        {
+          "key": "C",
+          "text": "パラメータ数を削減する",
+          "explanation": {
+            "text": "パラメータ数はモーメンタム法によって変わりません。",
+            "reference": "https://cs231n.github.io/neural-networks-3/"
+          }
+        },
+        {
+          "key": "D",
+          "text": "正則化を行う",
+          "explanation": {
+            "text": "モーメンタム法は正則化手法ではなく、最適化手法です。",
+            "reference": "https://cs231n.github.io/neural-networks-3/"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "モーメンタム法は過去の勾配を活用し、学習を安定化させる手法です。",
+        "reference": "https://cs231n.github.io/neural-networks-3/"
+      }
+    },
+    {
+      "id": "ai-e-q38",
+      "question": "自然言語処理におけるサブワード分割（subword tokenization）の利点はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "未知語を部分的に分割して扱える",
+          "explanation": {
+            "text": "サブワード分割は未知語を部分的に既知のサブワードとして表現できるため有効です。",
+            "reference": "https://arxiv.org/abs/1508.07909"
+          }
+        },
+        {
+          "key": "B",
+          "text": "文章の意味を直接理解できる",
+          "explanation": {
+            "text": "サブワード分割自体は意味理解を行いません。",
+            "reference": "https://arxiv.org/abs/1508.07909"
+          }
+        },
+        {
+          "key": "C",
+          "text": "学習率を自動で最適化する",
+          "explanation": {
+            "text": "学習率調整はオプティマイザの役割です。",
+            "reference": "https://arxiv.org/abs/1508.07909"
+          }
+        },
+        {
+          "key": "D",
+          "text": "モデルの深さを制御する",
+          "explanation": {
+            "text": "サブワード分割は前処理であり、モデル深さとは関係ありません。",
+            "reference": "https://arxiv.org/abs/1508.07909"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "サブワード分割は未知語を部分的に既知の単位に分割して表現できるため、語彙不足問題を解決します。",
+        "reference": "https://arxiv.org/abs/1508.07909"
+      }
+    },
+    {
+      "id": "ai-e-q39",
+      "question": "自己注意機構（self-attention）の計算量は系列長に対してどのように増加するか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "線形に増加する",
+          "explanation": {
+            "text": "自己注意の計算量は系列長に対して線形ではなく二乗で増加します。",
+            "reference": "https://arxiv.org/abs/1706.03762"
+          }
+        },
+        {
+          "key": "B",
+          "text": "二乗で増加する",
+          "explanation": {
+            "text": "自己注意は全てのトークン間の関係を計算するため、計算量は系列長の二乗で増加します。",
+            "reference": "https://arxiv.org/abs/1706.03762"
+          }
+        },
+        {
+          "key": "C",
+          "text": "対数的に増加する",
+          "explanation": {
+            "text": "対数的な増加ではありません。",
+            "reference": "https://arxiv.org/abs/1706.03762"
+          }
+        },
+        {
+          "key": "D",
+          "text": "一定で変わらない",
+          "explanation": {
+            "text": "系列長に依存するため一定ではありません。",
+            "reference": "https://arxiv.org/abs/1706.03762"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "自己注意は全結合的にトークン同士を関連付けるため、計算量は系列長の二乗で増加します。",
+        "reference": "https://arxiv.org/abs/1706.03762"
+      }
+    },
+    {
+      "id": "ai-e-q40",
+      "question": "ハイパーパラメータの学習においてランダムサーチの利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "探索範囲を効率的にカバーできる",
+          "explanation": {
+            "text": "ランダムサーチは限られた計算回数でも広い探索範囲をカバーできます。",
+            "reference": "https://www.jmlr.org/papers/v13/bergstra12a.html"
+          }
+        },
+        {
+          "key": "B",
+          "text": "全ての組み合わせを探索する",
+          "explanation": {
+            "text": "全探索はグリッドサーチの特徴です。",
+            "reference": "https://www.jmlr.org/papers/v13/bergstra12a.html"
+          }
+        },
+        {
+          "key": "C",
+          "text": "必ず最適解を得られる",
+          "explanation": {
+            "text": "ランダムサーチは最適解を保証しません。",
+            "reference": "https://www.jmlr.org/papers/v13/bergstra12a.html"
+          }
+        },
+        {
+          "key": "D",
+          "text": "勾配情報を利用する",
+          "explanation": {
+            "text": "ランダムサーチは勾配を利用せず探索します。",
+            "reference": "https://www.jmlr.org/papers/v13/bergstra12a.html"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ランダムサーチは広い探索範囲を効率的にカバーできるため、グリッドサーチより有効な場合があります。",
+        "reference": "https://www.jmlr.org/papers/v13/bergstra12a.html"
+      }
+    },
+    {
+      "id": "ai-e-q41",
+      "question": "深層強化学習におけるExperience Replayの利点はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "過去の経験を保存して再利用できる",
+          "explanation": {
+            "text": "Experience Replayは過去の状態遷移を保存し、サンプリングして学習に利用します。",
+            "reference": "https://www.nature.com/articles/nature14236"
+          }
+        },
+        {
+          "key": "B",
+          "text": "探索を不要にする",
+          "explanation": {
+            "text": "探索は依然として必要です。",
+            "reference": "https://www.nature.com/articles/nature14236"
+          }
+        },
+        {
+          "key": "C",
+          "text": "勾配爆発を防ぐ",
+          "explanation": {
+            "text": "勾配爆発防止はExperience Replayの目的ではありません。",
+            "reference": "https://www.nature.com/articles/nature14236"
+          }
+        },
+        {
+          "key": "D",
+          "text": "環境の報酬設計を不要にする",
+          "explanation": {
+            "text": "報酬設計は依然として必要です。",
+            "reference": "https://www.nature.com/articles/nature14236"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Experience Replayは過去の経験を保存・再利用することでサンプル効率を改善し、学習の安定化に寄与します。",
+        "reference": "https://www.nature.com/articles/nature14236"
+      }
+    },
+    {
+      "id": "ai-e-q42",
+      "question": "深層学習モデルの過学習を検出する一般的な方法はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "検証データの損失が悪化するかどうかを確認する",
+          "explanation": {
+            "text": "過学習は訓練データで精度が上がる一方、検証データの損失が悪化することで検出できます。",
+            "reference": "https://cs231n.github.io/neural-networks-2/"
+          }
+        },
+        {
+          "key": "B",
+          "text": "学習率を小さく設定する",
+          "explanation": {
+            "text": "学習率は過学習検出の方法ではありません。",
+            "reference": "https://cs231n.github.io/neural-networks-2/"
+          }
+        },
+        {
+          "key": "C",
+          "text": "パラメータ数を増やす",
+          "explanation": {
+            "text": "パラメータ数増加は過学習を助長する可能性があります。",
+            "reference": "https://cs231n.github.io/neural-networks-2/"
+          }
+        },
+        {
+          "key": "D",
+          "text": "正則化を削除する",
+          "explanation": {
+            "text": "正則化を削除すると過学習が悪化します。",
+            "reference": "https://cs231n.github.io/neural-networks-2/"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "過学習は検証データでの損失の悪化によって検出されます。",
+        "reference": "https://cs231n.github.io/neural-networks-2/"
+      }
+    },
+    {
+      "id": "ai-e-q43",
+      "question": "CNNにおけるフィルタサイズを小さくする利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "パラメータ数を減らしつつ深さを増やせる",
+          "explanation": {
+            "text": "小さなフィルタを重ねることで表現力を保ちつつパラメータ数を削減できます（例: VGGネット）。",
+            "reference": "https://arxiv.org/abs/1409.1556"
+          }
+        },
+        {
+          "key": "B",
+          "text": "必ず計算速度が遅くなる",
+          "explanation": {
+            "text": "小さなフィルタは計算効率が高まる傾向にあります。",
+            "reference": "https://arxiv.org/abs/1409.1556"
+          }
+        },
+        {
+          "key": "C",
+          "text": "勾配爆発を防ぐ",
+          "explanation": {
+            "text": "勾配爆発防止はフィルタサイズとは直接関係ありません。",
+            "reference": "https://arxiv.org/abs/1409.1556"
+          }
+        },
+        {
+          "key": "D",
+          "text": "学習率調整が不要になる",
+          "explanation": {
+            "text": "フィルタサイズは学習率調整と関係しません。",
+            "reference": "https://arxiv.org/abs/1409.1556"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "小さなフィルタを使うとパラメータ数を抑えつつ深いネットワーク構造を構築できます。",
+        "reference": "https://arxiv.org/abs/1409.1556"
+      }
+    },
+    {
+      "id": "ai-e-q44",
+      "question": "正則化手法であるL1正則化の特徴はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "重みをスパース化する効果がある",
+          "explanation": {
+            "text": "L1正則化は重みを0に近づける効果があり、スパース性を促します。",
+            "reference": "https://www.deeplearningbook.org/"
+          }
+        },
+        {
+          "key": "B",
+          "text": "重みを一様に縮小する",
+          "explanation": {
+            "text": "一様に縮小するのはL2正則化の特徴です。",
+            "reference": "https://www.deeplearningbook.org/"
+          }
+        },
+        {
+          "key": "C",
+          "text": "学習率を自動調整する",
+          "explanation": {
+            "text": "正則化は学習率調整の仕組みではありません。",
+            "reference": "https://www.deeplearningbook.org/"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ドロップアウトと同じ仕組みである",
+          "explanation": {
+            "text": "L1正則化とドロップアウトは異なる正則化手法です。",
+            "reference": "https://www.deeplearningbook.org/"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "L1正則化はスパースな表現を得るために利用されます。",
+        "reference": "https://www.deeplearningbook.org/"
+      }
+    },
+    {
+      "id": "ai-e-q45",
+      "question": "敵対的サンプル（adversarial example）の特徴はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "人間にとっても分類が難しいデータである",
+          "explanation": {
+            "text": "人間には容易に認識可能でも、モデルを誤分類させる微小な摂動を加えたデータが敵対的サンプルです。",
+            "reference": "https://arxiv.org/abs/1412.6572"
+          }
+        },
+        {
+          "key": "B",
+          "text": "学習データに含まれるノイズのこと",
+          "explanation": {
+            "text": "敵対的サンプルは意図的に作成されたノイズであり、単なるデータノイズではありません。",
+            "reference": "https://arxiv.org/abs/1412.6572"
+          }
+        },
+        {
+          "key": "C",
+          "text": "必ずラベルが誤って付与されているデータ",
+          "explanation": {
+            "text": "ラベルは正しいがモデルが誤分類するのが敵対的サンプルです。",
+            "reference": "https://arxiv.org/abs/1412.6572"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データ拡張で生成されたデータ",
+          "explanation": {
+            "text": "敵対的サンプルはデータ拡張で生成するものではありません。",
+            "reference": "https://arxiv.org/abs/1412.6572"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "敵対的サンプルは人間には区別がつかないが、モデルを誤分類させる微小な摂動が加えられたデータです。",
+        "reference": "https://arxiv.org/abs/1412.6572"
+      }
+    },
+    {
+      "id": "ai-e-q46",
+      "question": "強化学習において探索と利用のトレードオフを制御する手法の一つはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ε-greedy法",
+          "explanation": {
+            "text": "ε-greedy法は確率εでランダム行動を選び、探索と利用のバランスを取ります。",
+            "reference": "http://incompleteideas.net/book/the-book.html"
+          }
+        },
+        {
+          "key": "B",
+          "text": "バックプロパゲーション",
+          "explanation": {
+            "text": "バックプロパゲーションは誤差逆伝播であり、探索制御手法ではありません。",
+            "reference": "http://incompleteideas.net/book/the-book.html"
+          }
+        },
+        {
+          "key": "C",
+          "text": "正則化",
+          "explanation": {
+            "text": "正則化は過学習防止の手法であり、探索制御とは異なります。",
+            "reference": "http://incompleteideas.net/book/the-book.html"
+          }
+        },
+        {
+          "key": "D",
+          "text": "クラスタリング",
+          "explanation": {
+            "text": "クラスタリングは教師なし学習の一種で探索制御ではありません。",
+            "reference": "http://incompleteideas.net/book/the-book.html"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ε-greedy法は探索と利用のバランスを調整する代表的な手法です。",
+        "reference": "http://incompleteideas.net/book/the-book.html"
+      }
+    },
+    {
+      "id": "ai-e-q47",
+      "question": "TransformerにおけるMulti-Head Attentionの利点はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "複数の異なる視点から系列間の関係を学習できる",
+          "explanation": {
+            "text": "Multi-Head Attentionは異なる重み行列を使い、複数の関係を同時に捉えることができます。",
+            "reference": "https://arxiv.org/abs/1706.03762"
+          }
+        },
+        {
+          "key": "B",
+          "text": "計算量を削減できる",
+          "explanation": {
+            "text": "Multi-Head Attentionは計算量削減より表現力向上が目的です。",
+            "reference": "https://arxiv.org/abs/1706.03762"
+          }
+        },
+        {
+          "key": "C",
+          "text": "学習率を自動調整する",
+          "explanation": {
+            "text": "学習率調整はオプティマイザに依存します。",
+            "reference": "https://arxiv.org/abs/1706.03762"
+          }
+        },
+        {
+          "key": "D",
+          "text": "勾配爆発を完全に防ぐ",
+          "explanation": {
+            "text": "勾配爆発を防ぐ機能はありません。",
+            "reference": "https://arxiv.org/abs/1706.03762"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Multi-Head Attentionは系列の依存関係を複数の異なる視点から学習する仕組みです。",
+        "reference": "https://arxiv.org/abs/1706.03762"
+      }
+    },
+    {
+      "id": "ai-e-q48",
+      "question": "早期終了（early stopping）の目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "過学習を防ぐ",
+          "explanation": {
+            "text": "早期終了は検証データで性能が悪化し始めた時点で学習を止めることで過学習を防ぎます。",
+            "reference": "https://cs231n.github.io/neural-networks-2/"
+          }
+        },
+        {
+          "key": "B",
+          "text": "学習率を増加させる",
+          "explanation": {
+            "text": "学習率の増加は早期終了の目的ではありません。",
+            "reference": "https://cs231n.github.io/neural-networks-2/"
+          }
+        },
+        {
+          "key": "C",
+          "text": "モデルのサイズを縮小する",
+          "explanation": {
+            "text": "早期終了はモデル構造を変更しません。",
+            "reference": "https://cs231n.github.io/neural-networks-2/"
+          }
+        },
+        {
+          "key": "D",
+          "text": "必ず最適解に到達する",
+          "explanation": {
+            "text": "早期終了は最適解を保証するものではありません。",
+            "reference": "https://cs231n.github.io/neural-networks-2/"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "早期終了は検証データでの性能悪化を契機に学習を停止し、過学習を防ぐ手法です。",
+        "reference": "https://cs231n.github.io/neural-networks-2/"
+      }
+    },
+    {
+      "id": "ai-e-q49",
+      "question": "教師なし学習の代表例として適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "クラスタリング",
+          "explanation": {
+            "text": "クラスタリングはラベルなしデータを分類する教師なし学習の代表例です。",
+            "reference": "https://scikit-learn.org/stable/modules/clustering.html"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ロジスティック回帰",
+          "explanation": {
+            "text": "ロジスティック回帰は教師あり学習の一種です。",
+            "reference": "https://scikit-learn.org/stable/modules/clustering.html"
+          }
+        },
+        {
+          "key": "C",
+          "text": "強化学習",
+          "explanation": {
+            "text": "強化学習は報酬信号を利用する学習手法であり、教師なし学習ではありません。",
+            "reference": "https://scikit-learn.org/stable/modules/clustering.html"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ニューラルネットによる分類",
+          "explanation": {
+            "text": "分類は教師あり学習のタスクです。",
+            "reference": "https://scikit-learn.org/stable/modules/clustering.html"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "教師なし学習の代表例はクラスタリングや次元削減などです。",
+        "reference": "https://scikit-learn.org/stable/modules/clustering.html"
+      }
+    },
+    {
+      "id": "ai-e-q50",
+      "question": "自己教師あり学習で利用されるコントラスト学習（contrastive learning）の特徴はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "同じデータの異なるビューを近づけ、異なるデータを遠ざける",
+          "explanation": {
+            "text": "コントラスト学習は同じサンプルの異なる変換を近くに、異なるサンプルを遠くに配置する表現学習手法です（例: SimCLR）。",
+            "reference": "https://arxiv.org/abs/2002.05709"
+          }
+        },
+        {
+          "key": "B",
+          "text": "教師ラベルを必須とする",
+          "explanation": {
+            "text": "コントラスト学習はラベル不要の自己教師あり学習です。",
+            "reference": "https://arxiv.org/abs/2002.05709"
+          }
+        },
+        {
+          "key": "C",
+          "text": "系列データの順序を保持する",
+          "explanation": {
+            "text": "系列順序保持はRNNやTransformerの役割であり、コントラスト学習の特徴ではありません。",
+            "reference": "https://arxiv.org/abs/2002.05709"
+          }
+        },
+        {
+          "key": "D",
+          "text": "生成モデルを利用して新しいデータを作る",
+          "explanation": {
+            "text": "コントラスト学習は生成モデルではなく表現学習手法です。",
+            "reference": "https://arxiv.org/abs/2002.05709"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "コントラスト学習は同一サンプルの異なるビューを近づけ、異なるサンプルを遠ざけることで特徴表現を学習します。",
+        "reference": "https://arxiv.org/abs/2002.05709"
+      }
+    }
+  ]
+}

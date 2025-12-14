@@ -1,0 +1,2416 @@
+{
+  "exam": {
+    "id": "SOA-C03",
+    "title": "AWS Certified CloudOps Engineer – Associate（旧 SysOps Admin）",
+    "description": "この認定は、AWS上でワークロードをデプロイ・運用・管理する技術者を対象に、運用・監視・自動化・セキュリティ・ネットワーク等のクラウド運用スキルを検証するものです。試験では、例えばモニタリング、ログ分析、パフォーマンス最適化、リソースのデプロイやプロビジョニング、自動化、災害復旧、ネットワークおよびコンテンツ配信、そしてセキュリティ・コンプライアンスといった分野について問われます。AWSのクラウド運用職を志す方が、自分のスキルを証明するための有力なステップとなります。",
+    "version": "2025年9月",
+    "price": "150 USD",
+    "difficulty": "普通",
+    "official-site": "https://aws.amazon.com/jp/certification/certified-cloudops-engineer-associate/",
+    "category": {
+      "id": "aws",
+      "name": "AWS"
+    }
+  },
+  "questions": [
+    {
+      "id": "aws-soa-c03-q1",
+      "question": "CloudWatchエージェントを用いてEC2インスタンスおよびEKSクラスタからカスタムメトリクスとログを集めたい。最も適切な設定はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "EC2とEKSの双方に対してCloudWatch エージェントをインストールし、CloudWatch Logs と CloudWatch Metrics の両方を有効にする。",
+          "explanation": {
+            "text": "CloudWatch エージェントは、EC2 や EKS 上で動作し、ログとメトリクスを収集可能。SOA-C03 のドメイン1「Monitoring, Logging, Analysis, Remediation, and Performance Optimization」に対応。", 
+            "reference": "https://d1.awsstatic.com/onedam/marketing-channels/website/aws/en_US/certification/approved/pdfs/docs-cloudops-associate/AWS-Certified-CloudOps-Engineer-Associate_Exam-Guide.pdf", 
+            "reference_label": "SOA-C03 Exam Guide Domain 1"
+          }
+        },
+        {
+          "key": "B",
+          "text": "EKS クラスタには CloudWatch Logs を使い、EC2 には別途カスタムスクリプトでメトリクスを収集して S3 に保存する。",
+          "explanation": {
+            "text": "この方法でも収集できるが、CloudWatch エージェントを使ったほうが設定・管理が一貫するしアラームやダッシュボードと統合しやすいため標準的には不十分。", 
+            "reference": "https://d1.awsstatic.com/onedam/marketing-channels/website/aws/en_US/certification/approved/pdfs/docs-cloudops-associate/AWS-Certified-CloudOps-Engineer-Associate_Exam-Guide.pdf", 
+            "reference_label": "SOA-C03 Exam Guide Domain 1"
+          }
+        },
+        {
+          "key": "C",
+          "text": "CloudWatch エージェントはログのみ収集し、メトリクスは CloudWatch Container Insights を使う。",
+          "explanation": {
+            "text": "コンテナ環境では Container Insights を使ってメトリクスの可視化が可能だが、ログ収集も必要ならエージェントとの併用が望ましい。選択肢としては部分正解だが「最も適切」ではない。", 
+            "reference": "https://d1.awsstatic.com/onedam/marketing-channels/website/aws/en_US/certification/approved/pdfs/docs-cloudops-associate/AWS-Certified-CloudOps-Engineer-Associate_Exam-Guide.pdf", 
+            "reference_label": "SOA-C03 Exam Guide Domain 1"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ログ収集は CloudWatch Logs エージェント、メトリクスは CloudWatch Metrics のみを使い、ログのフィルタリングやアラームは無視して後処理で行う。",
+          "explanation": {
+            "text": "アラームやフィルタリングを設定しないと、リアルタイムでの問題検知や自動対応（remediation）が難しい。SOA-C03 ではこれらも重視されている。", 
+            "reference": "https://d1.awsstatic.com/onedam/marketing-channels/website/aws/en_US/certification/approved/pdfs/docs-cloudops-associate/AWS-Certified-CloudOps-Engineer-Associate_Exam-Guide.pdf", 
+            "reference_label": "SOA-C03 Exam Guide Domain 1"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "CloudWatch エージェントを両方の環境に導入し、ログとメトリクスの両方を取得することで、モニタリング、アラーム、可観測性の要件を満たす。SOA-C03 のモニタリングドメインに適合。",
+        "reference": "https://d1.awsstatic.com/onedam/marketing-channels/website/aws/en_US/certification/approved/pdfs/docs-cloudops-associate/AWS-Certified-CloudOps-Engineer-Associate_Exam-Guide.pdf",
+        "reference_label": "SOA-C03 Exam Guide Domain 1"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q2",
+      "question": "複数アカウント＋マルチリージョン構成を持つ組織で、共通のセキュリティポリシーおよび監査ログを集中管理したい。どの AWS サービスまたは機能を使うのが最も適切か。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "各アカウントに CloudTrail を設置し、S3 バケットをアカウントごとに別ける。その後 Athena で各アカウントログを個別に分析。",
+          "explanation": {
+            "text": "動作はするが、集中管理とガバナンスの観点でメンテナンスが煩雑になる。", 
+            "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-multi-region-overview.html"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AWS Organizations を使い、Organization Trail を有効化し、ログを中央の S3 バケットに集約する。",
+          "explanation": {
+            "text": "このアプローチが推奨されており、Organization‐wide の CloudTrail でマルチアカウントの監査ログを集中管理できる。", 
+            "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/create-cloudtrail-all-regions.html"
+          }
+        },
+        {
+          "key": "C",
+          "text": "各リージョンごとに CloudWatch Logs を設置し、ログを CloudWatch Logs Insights で横断分析する。", 
+            "explanation": {
+              "text": "リアルタイム分析や監査には有効だが、ログ保存やアクセス権限管理の集中制御が足りない。", 
+              "reference": "https://docs.aws.amazon.com/cloudwatch/latest/logs/cloudwatch-logs-insights.html"
+            }
+          },
+        {
+          "key": "D",
+          "text": "AWS Config を各アカウント＋リージョンで有効化し、Config デリバリー先を中央アカウントの S3 へ設定する。",
+          "explanation": {
+            "text": "これは構成変更の監査には非常に有効。ただし、CloudTrail による API 呼び出しやログ記録とは用途が異なる。", 
+            "reference": "https://docs.aws.amazon.com/config/latest/developerguide/aggregator.html"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "AWS Organizations の Organization Trail によってマルチアカウント・マルチリージョンの API ログを中央に集約可能で、監査やコンプライアンス管理が容易になる。",
+        "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/create-cloudtrail-all-regions.html",
+        "reference_label": "CloudTrail Organization Trail"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q3",
+      "question": "高可用性および復旧目的で、RDS と S3 を組み合わせて災害発生時のデータ復旧 (disaster recovery) を設計する際、考慮すべき Recovery Time Objective (RTO) と Recovery Point Objective (RPO) の組み合わせとして正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "RTO：数分以内、RPO：ゼロ", 
+          "explanation": {
+            "text": "ゼロ RPO (データ損失なし) は継続的なレプリケーションなどが必要。コスト・複雑さが非常に高い。", 
+            "reference": "https://aws.amazon.com/backup/features/disaster-recovery/"
+          }
+        },
+        {
+          "key": "B",
+          "text": "RTO：1 時間以内、RPO：数時間", 
+          "explanation": {
+            "text": "実務でよく使われる妥協案。", 
+            "reference": "https://aws.amazon.com/backup/features/disaster-recovery/"
+          }
+        },
+        {
+          "key": "C",
+          "text": "RTO：数時間、RPO：ゼロ", 
+          "explanation": {
+            "text": "RPO ゼロは高コストであり、RTO 数時間と組み合わせる場合は継続的なレプリケーションが必要なので非現実的なケースが多い。", 
+            "reference": "https://aws.amazon.com/backup/features/disaster-recovery/"
+          }
+        },
+        {
+          "key": "D",
+          "text": "RTO：即時、RPO：数時間", 
+          "explanation": {
+            "text": "即時復旧（ゼロ時間）は非常に難しい。", 
+            "reference": "https://aws.amazon.com/backup/features/disaster-recovery/"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "最高レベルの可用性／復旧要件では、RTO をなるべく短く、RPO をゼロにすることでデータ損失を回避可能。ただしコスト・オペレーション負荷が大きい点を理解しておく必要がある。",
+        "reference": "https://aws.amazon.com/backup/features/disaster-recovery/"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q4",
+      "question": "Infrastructure as Code (IaC) を使って複数リージョン・複数アカウントでリソースをデプロイしたい。どの組み合わせが SOA-C03 試験の良い模範解答となるか（複数選択）。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AWS CloudFormation StackSets を使ってマルチアカウント・マルチリージョンにスタックを展開する。",
+          "explanation": {
+            "text": "StackSets はこの用途に合致する。", 
+            "reference": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/what-is-cfnstacksets.html"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AWS CDK（Cloud Development Kit）を使って複数アカウント／リージョンにまたがるアプリケーションを定義し、デプロイする。",
+          "explanation": {
+            "text": "CDK でも IaC を用いてマルチリージョン／アカウント対応のデプロイが可能。", 
+            "reference": "https://docs.aws.amazon.com/cdk/latest/guide/home.html"
+          }
+        },
+        {
+          "key": "C",
+          "text": "手動でコンソールから各アカウントにログインし、CloudFormation テンプレートをコピーしてデプロイする。",
+          "explanation": {
+            "text": "手動での作業はエラーが入りやすく自動化・再現性という観点で不適切。", 
+            "reference": "https://d1.awsstatic.com/onedam/marketing-channels/website/aws/en_US/certification/approved/pdfs/docs-cloudops-associate/AWS-Certified-CloudOps-Engineer-Associate_Exam-Guide.pdf"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Terraform を使ってプロバイダーを設定し、モジュールを用いて複数アカウント・リージョンを管理する。",
+          "explanation": {
+            "text": "Terraform も IaC ツールの一つであり、このような構成に適している。SOA-C03 で IaC／自動化が強調されているので有効。", 
+            "reference": "https://d1.awsstatic.com/onedam/marketing-channels/website/aws/en_US/certification/approved/pdfs/docs-cloudops-associate/AWS-Certified-CloudOps-Engineer-Associate_Exam-Guide.pdf"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "StackSets, CDK, Terraform の組み合わせが IaC を使ったマルチアカウント・マルチリージョン展開のベストプラクティス。手動作業（C）は自動化・再現性の観点で避けるべき。",
+        "reference": "https://d1.awsstatic.com/onedam/marketing-channels/website/aws/en_US/certification/approved/pdfs/docs-cloudops-associate/AWS-Certified-CloudOps-Engineer-Associate_Exam-Guide.pdf"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q5",
+      "question": "ネットワークのコスト最適化を考える上で、VPC NAT やインターネットゲートウェイ、NAT Gateway、NAT インスタンスの選択肢がある。多量のアウトバウンドトラフィックがある環境で最もコスト効率が良いのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "NAT インスタンスを使う。", 
+          "explanation": {
+            "text": "NAT インスタンスは初期コストが低く、小規模トラフィックでは有効だが、大量トラフィックだとスケーラビリティや帯域で制限があり、管理も手動が多い。", 
+            "reference": "https://aws.amazon.com/vpc/faqs/#NAT"
+          }
+        },
+        {
+          "key": "B",
+          "text": "NAT Gateway を使う。", 
+            "explanation": {
+              "text": "管理がほぼ不要でスケーラブルだが、コストは一定の転送量および時間使用料が掛かる。", 
+              "reference": "https://aws.amazon.com/vpc/faqs/#NAT"
+            }
+          },
+        {
+          "key": "C",
+          "text": "アウトバウンドのみなら Egress Only Internet Gateway を使う。", 
+          "explanation": {
+            "text": "Egress Only Internet Gateway は IPv6 のアウトバウンド通信に使えるが、IPv4 用の大量アウトバウンドには使えない。", 
+            "reference": "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-internet-gateway.html"
+          }
+        },
+        {
+          "key": "D",
+          "text": "エンドユーザーがすべてインターネット経由で通信するよう、Internet Gateway を経由するルーティングを最適化する。", 
+            "explanation": {
+              "text": "これは用途が異なる。アウトバウンド通信の多量処理であれば NAT Gateway が通常の選択肢になる。", 
+              "reference": "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-internet-gateway.html"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "大量トラフィックがあるなら、管理負荷・スケーラビリティの観点で NAT Gateway の方が NAT インスタンスより適している。ただしコスト構造を見て最適かを判断する必要あり。",
+        "reference": "https://aws.amazon.com/vpc/faqs/#NAT"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q6",
+      "question": "Amazon RDS の性能問題を診断する際、どの指標（metric）が遅延（latency）を引き起こす可能性が高いものか選べ（複数選択）。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "DBInstanceCPUUtilization", 
+          "explanation": {
+            "text": "CPU 使用率が高ければ処理遅延の原因となる。", 
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/monitoring-cloudwatch.html"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ReadIOPS", 
+            "explanation": {
+            "text": "読み込み操作の IOPS が高ければ待ち時間が発生する可能性あり。", 
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/monitoring-cloudwatch.html"
+          }
+        },
+        {
+          "key": "C",
+          "text": "DatabaseConnections", 
+            "explanation": {
+              "text": "接続数が多すぎるとスロットリングや待ち行列による遅延が発生する。", 
+              "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/monitoring-cloudwatch.html"
+            }
+          },
+        {
+          "key": "D",
+          "text": "FreeStorageSpace", 
+          "explanation": {
+            "text": "ストレージ空き容量が少ないと IOPS が低下する可能性はあるが、直接的な遅延の主因とは限らない。", 
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/monitoring-cloudwatch.html"
+          }
+        }
+      ],
+      "answer": "A,B,C",
+      "explanation": {
+        "text": "CPU 使用率、IOPS（読み込み書き込み）、接続数は遅延に直結する指標。FreeStorageSpace は過度に少なければ問題だが、通常即遅延とは限らない。",
+        "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/monitoring-cloudwatch.html"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q7",
+      "question": "運用と継続性 (Reliability and Business Continuity) ドメインにおける Multi-AZ RDS デプロイメントの主な利点として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "リージョン全体が停止してもフェイルオーバーして継続性が保証される。", 
+          "explanation": {
+            "text": "Multi-AZ は同リージョン内の異なるアベイラビリティゾーン (AZ) にレプリケーションを行い、AZ 障害に対して耐性を持たせる。リージョン全体の障害までは対応できない。", 
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html"
+          }
+        },
+        {
+          "key": "B",
+          "text": "読み取りレプリカ (Read Replica) を使って読み込みのスケーラビリティを確保する。", 
+            "explanation": {
+              "text": "読み取りレプリカはスケーラビリティ向上のため。Multi-AZ デプロイは主に可用性／耐障害性 (fault tolerance) のためであり、読み取りスケーラビリティは主目的ではない。", 
+              "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html"
+            }
+          },
+        {
+          "key": "C",
+          "text": "AZ 間のデータレプリケーションは非同期なのでデータ損失のリスクがある。", 
+            "explanation": {
+              "text": "Multi-AZ は同期レプリケーションまたはストレージベースの同期方式を用いるため、通常 AZ 間の障害時にデータ損失のリスクは非常に低い設計。", 
+              "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html"
+            }
+          },
+        {
+          "key": "D",
+          "text": "フェイルオーバーは自動的であり、アプリケーション設定を変えることなく行われる。", 
+            "explanation": {
+              "text": "通常は自動フェイルオーバーが行われ、アプリ側で endpoint を変える必要はない。", 
+              "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html"
+            }
+          }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "Multi-AZ デプロイメントでは、自動フェイルオーバーが可能であり、通常クライアントは同じ DB エンドポイントを使い続けることができる。可用性と故障耐性が目的。",
+        "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q8",
+      "question": "セキュリティとコンプライアンスの観点から、暗号化の設定で「転送中（in-transit）」と「保存時（at-rest）」の両方を確保できるのはどのサービスか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Amazon S3 + HTTPS (TLS) + サーバーサイド暗号化 (SSE-S3 または SSE-KMS)", 
+          "explanation": {
+            "text": "S3 では転送中は HTTPS/TLS、保存時は SSE を使って暗号化可能。", 
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingEncryption.html"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Amazon RDS + SSL 接続 + 暗号化されたストレージ (encrypted parameter)", 
+          "explanation": {
+            "text": "RDS ではストレージの暗号化オプションがあり、接続時に SSL/TLS を使えば転送中暗号化も確保できる。", 
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html"
+          }
+        },
+        {
+          "key": "C",
+          "text": "IAM ポリシーで HTTPS を強制し、S3 バケットを暗号化しても、AWS Config は転送中暗号化を制御できない。", 
+          "explanation": {
+            "text": "Config は構成管理／監査ツールであり、データ転送時の暗号化を制御する機能は外部サービスの設定に依存。"
+          }
+        },
+        {
+          "key": "D",
+          "text": "DynamoDB + HTTPS + 暗号化ストレージ設定", 
+            "explanation": {
+              "text": "DynamoDB も保存時暗号化 (at-rest encryption) を標準で提供し、HTTPS 接続を使えば転送中の暗号化が可能。", 
+              "reference": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/EncryptionAtRest.html"
+            }
+          }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "S3、RDS、DynamoDB の各サービスは保存時と転送時暗号化の両方をサポートしており、HTTPS／SSL や SSE／encrypted-storage の組み合わせで両方を確保できる。", 
+        "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q9",
+      "question": "パフォーマンス最適化の観点から、EC2 のストレージ I/O 遅延が発生しており、改善をしたい。最も効果的な方法はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "プロビジョンド IOPS（io1/io2）タイプの EBS ボリュームを使う。", 
+            "explanation": {
+              "text": "io1/io2 ボリュームは高 IOPS を保証でき、遅延を改善する用途で有効。", 
+              "reference": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html"
+            }
+        },
+        {
+          "key": "B",
+          "text": "ストレージを汎用 SSD (gp3) に変更し、必要なら IOPS を追加設定する。", 
+            "explanation": {
+              "text": "gp3 はコスト効率良く、IOPS のカスタマイズが可能で、遅延改善に有効な選択肢。", 
+              "reference": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html"
+            }
+        },
+        {
+          "key": "C",
+          "text": "Instance のタイプをストレージスループットやネットワーク帯域幅が高いものに変更する。", 
+            "explanation": {
+              "text": "I/O 性能はインスタンスの帯域幅やネットワーク性能にも依存するため、インスタンスタイプを見直すことは有効。", 
+              "reference": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types-ebs-optimization.html"
+            }
+          }
+      ],
+      "answer": "A,B,C",
+      "explanation": {
+        "text": "io1/io2 のようなプロビジョンド IOPS、gp3 + IOPS 設定、インスタンスタイプの性能見直しの組み合わせが遅延改善に有効な対策。", 
+        "reference": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q10",
+      "question": "コンテンツ配信および DNS 構成の最適化に関して、グローバルユーザーを持つウェブサイトの応答時間を低減するための正しい戦略はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Amazon CloudFront を使って静的アセットをエッジでキャッシュする。", 
+          "explanation": {
+            "text": "CloudFront によってユーザーの地理的位置近くでキャッシュを提供でき、レイテンシを低減可能。Networking & Content Delivery ドメインの典型的対策。", 
+            "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Route 53 による地理的ルーティング (Geolocation Routing) または レイテンシールーティング (Latency-Based Routing) を設定する。", 
+            "explanation": {
+              "text": "これによりユーザーに最も近いリージョンまたはエンドポイントにトラフィックを誘導でき、レイテンシを改善できる。", 
+              "reference": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html"
+            }
+          },
+        {
+          "key": "C",
+          "text": "静的ファイルを S3 でホストし、ユーザーに最も近いリージョンのバケットを指定する。", 
+            "explanation": {
+              "text": "S3 はバケットレベルでリージョンが決まるため、リージョンを跨いで自動的近いものを選ぶことはできない。CloudFront を使うのが一般的。", 
+              "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingAppropriateRegions.html"
+            }
+          },
+        {
+          "key": "D",
+          "text": "ウェブサイトを各リージョンに複製し、それぞれで API Gateway + Lambda を使って動的コンテンツを生成し、DNS ラウンドロビンで分散する。", 
+            "explanation": {
+              "text": "この方法も可能だが、管理コストやデータ同期、運用の複雑さが増すため静的資産にはキャッシュ戦略の方がまずは優しい。", 
+              "reference": "https://aws.amazon.com/blogs/aws/route-53/"
+            }
+          }
+      ],
+      "answer": "A,B",
+      "explanation": {
+        "text": "静的コンテンツは CloudFront でキャッシュするのがレイテンシ／ユーザ体験の観点で有効。加えてルーティングポリシーで地理／レイテンシベースのものを使うとさらに改善される。", 
+        "reference": "https://docs/aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q11",
+      "question": "運用チームは踏み台サーバーやSSH鍵を使わずにEC2へ安全にログインしたい。最も適切なサービスはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AWS Systems Manager Session Manager",
+          "explanation": {
+            "text": "インバウンドポートや踏み台を不要にし、ブラウザ/CLIから安全に接続できる。",
+            "reference": "https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html",
+            "reference_label": "Session Manager 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AWS Systems Manager Patch Manager",
+          "explanation": {
+            "text": "パッチ適用の自動化用途であり、対話セッション接続の機能ではない。",
+            "reference": "https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-patch.html",
+            "reference_label": "Patch Manager"
+          }
+        },
+        {
+          "key": "C",
+          "text": "AWS CloudTrail",
+          "explanation": {
+            "text": "API操作の監査ログ。リモート接続は提供しない。",
+            "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+            "reference_label": "CloudTrail ユーザーガイド"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Amazon Inspector",
+          "explanation": {
+            "text": "脆弱性スキャンが目的であり、ログイン手段ではない。",
+            "reference": "https://docs.aws.amazon.com/inspector/latest/user/getting-started.html",
+            "reference_label": "Inspector 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Session Managerはインバウンドポートを開けずにEC2へ安全に接続でき、運用のセキュリティと管理性を高める。",
+        "reference": "https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html",
+        "reference_label": "Session Manager 概要"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q12",
+      "question": "複数アカウント・複数リージョンの構成準拠状況を1つのダッシュボードで可視化したい。最も適した機能はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AWS Config Aggregator",
+          "explanation": {
+            "text": "マルチアカウント/リージョンの設定データを集約し、コンプライアンスを横断可視化できる。",
+            "reference": "https://docs.aws.amazon.com/config/latest/developerguide/aggregator.html",
+            "reference_label": "Config Aggregator"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AWS CloudTrail Lake",
+          "explanation": {
+            "text": "APIイベントをSQLで分析するが、構成準拠の集約可視化が主目的ではない。",
+            "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake.html",
+            "reference_label": "CloudTrail Lake"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Amazon OpenSearch Service",
+          "explanation": {
+            "text": "ログ分析基盤だが、Configのマルチアカウント集約機能の代替ではない。",
+            "reference": "https://docs.aws.amazon.com/opensearch-service/latest/developerguide/what-is.html",
+            "reference_label": "OpenSearch 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AWS Trusted Advisor",
+          "explanation": {
+            "text": "推奨事項は提供するが、Configのような構成準拠の集約は目的が異なる。",
+            "reference": "https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor.html",
+            "reference_label": "Trusted Advisor"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Config Aggregatorは組織全体の構成・準拠状況を集約して確認するための専用機能。",
+        "reference": "https://docs.aws.amazon.com/config/latest/developerguide/aggregator.html",
+        "reference_label": "Config Aggregator"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q13",
+      "question": "CloudTrailのイベントを保持し、SQLでインタラクティブにクエリできる機能はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "CloudTrail Lake",
+          "explanation": {
+            "text": "CloudTrail LakeはCloudTrailイベントを取り込み、SQLで分析できるデータレイク機能を提供する。",
+            "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake.html",
+            "reference_label": "CloudTrail Lake"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AthenaのS3ログ直接クエリのみ",
+          "explanation": {
+            "text": "AthenaでS3のCloudTrailログをクエリ可能だが、Lakeは管理・取り込み・スキーマ管理まで含む専用機能。",
+            "reference": "https://docs.aws.amazon.com/athena/latest/ug/cloudtrail-logs.html",
+            "reference_label": "AthenaでCloudTrailログ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Config Aggregator",
+          "explanation": {
+            "text": "構成データの集約であり、イベントのSQL分析機能ではない。",
+            "reference": "https://docs.aws.amazon.com/config/latest/developerguide/aggregator.html",
+            "reference_label": "Config Aggregator"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Inspector",
+          "explanation": {
+            "text": "脆弱性評価であり、監査イベントのSQL分析機能はない。",
+            "reference": "https://docs.aws.amazon.com/inspector/latest/user/getting-started.html",
+            "reference_label": "Inspector 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "CloudTrail LakeはCloudTrailイベントの長期保持とSQLクエリをネイティブに提供し、監査・調査を効率化する。",
+        "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake.html",
+        "reference_label": "CloudTrail Lake"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q14",
+      "question": "S3バケットの所有者がオブジェクト所有権を一元化し、ACLを無効化して権限管理をシンプルにしたい。どの設定が適切か。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "S3 Object Ownership の「Bucket owner enforced」を有効化する",
+          "explanation": {
+            "text": "ACLを無効化し、バケットポリシーとIAMで権限統一。オブジェクト所有権をバケット所有者に一元化できる。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/about-object-ownership.html",
+            "reference_label": "S3 Object Ownership"
+          }
+        },
+        {
+          "key": "B",
+          "text": "S3バケットの公開アクセスブロックを無効化する",
+          "explanation": {
+            "text": "公開アクセスブロックは公開可否に関する設定で、所有権の一元化とは別。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html",
+            "reference_label": "S3 公開アクセスブロック"
+          }
+        },
+        {
+          "key": "C",
+          "text": "S3バケットでSSE-KMSを有効化する",
+          "explanation": {
+            "text": "暗号化の設定であり、所有権やACLの無効化には影響しない。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html",
+            "reference_label": "SSE-KMS"
+          }
+        },
+        {
+          "key": "D",
+          "text": "S3アクセスログを有効化する",
+          "explanation": {
+            "text": "監査には有用だが、所有権一元化の要件は満たさない。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerLogs.html",
+            "reference_label": "S3 アクセスログ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Object OwnershipのBucket owner enforcedはACLを無効化し、所有権と権限管理を一元化するための推奨設定。",
+        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/about-object-ownership.html",
+        "reference_label": "S3 Object Ownership"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q15",
+      "question": "RDS Multi-AZの主目的として正しいものを選べ。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "高可用性のためのスタンバイへの自動フェイルオーバー",
+          "explanation": {
+            "text": "Multi-AZは別AZへ同期レプリケーションし、障害時に自動フェイルオーバーを提供する。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html",
+            "reference_label": "RDS Multi-AZ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "読み取りスケールアウトのためのリードレプリカ",
+          "explanation": {
+            "text": "読み取りスケールはRead Replicaの目的。Multi-AZは可用性中心。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html",
+            "reference_label": "RDS Read Replica"
+          }
+        },
+        {
+          "key": "C",
+          "text": "リージョン間DRのための自動クロスリージョン複製",
+          "explanation": {
+            "text": "Multi-AZは同一リージョン内。クロスリージョンは別機能。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html#USER_ReadRepl.XRgn",
+            "reference_label": "クロスリージョンRR"
+          }
+        },
+        {
+          "key": "D",
+          "text": "料金最適化のためストレージ階層の自動切替",
+          "explanation": {
+            "text": "コスト最適化ではなく可用性向上が目的。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html",
+            "reference_label": "RDS Multi-AZ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "RDS Multi-AZは高可用性設計で、障害時の自動フェイルオーバーを提供する。",
+        "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html",
+        "reference_label": "RDS Multi-AZ"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q16",
+      "question": "運用チームはWebアプリの外形監視を自動化し、ユーザー操作を再現して可用性と遅延を計測したい。適切なサービスはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "CloudWatch Synthetics Canary",
+          "explanation": {
+            "text": "スクリプト化したCanaryでエンドポイントを定期監視し、可用性やレイテンシを計測できる。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries.html",
+            "reference_label": "Synthetics Canary"
+          }
+        },
+        {
+          "key": "B",
+          "text": "CloudWatch メトリクス標準EC2統計",
+          "explanation": {
+            "text": "インフラ指標であり、ユーザー操作の再現は行わない。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/working_with_metrics.html",
+            "reference_label": "CloudWatch メトリクス"
+          }
+        },
+        {
+          "key": "C",
+          "text": "AWS Config ルール",
+          "explanation": {
+            "text": "構成準拠の評価であり、外形監視の機能ではない。",
+            "reference": "https://docs.aws.amazon.com/config/latest/developerguide/how-does-config-work.html",
+            "reference_label": "Config の仕組み"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AWS X-Ray",
+          "explanation": {
+            "text": "アプリ内部の分散トレースであり、外形監視の代替ではない。",
+            "reference": "https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html",
+            "reference_label": "X-Ray 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Synthetics Canaryは顧客視点の経路を再現して外形監視する専用サービス。",
+        "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries.html",
+        "reference_label": "Synthetics Canary"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q17",
+      "question": "EC2のI/O遅延を改善したい。費用対効果も考慮した推奨対応の組み合わせはどれか。（複数選択）",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "EBS gp3へ移行し必要なIOPS/スループットを個別にプロビジョニング",
+          "explanation": {
+            "text": "gp3はIOPS/スループットを独立設定でき、コスト効率よく性能向上が可能。",
+            "reference": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html",
+            "reference_label": "EBS ボリュームタイプ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "EBS io2（またはio2 Block Express）でプロビジョンドIOPSを利用",
+          "explanation": {
+            "text": "高IOPS/低レイテンシが必要な場合に有効。",
+            "reference": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html",
+            "reference_label": "EBS ボリュームタイプ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "EBS最適化帯域の高いインスタンスタイプへ変更",
+          "explanation": {
+            "text": "インスタンス帯域の上限がI/O性能を制約する場合があり、タイプ見直しが有効。",
+            "reference": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types-ebs-optimization.html",
+            "reference_label": "EBS最適化"
+          }
+        },
+        {
+          "key": "D",
+          "text": "EBSスナップショットを頻繁に取得してI/Oを高速化",
+          "explanation": {
+            "text": "スナップショットはバックアップ用途であり、運用時のI/O性能向上策ではない。",
+            "reference": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html",
+            "reference_label": "EBS スナップショット"
+          }
+        }
+      ],
+      "answer": "A,B,C",
+      "explanation": {
+        "text": "I/O遅延はボリュームタイプとIOPS/スループット設定、インスタンス帯域の見直しで改善するのが定石。",
+        "reference": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html",
+        "reference_label": "EBS ボリュームタイプ"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q18",
+      "question": "AWS Organizations配下で全アカウントに共通のセキュリティガードレールを適用し、許可されないアクションを明示的にブロックしたい。適切な仕組みはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Service Control Policy (SCP)",
+          "explanation": {
+            "text": "SCPは組織単位で許可のガードレールを定義し、メンバーアカウントの最大権限境界を制限できる。",
+            "reference": "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html",
+            "reference_label": "SCP 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "IAM Permission Boundary",
+          "explanation": {
+            "text": "個々のプリンシパルの最大権限を制約するが、組織全体の強制ガードレールではない。",
+            "reference": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html",
+            "reference_label": "Permission Boundary"
+          }
+        },
+        {
+          "key": "C",
+          "text": "AWS Config ルール",
+          "explanation": {
+            "text": "準拠状況の評価と検出は可能だが、直接の許可ブロックではない。",
+            "reference": "https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html",
+            "reference_label": "Config ルール"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CloudTrail Lake",
+          "explanation": {
+            "text": "監査・分析用途であり、許可制御は行わない。",
+            "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake.html",
+            "reference_label": "CloudTrail Lake"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "組織全体の許可ガードレールはSCPで実装するのがベストプラクティス。",
+        "reference": "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html",
+        "reference_label": "SCP 概要"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q19",
+      "question": "EC2へのポートフォワーディングセッションをSession Managerで開始したい。必要な前提条件として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "対象ノードに所定バージョン以上のSSM Agentがインストールされていること",
+          "explanation": {
+            "text": "ポートフォワーディングにはSSM Agentの対応バージョンが必要。",
+            "reference": "https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html",
+            "reference_label": "Session開始（ポート転送）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "インバウンドでTCP:22を開放しておくこと",
+          "explanation": {
+            "text": "Session Managerはインバウンドポート開放不要。",
+            "reference": "https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html",
+            "reference_label": "Session Manager 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "対象ノードが必ずパブリックIPを持つこと",
+          "explanation": {
+            "text": "パブリックIP不要。VPCエンドポイントなどで到達可能ならよい。",
+            "reference": "https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-networking.html",
+            "reference_label": "Session Manager ネットワーク"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CloudTrail Lakeが有効であること",
+          "explanation": {
+            "text": "CloudTrail Lakeは必須ではない。",
+            "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake.html",
+            "reference_label": "CloudTrail Lake"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ポートフォワーディングはSSM Agentの要件を満たす必要があり、SSHポート開放やパブリックIPは不要。",
+        "reference": "https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html",
+        "reference_label": "Session開始（ポート転送）"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q20",
+      "question": "CloudTrailを組織全体で集中管理し、全リージョンのAPIイベントを単一S3バケットへ集約したい。最も適切な設定はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AWS OrganizationsでOrganization Trailを作成し、全リージョンで有効化して中央S3へ配信",
+          "explanation": {
+            "text": "組織レベルのTrailはメンバーアカウント全体のイベントを集約可能。",
+            "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/create-cloudtrail-all-regions.html",
+            "reference_label": "全リージョンのTrail作成"
+          }
+        },
+        {
+          "key": "B",
+          "text": "各アカウントで個別のTrailを作成し、S3レプリケーションで集約",
+          "explanation": {
+            "text": "可能だが管理が煩雑で、OrganizationsのOrganization Trailが推奨。",
+            "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html",
+            "reference_label": "Trailの作成/更新"
+          }
+        },
+        {
+          "key": "C",
+          "text": "CloudWatch Logsにすべてのイベントを送信し、Logs Insightsで横断分析",
+          "explanation": {
+            "text": "分析は可能だが、集中ログ保管・配信はS3ベースのTrail集約が定石。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/cloudwatch-logs-insights.html",
+            "reference_label": "Logs Insights"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Athenaのワークグループを共有し、各アカウントのCloudTrailログを個別に参照",
+          "explanation": {
+            "text": "分析方法であり、ログ集約・集中管理の要件は満たさない。",
+            "reference": "https://docs.aws.amazon.com/athena/latest/ug/cloudtrail-logs.html",
+            "reference_label": "AthenaでCloudTrailログ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Organization Trailを使うとマルチアカウント・マルチリージョンのイベントを一元収集でき、監査や保全が容易になる。",
+        "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/create-cloudtrail-all-regions.html",
+        "reference_label": "全リージョンのTrail作成"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q21",
+      "question": "CloudWatch アラームでEC2のステータスチェック失敗を検知した際、自動で診断スクリプトを実行して結果をS3へ保存したい。最も運用自動化に適した組み合わせはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "EventBridge ルールでアラーム状態遷移をトリガーに Systems Manager Automation ランブックを起動する",
+          "explanation": {
+            "text": "CloudWatchアラーム→EventBridge→SSM Automationで自動修復/診断の実行が推奨パターン。",
+            "reference": "https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-working.html",
+            "reference_label": "SSM Automation の概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "CloudTrail でアラームイベントを検知し、Athena でクエリして通知する",
+          "explanation": {
+            "text": "CloudTrailはAPI監査であり、アラームの自動修復ワークフローには不向き。",
+            "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+            "reference_label": "CloudTrail ユーザーガイド"
+          }
+        },
+        {
+          "key": "C",
+          "text": "S3 イベントでEC2の状態変化を検知してLambdaを実行する",
+          "explanation": {
+            "text": "EC2の状態変化はS3イベントでは検知できない。S3はオブジェクト操作のイベント。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/NotificationHowTo.html",
+            "reference_label": "S3 イベント通知"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Config ルールの不適合を検知してSSM Run Commandを実行する",
+          "explanation": {
+            "text": "Configは構成準拠の検出。今回のトリガーはCloudWatchアラームであり前提が異なる。",
+            "reference": "https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html",
+            "reference_label": "AWS Config ルール"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "CloudWatchアラームの状態遷移をEventBridgeで受け、SSM Automationランブックを実行するのが標準的な自動診断・修復フロー。",
+        "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Using-CloudWatch-Events.html",
+        "reference_label": "CloudWatch と EventBridge の連携"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q22",
+      "question": "急激なコストの異常上昇（スパイク）を自動検知し、メールで通知したい。最も適切なサービス/機能はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AWS Cost Anomaly Detection のモニターとサブスクリプション",
+          "explanation": {
+            "text": "機械学習で異常支出を検知し、メール/SNS/Chatbot通知が可能。",
+            "reference": "https://docs.aws.amazon.com/cost-management/latest/userguide/manage-anomaly-detection.html",
+            "reference_label": "Cost Anomaly Detection"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AWS Budgets のコスト予算アラートのみ",
+          "explanation": {
+            "text": "予算超過の通知は可能だが、異常検知（スパイク検知）をMLで行うのはCost Anomaly Detection。",
+            "reference": "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-create.html",
+            "reference_label": "AWS Budgets"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Trusted Advisor のコスト最適化チェック",
+          "explanation": {
+            "text": "推奨事項の提供が主で、リアルタイムの異常検知が目的ではない。",
+            "reference": "https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor.html",
+            "reference_label": "Trusted Advisor"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CloudWatch メトリクスアラームで請求額（EstimatedCharges）を監視",
+          "explanation": {
+            "text": "全体の増加は検知できるが、サービス単位の異常や根因特定には不十分。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/monitor_estimated_charges_with_cloudwatch.html",
+            "reference_label": "EstimatedCharges の監視"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "スパイクの自動検知にはCost Anomaly Detectionが最適。特定のサービス/アカウント/タグ単位のモニターも可能。",
+        "reference": "https://docs.aws.amazon.com/cost-management/latest/userguide/manage-anomaly-detection.html",
+        "reference_label": "Cost Anomaly Detection"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q23",
+      "question": "災害対策として、データを暗号化したまま別リージョンでも低レイテンシで復号・再暗号化を行いたい。適切な鍵管理アプローチはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AWS KMS のマルチリージョンキー（Multi-Region keys）を使用し、レプリカキーを作成する",
+          "explanation": {
+            "text": "同一キーID/マテリアルをリージョン間でレプリケートでき、クロスリージョン復号が容易。",
+            "reference": "https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html",
+            "reference_label": "KMS Multi-Region Keys"
+          }
+        },
+        {
+          "key": "B",
+          "text": "別リージョンで新しいKMSキーを作成し、すべてのデータを再暗号化する",
+          "explanation": {
+            "text": "可用だが運用負荷・再暗号化コストが高い。即時性に欠ける。",
+            "reference": "https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html",
+            "reference_label": "KMS の基本概念"
+          }
+        },
+        {
+          "key": "C",
+          "text": "KMS キーマテリアルをエクスポートして手動で他リージョンにインポートする",
+          "explanation": {
+            "text": "キーマテリアルの取り扱いはリスクが高く、推奨されない。",
+            "reference": "https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html",
+            "reference_label": "キーマテリアルのインポート"
+          }
+        },
+        {
+          "key": "D",
+          "text": "S3 サーバーサイド暗号化（SSE-S3）に切り替える",
+          "explanation": {
+            "text": "SSE-S3はS3管理のキーであり、他サービスやアプリでのクロスリージョン暗号運用要件は満たさない。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingServerSideEncryption.html",
+            "reference_label": "S3 サーバーサイド暗号化"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "KMS マルチリージョンキーは災害対策での鍵の可搬性と暗号運用の一貫性を提供し、低レイテンシなクロスリージョン復号/再暗号化が可能。",
+        "reference": "https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html",
+        "reference_label": "KMS Multi-Region Keys"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q24",
+      "question": "S3 バケット間レプリケーションで、レプリケーション時間のSLAと可視化が必要。最も適切な機能はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "S3 Replication Time Control (S3 RTC) を有効化する",
+          "explanation": {
+            "text": "S3 RTCは大半のオブジェクトを15分以内にレプリケートするSLAとメトリクス/イベントを提供。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-time-control.html",
+            "reference_label": "S3 レプリケーション時間制御"
+          }
+        },
+        {
+          "key": "B",
+          "text": "S3 ライフサイクルルールで別クラスへ移行する",
+          "explanation": {
+            "text": "ストレージ階層管理であり、レプリケーションやSLAを提供しない。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html",
+            "reference_label": "S3 ライフサイクル"
+          }
+        },
+        {
+          "key": "C",
+          "text": "S3 イベント通知をCloudWatchに送る",
+          "explanation": {
+            "text": "イベント通知は可能だが、時間SLAや遅延可視化はRTCの機能に含まれる。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/NotificationHowTo.html",
+            "reference_label": "S3 イベント通知"
+          }
+        },
+        {
+          "key": "D",
+          "text": "S3 Select を使用する",
+          "explanation": {
+            "text": "S3 Selectはオブジェクトの一部取得機能で、レプリケーション管理ではない。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/selecting-content-from-objects.html",
+            "reference_label": "S3 Select"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "可観測性とレプリケーション時間の保証が要件のため、S3 RTCが最も適合する。",
+        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-time-control.html",
+        "reference_label": "S3 レプリケーション時間制御"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q25",
+      "question": "警報ノイズを抑えながら複数の前提条件が満たされたときのみ通知したい。CloudWatchで推奨される手法はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "CloudWatch コンポジットアラーム（Composite Alarm）で複数アラームの状態を組み合わせる",
+          "explanation": {
+            "text": "アラームルールでAND/ORなどの条件式を定義し、複数アラームの状態に基づき通知できる。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Create_Composite_Alarm.html",
+            "reference_label": "Composite Alarm"
+          }
+        },
+        {
+          "key": "B",
+          "text": "一つのメトリクスだけにしきい値を厳しく設定する",
+          "explanation": {
+            "text": "単体メトリクスでは誤検知の抑制が弱い。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html",
+            "reference_label": "アラームの基本"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ダッシュボードで毎時手動確認する",
+          "explanation": {
+            "text": "自動通知の要件を満たさない。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Dashboards.html",
+            "reference_label": "CloudWatch ダッシュボード"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Logs Insightsでクエリし続ける常時実行Lambdaを作る",
+          "explanation": {
+            "text": "過剰設計でコスト/運用負荷が高い。アラームの仕組みを使うべき。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/cloudwatch-logs-insights.html",
+            "reference_label": "Logs Insights"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Composite Alarmにより複数アラームの組合せ条件を定義してアクションを発火でき、ノイズを減らせる。",
+        "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Create_Composite_Alarm.html",
+        "reference_label": "Composite Alarm"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q26",
+      "question": "組織全体で人のログインとアカウント横断の権限付与を一元管理したい。最も適切なサービスはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "IAM Identity Center（旧AWS SSO）で権限セットを作成し、アカウント/OUに割り当てる",
+          "explanation": {
+            "text": "SSOと権限セットでマルチアカウントのアクセス管理を一元化できる。",
+            "reference": "https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html",
+            "reference_label": "IAM Identity Center 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "各アカウントにローカルIAMユーザーを作成し手動で権限管理する",
+          "explanation": {
+            "text": "スケールしない上、運用とセキュリティの負荷が高い。",
+            "reference": "https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html",
+            "reference_label": "IAM 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "CloudTrail LakeでAPI履歴を集約する",
+          "explanation": {
+            "text": "監査目的であり、アクセス管理自体は行わない。",
+            "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake.html",
+            "reference_label": "CloudTrail Lake"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Trusted AdvisorでIAMのベストプラクティス違反を検知する",
+          "explanation": {
+            "text": "推奨事項は得られるが、SSO/権限配布の一元管理とは目的が異なる。",
+            "reference": "https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor-best-practices.html",
+            "reference_label": "TA ベストプラクティス"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "IAM Identity Centerはマルチアカウントでの認証と権限セット配布を一元化するための正式な手段。",
+        "reference": "https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html",
+        "reference_label": "IAM Identity Center 概要"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q27",
+      "question": "EC2に対し、特定のソフトウェアが常に所定バージョンでインストールされている状態を自動維持したい。最も適切なSystems Managerの機能はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "State Manager のアソシエーションで所望状態を適用する",
+          "explanation": {
+            "text": "所望状態（Desired State）を継続適用し、ドリフトを自動修正できる。",
+            "reference": "https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-state.html",
+            "reference_label": "State Manager"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Parameter Store にバージョン番号を保存する",
+          "explanation": {
+            "text": "パラメータ保管はできるが、適用/維持は別機能。",
+            "reference": "https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html",
+            "reference_label": "Parameter Store"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Session Manager で都度ログインして手動更新する",
+          "explanation": {
+            "text": "手動運用は継続維持の要件に合わない。",
+            "reference": "https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html",
+            "reference_label": "Session Manager"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CloudWatch ダッシュボードでインストール状況を可視化する",
+          "explanation": {
+            "text": "可視化はできても、状態維持は実施できない。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Dashboards.html",
+            "reference_label": "CloudWatch ダッシュボード"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "State Managerは所望状態管理に最適で、ソフトウェアのインストールや設定の維持を自動化できる。",
+        "reference": "https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-state.html",
+        "reference_label": "State Manager"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q28",
+      "question": "EKSワークロードのトラブルシューティングのため、コントロールプレーンのログ収集とノード/コンテナのメトリクス可視化を行いたい。適切な構成はどれか。（複数選択）",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "EKS コントロールプレーンのログ出力を有効化して CloudWatch Logs に送る",
+          "explanation": {
+            "text": "APIサーバーなどの制御面ログをCloudWatchへ出力し、監査/調査が容易になる。",
+            "reference": "https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html",
+            "reference_label": "EKS コントロールプレーンログ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "CloudWatch Container Insights を有効化する",
+          "explanation": {
+            "text": "ノード/Pod/Containerのメトリクス・ログを収集しボトルネックを可視化できる。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Container-Insights.html",
+            "reference_label": "Container Insights"
+          }
+        },
+        {
+          "key": "C",
+          "text": "S3 Select を使ってPodログをストリーミングする",
+          "explanation": {
+            "text": "S3 Selectはオブジェクトの部分抽出。Podログの収集/分析用途ではない。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/selecting-content-from-objects.html",
+            "reference_label": "S3 Select"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AWS Backup からEKSのジョブを直接監視する",
+          "explanation": {
+            "text": "AWS Backupはバックアップ/リカバリの管理であり、運用監視ではない。",
+            "reference": "https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html",
+            "reference_label": "AWS Backup 概要"
+          }
+        }
+      ],
+      "answer": "A,B",
+      "explanation": {
+        "text": "EKSの制御面ログはCloudWatch Logsへ、データプレーンの可観測性はContainer Insightsで可視化するのが定石。",
+        "reference": "https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html",
+        "reference_label": "EKS コントロールプレーンログ"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q29",
+      "question": "複数アカウント/複数リージョンに標準VPC構成を一括展開・更新したい。運用負荷を抑えながら実現する最適な仕組みはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "CloudFormation StackSets をOrganizationsの委任管理者（Delegated Admin）で運用する",
+          "explanation": {
+            "text": "OU/アカウントに対するテンプレートの一括展開・更新が可能で、マルチリージョンにも対応。",
+            "reference": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-using.html",
+            "reference_label": "StackSets と Organizations"
+          }
+        },
+        {
+          "key": "B",
+          "text": "各アカウントで手動デプロイし、差分はConfluenceに記録する",
+          "explanation": {
+            "text": "再現性/自動化の観点で不適切。人的ミスの温床。",
+            "reference": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/what-is-cfn.html",
+            "reference_label": "CloudFormation 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "一つのリージョンにだけテンプレートを適用し、他リージョンへはS3レプリケーションでコピーする",
+          "explanation": {
+            "text": "テンプレートの配布はできてもスタックの作成/更新は行われない。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html",
+            "reference_label": "S3 レプリケーション"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Terraform のローカル実行のみで全アカウントへ適用する",
+          "explanation": {
+            "text": "可能だが、試験観点ではAWSネイティブのStackSets+Orgsがより直接的な解答。",
+            "reference": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/what-is-cfnstacksets.html",
+            "reference_label": "StackSets 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "StackSetsをOrganizations統合で使うとOU単位の一括デプロイ/更新が容易になり、運用負荷を最小化できる。",
+        "reference": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-using.html",
+        "reference_label": "StackSets と Organizations"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q30",
+      "question": "バックアップのガバナンスを強化し、全アカウントに共通のバックアップポリシー（スケジュール/保持/ボルト暗号化）を適用したい。最適なアプローチはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AWS Backup と AWS Organizations を統合し、バックアップポリシーをOU/アカウントに適用する",
+          "explanation": {
+            "text": "組織単位で標準バックアップ設定を配布・強制でき、クロスアカウントも統合管理可能。",
+            "reference": "https://docs.aws.amazon.com/aws-backup/latest/devguide/organize-backups.html",
+            "reference_label": "Organizations と AWS Backup"
+          }
+        },
+        {
+          "key": "B",
+          "text": "各アカウントでBackupプランを個別作成し、運用Runbookに従って手動で同期する",
+          "explanation": {
+            "text": "運用ミスのリスクが高く、統制が弱い。",
+            "reference": "https://docs.aws.amazon.com/aws-backup/latest/devguide/what-is.html",
+            "reference_label": "AWS Backup 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "S3ライフサイクルで全データを低コスト階層へ移動する",
+          "explanation": {
+            "text": "保管階層の最適化であり、バックアップ/リカバリのポリシー適用ではない。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html",
+            "reference_label": "S3 ライフサイクル"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CloudWatch イベントで週次Lambdaを起動し、各アカウントにBackupプランを作成する自作スクリプトを回す",
+          "explanation": {
+            "text": "自作でも可能だが、公式のOrganizations統合とポリシー配布機能を使う方が堅牢で保守容易。",
+            "reference": "https://docs.aws.amazon.com/aws-backup/latest/devguide/organize-backups.html",
+            "reference_label": "Organizations と AWS Backup"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "AWS BackupのOrganizations統合により、OU/アカウントへ標準化されたバックアップポリシーを一括適用でき、コンプライアンス運用が容易になる。",
+        "reference": "https://docs.aws.amazon.com/aws-backup/latest/devguide/organize-backups.html",
+        "reference_label": "Organizations と AWS Backup"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q31",
+      "question": "AWS Incident Manager のプレイブックを利用する利点として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "インシデント対応の手順を自動化して標準化できる",
+          "explanation": {
+            "text": "プレイブックは標準化された手順を自動実行し、診断〜復旧を迅速化する。",
+            "reference": "https://docs.aws.amazon.com/incident-manager/latest/userguide/what-is-incident-manager.html",
+            "reference_label": "Incident Manager とは"
+          }
+        },
+        {
+          "key": "B",
+          "text": "すべてのIAMユーザーに管理者権限を付与する",
+          "explanation": {
+            "text": "権限付与の話ではなく、セキュリティ上も不適切。",
+            "reference": "https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html",
+            "reference_label": "IAM 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "EC2インスタンスの自動スケーリングを行う",
+          "explanation": {
+            "text": "スケーリングはAuto Scalingの機能。Incident Managerの目的ではない。",
+            "reference": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
+            "reference_label": "EC2 Auto Scaling"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CloudTrail ログを30日以内に強制削除する",
+          "explanation": {
+            "text": "監査ログの削除は推奨されない。Incident Managerの機能でもない。",
+            "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+            "reference_label": "CloudTrail 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Incident Managerのプレイブックはオペレーションの自動化・標準化を通じてMTTRを低減する。",
+        "reference": "https://docs.aws.amazon.com/incident-manager/latest/userguide/what-is-incident-manager.html",
+        "reference_label": "Incident Manager とは"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q32",
+      "question": "CloudWatch RUM (Real User Monitoring) の主な利用目的として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "エンドユーザーが実際に体験するウェブアプリのパフォーマンスを可視化する",
+          "explanation": {
+            "text": "実ユーザーのブラウザから遅延・エラーなどを収集して可視化できる。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM.html",
+            "reference_label": "CloudWatch RUM 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "アプリ内部の依存関係を分散トレースで可視化する",
+          "explanation": {
+            "text": "分散トレースはX-Rayの役割でRUMの目的ではない。",
+            "reference": "https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html",
+            "reference_label": "AWS X-Ray 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "コンテナのCPU/メモリ使用率を可視化する",
+          "explanation": {
+            "text": "これはContainer Insightsの機能。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Container-Insights.html",
+            "reference_label": "Container Insights"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CloudTrail イベントをSQLで直接分析する",
+          "explanation": {
+            "text": "CloudTrail Lakeの機能であり、RUMではない。",
+            "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake.html",
+            "reference_label": "CloudTrail Lake"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "CloudWatch RUMは実ユーザーの体験を計測し、クライアント側の問題を特定するためのサービス。",
+        "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM.html",
+        "reference_label": "CloudWatch RUM 概要"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q33",
+      "question": "Amazon ECR のイメージに脆弱性が含まれていないかを自動スキャンする機能はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Amazon Inspector によるECRイメージスキャン（強化スキャン）",
+          "explanation": {
+            "text": "InspectorとECRの統合により、継続的・自動的な脆弱性スキャンが可能。",
+            "reference": "https://docs.aws.amazon.com/inspector/latest/user/scanning-ecr.html",
+            "reference_label": "Inspector でのECRスキャン"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AWS Config",
+          "explanation": {
+            "text": "構成準拠評価であり、イメージ脆弱性スキャンは対象外。",
+            "reference": "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
+            "reference_label": "AWS Config 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Trusted Advisor",
+          "explanation": {
+            "text": "ベストプラクティスの推奨は行うが、イメージ脆弱性のスキャンはしない。",
+            "reference": "https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor.html",
+            "reference_label": "Trusted Advisor 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CloudWatch Logs",
+          "explanation": {
+            "text": "ログ管理のサービス。脆弱性スキャン機能はない。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html",
+            "reference_label": "CloudWatch Logs 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Inspectorの強化スキャンとECRの統合で、プッシュ時や継続的に脆弱性検出ができる。",
+        "reference": "https://docs.aws.amazon.com/inspector/latest/user/scanning-ecr.html",
+        "reference_label": "Inspector でのECRスキャン"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q34",
+      "question": "RDSでポイントインタイムリカバリ（PITR）を迅速に行いたい場合に有効な機能はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Aurora Backtrack",
+          "explanation": {
+            "text": "Aurora MySQLで指定時点に高速に巻き戻せる機能（バックアップ復元不要）。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-backtrack.html",
+            "reference_label": "Aurora Backtrack 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "S3 バージョニング",
+          "explanation": {
+            "text": "オブジェクト履歴の機能であり、RDSのPITRには関係しない。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html",
+            "reference_label": "S3 バージョニング"
+          }
+        },
+        {
+          "key": "C",
+          "text": "CloudTrail Lake",
+          "explanation": {
+            "text": "監査用データレイクであり、DBの復旧機能はない。",
+            "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake.html",
+            "reference_label": "CloudTrail Lake 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "EBS Fast Snapshot Restore",
+          "explanation": {
+            "text": "ボリューム復元の高速化だが、Auroraの柔軟な時点戻しとは用途が異なる。",
+            "reference": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-fast-snapshot-restore.html",
+            "reference_label": "EBS FSR"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Aurora Backtrackはアプリを停止した上でDBを指定時点に素早く戻せるPITR特化機能。",
+        "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-backtrack.html",
+        "reference_label": "Aurora Backtrack 概要"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q35",
+      "question": "ネットワーク到達性の問題調査のため、VPC内のリソース間の通信経路を解析する適切なサービスはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "VPC Reachability Analyzer",
+          "explanation": {
+            "text": "ソースと宛先間の到達性を解析し、経路やブロック要因を可視化できる。",
+            "reference": "https://docs.aws.amazon.com/vpc/latest/reachability/what-is-reachability-analyzer.html",
+            "reference_label": "Reachability Analyzer とは"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AWS Config",
+          "explanation": {
+            "text": "構成監査のサービスであり、パス解析は行わない。",
+            "reference": "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
+            "reference_label": "AWS Config 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "CloudTrail Lake",
+          "explanation": {
+            "text": "API監査のデータレイクであり、到達性解析ではない。",
+            "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake.html",
+            "reference_label": "CloudTrail Lake 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AWS X-Ray",
+          "explanation": {
+            "text": "アプリの分散トレースで、ネットワーク経路診断は対象外。",
+            "reference": "https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html",
+            "reference_label": "AWS X-Ray 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Reachability Analyzerにより、VPC内外の到達性と阻害要因（SG/NACL/ルートなど）を特定できる。",
+        "reference": "https://docs.aws.amazon.com/vpc/latest/reachability/what-is-reachability-analyzer.html",
+        "reference_label": "Reachability Analyzer とは"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q36",
+      "question": "コスト配賦レポートを作成し、部門ごとの請求額を把握したい。最も推奨される方法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "コスト配賦タグを有効化し、Cost Explorerで分析する",
+          "explanation": {
+            "text": "コスト配賦タグを有効化してからタグベースでCost Explorer分析・レポートが可能。",
+            "reference": "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html",
+            "reference_label": "コスト配賦タグ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Trusted Advisor の推奨事項を確認する",
+          "explanation": {
+            "text": "配賦レポートではなく、推奨項目の提示が主目的。",
+            "reference": "https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor.html",
+            "reference_label": "Trusted Advisor 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Config Aggregatorで部門ごとのリソースを確認する",
+          "explanation": {
+            "text": "構成監査であり、請求の配賦分析機能はない。",
+            "reference": "https://docs.aws.amazon.com/config/latest/developerguide/aggregator.html",
+            "reference_label": "Config Aggregator"
+          }
+        },
+        {
+          "key": "D",
+          "text": "S3ライフサイクルで部門別に保存先を分ける",
+          "explanation": {
+            "text": "ストレージライフサイクル管理で、コスト配賦レポートの要件を満たさない。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html",
+            "reference_label": "S3 ライフサイクル"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "配賦タグ有効化＋Cost Explorer分析が部門別のコスト可視化におけるベストプラクティス。",
+        "reference": "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html",
+        "reference_label": "コスト配賦タグ"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q37",
+      "question": "Aurora Global Database の主な特徴として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "プライマリリージョンから別リージョンへ低レイテンシの非同期レプリケーションを行い、グローバル読取りを提供する",
+          "explanation": {
+            "text": "Aurora Global Databaseは非同期で別リージョンへ複製し、低レイテンシのリージョンローカルな読取りを可能にする。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html",
+            "reference_label": "Aurora Global Database"
+          }
+        },
+        {
+          "key": "B",
+          "text": "複数リージョン間で同期レプリケーションを行う",
+          "explanation": {
+            "text": "同期ではなく非同期。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html",
+            "reference_label": "Aurora Global Database"
+          }
+        },
+        {
+          "key": "C",
+          "text": "リージョン障害時に自動で全リージョンが同時に書込み可能になる",
+          "explanation": {
+            "text": "自動一斉昇格は行わず、管理操作による昇格が必要。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html",
+            "reference_label": "Aurora Global Database"
+          }
+        },
+        {
+          "key": "D",
+          "text": "オンプレミスMySQLと直接同期レプリケーションする",
+          "explanation": {
+            "text": "オンプレMySQLとの直接同期はサポート外。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html",
+            "reference_label": "Aurora Global Database"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Aurora Global Databaseは非同期でグローバルに複製し、リージョン毎の低レイテンシ読取りとDR対応を実現する。",
+        "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html",
+        "reference_label": "Aurora Global Database"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q38",
+      "question": "毎日 09:00（Asia/Tokyo）にSSM Automationランブックを起動し、失敗時は再試行とデッドレターキュー（DLQ）に送信したい。最も適切な設定はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Amazon EventBridge Schedulerで時間帯（タイムゾーン）を指定し、ターゲットをStartAutomationExecutionに設定。再試行ポリシーとDLQを構成する",
+          "explanation": {
+            "text": "Schedulerはタイムゾーン指定・リトライ・DLQ・柔軟なターゲット（SSM API）をサポートする。",
+            "reference": "https://docs.aws.amazon.com/scheduler/latest/UserGuide/what-is-scheduler.html",
+            "reference_label": "EventBridge Scheduler 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "CloudWatch アラームでCPU使用率を監視し、アラーム発火時にSSM Automationを呼ぶ",
+          "explanation": {
+            "text": "時刻指定の定期実行ではなく、メトリクス閾値に基づくトリガー。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html",
+            "reference_label": "CloudWatch アラーム入門"
+          }
+        },
+        {
+          "key": "C",
+          "text": "EventBridge ルール（スケジュール式）でcronを使うが、タイムゾーンはUTC固定のため日本時間は手動換算する",
+          "explanation": {
+            "text": "従来のスケジュールルールはUTCのみ。タイムゾーン指定とDLQ構成はSchedulerの利点。",
+            "reference": "https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-create-rule-schedule.html",
+            "reference_label": "EventBridge スケジュール式（UTC）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IAM Identity Centerで毎日9時にユーザーへ実行を促すメールを送る",
+          "explanation": {
+            "text": "認証/SSOのサービスであり、ジョブの自動実行やDLQは提供しない。",
+            "reference": "https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html",
+            "reference_label": "IAM Identity Center 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "時刻・タイムゾーン指定の定期実行、失敗時のリトライとDLQを一体で設定できるのはEventBridge Scheduler。ターゲットにSSMのStartAutomationExecutionを直接指定できる。",
+        "reference": "https://docs.aws.amazon.com/scheduler/latest/UserGuide/what-is-scheduler.html",
+        "reference_label": "EventBridge Scheduler 概要"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q39",
+      "question": "RDSの自動バックアップと手動スナップショットに関する説明として正しいものはどれか。（複数選択）",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "自動バックアップは保持期間内でポイントインタイムリカバリ（PITR）が可能",
+          "explanation": {
+            "text": "自動バックアップでログを用いたPITRができる（保持期間内）。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIT.html",
+            "reference_label": "RDS のポイントインタイム復元"
+          }
+        },
+        {
+          "key": "B",
+          "text": "手動スナップショットは明示的に削除するまで保持される",
+          "explanation": {
+            "text": "自動削除されず、保持はユーザー管理。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CreateSnapshot.html",
+            "reference_label": "DB スナップショットの作成"
+          }
+        },
+        {
+          "key": "C",
+          "text": "自動バックアップはリージョン間で自動レプリケーションされるため、追加設定なしでDRになる",
+          "explanation": {
+            "text": "自動バックアップは自動でクロスリージョン化されない。クロスリージョンはスナップショットコピー等が必要。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIT.html",
+            "reference_label": "RDS のPITR/バックアップ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "手動スナップショットをクロスリージョンへコピーできる",
+          "explanation": {
+            "text": "スナップショットコピーはサポートされ、DR戦略に活用できる。",
+            "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html",
+            "reference_label": "スナップショットのコピー"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "RDSのPITRは自動バックアップの保持期間内で実施可能。手動スナップショットは明示的削除まで保持され、クロスリージョンコピーも可能。一方、自動バックアップはデフォルトでクロスリージョンには複製されない。",
+        "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIT.html",
+        "reference_label": "RDS のポイントインタイム復元"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q40",
+      "question": "組織全体でAWSサービス障害やメンテナンスの影響を把握したい。アカウント横断でヘルスイベントを集約表示する適切な機能はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AWS Health Dashboard の“組織ビュー”（Organizations統合）を有効化する",
+          "explanation": {
+            "text": "Organizationsと統合し、メンバーアカウントのHealthイベントを集中表示できる。",
+            "reference": "https://docs.aws.amazon.com/health/latest/ug/organizational-view-health.html",
+            "reference_label": "AWS Health 組織ビュー"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Trusted Advisorを定期実行して結果をメール送信する",
+          "explanation": {
+            "text": "推奨事項の提示であり、サービス障害イベントの集約ではない。",
+            "reference": "https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor.html",
+            "reference_label": "Trusted Advisor 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "CloudTrail Lakeでエラーコードの多いAPIを検索する",
+          "explanation": {
+            "text": "監査クエリは可能だが、公式ヘルスイベントの集約ビューとは異なる。",
+            "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake.html",
+            "reference_label": "CloudTrail Lake 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Config Aggregatorで不適合リソースを一覧する",
+          "explanation": {
+            "text": "構成準拠の集約であり、サービスヘルスイベントの集約ではない。",
+            "reference": "https://docs.aws.amazon.com/config/latest/developerguide/aggregator.html",
+            "reference_label": "Config Aggregator"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "AWS Healthの組織ビューにより、Organizations配下の全アカウントのヘルスイベントを中央から把握できる。",
+        "reference": "https://docs.aws.amazon.com/health/latest/ug/organizational-view-health.html",
+        "reference_label": "AWS Health 組織ビュー"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q41",
+      "question": "ALBの5xxエラー率（5xx_count/requests）を算出してしきい値超過時に通知したい。最もシンプルに実現できるCloudWatchの機能はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Metric Mathで2つのメトリクスから算出メトリクスを作り、その結果にアラームを設定",
+          "explanation": {
+            "text": "CloudWatch Metric Mathで分数・比率などの式を定義し、結果に対してアラーム化できる。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html",
+            "reference_label": "CloudWatch Metric Math"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Composite Alarmで5xxとリクエスト数の2つのアラームをAND条件で結合",
+          "explanation": {
+            "text": "Composite Alarmはアラーム状態の論理結合であり、比率の算術計算は行えない。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Create_Composite_Alarm.html",
+            "reference_label": "Composite Alarm"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Logs Insightsでクエリを常時実行し、しきい値超過時に通知",
+          "explanation": {
+            "text": "可能だが常時クエリ運用は過剰。比率監視はMetric Math+アラームが適切。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html",
+            "reference_label": "Logs Insights"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ALBアクセスログをS3に保存し、Athenaのクエリ結果でイベント通知",
+          "explanation": {
+            "text": "バッチ分析向け。リアルタイムな比率監視には不向き。",
+            "reference": "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-access-logs.html",
+            "reference_label": "ALB アクセスログ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "CloudWatch Metric Mathで5xx/requestsを算出し、その結果に対してアラームを作るのが最小構成で運用負荷も低い。",
+        "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html",
+        "reference_label": "CloudWatch Metric Math"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q42",
+      "question": "EC2・Fargate・Lambdaの計算リソースに対してインスタンスタイプやリージョンを跨いで柔軟に適用される割引モデルはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Compute Savings Plans",
+          "explanation": {
+            "text": "コンピューティング使用量（$ / 時）に対してリージョン/インスタンスタイプ/サービスを跨いで自動適用される。",
+            "reference": "https://docs.aws.amazon.com/savingsplans/latest/userguide/what-is-savings-plans.html",
+            "reference_label": "Savings Plans 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "EC2 Instance Savings Plans",
+          "explanation": {
+            "text": "特定ファミリー・リージョンに最適化。Computeほどの柔軟性はない。",
+            "reference": "https://docs.aws.amazon.com/savingsplans/latest/userguide/instance-savings-plans.html",
+            "reference_label": "Instance Savings Plans"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Standard Reserved Instances",
+          "explanation": {
+            "text": "固定的で柔軟性が低い（変更制限あり）。",
+            "reference": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-reserved-instances.html",
+            "reference_label": "EC2 RI"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Convertible Reserved Instances",
+          "explanation": {
+            "text": "交換可能だがEC2専用で、FargateやLambdaには適用されない。",
+            "reference": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-reserved-instances.html",
+            "reference_label": "EC2 RI"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Compute Savings PlansはEC2/Fargate/Lambdaにまたがり自動的に適用され、柔軟性が高い。",
+        "reference": "https://docs.aws.amazon.com/savingsplans/latest/userguide/what-is-savings-plans.html",
+        "reference_label": "Savings Plans 概要"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q43",
+      "question": "AWS KMS のマルチリージョンキー（MRK）に関する正しい説明はどれか。（複数選択）",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "プライマリキーとレプリカキーは同じキーIDとキーマテリアルを共有するが、ARNはリージョンごとに異なる",
+          "explanation": {
+            "text": "MRKはグローバルに同一ID/マテリアルを持ち、各リージョンで別ARNとなる。",
+            "reference": "https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html",
+            "reference_label": "KMS Multi-Region Keys 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "レプリカキーのキー・ポリシーやタグは自動同期されないため、別途管理が必要",
+          "explanation": {
+            "text": "キー素材はレプリケートされるが、ポリシーやタグ、エイリアスは独立管理。",
+            "reference": "https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-managing.html",
+            "reference_label": "MRK の管理"
+          }
+        },
+        {
+          "key": "C",
+          "text": "あるリージョンで暗号化したデータは、別リージョンのレプリカキーで復号できない",
+          "explanation": {
+            "text": "MRKはクロスリージョン復号を可能にするため、記述は誤り。",
+            "reference": "https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html",
+            "reference_label": "MRK 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "MRKを使うとS3のバケットレプリケーション設定が不要になる",
+          "explanation": {
+            "text": "鍵の可搬性とデータのレプリケーションは別問題。S3のレプリケーション設定は依然必要。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html",
+            "reference_label": "S3 レプリケーション"
+          }
+        }
+      ],
+      "answer": "A,B",
+      "explanation": {
+        "text": "MRKは同一ID/マテリアルを共有しつつリージョンごとに独立したリソース（ARN）で、キー・ポリシー等は自動同期されない。クロスリージョン復号は可能だが、データのレプリケーションは別途行う。",
+        "reference": "https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html",
+        "reference_label": "KMS Multi-Region Keys 概要"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q44",
+      "question": "SQSキューからLambdaへイベントを流し、メッセージ属性でフィルタし、必要に応じてLambdaでエンリッチ（前処理）してから処理したい。運用を簡素化する最適な構成はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Amazon EventBridge PipesでSQS→Lambdaのパイプを作成し、フィルタ・エンリッチャーを設定する",
+          "explanation": {
+            "text": "Pipesはソースとターゲットの間でフィルタ/変換/エンリッチやリトライ/DLQを一体的に設定できる。",
+            "reference": "https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes.html",
+            "reference_label": "EventBridge Pipes"
+          }
+        },
+        {
+          "key": "B",
+          "text": "キューのコンシューマを自作常駐プログラムにし、Lambdaを手動で起動",
+          "explanation": {
+            "text": "運用負荷が高くスケーラビリティも劣る。",
+            "reference": "https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html",
+            "reference_label": "Lambda と SQS"
+          }
+        },
+        {
+          "key": "C",
+          "text": "CloudWatch LogsサブスクリプションフィルターでフィルタしてからLambdaを起動",
+          "explanation": {
+            "text": "対象はログストリームであり、SQSイベント処理の経路ではない。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/SubscriptionFilters.html",
+            "reference_label": "Logs サブスクリプション"
+          }
+        },
+        {
+          "key": "D",
+          "text": "EventBridge ルールにSQSを直接ソース登録してフィルタ",
+          "explanation": {
+            "text": "SQSはEventBridgeの標準イベントソースではない。Pipesを利用するのが適切。",
+            "reference": "https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes.html",
+            "reference_label": "EventBridge Pipes"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "EventBridge Pipesなら、SQS→Lambda間のフィルタや前処理、リトライ/DLQを宣言的に構成でき、実装と運用を最小化できる。",
+        "reference": "https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes.html",
+        "reference_label": "EventBridge Pipes"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q45",
+      "question": "S3の公開設定を誤って有効化する事故を確実に防止したい。最も強力なブロック手段はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "S3 Block Public Access（すべてのパブリックアクセスをブロック）をアカウントまたはバケットで有効化",
+          "explanation": {
+            "text": "ACLやポリシーによる公開設定を包括的にブロックできる推奨機能。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html",
+            "reference_label": "Block Public Access"
+          }
+        },
+        {
+          "key": "B",
+          "text": "S3アクセスポイントを作成してエンドポイント名を難読化",
+          "explanation": {
+            "text": "アクセスポイントはスコープ分離/ポリシー管理が目的で、公開の強制ブロックではない。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html",
+            "reference_label": "S3 アクセスポイント"
+          }
+        },
+        {
+          "key": "C",
+          "text": "CloudTrailでPutBucketPolicyイベントを監査",
+          "explanation": {
+            "text": "検出はできるが防止ではない。予防はBlock Public Accessが最適。",
+            "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+            "reference_label": "CloudTrail 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "S3バケットポリシーで特定のプリンシパルのみ許可",
+          "explanation": {
+            "text": "適切だが、将来の誤設定からの包括的な保護はBlock Public Accessが担保する。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-overview.html",
+            "reference_label": "S3 アクセス制御"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Block Public AccessはACL/ポリシー由来の公開を包括的に遮断し、設定ミスから保護する最も強力な仕組み。",
+        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html",
+        "reference_label": "Block Public Access"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q46",
+      "question": "Lambdaの新バージョンを段階的に公開し、問題があれば自動ロールバックしたい。最も適切な運用方法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "LambdaのエイリアスとCodeDeployを使い、カナリアまたはリニアのトラフィックシフトを構成",
+          "explanation": {
+            "text": "エイリアスにデプロイ設定を関連付け、段階リリースと自動ロールバックを実現できる。",
+            "reference": "https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html",
+            "reference_label": "Lambda エイリアス",
+            "reference2": "https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html",
+            "reference_label2": "CodeDeploy デプロイ設定"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Lambda関数URLを2つ発行して手動で切替",
+          "explanation": {
+            "text": "手動切替は人手依存でリスクが高い。自動ロールバックもない。",
+            "reference": "https://docs.aws.amazon.com/lambda/latest/dg/urls-intro.html",
+            "reference_label": "Lambda Function URLs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "バージョンを直接上書きデプロイ（$LATEST）",
+          "explanation": {
+            "text": "即時切替で安全性が低い。段階リリースやロールバック戦略がとれない。",
+            "reference": "https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html",
+            "reference_label": "Lambda バージョン"
+          }
+        },
+        {
+          "key": "D",
+          "text": "API Gatewayのステージ変数のみでトラフィック配分",
+          "explanation": {
+            "text": "配分制御は可能だが、CodeDeploy連携の自動ロールバックなどの運用機能は不足。",
+            "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-deploy-api.html",
+            "reference_label": "API Gateway デプロイ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Lambdaエイリアス＋CodeDeployの統合でカナリア/リニア配分・ヘルス判定・自動ロールバックまで一貫運用できる。",
+        "reference": "https://docs.aws.amazon.com/lambda/latest/dg/deploying-lambda-apps.html",
+        "reference_label": "Lambda デプロイ（CodeDeploy連携）"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q47",
+      "question": "S3をCloudFrontのオリジンとして安全に公開したい。バケットは非公開のまま、CloudFrontからの署名付きリクエスト（SigV4）でアクセスさせ、KMS暗号化にも対応したい。推奨構成はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "CloudFront Origin Access Control（OAC）を作成し、S3バケットポリシーでOACからのアクセスのみ許可",
+          "explanation": {
+            "text": "OACはSigV4署名でのアクセスをサポートし、SSE-KMSとも整合する。OAIより新しい推奨方式。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html#oac-overview",
+            "reference_label": "CloudFront OAC 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "S3を公開バケットにしてCache-Controlでキャッシュ最適化",
+          "explanation": {
+            "text": "公開は不要かつリスク。非公開のままCloudFront経由でアクセスさせるべき。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html",
+            "reference_label": "CloudFront からの私有S3アクセス"
+          }
+        },
+        {
+          "key": "C",
+          "text": "従来のOAI（Origin Access Identity）のみを使用し、バケットはデフォルト設定のまま",
+          "explanation": {
+            "text": "OAIはレガシー方式。KMSなど新機能整合や将来性はOACが優位。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html#using-oai",
+            "reference_label": "OAI（レガシー）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "署名付きURL/クッキーのみでS3を直接公開",
+          "explanation": {
+            "text": "S3直公開は回避すべき。CloudFrontのエッジ配信とOACで保護するのが推奨。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-signed-urls.html",
+            "reference_label": "CloudFront 署名付きURL/クッキー"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "OACはSigV4でS3非公開バケットを安全に配信でき、SSE-KMS等とも整合するため現在の推奨。",
+        "reference": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html#oac-overview",
+        "reference_label": "CloudFront OAC 概要"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q48",
+      "question": "SSM Automationで運用タスクを複数アカウント・複数リージョンに一括実行したい。適切な方法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Systems Manager Automationのマルチアカウント・マルチリージョン実行を使用し、Organizationsの委任管理者から実行",
+          "explanation": {
+            "text": "実行ロールとターゲット登録により、OU/アカウントへ横断的にAutomationを配布実行できる。",
+            "reference": "https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-working-multiple-accounts-and-regions.html",
+            "reference_label": "Automation 複数アカウント/リージョン"
+          }
+        },
+        {
+          "key": "B",
+          "text": "EventBridgeルールで各アカウントにメールを送り、手動実行してもらう",
+          "explanation": {
+            "text": "自動化ではなく人手に依存する運用で不適切。",
+            "reference": "https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation.html",
+            "reference_label": "SSM Automation 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "CloudFormation StackSetsでSSMドキュメントを配布し、Run Commandで都度呼び出す",
+          "explanation": {
+            "text": "配布はできるが、横断実行の運用はAutomationのマルチアカウント機能が最適。",
+            "reference": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/what-is-cfnstacksets.html",
+            "reference_label": "StackSets"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AWS CLIを管理アカウントでループ実行して各サブアカウントにAssumeRole",
+          "explanation": {
+            "text": "カスタムスクリプトは保守負荷が高い。ネイティブ機能を使うべき。",
+            "reference": "https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-working-multiple-accounts-and-regions.html",
+            "reference_label": "Automation 複数アカウント/リージョン"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Organizationsと連携したAutomationのマルチアカウント実行が、横断運用を最小の手間で安全に実現する。",
+        "reference": "https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-working-multiple-accounts-and-regions.html",
+        "reference_label": "Automation 複数アカウント/リージョン"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q49",
+      "question": "GuardDutyを組織全体で有効化し、検出結果を中央アカウントで集約・管理したい。推奨される方法はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AWS OrganizationsでGuardDutyの委任管理者（Delegated Administrator）を設定し、メンバーアカウントを自動登録",
+          "explanation": {
+            "text": "委任管理者により組織配下アカウントの有効化と集約管理が可能。",
+            "reference": "https://docs.aws.amazon.com/guardduty/latest/administration/guardduty_organizations.html",
+            "reference_label": "GuardDuty と Organizations"
+          }
+        },
+        {
+          "key": "B",
+          "text": "各アカウントのGuardDutyを手動で有効化し、結果をS3に集約",
+          "explanation": {
+            "text": "手動運用はスケールせず、統制も弱い。",
+            "reference": "https://docs.aws.amazon.com/guardduty/latest/administration/what-is-guardduty.html",
+            "reference_label": "GuardDuty 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Security Hubのみを組織有効化する",
+          "explanation": {
+            "text": "Security Hubは集約/コンプライアンス可視化だが、GuardDutyの有効化・検出自体は別管理。",
+            "reference": "https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-accounts-orgs.html",
+            "reference_label": "Security Hub と Organizations"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CloudTrail LakeにGuardDutyの検出をコピーして集約",
+          "explanation": {
+            "text": "監査基盤としては使えるが、GuardDutyの組織管理にはならない。",
+            "reference": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_findings.html",
+            "reference_label": "GuardDuty 検出"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "GuardDutyはOrganizationsの委任管理者を用いて中央集約・一括有効化するのがベストプラクティス。",
+        "reference": "https://docs.aws.amazon.com/guardduty/latest/administration/guardduty_organizations.html",
+        "reference_label": "GuardDuty と Organizations"
+      }
+    },
+    {
+      "id": "aws-soa-c03-q50",
+      "question": "プライベートサブネット内のEC2からS3へ大量のアウトバウンド通信があり、NAT Gatewayのデータ処理コストが高い。セキュリティを維持しつつコストを最小化する推奨構成はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "VPC Gateway Endpoint（S3）を作成し、ルートテーブルでS3宛をエンドポイントに向ける",
+          "explanation": {
+            "text": "Gateway EndpointはS3/DynamoDBへのプライベート接続を提供し、NATを経由しないためデータ処理料を削減できる。",
+            "reference": "https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints-s3.html",
+            "reference_label": "S3 Gateway エンドポイント"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Interface Endpoint（S3）を作成してENI経由で接続",
+          "explanation": {
+            "text": "S3はGateway Endpointが対象。Interface Endpointは通常はPrivateLink対応の各種サービス向け。",
+            "reference": "https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints.html",
+            "reference_label": "VPC エンドポイントの種類"
+          }
+        },
+        {
+          "key": "C",
+          "text": "NAT Gatewayを増やしてスループットを上げる",
+          "explanation": {
+            "text": "スループットは改善してもデータ処理料の課金構造は変わらない。",
+            "reference": "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html",
+            "reference_label": "NAT Gateway"
+          }
+        },
+        {
+          "key": "D",
+          "text": "インターネットゲートウェイ経由で直接S3へアクセス",
+          "explanation": {
+            "text": "プライベートサブネットからの直接アクセスは望ましくなく、NATまたはエンドポイントが必要。",
+            "reference": "https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html",
+            "reference_label": "Internet Gateway"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "S3向けはGateway Endpointが最適。プライベート接続でNAT処理料を回避し、コストとセキュリティを両立できる。",
+        "reference": "https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints-s3.html",
+        "reference_label": "S3 Gateway エンドポイント"
+      }
+    }
+  ]
+}

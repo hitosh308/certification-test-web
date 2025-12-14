@@ -1,0 +1,2467 @@
+{
+  "exam": {
+    "id": "linuc_level2_202",
+    "title": "LinuC レベル2 202試験",
+    "description": "本試験は、Linux環境における中〜上級レベルのサーバ構築・運用・管理能力を評価するもので、特に「ネットワーククライアントの管理」「ドメインネームサーバー」「HTTP／プロキシ／メール／ファイル共有サービス」「システムのセキュリティ」「システムアーキテクチャ」といった幅広く実践的な技術領域を問います。複数のサーバーサービスやセキュリティ設計、クラウド／仮想化環境も視野に入れた内容となっており、単なるコマンド知識だけでなく“設計・構築・運用保守”を経験・理解していることが有利です。",
+    "version": "10.0",
+    "price": "16,500円",
+    "difficulty": "普通",
+    "official-site": "https://linuc.org/linuc2",
+    "category": {
+      "id": "linux",
+      "name": "Linux技術者認定"
+    }
+  },
+  "questions": [
+    {
+      "id": "linuc-level2-202-001",
+      "question": "DHCPサーバを構成する際、固定IPを特定のクライアントに割り当てるために使用する設定項目として、一般的に正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "shared-network",
+          "explanation": {
+            "text": "shared-network は DHCP サーバのサブネットを定義するもので、単一クライアントの固定IP割り当てを行う設定項目ではない。",
+            "reference": "https://linuc.org/en/linuc2/range/202.html#2.07.1",
+            "reference_label": "LinuC レベル2 Exam 202 目的（Network client management）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "host と hardware ethernet を使った予約割り当て",
+          "explanation": {
+            "text": "固定IPを特定のクライアントに割り当てるには、host セクションと hardware ethernet を使って予約設定が一般的である。",
+            "reference": "https://linuc.org/en/linuc2/range/202.html#2.07.1",
+            "reference_label": "LinuC レベル2 Exam 202 目的（Network client management）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "pool と range を併用して動的割り当てを無効化する",
+          "explanation": {
+            "text": "pool と range は動的割り当て用の設定であり、固定IPを特定クライアントに直接設定するものではない。",
+            "reference": "https://linuc.org/en/linuc2/range/202.html#2.07.1",
+            "reference_label": "LinuC レベル2 Exam 202 目的（Network client management）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "allow unknown-clients を使って未知クライアントを許可する",
+          "explanation": {
+            "text": "allow unknown-clients は未知クライアントへの許可設定であり、特定クライアントへの固定IP割り当てとは直接関係がない。",
+            "reference": "https://linuc.org/en/linuc2/range/202.html#2.07.1",
+            "reference_label": "LinuC レベル2 Exam 202 目的（Network client management）"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "固定IP割り当て＝DHCP予約には host ステートメント＋hardware ethernet を用いるのが定番。よって B が正しい。",
+        "reference": "https://linuc.org/en/linuc2/range/202.html#2.07.1",
+        "reference_label": "LinuC レベル2 Exam 202 目的（Network client management）"
+      }
+    },
+    {
+      "id": "linuc-level2-202-002",
+      "question": "BIND をセキュアな DNS サーバとして構成する際、TSIG を用いて行う処理として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ゾーン転送（AXFR/IXFR）を鍵付きで許可する",
+          "explanation": {
+            "text": "TSIG (Transaction SIGnature) はゾーン転送や更新時に認証付き通信を確保する用途として使われる。",
+            "reference": "https://en.wikibooks.org/wiki/LPI_Linux_Certification/LPIC2_Exam_202/Detailed_Objectives#207.3_Securing_a_DNS_server",
+            "reference_label": "LPIC-2 Exam 202 目的（Securing a DNS server）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "DNS キャッシュのクリアに使われる",
+          "explanation": {
+            "text": "TSIG はキャッシュクリア用ではなく、DNS 操作の認証用鍵である。",
+            "reference": "https://en.wikibooks.org/wiki/LPI_Linux_Certification/LPIC2_Exam_202/Detailed_Objectives#207.3_Securing_a_DNS_server",
+            "reference_label": "LPIC-2 Exam 202 目的（Securing a DNS server）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "DNSSEC 署名鍵を生成するための鍵",
+          "explanation": {
+            "text": "TSIG と DNSSEC は別技術。TSIG はトランザクション署名、DNSSEC はゾーンの署名驗証用であり、用途が異なる。",
+            "reference": "https://educational-site.example.com",
+            "reference_label": "誤った理解例"
+          }
+        },
+        {
+          "key": "D",
+            "text": "ゾーン転送を暗号化するための SSL/TLS 証明書を生成する",
+            "explanation": {
+              "text": "TSIG によってゾーン転送を暗号化するわけではなく、認証付き通信を実現する鍵／署名方式である。",
+              "reference": "https://en.wikibooks.org/wiki/LPI_Linux_Certification/LPIC2_Exam_202/Detailed_Objectives#207.3_Securing_a_DNS_server",
+              "reference_label": "LPIC-2 Exam 202 目的（Securing a DNS server）"
+            }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "TSIG はゾーン転送や更新の認証を提供する仕組みで、セキュリティ強化に用いられるため A が正解。",
+        "reference": "https://en.wikibooks.org/wiki/LPI_Linux_Certification/LPIC2_Exam_202/Detailed_Objectives#207.3_Securing_a_DNS_server",
+        "reference_label": "LPIC-2 Exam 202 目的（Securing a DNS server）"
+      }
+    },
+    {
+      "id": "linuc-level2-202-003",
+      "question": "Apache HTTP Server で HTTPS (TLS) を有効にするために最低限必要なモジュール／設定として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "mod_ssl をロードし、Listen 443 を指定する",
+          "explanation": {
+            "text": "HTTPS 用には mod_ssl を有効にし、ポート 443 を Listen／設定するのが基本手順である。",
+            "reference": "https://turn0search4",
+            "reference_label": "LinuC レベル2 Exam 202 トピック 2.09 HTTP Server and Proxy Server"
+          }
+        },
+        {
+          "key": "B",
+          "text": "mod_wsgi をロードし、証明書なしで SSL 接続を受け付ける",
+          "explanation": {
+            "text": "mod_wsgi は Python WSGI 用モジュールであり、SSL の有効化には証明書が必要なので不適切。",
+            "reference": "https://turn0search2",
+            "reference_label": "LPI LPIC-2 202 目的（Web Services）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Listen 80 のみを設定し、Rewrite を使って HTTPS へ転送する",
+          "explanation": {
+            "text": "HTTPS を実質提供するにはポート 443 での SSL/TLS 接続を確立する必要があり、転送だけでは十分ではない。",
+            "reference": "https://turn0search4",
+            "reference_label": "LinuC レベル2 Exam 202 トピック 2.09 HTTP Server and Proxy Server"
+          }
+        },
+        {
+          "key": "D",
+          "text": "mod_proxy をロードしてリバースプロキシとして動作させれば HTTPS が不要になる",
+          "explanation": {
+            "text": "リバースプロキシ化だけではウェブサーバに HTTPS が不要になるわけではなく、SSL/TLS 設定が必要。",
+            "reference": "https://turn0search3",
+            "reference_label": "LPIC-2 Exam 202 目的（Web Services）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "HTTPS を有効にするには mod_ssl をロードし、SSL 証明書を設定し、Listen 443 を用いて接続を受ける必要があるため A が正しい。",
+        "reference": "https://turn0search4",
+        "reference_label": "LinuC レベル2 Exam 202 トピック 2.09 HTTP Server and Proxy Server"
+      }
+    },
+    {
+      "id": "linuc-level2-202-004",
+      "question": "Samba サーバを Active Directory ドメインメンバとして参加させる際、Windows サイドで必要な操作として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Samba 側からドメインコントローラへ『samba-tool join』を実行するのみ",
+          "explanation": {
+            "text": "samba-tool join を Samba 側で実行するが、それだけでは Windows 側でのコンピュータオブジェクト作成や適切な OU 参加等の準備が不要になるわけではない。",
+            "reference": "https://turn0search2",
+            "reference_label": "LPIC-2 Exam 202 目的（File Sharing）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ドメインコントローラ上でコンピュータオブジェクトを作成または承認する",
+          "explanation": {
+            "text": "AD ドメイン参加にはドメインコントローラ側でコンピュータアカウントを用意・承認することが一般的である。",
+            "reference": "https://turn0search3",
+            "reference_label": "LPIC-2 Exam 202 目的（File Sharing）"
+          }
+        },
+        {
+          "key": "C",
+            "text": "Windows 側で SMBv1 を有効にして Samba を認識させる",
+            "explanation": {
+            "text": "通常、AD 参加や Samba の現代的構成では SMBv1 は推奨されず、必須操作ではない。",
+            "reference": "https://turn0search4",
+            "reference_label": "LinuC レベル2 Exam 202 トピック 2.11 File Sharing Services"
+          }
+        },
+        {
+          "key": "D",
+            "text": "Windows 側で NFS クライアントサービスをインストールする",
+            "explanation": {
+            "text": "Samba ドメイン参加とは異なり、NFS は主に Unix／Linux ファイル共有用であり、Windows 側準備として必須ではない。",
+            "reference": "https://turn0search2",
+            "reference_label": "LPIC-2 Exam 202 目的（File Sharing）"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "AD ドメイン参加には、ドメインコントローラ側でコンピュータアカウントが用意・承認されている必要があるため B が正解。",
+        "reference": "https://turn0search3",
+        "reference_label": "LPIC-2 Exam 202 目的（File Sharing）"
+      }
+    },
+    {
+      "id": "linuc-level2-202-005",
+      "question": "iptables／firewalld を用いたパケットフィルタリング設定で「既存の接続からの応答パケットを許可」するにはどの条件を指定するのが望ましいか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "‐m conntrack --ctstate ESTABLISHED",
+          "explanation": {
+            "text": "conntrack モジュールの --ctstate オプションで ESTABLISHED／RELATED を指定することで、既存の接続の応答パケットを許可できる。",
+            "reference": "https://turn0search4",
+            "reference_label": "LinuC レベル2 Exam 202 トピック 2.12 System Security"
+          }
+        },
+        {
+          "key": "B",
+          "text": "-m state --state NEW",
+          "explanation": {
+            "text": "NEW は新規接続を意味し、既存の応答パケットを許可する動作とは異なる。",
+            "reference": "https://turn0search3",
+            "reference_label": "LPIC-2 Exam 202 目的（System Security）"
+          }
+        },
+        {
+          "key": "C",
+            "text": "-j ACCEPT --tcp-flags SYN,ACK SYN",
+            "explanation": {
+            "text": "この TCP フラグ指定は特定フラグのマッチングであり、汎用的に既存接続の応答を許可する方法としては不適切。",
+            "reference": "https://turn0search4",
+            "reference_label": "LinuC レベル2 Exam 202 トピック 2.12 System Security"
+          }
+        },
+        {
+          "key": "D",
+            "text": "-m limit --limit 1/second",
+            "explanation": {
+            "text": "limit モジュールはレート制限用であり、応答パケットの許可には関係がない。",
+            "reference": "https://turn0search2",
+            "reference_label": "LPIC-2 Exam 202 目的（System Security）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "既存の接続に対して応答パケットを許可するには conntrack の --ctstate ESTABLISHED（および RELATED）を使用するのが望ましいため A が正解。",
+        "reference": "https://turn0search4",
+        "reference_label": "LinuC レベル2 Exam 202 トピック 2.12 System Security"
+      }
+    },
+    {
+      "id": "linuc-level2-202-006",
+      "question": "Postfix を使用したメールサーバ構成で、外部から受信したメールを内部の別ドメインユーザへ転送する「リレー」の設定で使う main.cf のパラメータとして適切なのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "mydestination = example.com",
+          "explanation": {
+            "text": "mydestination はこのサーバ自身が最終受信を行うドメインを定義するもので、メールを内部へ転送（リレー）する設定項目ではない。",
+            "reference": "https://turn0search4",
+            "reference_label": "LinuC レベル2 Exam 202 トピック 2.10 E-Mail Services"
+          }
+        },
+        {
+          "key": "B",
+          "text": "relay_domains = internal.example.local",
+          "explanation": {
+            "text": "relay_domains に転送先ドメインを指定することで、外部の受信メールを内部ドメインへリレーできる設定となる。",
+            "reference": "https://turn0search2",
+            "reference_label": "LPIC-2 Exam 202 目的（E-Mail Services）"
+          }
+        },
+        {
+          "key": "C",
+            "text": "mynetworks = 127.0.0.0/8",
+            "explanation": {
+            "text": "mynetworks は送信（SMTP送信）を許可するネットワークを定義するもので、リレー先のドメイン指定とは直接関係がない。",
+            "reference": "https://turn0search3",
+            "reference_label": "LPIC-2 Exam 202 目的（E-Mail Services）"
+          }
+        },
+        {
+          "key": "D",
+            "text": "virtual_alias_maps = hash:/etc/postfix/relay",
+          "explanation": {
+            "text": "virtual_alias_maps は仮想エイリアスのマッピング用設定であり、ドメインリレー専用とは限らない。",
+            "reference": "https://turn0search4",
+            "reference_label": "LinuC レベル2 Exam 202 トピック 2.10 E-Mail Services"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "外部から受信したメールを内部ドメインへ転送（リレー）するためには relay_domains に内部転送対象ドメインを指定するのが典型的設定であるため B が正しい。",
+        "reference": "https://turn0search2",
+        "reference_label": "LPIC-2 Exam 202 目的（E-Mail Services）"
+      }
+    },
+    {
+      "id": "linuc-level2-202-007",
+      "question": "Dovecot を IMAP／POP3 サーバとして構成する際、TLS を必須にしてクライアント証明書による認証を要求するには、main もしくは 10-ssl.conf 等でどれを設定するべきか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ssl = required\nssl_cert = </etc/ssl/certs/dovecot.pem>\nssl_key = </etc/ssl/private/dovecot.key>\nssl_verify_client_cert = yes\nssl_client_cert = </etc/ssl/certs/clients.pem>",
+          "explanation": {
+            "text": "Dovecot でクライアント証明書を要求する際は ssl_verify_client_cert = yes 等で設定するのが正しい記述となる。",
+            "reference": "https://turn0search4",
+            "reference_label": "LinuC レベル2 Exam 202 トピック 2.10 E-Mail Services"
+          }
+        },
+        {
+          "key": "B",
+          "text": "disable_plaintext_auth = no\nssl = optional",
+          "explanation": {
+            "text": "この設定では TLS が必須にならず、クライアント証明書認証も有効になっていないため要件を満たさない。",
+            "reference": "https://turn0search3",
+            "reference_label": "LPIC-2 Exam 202 目的（E-Mail Services）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ssl = yes\nssl_auth_cert = required",
+          "explanation": {
+            "text": "Dovecot の典型設定項目に ssl_auth_cert は存在しないため不正確な記述である。",
+            "reference": "https://turn0search4",
+            "reference_label": "LinuC レベル2 Exam 202 トピック 2.10 E-Mail Services"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ssl = required\nssl_verify_client_cert = no",
+          "explanation": {
+            "text": "クライアント証明書を要求するには ssl_verify_client_cert を yes にする必要があるため、この設定では要件を満たさない。",
+            "reference": "https://turn0search2",
+            "reference_label": "LPIC-2 Exam 202 目的（E-Mail Services）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "TLS を必須にし、かつクライアント証明書認証を要求するには ssl_verify_client_cert = yes 等が必要であり、選択 A が正解。",
+        "reference": "https://turn0search4",
+        "reference_label": "LinuC レベル2 Exam 202 トピック 2.10 E-Mail Services"
+      }
+    },
+    {
+      "id": "linuc-level2-202-008",
+      "question": "LDAP クライアントを構成する際、ユーザ情報を LDAP サーバから取得可能にするために通常修正するファイルとして正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "/etc/nsswitch.conf",
+          "explanation": {
+            "text": "nsswitch.conf に ‘passwd: ldap’ 等と設定することでユーザ情報を LDAP 経由で参照できるようになる。",
+            "reference": "https://turn0search4",
+            "reference_label": "LinuC レベル2 Exam 202 トピック 2.07 Network client management"
+          }
+        },
+        {
+          "key": "B",
+          "text": "/etc/sssd/sssd.conf",
+          "explanation": {
+            "text": "sssd を用いる場合 sssd.conf も変更するが、ユーザ取得そのものの基本的な構成としてまず nsswitch.conf の設定が必要である。",
+            "reference": "https://turn0search0",
+            "reference_label": "LinuC レベル2 Exam 202 目的（Network client management）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "/etc/pam.d/common-auth",
+          "explanation": {
+            "text": "PAM は認証（authentication）を扱うが、ユーザ情報取得（名前解決）には nsswitch.conf が主対象となる。",
+            "reference": "https://turn0search3",
+            "reference_label": "LPIC-2 Exam 202 目的（Network client management）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "/etc/ldap/ldap.conf",
+          "explanation": {
+            "text": "ldap.conf は LDAP クライアントの基本設定ファイルであるが、ユーザ取得システムの挙動を決める主要ファイルは nsswitch.conf である。",
+            "reference": "https://turn0search4",
+            "reference_label": "LinuC レベル2 Exam 202 トピック 2.07 Network client management"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "LDAP クライアントで名前解決を参照するには /etc/nsswitch.conf の設定が基本であるため A が正解。",
+        "reference": "https://turn0search0",
+        "reference_label": "LinuC レベル2 Exam 202 目的（Network client management）"
+      }
+    },
+    {
+      "id": "linuc-level2-202-009",
+      "question": "高可用性（HA）構成を設計する際に、通常「アクティブ／パッシブ構成」で使われるフェイルオーバー手段として一般的なのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "共有ストレージに障害監視を行い、VIP（仮想IP）をフェイルオーバーさせる",
+          "explanation": {
+            "text": "アクティブ／パッシブ構成では共有ストレージ＋VIP移動を用いて待機系に切り替える設計が典型的である。",
+            "reference": "https://turn0search4",
+            "reference_label": "LinuC レベル2 Exam 202 トピック 2.13 System Architecture"
+          }
+        },
+        {
+          "key": "B",
+          "text": "クライアントが直接異なるサーバを選択するよう DNS‐RR を設定する",
+            "explanation": {
+            "text": "DNS‐RR（ラウンドロビン）はアクティブ／パッシブ構成の切り替え手段ではなく、負荷分散に近い構成である。",
+            "reference": "https://turn0search2",
+            "reference_label": "LPIC-2 Exam 202 目的（System Architecture）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "両方のノードに常にアクティブサービスを提供させ、クライアント自体で切り替える",
+            "explanation": {
+            "text": "これはアクティブ／アクティブ構成に近く、質問の「アクティブ／パッシブ」には該当しない。",
+            "reference": "https://turn0search3",
+            "reference_label": "LPIC-2 Exam 202 目的（System Architecture）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "共有なし構成で同期通信を用いずに切り替えを行う",
+            "explanation": {
+            "text": "同期データの共有がないとフェイルオーバー時にデータ整合性が担保できず、一般的な HA 設計とは言えない。",
+            "reference": "https://turn0search4",
+            "reference_label": "LinuC レベル2 Exam 202 トピック 2.13 System Architecture"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "アクティブ／パッシブ構成では共有ストレージ＋VIP移動が典型的なフェイルオーバー手段であるため A が正解。",
+        "reference": "https://turn0search4",
+        "reference_label": "LinuC レベル2 Exam 202 トピック 2.13 System Architecture"
+      }
+    },
+    {
+      "id": "linuc-level2-202-010",
+      "question": "OpenVPN を拠点間VPN（site-to-site）で構成する際、TLS 認証モード（–tls-auth）を併用する利点として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "TLS 認証モードを併用することで、UDP パケットのポート 1194 をフィルタリングから免除できる",
+          "explanation": {
+            "text": "TLS 認証モードそのものがフィルタ除外を保証するわけではなく、フィルタリング免除が直接の利点ではない。",
+            "reference": "https://turn0search4",
+            "reference_label": "LinuC レベル2 Exam 202 トピック 2.12 System Security"
+          }
+        },
+        {
+          "key": "B",
+            "text": "コネクション確立時に TLS ハンドシェイクだけでなく、HMAC による追加の認証が行われる",
+            "explanation": {
+            "text": "–tls-auth オプションにより、HMAC キーを用した事前共有認証が TLS ハンドシェイク前に行われ、セキュリティ強化となる。",
+            "reference": "https://turn0search3",
+            "reference_label": "LPIC-2 Exam 202 目的（System Security）"
+          }
+        },
+        {
+          "key": "C",
+            "text": "TCP モード（–proto tcp）でのみ動作するよう強制される",
+            "explanation": {
+            "text": "–tls-auth は proto tcp を強制する機能ではなく、UDP/TCP の両方で使えるオプションである。",
+            "reference": "https://turn0search4",
+            "reference_label": "LinuC レベル2 Exam 202 トピック 2.12 System Security"
+          }
+        },
+        {
+          "key": "D",
+          "text": "証明書と鍵を使わずに簡易共通鍵でVPNを構築できる",
+          "explanation": {
+            "text": "証明書と鍵を使わないというのは TLS モードの趣旨と異なり、–tls-auth はさらに HMAC を付加するものである。",
+            "reference": "https://turn0search2",
+            "reference_label": "LPIC-2 Exam 202 目的（System Security）"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "–tls-auth オプションでは共通 HMAC キーにより TLS ハンドシェイク前の認証を行えるため、B が正しい。",
+        "reference": "https://turn0search4",
+        "reference_label": "LinuC レベル2 Exam 202 トピック 2.12 System Security"
+      }
+    },
+    {
+      "id": "linuc-level2-202-011",
+      "question": "NFSv4 を利用する際に必要となる特徴として、正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "rpc.mountd を必ず起動する必要がある",
+          "explanation": {
+            "text": "NFSv4 では mountd は必須ではなく、RPC の多くが統合されているため必須要件ではない。",
+            "reference": "https://linuc.org",
+            "reference_label": "LinuC 試験範囲（NFS）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "NFSv4 は単一の TCP ポート 2049 を使用する",
+          "explanation": {
+            "text": "NFSv4 の特徴の1つは通信の多くが 2049 に統合されており、v3 以前の複数 RPC ポートを使わない点である。",
+            "reference": "https://linuc.org",
+            "reference_label": "LinuC 試験範囲（NFS）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "NFSv4 は UDP のみをサポートする",
+          "explanation": {
+            "text": "NFSv4 は TCP ベースであり、UDP のみという仕様ではない。",
+            "reference": "https://linuc.org",
+            "reference_label": "LinuC 試験範囲（NFS）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "NFSv4 クライアントは必ず Kerberos 認証を必要とする",
+          "explanation": {
+            "text": "Kerberos 認証は推奨だが必須ではない。AUTH_SYS も利用可能。",
+            "reference": "https://linuc.org",
+            "reference_label": "LinuC 試験範囲（NFS）"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "NFSv4 の特徴はポート統合（2049）であり、B が正しい。",
+        "reference": "https://linuc.org",
+        "reference_label": "LinuC 試験範囲（NFS）"
+      }
+    },
+    {
+      "id": "linuc-level2-202-012",
+      "question": "CUPS でプリントジョブを管理する際、ジョブを一時停止するコマンドとして正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "lpstat",
+          "explanation": {
+            "text": "lpstat はジョブやプリンタの状態表示であり、一時停止操作ではない。",
+            "reference": "https://linuc.org",
+            "reference_label": "LinuC CUPS 管理"
+          }
+        },
+        {
+          "key": "B",
+          "text": "lprm",
+          "explanation": {
+            "text": "lprm はジョブ削除コマンドで、一時停止ではない。",
+            "reference": "https://linuc.org",
+            "reference_label": "LinuC CUPS 管理"
+          }
+        },
+        {
+          "key": "C",
+          "text": "cupsdisable",
+          "explanation": {
+            "text": "cupsdisable はプリンタ自体を停止するコマンドであり、ジョブ単体の一時停止ではない。",
+            "reference": "https://linuc.org",
+            "reference_label": "LinuC CUPS 管理"
+          }
+        },
+        {
+          "key": "D",
+          "text": "lp -i <jobid> -H hold",
+          "explanation": {
+            "text": "lp コマンドの -H hold はジョブの一時停止を行う正しい方法である。",
+            "reference": "https://linuc.org",
+            "reference_label": "LinuC CUPS 管理"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "ジョブ単位の一時停止は lp -H hold を使うため D が正解。",
+        "reference": "https://linuc.org",
+        "reference_label": "LinuC CUPS 管理"
+      }
+    },
+    {
+      "id": "linuc-level2-202-202-013",
+      "question": "システムの時刻同期に chrony を利用する場合、手動で時刻を即座に同期させるコマンドとして正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "chronyc burst",
+          "explanation": {
+            "text": "burst は複数のパケット送出で精度を高めるが即時同期ではない。",
+            "reference": "https://linuc.org",
+            "reference_label": "chrony 基本操作"
+          }
+        },
+        {
+          "key": "B",
+          "text": "chronyc sources",
+          "explanation": {
+            "text": "sources は同期元一覧の表示であり、同期実行ではない。",
+            "reference": "https://linuc.org",
+            "reference_label": "chrony 基本操作"
+          }
+        },
+        {
+          "key": "C",
+          "text": "chronyc makestep",
+          "explanation": {
+            "text": "makestep は現在の時刻との差を即時反映させるため、手動同期に用いることができる。",
+            "reference": "https://linuc.org",
+            "reference_label": "chrony 基本操作"
+          }
+        },
+        {
+          "key": "D",
+          "text": "chronyd restart",
+          "explanation": {
+            "text": "再起動は即時同期ではない。",
+            "reference": "https://linuc.org",
+            "reference_label": "chrony 基本操作"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "手動で即時同期する際に使用するのは chronyc makestep である。",
+        "reference": "https://linuc.org",
+        "reference_label": "chrony 基本操作"
+      }
+    },
+    {
+      "id": "linuc-level2-202-014",
+      "question": "systemd-networkd による静的 IP アドレス設定で、Address= に続く記述として正しい形式はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "192.168.1.10:24",
+          "explanation": {
+            "text": "systemd-networkd は CIDR を / で指定する形式を用いるため誤り。",
+            "reference": "https://linuc.org",
+            "reference_label": "systemd-networkd 設定"
+          }
+        },
+        {
+          "key": "B",
+          "text": "192.168.1.10/24",
+          "explanation": {
+            "text": "CIDR形式で表記するのが正しい。",
+            "reference": "https://linuc.org",
+            "reference_label": "systemd-networkd 設定"
+          }
+        },
+        {
+          "key": "C",
+          "text": "192.168.1.10 mask 255.255.255.0",
+          "explanation": {
+            "text": "systemd-networkd は mask の指定形式ではない。",
+            "reference": "https://linuc.org",
+            "reference_label": "systemd-networkd 設定"
+          }
+        },
+        {
+          "key": "D",
+          "text": "192.168.1.10 netmask 255.255.255.0",
+          "explanation": {
+            "text": "netmask 記述ではなく CIDR 記述が必要。",
+            "reference": "https://linuc.org",
+            "reference_label": "systemd-networkd 設定"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "systemd-networkd の Address= は CIDR 形式で指定する。",
+        "reference": "https://linuc.org",
+        "reference_label": "systemd-networkd 設定"
+      }
+    },
+    {
+      "id": "linuc-level2-202-015",
+      "question": "MariaDB でリモートアクセスを許可するために必要な操作として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "bind-address を 127.0.0.1 に設定する",
+          "explanation": {
+            "text": "127.0.0.1 はローカルホストのみの接続となり、リモート接続許可にならない。",
+            "reference": "https://linuc.org",
+            "reference_label": "MariaDB 基本管理"
+          }
+        },
+        {
+          "key": "B",
+          "text": "GRANT USAGE を実行するだけで良い",
+          "explanation": {
+            "text": "リモート許可には適切なホスト指定で GRANT を行う必要がある。",
+            "reference": "https://linuc.org",
+            "reference_label": "MariaDB 基本管理"
+          }
+        },
+        {
+          "key": "C",
+          "text": "bind-address を 0.0.0.0 などに変更し、ユーザにホスト指定を付けて GRANT を行う",
+          "explanation": {
+            "text": "リモート接続を許可する典型的手順として正しい。",
+            "reference": "https://linuc.org",
+            "reference_label": "MariaDB 基本管理"
+          }
+        },
+        {
+          "key": "D",
+          "text": "skip-networking を有効にする",
+          "explanation": {
+            "text": "skip-networking はネットワーク接続そのものを無効化するため逆効果。",
+            "reference": "https://linuc.org",
+            "reference_label": "MariaDB 基本管理"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "bind-address を外部からアクセス可能にし、GRANT にホスト指定を行うのがリモート接続許可の一般的手順。",
+        "reference": "https://linuc.org",
+        "reference_label": "MariaDB 基本管理"
+      }
+    },
+    {
+      "id": "linuc-level2-202-016",
+      "question": "Git でコミットメッセージを修正するために直前のコミットを編集する操作として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "git commit --amend",
+          "explanation": {
+            "text": "直前のコミットを修正するための正しい操作である。",
+            "reference": "https://linuc.org",
+            "reference_label": "Git 基本操作"
+          }
+        },
+        {
+          "key": "B",
+          "text": "git revert",
+          "explanation": {
+            "text": "revert は打ち消しコミットを作る操作で、修正ではない。",
+            "reference": "https://linuc.org",
+            "reference_label": "Git 基本操作"
+          }
+        },
+        {
+          "key": "C",
+          "text": "git rebase --force",
+          "explanation": {
+            "text": "rebase は履歴書き換えだが、直前修正に直接用いる一般的コマンドではない。",
+            "reference": "https://linuc.org",
+            "reference_label": "Git 基本操作"
+          }
+        },
+        {
+          "key": "D",
+          "text": "git clean -f",
+          "explanation": {
+            "text": "トラックされていないファイル削除でありコミット修正ではない。",
+            "reference": "https://linuc.org",
+            "reference_label": "Git 基本操作"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "直前のコミットメッセージ修正には git commit --amend を用いる。",
+        "reference": "https://linuc.org",
+        "reference_label": "Git 基本操作"
+      }
+    },
+    {
+      "id": "linuc-level2-202-017",
+      "question": "rsyslog で特定のプログラムからのログを別ファイルに出力する場合、どのディレクティブを利用するのが正しいか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": ":programname, isequal, \"sshd\" /var/log/sshd.log",
+          "explanation": {
+            "text": "プログラム名フィルタを利用する正しい書式である。",
+            "reference": "https://linuc.org",
+            "reference_label": "rsyslog フィルタ設定"
+          }
+        },
+        {
+          "key": "B",
+          "text": "$FileCreateMode 0644 /var/log/sshd.log",
+          "explanation": {
+            "text": "FileCreateMode はファイル作成時の権限設定であり、フィルタではない。",
+            "reference": "https://linuc.org",
+            "reference_label": "rsyslog フィルタ設定"
+          }
+        },
+        {
+          "key": "C",
+          "text": "*.* /var/log/sshd.log",
+          "explanation": {
+            "text": "全メッセージを出力してしまい、特定プログラムのみではない。",
+            "reference": "https://linuc.org",
+            "reference_label": "rsyslog フィルタ設定"
+          }
+        },
+        {
+          "key": "D",
+          "text": ":msg, contains, \"sshd\" /var/log/sshd.log",
+          "explanation": {
+            "text": "メッセージ内容でフィルタする方法だが、プログラム名でのフィルタではない。",
+            "reference": "https://linuc.org",
+            "reference_label": "rsyslog フィルタ設定"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "programname フィルタが最適であるため A が正解。",
+        "reference": "https://linuc.org",
+        "reference_label": "rsyslog フィルタ設定"
+      }
+    },
+    {
+      "id": "linuc-level2-202-018",
+      "question": "LVM のスナップショットを作成する際、前提条件として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "論理ボリュームがマウントされていない必要がある",
+          "explanation": {
+            "text": "オンラインスナップショットも可能で、マウント解除は必須ではない。",
+            "reference": "https://linuc.org",
+            "reference_label": "LVM スナップショット"
+          }
+        },
+        {
+          "key": "B",
+          "text": "十分な空き領域がボリュームグループに必要である",
+          "explanation": {
+            "text": "スナップショット領域が必要であるため正しい。",
+            "reference": "https://linuc.org",
+            "reference_label": "LVM スナップショット"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ext4 では使用できない",
+          "explanation": {
+            "text": "LVM スナップショットはファイルシステム種別に依存しないため誤り。",
+            "reference": "https://linuc.org",
+            "reference_label": "LVM スナップショット"
+          }
+        },
+        {
+          "key": "D",
+          "text": "必ず読み取り専用スナップショットになる",
+          "explanation": {
+            "text": "読み書き可能スナップショットも作成できる。",
+            "reference": "https://linuc.org",
+            "reference_label": "LVM スナップショット"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "スナップショットにはコピーオンライト領域として十分な空き領域が必要なため B が正解。",
+        "reference": "https://linuc.org",
+        "reference_label": "LVM スナップショット"
+      }
+    },
+    {
+      "id": "linuc-level2-202-019",
+      "question": "IPv6 のリンクローカルアドレスとして正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "fc00::1",
+          "explanation": {
+            "text": "fc00::/7 はユニークローカルアドレスでありリンクローカルではない。",
+            "reference": "https://linuc.org",
+            "reference_label": "IPv6 基礎"
+          }
+        },
+        {
+          "key": "B",
+          "text": "fe80::1",
+          "explanation": {
+            "text": "fe80::/10 がリンクローカルアドレス範囲であるため正しい。",
+            "reference": "https://linuc.org",
+            "reference_label": "IPv6 基礎"
+          }
+        },
+        {
+          "key": "C",
+          "text": "2001:db8::1",
+          "explanation": {
+            "text": "2001:db8::/32 は文書用アドレスでありリンクローカルではない。",
+            "reference": "https://linuc.org",
+            "reference_label": "IPv6 基礎"
+          }
+        },
+        {
+          "key": "D",
+          "text": "::1",
+          "explanation": {
+            "text": "::1 はループバックアドレスでありリンクローカルではない。",
+            "reference": "https://linuc.org",
+            "reference_label": "IPv6 基礎"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "リンクローカルは fe80::/10 の範囲であるため B が正しい。",
+        "reference": "https://linuc.org",
+        "reference_label": "IPv6 基礎"
+      }
+    },
+    {
+      "id": "linuc-level2-202-020",
+      "question": "Pacemaker + Corosync によるクラスタ構成で、STONITH の目的として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "クラスタノードの負荷分散を自動化する",
+          "explanation": {
+            "text": "STONITH は負荷分散ではなくフェンシング機構である。",
+            "reference": "https://linuc.org",
+            "reference_label": "HA クラスタ基本"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ノード障害時に対象ノードを強制的に電源断し、二重起動を防ぐ",
+          "explanation": {
+            "text": "STONITH（Shoot The Other Node In The Head）はフェンシングの代表的手法であり、誤動作ノードを隔離する機能。",
+            "reference": "https://linuc.org",
+            "reference_label": "HA クラスタ基本"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Corosync のトラフィックを暗号化する",
+          "explanation": {
+            "text": "STONITH の役割ではない。",
+            "reference": "https://linuc.org",
+            "reference_label": "HA クラスタ基本"
+          }
+        },
+        {
+          "key": "D",
+          "text": "VIP の自動切り替えを実行する",
+          "explanation": {
+            "text": "VIP 切替はリソース管理の機能であり STONITH ではない。",
+            "reference": "https://linuc.org",
+            "reference_label": "HA クラスタ基本"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "STONITH はフェンシング機構であり、誤動作ノードを強制隔離し二重起動を防ぐ役割を持つため B が正解。",
+        "reference": "https://linuc.org",
+        "reference_label": "HA クラスタ基本"
+      }
+    },
+    {
+      "id": "linuc-level2-202-021",
+      "question": "BIND をキャッシュ DNS サーバとして運用する際、オープンリゾルバとならないように「再帰問い合わせを許可するクライアント」を制御する主なディレクティブはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "recursion",
+          "explanation": {
+            "text": "recursion yes/no は再帰機能そのものの有効/無効を切り替えるが、どのクライアントに許可するかの範囲指定は行わない。",
+            "reference": "https://jprs.jp/tech/notice/2013-04-18-fixing-bind-openresolver.html",
+            "reference_label": "JPRS: オープンリゾルバー機能を停止するには【BIND編】"
+          }
+        },
+        {
+          "key": "B",
+          "text": "allow-query",
+          "explanation": {
+            "text": "allow-query は権威・キャッシュ問わずクエリへの応答可否を制御するが、再帰問い合わせの許可範囲を制御するのは別ディレクティブである。",
+            "reference": "https://zenn.dev/pe_yan/articles/2b24abf8f4c28d",
+            "reference_label": "Zenn: DNSサーバーの重要設定「allow-query」「allow-recursion」"
+          }
+        },
+        {
+          "key": "C",
+          "text": "allow-recursion",
+          "explanation": {
+            "text": "allow-recursion は BIND が再帰問い合わせを受け付けるクライアントの範囲を制御するため、オープンリゾルバ対策として重要なディレクティブである。",
+            "reference": "https://docs.redhat.com/ja/documentation/red_hat_enterprise_linux/8/html/deploying_different_types_of_servers/proc_configuring-bind-as-a-caching-dns-server_assembly_setting-up-and-configuring-a-bind-dns-server",
+            "reference_label": "Red Hat: BIND をキャッシュ DNS サーバーとして設定する"
+          }
+        },
+        {
+          "key": "D",
+          "text": "forwarders",
+          "explanation": {
+            "text": "forwarders は上位 DNS への転送先を指定するためのディレクティブであり、クライアントからの再帰問い合わせ許可範囲は制御しない。",
+            "reference": "https://linuc.org/linuc2/range/202.html",
+            "reference_label": "LinuC レベル2 202 試験範囲 2.08 ドメインネームサーバー"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "BIND をキャッシュ DNS として安全に運用するには、再帰問い合わせを内部ネットワークなど必要な範囲に限定することが重要であり、その制御に使うのが allow-recursion ディレクティブである。",
+        "reference": "https://jprs.jp/tech/notice/2013-04-18-fixing-bind-openresolver.html",
+        "reference_label": "JPRS: オープンリゾルバー機能を停止するには【BIND編】"
+      }
+    },
+    {
+      "id": "linuc-level2-202-022",
+      "question": "BIND でゾーンを公開する権威 DNS サーバを構成する際、外部公開用ゾーンに対して「問い合わせを許可するクライアントの範囲」を設定するディレクティブとして最も適切なのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "allow-query",
+          "explanation": {
+            "text": "allow-query は DNS サーバがどのクライアントからのクエリに応答するかを制御するディレクティブであり、権威サーバでの公開範囲制御に利用される。",
+            "reference": "https://zenn.dev/pe_yan/articles/2b24abf8f4c28d",
+            "reference_label": "Zenn: DNSサーバーの重要設定「allow-query」「allow-recursion」"
+          }
+        },
+        {
+          "key": "B",
+          "text": "allow-transfer",
+          "explanation": {
+            "text": "allow-transfer はゾーン転送を許可するセカンダリ DNS の範囲を制御するもので、通常のクエリ許可範囲制御とは目的が異なる。",
+            "reference": "https://linuc.org/linuc2/range/202.html",
+            "reference_label": "LinuC レベル2 202 試験範囲 2.08.2 ゾーン情報の管理"
+          }
+        },
+        {
+          "key": "C",
+          "text": "allow-recursion",
+          "explanation": {
+            "text": "allow-recursion は再帰問い合わせを受け付けるクライアントの範囲であり、権威サーバ公開範囲の直接の制御ではない。",
+            "reference": "https://jprs.jp/tech/notice/2013-04-18-fixing-bind-openresolver.html",
+            "reference_label": "JPRS: オープンリゾルバー機能を停止するには【BIND編】"
+          }
+        },
+        {
+          "key": "D",
+          "text": "blackhole",
+          "explanation": {
+            "text": "blackhole は特定クライアントからのクエリを無視する設定であり、一般的な公開範囲指定として使うディレクティブではない。",
+            "reference": "https://docs.redhat.com/ja/documentation/red_hat_enterprise_linux/8/html/deploying_different_types_of_servers/proc_configuring-bind-as-a-caching-dns-server_assembly_setting-up-and-configuring-a-bind-dns-server",
+            "reference_label": "Red Hat: BIND のアクセス制御設定例"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "権威 DNS の外部公開では、そのゾーンに対するクエリをどこまで許可するかを allow-query で制御するのが基本であり、特に内部専用ゾーンを分離する際などにも重要となる。",
+        "reference": "https://qiita.com/Yorcna/items/e87b5d8dab1d8fc60019",
+        "reference_label": "Qiita: BINDの基本的なアクセス制限（allow-query の例）"
+      }
+    },
+    {
+      "id": "linuc-level2-202-023",
+      "question": "nginx で静的コンテンツを配信する仮想サーバを構成する。/var/www/html をドキュメントルートとし、index.html をデフォルトファイルとする基本的な server ブロックの設定として、最も適切な組み合わせはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "server { root /var/www/html; index index.html; }",
+          "explanation": {
+            "text": "nginx では root ディレクティブでドキュメントルートを、index ディレクティブでデフォルトのインデックスファイルを指定するのが基本的な構成である。",
+            "reference": "https://docs.nginx.com/nginx/admin-guide/web-server/serving-static-content/",
+            "reference_label": "NGINX Docs: Root Directory and Index Files"
+          }
+        },
+        {
+          "key": "B",
+          "text": "server { document_root /var/www/html; default_index index.html; }",
+          "explanation": {
+            "text": "document_root や default_index というディレクティブは nginx には存在せず、Apache など他製品との混同である。",
+            "reference": "https://nginx.org/en/docs/beginners_guide.html",
+            "reference_label": "NGINX Beginner's Guide"
+          }
+        },
+        {
+          "key": "C",
+          "text": "server { location /var/www/html { index index.html; } }",
+          "explanation": {
+            "text": "location は URI パスに対するマッチングであり、直接ファイルシステム上のパスを書くのは誤りである。root などと組み合わせて使用する。",
+            "reference": "https://www.digitalocean.com/community/tutorials/understanding-nginx-server-and-location-block-selection-algorithms",
+            "reference_label": "DigitalOcean: Nginx server/location ブロックの基本"
+          }
+        },
+        {
+          "key": "D",
+          "text": "server { webroot /var/www/html; directoryindex index.html; }",
+          "explanation": {
+            "text": "webroot や directoryindex は nginx のディレクティブではない。",
+            "reference": "https://docs.nginx.com/nginx/admin-guide/web-server/serving-static-content/",
+            "reference_label": "NGINX Docs: 静的コンテンツ配信"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "nginx で静的コンテンツを提供する際は、server ブロック内で root にドキュメントルートを、index にデフォルトファイルを指定するのが一般的な構成である。",
+        "reference": "https://docs.nginx.com/nginx/admin-guide/web-server/serving-static-content/",
+        "reference_label": "NGINX Docs: Root ディレクティブと index の使い方"
+      }
+    },
+    {
+      "id": "linuc-level2-202-024",
+      "question": "Squid で特定ドメインへのアクセスをブロックするブラックリスト方式を設定したい。/etc/squid/blacklist にドメイン一覧を用意しているとき、squid.conf の記述として最も適切な組み合わせはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "acl blacklist dstdomain \"/etc/squid/blacklist\"\nhttp_access deny blacklist",
+          "explanation": {
+            "text": "acl で dstdomain タイプのブラックリストを定義し、http_access deny で該当ドメインを拒否する構成は、Squid のブラックリスト方式の典型例である。",
+            "reference": "https://blog.cybozu.io/entry/2017/02/03/080000",
+            "reference_label": "Cybozu Blog: Squid で安全なインターネットアクセス環境を構築する方法"
+          }
+        },
+        {
+          "key": "B",
+          "text": "acl blacklist src \"/etc/squid/blacklist\"\nhttp_access deny all",
+          "explanation": {
+            "text": "src タイプはクライアント IP を対象とする ACL であり、ドメインのブラックリストには適さない。また http_access deny all は全アクセス拒否となる。",
+            "reference": "https://docs.rockylinux.org/8/books/web_services/053-load-balancer-proxies-squid/",
+            "reference_label": "Rocky Linux Docs: Squid ACL の基本"
+          }
+        },
+        {
+          "key": "C",
+          "text": "http_access deny \"/etc/squid/blacklist\"",
+          "explanation": {
+            "text": "http_access は ACL 名を指定して許可/拒否するディレクティブであり、ファイルパスを直接指定する書式は用いない。",
+            "reference": "https://wiki.squid-cache.org/SquidFaq/SquidAcl",
+            "reference_label": "Squid FAQ: ACL と http_access の仕組み"
+          }
+        },
+        {
+          "key": "D",
+          "text": "acl blacklist url_regex \"/etc/squid/blacklist\"\nhttp_access allow blacklist",
+          "explanation": {
+            "text": "url_regex も利用できるが、この例では http_access allow blacklist となっているため、ブラックリストのサイトを逆に許可してしまう誤った設定となる。",
+            "reference": "https://wiki.squid-cache.org/SquidFaq/SquidAcl",
+            "reference_label": "Squid FAQ: ACL の AND/OR ロジック"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ブラックリストファイルを dstdomain タイプの ACL として定義し、その ACL を http_access deny で拒否するのが Squid での典型的なブラックリスト実装方法である。",
+        "reference": "https://blog.cybozu.io/entry/2017/02/03/080000",
+        "reference_label": "Cybozu Blog: ブラックリスト/ホワイトリスト設定例"
+      }
+    },
+    {
+      "id": "linuc-level2-202-025",
+      "question": "PAM 設定ファイル（/etc/pam.d/ssh など）において、control flag として \"required\" が指定されたモジュールの挙動の説明として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "required は、そのモジュールが成功した場合も失敗した場合も全体の認証結果には影響しない",
+          "explanation": {
+            "text": "影響を与えないのは optional の動作であり、required の説明として不適切である。",
+            "reference": "https://ftp.iij.ad.jp/pub/linux/centos-vault/3.9/docs/html/rhel-rg-en-3/s1-pam-format.html",
+            "reference_label": "Red Hat: PAM Configuration File Format"
+          }
+        },
+        {
+          "key": "B",
+          "text": "required は、そのモジュールが失敗すると即座に認証処理が打ち切られる",
+          "explanation": {
+            "text": "即座に打ち切るのは通常 requisite の挙動であり、required の場合はスタックを最後まで評価したうえで失敗になる。",
+            "reference": "https://docs.oracle.com/cd/E19253-01/816-4557/pam-32/index.html",
+            "reference_label": "Oracle: PAM Control Flags の説明"
+          }
+        },
+        {
+          "key": "C",
+          "text": "required は、そのモジュールが失敗した場合、スタック内の他のモジュールも評価されるが、最終的な認証結果は失敗となる",
+          "explanation": {
+            "text": "required フラグは、モジュールが成功することが全体の成功条件であり、失敗しても後続モジュールの評価は続けるが総合結果としては必ず失敗となる。",
+            "reference": "https://unix.stackexchange.com/questions/106131/pam-required-and-sufficient-control-flag",
+            "reference_label": "Unix.SE: required と sufficient の挙動解説"
+          }
+        },
+        {
+          "key": "D",
+          "text": "required は、そのモジュールが成功した場合、残りのモジュールの評価をスキップして即座に成功となる",
+          "explanation": {
+            "text": "成功時に他モジュールをスキップして成功とするのは sufficient の挙動であり、required の説明としては誤りである。",
+            "reference": "https://docs.oracle.com/cd/E19683-01/817-0365/pam-36/index.html",
+            "reference_label": "Oracle: PAM Control Flags の詳細"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "required は「成功が必須」のモジュールであり、失敗しても処理は続行されるものの、最終的な認証結果は失敗になるというのが特徴である。",
+        "reference": "https://ftp.iij.ad.jp/pub/linux/centos-vault/3.9/docs/html/rhel-rg-en-3/s1-pam-format.html",
+        "reference_label": "Red Hat: PAM control flag required の定義"
+      }
+    },
+    {
+      "id": "linuc-level2-202-026",
+      "question": "OpenLDAP サーバの設定方式として、slapd-config (cn=config) 方式を採用する利点として最も適切な説明はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "設定は slapd.conf のみで管理され、変更のたびにサーバ再起動が必要になる",
+          "explanation": {
+            "text": "これは従来の slapd.conf ベースの方式であり、slapd-config 方式の利点ではない。",
+            "reference": "https://note.com/sakuzo_books/n/naabc1fd27b1b",
+            "reference_label": "note: OpenLDAP の設定方法（slapd.conf と slapd-config）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "設定は LDIF ファイルへの直接編集により変更し、slapd は自動的に反映する",
+          "explanation": {
+            "text": "slapd-config では設定は LDAP データベースとして cn=config に保存され、ldapmodify などの LDAP 操作で変更するのが基本であり、LDIF ファイルの直接編集は推奨されない。",
+            "reference": "https://www.openldap.org/doc/admin24/slapdconf2.html",
+            "reference_label": "OpenLDAP Admin Guide: slapd-config 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "設定は LDAP エントリとして cn=config 以下に保存され、LDAP 操作により多くの場合再起動なしで動的に変更できる",
+          "explanation": {
+            "text": "slapd-config 方式の特徴は、設定が LDAP データベースに格納され、標準の LDAP 操作で管理できるため、多くの設定変更を再起動なしに反映できる点である。",
+            "reference": "https://www.openldap.org/doc/admin24/slapdconf2.html",
+            "reference_label": "OpenLDAP Admin Guide: slapd-config の特徴"
+          }
+        },
+        {
+          "key": "D",
+          "text": "slapd-config を利用すると、PAM 連携が不要になりユーザ認証を行わなくてよい",
+          "explanation": {
+            "text": "slapd-config は設定管理方式の違いであり、クライアント認証方式（PAM や LDAP 認証）とは直接関係しない。",
+            "reference": "https://linuc.org/linuc2/range/202.html",
+            "reference_label": "LinuC レベル2 202 試験範囲 2.07.4 OpenLDAPサーバーの設定"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "slapd-config (cn=config) は設定を LDAP データとして扱い、ldapmodify などで変更できるため、従来の slapd.conf より柔軟で動的な設定変更が可能になるのが大きな利点である。",
+        "reference": "https://www.openldap.org/doc/admin24/slapdconf2.html",
+        "reference_label": "OpenLDAP Admin Guide: slapd-config(5)"
+      }
+    },
+    {
+      "id": "linuc-level2-202-027",
+      "question": "Samba の共有設定において、共有名をネットワークブラウザ等の一覧に表示するかどうかを制御するパラメータとして正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "browseable",
+          "explanation": {
+            "text": "browseable パラメータは、その共有がブラウズリストや net view で表示されるかどうかを制御するための設定である。",
+            "reference": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html",
+            "reference_label": "smb.conf(5): browseable の説明"
+          }
+        },
+        {
+          "key": "B",
+          "text": "valid users",
+          "explanation": {
+            "text": "valid users は共有へアクセスを許可するユーザやグループを制限するためのパラメータであり、一覧表示可否の制御ではない。",
+            "reference": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html",
+            "reference_label": "smb.conf(5): valid users の説明"
+          }
+        },
+        {
+          "key": "C",
+          "text": "read only",
+          "explanation": {
+            "text": "read only は共有を読み取り専用にするかどうかを制御するパラメータであり、表示の有無とは関係しない。",
+            "reference": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html",
+            "reference_label": "smb.conf(5): read only の説明"
+          }
+        },
+        {
+          "key": "D",
+          "text": "guest ok",
+          "explanation": {
+            "text": "guest ok はゲストアクセスを許可するかどうかを決めるパラメータであり、共有の一覧表示可否を制御するものではない。",
+            "reference": "https://unix.stackexchange.com/questions/377516/what-does-browseable-in-samba-configuration-mean",
+            "reference_label": "Unix.SE: browseable パラメータの意味"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "browseable は共有のブラウズ可否を制御するパラメータであり、Windows クライアントからネットワーク一覧に表示するかどうかを決めるために使用される。",
+        "reference": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html",
+        "reference_label": "smb.conf(5): browseable オプション"
+      }
+    },
+    {
+      "id": "linuc-level2-202-028",
+      "question": "OpenSSH サーバで公開鍵認証のみを許可し、パスワード認証を禁止したい。/etc/ssh/sshd_config に設定すべき内容として最も適切な組み合わせはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "PubkeyAuthentication yes\nPasswordAuthentication no",
+          "explanation": {
+            "text": "公開鍵認証を有効化し、PasswordAuthentication を no にすることでパスワード認証を禁止し、公開鍵認証のみに制限する設定となる。",
+            "reference": "https://docs.redhat.com/ja/documentation/red_hat_enterprise_linux/8/html/configuring_basic_system_settings/setting-an-openssh-server-for-key-based-authentication_assembly_using-secure-communications-between-two-systems-with-openssh",
+            "reference_label": "Red Hat: 鍵ベース認証のみを使用する設定例"
+          }
+        },
+        {
+          "key": "B",
+          "text": "PubkeyAuthentication no\nPasswordAuthentication yes",
+          "explanation": {
+            "text": "この設定では公開鍵認証が無効になり、パスワード認証のみが有効となるため問題文の要件と逆である。",
+            "reference": "https://hyperschool.net/textbook/vccw/6010_vccw_public_key.html",
+            "reference_label": "HyperSchool: 公開鍵認証とパスワードログインの禁止"
+          }
+        },
+        {
+          "key": "C",
+          "text": "PubkeyAuthentication yes\nPasswordAuthentication yes",
+          "explanation": {
+            "text": "両方を yes にすると公開鍵とパスワードの両方が許可されるため、パスワード認証を禁止する要件を満たさない。",
+            "reference": "https://qiita.com/YukiTetsuka/items/b1ed9942aa139c530f11",
+            "reference_label": "Qiita: sshd_config デフォルト設定とセキュリティ強化"
+          }
+        },
+        {
+          "key": "D",
+          "text": "PubkeyAuthentication no\nPasswordAuthentication no",
+          "explanation": {
+            "text": "両方を無効にすると、通常ユーザはログインできなくなり、公開鍵認証のみを許可する目的から外れてしまう。",
+            "reference": "https://superuser.com/questions/161609/can-someone-explain-the-passwordauthentication-in-the-etc-ssh-sshd-config-fil",
+            "reference_label": "Superuser: PasswordAuthentication オプションの意味"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "公開鍵認証のみを許可するには、PubkeyAuthentication を yes、PasswordAuthentication を no とするのが代表的な設定であり、多くのベストプラクティスでも推奨されている。",
+        "reference": "https://hyperschool.net/textbook/vccw/6010_vccw_public_key.html",
+        "reference_label": "HyperSchool: sshd_config の設定例"
+      }
+    },
+    {
+      "id": "linuc-level2-202-029",
+      "question": "Fail2ban を sshd と連携させて運用する主な目的として、最も適切な説明はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "SSH 通信の内容を暗号化する",
+          "explanation": {
+            "text": "SSH の暗号化は OpenSSH 自体が提供する機能であり、Fail2ban の役割ではない。",
+            "reference": "https://wiki.archlinux.jp/index.php/Fail2ban",
+            "reference_label": "ArchWiki: Fail2ban の概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "特定の IP アドレスからの SSH 接続のみを常に許可する",
+          "explanation": {
+            "text": "特定 IP の許可はファイアウォールや sshd の ListenAddress 設定などで行うのが一般的であり、Fail2ban の主目的とは異なる。",
+            "reference": "https://wiki.archlinux.jp/index.php/Fail2ban",
+            "reference_label": "ArchWiki: Fail2ban とファイアウォール"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ログを監視し、SSH ログイン失敗を繰り返す IP アドレスを一時的に遮断する",
+          "explanation": {
+            "text": "Fail2ban はログファイルを監視して不正アクセスとみなされるパターンを検知し、対応する IP をファイアウォールなどで一時的にブロックすることでブルートフォース攻撃を軽減する。",
+            "reference": "https://wiki.archlinux.jp/index.php/Fail2ban",
+            "reference_label": "ArchWiki: Fail2ban の仕組みと sshd との連携"
+          }
+        },
+        {
+          "key": "D",
+          "text": "SSH サーバの設定ファイル(sshd_config)を自動生成する",
+          "explanation": {
+            "text": "Fail2ban はログ監視と IP ブロックを行うツールであり、sshd_config の自動生成や編集を行うものではない。",
+            "reference": "https://zenn.dev/y_mrok/articles/ssh_security_fail2ban",
+            "reference_label": "Zenn: ssh のセキュリティ対策と Fail2ban"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "Fail2ban の主な役割は、ログから不正な試行回数を検知して iptables などを用いて該当 IP を一時的にブロックすることで、SSH などへの総当たり攻撃を抑止することである。",
+        "reference": "https://wiki.archlinux.jp/index.php/Fail2ban",
+        "reference_label": "ArchWiki: Fail2ban"
+      }
+    },
+    {
+      "id": "linuc-level2-202-030",
+      "question": "Squid でホワイトリスト方式（指定ドメインのみ許可、それ以外は拒否）を実現したい。/etc/squid/whitelist に許可したいドメイン一覧を記述しているとき、典型的な設定例として最も適切なのはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "acl whitelist dstdomain \"/etc/squid/whitelist\"\nhttp_access allow whitelist\nhttp_access deny all",
+          "explanation": {
+            "text": "ホワイトリスト ACL にマッチした通信のみ allow とし、その後に http_access deny all を置く構成は、許可ドメイン以外を全て拒否するホワイトリスト方式の基本形である。",
+            "reference": "https://blog.cybozu.io/entry/2017/02/03/080000",
+            "reference_label": "Cybozu Blog: Squid のホワイトリスト方式の例"
+          }
+        },
+        {
+          "key": "B",
+          "text": "acl whitelist dstdomain \"/etc/squid/whitelist\"\nhttp_access deny whitelist\nhttp_access allow all",
+          "explanation": {
+            "text": "whitelist を deny しているため、ホワイトリストに載っているドメインだけが拒否され、他は許可されるという逆の挙動になってしまう。",
+            "reference": "https://docs.rockylinux.org/8/books/web_services/053-load-balancer-proxies-squid/",
+            "reference_label": "Rocky Linux Docs: http_access の評価順序"
+          }
+        },
+        {
+          "key": "C",
+          "text": "acl whitelist src \"/etc/squid/whitelist\"\nhttp_access allow whitelist\nhttp_access deny all",
+          "explanation": {
+            "text": "src タイプの ACL はクライアント IP アドレスを対象としており、ドメインのホワイトリストではなく、許可 IP アドレスリストを意味してしまう。",
+            "reference": "https://wiki.squid-cache.org/SquidFaq/SquidAcl",
+            "reference_label": "Squid FAQ: ACL タイプ (src, dstdomain など)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "acl whitelist url_regex \"/etc/squid/whitelist\"\nhttp_access allow all",
+          "explanation": {
+            "text": "url_regex を用いてもよいが、この設定では whitelist ACL を使わず常に allow all のため、ホワイトリストになっていない。",
+            "reference": "https://workaround.org/squid-acls/",
+            "reference_label": "Workaround.org: Squid ACL の基本と http_access"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "許可対象ドメインを dstdomain ACL として定義し、その ACL のみを allow した上で最後に deny all を置くことで、リストにないドメインをすべて遮断するホワイトリスト方式を実現できる。",
+        "reference": "https://blog.cybozu.io/entry/2017/02/03/080000",
+        "reference_label": "Cybozu Blog: Squid のホワイトリスト設定例"
+      }
+    },
+    {
+      "id": "linuc-level2-202-031",
+      "question": "Linux の systemd サービスで、失敗時に自動再起動を行わせるための設定として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Restart=on-failure",
+          "explanation": {
+            "text": "on-failure は終了コードがエラーの場合に自動再起動を実行する設定である。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.service.html",
+            "reference_label": "systemd.service - Restart"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Restart=never",
+          "explanation": {
+            "text": "never は自動再起動しない設定である。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.service.html",
+            "reference_label": "systemd.service - Restart"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Restart=reload",
+          "explanation": {
+            "text": "reload はサービスを再読み込みする動作であり、再起動条件ではない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.service.html",
+            "reference_label": "systemd.service - Restart"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Restart=always-fail",
+          "explanation": {
+            "text": "always-fail という設定値は存在しない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.service.html",
+            "reference_label": "systemd.service - Restart"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "サービス失敗時の再起動は Restart=on-failure が一般的である。",
+        "reference": "https://www.freedesktop.org/software/systemd/man/systemd.service.html",
+        "reference_label": "systemd.service - Restart"
+      }
+    },
+    {
+      "id": "linuc-level2-202-032",
+      "question": "Linux のネットワーク管理において、ip コマンドでデフォルトゲートウェイを設定する正しいコマンドはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ip route add default gw 192.168.1.1",
+          "explanation": {
+            "text": "ip コマンドでは gw キーワードは使用しない。",
+            "reference": "https://man7.org/linux/man-pages/man8/ip-route.8.html",
+            "reference_label": "ip-route(8) 基本構文"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ip route add 192.168.1.1 default",
+          "explanation": {
+            "text": "default の記述順序が誤っている。",
+            "reference": "https://man7.org/linux/man-pages/man8/ip-route.8.html",
+            "reference_label": "ip-route(8)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ip route add default via 192.168.1.1",
+          "explanation": {
+            "text": "via を用いてゲートウェイを指定する正しい構文である。",
+            "reference": "https://man7.org/linux/man-pages/man8/ip-route.8.html",
+            "reference_label": "ip-route(8)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ip addr add default dev eth0",
+          "explanation": {
+            "text": "ip addr は IP 割り当て用であり、ルート設定ではない。",
+            "reference": "https://man7.org/linux/man-pages/man8/ip-address.8.html",
+            "reference_label": "ip-address(8)"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "default ルートの設定は「ip route add default via <gateway>」が正しい。",
+        "reference": "https://man7.org/linux/man-pages/man8/ip-route.8.html",
+        "reference_label": "ip-route(8)"
+      }
+    },
+    {
+      "id": "linuc-level2-202-033",
+      "question": "Apache HTTP Server において、特定ディレクトリへのアクセス制御を .htaccess で有効にするため、httpd.conf 側で必要となる設定はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AllowOverride All",
+          "explanation": {
+            "text": "AllowOverride All を設定することで、.htaccess のアクセス制御設定が有効化される。",
+            "reference": "https://httpd.apache.org/docs/2.4/mod/core.html#allowoverride",
+            "reference_label": "Apache: AllowOverride"
+          }
+        },
+        {
+          "key": "B",
+          "text": "OverrideAllow On",
+          "explanation": {
+            "text": "OverrideAllow というディレクティブは存在しない。",
+            "reference": "https://httpd.apache.org/docs/2.4/",
+            "reference_label": "Apache 2.4 ドキュメント"
+          }
+        },
+        {
+          "key": "C",
+          "text": "AccessFile .htaccess",
+          "explanation": {
+            "text": "AccessFileName が正しいディレクティブ名であり、AccessFile は存在しない。",
+            "reference": "https://httpd.apache.org/docs/2.4/mod/core.html#accessfilename",
+            "reference_label": "Apache: AccessFileName"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AllowAllOverride On",
+          "explanation": {
+            "text": "AllowAllOverride は存在しないディレクティブである。",
+            "reference": "https://httpd.apache.org/docs/2.4/",
+            "reference_label": "Apache 2.4"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": ".htaccess を使ったアクセス制御を有効化するには AllowOverride の設定が必須である。",
+        "reference": "https://httpd.apache.org/docs/2.4/mod/core.html#allowoverride",
+        "reference_label": "Apache: AllowOverride"
+      }
+    },
+    {
+      "id": "linuc-level2-202-034",
+      "question": "Postfix で SMTP-AUTH を有効にする際、利用される SASL 実装として一般的に使用されるものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Cyrus SASL",
+          "explanation": {
+            "text": "Postfix の SASL 認証では Cyrus SASL が広く用いられている。",
+            "reference": "http://www.postfix.org/SASL_README.html",
+            "reference_label": "Postfix SASL README"
+          }
+        },
+        {
+          "key": "B",
+          "text": "OpenSSL SASL",
+          "explanation": {
+            "text": "OpenSSL は暗号化ライブラリであり、SASL 実装ではない。",
+            "reference": "http://www.postfix.org/SASL_README.html",
+            "reference_label": "Postfix SASL README"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Kerberos SASL",
+          "explanation": {
+            "text": "Kerberos 認証は可能だが、一般的な SASL 実装名ではない。",
+            "reference": "http://www.postfix.org/SASL_README.html",
+            "reference_label": "Postfix SASL README"
+          }
+        },
+        {
+          "key": "D",
+          "text": "TLS SASL",
+          "explanation": {
+            "text": "TLS は暗号化プロトコルであり、SASL の提供機能ではない。",
+            "reference": "http://www.postfix.org/SASL_README.html",
+            "reference_label": "Postfix SASL README"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Postfix の SMTP-AUTH では Cyrus SASL を利用する構成が一般的である。",
+        "reference": "http://www.postfix.org/SASL_README.html",
+        "reference_label": "Postfix SASL README"
+      }
+    },
+    {
+      "id": "linuc-level2-202-035",
+      "question": "Nginx のリバースプロキシ設定で、バックエンドに渡す Host ヘッダを変更したくない場合、使用するディレクティブとして最適なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "proxy_set_header Host $host;",
+          "explanation": {
+            "text": "$host を指定することで、受信した Host ヘッダがバックエンドにも引き継がれる。",
+            "reference": "https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_set_header",
+            "reference_label": "NGINX proxy_set_header"
+          }
+        },
+        {
+          "key": "B",
+          "text": "proxy_host preserve;",
+          "explanation": {
+            "text": "proxy_host というディレクティブは存在しない。",
+            "reference": "https://nginx.org/en/docs/",
+            "reference_label": "NGINX docs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "proxy_header Host keep;",
+          "explanation": {
+            "text": "この形式のディレクティブは存在しない。",
+            "reference": "https://nginx.org/en/docs/",
+            "reference_label": "NGINX docs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "proxy_set_header Host ''",
+          "explanation": {
+            "text": "空にするとバックエンドへ適切な Host 情報が渡らない。",
+            "reference": "https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_set_header",
+            "reference_label": "NGINX proxy_set_header"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "proxy_set_header Host $host により、クライアントの Host ヘッダがそのままバックエンドに渡される。",
+        "reference": "https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_set_header",
+        "reference_label": "NGINX proxy_set_header"
+      }
+    },
+    {
+      "id": "linuc-level2-202-036",
+      "question": "LVM の PV（Physical Volume）を確認するコマンドとして正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "pvscan",
+          "explanation": {
+            "text": "pvscan は PV をスキャンし検出するための正しいコマンドである。",
+            "reference": "https://linux.die.net/man/8/pvscan",
+            "reference_label": "pvscan(8)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "lvscan",
+          "explanation": {
+            "text": "lvscan は LV（Logical Volume）をスキャンするコマンドであり、PV ではない。",
+            "reference": "https://linux.die.net/man/8/lvscan",
+            "reference_label": "lvscan(8)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "vgscan",
+          "explanation": {
+            "text": "vgscan は VG（Volume Group）のスキャンである。",
+            "reference": "https://linux.die.net/man/8/vgscan",
+            "reference_label": "vgscan(8)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "fdisk -l",
+          "explanation": {
+            "text": "fdisk はパーティション情報を表示するが PV 情報の取得には使わない。",
+            "reference": "https://man7.org/linux/man-pages/man8/fdisk.8.html",
+            "reference_label": "fdisk(8)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "LVM の PV 一覧は pvscan により確認することができる。",
+        "reference": "https://linux.die.net/man/8/pvscan",
+        "reference_label": "pvscan(8)"
+      }
+    },
+    {
+      "id": "linuc-level2-202-037",
+      "question": "Kerberos のチケットを確認するコマンドとして最も一般的なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "klist",
+          "explanation": {
+            "text": "klist は現在の Kerberos チケット情報を表示するコマンドである。",
+            "reference": "https://web.mit.edu/kerberos/krb5-devel/doc/user/user_commands/klist.html",
+            "reference_label": "Kerberos klist command"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ktlist",
+          "explanation": {
+            "text": "ktlist というコマンドは存在しない。",
+            "reference": "https://web.mit.edu/kerberos/",
+            "reference_label": "MIT Kerberos"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ticket-show",
+          "explanation": {
+            "text": "ticket-show というコマンドは存在しない。",
+            "reference": "https://web.mit.edu/kerberos/",
+            "reference_label": "MIT Kerberos"
+          }
+        },
+        {
+          "key": "D",
+          "text": "kpasswd",
+          "explanation": {
+            "text": "kpasswd は Kerberos パスワード変更コマンドである。",
+            "reference": "https://web.mit.edu/kerberos/",
+            "reference_label": "MIT Kerberos"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Kerberos チケットの確認は klist が標準コマンドである。",
+        "reference": "https://web.mit.edu/kerberos/krb5-devel/doc/user/user_commands/klist.html",
+        "reference_label": "Kerberos klist"
+      }
+    },
+    {
+      "id": "linuc-level2-202-038",
+      "question": "Linux のアクセス制御で、setgid ビットがディレクトリに設定されている場合の挙動として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "そのディレクトリ内に作成されるファイルの所有者がディレクトリの所有者になる",
+          "explanation": {
+            "text": "所有者ではなく、グループの継承であるため誤り。",
+            "reference": "https://man7.org/linux/man-pages/man1/chmod.1.html",
+            "reference_label": "chmod(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "そのディレクトリ内に作成されるファイルのグループがディレクトリのグループを継承する",
+          "explanation": {
+            "text": "setgid がディレクトリに設定されると、新規作成ファイルのグループはディレクトリのグループを継承する。",
+            "reference": "https://man7.org/linux/man-pages/man1/chmod.1.html",
+            "reference_label": "chmod(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "root ユーザ以外がディレクトリを実行できなくなる",
+          "explanation": {
+            "text": "setgid は実行可否には影響しない。",
+            "reference": "https://man7.org/linux/man-pages/man1/chmod.1.html",
+            "reference_label": "chmod(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ACL が無効化される",
+          "explanation": {
+            "text": "setgid 設定は ACL と無関係である。",
+            "reference": "https://man7.org/linux/man-pages/man1/chmod.1.html",
+            "reference_label": "chmod(1)"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ディレクトリの setgid は、そのディレクトリ内で作成されるファイルのグループを継承させる動作である。",
+        "reference": "https://man7.org/linux/man-pages/man1/chmod.1.html",
+        "reference_label": "chmod(1)"
+      }
+    },
+    {
+      "id": "linuc-level2-202-039",
+      "question": "DNSSEC において、ゾーン情報の整合性を提供するために使用される暗号化要素として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "DS レコード",
+          "explanation": {
+            "text": "DS は親ゾーン側に格納されるが、整合性そのものを直接保証するのは署名である。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4033",
+            "reference_label": "RFC4033 DNSSEC Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "RRSIG レコード",
+          "explanation": {
+            "text": "RRSIG は各レコードセットに対する署名情報であり、DNSSEC の整合性を担保する主要要素である。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4034",
+            "reference_label": "RFC4034 DNSSEC Resource Records"
+          }
+        },
+        {
+          "key": "C",
+          "text": "PTR レコード",
+          "explanation": {
+            "text": "PTR は逆引き用であり、DNSSEC と無関係である。",
+            "reference": "https://www.rfc-editor.org/rfc/",
+            "reference_label": "RFC 各種 DNS レコード"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CAA レコード",
+          "explanation": {
+            "text": "CAA は証明書発行のポリシーを示すレコードであり DNSSEC の署名とは関係しない。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc6844",
+            "reference_label": "RFC6844 CAA"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "DNSSEC の整合性を保証する中心的な仕組みは RRSIG による署名レコードである。",
+        "reference": "https://www.rfc-editor.org/rfc/rfc4034",
+        "reference_label": "RFC4034 RRSIG"
+      }
+    },
+    {
+      "id": "linuc-level2-202-040",
+      "question": "Linux のカーネルパラメータを永続的に設定する方法として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "sysctl -w を実行するだけで永続化される",
+          "explanation": {
+            "text": "sysctl -w は一時的な設定であり再起動で失われる。",
+            "reference": "https://man7.org/linux/man-pages/man8/sysctl.8.html",
+            "reference_label": "sysctl(8)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "/etc/sysctl.conf または /etc/sysctl.d/*.conf に設定を書く",
+          "explanation": {
+            "text": "これらのファイルに設定を記載することで永続化される。",
+            "reference": "https://man7.org/linux/man-pages/man8/sysctl.8.html",
+            "reference_label": "sysctl(8)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "/proc/sys 以下の値を直接 echo コマンドで書き換える",
+          "explanation": {
+            "text": "直接書き換えは可能だが永続化はされない。",
+            "reference": "https://man7.org/linux/man-pages/man5/proc.5.html",
+            "reference_label": "proc(5)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "カーネルを再ビルドする必要がある",
+          "explanation": {
+            "text": "sysctl によるランタイム設定にカーネル再ビルドは不要である。",
+            "reference": "https://man7.org/linux/man-pages/man8/sysctl.8.html",
+            "reference_label": "sysctl(8)"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "永続化には /etc/sysctl.conf または /etc/sysctl.d/ に設定を書くことが正しい方法である。",
+        "reference": "https://man7.org/linux/man-pages/man8/sysctl.8.html",
+        "reference_label": "sysctl(8)"
+      }
+    },
+    {
+      "id": "linuc-level2-202-041",
+      "question": "iptables から nftables への移行が進む中、nftables で IPv4 のポート 22/tcp への新規入力接続を許可する基本的なコマンドとして最も適切なものはどれか。なお、フィルタ用テーブルとして 'inet filter'、チェインとして 'input' が定義済みであるものとする。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "nft add rule ip filter input tcp dport 22 accept",
+          "explanation": {
+            "text": "inet テーブルでは 'ip' ではなく 'inet' ファミリを指定するのが一般的であり、この例ではテーブル定義とファミリが一致していない。",
+            "reference": "https://wiki.nftables.org/wiki-nftables/index.php/Simple_ruleset_for_a_workstation",
+            "reference_label": "nftables wiki: 基本ルールセット例"
+          }
+        },
+        {
+          "key": "B",
+          "text": "nft add rule inet filter input tcp dport 22 ct state new accept",
+          "explanation": {
+            "text": "inet ファミリの filter テーブル input チェインに対し、tcp dport 22 かつ接続状態が new のパケットを accept する、よく用いられる基本的な記述である。",
+            "reference": "https://wiki.archlinux.org/title/Nftables",
+            "reference_label": "ArchWiki: nftables の基本ルールセット"
+          }
+        },
+        {
+          "key": "C",
+          "text": "nft add chain inet filter input { tcp dport 22 accept }",
+          "explanation": {
+            "text": "これはチェイン定義とルール記述が混在しており、実際の構文としては不正な書き方である。",
+            "reference": "https://wiki.nftables.org/wiki-nftables/index.php/Configuring_chains",
+            "reference_label": "nftables: チェイン設定"
+          }
+        },
+        {
+          "key": "D",
+          "text": "nft add rule inet input filter tcp dport 22 accept",
+          "explanation": {
+            "text": "テーブル名とチェイン名の順番が誤っており、'inet filter input' の順に指定する必要がある。",
+            "reference": "https://wiki.archlinux.org/title/Nftables",
+            "reference_label": "ArchWiki: nft コマンドの構文"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "nftables では 'nft add rule <family> <table> <chain> ...' の構文を用いる。inet filter input に対し tcp dport 22 かつ新規接続のみを許可する B が、与えられた条件に最も適した正しいコマンドである。",
+        "reference": "https://wiki.archlinux.org/title/Nftables",
+        "reference_label": "ArchWiki: nftables の基本構文"
+      }
+    },
+    {
+      "id": "linuc-level2-202-042",
+      "question": "vsftpd をセキュアに運用するため、匿名ユーザによるアップロードを禁止しつつダウンロードのみ許可したい。vsftpd.conf の設定として最も適切な組み合わせはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "anonymous_enable=YES\nanon_upload_enable=YES\nanon_mkdir_write_enable=YES",
+          "explanation": {
+            "text": "anonymous_enable=YES かつ anon_upload_enable=YES は匿名ユーザにアップロードを許可してしまうため、要件と逆の設定となる。",
+            "reference": "https://security.appspot.com/vsftpd/vsftpd_conf.html",
+            "reference_label": "vsftpd.conf オプション解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "anonymous_enable=YES\nanon_upload_enable=NO\nanon_mkdir_write_enable=NO",
+          "explanation": {
+            "text": "匿名アクセス（読み取り）を許可しつつ、アップロードとディレクトリ作成を禁止しているため、匿名ユーザはダウンロードのみ可能になる。",
+            "reference": "https://security.appspot.com/vsftpd/vsftpd_conf.html",
+            "reference_label": "vsftpd.conf: anonymous_enable, anon_upload_enable"
+          }
+        },
+        {
+          "key": "C",
+          "text": "anonymous_enable=NO\nwrite_enable=YES",
+          "explanation": {
+            "text": "anonymous_enable=NO の場合、匿名ユーザ自体が利用できず、匿名ダウンロードも禁止されるため要件を満たさない。",
+            "reference": "https://security.appspot.com/vsftpd/vsftpd_conf.html",
+            "reference_label": "vsftpd.conf: anonymous_enable"
+          }
+        },
+        {
+          "key": "D",
+          "text": "anonymous_enable=YES\nwrite_enable=YES\nanon_world_readable_only=NO",
+          "explanation": {
+            "text": "write_enable=YES により書き込みが有効化され、さらに anon_world_readable_only=NO とすると匿名ユーザの権限が広くなり、セキュアなダウンロード専用構成とは言えない。",
+            "reference": "https://security.appspot.com/vsftpd/vsftpd_conf.html",
+            "reference_label": "vsftpd.conf: write_enable"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "匿名ダウンロードのみ許可したい場合、anonymous_enable=YES としつつ anon_upload_enable=NO, anon_mkdir_write_enable=NO で匿名ユーザの書き込みを禁止する構成が一般的である。",
+        "reference": "https://security.appspot.com/vsftpd/vsftpd_conf.html",
+        "reference_label": "vsftpd.conf 公式ドキュメント"
+      }
+    },
+    {
+      "id": "linuc-level2-202-043",
+      "question": "SELinux が Enforcing モードで動作しているシステムで、特定のサービスがポリシー違反により動作しない場合の基本的な調査手順として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "getenforce コマンドでモードを確認し、setenforce 0 で一時的に Permissive にしてログの AVC メッセージを確認する",
+          "explanation": {
+            "text": "SELinux のトラブルシュートでは、一時的に Permissive にして AVC ログを収集し、それを元にポリシー調整や booleans 設定を行うのが基本的な手順の一つである。",
+            "reference": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/using_selinux/troubleshooting-selinux-using-selinux",
+            "reference_label": "Red Hat: SELinux トラブルシューティング"
+          }
+        },
+        {
+          "key": "B",
+          "text": "getenforce コマンドでモードを確認し、必ず Disabled に変更してからサービスを再起動する",
+          "explanation": {
+            "text": "Disabled にしてしまうと SELinux の保護機能自体が無効になり、問題の原因把握や適切なポリシー調整が行えないため、推奨される手順ではない。",
+            "reference": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/using_selinux/assembly_selinux-modes_using-selinux",
+            "reference_label": "Red Hat: SELinux モードの説明"
+          }
+        },
+        {
+          "key": "C",
+          "text": "audit2allow コマンドで任意の AVC ログをそのままポリシーに変換し、自動生成されたモジュールを常に適用する",
+          "explanation": {
+            "text": "audit2allow は便利だが、すべての AVC を無批判に許可するのは過剰権限につながるため、公式にも慎重な利用が推奨されている。",
+            "reference": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/using_selinux/assembly_securing-applications-using-selinux-policies_using-selinux",
+            "reference_label": "Red Hat: audit2allow 利用時の注意"
+          }
+        },
+        {
+          "key": "D",
+          "text": "常に setenforce 1 を実行してからサービスを再起動し、問題が再現するまで繰り返す",
+          "explanation": {
+            "text": "すでに Enforcing の場合は意味がなく、またログを確認しないため原因究明にならない。",
+            "reference": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/using_selinux/troubleshooting-selinux-using-selinux",
+            "reference_label": "Red Hat: SELinux トラブルシュート概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "SELinux 関連トラブルでは、まず Enforcing を確認し、一時的に Permissive に落として AVC ログを収集・分析するのが基本。原因を把握した上で適切な boolean やポリシー変更を行う。",
+        "reference": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/using_selinux/troubleshooting-selinux-using-selinux",
+        "reference_label": "Red Hat: SELinux トラブルシューティングの基本"
+      }
+    },
+    {
+      "id": "linuc-level2-202-044",
+      "question": "OpenVPN でリモートアクセス VPN を構成する際、クライアント設定ファイル（client.ovpn）において、サーバ証明書のホスト名検証を強化するために推奨される設定はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "verify-x509-name server name",
+          "explanation": {
+            "text": "verify-x509-name はサーバ証明書の CN や subject を検証し、意図しない証明書で接続しないようにするための推奨オプションである。",
+            "reference": "https://openvpn.net/community-resources/reference-manual-for-openvpn-2-5/",
+            "reference_label": "OpenVPN 2.5 man ページ: verify-x509-name"
+          }
+        },
+        {
+          "key": "B",
+          "text": "remote-cert-tls client",
+          "explanation": {
+            "text": "remote-cert-tls client はサーバ側の設定ではなく、クライアントを検証する際に使うもので、この例では方向が逆である。",
+            "reference": "https://openvpn.net/community-resources/reference-manual-for-openvpn-2-5/",
+            "reference_label": "OpenVPN: remote-cert-tls"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ns-cert-type server",
+          "explanation": {
+            "text": "ns-cert-type は旧来のオプションであり、現在は非推奨とされ verify-x509-name などの使用が推奨されている。",
+            "reference": "https://openvpn.net/community-resources/reference-manual-for-openvpn-2-5/",
+            "reference_label": "OpenVPN: 非推奨オプションに関する記述"
+          }
+        },
+        {
+          "key": "D",
+          "text": "remote-random-hostname",
+          "explanation": {
+            "text": "remote-random-hostname は DNS キャッシュ回避等に用いるオプションであり、証明書のホスト名検証とは直接関係がない。",
+            "reference": "https://openvpn.net/community-resources/reference-manual-for-openvpn-2-5/",
+            "reference_label": "OpenVPN: remote-random-hostname"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "現在の OpenVPN では、サーバ証明書の検証強化には verify-x509-name の利用が推奨されており、client 設定で CN などを明示して検証することがベストプラクティスとされている。",
+        "reference": "https://openvpn.net/community-resources/reference-manual-for-openvpn-2-5/",
+        "reference_label": "OpenVPN 2.5 公式マニュアル"
+      }
+    },
+    {
+      "id": "linuc-level2-202-045",
+      "question": "NFSv4 サーバをセキュアに運用するために、クライアントとの認証・認可に Kerberos を用いる構成（sec=krb5p など）を採用したい。このとき前提条件として正しい説明はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "NFS サーバのみが Kerberos レルムに参加していればよく、クライアントは Kerberos を使用しなくてよい",
+          "explanation": {
+            "text": "Kerberos ベースのセキュリティを利用する場合、サーバとクライアント双方が同一または信頼関係のあるレルムでチケットを取得する必要がある。",
+            "reference": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/managing_file_systems/using-kerberos-security-with-nfsv4_mounting-nfs-shares",
+            "reference_label": "Red Hat: Using Kerberos security with NFSv4"
+          }
+        },
+        {
+          "key": "B",
+          "text": "NFS サーバと NFS クライアントの両方が Kerberos レルムに参加し、対応するプリンシパルとキータブが設定されている必要がある",
+          "explanation": {
+            "text": "Kerberos 認証付き NFS では、サーバ側・クライアント側ともに Kerberos 設定（プリンシパル／キータブ）が前提となる。",
+            "reference": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/managing_file_systems/using-kerberos-security-with-nfsv4_mounting-nfs-shares",
+            "reference_label": "Red Hat: Kerberos and NFSv4"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Kerberos レルムは NFS サーバと別ネットワークセグメントに配置してはならない",
+          "explanation": {
+            "text": "Kerberos レルムの KDC はネットワーク越しに利用可能であり、同一セグメントにある必要はない。",
+            "reference": "https://web.mit.edu/kerberos/krb5-devel/doc/admin/princ_dns.html",
+            "reference_label": "MIT Kerberos: Realm configuration"
+          }
+        },
+        {
+          "key": "D",
+          "text": "sec=krb5p を用いる場合、/etc/idmapd.conf は不要である",
+          "explanation": {
+            "text": "NFSv4 では ID マッピングに idmapd.conf が関係し、Kerberos 利用の有無に関わらず適切な設定が必要となる。",
+            "reference": "https://linux.die.net/man/5/idmapd.conf",
+            "reference_label": "idmapd.conf(5)"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Kerberos 認証付き NFS を利用するには、サーバ・クライアントともに Kerberos レルムに参加し、プリンシパルとキータブが正しく設定されていることが前提となる。",
+        "reference": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/managing_file_systems/using-kerberos-security-with-nfsv4_mounting-nfs-shares",
+        "reference_label": "Red Hat: NFSv4 と Kerberos"
+      }
+    },
+    {
+      "id": "linuc-level2-202-046",
+      "question": "Samba で Linux サーバを Active Directory ドメインにメンバサーバとして参加させる場合に一般的に利用される ID マッピングバックエンドとして、適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "idmap backend = tdb",
+          "explanation": {
+            "text": "tdb はスタンドアロンや古い構成でよく使われるが、AD ドメインメンバの推奨構成としては idmap_ad や idmap_rid などが利用される。",
+            "reference": "https://www.samba.org/samba/docs/current/man-html/idmap_ad.8.html",
+            "reference_label": "Samba idmap_ad(8)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "idmap config * : backend = ad",
+          "explanation": {
+            "text": "idmap_ad は Active Directory のユーザ・グループ SID を UNIX UID/GID にマッピングするためのバックエンドであり、ドメインメンバ構成で一般的に利用される。",
+            "reference": "https://wiki.samba.org/index.php/Idmap_config_ad",
+            "reference_label": "Samba Wiki: idmap_ad backend"
+          }
+        },
+        {
+          "key": "C",
+          "text": "idmap config * : backend = nis",
+          "explanation": {
+            "text": "nis バックエンドは Samba の idmap バックエンドとしては存在せず、NIS サーバとは別の技術である。",
+            "reference": "https://www.samba.org/samba/docs/current/man-html/idmap.8.html",
+            "reference_label": "idmap backends 一覧"
+          }
+        },
+        {
+          "key": "D",
+          "text": "idmap config * : backend = none",
+          "explanation": {
+            "text": "none は ID マッピングを行わないため、AD ドメインメンバ構成には適さない。",
+            "reference": "https://wiki.samba.org/index.php/Setting_up_Samba_as_a_Domain_Member",
+            "reference_label": "Samba Wiki: Domain Member サーバのセットアップ"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "AD ドメインに参加する Samba メンバサーバでは、AD の SID と UNIX UID/GID をマッピングするために idmap_ad や idmap_rid がよく用いられ、その代表例が idmap config * : backend = ad である。",
+        "reference": "https://wiki.samba.org/index.php/Idmap_config_ad",
+        "reference_label": "Samba Wiki: idmap_ad の利用例"
+      }
+    },
+    {
+      "id": "linuc-level2-202-047",
+      "question": "Dovecot をメールボックスサーバとして利用する際、メールボックス形式として古くからある mbox ではなく、メール単位のファイルに分割される形式を利用したい。この形式として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Maildir",
+          "explanation": {
+            "text": "Maildir 形式は 1 メール = 1 ファイルとしてディレクトリ配下に保存する方式であり、Dovecot でも広くサポートされている。",
+            "reference": "https://doc.dovecot.org/configuration_manual/mail_location/",
+            "reference_label": "Dovecot: Mailbox formats (Maildir)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "mbox",
+          "explanation": {
+            "text": "mbox は複数メールを単一ファイルに連結して保存する形式であり、問題文の条件と逆である。",
+            "reference": "https://doc.dovecot.org/configuration_manual/mail_location/",
+            "reference_label": "Dovecot: mbox format"
+          }
+        },
+        {
+          "key": "C",
+          "text": "SQLBox",
+          "explanation": {
+            "text": "SQLBox というメールボックス形式は一般的ではなく、Dovecot の標準形式には含まれない。",
+            "reference": "https://doc.dovecot.org/configuration_manual/mail_location/",
+            "reference_label": "Dovecot: サポートされるストレージ形式"
+          }
+        },
+        {
+          "key": "D",
+          "text": "POPDir",
+          "explanation": {
+            "text": "POPDir という形式は Dovecot における標準的なメールボックス形式ではない。",
+            "reference": "https://doc.dovecot.org/configuration_manual/mail_location/",
+            "reference_label": "Dovecot: mailbox formats"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "1 メール 1 ファイル形式として最も広く知られ、Dovecot でも標準サポートされているのが Maildir 形式である。",
+        "reference": "https://doc.dovecot.org/configuration_manual/mail_location/",
+        "reference_label": "Dovecot: Maildir 形式の説明"
+      }
+    },
+    {
+      "id": "linuc-level2-202-048",
+      "question": "Postfix で、ローカル配送を行わずに外部のスマートホスト（例: smtp.example.net）へ全てのメールを中継したい。main.cf の設定として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "mydestination = smtp.example.net",
+          "explanation": {
+            "text": "mydestination はローカル配送するドメインを指定するパラメータであり、スマートホスト中継とは目的が異なる。",
+            "reference": "http://www.postfix.org/postconf.5.html#mydestination",
+            "reference_label": "postconf(5): mydestination"
+          }
+        },
+        {
+          "key": "B",
+          "text": "relayhost = [smtp.example.net]:587",
+          "explanation": {
+            "text": "relayhost にスマートホストを指定することで、外部サーバにメールを中継することができる。ポート 587 などの submission ポートを指定する例も一般的である。",
+            "reference": "http://www.postfix.org/postconf.5.html#relayhost",
+            "reference_label": "postconf(5): relayhost"
+          }
+        },
+        {
+          "key": "C",
+          "text": "relay_domains = smtp.example.net",
+          "explanation": {
+            "text": "relay_domains はこのサーバがリレー先として扱う宛先ドメインの制御であり、スマートホストへの一括中継指定とは異なる。",
+            "reference": "http://www.postfix.org/postconf.5.html#relay_domains",
+            "reference_label": "postconf(5): relay_domains"
+          }
+        },
+        {
+          "key": "D",
+          "text": "virtual_alias_domains = smtp.example.net",
+          "explanation": {
+            "text": "virtual_alias_domains は仮想エイリアス用ドメインの指定であり、スマートホスト中継の設定ではない。",
+            "reference": "http://www.postfix.org/postconf.5.html#virtual_alias_domains",
+            "reference_label": "postconf(5): virtual_alias_domains"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "全メールを外部スマートホストに中継する構成では、relayhost パラメータに中継先サーバ（必要に応じてポート番号付き）を指定するのが一般的な設定方法である。",
+        "reference": "http://www.postfix.org/postconf.5.html#relayhost",
+        "reference_label": "Postfix 公式ドキュメント: relayhost"
+      }
+    },
+    {
+      "id": "linuc-level2-202-049",
+      "question": "OpenLDAP クライアントを NSS/PAM 経由で利用する際、ユーザ名解決の順序を制御するファイルとして適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "/etc/nsswitch.conf",
+          "explanation": {
+            "text": "nsswitch.conf は passwd や group などの名前解決に使用するソースの順序を指定するファイルであり、LDAP を含む NSS クライアント構成で重要な役割を持つ。",
+            "reference": "https://man7.org/linux/man-pages/man5/nsswitch.conf.5.html",
+            "reference_label": "nsswitch.conf(5)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "/etc/ldap/ldap.conf",
+          "explanation": {
+            "text": "ldap.conf は LDAP クライアントライブラリの設定ファイルであり、サーバ URI などを指定するが、ネームサービスの検索順序自体は制御しない。",
+            "reference": "https://linux.die.net/man/5/ldap.conf",
+            "reference_label": "ldap.conf(5)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "/etc/pam.d/system-auth",
+          "explanation": {
+            "text": "system-auth は PAM スタックの定義ファイルであり、認証の順序を制御するが、NSS による名前解決の順序は nsswitch.conf によって制御される。",
+            "reference": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_authentication_and_authorization_in_rhel/assembly_using-pluggable-authentication-modules-to-configure-local-authentication_configuring-authentication-and-authorization-in-rhel",
+            "reference_label": "Red Hat: PAM 設定概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "/etc/openldap/nss.conf",
+          "explanation": {
+            "text": "このようなファイル名は標準的なディストリビューションでは利用されておらず、NSS の順序制御ファイルではない。",
+            "reference": "https://man7.org/linux/man-pages/man5/nsswitch.conf.5.html",
+            "reference_label": "nsswitch.conf(5)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "OpenLDAP クライアントを NSS 経由で利用する場合、ユーザ名やグループ名の検索順序は /etc/nsswitch.conf の設定（例: passwd: files ldap）によって制御される。",
+        "reference": "https://man7.org/linux/man-pages/man5/nsswitch.conf.5.html",
+        "reference_label": "nsswitch.conf(5) ドキュメント"
+      }
+    },
+    {
+      "id": "linuc-level2-202-050",
+      "question": "Pacemaker/Corosync によるクラスタ構成で、特定リソース（例: IP アドレスリソース）が同時に複数ノードで起動しないようにするために指定するリソースの動作特性として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "resource-stickiness=0 に設定する",
+          "explanation": {
+            "text": "resource-stickiness はフェイルオーバーのしやすさに影響するパラメータであり、同時起動防止を直接保証するものではない。",
+            "reference": "https://clusterlabs.org/pacemaker/doc/en-US/Pacemaker/2.1/html-single/Pacemaker_Explained/index.html",
+            "reference_label": "Pacemaker Explained: Resource Stickiness"
+          }
+        },
+        {
+          "key": "B",
+          "text": "リソースの meta 属性として 'multiple-active=stop_start' を設定する",
+          "explanation": {
+            "text": "multiple-active は一部のマルチステートリソースで利用される属性であり、IP などの単純なリソースの排他制御には通常用いない。",
+            "reference": "https://clusterlabs.org/pacemaker/doc/en-US/Pacemaker/2.1/html-single/Pacemaker_Explained/index.html",
+            "reference_label": "Pacemaker: Multi-state リソース属性"
+          }
+        },
+        {
+          "key": "C",
+          "text": "primitive リソースをデフォルトのまま（マルチステートにせず）1つ定義し、clone や master リソースとして設定しない",
+          "explanation": {
+            "text": "通常の primitive リソースは 1 ノードのみでアクティブとなることを前提としており、clone や master リソースにしなければ Pacemaker は同時多重起動を行わない。",
+            "reference": "https://clusterlabs.org/pacemaker/doc/en-US/Pacemaker/2.1/html-single/Pacemaker_Explained/index.html#_primitive_resources",
+            "reference_label": "Pacemaker: Primitive リソースの説明"
+          }
+        },
+        {
+          "key": "D",
+          "text": "location 制約を一切定義しない",
+          "explanation": {
+            "text": "location 制約がなくても primitive リソースは 1 ノードで動作するが、それ自体が同時起動防止のための設定とは言えない。",
+            "reference": "https://clusterlabs.org/pacemaker/doc/en-US/Pacemaker/2.1/html-single/Pacemaker_Explained/index.html#ch-constraints",
+            "reference_label": "Pacemaker: location 制約"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "IP アドレスのようなリソースをクラスタ内で 1 ノードのみアクティブにしたい場合、基本的には primitive リソースとして単一定義し、clone や master などのマルチインスタンス化を行わないことで、Pacemaker による同時起動を防ぐことができる。",
+        "reference": "https://clusterlabs.org/pacemaker/doc/en-US/Pacemaker/2.1/html-single/Pacemaker_Explained/index.html#_primitive_resources",
+        "reference_label": "Pacemaker Explained: Primitive resources"
+      }
+    }
+  ]
+}

@@ -1,0 +1,2467 @@
+{
+  "exam": {
+    "id": "dp-300",
+    "title": "Database Administrator Associate",
+    "description": "この認定は、クラウド環境（Azure SQL Database／Azure SQL Managed Instance／オンプレミスの SQL Server）およびハイブリッド環境において、データベース管理者がデータプラットフォームソリューションを構築・運用できる能力を検証します。データベースの可用性、セキュリティ、パフォーマンス最適化、移行戦略、監視・自動化といった実務的なスキルが問われる中級レベルの認定です。",
+    "version": "2024年10月",
+    "price": "165 USD",
+    "difficulty": "普通",
+    "official-site": "https://learn.microsoft.com/en-us/credentials/certifications/azure-database-administrator-associate/",
+    "category": {
+      "id": "azure",
+      "name": "Azure"
+    }
+  },
+  "questions": [
+    {
+      "id": "azure-DP-300-q1",
+      "question": "Azure SQL Databaseのサーバーレス コンピューティング層の特徴はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "アイドル時間に自動的に一時停止し、利用時に再開できる",
+          "explanation": {
+            "text": "サーバーレス層は自動スケーリングと一時停止・再開機能を持ち、コスト効率が高い。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/serverless-tier-overview",
+            "reference_label": "Microsoft Docs - Serverless tier overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "DTUベースの課金モデルのみ利用できる",
+          "explanation": {
+            "text": "サーバーレス層はvCoreモデルに基づいており、DTUモデルでは提供されない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/service-tiers-vcore-dtu-single-database",
+            "reference_label": "Microsoft Docs - vCore vs DTU"
+          }
+        },
+        {
+          "key": "C",
+          "text": "常に最大コンピューティングリソースを利用する",
+          "explanation": {
+            "text": "サーバーレスは必要に応じてリソースをスケーリングするため、常時最大リソースを使用するわけではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/serverless-tier-overview",
+            "reference_label": "Microsoft Docs - Serverless tier overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "マネージドインスタンス専用の機能である",
+          "explanation": {
+            "text": "サーバーレス層はシングルデータベースにのみ提供され、マネージドインスタンスでは利用不可。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/serverless-tier-overview",
+            "reference_label": "Microsoft Docs - Serverless tier overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "サーバーレス層ではアイドル時間に自動的に一時停止し、クエリが実行されると再開する。これによりコスト最適化が可能。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/serverless-tier-overview",
+        "reference_label": "Microsoft Docs - Serverless tier overview"
+      }
+    },
+    {
+      "id": "azure-DP-300-q2",
+      "question": "Azure SQL Databaseのゾーン冗長構成(ZRS)の目的は何か。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データベースを複数の可用性ゾーンにレプリケーションする",
+          "explanation": {
+            "text": "ゾーン冗長構成では、可用性ゾーンにまたがって高可用性を確保する。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/high-availability-sla",
+            "reference_label": "Microsoft Docs - High availability for Azure SQL Database"
+          }
+        },
+        {
+          "key": "B",
+          "text": "異なるリージョンに自動的にバックアップを作成する",
+          "explanation": {
+            "text": "ゾーン冗長はリージョン内の複数ゾーンに配置されるため、リージョン間レプリケーションではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/high-availability-sla",
+            "reference_label": "Microsoft Docs - High availability for Azure SQL Database"
+          }
+        },
+        {
+          "key": "C",
+          "text": "オンプレミスのSQL Serverと同期レプリケーションする",
+          "explanation": {
+            "text": "ゾーン冗長構成はクラウド内での冗長化であり、オンプレミス環境とは直接関係しない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/high-availability-sla",
+            "reference_label": "Microsoft Docs - High availability for Azure SQL Database"
+          }
+        },
+        {
+          "key": "D",
+          "text": "バックアップ保持期間を自動的に延長する",
+          "explanation": {
+            "text": "ゾーン冗長は高可用性の仕組みであり、バックアップポリシーには関与しない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/high-availability-sla",
+            "reference_label": "Microsoft Docs - High availability for Azure SQL Database"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ゾーン冗長構成では、同一リージョン内の複数可用性ゾーンにデータベースを冗長化し、障害時の可用性を高める。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/high-availability-sla",
+        "reference_label": "Microsoft Docs - High availability for Azure SQL Database"
+      }
+    },
+    {
+      "id": "azure-DP-300-q3",
+      "question": "Azure SQL Managed Instanceでサポートされる機能はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "SQL Server Agent",
+          "explanation": {
+            "text": "Managed InstanceはSQL Server Agentをサポートしている。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview",
+            "reference_label": "Microsoft Docs - Managed Instance overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "PolyBaseによる外部データソースクエリ",
+          "explanation": {
+            "text": "PolyBaseは一部制限があり、完全にはサポートされない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/managed-instance/transact-sql-tsql-differences-sql-server",
+            "reference_label": "Microsoft Docs - T-SQL differences"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Database Mail",
+          "explanation": {
+            "text": "Database Mailはサポートされていない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/managed-instance/transact-sql-tsql-differences-sql-server",
+            "reference_label": "Microsoft Docs - T-SQL differences"
+          }
+        },
+        {
+          "key": "D",
+          "text": "SQL Server Reporting Services (SSRS)",
+          "explanation": {
+            "text": "SSRSはPaaS環境で提供されず、Managed Instanceでは利用できない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview",
+            "reference_label": "Microsoft Docs - Managed Instance overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure SQL Managed InstanceはSQL Server Agentをサポートしており、ジョブスケジューリングが可能。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview",
+        "reference_label": "Microsoft Docs - Managed Instance overview"
+      }
+    },
+    {
+      "id": "azure-DP-300-q4",
+      "question": "自動チューニング機能でAzure SQL Databaseが提供するものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "インデックスの自動作成と削除",
+          "explanation": {
+            "text": "Azure SQL Databaseは自動インデックス管理をサポートする。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/automatic-tuning-overview",
+            "reference_label": "Microsoft Docs - Automatic tuning"
+          }
+        },
+        {
+          "key": "B",
+          "text": "クエリヒントの自動最適化",
+          "explanation": {
+            "text": "自動チューニングはクエリヒントの自動挿入は行わない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/automatic-tuning-overview",
+            "reference_label": "Microsoft Docs - Automatic tuning"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データ型の自動変更",
+          "explanation": {
+            "text": "データ型は自動で変更されない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/automatic-tuning-overview",
+            "reference_label": "Microsoft Docs - Automatic tuning"
+          }
+        },
+        {
+          "key": "D",
+          "text": "統計情報の自動削除",
+          "explanation": {
+            "text": "統計情報は削除されず、自動更新される。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/automatic-tuning-overview",
+            "reference_label": "Microsoft Docs - Automatic tuning"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "自動チューニング機能はインデックス作成と削除、プラン修正をサポートする。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/automatic-tuning-overview",
+        "reference_label": "Microsoft Docs - Automatic tuning"
+      }
+    },
+    {
+      "id": "azure-DP-300-q5",
+      "question": "Azure SQL DatabaseのPoint-in-Time Restore(PITR)機能の最大保持期間はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "7日間",
+          "explanation": {
+            "text": "既定では7日間だが、最大保持期間はこれより長い。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/automated-backups-overview",
+            "reference_label": "Microsoft Docs - Automated backups"
+          }
+        },
+        {
+          "key": "B",
+          "text": "35日間",
+          "explanation": {
+            "text": "PITRは最大35日間バックアップを保持できる。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/automated-backups-overview",
+            "reference_label": "Microsoft Docs - Automated backups"
+          }
+        },
+        {
+          "key": "C",
+          "text": "90日間",
+          "explanation": {
+            "text": "PITRは標準で最大35日までであり、90日はサポートされない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/automated-backups-overview",
+            "reference_label": "Microsoft Docs - Automated backups"
+          }
+        },
+        {
+          "key": "D",
+          "text": "1年間",
+          "explanation": {
+            "text": "1年間の保持はLong-term Retention(LTR)を使用する必要がある。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/long-term-retention-overview",
+            "reference_label": "Microsoft Docs - Long-term retention"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "PITRでは最大35日間まで任意の時点に復元できる。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/automated-backups-overview",
+        "reference_label": "Microsoft Docs - Automated backups"
+      }
+    },
+    {
+      "id": "azure-DP-300-q6",
+      "question": "Azure SQL Databaseで暗号化を有効化するための機能はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Transparent Data Encryption (TDE)",
+          "explanation": {
+            "text": "TDEは保存データの暗号化を行う標準機能。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/transparent-data-encryption-azure-sql",
+            "reference_label": "Microsoft Docs - Transparent Data Encryption"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Always On Availability Groups",
+          "explanation": {
+            "text": "Always Onは高可用性機能であり、暗号化とは直接関係しない。",
+            "reference": "https://learn.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server",
+            "reference_label": "Microsoft Docs - Always On Availability Groups"
+          }
+        },
+        {
+          "key": "C",
+          "text": "SQL Server Reporting Services",
+          "explanation": {
+            "text": "SSRSはレポート機能であり、データベース暗号化機能ではない。",
+            "reference": "https://learn.microsoft.com/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports",
+            "reference_label": "Microsoft Docs - Reporting Services"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Monitor",
+          "explanation": {
+            "text": "Azure Monitorは監視サービスであり、暗号化には関与しない。",
+            "reference": "https://learn.microsoft.com/azure/azure-monitor/overview",
+            "reference_label": "Microsoft Docs - Azure Monitor overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure SQL Databaseは既定でTDEを使用し、保存データを暗号化する。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/transparent-data-encryption-azure-sql",
+        "reference_label": "Microsoft Docs - Transparent Data Encryption"
+      }
+    },
+    {
+      "id": "azure-DP-300-q7",
+      "question": "Azure SQL DatabaseのGeo-Replicationの用途はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "異なるリージョンに読み取り専用のセカンダリデータベースを作成する",
+          "explanation": {
+            "text": "Geo-Replicationは災害対策や負荷分散のため、他リージョンに読み取り専用レプリカを作成する。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/active-geo-replication-overview",
+            "reference_label": "Microsoft Docs - Active geo-replication"
+          }
+        },
+        {
+          "key": "B",
+          "text": "同一リージョン内のゾーンに同期レプリケーションを行う",
+          "explanation": {
+            "text": "同一リージョン内での同期レプリケーションはゾーン冗長構成で実現される。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/high-availability-sla",
+            "reference_label": "Microsoft Docs - High availability for Azure SQL Database"
+          }
+        },
+        {
+          "key": "C",
+          "text": "オンプレミスSQL Serverにバックアップを保存する",
+          "explanation": {
+            "text": "Geo-ReplicationはAzure内のリージョン間での機能であり、オンプレミスへのバックアップ保存ではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/active-geo-replication-overview",
+            "reference_label": "Microsoft Docs - Active geo-replication"
+          }
+        },
+        {
+          "key": "D",
+          "text": "セキュリティポリシーを複数リージョンに適用する",
+          "explanation": {
+            "text": "Geo-Replicationはセキュリティポリシーではなく、データベースレプリケーションの仕組み。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/active-geo-replication-overview",
+            "reference_label": "Microsoft Docs - Active geo-replication"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Geo-Replicationは他リージョンに最大4つの読み取り専用レプリカを作成し、障害発生時にフェールオーバーが可能。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/active-geo-replication-overview",
+        "reference_label": "Microsoft Docs - Active geo-replication"
+      }
+    },
+    {
+      "id": "azure-DP-300-q8",
+      "question": "Azure SQL DatabaseのLong-term Retention (LTR) の利用目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "バックアップを最大10年間保持する",
+          "explanation": {
+            "text": "LTRはバックアップを数年間保持でき、法令遵守や監査対応に利用される。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/long-term-retention-overview",
+            "reference_label": "Microsoft Docs - Long-term retention"
+          }
+        },
+        {
+          "key": "B",
+          "text": "リージョン間での高可用性を確保する",
+          "explanation": {
+            "text": "高可用性はGeo-ReplicationやAuto-failover groupで実現される。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/high-availability-sla",
+            "reference_label": "Microsoft Docs - High availability"
+          }
+        },
+        {
+          "key": "C",
+          "text": "自動的にインデックスを最適化する",
+          "explanation": {
+            "text": "インデックス最適化は自動チューニングの機能であり、LTRではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/automatic-tuning-overview",
+            "reference_label": "Microsoft Docs - Automatic tuning"
+          }
+        },
+        {
+          "key": "D",
+          "text": "オンプレミスSQL Serverへのレプリケーション",
+          "explanation": {
+            "text": "LTRはクラウド上のバックアップ保持であり、オンプレミスとは関係しない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/long-term-retention-overview",
+            "reference_label": "Microsoft Docs - Long-term retention"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "LTRではバックアップを最長10年間保持でき、監査やコンプライアンス対応に使用される。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/long-term-retention-overview",
+        "reference_label": "Microsoft Docs - Long-term retention"
+      }
+    },
+    {
+      "id": "azure-DP-300-q9",
+      "question": "Azure SQL Databaseの接続でプライベートエンドポイントを利用する利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "仮想ネットワーク(VNet)内での安全な接続を実現できる",
+          "explanation": {
+            "text": "プライベートエンドポイントはAzure Private Linkを利用し、VNet内の安全な接続を可能にする。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/private-endpoint-overview",
+            "reference_label": "Microsoft Docs - Private endpoint"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SQL Databaseをオンプレミスに移行する",
+          "explanation": {
+            "text": "プライベートエンドポイントは移行の仕組みではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/private-endpoint-overview",
+            "reference_label": "Microsoft Docs - Private endpoint"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データベースの自動スケーリングを有効にする",
+          "explanation": {
+            "text": "スケーリングはプライベートエンドポイントの機能ではなく、サーバーレス層やスケーリング設定に依存する。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/serverless-tier-overview",
+            "reference_label": "Microsoft Docs - Serverless tier"
+          }
+        },
+        {
+          "key": "D",
+          "text": "リージョン間のレプリケーションを構成する",
+          "explanation": {
+            "text": "リージョン間のレプリケーションはGeo-Replicationの機能であり、プライベートエンドポイントではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/active-geo-replication-overview",
+            "reference_label": "Microsoft Docs - Geo-replication"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "プライベートエンドポイントはVNet経由のセキュアな接続を可能にし、パブリックインターネット経由のアクセスを防ぐ。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/private-endpoint-overview",
+        "reference_label": "Microsoft Docs - Private endpoint"
+      }
+    },
+    {
+      "id": "azure-DP-300-q10",
+      "question": "Azure SQL Managed Instanceが提供するセキュリティ機能として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Always Encrypted",
+          "explanation": {
+            "text": "Managed InstanceはAlways Encryptedをサポートする。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/managed-instance/always-encrypted-overview",
+            "reference_label": "Microsoft Docs - Always Encrypted"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Transparent Data Encryption (TDE)",
+          "explanation": {
+            "text": "TDEはManaged Instanceでサポートされる。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/managed-instance/transparent-data-encryption-azure-sql",
+            "reference_label": "Microsoft Docs - Transparent Data Encryption"
+          }
+        },
+        {
+          "key": "C",
+          "text": "SQL Server Reporting Services",
+          "explanation": {
+            "text": "SSRSはManaged Instanceでは利用できない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview",
+            "reference_label": "Microsoft Docs - Managed Instance overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "両方 (AとB)",
+          "explanation": {
+            "text": "Managed InstanceはAlways EncryptedとTDEの両方をサポートする。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview",
+            "reference_label": "Microsoft Docs - Managed Instance overview"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "Azure SQL Managed InstanceはTDEとAlways Encryptedの両方をサポートし、保存データと転送中データの暗号化を提供する。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview",
+        "reference_label": "Microsoft Docs - Managed Instance overview"
+      }
+    },
+    {
+      "id": "azure-DP-300-q11",
+      "question": "Azure SQL DatabaseのAutomatic Failover Groupの特徴はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "複数のデータベースをまとめてフェールオーバーできる",
+          "explanation": {
+            "text": "Failover Groupでは複数のデータベースを一括してフェールオーバー可能。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/auto-failover-group-overview",
+            "reference_label": "Microsoft Docs - Auto-failover groups"
+          }
+        },
+        {
+          "key": "B",
+          "text": "同一リージョン内でのみ構成できる",
+          "explanation": {
+            "text": "Failover Groupは異なるリージョン間で構成される。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/auto-failover-group-overview",
+            "reference_label": "Microsoft Docs - Auto-failover groups"
+          }
+        },
+        {
+          "key": "C",
+          "text": "オンプレミスSQL Serverへの自動フェールオーバーを提供する",
+          "explanation": {
+            "text": "オンプレミスSQL Serverとのフェールオーバーはサポートされない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/auto-failover-group-overview",
+            "reference_label": "Microsoft Docs - Auto-failover groups"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データベースごとに個別のエンドポイントを使用する",
+          "explanation": {
+            "text": "Failover Groupではグループ単位のリスナーエンドポイントが提供される。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/auto-failover-group-overview",
+            "reference_label": "Microsoft Docs - Auto-failover groups"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Automatic Failover Groupは複数のデータベースをまとめて他リージョンにフェールオーバー可能であり、DR(災害対策)に有効。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/auto-failover-group-overview",
+        "reference_label": "Microsoft Docs - Auto-failover groups"
+      }
+    },
+    {
+      "id": "azure-DP-300-q12",
+      "question": "Azure SQL DatabaseのIntelligent Insightsの主な用途は何か。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "パフォーマンス異常を自動検出し、推奨事項を提示する",
+          "explanation": {
+            "text": "Intelligent Insightsは機械学習を用いて異常検出を行い、改善提案を提示する。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/intelligent-insights-overview",
+            "reference_label": "Microsoft Docs - Intelligent Insights"
+          }
+        },
+        {
+          "key": "B",
+          "text": "自動でスケーリングを行う",
+          "explanation": {
+            "text": "スケーリングはIntelligent Insightsではなく、サーバーレス層や手動構成に依存する。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/serverless-tier-overview",
+            "reference_label": "Microsoft Docs - Serverless tier"
+          }
+        },
+        {
+          "key": "C",
+          "text": "長期バックアップを管理する",
+          "explanation": {
+            "text": "バックアップ管理はLTRや自動バックアップ機能の役割であり、Intelligent Insightsではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/long-term-retention-overview",
+            "reference_label": "Microsoft Docs - Long-term retention"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データベース暗号化を有効化する",
+          "explanation": {
+            "text": "暗号化はTDEやAlways Encryptedの機能であり、Intelligent Insightsでは提供されない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/transparent-data-encryption-azure-sql",
+            "reference_label": "Microsoft Docs - Transparent Data Encryption"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Intelligent InsightsはAzure SQL Databaseのパフォーマンス監視機能で、異常検出と改善提案を自動で提供する。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/intelligent-insights-overview",
+        "reference_label": "Microsoft Docs - Intelligent Insights"
+      }
+    },
+    {
+      "id": "azure-DP-300-q13",
+      "question": "Azure SQL Databaseで利用できるスケーリング方法として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "vCore数を変更して垂直スケーリングする",
+          "explanation": {
+            "text": "Azure SQL DatabaseはvCore数を増減することでスケーリング可能。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/service-tiers-vcore-dtu-single-database",
+            "reference_label": "Microsoft Docs - vCore vs DTU"
+          }
+        },
+        {
+          "key": "B",
+          "text": "複数のインスタンスを追加して自動的に水平スケーリングする",
+          "explanation": {
+            "text": "Azure SQL Databaseは標準機能として自動シャーディングを提供しない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/elastic-scale-introduction",
+            "reference_label": "Microsoft Docs - Elastic scale"
+          }
+        },
+        {
+          "key": "C",
+          "text": "オンプレミスのSQL Serverを利用してスケーリングする",
+          "explanation": {
+            "text": "オンプレミス環境はAzure SQL Databaseのスケーリング機能ではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/service-tiers-vcore-dtu-single-database",
+            "reference_label": "Microsoft Docs - vCore vs DTU"
+          }
+        },
+        {
+          "key": "D",
+          "text": "VMサイズを変更してスケーリングする",
+          "explanation": {
+            "text": "VMサイズ変更はIaaS (Azure VM上のSQL Server) のスケーリング手法であり、PaaS型のAzure SQL Databaseではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/service-tiers-vcore-dtu-single-database",
+            "reference_label": "Microsoft Docs - vCore vs DTU"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure SQL DatabaseではvCore数を増減することでコンピューティングリソースを調整できる。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/service-tiers-vcore-dtu-single-database",
+        "reference_label": "Microsoft Docs - vCore vs DTU"
+      }
+    },
+    {
+      "id": "azure-DP-300-q14",
+      "question": "Azure SQL DatabaseのHyperscaleサービス層の特徴はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "最大100 TBまでデータベースサイズを拡張できる",
+          "explanation": {
+            "text": "Hyperscale層は100 TBまで拡張可能で、大規模ワークロードをサポートする。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/service-tier-hyperscale",
+            "reference_label": "Microsoft Docs - Hyperscale"
+          }
+        },
+        {
+          "key": "B",
+          "text": "オンプレミスSQL Server専用の機能である",
+          "explanation": {
+            "text": "HyperscaleはAzure SQL Databaseのクラウドサービス層であり、オンプレミス専用ではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/service-tier-hyperscale",
+            "reference_label": "Microsoft Docs - Hyperscale"
+          }
+        },
+        {
+          "key": "C",
+          "text": "インメモリOLTP機能が必須となる",
+          "explanation": {
+            "text": "HyperscaleでインメモリOLTPはオプションであり、必須ではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/in-memory-oltp-overview",
+            "reference_label": "Microsoft Docs - In-memory OLTP"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データベースの復元が不可能になる",
+          "explanation": {
+            "text": "Hyperscaleはバックアップと復元をサポートしており、復元不可ではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/service-tier-hyperscale",
+            "reference_label": "Microsoft Docs - Hyperscale"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Hyperscaleサービス層は最大100 TBのスケーラビリティを提供し、大規模データベースのニーズに対応する。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/service-tier-hyperscale",
+        "reference_label": "Microsoft Docs - Hyperscale"
+      }
+    },
+    {
+      "id": "azure-DP-300-q15",
+      "question": "Azure SQL Databaseの監査機能で提供されるのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "すべてのデータ変更の完全なログを保存する",
+          "explanation": {
+            "text": "監査は特定の操作を記録するが、すべてのデータ変更の完全履歴を保存するわけではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/auditing-overview",
+            "reference_label": "Microsoft Docs - Auditing overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データベースアクティビティをログに記録し、外部ストレージに保存できる",
+          "explanation": {
+            "text": "監査ではログをAzure StorageやLog Analytics、Event Hubに保存可能。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/auditing-overview",
+            "reference_label": "Microsoft Docs - Auditing overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "自動的にセキュリティポリシーを修正する",
+          "explanation": {
+            "text": "監査はログ記録が目的であり、ポリシー修正は自動では行われない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/auditing-overview",
+            "reference_label": "Microsoft Docs - Auditing overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "バックアップ保持期間を延長する",
+          "explanation": {
+            "text": "バックアップ保持は監査機能の目的ではなく、LTRによって管理される。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/long-term-retention-overview",
+            "reference_label": "Microsoft Docs - Long-term retention"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "監査はデータベースアクティビティを追跡し、ログをAzure StorageやLog Analyticsなどに保存できる。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/auditing-overview",
+        "reference_label": "Microsoft Docs - Auditing overview"
+      }
+    },
+    {
+      "id": "azure-DP-300-q16",
+      "question": "Azure SQL Databaseの動的データマスキング(Dynamic Data Masking)の役割はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "クエリ結果の機密データをマスクして表示制御する",
+          "explanation": {
+            "text": "動的データマスキングは機密情報を伏字などで置き換える。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/dynamic-data-masking-overview",
+            "reference_label": "Microsoft Docs - Dynamic Data Masking"
+          }
+        },
+        {
+          "key": "B",
+          "text": "保存データを暗号化する",
+          "explanation": {
+            "text": "保存データの暗号化はTDEの機能。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/transparent-data-encryption-azure-sql",
+            "reference_label": "Microsoft Docs - Transparent Data Encryption"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データベースの完全バックアップを自動作成する",
+          "explanation": {
+            "text": "バックアップは自動バックアップ機能で行われる。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/automated-backups-overview",
+            "reference_label": "Microsoft Docs - Automated backups"
+          }
+        },
+        {
+          "key": "D",
+          "text": "行レベルセキュリティを実現する",
+          "explanation": {
+            "text": "行レベルセキュリティは別の機能であり、DDMではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/row-level-security",
+            "reference_label": "Microsoft Docs - Row-level security"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "動的データマスキングはアプリケーションやユーザーに返すデータを動的にマスクして機密情報を保護する。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/dynamic-data-masking-overview",
+        "reference_label": "Microsoft Docs - Dynamic Data Masking"
+      }
+    },
+    {
+      "id": "azure-DP-300-q17",
+      "question": "Azure SQL Managed Instanceのリンク機能(Azure Arc enabled SQL Managed Instance link)の利用用途はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "オンプレミスSQL Serverの継続的レプリケーションを可能にする",
+          "explanation": {
+            "text": "リンク機能はオンプレミスSQL ServerからManaged Instanceへの継続的レプリケーションを提供する。",
+            "reference": "https://learn.microsoft.com/azure/azure-arc/data/managed-instance-link-overview",
+            "reference_label": "Microsoft Docs - Managed Instance link"
+          }
+        },
+        {
+          "key": "B",
+          "text": "オンプレミスSQL Serverの自動バックアップをAzureに保存する",
+          "explanation": {
+            "text": "バックアップ保存ではなく、トランザクションレプリケーションに基づく同期。",
+            "reference": "https://learn.microsoft.com/azure/azure-arc/data/managed-instance-link-overview",
+            "reference_label": "Microsoft Docs - Managed Instance link"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure VMのSQL Serverを自動スケーリングする",
+          "explanation": {
+            "text": "VMのスケーリングとは関係がない。",
+            "reference": "https://learn.microsoft.com/azure/azure-arc/data/managed-instance-link-overview",
+            "reference_label": "Microsoft Docs - Managed Instance link"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure SQL DatabaseとManaged Instance間のデータ移行",
+          "explanation": {
+            "text": "リンク機能はオンプレミスSQL Serverとのハイブリッド接続を目的としている。",
+            "reference": "https://learn.microsoft.com/azure/azure-arc/data/managed-instance-link-overview",
+            "reference_label": "Microsoft Docs - Managed Instance link"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Managed Instance linkはオンプレミスSQL ServerとAzure SQL Managed Instanceを結び、ほぼリアルタイムのレプリケーションを実現する。",
+        "reference": "https://learn.microsoft.com/azure/azure-arc/data/managed-instance-link-overview",
+        "reference_label": "Microsoft Docs - Managed Instance link"
+      }
+    },
+    {
+      "id": "azure-DP-300-q18",
+      "question": "Azure SQL Databaseで行レベルセキュリティ(Row-Level Security)を使用する目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ユーザーごとにアクセス可能な行を制御する",
+          "explanation": {
+            "text": "行レベルセキュリティはユーザーコンテキストに基づいてアクセス可能な行を制御する。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/row-level-security",
+            "reference_label": "Microsoft Docs - Row-Level Security"
+          }
+        },
+        {
+          "key": "B",
+          "text": "カラムごとのデータをマスクする",
+          "explanation": {
+            "text": "カラムのマスキングは動的データマスキング(DDM)で行う。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/dynamic-data-masking-overview",
+            "reference_label": "Microsoft Docs - Dynamic Data Masking"
+          }
+        },
+        {
+          "key": "C",
+          "text": "バックアップを暗号化する",
+          "explanation": {
+            "text": "バックアップ暗号化はTDEなどの機能で行われる。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/transparent-data-encryption-azure-sql",
+            "reference_label": "Microsoft Docs - Transparent Data Encryption"
+          }
+        },
+        {
+          "key": "D",
+          "text": "インデックスを自動最適化する",
+          "explanation": {
+            "text": "インデックス最適化は自動チューニング機能。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/automatic-tuning-overview",
+            "reference_label": "Microsoft Docs - Automatic tuning"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Row-Level Securityはユーザーごとにアクセス可能なデータ行を制御し、細粒度のセキュリティを提供する。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/row-level-security",
+        "reference_label": "Microsoft Docs - Row-Level Security"
+      }
+    },
+    {
+      "id": "azure-DP-300-q19",
+      "question": "Azure SQL Databaseで接続に失敗した場合のリトライロジックを実装する目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "一時的な接続障害に対処する",
+          "explanation": {
+            "text": "リトライロジックは一時的な障害やフェールオーバーによる接続中断を吸収するために必要。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/troubleshoot-common-errors-issues",
+            "reference_label": "Microsoft Docs - Troubleshooting"
+          }
+        },
+        {
+          "key": "B",
+          "text": "常にフェールオーバーを強制する",
+          "explanation": {
+            "text": "リトライロジックはフェールオーバーを強制するものではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/troubleshoot-common-errors-issues",
+            "reference_label": "Microsoft Docs - Troubleshooting"
+          }
+        },
+        {
+          "key": "C",
+          "text": "バックアップを自動的に復元する",
+          "explanation": {
+            "text": "バックアップ復元はリトライロジックの目的ではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/automated-backups-overview",
+            "reference_label": "Microsoft Docs - Automated backups"
+          }
+        },
+        {
+          "key": "D",
+          "text": "セキュリティポリシーを適用する",
+          "explanation": {
+            "text": "セキュリティポリシーの適用とは関係しない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/troubleshoot-common-errors-issues",
+            "reference_label": "Microsoft Docs - Troubleshooting"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "リトライロジックは短時間の接続障害を吸収し、クラウド環境特有の一時的エラーに対応するために重要。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/troubleshoot-common-errors-issues",
+        "reference_label": "Microsoft Docs - Troubleshooting"
+      }
+    },
+    {
+      "id": "azure-DP-300-q20",
+      "question": "Azure SQL DatabaseのGeo-restoreの特徴はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "異なるリージョンにバックアップからデータベースを復元できる",
+          "explanation": {
+            "text": "Geo-restoreはGeo冗長バックアップを利用し、他リージョンに復元できる。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/backup-restore-overview",
+            "reference_label": "Microsoft Docs - Backup & restore overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "同期レプリケーションを提供する",
+          "explanation": {
+            "text": "Geo-restoreはバックアップベースであり、リアルタイム同期レプリケーションではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/backup-restore-overview",
+            "reference_label": "Microsoft Docs - Backup & restore overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "常に1分以内に復元が完了する",
+          "explanation": {
+            "text": "復元時間はDBサイズや状況により異なり、保証されない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/backup-restore-overview",
+            "reference_label": "Microsoft Docs - Backup & restore overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "オンプレミスSQL Serverに復元可能である",
+          "explanation": {
+            "text": "Geo-restoreはAzureリージョン間で利用される機能であり、オンプレミス復元ではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/backup-restore-overview",
+            "reference_label": "Microsoft Docs - Backup & restore overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Geo-restoreはGeo冗長ストレージに保存されたバックアップを利用し、別リージョンにデータベースを復元可能。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/backup-restore-overview",
+        "reference_label": "Microsoft Docs - Backup & restore overview"
+      }
+    },
+    {
+      "id": "azure-DP-300-q21",
+      "question": "Azure SQL Databaseでサポートされる接続方法の1つはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "SQL Server Management Studio (SSMS) を使った接続",
+          "explanation": {
+            "text": "SSMSはAzure SQL Databaseに接続可能。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/connect-query-ssms",
+            "reference_label": "Microsoft Docs - Connect with SSMS"
+          }
+        },
+        {
+          "key": "B",
+          "text": "PowerPointを利用した直接接続",
+          "explanation": {
+            "text": "PowerPointはデータベース接続のためのツールではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/connect-query-ssms",
+            "reference_label": "Microsoft Docs - Connect with SSMS"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Adobe Acrobatを利用した接続",
+          "explanation": {
+            "text": "AcrobatはPDF閲覧ソフトであり、接続機能はない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/connect-query-ssms",
+            "reference_label": "Microsoft Docs - Connect with SSMS"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Notepadを利用して直接接続",
+          "explanation": {
+            "text": "Notepadはテキストエディタであり、データベース接続機能は持たない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/connect-query-ssms",
+            "reference_label": "Microsoft Docs - Connect with SSMS"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "SSMSはAzure SQL Databaseに接続してクエリを実行できる主要ツールの1つ。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/connect-query-ssms",
+        "reference_label": "Microsoft Docs - Connect with SSMS"
+      }
+    },
+    {
+      "id": "azure-DP-300-q22",
+      "question": "Azure SQL Databaseのサービス階層のうち、ビジネスクリティカル層の特徴はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "インメモリOLTPをサポートしている",
+          "explanation": {
+            "text": "ビジネスクリティカル層はインメモリOLTPを利用可能。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/service-tiers-general-purpose-business-critical",
+            "reference_label": "Microsoft Docs - Service tiers"
+          }
+        },
+        {
+          "key": "B",
+          "text": "バックアップを保持できない",
+          "explanation": {
+            "text": "すべてのサービス層でバックアップは保持される。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/automated-backups-overview",
+            "reference_label": "Microsoft Docs - Automated backups"
+          }
+        },
+        {
+          "key": "C",
+          "text": "常に100 TBまでスケーリングできる",
+          "explanation": {
+            "text": "100 TBのスケーリングはHyperscale層の特徴。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/service-tier-hyperscale",
+            "reference_label": "Microsoft Docs - Hyperscale"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ゾーン冗長構成が利用できない",
+          "explanation": {
+            "text": "ビジネスクリティカル層はゾーン冗長構成に対応している。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/high-availability-sla",
+            "reference_label": "Microsoft Docs - High availability"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ビジネスクリティカル層は高パフォーマンスを実現し、インメモリOLTPを利用できる。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/service-tiers-general-purpose-business-critical",
+        "reference_label": "Microsoft Docs - Service tiers"
+      }
+    },
+    {
+      "id": "azure-DP-300-q23",
+      "question": "Azure SQL DatabaseのElastic Poolを利用する利点はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "複数データベースが共有リソースを利用できる",
+          "explanation": {
+            "text": "Elastic Poolではリソースを共有し、コスト効率を向上できる。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/elastic-pool-overview",
+            "reference_label": "Microsoft Docs - Elastic pool overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データベースを常に100 TBまで拡張できる",
+          "explanation": {
+            "text": "Elastic Poolの拡張性はHyperscale層に比べ制限がある。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/elastic-pool-overview",
+            "reference_label": "Microsoft Docs - Elastic pool overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "オンプレミスSQL Serverと直接レプリケーション可能",
+          "explanation": {
+            "text": "Elastic Poolはオンプレミスとのレプリケーションを提供しない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/elastic-pool-overview",
+            "reference_label": "Microsoft Docs - Elastic pool overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Always On可用性グループを利用できる",
+          "explanation": {
+            "text": "Always OnはSQL Serverの機能であり、Elastic Pool固有の機能ではない。",
+            "reference": "https://learn.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server",
+            "reference_label": "Microsoft Docs - Always On"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Elastic Poolは変動のある複数データベースの利用に適しており、コスト最適化が可能。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/elastic-pool-overview",
+        "reference_label": "Microsoft Docs - Elastic pool overview"
+      }
+    },
+    {
+      "id": "azure-DP-300-q24",
+      "question": "Azure SQL Databaseの接続において、ファイアウォールルールの設定目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "特定のIPアドレス範囲からの接続を許可する",
+          "explanation": {
+            "text": "ファイアウォールルールは許可されたIPからの接続のみを可能にする。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/firewall-configure",
+            "reference_label": "Microsoft Docs - Firewall rules"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SQL Serverのバージョンを自動的に更新する",
+          "explanation": {
+            "text": "ファイアウォールルールは接続制御の機能であり、バージョン更新には関与しない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/firewall-configure",
+            "reference_label": "Microsoft Docs - Firewall rules"
+          }
+        },
+        {
+          "key": "C",
+          "text": "バックアップ保持期間を延長する",
+          "explanation": {
+            "text": "バックアップ保持はファイアウォールルールの機能ではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/firewall-configure",
+            "reference_label": "Microsoft Docs - Firewall rules"
+          }
+        },
+        {
+          "key": "D",
+          "text": "セカンダリデータベースを作成する",
+          "explanation": {
+            "text": "セカンダリ作成はGeo-Replicationなどの機能で行う。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/active-geo-replication-overview",
+            "reference_label": "Microsoft Docs - Geo-replication"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ファイアウォールルールはクライアントの接続元IPを制御するセキュリティ機能。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/firewall-configure",
+        "reference_label": "Microsoft Docs - Firewall rules"
+      }
+    },
+    {
+      "id": "azure-DP-300-q25",
+      "question": "Azure SQL Databaseの読み取りスケールアウト機能の特徴はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "読み取り専用ワークロードをセカンダリレプリカにオフロードできる",
+          "explanation": {
+            "text": "読み取りスケールアウトはセカンダリレプリカに読み取りクエリを分散する。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/read-scale-out",
+            "reference_label": "Microsoft Docs - Read scale-out"
+          }
+        },
+        {
+          "key": "B",
+          "text": "書き込み操作を自動的に並列化する",
+          "explanation": {
+            "text": "読み取りスケールアウトは書き込みには適用されない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/read-scale-out",
+            "reference_label": "Microsoft Docs - Read scale-out"
+          }
+        },
+        {
+          "key": "C",
+          "text": "常に全ての接続をプライマリに誘導する",
+          "explanation": {
+            "text": "スケールアウトではセカンダリが読み取り処理を担当する。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/read-scale-out",
+            "reference_label": "Microsoft Docs - Read scale-out"
+          }
+        },
+        {
+          "key": "D",
+          "text": "バックアップ速度を向上させる",
+          "explanation": {
+            "text": "バックアップ速度はスケールアウト機能の対象ではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/read-scale-out",
+            "reference_label": "Microsoft Docs - Read scale-out"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "読み取りスケールアウトはセカンダリに負荷を分散し、プライマリのリソースを軽減する。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/read-scale-out",
+        "reference_label": "Microsoft Docs - Read scale-out"
+      }
+    },
+    {
+      "id": "azure-DP-300-q26",
+      "question": "Azure SQL Databaseのゾーン冗長バックアップ(ZRSバックアップ)を利用する利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "リージョン内の複数ゾーンにバックアップが保持される",
+          "explanation": {
+            "text": "ZRSバックアップはゾーン間で冗長化される。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/automated-backups-overview",
+            "reference_label": "Microsoft Docs - Automated backups"
+          }
+        },
+        {
+          "key": "B",
+          "text": "オンプレミスに自動的にバックアップを保存する",
+          "explanation": {
+            "text": "バックアップはAzure内で保持され、オンプレミス保存はされない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/automated-backups-overview",
+            "reference_label": "Microsoft Docs - Automated backups"
+          }
+        },
+        {
+          "key": "C",
+          "text": "常にGeo-Replicationが有効化される",
+          "explanation": {
+            "text": "ZRSはリージョン内冗長であり、Geo-Replicationは別の機能。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/automated-backups-overview",
+            "reference_label": "Microsoft Docs - Automated backups"
+          }
+        },
+        {
+          "key": "D",
+          "text": "復元速度が保証される",
+          "explanation": {
+            "text": "復元速度は保証されず、ZRSは冗長性に関する機能。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/automated-backups-overview",
+            "reference_label": "Microsoft Docs - Automated backups"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ZRSバックアップは同一リージョン内の複数ゾーンにデータを保存し、ゾーン障害に備える。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/automated-backups-overview",
+        "reference_label": "Microsoft Docs - Automated backups"
+      }
+    },
+    {
+      "id": "azure-DP-300-q27",
+      "question": "Azure SQL Managed Instanceの仮想ネットワーク統合の特徴はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "専用のVNet内でのみデプロイ可能である",
+          "explanation": {
+            "text": "Managed Instanceは常にVNetに統合されてデプロイされる。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/managed-instance/connectivity-architecture-overview",
+            "reference_label": "Microsoft Docs - Connectivity architecture"
+          }
+        },
+        {
+          "key": "B",
+          "text": "パブリックIPアドレス経由で直接アクセスできる",
+          "explanation": {
+            "text": "Managed Instanceは原則としてパブリックIPを使用せず、プライベート接続が基本。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/managed-instance/connectivity-architecture-overview",
+            "reference_label": "Microsoft Docs - Connectivity architecture"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Storageアカウントの接続を自動的に構成する",
+          "explanation": {
+            "text": "Storage接続は別途構成する必要がある。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/managed-instance/connectivity-architecture-overview",
+            "reference_label": "Microsoft Docs - Connectivity architecture"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ゾーン冗長構成を必須とする",
+          "explanation": {
+            "text": "ゾーン冗長はオプションであり、必須ではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/managed-instance/connectivity-architecture-overview",
+            "reference_label": "Microsoft Docs - Connectivity architecture"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Managed Instanceは常にVNetに統合された環境でのみ提供される。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/managed-instance/connectivity-architecture-overview",
+        "reference_label": "Microsoft Docs - Connectivity architecture"
+      }
+    },
+    {
+      "id": "azure-DP-300-q28",
+      "question": "Azure SQL Databaseの監査ログをLog Analyticsに送信する利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "クエリを使って監査データを分析できる",
+          "explanation": {
+            "text": "Log AnalyticsではKusto Query Language (KQL) を利用してログを分析可能。",
+            "reference": "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-tutorial",
+            "reference_label": "Microsoft Docs - Log Analytics"
+          }
+        },
+        {
+          "key": "B",
+          "text": "監査ログを自動的に削除する",
+          "explanation": {
+            "text": "Log Analyticsは保存と分析が目的であり、自動削除ではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-tutorial",
+            "reference_label": "Microsoft Docs - Log Analytics"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データベース暗号化を有効化する",
+          "explanation": {
+            "text": "暗号化はTDEやAlways Encryptedの機能であり、Log Analyticsではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/transparent-data-encryption-azure-sql",
+            "reference_label": "Microsoft Docs - Transparent Data Encryption"
+          }
+        },
+        {
+          "key": "D",
+          "text": "バックアップ保持期間を延長する",
+          "explanation": {
+            "text": "バックアップ保持はLog Analyticsの機能ではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-tutorial",
+            "reference_label": "Microsoft Docs - Log Analytics"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Log Analyticsに送信された監査ログはKQLで分析でき、セキュリティや監査要件に役立つ。",
+        "reference": "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-tutorial",
+        "reference_label": "Microsoft Docs - Log Analytics"
+      }
+    },
+    {
+      "id": "azure-DP-300-q29",
+      "question": "Azure SQL Databaseで接続時にManaged Identityを利用する利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "接続文字列にパスワードを含める必要がない",
+          "explanation": {
+            "text": "Managed Identityを使えばAzure AD認証が可能になり、秘密情報を接続文字列に含めなくてよい。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/authentication-aad-overview",
+            "reference_label": "Microsoft Docs - Azure AD authentication"
+          }
+        },
+        {
+          "key": "B",
+          "text": "自動的にデータベースをバックアップする",
+          "explanation": {
+            "text": "バックアップは別の仕組みで管理される。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/automated-backups-overview",
+            "reference_label": "Microsoft Docs - Automated backups"
+          }
+        },
+        {
+          "key": "C",
+          "text": "すべての接続を暗号化する",
+          "explanation": {
+            "text": "暗号化はTLSで行われ、Managed Identity自体の機能ではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/authentication-aad-overview",
+            "reference_label": "Microsoft Docs - Azure AD authentication"
+          }
+        },
+        {
+          "key": "D",
+          "text": "SQL Serverのバージョンを最新に保つ",
+          "explanation": {
+            "text": "バージョン管理はサービス側で行われ、Managed Identityとは関係ない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/authentication-aad-overview",
+            "reference_label": "Microsoft Docs - Azure AD authentication"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Managed Identityを利用するとAzure AD認証を使用でき、アプリ側で資格情報を保持する必要がなくなる。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/authentication-aad-overview",
+        "reference_label": "Microsoft Docs - Azure AD authentication"
+      }
+    },
+    {
+      "id": "azure-DP-300-q30",
+      "question": "Azure SQL Databaseで接続エラー 'Cannot open server requested by the login' が発生する主な原因はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ファイアウォールルールが正しく構成されていない",
+          "explanation": {
+            "text": "接続元IPが許可されていない場合、このエラーが発生することが多い。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/troubleshoot-common-errors-issues",
+            "reference_label": "Microsoft Docs - Troubleshooting errors"
+          }
+        },
+        {
+          "key": "B",
+          "text": "自動チューニングが無効になっている",
+          "explanation": {
+            "text": "自動チューニングの有効化は接続エラーに関与しない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/troubleshoot-common-errors-issues",
+            "reference_label": "Microsoft Docs - Troubleshooting errors"
+          }
+        },
+        {
+          "key": "C",
+          "text": "バックアップが存在しない",
+          "explanation": {
+            "text": "バックアップの有無は接続時の認証エラーには関係ない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/troubleshoot-common-errors-issues",
+            "reference_label": "Microsoft Docs - Troubleshooting errors"
+          }
+        },
+        {
+          "key": "D",
+          "text": "監査が有効化されていない",
+          "explanation": {
+            "text": "監査設定は接続時エラーには直接関係しない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/troubleshoot-common-errors-issues",
+            "reference_label": "Microsoft Docs - Troubleshooting errors"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure SQL Database接続エラーの一般的原因は、ファイアウォールルール未設定または誤設定。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/troubleshoot-common-errors-issues",
+        "reference_label": "Microsoft Docs - Troubleshooting errors"
+      }
+    },
+    {
+      "id": "azure-DP-300-q31",
+      "question": "Azure SQL Managed Instanceにおけるリンク機能のフェールオーバー時の動作はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "フェールオーバー時にレプリケーションが自動的に再同期される",
+          "explanation": {
+            "text": "リンク機能はフェールオーバー時に自動再同期を行う。",
+            "reference": "https://learn.microsoft.com/azure/azure-arc/data/managed-instance-link-overview",
+            "reference_label": "Microsoft Docs - Managed Instance link"
+          }
+        },
+        {
+          "key": "B",
+          "text": "フェールオーバー時にすべてのバックアップが削除される",
+          "explanation": {
+            "text": "フェールオーバーでバックアップが削除されることはない。",
+            "reference": "https://learn.microsoft.com/azure/azure-arc/data/managed-instance-link-overview",
+            "reference_label": "Microsoft Docs - Managed Instance link"
+          }
+        },
+        {
+          "key": "C",
+          "text": "手動で再構成しないとレプリケーションは再開しない",
+          "explanation": {
+            "text": "リンク機能は高可用性に対応し、手動介入は不要。",
+            "reference": "https://learn.microsoft.com/azure/azure-arc/data/managed-instance-link-overview",
+            "reference_label": "Microsoft Docs - Managed Instance link"
+          }
+        },
+        {
+          "key": "D",
+          "text": "フェールオーバー後は常に読み取り専用になる",
+          "explanation": {
+            "text": "フェールオーバー後も通常の読み書きが可能。",
+            "reference": "https://learn.microsoft.com/azure/azure-arc/data/managed-instance-link-overview",
+            "reference_label": "Microsoft Docs - Managed Instance link"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Managed Instanceのリンク機能はフェールオーバーを考慮して設計されており、自動再同期される。",
+        "reference": "https://learn.microsoft.com/azure/azure-arc/data/managed-instance-link-overview",
+        "reference_label": "Microsoft Docs - Managed Instance link"
+      }
+    },
+    {
+      "id": "azure-DP-300-q32",
+      "question": "Azure SQL Databaseのクエリストア(Query Store)の主な用途はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "クエリの実行計画とパフォーマンス履歴を保存する",
+          "explanation": {
+            "text": "クエリストアは実行計画の追跡と比較に利用される。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/query-store-overview",
+            "reference_label": "Microsoft Docs - Query Store"
+          }
+        },
+        {
+          "key": "B",
+          "text": "バックアップを保存する",
+          "explanation": {
+            "text": "バックアップ保存はクエリストアの機能ではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/query-store-overview",
+            "reference_label": "Microsoft Docs - Query Store"
+          }
+        },
+        {
+          "key": "C",
+          "text": "行レベルセキュリティを有効化する",
+          "explanation": {
+            "text": "セキュリティ制御はクエリストアの機能ではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/query-store-overview",
+            "reference_label": "Microsoft Docs - Query Store"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ファイアウォールルールを設定する",
+          "explanation": {
+            "text": "ネットワーク制御はクエリストアの対象ではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/query-store-overview",
+            "reference_label": "Microsoft Docs - Query Store"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "クエリストアは実行計画とパフォーマンス履歴を保存し、問題の特定や最適化に利用できる。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/query-store-overview",
+        "reference_label": "Microsoft Docs - Query Store"
+      }
+    },
+    {
+      "id": "azure-DP-300-q33",
+      "question": "Azure SQL Databaseのデータベーススコープド資格情報(Database-scoped credential)の用途はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "外部データソースへの接続に使用される",
+          "explanation": {
+            "text": "データベーススコープド資格情報は外部ストレージや外部データソースへのアクセスに利用される。",
+            "reference": "https://learn.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql",
+            "reference_label": "Microsoft Docs - Database-scoped credential"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーのログイン認証に使用される",
+          "explanation": {
+            "text": "ログインはサーバーレベル認証で管理される。",
+            "reference": "https://learn.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql",
+            "reference_label": "Microsoft Docs - Database-scoped credential"
+          }
+        },
+        {
+          "key": "C",
+          "text": "自動的にバックアップを復元する",
+          "explanation": {
+            "text": "バックアップ復元は資格情報とは無関係。",
+            "reference": "https://learn.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql",
+            "reference_label": "Microsoft Docs - Database-scoped credential"
+          }
+        },
+        {
+          "key": "D",
+          "text": "監査ログを保存する",
+          "explanation": {
+            "text": "監査ログ保存は資格情報の役割ではない。",
+            "reference": "https://learn.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql",
+            "reference_label": "Microsoft Docs - Database-scoped credential"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Database-scoped credentialは外部データソース認証に使用され、PolyBaseやBLOBストレージアクセスなどに利用される。",
+        "reference": "https://learn.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql",
+        "reference_label": "Microsoft Docs - Database-scoped credential"
+      }
+    },
+    {
+      "id": "azure-DP-300-q34",
+      "question": "Azure SQL Databaseのフェールオーバーイベントを検知する方法として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Azure Monitorの診断ログを利用する",
+          "explanation": {
+            "text": "診断ログをAzure Monitorに送信することでフェールオーバーイベントを監視できる。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure",
+            "reference_label": "Microsoft Docs - Diagnostic logging"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SQL Server Agentジョブを構成する",
+          "explanation": {
+            "text": "SQL Server Agentはシングルデータベースで利用できない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure",
+            "reference_label": "Microsoft Docs - Diagnostic logging"
+          }
+        },
+        {
+          "key": "C",
+          "text": "PowerPointの通知機能を利用する",
+          "explanation": {
+            "text": "PowerPointは通知機能を持たない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure",
+            "reference_label": "Microsoft Docs - Diagnostic logging"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Excelの数式で監視する",
+          "explanation": {
+            "text": "Excelはフェールオーバー検知機能を提供しない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure",
+            "reference_label": "Microsoft Docs - Diagnostic logging"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure Monitorに診断ログを送信することで、フェールオーバーやその他の重要イベントを検知できる。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure",
+        "reference_label": "Microsoft Docs - Diagnostic logging"
+      }
+    },
+    {
+      "id": "azure-DP-300-q35",
+      "question": "Azure SQL Databaseの接続時に使用されるTLSバージョンに関して正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "既定ではTLS 1.2が使用される",
+          "explanation": {
+            "text": "Azure SQL Databaseはセキュリティ強化のため、TLS 1.2を既定で使用する。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/connect-query-ssms",
+            "reference_label": "Microsoft Docs - Connect securely"
+          }
+        },
+        {
+          "key": "B",
+          "text": "TLS 1.0が既定で使用される",
+          "explanation": {
+            "text": "TLS 1.0は非推奨であり、既定では使用されない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/connect-query-ssms",
+            "reference_label": "Microsoft Docs - Connect securely"
+          }
+        },
+        {
+          "key": "C",
+          "text": "暗号化は必須ではない",
+          "explanation": {
+            "text": "Azure SQL Database接続ではTLS暗号化が必須。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/connect-query-ssms",
+            "reference_label": "Microsoft Docs - Connect securely"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Always Encryptedと同じ機能である",
+          "explanation": {
+            "text": "TLSは転送中データ暗号化であり、Always Encryptedとは異なる。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/connect-query-ssms",
+            "reference_label": "Microsoft Docs - Connect securely"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure SQL Databaseは既定でTLS 1.2を使用して通信を暗号化する。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/connect-query-ssms",
+        "reference_label": "Microsoft Docs - Connect securely"
+      }
+    },
+    {
+      "id": "azure-DP-300-q36",
+      "question": "Azure SQL Databaseのフェールオーバーグループを利用する主な目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "リージョン間での自動フェールオーバーを実現する",
+          "explanation": {
+            "text": "フェールオーバーグループは異なるリージョン間での自動フェールオーバーを提供する。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/auto-failover-group-overview",
+            "reference_label": "Microsoft Docs - Auto-failover groups"
+          }
+        },
+        {
+          "key": "B",
+          "text": "バックアップ保持期間を延長する",
+          "explanation": {
+            "text": "バックアップ保持はLTR機能により行われる。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/long-term-retention-overview",
+            "reference_label": "Microsoft Docs - Long-term retention"
+          }
+        },
+        {
+          "key": "C",
+          "text": "オンプレミスSQL Serverへのレプリケーション",
+          "explanation": {
+            "text": "オンプレミスSQL Serverとのレプリケーションはサポートされない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/auto-failover-group-overview",
+            "reference_label": "Microsoft Docs - Auto-failover groups"
+          }
+        },
+        {
+          "key": "D",
+          "text": "インデックスの自動最適化を行う",
+          "explanation": {
+            "text": "インデックス最適化は自動チューニング機能であり、フェールオーバーグループの役割ではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/automatic-tuning-overview",
+            "reference_label": "Microsoft Docs - Automatic tuning"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "フェールオーバーグループは異なるリージョンに配置されたDB間で自動フェールオーバーを提供し、災害対策に有効。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/auto-failover-group-overview",
+        "reference_label": "Microsoft Docs - Auto-failover groups"
+      }
+    },
+    {
+      "id": "azure-DP-300-q37",
+      "question": "Azure SQL DatabaseのIntelligent Performance機能に含まれるものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Automatic tuning",
+          "explanation": {
+            "text": "Intelligent PerformanceにはAutomatic tuningが含まれる。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/intelligent-performance",
+            "reference_label": "Microsoft Docs - Intelligent Performance"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Always On可用性グループ",
+          "explanation": {
+            "text": "Always OnはSQL Serverの機能であり、Intelligent Performanceには含まれない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/intelligent-performance",
+            "reference_label": "Microsoft Docs - Intelligent Performance"
+          }
+        },
+        {
+          "key": "C",
+          "text": "バックアップ保持管理",
+          "explanation": {
+            "text": "バックアップ管理はIntelligent Performanceの対象ではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/intelligent-performance",
+            "reference_label": "Microsoft Docs - Intelligent Performance"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ファイアウォールルール設定",
+          "explanation": {
+            "text": "ネットワーク制御はIntelligent Performanceの機能ではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/intelligent-performance",
+            "reference_label": "Microsoft Docs - Intelligent Performance"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Intelligent PerformanceにはAutomatic tuning, Query Store, Intelligent Insightsが含まれる。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/intelligent-performance",
+        "reference_label": "Microsoft Docs - Intelligent Performance"
+      }
+    },
+    {
+      "id": "azure-DP-300-q38",
+      "question": "Azure SQL Managed Instanceでサポートされない機能はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Database Mail",
+          "explanation": {
+            "text": "Managed InstanceではDatabase Mailはサポートされていない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/managed-instance/transact-sql-tsql-differences-sql-server",
+            "reference_label": "Microsoft Docs - T-SQL differences"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SQL Server Agent",
+          "explanation": {
+            "text": "SQL Server AgentはManaged Instanceでサポートされている。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview",
+            "reference_label": "Microsoft Docs - Managed Instance overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "クロスデータベースクエリ",
+          "explanation": {
+            "text": "Managed Instanceはクロスデータベースクエリをサポートする。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/managed-instance/sql-managed-instance-transact-sql-information",
+            "reference_label": "Microsoft Docs - Managed Instance T-SQL"
+          }
+        },
+        {
+          "key": "D",
+          "text": "リンクサーバー機能",
+          "explanation": {
+            "text": "リンクサーバー機能はManaged Instanceで利用可能。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview",
+            "reference_label": "Microsoft Docs - Managed Instance overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure SQL Managed Instanceは多くのSQL Server互換機能を持つが、Database Mailはサポート外。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/managed-instance/transact-sql-tsql-differences-sql-server",
+        "reference_label": "Microsoft Docs - T-SQL differences"
+      }
+    },
+    {
+      "id": "azure-DP-300-q39",
+      "question": "Azure SQL DatabaseでのGeo-Replication利用時、最大いくつのセカンダリを作成できるか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "2",
+          "explanation": {
+            "text": "セカンダリ数は最大4つまで作成可能であり、2では制限が小さい。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/active-geo-replication-overview",
+            "reference_label": "Microsoft Docs - Geo-replication"
+          }
+        },
+        {
+          "key": "B",
+          "text": "3",
+          "explanation": {
+            "text": "Geo-Replicationでは最大4つまでセカンダリを作成可能。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/active-geo-replication-overview",
+            "reference_label": "Microsoft Docs - Geo-replication"
+          }
+        },
+        {
+          "key": "C",
+          "text": "4",
+          "explanation": {
+            "text": "Geo-Replicationで作成できるセカンダリは最大4つ。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/active-geo-replication-overview",
+            "reference_label": "Microsoft Docs - Geo-replication"
+          }
+        },
+        {
+          "key": "D",
+          "text": "5",
+          "explanation": {
+            "text": "5つのセカンダリはサポートされない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/active-geo-replication-overview",
+            "reference_label": "Microsoft Docs - Geo-replication"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "Active Geo-Replicationは最大4つのセカンダリデータベースをサポートする。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/active-geo-replication-overview",
+        "reference_label": "Microsoft Docs - Geo-replication"
+      }
+    },
+    {
+      "id": "azure-DP-300-q40",
+      "question": "Azure SQL DatabaseのThreat Detection機能の役割はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "疑わしいアクティビティを検出して通知する",
+          "explanation": {
+            "text": "Threat Detectionは潜在的な攻撃や異常を検出してアラートを生成する。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/threat-detection-overview",
+            "reference_label": "Microsoft Docs - Threat Detection"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データベースの完全バックアップを作成する",
+          "explanation": {
+            "text": "バックアップはThreat Detectionの機能ではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/automated-backups-overview",
+            "reference_label": "Microsoft Docs - Automated backups"
+          }
+        },
+        {
+          "key": "C",
+          "text": "パフォーマンス異常を検出する",
+          "explanation": {
+            "text": "パフォーマンス異常検出はIntelligent Insightsの役割。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/intelligent-insights-overview",
+            "reference_label": "Microsoft Docs - Intelligent Insights"
+          }
+        },
+        {
+          "key": "D",
+          "text": "自動でインデックスを作成する",
+          "explanation": {
+            "text": "インデックス自動管理はAutomatic tuningの機能。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/automatic-tuning-overview",
+            "reference_label": "Microsoft Docs - Automatic tuning"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Threat Detectionは潜在的なSQLインジェクション攻撃や疑わしいアクティビティを検出する。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/threat-detection-overview",
+        "reference_label": "Microsoft Docs - Threat Detection"
+      }
+    },
+    {
+      "id": "azure-DP-300-q41",
+      "question": "Azure SQL Databaseでサポートされるフェールオーバーモードはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "自動フェールオーバーと手動フェールオーバー",
+          "explanation": {
+            "text": "両方のフェールオーバーモードがサポートされている。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/auto-failover-group-overview",
+            "reference_label": "Microsoft Docs - Auto-failover groups"
+          }
+        },
+        {
+          "key": "B",
+          "text": "バックアップベースのフェールオーバーのみ",
+          "explanation": {
+            "text": "バックアップ復元はフェールオーバーの仕組みではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/auto-failover-group-overview",
+            "reference_label": "Microsoft Docs - Auto-failover groups"
+          }
+        },
+        {
+          "key": "C",
+          "text": "オンプレミス専用フェールオーバー",
+          "explanation": {
+            "text": "オンプレミスSQL Server用の機能ではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/auto-failover-group-overview",
+            "reference_label": "Microsoft Docs - Auto-failover groups"
+          }
+        },
+        {
+          "key": "D",
+          "text": "常に手動フェールオーバーのみ",
+          "explanation": {
+            "text": "自動フェールオーバーにも対応しているため不正解。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/auto-failover-group-overview",
+            "reference_label": "Microsoft Docs - Auto-failover groups"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure SQL Databaseは自動と手動の両方のフェールオーバーモードをサポートする。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/auto-failover-group-overview",
+        "reference_label": "Microsoft Docs - Auto-failover groups"
+      }
+    },
+    {
+      "id": "azure-DP-300-q42",
+      "question": "Azure SQL Databaseのゾーン冗長構成の利用目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "可用性ゾーン間で冗長化し、ゾーン障害に耐える",
+          "explanation": {
+            "text": "ゾーン冗長構成はゾーン障害に対する高可用性を実現する。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/high-availability-sla",
+            "reference_label": "Microsoft Docs - High availability"
+          }
+        },
+        {
+          "key": "B",
+          "text": "オンプレミスSQL Serverとのフェールオーバーを実現する",
+          "explanation": {
+            "text": "ゾーン冗長はクラウド内の仕組みであり、オンプレミスとは無関係。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/high-availability-sla",
+            "reference_label": "Microsoft Docs - High availability"
+          }
+        },
+        {
+          "key": "C",
+          "text": "常にリージョン間で同期レプリケーションを行う",
+          "explanation": {
+            "text": "ゾーン冗長は同一リージョン内のゾーン間冗長であり、リージョン間ではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/high-availability-sla",
+            "reference_label": "Microsoft Docs - High availability"
+          }
+        },
+        {
+          "key": "D",
+          "text": "監査ログを保持する",
+          "explanation": {
+            "text": "監査ログ保持はゾーン冗長の目的ではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/auditing-overview",
+            "reference_label": "Microsoft Docs - Auditing"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ゾーン冗長構成は可用性ゾーン間で冗長化され、ゾーン障害に対する回復力を提供する。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/high-availability-sla",
+        "reference_label": "Microsoft Docs - High availability"
+      }
+    },
+    {
+      "id": "azure-DP-300-q43",
+      "question": "Azure SQL Databaseでの接続において、エラスティックプールを利用する際の利点はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "複数データベースが共有リソースを利用できる",
+          "explanation": {
+            "text": "エラスティックプールは複数DBで共有リソースを利用し、コスト効率を高める。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/elastic-pool-overview",
+            "reference_label": "Microsoft Docs - Elastic pool overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "常にHyperscale層と同等のスケーリングを提供する",
+          "explanation": {
+            "text": "Hyperscale層の拡張性はElastic Poolには含まれない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/service-tier-hyperscale",
+            "reference_label": "Microsoft Docs - Hyperscale"
+          }
+        },
+        {
+          "key": "C",
+          "text": "バックアップをオンプレミスに保存する",
+          "explanation": {
+            "text": "バックアップはAzure内に保存され、Elastic Pool自体はバックアップの保存先を変更しない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/elastic-pool-overview",
+            "reference_label": "Microsoft Docs - Elastic pool overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Always On可用性グループを構成できる",
+          "explanation": {
+            "text": "Always OnはSQL Serverの機能であり、Azure SQL DatabaseのElastic Poolでは利用できない。",
+            "reference": "https://learn.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server",
+            "reference_label": "Microsoft Docs - Always On"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Elastic Poolは複数DBでリソースを共有できるため、負荷の変動に対応しやすい。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/elastic-pool-overview",
+        "reference_label": "Microsoft Docs - Elastic pool overview"
+      }
+    },
+    {
+      "id": "azure-DP-300-q44",
+      "question": "Azure SQL DatabaseのHyperscale層における特徴はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "最大100 TBまで拡張可能",
+          "explanation": {
+            "text": "Hyperscaleは100 TBまで拡張できる。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/service-tier-hyperscale",
+            "reference_label": "Microsoft Docs - Hyperscale"
+          }
+        },
+        {
+          "key": "B",
+          "text": "常にオンプレミスSQL Serverと同期される",
+          "explanation": {
+            "text": "HyperscaleはAzure内のスケーラビリティ機能であり、オンプレミス同期は関係ない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/service-tier-hyperscale",
+            "reference_label": "Microsoft Docs - Hyperscale"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ゾーン冗長はサポートされない",
+          "explanation": {
+            "text": "Hyperscaleでもゾーン冗長は利用可能。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/service-tier-hyperscale",
+            "reference_label": "Microsoft Docs - Hyperscale"
+          }
+        },
+        {
+          "key": "D",
+          "text": "インメモリOLTPが必須",
+          "explanation": {
+            "text": "インメモリOLTPはオプションであり、必須ではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/in-memory-oltp-overview",
+            "reference_label": "Microsoft Docs - In-memory OLTP"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Hyperscale層は100 TBまで拡張できるスケーラブルなサービス層。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/service-tier-hyperscale",
+        "reference_label": "Microsoft Docs - Hyperscale"
+      }
+    },
+    {
+      "id": "azure-DP-300-q45",
+      "question": "Azure SQL Databaseのゾーン冗長高可用性構成で利用される仕組みはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "複数の可用性ゾーンにレプリカを配置する",
+          "explanation": {
+            "text": "ゾーン冗長では複数の可用性ゾーンにレプリカを配置する。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/high-availability-sla",
+            "reference_label": "Microsoft Docs - High availability"
+          }
+        },
+        {
+          "key": "B",
+          "text": "オンプレミスSQL Serverにフェールオーバーする",
+          "explanation": {
+            "text": "ゾーン冗長はAzure内での仕組みであり、オンプレミスへのフェールオーバーは対象外。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/high-availability-sla",
+            "reference_label": "Microsoft Docs - High availability"
+          }
+        },
+        {
+          "key": "C",
+          "text": "TLSバージョンを強制的に更新する",
+          "explanation": {
+            "text": "TLSバージョンは通信暗号化の仕組みであり、ゾーン冗長構成の対象ではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/connect-query-ssms",
+            "reference_label": "Microsoft Docs - Secure connections"
+          }
+        },
+        {
+          "key": "D",
+          "text": "インデックスを自動作成する",
+          "explanation": {
+            "text": "インデックス自動作成はAutomatic tuningの機能。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/automatic-tuning-overview",
+            "reference_label": "Microsoft Docs - Automatic tuning"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ゾーン冗長構成は可用性ゾーンにレプリカを配置し、ゾーン障害に耐える仕組み。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/high-availability-sla",
+        "reference_label": "Microsoft Docs - High availability"
+      }
+    },
+    {
+      "id": "azure-DP-300-q46",
+      "question": "Azure SQL Databaseの自動バックアップに含まれるものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "トランザクションログバックアップ",
+          "explanation": {
+            "text": "自動バックアップにはデータベース、差分、トランザクションログが含まれる。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/automated-backups-overview",
+            "reference_label": "Microsoft Docs - Automated backups"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ファイルシステムスナップショットのみ",
+          "explanation": {
+            "text": "スナップショットのみではなく、完全・差分・ログバックアップが取得される。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/automated-backups-overview",
+            "reference_label": "Microsoft Docs - Automated backups"
+          }
+        },
+        {
+          "key": "C",
+          "text": "オンプレミスのSQL Serverバックアップ",
+          "explanation": {
+            "text": "オンプレミスバックアップは自動バックアップに含まれない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/automated-backups-overview",
+            "reference_label": "Microsoft Docs - Automated backups"
+          }
+        },
+        {
+          "key": "D",
+          "text": "監査ログ",
+          "explanation": {
+            "text": "監査ログはバックアップ対象ではなく、別の仕組みで保存される。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/auditing-overview",
+            "reference_label": "Microsoft Docs - Auditing"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "自動バックアップには完全バックアップ、差分バックアップ、トランザクションログバックアップが含まれる。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/automated-backups-overview",
+        "reference_label": "Microsoft Docs - Automated backups"
+      }
+    },
+    {
+      "id": "azure-DP-300-q47",
+      "question": "Azure SQL Databaseの監査機能の保存先に指定できるのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Azure Storage、Log Analytics、Event Hub",
+          "explanation": {
+            "text": "監査ログはこれらの保存先に出力できる。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/auditing-overview",
+            "reference_label": "Microsoft Docs - Auditing"
+          }
+        },
+        {
+          "key": "B",
+          "text": "オンプレミスのファイルサーバー",
+          "explanation": {
+            "text": "監査ログはAzureサービスに保存される仕組みであり、オンプレミス保存は直接サポートされない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/auditing-overview",
+            "reference_label": "Microsoft Docs - Auditing"
+          }
+        },
+        {
+          "key": "C",
+          "text": "OneDrive",
+          "explanation": {
+            "text": "OneDriveは監査ログの出力先としてサポートされない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/auditing-overview",
+            "reference_label": "Microsoft Docs - Auditing"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Power BI",
+          "explanation": {
+            "text": "Power BIは分析ツールであり、保存先には指定できない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/auditing-overview",
+            "reference_label": "Microsoft Docs - Auditing"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "監査ログはAzure Storage、Log Analytics、Event Hubに送信可能。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/auditing-overview",
+        "reference_label": "Microsoft Docs - Auditing"
+      }
+    },
+    {
+      "id": "azure-DP-300-q48",
+      "question": "Azure SQL Databaseの接続でプライベートエンドポイントを利用する主な利点はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "仮想ネットワーク内でのセキュアな接続",
+          "explanation": {
+            "text": "プライベートエンドポイントはVNet経由での安全な接続を提供する。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/private-endpoint-overview",
+            "reference_label": "Microsoft Docs - Private endpoint"
+          }
+        },
+        {
+          "key": "B",
+          "text": "常にGeo-Replicationが有効化される",
+          "explanation": {
+            "text": "Geo-Replicationは別の機能であり、プライベートエンドポイントとは無関係。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/private-endpoint-overview",
+            "reference_label": "Microsoft Docs - Private endpoint"
+          }
+        },
+        {
+          "key": "C",
+          "text": "オンプレミスSQL Serverとの自動同期",
+          "explanation": {
+            "text": "オンプレミスSQL Serverとの同期機能ではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/private-endpoint-overview",
+            "reference_label": "Microsoft Docs - Private endpoint"
+          }
+        },
+        {
+          "key": "D",
+          "text": "インデックスを自動作成する",
+          "explanation": {
+            "text": "インデックス作成は自動チューニングの機能であり、プライベートエンドポイントの機能ではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/automatic-tuning-overview",
+            "reference_label": "Microsoft Docs - Automatic tuning"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "プライベートエンドポイントはVNet内の安全な接続を提供し、パブリックアクセスを排除できる。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/private-endpoint-overview",
+        "reference_label": "Microsoft Docs - Private endpoint"
+      }
+    },
+    {
+      "id": "azure-DP-300-q49",
+      "question": "Azure SQL DatabaseのTLS暗号化の特徴はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "既定で有効化されており、TLS 1.2を使用する",
+          "explanation": {
+            "text": "Azure SQL Databaseは既定でTLS 1.2を使用して暗号化を行う。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/connect-query-ssms",
+            "reference_label": "Microsoft Docs - Secure connections"
+          }
+        },
+        {
+          "key": "B",
+          "text": "必ずTLS 1.0を利用する",
+          "explanation": {
+            "text": "TLS 1.0は非推奨であり、既定では使用されない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/connect-query-ssms",
+            "reference_label": "Microsoft Docs - Secure connections"
+          }
+        },
+        {
+          "key": "C",
+          "text": "暗号化は必須ではない",
+          "explanation": {
+            "text": "TLS暗号化は必須であり、無効にできない。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/connect-query-ssms",
+            "reference_label": "Microsoft Docs - Secure connections"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Always Encryptedと同じ役割を持つ",
+          "explanation": {
+            "text": "TLSは転送中の暗号化であり、Always Encryptedは列レベルの暗号化。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/always-encrypted-azure-sql-overview",
+            "reference_label": "Microsoft Docs - Always Encrypted"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure SQL DatabaseはTLS 1.2を既定で利用し、暗号化通信を強制する。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/connect-query-ssms",
+        "reference_label": "Microsoft Docs - Secure connections"
+      }
+    },
+{
+  "id": "azure-DP-300-q50",
+  "question": "Azure SQL Database のサーバーレス層の特徴として正しいものはどれか。",
+  "difficulty": "normal",
+  "choices": [
+    {
+      "key": "A",
+      "text": "アイドル状態では自動的に一時停止し、利用が再開されると復帰する",
+      "explanation": {
+        "text": "サーバーレス層は自動一時停止・自動再開機能を持ち、間欠的なワークロードでコストを最適化できる。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/serverless-tier-overview",
+        "reference_label": "Microsoft Docs - Serverless tier"
+      }
+    },
+    {
+      "key": "B",
+      "text": "常に固定のコンピューティングリソースを提供する",
+      "explanation": {
+        "text": "これはプロビジョニング層の特徴であり、サーバーレス層は需要に応じてコンピューティングを動的に調整する。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/serverless-tier-overview",
+        "reference_label": "Microsoft Docs - Serverless tier"
+      }
+    },
+    {
+      "key": "C",
+      "text": "コンピューティングリソースのスケーリングには手動操作が必要である",
+      "explanation": {
+        "text": "サーバーレス層ではコンピューティングが自動的にスケールされ、手動操作は不要である。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/serverless-tier-overview",
+        "reference_label": "Microsoft Docs - Serverless tier"
+      }
+    },
+    {
+      "key": "D",
+      "text": "ストレージはコンピューティングと同時にしかスケールできない",
+      "explanation": {
+        "text": "サーバーレス層ではストレージはコンピューティングとは独立して自動的に拡張される。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/serverless-tier-overview",
+        "reference_label": "Microsoft Docs - Serverless tier"
+      }
+    }
+  ],
+  "answer": "A",
+  "explanation": {
+    "text": "Azure SQL Database のサーバーレス層は間欠的なワークロード向けに設計されており、需要に応じてコンピューティングを自動的にスケールする。またアイドル時間には自動的に一時停止し、再び利用が始まると再開することでコストを削減できる。",
+    "reference": "https://learn.microsoft.com/azure/azure-sql/database/serverless-tier-overview",
+    "reference_label": "Microsoft Docs - Serverless tier"
+  }
+}
+  ]
+}

@@ -1,0 +1,2477 @@
+{
+  "exam": {
+    "id": "azure_security_engineer_associate",
+    "title": "Azure Security Engineer Associate",
+    "description": "この認定資格は、Azure 環境およびハイブリッド／マルチクラウド環境において、セキュリティ制御を実装・管理・監視し、組織のセキュリティ体制を維持し、脆弱性の特定と修復を行うためのスキルを証明するものです。受験者には、Microsoft Entra ID（旧 Azure AD）や Azure のコンピュート／ネットワーク／ストレージに関する深い知識が求められ、セキュリティポスチャーの管理、脅威保護、脆弱性の対応、規制／コンプライアンス制御の実装などが職務として想定されています。",
+    "version": "2025年11月",
+    "price": "165 USD",
+    "difficulty": "普通",
+    "official-site": "https://learn.microsoft.com/ja-jp/credentials/certifications/azure-security-engineer/",
+    "category": {
+      "id": "azure",
+      "name": "Azure"
+    }
+  },
+  "questions": [
+    {
+      "id": "azure-AZ-500-q1",
+      "question": "Microsoft Entra ID (以前の Azure AD) において、特権役割 (Privileged Roles) のアクセスを“Just-In-Time”（必要なときだけ有効）にするために使われるサービスはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Azure AD Identity Protection",
+          "explanation": {
+            "text": "Identity Protection はユーザーのリスク検知と条件付きアクセスなどに関係するが、特権役割を期限付きで有効化する “Just-In-Time” アクセス制御は提供しない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/active-directory/privileged-identity-management/pim-overview",
+            "reference_label": "Privileged Identity Management (PIM) 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure AD Privileged Identity Management (PIM)",
+          "explanation": {
+            "text": "PIM を使うと特権役割を必要なときだけアクティブにし、自動的に期限付きアクセスにするなどの設定が可能である。",
+            "reference": "https://learn.microsoft.com/en-us/azure/active-directory/privileged-identity-management/pim-overview",
+            "reference_label": "Privileged Identity Management (PIM) 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Conditional Access ポリシー",
+          "explanation": {
+            "text": "Conditional Access は条件付きで認証やアクセス制御を行うが、特権役割の “Just-In-Time” 起動／有効化は PIM の責任範囲である。",
+            "reference": "https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/overview",
+            "reference_label": "Conditional Access の概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Role-Based Access Control (RBAC)",
+          "explanation": {
+            "text": "RBAC はリソースへのアクセスの粒度を制御するが、役割を一時的／オンデマンドで昇格／アクティブにする “Just-In-Time” の機能は標準では持たない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/role-based-access-control/overview",
+            "reference_label": "Azure RBAC の概要"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "特権役割 (Privileged Roles) を必要なときだけ有効化・利用できるようにするのは Azure AD Privileged Identity Management (PIM) の機能である。",
+        "reference": "https://learn.microsoft.com/en-us/azure/active-directory/privileged-identity-management/pim-overview",
+        "reference_label": "Privileged Identity Management (PIM) 概要"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q2",
+      "question": "仮想ネットワーク (Virtual Network) におけるサブネット間のトラフィックを制御するための Azure Security 構成として最も適切なのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Network Security Group (NSG)",
+          "explanation": {
+            "text": "NSG を使えばサブネットまたはネットワークインターフェースレベルでトラフィックの許可／拒否を制御できる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview",
+            "reference_label": "NSG の概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure Firewall",
+          "explanation": {
+            "text": "Azure Firewall はネットワーク境界や仮想ネットワーク全体の大規模なルールセットやログ記録に向いているが、各サブネット内トラフィック制御という点では NSG がネイティブで軽量な選択である。",
+            "reference": "https://learn.microsoft.com/en-us/azure/firewall/overview",
+            "reference_label": "Azure Firewall の概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "User-Defined Route (UDR)",
+          "explanation": {
+            "text": "UDR はトラフィックのルーティングを制御するが、許可／拒否ポリシーではなくどの経路を通すかを指定するもの。セキュリティルールとは性質が異なる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/virtual-network/user-defined-routes-overview",
+            "reference_label": "UDR の概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Policy",
+          "explanation": {
+            "text": "Azure Policy はリソース構成の準拠性（compliance）を保証するためのもので、リアルタイムのネットワークトラフィック許可／拒否制御そのものを直接扱うわけではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/governance/policy/overview",
+            "reference_label": "Azure Policy の概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "サブネット間のトラフィックをきめ細かく許可／拒否するには Network Security Group (NSG) が適切。各サブネットまたはネットワークインターフェースにアタッチして制御できる。",
+        "reference": "https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview",
+        "reference_label": "NSG の概要"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q3",
+      "question": "Azure Storage アカウントに保存されたデータを “保存時（at rest）” および “転送中（in transit）” 両方で暗号化し、キー管理を自社で制御したい。最も適切な選択肢はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Storage Service Encryption (SSE) with Microsoft-Managed Keys + HTTPS enforced",
+          "explanation": {
+            "text": "Microsoft 管理キーを使った SSE はデータが保存時に暗号化されるが、キー管理を自社で持ちたいという要件を満たさない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/storage/common/storage-service-encryption-overview",
+            "reference_label": "Storage Service Encryption の概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SSE with Customer-Managed Keys (CMK) + HTTPS enforced",
+          "explanation": {
+            "text": "保存時の暗号化を自社管理キー (CMK) で行い、転送中も HTTPS を強制することで暗号化を確保できる。要件に合致する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/storage/common/customer-managed-keys-overview",
+            "reference_label": "Customer-Managed Keys の概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Client-side encryption followed by SSE with Microsoft managed keys",
+          "explanation": {
+            "text": "クライアント側で暗号化してから保存時暗号化をかける方式も有効だが、キー管理の観点で自社制御を要求するなら SSE-CMK の方が実務でシンプルかつ Azure の管理機能と統合しやすい。",
+            "reference": "https://learn.microsoft.com/en-us/azure/storage/common/encryption-client-side",
+            "reference_label": "クライアント側暗号化の概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Unencrypted storage account + VPN for data in transit",
+          "explanation": {
+            "text": "転送時のみ VPN 等を使って保護しても、保存時の暗号化 (at rest) がないため要件を満たさない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/storage/common/storage-service-encryption-overview",
+            "reference_label": "Storage Service Encryption の概要"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "保存時 (at rest) に Customer-Managed Key を使った暗号化を行い、転送中 (in transit) は HTTPS を強制することで、データが両方の状態で暗号化され、キー管理も自社で制御できる。",
+        "reference": "https://learn.microsoft.com/en-us/azure/storage/common/customer-managed-keys-overview",
+        "reference_label": "Customer-Managed Keys の概要"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q4",
+      "question": "Azure Defender for Cloud（以前の Azure Security Center）で “セキュリティ姿勢 (security posture)” を監視し改善するために設定すべきものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Enable Regulatory Compliance Standards",
+          "explanation": {
+            "text": "規制準拠標準 (Regulatory Compliance) を有効にして、Azure 環境がどのベンチマークや標準 (例えば ISO, NIST など) にどれだけ準拠しているかを評価できる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/regulatory-compliance",
+            "reference_label": "Regulatory Compliance の概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Disable Just-In-Time VM Access",
+          "explanation": {
+            "text": "JIT VM Access は VM への不要なアクセスを減らすためのセキュリティ機能であり、無効にするのはセキュリティ姿勢を低下させる方向である。",
+            "reference": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/just-in-time-vm-access-overview",
+            "reference_label": "Just-In-Time VM Access の概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Enable Azure Defender plans for relevant resource types",
+          "explanation": {
+            "text": "Defender プランをリソース種別に応じて有効化することで、脅威防御 (threat protection) やセキュリティアラートを得られ、セキュリティ姿勢を強化できる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/defender-plans",
+            "reference_label": "Defender プランの概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Enable Storage Account soft delete",
+          "explanation": {
+            "text": "ストレージのソフトデリートは誤削除に対する保護を提供するが、セキュリティ姿勢全体の監視・評価には主目的ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/storage/blobs/soft-delete-overview",
+            "reference_label": "ソフトデリートの概要"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "セキュリティ姿勢を監視改善するには、Regulatory Compliance Standards の有効化と、関連する Azure Defender プランをリソース種別ごとにオンにすることが重要。これにより標準への準拠度と脅威検知能力が高まる。",
+        "reference": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/regulatory-compliance",
+        "reference_label": "Regulatory Compliance の概要"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q5",
+      "question": "仮想マシン (VM) の SSH や RDP 接続をインターネットに直接さらさず、安全にアクセスを提供したい。最も適切な Azure サービスはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Enable SSH/RDP directly on the VM public IP with strong password and network security group",
+          "explanation": {
+            "text": "直接公開する方式ではポートスキャンやブルートフォース攻撃のリスクがあり、安全性が十分ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/security/fundamentals/virtual-machine-best-practices",
+            "reference_label": "VM のセキュリティ ベスト プラクティス"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Use Azure Bastion",
+          "explanation": {
+            "text": "Azure Bastion を使えば、VM をパブリック IP で直接公開することなく、ブラウザ経由でセキュアな RDP/SSH アクセスを提供できる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/bastion/bastion-overview",
+            "reference_label": "Azure Bastion の概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Use VPN Gateway only",
+          "explanation": {
+            "text": "VPN Gateway を使うのは有効な方法だが、通常はネットワークレベルでのアクセスを含むため、アクセス用管理ポートが VM に直接公開されるのを避ける点で Bastion の方が適切な場合が多い。VPN だけで十分とは限らない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about",
+            "reference_label": "VPN Gateway の概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Use public load balancer with health probe restrictions",
+          "explanation": {
+            "text": "ロードバランサーを通す方法でもポートが開かれるため、管理アクセス用としては Bastion の方が意図したセキュア性が高い。",
+            "reference": "https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-overview",
+            "reference_label": "ロードバランサーの概要"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Azure Bastion は VM の RDP/SSH を VM のパブリック IP を公開せずに提供でき、安全性が高く、インターネットからの直接アクセスを防ぐ最適な選択肢である。",
+        "reference": "https://learn.microsoft.com/en-us/azure/bastion/bastion-overview",
+        "reference_label": "Azure Bastion の概要"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q6",
+      "question": "Azure Monitor と Microsoft Sentinel を使ったセキュリティ監視において、異常なログイン試行をリアルタイムで追跡・可視化するために最も適切な構成はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Enable Azure Activity Logs + send them to Log Analytics workspace + configure alerts",
+          "explanation": {
+            "text": "Azure の各種操作ログ (Activity Logs) を Log Analytics に送り、アラートを設定することで、異常なログイン等の操作を追跡可能である。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/activity-logs-overview",
+            "reference_label": "Activity Logs の概要"
+          }
+        },
+        {
+          "key": "B",
+            "text": "Enable Diagnostic Logs only on Azure VMs",
+            "explanation": {
+              "text": "VM の診断ログだけでは異常なログイン試行 (Identity／Azure AD) などを全面的に追跡するには不十分である。",
+              "reference": "https://learn.microsoft.com/en-us/azure/virtual-machines/diagnostic-extension-overview",
+              "reference_label": "VM Diagnostic Logs の概要"
+            }
+        },
+        {
+          "key": "C",
+          "text": "Use Azure Policies to enforce logging on resources",
+          "explanation": {
+            "text": "Policy を使ってログ出力を強制できるが、リアルタイム追跡・可視化・アラートの構成とは別のレイヤーである。",
+              "reference": "https://learn.microsoft.com/en-us/azure/governance/policy/overview",
+              "reference_label": "Azure Policy の概要"
+            }
+        },
+        {
+          "key": "D",
+          "text": "Enable Microsoft Sentinel + ingest Azure AD sign-in logs + configure analytic rules",
+          "explanation": {
+              "text": "Sentinel に Azure AD のサインインログを取り込んでアナリティックルール (解析ルール) を作ることで、異常なログイン試行などをリアルタイムまたは準リアルタイムで検出できる。",
+              "reference": "https://learn.microsoft.com/en-us/azure/sentinel/connect-azure-ad",
+              "reference_label": "Sentinel で Azure AD を接続する方法"
+            }
+        }
+      ],
+      "answer": "A,D",
+      "explanation": {
+        "text": "異常なログイン試行を追跡・可視化するには、Activity Logs を Log Analytics に収集してアラートを設定する方法と、Sentinel にサインインログを収集して解析ルールを用いて検出する方法が組み合わさることで強力な監視基盤となる。",
+        "reference": "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/activity-logs-overview",
+        "reference_label": "Activity Logs の概要"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q7",
+      "question": "Azure SQL Database のセキュリティを強化するため、透過的データ暗号化 (Transparent Data Encryption, TDE) と “Always Encrypted” の主な違いはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "TDE はディスク／ストレージ上のデータを暗号化するが、“Always Encrypted” はクライアント側で暗号化を行い、サーバーにプレーンテキストを送らない",
+          "explanation": {
+            "text": "TDE は at rest（保存時）の暗号化を提供する。一方 Always Encrypted はクライアント側で暗号化と復号が行われ、サーバー側には暗号化されたデータしか見えないため、より機密性が高い制御が可能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-sql/database/transparent-data-encryption-azure-sql",
+            "reference_label": "TDE の概要",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-sql/database/always-encrypted-azure-sql",
+            "reference_label": "Always Encrypted の概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Always Encrypted は保存時のみ暗号化を行い、TDE は保存時と転送時両方を暗号化する",
+          "explanation": {
+            "text": "Always Encrypted はクライアント／アプリケーション レベルでデータを暗号化し、保存時と転送時の双方で暗号化の効果はあるが、“転送時” の暗号化は TLS 等ネットワーク層に依存する。TDE は保存時 (at rest) 暗号化が主目的。転送時暗号化は別機能である。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-sql/database/always-encrypted-azure-sql",
+            "reference_label": "Always Encrypted の概要",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-sql/database/transparent-data-encryption-azure-sql",
+            "reference_label": "TDE の概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "TDE はデータをクライアント側でのみ復号可能にし、“Always Encrypted” はサーバー側で復号可能",
+          "explanation": {
+            "text": "この説明は逆。Always Encrypted はクライアント側でのみ復号できるよう設計されており、サーバー側は暗号化されたデータしか見えないようにする。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-sql/database/always-encrypted-azure-sql",
+            "reference_label": "Always Encrypted の概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "TDE はアプリケーション レベルの暗号化、Always Encrypted はディスクレベルの暗号化",
+          "explanation": {
+              "text": "この説明は誤り。TDE はディスク／ストレージレベルで暗号化を行う。Always Encrypted はアプリケーション／クライアント レベルで暗号化する特定の列 (column) に焦点を当てる。",
+              "reference": "https://learn.microsoft.com/en-us/azure/azure-sql/database/transparent-data-encryption-azure-sql",
+              "reference_label": "TDE の概要",
+              "reference": "https://learn.microsoft.com/en-us/azure/azure-sql/database/always-encrypted-azure-sql",
+              "reference_label": "Always Encrypted の概要"
+            }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "TDE は保存時(ディスク／バックアップなど)の暗号化を提供し、Always Encrypted はクライアント側で暗号化・復号するため、サーバー側には暗号化されたデータしか見えない。これは “at rest” プロテクション以上の機密性を提供する。",
+        "reference": "https://learn.microsoft.com/en-us/azure/azure-sql/database/transparent-data-encryption-azure-sql",
+        "reference_label": "TDE の概要; Always Encrypted の概要"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q8",
+      "question": "条件付きアクセス (Conditional Access) ポリシーで MFA を要求する代表的なシナリオはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ユーザーが社内ネットワークからログインする場合",
+          "explanation": {
+            "text": "信頼できる社内ネットワークからのログインでは通常 MFA は不要に設定されることが多い。",
+            "reference": "https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/overview",
+            "reference_label": "Conditional Access の概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーが未知の場所やデバイスからログインする場合",
+          "explanation": {
+            "text": "リスクの高いシナリオ（未知の場所やデバイスからのアクセス）では追加のセキュリティ対策として MFA が要求されるのが一般的。",
+            "reference": "https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/overview",
+            "reference_label": "Conditional Access の概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザーが Microsoft Teams にアクセスする場合",
+          "explanation": {
+            "text": "Teams アクセス自体は MFA 必須ではなく、条件付きアクセスの設定次第。必須シナリオはサービスではなくリスクベースで決まる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/concept-conditional-access-policies",
+            "reference_label": "Conditional Access ポリシー"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザーが週末にログインする場合",
+          "explanation": {
+            "text": "時間帯や曜日だけで必ず MFA が必要になるわけではなく、主にリスクベースのシナリオが対象。",
+            "reference": "https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/concept-conditional-access-policies",
+            "reference_label": "Conditional Access ポリシー"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Conditional Access ポリシーでは、未知の場所やデバイスなどリスクの高いログインシナリオで MFA を要求するのが代表的である。",
+        "reference": "https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/overview",
+        "reference_label": "Conditional Access の概要"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q9",
+      "question": "Azure Key Vault に保存した秘密情報（シークレット）へのアクセスを制御するために最も適切な方法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "共有された管理者パスワードでアクセスする",
+          "explanation": {
+            "text": "共有パスワードはセキュリティリスクが高く推奨されない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/key-vault/general/basic-concepts",
+            "reference_label": "Key Vault の基本概念"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Managed Identity を使ってアクセス制御を行う",
+          "explanation": {
+            "text": "Azure のリソースに Managed Identity を付与し、それを使って Key Vault にアクセスさせるのが最も安全かつ推奨される方法。",
+            "reference": "https://learn.microsoft.com/en-us/azure/key-vault/general/basic-concepts",
+            "reference_label": "Key Vault の基本概念"
+          }
+        },
+        {
+          "key": "C",
+          "text": "パブリックエンドポイントから無制限アクセスする",
+          "explanation": {
+            "text": "パブリックアクセスを無制限に許可するのはセキュリティリスクが高い。",
+            "reference": "https://learn.microsoft.com/en-us/azure/key-vault/general/security-features",
+            "reference_label": "Key Vault のセキュリティ機能"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Firewall 経由でアクセスするのみ",
+          "explanation": {
+            "text": "Firewall はネットワーク制御に有効だが、認証・認可を提供するものではないため十分ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/key-vault/general/security-features",
+            "reference_label": "Key Vault のセキュリティ機能"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Key Vault の推奨されるアクセス方法は Managed Identity を利用する方法である。これにより資格情報のハードコードを回避できる。",
+        "reference": "https://learn.microsoft.com/en-us/azure/key-vault/general/basic-concepts",
+        "reference_label": "Key Vault の基本概念"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q10",
+      "question": "Azure DDoS Protection Standard の特徴として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "アプリケーションレベルの攻撃 (SQL インジェクションなど) を防ぐ",
+          "explanation": {
+            "text": "SQL インジェクションのようなアプリケーションレベルの攻撃は Web Application Firewall (WAF) の役割であり、DDoS Protection の範囲ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/ddos-protection/ddos-protection-overview",
+            "reference_label": "DDoS Protection の概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "分散型サービス拒否 (DDoS) 攻撃を検知・緩和する",
+          "explanation": {
+            "text": "DDoS Protection Standard は Azure リソースに対する大規模なトラフィックフラッド攻撃を検知・自動緩和する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/ddos-protection/ddos-protection-overview",
+            "reference_label": "DDoS Protection の概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "暗号化キーの保存を行う",
+          "explanation": {
+            "text": "暗号化キーの保存は Key Vault の役割であり、DDoS Protection ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/key-vault/general/basic-concepts",
+            "reference_label": "Key Vault の基本概念"
+          }
+        },
+        {
+          "key": "D",
+          "text": "仮想マシンのパッチ管理を行う",
+          "explanation": {
+            "text": "パッチ管理は Update Management や Azure Automation の役割。",
+            "reference": "https://learn.microsoft.com/en-us/azure/automation/update-management/overview",
+            "reference_label": "Update Management の概要"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Azure DDoS Protection Standard は大規模な DDoS 攻撃を検知し、Azure リソースを自動で保護する機能を提供する。",
+        "reference": "https://learn.microsoft.com/en-us/azure/ddos-protection/ddos-protection-overview",
+        "reference_label": "DDoS Protection の概要"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q11",
+      "question": "Azure Disk Encryption (ADE) を利用して Windows VM の OS ディスクを暗号化する際に必須となるコンポーネントはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Azure Key Vault",
+          "explanation": {
+            "text": "Azure Disk Encryption は Key Vault を使って BitLocker キーや暗号化キーを安全に格納する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption-overview",
+            "reference_label": "Disk Encryption の概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure Bastion",
+          "explanation": {
+            "text": "Bastion は VM へのセキュアな接続を提供するが、暗号化には関係しない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/bastion/bastion-overview",
+            "reference_label": "Bastion の概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Firewall",
+          "explanation": {
+            "text": "Firewall はネットワーク制御のためのサービスであり、ディスク暗号化には必須ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/firewall/overview",
+            "reference_label": "Azure Firewall の概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Application Gateway",
+          "explanation": {
+            "text": "Application Gateway はアプリケーション層のロードバランシングと WAF を提供するが、ディスク暗号化には不要。",
+            "reference": "https://learn.microsoft.com/en-us/azure/application-gateway/overview",
+            "reference_label": "Application Gateway の概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure Disk Encryption (ADE) は Key Vault を必須とし、暗号化キーや BitLocker キーを安全に格納する。",
+        "reference": "https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption-overview",
+        "reference_label": "Disk Encryption の概要"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q12",
+      "question": "Microsoft Defender for Identity が提供する主な機能はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "オンプレミス Active Directory 環境での脅威検知",
+          "explanation": {
+            "text": "Defender for Identity はオンプレミスの Active Directory を監視し、疑わしい活動や潜在的な攻撃を検出する。",
+            "reference": "https://learn.microsoft.com/en-us/defender-for-identity/what-is",
+            "reference_label": "Defender for Identity の概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure Storage アカウント暗号化",
+          "explanation": {
+            "text": "Storage の暗号化は Storage Service Encryption の機能であり、Defender for Identity ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/storage/common/storage-service-encryption-overview",
+            "reference_label": "Storage Service Encryption の概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "SQL Database の脆弱性スキャン",
+          "explanation": {
+            "text": "SQL の脆弱性評価は Defender for SQL の機能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/defender-for-sql/azure-defender-for-sql-introduction",
+            "reference_label": "Defender for SQL の概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Key Vault シークレットのローテーション",
+          "explanation": {
+            "text": "Key Vault シークレットのローテーションは Key Vault の機能であり、Defender for Identity ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/key-vault/secrets/overview",
+            "reference_label": "Key Vault Secrets の概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Defender for Identity はオンプレミス AD 環境に特化したセキュリティソリューションで、攻撃や脅威の検出を提供する。",
+        "reference": "https://learn.microsoft.com/en-us/defender-for-identity/what-is",
+        "reference_label": "Defender for Identity の概要"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q13",
+      "question": "Azure Policy を利用する主な目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "リソース構成が組織の基準に準拠しているかを評価・強制する",
+          "explanation": {
+            "text": "Azure Policy はコンプライアンスを保証し、基準を逸脱したリソースを検出・修正できる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/governance/policy/overview",
+            "reference_label": "Azure Policy の概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ネットワークトラフィックをフィルタリングする",
+          "explanation": {
+            "text": "ネットワークフィルタリングは NSG や Firewall の役割であり、Policy ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/firewall/overview",
+            "reference_label": "Azure Firewall の概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "仮想マシンへのパッチを適用する",
+          "explanation": {
+            "text": "パッチ適用は Update Management の役割。",
+            "reference": "https://learn.microsoft.com/en-us/azure/automation/update-management/overview",
+            "reference_label": "Update Management の概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "アプリケーションのログ収集を行う",
+          "explanation": {
+            "text": "ログ収集は Azure Monitor の役割であり、Policy ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-monitor/overview",
+            "reference_label": "Azure Monitor の概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure Policy はガバナンス機能であり、組織のルールや標準に基づきリソースの準拠性を強制できる。",
+        "reference": "https://learn.microsoft.com/en-us/azure/governance/policy/overview",
+        "reference_label": "Azure Policy の概要"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q14",
+      "question": "Azure App Service において Web アプリケーションファイアウォール (WAF) を提供する方法として最も一般的なのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Application Gateway と統合する",
+          "explanation": {
+            "text": "Application Gateway は WAF 機能を提供し、App Service の前段に配置して OWASP ルールなどで保護できる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/web-application-firewall/ag/ag-overview",
+            "reference_label": "Application Gateway WAF の概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure Bastion を使用する",
+          "explanation": {
+            "text": "Bastion は VM への安全な RDP/SSH アクセス用で、HTTP/HTTPS のWAFではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/bastion/bastion-overview",
+            "reference_label": "Azure Bastion の概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "NSG を App Service に直接適用する",
+          "explanation": {
+            "text": "App Service（マルチテナント）の前段に NSG を直接適用することはできず、WAF 機能も提供しない。WAF は Application Gateway などで実装する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/app-service/overview",
+            "reference_label": "Azure App Service の概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Key Vault を有効化する",
+          "explanation": {
+            "text": "Key Vault は秘密情報や証明書の管理であり、WAF 機能は提供しない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/key-vault/secrets/overview",
+            "reference_label": "Key Vault Secrets の概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "App Service を WAF で保護する一般的手法は、Application Gateway（WAF）を前段に配置して検出/防御モードのルールで保護すること。",
+        "reference": "https://learn.microsoft.com/en-us/azure/web-application-firewall/ag/ag-overview",
+        "reference_label": "Application Gateway WAF の概要"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q15",
+      "question": "Microsoft Entra 条件付きアクセスで、社内の固定グローバル IP からのアクセスに対して MFA を免除したい。最も適切な設定はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "信頼できるデバイス (準拠デバイス) のみを対象にする",
+          "explanation": {
+            "text": "準拠デバイス条件は端末の状態に基づく。固定グローバル IP を基準に免除する要件には直接一致しない。",
+            "reference": "https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-conditional-access-conditions",
+            "reference_label": "条件付きアクセスの条件"
+          }
+        },
+        {
+          "key": "B",
+          "text": "名前付きの場所 (Named locations) に社内グローバル IP を登録し、その場所からのアクセスを MFA の対象外にする条件を追加する",
+          "explanation": {
+            "text": "条件付きアクセスでは名前付きの場所に IP 範囲を登録し、場所に応じてポリシーを分岐できる。社内 IP からのアクセスを MFA 免除にする典型手法。",
+            "reference": "https://learn.microsoft.com/en-us/entra/identity/conditional-access/location-condition",
+            "reference_label": "場所条件 (Named locations)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "セキュリティの既定値 (Security defaults) を有効化する",
+          "explanation": {
+            "text": "Security defaults は基本的な保護を一括適用する機能で、きめ細かな場所ベースの免除は構成できない。",
+            "reference": "https://learn.microsoft.com/en-us/entra/fundamentals/security-defaults",
+            "reference_label": "Security defaults"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザー リスクが“低”のときは MFA を要求しない設定にする",
+          "explanation": {
+            "text": "ユーザー リスクは Identity Protection による動的評価で、固定 IP の考慮とは別。場所ベースの要件を満たさない。",
+            "reference": "https://learn.microsoft.com/en-us/entra/id-protection/concept-identity-protection-policies",
+            "reference_label": "Identity Protection ポリシー"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "社内の固定 IP を“名前付きの場所”に登録し、該当場所からのアクセスに MFA 免除を適用するのが定石である。",
+        "reference": "https://learn.microsoft.com/en-us/entra/identity/conditional-access/location-condition",
+        "reference_label": "場所条件 (Named locations)"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q16",
+      "question": "Azure Storage アカウントへのアクセスをインターネットから遮断し、仮想ネットワーク内のリソースのみから到達させたい。セキュリティとデータ漏えい対策の観点で最も厳格な選択肢はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "サービス エンドポイント (Service Endpoints) を有効化し、ファイアウォールで VNet のみ許可",
+          "explanation": {
+            "text": "Service Endpoints は Microsoft バックボーンにトラフィックを切り替えるが、ストレージのパブリック エンドポイントは存続する。より強固なのは Private Link。",
+            "reference": "https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-service-endpoints-overview",
+            "reference_label": "Service Endpoints 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "プライベート エンドポイント (Private Endpoint) を作成し、ストレージのパブリック ネットワーク アクセスを無効化",
+          "explanation": {
+            "text": "Private Endpoint は VNet のプライベート IP を介してサービスに到達し、データ漏えい経路を低減できる。パブリック アクセス無効化でより厳格にできる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview",
+            "reference_label": "Private Endpoint 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "NSG で 443/TCP を拒否する",
+          "explanation": {
+            "text": "NSG はサブネット/ NIC のトラフィック制御で、ストレージの公開エンドポイント自体を無効化するわけではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview",
+            "reference_label": "NSG 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Firewall で FQDN ルールを許可のみにする",
+          "explanation": {
+            "text": "Firewall は経路での制御。最も厳格に“公開面”を閉じるには Private Endpoint とパブリック アクセスの無効化が推奨。",
+            "reference": "https://learn.microsoft.com/en-us/azure/firewall/overview",
+            "reference_label": "Azure Firewall 概要"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "最も厳格なのは Private Endpoint＋パブリック ネットワーク アクセス無効化。VNet からのプライベート接続のみ許容でき、データ漏えいリスクを最小化できる。",
+        "reference": "https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview",
+        "reference_label": "Private Endpoint 概要"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q17",
+      "question": "Microsoft Defender for Cloud で“推奨事項 (Recommendations)”の修復自動化を図りたい。コード変更無しで Azure リソースに修復を適用する標準機能の組み合わせはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Defender for Cloud の“ワークフロー自動化 (Workflow automation)”で Logic Apps を呼び出す",
+          "explanation": {
+            "text": "推奨事項やアラートをトリガーに Logic App を実行し、修復手順を自動化できる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/workflow-automation",
+            "reference_label": "Workflow automation"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure Policy の“修復タスク (Remediation task)”を利用する",
+          "explanation": {
+            "text": "ポリシーの“補正 (DeployIfNotExists/Modify)”と修復タスクを使うと、準拠していないリソースを自動修正できる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/governance/policy/how-to/remediate-resources",
+            "reference_label": "Policy による修復"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Monitor のアクショングループにメール通知のみ設定する",
+          "explanation": {
+            "text": "通知は可能だが、修復の自動実行には足りない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/action-groups",
+            "reference_label": "Action Groups"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Resource Graph クエリで準拠違反を抽出し手動修正する",
+          "explanation": {
+            "text": "Resource Graph は可視化・探索に有用だが自動修復機能は持たない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/governance/resource-graph/overview",
+            "reference_label": "Resource Graph 概要"
+          }
+        }
+      ],
+      "answer": "A,B",
+      "explanation": {
+        "text": "Defender for Cloud の Workflow automation で Logic Apps を呼び出す方法、または Azure Policy の補正＋修復タスクで自動修復する方法が、コード変更無しでの代表的手段。",
+        "reference": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/workflow-automation",
+        "reference_label": "Workflow automation と Azure Policy の修復"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q18",
+      "question": "AKS (Azure Kubernetes Service) のアイデンティティで Pod から Key Vault への安全なアクセスを実現したい。最新の推奨構成はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Pod にサービス プリンシパルのクライアント シークレットを環境変数で注入する",
+          "explanation": {
+            "text": "資格情報のハードコード/注入は漏えいリスクが高く推奨されない。",
+            "reference": "https://learn.microsoft.com/en-us/entra/workload-id/workload-identity-federation",
+            "reference_label": "Workload identity federation"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AKS の Kubernetes 用マネージド ID (Azure AD Workload Identity) を使用し、Pod と Microsoft Entra ID を連携する",
+          "explanation": {
+            "text": "Azure AD Workload Identity により、Pod がフェデレーションでマネージド ID としてトークンを取得し、Key Vault へ安全にアクセスできるのが最新推奨。",
+            "reference": "https://learn.microsoft.com/en-us/azure/aks/workload-identity-overview",
+            "reference_label": "Azure AD Workload Identity (AKS)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "AKS で AAD Pod Identity を使う",
+          "explanation": {
+            "text": "AAD Pod Identity は旧方式で、Workload Identity への移行が推奨されている。",
+            "reference": "https://learn.microsoft.com/en-us/azure/aks/workload-identity-deploy",
+            "reference_label": "Workload Identity への移行"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Key Vault ファイアウォールを無効化して誰でもアクセス可能にする",
+          "explanation": {
+            "text": "セキュリティを著しく低下させる誤設定である。",
+            "reference": "https://learn.microsoft.com/en-us/azure/key-vault/general/security-features",
+            "reference_label": "Key Vault セキュリティ機能"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "AKS では Azure AD Workload Identity が推奨。Pod がフェデレーションでトークンを取得し、Key Vault 等に安全にアクセスできる。",
+        "reference": "https://learn.microsoft.com/en-us/azure/aks/workload-identity-overview",
+        "reference_label": "Azure AD Workload Identity (AKS)"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q19",
+      "question": "Azure Files を企業内から SMB で安全に利用する。オンプレミスからのアクセスを限定し、資格情報の保護とアクセス制御を強化するための適切な組み合わせはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Azure Files の AD DS または Microsoft Entra Kerberos 認証を有効化し、プライベート エンドポイントを構成、Storage ファイアウォールでパブリック アクセス無効化",
+          "explanation": {
+            "text": "Kerberos 認証と Private Endpoint により、SMB アクセスの認証・経路を強化し、パブリック エンドポイントを閉じることで露出面を削減できる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable",
+            "reference_label": "Azure Files ID 認証",
+            "reference2": "https://learn.microsoft.com/en-us/azure/storage/files/storage-files-networking-endpoints",
+            "reference_label2": "Azure Files のネットワーク"
+          }
+        },
+        {
+          "key": "B",
+          "text": "共有アクセス署名 (SAS) をファイル共有の読み取り/書き込み用に全社配布",
+          "explanation": {
+            "text": "SAS の広範な配布はリスクが高い。SMB アクセスには Kerberos 認証の方が管理的・監査的に適切。",
+            "reference": "https://learn.microsoft.com/en-us/azure/storage/common/storage-sas-overview",
+            "reference_label": "SAS の概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "パブリック エンドポイントのみでアクセスし、クライアントのホスト ファイアウォールで制限",
+          "explanation": {
+            "text": "サービス側の公開面が残り、統制が弱い。企業利用には不向き。",
+            "reference": "https://learn.microsoft.com/en-us/azure/storage/files/storage-files-networking-endpoints",
+            "reference_label": "Azure Files のネットワーク"
+          }
+        },
+        {
+          "key": "D",
+          "text": "匿名アクセスを許可して利便性を優先",
+          "explanation": {
+            "text": "セキュリティ要件に反する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable",
+            "reference_label": "Azure Files ID 認証"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Kerberos 認証 (AD DS / Entra Kerberos) + Private Endpoint + パブリック アクセス無効化が、認証・経路・公開面の三点を同時に強化できる実践的構成。",
+        "reference": "https://learn.microsoft.com/en-us/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable",
+        "reference_label": "Azure Files ID 認証"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q20",
+      "question": "Azure Key Vault でキー／シークレットのアクセスを“ゼロ トラスト”の観点で強化したい。最も効果の高い設定の組み合わせはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "パブリック ネットワーク アクセスを無効化し、プライベート エンドポイントのみ許可、RBAC ベースのアクセス制御を有効化、Managed Identity を利用",
+          "explanation": {
+            "text": "ネットワーク面の閉域化・アイデンティティ ベースの最小権限化・資格情報の非共有化を同時に実現できる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/key-vault/general/secure-your-key-vault",
+            "reference_label": "Key Vault を保護するベスト プラクティス"
+          }
+        },
+        {
+          "key": "B",
+          "text": "アクセスポリシーを“すべてのアプリに許可”に設定し、監査ログを有効化",
+          "explanation": {
+            "text": "監査は重要だが“すべて許可”は最小権限に反する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/key-vault/general/security-features",
+            "reference_label": "Key Vault セキュリティ機能"
+          }
+        },
+        {
+          "key": "C",
+          "text": "IP フィルタリングのみによる制御",
+          "explanation": {
+            "text": "IP 制御のみでは資格情報の乱用に弱い。アイデンティティ ベース制御が推奨。",
+            "reference": "https://learn.microsoft.com/en-us/azure/key-vault/general/secure-your-key-vault",
+            "reference_label": "Key Vault ベスト プラクティス"
+          }
+        },
+        {
+          "key": "D",
+          "text": "シークレットをアプリ設定にコピーしておき Key Vault は無効化",
+          "explanation": {
+            "text": "秘匿情報の分散配置・露出増加を招くアンチパターン。",
+            "reference": "https://learn.microsoft.com/en-us/azure/architecture/framework/security/design-storage-secrets",
+            "reference_label": "Azure Well-Architected: 秘密情報の管理"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Private Endpoint で閉域化し、RBAC と Managed Identity による最小権限・資格情報レスのアクセスを徹底するのがゼロ トラストに適う。",
+        "reference": "https://learn.microsoft.com/en-us/azure/key-vault/general/secure-your-key-vault",
+        "reference_label": "Key Vault を保護するベスト プラクティス"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q21",
+      "question": "Microsoft Sentinel で Entra サインイン ログから“パスワード スプレー”の疑いを検出する分析ルールを作成したい。最も適切な構成のポイントはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データ コネクタで Entra ID サインイン ログを Log Analytics ワークスペースに取り込み、KQL でしきい値や時間窓に基づく集計検出を行う",
+          "explanation": {
+            "text": "Sentinel のデータ コネクタでログを取り込み、KQL で同一 IP から複数ユーザーに対する失敗試行を時間窓で集計するのが標準手順。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sentinel/connect-azure-active-directory",
+            "reference_label": "Sentinel と Entra ID の接続",
+            "reference2": "https://learn.microsoft.com/en-us/azure/sentinel/behavior-analytics",
+            "reference_label2": "分析ルールと KQL"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure Monitor のメトリック アラートのみで IP 単位の失敗回数を検出する",
+          "explanation": {
+            "text": "メトリック アラートだけでは複数ユーザーへの横断的攻撃パターン検出が困難。Sentinel/KQL が適切。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/alerts-overview",
+            "reference_label": "アラートの概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ワークブックで可視化のみ行い、分析ルールは作成しない",
+          "explanation": {
+            "text": "検出とアラート化には分析ルールが必要。可視化のみでは不十分。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sentinel/detect-threats-built-in",
+            "reference_label": "検出ルール"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ブックマーク機能で手動マーキングして運用担当にメール通知",
+          "explanation": {
+            "text": "手動では継続的検出に不向き。自動検出ルールを構成すべき。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sentinel/detect-threats-built-in",
+            "reference_label": "検出ルール"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Sentinel にサインイン ログを取り込み、KQL で“同一 IP から複数ユーザーへの失敗試行を短時間に多数”といった条件を分析ルールに実装するのが定石。",
+        "reference": "https://learn.microsoft.com/en-us/azure/sentinel/connect-azure-active-directory",
+        "reference_label": "Sentinel と Entra ID の接続"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q22",
+      "question": "Microsoft Entra Privileged Identity Management (PIM) における“承認ワークフロー付き JIT アクセス”を有効化することで実現できるセキュリティ効果はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ユーザーが特権ロールを即時かつ無制限に利用可能になる",
+          "explanation": {
+            "text": "承認ワークフローを要求すると、即時・無制限の利用ではなく、管理者承認後にのみ JIT アクセスが可能になる。",
+            "reference": "https://learn.microsoft.com/en-us/entra/identity/privileged-identity-management/pim-configure",
+            "reference_label": "PIM の構成"
+          }
+        },
+        {
+          "key": "B",
+          "text": "特権ロールの利用を事前承認者による確認後に限定できる",
+          "explanation": {
+            "text": "承認ワークフローを有効にすると、特権ロールを有効化する際に承認者による確認を必須化できる。",
+            "reference": "https://learn.microsoft.com/en-us/entra/identity/privileged-identity-management/pim-configure",
+            "reference_label": "PIM の構成"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ロールの使用時間を無制限に延長できる",
+          "explanation": {
+            "text": "使用時間は PIM ポリシーで最大値が制御され、無制限化はできない。",
+            "reference": "https://learn.microsoft.com/en-us/entra/identity/privileged-identity-management/pim-configure",
+            "reference_label": "PIM の構成"
+          }
+        },
+        {
+          "key": "D",
+          "text": "多要素認証 (MFA) を無効化できる",
+          "explanation": {
+            "text": "承認ワークフローは MFA 無効化とは無関係で、むしろ MFA 要求と併用が推奨される。",
+            "reference": "https://learn.microsoft.com/en-us/entra/identity/privileged-identity-management/pim-security-overview",
+            "reference_label": "PIM セキュリティの概要"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "承認ワークフローにより、JIT アクセスが承認者の許可後にのみ有効化され、特権濫用リスクが低減する。",
+        "reference": "https://learn.microsoft.com/en-us/entra/identity/privileged-identity-management/pim-configure",
+        "reference_label": "PIM の構成"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q23",
+      "question": "Azure Firewall と NSG の役割の違いとして正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "NSG はレイヤー 7 (アプリケーション層) フィルタリングを提供する",
+          "explanation": {
+            "text": "NSG はレイヤー 4 (TCP/UDP) までの制御で、L7 機能は持たない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview",
+            "reference_label": "NSG の概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure Firewall は FQDN ベースのルールや詳細なログを提供する",
+          "explanation": {
+            "text": "Azure Firewall は L3〜L7 の制御や FQDN/アプリケーション規則、集約ログを提供する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/firewall/overview",
+            "reference_label": "Azure Firewall の概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "NSG はインターネット出口のフル機能プロキシとして利用できる",
+          "explanation": {
+            "text": "NSG はステートフルなパケット フィルタであり、プロキシ機能はない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview",
+            "reference_label": "NSG の概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Firewall は VM NIC に直接アタッチして使う",
+          "explanation": {
+            "text": "Azure Firewall は専用サブネットに展開するマネージド ファイアウォールで、NIC 直付けではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/firewall/overview",
+            "reference_label": "Azure Firewall の概要"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "NSG は L3/L4 の最小限フィルタ、Azure Firewall は FQDN/アプリ規則・詳細ログなど高度機能を提供する。",
+        "reference": "https://learn.microsoft.com/en-us/azure/firewall/overview",
+        "reference_label": "Azure Firewall の概要"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q24",
+      "question": "Defender for Containers (旧 Defender for Kubernetes) を有効化する主な目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Kubernetes/コンテナー環境の脅威検知とイメージ脆弱性評価",
+          "explanation": {
+            "text": "AKS などのクラスターに対し脅威検出やイメージの脆弱性スキャンを提供する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/defender-for-containers-introduction",
+            "reference_label": "Defender for Containers の概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Windows Update の自動適用",
+          "explanation": {
+            "text": "OS パッチ適用は Update Management の領域であり、Defender for Containers の機能ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/automation/update-management/overview",
+            "reference_label": "Update Management"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ストレージ アカウントの暗号化強制",
+          "explanation": {
+            "text": "ストレージ暗号化は SSE/CMK の機能で、Defender for Containers とは無関係。",
+            "reference": "https://learn.microsoft.com/en-us/azure/storage/common/storage-service-encryption-overview",
+            "reference_label": "Storage 暗号化の概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "VNet のルーティング制御",
+          "explanation": {
+            "text": "ルーティングは UDR/VPN/ER の領域であり、Defender for Containers の目的ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/virtual-network/user-defined-routes-overview",
+            "reference_label": "UDR の概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Defender for Containers はクラウドネイティブなワークロードの脅威検知と脆弱性管理を目的とする。",
+        "reference": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/defender-for-containers-introduction",
+        "reference_label": "Defender for Containers の概要"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q25",
+      "question": "Azure Application Gateway WAF の“防御モード (Prevention mode)”を有効にするとどうなるか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "攻撃が検出されてもログのみ記録しブロックはしない",
+          "explanation": {
+            "text": "これは“検出モード (Detection mode)”の挙動であり、防御モードではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/web-application-firewall/ag/ag-overview",
+            "reference_label": "WAF の概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "攻撃と判断されたリクエストを即座にブロックする",
+          "explanation": {
+            "text": "Prevention mode は検出ルールに一致するリクエストを遮断する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/web-application-firewall/ag/ag-overview",
+            "reference_label": "WAF の概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "バックエンドの VM 数を自動スケールアウトする",
+          "explanation": {
+            "text": "スケーリングは WAF モードの機能ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-autoscaling-zone-redundant",
+            "reference_label": "Application Gateway のスケーリング"
+          }
+        },
+        {
+          "key": "D",
+          "text": "TLS 証明書の自動更新を行う",
+          "explanation": {
+            "text": "証明書ライフサイクルは別機能であり、WAF モードとは関係しない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/application-gateway/ssl-overview",
+            "reference_label": "SSL/TLS の概要"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "防御モードでは悪意のあるリクエストをブロックしてバックエンド到達を防ぐ。",
+        "reference": "https://learn.microsoft.com/en-us/azure/web-application-firewall/ag/ag-overview",
+        "reference_label": "WAF の概要"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q26",
+      "question": "Azure Policy の“DeployIfNotExists”効果を利用する主な目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "違反リソースを検出するだけ",
+          "explanation": {
+            "text": "Audit は検出のみ。DeployIfNotExists は不足構成の自動展開・修復に用いる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/effects",
+            "reference_label": "Policy 効果の種類"
+          }
+        },
+        {
+          "key": "B",
+          "text": "準拠していないリソースを自動修正/必要な関連リソースを展開する",
+          "explanation": {
+            "text": "DeployIfNotExists はポリシー違反を補正するための自動デプロイに対応する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/effects",
+            "reference_label": "Policy 効果の種類"
+          }
+        },
+        {
+          "key": "C",
+          "text": "不要リソースを自動削除する",
+          "explanation": {
+            "text": "削除専用の効果は存在しない。DeployIfNotExists は展開・修復を行う。",
+            "reference": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/effects",
+            "reference_label": "Policy 効果の種類"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザーに MFA を強制する",
+          "explanation": {
+            "text": "MFA は条件付きアクセスの範囲であり、Policy 効果ではない。",
+            "reference": "https://learn.microsoft.com/en-us/entra/identity/conditional-access/overview",
+            "reference_label": "条件付きアクセス概要"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "DeployIfNotExists は準拠違反の自動修復・不足構成のデプロイにより、組織基準への準拠を強制する。",
+        "reference": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/effects",
+        "reference_label": "Policy 効果の種類"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q27",
+      "question": "Azure Security Benchmark に基づく Microsoft Defender for Cloud の“セキュリティ スコア”の役割はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "リソースのコストを算出する",
+          "explanation": {
+            "text": "コスト算出は Cost Management の領域で、セキュリティ スコアの目的ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/cost-management-billing/cost-management-billing-overview",
+            "reference_label": "Cost Management の概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "組織のセキュリティ姿勢を定量化し、推奨事項に基づく改善点を示す",
+          "explanation": {
+            "text": "セキュリティ スコアはベンチマーク準拠に基づいて環境の強弱を数値化し改善指針を提供する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/secure-score-security-controls",
+            "reference_label": "セキュリティ スコア"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザーのログイン成功率を表示する",
+          "explanation": {
+            "text": "ログイン統計は Entra レポートの領域であり、セキュリティ スコアではない。",
+            "reference": "https://learn.microsoft.com/en-us/entra/reporting-monitoring/concept-sign-ins",
+            "reference_label": "サインイン ログ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "暗号化キーの寿命を制御する",
+          "explanation": {
+            "text": "キー管理は Key Vault の領域で、セキュリティ スコアの機能ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/key-vault/general/basic-concepts",
+            "reference_label": "Key Vault の基本概念"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "セキュリティ スコアは Azure Security Benchmark に照らした環境の成熟度を可視化し、推奨事項で改善を促す。",
+        "reference": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/secure-score-security-controls",
+        "reference_label": "セキュリティ スコア"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q28",
+      "question": "Azure Storage で BLOB データへの匿名アクセスを禁止し、アプリケーション認証を強制する方法として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ストレージ アカウントの“パブリック BLOB アクセス”設定を無効化する",
+          "explanation": {
+            "text": "この設定を無効にすると、コンテナー/Blob の匿名読み取りを全体で禁止できる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/storage/blobs/anonymous-read-access-prevent",
+            "reference_label": "匿名アクセスの防止"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SAS を全社配布して URL を共有する",
+          "explanation": {
+            "text": "SAS 配布はリスクが高く、匿名アクセスの禁止策にもならない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/storage/common/storage-sas-overview",
+            "reference_label": "SAS の概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "コンテナーを“パブリック”に設定し、読み取りにはアプリ登録を要求する",
+          "explanation": {
+            "text": "コンテナーがパブリックだと匿名読み取りが可能になり、要件と矛盾する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/storage/blobs/anonymous-read-access-prevent",
+            "reference_label": "匿名アクセスの防止"
+          }
+        },
+        {
+          "key": "D",
+          "text": "NSG で 443/TCP を拒否して外部からのアクセスを遮断する",
+          "explanation": {
+            "text": "NSG は VNet 内のフィルタで、ストレージの公開設定そのものを無効化する手段ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview",
+            "reference_label": "NSG の概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "“パブリック BLOB アクセス”を無効化するのが組織全体での匿名読み取り禁止の確実な方法である。",
+        "reference": "https://learn.microsoft.com/en-us/azure/storage/blobs/anonymous-read-access-prevent",
+        "reference_label": "匿名アクセスの防止"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q29",
+      "question": "Microsoft Entra ID Identity Protection が提供する主な機能はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "特権ロールの JIT アクセス管理",
+          "explanation": {
+            "text": "特権ロール管理は PIM (Privileged Identity Management) の機能。",
+            "reference": "https://learn.microsoft.com/en-us/entra/identity/privileged-identity-management/pim-configure",
+            "reference_label": "PIM の概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "リスクベースのサインイン検出と自動ポリシー適用",
+          "explanation": {
+            "text": "Identity Protection はリスクを検知し、条件付きアクセスと連携して MFA 要求やアクセス制御を自動適用できる。",
+            "reference": "https://learn.microsoft.com/en-us/entra/id-protection/overview-identity-protection",
+            "reference_label": "Identity Protection の概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "SQL Database の脆弱性スキャン",
+          "explanation": {
+            "text": "これは Defender for SQL の機能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/defender-for-sql/azure-defender-for-sql-introduction",
+            "reference_label": "Defender for SQL の概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "VM のパッチ管理",
+          "explanation": {
+            "text": "パッチ管理は Update Management の機能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/automation/update-management/overview",
+            "reference_label": "Update Management"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Identity Protection はサインインやユーザーのリスクを検出し、条件付きアクセスで自動制御を可能にする。",
+        "reference": "https://learn.microsoft.com/en-us/entra/id-protection/overview-identity-protection",
+        "reference_label": "Identity Protection の概要"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q30",
+      "question": "Microsoft Defender for Endpoint と Defender for Cloud を統合する目的として最も適切なのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "クラウド リソースに対してエンドポイント検知と応答 (EDR) のシグナルを活用する",
+          "explanation": {
+            "text": "統合により VM などクラウドリソースが Defender for Endpoint にオンボードされ、EDR 機能を利用できる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/integration-defender-for-endpoint",
+            "reference_label": "Defender for Endpoint 統合"
+          }
+        },
+        {
+          "key": "B",
+          "text": "VPN の代替としてリモート接続を提供する",
+          "explanation": {
+            "text": "VPN 機能は提供されない。Defender 統合は EDR と脅威検出が目的。",
+            "reference": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/integration-defender-for-endpoint",
+            "reference_label": "Defender for Endpoint 統合"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Policy を自動作成する",
+          "explanation": {
+            "text": "Policy 連携は別機能。EDR 統合とは関係ない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/governance/policy/overview",
+            "reference_label": "Azure Policy 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Key Vault のシークレット ローテーションを行う",
+          "explanation": {
+            "text": "シークレット管理は Key Vault の機能であり Defender 統合の範囲外。",
+            "reference": "https://learn.microsoft.com/en-us/azure/key-vault/secrets/overview",
+            "reference_label": "Key Vault Secrets"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Defender for Endpoint と統合することで、クラウドリソースに EDR 機能を付与し、攻撃検知と対応力を強化できる。",
+        "reference": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/integration-defender-for-endpoint",
+        "reference_label": "Defender for Endpoint 統合"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q31",
+      "question": "Azure Monitor でサブスクリプション全体のセキュリティログを集中収集し、長期保持と KQL 分析を可能にする標準的な方法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Log Analytics ワークスペースを作成し、診断設定でリソースログを送信する",
+          "explanation": {
+            "text": "推奨アプローチは Log Analytics に集約すること。診断設定でリソースごとにログを送信できる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/diagnostic-settings",
+            "reference_label": "診断設定"
+          }
+        },
+        {
+          "key": "B",
+          "text": "VM のみでイベントログを収集する",
+          "explanation": {
+            "text": "VM 以外の PaaS リソースも監視対象となるため不十分。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/diagnostic-settings",
+            "reference_label": "診断設定"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ストレージ アカウントにエクスポートし手動で分析する",
+          "explanation": {
+            "text": "ストレージに保存は可能だが、KQL 分析やアラートには向かない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/log-analytics-overview",
+            "reference_label": "Log Analytics 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Activity Log のみを利用する",
+          "explanation": {
+            "text": "Activity Log では一部の操作しか取得できず、すべてのリソースログ収集には足りない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/activity-log",
+            "reference_label": "Activity Log 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure Monitor の標準的なログ集中管理は Log Analytics ワークスペースに収集し、KQL で分析する方法である。",
+        "reference": "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/log-analytics-overview",
+        "reference_label": "Log Analytics 概要"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q32",
+      "question": "Azure Sentinel (Microsoft Sentinel) における“アナリティック ルール”の主な役割はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ログを視覚化するダッシュボードを作る",
+          "explanation": {
+            "text": "ダッシュボードはワークブックの役割であり、アナリティック ルールは異なる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sentinel/workbooks",
+            "reference_label": "ワークブック"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ログを保存するストレージを指定する",
+          "explanation": {
+            "text": "保存先は Log Analytics ワークスペースであり、ルールの機能ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/log-analytics-overview",
+            "reference_label": "Log Analytics 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "疑わしいアクティビティを検出しアラートを生成する",
+          "explanation": {
+            "text": "アナリティック ルールは KQL クエリを用いてパターンを検出し、インシデントを生成する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sentinel/detect-threats-built-in",
+            "reference_label": "アナリティック ルール"
+          }
+        },
+        {
+          "key": "D",
+          "text": "MFA を強制する",
+          "explanation": {
+            "text": "MFA は条件付きアクセスの機能であり Sentinel ルールではない。",
+            "reference": "https://learn.microsoft.com/en-us/entra/identity/conditional-access/overview",
+            "reference_label": "条件付きアクセス"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "Sentinel のアナリティック ルールは異常や脅威を検出し、自動でアラートやインシデントを作成する。",
+        "reference": "https://learn.microsoft.com/en-us/azure/sentinel/detect-threats-built-in",
+        "reference_label": "アナリティック ルール"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q33",
+      "question": "Azure Disk Encryption (ADE) で Linux VM を暗号化する際に利用される基盤技術はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "BitLocker",
+          "explanation": {
+            "text": "BitLocker は Windows VM 向け。Linux では利用されない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption-overview",
+            "reference_label": "Disk Encryption の概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "dm-crypt",
+          "explanation": {
+            "text": "Linux VM の ADE では dm-crypt が利用される。",
+            "reference": "https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption-overview",
+            "reference_label": "Disk Encryption の概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "EFS (Encrypting File System)",
+          "explanation": {
+            "text": "EFS は Windows のファイル暗号化機能であり、Linux ADE では使われない。",
+            "reference": "https://learn.microsoft.com/en-us/windows/security/threat-protection/efs/introduction-to-efs",
+            "reference_label": "EFS の概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Always Encrypted",
+          "explanation": {
+            "text": "Always Encrypted は SQL Database の列暗号化機能であり、VM ディスク暗号化とは異なる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-sql/database/always-encrypted-azure-sql",
+            "reference_label": "Always Encrypted"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Linux VM の Azure Disk Encryption では dm-crypt が利用される。Windows は BitLocker。",
+        "reference": "https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption-overview",
+        "reference_label": "Disk Encryption の概要"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q34",
+      "question": "Azure Bastion の“スケーリング (スケーリング インスタンス数)”を調整する理由として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "セッション同時接続数を増加させるため",
+          "explanation": {
+            "text": "Bastion のスケーリングは同時セッション数を処理するために利用される。",
+            "reference": "https://learn.microsoft.com/en-us/azure/bastion/bastion-overview",
+            "reference_label": "Bastion の概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "VM ディスクの暗号化を強化するため",
+          "explanation": {
+            "text": "ディスク暗号化は Bastion と無関係で ADE の機能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption-overview",
+            "reference_label": "Disk Encryption"
+          }
+        },
+        {
+          "key": "C",
+          "text": "SQL Database のフェールオーバーを改善するため",
+          "explanation": {
+            "text": "SQL の冗長化は Bastion ではなく、RDS 機能や Geo-Replication による。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-sql/database/active-geo-replication-overview",
+            "reference_label": "SQL Geo-Replication"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ログ分析クエリを高速化するため",
+          "explanation": {
+            "text": "ログ分析の性能は Bastion とは無関係。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/log-analytics-overview",
+            "reference_label": "Log Analytics"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure Bastion のスケーリングは同時セッション数処理を目的とする。暗号化や SQL 冗長化とは無関係。",
+        "reference": "https://learn.microsoft.com/en-us/azure/bastion/bastion-overview",
+        "reference_label": "Bastion の概要"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q35",
+      "question": "Azure Key Vault のアクセス制御モデルとして新しく推奨される方式はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Key Vault アクセスポリシー モデル",
+          "explanation": {
+            "text": "従来モデルであり、柔軟性に欠けるため現在は推奨されない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide",
+            "reference_label": "Key Vault アクセス制御"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure RBAC モデル",
+          "explanation": {
+            "text": "Key Vault のアクセスは Azure RBAC に統一するのが推奨される。よりきめ細かな権限管理が可能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide",
+            "reference_label": "Key Vault アクセス制御"
+          }
+        },
+        {
+          "key": "C",
+          "text": "匿名アクセス",
+          "explanation": {
+            "text": "シークレットやキーへの匿名アクセスはセキュリティリスクであり禁止される。",
+            "reference": "https://learn.microsoft.com/en-us/azure/key-vault/general/basic-concepts",
+            "reference_label": "Key Vault 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Firewall のみで制御",
+          "explanation": {
+            "text": "Firewall はネットワーク制御であり、ID ベースの権限管理は行えない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide",
+            "reference_label": "Key Vault アクセス制御"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Key Vault のアクセス制御は Azure RBAC モデルへの移行が推奨され、柔軟な権限管理が可能。",
+        "reference": "https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide",
+        "reference_label": "Key Vault アクセス制御"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q36",
+      "question": "Microsoft Defender for SQL を有効化すると利用できるセキュリティ機能はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "脆弱性評価と高度な脅威検出",
+          "explanation": {
+            "text": "Defender for SQL は DB の脆弱性スキャンと高度な脅威検出を提供する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/defender-for-sql/azure-defender-for-sql-introduction",
+            "reference_label": "Defender for SQL の概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ストレージ アカウントの暗号化",
+          "explanation": {
+            "text": "暗号化は Storage SSE/CMK 機能で、Defender for SQL ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/storage/common/storage-service-encryption-overview",
+            "reference_label": "Storage 暗号化"
+          }
+        },
+        {
+          "key": "C",
+          "text": "VM のパッチ適用自動化",
+          "explanation": {
+            "text": "パッチ管理は Update Management の機能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/automation/update-management/overview",
+            "reference_label": "Update Management"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Key Vault シークレット ローテーション",
+          "explanation": {
+            "text": "シークレット管理は Key Vault の役割。",
+            "reference": "https://learn.microsoft.com/en-us/azure/key-vault/secrets/overview",
+            "reference_label": "Key Vault Secrets"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Defender for SQL を有効にすると、SQL データベースの脆弱性評価と高度な脅威検出を利用できる。",
+        "reference": "https://learn.microsoft.com/en-us/azure/defender-for-sql/azure-defender-for-sql-introduction",
+        "reference_label": "Defender for SQL の概要"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q37",
+      "question": "App Service のセキュリティを強化し、アプリへの認証を Microsoft Entra ID と統合するにはどの機能を利用するか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Easy Auth (App Service 認証/承認)",
+          "explanation": {
+            "text": "Easy Auth を有効化すると、Entra ID などの外部 IdP と統合し、アプリへの認証を強制できる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/app-service/overview-authentication-authorization",
+            "reference_label": "App Service 認証"
+          }
+        },
+        {
+          "key": "B",
+          "text": "NSG",
+          "explanation": {
+            "text": "NSG はネットワーク制御であり、アプリの認証統合はできない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview",
+            "reference_label": "NSG の概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Firewall",
+          "explanation": {
+            "text": "Firewall はネットワーク制御であり、認証統合機能は持たない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/firewall/overview",
+            "reference_label": "Azure Firewall"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Monitor",
+          "explanation": {
+            "text": "Monitor は監視と分析機能であり、認証統合は行えない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-monitor/overview",
+            "reference_label": "Azure Monitor"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "App Service の認証/承認 (Easy Auth) を使えば、Entra ID や他 IdP と統合し、認証強化が可能。",
+        "reference": "https://learn.microsoft.com/en-us/azure/app-service/overview-authentication-authorization",
+        "reference_label": "App Service 認証"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q38",
+      "question": "Azure VPN Gateway と ExpressRoute のセキュリティに関する説明として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "VPN Gateway は IPsec/IKE 暗号化トンネルを利用する",
+          "explanation": {
+            "text": "VPN Gateway は暗号化トンネル (IPsec/IKE) を提供する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways",
+            "reference_label": "VPN Gateway 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ExpressRoute は常に暗号化されている",
+          "explanation": {
+            "text": "ExpressRoute はプライベート回線だが暗号化は必須ではない。追加で IPsec 等を構成できる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/expressroute/expressroute-about-encryption",
+            "reference_label": "ExpressRoute 暗号化"
+          }
+        },
+        {
+          "key": "C",
+          "text": "VPN Gateway は暗号化を提供しない",
+          "explanation": {
+            "text": "VPN Gateway は暗号化を前提とするため誤り。",
+            "reference": "https://learn.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways",
+            "reference_label": "VPN Gateway 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ExpressRoute はインターネット VPN と同じ暗号化方式を常に利用する",
+          "explanation": {
+            "text": "暗号化はデフォルトで無効。VPN と同じ方式を必ず使うわけではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/expressroute/expressroute-about-encryption",
+            "reference_label": "ExpressRoute 暗号化"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "VPN Gateway は IPsec/IKE に基づく暗号化トンネルを提供する。ExpressRoute は暗号化必須ではなく、追加で構成が必要。",
+        "reference": "https://learn.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways",
+        "reference_label": "VPN Gateway 概要"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q39",
+      "question": "オンプレミス Active Directory と Microsoft Entra ID を同期し、ハイブリッド ID を実現するために利用するサービスはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Azure AD Connect (Microsoft Entra Connect)",
+          "explanation": {
+            "text": "オンプレミス AD と Entra ID を同期する標準サービスは Entra Connect。",
+            "reference": "https://learn.microsoft.com/en-us/entra/identity/hybrid/connect/whatis-azure-ad-connect",
+            "reference_label": "Azure AD Connect"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure Key Vault",
+          "explanation": {
+            "text": "Key Vault は秘密情報管理であり、ID 同期は行わない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/key-vault/general/overview",
+            "reference_label": "Key Vault 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Bastion",
+          "explanation": {
+            "text": "Bastion は安全な RDP/SSH 接続を提供するが、ID 同期とは無関係。",
+            "reference": "https://learn.microsoft.com/en-us/azure/bastion/bastion-overview",
+            "reference_label": "Bastion 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Defender for Identity",
+          "explanation": {
+            "text": "Defender for Identity はオンプレ AD の脅威検出を行うが、同期は担当しない。",
+            "reference": "https://learn.microsoft.com/en-us/defender-for-identity/what-is",
+            "reference_label": "Defender for Identity 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "オンプレ AD と Entra ID の同期には Azure AD Connect (現 Entra Connect) を使用する。",
+        "reference": "https://learn.microsoft.com/en-us/entra/identity/hybrid/connect/whatis-azure-ad-connect",
+        "reference_label": "Azure AD Connect"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q40",
+      "question": "Azure Activity Log の役割はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ユーザーのサインイン試行を記録する",
+          "explanation": {
+            "text": "サインイン ログは Entra ID の機能であり Activity Log ではない。",
+            "reference": "https://learn.microsoft.com/en-us/entra/reporting-monitoring/concept-sign-ins",
+            "reference_label": "サインイン ログ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "リソースの作成・削除・更新操作を記録する",
+          "explanation": {
+            "text": "Activity Log は管理操作やサービスヘルス関連の記録を保持する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/activity-log",
+            "reference_label": "Activity Log 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "仮想マシンの CPU 使用率を記録する",
+          "explanation": {
+            "text": "これはメトリック収集の範囲であり Activity Log ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/data-platform-metrics",
+            "reference_label": "メトリック"
+          }
+        },
+        {
+          "key": "D",
+          "text": "脅威検出ルールを実行する",
+          "explanation": {
+            "text": "脅威検出は Defender for Cloud や Sentinel の領域。",
+            "reference": "https://learn.microsoft.com/en-us/azure/sentinel/overview",
+            "reference_label": "Sentinel 概要"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Activity Log は Azure リソースの管理操作を追跡するためのログである。",
+        "reference": "https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/activity-log",
+        "reference_label": "Activity Log 概要"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q41",
+      "question": "Azure Policy と Microsoft Defender for Cloud の推奨事項を組み合わせて運用する利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Defender の推奨事項を強制力のあるコンプライアンス ポリシーに変換できる",
+          "explanation": {
+            "text": "Defender の推奨を Azure Policy にマッピングし、違反検出と修復を強制できる。",
+            "reference": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/azure-policy-integration",
+            "reference_label": "Defender と Azure Policy 統合"
+          }
+        },
+        {
+          "key": "B",
+          "text": "サブスクリプションの課金レートを最適化する",
+          "explanation": {
+            "text": "ポリシー統合はセキュリティ強化が目的で、コスト最適化は別機能。",
+            "reference": "https://learn.microsoft.com/en-us/azure/cost-management-billing/cost-management-billing-overview",
+            "reference_label": "Cost Management"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アプリケーションログを収集する",
+          "explanation": {
+            "text": "ログ収集は Azure Monitor の役割。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-monitor/overview",
+            "reference_label": "Azure Monitor"
+          }
+        },
+        {
+          "key": "D",
+          "text": "TLS 証明書を自動更新する",
+          "explanation": {
+            "text": "証明書管理は Key Vault/ App Service の領域であり、Policy 統合ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/key-vault/certificates/about-certificates",
+            "reference_label": "Key Vault 証明書"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Defender の推奨事項を Azure Policy と統合することで、セキュリティ強制力を高め、準拠性を自動的に確保できる。",
+        "reference": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/azure-policy-integration",
+        "reference_label": "Defender と Azure Policy 統合"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q42",
+      "question": "Microsoft Entra External Identities を利用する主な目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "外部ユーザー (パートナー/顧客) に安全にリソースアクセスを提供する",
+          "explanation": {
+            "text": "External Identities により B2B/B2C ユースケースで外部ユーザーを Entra に統合できる。",
+            "reference": "https://learn.microsoft.com/en-us/entra/external-id/what-is-b2b",
+            "reference_label": "External Identities"
+          }
+        },
+        {
+          "key": "B",
+          "text": "オンプレミス Active Directory のドメイン コントローラーを管理する",
+          "explanation": {
+            "text": "オンプレ AD 管理は External Identities の目的ではない。",
+            "reference": "https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview",
+            "reference_label": "Active Directory"
+          }
+        },
+        {
+          "key": "C",
+          "text": "VM の SSH 認証を提供する",
+          "explanation": {
+            "text": "SSH 認証は Azure AD/Entra ID for Linux で対応可能だが External Identities の機能ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/active-directory/devices/howto-vm-sign-in-azure-ad-linux",
+            "reference_label": "Entra ID for Linux VM"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ストレージ アカウントの匿名アクセスを管理する",
+          "explanation": {
+            "text": "ストレージ制御は Storage アカウントの設定であり External Identities とは関係しない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/storage/blobs/anonymous-read-access-prevent",
+            "reference_label": "匿名アクセス制御"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "External Identities を利用することで、パートナーや顧客など外部ユーザーを安全に Entra ID に取り込み、リソースアクセスを提供できる。",
+        "reference": "https://learn.microsoft.com/en-us/entra/external-id/what-is-b2b",
+        "reference_label": "External Identities"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q43",
+      "question": "Azure Key Vault Managed HSM を利用する利点として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "FIPS 140-2 レベル 3 準拠のハードウェア セキュリティ モジュールでキーを管理できる",
+          "explanation": {
+            "text": "Managed HSM は HSM ベースでキーを保護し、FIPS 140-2 Level 3 準拠を提供する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/key-vault/managed-hsm/overview",
+            "reference_label": "Managed HSM 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "アプリ シークレットのバージョン管理のみ行える",
+          "explanation": {
+            "text": "シークレット管理は Key Vault Secrets の機能。Managed HSM はキー管理に特化している。",
+            "reference": "https://learn.microsoft.com/en-us/azure/key-vault/secrets/overview",
+            "reference_label": "Key Vault Secrets"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ストレージ アカウントの暗号化を自動で無効化する",
+          "explanation": {
+            "text": "暗号化を無効化する機能は存在しない。むしろ暗号化強化に利用する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/storage/common/storage-service-encryption-overview",
+            "reference_label": "Storage 暗号化"
+          }
+        },
+        {
+          "key": "D",
+          "text": "VM のネットワーク分離を実現する",
+          "explanation": {
+            "text": "ネットワーク分離は NSG や Firewall の役割であり、HSM の目的ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview",
+            "reference_label": "NSG の概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Managed HSM は FIPS 140-2 Level 3 準拠の HSM によるキー管理を提供し、セキュリティとコンプライアンスを強化できる。",
+        "reference": "https://learn.microsoft.com/en-us/azure/key-vault/managed-hsm/overview",
+        "reference_label": "Managed HSM 概要"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q44",
+      "question": "Defender for Cloud の“Just-in-Time VM アクセス”を利用する主な目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "VM への管理ポート (RDP/SSH) を常時開放して利便性を向上する",
+          "explanation": {
+            "text": "常時開放はセキュリティリスクであり、JIT の目的と逆である。",
+            "reference": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/just-in-time-access-overview",
+            "reference_label": "JIT VM アクセス"
+          }
+        },
+        {
+          "key": "B",
+          "text": "必要時にのみ一時的にアクセス許可を付与し攻撃面を最小化する",
+          "explanation": {
+            "text": "JIT は一時的に RDP/SSH を有効化し、不要時は閉じることで攻撃対象を減らす。",
+            "reference": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/just-in-time-access-overview",
+            "reference_label": "JIT VM アクセス"
+          }
+        },
+        {
+          "key": "C",
+          "text": "VM のディスク暗号化を自動化する",
+          "explanation": {
+            "text": "ディスク暗号化は ADE の機能であり、JIT ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption-overview",
+            "reference_label": "Disk Encryption"
+          }
+        },
+        {
+          "key": "D",
+          "text": "外部ユーザーのアクセスを統合認証する",
+          "explanation": {
+            "text": "外部ユーザー管理は Entra External Identities の範囲。",
+            "reference": "https://learn.microsoft.com/en-us/entra/external-id/what-is-b2b",
+            "reference_label": "External Identities"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "JIT アクセスにより管理ポートを必要時のみ一時的に開放し、攻撃面を大幅に減らすことができる。",
+        "reference": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/just-in-time-access-overview",
+        "reference_label": "JIT VM アクセス"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q45",
+      "question": "Azure DDoS Protection Standard が提供する主な機能はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "レイヤー 3〜7 の分散型サービス拒否攻撃 (DDoS) の検出と自動緩和",
+          "explanation": {
+            "text": "DDoS Protection Standard は L3/L4 に加え一部アプリ層攻撃も緩和する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/ddos-protection/ddos-protection-overview",
+            "reference_label": "DDoS Protection 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Key Vault のシークレット自動ローテーション",
+          "explanation": {
+            "text": "シークレット管理は DDoS Protection の役割ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/key-vault/secrets/overview",
+            "reference_label": "Key Vault Secrets"
+          }
+        },
+        {
+          "key": "C",
+          "text": "暗号化キーの生成と保護",
+          "explanation": {
+            "text": "キー管理は Managed HSM や Key Vault の機能であり、DDoS Protection とは関係ない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/key-vault/managed-hsm/overview",
+            "reference_label": "Managed HSM 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Policy の違反検出と修復",
+          "explanation": {
+            "text": "これは Azure Policy/Defender for Cloud の領域であり、DDoS Protection の機能ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/governance/policy/overview",
+            "reference_label": "Azure Policy"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure DDoS Protection Standard は大規模攻撃を自動検出・緩和し、ネットワーク/アプリ層防御を強化する。",
+        "reference": "https://learn.microsoft.com/en-us/azure/ddos-protection/ddos-protection-overview",
+        "reference_label": "DDoS Protection 概要"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q46",
+      "question": "Microsoft Purview と Azure セキュリティの連携により可能となることはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データ分類と情報保護ラベルを用いた機密データの発見・管理",
+          "explanation": {
+            "text": "Purview はデータ分類と統合ラベルを通じて機密データを検出・管理できる。",
+            "reference": "https://learn.microsoft.com/en-us/purview/purview",
+            "reference_label": "Microsoft Purview 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "仮想マシンの JIT アクセス制御",
+          "explanation": {
+            "text": "JIT は Defender for Cloud の機能であり Purview の役割ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/just-in-time-access-overview",
+            "reference_label": "JIT VM アクセス"
+          }
+        },
+        {
+          "key": "C",
+          "text": "外部ユーザー認証の管理",
+          "explanation": {
+            "text": "外部ユーザーは Entra External Identities で管理する。",
+            "reference": "https://learn.microsoft.com/en-us/entra/external-id/what-is-b2b",
+            "reference_label": "External Identities"
+          }
+        },
+        {
+          "key": "D",
+          "text": "SQL Database の脅威検出",
+          "explanation": {
+            "text": "これは Defender for SQL の機能であり Purview とは別。",
+            "reference": "https://learn.microsoft.com/en-us/azure/defender-for-sql/azure-defender-for-sql-introduction",
+            "reference_label": "Defender for SQL"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Microsoft Purview によって Azure のデータを分類し、機密性に応じてラベル付与・保護を適用できる。",
+        "reference": "https://learn.microsoft.com/en-us/purview/purview",
+        "reference_label": "Microsoft Purview 概要"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q47",
+      "question": "Microsoft Defender for Cloud の“セキュリティ ポリシー”の役割はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "セキュリティ コントロールを定義し、リソースの準拠状況を監視する",
+          "explanation": {
+            "text": "セキュリティ ポリシーはベースラインを定義し、準拠状況を評価する。",
+            "reference": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/security-policy-concept",
+            "reference_label": "セキュリティ ポリシー"
+          }
+        },
+        {
+          "key": "B",
+          "text": "リソースのコスト最適化を行う",
+          "explanation": {
+            "text": "コスト管理は Defender のセキュリティ ポリシーの役割ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/cost-management-billing/cost-management-billing-overview",
+            "reference_label": "Cost Management"
+          }
+        },
+        {
+          "key": "C",
+          "text": "VM の自動スケーリングを行う",
+          "explanation": {
+            "text": "スケーリングは VM/VMSS の機能であり、セキュリティ ポリシーとは無関係。",
+            "reference": "https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/overview",
+            "reference_label": "VMSS 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザー認証を実行する",
+          "explanation": {
+            "text": "認証は Entra ID の領域であり、セキュリティ ポリシーの役割ではない。",
+            "reference": "https://learn.microsoft.com/en-us/entra/identity/conditional-access/overview",
+            "reference_label": "条件付きアクセス概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "セキュリティ ポリシーは基準を定義し、Azure リソースの準拠性を Defender for Cloud で継続監視する。",
+        "reference": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/security-policy-concept",
+        "reference_label": "セキュリティ ポリシー"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q48",
+      "question": "Microsoft Entra ID の“条件付きアクセス”における“セッション制御”の活用例として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "SharePoint Online からのダウンロードを制限する",
+          "explanation": {
+            "text": "セッション制御でクラウドアプリ利用時の動作を制御でき、MIP/MCAS 連携でダウンロード制御が可能。",
+            "reference": "https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-conditional-access-session",
+            "reference_label": "条件付きアクセス セッション制御"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure Firewall のルールセットを更新する",
+          "explanation": {
+            "text": "Firewall 設定はセッション制御の対象外。",
+            "reference": "https://learn.microsoft.com/en-us/azure/firewall/overview",
+            "reference_label": "Azure Firewall"
+          }
+        },
+        {
+          "key": "C",
+          "text": "VM のディスク暗号化を有効化する",
+          "explanation": {
+            "text": "ディスク暗号化は別機能でありセッション制御ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption-overview",
+            "reference_label": "Disk Encryption"
+          }
+        },
+        {
+          "key": "D",
+          "text": "SQL Database の TLS バージョンを強制する",
+          "explanation": {
+            "text": "SQL の TLS 設定はサーバーレベルの構成でありセッション制御の対象ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-sql/database/connectivity-architecture",
+            "reference_label": "SQL 接続の概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "条件付きアクセスのセッション制御を用いると、SharePoint などクラウドアプリの操作制御 (ダウンロード制限等) が可能になる。",
+        "reference": "https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-conditional-access-session",
+        "reference_label": "条件付きアクセス セッション制御"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q49",
+      "question": "Azure Security Center（現 Microsoft Defender for Cloud）の“アダプティブ アプリケーション制御”の目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "VM 上で実行できるアプリケーションをホワイトリストで制御する",
+          "explanation": {
+            "text": "適応型アプリケーション制御は、学習に基づくホワイトリストで許可された実行ファイルのみを許可し、未知の実行を防ぐ。",
+            "reference": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/adaptive-application-controls",
+            "reference_label": "アダプティブ アプリケーション制御"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ストレージの暗号化方式を変更する",
+          "explanation": {
+            "text": "ストレージ暗号化は Storage Service Encryption (SSE) / CMK の機能で、アプリ制御の範囲ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/storage/common/storage-service-encryption-overview",
+            "reference_label": "Storage Service Encryption の概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザーの MFA 要求を設定する",
+          "explanation": {
+            "text": "MFA は Microsoft Entra 条件付きアクセスの領域であり、アプリ制御とは無関係。",
+            "reference": "https://learn.microsoft.com/en-us/entra/identity/conditional-access/overview",
+            "reference_label": "条件付きアクセスの概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "SQL Database の監査ログを有効化する",
+          "explanation": {
+            "text": "SQL 監査は Azure SQL の Auditing 機能で構成する。アプリ制御の目的ではない。",
+            "reference": "https://learn.microsoft.com/en-us/azure/azure-sql/database/auditing-overview",
+            "reference_label": "Azure SQL Auditing の概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "アダプティブ アプリケーション制御は、許可リストに基づき VM 上の実行可能ファイルを制御し、攻撃面（不正実行）を低減するための機能である。",
+        "reference": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/adaptive-application-controls",
+        "reference_label": "アダプティブ アプリケーション制御"
+      }
+    },
+    {
+      "id": "azure-AZ-500-q50",
+      "question": "Microsoft Entra ID で管理者アカウントに対して“フィッシング耐性のある MFA”を必須化したい。条件付きアクセスで最も適切な構成はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "割り当て対象を管理者ロールに絞り、アクセス制御の“認証強度 (Authentication strength)”で“Phishing-resistant MFA”を要求する",
+          "explanation": {
+            "text": "条件付きアクセスでは“認証強度”を用いて FIDO2 パスキーや Authenticator のパスキー等のフィッシング耐性のある要素を強制できる。管理者ロール対象に適用するのがベストプラクティス。",
+            "reference": "https://learn.microsoft.com/en-us/entra/identity/conditional-access/policy-admin-phish-resistant-mfa",
+            "reference_label": "管理者にフィッシング耐性のある MFA を要求する"
+          }
+        },
+        {
+          "key": "B",
+          "text": "“アクセス許可を付与する”で MFA を要求する (古い制御) のみを設定する",
+          "explanation": {
+            "text": "従来の“多要素認証を要求する”だけでは、フィッシング耐性のない方法（SMS など）も満たしてしまう可能性がある。認証強度で“Phishing-resistant”を指定すべき。",
+            "reference": "https://learn.microsoft.com/en-us/entra/identity/authentication/concept-authentication-strengths",
+            "reference_label": "認証強度の概念"
+          }
+        },
+        {
+          "key": "C",
+          "text": "パスワードレスを無効化し、Authenticator のプッシュ通知だけを許可する",
+          "explanation": {
+            "text": "Authenticator プッシュのみでは条件次第でフィッシング耐性が不十分となり得る。パスキー (FIDO2) 等のフィッシング耐性のある要素を必須にすべき。",
+            "reference": "https://learn.microsoft.com/en-us/entra/identity/authentication/concept-authentication-methods",
+            "reference_label": "推奨される認証方法"
+          }
+        },
+        {
+          "key": "D",
+          "text": "“すべてのクラウド アプリ”を対象にせず、SharePoint Online のみに限定して認証強度を適用する",
+          "explanation": {
+            "text": "管理者アカウント保護では広範な適用が推奨。特定アプリ限定ではギャップが残る。Microsoft の推奨では管理者に対して認証強度“Phishing-resistant MFA”を包括的に要求する。",
+            "reference": "https://learn.microsoft.com/en-us/entra/identity/conditional-access/policy-admin-phish-resistant-mfa",
+            "reference_label": "管理者にフィッシング耐性のある MFA を要求する"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "管理者の強固な保護には、条件付きアクセスの“認証強度”で“Phishing-resistant MFA”を要求し、FIDO2 パスキー（Passkeys）や Authenticator のパスキーなどのフィッシング耐性のある要素を必須化するのが最適。対象は管理者ロールに限定し、ゼロトラストの原則に沿って強制する。",
+        "reference": "https://learn.microsoft.com/en-us/entra/identity/conditional-access/policy-admin-phish-resistant-mfa",
+        "reference_label": "管理者にフィッシング耐性のある MFA を要求する"
+      }
+    }
+  ]
+}

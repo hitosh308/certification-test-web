@@ -1,0 +1,2467 @@
+{
+    "exam": {
+        "id": "azure_az104",
+        "title": "Azure Administrator Associate",
+        "description": "この認定は、Microsoft Azure 環境において、仮想ネットワーク、ストレージ、コンピュート、アイデンティティ、セキュリティ、ガバナンスなど主要な機能を構成・管理・監視するスキルを証明します。候補者は Azure ポータル、Azure CLI、PowerShell、リソース マネージャー テンプレートなどを用いてクラウド環境の運用を担います。中級レベルの「管理者（Administrator）」ロール向けとなっており、組織のクラウドインフラを実装・運用するチームの一員として機能する能力を問います。",
+        "version": "2025年4月",
+        "price": "165 USD",
+        "difficulty": "普通",
+        "official-site": "https://learn.microsoft.com/credentials/certifications/azure-administrator/",
+        "category": {
+            "id": "azure",
+            "name": "Azure"
+        }
+    },
+    "questions": [
+        {
+            "id": "azure-AZ-104-q1",
+            "question": "Azure VMの可用性を向上させるために、複数のVMを同一リージョン内で異なる物理ラックに配置する方法はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "可用性ゾーン",
+                    "explanation": {
+                        "text": "可用性ゾーンは異なるデータセンター間でVMを冗長化する仕組みであり、ラックレベルの冗長性ではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machines/availability",
+                        "reference_label": "Microsoft Docs - Azure VM 可用性"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "可用性セット",
+                    "explanation": {
+                        "text": "可用性セットは異なるフォールトドメイン（物理ラック）と更新ドメインにVMを分散させることで、ラックレベルの冗長性を確保する。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machines/availability-set-overview",
+                        "reference_label": "Microsoft Docs - 可用性セット概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "スケールセット",
+                    "explanation": {
+                        "text": "仮想マシンスケールセットは負荷分散と自動スケーリングを提供するが、ラック配置の制御は可用性セットに依存する。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machine-scale-sets/overview",
+                        "reference_label": "Microsoft Docs - VMSS 概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "リージョンペア",
+                    "explanation": {
+                        "text": "リージョンペアは地理的に離れた2つのリージョン間での冗長性を提供するもので、ラックレベルの冗長性には関係しない。",
+                        "reference": "https://learn.microsoft.com/azure/reliability/cross-region-replication",
+                        "reference_label": "Microsoft Docs - リージョンペア"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "可用性セットを利用すると、VMは異なるフォールトドメインに分散され、物理ラック障害からの耐性を確保できる。",
+                "reference": "https://learn.microsoft.com/azure/virtual-machines/availability-set-overview",
+                "reference_label": "Microsoft Docs - 可用性セット概要"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q2",
+            "question": "Azureストレージアカウントで、低頻度アクセス用のコスト最適化に適したアクセス層はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Hot",
+                    "explanation": {
+                        "text": "Hot層は頻繁にアクセスされるデータ向けで、ストレージコストは高いがアクセスコストは低い。",
+                        "reference": "https://learn.microsoft.com/azure/storage/blobs/access-tiers-overview",
+                        "reference_label": "Microsoft Docs - ストレージアクセス層"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Cool",
+                    "explanation": {
+                        "text": "Cool層はアクセス頻度が低いデータ向けで、Hotよりもストレージコストが低く、長期間保持する場合に最適。",
+                        "reference": "https://learn.microsoft.com/azure/storage/blobs/access-tiers-overview",
+                        "reference_label": "Microsoft Docs - ストレージアクセス層"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Archive",
+                    "explanation": {
+                        "text": "Archive層は長期間アクセスされないデータ向けで、取り出しに時間とコストがかかる。",
+                        "reference": "https://learn.microsoft.com/azure/storage/blobs/access-tiers-overview",
+                        "reference_label": "Microsoft Docs - ストレージアクセス層"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Premium",
+                    "explanation": {
+                        "text": "Premium層は低遅延・高スループットが必要なワークロード向けで、コスト最適化には適さない。",
+                        "reference": "https://learn.microsoft.com/azure/storage/blobs/access-tiers-overview",
+                        "reference_label": "Microsoft Docs - ストレージアクセス層"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "Cool層はアクセス頻度が低いデータ向けで、ストレージコストを最適化できる。",
+                "reference": "https://learn.microsoft.com/azure/storage/blobs/access-tiers-overview",
+                "reference_label": "Microsoft Docs - ストレージアクセス層"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q3",
+            "question": "Azure ADで条件付きアクセスを利用する主な目的はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "仮想マシンのスケーリング制御",
+                    "explanation": {
+                        "text": "条件付きアクセスは認証制御に関する機能であり、VMのスケーリングには関与しない。",
+                        "reference": "https://learn.microsoft.com/azure/active-directory/conditional-access/overview",
+                        "reference_label": "Microsoft Docs - 条件付きアクセス概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "ユーザー認証に基づくアクセス制御",
+                    "explanation": {
+                        "text": "条件付きアクセスはユーザーの条件（場所、デバイス、リスクなど）に応じてアクセスを制御する。",
+                        "reference": "https://learn.microsoft.com/azure/active-directory/conditional-access/overview",
+                        "reference_label": "Microsoft Docs - 条件付きアクセス概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "リソース間のネットワークルーティング制御",
+                    "explanation": {
+                        "text": "ルーティング制御はVNetやNSGで行われ、条件付きアクセスとは無関係。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-networks-overview",
+                        "reference_label": "Microsoft Docs - VNet概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "課金アラートの設定",
+                    "explanation": {
+                        "text": "課金アラートはAzure Cost Managementで行う機能であり、条件付きアクセスではない。",
+                        "reference": "https://learn.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis",
+                        "reference_label": "Microsoft Docs - コスト管理"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "条件付きアクセスは、認証条件に基づいてアクセスを制御し、セキュリティを強化する仕組みである。",
+                "reference": "https://learn.microsoft.com/azure/active-directory/conditional-access/overview",
+                "reference_label": "Microsoft Docs - 条件付きアクセス概要"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q4",
+            "question": "Azure Resource Manager (ARM) テンプレートの主な用途はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "リソースの監視",
+                    "explanation": {
+                        "text": "監視はAzure Monitorの役割であり、ARMテンプレートでは行わない。",
+                        "reference": "https://learn.microsoft.com/azure/azure-monitor/overview",
+                        "reference_label": "Microsoft Docs - Azure Monitor"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "リソースのデプロイと管理の自動化",
+                    "explanation": {
+                        "text": "ARMテンプレートはインフラをコードとして定義し、リソースを自動的にデプロイ・管理できる。",
+                        "reference": "https://learn.microsoft.com/azure/azure-resource-manager/templates/overview",
+                        "reference_label": "Microsoft Docs - ARMテンプレート概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ユーザー認証",
+                    "explanation": {
+                        "text": "認証はAzure ADの役割であり、ARMテンプレートでは行わない。",
+                        "reference": "https://learn.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis",
+                        "reference_label": "Microsoft Docs - Azure AD概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "コスト分析",
+                    "explanation": {
+                        "text": "コスト分析はAzure Cost Managementで行う機能であり、ARMテンプレートの用途ではない。",
+                        "reference": "https://learn.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis",
+                        "reference_label": "Microsoft Docs - コスト管理"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "ARMテンプレートはインフラをコードとして表現し、同じ環境を繰り返しデプロイできる仕組みを提供する。",
+                "reference": "https://learn.microsoft.com/azure/azure-resource-manager/templates/overview",
+                "reference_label": "Microsoft Docs - ARMテンプレート概要"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q5",
+            "question": "Azure Load Balancer の標準SKUを利用する利点はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "グローバル負荷分散が可能",
+                    "explanation": {
+                        "text": "グローバル負荷分散はTraffic ManagerやFront Doorで提供され、Load Balancerの機能ではない。",
+                        "reference": "https://learn.microsoft.com/azure/traffic-manager/traffic-manager-overview",
+                        "reference_label": "Microsoft Docs - Traffic Manager"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "高可用性とゾーン冗長性",
+                    "explanation": {
+                        "text": "標準SKUは可用性ゾーンに対応しており、高可用性とゾーン冗長性を提供する。",
+                        "reference": "https://learn.microsoft.com/azure/load-balancer/load-balancer-standard-overview",
+                        "reference_label": "Microsoft Docs - Load Balancer Standard"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "アプリケーションレベルのルーティング制御",
+                    "explanation": {
+                        "text": "アプリケーションレベルのルーティングはApplication Gatewayの役割であり、Load Balancerでは提供されない。",
+                        "reference": "https://learn.microsoft.com/azure/application-gateway/overview",
+                        "reference_label": "Microsoft Docs - Application Gateway"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "コンテンツキャッシュ機能",
+                    "explanation": {
+                        "text": "キャッシュ機能はAzure CDNやFront Doorの機能であり、Load Balancerには含まれない。",
+                        "reference": "https://learn.microsoft.com/azure/cdn/cdn-overview",
+                        "reference_label": "Microsoft Docs - Azure CDN"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "標準SKUのLoad Balancerは可用性ゾーン対応により高可用性を提供し、ゾーン冗長性を実現できる。",
+                "reference": "https://learn.microsoft.com/azure/load-balancer/load-balancer-standard-overview",
+                "reference_label": "Microsoft Docs - Load Balancer Standard"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q6",
+            "question": "Azure StorageでSAS（Shared Access Signature）を利用する主な目的はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "ストレージアカウントの課金を削減する",
+                    "explanation": {
+                        "text": "課金削減はSASの目的ではない。SASは認証とアクセス制御に関する機能。",
+                        "reference": "https://learn.microsoft.com/azure/storage/common/storage-sas-overview",
+                        "reference_label": "Microsoft Docs - SAS概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "リソースへの一時的なアクセス権を提供する",
+                    "explanation": {
+                        "text": "SASを利用すると、キーを公開せずにBlobやFileなどに一時的なアクセスを付与できる。",
+                        "reference": "https://learn.microsoft.com/azure/storage/common/storage-sas-overview",
+                        "reference_label": "Microsoft Docs - SAS概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ストレージデータを暗号化する",
+                    "explanation": {
+                        "text": "暗号化はAzure Storageの暗号化機能で提供され、SASとは別の機能。",
+                        "reference": "https://learn.microsoft.com/azure/storage/common/storage-service-encryption",
+                        "reference_label": "Microsoft Docs - Storage 暗号化"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "リージョン間でデータを複製する",
+                    "explanation": {
+                        "text": "データ複製はGeo冗長ストレージの機能であり、SASの役割ではない。",
+                        "reference": "https://learn.microsoft.com/azure/storage/common/storage-redundancy",
+                        "reference_label": "Microsoft Docs - ストレージ冗長性"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "SASは一時的かつ限定的なアクセス権を発行するための仕組みで、セキュアなデータ共有に利用される。",
+                "reference": "https://learn.microsoft.com/azure/storage/common/storage-sas-overview",
+                "reference_label": "Microsoft Docs - SAS概要"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q7",
+            "question": "Azure Policyの利用目的として最も適切なのはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "ネットワークトラフィックの監視",
+                    "explanation": {
+                        "text": "ネットワーク監視はNetwork Watcherなどで行い、Azure Policyの用途ではない。",
+                        "reference": "https://learn.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview",
+                        "reference_label": "Microsoft Docs - Network Watcher"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "リソース構成のガバナンスを実施する",
+                    "explanation": {
+                        "text": "Azure Policyは組織のルールに従ってリソース構成を強制し、ガバナンスを実現する。",
+                        "reference": "https://learn.microsoft.com/azure/governance/policy/overview",
+                        "reference_label": "Microsoft Docs - Azure Policy概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "リソースの利用状況を課金レベルで分析する",
+                    "explanation": {
+                        "text": "課金分析はCost Managementの役割であり、Azure Policyの目的ではない。",
+                        "reference": "https://learn.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis",
+                        "reference_label": "Microsoft Docs - コスト管理"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ユーザー認証を制御する",
+                    "explanation": {
+                        "text": "ユーザー認証はAzure ADで行う機能であり、Azure Policyではない。",
+                        "reference": "https://learn.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis",
+                        "reference_label": "Microsoft Docs - Azure AD概要"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "Azure Policyは組織のセキュリティやコンプライアンス要件を満たすためにリソース構成を強制する機能である。",
+                "reference": "https://learn.microsoft.com/azure/governance/policy/overview",
+                "reference_label": "Microsoft Docs - Azure Policy概要"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q8",
+            "question": "Azure MonitorのLog Analyticsワークスペースを利用する主な目的はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "仮想マシンのスケーリングを自動化する",
+                    "explanation": {
+                        "text": "スケーリングの自動化はVMスケールセットやオートスケーリングで行う。Log Analyticsの目的ではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machine-scale-sets/overview",
+                        "reference_label": "Microsoft Docs - VMスケールセット概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "ログデータを収集・分析する",
+                    "explanation": {
+                        "text": "Log AnalyticsはAzureリソースやアプリケーションからのログデータを収集・分析する。",
+                        "reference": "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-overview",
+                        "reference_label": "Microsoft Docs - Log Analytics概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ユーザー認証を制御する",
+                    "explanation": {
+                        "text": "ユーザー認証はAzure ADの機能であり、Log Analyticsの用途ではない。",
+                        "reference": "https://learn.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis",
+                        "reference_label": "Microsoft Docs - Azure AD概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ネットワークトラフィックをルーティングする",
+                    "explanation": {
+                        "text": "ルーティングはVNetやNSGで行い、Log Analyticsは監視・分析に使用される。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-networks-overview",
+                        "reference_label": "Microsoft Docs - VNet概要"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "Log AnalyticsはAzure Monitorの一部であり、リソースのログやメトリクスを収集・分析するために使用される。",
+                "reference": "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-overview",
+                "reference_label": "Microsoft Docs - Log Analytics概要"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q9",
+            "question": "Azure Backupを利用する主な利点はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "アプリケーションの高可用性を提供する",
+                    "explanation": {
+                        "text": "高可用性は可用性セットや可用性ゾーンによって提供される。バックアップの目的ではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machines/availability",
+                        "reference_label": "Microsoft Docs - Azure VM可用性"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "データ損失からの保護",
+                    "explanation": {
+                        "text": "Azure Backupはデータを定期的にバックアップし、損失や障害から保護する。",
+                        "reference": "https://learn.microsoft.com/azure/backup/backup-overview",
+                        "reference_label": "Microsoft Docs - Azure Backup概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ネットワークパフォーマンスを最適化する",
+                    "explanation": {
+                        "text": "ネットワークの最適化はAzure Traffic ManagerやFront Doorが担当する。バックアップの役割ではない。",
+                        "reference": "https://learn.microsoft.com/azure/frontdoor/front-door-overview",
+                        "reference_label": "Microsoft Docs - Azure Front Door"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ストレージコストを削減する",
+                    "explanation": {
+                        "text": "ストレージコスト削減はアクセス層の選択で実現できる。バックアップの直接の目的ではない。",
+                        "reference": "https://learn.microsoft.com/azure/storage/blobs/access-tiers-overview",
+                        "reference_label": "Microsoft Docs - ストレージアクセス層"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "Azure Backupはデータ損失から保護するためのクラウドベースのバックアップサービスである。",
+                "reference": "https://learn.microsoft.com/azure/backup/backup-overview",
+                "reference_label": "Microsoft Docs - Azure Backup概要"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q10",
+            "question": "Azure Virtual Network (VNet) ピアリングの特徴はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "異なるリージョン間では利用できない",
+                    "explanation": {
+                        "text": "VNetピアリングは同一リージョンだけでなく、異なるリージョン間でもサポートされる。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-network-peering-overview",
+                        "reference_label": "Microsoft Docs - VNetピアリング概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "ピアリングされたVNet間で低遅延・高帯域の通信が可能",
+                    "explanation": {
+                        "text": "VNetピアリングにより、仮想ネットワーク間でほぼ同一ネットワークのように通信できる。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-network-peering-overview",
+                        "reference_label": "Microsoft Docs - VNetピアリング概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ピアリングにはVPNゲートウェイが必須",
+                    "explanation": {
+                        "text": "VNetピアリングではVPNゲートウェイは不要。直接の接続が確立される。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-network-peering-overview",
+                        "reference_label": "Microsoft Docs - VNetピアリング概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "暗号化通信はサポートされない",
+                    "explanation": {
+                        "text": "VNetピアリングでも暗号化はサポートされている。非対応というのは誤り。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-network-peering-overview",
+                        "reference_label": "Microsoft Docs - VNetピアリング概要"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "VNetピアリングを利用すると、異なる仮想ネットワーク間で低遅延かつ高帯域の通信が可能となる。",
+                "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-network-peering-overview",
+                "reference_label": "Microsoft Docs - VNetピアリング概要"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q11",
+            "question": "Azure RBAC (Role-Based Access Control) の役割はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "仮想マシンの可用性を制御する",
+                    "explanation": {
+                        "text": "VMの可用性は可用性セットやゾーンで制御される。RBACの機能ではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machines/availability",
+                        "reference_label": "Microsoft Docs - Azure VM可用性"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "リソースへのアクセス権限を管理する",
+                    "explanation": {
+                        "text": "RBACはユーザーやグループに対してリソースへのアクセス権限を付与する仕組み。",
+                        "reference": "https://learn.microsoft.com/azure/role-based-access-control/overview",
+                        "reference_label": "Microsoft Docs - RBAC概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "データを暗号化する",
+                    "explanation": {
+                        "text": "データ暗号化はストレージやSQL Databaseの暗号化機能で提供される。RBACの役割ではない。",
+                        "reference": "https://learn.microsoft.com/azure/security/fundamentals/encryption-overview",
+                        "reference_label": "Microsoft Docs - 暗号化概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "コストを最適化する",
+                    "explanation": {
+                        "text": "コスト最適化はAzure Advisorなどで実施される。RBACの機能ではない。",
+                        "reference": "https://learn.microsoft.com/azure/advisor/advisor-overview",
+                        "reference_label": "Microsoft Docs - Azure Advisor"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "RBACはロールに基づいてアクセスを管理し、ユーザーに最小限の権限を付与することでセキュリティを強化する。",
+                "reference": "https://learn.microsoft.com/azure/role-based-access-control/overview",
+                "reference_label": "Microsoft Docs - RBAC概要"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q12",
+            "question": "Azure DNSを利用する主な利点はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "オンプレミスサーバーの監視",
+                    "explanation": {
+                        "text": "監視はAzure MonitorやLog Analyticsの役割であり、Azure DNSではない。",
+                        "reference": "https://learn.microsoft.com/azure/azure-monitor/overview",
+                        "reference_label": "Microsoft Docs - Azure Monitor"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "DNSゾーンとレコードの管理",
+                    "explanation": {
+                        "text": "Azure DNSはドメインのネームサーバーとして機能し、ゾーンやレコードをクラウドで管理できる。",
+                        "reference": "https://learn.microsoft.com/azure/dns/dns-overview",
+                        "reference_label": "Microsoft Docs - Azure DNS概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "トラフィックの最適化",
+                    "explanation": {
+                        "text": "トラフィックの最適化はTraffic ManagerやFront Doorで行う。Azure DNSは名前解決の役割。",
+                        "reference": "https://learn.microsoft.com/azure/traffic-manager/traffic-manager-overview",
+                        "reference_label": "Microsoft Docs - Traffic Manager"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "アプリケーションのスケーリング",
+                    "explanation": {
+                        "text": "スケーリングはVMSSやApp Serviceで実現する。Azure DNSの役割ではない。",
+                        "reference": "https://learn.microsoft.com/azure/app-service/manage-scale",
+                        "reference_label": "Microsoft Docs - App Service スケーリング"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "Azure DNSはMicrosoftが提供するDNSサービスで、ゾーンやレコードをクラウドで管理できる。",
+                "reference": "https://learn.microsoft.com/azure/dns/dns-overview",
+                "reference_label": "Microsoft Docs - Azure DNS概要"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q13",
+            "question": "Azure Site Recovery (ASR) の主な目的はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "データ暗号化",
+                    "explanation": {
+                        "text": "暗号化はASRの目的ではなく、別のAzureセキュリティ機能で実現される。",
+                        "reference": "https://learn.microsoft.com/azure/security/fundamentals/encryption-overview",
+                        "reference_label": "Microsoft Docs - 暗号化概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "ディザスタリカバリ",
+                    "explanation": {
+                        "text": "ASRは災害対策のために仮想マシンやアプリケーションを他リージョンにレプリケーションする。",
+                        "reference": "https://learn.microsoft.com/azure/site-recovery/site-recovery-overview",
+                        "reference_label": "Microsoft Docs - Site Recovery概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "コスト管理",
+                    "explanation": {
+                        "text": "コスト管理はAzure Cost Managementが担当する。ASRの目的ではない。",
+                        "reference": "https://learn.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis",
+                        "reference_label": "Microsoft Docs - コスト管理"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "アプリケーションのスケーリング",
+                    "explanation": {
+                        "text": "スケーリングはVMSSやApp Serviceで行う機能であり、ASRとは無関係。",
+                        "reference": "https://learn.microsoft.com/azure/app-service/manage-scale",
+                        "reference_label": "Microsoft Docs - App Service スケーリング"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "Azure Site Recoveryは災害対策（ディザスタリカバリ）のために設計され、サービスを他リージョンへフェールオーバーできる。",
+                "reference": "https://learn.microsoft.com/azure/site-recovery/site-recovery-overview",
+                "reference_label": "Microsoft Docs - Site Recovery概要"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q14",
+            "question": "Azure Key Vaultを利用する主な目的はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "リソースの監視",
+                    "explanation": {
+                        "text": "監視はAzure Monitorが担当する。Key Vaultの役割ではない。",
+                        "reference": "https://learn.microsoft.com/azure/azure-monitor/overview",
+                        "reference_label": "Microsoft Docs - Azure Monitor"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "シークレットや証明書の安全な管理",
+                    "explanation": {
+                        "text": "Key Vaultはシークレット、キー、証明書を安全に保管・管理するために利用される。",
+                        "reference": "https://learn.microsoft.com/azure/key-vault/general/overview",
+                        "reference_label": "Microsoft Docs - Key Vault概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "アプリケーションのスケーリング",
+                    "explanation": {
+                        "text": "スケーリングはVMSSやApp Serviceで行う機能であり、Key Vaultの目的ではない。",
+                        "reference": "https://learn.microsoft.com/azure/app-service/manage-scale",
+                        "reference_label": "Microsoft Docs - App Service スケーリング"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ネットワークルーティングの制御",
+                    "explanation": {
+                        "text": "ネットワークルーティングはVNetやNSGの役割であり、Key Vaultの機能ではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-networks-overview",
+                        "reference_label": "Microsoft Docs - VNet概要"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "Key Vaultはシークレットや証明書の安全な保存・管理を目的として利用される。",
+                "reference": "https://learn.microsoft.com/azure/key-vault/general/overview",
+                "reference_label": "Microsoft Docs - Key Vault概要"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q15",
+            "question": "Azure Advisorの役割として最も適切なのはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "アプリケーションコードのデバッグ",
+                    "explanation": {
+                        "text": "コードのデバッグはAzure DevOpsやApplication Insightsで行う。Advisorの役割ではない。",
+                        "reference": "https://learn.microsoft.com/azure/azure-monitor/app/app-insights-overview",
+                        "reference_label": "Microsoft Docs - Application Insights概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "リソース利用に関する推奨事項の提供",
+                    "explanation": {
+                        "text": "Azure Advisorはコスト、パフォーマンス、セキュリティ、可用性に関する推奨事項を提供する。",
+                        "reference": "https://learn.microsoft.com/azure/advisor/advisor-overview",
+                        "reference_label": "Microsoft Docs - Azure Advisor概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "データ暗号化の実施",
+                    "explanation": {
+                        "text": "暗号化はKey VaultやStorage暗号化の機能で行う。Advisorは推奨事項を提示するサービスである。",
+                        "reference": "https://learn.microsoft.com/azure/security/fundamentals/encryption-overview",
+                        "reference_label": "Microsoft Docs - 暗号化概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ネットワークトラフィックのルーティング",
+                    "explanation": {
+                        "text": "ルーティングはVNetやNSGが担当し、Advisorの役割ではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-networks-overview",
+                        "reference_label": "Microsoft Docs - VNet概要"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "Azure Advisorはクラウド環境のベストプラクティスに基づき、リソース利用の改善点を提案する。",
+                "reference": "https://learn.microsoft.com/azure/advisor/advisor-overview",
+                "reference_label": "Microsoft Docs - Azure Advisor概要"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q16",
+            "question": "Azure Resource Locks の主な利用目的はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "リソース削除や変更を防止する",
+                    "explanation": {
+                        "text": "Resource Locksは誤ってリソースを削除または変更することを防ぐために使用される。",
+                        "reference": "https://learn.microsoft.com/azure/azure-resource-manager/management/lock-resources",
+                        "reference_label": "Microsoft Docs - Resource Locks概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "コストを最適化する",
+                    "explanation": {
+                        "text": "コスト最適化はAzure AdvisorやCost Managementが行う。Resource Locksの役割ではない。",
+                        "reference": "https://learn.microsoft.com/azure/advisor/advisor-overview",
+                        "reference_label": "Microsoft Docs - Azure Advisor概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "データのバックアップを実施する",
+                    "explanation": {
+                        "text": "バックアップはAzure Backupの役割であり、Resource Locksの機能ではない。",
+                        "reference": "https://learn.microsoft.com/azure/backup/backup-overview",
+                        "reference_label": "Microsoft Docs - Azure Backup概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "リソース監視を有効化する",
+                    "explanation": {
+                        "text": "監視はAzure Monitorの役割であり、Resource Locksの機能ではない。",
+                        "reference": "https://learn.microsoft.com/azure/azure-monitor/overview",
+                        "reference_label": "Microsoft Docs - Azure Monitor概要"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Resource Locksはリソースを削除または変更できないように制御し、誤操作から環境を保護する。",
+                "reference": "https://learn.microsoft.com/azure/azure-resource-manager/management/lock-resources",
+                "reference_label": "Microsoft Docs - Resource Locks概要"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q17",
+            "question": "Azure Traffic Manager の利用目的として正しいものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "アプリケーションレベルのファイアウォールを提供する",
+                    "explanation": {
+                        "text": "アプリケーションファイアウォールはAzure Application Gatewayの機能であり、Traffic Managerではない。",
+                        "reference": "https://learn.microsoft.com/azure/application-gateway/overview",
+                        "reference_label": "Microsoft Docs - Application Gateway概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "グローバルDNSベースのトラフィック分散を実現する",
+                    "explanation": {
+                        "text": "Traffic ManagerはDNSベースでユーザーのリクエストを最適なエンドポイントにルーティングする。",
+                        "reference": "https://learn.microsoft.com/azure/traffic-manager/traffic-manager-overview",
+                        "reference_label": "Microsoft Docs - Traffic Manager概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ストレージアカウントのレプリケーションを行う",
+                    "explanation": {
+                        "text": "ストレージのレプリケーションはGeo冗長ストレージが行う。Traffic Managerの役割ではない。",
+                        "reference": "https://learn.microsoft.com/azure/storage/common/storage-redundancy",
+                        "reference_label": "Microsoft Docs - ストレージ冗長性"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "VMのスケーリングを自動化する",
+                    "explanation": {
+                        "text": "スケーリングはVMSSやApp Serviceで行う。Traffic Managerの役割ではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machine-scale-sets/overview",
+                        "reference_label": "Microsoft Docs - VMスケールセット概要"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "Traffic Managerはグローバルに分散したサービスへのユーザーアクセスを最適化するDNSベースの負荷分散サービスである。",
+                "reference": "https://learn.microsoft.com/azure/traffic-manager/traffic-manager-overview",
+                "reference_label": "Microsoft Docs - Traffic Manager概要"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q18",
+            "question": "Azure Storageの冗長性オプションで、同一リージョン内の3つのゾーンにデータを複製する方式はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "LRS (Locally Redundant Storage)",
+                    "explanation": {
+                        "text": "LRSは1つのデータセンター内でデータを3重に保存する方式であり、ゾーン間冗長ではない。",
+                        "reference": "https://learn.microsoft.com/azure/storage/common/storage-redundancy",
+                        "reference_label": "Microsoft Docs - ストレージ冗長性"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "ZRS (Zone-Redundant Storage)",
+                    "explanation": {
+                        "text": "ZRSは同一リージョン内の複数ゾーンにデータを保存するため、ゾーン障害に耐性がある。",
+                        "reference": "https://learn.microsoft.com/azure/storage/common/storage-redundancy",
+                        "reference_label": "Microsoft Docs - ストレージ冗長性"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "GRS (Geo-Redundant Storage)",
+                    "explanation": {
+                        "text": "GRSはリージョン間でデータを複製する方式であり、ゾーン冗長ではない。",
+                        "reference": "https://learn.microsoft.com/azure/storage/common/storage-redundancy",
+                        "reference_label": "Microsoft Docs - ストレージ冗長性"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "RA-GRS (Read-Access Geo-Redundant Storage)",
+                    "explanation": {
+                        "text": "RA-GRSはGRSに読み取りアクセスを追加した方式であり、ゾーン冗長ではない。",
+                        "reference": "https://learn.microsoft.com/azure/storage/common/storage-redundancy",
+                        "reference_label": "Microsoft Docs - ストレージ冗長性"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "ZRSはリージョン内の複数の可用性ゾーンにデータを保存するため、ゾーンレベルの障害から保護される。",
+                "reference": "https://learn.microsoft.com/azure/storage/common/storage-redundancy",
+                "reference_label": "Microsoft Docs - ストレージ冗長性"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q19",
+            "question": "Azure Network Security Group (NSG) の主な機能はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "VMのスケーリングを制御する",
+                    "explanation": {
+                        "text": "スケーリングはVMSSやApp Serviceの役割であり、NSGの機能ではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machine-scale-sets/overview",
+                        "reference_label": "Microsoft Docs - VMスケールセット概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "トラフィックの許可・拒否を制御する",
+                    "explanation": {
+                        "text": "NSGはインバウンドおよびアウトバウンドトラフィックを制御するセキュリティ機能。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/network-security-groups-overview",
+                        "reference_label": "Microsoft Docs - NSG概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "リソースの課金を監視する",
+                    "explanation": {
+                        "text": "課金監視はCost Managementの役割であり、NSGではない。",
+                        "reference": "https://learn.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis",
+                        "reference_label": "Microsoft Docs - コスト管理"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "証明書を管理する",
+                    "explanation": {
+                        "text": "証明書管理はKey Vaultの役割であり、NSGの機能ではない。",
+                        "reference": "https://learn.microsoft.com/azure/key-vault/general/overview",
+                        "reference_label": "Microsoft Docs - Key Vault概要"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "NSGは仮想ネットワーク内のトラフィック制御に利用され、セキュリティ強化を実現する。",
+                "reference": "https://learn.microsoft.com/azure/virtual-network/network-security-groups-overview",
+                "reference_label": "Microsoft Docs - NSG概要"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q20",
+            "question": "Azure Monitorのアラートルールの主な役割はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "リソースのパフォーマンスを強制的に最適化する",
+                    "explanation": {
+                        "text": "アラートは通知を行う機能であり、パフォーマンスを直接最適化するものではない。",
+                        "reference": "https://learn.microsoft.com/azure/azure-monitor/alerts/alerts-overview",
+                        "reference_label": "Microsoft Docs - アラート概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "特定の条件を検出した際に通知やアクションを実行する",
+                    "explanation": {
+                        "text": "Azure Monitorのアラートは条件に基づき通知や自動アクションをトリガーする。",
+                        "reference": "https://learn.microsoft.com/azure/azure-monitor/alerts/alerts-overview",
+                        "reference_label": "Microsoft Docs - アラート概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "コストを自動的に削減する",
+                    "explanation": {
+                        "text": "コスト削減はAdvisorやCost Managementが行う。アラートルールは通知機能。",
+                        "reference": "https://learn.microsoft.com/azure/advisor/advisor-overview",
+                        "reference_label": "Microsoft Docs - Azure Advisor概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "VMのスケーリングを自動化する",
+                    "explanation": {
+                        "text": "スケーリング自動化はオートスケールの役割であり、アラートルールはトリガーとして利用できるが直接の機能ではない。",
+                        "reference": "https://learn.microsoft.com/azure/azure-monitor/autoscale/autoscale-overview",
+                        "reference_label": "Microsoft Docs - Autoscale概要"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "アラートルールは条件に応じて通知やアクションを実行し、運用者に即時対応を促す。",
+                "reference": "https://learn.microsoft.com/azure/azure-monitor/alerts/alerts-overview",
+                "reference_label": "Microsoft Docs - アラート概要"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q21",
+            "question": "Azure Filesの利点として最も適切なのはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "オブジェクトストレージとして利用できる",
+                    "explanation": {
+                        "text": "オブジェクトストレージはAzure Blob Storageで提供される。Azure Filesはファイル共有サービス。",
+                        "reference": "https://learn.microsoft.com/azure/storage/blobs/storage-blobs-overview",
+                        "reference_label": "Microsoft Docs - Blob Storage概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "SMBプロトコルを使用してファイル共有を提供する",
+                    "explanation": {
+                        "text": "Azure Filesは標準のSMBプロトコルを利用してクラウドベースのファイル共有を提供する。",
+                        "reference": "https://learn.microsoft.com/azure/storage/files/storage-files-introduction",
+                        "reference_label": "Microsoft Docs - Azure Files概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "仮想ネットワークのルーティングを制御する",
+                    "explanation": {
+                        "text": "ルーティング制御はVNetやNSGの役割であり、Azure Filesの役割ではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-networks-overview",
+                        "reference_label": "Microsoft Docs - VNet概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "証明書を管理する",
+                    "explanation": {
+                        "text": "証明書管理はKey Vaultの役割であり、Azure Filesではない。",
+                        "reference": "https://learn.microsoft.com/azure/key-vault/general/overview",
+                        "reference_label": "Microsoft Docs - Key Vault概要"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "Azure FilesはSMBプロトコルを使用してクラウド上でファイル共有を実現し、オンプレミスやAzure VMから利用可能。",
+                "reference": "https://learn.microsoft.com/azure/storage/files/storage-files-introduction",
+                "reference_label": "Microsoft Docs - Azure Files概要"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q22",
+            "question": "Azure Bastionを利用する主な利点はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "仮想マシンをパブリックIPなしで安全に接続できる",
+                    "explanation": {
+                        "text": "Azure BastionはVMにパブリックIPを付与せずにRDP/SSH接続を可能にする。",
+                        "reference": "https://learn.microsoft.com/azure/bastion/bastion-overview",
+                        "reference_label": "Microsoft Docs - Bastion概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "VMのスケーリングを自動化する",
+                    "explanation": {
+                        "text": "スケーリングはVMSSで行う。Bastionの役割ではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machine-scale-sets/overview",
+                        "reference_label": "Microsoft Docs - VMSS概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ネットワークトラフィックを最適化する",
+                    "explanation": {
+                        "text": "トラフィック最適化はTraffic ManagerやFront Doorの役割。Bastionの機能ではない。",
+                        "reference": "https://learn.microsoft.com/azure/frontdoor/front-door-overview",
+                        "reference_label": "Microsoft Docs - Azure Front Door概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "DNSレコードを管理する",
+                    "explanation": {
+                        "text": "DNS管理はAzure DNSの役割。Bastionの目的ではない。",
+                        "reference": "https://learn.microsoft.com/azure/dns/dns-overview",
+                        "reference_label": "Microsoft Docs - Azure DNS概要"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Azure Bastionは安全なRDP/SSH接続をブラウザ経由で提供し、パブリックIP不要でセキュリティを向上させる。",
+                "reference": "https://learn.microsoft.com/azure/bastion/bastion-overview",
+                "reference_label": "Microsoft Docs - Bastion概要"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q23",
+            "question": "Azure Monitorのメトリックを利用する主な目的はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "ログの長期保存",
+                    "explanation": {
+                        "text": "ログ保存はLog Analyticsで行う。メトリックは短期間の数値データを扱う。",
+                        "reference": "https://learn.microsoft.com/azure/azure-monitor/essentials/data-platform-metrics",
+                        "reference_label": "Microsoft Docs - メトリック概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "リソースのパフォーマンスデータを収集する",
+                    "explanation": {
+                        "text": "メトリックはCPU使用率やディスクIOなど、リソースのパフォーマンスを数値データとして収集する。",
+                        "reference": "https://learn.microsoft.com/azure/azure-monitor/essentials/data-platform-metrics",
+                        "reference_label": "Microsoft Docs - メトリック概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ユーザー認証を制御する",
+                    "explanation": {
+                        "text": "認証制御はAzure ADの役割であり、メトリックの機能ではない。",
+                        "reference": "https://learn.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis",
+                        "reference_label": "Microsoft Docs - Azure AD概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "VMのネットワークルーティングを変更する",
+                    "explanation": {
+                        "text": "ルーティングはVNetやNSGの機能であり、メトリックの機能ではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-networks-overview",
+                        "reference_label": "Microsoft Docs - VNet概要"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "Azure Monitorのメトリックはリソースのリアルタイムなパフォーマンス指標を収集・分析するために利用される。",
+                "reference": "https://learn.microsoft.com/azure/azure-monitor/essentials/data-platform-metrics",
+                "reference_label": "Microsoft Docs - メトリック概要"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q24",
+            "question": "Azure Application Gatewayの特徴として正しいものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "コンテンツベースのルーティングを提供する",
+                    "explanation": {
+                        "text": "Application GatewayはL7ロードバランサーであり、URLパスやホスト名に基づくルーティングを提供する。",
+                        "reference": "https://learn.microsoft.com/azure/application-gateway/overview",
+                        "reference_label": "Microsoft Docs - Application Gateway概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "ゾーン冗長なストレージを提供する",
+                    "explanation": {
+                        "text": "ストレージ冗長性はStorageアカウントの機能であり、Application Gatewayではない。",
+                        "reference": "https://learn.microsoft.com/azure/storage/common/storage-redundancy",
+                        "reference_label": "Microsoft Docs - ストレージ冗長性"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "仮想マシンの自動スケーリングを行う",
+                    "explanation": {
+                        "text": "自動スケーリングはVMSSで行う。Application Gatewayはロードバランサーである。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machine-scale-sets/overview",
+                        "reference_label": "Microsoft Docs - VMSS概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "DNS名前解決を行う",
+                    "explanation": {
+                        "text": "DNSはAzure DNSが担当する。Application Gatewayはアプリケーション層のトラフィック管理を行う。",
+                        "reference": "https://learn.microsoft.com/azure/dns/dns-overview",
+                        "reference_label": "Microsoft Docs - Azure DNS概要"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Application GatewayはL7ロードバランサーとして、コンテンツベースのルーティングやWAF機能を提供する。",
+                "reference": "https://learn.microsoft.com/azure/application-gateway/overview",
+                "reference_label": "Microsoft Docs - Application Gateway概要"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q25",
+            "question": "Azure Blueprints の主な利用目的はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "アプリケーションのデバッグを自動化する",
+                    "explanation": {
+                        "text": "デバッグはBluePrintsの目的ではなく、Application Insightsなどが担当する。",
+                        "reference": "https://learn.microsoft.com/azure/azure-monitor/app/app-insights-overview",
+                        "reference_label": "Microsoft Docs - Application Insights概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "環境のガバナンスをコードとして管理する",
+                    "explanation": {
+                        "text": "BlueprintsはRBAC、Policy、ARMテンプレートを組み合わせて、標準化された環境をコードとして提供できる。",
+                        "reference": "https://learn.microsoft.com/azure/governance/blueprints/overview",
+                        "reference_label": "Microsoft Docs - Azure Blueprints概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ストレージコストを最適化する",
+                    "explanation": {
+                        "text": "コスト最適化はAdvisorやアクセス層の設定で行う。Blueprintsの機能ではない。",
+                        "reference": "https://learn.microsoft.com/azure/advisor/advisor-overview",
+                        "reference_label": "Microsoft Docs - Azure Advisor概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ネットワークトラフィックの監視を行う",
+                    "explanation": {
+                        "text": "ネットワーク監視はNetwork Watcherの機能。Blueprintsの役割ではない。",
+                        "reference": "https://learn.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview",
+                        "reference_label": "Microsoft Docs - Network Watcher概要"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "Azure BlueprintsはPolicyやRBACなどを含めたガバナンスを自動化し、標準化した環境を一貫してデプロイできる。",
+                "reference": "https://learn.microsoft.com/azure/governance/blueprints/overview",
+                "reference_label": "Microsoft Docs - Azure Blueprints概要"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q26",
+            "question": "Azure VMにManaged Identityを割り当てる利点はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "VMが他のAzureリソースにアクセスする際に資格情報をコードに埋め込む必要がなくなる",
+                    "explanation": {
+                        "text": "Managed Identityを利用すると資格情報を安全に管理でき、コードに埋め込み不要になる。",
+                        "reference": "https://learn.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview",
+                        "reference_label": "Microsoft Docs - Managed Identity概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "VMのネットワークルーティングを制御できる",
+                    "explanation": {
+                        "text": "ルーティングはNSGやVNetの機能であり、Managed Identityの役割ではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-networks-overview",
+                        "reference_label": "Microsoft Docs - VNet概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "VMを可用性ゾーンに配置できる",
+                    "explanation": {
+                        "text": "可用性ゾーン配置はVM作成時の設定であり、Managed Identityの役割ではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machines/availability",
+                        "reference_label": "Microsoft Docs - Azure VM可用性"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "VMのバックアップを自動化できる",
+                    "explanation": {
+                        "text": "バックアップはAzure Backupの機能であり、Managed Identityとは関係ない。",
+                        "reference": "https://learn.microsoft.com/azure/backup/backup-overview",
+                        "reference_label": "Microsoft Docs - Azure Backup概要"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Managed Identityを利用することで資格情報をコードに含める必要がなくなり、安全なリソースアクセスが可能となる。",
+                "reference": "https://learn.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview",
+                "reference_label": "Microsoft Docs - Managed Identity概要"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q27",
+            "question": "Azure ExpressRouteの特徴はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "インターネットを介してAzureと接続する",
+                    "explanation": {
+                        "text": "ExpressRouteはインターネットを経由せず専用線でAzureに接続する。",
+                        "reference": "https://learn.microsoft.com/azure/expressroute/expressroute-introduction",
+                        "reference_label": "Microsoft Docs - ExpressRoute概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "オンプレミス環境とAzure間の専用接続を提供する",
+                    "explanation": {
+                        "text": "ExpressRouteは専用線を使ったプライベート接続を提供し、安定性とセキュリティを確保する。",
+                        "reference": "https://learn.microsoft.com/azure/expressroute/expressroute-introduction",
+                        "reference_label": "Microsoft Docs - ExpressRoute概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "グローバル負荷分散を提供する",
+                    "explanation": {
+                        "text": "グローバル負荷分散はTraffic ManagerやFront Doorの役割。ExpressRouteではない。",
+                        "reference": "https://learn.microsoft.com/azure/traffic-manager/traffic-manager-overview",
+                        "reference_label": "Microsoft Docs - Traffic Manager概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "VMのスケーリングを提供する",
+                    "explanation": {
+                        "text": "スケーリングはVMSSの機能であり、ExpressRouteの目的ではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machine-scale-sets/overview",
+                        "reference_label": "Microsoft Docs - VMSS概要"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "ExpressRouteはオンプレミスとAzureを専用線で接続し、高速かつセキュアな通信を実現する。",
+                "reference": "https://learn.microsoft.com/azure/expressroute/expressroute-introduction",
+                "reference_label": "Microsoft Docs - ExpressRoute概要"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q28",
+            "question": "Azure Storageのアクセスキーをローテーションする理由として最も適切なのはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "ストレージの可用性を高めるため",
+                    "explanation": {
+                        "text": "可用性は冗長性オプションで確保される。キーのローテーションはセキュリティ目的で行う。",
+                        "reference": "https://learn.microsoft.com/azure/storage/common/storage-redundancy",
+                        "reference_label": "Microsoft Docs - ストレージ冗長性"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "不正アクセスを防止するため",
+                    "explanation": {
+                        "text": "アクセスキーを定期的にローテーションすることで漏洩リスクを軽減し、不正利用を防ぐ。",
+                        "reference": "https://learn.microsoft.com/azure/storage/common/storage-account-keys-manage",
+                        "reference_label": "Microsoft Docs - ストレージアカウントキー管理"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "データの暗号化を強化するため",
+                    "explanation": {
+                        "text": "暗号化は別途ストレージ暗号化で実施される。キーのローテーションの主目的ではない。",
+                        "reference": "https://learn.microsoft.com/azure/storage/common/storage-service-encryption",
+                        "reference_label": "Microsoft Docs - ストレージ暗号化"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ストレージのスループットを向上させるため",
+                    "explanation": {
+                        "text": "スループットはストレージSKUや設計に依存する。キーのローテーションによる効果ではない。",
+                        "reference": "https://learn.microsoft.com/azure/storage/common/storage-account-overview",
+                        "reference_label": "Microsoft Docs - ストレージアカウント概要"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "アクセスキーをローテーションすることで不正利用のリスクを低減し、セキュリティを強化できる。",
+                "reference": "https://learn.microsoft.com/azure/storage/common/storage-account-keys-manage",
+                "reference_label": "Microsoft Docs - ストレージアカウントキー管理"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q29",
+            "question": "Azure Disk Encryptionの主な目的はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "VMのスケーリングを自動化する",
+                    "explanation": {
+                        "text": "スケーリングはVMSSで行う。Disk Encryptionの役割ではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machine-scale-sets/overview",
+                        "reference_label": "Microsoft Docs - VMSS概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "仮想マシンのディスクデータを暗号化する",
+                    "explanation": {
+                        "text": "Azure Disk EncryptionはBitLockerやDM-Cryptを利用してディスクデータを暗号化する。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machines/disk-encryption-overview",
+                        "reference_label": "Microsoft Docs - Disk Encryption概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "リソースの監視を実施する",
+                    "explanation": {
+                        "text": "監視はAzure Monitorで行う。Disk Encryptionの目的ではない。",
+                        "reference": "https://learn.microsoft.com/azure/azure-monitor/overview",
+                        "reference_label": "Microsoft Docs - Azure Monitor概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ネットワークトラフィックを最適化する",
+                    "explanation": {
+                        "text": "トラフィック最適化はFront DoorやTraffic Managerの役割。Disk Encryptionの役割ではない。",
+                        "reference": "https://learn.microsoft.com/azure/frontdoor/front-door-overview",
+                        "reference_label": "Microsoft Docs - Azure Front Door概要"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "Azure Disk Encryptionはディスク上のデータを暗号化し、セキュリティを強化する。",
+                "reference": "https://learn.microsoft.com/azure/virtual-machines/disk-encryption-overview",
+                "reference_label": "Microsoft Docs - Disk Encryption概要"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q30",
+            "question": "Azure Service Healthを利用する主な目的はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Azureサービスの状態を確認する",
+                    "explanation": {
+                        "text": "Azure Service Healthはサービスの稼働状況や障害情報を提供する。",
+                        "reference": "https://learn.microsoft.com/azure/service-health/overview",
+                        "reference_label": "Microsoft Docs - Service Health概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "リソースのコストを最適化する",
+                    "explanation": {
+                        "text": "コスト最適化はAdvisorやCost Managementで行う。Service Healthの目的ではない。",
+                        "reference": "https://learn.microsoft.com/azure/advisor/advisor-overview",
+                        "reference_label": "Microsoft Docs - Azure Advisor概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "VMのスケーリングを自動化する",
+                    "explanation": {
+                        "text": "スケーリングはVMSSやAutoscaleの機能。Service Healthの役割ではない。",
+                        "reference": "https://learn.microsoft.com/azure/azure-monitor/autoscale/autoscale-overview",
+                        "reference_label": "Microsoft Docs - Autoscale概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "アプリケーションのログを収集する",
+                    "explanation": {
+                        "text": "ログ収集はLog Analyticsの機能。Service Healthはサービス稼働情報の提供を目的とする。",
+                        "reference": "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-overview",
+                        "reference_label": "Microsoft Docs - Log Analytics概要"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Azure Service HealthはAzureサービスの稼働状態や障害、メンテナンス情報を提供する。",
+                "reference": "https://learn.microsoft.com/azure/service-health/overview",
+                "reference_label": "Microsoft Docs - Service Health概要"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q31",
+            "question": "Azure StorageにおけるCORS（Cross-Origin Resource Sharing）の役割はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "異なるドメインからのリソースアクセスを制御する",
+                    "explanation": {
+                        "text": "CORSは異なるオリジンからのリソースリクエストを許可・制御する仕組み。",
+                        "reference": "https://learn.microsoft.com/azure/storage/blobs/cross-origin-resource-sharing-overview",
+                        "reference_label": "Microsoft Docs - Storage CORS概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "ストレージの暗号化を強制する",
+                    "explanation": {
+                        "text": "暗号化はStorage Encryptionの役割であり、CORSの目的ではない。",
+                        "reference": "https://learn.microsoft.com/azure/storage/common/storage-service-encryption",
+                        "reference_label": "Microsoft Docs - ストレージ暗号化"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "アクセスキーを定期的にローテーションする",
+                    "explanation": {
+                        "text": "キー管理はストレージアカウントの管理機能で行う。CORSの目的ではない。",
+                        "reference": "https://learn.microsoft.com/azure/storage/common/storage-account-keys-manage",
+                        "reference_label": "Microsoft Docs - ストレージアカウントキー管理"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ゾーン冗長性を有効化する",
+                    "explanation": {
+                        "text": "ゾーン冗長性はZRSによって実現される。CORSの役割ではない。",
+                        "reference": "https://learn.microsoft.com/azure/storage/common/storage-redundancy",
+                        "reference_label": "Microsoft Docs - ストレージ冗長性"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "CORSはブラウザベースのクロスオリジンリクエストを制御し、必要に応じて許可する。",
+                "reference": "https://learn.microsoft.com/azure/storage/blobs/cross-origin-resource-sharing-overview",
+                "reference_label": "Microsoft Docs - Storage CORS概要"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q32",
+            "question": "Azure Automation Runbookの主な利用目的はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "リソース管理タスクを自動化する",
+                    "explanation": {
+                        "text": "RunbookはPowerShellやPythonスクリプトを使ってリソースの運用タスクを自動化できる。",
+                        "reference": "https://learn.microsoft.com/azure/automation/automation-runbook-overview",
+                        "reference_label": "Microsoft Docs - Runbook概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "サービスの可用性を監視する",
+                    "explanation": {
+                        "text": "監視はAzure Monitorが担当する。Runbookはタスク自動化の仕組み。",
+                        "reference": "https://learn.microsoft.com/azure/azure-monitor/overview",
+                        "reference_label": "Microsoft Docs - Azure Monitor概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "アプリケーションのログを収集する",
+                    "explanation": {
+                        "text": "ログ収集はLog Analyticsの機能であり、Runbookの役割ではない。",
+                        "reference": "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-overview",
+                        "reference_label": "Microsoft Docs - Log Analytics概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "仮想ネットワークを構成する",
+                    "explanation": {
+                        "text": "VNet構成はネットワーク管理の一部。Runbookはタスク自動化が役割。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-networks-overview",
+                        "reference_label": "Microsoft Docs - VNet概要"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Azure Automation Runbookはリソース管理やメンテナンスの自動化を可能にする。",
+                "reference": "https://learn.microsoft.com/azure/automation/automation-runbook-overview",
+                "reference_label": "Microsoft Docs - Runbook概要"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q33",
+            "question": "Azure MonitorのApplication Insightsの主な用途はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "アプリケーションのパフォーマンス監視とテレメトリ収集",
+                    "explanation": {
+                        "text": "Application Insightsはアプリケーションの動作やパフォーマンスを監視する。",
+                        "reference": "https://learn.microsoft.com/azure/azure-monitor/app/app-insights-overview",
+                        "reference_label": "Microsoft Docs - Application Insights概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Azureリソースのプロビジョニング",
+                    "explanation": {
+                        "text": "リソースのデプロイはARMテンプレートなどで行う。Application Insightsの役割ではない。",
+                        "reference": "https://learn.microsoft.com/azure/azure-resource-manager/templates/overview",
+                        "reference_label": "Microsoft Docs - ARMテンプレート概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "DNSゾーン管理",
+                    "explanation": {
+                        "text": "DNS管理はAzure DNSで行う。Application Insightsはアプリ監視用。",
+                        "reference": "https://learn.microsoft.com/azure/dns/dns-overview",
+                        "reference_label": "Microsoft Docs - Azure DNS概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "トラフィック分散",
+                    "explanation": {
+                        "text": "トラフィック分散はLoad BalancerやTraffic Managerの役割。Application Insightsの用途ではない。",
+                        "reference": "https://learn.microsoft.com/azure/traffic-manager/traffic-manager-overview",
+                        "reference_label": "Microsoft Docs - Traffic Manager概要"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Application Insightsはアプリケーションのパフォーマンスや利用状況を分析し、改善に役立てる。",
+                "reference": "https://learn.microsoft.com/azure/azure-monitor/app/app-insights-overview",
+                "reference_label": "Microsoft Docs - Application Insights概要"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q34",
+            "question": "Azure Arcの主な特徴はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "オンプレミスや他クラウドのリソースをAzureで管理できる",
+                    "explanation": {
+                        "text": "Azure Arcはハイブリッド環境のリソースをAzureの一元管理下に置ける。",
+                        "reference": "https://learn.microsoft.com/azure/azure-arc/overview",
+                        "reference_label": "Microsoft Docs - Azure Arc概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "DNSゾーンをクラウドで管理できる",
+                    "explanation": {
+                        "text": "DNS管理はAzure DNSで行う。Arcの機能ではない。",
+                        "reference": "https://learn.microsoft.com/azure/dns/dns-overview",
+                        "reference_label": "Microsoft Docs - Azure DNS概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "VMの可用性を向上させる",
+                    "explanation": {
+                        "text": "VM可用性は可用性セットやゾーンで対応。Arcの役割はハイブリッド管理。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machines/availability",
+                        "reference_label": "Microsoft Docs - Azure VM可用性"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "アプリケーションのログを収集する",
+                    "explanation": {
+                        "text": "ログ収集はLog Analyticsが行う。Arcはリソース管理の拡張が目的。",
+                        "reference": "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-overview",
+                        "reference_label": "Microsoft Docs - Log Analytics概要"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Azure Arcはオンプレやマルチクラウド環境をAzureの一貫した管理対象に組み込むことができる。",
+                "reference": "https://learn.microsoft.com/azure/azure-arc/overview",
+                "reference_label": "Microsoft Docs - Azure Arc概要"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q35",
+            "question": "Azure PolicyとAzure RBACの違いを正しく説明しているものはどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "RBACは認可を管理し、Policyはリソース構成を強制する",
+                    "explanation": {
+                        "text": "RBACはアクセス制御、Policyは構成の準拠性を強制する仕組み。",
+                        "reference": "https://learn.microsoft.com/azure/governance/policy/overview",
+                        "reference_label": "Microsoft Docs - Azure Policy概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "RBACは課金を管理し、Policyはセキュリティを強制する",
+                    "explanation": {
+                        "text": "課金はCost Managementが管理する。RBACの役割は認可管理。",
+                        "reference": "https://learn.microsoft.com/azure/role-based-access-control/overview",
+                        "reference_label": "Microsoft Docs - RBAC概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "RBACはリソースをデプロイし、Policyは監視を行う",
+                    "explanation": {
+                        "text": "リソースのデプロイはARMテンプレート、監視はAzure Monitorの役割。誤り。",
+                        "reference": "https://learn.microsoft.com/azure/azure-resource-manager/templates/overview",
+                        "reference_label": "Microsoft Docs - ARMテンプレート概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "RBACはアラートを発行し、Policyは課金を制御する",
+                    "explanation": {
+                        "text": "アラートはAzure Monitor、課金はCost Managementの役割。誤り。",
+                        "reference": "https://learn.microsoft.com/azure/azure-monitor/alerts/alerts-overview",
+                        "reference_label": "Microsoft Docs - アラート概要"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "RBACは誰がリソースにアクセスできるかを制御し、Policyはリソースが組織ルールに従っているかを強制する。",
+                "reference": "https://learn.microsoft.com/azure/governance/policy/overview",
+                "reference_label": "Microsoft Docs - Azure Policy概要"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q36",
+            "question": "Azure MonitorのDiagnostic Settingsの主な役割はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "リソースログやメトリックをLog AnalyticsやStorageに送信する",
+                    "explanation": {
+                        "text": "Diagnostic Settingsはリソースの監視データをLog Analytics、Event Hub、Storageに送信できる。",
+                        "reference": "https://learn.microsoft.com/azure/azure-monitor/essentials/diagnostic-settings",
+                        "reference_label": "Microsoft Docs - Diagnostic Settings"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "仮想マシンの可用性を向上させる",
+                    "explanation": {
+                        "text": "可用性は可用性セットやゾーンで対応。Diagnostic Settingsはログ転送機能。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machines/availability",
+                        "reference_label": "Microsoft Docs - VM可用性"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "アプリケーションの自動スケーリングを行う",
+                    "explanation": {
+                        "text": "スケーリングはAutoscaleの機能であり、Diagnostic Settingsではない。",
+                        "reference": "https://learn.microsoft.com/azure/azure-monitor/autoscale/autoscale-overview",
+                        "reference_label": "Microsoft Docs - Autoscale概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "コストの最適化を自動的に行う",
+                    "explanation": {
+                        "text": "コスト最適化はAdvisorの役割であり、Diagnostic Settingsの役割ではない。",
+                        "reference": "https://learn.microsoft.com/azure/advisor/advisor-overview",
+                        "reference_label": "Microsoft Docs - Advisor概要"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Diagnostic SettingsはAzureリソースの監視データを外部に送信し、詳細な分析や長期保存を可能にする。",
+                "reference": "https://learn.microsoft.com/azure/azure-monitor/essentials/diagnostic-settings",
+                "reference_label": "Microsoft Docs - Diagnostic Settings"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q37",
+            "question": "Azure Virtual Network Gatewayの主な役割はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "オンプレミスネットワークとAzure仮想ネットワークを接続する",
+                    "explanation": {
+                        "text": "Virtual Network GatewayはVPNまたはExpressRouteを利用してオンプレとAzureを接続する。",
+                        "reference": "https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways",
+                        "reference_label": "Microsoft Docs - VPN Gateway概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "仮想ネットワークのルーティングを強制する",
+                    "explanation": {
+                        "text": "ルーティングはNSGやUDRの機能。Gatewayの役割はオンプレ接続。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-networks-overview",
+                        "reference_label": "Microsoft Docs - VNet概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "リソースの監視を行う",
+                    "explanation": {
+                        "text": "監視はAzure Monitorの役割。Gatewayの役割ではない。",
+                        "reference": "https://learn.microsoft.com/azure/azure-monitor/overview",
+                        "reference_label": "Microsoft Docs - Azure Monitor概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "アプリケーション層のロードバランシングを行う",
+                    "explanation": {
+                        "text": "アプリ層ロードバランシングはApplication Gatewayの役割であり、VPN Gatewayではない。",
+                        "reference": "https://learn.microsoft.com/azure/application-gateway/overview",
+                        "reference_label": "Microsoft Docs - Application Gateway概要"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Virtual Network GatewayはAzureとオンプレ環境を安全に接続するためのVPN/ExpressRouteゲートウェイ。",
+                "reference": "https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways",
+                "reference_label": "Microsoft Docs - VPN Gateway概要"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q38",
+            "question": "Azure StorageのImmutable Blob Storageの主な用途はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "データを一定期間削除や変更できないように保持する",
+                    "explanation": {
+                        "text": "Immutable Blobは金融や監査要件に対応するため、削除や変更を防止する。",
+                        "reference": "https://learn.microsoft.com/azure/storage/blobs/immutable-storage-overview",
+                        "reference_label": "Microsoft Docs - Immutable Storage概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "ストレージコストを最適化する",
+                    "explanation": {
+                        "text": "コスト最適化はアクセス層で行う。Immutableの主目的ではない。",
+                        "reference": "https://learn.microsoft.com/azure/storage/blobs/access-tiers-overview",
+                        "reference_label": "Microsoft Docs - アクセス層概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "データを暗号化する",
+                    "explanation": {
+                        "text": "暗号化はStorage Service Encryptionで実施される。Immutableの主目的ではない。",
+                        "reference": "https://learn.microsoft.com/azure/storage/common/storage-service-encryption",
+                        "reference_label": "Microsoft Docs - ストレージ暗号化"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "VMディスクを高速化する",
+                    "explanation": {
+                        "text": "VMディスクの高速化はPremium Diskで行う。Immutableの目的ではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machines/disks-types",
+                        "reference_label": "Microsoft Docs - ディスクの種類"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Immutable Blob Storageは変更不可の状態でデータを保持し、金融や法規制に準拠した保管を実現する。",
+                "reference": "https://learn.microsoft.com/azure/storage/blobs/immutable-storage-overview",
+                "reference_label": "Microsoft Docs - Immutable Storage概要"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q39",
+            "question": "Azure VMの拡張機能（Extensions）の主な利用目的はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "VMに追加機能や構成をデプロイする",
+                    "explanation": {
+                        "text": "VM拡張機能は監視エージェントや構成スクリプトをデプロイする仕組み。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machines/extensions/overview",
+                        "reference_label": "Microsoft Docs - VM Extensions概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "VMを可用性ゾーンに配置する",
+                    "explanation": {
+                        "text": "可用性ゾーン配置はVM作成時の設定であり、拡張機能ではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machines/availability",
+                        "reference_label": "Microsoft Docs - VM可用性"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "VMの課金を最適化する",
+                    "explanation": {
+                        "text": "課金の最適化はAdvisorで行う。拡張機能の目的ではない。",
+                        "reference": "https://learn.microsoft.com/azure/advisor/advisor-overview",
+                        "reference_label": "Microsoft Docs - Advisor概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "VMのネットワークルーティングを制御する",
+                    "explanation": {
+                        "text": "ルーティングはVNetやNSGで行う。拡張機能の役割ではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-networks-overview",
+                        "reference_label": "Microsoft Docs - VNet概要"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "VM拡張機能は構成スクリプトや監視エージェントをVMに展開し、機能を拡張する。",
+                "reference": "https://learn.microsoft.com/azure/virtual-machines/extensions/overview",
+                "reference_label": "Microsoft Docs - VM Extensions概要"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q40",
+            "question": "Azure Private Linkの主な利点はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "AzureサービスにプライベートIPでアクセスできる",
+                    "explanation": {
+                        "text": "Private LinkはAzureサービスを仮想ネットワーク内のプライベートIPで利用可能にする。",
+                        "reference": "https://learn.microsoft.com/azure/private-link/private-link-overview",
+                        "reference_label": "Microsoft Docs - Private Link概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "VMのスケーリングを最適化する",
+                    "explanation": {
+                        "text": "スケーリングはVMSSの役割であり、Private Linkの機能ではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machine-scale-sets/overview",
+                        "reference_label": "Microsoft Docs - VMSS概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ストレージコストを削減する",
+                    "explanation": {
+                        "text": "コスト削減はアクセス層やAdvisorで行う。Private Linkの役割ではない。",
+                        "reference": "https://learn.microsoft.com/azure/storage/blobs/access-tiers-overview",
+                        "reference_label": "Microsoft Docs - アクセス層概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "DNSゾーンを管理する",
+                    "explanation": {
+                        "text": "DNS管理はAzure DNSの役割。Private Linkの目的ではない。",
+                        "reference": "https://learn.microsoft.com/azure/dns/dns-overview",
+                        "reference_label": "Microsoft Docs - Azure DNS概要"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Private LinkはAzureサービスへのトラフィックを仮想ネットワーク内で完結させ、セキュリティを強化する。",
+                "reference": "https://learn.microsoft.com/azure/private-link/private-link-overview",
+                "reference_label": "Microsoft Docs - Private Link概要"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q41",
+            "question": "Azure Storage AccountでFirewallとVirtual Networkルールを構成する目的はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "アクセスを特定のネットワークやIPに制限する",
+                    "explanation": {
+                        "text": "FirewallとVNetルールで特定ネットワークやIPからのアクセスのみを許可できる。",
+                        "reference": "https://learn.microsoft.com/azure/storage/common/storage-network-security",
+                        "reference_label": "Microsoft Docs - ストレージネットワークセキュリティ"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "ストレージの暗号化を強化する",
+                    "explanation": {
+                        "text": "暗号化はStorage Service Encryptionの機能。Firewallルールではない。",
+                        "reference": "https://learn.microsoft.com/azure/storage/common/storage-service-encryption",
+                        "reference_label": "Microsoft Docs - ストレージ暗号化"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ストレージコストを削減する",
+                    "explanation": {
+                        "text": "コスト削減はアクセス層やAdvisorの役割。Firewall設定ではない。",
+                        "reference": "https://learn.microsoft.com/azure/storage/blobs/access-tiers-overview",
+                        "reference_label": "Microsoft Docs - アクセス層概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "VMのスケーリングを自動化する",
+                    "explanation": {
+                        "text": "スケーリングはVMSSで行う。Firewallルールはアクセス制御目的。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machine-scale-sets/overview",
+                        "reference_label": "Microsoft Docs - VMSS概要"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "FirewallとVNetルールを使うことで、ストレージアカウントへのアクセスを特定ネットワークに制御できる。",
+                "reference": "https://learn.microsoft.com/azure/storage/common/storage-network-security",
+                "reference_label": "Microsoft Docs - ストレージネットワークセキュリティ"
+            }
+        },
+        {
+            "id": "azure-AZ-104-q42",
+            "question": "Azure Resource Graphの利用目的はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "大規模環境でリソースのクエリと探索を行う",
+                    "explanation": {
+                        "text": "Resource Graphは数千〜数万規模のリソースを効率的にクエリ・探索できる。",
+                        "reference": "https://learn.microsoft.com/azure/governance/resource-graph/overview",
+                        "reference_label": "Microsoft Docs - Resource Graph概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "VMのディスク暗号化を行う",
+                    "explanation": {
+                        "text": "ディスク暗号化はDisk Encryptionの役割であり、Resource Graphではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machines/disk-encryption-overview",
+                        "reference_label": "Microsoft Docs - Disk Encryption概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "アプリケーションのログを収集する",
+                    "explanation": {
+                        "text": "ログ収集はLog Analyticsの役割であり、Resource Graphの目的ではない。",
+                        "reference": "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-overview",
+                        "reference_label": "Microsoft Docs - Log Analytics概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "リソースにポリシーを強制する",
+                    "explanation": {
+                        "text": "ポリシー強制はAzure Policyの役割であり、Resource Graphはクエリと探索の仕組み。",
+                        "reference": "https://learn.microsoft.com/azure/governance/policy/overview",
+                        "reference_label": "Microsoft Docs - Azure Policy概要"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Azure Resource GraphはAzure環境全体のリソースを効率的に探索・クエリできる強力なツールである。",
+                "reference": "https://learn.microsoft.com/azure/governance/resource-graph/overview",
+                "reference_label": "Microsoft Docs - Resource Graph概要"
+            }
+        },
+    {
+      "id": "azure-AZ-104-q43",
+      "question": "Azure MonitorのAction Groupの役割はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "アラートに応じて通知や自動アクションを実行する",
+          "explanation": {
+            "text": "Action Groupはアラート発生時にメール、SMS、Webhook、Logic Apps、関数などの通知・アクションを実行できる。",
+            "reference": "https://learn.microsoft.com/azure/azure-monitor/alerts/action-groups",
+            "reference_label": "Microsoft Docs - Action Groups"
+          }
+        },
+        {
+          "key": "B",
+          "text": "VMを自動的にスケーリングする",
+          "explanation": {
+            "text": "スケーリングはAutoscaleの機能。Action Groupはアラートの送達・実行先を定義する。",
+            "reference": "https://learn.microsoft.com/azure/azure-monitor/autoscale/autoscale-overview",
+            "reference_label": "Microsoft Docs - Autoscale 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "リソースの課金を監視する",
+          "explanation": {
+            "text": "課金監視はCost Managementで行う。Action Groupの目的ではない。",
+            "reference": "https://learn.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis",
+            "reference_label": "Microsoft Docs - Cost Management"
+          }
+        },
+        {
+          "key": "D",
+          "text": "アプリケーションログを収集する",
+          "explanation": {
+            "text": "ログ収集はLog Analyticsワークスペースに送る設定やAgentが担う。Action Groupは通知先。",
+            "reference": "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-overview",
+            "reference_label": "Microsoft Docs - Log Analytics 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Action Groupはアラートの受信先とアクション（通知・自動実行）を束ねる仕組みで、運用の即応性を高める。",
+        "reference": "https://learn.microsoft.com/azure/azure-monitor/alerts/action-groups",
+        "reference_label": "Microsoft Docs - Action Groups"
+      }
+    },
+    {
+      "id": "azure-AZ-104-q44",
+      "question": "Azure Migrateの主な利用目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "オンプレミスのワークロードをAzureに移行する際の評価と移行支援",
+          "explanation": {
+            "text": "Azure Migrateはサーバー、データベース、VDIなどの評価・移行ツール群を提供するハブサービス。",
+            "reference": "https://learn.microsoft.com/azure/migrate/migrate-overview",
+            "reference_label": "Microsoft Docs - Azure Migrate 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azureリソースの監視を自動化する",
+          "explanation": {
+            "text": "監視の自動化はAzure Monitorの領域であり、Migrateの目的ではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-monitor/overview",
+            "reference_label": "Microsoft Docs - Azure Monitor 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "VMのスケーリングを行う",
+          "explanation": {
+            "text": "スケーリングはVMSSやAutoscaleで行う。Migrateは移行支援が目的。",
+            "reference": "https://learn.microsoft.com/azure/virtual-machine-scale-sets/overview",
+            "reference_label": "Microsoft Docs - VMSS 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "DNSレコードをクラウドで管理する",
+          "explanation": {
+            "text": "DNS管理はAzure DNSの役割。Migrateの機能ではない。",
+            "reference": "https://learn.microsoft.com/azure/dns/dns-overview",
+            "reference_label": "Microsoft Docs - Azure DNS 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure Migrateはアセスメントから移行実行までを支援するための中核サービスで、オンプレ資産のクラウド移行を加速する。",
+        "reference": "https://learn.microsoft.com/azure/migrate/migrate-overview",
+        "reference_label": "Microsoft Docs - Azure Migrate 概要"
+      }
+    },
+    {
+      "id": "azure-AZ-104-q45",
+      "question": "Azure Cost Management + Billingの主な用途はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "リソースの利用状況とコストの分析",
+          "explanation": {
+            "text": "Cost Managementは消費の可視化、予算、アラート、コスト分析レポートを提供する。",
+            "reference": "https://learn.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis",
+            "reference_label": "Microsoft Docs - コスト分析のクイックスタート"
+          }
+        },
+        {
+          "key": "B",
+          "text": "アプリケーションログの収集",
+          "explanation": {
+            "text": "ログ収集はLog Analyticsの役割であり、Cost Managementの範囲外。",
+            "reference": "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-overview",
+            "reference_label": "Microsoft Docs - Log Analytics 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ネットワークトラフィックを制御する",
+          "explanation": {
+            "text": "トラフィック制御はNSGやApplication Gateway。Cost Managementは課金・コスト管理。",
+            "reference": "https://learn.microsoft.com/azure/virtual-network/network-security-groups-overview",
+            "reference_label": "Microsoft Docs - NSG 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "リソース削除を防ぐ",
+          "explanation": {
+            "text": "削除防止はResource Locksの機能。Cost Managementではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-resource-manager/management/lock-resources",
+            "reference_label": "Microsoft Docs - Resource Locks"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cost Management + Billingは利用状況の分析・予算管理・コスト最適化に役立つ統合機能を提供する。",
+        "reference": "https://learn.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis",
+        "reference_label": "Microsoft Docs - コスト分析のクイックスタート"
+      }
+    },
+    {
+      "id": "azure-AZ-104-q46",
+      "question": "Azure Update Managementを利用する主な利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "VMやサーバーの更新プログラムを一元的に管理できる",
+          "explanation": {
+            "text": "Update ManagementはAzure/オンプレのWindowsやLinuxのパッチ適用を一括スケジュール・可視化できる。",
+            "reference": "https://learn.microsoft.com/azure/automation/update-management/overview",
+            "reference_label": "Microsoft Docs - Update Management 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "DNSレコードを管理できる",
+          "explanation": {
+            "text": "DNS管理はAzure DNSの役割であり、Update Managementの機能ではない。",
+            "reference": "https://learn.microsoft.com/azure/dns/dns-overview",
+            "reference_label": "Microsoft Docs - Azure DNS 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "リソースの課金を分析できる",
+          "explanation": {
+            "text": "課金分析はCost Management。Update Managementの目的ではない。",
+            "reference": "https://learn.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis",
+            "reference_label": "Microsoft Docs - コスト管理"
+          }
+        },
+        {
+          "key": "D",
+          "text": "アプリケーションのスケーリングを自動化できる",
+          "explanation": {
+            "text": "スケーリング自動化はAutoscale/VMSS。Update Managementは更新管理に特化。",
+            "reference": "https://learn.microsoft.com/azure/azure-monitor/autoscale/autoscale-overview",
+            "reference_label": "Microsoft Docs - Autoscale 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "複数サーバーの更新を一元管理し、コンプライアンスと可用性を両立できるのがUpdate Managementの利点。",
+        "reference": "https://learn.microsoft.com/azure/automation/update-management/overview",
+        "reference_label": "Microsoft Docs - Update Management 概要"
+      }
+    },
+    {
+      "id": "azure-AZ-104-q47",
+      "question": "Azure Virtual Desktop (AVD) の主な特徴はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "クラウドベースの仮想デスクトップ環境を提供する",
+          "explanation": {
+            "text": "AVDはAzure上でWindowsマルチセッション、リモートアプリ配信、プロファイルのFSLogix統合を提供する。",
+            "reference": "https://learn.microsoft.com/azure/virtual-desktop/overview",
+            "reference_label": "Microsoft Docs - Azure Virtual Desktop 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "DNSレコードをクラウドで管理する",
+          "explanation": {
+            "text": "DNSはAzure DNSの役割。AVDはデスクトップ仮想化サービス。",
+            "reference": "https://learn.microsoft.com/azure/dns/dns-overview",
+            "reference_label": "Microsoft Docs - Azure DNS 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "リソースの課金を最適化する",
+          "explanation": {
+            "text": "課金最適化はAdvisor/Cost Management。AVDの主目的ではない。",
+            "reference": "https://learn.microsoft.com/azure/advisor/advisor-overview",
+            "reference_label": "Microsoft Docs - Azure Advisor 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ネットワークルーティングを制御する",
+          "explanation": {
+            "text": "ルーティングはNSG/UDRの領域。AVDの機能ではない。",
+            "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-networks-overview",
+            "reference_label": "Microsoft Docs - VNet 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "AVDはクラウドネイティブな仮想デスクトップ/アプリ配信を提供し、柔軟なスケーリングとセキュアなアクセスを実現する。",
+        "reference": "https://learn.microsoft.com/azure/virtual-desktop/overview",
+        "reference_label": "Microsoft Docs - Azure Virtual Desktop 概要"
+      }
+    },
+    {
+      "id": "azure-AZ-104-q48",
+      "question": "Azure Automanageの主な目的はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "VMの運用ベストプラクティスを自動適用する",
+          "explanation": {
+            "text": "Automanageはバックアップ、モニタリング、セキュリティ、更新等のベストプラクティスをVMへ自動適用する。",
+            "reference": "https://learn.microsoft.com/azure/automanage/automanage-overview",
+            "reference_label": "Microsoft Docs - Automanage 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "DNSゾーンのレコードを管理する",
+          "explanation": {
+            "text": "DNS管理はAzure DNS。Automanageの機能ではない。",
+            "reference": "https://learn.microsoft.com/azure/dns/dns-overview",
+            "reference_label": "Microsoft Docs - Azure DNS 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "VMのスケーリングを自動化する",
+          "explanation": {
+            "text": "スケーリングはAutoscale/VMSSの領域。Automanageは運用ベースラインの自動適用。",
+            "reference": "https://learn.microsoft.com/azure/azure-monitor/autoscale/autoscale-overview",
+            "reference_label": "Microsoft Docs - Autoscale 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ストレージアカウントを暗号化する",
+          "explanation": {
+            "text": "暗号化はStorage Service Encryption。Automanageの役割ではない。",
+            "reference": "https://learn.microsoft.com/azure/storage/common/storage-service-encryption",
+            "reference_label": "Microsoft Docs - ストレージ暗号化"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Automanageは“Azure best practices”の自動適用により、運用負荷を軽減しガバナンスを標準化する。",
+        "reference": "https://learn.microsoft.com/azure/automanage/automanage-overview",
+        "reference_label": "Microsoft Docs - Automanage 概要"
+      }
+    },
+    {
+      "id": "azure-AZ-104-q49",
+      "question": "Azure Lighthouseの主な用途はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "複数テナントのリソースを一元的に管理する",
+          "explanation": {
+            "text": "Lighthouseは委任リソース管理により、サービスプロバイダーが顧客テナントを一元管理できる。",
+            "reference": "https://learn.microsoft.com/azure/lighthouse/overview",
+            "reference_label": "Microsoft Docs - Azure Lighthouse 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "DNSゾーンをクラウドで管理する",
+          "explanation": {
+            "text": "DNSはAzure DNSが担当。Lighthouseのスコープ外。",
+            "reference": "https://learn.microsoft.com/azure/dns/dns-overview",
+            "reference_label": "Microsoft Docs - Azure DNS 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アプリケーションのログを収集する",
+          "explanation": {
+            "text": "ログ収集はLog Analytics。Lighthouseはマルチテナント管理基盤。",
+            "reference": "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-overview",
+            "reference_label": "Microsoft Docs - Log Analytics 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "VMのスケーリングを最適化する",
+          "explanation": {
+            "text": "スケーリングはVMSSの領域。Lighthouseの目的ではない。",
+            "reference": "https://learn.microsoft.com/azure/virtual-machine-scale-sets/overview",
+            "reference_label": "Microsoft Docs - VMSS 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure Lighthouseはクロステナントの委任管理を安全に実現し、運用スケールを高める。",
+        "reference": "https://learn.microsoft.com/azure/lighthouse/overview",
+        "reference_label": "Microsoft Docs - Azure Lighthouse 概要"
+      }
+    },
+    {
+      "id": "azure-AZ-104-q50",
+      "question": "Azure Well-Architected Frameworkの主な目的はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "クラウド設計のベストプラクティスを提供する",
+          "explanation": {
+            "text": "Well-Architected Frameworkは信頼性、セキュリティ、コスト最適化、運用優秀性、パフォーマンス効率の観点で設計原則を提供する。",
+            "reference": "https://learn.microsoft.com/azure/architecture/framework/",
+            "reference_label": "Microsoft Docs - Well-Architected Framework"
+          }
+        },
+        {
+          "key": "B",
+          "text": "アプリケーションコードをデバッグする",
+          "explanation": {
+            "text": "コードのデバッグはApplication Insights/DevOps等の領域。Frameworkの目的ではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-monitor/app/app-insights-overview",
+            "reference_label": "Microsoft Docs - Application Insights 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "クラウドコストを自動的に削減する",
+          "explanation": {
+            "text": "Frameworkは設計指針。コストの自動削減はCost ManagementやAdvisorの役割に近い。",
+            "reference": "https://learn.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis",
+            "reference_label": "Microsoft Docs - Cost Management"
+          }
+        },
+        {
+          "key": "D",
+          "text": "リソースに組織のポリシーを強制適用する",
+          "explanation": {
+            "text": "ポリシー強制はAzure Policyの役割。Frameworkは設計評価とガイダンスを提供する。",
+            "reference": "https://learn.microsoft.com/azure/governance/policy/overview",
+            "reference_label": "Microsoft Docs - Azure Policy 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Well-Architected Frameworkは5つの柱に沿った設計原則とレビュー手法を提供し、Azure上で“良い設計”を実現するためのガイドとなる。",
+        "reference": "https://learn.microsoft.com/azure/architecture/framework/",
+        "reference_label": "Microsoft Docs - Well-Architected Framework"
+      }
+    }
+  ]
+}

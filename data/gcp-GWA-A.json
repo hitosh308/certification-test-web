@@ -1,0 +1,2467 @@
+{
+  "exam": {
+    "id": "GWA-A",
+    "title": "Associate Google Workspace Administrator",
+    "description": "この資格は、Google Workspace 環境を日常的に管理・運用する IT 管理者向けに設計されたエントリーレベルの認定試験です。ユーザーアカウントやグループの管理、Gmail／Drive／Calendar／Meet などのコアサービス設定、共有・アクセス権限、データガバナンスやセキュリティポリシー、トラブルシューティングなどの実務スキルを確認します。準備を通じて、Google Workspace のベストプラクティスを理解・適用できることが証明されるため、クラウド移行中または導入済み組織の管理者にとって有力なステップとなります。",
+    "version": "v1.0",
+    "price": "125 USD",
+    "difficulty": "普通",
+    "official-site": "https://cloud.google.com/learn/certification/associate-google-workspace-administrator",
+    "category": {
+      "id": "gcp",
+      "name": "Google Cloud"
+    }
+  },
+  "questions": [
+    {
+      "id": "gcp-GWA-A-q1",
+      "question": "新入社員をGoogle Workspaceに追加する際、最も推奨される方法はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Google管理コンソールから手動でユーザーを1件ずつ追加する",
+          "explanation": {
+            "text": "少人数なら可能だが、大規模な導入や継続的な追加には非効率。",
+            "reference": "https://support.google.com/a/answer/33310",
+            "reference_label": "Google Workspace 管理者ヘルプ - ユーザーの追加"
+          }
+        },
+        {
+          "key": "B",
+          "text": "CSVファイルをインポートして複数のユーザーを一括で追加する",
+          "explanation": {
+            "text": "推奨方法のひとつで、大量のユーザーを効率的に追加可能。",
+            "reference": "https://support.google.com/a/answer/40057",
+            "reference_label": "Google Workspace 管理者ヘルプ - CSV でユーザーを追加"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Googleドライブからスプレッドシートを共有し、本人にセルフ登録してもらう",
+          "explanation": {
+            "text": "Google Workspace ではセルフ登録はサポートされていない。",
+            "reference": "https://support.google.com/a/",
+            "reference_label": "Google Workspace 管理者ヘルプ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Google Cloud Directory Sync (GCDS) を利用する",
+          "explanation": {
+            "text": "オンプレADと連携して大規模ユーザー管理が可能で推奨される方法。",
+            "reference": "https://support.google.com/a/answer/106368",
+            "reference_label": "Google Workspace 管理者ヘルプ - GCDS"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "新入社員の追加は少数ならCSVでもよいが、運用上はAD連携が可能なGCDSを利用するのが推奨される。",
+        "reference": "https://support.google.com/a/answer/106368",
+        "reference_label": "Google Workspace 管理者ヘルプ - GCDS"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q2",
+      "question": "Google Workspaceの2段階認証を有効にする際、管理者が強制できる設定はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "特定の組織部門やグループに対してのみ2段階認証を必須にする",
+          "explanation": {
+            "text": "管理者はOUやグループ単位でポリシーを適用できる。",
+            "reference": "https://support.google.com/a/answer/9176657",
+            "reference_label": "Google Workspace 管理者ヘルプ - 2段階認証の適用"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーが希望した場合のみ2段階認証を利用可能にする",
+          "explanation": {
+            "text": "管理者は強制適用できるため、任意利用のみの設定は存在しない。",
+            "reference": "https://support.google.com/a/answer/9176657",
+            "reference_label": "Google Workspace 管理者ヘルプ - 2段階認証の適用"
+          }
+        },
+        {
+          "key": "C",
+          "text": "管理者アカウントにだけ2段階認証を強制する",
+          "explanation": {
+            "text": "管理者アカウントへの強制は推奨されるが、全ユーザーやOU単位も可能。",
+            "reference": "https://support.google.com/a/answer/9176657",
+            "reference_label": "Google Workspace 管理者ヘルプ - 2段階認証の適用"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ドメイン全体で必須にすることはできない",
+          "explanation": {
+            "text": "ドメイン全体への強制も可能であるため誤り。",
+            "reference": "https://support.google.com/a/answer/9176657",
+            "reference_label": "Google Workspace 管理者ヘルプ - 2段階認証の適用"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Google WorkspaceではOU単位での2段階認証の強制適用が可能。特定のユーザー層に限定することもできる。",
+        "reference": "https://support.google.com/a/answer/9176657",
+        "reference_label": "Google Workspace 管理者ヘルプ - 2段階認証の適用"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q3",
+      "question": "ユーザーが退職する際に、Google Workspaceで推奨される対応はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ユーザーアカウントを削除する",
+          "explanation": {
+            "text": "削除するとデータが失われるため非推奨。",
+            "reference": "https://support.google.com/a/answer/33314",
+            "reference_label": "Google Workspace 管理者ヘルプ - アカウント削除"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーアカウントを無効化し、データを保持する",
+          "explanation": {
+            "text": "退職者データ保持には無効化が推奨される。",
+            "reference": "https://support.google.com/a/answer/33314",
+            "reference_label": "Google Workspace 管理者ヘルプ - アカウント管理"
+          }
+        },
+        {
+          "key": "C",
+          "text": "メール転送を設定し、アカウントを放置する",
+          "explanation": {
+            "text": "放置はセキュリティリスクが高いため非推奨。",
+            "reference": "https://support.google.com/a/",
+            "reference_label": "Google Workspace 管理者ヘルプ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザー本人にアカウントを削除してもらう",
+          "explanation": {
+            "text": "管理者のみが削除でき、本人操作は不可。",
+            "reference": "https://support.google.com/a/",
+            "reference_label": "Google Workspace 管理者ヘルプ"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "退職者アカウントは無効化し、必要に応じてデータを別ユーザーに移行するのが推奨。",
+        "reference": "https://support.google.com/a/answer/33314",
+        "reference_label": "Google Workspace 管理者ヘルプ - アカウント管理"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q4",
+      "question": "Google Workspaceのストレージ管理に関して正しい説明はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "各ユーザーには固定で15GBのストレージが割り当てられる",
+          "explanation": {
+            "text": "プランによって割り当ては異なり、固定ではない。",
+            "reference": "https://workspace.google.com/intl/ja/pricing.html",
+            "reference_label": "Google Workspace 料金表"
+          }
+        },
+        {
+          "key": "B",
+          "text": "管理者はユーザーごとのストレージ使用量を確認できる",
+          "explanation": {
+            "text": "管理コンソールでユーザーごとの使用量を確認可能。",
+            "reference": "https://support.google.com/a/answer/100458",
+            "reference_label": "Google Workspace 管理者ヘルプ - ストレージ管理"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザーはストレージ上限を超えても引き続き利用可能",
+          "explanation": {
+            "text": "上限を超えると新しいデータ保存ができなくなる。",
+            "reference": "https://support.google.com/a/answer/10434866",
+            "reference_label": "Google Workspace 管理者ヘルプ - ストレージ制限"
+          }
+        },
+        {
+          "key": "D",
+          "text": "管理者が個別に追加ストレージを割り当てることはできない",
+          "explanation": {
+            "text": "管理者はユーザー単位でストレージを割り当て可能。",
+            "reference": "https://support.google.com/a/answer/10434866",
+            "reference_label": "Google Workspace 管理者ヘルプ - ストレージ制限"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "管理者は管理コンソールからユーザーごとのストレージ使用状況を確認できる。",
+        "reference": "https://support.google.com/a/answer/100458",
+        "reference_label": "Google Workspace 管理者ヘルプ - ストレージ管理"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q5",
+      "question": "管理者がユーザーのパスワードをリセットするときに必要な操作はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "管理者はGoogleサポートに依頼しなければならない",
+          "explanation": {
+            "text": "管理者が直接管理コンソールで操作可能。",
+            "reference": "https://support.google.com/a/answer/33319",
+            "reference_label": "Google Workspace 管理者ヘルプ - パスワードリセット"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーにパスワード変更リクエストを送信する必要がある",
+          "explanation": {
+            "text": "管理者は直接新しいパスワードを設定可能。",
+            "reference": "https://support.google.com/a/answer/33319",
+            "reference_label": "Google Workspace 管理者ヘルプ - パスワードリセット"
+          }
+        },
+        {
+          "key": "C",
+          "text": "管理者コンソールから該当ユーザーを選択してパスワードを更新する",
+          "explanation": {
+            "text": "最も標準的な操作方法。",
+            "reference": "https://support.google.com/a/answer/33319",
+            "reference_label": "Google Workspace 管理者ヘルプ - パスワードリセット"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザーが自分で再設定するまで待つ必要がある",
+          "explanation": {
+            "text": "管理者が即時リセット可能。",
+            "reference": "https://support.google.com/a/answer/33319",
+            "reference_label": "Google Workspace 管理者ヘルプ - パスワードリセット"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "管理者は管理コンソールで直接ユーザーのパスワードをリセットできる。",
+        "reference": "https://support.google.com/a/answer/33319",
+        "reference_label": "Google Workspace 管理者ヘルプ - パスワードリセット"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q6",
+      "question": "Googleグループを利用する主な利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "複数ユーザーに一括でメールを送信できる",
+          "explanation": {
+            "text": "代表的な用途であり利点。",
+            "reference": "https://support.google.com/a/answer/167430",
+            "reference_label": "Google Workspace 管理者ヘルプ - グループ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーのパスワードを管理できる",
+          "explanation": {
+            "text": "グループにはパスワード管理機能はない。",
+            "reference": "https://support.google.com/a/answer/167430",
+            "reference_label": "Google Workspace 管理者ヘルプ - グループ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザーアカウントを無効化できる",
+          "explanation": {
+            "text": "グループにはアカウント制御機能はない。",
+            "reference": "https://support.google.com/a/answer/167430",
+            "reference_label": "Google Workspace 管理者ヘルプ - グループ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザーのストレージ割り当てを変更できる",
+          "explanation": {
+            "text": "ストレージ管理機能はない。",
+            "reference": "https://support.google.com/a/answer/167430",
+            "reference_label": "Google Workspace 管理者ヘルプ - グループ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Googleグループは複数ユーザーに一括でメールを送信するためのメーリングリスト機能が主な利点。",
+        "reference": "https://support.google.com/a/answer/167430",
+        "reference_label": "Google Workspace 管理者ヘルプ - グループ"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q7",
+      "question": "管理者がユーザーのアクティビティログを確認する理由として最も適切なのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ユーザーのストレージ容量を増やすため",
+          "explanation": {
+            "text": "ログはストレージ容量の変更には関係しない。",
+            "reference": "https://support.google.com/a/answer/4580176",
+            "reference_label": "Google Workspace 管理者ヘルプ - 監査ログ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "セキュリティインシデントの検知や不正アクセス調査のため",
+          "explanation": {
+            "text": "アクティビティログはセキュリティ監査に用いられる。",
+            "reference": "https://support.google.com/a/answer/4580176",
+            "reference_label": "Google Workspace 管理者ヘルプ - 監査ログ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザーのメール件数を減らすため",
+          "explanation": {
+            "text": "ログはメール件数の制御には関係しない。",
+            "reference": "https://support.google.com/a/answer/4580176",
+            "reference_label": "Google Workspace 管理者ヘルプ - 監査ログ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザーのパスワードをリセットするため",
+          "explanation": {
+            "text": "ログ確認はパスワードリセット操作ではない。",
+            "reference": "https://support.google.com/a/answer/4580176",
+            "reference_label": "Google Workspace 管理者ヘルプ - 監査ログ"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "アクティビティログはセキュリティ上の異常検知や調査のために利用される。",
+        "reference": "https://support.google.com/a/answer/4580176",
+        "reference_label": "Google Workspace 管理者ヘルプ - 監査ログ"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q8",
+      "question": "Google Workspaceでユーザーのメール署名を一括で管理したい場合、推奨される方法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "各ユーザーに署名を手動で設定してもらう",
+          "explanation": {
+            "text": "ユーザー任せでは統一管理ができない。",
+            "reference": "https://support.google.com/a/answer/92074",
+            "reference_label": "Google Workspace 管理者ヘルプ - Gmail 署名"
+          }
+        },
+        {
+          "key": "B",
+          "text": "管理者が管理コンソールから一括で署名を設定する",
+          "explanation": {
+            "text": "管理コンソールには直接の一括署名設定機能はない。",
+            "reference": "https://support.google.com/a/answer/92074",
+            "reference_label": "Google Workspace 管理者ヘルプ - Gmail 署名"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Google Workspace Marketplaceのアドオンを利用する",
+          "explanation": {
+            "text": "統一署名管理にはアドオンやAPI利用が推奨される。",
+            "reference": "https://workspace.google.com/marketplace/",
+            "reference_label": "Google Workspace Marketplace"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Gmailフィルタを利用して署名を付与する",
+          "explanation": {
+            "text": "フィルタでは署名管理はできない。",
+            "reference": "https://support.google.com/mail/answer/6579",
+            "reference_label": "Gmail ヘルプ - フィルタ"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "標準機能では署名の一括管理は不可。MarketplaceアドオンやAPIを利用するのが推奨。",
+        "reference": "https://workspace.google.com/marketplace/",
+        "reference_label": "Google Workspace Marketplace"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q9",
+      "question": "Google Workspaceでユーザーに特定のアプリの利用を制限するにはどの機能を使うか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "組織部門（OU）の設定を利用する",
+          "explanation": {
+            "text": "OU単位でアプリ利用の有効化/無効化が可能。",
+            "reference": "https://support.google.com/a/answer/182442",
+            "reference_label": "Google Workspace 管理者ヘルプ - サービス管理"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Googleグループでアプリ権限を割り当てる",
+          "explanation": {
+            "text": "グループではアプリ利用制御はできない。",
+            "reference": "https://support.google.com/a/answer/182442",
+            "reference_label": "Google Workspace 管理者ヘルプ - サービス管理"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Googleカレンダーでアクセス制御を設定する",
+          "explanation": {
+            "text": "カレンダーは予定共有の機能であり、アプリ制御ではない。",
+            "reference": "https://support.google.com/a/",
+            "reference_label": "Google Workspace 管理者ヘルプ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Googleドライブの共有設定を変更する",
+          "explanation": {
+            "text": "ドライブ共有設定はファイルアクセス制御でありアプリ制御ではない。",
+            "reference": "https://support.google.com/a/",
+            "reference_label": "Google Workspace 管理者ヘルプ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Google Workspaceのアプリ利用制御はOU単位でのサービス管理設定で行う。",
+        "reference": "https://support.google.com/a/answer/182442",
+        "reference_label": "Google Workspace 管理者ヘルプ - サービス管理"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q10",
+      "question": "Google Vaultの主な目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ユーザーのストレージ容量を増やす",
+          "explanation": {
+            "text": "Vaultはストレージ管理ではない。",
+            "reference": "https://support.google.com/vault/answer/2462365",
+            "reference_label": "Google Vault ヘルプ - 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "法的保持や電子情報開示（eDiscovery）を実施する",
+          "explanation": {
+            "text": "Vaultは法的要件に対応するための機能。",
+            "reference": "https://support.google.com/vault/answer/2462365",
+            "reference_label": "Google Vault ヘルプ - 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザーのパスワードを保存する",
+          "explanation": {
+            "text": "Vaultにパスワード保存機能はない。",
+            "reference": "https://support.google.com/vault/answer/2462365",
+            "reference_label": "Google Vault ヘルプ - 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Googleドライブの共有設定を変更する",
+          "explanation": {
+            "text": "Vaultは共有制御ではなくデータ保持・監査に関する機能。",
+            "reference": "https://support.google.com/vault/answer/2462365",
+            "reference_label": "Google Vault ヘルプ - 概要"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Vaultは法的保持、監査、eDiscoveryのためのツールであり、コンプライアンス対応が目的。",
+        "reference": "https://support.google.com/vault/answer/2462365",
+        "reference_label": "Google Vault ヘルプ - 概要"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q11",
+      "question": "Google Workspaceでユーザーがメールの不審な添付ファイルを開かないようにするため、管理者が利用できる機能はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Gmailのセキュリティ設定で添付ファイルスキャンを有効にする",
+          "explanation": {
+            "text": "管理者は添付ファイルのスキャンポリシーを適用できる。",
+            "reference": "https://support.google.com/a/answer/7582929",
+            "reference_label": "Google Workspace 管理者ヘルプ - Gmail セキュリティ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Googleドライブの共有制限を強化する",
+          "explanation": {
+            "text": "これは添付ファイルではなくドライブ共有に関する制御。",
+            "reference": "https://support.google.com/a/",
+            "reference_label": "Google Workspace 管理者ヘルプ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Googleカレンダーでイベント添付を禁止する",
+          "explanation": {
+            "text": "カレンダーは添付ファイルのセキュリティ管理対象ではない。",
+            "reference": "https://support.google.com/a/",
+            "reference_label": "Google Workspace 管理者ヘルプ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "管理者が全メールを手動で確認する",
+          "explanation": {
+            "text": "非現実的であり管理者に推奨される方法ではない。",
+            "reference": "https://support.google.com/a/",
+            "reference_label": "Google Workspace 管理者ヘルプ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Gmailのセキュリティ機能を利用し、不審な添付ファイルを自動的に検出・ブロックできる。",
+        "reference": "https://support.google.com/a/answer/7582929",
+        "reference_label": "Google Workspace 管理者ヘルプ - Gmail セキュリティ"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q12",
+      "question": "Google Workspaceで利用できるモバイル端末管理（MDM）の機能はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "端末のパスワードポリシーを強制する",
+          "explanation": {
+            "text": "MDMでセキュリティポリシーを適用可能。",
+            "reference": "https://support.google.com/a/answer/1734200",
+            "reference_label": "Google Workspace 管理者ヘルプ - モバイル管理"
+          }
+        },
+        {
+          "key": "B",
+          "text": "端末のバッテリー寿命を延ばす",
+          "explanation": {
+            "text": "MDMにはバッテリー最適化機能はない。",
+            "reference": "https://support.google.com/a/answer/1734200",
+            "reference_label": "Google Workspace 管理者ヘルプ - モバイル管理"
+          }
+        },
+        {
+          "key": "C",
+          "text": "端末のアプリストア購入を管理する",
+          "explanation": {
+            "text": "Google Workspace MDMはアプリ購入管理機能を提供しない。",
+            "reference": "https://support.google.com/a/answer/1734200",
+            "reference_label": "Google Workspace 管理者ヘルプ - モバイル管理"
+          }
+        },
+        {
+          "key": "D",
+          "text": "端末をリモートでワイプする",
+          "explanation": {
+            "text": "紛失時に端末データをリモート削除できる。",
+            "reference": "https://support.google.com/a/answer/1734200",
+            "reference_label": "Google Workspace 管理者ヘルプ - モバイル管理"
+          }
+        }
+      ],
+      "answer": "A,D",
+      "explanation": {
+        "text": "Google Workspaceのモバイル管理では、パスワードポリシーの適用や端末リモートワイプが可能。",
+        "reference": "https://support.google.com/a/answer/1734200",
+        "reference_label": "Google Workspace 管理者ヘルプ - モバイル管理"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q13",
+      "question": "Google Workspaceでユーザーが新しいデバイスからログインした際に追加確認を行うための機能はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "セキュリティアラート通知",
+          "explanation": {
+            "text": "不審なログインを検知して通知可能。",
+            "reference": "https://support.google.com/a/answer/7587183",
+            "reference_label": "Google Workspace 管理者ヘルプ - セキュリティアラート"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ログインチャレンジ（Login Challenge）",
+          "explanation": {
+            "text": "新しいデバイスや場所からのログイン時に追加確認を行う機能。",
+            "reference": "https://support.google.com/a/answer/6002699",
+            "reference_label": "Google Workspace 管理者ヘルプ - ログインチャレンジ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Googleカレンダーの招待制限",
+          "explanation": {
+            "text": "カレンダーはログイン確認機能を提供しない。",
+            "reference": "https://support.google.com/a/",
+            "reference_label": "Google Workspace 管理者ヘルプ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Googleドライブの共有制御",
+          "explanation": {
+            "text": "ドライブ共有制御はログインセキュリティとは無関係。",
+            "reference": "https://support.google.com/a/",
+            "reference_label": "Google Workspace 管理者ヘルプ"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ログインチャレンジは新規デバイスやIPからのログイン時に追加認証を要求し、セキュリティを強化する。",
+        "reference": "https://support.google.com/a/answer/6002699",
+        "reference_label": "Google Workspace 管理者ヘルプ - ログインチャレンジ"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q14",
+      "question": "Google Workspaceでグループを外部ユーザーと共有可能にする設定はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "管理コンソールでグループ設定を外部アクセス許可に変更する",
+          "explanation": {
+            "text": "管理者が外部ユーザーとの共有可否を設定可能。",
+            "reference": "https://support.google.com/a/answer/167430",
+            "reference_label": "Google Workspace 管理者ヘルプ - グループ設定"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーが任意で外部ユーザーを追加できる",
+          "explanation": {
+            "text": "外部共有の可否は管理者が設定する必要がある。",
+            "reference": "https://support.google.com/a/answer/167430",
+            "reference_label": "Google Workspace 管理者ヘルプ - グループ設定"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Googleドライブの共有設定で制御する",
+          "explanation": {
+            "text": "ドライブ共有とは別の設定。",
+            "reference": "https://support.google.com/a/",
+            "reference_label": "Google Workspace 管理者ヘルプ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Googleカレンダーで権限を変更する",
+          "explanation": {
+            "text": "カレンダー共有とは無関係。",
+            "reference": "https://support.google.com/a/",
+            "reference_label": "Google Workspace 管理者ヘルプ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "外部ユーザーとのグループ共有は管理者が管理コンソールで設定変更する必要がある。",
+        "reference": "https://support.google.com/a/answer/167430",
+        "reference_label": "Google Workspace 管理者ヘルプ - グループ設定"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q15",
+      "question": "Google Workspaceで特定ユーザーのメールを監査目的で確認するために利用できる機能はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Google Vaultの検索機能",
+          "explanation": {
+            "text": "Vaultを利用すれば対象ユーザーのメールを保持・検索できる。",
+            "reference": "https://support.google.com/vault/answer/2462365",
+            "reference_label": "Google Vault ヘルプ - 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Googleドライブのアクティビティログ",
+          "explanation": {
+            "text": "ドライブログはメール監査には利用できない。",
+            "reference": "https://support.google.com/vault/",
+            "reference_label": "Google Vault ヘルプ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "管理者コンソールのストレージ管理",
+          "explanation": {
+            "text": "ストレージ管理は容量確認の機能であり、メール監査ではない。",
+            "reference": "https://support.google.com/a/answer/100458",
+            "reference_label": "Google Workspace 管理者ヘルプ - ストレージ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Googleグループのメッセージ管理",
+          "explanation": {
+            "text": "グループは特定ユーザーの個人メール監査には使えない。",
+            "reference": "https://support.google.com/a/",
+            "reference_label": "Google Workspace 管理者ヘルプ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ユーザーのメール監査はGoogle Vaultを利用するのが標準的な方法。",
+        "reference": "https://support.google.com/vault/answer/2462365",
+        "reference_label": "Google Vault ヘルプ - 概要"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q16",
+      "question": "Google Workspaceの管理者が利用できる事前定義済みの管理者ロールの例はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "スーパーマーケット管理者",
+          "explanation": {
+            "text": "存在しないロール。",
+            "reference": "https://support.google.com/a/answer/1219251",
+            "reference_label": "Google Workspace 管理者ヘルプ - 管理者ロール"
+          }
+        },
+        {
+          "key": "B",
+          "text": "スーパ管理者",
+          "explanation": {
+            "text": "全権限を持つデフォルトの管理者ロール。",
+            "reference": "https://support.google.com/a/answer/1219251",
+            "reference_label": "Google Workspace 管理者ヘルプ - 管理者ロール"
+          }
+        },
+        {
+          "key": "C",
+          "text": "カレンダーリーダー",
+          "explanation": {
+            "text": "Google Workspaceにはそのようなロールは存在しない。",
+            "reference": "https://support.google.com/a/answer/1219251",
+            "reference_label": "Google Workspace 管理者ヘルプ - 管理者ロール"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザーマネージャー",
+          "explanation": {
+            "text": "ユーザー管理専用の事前定義ロールが存在する。",
+            "reference": "https://support.google.com/a/answer/1219251",
+            "reference_label": "Google Workspace 管理者ヘルプ - 管理者ロール"
+          }
+        }
+      ],
+      "answer": "B,D",
+      "explanation": {
+        "text": "Google Workspaceの事前定義ロールにはスーパ管理者やユーザーマネージャーなどが含まれる。",
+        "reference": "https://support.google.com/a/answer/1219251",
+        "reference_label": "Google Workspace 管理者ヘルプ - 管理者ロール"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q17",
+      "question": "Google Workspaceでユーザーがアカウントにアクセスできなくなった場合、まず確認すべきことはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "アカウントが無効化されていないか確認する",
+          "explanation": {
+            "text": "無効化されたアカウントではログインできない。",
+            "reference": "https://support.google.com/a/answer/33314",
+            "reference_label": "Google Workspace 管理者ヘルプ - アカウント管理"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーのカレンダー予定を確認する",
+          "explanation": {
+            "text": "予定確認はログイン不可の原因調査にはならない。",
+            "reference": "https://support.google.com/a/",
+            "reference_label": "Google Workspace 管理者ヘルプ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザーのメール署名を確認する",
+          "explanation": {
+            "text": "署名はログイン不可と無関係。",
+            "reference": "https://support.google.com/a/",
+            "reference_label": "Google Workspace 管理者ヘルプ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Googleドライブの共有設定を変更する",
+          "explanation": {
+            "text": "共有設定はログイン不可の原因にはならない。",
+            "reference": "https://support.google.com/a/",
+            "reference_label": "Google Workspace 管理者ヘルプ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ログインできない場合はアカウントの無効化やロックを確認するのが基本。",
+        "reference": "https://support.google.com/a/answer/33314",
+        "reference_label": "Google Workspace 管理者ヘルプ - アカウント管理"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q18",
+      "question": "Google Workspaceで組織部門（OU）を利用する主な目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ユーザーの誕生日を管理するため",
+          "explanation": {
+            "text": "OUは誕生日管理には使われない。",
+            "reference": "https://support.google.com/a/answer/182537",
+            "reference_label": "Google Workspace 管理者ヘルプ - 組織部門"
+          }
+        },
+        {
+          "key": "B",
+          "text": "サービスやポリシーをユーザーグループごとに適用するため",
+          "explanation": {
+            "text": "OUはポリシーの適用単位として利用される。",
+            "reference": "https://support.google.com/a/answer/182537",
+            "reference_label": "Google Workspace 管理者ヘルプ - 組織部門"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザーのパスワードを自動変更するため",
+          "explanation": {
+            "text": "OUはパスワード変更機能を提供しない。",
+            "reference": "https://support.google.com/a/answer/182537",
+            "reference_label": "Google Workspace 管理者ヘルプ - 組織部門"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Googleドライブのフォルダ階層を管理するため",
+          "explanation": {
+            "text": "OUはドライブフォルダ管理とは関係ない。",
+            "reference": "https://support.google.com/a/answer/182537",
+            "reference_label": "Google Workspace 管理者ヘルプ - 組織部門"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "OUはユーザーやデバイスに対してサービスやポリシーを適用するための管理単位。",
+        "reference": "https://support.google.com/a/answer/182537",
+        "reference_label": "Google Workspace 管理者ヘルプ - 組織部門"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q19",
+      "question": "Google Workspaceでセキュリティセンターを利用する主な目的はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ユーザーの誕生日通知を管理する",
+          "explanation": {
+            "text": "セキュリティセンターは誕生日とは無関係。",
+            "reference": "https://support.google.com/a/answer/9050944",
+            "reference_label": "Google Workspace 管理者ヘルプ - セキュリティセンター"
+          }
+        },
+        {
+          "key": "B",
+          "text": "組織全体のセキュリティ状況を可視化・分析する",
+          "explanation": {
+            "text": "セキュリティセンターは脅威の検知やセキュリティ可視化に利用される。",
+            "reference": "https://support.google.com/a/answer/9050944",
+            "reference_label": "Google Workspace 管理者ヘルプ - セキュリティセンター"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Googleカレンダーのイベントを統計分析する",
+          "explanation": {
+            "text": "カレンダーとは関係ない。",
+            "reference": "https://support.google.com/a/answer/9050944",
+            "reference_label": "Google Workspace 管理者ヘルプ - セキュリティセンター"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザーのメール署名を一括で設定する",
+          "explanation": {
+            "text": "署名管理はセキュリティセンターの機能ではない。",
+            "reference": "https://support.google.com/a/answer/9050944",
+            "reference_label": "Google Workspace 管理者ヘルプ - セキュリティセンター"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Google Workspace セキュリティセンターは、セキュリティ状態を分析・監視し、脅威に対応するための機能を提供する。",
+        "reference": "https://support.google.com/a/answer/9050944",
+        "reference_label": "Google Workspace 管理者ヘルプ - セキュリティセンター"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q20",
+      "question": "Google Workspaceで監査ログを利用することで得られる利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ユーザーのファイルアクセスやログイン履歴を確認できる",
+          "explanation": {
+            "text": "監査ログでユーザー操作やログイン履歴を確認可能。",
+            "reference": "https://support.google.com/a/answer/4580176",
+            "reference_label": "Google Workspace 管理者ヘルプ - 監査ログ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーのパスワードを変更できる",
+          "explanation": {
+            "text": "監査ログにはパスワード操作機能はない。",
+            "reference": "https://support.google.com/a/answer/4580176",
+            "reference_label": "Google Workspace 管理者ヘルプ - 監査ログ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ストレージ容量を増やせる",
+          "explanation": {
+            "text": "監査ログはストレージ制御機能を持たない。",
+            "reference": "https://support.google.com/a/answer/4580176",
+            "reference_label": "Google Workspace 管理者ヘルプ - 監査ログ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザーに代わってメールを送信できる",
+          "explanation": {
+            "text": "監査ログは行動記録であり代理送信機能はない。",
+            "reference": "https://support.google.com/a/answer/4580176",
+            "reference_label": "Google Workspace 管理者ヘルプ - 監査ログ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "監査ログを利用することで、ユーザーが行った操作やログイン履歴を追跡しセキュリティ監査を強化できる。",
+        "reference": "https://support.google.com/a/answer/4580176",
+        "reference_label": "Google Workspace 管理者ヘルプ - 監査ログ"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q21",
+      "question": "Google Workspaceでカスタム管理者ロールを作成する場合にできることはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "一部の管理機能だけを委任できる",
+          "explanation": {
+            "text": "カスタムロールを作成して権限を細かく委任できる。",
+            "reference": "https://support.google.com/a/answer/2406043",
+            "reference_label": "Google Workspace 管理者ヘルプ - カスタム管理者ロール"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーの誕生日を自動で登録できる",
+          "explanation": {
+            "text": "そのような機能は存在しない。",
+            "reference": "https://support.google.com/a/answer/2406043",
+            "reference_label": "Google Workspace 管理者ヘルプ - カスタム管理者ロール"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Googleドライブの全ファイルを直接編集できる",
+          "explanation": {
+            "text": "ロール権限で管理可能なのは制御範囲に限られる。",
+            "reference": "https://support.google.com/a/answer/2406043",
+            "reference_label": "Google Workspace 管理者ヘルプ - カスタム管理者ロール"
+          }
+        },
+        {
+          "key": "D",
+          "text": "パスワードを知らずにユーザーとしてログインできる",
+          "explanation": {
+            "text": "管理者ロールにそのような機能は存在しない。",
+            "reference": "https://support.google.com/a/answer/2406043",
+            "reference_label": "Google Workspace 管理者ヘルプ - カスタム管理者ロール"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "カスタム管理者ロールでは特定の管理機能のみを委任可能。権限の細分化によるセキュリティ向上が狙い。",
+        "reference": "https://support.google.com/a/answer/2406043",
+        "reference_label": "Google Workspace 管理者ヘルプ - カスタム管理者ロール"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q22",
+      "question": "Google Workspaceでユーザーのパスワードポリシーを管理者が設定できる項目はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "パスワードの最小文字数",
+          "explanation": {
+            "text": "管理者はパスワードの長さ要件を設定可能。",
+            "reference": "https://support.google.com/a/answer/139399",
+            "reference_label": "Google Workspace 管理者ヘルプ - パスワードポリシー"
+          }
+        },
+        {
+          "key": "B",
+          "text": "パスワードの有効期限",
+          "explanation": {
+            "text": "一定期間でパスワード変更を必須化できる。",
+            "reference": "https://support.google.com/a/answer/139399",
+            "reference_label": "Google Workspace 管理者ヘルプ - パスワードポリシー"
+          }
+        },
+        {
+          "key": "C",
+          "text": "パスワードの履歴保持",
+          "explanation": {
+            "text": "過去のパスワードを再利用できないように制御可能。",
+            "reference": "https://support.google.com/a/answer/139399",
+            "reference_label": "Google Workspace 管理者ヘルプ - パスワードポリシー"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザーの指紋認証登録",
+          "explanation": {
+            "text": "Google Workspaceのパスワードポリシーには含まれない。",
+            "reference": "https://support.google.com/a/answer/139399",
+            "reference_label": "Google Workspace 管理者ヘルプ - パスワードポリシー"
+          }
+        }
+      ],
+      "answer": "A,B,C",
+      "explanation": {
+        "text": "Google Workspaceのパスワードポリシーでは、長さ、期限、履歴制御が可能。生体認証は含まれない。",
+        "reference": "https://support.google.com/a/answer/139399",
+        "reference_label": "Google Workspace 管理者ヘルプ - パスワードポリシー"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q23",
+      "question": "Google Workspaceでユーザーのメールを別ユーザーに自動転送する設定を管理者が行う場合、最適な方法はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "管理者コンソールでルーティングルールを作成する",
+          "explanation": {
+            "text": "ルーティング設定により管理者が自動転送を制御可能。",
+            "reference": "https://support.google.com/a/answer/2685650",
+            "reference_label": "Google Workspace 管理者ヘルプ - Gmail ルーティング"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーに手動で転送設定を依頼する",
+          "explanation": {
+            "text": "統一的な管理にはならないため非推奨。",
+            "reference": "https://support.google.com/a/answer/2685650",
+            "reference_label": "Google Workspace 管理者ヘルプ - Gmail ルーティング"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Googleグループに参加させて代理でメールを受信させる",
+          "explanation": {
+            "text": "一部のケースで利用可能だが自動転送の代替ではない。",
+            "reference": "https://support.google.com/a/answer/167430",
+            "reference_label": "Google Workspace 管理者ヘルプ - グループ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Googleドライブの共有設定を変更する",
+          "explanation": {
+            "text": "ドライブ設定はメール転送に無関係。",
+            "reference": "https://support.google.com/a/",
+            "reference_label": "Google Workspace 管理者ヘルプ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ユーザーのメールを別の宛先に自動転送する場合、管理者コンソールでルーティングルールを設定するのが正しい方法。",
+        "reference": "https://support.google.com/a/answer/2685650",
+        "reference_label": "Google Workspace 管理者ヘルプ - Gmail ルーティング"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q24",
+      "question": "Google Workspaceで利用できるレポート機能の活用例として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ユーザーごとのログイン履歴を確認する",
+          "explanation": {
+            "text": "レポート機能でログインやアクティビティを追跡可能。",
+            "reference": "https://support.google.com/a/answer/4580176",
+            "reference_label": "Google Workspace 管理者ヘルプ - レポート"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーのメール署名を変更する",
+          "explanation": {
+            "text": "署名変更機能はレポートには含まれない。",
+            "reference": "https://support.google.com/a/answer/4580176",
+            "reference_label": "Google Workspace 管理者ヘルプ - レポート"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Googleカレンダーの予定を削除する",
+          "explanation": {
+            "text": "レポートは削除機能を提供しない。",
+            "reference": "https://support.google.com/a/answer/4580176",
+            "reference_label": "Google Workspace 管理者ヘルプ - レポート"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Googleドライブの共有フォルダを作成する",
+          "explanation": {
+            "text": "レポートは共有フォルダ作成機能を持たない。",
+            "reference": "https://support.google.com/a/answer/4580176",
+            "reference_label": "Google Workspace 管理者ヘルプ - レポート"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Google Workspaceのレポート機能を使えば、ログイン履歴やアクティビティを監査可能。",
+        "reference": "https://support.google.com/a/answer/4580176",
+        "reference_label": "Google Workspace 管理者ヘルプ - レポート"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q25",
+      "question": "Google Workspaceで端末管理を有効にすることでできることはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "端末のパスワードポリシーを強制する",
+          "explanation": {
+            "text": "モバイル端末管理で端末にポリシーを適用可能。",
+            "reference": "https://support.google.com/a/answer/1734200",
+            "reference_label": "Google Workspace 管理者ヘルプ - モバイル管理"
+          }
+        },
+        {
+          "key": "B",
+          "text": "端末をリモートでワイプする",
+          "explanation": {
+            "text": "紛失や盗難時にデータを削除可能。",
+            "reference": "https://support.google.com/a/answer/1734200",
+            "reference_label": "Google Workspace 管理者ヘルプ - モバイル管理"
+          }
+        },
+        {
+          "key": "C",
+          "text": "端末のバッテリー寿命を延長する",
+          "explanation": {
+            "text": "バッテリー最適化機能はない。",
+            "reference": "https://support.google.com/a/answer/1734200",
+            "reference_label": "Google Workspace 管理者ヘルプ - モバイル管理"
+          }
+        },
+        {
+          "key": "D",
+          "text": "端末のアプリストア購入を制御する",
+          "explanation": {
+            "text": "Google Workspaceではアプリ購入の管理は不可。",
+            "reference": "https://support.google.com/a/answer/1734200",
+            "reference_label": "Google Workspace 管理者ヘルプ - モバイル管理"
+          }
+        }
+      ],
+      "answer": "A,B",
+      "explanation": {
+        "text": "モバイル端末管理ではパスワードポリシーの適用やリモートワイプが可能。",
+        "reference": "https://support.google.com/a/answer/1734200",
+        "reference_label": "Google Workspace 管理者ヘルプ - モバイル管理"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q26",
+      "question": "Google Workspaceでアプリケーションに対するアクセスを制御するために利用できる機能はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "コンテキストアウェアアクセス",
+          "explanation": {
+            "text": "ユーザー属性やデバイス状態に基づきアクセス制御可能。",
+            "reference": "https://support.google.com/a/answer/9223653",
+            "reference_label": "Google Workspace 管理者ヘルプ - コンテキストアウェアアクセス"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Googleカレンダーのアクセス権",
+          "explanation": {
+            "text": "カレンダー共有とは別機能でありアクセス制御全般には利用できない。",
+            "reference": "https://support.google.com/a/answer/9223653",
+            "reference_label": "Google Workspace 管理者ヘルプ - コンテキストアウェアアクセス"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Googleグループの設定",
+          "explanation": {
+            "text": "グループ設定はメール配信に関連するがアプリ全般のアクセス制御ではない。",
+            "reference": "https://support.google.com/a/answer/9223653",
+            "reference_label": "Google Workspace 管理者ヘルプ - コンテキストアウェアアクセス"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Googleドライブの共有制御",
+          "explanation": {
+            "text": "ドライブ共有制御はストレージ関連でありアプリ全般には対応しない。",
+            "reference": "https://support.google.com/a/answer/9223653",
+            "reference_label": "Google Workspace 管理者ヘルプ - コンテキストアウェアアクセス"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "コンテキストアウェアアクセスを利用すれば、ユーザーの状況に応じてアプリアクセスを制御できる。",
+        "reference": "https://support.google.com/a/answer/9223653",
+        "reference_label": "Google Workspace 管理者ヘルプ - コンテキストアウェアアクセス"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q27",
+      "question": "Google Workspaceでユーザーがドライブのファイルを外部と共有する際、管理者が制御できる設定はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "外部ユーザーとの共有を禁止する",
+          "explanation": {
+            "text": "管理者は外部共有の可否を制御可能。",
+            "reference": "https://support.google.com/a/answer/60781",
+            "reference_label": "Google Workspace 管理者ヘルプ - 共有設定"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ドメイン外ユーザーへの共有リンク作成を制御する",
+          "explanation": {
+            "text": "リンク共有の範囲を管理者が制御可能。",
+            "reference": "https://support.google.com/a/answer/60781",
+            "reference_label": "Google Workspace 管理者ヘルプ - 共有設定"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザーの個人ドライブを削除する",
+          "explanation": {
+            "text": "管理者は個人ドライブの削除は直接行えない。",
+            "reference": "https://support.google.com/a/answer/60781",
+            "reference_label": "Google Workspace 管理者ヘルプ - 共有設定"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザーのパスワードをリセットする",
+          "explanation": {
+            "text": "共有設定とは無関係。",
+            "reference": "https://support.google.com/a/answer/60781",
+            "reference_label": "Google Workspace 管理者ヘルプ - 共有設定"
+          }
+        }
+      ],
+      "answer": "A,B",
+      "explanation": {
+        "text": "Google Workspaceの管理者は外部共有禁止やリンク共有範囲を制御できる。",
+        "reference": "https://support.google.com/a/answer/60781",
+        "reference_label": "Google Workspace 管理者ヘルプ - 共有設定"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q28",
+      "question": "Google WorkspaceでAPIアクセスを制御する理由として最も適切なのはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "不正なアプリケーションがユーザーデータにアクセスするのを防ぐため",
+          "explanation": {
+            "text": "API制御により安全性を高められる。",
+            "reference": "https://support.google.com/a/answer/7281227",
+            "reference_label": "Google Workspace 管理者ヘルプ - APIアクセス制御"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーのメール署名を自動で設定するため",
+          "explanation": {
+            "text": "APIアクセス制御は署名管理には関与しない。",
+            "reference": "https://support.google.com/a/answer/7281227",
+            "reference_label": "Google Workspace 管理者ヘルプ - APIアクセス制御"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Googleカレンダーの予定数を減らすため",
+          "explanation": {
+            "text": "API制御は予定数制御とは無関係。",
+            "reference": "https://support.google.com/a/answer/7281227",
+            "reference_label": "Google Workspace 管理者ヘルプ - APIアクセス制御"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザーのストレージ容量を増加させるため",
+          "explanation": {
+            "text": "API制御はストレージ管理とは関係ない。",
+            "reference": "https://support.google.com/a/answer/7281227",
+            "reference_label": "Google Workspace 管理者ヘルプ - APIアクセス制御"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "APIアクセス制御は、第三者アプリによる不正アクセスからデータを保護するための機能。",
+        "reference": "https://support.google.com/a/answer/7281227",
+        "reference_label": "Google Workspace 管理者ヘルプ - APIアクセス制御"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q29",
+      "question": "Google Workspaceで監査ログを利用する際に確認できる情報はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ユーザーのログイン履歴",
+          "explanation": {
+            "text": "監査ログでユーザーのログインイベントを確認可能。",
+            "reference": "https://support.google.com/a/answer/4580176",
+            "reference_label": "Google Workspace 管理者ヘルプ - 監査ログ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーのメール署名内容",
+          "explanation": {
+            "text": "署名は監査ログの対象外。",
+            "reference": "https://support.google.com/a/answer/4580176",
+            "reference_label": "Google Workspace 管理者ヘルプ - 監査ログ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Googleカレンダーのイベント件数",
+          "explanation": {
+            "text": "カレンダー利用状況は一部レポートで確認可能だが監査ログの主目的ではない。",
+            "reference": "https://support.google.com/a/answer/4580176",
+            "reference_label": "Google Workspace 管理者ヘルプ - 監査ログ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザーのパスワード文字数",
+          "explanation": {
+            "text": "監査ログでパスワード詳細は確認できない。",
+            "reference": "https://support.google.com/a/answer/4580176",
+            "reference_label": "Google Workspace 管理者ヘルプ - 監査ログ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "監査ログはユーザーのログインやアクティビティ記録を確認できる。",
+        "reference": "https://support.google.com/a/answer/4580176",
+        "reference_label": "Google Workspace 管理者ヘルプ - 監査ログ"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q30",
+      "question": "Google Workspaceでセキュリティキーを利用する主な目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ユーザーがパスワードを忘れた場合のリセット",
+          "explanation": {
+            "text": "セキュリティキーはパスワードリセット機能ではない。",
+            "reference": "https://support.google.com/a/answer/175197",
+            "reference_label": "Google Workspace 管理者ヘルプ - セキュリティキー"
+          }
+        },
+        {
+          "key": "B",
+          "text": "2段階認証における追加の認証要素",
+          "explanation": {
+            "text": "セキュリティキーは強力な2FA要素。",
+            "reference": "https://support.google.com/a/answer/175197",
+            "reference_label": "Google Workspace 管理者ヘルプ - セキュリティキー"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Googleドライブの保存容量を増やす",
+          "explanation": {
+            "text": "セキュリティキーはストレージ管理とは無関係。",
+            "reference": "https://support.google.com/a/answer/175197",
+            "reference_label": "Google Workspace 管理者ヘルプ - セキュリティキー"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザーのカレンダー予定を同期する",
+          "explanation": {
+            "text": "セキュリティキーは予定管理に関与しない。",
+            "reference": "https://support.google.com/a/answer/175197",
+            "reference_label": "Google Workspace 管理者ヘルプ - セキュリティキー"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "セキュリティキーはGoogle Workspaceの2段階認証に利用される追加の物理認証要素。",
+        "reference": "https://support.google.com/a/answer/175197",
+        "reference_label": "Google Workspace 管理者ヘルプ - セキュリティキー"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q31",
+      "question": "Google Workspaceでエイリアスアドレスを利用する利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "1つのユーザーが複数のメールアドレスで受信できる",
+          "explanation": {
+            "text": "エイリアスに送られたメールは同じユーザーの受信トレイに届く。",
+            "reference": "https://support.google.com/a/answer/33327",
+            "reference_label": "Google Workspace 管理者ヘルプ - エイリアス"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーのパスワードを複数作成できる",
+          "explanation": {
+            "text": "パスワードは1つのみ。エイリアスとは関係ない。",
+            "reference": "https://support.google.com/a/answer/33327",
+            "reference_label": "Google Workspace 管理者ヘルプ - エイリアス"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザーのストレージ容量が増える",
+          "explanation": {
+            "text": "エイリアスはストレージに影響しない。",
+            "reference": "https://support.google.com/a/answer/33327",
+            "reference_label": "Google Workspace 管理者ヘルプ - エイリアス"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザーのカレンダー予定が共有される",
+          "explanation": {
+            "text": "カレンダー共有とは無関係。",
+            "reference": "https://support.google.com/a/answer/33327",
+            "reference_label": "Google Workspace 管理者ヘルプ - エイリアス"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "エイリアスを利用すると、複数のメールアドレスを1つの受信トレイで扱える。",
+        "reference": "https://support.google.com/a/answer/33327",
+        "reference_label": "Google Workspace 管理者ヘルプ - エイリアス"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q32",
+      "question": "Google Workspaceでユーザーが退職した場合に推奨される対応はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "アカウントを即時削除する",
+          "explanation": {
+            "text": "削除するとデータも消えるため推奨されない。",
+            "reference": "https://support.google.com/a/answer/33314",
+            "reference_label": "Google Workspace 管理者ヘルプ - アカウント管理"
+          }
+        },
+        {
+          "key": "B",
+          "text": "アカウントを無効化してデータを保持する",
+          "explanation": {
+            "text": "無効化すれば不正利用を防ぎつつデータを保持できる。",
+            "reference": "https://support.google.com/a/answer/33314",
+            "reference_label": "Google Workspace 管理者ヘルプ - アカウント管理"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザーに削除依頼を送る",
+          "explanation": {
+            "text": "アカウント削除は管理者のみが可能。",
+            "reference": "https://support.google.com/a/answer/33314",
+            "reference_label": "Google Workspace 管理者ヘルプ - アカウント管理"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザーのカレンダー予定を手動削除する",
+          "explanation": {
+            "text": "予定削除ではアカウント管理として不十分。",
+            "reference": "https://support.google.com/a/answer/33314",
+            "reference_label": "Google Workspace 管理者ヘルプ - アカウント管理"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "退職者のアカウントは無効化し、必要に応じてデータを引き継ぐのが推奨される。",
+        "reference": "https://support.google.com/a/answer/33314",
+        "reference_label": "Google Workspace 管理者ヘルプ - アカウント管理"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q33",
+      "question": "Google Workspaceでユーザーがログインできない場合、考えられる原因はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "アカウントが無効化されている",
+          "explanation": {
+            "text": "無効化されたアカウントではログイン不可。",
+            "reference": "https://support.google.com/a/answer/33314",
+            "reference_label": "Google Workspace 管理者ヘルプ - アカウント管理"
+          }
+        },
+        {
+          "key": "B",
+          "text": "パスワードが間違っている",
+          "explanation": {
+            "text": "誤ったパスワード入力でログインできない。",
+            "reference": "https://support.google.com/a/answer/33319",
+            "reference_label": "Google Workspace 管理者ヘルプ - パスワード管理"
+          }
+        },
+        {
+          "key": "C",
+          "text": "2段階認証が失敗している",
+          "explanation": {
+            "text": "認証に失敗すればログイン不可。",
+            "reference": "https://support.google.com/a/answer/9176657",
+            "reference_label": "Google Workspace 管理者ヘルプ - 2段階認証"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Googleドライブの共有設定が無効化されている",
+          "explanation": {
+            "text": "共有設定はログイン可否に関係しない。",
+            "reference": "https://support.google.com/a/",
+            "reference_label": "Google Workspace 管理者ヘルプ"
+          }
+        }
+      ],
+      "answer": "A,B,C",
+      "explanation": {
+        "text": "ログイン不可の原因としてはアカウント無効化、パスワード間違い、2段階認証失敗などが考えられる。",
+        "reference": "https://support.google.com/a/answer/33314",
+        "reference_label": "Google Workspace 管理者ヘルプ - アカウント管理"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q34",
+      "question": "Google WorkspaceでGmailルーティングを設定する目的として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "メールを特定のアーカイブサーバにコピーする",
+          "explanation": {
+            "text": "ルーティングにより外部アーカイブへコピー可能。",
+            "reference": "https://support.google.com/a/answer/2685650",
+            "reference_label": "Google Workspace 管理者ヘルプ - Gmail ルーティング"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーのパスワードを変更する",
+          "explanation": {
+            "text": "ルーティング設定はパスワード管理に関与しない。",
+            "reference": "https://support.google.com/a/answer/2685650",
+            "reference_label": "Google Workspace 管理者ヘルプ - Gmail ルーティング"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザーのカレンダー予定を変更する",
+          "explanation": {
+            "text": "ルーティングはカレンダーには関係しない。",
+            "reference": "https://support.google.com/a/answer/2685650",
+            "reference_label": "Google Workspace 管理者ヘルプ - Gmail ルーティング"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Googleドライブの共有を制御する",
+          "explanation": {
+            "text": "ルーティングはドライブ共有設定とは無関係。",
+            "reference": "https://support.google.com/a/answer/2685650",
+            "reference_label": "Google Workspace 管理者ヘルプ - Gmail ルーティング"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Gmailルーティングはアーカイブや監査目的でメールコピーを設定するために利用される。",
+        "reference": "https://support.google.com/a/answer/2685650",
+        "reference_label": "Google Workspace 管理者ヘルプ - Gmail ルーティング"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q35",
+      "question": "Google Workspaceで組織部門（OU）の構成を設計する際の推奨事項はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ユーザー属性や役割ごとにOUを分ける",
+          "explanation": {
+            "text": "OUはポリシーを分けたい単位で設計するのが推奨される。",
+            "reference": "https://support.google.com/a/answer/182537",
+            "reference_label": "Google Workspace 管理者ヘルプ - 組織部門"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Googleドライブのフォルダ構成に合わせる",
+          "explanation": {
+            "text": "OUはドライブ構成とは無関係。",
+            "reference": "https://support.google.com/a/answer/182537",
+            "reference_label": "Google Workspace 管理者ヘルプ - 組織部門"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザーの誕生日ごとにOUを作成する",
+          "explanation": {
+            "text": "誕生日でOUを分ける意味はない。",
+            "reference": "https://support.google.com/a/answer/182537",
+            "reference_label": "Google Workspace 管理者ヘルプ - 組織部門"
+          }
+        },
+        {
+          "key": "D",
+          "text": "すべてのユーザーを1つのOUにまとめる",
+          "explanation": {
+            "text": "OUを細分化しないと柔軟なポリシー管理ができない。",
+            "reference": "https://support.google.com/a/answer/182537",
+            "reference_label": "Google Workspace 管理者ヘルプ - 組織部門"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "OU設計の基本はユーザー属性や役割に応じたポリシー適用単位として分けること。",
+        "reference": "https://support.google.com/a/answer/182537",
+        "reference_label": "Google Workspace 管理者ヘルプ - 組織部門"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q36",
+      "question": "Google Workspaceでユーザーが2段階認証を設定していない場合、管理者が強制できる方法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "管理者がユーザーの端末に直接ログインして設定する",
+          "explanation": {
+            "text": "管理者が直接ユーザー端末で設定することは推奨されない。",
+            "reference": "https://support.google.com/a/answer/9176657",
+            "reference_label": "Google Workspace 管理者ヘルプ - 2段階認証の適用"
+          }
+        },
+        {
+          "key": "B",
+          "text": "管理コンソールで対象ユーザーに対し2段階認証を必須化する",
+          "explanation": {
+            "text": "OUやグループ単位で強制適用できる。",
+            "reference": "https://support.google.com/a/answer/9176657",
+            "reference_label": "Google Workspace 管理者ヘルプ - 2段階認証の適用"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザーが希望した場合のみ有効化できる",
+          "explanation": {
+            "text": "管理者が強制設定可能なので任意利用のみは誤り。",
+            "reference": "https://support.google.com/a/answer/9176657",
+            "reference_label": "Google Workspace 管理者ヘルプ - 2段階認証の適用"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Googleドライブ共有設定で2段階認証を強制する",
+          "explanation": {
+            "text": "ドライブ設定では2段階認証を強制できない。",
+            "reference": "https://support.google.com/a/answer/9176657",
+            "reference_label": "Google Workspace 管理者ヘルプ - 2段階認証の適用"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "管理者は管理コンソールからOU単位で2段階認証を必須化できる。",
+        "reference": "https://support.google.com/a/answer/9176657",
+        "reference_label": "Google Workspace 管理者ヘルプ - 2段階認証の適用"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q37",
+      "question": "Google Workspaceのセキュリティダッシュボードで確認できる情報はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "不審なログイン試行",
+          "explanation": {
+            "text": "セキュリティダッシュボードでは脅威情報を確認できる。",
+            "reference": "https://support.google.com/a/answer/7575955",
+            "reference_label": "Google Workspace 管理者ヘルプ - セキュリティダッシュボード"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーのカレンダー予定",
+          "explanation": {
+            "text": "カレンダー予定はセキュリティ情報ではない。",
+            "reference": "https://support.google.com/a/answer/7575955",
+            "reference_label": "Google Workspace 管理者ヘルプ - セキュリティダッシュボード"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Googleドライブのフォルダ数",
+          "explanation": {
+            "text": "フォルダ数はセキュリティ情報には含まれない。",
+            "reference": "https://support.google.com/a/answer/7575955",
+            "reference_label": "Google Workspace 管理者ヘルプ - セキュリティダッシュボード"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザーのパスワード文字数",
+          "explanation": {
+            "text": "セキュリティダッシュボードでは確認できない。",
+            "reference": "https://support.google.com/a/answer/7575955",
+            "reference_label": "Google Workspace 管理者ヘルプ - セキュリティダッシュボード"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "セキュリティダッシュボードは不審なログインや脅威を可視化するツール。",
+        "reference": "https://support.google.com/a/answer/7575955",
+        "reference_label": "Google Workspace 管理者ヘルプ - セキュリティダッシュボード"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q38",
+      "question": "Google Workspaceでユーザーが利用できるアプリを制御する際に最も推奨される方法はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "組織部門（OU）ごとにサービスのON/OFFを設定する",
+          "explanation": {
+            "text": "OU単位でサービス利用制御するのが標準的。",
+            "reference": "https://support.google.com/a/answer/182442",
+            "reference_label": "Google Workspace 管理者ヘルプ - サービス管理"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーが自由にアプリを有効化できるようにする",
+          "explanation": {
+            "text": "管理者が制御しなければセキュリティリスクが高い。",
+            "reference": "https://support.google.com/a/answer/182442",
+            "reference_label": "Google Workspace 管理者ヘルプ - サービス管理"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Googleドライブの共有設定でアプリを制御する",
+          "explanation": {
+            "text": "ドライブ共有設定はアプリ制御とは無関係。",
+            "reference": "https://support.google.com/a/answer/182442",
+            "reference_label": "Google Workspace 管理者ヘルプ - サービス管理"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Googleカレンダーの設定からアプリを有効化する",
+          "explanation": {
+            "text": "カレンダーの設定でアプリ全体の制御はできない。",
+            "reference": "https://support.google.com/a/answer/182442",
+            "reference_label": "Google Workspace 管理者ヘルプ - サービス管理"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Google Workspaceでアプリ利用を制御する際は、OU単位でサービスを有効化/無効化するのが推奨される。",
+        "reference": "https://support.google.com/a/answer/182442",
+        "reference_label": "Google Workspace 管理者ヘルプ - サービス管理"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q39",
+      "question": "Google Workspaceのレポート機能を利用することで可能になるのはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ユーザーのログイン状況を確認する",
+          "explanation": {
+            "text": "レポートでログインや利用状況を可視化できる。",
+            "reference": "https://support.google.com/a/answer/4580176",
+            "reference_label": "Google Workspace 管理者ヘルプ - レポート"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーのパスワードを変更する",
+          "explanation": {
+            "text": "レポート機能にパスワード変更は含まれない。",
+            "reference": "https://support.google.com/a/answer/4580176",
+            "reference_label": "Google Workspace 管理者ヘルプ - レポート"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Googleドライブの共有を無効化する",
+          "explanation": {
+            "text": "レポート機能は制御ではなく可視化。",
+            "reference": "https://support.google.com/a/answer/4580176",
+            "reference_label": "Google Workspace 管理者ヘルプ - レポート"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザーを組織部門から移動する",
+          "explanation": {
+            "text": "ユーザー管理操作はレポート機能に含まれない。",
+            "reference": "https://support.google.com/a/answer/4580176",
+            "reference_label": "Google Workspace 管理者ヘルプ - レポート"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "レポート機能を使うとユーザーのログインや利用状況を監視できる。",
+        "reference": "https://support.google.com/a/answer/4580176",
+        "reference_label": "Google Workspace 管理者ヘルプ - レポート"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q40",
+      "question": "Google WorkspaceのAPIアクセス制御を有効にすることで可能になることはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "信頼されたアプリにのみユーザーデータアクセスを許可する",
+          "explanation": {
+            "text": "APIアクセス制御で安全なアプリのみ許可可能。",
+            "reference": "https://support.google.com/a/answer/7281227",
+            "reference_label": "Google Workspace 管理者ヘルプ - APIアクセス制御"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーのパスワードを直接取得する",
+          "explanation": {
+            "text": "API制御でパスワードを取得することはできない。",
+            "reference": "https://support.google.com/a/answer/7281227",
+            "reference_label": "Google Workspace 管理者ヘルプ - APIアクセス制御"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Googleカレンダーの予定を自動的に削除する",
+          "explanation": {
+            "text": "API制御は予定削除とは無関係。",
+            "reference": "https://support.google.com/a/answer/7281227",
+            "reference_label": "Google Workspace 管理者ヘルプ - APIアクセス制御"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Googleドライブのストレージ容量を増やす",
+          "explanation": {
+            "text": "API制御はストレージ管理機能ではない。",
+            "reference": "https://support.google.com/a/answer/7281227",
+            "reference_label": "Google Workspace 管理者ヘルプ - APIアクセス制御"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "APIアクセス制御は、信頼できるアプリのみユーザーデータにアクセスを許可するための機能。",
+        "reference": "https://support.google.com/a/answer/7281227",
+        "reference_label": "Google Workspace 管理者ヘルプ - APIアクセス制御"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q41",
+      "question": "Google WorkspaceのGmailコンプライアンス設定で可能なことはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "特定のキーワードを含むメールをブロックする",
+          "explanation": {
+            "text": "コンプライアンスルールでキーワードベースの制御が可能。",
+            "reference": "https://support.google.com/a/answer/1346934",
+            "reference_label": "Google Workspace 管理者ヘルプ - Gmail コンプライアンス"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーのパスワードを強制変更する",
+          "explanation": {
+            "text": "パスワード管理はコンプライアンス設定に含まれない。",
+            "reference": "https://support.google.com/a/answer/1346934",
+            "reference_label": "Google Workspace 管理者ヘルプ - Gmail コンプライアンス"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Googleドライブの共有リンクを削除する",
+          "explanation": {
+            "text": "ドライブ共有はコンプライアンス設定とは無関係。",
+            "reference": "https://support.google.com/a/answer/1346934",
+            "reference_label": "Google Workspace 管理者ヘルプ - Gmail コンプライアンス"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Googleカレンダーの招待を制御する",
+          "explanation": {
+            "text": "カレンダー設定はコンプライアンス設定には含まれない。",
+            "reference": "https://support.google.com/a/answer/1346934",
+            "reference_label": "Google Workspace 管理者ヘルプ - Gmail コンプライアンス"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Gmailコンプライアンス設定では、特定の条件を満たすメールをブロックや転送できる。",
+        "reference": "https://support.google.com/a/answer/1346934",
+        "reference_label": "Google Workspace 管理者ヘルプ - Gmail コンプライアンス"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q42",
+      "question": "Google Workspaceのグループ設定で管理者が制御できるものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "誰がグループに参加できるか",
+          "explanation": {
+            "text": "参加権限を管理者が制御可能。",
+            "reference": "https://support.google.com/a/answer/167430",
+            "reference_label": "Google Workspace 管理者ヘルプ - グループ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーのパスワード文字数",
+          "explanation": {
+            "text": "グループ設定でパスワードは管理できない。",
+            "reference": "https://support.google.com/a/answer/167430",
+            "reference_label": "Google Workspace 管理者ヘルプ - グループ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Googleドライブの容量制限",
+          "explanation": {
+            "text": "グループ設定はドライブ容量に関与しない。",
+            "reference": "https://support.google.com/a/answer/167430",
+            "reference_label": "Google Workspace 管理者ヘルプ - グループ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "カレンダー予定の自動追加",
+          "explanation": {
+            "text": "カレンダー予定はグループ設定で制御できない。",
+            "reference": "https://support.google.com/a/answer/167430",
+            "reference_label": "Google Workspace 管理者ヘルプ - グループ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Google Workspaceのグループ設定では、誰が参加できるか、誰が投稿できるかを制御できる。",
+        "reference": "https://support.google.com/a/answer/167430",
+        "reference_label": "Google Workspace 管理者ヘルプ - グループ"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q43",
+      "question": "Google Workspaceでユーザーが忘れたパスワードをリセットする際、管理者ができる操作はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "管理コンソールで新しいパスワードを設定する",
+          "explanation": {
+            "text": "管理者は管理コンソールから対象ユーザーのパスワードを即時リセットできる。",
+            "reference": "https://support.google.com/a/answer/33319",
+            "reference_label": "Google Workspace 管理者ヘルプ - ユーザーのパスワードをリセット"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーに再設定用リンクを送信する",
+          "explanation": {
+            "text": "セルフサービスの再設定リンクも使えるが、管理者は直接リセット可能。",
+            "reference": "https://support.google.com/a/answer/33319",
+            "reference_label": "Google Workspace 管理者ヘルプ - ユーザーのパスワードをリセット"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Googleサポートに依頼する必要がある",
+          "explanation": {
+            "text": "通常のパスワードリセットは管理者が自組織内で完結できる。",
+            "reference": "https://support.google.com/a/answer/33319",
+            "reference_label": "Google Workspace 管理者ヘルプ - ユーザーのパスワードをリセット"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザーに新しいアカウントを作成させる",
+          "explanation": {
+            "text": "アカウント再作成は不要で、リセットで対応できる。",
+            "reference": "https://support.google.com/a/answer/33319",
+            "reference_label": "Google Workspace 管理者ヘルプ - ユーザーのパスワードをリセット"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "パスワードを忘れたユーザーに対しては、管理コンソールから即時リセットするのが標準手順。",
+        "reference": "https://support.google.com/a/answer/33319",
+        "reference_label": "Google Workspace 管理者ヘルプ - ユーザーのパスワードをリセット"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q44",
+      "question": "Google Workspaceでグループを利用する利点として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "一括でメールを送信できる",
+          "explanation": {
+            "text": "グループ（メーリングリスト）により複数ユーザーへの一斉配信が可能。",
+            "reference": "https://support.google.com/a/answer/167430",
+            "reference_label": "Google Workspace 管理者ヘルプ - グループを作成して管理する"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーのパスワードを管理できる",
+          "explanation": {
+            "text": "パスワード管理はグループ機能には含まれない。",
+            "reference": "https://support.google.com/a/answer/167430",
+            "reference_label": "Google Workspace 管理者ヘルプ - グループを作成して管理する"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Googleドライブのフォルダ階層を管理できる",
+          "explanation": {
+            "text": "フォルダ管理はドライブの機能であり、グループの役割ではない。",
+            "reference": "https://support.google.com/a/answer/167430",
+            "reference_label": "Google Workspace 管理者ヘルプ - グループを作成して管理する"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Googleカレンダーの予定を強制的に追加できる",
+          "explanation": {
+            "text": "予定追加はカレンダーの機能で、グループは直接制御しない。",
+            "reference": "https://support.google.com/a/answer/167430",
+            "reference_label": "Google Workspace 管理者ヘルプ - グループを作成して管理する"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "グループはメーリングリストやアクセス制御の単位として機能し、一斉配信に適している。",
+        "reference": "https://support.google.com/a/answer/167430",
+        "reference_label": "Google Workspace 管理者ヘルプ - グループを作成して管理する"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q45",
+      "question": "Google Workspaceのセキュリティセンターを利用する目的はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "組織のセキュリティリスクを可視化する",
+          "explanation": {
+            "text": "セキュリティ ダッシュボード等で脅威やリスクの状況を可視化・分析できる。",
+            "reference": "https://support.google.com/a/answer/9050944",
+            "reference_label": "Google Workspace 管理者ヘルプ - セキュリティ センターの概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Googleドライブの容量を増やす",
+          "explanation": {
+            "text": "ストレージ管理ではないため誤り。",
+            "reference": "https://support.google.com/a/answer/9050944",
+            "reference_label": "Google Workspace 管理者ヘルプ - セキュリティ センターの概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザーのメール署名を管理する",
+          "explanation": {
+            "text": "署名管理機能は提供していない。",
+            "reference": "https://support.google.com/a/answer/9050944",
+            "reference_label": "Google Workspace 管理者ヘルプ - セキュリティ センターの概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Googleカレンダー予定を統計処理する",
+          "explanation": {
+            "text": "予定の統計処理は対象外。",
+            "reference": "https://support.google.com/a/answer/9050944",
+            "reference_label": "Google Workspace 管理者ヘルプ - セキュリティ センターの概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "セキュリティセンターは脅威の検出、分析、対処のためのツール群を提供する。",
+        "reference": "https://support.google.com/a/answer/9050944",
+        "reference_label": "Google Workspace 管理者ヘルプ - セキュリティ センターの概要"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q46",
+      "question": "Google WorkspaceのGmailコンプライアンス機能を利用することで可能なことはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "特定のキーワードを含むメールを自動で拒否する",
+          "explanation": {
+            "text": "コンプライアンス/ルーティング ルールで条件に合致するメールを拒否・転送・修正できる。",
+            "reference": "https://support.google.com/a/answer/1346934",
+            "reference_label": "Google Workspace 管理者ヘルプ - コンプライアンスを設定する"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーのカレンダー予定を削除する",
+          "explanation": {
+            "text": "カレンダー管理は対象外。",
+            "reference": "https://support.google.com/a/answer/1346934",
+            "reference_label": "Google Workspace 管理者ヘルプ - コンプライアンスを設定する"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Googleドライブの共有フォルダを削除する",
+          "explanation": {
+            "text": "ドライブ共有に直接関与しない。",
+            "reference": "https://support.google.com/a/answer/1346934",
+            "reference_label": "Google Workspace 管理者ヘルプ - コンプライアンスを設定する"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザーのパスワードを変更する",
+          "explanation": {
+            "text": "パスワード管理機能ではない。",
+            "reference": "https://support.google.com/a/answer/1346934",
+            "reference_label": "Google Workspace 管理者ヘルプ - コンプライアンスを設定する"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Gmailのコンプライアンス/ルーティング設定により、キーワードや条件に基づく自動拒否などのポリシー適用が可能。",
+        "reference": "https://support.google.com/a/answer/1346934",
+        "reference_label": "Google Workspace 管理者ヘルプ - コンプライアンスを設定する"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q47",
+      "question": "Google Workspaceで外部アプリケーションのAPIアクセスを制御する理由はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "不正アプリがユーザーデータにアクセスするのを防ぐため",
+          "explanation": {
+            "text": "OAuth アプリのホワイトリスト/制限により信頼できるアプリのみデータアクセスを許可できる。",
+            "reference": "https://support.google.com/a/answer/7281227",
+            "reference_label": "Google Workspace 管理者ヘルプ - サードパーティ製アプリのアクセス制御"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーのパスワードを保存するため",
+          "explanation": {
+            "text": "APIアクセス制御はパスワード保存機能ではない。",
+            "reference": "https://support.google.com/a/answer/7281227",
+            "reference_label": "Google Workspace 管理者ヘルプ - サードパーティ製アプリのアクセス制御"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Googleドライブのフォルダ数を減らすため",
+          "explanation": {
+            "text": "フォルダ数管理には関与しない。",
+            "reference": "https://support.google.com/a/answer/7281227",
+            "reference_label": "Google Workspace 管理者ヘルプ - サードパーティ製アプリのアクセス制御"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザーのカレンダー予定を統計処理するため",
+          "explanation": {
+            "text": "カレンダー分析の機能ではない。",
+            "reference": "https://support.google.com/a/answer/7281227",
+            "reference_label": "Google Workspace 管理者ヘルプ - サードパーティ製アプリのアクセス制御"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "APIアクセス制御は第三者アプリからの不正アクセスや過剰権限を抑止し、データ保護を強化するために実施する。",
+        "reference": "https://support.google.com/a/answer/7281227",
+        "reference_label": "Google Workspace 管理者ヘルプ - サードパーティ製アプリのアクセス制御"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q48",
+      "question": "Google Workspaceの組織部門（OU）を利用する利点はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "サービスやポリシーを部門ごとに適用できる",
+          "explanation": {
+            "text": "OU単位でサービス有効化や各種ポリシーの差異適用が可能。",
+            "reference": "https://support.google.com/a/answer/182537",
+            "reference_label": "Google Workspace 管理者ヘルプ - 組織部門を設定してユーザーやデバイスを管理する"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Googleドライブのフォルダを作成する",
+          "explanation": {
+            "text": "フォルダ作成はドライブの機能で、OUの役割ではない。",
+            "reference": "https://support.google.com/a/answer/182537",
+            "reference_label": "Google Workspace 管理者ヘルプ - 組織部門を設定してユーザーやデバイスを管理する"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザーの誕生日を登録する",
+          "explanation": {
+            "text": "OUはプロフィール項目の管理機能ではない。",
+            "reference": "https://support.google.com/a/answer/182537",
+            "reference_label": "Google Workspace 管理者ヘルプ - 組織部門を設定してユーザーやデバイスを管理する"
+          }
+        },
+        {
+          "key": "D",
+          "text": "カレンダー予定を強制的に追加する",
+          "explanation": {
+            "text": "カレンダー制御はOUの目的ではない。",
+            "reference": "https://support.google.com/a/answer/182537",
+            "reference_label": "Google Workspace 管理者ヘルプ - 組織部門を設定してユーザーやデバイスを管理する"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "OUはユーザーの集合に対して設定・サービスを分割適用するための管理単位。",
+        "reference": "https://support.google.com/a/answer/182537",
+        "reference_label": "Google Workspace 管理者ヘルプ - 組織部門を設定してユーザーやデバイスを管理する"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q49",
+      "question": "Google Workspaceでユーザーが新しい端末からログインした際に追加認証を要求する機能はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ログインチャレンジ",
+          "explanation": {
+            "text": "管理者はOU単位でログインチャレンジを有効化でき、リスクに応じた追加確認を要求できる。",
+            "reference": "https://support.google.com/a/answer/6002699",
+            "reference_label": "Google Workspace 管理者ヘルプ - セキュリティ チャレンジでアカウントを保護する"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Googleドライブ共有制御",
+          "explanation": {
+            "text": "共有制御はログイン認証とは無関係。",
+            "reference": "https://support.google.com/a/answer/6002699",
+            "reference_label": "Google Workspace 管理者ヘルプ - セキュリティ チャレンジでアカウントを保護する"
+          }
+        },
+        {
+          "key": "C",
+          "text": "カレンダー招待制御",
+          "explanation": {
+            "text": "カレンダー設定は認証強化には関係しない。",
+            "reference": "https://support.google.com/a/answer/6002699",
+            "reference_label": "Google Workspace 管理者ヘルプ - セキュリティ チャレンジでアカウントを保護する"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ストレージ割り当て変更",
+          "explanation": {
+            "text": "ストレージ設定は認証機能ではない。",
+            "reference": "https://support.google.com/a/answer/6002699",
+            "reference_label": "Google Workspace 管理者ヘルプ - セキュリティ チャレンジでアカウントを保護する"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ログインチャレンジは新規デバイスやリスク検知時に追加確認を行い、アカウント乗っ取り対策を強化する。",
+        "reference": "https://support.google.com/a/answer/6002699",
+        "reference_label": "Google Workspace 管理者ヘルプ - セキュリティ チャレンジでアカウントを保護する"
+      }
+    },
+    {
+      "id": "gcp-GWA-A-q50",
+      "question": "Google Workspaceでセキュリティキーを管理者が強制的に利用させることができる対象はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "特定の組織部門（OU）のユーザー",
+          "explanation": {
+            "text": "2段階認証(2SV)ポリシーはOU単位で適用可能で、\"セキュリティキーのみ\" の強制も設定できる。",
+            "reference": "https://support.google.com/a/answer/9176657",
+            "reference_label": "Google Workspace 管理者ヘルプ - 2段階認証を導入・適用する"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザー全員",
+          "explanation": {
+            "text": "トップレベルOU（ドメイン）に適用すれば全ユーザーに強制できる。",
+            "reference": "https://support.google.com/a/answer/9176657",
+            "reference_label": "Google Workspace 管理者ヘルプ - 2段階認証を導入・適用する"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザーの任意",
+          "explanation": {
+            "text": "任意ではなく、管理側で強制設定できる。",
+            "reference": "https://support.google.com/a/answer/175197",
+            "reference_label": "Google Workspace 管理者ヘルプ - 2段階認証でアカウントを保護する"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Googleカレンダー予定",
+          "explanation": {
+            "text": "認証方式の設定であり、予定管理には関係しない。",
+            "reference": "https://support.google.com/a/answer/175197",
+            "reference_label": "Google Workspace 管理者ヘルプ - 2段階認証でアカウントを保護する"
+          }
+        }
+      ],
+      "answer": "A,B",
+      "explanation": {
+        "text": "2SVはOU単位またはドメイン全体で強制でき、オプションで「セキュリティキーのみ」を選択可能。これにより対象ユーザーへ物理キー利用を必須化できる。",
+        "reference": "https://support.google.com/a/answer/9176657",
+        "reference_label": "Google Workspace 管理者ヘルプ - 2段階認証を導入・適用する"
+      }
+    }
+  ]
+}

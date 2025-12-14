@@ -1,0 +1,2467 @@
+{
+  "exam": {
+    "id": "PCE-P",
+    "title": "Google Professional Collaboration Engineer",
+    "description": "この試験は、企業のコラボレーション環境（主に Google Workspace）において、ビジネス目標を具体的な設定・ポリシー・セキュリティ対策に落とし込み、ユーザー・コンテンツ・統合を包括的に管理できるエンジニアを認定するものです。メールルーティングやアイデンティティ管理基盤の知識を活用し、安全で効率的なコミュニケーションとデータアクセスを実現。エンジニアリングおよびソリューション志向のマインドセットを備え、ツール・API・プログラミング言語を用いてワークフローを自動化しながら、ユーザー教育や運用効率の向上を推進する能力を検証します。",
+    "version": "2025年4月",
+    "price": "200 USD",
+    "difficulty": "難しい",
+    "official-site": "https://cloud.google.com/learn/certification",
+    "category": {
+      "id": "gcp",
+      "name": "Google Cloud"
+    }
+  },
+  "questions": [
+    {
+      "id": "gcp-PCE-P-q1",
+      "question": "あなたの組織では、特定の部署のみが Google Workspace の新機能を迅速リリース (Rapid Release) をいち早く体験したい。どのように設定すべきか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "組織全体を Rapid Release トラックに切り替える",
+          "explanation": {
+            "text": "全体を Rapid Release にすると、組織の他のすべての部署も新機能を早く受け取ることになるため、限定した部署のみ体験させたいという目的には合わない。",
+            "reference": "https://support.google.com/a/answer/172177?hl=en",
+            "reference_label": "Google Workspace Release Tracks"
+          }
+        },
+        {
+          "key": "B",
+          "text": "新機能用のテスト用 OU（組織単位）を作成し、その OU に対して Rapid Release を適用する",
+          "explanation": {
+            "text": "組織単位 (OU) ごとにリリーストラックを設定できるので、特定の OU のみ Rapid Release にすることが可能。目的に合致する。",
+            "reference": "https://support.google.com/a/answer/172177?hl=en",
+            "reference_label": "Google Workspace Release Tracks"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザーグループを作成し、そのグループに Rapid Release を適用する",
+          "explanation": {
+            "text": "リリーストラックの設定は OU（組織単位）に対して行われる。グループに対して Rapid Release を直接設定することはできない。",
+            "reference": "https://support.google.com/a/answer/172177?hl=en",
+            "reference_label": "Google Workspace Release Tracks"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Google に連絡し、部署ごとの早期アクセス環境を依頼する",
+          "explanation": {
+            "text": "Google にサポート依頼をする手段もあるが、Rapid Release の設定変更は管理コンソール内で OU に対して行うのが通常の方法であり、サポート依頼が必要なケースは限定的。",
+            "reference": "https://support.google.com/a/answer/172177?hl=en",
+            "reference_label": "Google Workspace Release Tracks"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "特定の部署（OU）だけが Rapid Release を体験したい場合は、その部署を別 OU に分けて、その OU に Rapid Release トラックを設定するのが正しい方法です。",
+        "reference": "https://support.google.com/a/answer/172177?hl=en",
+        "reference_label": "Google Workspace Release Tracks"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q2",
+      "question": "組織が Google Cloud Directory Sync (GCDS) を使って Active Directory からユーザーを同期しており、グループのメンバーと設定が間違っている多数のグループがある。これらを一括で正しい設定に更新するには？",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "CSV でグループ設定を export し編集したものを再度インポートして更新する",
+          "explanation": {
+            "text": "大量のグループを一括で設定変更するのに直感的な方法。CSV import を使って、外部から設定を上書き可能。",
+            "reference": "https://support.google.com/a/answer/33343?hl=en",
+            "reference_label": "Manage groups in Google Workspace using CSV"
+          }
+        },
+        {
+          "key": "B",
+          "text": "GCDS の設定ファイルを修正し、再同期することでグループ設定を一括修正する",
+          "explanation": {
+            "text": "GCDS は主にユーザー・属性の同期向けであり、グループのメンバーシップ以外の細かい設定（投稿権限、外部メンバー許可など）は GCDS で設定できない／または限界があることが多い。",
+            "reference": "https://support.google.com/a/answer/33343?hl=en",
+            "reference_label": "Manage groups in Google Workspace using CSV"
+          }
+        },
+        {
+          "key": "C",
+          "text": "グループオーナーに管理者ロールを割り当て、各オーナーに設定を直してもらう",
+          "explanation": {
+            "text": "ユーザー（オーナー）に権限を渡すのは一つの手だが、多くのグループに対して一つずつ手動で修正する作業になるため時間がかかり、誤設定の利点が薄い。",
+            "reference": "https://support.google.com/a/answer/33343?hl=en",
+            "reference_label": "Manage groups in Google Workspace using CSV"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Groups Settings API を使ってスクリプトで各グループの設定を更新する",
+          "explanation": {
+            "text": "API を使うことで細かい設定（投稿できる人、外部メンバーの有無など）をスクリプトで自動化できる。大量の修正が必要な場合には効率的な選択。",
+            "reference": "https://developers.google.com/admin-sdk/groups-settings",
+            "reference_label": "Groups Settings API"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "大量かつ複雑な設定変更をするには、管理コンソールの CSV import も使えるが、グループの細かい属性を制御・更新するには Groups Settings API を使うのが最も柔軟で誤りも減る。",
+        "reference": "https://developers.google.com/admin-sdk/groups-settings",
+        "reference_label": "Groups Settings API"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q3",
+      "question": "Gmail の受信メールに対してスパム防止とフィッシング対策を強化したい。管理者としてどの組み合わせを設定すべきか？（複数選択可）",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "DKIM を設定してドメインの署名を有効にする",
+          "explanation": {
+            "text": "DKIM（DomainKeys Identified Mail）は送信ドメインの偽装を検出する助けとなる。",
+            "reference": "https://support.google.com/a/answer/180504?hl=en",
+            "reference_label": "Set up DKIM"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SPF レコードを DNS に設定し、送信元の正当性を検証する",
+            "explanation": {
+              "text": "SPF（Sender Policy Framework）を使って、許可されたメール送信サーバーのみ送信できるように設定することでなりすましを防止できる。",
+              "reference": "https://support.google.com/a/answer/33786?hl=en",
+              "reference_label": "SPF for your domain"
+            }
+        },
+        {
+          "key": "C",
+          "text": "IMAP と POP をすべてのユーザーで有効にする",
+          "explanation": {
+            "text": "IMAP/POP の有効化はメールクライアントからのアクセスを可能にするが、スパムやなりすまし対策とは逆のリスクを増大させる可能性がある。通常は制限または無効化が望ましい。",
+              "reference": "https://support.google.com/a/answer/105694?hl=en",
+            "reference_label": "POP and IMAP settings"
+            }
+        },
+        {
+          "key": "D",
+          "text": "Gmail のフィッシング／マルウェア防止機能を強化する設定を有効にする",
+          "explanation": {
+            "text": "Google Workspace の管理者設定で、フィッシングやマルウェア攻撃からの保護を有効化できる。",
+            "reference": "https://support.google.com/a/answer/1346933?hl=en",
+            "reference_label": "Helpful settings to protect from phishing"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "スパム・フィッシング対策には DKIM／SPF 設定と、Gmail のマルウェア／フィッシング保護を有効にすることが効果的。IMAP/POP の無制限な有効化はセキュリティリスクになる。",
+        "reference": "https://support.google.com/a/answer/1346933?hl=en",
+        "reference_label": "Helpful settings to protect from phishing"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q4",
+      "question": "モバイル端末 (従業員の私物端末含む) の管理を厳格にしたい。どの設定が適切か？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "アプリインストールを許可されたものだけに限定するポリシーを設定する",
+          "explanation": {
+            "text": "Endpoint 管理で許可されたアプリのみをホワイトリスト化することにより、セキュリティリスクを低減できる。",
+            "reference": "https://support.google.com/workspace/answer/9089690?hl=en",
+            "reference_label": "Manage apps on endpoint devices"
+          }
+        },
+        {
+          "key": "B",
+          "text": "端末に PIN またはパスコードの設定を必須とする",
+            "explanation": {
+              "text": "モバイル管理ポリシーでデバイスのロック画面設定を強制することが可能であり、アクセスセキュリティを高める。",
+              "reference": "https://support.google.com/workspace/answer/6387400?hl=en",
+              "reference_label": "Enforce screen lock settings on mobile devices"
+            }
+        },
+        {
+          "key": "C",
+            "text": "すべての端末で OS の自動アップデートを無効にする",
+            "explanation": {
+              "text": "OS の自動アップデートを無効にすることはセキュリティ上のリスクであり、通常は有効にしておくことが望ましい。目的と逆の対応になる。",
+              "reference": "https://support.google.com/workspace/answer/9089690?hl=en",
+              "reference_label": "Manage apps on endpoint devices"
+            }
+        },
+        {
+          "key": "D",
+            "text": "デバイス紛失時のための遠隔ワイプ (remote wipe) 機能を構成する",
+            "explanation": {
+              "text": "エンタープライズのセキュリティポリシーとして遠隔ワイプ機能を持たせることは標準的であり、リスク緩和に有効。",
+              "reference": "https://support.google.com/workspace/answer/6387400?hl=en",
+              "reference_label": "Enforce screen lock settings on mobile devices"
+            }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "私物端末を含むモバイル管理では、端末のロック (PIN/パスコード)、アプリインストール制御、遠隔ワイプなどが有効で、OS アップデートを無効化することは逆効果。",
+        "reference": "https://support.google.com/workspace/answer/9089690?hl=en",
+        "reference_label": "Manage apps on endpoint devices"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q5",
+      "question": "共有ドライブ (Shared Drive / Team Drive) の外部共有を制限し、ファイルアクセスを確実に管理したい。どの設定が有効か？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ドメイン外のユーザーとの共有リンクを無効にする",
+          "explanation": {
+            "text": "外部との共有を全く許可しないまたは制限する設定が可能で、ドメイン外ユーザーの共有を防げる。",
+            "reference": "https://support.google.com/a/answer/60781?hl=en",
+            "reference_label": "Sharing settings in Google Workspace"
+          }
+        },
+          {
+            "key": "B",
+            "text": "共有ドライブにおけるすべてのメンバーに編集権限を与える",
+            "explanation": {
+              "text": "すべてのメンバーに編集権限を与えるのではなく、最小権限の原則 (least privilege) を適用することが望ましい。編集権限を無差別に与えるとセキュリティリスクが増す。",
+              "reference": "https://support.google.com/a/answer/60781?hl=en",
+              "reference_label": "Sharing settings in Google Workspace"
+            }
+          },
+          {
+            "key": "C",
+            "text": "ファイルとフォルダのアクセス制御リスト (ACL) を厳密に設定する",
+            "explanation": {
+              "text": "ACL を使ってファイル／フォルダごとに閲覧・編集権限を細かく制御することが可能。外部ユーザーアクセスを限定する際にも有効。",
+              "reference": "https://support.google.com/drive/answer/73761?hl=en",
+              "reference_label": "Drive sharing and access control"
+            }
+          },
+          {
+            "key": "D",
+            "text": "ドメインの Vault を使ってすべての外部共有を常に監査するように設定する",
+            "explanation": {
+              "text": "Vault は主にデータ保持、検索、法的ホールド (legal hold) などのためのツールであり、外部共有の設定制御そのものではなく監査目的でのログ取得に適している。",
+              "reference": "https://support.google.com/vault/answer/2462365?hl=en",
+              "reference_label": "Vault retention and audit"
+            }
+          }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "外部共有リンクの無効化およびファイル／フォルダごとの ACL 制御を組み合わせることで、共有ドライブにおける外部アクセスを適切に制限できる。Vault 監査機能は補助的である。",
+        "reference": "https://support.google.com/drive/answer/73761?hl=en",
+        "reference_label": "Drive sharing and access control"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q6",
+      "question": "組織の操作状況を把握するため、管理者としてどのレポート・監査機能を使うべきか？（複数選択可）",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ドライブやメールの共有・アクセス設定の監査ログ (Drive, Gmail audit logs)",
+          "explanation": {
+            "text": "管理コンソールの監査ログ機能を使うと、共有設定の変更やアクセス、異常操作などを記録・追跡できる。",
+            "reference": "https://support.google.com/a/answer/7061566?hl=en",
+            "reference_label": "Drive & Gmail audit log"
+          }
+        },
+        {
+            "key": "B",
+            "text": "管理コンソール上の利用状況レポート (Usage Reports) でユーザーのアクティビティを可視化する",
+            "explanation": {
+              "text": "Usage Reports によってログイン状況、アプリ使用頻度等を把握できる。採用状況・利用傾向をモニタリングするのに有用。",
+              "reference": "https://support.google.com/a/answer/4580177?hl=en",
+              "reference_label": "View usage reports"
+            }
+        },
+        {
+            "key": "C",
+            "text": "すべてのユーザーのブラウザ履歴を常時取得するポリシーを設定する",
+            "explanation": {
+              "text": "通常ブラウザ履歴の取得はプライバシー・法務的な問題を伴う。監査ログ・アクセスログとは別の扱いであり、すべて取得することは標準的な要件ではない。",
+              "reference": "https://support.google.com/a/answer/7061566?hl=en",
+              "reference_label": "Drive & Gmail audit log"
+            }
+        },
+        {
+            "key": "D",
+            "text": "不審なアクティビティがあれば管理者にアラートを送る設定を行う",
+            "explanation": {
+              "text": "管理コンソール等でアラート・アドミッション設定が可能で、セキュリティ・コンプライアンス違反を早く察知できるようにするのが望ましい。",
+              "reference": "https://support.google.com/a/answer/9311594?hl=en",
+              "reference_label": "Alert center"
+            }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "操作状況の把握には監査ログ (audit logs)、利用状況レポート (usage reports)、および異常を検知した際のアラート設定を組み合わせるのが有効。ブラウザ履歴の常時取得は過剰であり、標準的な機能とは言えない。",
+        "reference": "https://support.google.com/a/answer/9311594?hl=en",
+        "reference_label": "Alert center"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q7",
+      "question": "組織内で Google Workspace の利用率を高め、ユーザーの満足度を上げるための最善のアプローチはどれか？",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "すべてのユーザーに最新の機能を一斉にロールアウトする",
+          "explanation": {
+            "text": "一斉ロールアウトは影響調査を行わない場合リスクがあり、ユーザーが混乱する可能性が高い。対象を絞ったパイロットや段階展開が望ましい。",
+            "reference": "https://support.google.com/a/answer/172177?hl=en",
+            "reference_label": "Google Workspace Release Tracks"
+          }
+        },
+        {
+          "key": "B",
+          "text": "パイロットグループを使って新機能をテストし、フィードバックを得てから段階的に展開する",
+          "explanation": {
+            "text": "新機能を限定されたユーザー／グループで先行導入し、意見を集めて問題を把握したうえで組織全体に広げるのがベストプラクティス。",
+            "reference": "https://support.google.com/a/answer/172177?hl=en",
+            "reference_label": "Google Workspace Release Tracks"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザーに新機能のトレーニングマテリアルを送るだけに留める",
+          "explanation": {
+            "text": "資料を送るだけでは受け身になりがちで、理解度が低い可能性がある。ワークショップやハンズオンが効果的。",
+            "reference": "https://support.google.com/a/answer/172177?hl=en",
+            "reference_label": "Google Workspace Release Tracks"
+          }
+        },
+        {
+            "key": "D",
+            "text": "新機能のロールアウト後に何もしない",
+            "explanation": {
+              "text": "導入直後のサポートやフィードバック収集をしないと、ユーザーが混乱したままになる可能性・不満が高まる可能性がある。",
+              "reference": "https://support.google.com/a/answer/172177? hl=en",
+              "reference_label": "Google Workspace Release Tracks"
+            }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "パイロットグループを使って先行テスト・フィードバック収集し、その結果をもとに段階的に展開するのが一般的な導入戦略として望ましい。",
+        "reference": "https://support.google.com/a/answer/172177? hl=en",
+        "reference_label": "Google Workspace Release Tracks"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q8",
+      "question": "ユーザーが誤って機密データを社外の Gmail アドレスに送信することを防止したい。管理者としてどの機能を有効化すべきか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Data Loss Prevention (DLP) ポリシーを設定する",
+          "explanation": {
+            "text": "DLP ポリシーで、特定のキーワードや正規表現（例：クレジットカード番号）を検出して送信制御できる。",
+            "reference": "https://support.google.com/a/answer/6327505?hl=en",
+            "reference_label": "Prevent data loss in Gmail"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Gmail のラベルを強制適用する",
+          "explanation": {
+            "text": "ラベル付けは分類に役立つが、誤送信の防止には直接効果がない。",
+            "reference": "https://support.google.com/a/answer/6327505?hl=en",
+            "reference_label": "Prevent data loss in Gmail"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Gmail のオフライン機能を無効にする",
+          "explanation": {
+            "text": "オフライン機能を無効化しても誤送信防止にはつながらない。",
+            "reference": "https://support.google.com/a/answer/6327505?hl=en",
+            "reference_label": "Prevent data loss in Gmail"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Vault で送信メールを保持する",
+          "explanation": {
+            "text": "Vault は保持と監査目的であり、送信自体をブロックする機能ではない。",
+            "reference": "https://support.google.com/vault/answer/2462365?hl=en",
+            "reference_label": "Google Vault"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "誤送信防止のためには Gmail の DLP 機能を利用する。特定条件に基づき送信をブロックしたり警告を表示できる。",
+        "reference": "https://support.google.com/a/answer/6327505?hl=en",
+        "reference_label": "Prevent data loss in Gmail"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q9",
+      "question": "組織では多要素認証 (MFA) を必須としたい。Google Workspace で最も推奨される方法はどれか？",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ユーザーが任意で 2 段階認証を設定できるようにする",
+          "explanation": {
+            "text": "任意設定だと徹底できず、セキュリティリスクが残る。",
+            "reference": "https://support.google.com/a/answer/175197?hl=en",
+            "reference_label": "Set up 2-Step Verification"
+          }
+        },
+        {
+          "key": "B",
+          "text": "管理者が必須ポリシーとして 2 段階認証を強制する",
+          "explanation": {
+            "text": "Google Workspace 管理コンソールから強制設定が可能。セキュリティ強化には必須。",
+            "reference": "https://support.google.com/a/answer/175197?hl=en",
+            "reference_label": "Set up 2-Step Verification"
+          }
+        },
+        {
+          "key": "C",
+          "text": "セキュリティキーのみを必須にする",
+          "explanation": {
+            "text": "セキュリティキーは非常に強力だが、全員に物理キーを配布する運用は現実的でない場合も多い。",
+            "reference": "https://support.google.com/a/answer/175197?hl=en",
+            "reference_label": "Set up 2-Step Verification"
+          }
+        },
+        {
+          "key": "D",
+          "text": "MFA の代わりにパスワードポリシーを強化する",
+          "explanation": {
+            "text": "パスワードポリシーだけではフィッシングや盗難リスクに対応できない。",
+            "reference": "https://support.google.com/a/answer/175197?hl=en",
+            "reference_label": "Set up 2-Step Verification"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Google Workspace では管理者が組織単位ごとに 2 段階認証を強制できる。MFA 強制が推奨される。",
+        "reference": "https://support.google.com/a/answer/175197?hl=en",
+        "reference_label": "Set up 2-Step Verification"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q10",
+      "question": "Google Meet の録画データを組織全体で管理・保持する必要がある。どのサービスと統合して実現できるか？",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Google Vault",
+          "explanation": {
+            "text": "Vault により Meet 録画（Drive に保存される）を保持・検索・監査できる。",
+            "reference": "https://support.google.com/vault/answer/2462365?hl=en",
+            "reference_label": "Google Vault"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Cloud Storage に直接保存する",
+          "explanation": {
+            "text": "Meet 録画は Drive に保存され、直接 Cloud Storage に保存することはできない。",
+            "reference": "https://support.google.com/meet/answer/9308681?hl=en",
+            "reference_label": "Record a video meeting"
+          }
+        },
+        {
+          "key": "C",
+          "text": "BigQuery",
+          "explanation": {
+            "text": "BigQuery はログや分析用途であり、Meet 録画データの保持には直接利用されない。",
+            "reference": "https://support.google.com/meet/answer/9308681?hl=en",
+            "reference_label": "Record a video meeting"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AppSheet",
+          "explanation": {
+            "text": "AppSheet はノーコード開発プラットフォームであり、Meet 録画の保持とは無関係。",
+            "reference": "https://support.google.com/meet/answer/9308681?hl=en",
+            "reference_label": "Record a video meeting"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Meet 録画は Drive に保存され、Vault を使って保持・検索・eDiscovery が可能。",
+        "reference": "https://support.google.com/vault/answer/2462365?hl=en",
+        "reference_label": "Google Vault"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q11",
+      "question": "管理者は特定の部門で Gmail の第三者アドオンの利用を禁止したい。この設定はどこで行うか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Google Workspace Marketplace アプリ管理",
+          "explanation": {
+            "text": "Marketplace アプリのインストール可否を OU ごとに制御できる。",
+            "reference": "https://support.google.com/a/answer/6087519?hl=en",
+            "reference_label": "Manage Marketplace apps"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Gmail のラベル設定",
+          "explanation": {
+            "text": "ラベル設定は分類機能であり、アドオン制御には関係しない。",
+            "reference": "https://support.google.com/a/answer/6087519?hl=en",
+            "reference_label": "Manage Marketplace apps"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Google Vault",
+          "explanation": {
+            "text": "Vault は保持・監査機能であり、アドオン制御には関係しない。",
+            "reference": "https://support.google.com/a/answer/6087519?hl=en",
+            "reference_label": "Manage Marketplace apps"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Google Chat の外部連携設定",
+          "explanation": {
+            "text": "Chat の外部連携設定は Gmail アドオン制御には影響しない。",
+            "reference": "https://support.google.com/a/answer/6087519?hl=en",
+            "reference_label": "Manage Marketplace apps"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Marketplace アプリ管理で OU ごとにアプリ利用可否を制御できるため、特定部門で Gmail アドオンを禁止可能。",
+        "reference": "https://support.google.com/a/answer/6087519?hl=en",
+        "reference_label": "Manage Marketplace apps"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q12",
+      "question": "組織の監査ポリシーに従い、管理者はユーザーが Google Drive で外部ドメインと共有したファイルの一覧を定期的に取得する必要がある。最も効率的な方法はどれか？",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Drive Audit API を利用して共有イベントを取得する",
+          "explanation": {
+            "text": "Audit API で外部共有のイベントを取得し、一覧化できる。",
+            "reference": "https://developers.google.com/admin-sdk/reports/v1/get-start/audit",
+            "reference_label": "Reports API (Audit)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Vault で外部共有のレポートを作成する",
+          "explanation": {
+            "text": "Vault は検索・保持目的であり、共有イベント一覧を出す機能はない。",
+            "reference": "https://developers.google.com/admin-sdk/reports/v1/get-start/audit",
+            "reference_label": "Reports API (Audit)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Google Sheets でユーザーに自己申告してもらう",
+          "explanation": {
+            "text": "自己申告は正確性に欠け、監査要件を満たさない。",
+            "reference": "https://developers.google.com/admin-sdk/reports/v1/get-start/audit",
+            "reference_label": "Reports API (Audit)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "管理コンソールのセキュリティダッシュボードで一覧を確認する",
+          "explanation": {
+            "text": "管理コンソールで一部情報は参照できるが、自動化して定期的に一覧取得するには API が適切。",
+            "reference": "https://developers.google.com/admin-sdk/reports/v1/get-start/audit",
+            "reference_label": "Reports API (Audit)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Drive Audit API を利用すれば、外部共有イベントを定期的に自動取得でき、監査要件に最も適している。",
+        "reference": "https://developers.google.com/admin-sdk/reports/v1/get-start/audit",
+        "reference_label": "Reports API (Audit)"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q13",
+      "question": "組織は BYOD (Bring Your Own Device) ポリシーを採用している。最小限の管理でセキュリティを確保するため、Google Workspace 管理者が有効にすべき機能はどれか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "基本モバイル管理 (Basic Mobile Management)",
+          "explanation": {
+            "text": "PIN・パスワード必須、端末ワイプなどの基本機能を提供し、BYOD に適している。",
+            "reference": "https://support.google.com/a/answer/7400753?hl=en",
+            "reference_label": "Set up basic mobile management"
+          }
+        },
+        {
+          "key": "B",
+          "text": "高度モバイル管理 (Advanced Mobile Management) を全端末に必須化する",
+          "explanation": {
+            "text": "高度管理は強力だが、BYOD では導入障壁が高くユーザーの反発を招きやすい。",
+            "reference": "https://support.google.com/a/answer/7400753?hl=en",
+            "reference_label": "Set up basic mobile management"
+          }
+        },
+        {
+          "key": "C",
+          "text": "モバイルアクセスを完全禁止する",
+          "explanation": {
+            "text": "BYOD 採用ポリシーに反する。",
+            "reference": "https://support.google.com/a/answer/7400753?hl=en",
+            "reference_label": "Set up basic mobile management"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Google Vault を使ってモバイルデータを制御する",
+          "explanation": {
+            "text": "Vault は保持目的であり、端末制御はできない。",
+            "reference": "https://support.google.com/a/answer/7400753?hl=en",
+            "reference_label": "Set up basic mobile management"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "BYOD 環境では過剰な管理を避けつつ、基本モバイル管理を利用して最低限のセキュリティを担保するのが適切。",
+        "reference": "https://support.google.com/a/answer/7400753?hl=en",
+        "reference_label": "Set up basic mobile management"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q14",
+      "question": "ユーザーが誤って重要なカレンダーを削除してしまった。管理者として復旧するための最も適切な手段はどれか？",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Google Vault から削除カレンダーを復旧する",
+          "explanation": {
+            "text": "Vault はメールやドライブデータは保持するが、カレンダーの直接復旧には利用できない。",
+            "reference": "https://support.google.com/a/answer/7550875?hl=en",
+            "reference_label": "Restore a deleted calendar"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザー自身にカレンダーのゴミ箱から復元させる",
+          "explanation": {
+            "text": "削除されたイベントやカレンダーはゴミ箱から一定期間復元可能。",
+            "reference": "https://support.google.com/a/answer/7550875?hl=en",
+            "reference_label": "Restore a deleted calendar"
+          }
+        },
+        {
+          "key": "C",
+          "text": "管理者が Admin Console から強制的に再作成する",
+          "explanation": {
+            "text": "強制再作成は可能だが、既存イベントデータは失われるため復元にはならない。",
+            "reference": "https://support.google.com/a/answer/7550875?hl=en",
+            "reference_label": "Restore a deleted calendar"
+          }
+        },
+        {
+          "key": "D",
+          "text": "API を使って削除データを直接取得する",
+          "explanation": {
+            "text": "Calendar API で削除済みデータを直接取得することはできない。",
+            "reference": "https://support.google.com/a/answer/7550875?hl=en",
+            "reference_label": "Restore a deleted calendar"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "カレンダーやイベントはゴミ箱から一定期間復旧可能で、最も簡単かつ適切な手段。",
+        "reference": "https://support.google.com/a/answer/7550875?hl=en",
+        "reference_label": "Restore a deleted calendar"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q15",
+      "question": "機密メールの取り扱い強化のため、組織で Gmail のクライアント側暗号化（Client-side encryption; CSE）を導入したい。正しい前提・特徴の組み合わせはどれか。（複数選択可）",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "暗号鍵は外部キーサービス（KACLS）など組織管理下で保持できる",
+          "explanation": {
+            "text": "CSE は組織が鍵管理を担い、Google は復号できない設計。外部キーサービス連携が前提となる。",
+            "reference": "https://support.google.com/a/answer/10741897?hl=en",
+            "reference_label": "About client-side encryption"
+          }
+        },
+        {
+          "key": "B",
+          "text": "CSE を有効にすると添付ファイルのアップロード上限など一部制約がある",
+          "explanation": {
+            "text": "CSE 有効時は添付・インライン画像のアップロードに制限（例：5MB）があるなど機能上の制約が明示されている。",
+            "reference": "https://support.google.com/mail/answer/13317990?hl=en",
+            "reference_label": "Learn about Gmail Client-side encryption"
+          }
+        },
+        {
+          "key": "C",
+          "text": "CSE を使うには Gmail 側で何の下準備も要らない",
+          "explanation": {
+            "text": "導入は段階的準備（外部キーサービス準備・Admin Console 設定・API 構成など）が必要。",
+            "reference": "https://support.google.com/a/answer/14309952?hl=en",
+            "reference_label": "Client-side encryption setup overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CSE は TLS を代替するものであり、TLS を無効化して使う",
+          "explanation": {
+            "text": "CSE はコンテンツ暗号化の追加レイヤーであり、TLS は通信路暗号。目的が異なるため代替ではない。",
+            "reference": "https://support.google.com/a/answer/100181?hl=en",
+            "reference_label": "TLS & SSL connections"
+          }
+        }
+      ],
+      "answer": "A,B",
+      "explanation": {
+        "text": "CSE は組織が鍵を保持する追加暗号化で、外部キーサービスと連携して導入する。導入手順や機能制約も公式に示される。一方 TLS は伝送路の暗号化であり、CSEの代替ではない。",
+        "reference": "https://support.google.com/a/answer/10741897?hl=en",
+        "reference_label": "About client-side encryption"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q16",
+      "question": "メールの機密性を高めたい管理者が検討している選択肢は「TLS 強制」「MTA-STS」「S/MIME（ホスト型または CSE）」である。要件と技術の正しい対応はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "外部特定ドメインとの間で常に暗号化配信を保証したい → TLS 強制（セキュアトランスポート）",
+          "explanation": {
+            "text": "相手側サーバーに TLS を要求して不達/拒否を選べる。特定アドレスリストに対して適用可能。",
+            "reference": "https://support.google.com/a/answer/2520500?hl=en",
+            "reference_label": "Send email over a secure TLS connection"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ドメイン宛の受信メール全体について暗号化と認証をポリシーで要求したい → MTA-STS",
+          "explanation": {
+            "text": "MTA-STS はドメイン単位で TLS 要件とレポーティングにより配信のセキュリティを高める。",
+            "reference": "https://support.google.com/a/answer/9261504?hl=en",
+            "reference_label": "About MTA-STS and TLS reporting"
+          }
+        },
+        {
+          "key": "C",
+          "text": "メッセージ本文/添付そのものを受信者のみが復号できる形で保護したい → S/MIME/CSE",
+          "explanation": {
+            "text": "S/MIME も CSE もコンテンツレベル暗号化で機密性を高める。S/MIME は証明書、CSE は組織管理の鍵を使う。",
+            "reference": "https://support.google.com/a/answer/6374496?hl=en",
+            "reference_label": "Turn on hosted S/MIME"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CSE を有効にすると MTA-STS は自動的に無効になる",
+          "explanation": {
+            "text": "CSE（コンテンツ暗号）と MTA-STS（伝送路制御）は別レイヤーで併用可能。自動的に無効化はされない。",
+            "reference": "https://support.google.com/a/answer/9261504?hl=en",
+            "reference_label": "About MTA-STS and TLS reporting"
+          }
+        }
+      ],
+      "answer": "A,B,C",
+      "explanation": {
+        "text": "TLS 強制は相手機関との暗号化配信保証、MTA-STS はドメイン全体の受信経路強化、S/MIME/CSE はコンテンツ暗号化。用途が異なり補完関係にある。",
+        "reference": "https://support.google.com/a/answer/2520500?hl=en",
+        "reference_label": "Send email over a secure TLS connection"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q17",
+      "question": "研究部門の共有ドライブから他部門（営業部門 OU）への共有を禁止したい。ただし役員グループは例外で参照可とする。最も適切な実装はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Drive の「共有設定（組織外共有）」のみで対応する",
+          "explanation": {
+            "text": "従来の共有設定は組織外/リンク共有中心で、部門間のきめ細かいブロック/許可は難しい。",
+            "reference": "https://support.google.com/a/answer/10621317?hl=en",
+            "reference_label": "Create and manage trust rules for Drive sharing"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Drive のトラストルールで研究部門 OU→営業部門 OU を拒否、役員グループを許可条件として追加",
+          "explanation": {
+            "text": "トラストルールは OU/グループ/ドメイン単位での詳細制御が可能で、例外条件も設定できる。",
+            "reference": "https://support.google.com/a/answer/10621317?hl=en",
+            "reference_label": "Create and manage trust rules for Drive sharing"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Vault の保持ルールで営業部門の閲覧を禁止する",
+          "explanation": {
+            "text": "Vault は保持・eDiscovery 用でアクセス制御ツールではない。",
+            "reference": "https://support.google.com/vault/answer/2462365?hl=en",
+            "reference_label": "Google Vault overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "共有ドライブのメンバー権限を全員閲覧不可にする",
+          "explanation": {
+            "text": "要件は部門間の共有禁止＋役員のみ例外。単純な一律権限では要件を満たせない。",
+            "reference": "https://support.google.com/a/answer/10621317?hl=en",
+            "reference_label": "Create and manage trust rules for Drive sharing"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Drive トラストルールは OU/グループ条件を組み合わせた精密な共有制御を提供する。例外（役員グループ許可）もルールで表現可能。",
+        "reference": "https://support.google.com/a/answer/10621317?hl=en",
+        "reference_label": "Create and manage trust rules for Drive sharing"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q18",
+      "question": "Context-Aware Access（CAA）で「社外 IP からの管理コンソールアクセスを禁止し、社外からは Gmail/Drive は閲覧のみ許可（承認済み端末は編集可）」という要件を実現したい。最適な構成はどれか。（複数選択可）",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "対象アプリごとに CAA アクセスレベルを作成し、条件（IP 範囲・デバイスポスチャ）に基づくポリシーを適用",
+          "explanation": {
+            "text": "CAA はアプリ単位で属性（ユーザー、場所、デバイス状態、IP 等）に基づく細粒度ポリシーを適用できる。",
+            "reference": "https://support.google.com/a/answer/12645308?hl=en",
+            "reference_label": "About Context-Aware Access"
+          }
+        },
+        {
+          "key": "B",
+          "text": "管理コンソール自体にも CAA を適用し、社外 IP からのアクセスをブロック",
+          "explanation": {
+            "text": "CAA は Workspace 管理コンソールを含むアプリへのアクセス制御にも利用できる。",
+            "reference": "https://support.google.com/a/answer/9275380?hl=en",
+            "reference_label": "Protect your business with Context-Aware Access"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Gmail/Drive は CAA で「閲覧のみ」の操作権限を直接設定する",
+          "explanation": {
+            "text": "CAA はアクセス可否/要件を制御するもので、アプリ内の操作権限（閲覧のみ等）は Drive の共有権限や DLP 等で別途制御する。",
+            "reference": "https://support.google.com/a/answer/12645308?hl=en",
+            "reference_label": "About Context-Aware Access"
+          }
+        },
+        {
+          "key": "D",
+          "text": "承認デバイスの編集可否はデバイスコンプライアンス条件と組み合わせて許可する",
+          "explanation": {
+            "text": "承認端末（管理デバイス・スクリーンロック・証明書等）を条件に含め、編集を許可する形で運用ポリシーを分離できる。",
+            "reference": "https://cloud.google.com/architecture/secure-apps-resources-using-context-aware-access/best-practices",
+            "reference_label": "Best practices for CAA"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "CAA は IP/デバイスポスチャ等の属性でアプリへのアクセス要件を定義できる。操作レベル（閲覧のみ）は別の権限設計と併用する。",
+        "reference": "https://support.google.com/a/answer/12645308?hl=en",
+        "reference_label": "About Context-Aware Access"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q19",
+      "question": "ユーザー属性（部門=Sales、雇用区分=Contractor 等）でメンバーが自動更新されるグループを作り、アクセス権を動的に付与したい。最適な機能はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "動的グループ（Dynamic Groups）を作成し、属性クエリでメンバーシップを管理する",
+          "explanation": {
+            "text": "動的グループはユーザー属性に基づいて自動でメンバーを更新できる。",
+            "reference": "https://support.google.com/a/answer/10286834?hl=en",
+            "reference_label": "Manage membership automatically with dynamic groups"
+          }
+        },
+        {
+          "key": "B",
+          "text": "組織部門（OU）だけでメンバーを固定して手動更新する",
+          "explanation": {
+            "text": "OU 固定だと属性変化に追随しない。自動更新の目的に合わない。",
+            "reference": "https://cloud.google.com/identity/docs/concepts/overview-dynamic-groups",
+            "reference_label": "Dynamic groups overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "グループ設定 API で毎日バッチ更新する（手動スクリプト）",
+          "explanation": {
+            "text": "スクリプトは代替になり得るが、動的グループを使えば管理負荷と誤りを減らせる。",
+            "reference": "https://cloud.google.com/identity/docs/concepts/overview-dynamic-groups",
+            "reference_label": "Dynamic groups overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Calendar のリソースグループにユーザーを追加する",
+          "explanation": {
+            "text": "リソースグループはカレンダー資産の管理であり、アクセス制御の動的メンバーシップとは異なる。",
+            "reference": "https://cloud.google.com/identity/docs/concepts/overview-dynamic-groups",
+            "reference_label": "Dynamic groups overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "動的グループは属性ベースでメンバーを自動更新でき、最小コストでポリシー連携を実現できる。",
+        "reference": "https://support.google.com/a/answer/10286834?hl=en",
+        "reference_label": "Manage membership automatically with dynamic groups"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q20",
+      "question": "Google Chat で外部ユーザーとのやり取りを有効化する際の正しい考慮点はどれか。（複数選択可）",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "外部ユーザーとのやり取りは 1:1 または「外部ユーザーを許可したスペース」に限定される",
+          "explanation": {
+            "text": "グループメッセージに外部ユーザーを追加することはできず、外部対応のスペースで行う必要がある。",
+            "reference": "https://support.google.com/a/answer/9296706?hl=en",
+            "reference_label": "Chatting with external users"
+          }
+        },
+        {
+          "key": "B",
+          "text": "スペースを作成した後でも内部⇔外部の種別を自由に切り替えられる",
+          "explanation": {
+            "text": "スペースの外部可否は作成時に決める必要があり、後から変更できない制約がある。",
+            "reference": "https://support.google.com/a/answer/9296706?hl=en",
+            "reference_label": "Chatting with external users"
+          }
+        },
+        {
+          "key": "C",
+          "text": "管理者は外部チャット全体の可否や、外部スペースの作成/参加可否をポリシーで制御できる",
+          "explanation": {
+            "text": "Admin Console で外部チャットや外部スペースに関するポリシーを制御できる。",
+            "reference": "https://support.google.com/a/answer/9269229?hl=en",
+            "reference_label": "Control external Chat & spaces options"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Chat の外部連携設定は Gmail アドオン制御と同じ設定画面で行う",
+          "explanation": {
+            "text": "Gmail アドオン（Marketplace アプリ）管理とは別の設定系統であり同一ではない。",
+            "reference": "https://support.google.com/a/answer/9269229?hl=en",
+            "reference_label": "Control external Chat & spaces options"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "外部ユーザーは 1:1 DM か外部対応スペースでのみやり取りでき、管理者は外部チャット関連のポリシーを制御可能。スペースの外部可否は作成時に固定される。",
+        "reference": "https://support.google.com/a/answer/9296706?hl=en",
+        "reference_label": "Chatting with external users"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q21",
+      "question": "メール移行期間中、一部ユーザーは Gmail、他は既存メールサーバーを使用する。社内ドメイン宛メールの配送方式として適切なのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Split delivery：受信者に応じて Gmail または非 Gmail サーバーに振り分ける",
+          "explanation": {
+            "text": "Gmail を一次受信とし、ルーティングルールで受信者ごとに別システムへ転送する運用に適する。",
+            "reference": "https://support.google.com/a/answer/12971016?hl=en",
+            "reference_label": "Send email to 2 email systems with split delivery"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Dual delivery：同一受信者に同じメールを同時に 2 システムへ配送する",
+          "explanation": {
+            "text": "Dual はミラー配送（同一宛先を二重配送）であり、受信者の所属システムが分かれる移行には通常不要。",
+            "reference": "https://support.google.com/a/answer/2685650?hl=en",
+            "reference_label": "Email routing and delivery options"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Direct delivery：既存サーバーを経由せず各ユーザーの端末に直送する",
+          "explanation": {
+            "text": "そのような方式は存在しない。Workspace の配信方式ではない。",
+            "reference": "https://support.google.com/a/answer/2685650?hl=en",
+            "reference_label": "Email routing and delivery options"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Split delivery では MX は常に非 Gmail 側を指す必要がある",
+          "explanation": {
+            "text": "公式手順では MX を Google に向け、まず Gmail が受信してから条件により転送する。",
+            "reference": "https://support.google.com/a/answer/12971016?hl=en",
+            "reference_label": "Send email to 2 email systems with split delivery"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "移行期間にユーザーごとに受信システムが異なる場合は Split delivery が適切。Gmail を一次受信にし、ルールで非 Gmail 側へ振り分ける。",
+        "reference": "https://support.google.com/a/answer/12971016?hl=en",
+        "reference_label": "Send email to 2 email systems with split delivery"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q22",
+      "question": "組織は SPF、DKIM、DMARC を設定済みだが、一部受信者から依然としてなりすましメールが届くと報告がある。追加で有効化すべきセキュリティ機能はどれか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "MTA-STS を有効化し、TLS 経由での受信を保証する",
+          "explanation": {
+            "text": "MTA-STS は TLS 強制とレポートで送信側の改ざんを防ぐ。SPF/DKIM/DMARC を補完する。",
+            "reference": "https://support.google.com/a/answer/9261504?hl=en",
+            "reference_label": "About MTA-STS and TLS reporting"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ARC (Authenticated Received Chain) を導入して転送経路の認証を強化する",
+          "explanation": {
+            "text": "ARC はメール転送経路で SPF/DKIM/DMARC 情報が失われないよう保証する仕組みで、なりすまし検知を補強する。",
+            "reference": "https://support.google.com/a/answer/10022757?hl=en",
+            "reference_label": "Authenticated Received Chain (ARC)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "POP3 を無効化する",
+          "explanation": {
+            "text": "POP3 無効化は誤配信やなりすまし防止とは関係がない。",
+            "reference": "https://support.google.com/a/answer/9261504?hl=en",
+            "reference_label": "About MTA-STS and TLS reporting"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Vault で保持ルールを追加する",
+          "explanation": {
+            "text": "Vault は保持・検索用であり、なりすまし防止には寄与しない。",
+            "reference": "https://support.google.com/vault/answer/2462365?hl=en",
+            "reference_label": "Google Vault"
+          }
+        }
+      ],
+      "answer": "A,B",
+      "explanation": {
+        "text": "SPF/DKIM/DMARC に加え、MTA-STS による TLS 強制や ARC による転送経路の整合性保持を組み合わせることで、なりすまし検知をより確実にできる。",
+        "reference": "https://support.google.com/a/answer/9261504?hl=en",
+        "reference_label": "About MTA-STS and TLS reporting"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q23",
+      "question": "Google Meet で外部ユーザーが会議に参加できるようにしたいが、主催者が明示的に承認しない限り参加を禁止したい。どの設定を有効にすべきか？",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "クイックアクセスをオフにする",
+          "explanation": {
+            "text": "クイックアクセスをオフにすると、外部ユーザーは主催者の承認がないと参加できない。",
+            "reference": "https://support.google.com/meet/answer/9302870?hl=en",
+            "reference_label": "Turn quick access on or off"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Meet の録画機能を有効化する",
+          "explanation": {
+            "text": "録画機能は参加制御とは無関係。",
+            "reference": "https://support.google.com/meet/answer/9302870?hl=en",
+            "reference_label": "Turn quick access on or off"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Vault による保持ポリシーを適用する",
+          "explanation": {
+            "text": "Vault は保持目的であり、参加制御機能ではない。",
+            "reference": "https://support.google.com/meet/answer/9302870?hl=en",
+            "reference_label": "Turn quick access on or off"
+          }
+        },
+        {
+          "key": "D",
+          "text": "カレンダーで外部ユーザーを必ず招待する",
+          "explanation": {
+            "text": "カレンダー招待は参加制御ではなく、承認要件を満たさない。",
+            "reference": "https://support.google.com/meet/answer/9302870?hl=en",
+            "reference_label": "Turn quick access on or off"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Meet で外部ユーザーの無条件参加を防ぐには、クイックアクセスをオフにする設定が必要。",
+        "reference": "https://support.google.com/meet/answer/9302870?hl=en",
+        "reference_label": "Turn quick access on or off"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q24",
+      "question": "Google カレンダーで、従業員が外部ドメインのユーザーと予定を共有することを禁止したい。どの設定を変更すべきか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "カレンダーの外部共有オプションをドメインレベルで制限する",
+          "explanation": {
+            "text": "管理コンソールから外部共有の範囲を設定できる。公開・詳細共有を禁止することで目的を達成できる。",
+            "reference": "https://support.google.com/a/answer/60765?hl=en",
+            "reference_label": "Control external calendar sharing options"
+          }
+        },
+        {
+          "key": "B",
+          "text": "カレンダーの通知メールを無効にする",
+          "explanation": {
+            "text": "通知をオフにしても外部共有は防止できない。",
+            "reference": "https://support.google.com/a/answer/60765?hl=en",
+            "reference_label": "Control external calendar sharing options"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Vault の保持ルールでカレンダーを対象外にする",
+          "explanation": {
+            "text": "Vault の保持ルールは共有制御には関係しない。",
+            "reference": "https://support.google.com/a/answer/60765?hl=en",
+            "reference_label": "Control external calendar sharing options"
+          }
+        },
+        {
+          "key": "D",
+          "text": "組織全体でカレンダーを削除する",
+          "explanation": {
+            "text": "カレンダー自体を削除するのは不適切。",
+            "reference": "https://support.google.com/a/answer/60765?hl=en",
+            "reference_label": "Control external calendar sharing options"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "外部共有を制御するには、管理コンソールのカレンダー外部共有設定を変更するのが正しい。",
+        "reference": "https://support.google.com/a/answer/60765?hl=en",
+        "reference_label": "Control external calendar sharing options"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q25",
+      "question": "管理者が Security Investigation Tool を利用して、フィッシングメールを誤って開封したユーザーを特定したい。どの方法が正しいか？",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Gmail ログを検索し、該当メールの開封イベントを抽出する",
+          "explanation": {
+            "text": "Security Investigation Tool は Gmail ログを検索し、開封・配信などの詳細を確認可能。",
+            "reference": "https://support.google.com/a/answer/7575955?hl=en",
+            "reference_label": "Use the investigation tool"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Vault でメールを検索し、開封履歴を確認する",
+          "explanation": {
+            "text": "Vault は開封履歴を保持せず、保持と検索のみ。",
+            "reference": "https://support.google.com/a/answer/7575955?hl=en",
+            "reference_label": "Use the investigation tool"
+          }
+        },
+        {
+          "key": "C",
+          "text": "カレンダーログを検索する",
+          "explanation": {
+            "text": "カレンダーログではメール開封状況は確認できない。",
+            "reference": "https://support.google.com/a/answer/7575955?hl=en",
+            "reference_label": "Use the investigation tool"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザーの Gmail クライアント端末を直接調査する",
+          "explanation": {
+            "text": "端末調査は可能だが効率が悪く、Security Investigation Tool の機能を使うべき。",
+            "reference": "https://support.google.com/a/answer/7575955?hl=en",
+            "reference_label": "Use the investigation tool"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Security Investigation Tool は Gmail ログを基に、配信・開封状況を確認可能。Vault では開封イベントは見られない。",
+        "reference": "https://support.google.com/a/answer/7575955?hl=en",
+        "reference_label": "Use the investigation tool"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q26",
+      "question": "ユーザーが Google Drive で外部と共有してはいけないファイルを共有してしまった。管理者として即時に共有を取り消す方法はどれか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Security Investigation Tool で対象ファイルを特定し、共有を直接削除する",
+          "explanation": {
+            "text": "Security Investigation Tool から直接 Drive ファイルの共有設定を変更できる。",
+            "reference": "https://support.google.com/a/answer/7575955?hl=en",
+            "reference_label": "Use the investigation tool"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Vault で対象ファイルを検索して削除する",
+          "explanation": {
+            "text": "Vault は Drive ファイルの共有取り消し操作には対応していない。",
+            "reference": "https://support.google.com/a/answer/7575955?hl=en",
+            "reference_label": "Use the investigation tool"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザー本人に共有解除を依頼する",
+          "explanation": {
+            "text": "本人依頼は可能だが即時制御にはならない。",
+            "reference": "https://support.google.com/a/answer/7575955?hl=en",
+            "reference_label": "Use the investigation tool"
+          }
+        },
+        {
+          "key": "D",
+          "text": "カレンダー設定を変更する",
+          "explanation": {
+            "text": "Drive の共有制御にカレンダーは関係しない。",
+            "reference": "https://support.google.com/a/answer/7575955?hl=en",
+            "reference_label": "Use the investigation tool"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Drive 共有の誤設定を即時解除するには、Security Investigation Tool を使い管理者が直接設定を変更できる。",
+        "reference": "https://support.google.com/a/answer/7575955?hl=en",
+        "reference_label": "Use the investigation tool"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q27",
+      "question": "組織が新しいセキュリティポリシーを導入し、管理対象デバイスのみから Gmail にアクセスできるようにしたい。実現方法はどれか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Context-Aware Access で Gmail に管理対象デバイス条件を設定する",
+          "explanation": {
+            "text": "CAA は管理デバイス状態を条件にして Gmail アクセスを制御可能。",
+            "reference": "https://support.google.com/a/answer/9261434?hl=en",
+            "reference_label": "Context-Aware Access for Gmail"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Vault の保持ポリシーで管理デバイス以外からのアクセスを禁止する",
+          "explanation": {
+            "text": "Vault は保持目的であり、アクセス制御機能はない。",
+            "reference": "https://support.google.com/a/answer/9261434?hl=en",
+            "reference_label": "Context-Aware Access for Gmail"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザー自身に手動で端末認証をさせる",
+          "explanation": {
+            "text": "手動手続きでは自動制御として機能しない。",
+            "reference": "https://support.google.com/a/answer/9261434?hl=en",
+            "reference_label": "Context-Aware Access for Gmail"
+          }
+        },
+        {
+          "key": "D",
+          "text": "カレンダーの外部共有を禁止する",
+          "explanation": {
+            "text": "カレンダー設定は Gmail アクセス制御とは無関係。",
+            "reference": "https://support.google.com/a/answer/9261434?hl=en",
+            "reference_label": "Context-Aware Access for Gmail"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "CAA を利用して Gmail へのアクセスを管理対象デバイスに制限するのが正しい方法。",
+        "reference": "https://support.google.com/a/answer/9261434?hl=en",
+        "reference_label": "Context-Aware Access for Gmail"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q28",
+      "question": "従業員の退職後も法的要件のためにすべてのメールデータを保持したい。最も適切な方法はどれか？",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Google Vault で保持ルールを設定する",
+          "explanation": {
+            "text": "Vault によりユーザー削除後もメールデータを保持できる。",
+            "reference": "https://support.google.com/vault/answer/2462365?hl=en",
+            "reference_label": "Google Vault overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーのメールをすべて PST にエクスポートする",
+          "explanation": {
+            "text": "手動エクスポートも可能だが、法的要件を長期的に維持するには Vault の方が効率的。",
+            "reference": "https://support.google.com/vault/answer/2462365?hl=en",
+            "reference_label": "Google Vault overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "削除時にメールをすべて廃棄する",
+          "explanation": {
+            "text": "保持要件に違反する。",
+            "reference": "https://support.google.com/vault/answer/2462365?hl=en",
+            "reference_label": "Google Vault overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "カレンダー共有を禁止する",
+          "explanation": {
+            "text": "カレンダー設定はメール保持と無関係。",
+            "reference": "https://support.google.com/vault/answer/2462365?hl=en",
+            "reference_label": "Google Vault overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "法的保持要件を満たすためには Vault の保持ルールを適切に設定するのが正解。",
+        "reference": "https://support.google.com/vault/answer/2462365?hl=en",
+        "reference_label": "Google Vault overview"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q29",
+      "question": "社内で機密文書を外部に誤送信するリスクを減らすため、管理者は Gmail DLP を構成したい。最も効果的なアプローチはどれか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "正規表現を使ってパターン（例：クレジットカード番号）を検出し、送信ブロックルールを作成する",
+          "explanation": {
+            "text": "正規表現ルールで機密情報を検知し、自動的に送信をブロックできるのが基本。",
+            "reference": "https://support.google.com/a/answer/6327505?hl=en",
+            "reference_label": "Prevent data loss in Gmail"
+          }
+        },
+        {
+          "key": "B",
+          "text": "すべてのメール送信に管理者承認を必須とする",
+          "explanation": {
+            "text": "全送信の承認は運用負担が大きすぎ現実的でない。",
+            "reference": "https://support.google.com/a/answer/6327505?hl=en",
+            "reference_label": "Prevent data loss in Gmail"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Vault で検索し、該当メールを削除する",
+          "explanation": {
+            "text": "Vault は保持・監査用で、送信前のブロックはできない。",
+            "reference": "https://support.google.com/vault/answer/2462365?hl=en",
+            "reference_label": "Google Vault"
+          }
+        },
+        {
+          "key": "D",
+          "text": "SPF レコードを DNS に追加する",
+          "explanation": {
+            "text": "SPF は送信元認証であり、誤送信防止には直接役立たない。",
+            "reference": "https://support.google.com/a/answer/33786?hl=en",
+            "reference_label": "SPF for your domain"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "誤送信対策には Gmail DLP ポリシーで正規表現パターンを検出して送信ブロックする方法が効果的。",
+        "reference": "https://support.google.com/a/answer/6327505?hl=en",
+        "reference_label": "Prevent data loss in Gmail"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q30",
+      "question": "メール移行のため、一部ユーザーを Gmail に、残りを既存サーバーに残す必要がある。全員に同じメールが届く必要はない。この要件に適した配送方式はどれか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Split delivery",
+          "explanation": {
+            "text": "Split delivery は受信者ごとに Gmail または別システムに配送先を分けることができる。",
+            "reference": "https://support.google.com/a/answer/12971016?hl=en",
+            "reference_label": "Split delivery"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Dual delivery",
+          "explanation": {
+            "text": "Dual delivery は同じ受信者に 2 つのシステムへ同時配送する方式であり、今回の要件には合わない。",
+            "reference": "https://support.google.com/a/answer/2685650?hl=en",
+            "reference_label": "Email routing and delivery"
+          }
+        },
+        {
+          "key": "C",
+          "text": "MX レコードを既存サーバーに戻す",
+          "explanation": {
+            "text": "既存サーバーだけを使うと Gmail ユーザーがメールを受信できない。",
+            "reference": "https://support.google.com/a/answer/12971016?hl=en",
+            "reference_label": "Split delivery"
+          }
+        },
+        {
+          "key": "D",
+          "text": "POP3 で既存サーバーから Gmail に定期取得する",
+          "explanation": {
+            "text": "POP3 取得はユーザー任せで即時性やセキュリティ要件を満たさない。",
+            "reference": "https://support.google.com/a/answer/12971016?hl=en",
+            "reference_label": "Split delivery"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "移行中にユーザーごとにメール配送を分ける要件は Split delivery が適切。",
+        "reference": "https://support.google.com/a/answer/12971016?hl=en",
+        "reference_label": "Split delivery"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q31",
+      "question": "管理者は多数のグループの設定を一括で変更したい。例えば、投稿権限を「ドメイン内ユーザーのみ」に統一したい。この操作に最も効率的な方法はどれか？",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Groups Settings API を使ってスクリプトで更新する",
+          "explanation": {
+            "text": "API を利用すれば多くのグループに対して権限設定を自動化できる。",
+            "reference": "https://developers.google.com/admin-sdk/groups-settings",
+            "reference_label": "Groups Settings API"
+          }
+        },
+        {
+          "key": "B",
+          "text": "管理コンソールから一つずつ手作業で設定する",
+          "explanation": {
+            "text": "手作業では膨大な時間がかかり効率的でない。",
+            "reference": "https://developers.google.com/admin-sdk/groups-settings",
+            "reference_label": "Groups Settings API"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Vault を使ってグループを監査する",
+          "explanation": {
+            "text": "Vault は保持・監査用であり、グループ設定を変更する機能はない。",
+            "reference": "https://developers.google.com/admin-sdk/groups-settings",
+            "reference_label": "Groups Settings API"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CSV エクスポート・インポートでグループの投稿権限を更新する",
+          "explanation": {
+            "text": "CSV インポートはユーザーやグループ作成には使えるが、細かい投稿権限の一括変更には不向き。",
+            "reference": "https://developers.google.com/admin-sdk/groups-settings",
+            "reference_label": "Groups Settings API"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "大量のグループ設定変更は Groups Settings API を使うのが最も効率的。",
+        "reference": "https://developers.google.com/admin-sdk/groups-settings",
+        "reference_label": "Groups Settings API"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q32",
+      "question": "セキュリティセンターで、管理者は最近の不審な Gmail 活動を検出した。組織全体にポリシー対応を素早く行う最も適切な手段はどれか？",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "セキュリティセンターの推奨事項（Security Health）を適用する",
+          "explanation": {
+            "text": "Security Health から推奨事項を直接確認し適用することで即応できる。",
+            "reference": "https://support.google.com/a/answer/7532419?hl=en",
+            "reference_label": "Security Health"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Vault で保持ポリシーを修正する",
+          "explanation": {
+            "text": "Vault は保持目的であり、不審なアクティビティの対策には直接関係しない。",
+            "reference": "https://support.google.com/a/answer/7532419?hl=en",
+            "reference_label": "Security Health"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザーにパスワードを定期変更させる",
+          "explanation": {
+            "text": "パスワード変更は一部対応だが、Google は強制パスワード更新より MFA を推奨している。",
+            "reference": "https://support.google.com/a/answer/7532419?hl=en",
+            "reference_label": "Security Health"
+          }
+        },
+        {
+          "key": "D",
+          "text": "全ユーザーを一時的に停止する",
+          "explanation": {
+            "text": "全アカウント停止は現実的でなく業務影響が大きすぎる。",
+            "reference": "https://support.google.com/a/answer/7532419?hl=en",
+            "reference_label": "Security Health"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "セキュリティセンターの Security Health はリスク検出後に迅速な推奨対応を行うための機能である。",
+        "reference": "https://support.google.com/a/answer/7532419?hl=en",
+        "reference_label": "Security Health"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q33",
+      "question": "ユーザーが Google Chat で外部ユーザーとやり取りできるが、組織のセキュリティ方針により一部部門では禁止したい。正しいアプローチはどれか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "OU ごとに外部ユーザーとの Chat を無効化する",
+          "explanation": {
+            "text": "管理コンソールで OU ごとに外部チャットの可否を制御できる。",
+            "reference": "https://support.google.com/a/answer/9269229?hl=en",
+            "reference_label": "Control external Chat & spaces options"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Vault の保持ルールを利用する",
+          "explanation": {
+            "text": "Vault は保持用であり、外部チャット可否制御には利用できない。",
+            "reference": "https://support.google.com/a/answer/9269229?hl=en",
+            "reference_label": "Control external Chat & spaces options"
+          }
+        },
+        {
+          "key": "C",
+          "text": "グループ設定 API を使って禁止する",
+          "explanation": {
+            "text": "API はグループ設定用であり、Chat の外部共有制御は別。",
+            "reference": "https://support.google.com/a/answer/9269229?hl=en",
+            "reference_label": "Control external Chat & spaces options"
+          }
+        },
+        {
+          "key": "D",
+          "text": "すべてのユーザーに外部ユーザーをブロックさせる",
+          "explanation": {
+            "text": "ユーザー任せにすると統制が効かない。",
+            "reference": "https://support.google.com/a/answer/9269229?hl=en",
+            "reference_label": "Control external Chat & spaces options"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "外部チャット可否は OU ごとに制御可能。部門ごとにポリシーを反映できる。",
+        "reference": "https://support.google.com/a/answer/9269229?hl=en",
+        "reference_label": "Control external Chat & spaces options"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q34",
+      "question": "組織で Context-Aware Access を導入したが、特定のアプリケーションにのみ MFA を必須にしたい。正しい構成はどれか？",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "対象アプリのアクセスレベルに「2 段階認証必須」の条件を追加する",
+          "explanation": {
+            "text": "CAA はアクセスレベルで MFA 条件を設定できる。アプリ単位で適用可能。",
+            "reference": "https://support.google.com/a/answer/9275380?hl=en",
+            "reference_label": "Protect apps with CAA"
+          }
+        },
+        {
+          "key": "B",
+          "text": "組織全体で MFA を必須化する",
+          "explanation": {
+            "text": "全体強制だと「特定アプリのみ」という要件を満たさない。",
+            "reference": "https://support.google.com/a/answer/9275380?hl=en",
+            "reference_label": "Protect apps with CAA"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Vault の保持ルールで MFA を要求する",
+          "explanation": {
+            "text": "Vault は保持ツールであり、MFA 制御はできない。",
+            "reference": "https://support.google.com/a/answer/9275380?hl=en",
+            "reference_label": "Protect apps with CAA"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザー属性で MFA の適用可否を手作業で決定する",
+          "explanation": {
+            "text": "CAA のような自動ポリシーでなく、手作業はスケーラブルでない。",
+            "reference": "https://support.google.com/a/answer/9275380?hl=en",
+            "reference_label": "Protect apps with CAA"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "CAA のアクセスレベルで MFA 条件を設定すれば、特定アプリにだけ MFA を必須にできる。",
+        "reference": "https://support.google.com/a/answer/9275380?hl=en",
+        "reference_label": "Protect apps with CAA"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q35",
+      "question": "退職者のメールボックスを他のユーザーに引き継ぐ必要がある。最も適切な方法はどれか？",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データ転送ツールを使ってメールを他アカウントへ移行する",
+          "explanation": {
+            "text": "Google 提供のデータ転送ツールで Gmail を別アカウントに移行可能。",
+            "reference": "https://support.google.com/a/answer/112270?hl=en",
+            "reference_label": "Transfer data between Google Workspace accounts"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーを削除してすぐにアカウントを再利用する",
+          "explanation": {
+            "text": "削除するとメールデータが失われるため引き継ぎできない。",
+            "reference": "https://support.google.com/a/answer/112270?hl=en",
+            "reference_label": "Transfer data between Google Workspace accounts"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Vault に保持されたデータを閲覧用に提供する",
+          "explanation": {
+            "text": "Vault は閲覧や法的保持には有効だが、メールを通常利用アカウントに引き継ぐ用途には向かない。",
+            "reference": "https://support.google.com/a/answer/112270?hl=en",
+            "reference_label": "Transfer data between Google Workspace accounts"
+          }
+        },
+        {
+          "key": "D",
+          "text": "POP3 を使って手動でメールを取得する",
+          "explanation": {
+            "text": "POP3 転送は効率が悪く管理者の推奨手段ではない。",
+            "reference": "https://support.google.com/a/answer/112270?hl=en",
+            "reference_label": "Transfer data between Google Workspace accounts"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "退職者のデータを引き継ぐにはデータ転送ツールを利用するのが最適。",
+        "reference": "https://support.google.com/a/answer/112270?hl=en",
+        "reference_label": "Transfer data between Google Workspace accounts"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q36",
+      "question": "法務部門は、ある訴訟に関連する特定ユーザーのすべてのメールを保持し、削除されないように要求している。どの機能を使うべきか？",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Vault の訴訟ホールド（Legal Hold）を適用する",
+          "explanation": {
+            "text": "Vault の Legal Hold により対象ユーザーのデータは保持され、ユーザーが削除しても消えない。",
+            "reference": "https://support.google.com/vault/answer/2462365?hl=en",
+            "reference_label": "Google Vault overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "管理コンソールでアカウントを一時停止する",
+          "explanation": {
+            "text": "一時停止は利用制限だが、データ保持を保証する機能ではない。",
+            "reference": "https://support.google.com/vault/answer/2462365?hl=en",
+            "reference_label": "Google Vault overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザー本人に削除を禁止するよう依頼する",
+          "explanation": {
+            "text": "本人依頼は信頼性がなく、監査要件を満たさない。",
+            "reference": "https://support.google.com/vault/answer/2462365?hl=en",
+            "reference_label": "Google Vault overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Gmail のラベルを付与する",
+          "explanation": {
+            "text": "ラベルは分類であり、保持保証はない。",
+            "reference": "https://support.google.com/vault/answer/2462365?hl=en",
+            "reference_label": "Google Vault overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "訴訟関連データは Vault の Legal Hold で保持するのが正しい。",
+        "reference": "https://support.google.com/vault/answer/2462365?hl=en",
+        "reference_label": "Google Vault overview"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q37",
+      "question": "監査担当者が、誰が組織内で Google Drive の共有設定を変更したかを調べたい。どのログを参照すべきか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Drive 監査ログ",
+          "explanation": {
+            "text": "Drive 監査ログで共有リンクの作成・削除やアクセス権変更を確認できる。",
+            "reference": "https://support.google.com/a/answer/7061566?hl=en",
+            "reference_label": "Drive audit log"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Gmail 監査ログ",
+          "explanation": {
+            "text": "Gmail ログはメール活動のみ対象で、Drive の共有操作は含まれない。",
+            "reference": "https://support.google.com/a/answer/7061566?hl=en",
+            "reference_label": "Drive audit log"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Vault 検索ログ",
+          "explanation": {
+            "text": "Vault は保持/検索用で、共有操作履歴は確認できない。",
+            "reference": "https://support.google.com/a/answer/7061566?hl=en",
+            "reference_label": "Drive audit log"
+          }
+        },
+        {
+          "key": "D",
+          "text": "セキュリティセンターの Security Health",
+          "explanation": {
+            "text": "Security Health は推奨対策を示す機能で、操作ログではない。",
+            "reference": "https://support.google.com/a/answer/7061566?hl=en",
+            "reference_label": "Drive audit log"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Drive の共有操作は Drive 監査ログで確認できる。",
+        "reference": "https://support.google.com/a/answer/7061566?hl=en",
+        "reference_label": "Drive audit log"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q38",
+      "question": "組織は BYOD 端末も利用可能にしているが、最低限のセキュリティを担保したい。どの設定を有効化すべきか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "基本モバイル管理を有効化する",
+          "explanation": {
+            "text": "基本管理でパスコードや端末ワイプを強制できる。",
+            "reference": "https://support.google.com/a/answer/7400753?hl=en",
+            "reference_label": "Set up basic mobile management"
+          }
+        },
+        {
+          "key": "B",
+          "text": "高度モバイル管理を必須化する",
+          "explanation": {
+            "text": "高度管理は機能が豊富だが BYOD 導入では反発が出やすい。",
+            "reference": "https://support.google.com/a/answer/7400753?hl=en",
+            "reference_label": "Set up basic mobile management"
+          }
+        },
+        {
+          "key": "C",
+          "text": "すべてのモバイル端末からのアクセスを禁止する",
+          "explanation": {
+            "text": "BYOD 採用ポリシーに反する。",
+            "reference": "https://support.google.com/a/answer/7400753?hl=en",
+            "reference_label": "Set up basic mobile management"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Vault でモバイルデータを保持する",
+          "explanation": {
+            "text": "Vault は端末制御機能を持たない。",
+            "reference": "https://support.google.com/a/answer/7400753?hl=en",
+            "reference_label": "Set up basic mobile management"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "BYOD 環境では基本モバイル管理を利用し、端末ワイプや画面ロックを強制するのが現実的。",
+        "reference": "https://support.google.com/a/answer/7400753?hl=en",
+        "reference_label": "Set up basic mobile management"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q39",
+      "question": "ユーザー属性に基づいて自動で更新されるグループを作りたい。最適な機能はどれか？",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "動的グループ（Dynamic Groups）",
+          "explanation": {
+            "text": "ユーザー属性に基づいてメンバーが自動更新される。",
+            "reference": "https://support.google.com/a/answer/10286834?hl=en",
+            "reference_label": "Dynamic groups"
+          }
+        },
+        {
+          "key": "B",
+          "text": "通常の Google グループ",
+          "explanation": {
+            "text": "通常のグループは手動でメンバーを管理する必要がある。",
+            "reference": "https://support.google.com/a/answer/10286834?hl=en",
+            "reference_label": "Dynamic groups"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Vault の検索グループ",
+          "explanation": {
+            "text": "Vault の検索グループは保持対象を定義するものであり、自動メンバー更新はできない。",
+            "reference": "https://support.google.com/a/answer/10286834?hl=en",
+            "reference_label": "Dynamic groups"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Gmail の連絡先グループ",
+          "explanation": {
+            "text": "連絡先グループは個人用であり、組織管理には使えない。",
+            "reference": "https://support.google.com/a/answer/10286834?hl=en",
+            "reference_label": "Dynamic groups"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "動的グループを利用すれば、ユーザー属性ベースで自動更新される。",
+        "reference": "https://support.google.com/a/answer/10286834?hl=en",
+        "reference_label": "Dynamic groups"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q40",
+      "question": "管理者はセキュリティセンターの調査ツールを使って、フィッシングメールを受信したユーザー全員にラベルを付与したい。どの操作が必要か？",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "調査ツールから Gmail メッセージに対してアクションを実行する",
+          "explanation": {
+            "text": "調査ツールでは検索した Gmail メッセージに対してラベル付与などアクションを直接実行できる。",
+            "reference": "https://support.google.com/a/answer/7575955?hl=en",
+            "reference_label": "Investigation tool actions"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Vault で検索してラベルを適用する",
+          "explanation": {
+            "text": "Vault はラベル適用や直接操作を行う機能を持たない。",
+            "reference": "https://support.google.com/a/answer/7575955?hl=en",
+            "reference_label": "Investigation tool actions"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザー自身に手動でラベルを付けさせる",
+          "explanation": {
+            "text": "ユーザー任せは統制が効かず非効率。",
+            "reference": "https://support.google.com/a/answer/7575955?hl=en",
+            "reference_label": "Investigation tool actions"
+          }
+        },
+        {
+          "key": "D",
+          "text": "カレンダーで一括操作する",
+          "explanation": {
+            "text": "カレンダーはメールラベル付与と無関係。",
+            "reference": "https://support.google.com/a/answer/7575955?hl=en",
+            "reference_label": "Investigation tool actions"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "調査ツールは検索したメッセージに対してラベル付与などのアクションを直接行える。",
+        "reference": "https://support.google.com/a/answer/7575955?hl=en",
+        "reference_label": "Investigation tool actions"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q41",
+      "question": "Google Groups を使った承認フローを実装したい。例えば、社外への送信はモデレーターが承認してから配送したい。この要件に最適な機能はどれか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "グループの投稿モデレーションを有効にする",
+          "explanation": {
+            "text": "グループのモデレーション機能を使えば、モデレーターの承認後に投稿が配送される。",
+            "reference": "https://support.google.com/a/answer/167430?hl=en",
+            "reference_label": "Moderate messages in Groups"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Vault で外部メールを保持する",
+          "explanation": {
+            "text": "Vault は保持用で承認フロー機能はない。",
+            "reference": "https://support.google.com/a/answer/167430?hl=en",
+            "reference_label": "Moderate messages in Groups"
+          }
+        },
+        {
+          "key": "C",
+          "text": "カレンダーで招待承認を利用する",
+          "explanation": {
+            "text": "カレンダーの招待承認はメールフロー承認とは異なる。",
+            "reference": "https://support.google.com/a/answer/167430?hl=en",
+            "reference_label": "Moderate messages in Groups"
+          }
+        },
+        {
+          "key": "D",
+          "text": "MTA-STS を有効化する",
+          "explanation": {
+            "text": "MTA-STS は伝送暗号化ポリシーであり、承認フローとは関係ない。",
+            "reference": "https://support.google.com/a/answer/167430?hl=en",
+            "reference_label": "Moderate messages in Groups"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "承認フローは Google Groups のモデレーション機能を利用する。",
+        "reference": "https://support.google.com/a/answer/167430?hl=en",
+        "reference_label": "Moderate messages in Groups"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q42",
+      "question": "監査担当者は管理者が行った設定変更の履歴を確認したい。どのログを使うべきか？",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "管理者監査ログ（Admin audit log）",
+          "explanation": {
+            "text": "管理者監査ログで管理者の設定変更履歴を確認できる。",
+            "reference": "https://support.google.com/a/answer/4579579?hl=en",
+            "reference_label": "Admin audit log"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Drive 監査ログ",
+          "explanation": {
+            "text": "Drive 監査ログは Drive の操作記録で、管理者の設定変更は含まれない。",
+            "reference": "https://support.google.com/a/answer/4579579?hl=en",
+            "reference_label": "Admin audit log"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Vault 保持ルール",
+          "explanation": {
+            "text": "Vault は保持ポリシーを定義するツールであり、管理者操作のログは見られない。",
+            "reference": "https://support.google.com/a/answer/4579579?hl=en",
+            "reference_label": "Admin audit log"
+          }
+        },
+        {
+          "key": "D",
+          "text": "カレンダー共有ログ",
+          "explanation": {
+            "text": "カレンダーログは予定共有の履歴であり、管理者設定とは無関係。",
+            "reference": "https://support.google.com/a/answer/4579579?hl=en",
+            "reference_label": "Admin audit log"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "管理者が行った設定変更は Admin audit log で確認可能。",
+        "reference": "https://support.google.com/a/answer/4579579?hl=en",
+        "reference_label": "Admin audit log"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q43",
+      "question": "組織が S/MIME を導入し、社員間メールの暗号化を強制したい。正しい実装方法はどれか？",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Admin Console でホスト型 S/MIME を有効化し、ユーザー証明書をアップロードする",
+          "explanation": {
+            "text": "ホスト型 S/MIME は管理者が証明書を管理し、メール暗号化を自動適用できる。",
+            "reference": "https://support.google.com/a/answer/6374496?hl=en",
+            "reference_label": "Turn on hosted S/MIME"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Vault で暗号化ルールを作成する",
+          "explanation": {
+            "text": "Vault は保持用であり、暗号化の適用機能はない。",
+            "reference": "https://support.google.com/a/answer/6374496?hl=en",
+            "reference_label": "Turn on hosted S/MIME"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザーに各自で自己署名証明書を作らせる",
+          "explanation": {
+            "text": "自己署名証明書では信頼性がなく、組織管理下で運用する必要がある。",
+            "reference": "https://support.google.com/a/answer/6374496?hl=en",
+            "reference_label": "Turn on hosted S/MIME"
+          }
+        },
+        {
+          "key": "D",
+          "text": "TLS 強制ルールだけを設定する",
+          "explanation": {
+            "text": "TLS は伝送路暗号化であり、S/MIME のコンテンツ暗号化とは異なる。",
+            "reference": "https://support.google.com/a/answer/6374496?hl=en",
+            "reference_label": "Turn on hosted S/MIME"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "S/MIME を導入するには Admin Console で有効化し、証明書を管理する必要がある。",
+        "reference": "https://support.google.com/a/answer/6374496?hl=en",
+        "reference_label": "Turn on hosted S/MIME"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q44",
+      "question": "特定のグループメンバーだけがアプリにアクセスできるようにしたい。どの機能を使うべきか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "グループベースのアクセス制御（Group-based access control）",
+          "explanation": {
+            "text": "Google Cloud Identity ではグループ単位でアプリへのアクセス制御が可能。",
+            "reference": "https://support.google.com/a/answer/7281227?hl=en",
+            "reference_label": "Use groups to control access"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Vault の保持ルール",
+          "explanation": {
+            "text": "Vault はアクセス制御機能を持たない。",
+            "reference": "https://support.google.com/a/answer/7281227?hl=en",
+            "reference_label": "Use groups to control access"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Drive の共有設定",
+          "explanation": {
+            "text": "Drive 共有はファイル単位の制御で、アプリアクセス制御ではない。",
+            "reference": "https://support.google.com/a/answer/7281227?hl=en",
+            "reference_label": "Use groups to control access"
+          }
+        },
+        {
+          "key": "D",
+          "text": "個人連絡先グループ",
+          "explanation": {
+            "text": "個人連絡先は組織全体のアクセス制御には使えない。",
+            "reference": "https://support.google.com/a/answer/7281227?hl=en",
+            "reference_label": "Use groups to control access"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "グループベースのアクセス制御で、特定グループのみがアプリにアクセス可能にできる。",
+        "reference": "https://support.google.com/a/answer/7281227?hl=en",
+        "reference_label": "Use groups to control access"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q45",
+      "question": "会議室などの設備を予約管理したい。Google Workspace のどの機能を使うべきか？",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "カレンダーのリソース（Resource calendars）",
+          "explanation": {
+            "text": "カレンダーで会議室や設備をリソースとして登録し、予約管理が可能。",
+            "reference": "https://support.google.com/a/answer/1033925?hl=en",
+            "reference_label": "Set up Calendar resources"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Vault の保持ルール",
+          "explanation": {
+            "text": "Vault は保持機能であり、リソース管理はできない。",
+            "reference": "https://support.google.com/a/answer/1033925?hl=en",
+            "reference_label": "Set up Calendar resources"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Drive の共有ドライブ",
+          "explanation": {
+            "text": "共有ドライブはファイル共有用であり、設備予約には使えない。",
+            "reference": "https://support.google.com/a/answer/1033925?hl=en",
+            "reference_label": "Set up Calendar resources"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Gmail フィルタ",
+          "explanation": {
+            "text": "Gmail フィルタはメール整理用であり、設備予約機能ではない。",
+            "reference": "https://support.google.com/a/answer/1033925?hl=en",
+            "reference_label": "Set up Calendar resources"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "会議室などの設備予約はカレンダーのリソースを使うのが正解。",
+        "reference": "https://support.google.com/a/answer/1033925?hl=en",
+        "reference_label": "Set up Calendar resources"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q46",
+      "question": "多国籍企業がデータの保存場所を法規制に準拠させたい。どの機能を利用するべきか？",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データ地域（Data regions）ポリシーを設定する",
+          "explanation": {
+            "text": "データ地域ポリシーにより、Gmail・Drive・カレンダー等のデータ保存場所を米国または欧州に制御できる。",
+            "reference": "https://support.google.com/a/answer/9223653?hl=en",
+            "reference_label": "Choose a geographic location for your data"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Vault の保持ルールを変更する",
+          "explanation": {
+            "text": "Vault は保持ポリシーであり、データ保存場所を制御できない。",
+            "reference": "https://support.google.com/a/answer/9223653?hl=en",
+            "reference_label": "Choose a geographic location for your data"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザー自身に保存場所を選ばせる",
+          "explanation": {
+            "text": "保存場所は管理者ポリシーで制御し、ユーザーに委任はできない。",
+            "reference": "https://support.google.com/a/answer/9223653?hl=en",
+            "reference_label": "Choose a geographic location for your data"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Drive のトラストルールを変更する",
+          "explanation": {
+            "text": "Drive トラストルールは共有制御であり、保存場所の指定ではない。",
+            "reference": "https://support.google.com/a/answer/9223653?hl=en",
+            "reference_label": "Choose a geographic location for your data"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "データ地域ポリシーを設定することで、法規制に準拠した保存場所制御が可能。",
+        "reference": "https://support.google.com/a/answer/9223653?hl=en",
+        "reference_label": "Choose a geographic location for your data"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q47",
+      "question": "法務部門が『削除されたメールも含めて 10 年間保持』することを要件としている。最適な機能はどれか？",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Vault の保持ルールを 10 年に設定する",
+          "explanation": {
+            "text": "Vault の保持ルールで削除されたメールも保持可能。",
+            "reference": "https://support.google.com/vault/answer/2462365?hl=en",
+            "reference_label": "Google Vault overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーに削除しないよう通知する",
+          "explanation": {
+            "text": "ユーザー依存では要件を保証できない。",
+            "reference": "https://support.google.com/vault/answer/2462365?hl=en",
+            "reference_label": "Google Vault overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Gmail のフィルタで保存する",
+          "explanation": {
+            "text": "フィルタは整理用であり保持保証はできない。",
+            "reference": "https://support.google.com/vault/answer/2462365?hl=en",
+            "reference_label": "Google Vault overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "外部アーカイブツールに転送する",
+          "explanation": {
+            "text": "可能だが Google Vault が標準機能として適切。",
+            "reference": "https://support.google.com/vault/answer/2462365?hl=en",
+            "reference_label": "Google Vault overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Vault の保持ルールで削除済みも含め保持するのが正解。",
+        "reference": "https://support.google.com/vault/answer/2462365?hl=en",
+        "reference_label": "Google Vault overview"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q48",
+      "question": "現場部門が簡単な業務アプリを自作したい。Google Workspace と統合し、コードレスで作成できるサービスはどれか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AppSheet",
+          "explanation": {
+            "text": "AppSheet はコードレスで業務アプリを作成でき、Workspace データとも連携可能。",
+            "reference": "https://support.google.com/a/answer/10075162?hl=en",
+            "reference_label": "AppSheet and Google Workspace"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Cloud Functions",
+          "explanation": {
+            "text": "Cloud Functions はサーバレスコード実行環境であり、ノーコードアプリ構築ではない。",
+            "reference": "https://support.google.com/a/answer/10075162?hl=en",
+            "reference_label": "AppSheet and Google Workspace"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Vault",
+          "explanation": {
+            "text": "Vault は保持用であり、アプリ開発機能はない。",
+            "reference": "https://support.google.com/a/answer/10075162?hl=en",
+            "reference_label": "AppSheet and Google Workspace"
+          }
+        },
+        {
+          "key": "D",
+          "text": "BigQuery",
+          "explanation": {
+            "text": "BigQuery はデータ分析基盤であり、ノーコードアプリ開発には使わない。",
+            "reference": "https://support.google.com/a/answer/10075162?hl=en",
+            "reference_label": "AppSheet and Google Workspace"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "AppSheet は Workspace と統合されたノーコードアプリ開発プラットフォーム。",
+        "reference": "https://support.google.com/a/answer/10075162?hl=en",
+        "reference_label": "AppSheet and Google Workspace"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q49",
+      "question": "従業員のアクセスを強化するために、組織はパスキー（Passkeys）を導入したい。正しい特徴はどれか？",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "パスキーは公開鍵暗号方式を利用し、フィッシング耐性がある",
+          "explanation": {
+            "text": "パスキーは公開鍵暗号を使い、フィッシングや中間者攻撃に強い。",
+            "reference": "https://support.google.com/accounts/answer/13548313?hl=en",
+            "reference_label": "About passkeys"
+          }
+        },
+        {
+          "key": "B",
+          "text": "パスキーは必ず物理セキュリティキーを必要とする",
+          "explanation": {
+            "text": "パスキーはスマホや PC の生体認証デバイスも利用可能で、物理キー必須ではない。",
+            "reference": "https://support.google.com/accounts/answer/13548313?hl=en",
+            "reference_label": "About passkeys"
+          }
+        },
+        {
+          "key": "C",
+          "text": "パスキーはパスワードと同じくサーバー側に保存される",
+          "explanation": {
+            "text": "パスキーは公開鍵だけがサーバーに保存され、秘密鍵は端末に留まる。",
+            "reference": "https://support.google.com/accounts/answer/13548313?hl=en",
+            "reference_label": "About passkeys"
+          }
+        },
+        {
+          "key": "D",
+          "text": "パスキーは Workspace では利用できない",
+          "explanation": {
+            "text": "Workspace アカウントでも利用可能。",
+            "reference": "https://support.google.com/accounts/answer/13548313?hl=en",
+            "reference_label": "About passkeys"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "パスキーは公開鍵暗号を利用し、秘密鍵は端末に留まる。フィッシング耐性があり、Workspace でも利用可能。",
+        "reference": "https://support.google.com/accounts/answer/13548313?hl=en",
+        "reference_label": "About passkeys"
+      }
+    },
+    {
+      "id": "gcp-PCE-P-q50",
+      "question": "組織は以下のセキュリティ要件を満たしたい：\n1. 外部からのアクセスは管理対象デバイスのみ許可\n2. メールはコンテンツレベルで暗号化\n3. 法務部門が削除済みデータを10年間保持\n最適な機能の組み合わせはどれか？",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Context-Aware Access + Client-side encryption (CSE) + Vault 保持ルール",
+          "explanation": {
+            "text": "CAA でデバイス制御、CSE でメールコンテンツ暗号化、Vault で保持要件を満たせる。",
+            "reference": "https://support.google.com/a/answer/9261434?hl=en",
+            "reference_label": "Context-Aware Access"
+          }
+        },
+        {
+          "key": "B",
+          "text": "TLS 強制 + S/MIME + Vault 保持ルール",
+          "explanation": {
+            "text": "TLS は伝送路暗号化であり、外部アクセス制御には使えない。",
+            "reference": "https://support.google.com/a/answer/2520500?hl=en",
+            "reference_label": "TLS in Gmail"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Vault + Drive トラストルール + Basic モバイル管理",
+          "explanation": {
+            "text": "Drive トラストルールや Basic 管理ではメール暗号化や厳密な保持要件は満たせない。",
+            "reference": "https://support.google.com/a/answer/10621317?hl=en",
+            "reference_label": "Drive trust rules"
+          }
+        },
+        {
+          "key": "D",
+          "text": "MTA-STS + CSE + カレンダー外部共有制御",
+          "explanation": {
+            "text": "MTA-STS は伝送経路暗号化であり、外部アクセス制御や保持要件は満たせない。",
+            "reference": "https://support.google.com/a/answer/9261504?hl=en",
+            "reference_label": "MTA-STS"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "外部アクセス制御は CAA、メール暗号化は CSE、保持要件は Vault がそれぞれ対応する。要件を満たす最適解は A。",
+        "reference": "https://support.google.com/a/answer/9261434?hl=en",
+        "reference_label": "Context-Aware Access"
+      }
+    }
+  ]
+}

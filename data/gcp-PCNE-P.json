@@ -1,0 +1,2467 @@
+{
+  "exam": {
+    "id": "PCNE-P",
+    "title": "Google Professional Cloud Network Engineer",
+    "description": "Google Professional Cloud Network Engineer は、Google Cloud 上でネットワークの設計・構築・運用・監視およびトラブルシューティング能力を検証するプロフェッショナルレベルの資格試験です。VPC ネットワーク、ロードバランシング、VPN／専用線（Interconnect）、ハイブリッド／マルチクラウド接続、ネットワークセキュリティ、モニタリングや可視化といった幅広いネットワーク機能を扱い、実業務でクラウドネットワークを支えるエンジニアとしてのスキルを証明します。",
+    "price": "200 USD",
+    "difficulty": "難しい",
+    "official-site": "https://cloud.google.com/learn/certification/cloud-network-engineer",
+    "version": "2024",
+    "category": {
+      "id": "gcp",
+      "name": "Google Cloud"
+    }
+  },
+  "questions": [
+    {
+      "id": "gcp-PCNE-P-q1",
+      "question": "VPCネットワークにおけるカスタムモードと自動モードの違いとして正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "自動モードはリージョンごとに自動で1つのサブネットを作成する。",
+          "explanation": {
+            "text": "自動モードVPCは、作成時にすべてのリージョンに1つずつサブネットを自動で作成する。",
+            "reference": "https://cloud.google.com/vpc/docs/vpc?hl=ja",
+            "reference_label": "Google Cloud VPC ドキュメント"
+          }
+        },
+        {
+          "key": "B",
+          "text": "カスタムモードは作成後にサブネットを追加できない。",
+          "explanation": {
+            "text": "カスタムモードでもサブネットは自由に追加・削除可能であり、この記述は誤り。",
+            "reference": "https://cloud.google.com/vpc/docs/vpc?hl=ja",
+            "reference_label": "Google Cloud VPC ドキュメント"
+          }
+        },
+        {
+          "key": "C",
+          "text": "自動モードではサブネットの削除ができない。",
+          "explanation": {
+            "text": "自動モードでも不要なサブネットは削除できる。",
+            "reference": "https://cloud.google.com/vpc/docs/vpc?hl=ja",
+            "reference_label": "Google Cloud VPC ドキュメント"
+          }
+        },
+        {
+          "key": "D",
+          "text": "カスタムモードはVPCピアリングを利用できない。",
+          "explanation": {
+            "text": "VPCピアリングは自動モード・カスタムモードのいずれでも利用可能。",
+            "reference": "https://cloud.google.com/vpc/docs/vpc-peering?hl=ja",
+            "reference_label": "Google Cloud VPC ピアリング"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "自動モードVPCは、すべてのリージョンに自動でサブネットを作成するのが特徴。一方、カスタムモードは必要に応じて手動でサブネットを作成する。",
+        "reference": "https://cloud.google.com/vpc/docs/vpc?hl=ja",
+        "reference_label": "Google Cloud VPC ドキュメント"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q2",
+      "question": "Cloud InterconnectのDedicated InterconnectとPartner Interconnectの違いとして正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Dedicated Interconnectは顧客がGoogleと直接物理接続を行う。",
+          "explanation": {
+            "text": "Dedicated Interconnectは顧客のネットワークをGoogleのネットワークに直接物理的に接続する。",
+            "reference": "https://cloud.google.com/interconnect/docs/concepts/dedicated-overview?hl=ja",
+            "reference_label": "Dedicated Interconnect 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Partner InterconnectはGoogleが顧客に直接物理回線を提供する。",
+          "explanation": {
+            "text": "Partner InterconnectはGoogleのパートナー事業者を介して接続を提供するため、Googleが直接物理回線を提供するわけではない。",
+            "reference": "https://cloud.google.com/interconnect/docs/concepts/partner-overview?hl=ja",
+            "reference_label": "Partner Interconnect 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Dedicated Interconnectは100Mbps単位で帯域を提供する。",
+          "explanation": {
+            "text": "Dedicated Interconnectは10Gbpsまたは100Gbpsの帯域単位で提供され、100Mbps単位ではない。",
+            "reference": "https://cloud.google.com/interconnect/docs/concepts/dedicated-overview?hl=ja",
+            "reference_label": "Dedicated Interconnect 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Partner Interconnectは専用ラックを設置して運用する必要がある。",
+          "explanation": {
+            "text": "Partner Interconnectでは専用ラックの設置は不要で、パートナー事業者の回線を利用する。",
+            "reference": "https://cloud.google.com/interconnect/docs/concepts/partner-overview?hl=ja",
+            "reference_label": "Partner Interconnect 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Dedicated InterconnectはGoogleのネットワークと顧客のネットワークを直接接続する。一方、Partner Interconnectはパートナーを介して接続を行う。",
+        "reference": "https://cloud.google.com/interconnect/docs/concepts/overview?hl=ja",
+        "reference_label": "Cloud Interconnect 概要"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q3",
+      "question": "Cloud VPNのHigh Availability（HA）構成について正しい説明はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "HA VPNはリージョン内で自動的に冗長化され、BGPを利用してフェイルオーバーする。",
+          "explanation": {
+            "text": "HA VPNは冗長化された2つのVPNトンネルを持ち、BGPでルート情報を交換しながら自動フェイルオーバーする。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/vpn/concepts/overview?hl=ja",
+            "reference_label": "Cloud VPN 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "HA VPNではスタティックルートのみが利用可能。",
+          "explanation": {
+            "text": "HA VPNでは動的ルーティング（BGP）を利用するのが推奨であり、スタティックルートのみの構成は誤り。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/vpn/concepts/overview?hl=ja",
+            "reference_label": "Cloud VPN 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "HA VPNは複数リージョンを跨いだ冗長構成を自動で提供する。",
+          "explanation": {
+            "text": "HA VPNは1リージョン内での冗長構成であり、複数リージョンにまたがる冗長性は提供しない。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/vpn/concepts/overview?hl=ja",
+            "reference_label": "Cloud VPN 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "HA VPNを利用する場合はCloud Routerは不要である。",
+          "explanation": {
+            "text": "BGPを利用するためにはCloud Routerが必要となる。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/router?hl=ja",
+            "reference_label": "Cloud Router ドキュメント"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "HA VPNは2つの冗長VPNゲートウェイを持ち、BGPでルート交換を行うことで自動的にフェイルオーバーする仕組みを提供する。",
+        "reference": "https://cloud.google.com/network-connectivity/docs/vpn/concepts/overview?hl=ja",
+        "reference_label": "Cloud VPN 概要"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q4",
+      "question": "Cloud Load BalancingのGlobal External HTTP(S) Load Balancerの特徴として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "任意のリージョンにあるバックエンドサービスに対してグローバルな負荷分散を提供できる。",
+          "explanation": {
+            "text": "Global External HTTP(S) Load Balancerは、リージョンを跨いだグローバルな負荷分散を行うことができる。",
+            "reference": "https://cloud.google.com/load-balancing/docs/https?hl=ja",
+            "reference_label": "HTTP(S) Load Balancing ドキュメント"
+          }
+        },
+        {
+          "key": "B",
+          "text": "必ずスタティックルートを使用する必要がある。",
+          "explanation": {
+            "text": "HTTP(S) Load Balancerはスタティックルートを必須とせず、GCPのマネージドルーティングで動作する。",
+            "reference": "https://cloud.google.com/load-balancing/docs/https?hl=ja",
+            "reference_label": "HTTP(S) Load Balancing ドキュメント"
+          }
+        },
+        {
+          "key": "C",
+          "text": "L3レベルでトラフィックを分散する。",
+          "explanation": {
+            "text": "HTTP(S) Load BalancerはL7ロードバランサであり、L3レベルでの分散は行わない。",
+            "reference": "https://cloud.google.com/load-balancing/docs/https?hl=ja",
+            "reference_label": "HTTP(S) Load Balancing ドキュメント"
+          }
+        },
+        {
+          "key": "D",
+          "text": "マルチクラウド環境での利用はサポートされない。",
+          "explanation": {
+            "text": "外部接続とCloud Armorなどを組み合わせることでマルチクラウド環境にも利用できる。",
+            "reference": "https://cloud.google.com/load-balancing/docs/https?hl=ja",
+            "reference_label": "HTTP(S) Load Balancing ドキュメント"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Global External HTTP(S) Load Balancerはリージョン間を跨いだグローバル負荷分散を提供し、単一IPで世界規模のサービス提供が可能。",
+        "reference": "https://cloud.google.com/load-balancing/docs/https?hl=ja",
+        "reference_label": "HTTP(S) Load Balancing ドキュメント"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q5",
+      "question": "VPC Service Controlsの主な目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データ流出（exfiltration）を防ぐための境界セキュリティを提供する。",
+          "explanation": {
+            "text": "VPC Service Controlsはデータ流出対策として、サービス境界を設定して外部からの不正アクセスを防ぐ。",
+            "reference": "https://cloud.google.com/vpc-service-controls/docs/overview?hl=ja",
+            "reference_label": "VPC Service Controls 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "IAMポリシーの強化によってユーザー認証を制御する。",
+          "explanation": {
+            "text": "IAMはユーザー認証や権限管理を担うが、VPC Service Controlsはデータ境界の制御が目的。",
+            "reference": "https://cloud.google.com/iam/docs/overview?hl=ja",
+            "reference_label": "IAM 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "サービス間のレイテンシを削減する。",
+          "explanation": {
+            "text": "VPC Service Controlsはレイテンシ削減ではなく、セキュリティを目的としている。",
+            "reference": "https://cloud.google.com/vpc-service-controls/docs/overview?hl=ja",
+            "reference_label": "VPC Service Controls 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "VPCピアリングの自動化を行う。",
+          "explanation": {
+            "text": "VPC Service Controlsはピアリングの自動化機能を持たない。",
+            "reference": "https://cloud.google.com/vpc/docs/vpc-peering?hl=ja",
+            "reference_label": "VPC ピアリング"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "VPC Service Controlsはデータ流出を防ぐための境界セキュリティ機能で、Cloud StorageやBigQueryなどのサービスを保護できる。",
+        "reference": "https://cloud.google.com/vpc-service-controls/docs/overview?hl=ja",
+        "reference_label": "VPC Service Controls 概要"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q6",
+      "question": "Private Google Accessを有効化すると、どのようなメリットがあるか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "外部IPを持たないVMがGoogle APIやサービスにアクセスできる。",
+          "explanation": {
+            "text": "Private Google Accessを有効化すると、内部IPのみのVMからGoogleサービスにアクセス可能になる。",
+            "reference": "https://cloud.google.com/vpc/docs/private-google-access?hl=ja",
+            "reference_label": "Private Google Access"
+          }
+        },
+        {
+          "key": "B",
+          "text": "外部インターネットへの出口を無制限に開放する。",
+          "explanation": {
+            "text": "Private Google Accessはインターネット全体への出口を提供するわけではない。",
+            "reference": "https://cloud.google.com/vpc/docs/private-google-access?hl=ja",
+            "reference_label": "Private Google Access"
+          }
+        },
+        {
+          "key": "C",
+          "text": "オンプレミス環境からのみ利用できる。",
+          "explanation": {
+            "text": "Private Google AccessはGCPのVMに対して有効化する設定であり、オンプレミス専用ではない。",
+            "reference": "https://cloud.google.com/vpc/docs/private-google-access?hl=ja",
+            "reference_label": "Private Google Access"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud CDNへのアクセスを必須とする。",
+          "explanation": {
+            "text": "Private Google AccessはCloud CDNとは関係がない。",
+            "reference": "https://cloud.google.com/cdn/docs/overview?hl=ja",
+            "reference_label": "Cloud CDN"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Private Google Accessを有効化することで、外部IPを持たないVMからもGoogle APIやサービスにアクセス可能になる。",
+        "reference": "https://cloud.google.com/vpc/docs/private-google-access?hl=ja",
+        "reference_label": "Private Google Access"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q7",
+      "question": "Cloud DNSのプライベートゾーンを利用する典型的なユースケースはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "VPC内部でのみ名前解決を行うため。",
+          "explanation": {
+            "text": "プライベートゾーンはVPC内でのみ有効で、内部リソースの名前解決に利用される。",
+            "reference": "https://cloud.google.com/dns/docs/zones?hl=ja",
+            "reference_label": "Cloud DNS ゾーン"
+          }
+        },
+        {
+          "key": "B",
+          "text": "パブリックインターネットからサービスを公開するため。",
+          "explanation": {
+            "text": "パブリックインターネット公開にはパブリックゾーンを利用する。",
+            "reference": "https://cloud.google.com/dns/docs/zones?hl=ja",
+            "reference_label": "Cloud DNS ゾーン"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Cloud CDNのキャッシュを制御するため。",
+          "explanation": {
+            "text": "DNSのゾーン管理とCDNキャッシュ制御は別の機能である。",
+            "reference": "https://cloud.google.com/cdn/docs/overview?hl=ja",
+            "reference_label": "Cloud CDN"
+          }
+        },
+        {
+          "key": "D",
+          "text": "外部のDNSレコードを強制的に上書きするため。",
+          "explanation": {
+            "text": "プライベートゾーンはVPC内部のみに適用され、外部DNSレコードを上書きする機能はない。",
+            "reference": "https://cloud.google.com/dns/docs/zones?hl=ja",
+            "reference_label": "Cloud DNS ゾーン"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud DNSのプライベートゾーンは、VPC内部での名前解決に利用される。外部には公開されない。",
+        "reference": "https://cloud.google.com/dns/docs/zones?hl=ja",
+        "reference_label": "Cloud DNS ゾーン"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q8",
+      "question": "Cloud NATを利用する主な目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "外部IPを持たないVMがインターネットへアクセスできるようにする。",
+          "explanation": {
+            "text": "Cloud NATを利用すると内部IPのみのVMがアウトバウンド通信を行える。",
+            "reference": "https://cloud.google.com/nat/docs/overview?hl=ja",
+            "reference_label": "Cloud NAT 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "オンプレミスからGCPへの専用線接続を提供する。",
+          "explanation": {
+            "text": "専用線接続はCloud Interconnectが担う機能である。",
+            "reference": "https://cloud.google.com/interconnect/docs/overview?hl=ja",
+            "reference_label": "Cloud Interconnect 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ロードバランシングのためにIPを分散する。",
+          "explanation": {
+            "text": "Cloud NATはロードバランサではなく、アウトバウンドNATを提供する。",
+            "reference": "https://cloud.google.com/nat/docs/overview?hl=ja",
+            "reference_label": "Cloud NAT 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "プライベートゾーンのDNS解決を行う。",
+          "explanation": {
+            "text": "DNS解決はCloud DNSの役割であり、Cloud NATには含まれない。",
+            "reference": "https://cloud.google.com/dns/docs/zones?hl=ja",
+            "reference_label": "Cloud DNS ゾーン"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud NATは外部IPを持たないVMがインターネットやGoogle APIへアクセスできるようにするためのアウトバウンドNAT機能を提供する。",
+        "reference": "https://cloud.google.com/nat/docs/overview?hl=ja",
+        "reference_label": "Cloud NAT 概要"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q9",
+      "question": "Shared VPCの主なメリットはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "複数プロジェクト間でVPCネットワークを共有できる。",
+          "explanation": {
+            "text": "Shared VPCを利用すると、ホストプロジェクトのVPCを複数のサービスプロジェクトで共有可能となる。",
+            "reference": "https://cloud.google.com/vpc/docs/shared-vpc?hl=ja",
+            "reference_label": "Shared VPC 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "VPC間のトラフィックを自動的に暗号化する。",
+          "explanation": {
+            "text": "Shared VPCはネットワーク共有の仕組みであり、暗号化はTLSやIPsec VPNで実現する。",
+            "reference": "https://cloud.google.com/network-connectivity?hl=ja",
+            "reference_label": "ネットワーク接続オプション"
+          }
+        },
+        {
+          "key": "C",
+          "text": "異なるリージョン間のVPCを自動的に接続する。",
+          "explanation": {
+            "text": "Shared VPCはリージョン間の自動接続を提供しない。必要に応じてVPCピアリングやInterconnectを利用する。",
+            "reference": "https://cloud.google.com/vpc/docs/shared-vpc?hl=ja",
+            "reference_label": "Shared VPC 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "VPCごとにIAMポリシーを完全に独立管理できる。",
+          "explanation": {
+            "text": "Shared VPCはIAMを共有する形で運用されるため、完全独立にはならない。",
+            "reference": "https://cloud.google.com/vpc/docs/shared-vpc?hl=ja",
+            "reference_label": "Shared VPC 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Shared VPCによりホストプロジェクトのVPCネットワークを複数のサービスプロジェクトで共有でき、集中管理が可能になる。",
+        "reference": "https://cloud.google.com/vpc/docs/shared-vpc?hl=ja",
+        "reference_label": "Shared VPC 概要"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q10",
+      "question": "Cloud ArmorのWAF機能を利用する主な目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "DDoS攻撃や不正リクエストを防御する。",
+          "explanation": {
+            "text": "Cloud ArmorはWAF機能を備えており、DDoS防御やIPベースの制御を提供する。",
+            "reference": "https://cloud.google.com/armor/docs/overview?hl=ja",
+            "reference_label": "Cloud Armor 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "VPCピアリングを設定する。",
+          "explanation": {
+            "text": "Cloud Armorはセキュリティサービスであり、ネットワーク接続機能は持たない。",
+            "reference": "https://cloud.google.com/vpc/docs/vpc-peering?hl=ja",
+            "reference_label": "VPC ピアリング"
+          }
+        },
+        {
+          "key": "C",
+          "text": "内部DNSの名前解決を行う。",
+          "explanation": {
+            "text": "DNS解決はCloud DNSの機能であり、Cloud Armorには含まれない。",
+            "reference": "https://cloud.google.com/dns/docs/zones?hl=ja",
+            "reference_label": "Cloud DNS ゾーン"
+          }
+        },
+        {
+          "key": "D",
+          "text": "オンプレミスからの接続を最適化する。",
+          "explanation": {
+            "text": "接続最適化はCloud InterconnectやVPNの領域であり、Cloud Armorは攻撃防御が目的。",
+            "reference": "https://cloud.google.com/interconnect/docs/overview?hl=ja",
+            "reference_label": "Cloud Interconnect 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud ArmorはDDoS防御やWAF機能を提供し、アプリケーション層への攻撃から保護する。",
+        "reference": "https://cloud.google.com/armor/docs/overview?hl=ja",
+        "reference_label": "Cloud Armor 概要"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q11",
+      "question": "Cloud Routerの役割として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "動的ルーティングを提供し、BGPセッションを管理する。",
+          "explanation": {
+            "text": "Cloud RouterはBGPを用いた動的ルーティングを提供し、オンプレミスやVPC間のルートを交換する。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/router?hl=ja",
+            "reference_label": "Cloud Router 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "DNS解決を行い、名前解決を提供する。",
+          "explanation": {
+            "text": "DNS解決はCloud DNSの役割であり、Cloud Routerには含まれない。",
+            "reference": "https://cloud.google.com/dns/docs/zones?hl=ja",
+            "reference_label": "Cloud DNS ゾーン"
+          }
+        },
+        {
+          "key": "C",
+          "text": "DDoS攻撃を防御する。",
+          "explanation": {
+            "text": "DDoS防御はCloud Armorの役割である。",
+            "reference": "https://cloud.google.com/armor/docs/overview?hl=ja",
+            "reference_label": "Cloud Armor 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ロードバランシングを行う。",
+          "explanation": {
+            "text": "ロードバランシングはCloud Load Balancingの役割であり、Cloud Routerはルート交換に特化している。",
+            "reference": "https://cloud.google.com/load-balancing/docs/overview?hl=ja",
+            "reference_label": "Cloud Load Balancing 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud RouterはBGPを利用してオンプレミスやVPC間でルート情報を動的に交換する。",
+        "reference": "https://cloud.google.com/network-connectivity/docs/router?hl=ja",
+        "reference_label": "Cloud Router 概要"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q12",
+      "question": "Firewall Rulesの優先度(priority)設定について正しい説明はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "数値が小さいルールほど優先的に評価される。",
+          "explanation": {
+            "text": "Firewall Rulesのpriorityは0〜65535の範囲で指定でき、数値が小さいほど優先度が高い。",
+            "reference": "https://cloud.google.com/vpc/docs/firewalls?hl=ja",
+            "reference_label": "VPC ファイアウォールルール"
+          }
+        },
+        {
+          "key": "B",
+          "text": "数値が大きいルールほど優先される。",
+          "explanation": {
+            "text": "逆に数値が小さい方が優先されるため、この記述は誤り。",
+            "reference": "https://cloud.google.com/vpc/docs/firewalls?hl=ja",
+            "reference_label": "VPC ファイアウォールルール"
+          }
+        },
+        {
+          "key": "C",
+          "text": "priorityは1000からしか設定できない。",
+          "explanation": {
+            "text": "priorityは0から65535まで設定可能であり、1000固定ではない。",
+            "reference": "https://cloud.google.com/vpc/docs/firewalls?hl=ja",
+            "reference_label": "VPC ファイアウォールルール"
+          }
+        },
+        {
+          "key": "D",
+          "text": "同じpriorityを持つルールは常にdenyが優先される。",
+          "explanation": {
+            "text": "同じpriorityを持つルールがある場合、より具体的なルールが優先される。",
+            "reference": "https://cloud.google.com/vpc/docs/firewalls?hl=ja",
+            "reference_label": "VPC ファイアウォールルール"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Firewall Rulesのpriorityは小さい数値ほど優先され、0が最も高い優先度となる。",
+        "reference": "https://cloud.google.com/vpc/docs/firewalls?hl=ja",
+        "reference_label": "VPC ファイアウォールルール"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q13",
+      "question": "Cloud CDNを利用する際の要件として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "HTTP(S) Load Balancerをフロントエンドとして利用する必要がある。",
+          "explanation": {
+            "text": "Cloud CDNはHTTP(S) Load Balancerと統合されており、これを通じてキャッシュを提供する。",
+            "reference": "https://cloud.google.com/cdn/docs/overview?hl=ja",
+            "reference_label": "Cloud CDN 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Cloud NATと組み合わせなければならない。",
+          "explanation": {
+            "text": "Cloud CDNはNATを必要とせず、HTTP(S) Load Balancerに統合されている。",
+            "reference": "https://cloud.google.com/cdn/docs/overview?hl=ja",
+            "reference_label": "Cloud CDN 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "必ず外部IPを利用しなければならない。",
+          "explanation": {
+            "text": "Cloud CDNは外部クライアント向けの仕組みだが、内部IP限定のケースでは利用できないという制約ではない。",
+            "reference": "https://cloud.google.com/cdn/docs/overview?hl=ja",
+            "reference_label": "Cloud CDN 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud Routerが必須となる。",
+          "explanation": {
+            "text": "Cloud CDN利用時にCloud Routerは不要である。",
+            "reference": "https://cloud.google.com/cdn/docs/overview?hl=ja",
+            "reference_label": "Cloud CDN 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud CDNはHTTP(S) Load Balancerと統合され、これをフロントエンドとして利用する必要がある。",
+        "reference": "https://cloud.google.com/cdn/docs/overview?hl=ja",
+        "reference_label": "Cloud CDN 概要"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q14",
+      "question": "VPCピアリングの制限事項として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "トランジティブルーティングはサポートされない。",
+          "explanation": {
+            "text": "VPCピアリングではトランジティブルーティングがサポートされないため、A-VPCとB-VPCを接続してもC-VPCへは直接到達できない。",
+            "reference": "https://cloud.google.com/vpc/docs/vpc-peering?hl=ja",
+            "reference_label": "VPC ピアリング"
+          }
+        },
+        {
+          "key": "B",
+          "text": "リージョンを跨ぐ接続は不可能である。",
+          "explanation": {
+            "text": "VPCピアリングはグローバルに機能するため、リージョンを跨いだ接続も可能である。",
+            "reference": "https://cloud.google.com/vpc/docs/vpc-peering?hl=ja",
+            "reference_label": "VPC ピアリング"
+          }
+        },
+        {
+          "key": "C",
+          "text": "同一プロジェクト内では利用できない。",
+          "explanation": {
+            "text": "同一プロジェクト内のVPC間でもピアリングは可能である。",
+            "reference": "https://cloud.google.com/vpc/docs/vpc-peering?hl=ja",
+            "reference_label": "VPC ピアリング"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ピアリング接続にはCloud Routerが必須である。",
+          "explanation": {
+            "text": "VPCピアリングはCloud Router不要で利用できる。",
+            "reference": "https://cloud.google.com/vpc/docs/vpc-peering?hl=ja",
+            "reference_label": "VPC ピアリング"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "VPCピアリングはシンプルな接続であり、トランジティブルーティングをサポートしていない点が制限事項となる。",
+        "reference": "https://cloud.google.com/vpc/docs/vpc-peering?hl=ja",
+        "reference_label": "VPC ピアリング"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q15",
+      "question": "Internal TCP/UDP Load Balancerの利用シナリオとして最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "VPC内部のバックエンドVM間でトラフィックを分散する。",
+          "explanation": {
+            "text": "Internal Load BalancerはVPC内部専用の負荷分散で、外部公開せずに内部サービスを分散できる。",
+            "reference": "https://cloud.google.com/load-balancing/docs/internal?hl=ja",
+            "reference_label": "Internal TCP/UDP Load Balancing"
+          }
+        },
+        {
+          "key": "B",
+          "text": "世界中のクライアントからのHTTPリクエストを処理する。",
+          "explanation": {
+            "text": "グローバルなHTTPリクエストはExternal HTTP(S) Load Balancerで処理する。",
+            "reference": "https://cloud.google.com/load-balancing/docs/https?hl=ja",
+            "reference_label": "HTTP(S) Load Balancing"
+          }
+        },
+        {
+          "key": "C",
+          "text": "DDoS攻撃からの防御を行う。",
+          "explanation": {
+            "text": "DDoS防御はCloud Armorの機能であり、Internal Load Balancerの役割ではない。",
+            "reference": "https://cloud.google.com/armor/docs/overview?hl=ja",
+            "reference_label": "Cloud Armor"
+          }
+        },
+        {
+          "key": "D",
+          "text": "オンプレミスからの専用接続を仲介する。",
+          "explanation": {
+            "text": "専用接続はCloud Interconnectで行う。",
+            "reference": "https://cloud.google.com/interconnect/docs/overview?hl=ja",
+            "reference_label": "Cloud Interconnect"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Internal TCP/UDP Load BalancerはVPC内部のトラフィック分散に利用され、外部には公開されない。",
+        "reference": "https://cloud.google.com/load-balancing/docs/internal?hl=ja",
+        "reference_label": "Internal TCP/UDP Load Balancing"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q16",
+      "question": "Network Service TiersにおけるPremium Tierの特徴はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Googleのグローバルバックボーンネットワークを利用する。",
+          "explanation": {
+            "text": "Premium TierはGoogleのグローバルネットワークを活用し、高品質・低レイテンシを実現する。",
+            "reference": "https://cloud.google.com/network-tiers/docs/overview?hl=ja",
+            "reference_label": "Network Service Tiers"
+          }
+        },
+        {
+          "key": "B",
+          "text": "常にコストが最も低いオプションとなる。",
+          "explanation": {
+            "text": "Premium TierはStandard Tierよりも高品質だがコストも高い場合が多い。",
+            "reference": "https://cloud.google.com/network-tiers/docs/overview?hl=ja",
+            "reference_label": "Network Service Tiers"
+          }
+        },
+        {
+          "key": "C",
+          "text": "リージョンごとのインターネット事業者網を利用する。",
+          "explanation": {
+            "text": "これはStandard Tierの特徴である。",
+            "reference": "https://cloud.google.com/network-tiers/docs/overview?hl=ja",
+            "reference_label": "Network Service Tiers"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CDN機能を強制的に有効化する。",
+          "explanation": {
+            "text": "Premium TierはCDN機能と独立しており、強制ではない。",
+            "reference": "https://cloud.google.com/network-tiers/docs/overview?hl=ja",
+            "reference_label": "Network Service Tiers"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Premium TierはGoogleのグローバルバックボーンネットワークを利用し、グローバルサービス向けに最適化されている。",
+        "reference": "https://cloud.google.com/network-tiers/docs/overview?hl=ja",
+        "reference_label": "Network Service Tiers"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q17",
+      "question": "Cloud Interconnectで高可用性を実現する推奨方法はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "異なるロケーションに少なくとも2本の回線を設置する。",
+          "explanation": {
+            "text": "可用性を高めるためには地理的に冗長な回線を利用することが推奨される。",
+            "reference": "https://cloud.google.com/interconnect/docs/concepts/dedicated-overview?hl=ja",
+            "reference_label": "Dedicated Interconnect"
+          }
+        },
+        {
+          "key": "B",
+          "text": "1本の高帯域回線のみを利用する。",
+          "explanation": {
+            "text": "単一回線では障害発生時に接続が失われるリスクがある。",
+            "reference": "https://cloud.google.com/interconnect/docs/concepts/dedicated-overview?hl=ja",
+            "reference_label": "Dedicated Interconnect"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Cloud VPNを組み合わせる必要がある。",
+          "explanation": {
+            "text": "VPNと併用する場合もあるが、推奨される冗長構成は物理回線を複数ロケーションで用意すること。",
+            "reference": "https://cloud.google.com/interconnect/docs/concepts/high-availability?hl=ja",
+            "reference_label": "Interconnect 高可用性"
+          }
+        },
+        {
+          "key": "D",
+          "text": "単一のリージョンで複数の回線を持つだけで十分。",
+          "explanation": {
+            "text": "リージョン内だけでは災害対策が不十分で、異なるロケーションに分散することが推奨される。",
+            "reference": "https://cloud.google.com/interconnect/docs/concepts/high-availability?hl=ja",
+            "reference_label": "Interconnect 高可用性"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Interconnectの高可用性を確保するためには、異なるロケーションに複数の回線を設置する構成が推奨される。",
+        "reference": "https://cloud.google.com/interconnect/docs/concepts/high-availability?hl=ja",
+        "reference_label": "Interconnect 高可用性"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q18",
+      "question": "Private Service Connectの利用目的として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "プライベートIP経由でGoogleサービスやサードパーティサービスに接続する。",
+          "explanation": {
+            "text": "Private Service Connectはプライベート接続を提供し、APIやサービスを内部IPで利用できる。",
+            "reference": "https://cloud.google.com/vpc/docs/private-service-connect?hl=ja",
+            "reference_label": "Private Service Connect"
+          }
+        },
+        {
+          "key": "B",
+          "text": "VPCピアリングを自動化する。",
+          "explanation": {
+            "text": "VPCピアリングとは別の仕組みであり、自動化は提供しない。",
+            "reference": "https://cloud.google.com/vpc/docs/vpc-peering?hl=ja",
+            "reference_label": "VPC ピアリング"
+          }
+        },
+        {
+          "key": "C",
+          "text": "オンプレミスからGoogleサービスへ直接接続する。",
+          "explanation": {
+            "text": "オンプレミスからの接続はInterconnectやVPNで行う。",
+            "reference": "https://cloud.google.com/interconnect/docs/overview?hl=ja",
+            "reference_label": "Cloud Interconnect"
+          }
+        },
+        {
+          "key": "D",
+          "text": "インターネット経由でのみ利用可能である。",
+          "explanation": {
+            "text": "Private Service ConnectはプライベートIP経由で利用できる仕組みであり、インターネットに依存しない。",
+            "reference": "https://cloud.google.com/vpc/docs/private-service-connect?hl=ja",
+            "reference_label": "Private Service Connect"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Private Service ConnectはGoogleサービスやサードパーティサービスへのプライベート接続を提供する。",
+        "reference": "https://cloud.google.com/vpc/docs/private-service-connect?hl=ja",
+        "reference_label": "Private Service Connect"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q19",
+      "question": "Cloud VPNとInterconnectを組み合わせる典型的なユースケースはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "専用線の障害時にVPNをフェイルオーバー回線として利用する。",
+          "explanation": {
+            "text": "冗長性を高めるため、専用線に障害が発生した場合VPNをバックアップ回線として利用するのが一般的。",
+            "reference": "https://cloud.google.com/hybrid-connectivity/docs?hl=ja",
+            "reference_label": "ハイブリッド接続"
+          }
+        },
+        {
+          "key": "B",
+          "text": "VPNを使って常時Interconnectを拡張する。",
+          "explanation": {
+            "text": "常時拡張ではなく、バックアップ回線としての利用が多い。",
+            "reference": "https://cloud.google.com/hybrid-connectivity/docs?hl=ja",
+            "reference_label": "ハイブリッド接続"
+          }
+        },
+        {
+          "key": "C",
+          "text": "VPN経由でのみBGPセッションを確立する。",
+          "explanation": {
+            "text": "BGPはInterconnectでも利用可能であり、VPN専用ではない。",
+            "reference": "https://cloud.google.com/interconnect/docs/concepts/dedicated-overview?hl=ja",
+            "reference_label": "Dedicated Interconnect"
+          }
+        },
+        {
+          "key": "D",
+          "text": "VPNとInterconnectを同時に利用すると必ず二重課金となる。",
+          "explanation": {
+            "text": "二重課金が必ず発生するわけではなく、回線利用状況に依存する。",
+            "reference": "https://cloud.google.com/hybrid-connectivity/docs?hl=ja",
+            "reference_label": "ハイブリッド接続"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Interconnectのバックアップ回線としてCloud VPNを利用する構成が推奨される。",
+        "reference": "https://cloud.google.com/hybrid-connectivity/docs?hl=ja",
+        "reference_label": "ハイブリッド接続"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q20",
+      "question": "Firewall Rulesにおけるターゲットタグ（target tags）の用途はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "特定のVMインスタンスにルールを適用する。",
+          "explanation": {
+            "text": "ターゲットタグを使うことで、対象VMにのみルールを適用できる。",
+            "reference": "https://cloud.google.com/vpc/docs/firewalls?hl=ja",
+            "reference_label": "VPC ファイアウォールルール"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ネットワーク全体にルールを強制適用する。",
+          "explanation": {
+            "text": "ネットワーク全体に適用する場合はタグ不要でデフォルトルールを利用する。",
+            "reference": "https://cloud.google.com/vpc/docs/firewalls?hl=ja",
+            "reference_label": "VPC ファイアウォールルール"
+          }
+        },
+        {
+          "key": "C",
+          "text": "IAM権限を制御する。",
+          "explanation": {
+            "text": "IAMは権限管理であり、Firewall Rulesのタグとは別の仕組み。",
+            "reference": "https://cloud.google.com/iam/docs/overview?hl=ja",
+            "reference_label": "IAM 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "DNS解決を制御する。",
+          "explanation": {
+            "text": "DNS解決はCloud DNSの役割であり、Firewall Rulesのタグではない。",
+            "reference": "https://cloud.google.com/dns/docs/zones?hl=ja",
+            "reference_label": "Cloud DNS"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ターゲットタグを設定することで、特定のVMに対してのみFirewall Rulesを適用できる。",
+        "reference": "https://cloud.google.com/vpc/docs/firewalls?hl=ja",
+        "reference_label": "VPC ファイアウォールルール"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q21",
+      "question": "SubnetのSecondary IP Rangeを利用する典型的なケースはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "GKE PodにIPアドレスを割り当てる。",
+          "explanation": {
+            "text": "GKEではPodにIPを割り当てるためにSecondary IP Rangeを利用する。",
+            "reference": "https://cloud.google.com/vpc/docs/using-ips-in-your-vpcs?hl=ja",
+            "reference_label": "VPC 内の IP アドレス"
+          }
+        },
+        {
+          "key": "B",
+          "text": "VPC間のピアリングを構成する。",
+          "explanation": {
+            "text": "ピアリング自体はSecondary IP Rangeを必要としない。",
+            "reference": "https://cloud.google.com/vpc/docs/vpc-peering?hl=ja",
+            "reference_label": "VPC ピアリング"
+          }
+        },
+        {
+          "key": "C",
+          "text": "VPNトンネルを作成する。",
+          "explanation": {
+            "text": "VPN構成にはSecondary IP Rangeは不要。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/vpn/concepts/overview?hl=ja",
+            "reference_label": "Cloud VPN 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Interconnectを冗長化する。",
+          "explanation": {
+            "text": "Interconnectの冗長化にはSecondary IP Rangeは関係しない。",
+            "reference": "https://cloud.google.com/interconnect/docs/overview?hl=ja",
+            "reference_label": "Cloud Interconnect"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "SubnetのSecondary IP Rangeは主にGKE PodへのIPアドレス割り当てなどで利用される。",
+        "reference": "https://cloud.google.com/vpc/docs/using-ips-in-your-vpcs?hl=ja",
+        "reference_label": "VPC 内の IP アドレス"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q22",
+      "question": "Global VPCの特徴として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "単一のVPCはすべてのリージョンに跨って利用できる。",
+          "explanation": {
+            "text": "Google CloudのVPCはグローバルリソースであり、リージョンを跨いで1つのVPCを利用できる。",
+            "reference": "https://cloud.google.com/vpc/docs/vpc?hl=ja",
+            "reference_label": "VPC 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "各リージョンごとに別のVPCを必ず作成する必要がある。",
+          "explanation": {
+            "text": "VPCはグローバルリソースなので、リージョンごとに別作成する必要はない。",
+            "reference": "https://cloud.google.com/vpc/docs/vpc?hl=ja",
+            "reference_label": "VPC 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "VPCはリージョン単位のリソースである。",
+          "explanation": {
+            "text": "VPC自体はグローバルリソースであり、サブネットがリージョン単位のリソース。",
+            "reference": "https://cloud.google.com/vpc/docs/vpc?hl=ja",
+            "reference_label": "VPC 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "1つのVPCに1リージョンしか含められない。",
+          "explanation": {
+            "text": "複数リージョンのサブネットを同一VPCに含めることが可能。",
+            "reference": "https://cloud.google.com/vpc/docs/vpc?hl=ja",
+            "reference_label": "VPC 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "VPCはグローバルリソースであり、サブネットはリージョン単位で存在する。",
+        "reference": "https://cloud.google.com/vpc/docs/vpc?hl=ja",
+        "reference_label": "VPC 概要"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q23",
+      "question": "Cloud Load BalancingにおけるExternal TCP Proxy Load Balancerの利用シナリオはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "クライアントからのSSL/TLS終端を行い、TCPベースのアプリケーションを公開する。",
+          "explanation": {
+            "text": "External TCP Proxy Load BalancerはL4ロードバランサであり、SSL/TLS終端を提供する。",
+            "reference": "https://cloud.google.com/load-balancing/docs/tcp?hl=ja",
+            "reference_label": "TCP プロキシ ロードバランシング"
+          }
+        },
+        {
+          "key": "B",
+          "text": "内部VPC間のトラフィックを分散する。",
+          "explanation": {
+            "text": "内部トラフィック分散はInternal TCP/UDP Load Balancerを利用する。",
+            "reference": "https://cloud.google.com/load-balancing/docs/internal?hl=ja",
+            "reference_label": "Internal TCP/UDP Load Balancing"
+          }
+        },
+        {
+          "key": "C",
+          "text": "HTTP(S)リクエストのコンテンツベースルーティングを行う。",
+          "explanation": {
+            "text": "コンテンツベースのルーティングはHTTP(S) Load Balancerで実現される。",
+            "reference": "https://cloud.google.com/load-balancing/docs/https?hl=ja",
+            "reference_label": "HTTP(S) Load Balancing"
+          }
+        },
+        {
+          "key": "D",
+          "text": "DDoS攻撃を防御する。",
+          "explanation": {
+            "text": "DDoS防御はCloud Armorの役割。",
+            "reference": "https://cloud.google.com/armor/docs/overview?hl=ja",
+            "reference_label": "Cloud Armor 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "External TCP Proxy Load BalancerはSSL/TLS終端を行い、TCPベースのアプリケーションをグローバルに公開する際に利用される。",
+        "reference": "https://cloud.google.com/load-balancing/docs/tcp?hl=ja",
+        "reference_label": "TCP プロキシ ロードバランシング"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q24",
+      "question": "Private Google AccessとPrivate Service Connectの違いとして正しい説明はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Private Google Accessは内部IPからGoogleサービスに接続でき、Private Service Connectは特定サービスをプライベートIPで公開できる。",
+          "explanation": {
+            "text": "Private Google AccessはVMからのアウトバウンド、Private Service Connectはサービス公開の仕組み。",
+            "reference": "https://cloud.google.com/vpc/docs/private-google-access?hl=ja",
+            "reference_label": "Private Google Access"
+          }
+        },
+        {
+          "key": "B",
+          "text": "両方ともVPCピアリングが必須である。",
+          "explanation": {
+            "text": "どちらもVPCピアリングを必須とはしない。",
+            "reference": "https://cloud.google.com/vpc/docs/private-service-connect?hl=ja",
+            "reference_label": "Private Service Connect"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Private Service ConnectはGoogle API専用である。",
+          "explanation": {
+            "text": "PSCはGoogle APIだけでなくサードパーティや独自サービスにも利用できる。",
+            "reference": "https://cloud.google.com/vpc/docs/private-service-connect?hl=ja",
+            "reference_label": "Private Service Connect"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Private Google Accessはサードパーティサービスの公開に利用できる。",
+          "explanation": {
+            "text": "PGAはVMがGoogleサービスへアクセスするための仕組みであり、サービス公開はできない。",
+            "reference": "https://cloud.google.com/vpc/docs/private-google-access?hl=ja",
+            "reference_label": "Private Google Access"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "PGAはVMからGoogleサービスへのアクセス、PSCはサービス公開の仕組みとして用途が異なる。",
+        "reference": "https://cloud.google.com/vpc/docs/private-service-connect?hl=ja",
+        "reference_label": "Private Service Connect"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q25",
+      "question": "Cloud DNSの条件付きフォワーディングを利用するケースはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "特定のドメイン名解決をオンプレミスのDNSサーバに委譲する。",
+          "explanation": {
+            "text": "条件付きフォワーディングでは、特定ドメインのクエリをオンプレミスなど外部DNSに転送できる。",
+            "reference": "https://cloud.google.com/dns/docs/overview?hl=ja",
+            "reference_label": "Cloud DNS 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "すべてのDNSクエリをGoogle Public DNSに転送する。",
+          "explanation": {
+            "text": "条件付きではなく、全クエリ転送は目的ではない。",
+            "reference": "https://cloud.google.com/dns/docs/overview?hl=ja",
+            "reference_label": "Cloud DNS 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "内部DNSクエリを常に拒否する。",
+          "explanation": {
+            "text": "条件付きフォワーディングは拒否ではなく委譲を行う。",
+            "reference": "https://cloud.google.com/dns/docs/overview?hl=ja",
+            "reference_label": "Cloud DNS 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "DNSキャッシュを強制的に無効化する。",
+          "explanation": {
+            "text": "キャッシュ制御はDNSフォワーディングの機能ではない。",
+            "reference": "https://cloud.google.com/dns/docs/overview?hl=ja",
+            "reference_label": "Cloud DNS 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "条件付きフォワーディングは、特定ドメインのクエリを外部DNSサーバに委譲する際に利用される。",
+        "reference": "https://cloud.google.com/dns/docs/overview?hl=ja",
+        "reference_label": "Cloud DNS 概要"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q26",
+      "question": "Google Cloud Armorでカスタムルールを設定する目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "特定のIPレンジからのリクエストを拒否する。",
+          "explanation": {
+            "text": "Cloud Armorのカスタムルールを利用すれば、IPレンジ単位のアクセス制御が可能。",
+            "reference": "https://cloud.google.com/armor/docs/configure-security-policies?hl=ja",
+            "reference_label": "Cloud Armor セキュリティポリシー"
+          }
+        },
+        {
+          "key": "B",
+          "text": "VPC間の接続を確立する。",
+          "explanation": {
+            "text": "VPC接続はCloud VPNやピアリングの役割。",
+            "reference": "https://cloud.google.com/vpc/docs/vpc-peering?hl=ja",
+            "reference_label": "VPC ピアリング"
+          }
+        },
+        {
+          "key": "C",
+          "text": "内部DNSクエリの解決を行う。",
+          "explanation": {
+            "text": "DNS解決はCloud DNSの役割。",
+            "reference": "https://cloud.google.com/dns/docs/overview?hl=ja",
+            "reference_label": "Cloud DNS 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ロードバランシングのルーティングアルゴリズムを変更する。",
+          "explanation": {
+            "text": "ロードバランシングのルーティングはCloud Load Balancerが担当する。",
+            "reference": "https://cloud.google.com/load-balancing/docs/overview?hl=ja",
+            "reference_label": "Cloud Load Balancing 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Armorのカスタムルールにより、特定IPレンジや地域などを条件にアクセス制御が可能になる。",
+        "reference": "https://cloud.google.com/armor/docs/configure-security-policies?hl=ja",
+        "reference_label": "Cloud Armor セキュリティポリシー"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q27",
+      "question": "Cloud NATのアドレス割り当て方法について正しい説明はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "静的に指定した外部IPアドレスを利用できる。",
+          "explanation": {
+            "text": "Cloud NATは静的に予約した外部IPを利用可能。",
+            "reference": "https://cloud.google.com/nat/docs/overview?hl=ja",
+            "reference_label": "Cloud NAT 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "動的に自動生成される外部IPしか利用できない。",
+          "explanation": {
+            "text": "静的IPも利用可能なので誤り。",
+            "reference": "https://cloud.google.com/nat/docs/overview?hl=ja",
+            "reference_label": "Cloud NAT 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "必ず各VMに個別の外部IPを割り当てる。",
+          "explanation": {
+            "text": "Cloud NATは複数VMで外部IPを共有できる。",
+            "reference": "https://cloud.google.com/nat/docs/overview?hl=ja",
+            "reference_label": "Cloud NAT 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IPアドレスの指定は不要で常にGoogleが決定する。",
+          "explanation": {
+            "text": "ユーザーが予約済み静的IPを指定することも可能。",
+            "reference": "https://cloud.google.com/nat/docs/overview?hl=ja",
+            "reference_label": "Cloud NAT 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud NATは予約済み静的IPを指定して利用可能であり、柔軟なアドレス管理ができる。",
+        "reference": "https://cloud.google.com/nat/docs/overview?hl=ja",
+        "reference_label": "Cloud NAT 概要"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q28",
+      "question": "Firewall Rulesでのソースフィルタ(source filter)の典型的な用途はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "特定のIPレンジやタグを持つトラフィックのみ許可する。",
+          "explanation": {
+            "text": "ソースフィルタはトラフィックの発信元に基づき許可/拒否を制御する。",
+            "reference": "https://cloud.google.com/vpc/docs/firewalls?hl=ja",
+            "reference_label": "VPC ファイアウォールルール"
+          }
+        },
+        {
+          "key": "B",
+          "text": "宛先ポートに基づいて負荷分散する。",
+          "explanation": {
+            "text": "負荷分散はFirewall RulesではなくLoad Balancerの役割。",
+            "reference": "https://cloud.google.com/load-balancing/docs/overview?hl=ja",
+            "reference_label": "Cloud Load Balancing"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ルーティング経路を変更する。",
+          "explanation": {
+            "text": "ルーティング制御はCloud RouterやVPCルートで行う。",
+            "reference": "https://cloud.google.com/vpc/docs/routes?hl=ja",
+            "reference_label": "VPC ルート"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ログをStackdriverに送信する。",
+          "explanation": {
+            "text": "ログ送信はFirewall Rulesの機能ではなく、Logging設定で制御する。",
+            "reference": "https://cloud.google.com/logging/docs?hl=ja",
+            "reference_label": "Cloud Logging"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Firewall Rulesのソースフィルタは、発信元IPレンジやタグを基準にアクセス制御を行うために利用される。",
+        "reference": "https://cloud.google.com/vpc/docs/firewalls?hl=ja",
+        "reference_label": "VPC ファイアウォールルール"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q29",
+      "question": "Cloud VPNのポリシーベースVPNとルートベースVPNの違いとして正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ルートベースVPNはBGPをサポートし、ポリシーベースVPNはBGPをサポートしない。",
+          "explanation": {
+            "text": "ルートベースVPNではBGPが利用可能だが、ポリシーベースVPNではサポートされない。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/vpn/concepts/overview?hl=ja",
+            "reference_label": "Cloud VPN 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ポリシーベースVPNはHA構成に対応している。",
+          "explanation": {
+            "text": "ポリシーベースVPNは非推奨であり、HA構成には対応していない。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/vpn/concepts/overview?hl=ja",
+            "reference_label": "Cloud VPN 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ルートベースVPNは静的ルーティングしか利用できない。",
+          "explanation": {
+            "text": "ルートベースVPNでは動的ルーティング（BGP）も利用できる。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/vpn/concepts/overview?hl=ja",
+            "reference_label": "Cloud VPN 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "両者の機能に大きな違いはない。",
+          "explanation": {
+            "text": "BGP対応の有無など大きな違いがあるため誤り。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/vpn/concepts/overview?hl=ja",
+            "reference_label": "Cloud VPN 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ルートベースVPNは動的ルーティングに対応し、BGPが利用可能だが、ポリシーベースVPNは対応しない。",
+        "reference": "https://cloud.google.com/network-connectivity/docs/vpn/concepts/overview?hl=ja",
+        "reference_label": "Cloud VPN 概要"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q30",
+      "question": "Cloud Load BalancingでSession Affinityを有効にする目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "同一クライアントのリクエストを同じバックエンドに送る。",
+          "explanation": {
+            "text": "Session Affinityを設定すると、クライアントからのリクエストが同一バックエンドに継続的にルーティングされる。",
+            "reference": "https://cloud.google.com/load-balancing/docs/backend-service?hl=ja",
+            "reference_label": "バックエンド サービス"
+          }
+        },
+        {
+          "key": "B",
+          "text": "複数のリージョンにまたがるトラフィックを分散する。",
+          "explanation": {
+            "text": "グローバル分散はSession Affinityではなく、ロードバランサの仕組み自体による。",
+            "reference": "https://cloud.google.com/load-balancing/docs/https?hl=ja",
+            "reference_label": "HTTP(S) Load Balancing"
+          }
+        },
+        {
+          "key": "C",
+          "text": "TCP接続を暗号化する。",
+          "explanation": {
+            "text": "暗号化はSession Affinityの役割ではない。",
+            "reference": "https://cloud.google.com/load-balancing/docs/https?hl=ja",
+            "reference_label": "HTTP(S) Load Balancing"
+          }
+        },
+        {
+          "key": "D",
+          "text": "DDoS攻撃を防御する。",
+          "explanation": {
+            "text": "DDoS防御はCloud Armorの役割である。",
+            "reference": "https://cloud.google.com/armor/docs/overview?hl=ja",
+            "reference_label": "Cloud Armor 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Session Affinityは特定クライアントのリクエストを同じバックエンドに送ることでセッションを維持する。",
+        "reference": "https://cloud.google.com/load-balancing/docs/backend-service?hl=ja",
+        "reference_label": "バックエンド サービス"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q31",
+      "question": "Cloud InterconnectのPartner Interconnectを利用するケースとして適切なのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Googleと直接物理接続できない場合にパートナー事業者経由で接続する。",
+          "explanation": {
+            "text": "Partner InterconnectはGoogleと直接接続できない顧客向けに、パートナーを経由して接続を提供する。",
+            "reference": "https://cloud.google.com/interconnect/docs/concepts/partner-overview?hl=ja",
+            "reference_label": "Partner Interconnect"
+          }
+        },
+        {
+          "key": "B",
+          "text": "専用ラックを設置して高帯域接続を行う。",
+          "explanation": {
+            "text": "専用ラックの設置はDedicated Interconnectの特徴である。",
+            "reference": "https://cloud.google.com/interconnect/docs/concepts/dedicated-overview?hl=ja",
+            "reference_label": "Dedicated Interconnect"
+          }
+        },
+        {
+          "key": "C",
+          "text": "VPNを必ず併用しなければならない。",
+          "explanation": {
+            "text": "Partner InterconnectはVPNを必須としない。",
+            "reference": "https://cloud.google.com/interconnect/docs/concepts/partner-overview?hl=ja",
+            "reference_label": "Partner Interconnect"
+          }
+        },
+        {
+          "key": "D",
+          "text": "100Gbps専用回線のみ提供される。",
+          "explanation": {
+            "text": "Partner Interconnectは50Mbpsから50Gbpsまで柔軟な帯域を選択できる。",
+            "reference": "https://cloud.google.com/interconnect/docs/concepts/partner-overview?hl=ja",
+            "reference_label": "Partner Interconnect"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Partner InterconnectはGoogleと直接物理接続できない場合にパートナー事業者を通じて接続を行う。",
+        "reference": "https://cloud.google.com/interconnect/docs/concepts/partner-overview?hl=ja",
+        "reference_label": "Partner Interconnect"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q32",
+      "question": "GCPにおけるデフォルトルート (0.0.0.0/0) の役割として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "VPC内からインターネットへの出口ルートを提供する。",
+          "explanation": {
+            "text": "デフォルトルートは全ての未指定トラフィックをインターネットへ送信するために利用される。",
+            "reference": "https://cloud.google.com/vpc/docs/routes?hl=ja",
+            "reference_label": "VPC ルート"
+          }
+        },
+        {
+          "key": "B",
+          "text": "VPC間のピアリングルートを提供する。",
+          "explanation": {
+            "text": "ピアリングルートは自動的に追加されるが、デフォルトルートとは異なる。",
+            "reference": "https://cloud.google.com/vpc/docs/vpc-peering?hl=ja",
+            "reference_label": "VPC ピアリング"
+          }
+        },
+        {
+          "key": "C",
+          "text": "内部DNSの解決を提供する。",
+          "explanation": {
+            "text": "DNS解決はルートではなくCloud DNSの役割。",
+            "reference": "https://cloud.google.com/dns/docs/overview?hl=ja",
+            "reference_label": "Cloud DNS 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "VPCファイアウォールの適用範囲を定義する。",
+          "explanation": {
+            "text": "ファイアウォールルールはルートとは別に定義される。",
+            "reference": "https://cloud.google.com/vpc/docs/firewalls?hl=ja",
+            "reference_label": "VPC ファイアウォールルール"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "デフォルトルートは未定義トラフィックをインターネットに送るためのルートである。",
+        "reference": "https://cloud.google.com/vpc/docs/routes?hl=ja",
+        "reference_label": "VPC ルート"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q33",
+      "question": "Cloud CDNでキャッシュを効率的に利用するために推奨される方法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "キャッシュ可能なリソースに適切なCache-Controlヘッダーを設定する。",
+          "explanation": {
+            "text": "HTTPレスポンスヘッダーでキャッシュポリシーを指定することが推奨される。",
+            "reference": "https://cloud.google.com/cdn/docs/caching?hl=ja",
+            "reference_label": "Cloud CDN キャッシュ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "全てのリソースをキャッシュ対象にする。",
+          "explanation": {
+            "text": "キャッシュに適さない動的リソースもあるため、全てキャッシュするのは適切ではない。",
+            "reference": "https://cloud.google.com/cdn/docs/caching?hl=ja",
+            "reference_label": "Cloud CDN キャッシュ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "DNSレコードでTTLを0に設定する。",
+          "explanation": {
+            "text": "TTLを0にするとキャッシュが効かなくなるため誤り。",
+            "reference": "https://cloud.google.com/cdn/docs/caching?hl=ja",
+            "reference_label": "Cloud CDN キャッシュ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud NATを必ず有効化する。",
+          "explanation": {
+            "text": "Cloud NATはキャッシュ利用に必須ではない。",
+            "reference": "https://cloud.google.com/cdn/docs/caching?hl=ja",
+            "reference_label": "Cloud CDN キャッシュ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud CDNで効率的にキャッシュを利用するには、Cache-Controlヘッダーを適切に設定する必要がある。",
+        "reference": "https://cloud.google.com/cdn/docs/caching?hl=ja",
+        "reference_label": "Cloud CDN キャッシュ"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q34",
+      "question": "Firewall Rulesにおけるログ記録機能を有効にすると何が可能になるか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "許可・拒否されたトラフィックをCloud Loggingで確認できる。",
+          "explanation": {
+            "text": "Firewall Rulesにログを有効化すると、トラフィックがCloud Loggingに記録される。",
+            "reference": "https://cloud.google.com/vpc/docs/firewall-rules-logging?hl=ja",
+            "reference_label": "Firewall Rules ログ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ファイアウォールルールを自動的に修正できる。",
+          "explanation": {
+            "text": "ログは可視化のためであり、ルールを自動修正する機能はない。",
+            "reference": "https://cloud.google.com/vpc/docs/firewall-rules-logging?hl=ja",
+            "reference_label": "Firewall Rules ログ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "DDoS攻撃を自動で遮断する。",
+          "explanation": {
+            "text": "DDoS防御はCloud Armorの役割であり、ログには含まれない。",
+            "reference": "https://cloud.google.com/armor/docs/overview?hl=ja",
+            "reference_label": "Cloud Armor 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "VPCピアリングを自動で作成する。",
+          "explanation": {
+            "text": "ログ機能はVPCピアリング作成とは無関係。",
+            "reference": "https://cloud.google.com/vpc/docs/firewall-rules-logging?hl=ja",
+            "reference_label": "Firewall Rules ログ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Firewall Rulesでログを有効化すると、許可・拒否されたトラフィックをCloud Loggingで確認可能。",
+        "reference": "https://cloud.google.com/vpc/docs/firewall-rules-logging?hl=ja",
+        "reference_label": "Firewall Rules ログ"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q35",
+      "question": "Shared VPCでサービスプロジェクトが利用できるリソースはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ホストプロジェクトのサブネット。",
+          "explanation": {
+            "text": "サービスプロジェクトはホストプロジェクトのVPCサブネットを利用できる。",
+            "reference": "https://cloud.google.com/vpc/docs/shared-vpc?hl=ja",
+            "reference_label": "Shared VPC"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ホストプロジェクトのIAMポリシーそのもの。",
+          "explanation": {
+            "text": "IAMポリシー全体を直接共有するわけではない。",
+            "reference": "https://cloud.google.com/iam/docs/overview?hl=ja",
+            "reference_label": "IAM 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ホストプロジェクトのCloud DNSパブリックゾーン。",
+          "explanation": {
+            "text": "パブリックゾーンは共有されず、サービスプロジェクトでは利用できない。",
+            "reference": "https://cloud.google.com/dns/docs/overview?hl=ja",
+            "reference_label": "Cloud DNS 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ホストプロジェクトの課金アカウント情報。",
+          "explanation": {
+            "text": "課金アカウント情報は共有されない。",
+            "reference": "https://cloud.google.com/vpc/docs/shared-vpc?hl=ja",
+            "reference_label": "Shared VPC"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Shared VPCではサービスプロジェクトがホストプロジェクトのVPCサブネットを利用できる。",
+        "reference": "https://cloud.google.com/vpc/docs/shared-vpc?hl=ja",
+        "reference_label": "Shared VPC"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q36",
+      "question": "Firewall Rulesにおけるターゲットサービスアカウント(target service accounts)の用途はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "特定のサービスアカウントを持つVMにルールを適用する。",
+          "explanation": {
+            "text": "サービスアカウントをターゲットにすることで、IAM管理と連動してFirewallルールを適用可能。",
+            "reference": "https://cloud.google.com/vpc/docs/firewalls?hl=ja",
+            "reference_label": "VPC ファイアウォールルール"
+          }
+        },
+        {
+          "key": "B",
+          "text": "VPC全体にルールを適用する。",
+          "explanation": {
+            "text": "VPC全体に適用するにはターゲット指定を省略する。",
+            "reference": "https://cloud.google.com/vpc/docs/firewalls?hl=ja",
+            "reference_label": "VPC ファイアウォールルール"
+          }
+        },
+        {
+          "key": "C",
+          "text": "オンプレミスの認証を制御する。",
+          "explanation": {
+            "text": "オンプレミス認証はFirewallルールの対象外。",
+            "reference": "https://cloud.google.com/iam/docs/overview?hl=ja",
+            "reference_label": "IAM 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "外部ロードバランサの設定を変更する。",
+          "explanation": {
+            "text": "ロードバランサの設定はFirewallルールとは無関係。",
+            "reference": "https://cloud.google.com/load-balancing/docs/overview?hl=ja",
+            "reference_label": "Cloud Load Balancing 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ターゲットサービスアカウントを利用すると、そのサービスアカウントを持つVMにのみFirewallルールを適用できる。",
+        "reference": "https://cloud.google.com/vpc/docs/firewalls?hl=ja",
+        "reference_label": "VPC ファイアウォールルール"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q37",
+      "question": "Internal HTTP(S) Load Balancerの典型的なユースケースはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "VPC内部で稼働するマイクロサービス間の通信を分散する。",
+          "explanation": {
+            "text": "Internal HTTP(S) Load Balancerは内部専用のL7ロードバランサであり、サービス間通信に利用される。",
+            "reference": "https://cloud.google.com/load-balancing/docs/l7-internal?hl=ja",
+            "reference_label": "Internal HTTP(S) Load Balancing"
+          }
+        },
+        {
+          "key": "B",
+          "text": "外部からのWebトラフィックを受け付ける。",
+          "explanation": {
+            "text": "外部公開にはExternal HTTP(S) Load Balancerを利用する。",
+            "reference": "https://cloud.google.com/load-balancing/docs/https?hl=ja",
+            "reference_label": "External HTTP(S) Load Balancing"
+          }
+        },
+        {
+          "key": "C",
+          "text": "オンプレミスからのVPN接続を最適化する。",
+          "explanation": {
+            "text": "VPN最適化はCloud VPNやInterconnectで行う。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/vpn/concepts/overview?hl=ja",
+            "reference_label": "Cloud VPN 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "DDoS防御を提供する。",
+          "explanation": {
+            "text": "DDoS防御はCloud Armorの役割。",
+            "reference": "https://cloud.google.com/armor/docs/overview?hl=ja",
+            "reference_label": "Cloud Armor 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Internal HTTP(S) Load BalancerはVPC内部サービス間の負荷分散を行うために利用される。",
+        "reference": "https://cloud.google.com/load-balancing/docs/l7-internal?hl=ja",
+        "reference_label": "Internal HTTP(S) Load Balancing"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q38",
+      "question": "Cloud RouterとBGPを利用するメリットとして正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ルートを自動的に学習・更新できる。",
+          "explanation": {
+            "text": "Cloud RouterとBGPを使うとルートが動的に交換され、自動更新される。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/router?hl=ja",
+            "reference_label": "Cloud Router 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ファイアウォールルールを自動生成する。",
+          "explanation": {
+            "text": "ファイアウォールルールは自動生成されない。",
+            "reference": "https://cloud.google.com/vpc/docs/firewalls?hl=ja",
+            "reference_label": "VPC ファイアウォールルール"
+          }
+        },
+        {
+          "key": "C",
+          "text": "DNSレコードを自動で作成する。",
+          "explanation": {
+            "text": "DNSはCloud DNSが管理するため無関係。",
+            "reference": "https://cloud.google.com/dns/docs/overview?hl=ja",
+            "reference_label": "Cloud DNS 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ロードバランサの設定を自動化する。",
+          "explanation": {
+            "text": "ロードバランサは別の仕組みで管理される。",
+            "reference": "https://cloud.google.com/load-balancing/docs/overview?hl=ja",
+            "reference_label": "Cloud Load Balancing 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "BGPを利用するとルート交換が自動化され、ネットワーク変更に応じてルート更新が行われる。",
+        "reference": "https://cloud.google.com/network-connectivity/docs/router?hl=ja",
+        "reference_label": "Cloud Router 概要"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q39",
+      "question": "VPCフローログを有効にする主な目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "トラフィックの可視化とトラブルシューティングに利用する。",
+          "explanation": {
+            "text": "フローログにより、トラフィック状況や接続問題を調査できる。",
+            "reference": "https://cloud.google.com/vpc/docs/using-flow-logs?hl=ja",
+            "reference_label": "VPC フローログ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "VPCピアリングを自動的に作成する。",
+          "explanation": {
+            "text": "フローログはピアリング作成機能を持たない。",
+            "reference": "https://cloud.google.com/vpc/docs/using-flow-logs?hl=ja",
+            "reference_label": "VPC フローログ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Firewallルールを強制適用する。",
+          "explanation": {
+            "text": "フローログは監視機能であり、制御機能ではない。",
+            "reference": "https://cloud.google.com/vpc/docs/using-flow-logs?hl=ja",
+            "reference_label": "VPC フローログ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "トラフィックを自動的に暗号化する。",
+          "explanation": {
+            "text": "暗号化はTLSやVPNで実現する。",
+            "reference": "https://cloud.google.com/vpc/docs/using-flow-logs?hl=ja",
+            "reference_label": "VPC フローログ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "VPCフローログはトラフィックの可視化やトラブルシューティングのために利用される。",
+        "reference": "https://cloud.google.com/vpc/docs/using-flow-logs?hl=ja",
+        "reference_label": "VPC フローログ"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q40",
+      "question": "Cloud DNSのプライベートゾーンを複数VPCで共有する方法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "DNSピアリングを利用する。",
+          "explanation": {
+            "text": "DNSピアリングにより、異なるVPC間でプライベートDNSゾーンを共有できる。",
+            "reference": "https://cloud.google.com/dns/docs/zones/peering?hl=ja",
+            "reference_label": "Cloud DNS ピアリング"
+          }
+        },
+        {
+          "key": "B",
+          "text": "VPCピアリングを設定する。",
+          "explanation": {
+            "text": "VPCピアリングだけではDNS共有はできない。",
+            "reference": "https://cloud.google.com/vpc/docs/vpc-peering?hl=ja",
+            "reference_label": "VPC ピアリング"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Cloud NATを有効化する。",
+          "explanation": {
+            "text": "Cloud NATはDNS共有には関係ない。",
+            "reference": "https://cloud.google.com/nat/docs/overview?hl=ja",
+            "reference_label": "Cloud NAT 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IAMポリシーを設定するだけで可能になる。",
+          "explanation": {
+            "text": "DNS共有にはピアリング設定が必要であり、IAM設定だけでは不十分。",
+            "reference": "https://cloud.google.com/dns/docs/zones/peering?hl=ja",
+            "reference_label": "Cloud DNS ピアリング"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "DNSピアリングを利用すれば複数のVPC間でプライベートゾーンを共有できる。",
+        "reference": "https://cloud.google.com/dns/docs/zones/peering?hl=ja",
+        "reference_label": "Cloud DNS ピアリング"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q41",
+      "question": "Cloud Load BalancingのExternal UDP Load Balancerの特徴はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "グローバルスコープでL4 UDPトラフィックを負荷分散できる。",
+          "explanation": {
+            "text": "External UDP Load BalancerはグローバルなL4ロードバランサでUDPトラフィックを分散できる。",
+            "reference": "https://cloud.google.com/load-balancing/docs/udp?hl=ja",
+            "reference_label": "UDP Load Balancing"
+          }
+        },
+        {
+          "key": "B",
+          "text": "HTTPリクエストのコンテンツベースルーティングが可能。",
+          "explanation": {
+            "text": "コンテンツベースルーティングはL7ロードバランサの役割。",
+            "reference": "https://cloud.google.com/load-balancing/docs/https?hl=ja",
+            "reference_label": "HTTP(S) Load Balancing"
+          }
+        },
+        {
+          "key": "C",
+          "text": "内部専用でのみ利用できる。",
+          "explanation": {
+            "text": "External UDP Load Balancerは外部向けに利用できる。",
+            "reference": "https://cloud.google.com/load-balancing/docs/udp?hl=ja",
+            "reference_label": "UDP Load Balancing"
+          }
+        },
+        {
+          "key": "D",
+          "text": "TCPトラフィックも同時に処理する。",
+          "explanation": {
+            "text": "UDP専用であり、TCPは別のロードバランサを利用する。",
+            "reference": "https://cloud.google.com/load-balancing/docs/udp?hl=ja",
+            "reference_label": "UDP Load Balancing"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "External UDP Load BalancerはグローバルにUDPトラフィックを分散する。",
+        "reference": "https://cloud.google.com/load-balancing/docs/udp?hl=ja",
+        "reference_label": "UDP Load Balancing"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q42",
+      "question": "VPCルートにおける次ホップ(Next Hop)の設定例として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "インターネットゲートウェイを指定する。",
+          "explanation": {
+            "text": "デフォルトルートでは次ホップとしてインターネットゲートウェイを指定する。",
+            "reference": "https://cloud.google.com/vpc/docs/routes?hl=ja",
+            "reference_label": "VPC ルート"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Cloud Storage バケットを指定する。",
+          "explanation": {
+            "text": "バケットはストレージリソースであり、ルートの次ホップには指定できない。",
+            "reference": "https://cloud.google.com/storage/docs/overview?hl=ja",
+            "reference_label": "Cloud Storage 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Cloud DNS ゾーンを指定する。",
+          "explanation": {
+            "text": "DNSゾーンはルーティング対象にならない。",
+            "reference": "https://cloud.google.com/dns/docs/overview?hl=ja",
+            "reference_label": "Cloud DNS 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IAMロールを指定する。",
+          "explanation": {
+            "text": "IAMロールはルーティングの対象にならない。",
+            "reference": "https://cloud.google.com/iam/docs/overview?hl=ja",
+            "reference_label": "IAM 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "VPCルートでは次ホップとしてインターネットゲートウェイ、VPNトンネル、インスタンスなどを指定できる。",
+        "reference": "https://cloud.google.com/vpc/docs/routes?hl=ja",
+        "reference_label": "VPC ルート"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q43",
+      "question": "Cloud InterconnectのDedicated Interconnectで提供される最小の回線帯域はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "10Gbps",
+          "explanation": {
+            "text": "Dedicated Interconnectは10Gbpsまたは100Gbpsの物理回線を提供する。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/interconnect/concepts/dedicated-overview?hl=ja",
+            "reference_label": "Dedicated Interconnect 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "1Gbps",
+          "explanation": {
+            "text": "1GbpsはDedicated Interconnectの提供帯域には含まれない。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/interconnect/concepts/dedicated-overview?hl=ja",
+            "reference_label": "Dedicated Interconnect 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "100Mbps",
+          "explanation": {
+            "text": "100Mbpsなどのサブ10Gbps帯域はPartner Interconnectで提供される。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/interconnect/concepts/partner-overview?hl=ja",
+            "reference_label": "Partner Interconnect 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "50Gbps",
+          "explanation": {
+            "text": "50GbpsはDedicatedの標準的な単一回線オプションではない（10Gbps/100Gbps）。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/interconnect/quotas?hl=ja",
+            "reference_label": "Cloud Interconnect クォータと制限"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Dedicated Interconnectの物理回線は10Gbpsまたは100Gbpsで提供され、最小は10Gbps。",
+        "reference": "https://cloud.google.com/network-connectivity/docs/interconnect/concepts/dedicated-overview?hl=ja",
+        "reference_label": "Dedicated Interconnect 概要"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q44",
+      "question": "Cloud NATを構成する際に必ず関連付けが必要となるリソースはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Cloud Router",
+          "explanation": {
+            "text": "Cloud NATはCloud Routerに関連付けて作成する設計である。",
+            "reference": "https://cloud.google.com/nat/docs/overview?hl=ja",
+            "reference_label": "Cloud NAT 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Cloud Armor",
+          "explanation": {
+            "text": "Cloud ArmorはWAF/DDoS対策であり、Cloud NAT構成に必須ではない。",
+            "reference": "https://cloud.google.com/armor/docs/overview?hl=ja",
+            "reference_label": "Cloud Armor 概要"
+          }
+        },
+        {
+            "key": "C",
+            "text": "Cloud DNS",
+            "explanation": {
+              "text": "Cloud DNSは名前解決のサービスであり、Cloud NATの必須要件ではない。",
+              "reference": "https://cloud.google.com/dns/docs/overview?hl=ja",
+              "reference_label": "Cloud DNS 概要"
+            }
+        },
+        {
+          "key": "D",
+          "text": "Cloud CDN",
+          "explanation": {
+            "text": "Cloud CDNはキャッシュ/配信であり、Cloud NATの構成に不要。",
+            "reference": "https://cloud.google.com/cdn/docs/overview?hl=ja",
+            "reference_label": "Cloud CDN 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud NATはCloud Routerに紐付けて動作し、サブネットのアウトバウンドNATを提供する。",
+        "reference": "https://cloud.google.com/nat/docs/overview?hl=ja",
+        "reference_label": "Cloud NAT 概要"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q45",
+      "question": "VPCルートの選択において最も優先される基準はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "最長一致（Longest Prefix Match）",
+          "explanation": {
+            "text": "GCPのルーティングは最長一致でルートを選択するのが基本ルールである。",
+            "reference": "https://cloud.google.com/vpc/docs/routes?hl=ja",
+            "reference_label": "VPC ルート"
+          }
+        },
+        {
+          "key": "B",
+          "text": "静的ルートが常に動的ルートより優先",
+          "explanation": {
+            "text": "静的/動的の別よりもプレフィックス長が優先される。",
+            "reference": "https://cloud.google.com/vpc/docs/routes?hl=ja",
+            "reference_label": "VPC ルート"
+          }
+        },
+        {
+          "key": "C",
+          "text": "デフォルトルートが常に優先",
+          "explanation": {
+            "text": "特定プレフィックスに一致するルートがない場合のみデフォルトルートが使用される。",
+            "reference": "https://cloud.google.com/vpc/docs/routes?hl=ja",
+            "reference_label": "VPC ルート"
+          }
+        },
+        {
+          "key": "D",
+          "text": "priority値が小さいルートが常に最優先",
+          "explanation": {
+            "text": "priorityは同一プレフィックス長の候補間での比較に利用される補助基準である。",
+            "reference": "https://cloud.google.com/vpc/docs/routes?hl=ja",
+            "reference_label": "VPC ルート"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "GCPでは最長一致が最優先で、同一長の場合にpriorityなどが比較される。",
+        "reference": "https://cloud.google.com/vpc/docs/routes?hl=ja",
+        "reference_label": "VPC ルート"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q46",
+      "question": "Google Cloud Armorのプリコンフィグルールセット（例えばOWASPベース）を利用する主な利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "一般的な攻撃パターン（SQLi、XSSなど）への防御を迅速に適用できる。",
+          "explanation": {
+            "text": "プリコンフィグルールは代表的な攻撃シグネチャを網羅し、即時適用が可能。",
+            "reference": "https://cloud.google.com/armor/docs/rules-language?hl=ja",
+            "reference_label": "Cloud Armor ルールと言語"
+          }
+        },
+        {
+          "key": "B",
+          "text": "VPCルートを自動生成して最適化する。",
+          "explanation": {
+            "text": "ルーティングはCloud Armorの範囲外で、Cloud RouterやVPCルートの役割。",
+            "reference": "https://cloud.google.com/vpc/docs/routes?hl=ja",
+            "reference_label": "VPC ルート"
+          }
+        },
+        {
+          "key": "C",
+          "text": "DNS解決を高速化する。",
+          "explanation": {
+            "text": "DNSはCloud DNSの機能であり、Cloud Armorは関与しない。",
+            "reference": "https://cloud.google.com/dns/docs/overview?hl=ja",
+            "reference_label": "Cloud DNS 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Interconnectの障害時に自動フェイルオーバーする。",
+          "explanation": {
+            "text": "Interconnectのフェイルオーバーは接続設計やBGPで実現する領域であり、Cloud Armorの機能ではない。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/interconnect/concepts/high-availability?hl=ja",
+            "reference_label": "Interconnect の高可用性"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "プリコンフィグルールを用いると一般的なWeb攻撃に対する保護を短時間で導入できる。",
+        "reference": "https://cloud.google.com/armor/docs/rules-language?hl=ja",
+        "reference_label": "Cloud Armor ルールと言語"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q47",
+      "question": "VPCピアリングで正しい挙動はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ピアリング確立後、双方のVPCのサブネットルートが自動的に交換される。",
+          "explanation": {
+            "text": "VPCピアリングはBGP不要で、サブネットルートが自動共有される（ただしトランジティブ不可）。",
+            "reference": "https://cloud.google.com/vpc/docs/vpc-peering?hl=ja",
+            "reference_label": "VPC ピアリング"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Cloud RouterでBGPを設定しないとルート共有されない。",
+          "explanation": {
+            "text": "VPCピアリングはBGPを使用しない設計である。",
+            "reference": "https://cloud.google.com/vpc/docs/vpc-peering?hl=ja",
+            "reference_label": "VPC ピアリング"
+          }
+        },
+        {
+          "key": "C",
+          "text": "デフォルトルートのみが共有される。",
+          "explanation": {
+            "text": "共有されるのはサブネットルートであり、デフォルトルートに限定されない。",
+            "reference": "https://cloud.google.com/vpc/docs/vpc-peering?hl=ja",
+            "reference_label": "VPC ピアリング"
+          }
+        },
+        {
+          "key": "D",
+          "text": "A-VPC→B-VPC→C-VPCのようなトランジティブルーティングが可能。",
+          "explanation": {
+            "text": "VPCピアリングはトランジティブルーティングをサポートしない。",
+            "reference": "https://cloud.google.com/vpc/docs/vpc-peering?hl=ja",
+            "reference_label": "VPC ピアリング"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "VPCピアリングではサブネットルートが自動で共有されるが、トランジティブではない点に注意。",
+        "reference": "https://cloud.google.com/vpc/docs/vpc-peering?hl=ja",
+        "reference_label": "VPC ピアリング"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q48",
+      "question": "マルチリージョン冗長と単一のグローバルAnycast IPでの公開を同時に実現できるロードバランサはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Global External Application Load Balancer（HTTP(S)）",
+          "explanation": {
+            "text": "グローバルL7ロードバランサで、複数リージョンのバックエンドに分散し単一Anycast IPで公開できる。",
+            "reference": "https://cloud.google.com/load-balancing/docs/https?hl=ja",
+            "reference_label": "External Application Load Balancer 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Internal TCP/UDP Load Balancer",
+          "explanation": {
+            "text": "内部専用のリージョナルL4ロードバランサで、グローバルAnycastではない。",
+            "reference": "https://cloud.google.com/load-balancing/docs/internal?hl=ja",
+            "reference_label": "Internal TCP/UDP Load Balancing"
+          }
+        },
+        {
+          "key": "C",
+          "text": "External passthrough Network Load Balancer（TCP/UDP）",
+          "explanation": {
+            "text": "パススルー型のL4ロードバランサはスコープがリージョナルであり、グローバル冗長ではない。",
+            "reference": "https://cloud.google.com/load-balancing/docs/network?hl=ja",
+            "reference_label": "External passthrough Network Load Balancer"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud NAT",
+          "explanation": {
+            "text": "Cloud NATはアウトバウンドNATであり、負荷分散ではない。",
+            "reference": "https://cloud.google.com/nat/docs/overview?hl=ja",
+            "reference_label": "Cloud NAT 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "External Application Load BalancerはグローバルAnycast IPとマルチリージョン分散をサポートする。",
+        "reference": "https://cloud.google.com/load-balancing/docs/https?hl=ja",
+        "reference_label": "External Application Load Balancer 概要"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q49",
+      "question": "Private Service Connect（PSC）で可能なことはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "VPC内部からプライベートIPでGoogle APIやサードパーティ/パートナーのサービスに接続する。",
+          "explanation": {
+            "text": "PSCはプライベートIP経由でのサービス接続や、サービス提供側がプライベートに公開する仕組みを提供する。",
+            "reference": "https://cloud.google.com/vpc/docs/private-service-connect?hl=ja",
+            "reference_label": "Private Service Connect 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "オンプレミスから直接GoogleのAPIにプライベート接続する（GCPを経由しない）。",
+          "explanation": {
+            "text": "オンプレミスからはInterconnectやVPNでGCPへ接続した上でPSCを利用するのが一般的で、PSC単体でオンプレ直結はしない。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/interconnect/concepts/overview?hl=ja",
+            "reference_label": "Cloud Interconnect 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "インターネット経由のみで利用できる。",
+          "explanation": {
+            "text": "PSCはプライベート接続の技術であり、インターネット経由を前提としない。",
+            "reference": "https://cloud.google.com/vpc/docs/private-service-connect?hl=ja",
+            "reference_label": "Private Service Connect 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "VPCピアリングの設定が必須である。",
+          "explanation": {
+            "text": "PSCはVPCピアリング不要で動作する別の仕組み。",
+            "reference": "https://cloud.google.com/vpc/docs/private-service-connect?hl=ja",
+            "reference_label": "Private Service Connect 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "PSCはプライベートIPでのサービス利用・公開を可能にし、Google APIやサードパーティサービスに対するプライベート接続を提供する。",
+        "reference": "https://cloud.google.com/vpc/docs/private-service-connect?hl=ja",
+        "reference_label": "Private Service Connect 概要"
+      }
+    },
+    {
+      "id": "gcp-PCNE-P-q50",
+      "question": "Cloud VPNのHA（高可用性）構成を採用する主な利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "2つのトンネルで冗長化され、BGPにより自動フェイルオーバーが可能になる。",
+          "explanation": {
+            "text": "HA VPNは冗長なゲートウェイ/トンネルを持ち、Cloud Router（BGP）で経路を自動切替できる。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/vpn/concepts/overview?hl=ja",
+            "reference_label": "Cloud VPN（HA） 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "スタティックルートのみを使用できる。",
+          "explanation": {
+            "text": "HA VPNでは動的ルーティング（BGP）が推奨であり、スタティックのみではない。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/vpn/concepts/overview?hl=ja",
+            "reference_label": "Cloud VPN 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "リージョンを跨いだ自動冗長性（マルチリージョン）が標準提供される。",
+          "explanation": {
+            "text": "HA VPNは1リージョン内での冗長化であり、マルチリージョン冗長は別設計が必要。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/vpn/concepts/overview?hl=ja",
+            "reference_label": "Cloud VPN 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud RouterなしでBGPのフェイルオーバーを提供できる。",
+          "explanation": {
+            "text": "BGPを利用するにはCloud Routerが必須である。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/router?hl=ja",
+            "reference_label": "Cloud Router 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "HA VPNは二重化トンネルとBGPを用いた自動フェイルオーバーにより、サイト間接続の可用性を高める。",
+        "reference": "https://cloud.google.com/network-connectivity/docs/vpn/concepts/overview?hl=ja",
+        "reference_label": "Cloud VPN（HA） 概要"
+      }
+    }
+  ]
+}

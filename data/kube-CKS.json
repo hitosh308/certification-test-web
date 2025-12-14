@@ -1,0 +1,2503 @@
+{
+  "exam": {
+    "id": "cks",
+    "title": "Certified Kubernetes Security Specialist（CKS）",
+    "description": "CKS は、Cloud Native Computing Foundation (CNCF)／The Linux Foundation による、コンテナ環境および Kubernetes クラスターのセキュリティ専門知識を評価する認定資格です。実際の Kubernetes 環境を模したオンラインのプロクタリング試験で、クラスターのセットアップ・ハードニング、システム／ランタイムのセキュリティ、サプライチェーンセキュリティ、モニタリング・ログ管理など、実践的なセキュリティ対策を問われます。試験は実技形式（performance-based）で、単なる知識ではなく「手を動かして設定・操作できる能力」を証明します。",
+    "version": "2025",
+    "price": "445 USD",
+    "difficulty": "難しい",
+    "official-site": "https://training.linuxfoundation.org/certification/certified-kubernetes-security-specialist-cks/",
+    "category": {
+      "id": "kube",
+      "name": "Kubernetes技術者認定"
+    }
+  },
+  "questions": [
+    {
+      "id": "kube-CKS-1",
+      "question": "Kubernetes において、特定 namespace 内の Pod から外部インターネットへの送信を拒否したい。この実現に最も直接関与する Kubernetes 機能はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "NetworkPolicy",
+          "explanation": {
+            "text": "NetworkPolicy は Pod 間通信および外部送信の制御を可能にする唯一の Kubernetes ネイティブ機能。",
+            "reference": "https://kubernetes.io/docs/concepts/services-networking/network-policies/",
+            "reference_label": "Kubernetes Docs - NetworkPolicies"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ResourceQuota",
+          "explanation": {
+            "text": "リソース制限に関する機能であり、通信制御には関与しない。",
+            "reference": "https://kubernetes.io/docs/concepts/policy/resource-quotas/",
+            "reference_label": "Kubernetes Docs - ResourceQuota"
+          }
+        },
+        {
+          "key": "C",
+          "text": "LimitRange",
+          "explanation": {
+            "text": "Pod の CPU・メモリ制限の設定であり、通信制御には使えない。",
+            "reference": "https://kubernetes.io/docs/concepts/policy/limit-range/",
+            "reference_label": "Kubernetes Docs - LimitRange"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ServiceAccount",
+          "explanation": {
+            "text": "認証主体の設定であり、ネットワーク制御とは無関係。",
+            "reference": "https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/",
+            "reference_label": "Kubernetes Docs - ServiceAccounts"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "外部通信拒否を実現できる Kubernetes ネイティブ機能は NetworkPolicy のみ。",
+        "reference": "https://kubernetes.io/docs/concepts/services-networking/network-policies/",
+        "reference_label": "Kubernetes Docs - NetworkPolicies"
+      }
+    },
+
+    {
+      "id": "kube-CKS-2",
+      "question": "コンテナイメージが root ユーザで実行されることを防ぎたい。Deployment の PodSpec に最も適切に設定すべき項目はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "readOnlyRootFilesystem: true",
+          "explanation": {
+            "text": "これはファイルシステムの書き込みを防ぐもので、root 実行の抑止にはならない。",
+            "reference": "https://kubernetes.io/docs/tasks/configure-pod-container/security-context/",
+            "reference_label": "Kubernetes Docs - SecurityContext"
+          }
+        },
+        {
+          "key": "B",
+          "text": "runAsNonRoot: true",
+          "explanation": {
+            "text": "runAsNonRoot を true にすると root ユーザでの実行を Kubernetes が拒否するため最適。",
+            "reference": "https://kubernetes.io/docs/tasks/configure-pod-container/security-context/",
+            "reference_label": "Kubernetes Docs - SecurityContext"
+          }
+        },
+        {
+          "key": "C",
+          "text": "allowPrivilegeEscalation: true",
+          "explanation": {
+            "text": "権限昇格許可を意味し、root での実行防止とは逆効果。",
+            "reference": "https://kubernetes.io/docs/tasks/configure-pod-container/security-context/",
+            "reference_label": "Kubernetes Docs - SecurityContext"
+          }
+        },
+        {
+          "key": "D",
+          "text": "privileged: false",
+          "explanation": {
+            "text": "特権コンテナを禁止するが、非特権 root 実行は防げない。",
+            "reference": "https://kubernetes.io/docs/tasks/configure-pod-container/security-context/",
+            "reference_label": "Kubernetes Docs - SecurityContext"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "runAsNonRoot を true に設定すると root での実行を Kubernetes が強制的に拒否する。",
+        "reference": "https://kubernetes.io/docs/tasks/configure-pod-container/security-context/",
+        "reference_label": "Kubernetes Docs - SecurityContext"
+      }
+    },
+
+    {
+      "id": "kube-CKS-3",
+      "question": "Ingress を保護するため、TLS 終端時に証明書の自動更新を実現したい。最も一般的な Kubernetes ネイティブ構成はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "cert-manager を利用して Certificate と Issuer を作成",
+          "explanation": {
+            "text": "cert-manager は Kubernetes で TLS 証明書の自動更新を実現する標準的ソリューション。",
+            "reference": "https://cert-manager.io/docs/",
+            "reference_label": "cert-manager Official Docs"
+          }
+        },
+        {
+          "key": "B",
+          "text": "IngressClass に autossl: enabled を指定",
+          "explanation": {
+            "text": "autossl という標準機能は存在しない。",
+            "reference": "https://kubernetes.io/docs/concepts/services-networking/ingress/",
+            "reference_label": "Kubernetes Docs - Ingress"
+          }
+        },
+        {
+          "key": "C",
+          "text": "kubelet の TLSBootstrap を有効化",
+          "explanation": {
+            "text": "これは kubelet の証明書管理であり Ingress の TLS とは無関係。",
+            "reference": "https://kubernetes.io/docs/tasks/tls/manual-rotation-of-ca-certificates/",
+            "reference_label": "Kubernetes TLS bootstrap"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Ingress の annotation に tls-auto-rotate: true を設定",
+          "explanation": {
+            "text": "そのような標準アノテーションは存在しない。",
+            "reference": "https://kubernetes.io/docs/concepts/services-networking/ingress/",
+            "reference_label": "Kubernetes Docs - Ingress"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "cert-manager は TLS 証明書の発行・更新を Kubernetes で自動化する標準的ツール。",
+        "reference": "https://cert-manager.io/docs/",
+        "reference_label": "cert-manager Official Docs"
+      }
+    },
+
+    {
+      "id": "kube-CKS-4",
+      "question": "Pod の root filesystem への書き込みを防ぐために使用する SecurityContext の設定はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "allowPrivilegeEscalation: false",
+          "explanation": {
+            "text": "権限昇格の可否であり、root filesystem の保護にはならない。",
+            "reference": "https://kubernetes.io/docs/tasks/configure-pod-container/security-context/",
+            "reference_label": "SecurityContext"
+          }
+        },
+        {
+          "key": "B",
+          "text": "privileged: false",
+          "explanation": {
+            "text": "特権モードの無効化だが、書き込み可否とは無関係。",
+            "reference": "https://kubernetes.io/docs/tasks/configure-pod-container/security-context/",
+            "reference_label": "SecurityContext"
+          }
+        },
+        {
+          "key": "C",
+          "text": "readOnlyRootFilesystem: true",
+          "explanation": {
+            "text": "ルートファイルシステムを読み取り専用にする設定で目的に適合する。",
+            "reference": "https://kubernetes.io/docs/tasks/configure-pod-container/security-context/",
+            "reference_label": "SecurityContext"
+          }
+        },
+        {
+          "key": "D",
+          "text": "runAsGroup: 2000",
+          "explanation": {
+            "text": "グループ設定であり、ファイル書き込み制御とは直接無関係。",
+            "reference": "https://kubernetes.io/docs/tasks/configure-pod-container/security-context/",
+            "reference_label": "SecurityContext"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "readOnlyRootFilesystem は Pod の root filesystem を読み取り専用にする唯一の設定。",
+        "reference": "https://kubernetes.io/docs/tasks/configure-pod-container/security-context/",
+        "reference_label": "SecurityContext"
+      }
+    },
+
+    {
+      "id": "kube-CKS-5",
+      "question": "etcd に保存される Secret の内容を暗号化するには、API Server にどの設定ファイルを指定する必要があるか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "--audit-policy-file",
+          "explanation": {
+            "text": "これは監査ログ設定であり、Secret の暗号化とは無関係。",
+            "reference": "https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/",
+            "reference_label": "Kubernetes Audit"
+          }
+        },
+        {
+          "key": "B",
+          "text": "--encryption-provider-config",
+          "explanation": {
+            "text": "Secret 暗号化を有効化するために API Server へ渡す正式な設定項目。",
+            "reference": "https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/",
+            "reference_label": "Encrypting data at rest"
+          }
+        },
+        {
+          "key": "C",
+          "text": "--authorization-mode=RBAC",
+          "explanation": {
+            "text": "RBAC の有効化であり暗号化とは関係しない。",
+            "reference": "https://kubernetes.io/docs/reference/access-authn-authz/rbac/",
+            "reference_label": "RBAC"
+          }
+        },
+        {
+          "key": "D",
+          "text": "--service-account-signing-key-file",
+          "explanation": {
+            "text": "これは SA token 署名に使用する鍵であり Secret 暗号化には使わない。",
+            "reference": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/",
+            "reference_label": "ServiceAccount Tokens"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Secret の etcd 暗号化は EncryptionConfiguration を API Server に指定することで有効化できる。",
+        "reference": "https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/",
+        "reference_label": "Encrypting data at rest"
+      }
+    },
+
+    {
+      "id": "kube-CKS-6",
+      "question": "Pod に対して最小限の権限のみ付与したい。ServiceAccount と RBAC を利用する際に最も重要な考え方はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ServiceAccount に広い ClusterRole を割り当てる",
+          "explanation": {
+            "text": "最小権限の原則に反する。",
+            "reference": "https://kubernetes.io/docs/reference/access-authn-authz/rbac/",
+            "reference_label": "RBAC"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ServiceAccount に権限を付与する際は RoleBinding を使い、必要最小限の Role を付与する",
+          "explanation": {
+            "text": "最小権限の原則に最も合致する正しい手法。",
+            "reference": "https://kubernetes.io/docs/reference/access-authn-authz/rbac/",
+            "reference_label": "RBAC"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ServiceAccount を複数 namespace で使い回す",
+          "explanation": {
+            "text": "権限が広がるため推奨されない。",
+            "reference": "https://kubernetes.io/docs/reference/access-authn-authz/rbac/",
+            "reference_label": "RBAC"
+          }
+        },
+        {
+          "key": "D",
+          "text": "default ServiceAccount を利用し RBAC 設定を最小限にする",
+          "explanation": {
+            "text": "default アカウント共有はセキュリティリスク。",
+            "reference": "https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/",
+            "reference_label": "ServiceAccounts"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ServiceAccount に最小限の Role を RoleBinding で付与することが最小権限の基本。",
+        "reference": "https://kubernetes.io/docs/reference/access-authn-authz/rbac/",
+        "reference_label": "RBAC"
+      }
+    },
+
+    {
+      "id": "kube-CKS-7",
+      "question": "コンテナが不要な Linux Capability を保持しないようにするための推奨設定はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "drop: [\"ALL\"] を指定し、必要な Capability のみ add する",
+          "explanation": {
+            "text": "Capability の最小化における推奨パターン。",
+            "reference": "https://kubernetes.io/docs/tasks/configure-pod-container/security-context/",
+            "reference_label": "SecurityContext Capabilities"
+          }
+        },
+        {
+          "key": "B",
+          "text": "add: [\"ALL\"] を指定し、不要なものを個別に削除",
+          "explanation": {
+            "text": "不要な権限を大量に保持してしまい危険。",
+            "reference": "https://kubernetes.io/docs/tasks/configure-pod-container/security-context/",
+            "reference_label": "SecurityContext Capabilities"
+          }
+        },
+        {
+          "key": "C",
+          "text": "runAsUser: 0 を指定",
+          "explanation": {
+            "text": "root ユーザで実行されるため危険であり Capability 削減にはならない。",
+            "reference": "https://kubernetes.io/docs/tasks/configure-pod-container/security-context/",
+            "reference_label": "SecurityContext"
+          }
+        },
+        {
+          "key": "D",
+          "text": "privileged: true を指定",
+          "explanation": {
+            "text": "すべての Capability を保持してしまい逆効果。",
+            "reference": "https://kubernetes.io/docs/tasks/configure-pod-container/security-context/",
+            "reference_label": "SecurityContext"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Capability を drop: [\"ALL\"] とし必要なものだけ追加するのが最小権限の原則に最も適合する。",
+        "reference": "https://kubernetes.io/docs/tasks/configure-pod-container/security-context/",
+        "reference_label": "SecurityContext Capabilities"
+      }
+    },
+
+    {
+      "id": "kube-CKS-8",
+      "question": "Kubernetes で Secret を環境変数として Pod に渡す場合のセキュリティ上の弱点はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ノードの /tmp へ自動コピーされる",
+          "explanation": {
+            "text": "そのような挙動は Kubernetes には存在しない。",
+            "reference": "https://kubernetes.io/docs/concepts/configuration/secret/",
+            "reference_label": "Secrets"
+          }
+        },
+        {
+          "key": "B",
+          "text": "環境変数として設定した Secret は process list に表示される可能性がある",
+          "explanation": {
+            "text": "env を介した Secret は ps コマンドなどの出力で漏洩する恐れがある。",
+            "reference": "https://kubernetes.io/docs/concepts/configuration/secret/#risks",
+            "reference_label": "Secret Risks"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Secret が必ず etcd に平文で保存される",
+          "explanation": {
+            "text": "暗号化設定を行えば平文保存にはならない。",
+            "reference": "https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/",
+            "reference_label": "Encrypt Data"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Secret は Pod 側で必ず Base64 のまま利用される",
+          "explanation": {
+            "text": "コンテナ内部ではデコードされた状態で利用される。",
+            "reference": "https://kubernetes.io/docs/concepts/configuration/secret/",
+            "reference_label": "Secrets"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "環境変数に設定された Secret は process list で漏れるリスクがあるため推奨されない。",
+        "reference": "https://kubernetes.io/docs/concepts/configuration/secret/#risks",
+        "reference_label": "Secret Risks"
+      }
+    },
+
+    {
+      "id": "kube-CKS-9",
+      "question": "RuntimeClass を利用して、特定の Pod を gVisor のようなサンドボックス環境で実行する目的として最も適切なのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Pod の起動速度を高速化するため",
+          "explanation": {
+            "text": "サンドボックス実行は通常、起動が遅くなる。",
+            "reference": "https://kubernetes.io/docs/concepts/containers/runtime-class/",
+            "reference_label": "RuntimeClass"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Pod ごとに独立したカーネルレベルの隔離を強化するため",
+          "explanation": {
+            "text": "gVisor のようなランタイムは追加隔離レイヤーを提供する。",
+            "reference": "https://kubernetes.io/docs/concepts/containers/runtime-class/",
+            "reference_label": "RuntimeClass"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Pod のメトリクス収集を最適化するため",
+          "explanation": {
+            "text": "メトリクスとは無関係。",
+            "reference": "https://kubernetes.io/docs/concepts/containers/runtime-class/",
+            "reference_label": "RuntimeClass"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ServiceAccount のトークン発行を高速化するため",
+          "explanation": {
+            "text": "実行ランタイムと SA トークンは無関係。",
+            "reference": "https://kubernetes.io/docs/concepts/containers/runtime-class/",
+            "reference_label": "RuntimeClass"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "サンドボックスランタイムは隔離の強化が主目的。",
+        "reference": "https://kubernetes.io/docs/concepts/containers/runtime-class/",
+        "reference_label": "RuntimeClass"
+      }
+    },
+
+    {
+      "id": "kube-CKS-10",
+      "question": "Container Image の署名を確認せずに実行してしまうことによる最も直接的なリスクはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Pod が起動できなくなる",
+          "explanation": {
+            "text": "署名未検証でも Pod は通常起動できる。",
+            "reference": "https://kubernetes.io/docs/concepts/containers/images/",
+            "reference_label": "Container Images"
+          }
+        },
+        {
+          "key": "B",
+          "text": "意図しないコンテナイメージ（改ざん・悪意あるコード）を実行してしまう",
+          "explanation": {
+            "text": "署名検証なしでは改ざんイメージの混入を防げない。",
+            "reference": "https://kubernetes.io/docs/concepts/security/overview/",
+            "reference_label": "Security Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "kubelet の証明書が無効化される",
+          "explanation": {
+            "text": "イメージ署名と kubelet 証明書は無関係。",
+            "reference": "https://kubernetes.io/docs/concepts/security/overview/",
+            "reference_label": "Security Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ServiceAccount が自動的に削除される",
+          "explanation": {
+            "text": "イメージ署名とは無関係。",
+            "reference": "https://kubernetes.io/docs/concepts/security/overview/",
+            "reference_label": "Security Overview"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "署名検証を行わないと改ざんイメージの混入を防げないことが最大のリスク。",
+        "reference": "https://kubernetes.io/docs/concepts/security/overview/",
+        "reference_label": "Security Overview"
+      }
+    },
+    {
+      "id": "kube-CKS-11",
+      "question": "PodSecurity Standards (PSS) を適用する際、各 namespace に対して 'baseline' レベルを強制したい。正しい設定場所はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "kube-scheduler の設定ファイルに baseline を指定する",
+          "explanation": {
+            "text": "スケジューラは PSS の適用とは無関係。",
+            "reference": "https://kubernetes.io/docs/concepts/security/pod-security-standards/",
+            "reference_label": "Pod Security Standards"
+          }
+        },
+        {
+          "key": "B",
+          "text": "namespace に pod-security.kubernetes.io/enforce ラベルを付与する",
+          "explanation": {
+            "text": "PSS の enforcement は namespace ラベルで制御するのが正しい方法。",
+            "reference": "https://kubernetes.io/docs/tasks/configure-pod-container/enforce-standards/",
+            "reference_label": "Pod Security Admission"
+          }
+        },
+        {
+          "key": "C",
+          "text": "kubelet 起動オプションに baseline-mode=true を追加する",
+          "explanation": {
+            "text": "そのようなオプションは存在しない。",
+            "reference": "https://kubernetes.io/docs/concepts/security/pod-security-standards/",
+            "reference_label": "PSS"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Deployment の annotation に baseline-level を記述する",
+          "explanation": {
+            "text": "PSS は namespace 単位で適用され、Deployment 単位では設定できない。",
+            "reference": "https://kubernetes.io/docs/tasks/configure-pod-container/enforce-standards/",
+            "reference_label": "Pod Security Admission"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "PSS の enforce 設定は namespace にラベルを付与することで行われる。",
+        "reference": "https://kubernetes.io/docs/tasks/configure-pod-container/enforce-standards/",
+        "reference_label": "Pod Security Admission"
+      }
+    },
+
+    {
+      "id": "kube-CKS-12",
+      "question": "Kubernetes API へのアクセスを監査し、不正なリクエストを後から追跡できるようにしたい。API Server に設定すべき項目はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "--enable-admission-plugins=TraceAudit",
+          "explanation": {
+            "text": "TraceAudit という admission plugin は存在しない。",
+            "reference": "https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/",
+            "reference_label": "Admission Controllers"
+          }
+        },
+        {
+          "key": "B",
+          "text": "--audit-log-path で監査ログ出力先を指定する",
+          "explanation": {
+            "text": "監査ログを有効化するための代表的な API Server オプション。",
+            "reference": "https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/",
+            "reference_label": "Audit Logging"
+          }
+        },
+        {
+          "key": "C",
+          "text": "kube-proxy に audit-mode=enabled を設定する",
+          "explanation": {
+            "text": "kube-proxy は API 監査とは関係しない。",
+            "reference": "https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/",
+            "reference_label": "Audit Logging"
+          }
+        },
+        {
+          "key": "D",
+          "text": "etcd のログレベルを debug に変更する",
+          "explanation": {
+            "text": "etcd のログは API リクエストの監査を行わない。",
+            "reference": "https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/",
+            "reference_label": "Audit Logging"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "API Server の監査ログは --audit-log-path などの audit オプションで有効化する。",
+        "reference": "https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/",
+        "reference_label": "Audit Logging"
+      }
+    },
+
+    {
+      "id": "kube-CKS-13",
+      "question": "kubelet の認証を強固にするため、ノードと API Server 間の通信を相互 TLS で保護したい。必要な構成の組み合わせはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "API Server に kubelet-client-certificate と kubelet-client-key を設定する",
+          "explanation": {
+            "text": "API Server が kubelet に接続する際の相互認証に使用される。",
+            "reference": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/",
+            "reference_label": "kube-apiserver Options"
+          }
+        },
+        {
+          "key": "B",
+          "text": "etcd 側で RBAC を有効化する",
+          "explanation": {
+            "text": "etcd RBAC は API-Server-kubelet 間の認証には関係ない。",
+            "reference": "https://etcd.io/docs/",
+            "reference_label": "etcd Docs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "kube-proxy の TLSCipherSuite を strict にする",
+          "explanation": {
+            "text": "kube-proxy TLS は kubelet 認証には関係しない。",
+            "reference": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/",
+            "reference_label": "kube-proxy"
+          }
+        },
+        {
+          "key": "D",
+          "text": "API Server の anonymous-auth=true を設定",
+          "explanation": {
+            "text": "匿名アクセス許可はセキュリティを弱める設定。",
+            "reference": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/",
+            "reference_label": "kube-apiserver"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "API Server は kubelet-client-certificate と key を利用して kubelet と相互 TLS 認証を行う。",
+        "reference": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/",
+        "reference_label": "kube-apiserver Options"
+      }
+    },
+
+    {
+      "id": "kube-CKS-14",
+      "question": "Pod が特権コンテナとして起動されないようプロアクティブに検出したい。最も適した OSS ツールはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Falco",
+          "explanation": {
+            "text": "Falco はランタイムセキュリティツールで特権コンテナ検出ルールを提供する。",
+            "reference": "https://falco.org/docs/",
+            "reference_label": "Falco Docs"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Helm",
+          "explanation": {
+            "text": "パッケージマネージャでありセキュリティ監視は行わない。",
+            "reference": "https://helm.sh/docs/",
+            "reference_label": "Helm Docs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Kustomize",
+          "explanation": {
+            "text": "マニフェスト管理ツールでありランタイム監視機能はない。",
+            "reference": "https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/",
+            "reference_label": "Kustomize"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Prometheus",
+          "explanation": {
+            "text": "メトリクス監視が目的であり特権検出は行わない。",
+            "reference": "https://prometheus.io/docs/",
+            "reference_label": "Prometheus Docs"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Falco はランタイム監視に特化し特権コンテナの検出ルールを標準で提供する。",
+        "reference": "https://falco.org/docs/",
+        "reference_label": "Falco"
+      }
+    },
+
+    {
+      "id": "kube-CKS-15",
+      "question": "Container Runtime Interface (CRI) として OCI 準拠ランタイムを利用する理由として最も適切なのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Pod の CPU 使用率が常に半減する",
+          "explanation": {
+            "text": "ランタイムの種類が CPU 使用率を保証することはない。",
+            "reference": "https://opencontainers.org/",
+            "reference_label": "OCI"
+          }
+        },
+        {
+          "key": "B",
+          "text": "イメージフォーマットとランタイム仕様を標準化し、セキュリティ互換性を確保するため",
+          "explanation": {
+            "text": "OCI の目的は仕様の標準化により互換性と安全性を高めること。",
+            "reference": "https://opencontainers.org/",
+            "reference_label": "OCI"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ServiceAccount のトークンが高速に更新される",
+          "explanation": {
+            "text": "ランタイムと SA トークン処理は無関係。",
+            "reference": "https://kubernetes.io/docs/concepts/security/",
+            "reference_label": "Security Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Pod の作成が etcd を経由せずに行われるようになる",
+          "explanation": {
+            "text": "Pod 情報は常に etcd に保存される。",
+            "reference": "https://kubernetes.io/docs/concepts/overview/components/",
+            "reference_label": "Kubernetes Components"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "OCI はイメージ・ランタイムの標準化により互換性とセキュリティを向上させる。",
+        "reference": "https://opencontainers.org/",
+        "reference_label": "OCI"
+      }
+    },
+
+    {
+      "id": "kube-CKS-16",
+      "question": "Kubernetes 上で署名付きイメージのみの実行を強制したい。最も適切な仕組みはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "OPA Gatekeeper に署名検証ルールを導入する",
+          "explanation": {
+            "text": "Gatekeeper を使えば admission controller で署名検証ポリシーを適用できる。",
+            "reference": "https://open-policy-agent.github.io/gatekeeper/website/docs/",
+            "reference_label": "OPA Gatekeeper"
+          }
+        },
+        {
+          "key": "B",
+          "text": "kube-proxy の webhook モードを有効化する",
+          "explanation": {
+            "text": "kube-proxy は署名検証とは無関係。",
+            "reference": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/",
+            "reference_label": "kube-proxy"
+          }
+        },
+        {
+          "key": "C",
+          "text": "kubelet の garbage-collection を無効化する",
+          "explanation": {
+            "text": "GC と署名検証は無関係。",
+            "reference": "https://kubernetes.io/docs/concepts/cluster-administration/kubelet-garbage-collection/",
+            "reference_label": "kubelet GC"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IngressClass に verify-signature=true を設定する",
+          "explanation": {
+            "text": "そのような標準設定は存在しない。",
+            "reference": "https://kubernetes.io/docs/concepts/services-networking/ingress/",
+            "reference_label": "Ingress"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "署名検証ポリシーは OPA Gatekeeper などの admission controller で実装するのが一般的。",
+        "reference": "https://open-policy-agent.github.io/gatekeeper/website/docs/",
+        "reference_label": "OPA Gatekeeper"
+      }
+    },
+
+    {
+      "id": "kube-CKS-17",
+      "question": "etcd 通信を暗号化する目的で、API Server が利用する etcd への接続設定として正しいのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "--etcd-servers=https://<endpoint>:2379 とし、--etcd-cafile/--etcd-certfile/--etcd-keyfile を指定する",
+          "explanation": {
+            "text": "TLS で etcd と通信する正式な方法。",
+            "reference": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/",
+            "reference_label": "kube-apiserver"
+          }
+        },
+        {
+          "key": "B",
+          "text": "--etcd-secure-mode=true を指定する",
+          "explanation": {
+            "text": "そのようなオプションは存在しない。",
+            "reference": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/",
+            "reference_label": "kube-apiserver"
+          }
+        },
+        {
+          "key": "C",
+          "text": "--etcd-plaintext=true を指定する",
+          "explanation": {
+            "text": "平文通信を強制するため逆効果。",
+            "reference": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/",
+            "reference_label": "kube-apiserver"
+          }
+        },
+        {
+          "key": "D",
+          "text": "--enable-etcd-firewall=true を設定",
+          "explanation": {
+            "text": "そのような API Server オプションは存在しない。",
+            "reference": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/",
+            "reference_label": "kube-apiserver"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "TLS を利用するために etcd 用 CA・証明書・秘密鍵の指定が必須。",
+        "reference": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/",
+        "reference_label": "kube-apiserver"
+      }
+    },
+
+    {
+      "id": "kube-CKS-18",
+      "question": "Pod に設定した seccompProfile が機能せず、全て unconfined として実行されてしまう。最も疑われる原因はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "kubelet で --seccomp-default が有効化されていない",
+          "explanation": {
+            "text": "seccomp-default を有効化しないと、デフォルトで unconfined が適用されやすくなる。",
+            "reference": "https://kubernetes.io/docs/tutorials/security/seccomp/",
+            "reference_label": "Seccomp"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Pod に runAsGroup が設定されている",
+          "explanation": {
+            "text": "runAsGroup は seccomp とは関係ない。",
+            "reference": "https://kubernetes.io/docs/tasks/configure-pod-container/security-context/",
+            "reference_label": "SecurityContext"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ConfigMap のサイズが上限を超過している",
+          "explanation": {
+            "text": "seccomp 適用とは無関係。",
+            "reference": "https://kubernetes.io/docs/concepts/configuration/configmap/",
+            "reference_label": "ConfigMap"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IngressClass を default に設定している",
+          "explanation": {
+            "text": "Ingress は seccomp と無関係。",
+            "reference": "https://kubernetes.io/docs/concepts/services-networking/ingress/",
+            "reference_label": "Ingress"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "kubelet の --seccomp-default を有効化しないと Pod の seccomp 設定が unconfined になることがある。",
+        "reference": "https://kubernetes.io/docs/tutorials/security/seccomp/",
+        "reference_label": "Seccomp"
+      }
+    },
+
+    {
+      "id": "kube-CKS-19",
+      "question": "Kubernetes Secret をマウントする際、ファイルとして利用することで得られる主なセキュリティ上の利点はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "コンテナの標準出力に自動で記録されなくなる",
+          "explanation": {
+            "text": "ファイルマウントの場合、誤って標準出力に流れにくくなる利点がある。",
+            "reference": "https://kubernetes.io/docs/concepts/configuration/secret/",
+            "reference_label": "Secrets"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Secret が etcd に保存されなくなる",
+          "explanation": {
+            "text": "etcd 保存は常に行われる。",
+            "reference": "https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/",
+            "reference_label": "Encrypt Data"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Secret が Base64 エンコードされなくなる",
+          "explanation": {
+            "text": "エンコード仕様は変わらない。",
+            "reference": "https://kubernetes.io/docs/concepts/configuration/secret/",
+            "reference_label": "Secrets"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Pod のスケジューリングに使用される",
+          "explanation": {
+            "text": "スケジューリングとは無関係。",
+            "reference": "https://kubernetes.io/docs/concepts/scheduling-eviction/",
+            "reference_label": "Scheduling"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "環境変数と比べ、ファイルマウントされた Secret はログへ誤出力されにくい。",
+        "reference": "https://kubernetes.io/docs/concepts/configuration/secret/",
+        "reference_label": "Secrets"
+      }
+    },
+
+    {
+      "id": "kube-CKS-20",
+      "question": "コンテナランタイムで rootless モードを利用する主なセキュリティメリットはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "コンテナの起動速度が倍になる",
+          "explanation": {
+            "text": "rootless と起動速度の相関はない。",
+            "reference": "https://rootlesscontaine.rs/",
+            "reference_label": "Rootless Containers"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ホスト上で root 権限を必要とせず、権限昇格リスクを減らせる",
+          "explanation": {
+            "text": "rootless の最大の目的はホスト root 権限の不要化。",
+            "reference": "https://rootlesscontaine.rs/",
+            "reference_label": "Rootless Containers"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Pod Security Standards を自動的に適用する",
+          "explanation": {
+            "text": "PSS とは無関係。",
+            "reference": "https://kubernetes.io/docs/concepts/security/pod-security-standards/",
+            "reference_label": "PSS"
+          }
+        },
+        {
+          "key": "D",
+          "text": "etcd のバックアップが高速化される",
+          "explanation": {
+            "text": "ランタイムとは無関係。",
+            "reference": "https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/",
+            "reference_label": "etcd"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "rootless ランタイムはホスト root 権限不要のため攻撃範囲を縮小できる。",
+        "reference": "https://rootlesscontaine.rs/",
+        "reference_label": "Rootless Containers"
+      }
+    },
+    {
+      "id": "kube-CKS-21",
+      "question": "Kubernetes 環境でノードが不正に追加されるリスクを防ぐために推奨される仕組みはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "NodeRestriction Admission Controller を有効化する",
+          "explanation": {
+            "text": "NodeRestriction はノード名を詐称した不正ノードの登録リスクを軽減する代表的な仕組み。",
+            "reference": "https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#noderestriction",
+            "reference_label": "NodeRestriction"
+          }
+        },
+        {
+          "key": "B",
+          "text": "default ServiceAccount を無効化する",
+          "explanation": {
+            "text": "ノード追加の制御とは無関係。",
+            "reference": "https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/",
+            "reference_label": "ServiceAccounts"
+          }
+        },
+        {
+          "key": "C",
+          "text": "kubelet の garbage-collection を無効化する",
+          "explanation": {
+            "text": "GC はノード登録の安全性と関係しない。",
+            "reference": "https://kubernetes.io/docs/concepts/cluster-administration/kubelet-garbage-collection/",
+            "reference_label": "kubelet GC"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IngressClass を strict に設定する",
+          "explanation": {
+            "text": "Ingress はノード追加とは関係ない。",
+            "reference": "https://kubernetes.io/docs/concepts/services-networking/ingress/",
+            "reference_label": "Ingress"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "NodeRestriction はノードの不正登録を防ぐための必須セキュリティ機構。",
+        "reference": "https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#noderestriction",
+        "reference_label": "NodeRestriction"
+      }
+    },
+
+    {
+      "id": "kube-CKS-22",
+      "question": "PodSecurity Standard の 'restricted' レベルが要求する設定として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "特権コンテナの使用禁止",
+          "explanation": {
+            "text": "restricted は最も厳格で、privileged: true を禁止する。",
+            "reference": "https://kubernetes.io/docs/concepts/security/pod-security-standards/",
+            "reference_label": "PSS restricted"
+          }
+        },
+        {
+          "key": "B",
+          "text": "必ず hostNetwork を true にする",
+          "explanation": {
+            "text": "restricted は hostNetwork を禁止する方向。",
+            "reference": "https://kubernetes.io/docs/concepts/security/pod-security-standards/",
+            "reference_label": "PSS"
+          }
+        },
+        {
+          "key": "C",
+          "text": "SYS_ADMIN capability を必須にする",
+          "explanation": {
+            "text": "restricted では Capability は最小化され SYS_ADMIN など強力なものは禁止。",
+            "reference": "https://kubernetes.io/docs/concepts/security/pod-security-standards/",
+            "reference_label": "PSS"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AppArmor を常に unconfined に設定する",
+          "explanation": {
+            "text": "restricted レベルでは unconfined は禁止。",
+            "reference": "https://kubernetes.io/docs/concepts/security/pod-security-standards/",
+            "reference_label": "PSS"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "restricted レベルでは特権コンテナは禁止されている。",
+        "reference": "https://kubernetes.io/docs/concepts/security/pod-security-standards/",
+        "reference_label": "Pod Security Standards"
+      }
+    },
+
+    {
+      "id": "kube-CKS-23",
+      "question": "Runtime Threat Detection を目的としてシステムコールの監視を行う仕組みはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Falco",
+          "explanation": {
+            "text": "Falco はシステムコールレベルの監視で脅威検知する代表 OSS。",
+            "reference": "https://falco.org/docs/",
+            "reference_label": "Falco"
+          }
+        },
+        {
+          "key": "B",
+          "text": "kubeadm",
+          "explanation": {
+            "text": "クラスタ初期化ツールで監視機能はない。",
+            "reference": "https://kubernetes.io/docs/reference/setup-tools/kubeadm/",
+            "reference_label": "kubeadm"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Metrics Server",
+          "explanation": {
+            "text": "メトリクス提供のみで、脅威検知には使わない。",
+            "reference": "https://github.com/kubernetes-sigs/metrics-server",
+            "reference_label": "Metrics Server"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Ingress Controller",
+          "explanation": {
+            "text": "L7ロードバランシングであり脅威検知とは無関係。",
+            "reference": "https://kubernetes.io/docs/concepts/services-networking/ingress/",
+            "reference_label": "Ingress"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Falco は syscalls を監視し異常動作を検出する。",
+        "reference": "https://falco.org/docs/",
+        "reference_label": "Falco"
+      }
+    },
+
+    {
+      "id": "kube-CKS-24",
+      "question": "Kubernetes API Server に対するリクエストを admission webhook で制御したい。必要となる Kubernetes の仕組みはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "MutatingAdmissionWebhook または ValidatingAdmissionWebhook",
+          "explanation": {
+            "text": "Admission Webhook は API リクエストを変更・検証するために使われる正式機構。",
+            "reference": "https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/",
+            "reference_label": "Admission Webhooks"
+          }
+        },
+        {
+          "key": "B",
+          "text": "kubelet の --admission-check=true",
+          "explanation": {
+            "text": "kubelet に admission チェックの設定は存在しない。",
+            "reference": "https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/",
+            "reference_label": "kubelet"
+          }
+        },
+        {
+          "key": "C",
+          "text": "etcd の ACL 設定",
+          "explanation": {
+            "text": "etcd ACL は API admission とは無関係。",
+            "reference": "https://etcd.io/docs/",
+            "reference_label": "etcd"
+          }
+        },
+        {
+          "key": "D",
+          "text": "scheduler の PluginWebhook 設定",
+          "explanation": {
+            "text": "スケジューラは admission の前段処理には関与しない。",
+            "reference": "https://kubernetes.io/docs/concepts/scheduling/",
+            "reference_label": "Scheduling"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Admission Webhook は API リクエストに介入する唯一の拡張機構。",
+        "reference": "https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/",
+        "reference_label": "Admission Webhooks"
+      }
+    },
+
+    {
+      "id": "kube-CKS-25",
+      "question": "Kubernetes Secret の取り扱いにおいて、暗号化せず etcd に保存されることによる主なリスクはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "etcd のバックアップファイルに平文で残る",
+          "explanation": {
+            "text": "etcd 暗号化が無効の場合、バックアップに平文 Secret が保存される。",
+            "reference": "https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/",
+            "reference_label": "Encrypt Data"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Secret が Pod で自動的に削除される",
+          "explanation": {
+            "text": "そのような挙動はない。",
+            "reference": "https://kubernetes.io/docs/concepts/configuration/secret/",
+            "reference_label": "Secrets"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ServiceAccount のトークン生成が失敗する",
+          "explanation": {
+            "text": "Secret 暗号化とは無関係。",
+            "reference": "https://kubernetes.io/docs/concepts/configuration/secret/",
+            "reference_label": "Secrets"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ConfigMap が暗号化されなくなる",
+          "explanation": {
+            "text": "ConfigMap は暗号化対象ではない。",
+            "reference": "https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/",
+            "reference_label": "Encrypt Data"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "etcd バックアップは Secret を含むため、暗号化しないと平文のまま残る。",
+        "reference": "https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/",
+        "reference_label": "Encrypt Data"
+      }
+    },
+
+    {
+      "id": "kube-CKS-26",
+      "question": "攻撃者が privileged コンテナを作成することを防ぎたい。Kubernetes で適切な防御策はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "PodSecurity Standards を 'restricted' で enforce する",
+          "explanation": {
+            "text": "restricted レベルでは privileged コンテナは禁止される。",
+            "reference": "https://kubernetes.io/docs/concepts/security/pod-security-standards/",
+            "reference_label": "PSS"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Deployment の replicas を 1 に制限する",
+          "explanation": {
+            "text": "replicas は特権コンテナ制御とは関係ない。",
+            "reference": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/",
+            "reference_label": "Deployment"
+          }
+        },
+        {
+          "key": "C",
+          "text": "kubeadm を再インストールする",
+          "explanation": {
+            "text": "特権コンテナ防止とは無関係。",
+            "reference": "https://kubernetes.io/docs/reference/setup-tools/kubeadm/",
+            "reference_label": "kubeadm"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Service の type を ClusterIP に変更する",
+          "explanation": {
+            "text": "Service タイプは権限に影響しない。",
+            "reference": "https://kubernetes.io/docs/concepts/services-networking/service/",
+            "reference_label": "Service"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "restricted レベル enforced により privileged は完全拒否となる。",
+        "reference": "https://kubernetes.io/docs/concepts/security/pod-security-standards/",
+        "reference_label": "PSS"
+      }
+    },
+
+    {
+      "id": "kube-CKS-27",
+      "question": "Kubernetes の admission webhook の証明書更新後、API Server から接続できなくなった。最も考えられる原因はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ValidatingWebhookConfiguration の caBundle を更新していない",
+          "explanation": {
+            "text": "Webhook の CA が更新されないと API Server が証明書を検証できず通信できない。",
+            "reference": "https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/",
+            "reference_label": "Admission Webhooks"
+          }
+        },
+        {
+          "key": "B",
+          "text": "kubelet の CPU 制限を超過した",
+          "explanation": {
+            "text": "Webhook 通信とは無関係。",
+            "reference": "https://kubernetes.io/docs/concepts/overview/components/",
+            "reference_label": "Components"
+          }
+        },
+        {
+          "key": "C",
+          "text": "etcd のデータファイルがローテートされた",
+          "explanation": {
+            "text": "Webhook 証明書とは無関係。",
+            "reference": "https://etcd.io/docs/",
+            "reference_label": "etcd"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IngressClass の default 設定が無効化された",
+          "explanation": {
+            "text": "Webhook とは全く関係がない。",
+            "reference": "https://kubernetes.io/docs/concepts/services-networking/ingress/",
+            "reference_label": "Ingress"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Webhook 証明書更新時は caBundle も更新しないと API Server が拒否する。",
+        "reference": "https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/",
+        "reference_label": "Admission Webhooks"
+      }
+    },
+
+    {
+      "id": "kube-CKS-28",
+      "question": "コンテナの rootfs に書き込みできないようにしたい。SecurityContext の最適な設定はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "readOnlyRootFilesystem: true",
+          "explanation": {
+            "text": "rootfs を読み取り専用にする正式な設定。",
+            "reference": "https://kubernetes.io/docs/tasks/configure-pod-container/security-context/",
+            "reference_label": "SecurityContext"
+          }
+        },
+        {
+          "key": "B",
+          "text": "runAsGroup: 3000",
+          "explanation": {
+            "text": "ファイルシステムの書き込み可否には関係しない。",
+            "reference": "https://kubernetes.io/docs/tasks/configure-pod-container/security-context/",
+            "reference_label": "SecurityContext"
+          }
+        },
+        {
+          "key": "C",
+          "text": "allowPrivilegeEscalation: true",
+          "explanation": {
+            "text": "権限拡張を許可してしまい逆効果。",
+            "reference": "https://kubernetes.io/docs/tasks/configure-pod-container/security-context/",
+            "reference_label": "SecurityContext"
+          }
+        },
+        {
+          "key": "D",
+          "text": "seccompProfile: unconfined",
+          "explanation": {
+            "text": "制限が緩くなるため推奨でない。",
+            "reference": "https://kubernetes.io/docs/tutorials/security/seccomp/",
+            "reference_label": "Seccomp"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "readOnlyRootFilesystem は rootfs を確実に読み取り専用にする。",
+        "reference": "https://kubernetes.io/docs/tasks/configure-pod-container/security-context/",
+        "reference_label": "SecurityContext"
+      }
+    },
+
+    {
+      "id": "kube-CKS-29",
+      "question": "クラスタ内全ての通信を暗号化したい。推奨される CNI の機能はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Cilium の Transparent Encryption (IPsec/WireGuard)",
+          "explanation": {
+            "text": "Cilium はデータプレーン暗号化をサポートしクラスタ内通信を保護できる。",
+            "reference": "https://docs.cilium.io/en/stable/",
+            "reference_label": "Cilium Docs"
+          }
+        },
+        {
+          "key": "B",
+          "text": "kubelet の TLS bootstrap",
+          "explanation": {
+            "text": "ノード認証でありクラスタ全通信暗号化ではない。",
+            "reference": "https://kubernetes.io/docs/tasks/tls/manual-rotation-of-ca-certificates/",
+            "reference_label": "TLS bootstrap"
+          }
+        },
+        {
+          "key": "C",
+          "text": "NodePort のみを利用する",
+          "explanation": {
+            "text": "通信暗号化とは無関係。",
+            "reference": "https://kubernetes.io/docs/concepts/services-networking/service/",
+            "reference_label": "Service"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Deployment の affinity を strict にする",
+          "explanation": {
+            "text": "暗号化とは関係しない。",
+            "reference": "https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/",
+            "reference_label": "Affinity"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cilium の Transparent Encryption はクラスタ内通信暗号化を提供する。",
+        "reference": "https://docs.cilium.io/en/stable/",
+        "reference_label": "Cilium Docs"
+      }
+    },
+
+    {
+      "id": "kube-CKS-30",
+      "question": "Kubernetes Secret を Pod へ渡す際、環境変数ではなく Volume マウントを使うべき主な理由はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "環境変数よりもログや process list に露出しにくいため",
+          "explanation": {
+            "text": "環境変数は ps 出力などで漏洩リスクが高いため Volume の方が安全。",
+            "reference": "https://kubernetes.io/docs/concepts/configuration/secret/#risks",
+            "reference_label": "Secret Risks"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Volume マウントだと Secret が etcd に保存されなくなる",
+          "explanation": {
+            "text": "保存仕様は変わらない。",
+            "reference": "https://kubernetes.io/docs/concepts/configuration/secret/",
+            "reference_label": "Secrets"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Volume を使用すると Secret が自動暗号化される",
+          "explanation": {
+            "text": "暗号化は API Server 側の設定であり Volume とは無関係。",
+            "reference": "https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/",
+            "reference_label": "Encrypt Data"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Volume マウントの方が Pod セットアップ時間が高速になる",
+          "explanation": {
+            "text": "速度の優位性に関する仕様はない。",
+            "reference": "https://kubernetes.io/docs/concepts/configuration/secret/",
+            "reference_label": "Secrets"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Secret を環境変数にするとプロセス一覧などで漏れやすいため Volume が推奨される。",
+        "reference": "https://kubernetes.io/docs/concepts/configuration/secret/#risks",
+        "reference_label": "Secret Risks"
+      }
+    },
+    {
+      "id": "kube-CKS-31",
+      "question": "Kubernetes の監査ログ設定において、リクエスト/レスポンスボディを含めず、ユーザ名やリソース名などのメタデータのみを記録したい。監査ポリシーで指定すべき level はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "None",
+          "explanation": {
+            "text": "None はそのイベントをログ出力しない設定であり、メタデータも記録されない。",
+            "reference": "https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/#audit-policy",
+            "reference_label": "Kubernetes Docs - Audit Policy"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Request",
+          "explanation": {
+            "text": "Request はリクエストボディを含めて記録するため、機密情報がログへ流出する可能性が高い。",
+            "reference": "https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/#audit-policy",
+            "reference_label": "Kubernetes Docs - Audit Policy"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Metadata",
+          "explanation": {
+            "text": "Metadata はユーザ名やリソース名などのメタデータのみを記録し、ボディは記録しないレベルである。",
+            "reference": "https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/#audit-policy",
+            "reference_label": "Kubernetes Docs - Audit Policy"
+          }
+        },
+        {
+          "key": "D",
+          "text": "RequestResponse",
+          "explanation": {
+            "text": "RequestResponse はリクエストとレスポンス両方のボディを含めるため、最も情報量が多くリスクも高い。",
+            "reference": "https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/#audit-policy",
+            "reference_label": "Kubernetes Docs - Audit Policy"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "機密データを含むボディを避けつつ、ユーザや対象リソースを特定したい場合は level: Metadata を利用する。",
+        "reference": "https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/#audit-policy",
+        "reference_label": "Kubernetes Docs - Audit Policy"
+      }
+    },
+    {
+      "id": "kube-CKS-32",
+      "question": "クラスタ全体で Pod による hostPath ボリュームの利用を禁止したい。Kubernetes ネイティブ機能として最も適切な選択肢はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ResourceQuota を利用してボリューム数を制限する",
+          "explanation": {
+            "text": "ResourceQuota はリソース量の制限であり、特定のボリューム種別だけを禁止することはできない。",
+            "reference": "https://kubernetes.io/docs/concepts/policy/resource-quotas/",
+            "reference_label": "Kubernetes Docs - ResourceQuota"
+          }
+        },
+        {
+          "key": "B",
+          "text": "NetworkPolicy で hostPath を利用する Pod を遮断する",
+          "explanation": {
+            "text": "NetworkPolicy はネットワーク通信制御であり、ボリューム種別の利用可否は制御できない。",
+            "reference": "https://kubernetes.io/docs/concepts/services-networking/network-policies/",
+            "reference_label": "Kubernetes Docs - NetworkPolicies"
+          }
+        },
+        {
+          "key": "C",
+          "text": "HorizontalPodAutoscaler でスケール数を調整する",
+          "explanation": {
+            "text": "HPA はオートスケーリングの仕組みであり、セキュリティポリシーとは無関係。",
+            "reference": "https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/",
+            "reference_label": "Kubernetes Docs - HPA"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Pod Security Admission で 'restricted' レベルを enforce する",
+          "explanation": {
+            "text": "restricted プロファイルは hostPath などホスト依存ボリュームの使用を基本的に禁止する。",
+            "reference": "https://kubernetes.io/docs/concepts/security/pod-security-standards/#restricted",
+            "reference_label": "Kubernetes Docs - Pod Security Standards (Restricted)"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "Pod Security Admission で restricted を enforce すると hostPath など危険なボリュームの利用が拒否される。",
+        "reference": "https://kubernetes.io/docs/concepts/security/pod-security-standards/#restricted",
+        "reference_label": "Kubernetes Docs - Pod Security Standards (Restricted)"
+      }
+    },
+    {
+      "id": "kube-CKS-33",
+      "question": "常に最新パッチを適用したコンテナイメージを使用するために、Deployment の PodSpec に設定すべき imagePullPolicy として最も適切なのはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "IfNotPresent",
+          "explanation": {
+            "text": "IfNotPresent はノードにイメージがキャッシュされている場合、再取得しないため古いイメージが使われる可能性がある。",
+            "reference": "https://kubernetes.io/docs/concepts/containers/images/#updating-images",
+            "reference_label": "Kubernetes Docs - Updating Images"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Never",
+          "explanation": {
+            "text": "Never はイメージを決して取得しない設定であり、レジストリの更新が反映されない。",
+            "reference": "https://kubernetes.io/docs/concepts/containers/images/#image-pull-policy",
+            "reference_label": "Kubernetes Docs - Image Pull Policy"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Always",
+          "explanation": {
+            "text": "Always は毎回レジストリからイメージを取得するため、最新パッチを常に取り込める。",
+            "reference": "https://kubernetes.io/docs/concepts/containers/images/#updating-images",
+            "reference_label": "Kubernetes Docs - Updating Images"
+          }
+        },
+        {
+          "key": "D",
+          "text": "OnUpdate",
+          "explanation": {
+            "text": "OnUpdate という値は存在せず、誤った設定となる。",
+            "reference": "https://kubernetes.io/docs/concepts/containers/images/#image-pull-policy",
+            "reference_label": "Kubernetes Docs - Image Pull Policy"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "常に更新済みイメージを利用したい場合、imagePullPolicy: Always を設定するのが基本となる。",
+        "reference": "https://kubernetes.io/docs/concepts/containers/images/#updating-images",
+        "reference_label": "Kubernetes Docs - Updating Images"
+      }
+    },
+    {
+      "id": "kube-CKS-34",
+      "question": "外部から Kubernetes API へのブルートフォース攻撃（大量の認証失敗）を検知したい。最も直接的に有効なログソースはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "kubelet のログ",
+          "explanation": {
+            "text": "kubelet ログはノード上の Pod 管理に関するものであり、API への認証失敗は直接記録されない。",
+            "reference": "https://kubernetes.io/docs/concepts/overview/components/",
+            "reference_label": "Kubernetes Docs - Components"
+          }
+        },
+        {
+          "key": "B",
+          "text": "CNI プラグインのログ",
+          "explanation": {
+            "text": "CNI ログはネットワーク設定に関する情報であり、認証失敗イベントは含まれない。",
+            "reference": "https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/",
+            "reference_label": "Kubernetes Docs - CNI"
+          }
+        },
+        {
+          "key": "C",
+          "text": "controller-manager のログ",
+          "explanation": {
+            "text": "controller-manager はリソースの調整ループを動かすコンポーネントで、ユーザ認証失敗ログは中心ではない。",
+            "reference": "https://kubernetes.io/docs/concepts/overview/components/",
+            "reference_label": "Kubernetes Docs - Components"
+          }
+        },
+        {
+          "key": "D",
+          "text": "API Server の監査ログ（audit log）",
+          "explanation": {
+            "text": "監査ログは認証失敗や不正な API リクエストを詳細に記録するため、攻撃検知に最も適している。",
+            "reference": "https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/",
+            "reference_label": "Kubernetes Docs - Audit Logging"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "API Server の監査ログには認証・認可結果が記録されるため、ブルートフォース攻撃の検知に直接利用できる。",
+        "reference": "https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/",
+        "reference_label": "Kubernetes Docs - Audit Logging"
+      }
+    },
+    {
+      "id": "kube-CKS-35",
+      "question": "ユーザが既存の Pod 内で任意コマンドを実行する kubectl exec 操作を禁止したい。RBAC で制御すべきリソースと動詞の組み合わせとして正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "pods/log リソースに対する get 動詞",
+          "explanation": {
+            "text": "pods/log はログ閲覧用サブリソースであり、exec の可否とは関係しない。",
+            "reference": "https://kubernetes.io/docs/reference/access-authn-authz/authorization/",
+            "reference_label": "Kubernetes Docs - Authorization Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "pods リソースに対する delete 動詞",
+          "explanation": {
+            "text": "delete は Pod の削除に関する権限であり、exec 操作を直接制御しない。",
+            "reference": "https://kubernetes.io/docs/reference/access-authn-authz/authorization/",
+            "reference_label": "Kubernetes Docs - Authorization Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "pods/exec サブリソースに対する create 動詞",
+          "explanation": {
+            "text": "kubectl exec は pods/exec サブリソースへの create リクエストとして扱われるため、ここを禁止することで exec を防げる。",
+            "reference": "https://kubernetes.io/docs/reference/access-authn-authz/authorization/#determine-whether-an-action-is-authorized",
+            "reference_label": "Kubernetes Docs - Authorization (Subresources)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "nodes リソースに対する list 動詞",
+          "explanation": {
+            "text": "ノード一覧取得権限であり、exec の可否とは無関係。",
+            "reference": "https://kubernetes.io/docs/reference/access-authn-authz/authorization/",
+            "reference_label": "Kubernetes Docs - Authorization Overview"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "kubectl exec は pods/exec サブリソースの create として扱われるため、この組み合わせの権限を与えないことが重要である。",
+        "reference": "https://kubernetes.io/docs/reference/access-authn-authz/authorization/#determine-whether-an-action-is-authorized",
+        "reference_label": "Kubernetes Docs - Authorization (Subresources)"
+      }
+    },
+    {
+      "id": "kube-CKS-36",
+      "question": "ServiceAccount トークンが長期間有効なままとなり不正利用されるリスクを下げたい。Kubernetes の推奨アプローチとして最も適切なのはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "basic-auth ファイルを使って長期固定パスワードを設定する",
+          "explanation": {
+            "text": "basic-auth は非推奨であり、長期固定パスワードはリスクが高い。",
+            "reference": "https://kubernetes.io/docs/reference/access-authn-authz/authentication/#deprecated",
+            "reference_label": "Kubernetes Docs - Deprecated Authentication"
+          }
+        },
+        {
+          "key": "B",
+          "text": "static token ファイルを利用してノードごとに固定トークンを配布する",
+          "explanation": {
+            "text": "static token ファイルも非推奨で、トークン失効やローテーションが困難になる。",
+            "reference": "https://kubernetes.io/docs/reference/access-authn-authz/authentication/#bootstrap-tokens",
+            "reference_label": "Kubernetes Docs - Authentication"
+          }
+        },
+        {
+          "key": "C",
+          "text": "従来型の ServiceAccount シークレットトークンのみを使い続ける",
+          "explanation": {
+            "text": "従来の SA トークンは長期トークンであり、CKS ではより短命なトークン利用が推奨される。",
+            "reference": "https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#bound-service-account-token-volume",
+            "reference_label": "Kubernetes Docs - Bound ServiceAccountTokenVolume"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Bound ServiceAccountTokenVolume と projected トークンを利用し、有効期限付きトークンを発行する",
+          "explanation": {
+            "text": "短命な JWT を Pod にマウントする仕組みであり、盗難時の影響範囲を小さくできる。",
+            "reference": "https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#bound-service-account-token-volume",
+            "reference_label": "Kubernetes Docs - Bound ServiceAccountTokenVolume"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "Bound ServiceAccountTokenVolume により有効期限付きトークンを利用でき、漏洩時のリスクを大幅に低減できる。",
+        "reference": "https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#bound-service-account-token-volume",
+        "reference_label": "Kubernetes Docs - Bound ServiceAccountTokenVolume"
+      }
+    },
+    {
+      "id": "kube-CKS-37",
+      "question": "OPA Gatekeeper を用いて、独自のセキュリティポリシーを Rego で実装し、複数の Constraint から再利用したい。まず定義すべきカスタムリソースはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ValidatingWebhookConfiguration",
+          "explanation": {
+            "text": "Kubernetes 標準の webhook 設定であり、Rego ポリシーそのものは記述しない。",
+            "reference": "https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/",
+            "reference_label": "Kubernetes Docs - Admission Webhooks"
+          }
+        },
+        {
+          "key": "B",
+          "text": "PodDisruptionBudget",
+          "explanation": {
+            "text": "可用性確保のためのオブジェクトであり、ポリシーエンジンではない。",
+            "reference": "https://kubernetes.io/docs/concepts/workloads/pods/disruptions/",
+            "reference_label": "Kubernetes Docs - PDB"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ConstraintTemplate",
+          "explanation": {
+            "text": "ConstraintTemplate で Rego とスキーマを定義し、それを元に個別の Constraint を作成する。",
+            "reference": "https://open-policy-agent.github.io/gatekeeper/website/docs/howto/",
+            "reference_label": "OPA Gatekeeper - How-to"
+          }
+        },
+        {
+          "key": "D",
+          "text": "RoleBinding",
+          "explanation": {
+            "text": "RBAC の関連オブジェクトであり、Gatekeeper ポリシー定義ではない。",
+            "reference": "https://kubernetes.io/docs/reference/access-authn-authz/rbac/",
+            "reference_label": "Kubernetes Docs - RBAC"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "Gatekeeper では ConstraintTemplate に Rego ポリシーとパラメータスキーマを定義し、それを元に Constraint を作って適用する。",
+        "reference": "https://open-policy-agent.github.io/gatekeeper/website/docs/howto/",
+        "reference_label": "OPA Gatekeeper - How-to"
+      }
+    },
+    {
+      "id": "kube-CKS-38",
+      "question": "CIS Kubernetes Benchmark に基づき、クラスタの設定がベストプラクティスに沿っているかを自動評価したい。代表的な OSS ツールはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "kubectl top",
+          "explanation": {
+            "text": "kubectl top はリソース使用量を表示するコマンドであり、ベンチマークチェックは行わない。",
+            "reference": "https://kubernetes.io/docs/tasks/debug/debug-cluster/resource-usage-monitoring/",
+            "reference_label": "Kubernetes Docs - Resource Metrics"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Helm",
+          "explanation": {
+            "text": "Helm はパッケージ管理ツールであり、セキュリティベンチマークの評価機能はない。",
+            "reference": "https://helm.sh/docs/",
+            "reference_label": "Helm Docs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "kustomize",
+          "explanation": {
+            "text": "マニフェストのカスタマイズツールであり、CIS ベンチマーク評価は行わない。",
+            "reference": "https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/",
+            "reference_label": "Kubernetes Docs - Kustomize"
+          }
+        },
+        {
+          "key": "D",
+          "text": "kube-bench",
+          "explanation": {
+            "text": "kube-bench は CIS Kubernetes Benchmark に基づき設定をチェックするための OSS ツールである。",
+            "reference": "https://github.com/aquasecurity/kube-bench",
+            "reference_label": "GitHub - kube-bench"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "kube-bench は CIS Kubernetes Benchmark に沿った自動チェックを提供する代表的なツールである。",
+        "reference": "https://github.com/aquasecurity/kube-bench",
+        "reference_label": "GitHub - kube-bench"
+      }
+    },
+    {
+      "id": "kube-CKS-39",
+      "question": "Pod に自動的に ServiceAccount トークンがマウントされることを防ぎたい。PodSpec で設定すべきフィールドはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "serviceAccountName: \"\"",
+          "explanation": {
+            "text": "serviceAccountName を空にしても default ServiceAccount が自動で利用されるため、トークンマウントは止まらない。",
+            "reference": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/",
+            "reference_label": "Kubernetes Docs - Configure Service Accounts"
+          }
+        },
+        {
+          "key": "B",
+          "text": "hostNetwork: false",
+          "explanation": {
+            "text": "ネットワーク名前空間に関する設定であり、トークンマウントとは関係しない。",
+            "reference": "https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/",
+            "reference_label": "Kubernetes Docs - DNS for Services and Pods"
+          }
+        },
+        {
+          "key": "C",
+          "text": "automountServiceAccountToken: false",
+          "explanation": {
+            "text": "このフィールドを false にすることで、その Pod には SA トークンが自動マウントされなくなる。",
+            "reference": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#using-an-imagepullsecrets",
+            "reference_label": "Kubernetes Docs - ServiceAccount (automountServiceAccountToken)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "terminationGracePeriodSeconds: 0",
+          "explanation": {
+            "text": "終了猶予時間の設定であり、トークンマウントには影響しない。",
+            "reference": "https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/",
+            "reference_label": "Kubernetes Docs - Pod Lifecycle"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "Pod 単位で ServiceAccount トークンの自動マウントを止めたい場合、automountServiceAccountToken: false を指定する。",
+        "reference": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/",
+        "reference_label": "Kubernetes Docs - Configure Service Accounts"
+      }
+    },
+    {
+      "id": "kube-CKS-40",
+      "question": "マルチテナント環境で、特定のワークロードをセキュリティ要件の高い専用ノードにのみスケジューリングしたい。Kubernetes の仕組みとして最も適切なのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "PodAffinity / PodAntiAffinity だけを利用する",
+          "explanation": {
+            "text": "PodAffinity は Pod 同士の配置制御であり、特定ノードへの専用割り当てには向かない。",
+            "reference": "https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity",
+            "reference_label": "Kubernetes Docs - Pod Affinity & Anti-Affinity"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ConfigMap にノード名を書き込み、アプリケーション側で判断する",
+          "explanation": {
+            "text": "アプリ側でノードを選ぶ設計は誤りであり、スケジューラ機能を使うべきである。",
+            "reference": "https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/",
+            "reference_label": "Kubernetes Docs - Assigning Pods to Nodes"
+          }
+        },
+        {
+          "key": "C",
+          "text": "HorizontalPodAutoscaler を利用して専用ノード数を増やす",
+          "explanation": {
+            "text": "HPA は Pod 数の制御であり、どのノードに配置されるかは制御しない。",
+            "reference": "https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/",
+            "reference_label": "Kubernetes Docs - HPA"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ノードに taint を設定し、専用ワークロードにのみ対応する toleration を付与する",
+          "explanation": {
+            "text": "taints と tolerations を使うことで、特定 Pod だけが専用ノードにスケジュールされるよう制御できる。",
+            "reference": "https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/",
+            "reference_label": "Kubernetes Docs - Taints and Tolerations"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "セキュリティ要件の高い専用ノードを用意し、taints / tolerations で対象ワークロードのみ受け入れる設計が推奨される。",
+        "reference": "https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/",
+        "reference_label": "Kubernetes Docs - Taints and Tolerations"
+      }
+    },
+    {
+      "id": "kube-CKS-41",
+      "question": "Kubernetes クラスタ内で egress トラフィックを特定の外部宛先のみに制限したい。最も適切なアプローチはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "NetworkPolicy の egress ルールを使用する",
+          "explanation": {
+            "text": "NetworkPolicy は egress の宛先IP・ポートを制限でき、代表的な制御方法である。",
+            "reference": "https://kubernetes.io/docs/concepts/services-networking/network-policies/",
+            "reference_label": "Kubernetes Docs - NetworkPolicies"
+          }
+        },
+        {
+          "key": "B",
+          "text": "HorizontalPodAutoscaler を利用する",
+          "explanation": {
+            "text": "HPA はスケーリング制御であり、通信制御とは無関係。",
+            "reference": "https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/",
+            "reference_label": "HPA"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Service の type を ExternalName に設定する",
+          "explanation": {
+            "text": "ExternalName は名前解決を行うだけであり、通信制限には使えない。",
+            "reference": "https://kubernetes.io/docs/concepts/services-networking/service/",
+            "reference_label": "Service"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IngressClass を strict に設定する",
+          "explanation": {
+            "text": "Ingress は外部 → 内部の L7 通信制御であり、内部 → 外部の egress 制御はできない。",
+            "reference": "https://kubernetes.io/docs/concepts/services-networking/ingress/",
+            "reference_label": "Ingress"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "egress 制御は NetworkPolicy の主要なユースケースの1つであり、外部宛先を限定可能である。",
+        "reference": "https://kubernetes.io/docs/concepts/services-networking/network-policies/",
+        "reference_label": "NetworkPolicies"
+      }
+    },
+
+    {
+      "id": "kube-CKS-42",
+      "question": "クラスタの etcd が TLS で保護されていることを検証したい。まず確認すべき API Server のフラグはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "--etcd-cafile / --etcd-certfile / --etcd-keyfile",
+          "explanation": {
+            "text": "これらは API Server が etcd と TLS 通信するための設定であり、最も重要な確認対象となる。",
+            "reference": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/",
+            "reference_label": "kube-apiserver Options"
+          }
+        },
+        {
+          "key": "B",
+          "text": "--kubelet-certificate-authority",
+          "explanation": {
+            "text": "これは kubelet との通信に関わる設定であり etcd とは関係ない。",
+            "reference": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/",
+            "reference_label": "kube-apiserver Options"
+          }
+        },
+        {
+          "key": "C",
+          "text": "--proxy-client-cert-file",
+          "explanation": {
+            "text": "これは aggregator との通信設定であり etcd とは無関係。",
+            "reference": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/",
+            "reference_label": "kube-apiserver Options"
+          }
+        },
+        {
+          "key": "D",
+          "text": "--service-account-key-file",
+          "explanation": {
+            "text": "ServiceAccount token の署名用であり etcd 通信には関係しない。",
+            "reference": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/",
+            "reference_label": "kube-apiserver Options"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "API Server は etcd と TLS で通信するために CA・証明書・鍵をフラグで指定する必要がある。",
+        "reference": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/",
+        "reference_label": "kube-apiserver Options"
+      }
+    },
+
+    {
+      "id": "kube-CKS-43",
+      "question": "PodSecurity Standards の baseline レベルでは禁止されるが、privileged レベルでは許可される設定はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "hostNetwork の利用",
+          "explanation": {
+            "text": "baseline では hostNetwork の利用は制限されるが、privileged レベルでは許容されうる。",
+            "reference": "https://kubernetes.io/docs/concepts/security/pod-security-standards/",
+            "reference_label": "Pod Security Standards"
+          }
+        },
+        {
+          "key": "B",
+          "text": "readOnlyRootFilesystem: true",
+          "explanation": {
+            "text": "これは安全側の設定であり baseline では禁止されず、privileged でももちろん許可される。",
+            "reference": "https://kubernetes.io/docs/concepts/security/pod-security-standards/",
+            "reference_label": "Pod Security Standards"
+          }
+        },
+        {
+          "key": "C",
+          "text": "runAsNonRoot: true",
+          "explanation": {
+            "text": "安全設定のため baseline でも必須に近い扱いであり、禁止されることはない。",
+            "reference": "https://kubernetes.io/docs/concepts/security/pod-security-standards/",
+            "reference_label": "Pod Security Standards"
+          }
+        },
+        {
+          "key": "D",
+          "text": "allowPrivilegeEscalation: false",
+          "explanation": {
+            "text": "baseline でも禁止されず、むしろ推奨設定である。",
+            "reference": "https://kubernetes.io/docs/concepts/security/pod-security-standards/",
+            "reference_label": "Pod Security Standards"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "baseline では hostNetwork や hostPath などホスト依存のリソース利用が制限される。",
+        "reference": "https://kubernetes.io/docs/concepts/security/pod-security-standards/",
+        "reference_label": "Pod Security Standards"
+      }
+    },
+
+    {
+      "id": "kube-CKS-44",
+      "question": "Secret を直接環境変数に設定した状態で Pod が暴露された場合のリスクとして最も重大なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "プロセス一覧（ps）に Secret が露出する可能性がある",
+          "explanation": {
+            "text": "環境変数は ps や /proc を通じて閲覧される可能性があるため機密漏洩リスクが高い。",
+            "reference": "https://kubernetes.io/docs/concepts/configuration/secret/#risks",
+            "reference_label": "Kubernetes Docs - Secret Risks"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Secret が etcd に保存されなくなる",
+          "explanation": {
+            "text": "保存形式は変わらないため誤り。",
+            "reference": "https://kubernetes.io/docs/concepts/configuration/secret/",
+            "reference_label": "Kubernetes Docs - Secret"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Pod のスケジューリングが不安定になる",
+          "explanation": {
+            "text": "環境変数はスケジューラーに影響しない。",
+            "reference": "https://kubernetes.io/docs/concepts/scheduling-eviction/",
+            "reference_label": "Kubernetes Docs - Scheduling"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Secret の Base64 形式が破損する可能性がある",
+          "explanation": {
+            "text": "Base64 は単なるエンコード形式で、破損するリスクは環境変数とは無関係。",
+            "reference": "https://kubernetes.io/docs/concepts/configuration/secret/",
+            "reference_label": "Kubernetes Docs - Secret"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "環境変数は ps コマンドなどで漏れる可能性があるため最も危険な渡し方である。",
+        "reference": "https://kubernetes.io/docs/concepts/configuration/secret/#risks",
+        "reference_label": "Secret Risks"
+      }
+    },
+
+    {
+      "id": "kube-CKS-45",
+      "question": "特定の namespace だけに RBAC 権限を付与し、他の namespace には一切権限を与えないようにしたい。利用すべき最適な RBAC オブジェクトはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ClusterRoleBinding",
+          "explanation": {
+            "text": "ClusterRoleBinding は全 namespace に影響し、限定ができない。",
+            "reference": "https://kubernetes.io/docs/reference/access-authn-authz/rbac/",
+            "reference_label": "RBAC"
+          }
+        },
+        {
+          "key": "B",
+          "text": "RoleBinding",
+          "explanation": {
+            "text": "RoleBinding は namespace スコープで権限を付与できるため、目的に最適。",
+            "reference": "https://kubernetes.io/docs/reference/access-authn-authz/rbac/",
+            "reference_label": "RBAC"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ServiceAccount",
+          "explanation": {
+            "text": "ServiceAccount は主体であり、権限そのものは定義しない。",
+            "reference": "https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/",
+            "reference_label": "ServiceAccount"
+          }
+        },
+        {
+          "key": "D",
+          "text": "PodDisruptionBudget",
+          "explanation": {
+            "text": "可用性の制御ツールであり RBAC とは無関係。",
+            "reference": "https://kubernetes.io/docs/concepts/workloads/pods/disruptions/",
+            "reference_label": "PDB"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "RoleBinding は namespace スコープでのみ権限を付与するオブジェクトである。",
+        "reference": "https://kubernetes.io/docs/reference/access-authn-authz/rbac/",
+        "reference_label": "RBAC"
+      }
+    },
+
+    {
+      "id": "kube-CKS-46",
+      "question": "Privileged コンテナを禁止し、さらに SYS_ADMIN などの危険な Capability を取り除きたい。PodSecurity Standards における推奨レベルはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "privileged",
+          "explanation": {
+            "text": "privileged は最も緩いレベルであり、特権コンテナも Capability も制限しない。",
+            "reference": "https://kubernetes.io/docs/concepts/security/pod-security-standards/",
+            "reference_label": "PSS"
+          }
+        },
+        {
+          "key": "B",
+          "text": "baseline",
+          "explanation": {
+            "text": "baseline はプロダクション向けの最低ラインだが、危険な Capability を完全には防げない。",
+            "reference": "https://kubernetes.io/docs/concepts/security/pod-security-standards/",
+            "reference_label": "PSS"
+          }
+        },
+        {
+          "key": "C",
+          "text": "restricted",
+          "explanation": {
+            "text": "restricted は特権コンテナや危険な Capability を明確に禁止するレベルである。",
+            "reference": "https://kubernetes.io/docs/concepts/security/pod-security-standards/#restricted",
+            "reference_label": "PSS Restricted"
+          }
+        },
+        {
+          "key": "D",
+          "text": "custom",
+          "explanation": {
+            "text": "custom は公式のスタンダードではない。",
+            "reference": "https://kubernetes.io/docs/concepts/security/pod-security-standards/",
+            "reference_label": "PSS"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "restricted は最も厳しい PSS レベルで、特権禁止・Capability 制限などを要求する。",
+        "reference": "https://kubernetes.io/docs/concepts/security/pod-security-standards/#restricted",
+        "reference_label": "PSS Restricted"
+      }
+    },
+
+    {
+      "id": "kube-CKS-47",
+      "question": "Kubernetes の audit-policy.yaml において、特定のユーザだけログレベルを高くし、その他は Metadata のみにしたい。最も適切な設定方法はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "audit-policy.yaml の rules に userSelector または userGroups を用いる",
+          "explanation": {
+            "text": "audit policy はユーザ名やグループに基づき log level を切り替える細かな制御が可能である。",
+            "reference": "https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/#audit-policy",
+            "reference_label": "Audit Policy"
+          }
+        },
+        {
+          "key": "B",
+          "text": "kubelet のログレベルを debug にする",
+          "explanation": {
+            "text": "kubelet は API Server へのユーザアクセスを監査しない。",
+            "reference": "https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/",
+            "reference_label": "kubelet"
+          }
+        },
+        {
+          "key": "C",
+          "text": "etcd のログレベルを verbose にする",
+          "explanation": {
+            "text": "etcd のログは API リクエストごとの User 情報を記録しない。",
+            "reference": "https://etcd.io/docs/",
+            "reference_label": "etcd"
+          }
+        },
+        {
+          "key": "D",
+          "text": "scheduler の plugin を customUserAudit に変更する",
+          "explanation": {
+            "text": "scheduler はユーザリクエスト 対象外であり監査には関与しない。",
+            "reference": "https://kubernetes.io/docs/concepts/scheduling/",
+            "reference_label": "Scheduling"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "audit-policy.yaml はユーザ単位でログレベルを変えられる柔軟な仕組みを提供する。",
+        "reference": "https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/#audit-policy",
+        "reference_label": "Audit Policy"
+      }
+    },
+
+    {
+      "id": "kube-CKS-48",
+      "question": "Cilium を利用しているクラスタで、特定 Pod から特定 DNS 名への通信のみを許可したい。Cilium の機能として最適なのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "CiliumNetworkPolicy の FQDN ルール",
+          "explanation": {
+            "text": "Cilium は FQDN-based policy をサポートし DNS 名ベースの egress 制御が可能である。",
+            "reference": "https://docs.cilium.io/en/stable/network/layer7/fqdn/",
+            "reference_label": "Cilium Docs - FQDN policies"
+          }
+        },
+        {
+          "key": "B",
+          "text": "kube-apiserver の whitelist-dns フラグ",
+          "explanation": {
+            "text": "そのようなフラグは存在しない。",
+            "reference": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/",
+            "reference_label": "kube-apiserver"
+          }
+        },
+        {
+          "key": "C",
+          "text": "NetworkPolicy の DNS セレクタ機能",
+          "explanation": {
+            "text": "標準 NetworkPolicy は FQDN を扱えない。",
+            "reference": "https://kubernetes.io/docs/concepts/services-networking/network-policies/",
+            "reference_label": "NetworkPolicies"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Ingress の host matching",
+          "explanation": {
+            "text": "Ingress は外部 → 内部通信であり、Pod → 外部の egress 制御には使えない。",
+            "reference": "https://kubernetes.io/docs/concepts/services-networking/ingress/",
+            "reference_label": "Ingress"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cilium の FQDN ポリシーは DNS 名ベースでの egress 制御を可能にする強力な機能である。",
+        "reference": "https://docs.cilium.io/en/stable/network/layer7/fqdn/",
+        "reference_label": "Cilium Docs - FQDN Policies"
+      }
+    },
+
+    {
+      "id": "kube-CKS-49",
+      "question": "クラスタ運用者が API Server の audit log を長期間保存したいが、ログ量が爆発しパフォーマンス悪化の懸念がある。最も適切な対応はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Audit Backend を webhook モードにし、外部ログシステムへ転送する",
+          "explanation": {
+            "text": "Webhook backend により外部 SIEM やログ基盤へオフロード可能となり、API Server の負荷を軽減できる。",
+            "reference": "https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/#audit-backends",
+            "reference_label": "Audit Backends"
+          }
+        },
+        {
+          "key": "B",
+          "text": "audit-policy.yaml をすべて RequestResponse にする",
+          "explanation": {
+            "text": "最もログが増える設定であり逆効果。",
+            "reference": "https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/",
+            "reference_label": "Audit Policy"
+          }
+        },
+        {
+          "key": "C",
+          "text": "kubelet のログローテーション設定を変更する",
+          "explanation": {
+            "text": "kubelet ログは API audit とは無関係。",
+            "reference": "https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/",
+            "reference_label": "kubelet"
+          }
+        },
+        {
+          "key": "D",
+          "text": "etcd の圧縮設定を強化する",
+          "explanation": {
+            "text": "audit ログは etcd に保存されるわけではないため関係ない。",
+            "reference": "https://etcd.io/docs/",
+            "reference_label": "etcd"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Webhook backend を利用すると外部ログ基盤に転送でき、API Server の負荷増大を防ぎながら長期保管が可能となる。",
+        "reference": "https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/#audit-backends",
+        "reference_label": "Audit Backends"
+      }
+    },
+
+    {
+      "id": "kube-CKS-50",
+      "question": "Kubernetes ノードで rootless コンテナランタイムを使用する場合のセキュリティ上の主な利点はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ホスト上で root 権限を使わずにコンテナを実行できる",
+          "explanation": {
+            "text": "rootless モードはホスト root 権限不要でコンテナを動かせるため、攻撃面積を大幅に削減する。",
+            "reference": "https://rootlesscontaine.rs/",
+            "reference_label": "Rootless Containers"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Pod 起動時間が常に高速化する",
+          "explanation": {
+            "text": "rootless と性能向上は必ずしも関係しない。",
+            "reference": "https://rootlesscontaine.rs/",
+            "reference_label": "Rootless Containers"
+          }
+        },
+        {
+          "key": "C",
+          "text": "etcd のセキュリティが自動的に強化される",
+          "explanation": {
+            "text": "rootless ランタイムと etcd の保護は無関係。",
+            "reference": "https://etcd.io/docs/",
+            "reference_label": "etcd Docs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ServiceAccount トークンのローテーションが高速化する",
+          "explanation": {
+            "text": "rootless は SA token の仕組みとは関係しない。",
+            "reference": "https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/",
+            "reference_label": "ServiceAccount"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "rootless ランタイムの最大の利点はホスト root 権限を使わずにコンテナを実行でき、権限昇格攻撃のリスクを大きく減らせる点にある。",
+        "reference": "https://rootlesscontaine.rs/",
+        "reference_label": "Rootless Containers"
+      }
+    }
+  ]
+}

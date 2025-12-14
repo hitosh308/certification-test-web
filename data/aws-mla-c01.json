@@ -1,0 +1,2427 @@
+{
+  "exam": {
+    "id": "MLA-C01",
+    "title": "AWS Certified Machine Learning Engineer – Associate",
+    "description": "「AWS Certified Machine Learning Engineer – Associate」試験は、Amazon Web Services（AWS）クラウド上で機械学習ワークロードを開発・運用・本番化するための技術力を証明する認定です。データ準備、モデル開発、デプロイ／オーケストレーション、運用・監視・セキュリティといった ML ライフサイクル全体をカバーしており、実践的な ML 工程および AWS サービスの活用力が問われます。",
+    "version": "2024年10月",
+    "price": "150 USD",
+    "difficulty": "難しい",
+    "official-site": "https://aws.amazon.com/certification/certified-machine-learning-engineer-associate/",
+    "category": {
+      "id": "aws",
+      "name": "AWS"
+    }
+  },
+  "questions": [
+    {
+      "id": "aws-mla-c01-q1",
+      "question": "ある企業が Amazon S3 に保存されている大量のログデータを機械学習モデルにかけたい。データに欠損値があり、不均衡なラベル分布もある。ML エンジニアとして最初に行うべきステップとして最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "欠損値を平均で埋めた後、ラベルの少ないクラスをオーバーサンプリングする。",
+          "explanation": {
+            "text": "欠損値の補完とクラス不均衡への対応はモデル精度を改善する基本的な前処理ステップである。",
+            "reference": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf",
+            "reference_label": "MLA-C01 Exam Guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデルをまずトレーニングし、その後に異常値や欠損値の処理を行う。",
+          "explanation": {
+            "text": "モデル学習前にデータクリーニングを完了しておくべきで、欠損値や異常値を含むままでは誤った学習を招く可能性がある。",
+            "reference": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer_associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf",
+            "reference_label": "MLA-C01 Exam Guide"
+          }
+        },
+        {
+          "key": "C",
+          "text": "まずラベルの少ないクラスのみを使ってモデルを構築し、次に残りのデータを追加する。",
+          "explanation": {
+            "text": "不均衡データ処理のアプローチとしては一般的ではなく、まずデータ全体を理解・処理してからモデルにかけるべきである。",
+            "reference": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer_associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf",
+            "reference_label": "MLA-C01 Exam Guide"
+          }
+        },
+        {
+          "key": "D",
+          "text": "まずモデルのデプロイを先に設計し、後からデータ前処理を調整する。",
+          "explanation": {
+            "text": "モデルのデプロイ設計は重要だが、まずはデータ準備（データ品質、前処理など）を行ってからモデル設計・デプロイ設計のフェーズに入る方がよい。",
+            "reference": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf",
+            "reference_label": "MLA-C01 Exam Guide"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "データ前処理として、欠損値の補完やラベル不均衡への対応はモデルの性能と一般化能力に大きく影響するため、最初のステップとして適切。",
+        "reference": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer_associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf",
+        "reference_label": "MLA-C01 Exam Guide"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q2",
+      "question": "Amazon SageMaker の機能で、特徴量ストア（Feature Store）を使う主な利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "すべてのモデルが同じ特徴量を使うように保証でき、特徴量の計算を一元管理できる。",
+          "explanation": {
+            "text": "Feature Store を使うことで特徴量生成 (feature engineering) を共有し、再現性を確保できる。",
+            "reference": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer_associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf",
+            "reference_label": "MLA-C01 Exam Guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデルのトレーニング時間をゼロにすることができる。",
+          "explanation": {
+            "text": "モデルの学習時間を全く無くすことは不可能であり、Feature Store は特徴量の再利用性と一貫性を提供するが、モデル訓練時間をゼロにはしない。",
+            "reference": "一般的な AWS ガイドライン",
+            "reference_label": "Feature Store documentation"
+          }
+        },
+        {
+          "key": "C",
+          "text": "リアルタイム推論（real-time inference）を必ず可能にする。",
+          "explanation": {
+            "text": "Feature Store はリアルタイム・バッチ両方をサポートできるが、常に real-time 推論を保証するものではない。",
+            "reference": "AWS SageMaker Feature Store doc",
+            "reference_label": "SageMaker Feature Store"
+          }
+        },
+        {
+          "key": "D",
+          "text": "特徴量の暗号化を自動でしてくれるため、セキュリティ設定は不要になる。",
+          "explanation": {
+            "text": "Feature Store には暗号化オプションがあるが、完全に自動で全てのセキュリティ要件を満たすわけではない。",
+            "reference": "AWS Feature Store encryption settings",
+            "reference_label": "SageMaker Feature Store docs"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Feature Store の利点の一つは、特徴量の計算ロジックを共有・再利用可能にし、データリークや不整合を減らし、モデルの再現性を改善できること。",
+        "reference": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer_associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf",
+        "reference_label": "MLA-C01 Exam Guide"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q3",
+      "question": "MLA-C01 の試験ドメインで “Deployment and Orchestration of ML Workflows” が占める割合はおおよそ何％か。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "22%",
+          "explanation": {
+            "text": "試験ガイドによると、Domain 3 “Deployment and Orchestration of ML Workflows” の比率は約 22%。",
+            "reference": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer_associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf",
+            "reference_label": "MLA-C01 Exam Guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "28%",
+          "explanation": {
+            "text": "28% は Domain 1 の比率であり、Domain 3 ではない。",
+            "reference": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer_associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf",
+            "reference_label": "MLA-C01 Exam Guide"
+          }
+        },
+        {
+          "key": "C",
+          "text": "24%",
+          "explanation": {
+            "text": "24% は Domain 4 の比率。Domain 3 は別。",
+            "reference": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer_associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf",
+            "reference_label": "MLA-C01 Exam Guide"
+          }
+        },
+        {
+          "key": "D",
+          "text": "26%",
+          "explanation": {
+            "text": "26% は Domain 2 “ML Model Development” の割合である。",
+            "reference": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer_associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf",
+            "reference_label": "MLA-C01 Exam Guide"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "公式試験ガイドに“Deployment and Orchestration of ML Workflows”が約22％を占めると明記されている。Domain 3 = 22%。",
+        "reference": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer_associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf",
+        "reference_label": "MLA-C01 Exam Guide"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q4",
+      "question": "モデルのハイパーパラメータ調整（hyperparameter tuning）を行う際、Amazon SageMaker の機能を使って複数の候補を同時に評価するにはどの方法が最適か。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "SageMaker AutoPilot を使う。",
+          "explanation": {
+            "text": "AutoPilot は自動 ML（AutoML）機能で、既存のデータを使って前処理から最適なモデルとハイパーパラメータを探すが、カスタムモデル／複雑な制御には向かない場合がある。",
+            "reference": "AWS AutoPilot documentation",
+            "reference_label": "SageMaker AutoPilot"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SageMaker Hyperparameter Tuning Job を設定し、複数のハイパーパラメータの組み合わせを試す。",
+          "explanation": {
+                "text": "HPO ジョブは複数の組み合わせを並列または分散して試行できる正統な方法である。",
+                "reference": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer_associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf",
+                "reference_label": "MLA-C01 Exam Guide"
+            }
+        },
+        {
+          "key": "C",
+          "text": "モデルを複数トレーニングし、手動で評価する。",
+          "explanation": {
+            "text": "手動で複数トレーニングする方法も可能だが、Scale や生産性で劣る。SageMaker の調整機能を使うほうがベストプラクティスとされる。",
+            "reference": "一般的な ML ワークフローのベストプラクティス",
+            "reference_label": "AWS ML whitepapers"
+          }
+        },
+        {
+          "key": "D",
+            "text": "まずモデルをデプロイし、デプロイされたモデルで異なるハイパーパラメータを試す。",
+            "explanation": {
+              "text": "通常は訓練中にハイパーパラメータ調整を行う。デプロイ後に試すのは非効率で、リスクを伴う。",
+              "reference": "AWS ML best practices",
+              "reference_label": "AWS Guidelines"
+            }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "SageMaker Hyperparameter Tuning Job を使えば、複数の組み合わせを試行し、最適なハイパーパラメータを探索できる。",
+        "reference": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer_associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf",
+        "reference_label": "MLA-C01 Exam Guide"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q5",
+      "question": "継続的統合／継続的デリバリー (CI/CD) を用いて ML ワークフローを自動化する際に、推論用モデルのバージョンコントロールおよびロールバックを最も容易にする構成はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Amazon SageMaker Model Registry を使い、モデルバージョンを登録。CI/CD パイプラインでモデルのバージョン番号を参照してデプロイ。",
+          "explanation": {
+            "text": "Model Registry を使うとモデルのバージョン管理が可能で、バージョンを指定してデプロイやロールバックができるため、運用上望ましい。",
+            "reference": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer_associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf",
+            "reference_label": "MLA-C01 Exam Guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "デプロイされたエンドポイントに対して直接コードを更新し、テストが通れば本番トラフィックを切り替える。",
+          "explanation": {
+                "text": "この方法はロールバックやバージョン管理が曖昧になりやすく、Model Registry を使う方が標準的。",
+                "reference": "一般的な ML 運用ベストプラクティス",
+                "reference_label": "AWS ML Ops ガイド"
+            }
+        },
+        {
+          "key": "C",
+          "text": "モデルを再訓練するたびに新しいモデルアーティファクトを Amazon S3 に保存し、そこから手動でデプロイする。",
+          "explanation": {
+                "text": "S3 にモデルを保存するのは基本だが、手動デプロイのみでは自動化やロールバックの効率が低い。",
+                "reference": "運用の自動化に関する AWS ドキュメント",
+                "reference_label": "AWS ML Guide"
+            }
+        },
+        {
+          "key": "D",
+          "text": "モデルをデプロイする都度、異なるエンドポイントを作成してテストした後、DNS を使って切り替える構成。",
+          "explanation": {
+                "text": "この手法も可能だが、Model Registry などを使う標準的なロールバックやバージョン追跡の仕組みに比べて複雑さが増す。",
+                "reference": "AWS ML best practices",
+                "reference_label": "AWS Documentation on model deployment"
+            }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "SageMaker Model Registry はモデルのバージョン管理、追跡、デプロイ管理やロールバックの機能を備えており、CI/CD との統合で非常に有効。",
+        "reference": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer_associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf",
+        "reference_label": "MLA-C01 Exam Guide"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q6",
+      "question": "推論 (inference) のエンドポイントをリアルタイム処理用とバッチ処理用とで分けて用意するべき理由として、もっとも適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "リアルタイム推論には遅延 (latency) の要求が高いため、低レイテンシー構成を使いたい。一方、バッチ推論はコスト効率を重視できる。",
+          "explanation": {
+            "text": "リアルタイムとバッチ推論では要求性能・コストのトレードオフが異なるため、それぞれ専用のエンドポイント設計をするのが一般的。",
+            "reference": "MLA-C01 Exam Guide: Deployment topic",
+            "reference_label": "AWS ML Deployment"
+          }
+        },
+        {
+            "key": "B",
+            "text": "リアルタイム推論用エンドポイントを使えばバッチ処理は不要になる。",
+            "explanation": {
+              "text": "一部のケースではそうかもしれないが、大量データや定期処理ではバッチ処理の方が効率的。",
+              "reference": "一般的な ML 運用知見"
+            }
+        },
+        {
+            "key": "C",
+            "text": "バッチ推論は必ず GPU インスタンスを使用する必要がある。",
+            "explanation": {
+              "text": "GPU は特定のワークロードで有効だが、バッチ推論すべてに必要なわけではない。ワークロードに依存する。",
+              "reference": "AWS インスタンス選定ドキュメント"
+            }
+        },
+        {
+            "key": "D",
+            "text": "リアルタイムとバッチでデータ前処理の要件が全く同じであるため、片方だけ設計すればよい。",
+            "explanation": {
+              "text": "前処理要件が異なることが多く、それぞれ条件に応じて設計すべきである。",
+              "reference": "ML operations best practices"
+            }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "リアルタイム推論は遅延が小さいことが重要であり、また使用頻度・トラフィックパターンなどによってコスト・スケーラビリティの要件が異なるため、別のエンドポイントもしくは構成を用意することが一般的。",
+        "reference": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer_associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf",
+        "reference_label": "MLA-C01 Exam Guide"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q7",
+      "question": "ある ML システムが本番運用中にモデルの予測精度が徐々に低下してきた。原因として最も考えられるものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+            "text": "データシフト (data drift) や概念シフト (concept drift) が起きている。",
+            "explanation": {
+              "text": "本番データの分布がトレーニングデータと異なる場合、data drift や concept drift によりモデル性能が落ちることがある。",
+              "reference": "MLA-C01 Exam Guide: Monitoring domain",
+              "reference_label": "MLA-C01 Exam Guide"
+            }
+        },
+        {
+          "key": "B",
+            "text": "モデルが過学習しており、トレーニングデータに対してのみ良く学習している。",
+            "explanation": {
+              "text": "過学習 (overfitting) は通常評価時に差が出るが、本番運用での変化やデータ分布の違いが主因であることが多い。過学習はモデル評価時に検出されるべき。",
+              "reference": "MLA-C01 guide topics on model evaluation and maintenance",
+              "reference_label": "MLA-C01 Exam Guide"
+            }
+        },
+        {
+          "key": "C",
+            "text": "モデルのハイパーパラメータがトレーニング時と同じである。",
+            "explanation": {
+              "text": "同じハイパーパラメータであること自体は問題ではない。問題はデータや入力の分布が変わっていること。",
+              "reference": "一般的な ML 運用知見"
+            }
+        },
+        {
+          "key": "D",
+            "text": "デプロイされたインフラストラクチャのリージョンで規制が変わったため、アクセスできるデータソースが減った。",
+            "explanation": {
+              "text": "このような外的要因も影響するが、多くの場合は data drift や concept drift の方が一般的な原因である。本番で何が変わっているかを調査する必要。",
+              "reference": "運用と監視のトピック",
+              "reference_label": "MLA-C01 Guide"
+            }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "本番環境で予測精度が落ちる典型的な理由として、データの分布の変化 (data drift) やラベルとの関係性の変化 (concept drift) がある。これを検出・監視することが MLA-C01 の監視・メンテナンス領域で問われる。 ",
+        "reference": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer_associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf",
+        "reference_label": "MLA-C01 Exam Guide"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q8",
+      "question": "セキュリティとコンプライアンスの観点から、ML ワークフローにおけるデータの保護のベストプラクティスとして正しい組み合わせはどれか（複数選択）。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "保存中のデータと転送中のデータの両方を暗号化する。",
+          "explanation": {
+            "text": "データの機密性を保つためには、静止時 (at-rest) と転送時 (in-transit) の暗号化が必要。",
+            "reference": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer_associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf",
+            "reference_label": "MLA-C01 Exam Guide"
+          }
+        },
+        {
+            "key": "B",
+            "text": "アクセス制御は IAM ロールだけでなく、ネットワークレベルでの制限も設ける。",
+            "explanation": {
+              "text": "アイデンティティとアクセス管理 (IAM) に加えて VPC やセキュリティグループ等でネットワーク制御をすることでより安全になる。",
+              "reference": "AWS security best practices",
+              "reference_label": "AWS Documentation"
+            }
+        },
+        {
+            "key": "C",
+            "text": "モデルの説明可能性 (explainability) を無視してもよい。モデルが正確であれば十分だからである。",
+            "explanation": {
+              "text": "説明可能性も重要なセキュリティおよび信頼性要件（バイアス検出等）に関わるため無視すべきではない。",
+              "reference": "MLA-C01 security topics",
+              "reference_label": "MLA-C01 Guide"
+            }
+        },
+        {
+            "key": "D",
+            "text": "個人情報 (PII) を含むデータは匿名化またはマスキングを行う。",
+            "explanation": {
+              "text": "プライバシー保護や法令遵守のため、PII をマスキングまたは匿名化することが推奨される。",
+              "reference": "MLA-C01 Exam Guide: Data protection",
+              "reference_label": "MLA-C01 Guide"
+            }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "データ保護においては、暗号化、アクセス制御、匿名化/マスキングなど複数の層での対策が必要。説明可能性を無視するのは安全性および透明性の観点から適切ではない。",
+        "reference": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer_associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf",
+        "reference_label": "MLA-C01 Exam Guide"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q9",
+      "question": "モデルを Amazon SageMaker 上でデプロイする際、Auto Scaling を設定したい。推論リクエストの量が時間帯によって大きく変動する場合、最も適切なアプローチはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+            "text": "SageMaker Endpoint をリアルタイムエンドポイントとしてプロビジョニングし、エンドポイント設定で Auto Scaling を構成する。",
+            "explanation": {
+              "text": "SageMaker のリアルタイムエンドポイントでは Auto Scaling を設定して、推論トラフィックに応じてキャパシティを増減させることができる。",
+              "reference": "MLA-C01 Exam Guide: Deployment domain",
+              "reference_label": "MLA-C01 Guide"
+            }
+        },
+        {
+            "key": "B",
+            "text": "推論リクエストが多い時間帯のみバッチ処理を使うようにスケジュールし、リアルタイムエンドポイントは常時同じ構成にする。",
+            "explanation": {
+              "text": "この構成ではピーク時のリアルタイムレイテンシーを確保できない可能性があり、Auto Scaling を活用する方が柔軟性がある。",
+              "reference": "AWS ML best practices"
+            }
+        },
+        {
+            "key": "C",
+            "text": "リアルタイム推論ではなく、すべてをバッチ処理に切り替える。",
+            "explanation": {
+              "text": "変動するトラフィックに対してはリアルタイムを残したほうが応答時間が重要なユースケースでは適切である。すべてをバッチにするのは常に許されるアプローチではない。",
+              "reference": "一般的な ML 推論設計"
+            }
+        },
+        {
+            "key": "D",
+            "text": "必要に応じて新しいエンドポイントを手動で作成して切り替える。",
+            "explanation": {
+              "text": "手動切り替えは運用コスト・複雑性が高いため、Auto Scaling を使う方が望ましい。",
+              "reference": "MLA-C01 deployment topics"
+            }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "自動スケーリング (Auto Scaling) を使用することで負荷に応じてキャパシティを動的に調整でき、時間帯でリクエスト量が大きく変動する場合にコスト効率と性能のバランスが取れる。",
+        "reference": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer_associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf",
+        "reference_label": "MLA-C01 Guide"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q10",
+      "question": "探索的データ分析 (exploratory data analysis, EDA) を行う目的として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+            "text": "モデル性能が既に十分であるかどうかを判断するためだけである。",
+            "explanation": {
+              "text": "EDA は性能確認だけでなく、データの異常、分布の偏り、相関関係などを理解するために行うもの。",
+              "reference": "一般的な ML プラクティス"
+            }
+        },
+        {
+          "key": "B",
+            "text": "データの分布、欠損値、異常値を把握し、特徴量エンジニアリングの方向性を決めるためである。",
+            "explanation": {
+              "text": "EDA の主な目的はデータを理解し、前処理および特徴量設計の戦略を立てることにある。",
+              "reference": "MLA-C01 Exam Guide: Data Preparation domain",
+              "reference_label": "MLA-C01 Guide"
+            }
+        },
+        {
+            "key": "C",
+            "text": "最終モデルをデプロイするためのインフラを設計するためだけである。",
+            "explanation": {
+              "text": "インフラ設計も重要だが、これは EDA の直接の目的ではない。EDA はデータ理解が中心である。",
+              "reference": "MLA-C01 Exam Guide"
+            }
+        },
+        {
+            "key": "D",
+            "text": "自動化された CI/CD パイプラインの構築に先立って必要なコードを書くためである。",
+            "explanation": {
+              "text": "EDA はパイプライン等の設計前段階でのデータ理解のための作業であるが、コードの自動化自体が目的ではない。",
+              "reference": "一般的な ML ワークフロー"
+            }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "EDA はデータの特徴（分布、欠損、異常、相関など）を把握し、どのような前処理・特徴量設計を行うかを決めるために行うものであり、モデルパフォーマンスのみを確認するためではない。",
+        "reference": "MLA-C01 Exam Guide: Data Preparation domain",
+        "reference_label": "MLA-C01 Guide"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q11",
+      "question": "Amazon SageMaker Clarify を使用する主な目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データやモデルのバイアス検出および予測の説明可能性を提供する。",
+          "explanation": {
+            "text": "Clarify はバイアス指標の計算や特徴量寄与（SHAP など）に基づく説明を提供する。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-configure-processing-jobs.html",
+            "reference_label": "SageMaker Clarify: 公平性と説明可能性"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ハイパーパラメータ自動調整を行う。",
+          "explanation": {
+            "text": "HPO は Hyperparameter Tuning Job の機能であり Clarify の機能ではない。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning.html",
+            "reference_label": "SageMaker Automatic Model Tuning"
+          }
+        },
+        {
+          "key": "C",
+          "text": "トレーニングジョブの失敗を検出して自動リトライする。",
+          "explanation": {
+            "text": "ジョブの再試行は処理・オーケストレーション側の制御であり、Clarify の役割ではない。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/build-and-manage-processing-jobs.html",
+            "reference_label": "SageMaker Processing の概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "トレーニング済みモデルを最適化して推論を高速化する。",
+          "explanation": {
+            "text": "推論最適化は SageMaker Neo などの領域。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/neo.html",
+            "reference_label": "SageMaker Neo"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Clarify はバイアス検出と説明可能性（特徴量寄与の可視化など）を提供するための機能である。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-configure-processing-jobs.html",
+        "reference_label": "SageMaker Clarify: 公平性と説明可能性"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q12",
+      "question": "Amazon SageMaker Neo を利用する主な利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "トレーニング済みモデルをコンパイル・最適化して、クラウドやエッジで高速推論を実現する。",
+          "explanation": {
+            "text": "Neo はモデルを最適化し、異なるハードウェアで効率よく実行できるようにする。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/neo.html",
+            "reference_label": "SageMaker Neo"
+          }
+        },
+        {
+          "key": "B",
+          "text": "未ラベルデータに自動ラベル付けを行う。",
+          "explanation": {
+            "text": "データラベリングは Ground Truth の役割。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/sms.html",
+            "reference_label": "SageMaker Ground Truth"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データ前処理フローを GUI で作成する。",
+          "explanation": {
+            "text": "これは Data Wrangler の役割。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler.html",
+            "reference_label": "SageMaker Data Wrangler"
+          }
+        },
+        {
+          "key": "D",
+          "text": "モデルの説明可能性レポートを生成する。",
+          "explanation": {
+            "text": "説明可能性は Clarify の領域。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-explainability.html",
+            "reference_label": "Clarify: モデルの説明可能性"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Neo はモデルの最適化とコンパイルにより推論性能を高め、クラウド／エッジでの実行を効率化する。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/neo.html",
+        "reference_label": "SageMaker Neo"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q13",
+      "question": "分散トレーニングを SageMaker で行う際に Horovod を利用する主目的はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "複数 GPU/ノードに学習を分散し、大規模データやモデルを効率的に学習させる。",
+          "explanation": {
+            "text": "Horovod はオープンソースの分散学習フレームワークで、SageMaker の分散トレーニング機能で活用できる。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/distributed-training.html",
+            "reference_label": "SageMaker 分散トレーニング"
+          }
+        },
+        {
+          "key": "B",
+          "text": "推論コードを最適化して遅延を削減する。",
+          "explanation": {
+            "text": "推論最適化は Neo や推論設定の領域であり、Horovod の目的ではない。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-optimize.html",
+            "reference_label": "推論最適化の手法"
+          }
+        },
+        {
+          "key": "C",
+          "text": "学習データの匿名化を自動で行う。",
+          "explanation": {
+            "text": "匿名化はセキュリティ・データ保護の設計であり、Horovod の機能ではない。",
+            "reference": "https://docs.aws.amazon.com/whitepapers/latest/security-overview-aws/overview-of-security-processes.html",
+            "reference_label": "AWS セキュリティ概観"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ハイパーパラメータを自動で探索する。",
+          "explanation": {
+            "text": "自動探索は Hyperparameter Tuning Job の機能。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning.html",
+            "reference_label": "SageMaker Automatic Model Tuning"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Horovod によって GPU/ノード間での効率的な勾配集約が可能となり、学習をスケールできる。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/distributed-training.html",
+        "reference_label": "SageMaker 分散トレーニング"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q14",
+      "question": "Amazon SageMaker Pipelines を使用する主な利点として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ML ワークフロー（DAG）をコードで定義して自動化・再現性を高められる。",
+          "explanation": {
+            "text": "Pipelines は ML ワークフローのオーケストレーションに特化している。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines.html",
+            "reference_label": "SageMaker Pipelines"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデルのハードウェア最適化を行う。",
+          "explanation": {
+            "text": "ハードウェア最適化は Neo などの領域。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/neo.html",
+            "reference_label": "SageMaker Neo"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データラベリングのワークフローを管理する。",
+          "explanation": {
+            "text": "ラベリングは Ground Truth の主領域。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/sms.html",
+            "reference_label": "SageMaker Ground Truth"
+          }
+        },
+        {
+          "key": "D",
+          "text": "リアルタイム推論のオートスケーリングを自動で設定する。",
+          "explanation": {
+            "text": "オートスケーリングはエンドポイントの設定。Pipelines の主目的ではない。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling.html",
+            "reference_label": "SageMaker エンドポイントの Auto Scaling"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Pipelines はステップを DAG として記述し、再現性の高い MLOps を実現する。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines.html",
+        "reference_label": "SageMaker Pipelines"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q15",
+      "question": "Amazon SageMaker Data Wrangler の適切なユースケースはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "GUI とコードの両方でデータの取り込み・前処理・特徴量作成・分析を行う。",
+          "explanation": {
+            "text": "Data Wrangler は前処理と特徴量エンジニアリングを効率化する。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler.html",
+            "reference_label": "SageMaker Data Wrangler"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデルを最適化してエッジに配布する。",
+          "explanation": {
+            "text": "それは Neo/Edge Manager の領域。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/neo.html",
+            "reference_label": "SageMaker Neo"
+          }
+        },
+        {
+          "key": "C",
+          "text": "推論エンドポイントの自動スケーリングポリシーを作成する。",
+          "explanation": {
+            "text": "オートスケーリングはエンドポイント設定で行う。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling.html",
+            "reference_label": "SageMaker Auto Scaling"
+          }
+        },
+        {
+          "key": "D",
+          "text": "モデルレジストリでバージョンを承認・昇格させる。",
+          "explanation": {
+            "text": "モデルの登録・承認は Model Registry の機能。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry.html",
+            "reference_label": "SageMaker Model Registry"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Data Wrangler は前処理と特徴量作成をまとめて効率化するために用いる。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler.html",
+        "reference_label": "SageMaker Data Wrangler"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q16",
+      "question": "SageMaker のデプロイメント・ガードレールで提供されるカナリアトラフィックシフティングの特徴はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "新しいフリート（Green）に一部トラフィックのみを段階的に流し、CloudWatch アラームで監視しながら本番移行する。",
+          "explanation": {
+            "text": "カナリアは一部トラフィックで新構成を検証し、問題時は自動ロールバックされる。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails-blue-green-canary.html",
+            "reference_label": "Canary Traffic Shifting"
+          }
+        },
+        {
+          "key": "B",
+          "text": "常に全トラフィックを一度に新モデルへ切り替える方式である。",
+          "explanation": {
+            "text": "それは “All at once” 方式でありカナリアではない。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails-blue-green.html",
+            "reference_label": "Blue/Green Deployments"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザー影響ゼロのまま本番トラフィックのコピーを新モデルへ送るシャドウテストである。",
+          "explanation": {
+            "text": "それは Shadow testing（トラフィック複製）であり、カナリアとは異なる。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/shadow-tests.html",
+            "reference_label": "Shadow tests"
+          }
+        },
+        {
+          "key": "D",
+          "text": "複数バリアントに任意の比率でトラフィックを分配し長期比較する A/B テストである。",
+          "explanation": {
+            "text": "A/B は Production Variants の重みで分配して比較する手法。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-ab-testing.html",
+            "reference_label": "Production Variants による A/B テスト"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "カナリアは少量トラフィックで新モデル（Green）を検証し、アラームが検知された場合は自動ロールバックする方式。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails-blue-green-canary.html",
+        "reference_label": "Canary Traffic Shifting"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q17",
+      "question": "Amazon SageMaker Ground Truth（および Ground Truth Plus）の主目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "高品質なデータラベリングの実施と運用支援（ワークフロー、ワーカー、出力管理）。",
+          "explanation": {
+            "text": "Ground Truth/Plus は学習データに対するアノテーションを支援する。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/sms.html",
+            "reference_label": "SageMaker Ground Truth"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデルの自動最適化とコンパイルを行う。",
+          "explanation": {
+            "text": "それは Neo の機能。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/neo.html",
+            "reference_label": "SageMaker Neo"
+          }
+        },
+        {
+          "key": "C",
+          "text": "推論エンドポイントのスケーリングと課金最適化を行う。",
+          "explanation": {
+            "text": "スケーリングはエンドポイント設定側の機能。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling.html",
+            "reference_label": "SageMaker Auto Scaling"
+          }
+        },
+        {
+          "key": "D",
+          "text": "本番推論データのドリフト監視を行う。",
+          "explanation": {
+            "text": "ドリフト監視は Model Monitor の役割。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html",
+            "reference_label": "SageMaker Model Monitor"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Ground Truth はデータラベリングのためのマネージド機能群を提供し、Plus はターンキー型の注釈サービスを提供する。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/gtp.html",
+        "reference_label": "SageMaker Ground Truth Plus"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q18",
+      "question": "Amazon SageMaker Model Monitor の主な機能はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "本番エンドポイントやバッチでデータ品質・モデル品質・ドリフトを継続監視し、アラートやレポートを提供する。",
+          "explanation": {
+            "text": "Model Monitor は連続監視、ベースライン作成、スケジュール監視を提供する。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html",
+            "reference_label": "SageMaker Model Monitor"
+          }
+        },
+        {
+          "key": "B",
+          "text": "推論遅延を最小化するためにモデルを自動コンパイルする。",
+          "explanation": {
+            "text": "コンパイルは Neo 等の役割であり、Model Monitor の機能ではない。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/neo.html",
+            "reference_label": "SageMaker Neo"
+          }
+        },
+        {
+          "key": "C",
+          "text": "未承認のモデルを自動的に本番に昇格する。",
+          "explanation": {
+            "text": "昇格は Model Registry/CI/CD の領域。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry.html",
+            "reference_label": "SageMaker Model Registry"
+          }
+        },
+        {
+          "key": "D",
+          "text": "説明可能性の可視化のみを提供する。",
+          "explanation": {
+            "text": "説明可能性は Clarify と統合可能だが、Model Monitor の主目的は品質・ドリフトの監視。",
+            "reference": "https://sagemaker.readthedocs.io/en/stable/amazon_sagemaker_model_monitoring.html",
+            "reference_label": "SDK: Model Monitor"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Model Monitor は本番のデータ/モデル品質を継続監視し、ドリフト検出・レポート・アラートを提供する。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html",
+        "reference_label": "SageMaker Model Monitor"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q19",
+      "question": "SageMaker Serverless Inference の適切なユースケースはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "スパイクがあるがアイドル期間も長いワークロードで、インフラ管理を最小化したい場合（コールドスタートを許容）。",
+          "explanation": {
+            "text": "Serverless はアイドル時にスケールダウンし、スパイクに自動対応するがコールドスタートがある。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/serverless-endpoints.html",
+            "reference_label": "SageMaker Serverless Inference"
+          }
+        },
+        {
+          "key": "B",
+          "text": "常時超低遅延が必須でコールドスタートが許容できない場合。",
+          "explanation": {
+            "text": "常時超低遅延ならプロビジョンドなリアルタイムエンドポイントが適する。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/realtime-endpoints.html",
+            "reference_label": "リアルタイム推論エンドポイント"
+          }
+        },
+        {
+          "key": "C",
+          "text": "巨大データセットに対する非同期一括推論（遅延は問わない）。",
+          "explanation": {
+            "text": "大規模一括は Batch Transform が適切。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html",
+            "reference_label": "Batch Transform"
+          }
+        },
+        {
+          "key": "D",
+          "text": "GPU を専有して常時実行する超高スループットの推論処理。",
+          "explanation": {
+            "text": "このケースは専用インスタンスでのリアルタイムエンドポイントが向く。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/realtime-endpoints.html",
+            "reference_label": "リアルタイム推論エンドポイント"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "サーバーレスはアイドル時のコスト最小化とスパイク吸収に向く一方、コールドスタートを許容できるワークロードに適している。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/serverless-endpoints.html",
+        "reference_label": "SageMaker Serverless Inference"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q20",
+      "question": "SageMaker Multi-Model Endpoints（MME）の特徴として最も適切なものはどれか（複数選択）。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "同一コンテナで多数のモデルをホストし、モデルを必要時にロードするためコスト効率を高められる。",
+          "explanation": {
+            "text": "MME は複数モデルを一つのエンドポイントで共有し、アクセス頻度の低いモデルはオンデマンドでロードされる。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/multi-model-endpoints.html",
+            "reference_label": "Multi-Model Endpoints 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "アクセス頻度が低いモデルでコールドロードに伴う追加レイテンシが発生し得る。",
+          "explanation": {
+            "text": "公式ドキュメントに、まれに利用されるモデルでレイテンシ増加の可能性が言及されている。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/multi-model-endpoints.html",
+            "reference_label": "Multi-Model Endpoints 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "MME では各モデルごとに別エンドポイントを必ず作成する必要がある。",
+          "explanation": {
+            "text": "MME は一つのエンドポイントで複数モデルをホストするため、別エンドポイントは不要。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/create-multi-model-endpoint.html",
+            "reference_label": "MME の作成"
+          }
+        },
+        {
+          "key": "D",
+          "text": "同じ ML フレームワーク上の複数モデルをまとめて提供するユースケースに向く。",
+          "explanation": {
+            "text": "MME は同一コンテナ（フレームワーク）で多数モデルを扱う前提で設計されている。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/multi-model-endpoints.html",
+            "reference_label": "Multi-Model Endpoints 概要"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "MME は多数モデルのホスティングを一つのエンドポイントで実現し、コスト効率に優れる一方で、低頻度モデルの初回ロードに伴う遅延が生じる可能性がある。同一フレームワークの複数モデル提供に適している。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/multi-model-endpoints.html",
+        "reference_label": "Multi-Model Endpoints 概要"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q21",
+      "question": "SageMaker Autopilot を利用する主な利点として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "前処理・特徴量生成・アルゴリズム選定・ハイパーパラメータ探索を自動化し、候補モデルの比較を提供する。",
+          "explanation": {
+            "text": "Autopilot はデータセットから自動で前処理と最適なモデル候補を構築し、ランキングを提示する。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-automate-model-development.html",
+            "reference_label": "SageMaker Autopilot の概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "学習済みモデルをエッジ向けに自動コンパイルして最適化する。",
+          "explanation": {
+            "text": "学習済みモデルの最適化・コンパイルは SageMaker Neo の領域であり、Autopilot の機能ではない。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/neo.html",
+            "reference_label": "SageMaker Neo"
+          }
+        },
+        {
+          "key": "C",
+          "text": "本番推論エンドポイントのスケーリングと課金最適化を自動化する。",
+          "explanation": {
+            "text": "オートスケーリングはエンドポイント機能。Autopilot はモデル開発自動化に焦点がある。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling.html",
+            "reference_label": "エンドポイントの Auto Scaling"
+          }
+        },
+        {
+          "key": "D",
+          "text": "モデルの説明可能性レポートのみを生成する。",
+          "explanation": {
+            "text": "説明可能性は Clarify の主機能で、Autopilot単独の主目的ではない。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-explainability.html",
+            "reference_label": "SageMaker Clarify: 説明可能性"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Autopilot は AutoML として前処理からアルゴリズム・HPO まで自動化し、候補モデルの比較を提供することで開発を加速する。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-automate-model-development.html",
+        "reference_label": "SageMaker Autopilot の概要"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q22",
+      "question": "非同期推論 (Asynchronous Inference) を選ぶべきユースケースはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "推論処理が数十秒〜数分かかり、クライアントは結果を後でポーリングまたはコールバックで受け取れる。",
+          "explanation": {
+            "text": "非同期推論は長時間の推論・キューイング・結果の後取得に適している。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/async-inference.html",
+            "reference_label": "SageMaker Asynchronous Inference"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ミリ秒単位の超低遅延が常時必須で、コールドスタートを許容しない。",
+          "explanation": {
+            "text": "この要件はリアルタイム（プロビジョンド）エンドポイントが適切。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/realtime-endpoints.html",
+            "reference_label": "リアルタイム推論"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ペタバイト規模の静的ファイルに対する一括推論を日次で回す。",
+          "explanation": {
+            "text": "大規模一括処理には Batch Transform が向く。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html",
+            "reference_label": "Batch Transform"
+          }
+        },
+        {
+          "key": "D",
+          "text": "スパイクはあるがアイドルが長く、小さなペイロードを断続的に処理したい（多少のコールドスタート可）。",
+          "explanation": {
+            "text": "この場合は Serverless Inference が適切になることが多い。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/serverless-endpoints.html",
+            "reference_label": "Serverless Inference"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "非同期推論は長時間推論とバックグラウンド処理に適し、結果は後で取得できる。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/async-inference.html",
+        "reference_label": "SageMaker Asynchronous Inference"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q23",
+      "question": "SageMaker Feature Store のオンラインストアとオフラインストアの組み合わせ利用で適切な説明はどれか（複数選択）。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "オンラインストアは低遅延取得を目的とし、推論時に特徴量を即時提供する。",
+          "explanation": {
+            "text": "オンラインストアはリアルタイム低遅延読み取りを想定。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store.html",
+            "reference_label": "SageMaker Feature Store 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "オフラインストアは S3 上で履歴データを保持し、学習・再現性のための一括クエリに使われる。",
+          "explanation": {
+            "text": "オフラインは履歴・分析・トレーニング向けに最適化。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store-offline.html",
+            "reference_label": "オフラインストア"
+          }
+        },
+        {
+          "key": "C",
+          "text": "オンラインストアは常に S3 にしか保存されないため、ミリ秒単位のレイテンシは期待できない。",
+          "explanation": {
+            "text": "オンラインは専用低遅延ストアで提供され、S3 のみではない。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store.html",
+            "reference_label": "Feature Store 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "オフラインストアは推論時の低遅延提供に最適化されている。",
+          "explanation": {
+            "text": "オフラインは低遅延用途には向かず、学習・分析向け。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store-offline.html",
+            "reference_label": "オフラインストア"
+          }
+        }
+      ],
+      "answer": "A,B",
+      "explanation": {
+        "text": "オンラインは低遅延の推論用、オフラインは S3 で履歴保持・学習/分析用という役割分担で併用するのが一般的。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store.html",
+        "reference_label": "SageMaker Feature Store 概要"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q24",
+      "question": "SageMaker トレーニングで File モードではなく Pipe モードを選ぶ利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データをストリーミングで読み込み、I/O 待ちやローカルストレージ消費を減らせる。",
+          "explanation": {
+            "text": "Pipe は S3 からのストリーミングで高速起動・小さいローカル領域でも学習可。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-train-storage.html#model-train-storage-pipe",
+            "reference_label": "SageMaker: Pipe モード"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データセットは必ずローカル EBS に全量展開されるため I/O が増える。",
+          "explanation": {
+            "text": "これは File モードの特徴で、Pipe の利点ではない。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-train-storage.html#model-train-storage-file",
+            "reference_label": "SageMaker: File モード"
+          }
+        },
+        {
+          "key": "C",
+          "text": "GPU メモリが不足しても自動でモデルを圧縮してくれる。",
+          "explanation": {
+            "text": "モデル圧縮は別の話で、Pipe モードの機能ではない。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-train.html",
+            "reference_label": "トレーニングの概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "学習ジョブの再開（チェックポイント）機能が Pipe モードでしか使えない。",
+          "explanation": {
+            "text": "チェックポイントはモードに依存せず設定可能。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-checkpoints.html",
+            "reference_label": "チェックポイント"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Pipe はストリーミングでデータを供給するため、ローカル展開を避けて起動時間やストレージ消費を抑えられる。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-train-storage.html#model-train-storage-pipe",
+        "reference_label": "SageMaker: Pipe モード"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q25",
+      "question": "Managed Spot Training を使う主な利点はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "中断許容な学習ジョブのコストを大幅に削減でき、チェックポイントと併用できる。",
+          "explanation": {
+            "text": "スポットは割引率が高く、チェックポイントを組み合わせれば中断時の再開も容易。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-managed-spot-training.html",
+            "reference_label": "Managed Spot Training"
+          }
+        },
+        {
+          "key": "B",
+          "text": "スポットを使うと学習ジョブが中断されることは絶対にない。",
+          "explanation": {
+            "text": "スポットは中断され得る。中断通知とチェックポイントで備える。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-managed-spot-training.html#spot-training-how-it-works",
+            "reference_label": "スポットの動作"
+          }
+        },
+        {
+          "key": "C",
+          "text": "SageMaker ではスポットと分散学習の併用はできない。",
+          "explanation": {
+            "text": "分散学習とスポットは併用可能（ワークロード依存）。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/distributed-training.html",
+            "reference_label": "分散トレーニング"
+          }
+        },
+        {
+          "key": "D",
+          "text": "マネージドスポットは GPU インスタンスでは利用できない。",
+          "explanation": {
+            "text": "GPU でも利用可能（利用可否はインスタンスタイプ・在庫による）。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-managed-spot-training.html",
+            "reference_label": "Managed Spot Training"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Managed Spot Training はコスト削減のために中断を許容し、チェックポイントで再開できる。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-managed-spot-training.html",
+        "reference_label": "Managed Spot Training"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q26",
+      "question": "SageMaker Experiments の主な目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "学習・前処理・ハイパーパラメータやメトリクスなどを系統的に追跡・比較する。",
+          "explanation": {
+            "text": "Experiments は実験（Runs）をメタデータで管理・比較する。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/experiments.html",
+            "reference_label": "SageMaker Experiments"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデルを自動で本番エンドポイントに昇格させる。",
+          "explanation": {
+            "text": "昇格は CI/CD や Model Registry の役割。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry.html",
+            "reference_label": "Model Registry"
+          }
+        },
+        {
+          "key": "C",
+          "text": "推論を高速化するためモデルをコンパイルする。",
+          "explanation": {
+            "text": "コンパイルは Neo の領域。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/neo.html",
+            "reference_label": "SageMaker Neo"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データの匿名化を自動化する。",
+          "explanation": {
+            "text": "匿名化はデータ処理設計の問題であり Experiments の機能ではない。",
+            "reference": "https://docs.aws.amazon.com/whitepapers/latest/security-overview-aws/overview-of-security-processes.html",
+            "reference_label": "AWS セキュリティ概観"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Experiments は複数実行の設定・成果を一元管理し、比較・再現性を高めるために用いる。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/experiments.html",
+        "reference_label": "SageMaker Experiments"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q27",
+      "question": "SageMaker Model Registry の適切な使い方はどれか（複数選択）。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "モデルアーティファクトとメタデータをバージョン管理し、承認状態（Pending/Approved/Rejected）で昇格を管理する。",
+          "explanation": {
+            "text": "Model Registry はバージョン・承認状態・デプロイとの連携を提供する。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry.html",
+            "reference_label": "Model Registry"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデルの説明可能性レポートを自動生成する。",
+          "explanation": {
+            "text": "説明可能性は Clarify の領域で、Registry の主機能ではない。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-explainability.html",
+            "reference_label": "Clarify"
+          }
+        },
+        {
+          "key": "C",
+          "text": "CI/CD パイプラインから特定バージョンを参照して本番へデプロイできる。",
+          "explanation": {
+            "text": "登録済みモデルバージョンを指定して自動デプロイやロールバックに活用できる。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry-deploy.html",
+            "reference_label": "Registry とデプロイ統合"
+          }
+        },
+        {
+          "key": "D",
+          "text": "学習データの重複排除と品質検査を自動で行う。",
+          "explanation": {
+            "text": "データ品質は別コンポーネントで対応し、Registry の主機能ではない。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry.html",
+            "reference_label": "Model Registry 概要"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "Registry はモデルのバージョン管理と承認フローを提供し、CI/CD と組み合せて特定バージョンのデプロイやロールバックが可能になる。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry.html",
+        "reference_label": "Model Registry"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q28",
+      "question": "SageMaker エンドポイントで A/B テストを行いたい。最も適切な方法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Production variants を複数作成し、VariantWeight を調整してトラフィックを分配する。",
+          "explanation": {
+            "text": "複数バリアントで比率を設定し、レスポンス品質・指標を比較するのが標準。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-ab-testing.html",
+            "reference_label": "A/B テスト（Production variants）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Shadow testing を用い、全トラフィックのコピーを新モデルで処理しつつユーザーへは返さない。",
+          "explanation": {
+            "text": "Shadow は安全検証だが A/B ではない（ユーザーに新モデル結果を返さない）。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/shadow-tests.html",
+            "reference_label": "Shadow tests"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Canary リリースで一部トラフィックのみ新モデルに送り、問題なければ段階的に 100% にする。",
+          "explanation": {
+            "text": "Canary は段階移行であり、同時比較の A/B テストとは目的が異なる。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails-blue-green-canary.html",
+            "reference_label": "Canary Traffic Shifting"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Batch Transform で 2 つのモデルを比較し、本番リクエストをオフラインで振り分ける。",
+          "explanation": {
+            "text": "Batch は一括オフライン。オンラインの A/B テストには向かない。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html",
+            "reference_label": "Batch Transform"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "オンライン A/B テストは Production variants の重みでトラフィックを分配して比較するのが標準的。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-ab-testing.html",
+        "reference_label": "A/B テスト（Production variants）"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q29",
+      "question": "エンドポイント推論の入力・出力ペイロードを収集して監視・検証したい。最適な機能はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Data Capture を有効化し、S3 に入出力サンプルを保存して Model Monitor と連携する。",
+          "explanation": {
+            "text": "Data Capture は推論 I/O をサンプリングして保存できる。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-data-capture.html",
+            "reference_label": "Data Capture"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SageMaker Neo のレポート機能を使う。",
+          "explanation": {
+            "text": "Neo は最適化/コンパイルのための機能であり、I/O キャプチャの機能はない。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/neo.html",
+            "reference_label": "SageMaker Neo"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Ground Truth で推論の I/O をすべて手動でラベリングする。",
+          "explanation": {
+            "text": "Ground Truth はアノテーション用途で、I/O キャプチャは別機能。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/sms.html",
+            "reference_label": "Ground Truth"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Feature Store のオンラインストアに推論結果を書き込む。",
+          "explanation": {
+            "text": "Feature Store は特徴量管理であり、I/O キャプチャが主目的ではない。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store.html",
+            "reference_label": "Feature Store"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Data Capture で入出力をサンプリング保存し、品質モニタリングやドリフト検出の土台とする。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-data-capture.html",
+        "reference_label": "Data Capture"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q30",
+      "question": "独自コンテナで推論を提供する際のベストプラクティスとして最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "推論用コンテナイメージを Amazon ECR のプライベートリポジトリに保管し、最小権限の IAM ロールでプルできるようにする。",
+          "explanation": {
+            "text": "SageMaker は ECR からイメージを取得するため、ECR+IAM による安全なプル設定が基本。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/docker-containers.html",
+            "reference_label": "SageMaker 用コンテナ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "コンテナ内の /opt/ml/model に学習コードを配置し、/opt/ml/code にモデルアーティファクトを置く。",
+          "explanation": {
+            "text": "SageMaker のディレクトリ規約では、/opt/ml/model はモデル、/opt/ml/code はコード配置が推奨。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-inference-code.html",
+            "reference_label": "推論コンテナの構成"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ヘルスチェックや /invocations エンドポイントは不要で、どのポートでも任意実装で良い。",
+          "explanation": {
+            "text": "推論コンテナは /invocations と /ping（または /ping 互換）などの約束に従う必要がある。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-inference-code.html#inference-container-apis",
+            "reference_label": "推論コンテナ API"
+          }
+        },
+        {
+          "key": "D",
+          "text": "コンテナのプライベート依存はインターネット経由でのみ取得し、VPC エンドポイントは使わない。",
+          "explanation": {
+            "text": "セキュリティの観点から VPC エンドポイント（ECR/CloudWatch Logs など）の利用が推奨される。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/security-infrastructure.html",
+            "reference_label": "SageMaker のネットワークとセキュリティ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "独自コンテナは ECR のプライベートリポジトリで管理し、最小権限の IAM とネットワーク設計で安全にプル・運用するのが基本。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/docker-containers.html",
+        "reference_label": "SageMaker 用コンテナ"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q31",
+      "question": "Amazon SageMaker Processing ジョブを利用する主なユースケースはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データ前処理、特徴量生成、モデル評価をスケーラブルに実行する。",
+          "explanation": {
+            "text": "Processing ジョブはデータ準備やバッチ処理タスクに特化したコンテナベースの仕組み。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/processing-job.html",
+            "reference_label": "SageMaker Processing"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデルを自動的に最適化し、推論レイテンシを削減する。",
+          "explanation": {
+            "text": "モデル最適化は Neo の役割。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/neo.html",
+            "reference_label": "SageMaker Neo"
+          }
+        },
+        {
+          "key": "C",
+          "text": "学習済みモデルをバージョン管理する。",
+          "explanation": {
+            "text": "モデルのバージョン管理は Model Registry の役割。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry.html",
+            "reference_label": "SageMaker Model Registry"
+          }
+        },
+        {
+          "key": "D",
+          "text": "リアルタイム推論のエンドポイントを提供する。",
+          "explanation": {
+            "text": "リアルタイム推論は Endpoint の役割であり、Processing ジョブではない。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/realtime-endpoints.html",
+            "reference_label": "リアルタイムエンドポイント"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Processing ジョブはスケーラブルなデータ処理を可能にし、前処理・特徴量生成・評価に最適。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/processing-job.html",
+        "reference_label": "SageMaker Processing"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q32",
+      "question": "Amazon SageMaker Debugger の主な目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "トレーニング中のメトリクスを収集し、異常や学習の停滞をリアルタイムで検知する。",
+          "explanation": {
+            "text": "Debugger はトレーニング中の張り付きや勾配消失などを検出できる。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/train-debugger.html",
+            "reference_label": "SageMaker Debugger"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデルの公平性を分析する。",
+          "explanation": {
+            "text": "公平性は Clarify の役割であり、Debugger の機能ではない。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-fairness-and-explainability.html",
+            "reference_label": "SageMaker Clarify"
+          }
+        },
+        {
+          "key": "C",
+          "text": "学習済みモデルを軽量化して推論高速化する。",
+          "explanation": {
+            "text": "推論最適化は Neo が担当する領域。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/neo.html",
+            "reference_label": "SageMaker Neo"
+          }
+        },
+        {
+          "key": "D",
+          "text": "モデルを複数バージョン同時に提供する。",
+          "explanation": {
+            "text": "これは Multi-Model Endpoint (MME) の機能。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/multi-model-endpoints.html",
+            "reference_label": "MME"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Debugger はトレーニング中の指標を監視し、異常学習を検出する仕組み。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/train-debugger.html",
+        "reference_label": "SageMaker Debugger"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q33",
+      "question": "セキュリティの観点で、SageMaker ノートブックインスタンスをインターネットに直接公開しないベストプラクティスはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ノートブックを VPC 内で起動し、インターネットアクセスは VPC エンドポイント経由に限定する。",
+          "explanation": {
+            "text": "SageMaker ノートブックは VPC 内での起動と VPC エンドポイント利用が推奨される。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/security-infrastructure.html",
+            "reference_label": "SageMaker セキュリティ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "常にノートブックをパブリックサブネットで起動する。",
+          "explanation": {
+            "text": "セキュリティ上、常時パブリックアクセスは推奨されない。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/security-infrastructure.html",
+            "reference_label": "SageMaker セキュリティ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "IAM 認証を無効化して匿名アクセスを許可する。",
+          "explanation": {
+            "text": "これは重大なセキュリティリスクである。",
+            "reference": "https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html",
+            "reference_label": "IAM の概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "常にノートブックを停止せず、24時間稼働させる。",
+          "explanation": {
+            "text": "停止しないことはセキュリティ強化にはならない。",
+            "reference": "AWS 運用ベストプラクティス"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "セキュリティを確保するには VPC 内起動と VPC エンドポイント経由の通信がベストプラクティス。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/security-infrastructure.html",
+        "reference_label": "SageMaker セキュリティ"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q34",
+      "question": "機械学習モデルに対して Amazon CloudWatch を統合する典型的なユースケースはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "推論レイテンシやエラー率をメトリクスとして収集し、アラームを設定する。",
+          "explanation": {
+            "text": "CloudWatch はメトリクス監視とアラートの仕組みを提供する。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html",
+            "reference_label": "Amazon CloudWatch"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データ前処理を自動化して特徴量を生成する。",
+          "explanation": {
+            "text": "これは Data Wrangler の役割。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler.html",
+            "reference_label": "SageMaker Data Wrangler"
+          }
+        },
+        {
+          "key": "C",
+          "text": "モデルを軽量化してエッジに配布する。",
+          "explanation": {
+            "text": "これは Neo/Edge Manager の役割。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/neo.html",
+            "reference_label": "SageMaker Neo"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データを匿名化してプライバシー保護を行う。",
+          "explanation": {
+            "text": "データ匿名化は CloudWatch の役割ではない。",
+            "reference": "AWS データ保護ガイド"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "CloudWatch はエンドポイントメトリクス監視・ログ収集・アラームを提供する。",
+        "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html",
+        "reference_label": "Amazon CloudWatch"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q35",
+      "question": "モデルの精度が徐々に低下している。最も考えられる一般的な原因はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データドリフトや概念ドリフトにより、本番データ分布が学習時と変わった。",
+          "explanation": {
+            "text": "分布の変化がモデル精度低下の典型的原因。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html",
+            "reference_label": "Model Monitor"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデルのハイパーパラメータが固定されている。",
+          "explanation": {
+            "text": "パラメータ固定自体は直接の原因ではない。",
+            "reference": "AWS ML Guide"
+          }
+        },
+        {
+          "key": "C",
+          "text": "推論エンドポイントのリージョンが変わった。",
+          "explanation": {
+            "text": "リージョン変更で精度が変わることは通常ない。",
+            "reference": "AWS ドキュメント"
+          }
+        },
+        {
+          "key": "D",
+          "text": "モデルが CloudWatch に統合されていない。",
+          "explanation": {
+            "text": "統合の有無は精度低下の直接原因ではない。",
+            "reference": "AWS CloudWatch"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "データドリフトや概念ドリフトが起きると、精度は時間経過とともに低下することが多い。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html",
+        "reference_label": "Model Monitor"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q36",
+      "question": "SageMaker の Batch Transform の特徴はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "大量データに対して一括で推論を実行し、リアルタイム応答は不要な場合に適する。",
+          "explanation": {
+            "text": "Batch Transform は一括推論で、低遅延応答が不要なユースケースに適用。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html",
+            "reference_label": "Batch Transform"
+          }
+        },
+        {
+          "key": "B",
+          "text": "必ず GPU インスタンスでのみ動作する。",
+          "explanation": {
+            "text": "インスタンスタイプは CPU/GPU いずれも選べる。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html",
+            "reference_label": "Batch Transform"
+          }
+        },
+        {
+          "key": "C",
+          "text": "推論結果を CloudWatch Logs に直接保存する。",
+          "explanation": {
+            "text": "出力は S3 に保存されるのが基本。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html",
+            "reference_label": "Batch Transform"
+          }
+        },
+        {
+          "key": "D",
+          "text": "リアルタイムエンドポイントの代替には使えない。",
+          "explanation": {
+            "text": "リアルタイム応答が不要な場合の代替として適している。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html",
+            "reference_label": "Batch Transform"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Batch Transform は大規模データセットの一括推論を効率的に実行できる。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html",
+        "reference_label": "Batch Transform"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q37",
+      "question": "機械学習ワークフローで CI/CD を導入する際のベストプラクティスはどれか（複数選択）。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "モデルのバージョン管理に Model Registry を活用し、承認ワークフローを構築する。",
+          "explanation": {
+            "text": "Model Registry によりバージョン管理と昇格を CI/CD で自動化可能。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry.html",
+            "reference_label": "Model Registry"
+          }
+        },
+        {
+          "key": "B",
+          "text": "インフラ構築は CloudFormation または CDK を活用しコード化する。",
+          "explanation": {
+            "text": "IaC（Infrastructure as Code）は再現性と自動化のベストプラクティス。",
+            "reference": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html",
+            "reference_label": "AWS CloudFormation"
+          }
+        },
+        {
+          "key": "C",
+          "text": "手動でモデルをデプロイし、本番に直接反映する。",
+          "explanation": {
+            "text": "手動デプロイはエラーリスクが高く、CI/CD の目的に反する。",
+            "reference": "AWS DevOps ガイド"
+          }
+        },
+        {
+          "key": "D",
+          "text": "モデルの精度評価を CI/CD パイプラインに組み込み、閾値を満たさない場合はデプロイを止める。",
+          "explanation": {
+            "text": "精度チェックをゲートにすることで品質を担保できる。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines.html",
+            "reference_label": "SageMaker Pipelines"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "CI/CD では IaC、Model Registry、精度ゲートを活用するのがベストプラクティス。手動デプロイは避ける。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry.html",
+        "reference_label": "Model Registry"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q38",
+      "question": "SageMaker JumpStart の主な目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "事前構築済みのソリューションやモデルを簡単に利用して、ML プロジェクトの開始を迅速化する。",
+          "explanation": {
+            "text": "JumpStart はテンプレートや事前学習モデルを提供し、PoC や学習を加速できる。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/studio-jumpstart.html",
+            "reference_label": "SageMaker JumpStart"
+          }
+        },
+        {
+          "key": "B",
+          "text": "推論リクエストのデータをキャプチャして保存する。",
+          "explanation": {
+            "text": "これは Data Capture の機能。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-data-capture.html",
+            "reference_label": "Data Capture"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データラベリングのタスクをクラウドワーカーに依頼する。",
+          "explanation": {
+            "text": "これは Ground Truth の役割。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/sms.html",
+            "reference_label": "Ground Truth"
+          }
+        },
+        {
+          "key": "D",
+          "text": "複数モデルを 1 エンドポイントで提供する。",
+          "explanation": {
+            "text": "これは Multi-Model Endpoint の特徴。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/multi-model-endpoints.html",
+            "reference_label": "MME"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "JumpStart は事前構築済みソリューションやモデルを提供し、開発を加速する。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/studio-jumpstart.html",
+        "reference_label": "SageMaker JumpStart"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q39",
+      "question": "SageMaker Studio Lab と SageMaker Studio の違いとして正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Studio Lab は無料の学習環境であり、Studio は AWS アカウント内で統合された商用環境である。",
+          "explanation": {
+            "text": "Studio Lab は無料提供、Studio は AWS アカウント統合型。",
+            "reference": "https://studiolab.sagemaker.aws/",
+            "reference_label": "SageMaker Studio Lab"
+          }
+        },
+        {
+          "key": "B",
+          "text": "両者とも同じ機能であり、料金体系だけが異なる。",
+          "explanation": {
+            "text": "機能差もあり、単なる料金の違いではない。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/studio.html",
+            "reference_label": "SageMaker Studio"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Studio Lab は商用利用を前提とし、Studio は学習者向けである。",
+          "explanation": {
+            "text": "逆で、Lab は教育用途、Studio は商用・統合用途。",
+            "reference": "AWS Docs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Studio Lab は必ず有料で、Studio は常に無料である。",
+          "explanation": {
+            "text": "事実と逆であり誤り。",
+            "reference": "AWS Docs"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Studio Lab は無料の教育用途、Studio は商用統合 ML IDE。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/studio.html",
+        "reference_label": "SageMaker Studio"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q40",
+      "question": "SageMaker Training Compiler の利点として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ディープラーニングモデルのトレーニングジョブを自動最適化し、GPU 使用効率を改善する。",
+          "explanation": {
+            "text": "Training Compiler はコンパイルを通じて GPU 利用効率を改善し、学習時間を短縮する。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/training-compiler.html",
+            "reference_label": "SageMaker Training Compiler"
+          }
+        },
+        {
+          "key": "B",
+          "text": "学習済みモデルを最適化して推論を高速化する。",
+          "explanation": {
+            "text": "推論最適化は Neo の役割。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/neo.html",
+            "reference_label": "Neo"
+          }
+        },
+        {
+          "key": "C",
+          "text": "モデルの公平性を検証し、バイアスを検出する。",
+          "explanation": {
+            "text": "これは Clarify の役割。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-fairness-and-explainability.html",
+            "reference_label": "Clarify"
+          }
+        },
+        {
+          "key": "D",
+          "text": "自動で特徴量エンジニアリングを実施する。",
+          "explanation": {
+            "text": "特徴量生成は Data Wrangler や Autopilot の領域。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler.html",
+            "reference_label": "Data Wrangler"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Training Compiler はディープラーニング向けにトレーニングジョブを最適化し、GPU 使用効率を向上する。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/training-compiler.html",
+        "reference_label": "SageMaker Training Compiler"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q41",
+      "question": "Amazon SageMaker の Bring Your Own Algorithm (BYOA) で必要な要件はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "推論 API とトレーニング API のインターフェイス（/train, /serve など）を満たすコンテナを用意する。",
+          "explanation": {
+            "text": "BYOA では API 契約を満たした Docker コンテナを用意する必要がある。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html",
+            "reference_label": "SageMaker BYOA"
+          }
+        },
+        {
+          "key": "B",
+          "text": "必ず TensorFlow または PyTorch を利用しなければならない。",
+          "explanation": {
+            "text": "BYOA は任意のフレームワーク利用可能。",
+            "reference": "AWS Docs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アルゴリズムは必ずオープンソースでなければならない。",
+          "explanation": {
+            "text": "独自アルゴリズムも利用可能。",
+            "reference": "AWS Docs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "推論用コードは必ず EBS 上に保存する。",
+          "explanation": {
+            "text": "保存場所の制約はない。コンテナ化が重要。",
+            "reference": "AWS Docs"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "BYOA では SageMaker API 契約を満たすコンテナを提供する必要がある。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html",
+        "reference_label": "SageMaker BYOA"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q42",
+      "question": "リアルタイム推論エンドポイントのスケーリング方法として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Application Auto Scaling を使い、CPU 使用率やレイテンシを指標にエンドポイントのインスタンス数を調整する。",
+          "explanation": {
+            "text": "リアルタイムエンドポイントは Application Auto Scaling と統合されている。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling.html",
+            "reference_label": "エンドポイントのオートスケーリング"
+          }
+        },
+        {
+          "key": "B",
+          "text": "必ず固定インスタンス数でしか動作できない。",
+          "explanation": {
+            "text": "オートスケーリング可能。",
+            "reference": "AWS Docs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "手動で再デプロイしなければインスタンス数は変えられない。",
+          "explanation": {
+            "text": "オートスケーリングが存在するため誤り。",
+            "reference": "AWS Docs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "スケーリングは GPU インスタンスでは利用できない。",
+          "explanation": {
+            "text": "GPU でも可能。",
+            "reference": "AWS Docs"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "リアルタイムエンドポイントは Application Auto Scaling でスケール可能。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling.html",
+        "reference_label": "エンドポイントのオートスケーリング"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q43",
+      "question": "SageMaker Edge Manager のユースケースはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "エッジデバイスにデプロイしたモデルを管理・監視し、モデル更新を効率化する。",
+          "explanation": {
+            "text": "Edge Manager はデバイス上のモデルライフサイクルを管理する。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/edge.html",
+            "reference_label": "SageMaker Edge Manager"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データラベリングをクラウドで実行する。",
+          "explanation": {
+            "text": "これは Ground Truth の機能。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/sms.html",
+            "reference_label": "Ground Truth"
+          }
+        },
+        {
+          "key": "C",
+          "text": "モデルの公平性を検証する。",
+          "explanation": {
+            "text": "公平性は Clarify の領域。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-fairness-and-explainability.html",
+            "reference_label": "Clarify"
+          }
+        },
+        {
+          "key": "D",
+          "text": "特徴量を一元的に保存してリアルタイムで利用する。",
+          "explanation": {
+            "text": "これは Feature Store の役割。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store.html",
+            "reference_label": "Feature Store"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Edge Manager はエッジ環境のモデルを監視・更新・管理するために利用する。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/edge.html",
+        "reference_label": "SageMaker Edge Manager"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q44",
+      "question": "大規模なモデルを効率的にトレーニングするための分散戦略として正しいものはどれか（複数選択）。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データ並列: データを分割して各ワーカーが同じモデルを学習し、勾配を集約する。",
+          "explanation": {
+            "text": "データ並列は最も一般的な分散戦略。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/distributed-training.html",
+            "reference_label": "分散トレーニング"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデル並列: モデルの一部を複数 GPU/ノードに分割して学習を並列化する。",
+          "explanation": {
+            "text": "巨大モデルの学習にモデル並列が使われる。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/distributed-training.html",
+            "reference_label": "分散トレーニング"
+          }
+        },
+        {
+          "key": "C",
+          "text": "推論並列: リアルタイム推論を複数リージョンに分散して実行する。",
+          "explanation": {
+            "text": "推論並列は学習ではなく推論スケーリングの話。",
+            "reference": "AWS Docs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "バッチ並列: 複数バッチを一度に処理し GPU を効率化する。",
+          "explanation": {
+            "text": "用語としては一般的でない。公式分散戦略はデータ並列とモデル並列。",
+            "reference": "AWS Docs"
+          }
+        }
+      ],
+      "answer": "A,B",
+      "explanation": {
+        "text": "分散学習にはデータ並列とモデル並列が公式にサポートされている。推論並列やバッチ並列は正しくない。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/distributed-training.html",
+        "reference_label": "分散トレーニング"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q45",
+      "question": "Amazon SageMaker Automatic Model Tuning (HPO) の仕組みとして正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "探索アルゴリズムを用いてハイパーパラメータの組み合わせを効率的に探索し、最適なモデルを見つける。",
+          "explanation": {
+            "text": "SageMaker HPO はベイズ最適化などを利用して効率的にハイパーパラメータを探索する。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning.html",
+            "reference_label": "Automatic Model Tuning"
+          }
+        },
+        {
+          "key": "B",
+          "text": "学習済みモデルを自動で軽量化する。",
+          "explanation": {
+            "text": "軽量化は Neo の役割。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/neo.html",
+            "reference_label": "Neo"
+          }
+        },
+        {
+          "key": "C",
+          "text": "推論エンドポイントのスケーリングを自動化する。",
+          "explanation": {
+            "text": "これは Application Auto Scaling の役割。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling.html",
+            "reference_label": "エンドポイントのオートスケーリング"
+          }
+        },
+        {
+          "key": "D",
+          "text": "モデルの公平性を評価する。",
+          "explanation": {
+            "text": "公平性は Clarify の機能。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-fairness-and-explainability.html",
+            "reference_label": "Clarify"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "HPO はベイズ最適化などでハイパーパラメータを効率的に探索する。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning.html",
+        "reference_label": "Automatic Model Tuning"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q46",
+      "question": "SageMaker のマネージドスポットトレーニングで推奨される設計はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "チェックポイントを有効化し、スポット中断時に途中結果を保存して再開できるようにする。",
+          "explanation": {
+            "text": "チェックポイントはスポット中断に備えるための推奨設定。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-managed-spot-training.html",
+            "reference_label": "Managed Spot Training"
+          }
+        },
+        {
+          "key": "B",
+          "text": "スポットインスタンスは必ず中断されないため、チェックポイントは不要である。",
+          "explanation": {
+            "text": "スポットは中断され得るため誤り。",
+            "reference": "AWS EC2 Spot インスタンスドキュメント"
+          }
+        },
+        {
+          "key": "C",
+          "text": "スポットは GPU では利用できない。",
+          "explanation": {
+            "text": "GPU でも利用可能。",
+            "reference": "AWS Docs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "スポット利用時は分散学習を使えない。",
+          "explanation": {
+            "text": "分散学習とスポットは併用可能。",
+            "reference": "AWS Docs"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "スポットは中断され得るため、チェックポイントによる再開設計が必須。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-managed-spot-training.html",
+        "reference_label": "Managed Spot Training"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q47",
+      "question": "モデルの継続的監視で検出できる問題の例として適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データドリフトやラベル分布の変化。",
+          "explanation": {
+            "text": "Model Monitor はデータ・ラベルドリフトを検出できる。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html",
+            "reference_label": "Model Monitor"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデルを自動で最適化する。",
+          "explanation": {
+            "text": "これは Neo の役割。",
+            "reference": "AWS Docs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ハイパーパラメータ探索を行う。",
+          "explanation": {
+            "text": "HPO の役割であり監視機能ではない。",
+            "reference": "AWS Docs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IAM ポリシーの違反を検出する。",
+          "explanation": {
+            "text": "IAM の検出は監査やセキュリティの範囲。",
+            "reference": "AWS IAM Docs"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Model Monitor はデータドリフトやラベル分布変化を検知できる。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html",
+        "reference_label": "Model Monitor"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q48",
+      "question": "SageMaker Inference Recommender の目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "モデル推論に最適なインスタンスタイプと設定を自動的に推奨する。",
+          "explanation": {
+            "text": "Inference Recommender は最適なインスタンス候補を提案する。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/inference-recommender.html",
+            "reference_label": "Inference Recommender"
+          }
+        },
+        {
+          "key": "B",
+          "text": "学習用のハイパーパラメータを自動探索する。",
+          "explanation": {
+            "text": "これは HPO の機能。",
+            "reference": "AWS Docs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "特徴量ストアを最適化してクエリ性能を上げる。",
+          "explanation": {
+            "text": "これは Feature Store の管理の話であり、Inference Recommender の機能ではない。",
+            "reference": "AWS Docs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データ前処理のジョブを自動的に最適化する。",
+          "explanation": {
+            "text": "前処理の最適化は Processing の設計の範囲である。",
+            "reference": "AWS Docs"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Inference Recommender はモデル推論向けに最適なインスタンスタイプを推奨する。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/inference-recommender.html",
+        "reference_label": "Inference Recommender"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q49",
+      "question": "SageMaker Shadow Testing の正しい説明はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "新モデルに本番トラフィックをコピーし、結果を比較するがユーザーには返さない。",
+          "explanation": {
+            "text": "Shadow テストはユーザー影響なしに新モデルを本番負荷で検証できる。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/shadow-tests.html",
+            "reference_label": "Shadow tests"
+          }
+        },
+        {
+          "key": "B",
+          "text": "本番リクエストの一部を新モデルに直接送って結果を返す。",
+          "explanation": {
+            "text": "これは Canary Release や A/B テストの手法である。",
+            "reference": "AWS Docs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "新モデルを必ず別リージョンにデプロイして検証する。",
+          "explanation": {
+            "text": "リージョン分離は Shadow テストの要件ではない。",
+            "reference": "AWS Docs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "新モデルを完全に切り替えて全ユーザーに提供する。",
+          "explanation": {
+            "text": "これは Blue/Green デプロイの手法。",
+            "reference": "AWS Docs"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Shadow テストはトラフィックコピーで新モデルを検証し、結果はユーザーに返さない。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/shadow-tests.html",
+        "reference_label": "Shadow tests"
+      }
+    },
+    {
+      "id": "aws-mla-c01-q50",
+      "question": "機械学習モデルを本番で運用する際のセキュリティベストプラクティスとして適切なものはどれか（複数選択）。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "IAM ロールに最小権限を適用し、S3 バケットは暗号化とアクセス制御を行う。",
+          "explanation": {
+            "text": "最小権限と暗号化は基本的なベストプラクティス。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/security.html",
+            "reference_label": "SageMaker セキュリティ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "VPC エンドポイントを利用し、モデルエンドポイントへの通信をパブリックインターネット経由にしない。",
+          "explanation": {
+            "text": "VPC エンドポイントにより閉域網で安全に通信できる。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/interface-vpc-endpoint.html",
+            "reference_label": "VPC エンドポイント"
+          }
+        },
+        {
+          "key": "C",
+          "text": "CloudWatch Logs を無効化して監視コストを削減する。",
+          "explanation": {
+            "text": "監視を無効化するのはセキュリティリスクを増大させる。",
+            "reference": "AWS Docs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "推論エンドポイントはパブリックアクセス可能に設定するのが推奨される。",
+          "explanation": {
+            "text": "セキュリティ上、VPC 内や認証制御が推奨され、パブリックアクセスは推奨されない。",
+            "reference": "AWS Docs"
+          }
+        }
+      ],
+      "answer": "A,B",
+      "explanation": {
+        "text": "IAM 最小権限と VPC エンドポイントによる閉域通信がベストプラクティス。監視無効化や無制限アクセスは推奨されない。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/security.html",
+        "reference_label": "SageMaker セキュリティ"
+      }
+    }
+  ]
+}

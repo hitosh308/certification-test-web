@@ -1,0 +1,2467 @@
+{
+  "exam": {
+    "id": "DEA-C01",
+    "title": "AWS Certified Data Engineer – Associate",
+    "description": "この試験は、クラウド上でのデータ取り込み、変換・パイプラインのオーケストレーション、データモデル設計、データライフサイクル管理およびデータ品質確保など、データエンジニアリング領域におけるスキルを検証します。対象は、データ関連の AWS サービスを用いてスケーラブルでセキュアなデータソリューションを設計・運用できる技術者です。",
+    "version": "2024年3月",
+    "price": "150 USD",
+    "difficulty": "普通",
+    "official-site": "https://aws.amazon.com/certification/certified-data-engineer-associate/",
+    "category": {
+      "id": "aws",
+      "name": "AWS"
+    }
+  },
+  "questions": [
+    {
+      "id": "aws-dea-c01-q1",
+      "question": "単一のAZ内で数百万の小さいオブジェクトを毎分読み書きする分析ワークロードがあります。サブ10ミリ秒のアクセス、低いリクエストレイテンシー、かつ低コストで最適なストレージはどれですか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Amazon S3 Express One Zone ディレクトリバケット",
+          "explanation": {
+            "text": "S3 Express One Zoneは単一AZ内で超低レイテンシーを実現し、S3 Standardに比べて最大10倍高速なアクセスと低いリクエストコストを提供します。",
+            "reference": "https://aws.amazon.com/jp/s3/storage-classes/express-one-zone/",
+            "reference_label": "Amazon S3 Express One Zone – 製品ページ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Amazon S3 Standard + Transfer Acceleration",
+          "explanation": {
+            "text": "Transfer Accelerationはグローバル転送を高速化しますが、単一AZ内の低レイテンシーには適しません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/AmazonS3/latest/userguide/transfer-acceleration.html",
+            "reference_label": "S3 Transfer Acceleration"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Amazon EFS General Purpose モード",
+          "explanation": {
+            "text": "EFSはPOSIX互換のファイルシステムであり、S3オブジェクトストアとは異なります。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/efs/latest/ug/performance.html",
+            "reference_label": "Amazon EFS パフォーマンス"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Amazon S3 Standard + マルチパートアップロード",
+          "explanation": {
+            "text": "マルチパートアップロードは大きなオブジェクト転送に有効ですが、リクエストレイテンシーを低減する仕組みではありません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/AmazonS3/latest/userguide/mpuoverview.html",
+            "reference_label": "S3 マルチパートアップロード"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "S3 Express One Zoneは、サブ10ミリ秒のレイテンシーと高速アクセスを提供し、分析系のホットデータ処理に最適です。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/AmazonS3/latest/userguide/s3-express-performance.html",
+        "reference_label": "S3 Express One Zone パフォーマンス"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q2",
+      "question": "Lake FormationのGoverned Tableが非推奨となりました。長期的にAWSが推奨する移行先はどれですか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Apache Icebergなどのオープンテーブルフォーマットへ移行し、Athena/Glueでクエリする",
+          "explanation": {
+            "text": "AWSはGoverned Tableの終了を発表し、Apache IcebergやHudi、Delta Lakeなどのオープンフォーマットの利用を推奨しています。",
+            "reference": "https://aws.amazon.com/jp/blogs/big-data/deprecation-of-lake-formations-governed-tables-feature/",
+            "reference_label": "Lake Formation Governed Tables 廃止のお知らせ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Governed Tableを使い続ける",
+          "explanation": {
+            "text": "誤りです。Governed Tableは非推奨であり、サポートも終了します。",
+            "reference": "https://aws.amazon.com/jp/blogs/big-data/deprecation-of-lake-formations-governed-tables-feature/",
+            "reference_label": "Lake Formation Governed Tables 廃止のお知らせ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "S3 Glacier Deep Archiveに保存してACIDを保持する",
+          "explanation": {
+            "text": "Glacierはアーカイブ用であり、ACIDテーブル機能は提供しません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/AmazonS3/latest/userguide/storage-class-intro.html",
+            "reference_label": "S3 ストレージクラス"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Lake FormationをAWS DMSに置き換える",
+          "explanation": {
+            "text": "DMSは移行やレプリケーションを行うサービスであり、S3上のACIDテーブル機能は持ちません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/dms/latest/userguide/Welcome.html",
+            "reference_label": "AWS DMS 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "推奨される移行先はApache Icebergなどのオープンテーブルフォーマットです。AthenaやGlueでクエリ可能です。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/querying-iceberg.html",
+        "reference_label": "Athena: Apache Iceberg テーブルのクエリ"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q3",
+      "question": "Amazon Kinesis Data StreamsからAmazon Redshiftに低レイテンシーで直接取り込みたい場合、S3を経由せずに実現できる機能はどれですか？",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Redshift ストリーミング取り込み（Streaming Ingestion）",
+          "explanation": {
+            "text": "RedshiftはKinesis Data StreamsやMSKから直接データを取り込めるストリーミング取り込み機能を提供しています。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/materialized-view-streaming-ingestion.html",
+            "reference_label": "Redshift ストリーミング取り込み"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Kinesis Data FirehoseをS3に書き込みCOPYコマンドでロード",
+          "explanation": {
+            "text": "この方法はS3を経由するため、低レイテンシー要件に合いません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/firehose/latest/dev/what-is-this-service.html",
+            "reference_label": "Kinesis Data Firehose"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Glue Streaming ETLジョブでRedshiftにロード",
+          "explanation": {
+            "text": "Glue Streamingは可能ですが、Redshiftのネイティブなストリーミング取り込みの方が低レイテンシーです。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/glue/latest/dg/add-job-streaming.html",
+            "reference_label": "AWS Glue ストリーミングETL"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Athena Federated Query経由でRedshiftに挿入",
+          "explanation": {
+            "text": "Athena Federated Queryはデータソースへのクエリ用であり、リアルタイムストリーミング取り込みには向きません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/connectors.html",
+            "reference_label": "Athena Federated Query"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Redshift Streaming Ingestionを利用すると、Kinesis Data Streamsから直接Redshiftにデータをロードできます。これにより低レイテンシーでの取り込みが可能です。",
+        "reference": "https://aws.amazon.com/jp/redshift/features/streaming-ingestion/",
+        "reference_label": "Amazon Redshift ストリーミング取り込み"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q4",
+      "question": "Amazon Glueで処理する大規模ETLジョブにおいて、開発者がジョブのスクリプトや実行環境をDockerでカスタマイズしたい場合に利用する仕組みはどれですか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Glueカスタムイメージ",
+          "explanation": {
+            "text": "GlueはカスタムDockerイメージを利用してライブラリや依存関係を指定可能です。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/glue/latest/dg/author-job.html#glue-docker",
+            "reference_label": "AWS Glue カスタムイメージ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Glue DataBrew",
+          "explanation": {
+            "text": "DataBrewはGUIベースのデータ前処理サービスであり、Dockerによるカスタマイズはできません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/databrew/latest/dg/what-is.html",
+            "reference_label": "AWS Glue DataBrew"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Glue Crawler",
+          "explanation": {
+            "text": "Crawlerはデータスキーマを推論してカタログに登録する機能であり、ジョブの実行環境とは無関係です。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/glue/latest/dg/add-crawler.html",
+            "reference_label": "AWS Glue Crawler"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Glue Workflows",
+          "explanation": {
+            "text": "WorkflowsはETLジョブの実行順序管理に使いますが、Dockerカスタマイズには対応していません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/glue/latest/dg/orchestrate-using-workflow.html",
+            "reference_label": "AWS Glue Workflows"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Glueカスタムイメージを使うことで、独自のPythonライブラリや依存関係を含むDockerイメージを指定してETLジョブを実行できます。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/glue/latest/dg/author-job.html#glue-docker",
+        "reference_label": "AWS Glue カスタムイメージ"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q5",
+      "question": "Redshiftにおいて、スキーマ変更の影響を受けずにテーブルクエリを安定させるためのベストプラクティスはどれですか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ビューを利用してアプリケーションからのクエリを抽象化する",
+          "explanation": {
+            "text": "ビューを使うことでスキーマの変更を吸収し、アプリケーションを安定化させられます。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/c-views.html",
+            "reference_label": "Amazon Redshift ビュー"
+          }
+        },
+        {
+          "key": "B",
+          "text": "すべての列をSELECT *で取得する",
+          "explanation": {
+            "text": "SELECT *はスキーマ変更に弱く、推奨されません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/r_SELECT_synopsis.html",
+            "reference_label": "Amazon Redshift SELECT"
+          }
+        },
+        {
+          "key": "C",
+          "text": "頻繁にスキーマを変更しないようにする",
+          "explanation": {
+            "text": "運用ルールで制御できますが、完全な解決策ではありません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/t_creating_tables.html",
+            "reference_label": "Amazon Redshift テーブル作成"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Glue Crawlerで常に最新スキーマを取得する",
+          "explanation": {
+            "text": "Glue Crawlerはスキーマ検出を行いますが、アプリケーション側での安定性確保には直接役立ちません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/glue/latest/dg/add-crawler.html",
+            "reference_label": "AWS Glue Crawler"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ビューを利用してアプリケーションからのクエリを抽象化するのがベストプラクティスです。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/c-views.html",
+        "reference_label": "Amazon Redshift ビュー"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q6",
+      "question": "Amazon Kinesis Data FirehoseでデータをS3に配信する際、オブジェクトサイズを小さくしすぎず、効率的に保存するための推奨最小バッファサイズはどれですか？",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "1 MB",
+          "explanation": {
+            "text": "最小1MBで配信可能ですが、推奨値としては効率が悪いため通常は利用しません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/firehose/latest/dev/basic-deliver.html",
+            "reference_label": "Kinesis Data Firehose 配信"
+          }
+        },
+        {
+          "key": "B",
+          "text": "5 MB",
+          "explanation": {
+            "text": "5MBは推奨される最小バッファサイズであり、効率とレイテンシーのバランスが良いです。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/firehose/latest/dev/basic-deliver.html",
+            "reference_label": "Kinesis Data Firehose 配信"
+          }
+        },
+        {
+          "key": "C",
+          "text": "50 MB",
+          "explanation": {
+            "text": "50MBは最大値であり、遅延が増える可能性があります。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/firehose/latest/dev/basic-deliver.html",
+            "reference_label": "Kinesis Data Firehose 配信"
+          }
+        },
+        {
+          "key": "D",
+          "text": "500 MB",
+          "explanation": {
+            "text": "Firehoseの最大バッファサイズは50MBであり、500MBは設定できません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/firehose/latest/dev/basic-deliver.html",
+            "reference_label": "Kinesis Data Firehose 配信"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Kinesis Data FirehoseでS3に配信する際は、5MB以上のバッファサイズが推奨されます。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/firehose/latest/dev/basic-deliver.html",
+        "reference_label": "Kinesis Data Firehose 配信"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q7",
+      "question": "Amazon Redshift Spectrumを利用する主な利点はどれですか？",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "S3上のデータをRedshiftにロードせず直接クエリできる",
+          "explanation": {
+            "text": "SpectrumはS3上のデータを直接クエリする機能で、ETLやロードを省略できます。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/c-using-spectrum.html",
+            "reference_label": "Amazon Redshift Spectrum"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Redshiftクラスターのストレージを拡張する唯一の方法",
+          "explanation": {
+            "text": "誤りです。Spectrumはクエリの拡張機能であり、ストレージ拡張の唯一の方法ではありません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/c-using-spectrum.html",
+            "reference_label": "Amazon Redshift Spectrum"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Glue Crawlerを使わずに自動スキーマ検出できる",
+          "explanation": {
+            "text": "誤りです。Spectrumはスキーマをカタログから参照します。スキーマ検出にはGlue Crawlerがよく使われます。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/glue/latest/dg/add-crawler.html",
+            "reference_label": "AWS Glue Crawler"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ストリーミングデータの直接取り込み機能",
+          "explanation": {
+            "text": "誤りです。ストリーミング取り込みはRedshift Streaming Ingestionで行います。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/materialized-view-streaming-ingestion.html",
+            "reference_label": "Redshift ストリーミング取り込み"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Redshift Spectrumを利用すると、S3上のデータを直接クエリできるため、ロード不要で分析が可能になります。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/c-using-spectrum.html",
+        "reference_label": "Amazon Redshift Spectrum"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q8",
+      "question": "Amazon DynamoDBで分析用に大量データをエクスポートする際、最も効率的で推奨される方法はどれですか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "DynamoDB Streamsを使って逐次エクスポート",
+          "explanation": {
+            "text": "Streamsは変更データキャプチャに適していますが、大規模エクスポートには効率的ではありません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/Streams.html",
+            "reference_label": "DynamoDB Streams"
+          }
+        },
+        {
+          "key": "B",
+          "text": "DynamoDB Export to S3機能を利用する",
+          "explanation": {
+            "text": "この機能はS3に直接バックアップをエクスポートでき、大規模データ分析に推奨されます。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/DataExport.html",
+            "reference_label": "DynamoDB Export to S3"
+          }
+        },
+        {
+          "key": "C",
+          "text": "AWS GlueジョブでDynamoDBから直接抽出する",
+          "explanation": {
+            "text": "Glueを利用しても可能ですが、大量データエクスポートにはExport to S3がより効率的です。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/glue/latest/dg/aws-glue-programming-etl-dynamodb.html",
+            "reference_label": "GlueとDynamoDB"
+          }
+        },
+        {
+          "key": "D",
+          "text": "DynamoDB Scan APIを利用して逐次書き出し",
+          "explanation": {
+            "text": "Scan APIは非常に非効率で、大規模データエクスポートには適しません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/Scan.html",
+            "reference_label": "DynamoDB Scan"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "DynamoDB Export to S3を利用することで、テーブル全体を効率的にS3へエクスポートできます。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/DataExport.html",
+        "reference_label": "DynamoDB Export to S3"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q9",
+      "question": "Amazon Athenaでパフォーマンスを最適化するために推奨されるS3データ配置戦略はどれですか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データをパーティション化して保存する",
+          "explanation": {
+            "text": "Athenaはパーティションを利用することで不要なデータスキャンを減らし、コストとパフォーマンスを改善できます。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/partitioning.html",
+            "reference_label": "Athena パーティション"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データをすべて1つの巨大ファイルにまとめる",
+          "explanation": {
+            "text": "巨大ファイル1つでは並列処理できず、非効率です。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/best-practices.html",
+            "reference_label": "Athena ベストプラクティス"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ファイル形式をCSVに統一する",
+          "explanation": {
+            "text": "CSVは非圧縮かつ列指向でないためパフォーマンスが低下します。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/best-practices.html",
+            "reference_label": "Athena ベストプラクティス"
+          }
+        },
+        {
+          "key": "D",
+          "text": "バケットを複数作りテーブルごとに分散する",
+          "explanation": {
+            "text": "バケット分割は推奨されず、パーティション戦略が重要です。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/best-practices.html",
+            "reference_label": "Athena ベストプラクティス"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "AthenaではS3上のデータをパーティション化して保存することで、スキャン効率を改善できます。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/partitioning.html",
+        "reference_label": "Athena パーティション"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q10",
+      "question": "Amazon EMRでスポットインスタンスを利用する場合の推奨アーキテクチャはどれですか？",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "マスターノードはオンデマンド、コア・タスクノードはスポットインスタンスを利用する",
+          "explanation": {
+            "text": "安定性を確保するためにマスターはオンデマンドにし、スポットはタスクやコアに使うのが推奨されます。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/emr/latest/ManagementGuide/emr-plan-instances-guidelines.html",
+            "reference_label": "Amazon EMR インスタンスガイドライン"
+          }
+        },
+        {
+          "key": "B",
+          "text": "すべてスポットインスタンスで構成する",
+          "explanation": {
+            "text": "スポットのみだと中断リスクがあり、マスターに利用するのは推奨されません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/emr/latest/ManagementGuide/emr-plan-instances-guidelines.html",
+            "reference_label": "Amazon EMR インスタンスガイドライン"
+          }
+        },
+        {
+          "key": "C",
+          "text": "マスターをリザーブド、タスクをオンデマンドで構成する",
+          "explanation": {
+            "text": "リザーブドを利用する方法もありますが、タスクはスポットを活用するのがよりコスト効率的です。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/emr/latest/ManagementGuide/emr-plan-instances-guidelines.html",
+            "reference_label": "Amazon EMR インスタンスガイドライン"
+          }
+        },
+        {
+          "key": "D",
+          "text": "すべてオンデマンドインスタンスで構成する",
+          "explanation": {
+            "text": "安定性はありますがコスト効率が悪く、スポット活用の利点を失います。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/emr/latest/ManagementGuide/emr-plan-instances-guidelines.html",
+            "reference_label": "Amazon EMR インスタンスガイドライン"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "マスターは安定稼働のためオンデマンドにし、コア・タスクノードにスポットを活用するのがベストプラクティスです。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/emr/latest/ManagementGuide/emr-plan-instances-guidelines.html",
+        "reference_label": "Amazon EMR インスタンスガイドライン"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q11",
+      "question": "Amazon Glueで、ストリーミングデータを継続的に処理してAmazon S3に保存するにはどの機能を利用すべきですか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Glue Streaming ETL",
+          "explanation": {
+            "text": "Glue Streaming ETLはApache Spark Structured Streamingをベースにしており、リアルタイムデータ処理に最適です。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/glue/latest/dg/add-job-streaming.html",
+            "reference_label": "Glue Streaming ジョブ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Glue DataBrew",
+          "explanation": {
+            "text": "DataBrewはバッチデータの可視的前処理に利用され、ストリーミングはサポートしていません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/databrew/latest/dg/what-is.html",
+            "reference_label": "Glue DataBrew"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Glue Crawler",
+          "explanation": {
+            "text": "Crawlerはデータスキーマの検出に利用され、リアルタイム処理はできません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/glue/latest/dg/add-crawler.html",
+            "reference_label": "Glue Crawler"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Glue Workflows",
+          "explanation": {
+            "text": "WorkflowsはETLジョブの管理・スケジューリングに使われますが、リアルタイム処理ではありません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/glue/latest/dg/orchestrate-using-workflow.html",
+            "reference_label": "Glue Workflows"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Glue Streaming ETLを利用することで、KinesisやKafkaからのストリーミングデータを継続的に処理可能です。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/glue/latest/dg/add-job-streaming.html",
+        "reference_label": "Glue Streaming ジョブ"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q12",
+      "question": "Amazon S3でデータレイクを構築する際、AthenaやEMRで効率的にクエリを実行するために推奨されるファイル形式はどれですか？",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Parquet",
+          "explanation": {
+            "text": "Parquetは列指向・圧縮対応であり、大規模分析に最適です。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/parquet.html",
+            "reference_label": "Athena Parquet"
+          }
+        },
+        {
+          "key": "B",
+          "text": "CSV",
+          "explanation": {
+            "text": "CSVはシンプルですが圧縮や列指向をサポートせず、大規模分析には非効率です。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/best-practices.html",
+            "reference_label": "Athena ベストプラクティス"
+          }
+        },
+        {
+          "key": "C",
+          "text": "JSON",
+          "explanation": {
+            "text": "JSONは構造化データを表現できますが、列指向処理に不向きです。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/best-practices.html",
+            "reference_label": "Athena ベストプラクティス"
+          }
+        },
+        {
+          "key": "D",
+          "text": "TSV",
+          "explanation": {
+            "text": "TSVは区切り文字が異なるだけでCSVと同じ欠点を持ちます。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/best-practices.html",
+            "reference_label": "Athena ベストプラクティス"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Parquetは列指向のため、AthenaやEMRで効率的な分析が可能です。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/parquet.html",
+        "reference_label": "Athena Parquet"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q13",
+      "question": "Amazon MSKを利用しているシステムで、データをS3に取り込みたい場合、最も効率的でネイティブな方法はどれですか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "MSK Connectを利用してS3 Sinkコネクタを使う",
+          "explanation": {
+            "text": "MSK ConnectはKafka Connectをマネージドで実行でき、S3 Sinkコネクタを用いて効率的にデータをS3へ配信可能です。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/msk/latest/developerguide/msk-connect.html",
+            "reference_label": "MSK Connect"
+          }
+        },
+        {
+          "key": "B",
+          "text": "DynamoDBに保存してからS3にエクスポートする",
+          "explanation": {
+            "text": "非効率な二段階処理となり、推奨されません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/DataExport.html",
+            "reference_label": "DynamoDB Export"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Glue Streamingジョブを使って処理・保存する",
+          "explanation": {
+            "text": "Glue Streamingでも可能ですが、ネイティブで簡潔な方法はMSK Connectです。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/glue/latest/dg/add-job-streaming.html",
+            "reference_label": "Glue Streaming"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Firehoseを利用してMSKから直接S3に配信する",
+          "explanation": {
+            "text": "FirehoseはKinesisからの取り込みに最適ですが、Kafkaには直接対応しません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/firehose/latest/dev/what-is-this-service.html",
+            "reference_label": "Kinesis Data Firehose"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "MSK Connectを利用してS3 Sinkコネクタを設定するのが最適です。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/msk/latest/developerguide/msk-connect.html",
+        "reference_label": "MSK Connect"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q14",
+      "question": "RedshiftでスナップショットをS3にエクスポートする場合の用途として最も適切なのはどれですか？",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "長期アーカイブや異なるリージョンへの移行",
+          "explanation": {
+            "text": "スナップショットをS3にエクスポートすると、アーカイブやクロスリージョン移行が可能です。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/exporting-snapshots.html",
+            "reference_label": "Redshift スナップショットエクスポート"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Redshiftのパフォーマンス改善",
+          "explanation": {
+            "text": "誤りです。スナップショットは性能改善の仕組みではありません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/exporting-snapshots.html",
+            "reference_label": "Redshift スナップショットエクスポート"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Athenaから直接クエリ可能にする",
+          "explanation": {
+            "text": "誤りです。エクスポート後はRedshift用のバックアップデータであり、Athenaで直接クエリはできません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/exporting-snapshots.html",
+            "reference_label": "Redshift スナップショットエクスポート"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Kinesisに再投入してストリーミング処理に利用する",
+          "explanation": {
+            "text": "誤りです。スナップショットはストリーミング処理に利用できません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/exporting-snapshots.html",
+            "reference_label": "Redshift スナップショットエクスポート"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "RedshiftスナップショットをS3にエクスポートすると、アーカイブ保存や異なるリージョンへの移行に活用できます。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/exporting-snapshots.html",
+        "reference_label": "Redshift スナップショットエクスポート"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q15",
+      "question": "Athenaでテーブルを更新し続けるデータを効率的に管理するために推奨されるテーブル形式はどれですか？",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Apache Iceberg",
+          "explanation": {
+            "text": "Icebergはスキーマ進化、タイムトラベル、ACID操作に対応しており、Athenaで推奨されています。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/querying-iceberg.html",
+            "reference_label": "Athena Iceberg"
+          }
+        },
+        {
+          "key": "B",
+          "text": "CSV",
+          "explanation": {
+            "text": "CSVは更新処理をサポートしていません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/best-practices.html",
+            "reference_label": "Athena ベストプラクティス"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ORC",
+          "explanation": {
+            "text": "ORCは列指向フォーマットですが、ACIDやタイムトラベルはサポートしません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/orc.html",
+            "reference_label": "Athena ORC"
+          }
+        },
+        {
+          "key": "D",
+          "text": "TSV",
+          "explanation": {
+            "text": "TSVはシンプルな行指向フォーマットであり、更新処理に不向きです。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/best-practices.html",
+            "reference_label": "Athena ベストプラクティス"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "AthenaではApache Icebergが更新処理に最適であり、ACIDやスキーマ進化もサポートします。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/querying-iceberg.html",
+        "reference_label": "Athena Iceberg"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q16",
+      "question": "Amazon S3データレイクで小さいファイルが大量に生成され、AthenaやEMRでのクエリ性能が低下しています。最も効果的な解決策はどれですか？",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ファイルを統合してParquet形式で保存する",
+          "explanation": {
+            "text": "小さいファイルを統合し、列指向のParquetに変換すると性能とコストが大幅に改善します。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/best-practices.html",
+            "reference_label": "Athena ベストプラクティス"
+          }
+        },
+        {
+          "key": "B",
+          "text": "S3バケットを複数に分割して保存する",
+          "explanation": {
+            "text": "バケットを分けても小さいファイル問題の解決にはなりません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/best-practices.html",
+            "reference_label": "Athena ベストプラクティス"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ファイルをすべてgzip圧縮して保存する",
+          "explanation": {
+            "text": "gzip圧縮はサイズ削減には有効ですが、小さいファイル問題自体の解決にはなりません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/compression-formats.html",
+            "reference_label": "Athena 圧縮形式"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AthenaでSELECT *を利用して全データをクエリする",
+          "explanation": {
+            "text": "SELECT *は非効率であり、小さいファイル問題を悪化させます。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/best-practices.html",
+            "reference_label": "Athena ベストプラクティス"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "小さいファイル問題はParquetなどの列指向フォーマットに統合することで解決できます。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/best-practices.html",
+        "reference_label": "Athena ベストプラクティス"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q17",
+      "question": "Amazon RedshiftのConcurrency Scalingの主な目的はどれですか？",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "同時実行クエリ数が増加した際にパフォーマンスを維持する",
+          "explanation": {
+            "text": "Concurrency Scalingは自動的にクラスターをスケールアウトしてクエリ性能を維持します。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/concurrency-scaling.html",
+            "reference_label": "Redshift Concurrency Scaling"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Redshiftのストレージ容量を拡張する",
+          "explanation": {
+            "text": "ストレージ拡張ではなく、同時実行性能を改善する機能です。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/concurrency-scaling.html",
+            "reference_label": "Redshift Concurrency Scaling"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Redshiftのバックアップを高速化する",
+          "explanation": {
+            "text": "Concurrency Scalingはバックアップには関係ありません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/concurrency-scaling.html",
+            "reference_label": "Redshift Concurrency Scaling"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Redshift Spectrumの外部テーブルを高速化する",
+          "explanation": {
+            "text": "Spectrumとは別の機能です。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/concurrency-scaling.html",
+            "reference_label": "Redshift Concurrency Scaling"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Concurrency Scalingは同時実行クエリ数が増えても自動的にスケーリングし、性能を維持します。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/concurrency-scaling.html",
+        "reference_label": "Redshift Concurrency Scaling"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q18",
+      "question": "AWS Glue Crawlerが自動的に作成するものはどれですか？",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AWS Glue Data Catalogのテーブル",
+          "explanation": {
+            "text": "CrawlerはデータソースをスキャンしてData Catalogにテーブルを作成します。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/glue/latest/dg/add-crawler.html",
+            "reference_label": "Glue Crawler"
+          }
+        },
+        {
+          "key": "B",
+          "text": "S3バケット",
+          "explanation": {
+            "text": "Crawlerはストレージを作成するのではなく、スキーマを認識します。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/glue/latest/dg/add-crawler.html",
+            "reference_label": "Glue Crawler"
+          }
+        },
+        {
+          "key": "C",
+          "text": "IAMロール",
+          "explanation": {
+            "text": "IAMロールはCrawlerの実行に必要ですが、自動的に作成されるものではありません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/glue/latest/dg/crawler-security.html",
+            "reference_label": "Glue Crawler セキュリティ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Athena Workgroup",
+          "explanation": {
+            "text": "Athena WorkgroupはAthenaの機能であり、Crawlerは関与しません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/workgroups.html",
+            "reference_label": "Athena Workgroup"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Glue Crawlerはデータソースをスキャンし、スキーマをData Catalogに自動登録します。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/glue/latest/dg/add-crawler.html",
+        "reference_label": "Glue Crawler"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q19",
+      "question": "Amazon EMRでHDFSを利用する場合の注意点として正しいのはどれですか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "クラスター終了時にHDFSデータは削除される",
+          "explanation": {
+            "text": "EMRのHDFSはクラスターライフサイクルに依存しており、クラスター終了時に削除されます。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/emr/latest/ManagementGuide/emr-hdfs.html",
+            "reference_label": "EMR HDFS"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データは自動的にS3にバックアップされる",
+          "explanation": {
+            "text": "誤りです。自動バックアップ機能はありません。必要なら明示的にS3に保存する必要があります。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/emr/latest/ManagementGuide/emr-hdfs.html",
+            "reference_label": "EMR HDFS"
+          }
+        },
+        {
+          "key": "C",
+          "text": "HDFSはリージョン全体で共有される",
+          "explanation": {
+            "text": "誤りです。HDFSはクラスターごとに存在します。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/emr/latest/ManagementGuide/emr-hdfs.html",
+            "reference_label": "EMR HDFS"
+          }
+        },
+        {
+          "key": "D",
+          "text": "HDFSはS3の代替として長期保存に推奨される",
+          "explanation": {
+            "text": "誤りです。HDFSは一時的なクラスター内ストレージとして使われます。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/emr/latest/ManagementGuide/emr-hdfs.html",
+            "reference_label": "EMR HDFS"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "EMR上のHDFSはクラスター終了とともに消失するため、永続化する場合はS3などを利用する必要があります。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/emr/latest/ManagementGuide/emr-hdfs.html",
+        "reference_label": "EMR HDFS"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q20",
+      "question": "AWS DataSyncの主なユースケースはどれですか？",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "オンプレミスからS3やEFSへの大規模データ転送",
+          "explanation": {
+            "text": "DataSyncはオンプレミスとAWS間での大規模データ転送に最適化されています。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/datasync/latest/userguide/what-is-datasync.html",
+            "reference_label": "AWS DataSync"
+          }
+        },
+        {
+          "key": "B",
+          "text": "DynamoDBテーブルの複製",
+          "explanation": {
+            "text": "誤りです。DataSyncはDynamoDBを対象としません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/datasync/latest/userguide/what-is-datasync.html",
+            "reference_label": "AWS DataSync"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ストリーミングデータの分析",
+          "explanation": {
+            "text": "誤りです。ストリーミング分析はKinesisやGlue Streamingを利用します。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/streams/latest/dev/introduction.html",
+            "reference_label": "Kinesis Data Streams"
+          }
+        },
+        {
+          "key": "D",
+          "text": "機械学習モデルの学習",
+          "explanation": {
+            "text": "誤りです。DataSyncは機械学習サービスではありません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/datasync/latest/userguide/what-is-datasync.html",
+            "reference_label": "AWS DataSync"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "AWS DataSyncはオンプレミスからAWSのS3やEFSへ高速でセキュアなデータ転送を実現します。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/datasync/latest/userguide/what-is-datasync.html",
+        "reference_label": "AWS DataSync"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q21",
+      "question": "Amazon Kinesis Data Streamsにおいて、スループットを拡張するために調整すべき主要なリソース単位はどれですか？",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "シャード (Shard)",
+          "explanation": {
+            "text": "シャードはKinesis Data Streamsの基本的なスループット単位で、追加すると書き込み/読み取り容量が拡張されます。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/streams/latest/dev/key-concepts.html",
+            "reference_label": "Kinesis Data Streams 概念"
+          }
+        },
+        {
+          "key": "B",
+          "text": "メッセージ",
+          "explanation": {
+            "text": "メッセージはストリーム内のデータ単位ですが、スループット制御の単位ではありません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/streams/latest/dev/key-concepts.html",
+            "reference_label": "Kinesis Data Streams 概念"
+          }
+        },
+        {
+          "key": "C",
+          "text": "パーティションキー",
+          "explanation": {
+            "text": "パーティションキーはシャードにマッピングされますが、スループット制御の単位ではありません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/streams/latest/dev/key-concepts.html",
+            "reference_label": "Kinesis Data Streams 概念"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IAMポリシー",
+          "explanation": {
+            "text": "IAMポリシーはアクセス制御であり、スループットには影響しません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/streams/latest/dev/key-concepts.html",
+            "reference_label": "Kinesis Data Streams 概念"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Kinesis Data Streamsのスループットはシャード単位でスケールされます。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/streams/latest/dev/key-concepts.html",
+        "reference_label": "Kinesis Data Streams 概念"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q22",
+      "question": "AWS Glueジョブでジョブブックマークを利用する主な目的はどれですか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "増分データ処理を行い、前回処理以降のデータのみを対象とする",
+          "explanation": {
+            "text": "ジョブブックマークは前回処理した位置を記録し、増分処理を可能にします。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/glue/latest/dg/monitor-continuations.html",
+            "reference_label": "Glue ジョブブックマーク"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Glueジョブのリソースを自動的にスケーリングする",
+          "explanation": {
+            "text": "スケーリングはブックマーク機能ではなく、ワーカー数やDPUで制御します。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/glue/latest/dg/add-job.html",
+            "reference_label": "Glue ジョブ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Athenaでのクエリ結果をキャッシュする",
+          "explanation": {
+            "text": "Athenaのキャッシュ機能とは関係ありません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/querying.html",
+            "reference_label": "Athena クエリ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Crawlerのスケジューリングを管理する",
+          "explanation": {
+            "text": "Crawlerのスケジュールとは別の機能です。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/glue/latest/dg/add-crawler.html",
+            "reference_label": "Glue Crawler"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Glueジョブブックマークは、ETLの増分処理を効率化するために利用されます。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/glue/latest/dg/monitor-continuations.html",
+        "reference_label": "Glue ジョブブックマーク"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q23",
+      "question": "Amazon Redshiftの自動ワークロード管理（WLM）の利点はどれですか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "クエリの優先度やリソース割り当てを自動的に最適化する",
+          "explanation": {
+            "text": "自動WLMはワークロードに基づきリソースを動的に調整します。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/cm-c-wlm-queue-assignment-auto.html",
+            "reference_label": "Redshift 自動WLM"
+          }
+        },
+        {
+          "key": "B",
+          "text": "クエリ結果を自動的にキャッシュする",
+          "explanation": {
+            "text": "キャッシュ機能は別で、自動WLMの機能ではありません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/cm-c-wlm-queue-assignment-auto.html",
+            "reference_label": "Redshift 自動WLM"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Redshiftノード数を自動で増減させる",
+          "explanation": {
+            "text": "ノードのスケーリングは自動WLMの範囲外です。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/mgmt/elastic-resize.html",
+            "reference_label": "Redshift Elastic Resize"
+          }
+        },
+        {
+          "key": "D",
+          "text": "バックアップを自動的に保存する",
+          "explanation": {
+            "text": "バックアップは自動スナップショット機能で行われます。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/mgmt/working-with-snapshots.html",
+            "reference_label": "Redshift スナップショット"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "自動WLMはクエリ優先度を考慮してリソース配分を調整し、クエリ性能を向上させます。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/cm-c-wlm-queue-assignment-auto.html",
+        "reference_label": "Redshift 自動WLM"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q24",
+      "question": "Amazon Athenaでクエリコストを最も削減できる戦略はどれですか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "圧縮された列指向フォーマット（Parquet/ORC）を利用する",
+          "explanation": {
+            "text": "列指向フォーマットはスキャンデータ量を削減し、クエリコストを大幅に減らします。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/best-practices.html",
+            "reference_label": "Athena ベストプラクティス"
+          }
+        },
+        {
+          "key": "B",
+          "text": "全テーブルに対してSELECT *を使う",
+          "explanation": {
+            "text": "不要なデータまで読み込み、コスト増につながります。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/best-practices.html",
+            "reference_label": "Athena ベストプラクティス"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データを常にCSV形式で保存する",
+          "explanation": {
+            "text": "CSVは非効率で、クエリコストが高くなります。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/best-practices.html",
+            "reference_label": "Athena ベストプラクティス"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Athenaのワークグループを複数作成する",
+          "explanation": {
+            "text": "ワークグループはコスト管理単位であり、直接の削減にはつながりません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/workgroups.html",
+            "reference_label": "Athena Workgroup"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Athenaのコスト削減には、ParquetやORCなどの列指向フォーマットと圧縮の利用が推奨されます。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/best-practices.html",
+        "reference_label": "Athena ベストプラクティス"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q25",
+      "question": "AWS GlueでPythonライブラリを追加する最も適切な方法はどれですか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ジョブで使用するカスタムPythonライブラリをS3にアップロードし、--extra-py-filesオプションで指定する",
+          "explanation": {
+            "text": "GlueジョブではカスタムライブラリをS3に置き、ジョブ引数で指定するのがベストプラクティスです。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/glue/latest/dg/aws-glue-programming-python-libraries.html",
+            "reference_label": "Glue Python ライブラリ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Glue Crawlerにライブラリを追加する",
+          "explanation": {
+            "text": "Crawlerはデータスキーマを検出するだけで、ライブラリ管理はしません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/glue/latest/dg/add-crawler.html",
+            "reference_label": "Glue Crawler"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Athena Workgroupにライブラリをインストールする",
+          "explanation": {
+            "text": "Athenaはサーバーレスであり、ライブラリ追加はできません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/workgroups.html",
+            "reference_label": "Athena Workgroup"
+          }
+        },
+        {
+          "key": "D",
+          "text": "S3 Selectを使ってライブラリを読み込む",
+          "explanation": {
+            "text": "S3 Selectはオブジェクトクエリ機能であり、Pythonライブラリを読み込む機能はありません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/AmazonS3/latest/userguide/selecting-content-from-objects.html",
+            "reference_label": "S3 Select"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "GlueジョブにカスタムPythonライブラリを追加するには、S3にアップロードして--extra-py-filesで指定します。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/glue/latest/dg/aws-glue-programming-python-libraries.html",
+        "reference_label": "Glue Python ライブラリ"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q26",
+      "question": "Amazon Redshiftでデータ圧縮を最適化するために利用できる機能はどれですか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ANALYZE COMPRESSION コマンド",
+          "explanation": {
+            "text": "ANALYZE COMPRESSIONを使うと、Redshiftが列ごとに最適な圧縮エンコードを推奨します。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/c-analyze-compression.html",
+            "reference_label": "Redshift ANALYZE COMPRESSION"
+          }
+        },
+        {
+          "key": "B",
+          "text": "VACUUM コマンド",
+          "explanation": {
+            "text": "VACUUMはテーブルの並べ替えや空き領域再利用のためで、圧縮最適化には直接関与しません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/r_VACUUM_command.html",
+            "reference_label": "Redshift VACUUM"
+          }
+        },
+        {
+          "key": "C",
+          "text": "UNLOAD コマンド",
+          "explanation": {
+            "text": "UNLOADはデータをS3にエクスポートするための機能です。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/r_UNLOAD_command.html",
+            "reference_label": "Redshift UNLOAD"
+          }
+        },
+        {
+          "key": "D",
+          "text": "COPY コマンド",
+          "explanation": {
+            "text": "COPYはS3などからデータをロードするコマンドであり、圧縮自体の最適化は行いません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/r_COPY_command.html",
+            "reference_label": "Redshift COPY"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Redshiftで圧縮を最適化するにはANALYZE COMPRESSIONコマンドを利用します。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/c-analyze-compression.html",
+        "reference_label": "Redshift ANALYZE COMPRESSION"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q27",
+      "question": "Amazon EMRでスポットインスタンスを安全に利用するための推奨戦略はどれですか？",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "マスターノードはオンデマンド、タスクノードにスポットを利用する",
+          "explanation": {
+            "text": "マスターは安定稼働のためオンデマンドにし、タスクノードでスポットを活用するのが推奨されます。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/emr/latest/ManagementGuide/emr-plan-instances-guidelines.html",
+            "reference_label": "EMR インスタンスのベストプラクティス"
+          }
+        },
+        {
+          "key": "B",
+          "text": "全ノードをスポットにする",
+          "explanation": {
+            "text": "すべてスポットにすると中断リスクが高く、マスターには適しません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/emr/latest/ManagementGuide/emr-plan-instances-guidelines.html",
+            "reference_label": "EMR インスタンスのベストプラクティス"
+          }
+        },
+        {
+          "key": "C",
+          "text": "スポットインスタンスは利用せずオンデマンドのみ利用する",
+          "explanation": {
+            "text": "安定性は確保できますがコスト効率が悪いです。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/emr/latest/ManagementGuide/emr-plan-instances-guidelines.html",
+            "reference_label": "EMR インスタンスのベストプラクティス"
+          }
+        },
+        {
+          "key": "D",
+          "text": "リザーブドインスタンスをすべてのノードに適用する",
+          "explanation": {
+            "text": "リザーブドはコスト削減に有効ですが、柔軟なスケーリングには向きません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/ec2-reserved-instances.html",
+            "reference_label": "EC2 リザーブドインスタンス"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "マスターノードをオンデマンド、タスクノードをスポットで構成するのが最適です。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/emr/latest/ManagementGuide/emr-plan-instances-guidelines.html",
+        "reference_label": "EMR インスタンスのベストプラクティス"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q28",
+      "question": "AWS Lake Formationでデータアクセス制御を行う際、中心となる仕組みはどれですか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データレイクのきめ細かい権限管理 (LF-Tags)",
+          "explanation": {
+            "text": "Lake FormationはLF-Tagsによるきめ細かいアクセス制御をサポートしています。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/lake-formation/latest/dg/permissions-overview.html",
+            "reference_label": "Lake Formation アクセス権限"
+          }
+        },
+        {
+          "key": "B",
+          "text": "IAMのみで制御する",
+          "explanation": {
+            "text": "IAMはリソースレベル制御ですが、Lake FormationではLF-Tagsを用いた制御が中心です。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/lake-formation/latest/dg/permissions-overview.html",
+            "reference_label": "Lake Formation アクセス権限"
+          }
+        },
+        {
+          "key": "C",
+          "text": "S3バケットポリシーのみを利用する",
+          "explanation": {
+            "text": "S3ポリシーだけではAthenaやRedshift Spectrumのクエリ権限を制御できません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/lake-formation/latest/dg/permissions-overview.html",
+            "reference_label": "Lake Formation アクセス権限"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CloudTrailイベントログ",
+          "explanation": {
+            "text": "CloudTrailは監査ログであり、アクセス制御の仕組みではありません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+            "reference_label": "AWS CloudTrail"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Lake FormationではLF-Tagsを活用したきめ細かいアクセス制御が推奨されています。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/lake-formation/latest/dg/permissions-overview.html",
+        "reference_label": "Lake Formation アクセス権限"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q29",
+      "question": "Amazon DynamoDBでトラフィックが急増するワークロードを扱う際に推奨される設定はどれですか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "オンデマンドキャパシティーモード",
+          "explanation": {
+            "text": "オンデマンドモードは自動的にスループットをスケーリングし、突発的なトラフィックに適しています。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html",
+            "reference_label": "DynamoDB キャパシティーモード"
+          }
+        },
+        {
+          "key": "B",
+          "text": "プロビジョンドキャパシティーで固定設定",
+          "explanation": {
+            "text": "プロビジョンドはスループット固定で、突発的な負荷には対応しにくいです。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html",
+            "reference_label": "DynamoDB キャパシティーモード"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Global Secondary Index (GSI) を追加",
+          "explanation": {
+            "text": "GSIはクエリの柔軟性を提供しますが、スループット拡張には直接関係ありません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/SecondaryIndexes.html",
+            "reference_label": "DynamoDB GSI"
+          }
+        },
+        {
+          "key": "D",
+          "text": "DAXを有効化する",
+          "explanation": {
+            "text": "DAXはキャッシュであり、スループットスケーリングの仕組みではありません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/DAX.html",
+            "reference_label": "DynamoDB DAX"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "オンデマンドキャパシティーモードを使うと、DynamoDBは自動的にスループットをスケーリングして急増するトラフィックに対応できます。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html",
+        "reference_label": "DynamoDB キャパシティーモード"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q30",
+      "question": "Amazon Athenaのパフォーマンスを向上させるためにデータをバケット化（Bucketing）する主な目的はどれですか？",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ジョイン処理の効率を高める",
+          "explanation": {
+            "text": "Bucketingはデータをキーに基づいて分割し、ジョイン処理を効率化します。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/bucketing.html",
+            "reference_label": "Athena Bucketing"
+          }
+        },
+        {
+          "key": "B",
+          "text": "S3ストレージコストを削減する",
+          "explanation": {
+            "text": "Bucketingはストレージコスト削減が目的ではありません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/bucketing.html",
+            "reference_label": "Athena Bucketing"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データ暗号化を強化する",
+          "explanation": {
+            "text": "暗号化はS3の機能であり、Bucketingとは無関係です。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/AmazonS3/latest/userguide/UsingServerSideEncryption.html",
+            "reference_label": "S3 サーバーサイド暗号化"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Athenaのクエリ課金を完全にゼロにする",
+          "explanation": {
+            "text": "課金はスキャン量に基づくため、完全にゼロにはできません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/best-practices.html",
+            "reference_label": "Athena ベストプラクティス"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "AthenaのBucketingは、データを特定キーで分割して配置し、ジョインの効率を向上させます。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/bucketing.html",
+        "reference_label": "Athena Bucketing"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q31",
+      "question": "Amazon Redshiftのマテリアライズドビューを利用する主な利点はどれですか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "クエリ結果を事前に計算・保存して、後続のクエリを高速化できる",
+          "explanation": {
+            "text": "マテリアライズドビューは結果を保持するため、再クエリ時の計算コストを削減できます。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/materialized-view-overview.html",
+            "reference_label": "Redshift マテリアライズドビュー"
+          }
+        },
+        {
+          "key": "B",
+          "text": "常に最新データを自動的に反映する",
+          "explanation": {
+            "text": "更新は自動ではなくREFRESHが必要です。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/materialized-view-overview.html",
+            "reference_label": "Redshift マテリアライズドビュー"
+          }
+        },
+        {
+          "key": "C",
+          "text": "バックアップを自動的に保存する",
+          "explanation": {
+            "text": "バックアップはマテリアライズドビューの機能ではありません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/mgmt/working-with-snapshots.html",
+            "reference_label": "Redshift スナップショット"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Athenaのクエリを自動的に変換する",
+          "explanation": {
+            "text": "Athenaとの連携機能ではありません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/materialized-view-overview.html",
+            "reference_label": "Redshift マテリアライズドビュー"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "マテリアライズドビューは事前計算結果を保存し、クエリを高速化する仕組みです。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/materialized-view-overview.html",
+        "reference_label": "Redshift マテリアライズドビュー"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q32",
+      "question": "Amazon S3に保存したParquetファイルをAthenaで効率的にクエリするための推奨事項はどれですか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "列指向フォーマットの特性を活かし、必要な列のみをSELECTする",
+          "explanation": {
+            "text": "Parquetは列指向フォーマットであり、必要な列だけをスキャンすることで効率が向上します。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/parquet.html",
+            "reference_label": "Athena Parquet"
+          }
+        },
+        {
+          "key": "B",
+          "text": "常にSELECT *で全列を取得する",
+          "explanation": {
+            "text": "不要な列を取得すると余分なスキャンコストが発生します。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/best-practices.html",
+            "reference_label": "Athena ベストプラクティス"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ParquetをCSVに変換して保存する",
+          "explanation": {
+            "text": "CSVは非効率であり、Parquetから戻すのは推奨されません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/parquet.html",
+            "reference_label": "Athena Parquet"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Athenaワークグループを分割する",
+          "explanation": {
+            "text": "ワークグループはクエリ管理単位であり、クエリ効率には直接影響しません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/workgroups.html",
+            "reference_label": "Athena Workgroup"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "AthenaでParquetを利用する場合は必要な列だけを選択するのがベストプラクティスです。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/parquet.html",
+        "reference_label": "Athena Parquet"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q33",
+      "question": "Amazon Kinesis Data FirehoseでデータをS3に保存する前に変換処理を行いたい場合、どの機能を利用しますか？",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Lambda関数によるデータ変換",
+          "explanation": {
+            "text": "FirehoseはLambdaを統合して変換処理を行えます。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/firehose/latest/dev/data-transformation.html",
+            "reference_label": "Firehose データ変換"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Athena Federated Query",
+          "explanation": {
+            "text": "Athena Federated Queryは外部データソースへのクエリ機能であり、Firehose変換ではありません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/connectors.html",
+            "reference_label": "Athena Federated Query"
+          }
+        },
+        {
+          "key": "C",
+          "text": "S3 Lifecycleルール",
+          "explanation": {
+            "text": "Lifecycleはオブジェクト管理の仕組みであり、変換処理はできません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/AmazonS3/latest/userguide/object-lifecycle-mgmt.html",
+            "reference_label": "S3 Lifecycle"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Glue DataBrew",
+          "explanation": {
+            "text": "DataBrewはGUIでのバッチデータ前処理用であり、Firehoseと統合されていません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/databrew/latest/dg/what-is.html",
+            "reference_label": "Glue DataBrew"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "FirehoseではLambda関数を呼び出してストリームデータを変換可能です。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/firehose/latest/dev/data-transformation.html",
+        "reference_label": "Firehose データ変換"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q34",
+      "question": "Amazon DynamoDB Streamsの一般的なユースケースはどれですか？",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "変更データキャプチャ (CDC) による他システム連携",
+          "explanation": {
+            "text": "Streamsはテーブル更新イベントをキャプチャし、CDC用途で利用されます。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/Streams.html",
+            "reference_label": "DynamoDB Streams"
+          }
+        },
+        {
+          "key": "B",
+          "text": "テーブルサイズの自動拡張",
+          "explanation": {
+            "text": "テーブルサイズ拡張はキャパシティーモードに依存し、Streamsの機能ではありません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html",
+            "reference_label": "DynamoDB キャパシティーモード"
+          }
+        },
+        {
+          "key": "C",
+          "text": "DAXキャッシュ更新",
+          "explanation": {
+            "text": "DAXは別のキャッシュ機能であり、Streamsでは更新しません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/DAX.html",
+            "reference_label": "DynamoDB DAX"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データの自動アーカイブ",
+          "explanation": {
+            "text": "Streamsはイベント通知用であり、アーカイブ機能はありません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/Streams.html",
+            "reference_label": "DynamoDB Streams"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "DynamoDB StreamsはCDC用途で他システム連携に利用されます。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/Streams.html",
+        "reference_label": "DynamoDB Streams"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q35",
+      "question": "Amazon EMRでHive Metastoreを外部に持たせる場合、推奨されるストレージはどれですか？",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Amazon RDS/Aurora",
+          "explanation": {
+            "text": "外部Metastoreの一般的な選択肢はRDSやAuroraです。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/emr/latest/ReleaseGuide/emr-hive-metastore-external.html",
+            "reference_label": "EMR Hive Metastore 外部化"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Amazon DynamoDB",
+          "explanation": {
+            "text": "DynamoDBはHive Metastoreとして利用されません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/emr/latest/ReleaseGuide/emr-hive-metastore-external.html",
+            "reference_label": "EMR Hive Metastore 外部化"
+          }
+        },
+        {
+          "key": "C",
+          "text": "S3バケット",
+          "explanation": {
+            "text": "S3はデータストレージ用であり、Metastoreには利用されません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/emr/latest/ReleaseGuide/emr-hive-metastore-external.html",
+            "reference_label": "EMR Hive Metastore 外部化"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CloudTrail",
+          "explanation": {
+            "text": "CloudTrailは監査サービスであり、Metastoreには関与しません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+            "reference_label": "AWS CloudTrail"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Hive Metastoreを外部化する場合、RDSやAuroraを利用するのがベストプラクティスです。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/emr/latest/ReleaseGuide/emr-hive-metastore-external.html",
+        "reference_label": "EMR Hive Metastore 外部化"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q36",
+      "question": "AWS Glue DataBrewのユースケースとして最も適切なのはどれですか？",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "GUIベースでデータの前処理やクレンジングを行う",
+          "explanation": {
+            "text": "DataBrewはコード不要でGUIベースのデータ準備ツールです。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/databrew/latest/dg/what-is.html",
+            "reference_label": "AWS Glue DataBrew"
+          }
+        },
+        {
+          "key": "B",
+          "text": "リアルタイムデータのストリーミング処理",
+          "explanation": {
+            "text": "リアルタイム処理にはGlue StreamingやKinesisを利用します。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/glue/latest/dg/add-job-streaming.html",
+            "reference_label": "Glue Streaming"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ETLワークフローの自動オーケストレーション",
+          "explanation": {
+            "text": "オーケストレーションはGlue Workflowsの機能です。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/glue/latest/dg/orchestrate-using-workflow.html",
+            "reference_label": "Glue Workflows"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Redshiftにデータを直接ストリーミング取り込み",
+          "explanation": {
+            "text": "Redshift Streaming Ingestionで行う機能であり、DataBrewではありません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/materialized-view-streaming-ingestion.html",
+            "reference_label": "Redshift Streaming Ingestion"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "DataBrewはノーコードでデータの準備を可能にするGUIベースのツールです。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/databrew/latest/dg/what-is.html",
+        "reference_label": "AWS Glue DataBrew"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q37",
+      "question": "Amazon EMRにおけるEMRFSの特徴はどれですか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "S3をHadoop互換のファイルシステムとして利用できる",
+          "explanation": {
+            "text": "EMRFSを利用するとS3をHadoopのストレージとして扱えます。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/emr/latest/ManagementGuide/emr-fs.html",
+            "reference_label": "Amazon EMRFS"
+          }
+        },
+        {
+          "key": "B",
+          "text": "クラスター終了後もデータが保持されない",
+          "explanation": {
+            "text": "S3は永続ストレージであり、データは保持されます。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/emr/latest/ManagementGuide/emr-fs.html",
+            "reference_label": "Amazon EMRFS"
+          }
+        },
+        {
+          "key": "C",
+          "text": "オンプレミスのHDFSを自動的にマウントする",
+          "explanation": {
+            "text": "オンプレHDFSとの統合は自動では行われません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/emr/latest/ManagementGuide/emr-fs.html",
+            "reference_label": "Amazon EMRFS"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Athena専用のファイルシステム",
+          "explanation": {
+            "text": "AthenaはS3を直接クエリしますが、EMRFSとは無関係です。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/emr/latest/ManagementGuide/emr-fs.html",
+            "reference_label": "Amazon EMRFS"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "EMRFSはS3をHadoop互換のファイルシステムとして扱えるEMRの機能です。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/emr/latest/ManagementGuide/emr-fs.html",
+        "reference_label": "Amazon EMRFS"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q38",
+      "question": "Athenaでバケット化テーブル（Bucketed Table）を利用する目的はどれですか？",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ジョインや集約クエリの効率を改善する",
+          "explanation": {
+            "text": "バケット化によりデータが特定のキーで分散され、ジョインや集約の効率が上がります。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/bucketing.html",
+            "reference_label": "Athena Bucketing"
+          }
+        },
+        {
+          "key": "B",
+          "text": "S3のストレージコストを削減する",
+          "explanation": {
+            "text": "バケット化はクエリ効率向上のためで、ストレージコスト削減の仕組みではありません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/bucketing.html",
+            "reference_label": "Athena Bucketing"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Athenaの課金をゼロにする",
+          "explanation": {
+            "text": "スキャン量は減らせますが、課金がゼロになるわけではありません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/bucketing.html",
+            "reference_label": "Athena Bucketing"
+          }
+        },
+        {
+          "key": "D",
+          "text": "自動的にGlue Crawlerを起動する",
+          "explanation": {
+            "text": "バケット化テーブルはクエリ効率の仕組みであり、Crawlerとは関係しません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/bucketing.html",
+            "reference_label": "Athena Bucketing"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Athenaのバケット化テーブルは、ジョインや集約処理の効率を改善します。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/bucketing.html",
+        "reference_label": "Athena Bucketing"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q39",
+      "question": "DynamoDB Global Tablesを利用する主な利点はどれですか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "マルチリージョンでの自動レプリケーションと低レイテンシーアクセス",
+          "explanation": {
+            "text": "Global Tablesは複数リージョン間で自動的にデータをレプリケートし、グローバルアプリケーションに最適です。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/GlobalTables.html",
+            "reference_label": "DynamoDB Global Tables"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データを長期保存するアーカイブ機能",
+          "explanation": {
+            "text": "アーカイブはGlobal Tablesの機能ではありません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/GlobalTables.html",
+            "reference_label": "DynamoDB Global Tables"
+          }
+        },
+        {
+          "key": "C",
+          "text": "クエリパフォーマンスの自動チューニング",
+          "explanation": {
+            "text": "Global Tablesはレプリケーション機能であり、クエリ最適化機能ではありません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/GlobalTables.html",
+            "reference_label": "DynamoDB Global Tables"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Athenaから直接クエリできる外部テーブルを提供する",
+          "explanation": {
+            "text": "Athena外部テーブルとは無関係です。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/GlobalTables.html",
+            "reference_label": "DynamoDB Global Tables"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "DynamoDB Global Tablesはマルチリージョンでのデータレプリケーションを自動化し、低レイテンシーでアクセス可能にします。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/GlobalTables.html",
+        "reference_label": "DynamoDB Global Tables"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q40",
+      "question": "AWS Glueジョブを開発・テストする際にローカル環境で活用できるツールはどれですか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Glue PythonシェルとGlueローカル開発環境（Dockerイメージ）",
+          "explanation": {
+            "text": "AWSはGlueジョブ用のローカル開発Dockerイメージを提供しており、Pythonシェルも利用可能です。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/glue/latest/dg/aws-glue-programming-etl-libraries.html",
+            "reference_label": "Glue ローカル開発"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Athenaクエリエディタ",
+          "explanation": {
+            "text": "Athenaはクエリ用であり、Glueジョブのテスト環境にはなりません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/querying.html",
+            "reference_label": "Athena クエリ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "CloudFormationテンプレート",
+          "explanation": {
+            "text": "CloudFormationはリソースのプロビジョニング用であり、ローカルテスト環境ではありません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/Welcome.html",
+            "reference_label": "AWS CloudFormation"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CloudTrailログ",
+          "explanation": {
+            "text": "CloudTrailは監査ログであり、開発・テストには関与しません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+            "reference_label": "AWS CloudTrail"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Glueはローカル開発用のDockerイメージとPythonシェルを提供しており、開発・テストに利用可能です。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/glue/latest/dg/aws-glue-programming-etl-libraries.html",
+        "reference_label": "Glue ローカル開発"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q41",
+      "question": "AWS GlueのDynamicFrameを利用する利点はどれですか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "スキーマを柔軟に扱い、欠損値やネスト構造に対応できる",
+          "explanation": {
+            "text": "DynamicFrameはDataFrameに似ていますが、スキーマが曖昧なデータでも処理可能です。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/glue/latest/dg/author-job.html",
+            "reference_label": "Glue DynamicFrame"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Spark SQL専用で利用できるデータ型",
+          "explanation": {
+            "text": "DynamicFrameはSpark SQL専用ではなく、DataFrameと変換可能です。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/glue/latest/dg/author-job.html",
+            "reference_label": "Glue DynamicFrame"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Athenaから直接クエリ可能な形式",
+          "explanation": {
+            "text": "AthenaはData Catalogを利用してクエリします。DynamicFrameはジョブ内で使う構造です。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/glue/latest/dg/author-job.html",
+            "reference_label": "Glue DynamicFrame"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Redshiftの専用ストレージ形式",
+          "explanation": {
+            "text": "Redshiftとは別であり、DynamicFrameはETL処理用です。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/glue/latest/dg/author-job.html",
+            "reference_label": "Glue DynamicFrame"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "DynamicFrameは柔軟にスキーマを扱い、ネスト構造や欠損値を処理できる点が特徴です。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/glue/latest/dg/author-job.html",
+        "reference_label": "Glue DynamicFrame"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q42",
+      "question": "Amazon Redshiftでデータ分散方式（DISTSTYLE）を選択する際、テーブル全体を各ノードにコピーする方式はどれですか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "DISTSTYLE ALL",
+          "explanation": {
+            "text": "DISTSTYLE ALLは小さな参照テーブルを全ノードにコピーする方式です。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/t_Distributing_data.html",
+            "reference_label": "Redshift データ分散"
+          }
+        },
+        {
+          "key": "B",
+          "text": "DISTSTYLE EVEN",
+          "explanation": {
+            "text": "DISTSTYLE EVENは行を均等に分散します。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/t_Distributing_data.html",
+            "reference_label": "Redshift データ分散"
+          }
+        },
+        {
+          "key": "C",
+          "text": "DISTSTYLE KEY",
+          "explanation": {
+            "text": "DISTSTYLE KEYは指定キーで分散させます。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/t_Distributing_data.html",
+            "reference_label": "Redshift データ分散"
+          }
+        },
+        {
+          "key": "D",
+          "text": "DISTSTYLE AUTO",
+          "explanation": {
+            "text": "DISTSTYLE AUTOはRedshiftが自動で方式を選択します。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/t_Distributing_data.html",
+            "reference_label": "Redshift データ分散"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "DISTSTYLE ALLは小規模テーブルを全ノードにコピーし、結合時のデータ移動を減らします。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/t_Distributing_data.html",
+        "reference_label": "Redshift データ分散"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q43",
+      "question": "AWS Lake Formationでデータアクセスを制御する場合、Glue Data Catalogのテーブルに対して適用されるのはどのような権限ですか？",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "列レベルやセルレベルのきめ細かいアクセス権限",
+          "explanation": {
+            "text": "Lake Formationは列単位・セル単位の制御を提供できます。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/lake-formation/latest/dg/permissions-overview.html",
+            "reference_label": "Lake Formation アクセス制御"
+          }
+        },
+        {
+          "key": "B",
+          "text": "IAMのみによるS3バケット権限",
+          "explanation": {
+            "text": "S3ポリシーは使われますが、Lake FormationはGlue Data Catalog単位で細かく制御します。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/lake-formation/latest/dg/permissions-overview.html",
+            "reference_label": "Lake Formation アクセス制御"
+          }
+        },
+        {
+          "key": "C",
+          "text": "VPCセキュリティグループ制御",
+          "explanation": {
+            "text": "ネットワークレベル制御ではなく、データ権限の制御です。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/lake-formation/latest/dg/permissions-overview.html",
+            "reference_label": "Lake Formation アクセス制御"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Athena Workgroupレベルの権限制御",
+          "explanation": {
+            "text": "Athena Workgroupとは異なり、Lake Formationはテーブルや列単位で制御します。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/lake-formation/latest/dg/permissions-overview.html",
+            "reference_label": "Lake Formation アクセス制御"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Lake FormationではGlue Data Catalogのテーブルに対して列単位やセル単位のきめ細かい権限を付与できます。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/lake-formation/latest/dg/permissions-overview.html",
+        "reference_label": "Lake Formation アクセス制御"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q44",
+      "question": "Amazon S3 Selectを利用する利点はどれですか？",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "オブジェクト全体ではなく必要な部分だけを取得できる",
+          "explanation": {
+            "text": "S3 SelectはCSVやJSON、Parquetなどの一部データだけを取得できます。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/AmazonS3/latest/userguide/selecting-content-from-objects.html",
+            "reference_label": "S3 Select"
+          }
+        },
+        {
+          "key": "B",
+          "text": "S3バケットの自動暗号化",
+          "explanation": {
+            "text": "暗号化はS3の機能ですが、S3 Selectの機能ではありません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/AmazonS3/latest/userguide/UsingServerSideEncryption.html",
+            "reference_label": "S3 暗号化"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Athenaクエリのキャッシュ",
+          "explanation": {
+            "text": "Athenaとは別の機能であり、クエリキャッシュ機能ではありません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/athena/latest/ug/querying.html",
+            "reference_label": "Athena クエリ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CloudTrailログ保存",
+          "explanation": {
+            "text": "CloudTrailとは関係ありません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+            "reference_label": "AWS CloudTrail"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "S3 Selectはオブジェクトの一部を抽出でき、転送コスト削減と高速化が可能です。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/AmazonS3/latest/userguide/selecting-content-from-objects.html",
+        "reference_label": "S3 Select"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q45",
+      "question": "Amazon RedshiftのSpectrumを利用する場合、クエリ対象となるデータはどこに保存されますか？",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Amazon S3",
+          "explanation": {
+            "text": "Redshift SpectrumはS3に保存されたデータを直接クエリします。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/c-using-spectrum.html",
+            "reference_label": "Redshift Spectrum"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Amazon RDS",
+          "explanation": {
+            "text": "RDSはSpectrumの対象ではありません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/c-using-spectrum.html",
+            "reference_label": "Redshift Spectrum"
+          }
+        },
+        {
+          "key": "C",
+          "text": "DynamoDB",
+          "explanation": {
+            "text": "DynamoDBはSpectrumで直接クエリできません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/c-using-spectrum.html",
+            "reference_label": "Redshift Spectrum"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ElastiCache",
+          "explanation": {
+            "text": "ElastiCacheはSpectrum対象ではありません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/c-using-spectrum.html",
+            "reference_label": "Redshift Spectrum"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Redshift SpectrumはAmazon S3上のデータを直接クエリできます。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/c-using-spectrum.html",
+        "reference_label": "Redshift Spectrum"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q46",
+      "question": "AWS Data Pipelineの特徴として正しいものはどれですか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データの移動や変換をスケジュールベースで自動化できる",
+          "explanation": {
+            "text": "Data Pipelineはデータ処理をスケジュール化して自動化できます。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/datapipeline/latest/DeveloperGuide/what-is-datapipeline.html",
+            "reference_label": "AWS Data Pipeline"
+          }
+        },
+        {
+          "key": "B",
+          "text": "リアルタイムストリーミングデータの処理専用サービス",
+          "explanation": {
+            "text": "リアルタイム処理はKinesisなどで行います。Data Pipelineはバッチ処理が中心です。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/datapipeline/latest/DeveloperGuide/what-is-datapipeline.html",
+            "reference_label": "AWS Data Pipeline"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Athenaの代替としてSQLクエリを実行できる",
+          "explanation": {
+            "text": "AthenaのようなSQLクエリ機能はありません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/datapipeline/latest/DeveloperGuide/what-is-datapipeline.html",
+            "reference_label": "AWS Data Pipeline"
+          }
+        },
+        {
+          "key": "D",
+          "text": "DynamoDBのスキーマを自動検出する",
+          "explanation": {
+            "text": "スキーマ検出はGlue Crawlerの機能です。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/glue/latest/dg/add-crawler.html",
+            "reference_label": "Glue Crawler"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "AWS Data Pipelineはスケジュールベースでデータ移動や変換を自動化できます。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/datapipeline/latest/DeveloperGuide/what-is-datapipeline.html",
+        "reference_label": "AWS Data Pipeline"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q47",
+      "question": "Amazon EMRでPrestoを利用する主な用途はどれですか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "分散SQLクエリエンジンとして大規模データに対するインタラクティブクエリを実行する",
+          "explanation": {
+            "text": "Prestoは分散SQLクエリエンジンで、S3などに保存されたデータに対して高速にクエリできます。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/emr/latest/ReleaseGuide/emr-presto.html",
+            "reference_label": "Amazon EMR Presto"
+          }
+        },
+        {
+          "key": "B",
+          "text": "機械学習モデルの学習を行う",
+          "explanation": {
+            "text": "機械学習にはSpark MLlibやSageMakerを利用します。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/sagemaker/latest/dg/whatis.html",
+            "reference_label": "Amazon SageMaker"
+          }
+        },
+        {
+          "key": "C",
+          "text": "NoSQLデータベースを提供する",
+          "explanation": {
+            "text": "NoSQLデータベースではなく、SQLクエリエンジンです。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/emr/latest/ReleaseGuide/emr-presto.html",
+            "reference_label": "Amazon EMR Presto"
+          }
+        },
+        {
+          "key": "D",
+          "text": "DynamoDBのキャッシュを管理する",
+          "explanation": {
+            "text": "DynamoDBキャッシュはDAXで提供され、Prestoとは関係ありません。",
+            "reference": "https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/DAX.html",
+            "reference_label": "DynamoDB DAX"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Prestoは分散SQLエンジンとしてインタラクティブクエリを大規模データに実行できます。",
+        "reference": "https://docs.aws.amazon.com/ja_jp/emr/latest/ReleaseGuide/emr-presto.html",
+        "reference_label": "Amazon EMR Presto"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q48",
+      "question": "AWS GlueでETLジョブをスケジュール実行するにはどの機能を利用すべきですか？",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Glue WorkflowsまたはGlue Triggers",
+          "explanation": {
+            "text": "Glueのトリガーはジョブやクローラーをオンデマンド、スケジュール、イベント連動で起動できます。ワークフローは依存関係を含む一連のジョブ・クローラーをオーケストレーションします。",
+            "reference": "https://docs.aws.amazon.com/glue/latest/dg/workflows_overview.html",
+            "reference_label": "AWS Glue ワークフローの概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Glue DataBrew",
+          "explanation": {
+            "text": "DataBrewはGUIベースのデータ準備ツールで、Glueジョブのスケジューラではありません。",
+            "reference": "https://docs.aws.amazon.com/databrew/latest/dg/what-is.html",
+            "reference_label": "AWS Glue DataBrew とは"
+          }
+        },
+        {
+          "key": "C",
+          "text": "CloudTrailイベント",
+          "explanation": {
+            "text": "CloudTrailはAPI操作の監査ログです。Glueジョブのスケジュール実行には使用しません。",
+            "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+            "reference_label": "AWS CloudTrail ユーザーガイド"
+          }
+        },
+        {
+          "key": "D",
+          "text": "S3 Lifecycle ルール",
+          "explanation": {
+            "text": "S3ライフサイクルはオブジェクトの保存クラス移行や有効期限管理であり、ETLジョブのスケジューリング機能ではありません。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html",
+            "reference_label": "S3 オブジェクトライフサイクル管理"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Glueのスケジュール実行はトリガー（cron 相当の時間ベースやイベント連動）で行い、複数ジョブ／クローラーの連携はワークフローで構築します。",
+        "reference": "https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html",
+        "reference_label": "Glue ジョブ／クローラーの時間ベーススケジュール"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q49",
+      "question": "Amazon MSKのトピックからAmazon Redshiftへ、S3にステージングせずに低レイテンシーで取り込みたい。結合（JOIN）の制約に注意しつつ実装する最もネイティブな方法はどれですか？",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Redshiftのストリーミング取り込み（マテリアライズドビュー）を使い、MSKトピックを参照する外部スキーマ＋ストリーミングMVを作成",
+          "explanation": {
+            "text": "RedshiftはMSKやKinesisから直接取り込めるストリーミング取り込みをサポート。外部スキーマを作成し、マテリアライズドビューで消費します（JOIN非対応などの制約あり）。",
+            "reference": "https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-streaming-ingestion-getting-started-MSK.html",
+            "reference_label": "Redshift: Kafka/MSK からのストリーミング取り込み"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Kinesis Data FirehoseでMSKから直接Redshiftへ配信する",
+          "explanation": {
+            "text": "FirehoseはRedshift配信をサポートしますが、MSKを直接ソースにするのではなく、Kafka Connect（MSK Connect）など別構成が必要でネイティブではありません。",
+            "reference": "https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html",
+            "reference_label": "Kinesis Data Firehose の概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Glue Streaming ETLでバッファしつつCOPYコマンドで投入",
+          "explanation": {
+            "text": "Glue経由で可能ですが、S3ステージングやバッチ投入が絡みやすく、最小レイテンシーの要件に劣ります。",
+            "reference": "https://docs.aws.amazon.com/glue/latest/dg/add-job-streaming.html",
+            "reference_label": "AWS Glue Streaming ジョブ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "MSK ConnectのS3 SinkでS3に書いてからRedshift COPY",
+          "explanation": {
+            "text": "これはS3経由のバッチ取り込みであり、問題文の“ステージング無し・低レイテンシー”要件に反します。",
+            "reference": "https://docs.aws.amazon.com/msk/latest/developerguide/msk-connect.html",
+            "reference_label": "MSK Connect の概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Redshiftのストリーミング取り込みはMSK/Kinesisから直接データを取り込める公式手段。外部スキーマとストリーミング用マテリアライズドビューで構成し、JOIN非対応などの制約を理解して設計します。",
+        "reference": "https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-streaming-ingestion.html",
+        "reference_label": "Redshift: ストリーミング取り込みの制約と概要"
+      }
+    },
+    {
+      "id": "aws-dea-c01-q50",
+      "question": "オンプレミスのリレーショナルDBからAmazon S3のデータレイクへ、フルロード＋CDCを行い、列指向フォーマットで保存して後続のAthena/EMR分析に最適化したい。設定と運用の手間を最小にする推奨アプローチはどれですか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AWS DMSを使用してS3をターゲットにし、出力形式をParquetに設定（必要に応じてトランザクション順序保存等のS3設定を有効化）",
+          "explanation": {
+            "text": "DMSはS3をターゲットにフルロード＋CDCの両方を出力可能。デフォルトCSVだがParquetを選択でき、分析向けにコンパクトで効率的。",
+            "reference": "https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html",
+            "reference_label": "DMS: S3 をターゲットに使用（Parquet対応）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Glue CrawlerでRDBをスキャンし、直接Parquetに変換してS3へ保存",
+          "explanation": {
+            "text": "Crawlerはスキーマ検出用であり、RDBからの移送やCDCは行いません。",
+            "reference": "https://docs.aws.amazon.com/glue/latest/dg/add-crawler.html",
+            "reference_label": "Glue Crawler の役割"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Snowball Edgeで一度S3に投入し、その後手作業でCDCを適用",
+          "explanation": {
+            "text": "大容量初期移行には有効ですが、継続的なCDCには適しません。",
+            "reference": "https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html",
+            "reference_label": "DMS: S3 ターゲット（CDC サポート）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Kinesis Data FirehoseでRDBから直接S3にストリーミングしてParquet保存",
+          "explanation": {
+            "text": "FirehoseはRDBを直接ソースにしません。RDB→S3の複製やCDCはDMSが適任です。",
+            "reference": "https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html",
+            "reference_label": "Kinesis Data Firehose の概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "DMSはS3ターゲットでフルロードとCDCを一元的に実行でき、出力をParquetに設定してデータレイク／Athena最適化に直結します。必要ならS3設定でトランザクション順序保存や検証の挙動も調整可能です。",
+        "reference": "https://docs.aws.amazon.com/dms/latest/APIReference/API_S3Settings.html",
+        "reference_label": "DMS S3Settings（ParquetやCDC関連設定）"
+      }
+    }
+  ]
+}

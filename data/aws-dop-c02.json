@@ -1,0 +1,2467 @@
+{
+    "exam": {
+        "id": "DOP-C02",
+        "title": "AWS Certified DevOps Engineer – Professional",
+        "description": "この試験は、AWS 環境における分散アプリケーションシステムの「プロビジョニング、運用、管理」に関する高度な技術力を検証するものです。具体的には、CI/CD（継続的デリバリー）やインフラストラクチャの自動化、モニタリング／ロギング、セキュリティ・ガバナンス、可用性・スケーラビリティ・自己修復性のあるシステム設計・運用を実践できる能力が問われます。対象は主に DevOps エンジニアの役割を担う技術者で、AWS 環境での実務経験を有する方に適しています。",
+        "version": "2023年3月",
+        "price": "300 USD",
+        "difficulty": "難しい",
+        "official-site": "https://aws.amazon.com/certification/certified-devops-engineer-professional/",
+        "category": {
+            "id": "aws",
+            "name": "AWS"
+        }
+    },
+    "questions": [
+        {
+            "id": "aws-dop-c02-q1",
+            "question": "開発チームはアプリケーションのデプロイを自動化するために、AWS CodePipelineを利用しています。ソースコードの変更がGitHubにプッシュされた際に自動的にパイプラインを実行するためには、どの方法が最も適切ですか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "GitHub Webhookを設定してCodePipelineをトリガーする",
+                    "explanation": {
+                        "text": "CodePipelineはGitHubと統合でき、Webhookによって変更がプッシュされると自動的にパイプラインを実行できます。",
+                        "reference": "https://docs.aws.amazon.com/codepipeline/latest/userguide/connections-github.html",
+                        "reference_label": "AWS CodePipeline – GitHub統合"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "S3に手動でZIPファイルをアップロードし、CodePipelineを手動で実行する",
+                    "explanation": {
+                        "text": "これは自動化ではなく手動運用となり、DevOpsの目的に反します。",
+                        "reference": "https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html",
+                        "reference_label": "AWS CodePipeline – Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "CloudWatch Logsをトリガーとしてパイプラインを起動する",
+                    "explanation": {
+                        "text": "CloudWatch Logsはソースコード変更を直接検知する仕組みではありません。",
+                        "reference": "https://docs.aws.amazon.com/codepipeline/latest/userguide/concepts.html",
+                        "reference_label": "AWS CodePipeline – Concepts"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "EC2インスタンス上でcronジョブを設定し、定期的にCodePipelineを開始する",
+                    "explanation": {
+                        "text": "これは非効率であり、GitHubとのネイティブ統合を利用すべきです。",
+                        "reference": "https://docs.aws.amazon.com/codepipeline/latest/userguide/connections-github.html",
+                        "reference_label": "AWS CodePipeline – GitHub統合"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "CodePipelineはGitHub WebhookやGitHub App統合を用いてソースコードの変更を自動検知し、パイプラインを開始できます。これにより完全な自動化が可能です。",
+                "reference": "https://docs.aws.amazon.com/codepipeline/latest/userguide/connections-github.html",
+                "reference_label": "AWS CodePipeline – GitHub統合"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q2",
+            "question": "運用チームは本番環境に対するインフラ変更をInfrastructure as Codeで管理しています。変更内容を安全に適用するために最も適切な方法はどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "AWS CloudFormation Change Setsを使用して変更内容を事前に確認する",
+                    "explanation": {
+                        "text": "Change Setsを使うことで、CloudFormationがどのようなリソース変更を行うか事前に確認できます。",
+                        "reference": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html",
+                        "reference_label": "AWS CloudFormation – Change Sets"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "CloudFormationスタックを直接更新し、結果をCloudWatch Logsで確認する",
+                    "explanation": {
+                        "text": "直接更新では事前確認ができずリスクが高いです。",
+                        "reference": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks.html",
+                        "reference_label": "AWS CloudFormation – Updating Stacks"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "手動でAWS Management Consoleから設定を変更する",
+                    "explanation": {
+                        "text": "手動変更はInfrastructure as Codeのベストプラクティスに反します。",
+                        "reference": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html",
+                        "reference_label": "AWS CloudFormation – Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "変更を本番環境に直接適用し、問題があればロールバックを試みる",
+                    "explanation": {
+                        "text": "事前確認をせずに変更を適用するとリスクが高すぎます。",
+                        "reference": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html",
+                        "reference_label": "AWS CloudFormation – Change Sets"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "CloudFormation Change Setsを使うことで、安全に変更内容を確認した上で適用できます。",
+                "reference": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html",
+                "reference_label": "AWS CloudFormation – Change Sets"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q3",
+            "question": "チームはAmazon ECSを利用してマイクロサービスを運用しています。ECSサービスの新しいタスク定義を安全に展開し、サービスダウンタイムを最小化する方法はどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Blue/Greenデプロイメントを利用して新旧環境を切り替える",
+                    "explanation": {
+                        "text": "Blue/Greenデプロイメントを使うと、トラフィックを新しい環境に切り替える前にテストでき、ダウンタイムを最小化できます。",
+                        "reference": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-type-bluegreen.html",
+                        "reference_label": "Amazon ECS – Blue/Green Deployment"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "新しいタスク定義をすべてのタスクに即座に適用する",
+                    "explanation": {
+                        "text": "即時置き換えはサービス中断を引き起こす可能性があります。",
+                        "reference": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html",
+                        "reference_label": "Amazon ECS – Deployment Types"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "タスクを1つずつ手動で更新する",
+                    "explanation": {
+                        "text": "手動更新は効率的ではなく、エラーのリスクも高いです。",
+                        "reference": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-deployment.html",
+                        "reference_label": "Amazon ECS – Deployments"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "CloudWatch Logsを監視しつつ手動でサービスを停止・再起動する",
+                    "explanation": {
+                        "text": "手動による停止・再起動は冗長であり、ゼロダウンタイムデプロイには向きません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html",
+                        "reference_label": "Amazon ECS – Deployment Types"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Blue/Greenデプロイメントを用いることで、テスト環境で新しいタスクを検証してから本番へ切り替えることができ、ダウンタイムを最小化できます。",
+                "reference": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-type-bluegreen.html",
+                "reference_label": "Amazon ECS – Blue/Green Deployment"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q4",
+            "question": "CI/CDパイプラインにおいて、セキュリティスキャンを組み込みたい場合、最も適切なAWSサービスはどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Amazon Inspector",
+                    "explanation": {
+                        "text": "Amazon Inspectorはソフトウェアの脆弱性を自動検出でき、CI/CDに統合可能です。",
+                        "reference": "https://docs.aws.amazon.com/inspector/latest/user/getting-started.html",
+                        "reference_label": "Amazon Inspector – Getting Started"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "AWS Config",
+                    "explanation": {
+                        "text": "AWS Configはリソース設定のコンプライアンス監査に使いますが、脆弱性スキャンには適しません。",
+                        "reference": "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
+                        "reference_label": "AWS Config – Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "AWS CloudTrail",
+                    "explanation": {
+                        "text": "CloudTrailはAPI呼び出しを記録しますが、脆弱性スキャンには使えません。",
+                        "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+                        "reference_label": "AWS CloudTrail – Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Amazon S3",
+                    "explanation": {
+                        "text": "S3はストレージサービスであり、セキュリティスキャン機能は持ちません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
+                        "reference_label": "Amazon S3 – Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Amazon Inspectorは自動脆弱性スキャンを提供し、CI/CDパイプラインに統合できます。",
+                "reference": "https://docs.aws.amazon.com/inspector/latest/user/getting-started.html",
+                "reference_label": "Amazon Inspector – Getting Started"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q5",
+            "question": "チームはAWS Lambdaを使ってサーバーレスアプリケーションを構築しています。デプロイ時にトラフィックを徐々に新しいバージョンへ移行するために使用できる仕組みはどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Lambda エイリアスとトラフィックシフト（加重ルーティング）",
+                    "explanation": {
+                        "text": "Lambdaエイリアスを使うと、トラフィックを複数バージョンに分配できます。",
+                        "reference": "https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html",
+                        "reference_label": "AWS Lambda – Aliases"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "AWS Configルールを使ったコンプライアンスチェック",
+                    "explanation": {
+                        "text": "Configは監査用であり、トラフィック制御には使えません。",
+                        "reference": "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
+                        "reference_label": "AWS Config – Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Lambda関数のバージョンを直接上書きする",
+                    "explanation": {
+                        "text": "直接上書きすると、全トラフィックが即座に切り替わり、リスクが高いです。",
+                        "reference": "https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html",
+                        "reference_label": "AWS Lambda – Versions"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "CloudTrailイベントを用いて自動的に関数を更新する",
+                    "explanation": {
+                        "text": "CloudTrailは監査ログサービスであり、トラフィック分割には利用できません。",
+                        "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+                        "reference_label": "AWS CloudTrail – Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Lambdaエイリアスに加重ルーティングを設定することで、新旧バージョン間でトラフィックを段階的に移行できます。",
+                "reference": "https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html",
+                "reference_label": "AWS Lambda – Aliases"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q6",
+            "question": "運用チームはAWS CloudWatchを用いてシステムのモニタリングを行っています。メトリクスに基づいて自動的にリソースをスケーリングさせるために利用できる仕組みはどれですか？",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "CloudWatch アラームとAuto Scaling",
+                    "explanation": {
+                        "text": "CloudWatchアラームを用いてしきい値を監視し、Auto Scalingをトリガーできます。",
+                        "reference": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-monitoring.html",
+                        "reference_label": "Amazon EC2 Auto Scaling – Monitoring"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "CloudTrailとSNSを使ってスケーリングをトリガーする",
+                    "explanation": {
+                        "text": "CloudTrailはAPIイベントの記録用であり、スケーリングトリガーには向きません。",
+                        "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+                        "reference_label": "AWS CloudTrail – Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Configルールでスケーリング条件を定義する",
+                    "explanation": {
+                        "text": "Configはコンプライアンス監査サービスであり、スケーリング制御には使えません。",
+                        "reference": "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
+                        "reference_label": "AWS Config – Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "手動でCloudWatchダッシュボードを監視し、EC2を増減させる",
+                    "explanation": {
+                        "text": "手動操作は自動スケーリングの目的に反します。",
+                        "reference": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-monitoring.html",
+                        "reference_label": "Amazon EC2 Auto Scaling – Monitoring"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "CloudWatchアラームを使ってリソースの状態を監視し、Auto Scalingと連携することで動的スケーリングが可能です。",
+                "reference": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-monitoring.html",
+                "reference_label": "Amazon EC2 Auto Scaling – Monitoring"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q7",
+            "question": "DevOpsエンジニアは複数のAWSアカウントにまたがるCI/CDパイプラインを設計しています。セキュリティを維持しつつクロスアカウントでリソースを操作するためのベストプラクティスはどれですか？",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "IAMロールを作成し、クロスアカウント信頼関係を設定する",
+                    "explanation": {
+                        "text": "IAMロールを利用することで、一時的な権限を付与し、安全にクロスアカウント操作が可能です。",
+                        "reference": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios.html",
+                        "reference_label": "IAM – Roles and Cross-Account Access"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "全てのアカウントに同じIAMユーザーとアクセスキーを作成する",
+                    "explanation": {
+                        "text": "静的アクセスキーの共有はセキュリティリスクが高いため推奨されません。",
+                        "reference": "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html",
+                        "reference_label": "IAM – Security Best Practices"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "すべてのアカウントで同じルートユーザーを利用する",
+                    "explanation": {
+                        "text": "ルートユーザーは高リスクであり、ベストプラクティスでは利用を最小限にすべきです。",
+                        "reference": "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html",
+                        "reference_label": "IAM – Security Best Practices"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "クロスアカウントでSecrets Managerに保存された認証情報を共有する",
+                    "explanation": {
+                        "text": "Secrets Managerは認証情報の保管には有効ですが、クロスアカウントアクセスのベストプラクティスはIAMロールの利用です。",
+                        "reference": "https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html",
+                        "reference_label": "AWS Secrets Manager – Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "クロスアカウントアクセスではIAMロールと信頼ポリシーを設定するのがベストプラクティスです。一時的な認証情報を用いることでセキュリティを高められます。",
+                "reference": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios.html",
+                "reference_label": "IAM – Roles and Cross-Account Access"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q8",
+            "question": "CI/CDパイプラインでデプロイ前にユニットテストを実行する最も適切なAWSサービスはどれですか？",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "AWS CodeBuild",
+                    "explanation": {
+                        "text": "CodeBuildはテストの自動実行をサポートし、CI/CDの一部として利用できます。",
+                        "reference": "https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html",
+                        "reference_label": "AWS CodeBuild – Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "AWS Lambda",
+                    "explanation": {
+                        "text": "Lambdaはイベント駆動で関数を実行できますが、テスト専用ではありません。",
+                        "reference": "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html",
+                        "reference_label": "AWS Lambda – Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Amazon S3",
+                    "explanation": {
+                        "text": "S3はオブジェクトストレージであり、テスト実行機能は持ちません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
+                        "reference_label": "Amazon S3 – Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Amazon CloudWatch",
+                    "explanation": {
+                        "text": "CloudWatchは監視サービスであり、ユニットテスト実行には適しません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html",
+                        "reference_label": "Amazon CloudWatch – Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "AWS CodeBuildはビルドとテストの自動化をサポートし、CI/CDパイプラインでのユニットテスト実行に最適です。",
+                "reference": "https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html",
+                "reference_label": "AWS CodeBuild – Overview"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q9",
+            "question": "開発チームはEKSクラスタを利用しています。アプリケーションデプロイを標準化し、再現性の高い方法で管理するために推奨されるツールはどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Helm",
+                    "explanation": {
+                        "text": "HelmはKubernetesのパッケージマネージャであり、EKSでのアプリケーションデプロイを標準化できます。",
+                        "reference": "https://helm.sh/docs/intro/using_helm/",
+                        "reference_label": "Helm – Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "CloudFormationスタックセット",
+                    "explanation": {
+                        "text": "スタックセットは複数アカウントやリージョンへのリソース展開には適しますが、Kubernetesのネイティブデプロイ方法ではありません。",
+                        "reference": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html",
+                        "reference_label": "AWS CloudFormation – StackSets"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Amazon S3バケット",
+                    "explanation": {
+                        "text": "S3はストレージサービスであり、アプリケーションデプロイには利用できません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
+                        "reference_label": "Amazon S3 – Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "AWS Glue",
+                    "explanation": {
+                        "text": "GlueはETLサービスであり、EKSデプロイには関係ありません。",
+                        "reference": "https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html",
+                        "reference_label": "AWS Glue – Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "HelmはKubernetes用の標準的なパッケージマネージャであり、EKSでのデプロイを効率化します。",
+                "reference": "https://helm.sh/docs/intro/using_helm/",
+                "reference_label": "Helm – Overview"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q10",
+            "question": "本番環境で予期せぬトラフィック増加が発生しました。可用性を維持するために最も適切な仕組みはどれですか？",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "オートスケーリンググループ",
+                    "explanation": {
+                        "text": "オートスケーリンググループは需要に応じてインスタンス数を自動的に調整できます。",
+                        "reference": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
+                        "reference_label": "Amazon EC2 Auto Scaling – Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "AWS Configルール",
+                    "explanation": {
+                        "text": "Configはリソース監査用であり、スケーリングには利用できません。",
+                        "reference": "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
+                        "reference_label": "AWS Config – Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Amazon Macie",
+                    "explanation": {
+                        "text": "Macieはデータ保護サービスであり、スケーリングとは関係ありません。",
+                        "reference": "https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html",
+                        "reference_label": "Amazon Macie – Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "AWS Glueジョブ",
+                    "explanation": {
+                        "text": "GlueはETLサービスであり、アプリケーションスケーリングには使えません。",
+                        "reference": "https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html",
+                        "reference_label": "AWS Glue – Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "オートスケーリンググループは本番環境の負荷変動に対応し、可用性を確保します。",
+                "reference": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
+                "reference_label": "Amazon EC2 Auto Scaling – Overview"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q11",
+            "question": "開発チームはAWS Systems Managerを利用して複数アカウントのパッチ適用を一元管理したいと考えています。最適な機能はどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Systems Manager Patch Manager",
+                    "explanation": {
+                        "text": "Patch Managerを使うと複数アカウントにわたる自動パッチ適用が可能です。",
+                        "reference": "https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-patch.html",
+                        "reference_label": "AWS Systems Manager – Patch Manager"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "AWS Config Conformance Packs",
+                    "explanation": {
+                        "text": "Conformance Packsはコンプライアンス監査用であり、パッチ適用機能はありません。",
+                        "reference": "https://docs.aws.amazon.com/config/latest/developerguide/conformance-packs.html",
+                        "reference_label": "AWS Config – Conformance Packs"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "CloudTrail Insights",
+                    "explanation": {
+                        "text": "CloudTrail Insightsは異常なAPI利用を検知しますが、パッチ適用とは無関係です。",
+                        "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-insights.html",
+                        "reference_label": "AWS CloudTrail – Insights"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "AWS Glue DataBrew",
+                    "explanation": {
+                        "text": "DataBrewはデータ前処理サービスであり、パッチ適用機能はありません。",
+                        "reference": "https://docs.aws.amazon.com/databrew/latest/dg/what-is.html",
+                        "reference_label": "AWS Glue DataBrew – Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Systems Manager Patch Managerは複数のアカウントやリージョンに対する自動パッチ適用をサポートします。",
+                "reference": "https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-patch.html",
+                "reference_label": "AWS Systems Manager – Patch Manager"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q12",
+            "question": "運用チームはAmazon CloudWatch Logsのログを自動的に分析したいと考えています。最も適切なサービスはどれですか？",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Amazon CloudWatch Logs Insights",
+                    "explanation": {
+                        "text": "Logs Insightsを利用すると、ログをクエリベースで即時分析できます。",
+                        "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html",
+                        "reference_label": "Amazon CloudWatch Logs Insights – Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Amazon S3 Select",
+                    "explanation": {
+                        "text": "S3 SelectはS3オブジェクトの部分的クエリ機能であり、CloudWatch Logsの分析には直接使えません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/selecting-content-from-objects.html",
+                        "reference_label": "Amazon S3 – Select"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Amazon Macie",
+                    "explanation": {
+                        "text": "Macieはデータ保護サービスであり、ログ分析には向きません。",
+                        "reference": "https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html",
+                        "reference_label": "Amazon Macie – Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "AWS Glueジョブ",
+                    "explanation": {
+                        "text": "GlueはETLサービスであり、ログ分析には不向きです。",
+                        "reference": "https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html",
+                        "reference_label": "AWS Glue – Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "CloudWatch Logs Insightsはログをリアルタイムに分析できる専用ツールです。",
+                "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html",
+                "reference_label": "Amazon CloudWatch Logs Insights – Overview"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q13",
+            "question": "開発チームは複数環境（開発・ステージング・本番）で一貫性を保ったデプロイを行いたいと考えています。最適な仕組みはどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Infrastructure as Code (IaC) をCloudFormationで管理する",
+                    "explanation": {
+                        "text": "CloudFormationを利用すれば環境間で一貫性を保ち、再現性の高いデプロイが可能です。",
+                        "reference": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html",
+                        "reference_label": "AWS CloudFormation – Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "各環境で手動でリソースを作成する",
+                    "explanation": {
+                        "text": "手動作業は一貫性を保つのが難しく、エラーのリスクが高いです。",
+                        "reference": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/best-practices.html",
+                        "reference_label": "AWS CloudFormation – Best Practices"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "環境ごとに別々のアカウントを作成し、管理者が手動調整する",
+                    "explanation": {
+                        "text": "環境分離は有効ですが、手動調整は非効率です。",
+                        "reference": "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_best-practices.html",
+                        "reference_label": "AWS Organizations – Best Practices"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "すべての環境を1つの共有VPCで動作させる",
+                    "explanation": {
+                        "text": "共有VPCは一貫性保証の仕組みではなく、環境の分離が困難になります。",
+                        "reference": "https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html",
+                        "reference_label": "Amazon VPC – Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "CloudFormationを使えばIaCとして環境を統一的に管理でき、複数環境での一貫性を確保できます。",
+                "reference": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html",
+                "reference_label": "AWS CloudFormation – Overview"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q14",
+            "question": "DevOpsチームはアプリケーションのリリースを自動的にロールバックしたいと考えています。これを実現できるサービスはどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "AWS CodeDeploy",
+                    "explanation": {
+                        "text": "CodeDeployはデプロイ失敗時の自動ロールバック機能を提供します。",
+                        "reference": "https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments-rollback-and-redeploy.html",
+                        "reference_label": "AWS CodeDeploy – Rollback"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Amazon S3 バージョニング",
+                    "explanation": {
+                        "text": "S3バージョニングはオブジェクト単位の復元には有効ですが、アプリケーションデプロイのロールバックには利用できません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html",
+                        "reference_label": "Amazon S3 – Versioning"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "AWS Backup",
+                    "explanation": {
+                        "text": "Backupはデータ復旧用であり、アプリケーションロールバックには使えません。",
+                        "reference": "https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html",
+                        "reference_label": "AWS Backup – Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Amazon CloudWatch Logs",
+                    "explanation": {
+                        "text": "CloudWatch Logsは監視用であり、ロールバック機能は持ちません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html",
+                        "reference_label": "Amazon CloudWatch Logs – Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "AWS CodeDeployはデプロイ失敗時に自動的に以前のバージョンに戻すロールバック機能を提供します。",
+                "reference": "https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments-rollback-and-redeploy.html",
+                "reference_label": "AWS CodeDeploy – Rollback"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q15",
+            "question": "運用チームはアプリケーションのデプロイ失敗時に自動的に以前の安定したバージョンへ戻したいと考えています。最も適切な選択肢はどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "AWS CodeDeployの自動ロールバック機能を利用する",
+                    "explanation": {
+                        "text": "CodeDeployはデプロイ失敗時に自動的にロールバックを行う機能を持っています。",
+                        "reference": "https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments-rollback-and-redeploy.html",
+                        "reference_label": "AWS CodeDeploy – Rollback"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "CloudFormationスタックを削除して再作成する",
+                    "explanation": {
+                        "text": "スタック削除は環境全体を破壊するため、ロールバックとしては不適切です。",
+                        "reference": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-rolling-back-updates.html",
+                        "reference_label": "AWS CloudFormation – Rollbacks"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "EC2のAMIを手動で復元する",
+                    "explanation": {
+                        "text": "AMI復元は自動化されておらず、迅速なロールバックには適しません。",
+                        "reference": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html",
+                        "reference_label": "Amazon EC2 – AMIs"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "CloudWatch Logsを確認しながら新しいバージョンを再デプロイする",
+                    "explanation": {
+                        "text": "ログ確認は役立ちますが、自動ロールバックを提供するものではありません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html",
+                        "reference_label": "Amazon CloudWatch Logs – Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "AWS CodeDeployの自動ロールバック機能は、失敗したデプロイから以前の安定バージョンへ自動的に復帰できるため最適です。",
+                "reference": "https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments-rollback-and-redeploy.html",
+                "reference_label": "AWS CodeDeploy – Rollback"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q16",
+            "question": "CI/CDパイプラインにおいて、アプリケーションのセキュリティ脆弱性を自動スキャンするために利用できるAWSサービスはどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Amazon Inspector",
+                    "explanation": {
+                        "text": "Amazon Inspectorは脆弱性管理サービスであり、CI/CDパイプラインに統合可能です。",
+                        "reference": "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html",
+                        "reference_label": "Amazon Inspector – Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "AWS Config",
+                    "explanation": {
+                        "text": "Configはコンプライアンス監査用であり、脆弱性スキャンには適しません。",
+                        "reference": "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
+                        "reference_label": "AWS Config – Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "AWS CloudTrail",
+                    "explanation": {
+                        "text": "CloudTrailはAPIアクティビティの監査ログを収集するものであり、脆弱性スキャン機能はありません。",
+                        "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+                        "reference_label": "AWS CloudTrail – Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Amazon Macie",
+                    "explanation": {
+                        "text": "Macieはデータ保護に特化しており、アプリケーション脆弱性スキャンは行いません。",
+                        "reference": "https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html",
+                        "reference_label": "Amazon Macie – Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Amazon InspectorはアプリケーションやEC2環境の脆弱性をスキャンする自動化機能を持ち、CI/CDパイプラインに組み込めます。",
+                "reference": "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html",
+                "reference_label": "Amazon Inspector – Overview"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q17",
+            "question": "開発チームはAWS Lambdaを利用しています。新しい関数バージョンを段階的にリリースしてユーザーへの影響を最小化する最適な方法はどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Lambda エイリアスを利用したトラフィックシフト",
+                    "explanation": {
+                        "text": "エイリアスを利用することで、トラフィックを複数バージョンに分配可能です。",
+                        "reference": "https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html",
+                        "reference_label": "AWS Lambda – Aliases"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "新しい関数をデフォルトに設定し全ユーザーを切り替える",
+                    "explanation": {
+                        "text": "一括切り替えは影響範囲が大きくリスクがあります。",
+                        "reference": "https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html",
+                        "reference_label": "AWS Lambda – Versions"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "CloudWatch Logsを監視しながら手動で切り替える",
+                    "explanation": {
+                        "text": "手動対応では即時切り替えが必要になり、自動化の利点を失います。",
+                        "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html",
+                        "reference_label": "Amazon CloudWatch Logs – Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "関数コードを直接上書きする",
+                    "explanation": {
+                        "text": "直接上書きはバージョン管理を回避するためリスクが高いです。",
+                        "reference": "https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html",
+                        "reference_label": "AWS Lambda – Versions"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Lambdaエイリアスを利用すると、段階的にトラフィックを移行でき、新旧バージョンの安全な切り替えが可能です。",
+                "reference": "https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html",
+                "reference_label": "AWS Lambda – Aliases"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q18",
+            "question": "DevOpsエンジニアはECSサービスでBlue/Greenデプロイを設定し、失敗時には元の環境へ戻したいと考えています。この仕組みをサポートするAWSサービスはどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "AWS CodeDeploy",
+                    "explanation": {
+                        "text": "CodeDeployはECSでのBlue/Greenデプロイをサポートしており、失敗時にロールバックできます。",
+                        "reference": "https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-steps-ecs.html",
+                        "reference_label": "AWS CodeDeploy – ECS Deployment"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "AWS Config",
+                    "explanation": {
+                        "text": "Configは監査サービスであり、デプロイ制御機能はありません。",
+                        "reference": "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
+                        "reference_label": "AWS Config – Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Amazon CloudTrail",
+                    "explanation": {
+                        "text": "CloudTrailはAPIアクティビティを記録しますが、Blue/Greenデプロイ機能は提供しません。",
+                        "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+                        "reference_label": "AWS CloudTrail – Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Amazon S3",
+                    "explanation": {
+                        "text": "S3はオブジェクトストレージであり、デプロイ制御機能はありません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
+                        "reference_label": "Amazon S3 – Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "AWS CodeDeployはECSでのBlue/Greenデプロイをサポートし、失敗時に以前の安定版に戻す機能を持ちます。",
+                "reference": "https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-steps-ecs.html",
+                "reference_label": "AWS CodeDeploy – ECS Deployment"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q19",
+            "question": "監査要件により、すべてのAWS APIコールの履歴を記録する必要があります。最も適切なサービスはどれですか？",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "AWS CloudTrail",
+                    "explanation": {
+                        "text": "CloudTrailはすべてのAPIコールを記録し、監査証跡を提供します。",
+                        "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+                        "reference_label": "AWS CloudTrail – Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Amazon CloudWatch",
+                    "explanation": {
+                        "text": "CloudWatchは監視サービスであり、APIコール履歴の保存は行いません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html",
+                        "reference_label": "Amazon CloudWatch – Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "AWS Config",
+                    "explanation": {
+                        "text": "Configはリソース状態の監査に使われますが、APIコール履歴は保持しません。",
+                        "reference": "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
+                        "reference_label": "AWS Config – Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Amazon S3",
+                    "explanation": {
+                        "text": "S3はストレージサービスであり、API監査機能はありません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
+                        "reference_label": "Amazon S3 – Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "AWS CloudTrailはアカウント内のAPIコールをすべて記録し、コンプライアンスやセキュリティ監査に利用できます。",
+                "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+                "reference_label": "AWS CloudTrail – Overview"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q20",
+            "question": "DevOpsチームはコンテナイメージの脆弱性を検出し、ECRに保存されたイメージを継続的にスキャンしたいと考えています。どのサービスを利用すべきですか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Amazon ECR Image Scanning",
+                    "explanation": {
+                        "text": "ECRはイメージスキャン機能を提供し、保存時や定期的に脆弱性を検出できます。",
+                        "reference": "https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html",
+                        "reference_label": "Amazon ECR – Image Scanning"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "AWS Glue",
+                    "explanation": {
+                        "text": "GlueはETLサービスであり、コンテナイメージの脆弱性スキャンは行いません。",
+                        "reference": "https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html",
+                        "reference_label": "AWS Glue – Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "AWS Config",
+                    "explanation": {
+                        "text": "Configはリソース設定の監査サービスであり、コンテナスキャンは行いません。",
+                        "reference": "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
+                        "reference_label": "AWS Config – Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Amazon CloudWatch Logs",
+                    "explanation": {
+                        "text": "CloudWatch Logsはログ監視サービスであり、脆弱性スキャン機能はありません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html",
+                        "reference_label": "Amazon CloudWatch Logs – Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Amazon ECRのイメージスキャン機能を利用することで、コンテナイメージを継続的に脆弱性スキャンできます。",
+                "reference": "https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html",
+                "reference_label": "Amazon ECR – Image Scanning"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q21",
+            "question": "DevOpsチームはCI/CDパイプラインでインフラをコードとして管理しています。パイプライン実行中にCloudFormationスタック更新が失敗した場合、どのような挙動になりますか？",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "自動的にロールバックが実行され、スタックは以前の安定した状態に戻る",
+                    "explanation": {
+                        "text": "デフォルトではCloudFormation更新失敗時にロールバックされます。",
+                        "reference": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-rollback-triggers.html",
+                        "reference_label": "AWS CloudFormation – Rollback"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "失敗したリソースのみ削除され、他のリソースは保持される",
+                    "explanation": {
+                        "text": "部分削除ではなく、スタック全体がロールバック対象となります。",
+                        "reference": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-rolling-back-updates.html",
+                        "reference_label": "AWS CloudFormation – Rollback Behavior"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "エラーが発生しても更新が強制的に続行される",
+                    "explanation": {
+                        "text": "強制的な続行は行われず、デフォルトで失敗時に停止します。",
+                        "reference": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-rolling-back-updates.html",
+                        "reference_label": "AWS CloudFormation – Rollback Behavior"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "エラーが発生した時点で処理が完全に停止し、ユーザーが手動で復旧する必要がある",
+                    "explanation": {
+                        "text": "デフォルトではロールバックが自動で実行されるため、手動復旧は不要です。",
+                        "reference": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-rollback-triggers.html",
+                        "reference_label": "AWS CloudFormation – Rollback"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "CloudFormationは更新失敗時に自動的にロールバックを実行し、スタックを以前の安定した状態に戻します。",
+                "reference": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-rollback-triggers.html",
+                "reference_label": "AWS CloudFormation – Rollback"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q22",
+            "question": "開発チームは複数のAWSアカウントに対して統一的にリソースをプロビジョニングしたいと考えています。最も適切なサービスはどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "AWS CloudFormation StackSets",
+                    "explanation": {
+                        "text": "StackSetsを利用することで、複数アカウントやリージョンにCloudFormationスタックを一括デプロイできます。",
+                        "reference": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html",
+                        "reference_label": "AWS CloudFormation – StackSets"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "AWS Elastic Beanstalk",
+                    "explanation": {
+                        "text": "Elastic Beanstalkは単一環境のアプリケーションデプロイを簡略化しますが、複数アカウント展開には適しません。",
+                        "reference": "https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/Welcome.html",
+                        "reference_label": "AWS Elastic Beanstalk – Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "AWS CodeDeploy",
+                    "explanation": {
+                        "text": "CodeDeployはアプリケーションのデプロイ管理に使いますが、インフラの一括プロビジョニングには不向きです。",
+                        "reference": "https://docs.aws.amazon.com/codedeploy/latest/userguide/welcome.html",
+                        "reference_label": "AWS CodeDeploy – Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "AWS Glue",
+                    "explanation": {
+                        "text": "GlueはETLサービスであり、インフラの展開には利用できません。",
+                        "reference": "https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html",
+                        "reference_label": "AWS Glue – Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "CloudFormation StackSetsを使うと、複数アカウントやリージョンにわたってスタックを効率的に管理できます。",
+                "reference": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html",
+                "reference_label": "AWS CloudFormation – StackSets"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q23",
+            "question": "運用チームはEKS上で動作するアプリケーションを管理しています。Podの障害が発生した場合に自動的に再スケジューリングされる仕組みはどれですか？",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Kubernetes Deployment",
+                    "explanation": {
+                        "text": "DeploymentはPodの望ましい状態を維持し、障害時に自動再スケジューリングを行います。",
+                        "reference": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/",
+                        "reference_label": "Kubernetes – Deployments"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "AWS CloudTrail",
+                    "explanation": {
+                        "text": "CloudTrailはAPIコールを監査しますが、Podの再スケジューリングには関与しません。",
+                        "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+                        "reference_label": "AWS CloudTrail – Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Amazon CloudWatch Logs",
+                    "explanation": {
+                        "text": "CloudWatch Logsは監視用であり、自動スケジューリング機能はありません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html",
+                        "reference_label": "Amazon CloudWatch Logs – Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "AWS Config",
+                    "explanation": {
+                        "text": "Configはリソース監査用であり、Pod再スケジューリング機能はありません。",
+                        "reference": "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
+                        "reference_label": "AWS Config – Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Kubernetes Deploymentは自己修復機能を持ち、Pod障害時に自動的に再スケジューリングします。",
+                "reference": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/",
+                "reference_label": "Kubernetes – Deployments"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q24",
+            "question": "開発チームはCI/CDパイプラインの一部としてデータベーススキーマの変更を自動的に適用したいと考えています。最も適切な方法はどれですか？",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "AWS CodeBuildを使用してマイグレーションスクリプトを実行する",
+                    "explanation": {
+                        "text": "CodeBuildはカスタムスクリプトを実行でき、スキーマ変更をCI/CDパイプラインに組み込むことが可能です。",
+                        "reference": "https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html",
+                        "reference_label": "AWS CodeBuild – Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "CloudFormationテンプレートでSQL文を直接定義する",
+                    "explanation": {
+                        "text": "CloudFormationはSQL実行機能を持たず、スキーマ変更の適用には不向きです。",
+                        "reference": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html",
+                        "reference_label": "AWS CloudFormation – Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Amazon S3にSQLファイルを保存するだけ",
+                    "explanation": {
+                        "text": "S3はストレージサービスであり、スキーマ変更を自動適用する機能はありません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
+                        "reference_label": "Amazon S3 – Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Lambda関数を定期的に実行してスキーマを変更する",
+                    "explanation": {
+                        "text": "Lambdaで可能ですが、CI/CDパイプライン統合にはCodeBuildを利用する方が効率的です。",
+                        "reference": "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html",
+                        "reference_label": "AWS Lambda – Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "CodeBuildを使うと、マイグレーションスクリプトをパイプライン内で実行でき、スキーマ変更の自動化が可能です。",
+                "reference": "https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html",
+                "reference_label": "AWS CodeBuild – Overview"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q25",
+            "question": "DevOpsチームはアプリケーションのデプロイ時に段階的にユーザーを移行させたいと考えています。この方法をサポートする仕組みはどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Canary デプロイメント",
+                    "explanation": {
+                        "text": "Canaryデプロイメントは一部のユーザーから徐々に新しいバージョンへ移行させる方法です。",
+                        "reference": "https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html",
+                        "reference_label": "AWS CodeDeploy – Deployment Configurations"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Blue/Green デプロイメント",
+                    "explanation": {
+                        "text": "Blue/Greenは全体を新旧環境で切り替える方式であり、段階的移行にはCanaryが適します。",
+                        "reference": "https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-steps.html",
+                        "reference_label": "AWS CodeDeploy – Deployment Types"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "リソースを直接上書きデプロイする",
+                    "explanation": {
+                        "text": "直接上書きはダウンタイムやリスクが高く推奨されません。",
+                        "reference": "https://docs.aws.amazon.com/codedeploy/latest/userguide/welcome.html",
+                        "reference_label": "AWS CodeDeploy – Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "CloudWatch Logsを監視して手動でユーザーを切り替える",
+                    "explanation": {
+                        "text": "手動操作は自動化の利点を失い、効率的ではありません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html",
+                        "reference_label": "Amazon CloudWatch Logs – Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Canaryデプロイメントを使うことで、段階的に新バージョンへ移行しリスクを最小化できます。",
+                "reference": "https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html",
+                "reference_label": "AWS CodeDeploy – Deployment Configurations"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q26",
+            "question": "開発チームはSecrets Managerを利用してアプリケーションの認証情報を安全に管理したいと考えています。セキュリティを強化するために有効な機能はどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "シークレットの自動ローテーション",
+                    "explanation": {
+                        "text": "Secrets Managerはデータベース認証情報やAPIキーの自動ローテーションをサポートします。",
+                        "reference": "https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html",
+                        "reference_label": "AWS Secrets Manager – Rotation"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "IAMユーザーの静的アクセスキーをSecrets Managerに保存する",
+                    "explanation": {
+                        "text": "静的キーを保存するだけではセキュリティ向上にはつながりません。",
+                        "reference": "https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html",
+                        "reference_label": "AWS Secrets Manager – Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "S3に暗号化されていない形で認証情報を保存する",
+                    "explanation": {
+                        "text": "暗号化されていない保存はセキュリティリスクが高すぎます。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingEncryption.html",
+                        "reference_label": "Amazon S3 – Encryption"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "環境変数に認証情報を直接書き込む",
+                    "explanation": {
+                        "text": "環境変数への直接保存は漏洩リスクが高く、推奨されません。",
+                        "reference": "https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html",
+                        "reference_label": "AWS Secrets Manager – Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Secrets Managerの自動ローテーションを利用することで、認証情報を定期的に更新しセキュリティを強化できます。",
+                "reference": "https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html",
+                "reference_label": "AWS Secrets Manager – Rotation"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q27",
+            "question": "開発チームはアプリケーションログを収集・分析してリアルタイムで異常を検知したいと考えています。最適なサービスはどれですか？",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Amazon CloudWatch Logs Insights",
+                    "explanation": {
+                        "text": "Logs Insightsはログデータをクエリ形式で分析でき、リアルタイム異常検知に有効です。",
+                        "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html",
+                        "reference_label": "Amazon CloudWatch Logs Insights – Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "AWS Config",
+                    "explanation": {
+                        "text": "Configはリソース監査サービスであり、ログ分析には利用できません。",
+                        "reference": "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
+                        "reference_label": "AWS Config – Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Amazon S3",
+                    "explanation": {
+                        "text": "S3はストレージであり、リアルタイムログ分析はできません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
+                        "reference_label": "Amazon S3 – Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "AWS Glue",
+                    "explanation": {
+                        "text": "GlueはETLサービスであり、リアルタイム分析には適しません。",
+                        "reference": "https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html",
+                        "reference_label": "AWS Glue – Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "CloudWatch Logs Insightsを利用することで、ログデータをリアルタイムでクエリし異常を検知できます。",
+                "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html",
+                "reference_label": "Amazon CloudWatch Logs Insights – Overview"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q28",
+            "question": "DevOpsチームはアプリケーションの依存関係をコンテナ化して再現性を確保したいと考えています。最も適切な選択肢はどれですか？",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Docker イメージ",
+                    "explanation": {
+                        "text": "Dockerイメージを利用すると、依存関係を含めてアプリケーションを再現可能にパッケージ化できます。",
+                        "reference": "https://docs.docker.com/get-started/overview/",
+                        "reference_label": "Docker – Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Amazon S3 バケット",
+                    "explanation": {
+                        "text": "S3はストレージサービスであり、アプリケーション依存関係の管理には不向きです。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
+                        "reference_label": "Amazon S3 – Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "AWS CloudTrail",
+                    "explanation": {
+                        "text": "CloudTrailはAPI監査サービスであり、依存関係管理には関係しません。",
+                        "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+                        "reference_label": "AWS CloudTrail – Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "AWS Glue",
+                    "explanation": {
+                        "text": "GlueはETLサービスであり、アプリケーション依存関係の再現性確保には利用できません。",
+                        "reference": "https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html",
+                        "reference_label": "AWS Glue – Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Dockerイメージは依存関係を含めてアプリケーションをコンテナ化し、再現性を確保するのに最適です。",
+                "reference": "https://docs.docker.com/get-started/overview/",
+                "reference_label": "Docker – Overview"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q29",
+            "question": "開発チームはCodePipelineを使用しており、リリースごとにセキュリティ承認を追加したいと考えています。最も適切な仕組みはどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Manual approvalアクションを追加する",
+                    "explanation": {
+                        "text": "CodePipelineのmanual approvalアクションを使えば、人間による承認を組み込めます。",
+                        "reference": "https://docs.aws.amazon.com/codepipeline/latest/userguide/approvals.html",
+                        "reference_label": "AWS CodePipeline – Manual approvals"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "S3に承認フラグファイルをアップロードする",
+                    "explanation": {
+                        "text": "手動でS3にファイルをアップロードするのは非効率であり、推奨されません。",
+                        "reference": "https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html",
+                        "reference_label": "AWS CodePipeline – Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "CloudTrailイベントを承認信号として利用する",
+                    "explanation": {
+                        "text": "CloudTrailはAPIイベント監査用であり、承認機能は持ちません。",
+                        "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+                        "reference_label": "AWS CloudTrail – Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Configルールをトリガーに利用する",
+                    "explanation": {
+                        "text": "Configはコンプライアンス監査用であり、承認アクションには不向きです。",
+                        "reference": "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
+                        "reference_label": "AWS Config – Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "CodePipelineのmanual approvalアクションを使うことで、リリース前に人間による承認を組み込めます。",
+                "reference": "https://docs.aws.amazon.com/codepipeline/latest/userguide/approvals.html",
+                "reference_label": "AWS CodePipeline – Manual approvals"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q30",
+            "question": "DevOpsチームはアプリケーションのパフォーマンスを可視化するために分散トレーシングを導入したいと考えています。最適なサービスはどれですか？",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "AWS X-Ray",
+                    "explanation": {
+                        "text": "X-Rayは分散トレーシングを提供し、アプリケーションのボトルネックを特定できます。",
+                        "reference": "https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html",
+                        "reference_label": "AWS X-Ray – Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Amazon S3",
+                    "explanation": {
+                        "text": "S3はストレージサービスであり、分散トレーシング機能はありません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
+                        "reference_label": "Amazon S3 – Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "AWS Config",
+                    "explanation": {
+                        "text": "Configはリソース監査用であり、トレーシング機能はありません。",
+                        "reference": "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
+                        "reference_label": "AWS Config – Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Amazon CloudWatch Logs",
+                    "explanation": {
+                        "text": "CloudWatch Logsはログ収集用であり、分散トレーシングには不十分です。",
+                        "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html",
+                        "reference_label": "Amazon CloudWatch Logs – Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "AWS X-Rayは分散トレーシングに特化したサービスであり、アプリケーションのパフォーマンス分析に最適です。",
+                "reference": "https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html",
+                "reference_label": "AWS X-Ray – Overview"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q31",
+            "question": "セキュリティチームは、すべてのAWSアカウントでセキュリティ標準を強制したいと考えています。最適なサービスはどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "AWS OrganizationsとService Control Policies (SCP)",
+                    "explanation": {
+                        "text": "SCPを使うと複数アカウントにわたりポリシーを強制できます。",
+                        "reference": "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html",
+                        "reference_label": "AWS Organizations – SCP"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "CloudTrail",
+                    "explanation": {
+                        "text": "CloudTrailは監査用であり、セキュリティ制御を強制するものではありません。",
+                        "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+                        "reference_label": "AWS CloudTrail – Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "CloudWatch アラーム",
+                    "explanation": {
+                        "text": "CloudWatchは監視サービスであり、セキュリティ制御の強制には使えません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html",
+                        "reference_label": "Amazon CloudWatch – Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Amazon Macie",
+                    "explanation": {
+                        "text": "Macieはデータ保護サービスであり、セキュリティポリシー強制には利用できません。",
+                        "reference": "https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html",
+                        "reference_label": "Amazon Macie – Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "AWS OrganizationsとSCPを利用すると、複数アカウントに統一的なセキュリティ標準を適用できます。",
+                "reference": "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html",
+                "reference_label": "AWS Organizations – SCP"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q32",
+            "question": "DevOpsチームはリリースごとにアプリケーションのパフォーマンステストを自動化したいと考えています。最も適切なAWSサービスはどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "AWS CodeBuild",
+                    "explanation": {
+                        "text": "CodeBuildは負荷テストスクリプトを含むビルドプロセスを自動化可能です。",
+                        "reference": "https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html",
+                        "reference_label": "AWS CodeBuild – Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "AWS Lambda",
+                    "explanation": {
+                        "text": "Lambdaは短時間処理に適していますが、パフォーマンステスト全体の自動化には不向きです。",
+                        "reference": "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html",
+                        "reference_label": "AWS Lambda – Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "AWS Glue",
+                    "explanation": {
+                        "text": "GlueはETLサービスであり、パフォーマンステストには利用できません。",
+                        "reference": "https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html",
+                        "reference_label": "AWS Glue – Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Amazon S3",
+                    "explanation": {
+                        "text": "S3はストレージサービスであり、テスト実行機能はありません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
+                        "reference_label": "Amazon S3 – Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "CodeBuildを使うと、パフォーマンステストを自動化してCI/CDパイプラインに組み込めます。",
+                "reference": "https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html",
+                "reference_label": "AWS CodeBuild – Overview"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q33",
+            "question": "開発チームはAmazon ECSで稼働するマイクロサービスのスケーリングを自動化したいと考えています。最適な仕組みはどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Application Auto Scaling",
+                    "explanation": {
+                        "text": "ECSサービスはApplication Auto Scalingを利用してスケーリング可能です。",
+                        "reference": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-auto-scaling.html",
+                        "reference_label": "Amazon ECS – Service Auto Scaling"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "CloudTrailイベントをトリガーにする",
+                    "explanation": {
+                        "text": "CloudTrailはAPI監査用であり、スケーリング制御には使えません。",
+                        "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+                        "reference_label": "AWS CloudTrail – Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "CloudWatch Logsを監視して手動で調整する",
+                    "explanation": {
+                        "text": "手動対応は非効率であり、自動スケーリングには適しません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html",
+                        "reference_label": "Amazon CloudWatch Logs – Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "S3イベントでスケーリングを実行する",
+                    "explanation": {
+                        "text": "S3イベントはオブジェクトストレージ関連であり、ECSスケーリングには関与しません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
+                        "reference_label": "Amazon S3 – Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "ECSサービスはApplication Auto Scalingを利用してリソース需要に応じてスケーリング可能です。",
+                "reference": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-auto-scaling.html",
+                "reference_label": "Amazon ECS – Service Auto Scaling"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q34",
+            "question": "DevOpsエンジニアはCI/CDパイプラインで依存ライブラリのセキュリティ脆弱性をチェックしたいと考えています。どのサービスを使うべきですか？",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Amazon CodeGuru Reviewer",
+                    "explanation": {
+                        "text": "CodeGuru Reviewerはコードの静的解析により脆弱性や非効率を検出できます。",
+                        "reference": "https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/what-is-codeguru-reviewer.html",
+                        "reference_label": "Amazon CodeGuru Reviewer – Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Amazon Macie",
+                    "explanation": {
+                        "text": "Macieはデータ保護に特化しており、依存ライブラリ脆弱性チェックには使えません。",
+                        "reference": "https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html",
+                        "reference_label": "Amazon Macie – Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "AWS Glue",
+                    "explanation": {
+                        "text": "GlueはETLサービスであり、依存ライブラリ解析には不向きです。",
+                        "reference": "https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html",
+                        "reference_label": "AWS Glue – Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Amazon CloudWatch Logs",
+                    "explanation": {
+                        "text": "CloudWatch Logsは監視用であり、依存ライブラリの解析はできません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html",
+                        "reference_label": "Amazon CloudWatch Logs – Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Amazon CodeGuru Reviewerは依存ライブラリの問題や脆弱性を検出でき、CI/CDに組み込み可能です。",
+                "reference": "https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/what-is-codeguru-reviewer.html",
+                "reference_label": "Amazon CodeGuru Reviewer – Overview"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q35",
+            "question": "開発チームはインフラをコードで管理しており、Terraformを利用しています。Terraformの状態ファイルを安全に共有・ロック管理するために最適な選択肢はどれですか？",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Amazon S3とDynamoDBを組み合わせてリモートバックエンドを構成する",
+                    "explanation": {
+                        "text": "S3で状態ファイルを保存し、DynamoDBでロック管理するのがベストプラクティスです。",
+                        "reference": "https://developer.hashicorp.com/terraform/language/settings/backends/s3",
+                        "reference_label": "Terraform – S3 backend"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "ローカルディスクに状態ファイルを保存する",
+                    "explanation": {
+                        "text": "ローカル保存は共有ができず、チームでの利用には不向きです。",
+                        "reference": "https://developer.hashicorp.com/terraform/language/state/remote",
+                        "reference_label": "Terraform – Remote state"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "CloudWatch Logsに状態を保存する",
+                    "explanation": {
+                        "text": "CloudWatch Logsはログ管理用であり、Terraformの状態保存には利用できません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html",
+                        "reference_label": "Amazon CloudWatch Logs – Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ECSタスクの環境変数に保存する",
+                    "explanation": {
+                        "text": "環境変数に状態ファイルを保存するのはセキュリティリスクが高く不適切です。",
+                        "reference": "https://developer.hashicorp.com/terraform/language/state/remote",
+                        "reference_label": "Terraform – Remote state"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Terraformの状態ファイルはS3に保存し、DynamoDBを用いたロック管理を行うことで安全に共有できます。",
+                "reference": "https://developer.hashicorp.com/terraform/language/settings/backends/s3",
+                "reference_label": "Terraform – S3 backend"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q36",
+            "question": "運用チームはAmazon RDSを利用しています。マルチAZ構成を有効にするとどのような利点がありますか？",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "自動フェイルオーバーによる高可用性",
+                    "explanation": {
+                        "text": "マルチAZ構成はスタンバイインスタンスに自動フェイルオーバーすることで高可用性を実現します。",
+                        "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html",
+                        "reference_label": "Amazon RDS – Multi-AZ"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "リードレプリカによる読み取りスケーリング",
+                    "explanation": {
+                        "text": "リードレプリカは読み取り専用スケーリング用であり、マルチAZとは異なります。",
+                        "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html",
+                        "reference_label": "Amazon RDS – Read Replicas"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ストレージ暗号化の自動有効化",
+                    "explanation": {
+                        "text": "暗号化は独立した機能であり、マルチAZ構成に依存しません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.html",
+                        "reference_label": "Amazon RDS – Encryption"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "スナップショットの自動取得",
+                    "explanation": {
+                        "text": "自動バックアップ機能はマルチAZとは別機能です。",
+                        "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html",
+                        "reference_label": "Amazon RDS – Automated backups"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "RDSマルチAZ構成はスタンバイDBに自動フェイルオーバーし、障害時でも高可用性を確保します。",
+                "reference": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html",
+                "reference_label": "Amazon RDS – Multi-AZ"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q37",
+            "question": "CI/CDパイプラインでTerraformを使用してインフラをデプロイしています。最も安全な方法でTerraformの状態ファイルを管理する仕組みはどれですか？",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Amazon S3とDynamoDBによるリモートステート管理",
+                    "explanation": {
+                        "text": "S3で状態ファイルを保存し、DynamoDBでロック管理するのが推奨方法です。",
+                        "reference": "https://developer.hashicorp.com/terraform/language/settings/backends/s3",
+                        "reference_label": "Terraform – S3 backend"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "ローカルマシンに保存する",
+                    "explanation": {
+                        "text": "ローカル保存はチーム利用には不向きで競合リスクがあります。",
+                        "reference": "https://developer.hashicorp.com/terraform/language/state/remote",
+                        "reference_label": "Terraform – Remote state"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "CloudWatch Logsに保存する",
+                    "explanation": {
+                        "text": "CloudWatchは監視用サービスであり、Terraformのステート保存には利用できません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html",
+                        "reference_label": "Amazon CloudWatch Logs – Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ECSタスクの環境変数に保存する",
+                    "explanation": {
+                        "text": "環境変数での保存はセキュリティリスクが高いため不適切です。",
+                        "reference": "https://developer.hashicorp.com/terraform/language/state/remote",
+                        "reference_label": "Terraform – Remote state"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Terraformの推奨方法はS3に保存し、DynamoDBでロック管理を行うリモートステート構成です。",
+                "reference": "https://developer.hashicorp.com/terraform/language/settings/backends/s3",
+                "reference_label": "Terraform – S3 backend"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q38",
+            "question": "運用チームはAWS Configを使って、すべてのEC2インスタンスが特定のタグを持っているかを確認したいと考えています。最も適切な仕組みはどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "AWS Config ルール",
+                    "explanation": {
+                        "text": "Configルールを使えば、リソースに特定タグが設定されているか評価できます。",
+                        "reference": "https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html",
+                        "reference_label": "AWS Config – Rules"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Amazon S3 バケットポリシー",
+                    "explanation": {
+                        "text": "S3バケットポリシーはS3にのみ適用され、EC2インスタンスには使えません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-policies.html",
+                        "reference_label": "Amazon S3 – Bucket policies"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "CloudTrail Insights",
+                    "explanation": {
+                        "text": "CloudTrail InsightsはAPI利用の異常検知を行いますが、タグ評価はできません。",
+                        "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-insights.html",
+                        "reference_label": "AWS CloudTrail – Insights"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "IAMポリシー",
+                    "explanation": {
+                        "text": "IAMポリシーはアクセス制御用であり、リソースのタグ付け強制には不向きです。",
+                        "reference": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html",
+                        "reference_label": "IAM – Policies"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "AWS Configルールを使えば、EC2が必須タグを持つかどうかを自動評価できます。",
+                "reference": "https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html",
+                "reference_label": "AWS Config – Rules"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q39",
+            "question": "開発チームはEKSクラスタ上でPodが正しく動作しているかをモニタリングしたいと考えています。最も適切な選択肢はどれですか？",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Amazon CloudWatch Container Insights",
+                    "explanation": {
+                        "text": "Container InsightsはEKSやECSのリソース使用状況を可視化できます。",
+                        "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ContainerInsights.html",
+                        "reference_label": "Amazon CloudWatch – Container Insights"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "S3 バケットにログを保存する",
+                    "explanation": {
+                        "text": "S3はストレージであり、Podの監視はできません。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
+                        "reference_label": "Amazon S3 – Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "AWS Glueでログを解析する",
+                    "explanation": {
+                        "text": "GlueはETLサービスであり、リアルタイム監視には不向きです。",
+                        "reference": "https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html",
+                        "reference_label": "AWS Glue – Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "CloudTrailでAPIコールを確認する",
+                    "explanation": {
+                        "text": "CloudTrailは監査用であり、Podの健全性監視には使えません。",
+                        "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+                        "reference_label": "AWS CloudTrail – Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "EKSのモニタリングにはContainer Insightsが推奨され、リソース利用状況やPod状態を可視化できます。",
+                "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ContainerInsights.html",
+                "reference_label": "Amazon CloudWatch – Container Insights"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q40",
+            "question": "DevOpsチームは複数のリージョンに跨るインフラを管理しています。リソースの一元管理を行うために最も適切な仕組みはどれですか？",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "AWS CloudFormation StackSets",
+                    "explanation": {
+                        "text": "StackSetsを使うと複数リージョンにわたりスタックを一括展開できます。",
+                        "reference": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html",
+                        "reference_label": "AWS CloudFormation – StackSets"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Amazon S3バケットポリシー",
+                    "explanation": {
+                        "text": "S3バケットポリシーはストレージアクセス制御用であり、インフラ管理には不向きです。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-policies.html",
+                        "reference_label": "Amazon S3 – Bucket policies"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "IAMロール",
+                    "explanation": {
+                        "text": "IAMロールはアクセス制御用であり、リソース管理そのものは行いません。",
+                        "reference": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html",
+                        "reference_label": "IAM – Roles"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "AWS Backup",
+                    "explanation": {
+                        "text": "Backupはデータ保護用であり、マルチリージョンインフラ展開には不向きです。",
+                        "reference": "https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html",
+                        "reference_label": "AWS Backup – Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "CloudFormation StackSetsを使えば、マルチリージョンのリソースを一括管理できます。",
+                "reference": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html",
+                "reference_label": "AWS CloudFormation – StackSets"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q41",
+            "question": "セキュリティチームは、CI/CDパイプラインの中で機密情報を安全に管理したいと考えています。推奨されるAWSサービスはどれですか？",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "AWS Secrets Manager",
+                    "explanation": {
+                        "text": "Secrets Managerは安全な認証情報管理と自動ローテーションを提供します。",
+                        "reference": "https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html",
+                        "reference_label": "AWS Secrets Manager – Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Amazon S3",
+                    "explanation": {
+                        "text": "S3はストレージサービスであり、認証情報を安全に管理するには不適切です。",
+                        "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
+                        "reference_label": "Amazon S3 – Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "AWS CloudTrail",
+                    "explanation": {
+                        "text": "CloudTrailは監査ログサービスであり、認証情報の管理は行いません。",
+                        "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+                        "reference_label": "AWS CloudTrail – Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "AWS Glue",
+                    "explanation": {
+                        "text": "GlueはETLサービスであり、認証情報管理には使えません。",
+                        "reference": "https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html",
+                        "reference_label": "AWS Glue – Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "CI/CDパイプラインでの機密情報管理にはSecrets Managerが推奨されます。",
+                "reference": "https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html",
+                "reference_label": "AWS Secrets Manager – Overview"
+            }
+        },
+        {
+            "id": "aws-dop-c02-q42",
+            "question": "開発チームはAWS Systems Managerを利用して複数のEC2インスタンスに一括コマンドを実行したいと考えています。最適な機能はどれですか？",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Run Command",
+                    "explanation": {
+                        "text": "Run Commandを利用すると複数インスタンスに一括で安全にコマンドを実行できます。",
+                        "reference": "https://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html",
+                        "reference_label": "AWS Systems Manager – Run Command"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Parameter Store",
+                    "explanation": {
+                        "text": "Parameter Storeは設定値やシークレット管理用であり、一括コマンド実行には使えません。",
+                        "reference": "https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html",
+                        "reference_label": "AWS Systems Manager – Parameter Store"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Patch Manager",
+                    "explanation": {
+                        "text": "Patch Managerはパッチ適用用であり、任意のコマンド実行には不向きです。",
+                        "reference": "https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-patch.html",
+                        "reference_label": "AWS Systems Manager – Patch Manager"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Automation Documents",
+                    "explanation": {
+                        "text": "Automationはプロセス自動化用であり、一括コマンド実行はRun Commandが適切です。",
+                        "reference": "https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation.html",
+                        "reference_label": "AWS Systems Manager – Automation"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Systems Manager Run Commandを使うことで、複数EC2インスタンスに安全に一括コマンドを実行できます。",
+                "reference": "https://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html",
+                "reference_label": "AWS Systems Manager – Run Command"
+            }
+        },
+    {
+      "id": "aws-dop-c02-q43",
+      "question": "開発チームはECSサービスを運用しています。サービスが異常終了したタスクを自動的に復旧する仕組みはどれですか？",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ECS サービススケジューラ",
+          "explanation": {
+            "text": "ECSサービススケジューラはタスク数を維持し、異常終了したタスクを自動再起動します。",
+            "reference": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-scheduler.html",
+            "reference_label": "Amazon ECS – Service scheduler"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Auto Scaling グループ",
+          "explanation": {
+            "text": "ASGはEC2インスタンス数を管理しますが、タスク復旧はECSが行います。",
+            "reference": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html",
+            "reference_label": "Amazon EC2 Auto Scaling – Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "CloudTrail イベント",
+          "explanation": {
+            "text": "CloudTrailはAPIログ監査用であり、タスク復旧は行いません。",
+            "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+            "reference_label": "AWS CloudTrail – Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Config Conformance Pack",
+          "explanation": {
+            "text": "Configは監査用であり、タスク自動復旧機能はありません。",
+            "reference": "https://docs.aws.amazon.com/config/latest/developerguide/conformance-packs.html",
+            "reference_label": "AWS Config – Conformance Packs"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ECSサービススケジューラは望ましいタスク数を維持し、異常終了時に自動で再起動します。",
+        "reference": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-scheduler.html",
+        "reference_label": "Amazon ECS – Service scheduler"
+      }
+    },
+    {
+      "id": "aws-dop-c02-q44",
+      "question": "DevOpsチームはパイプライン実行ごとに静的コード解析を行いたいと考えています。最適なAWSサービスはどれですか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Amazon CodeGuru Reviewer",
+          "explanation": {
+            "text": "CodeGuru Reviewerはコード解析を行い、セキュリティや効率性の問題を検出します。",
+            "reference": "https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/what-is-codeguru-reviewer.html",
+            "reference_label": "Amazon CodeGuru Reviewer – Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AWS Glue",
+          "explanation": {
+            "text": "GlueはETLサービスであり、コード解析には利用できません。",
+            "reference": "https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html",
+            "reference_label": "AWS Glue – Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Amazon Macie",
+          "explanation": {
+            "text": "Macieはデータ保護に特化しており、コード解析は行いません。",
+            "reference": "https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html",
+            "reference_label": "Amazon Macie – Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CloudWatch Logs Insights",
+          "explanation": {
+            "text": "Logs Insightsはログ分析用であり、静的コード解析は行いません。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html",
+            "reference_label": "CloudWatch Logs Insights – Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Amazon CodeGuru Reviewerは静的コード解析を自動化し、CI/CDパイプラインに統合可能です。",
+        "reference": "https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/what-is-codeguru-reviewer.html",
+        "reference_label": "Amazon CodeGuru Reviewer – Overview"
+      }
+    },
+    {
+      "id": "aws-dop-c02-q45",
+      "question": "開発チームはAPIのデプロイを自動化したいと考えています。最も適切なAWSサービスはどれですか？",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Amazon API Gateway",
+          "explanation": {
+            "text": "API GatewayはAPIを構築・デプロイ・管理するためのサービスです。",
+            "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html",
+            "reference_label": "Amazon API Gateway – Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AWS Glue",
+          "explanation": {
+            "text": "GlueはETLサービスであり、APIデプロイには不向きです。",
+            "reference": "https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html",
+            "reference_label": "AWS Glue – Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Amazon S3",
+          "explanation": {
+            "text": "S3はオブジェクトストレージであり、APIデプロイ機能はありません。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
+            "reference_label": "Amazon S3 – Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CloudTrail",
+          "explanation": {
+            "text": "CloudTrailは監査用であり、APIデプロイ機能はありません。",
+            "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+            "reference_label": "AWS CloudTrail – Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "APIの構築・デプロイにはAPI Gatewayが最適です。",
+        "reference": "https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html",
+        "reference_label": "Amazon API Gateway – Overview"
+      }
+    },
+    {
+      "id": "aws-dop-c02-q46",
+      "question": "監査チームはAWSアカウント内で誰がどのリソースを操作したかを把握したいと考えています。最適なサービスはどれですか？",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AWS CloudTrail",
+          "explanation": {
+            "text": "CloudTrailはAPIコールを記録し、誰が何を実行したかを把握できます。",
+            "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+            "reference_label": "AWS CloudTrail – Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Amazon CloudWatch",
+          "explanation": {
+            "text": "CloudWatchはメトリクス監視用であり、ユーザー操作の記録は行いません。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html",
+            "reference_label": "Amazon CloudWatch – Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "AWS Config",
+          "explanation": {
+            "text": "Configはリソースの設定状態を追跡しますが、ユーザー操作の詳細は提供しません。",
+            "reference": "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
+            "reference_label": "AWS Config – Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Amazon S3",
+          "explanation": {
+            "text": "S3はストレージであり、監査ログ機能はありません。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
+            "reference_label": "Amazon S3 – Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "CloudTrailを使えばAWSアカウント内の全APIコールを記録し、監査証跡を残せます。",
+        "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+        "reference_label": "AWS CloudTrail – Overview"
+      }
+    },
+    {
+      "id": "aws-dop-c02-q47",
+      "question": "開発チームはアプリケーションデプロイ時に段階的にリリースする仕組みを導入したいと考えています。最適なデプロイ戦略はどれですか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Canary デプロイメント",
+          "explanation": {
+            "text": "Canaryデプロイは一部のユーザーに新バージョンを提供し、問題がなければ拡大する方式です。",
+            "reference": "https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html",
+            "reference_label": "AWS CodeDeploy – Deployment configurations"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Blue/Green デプロイメント",
+          "explanation": {
+            "text": "Blue/Greenは環境を切り替える方式で、段階的リリースには向きません。",
+            "reference": "https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-steps.html",
+            "reference_label": "AWS CodeDeploy – Deployment types"
+          }
+        },
+        {
+          "key": "C",
+          "text": "リソースを直接上書き",
+          "explanation": {
+            "text": "直接上書きはダウンタイムやリスクが大きいため推奨されません。",
+            "reference": "https://docs.aws.amazon.com/codedeploy/latest/userguide/welcome.html",
+            "reference_label": "AWS CodeDeploy – Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Configルールでリリース制御",
+          "explanation": {
+            "text": "Configルールはコンプライアンス評価用であり、デプロイ戦略には利用できません。",
+            "reference": "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html",
+            "reference_label": "AWS Config – Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "段階的リリースにはCanaryデプロイメントが適しています。",
+        "reference": "https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html",
+        "reference_label": "AWS CodeDeploy – Deployment configurations"
+      }
+    },
+    {
+      "id": "aws-dop-c02-q48",
+      "question": "開発チームはLambda関数を管理しています。新しいバージョンへのトラフィック移行を安全に行うために利用すべき機能はどれですか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Lambda エイリアスによるトラフィックシフト",
+          "explanation": {
+            "text": "エイリアスを利用すると、新旧バージョン間でトラフィックを分割できます。",
+            "reference": "https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html",
+            "reference_label": "AWS Lambda – Aliases"
+          }
+        },
+        {
+          "key": "B",
+          "text": "関数を直接上書き",
+          "explanation": {
+            "text": "直接上書きは即時切り替えとなりリスクが高いです。",
+            "reference": "https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html",
+            "reference_label": "AWS Lambda – Versions"
+          }
+        },
+        {
+          "key": "C",
+          "text": "CloudWatch Logsによる手動監視",
+          "explanation": {
+            "text": "監視は可能ですが、トラフィック制御機能は持ちません。",
+            "reference": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html",
+            "reference_label": "Amazon CloudWatch Logs – Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IAMポリシーでアクセスを切り替える",
+          "explanation": {
+            "text": "IAMポリシーは認可制御用であり、トラフィック制御には不向きです。",
+            "reference": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html",
+            "reference_label": "IAM – Policies"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Lambdaエイリアスを利用すると、バージョン間でトラフィックを分割して段階的リリースが可能です。",
+        "reference": "https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html",
+        "reference_label": "AWS Lambda – Aliases"
+      }
+    },
+    {
+      "id": "aws-dop-c02-q49",
+      "question": "運用チームはECRに保存されたコンテナイメージの脆弱性を継続的に検出したいと考えています。最適な仕組みはどれですか？",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ECR Image Scanning",
+          "explanation": {
+            "text": "ECRは保存時と定期的にイメージスキャンを行い脆弱性を検出します。",
+            "reference": "https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html",
+            "reference_label": "Amazon ECR – Image scanning"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Glueジョブ",
+          "explanation": {
+            "text": "GlueはETLサービスであり、イメージスキャン機能は持ちません。",
+            "reference": "https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html",
+            "reference_label": "AWS Glue – Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "S3 バケット",
+          "explanation": {
+            "text": "S3はストレージであり、スキャン機能は持ちません。",
+            "reference": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
+            "reference_label": "Amazon S3 – Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CloudTrail",
+          "explanation": {
+            "text": "CloudTrailはAPIログ監査用であり、脆弱性スキャンは行いません。",
+            "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+            "reference_label": "AWS CloudTrail – Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ECR Image Scanningを利用すれば、保存されたイメージの脆弱性を自動的に検出できます。",
+        "reference": "https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html",
+        "reference_label": "Amazon ECR – Image scanning"
+      }
+    },
+    {
+      "id": "aws-dop-c02-q50",
+      "question": "開発チームはAWS Systems Managerを使ってEC2インスタンスに対する運用作業を自動化したいと考えています。最適な仕組みはどれですか？",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Systems Manager Automation Documents (SSM Documents)",
+          "explanation": {
+            "text": "Automationを用いると、パッチ適用、AMI作成、再起動などの定型運用を手順化して安全に自動実行できます。",
+            "reference": "https://docs.aws.amazon.com/systems-manager/latest/userguide/automation.html",
+            "reference_label": "AWS Systems Manager – Automation"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AWS CloudTrail",
+          "explanation": {
+            "text": "CloudTrailはAPI操作の監査ログであり、運用作業の自動化は行いません。",
+            "reference": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html",
+            "reference_label": "AWS CloudTrail – Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Systems Manager Run Command",
+          "explanation": {
+            "text": "Run Commandは一括コマンド実行に適しますが、複数手順のワークフロー自動化にはAutomationが適しています。",
+            "reference": "https://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html",
+            "reference_label": "AWS Systems Manager – Run Command"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Systems Manager State Manager",
+          "explanation": {
+            "text": "State Managerは所望の構成状態を維持するのに適しており、任意の運用手順を段取り良く自動実行する用途はAutomationが最適です。",
+            "reference": "https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-state.html",
+            "reference_label": "AWS Systems Manager – State Manager"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "複数手順の定型オペレーションを安全に自動化する目的に最も適しているのはSystems Manager Automationです。",
+        "reference": "https://docs.aws.amazon.com/systems-manager/latest/userguide/automation.html",
+        "reference_label": "AWS Systems Manager – Automation"
+      }
+    }
+  ]
+}

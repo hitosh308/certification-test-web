@@ -1,0 +1,2467 @@
+{
+  "exam": {
+    "id": "PMLE-P",
+    "title": "Google Professional Machine Learning Engineer",
+    "description": "この資格は、Google Cloud を活用して機械学習モデルを設計・構築・評価・本番運用・最適化できるプロフェッショナルを認定するものです。生成AI、MLOps、データパイプライン、モデル運用監視など事業課題を解決する実践的スキルが問われます。",
+    "version": "2025",
+    "price": "200 USD", 
+    "difficulty": "難しい",
+    "official-site": "https://cloud.google.com/learn/certification/machine-learning-engineer",
+    "category": {
+      "id": "gcp",
+      "name": "Google Cloud"
+    }
+  },
+  "questions": [
+    {
+      "id": "gcp-PMLE-P-q1",
+      "question": "Vertex AI の Feature Store を利用する主な目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "特徴量の一貫した保存・再利用を行い、学習と推論で整合性を保つため",
+          "explanation": {
+            "text": "Feature Store は学習時と推論時で同じ特徴量を利用できるようにする仕組みを提供します。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/featurestore",
+            "reference_label": "Vertex AI Feature Store ドキュメント"
+          }
+        },
+        {
+          "key": "B",
+          "text": "分散トレーニングのために複数 GPU にデータを自動分割するため",
+          "explanation": {
+            "text": "分散トレーニングのデータ分割は Feature Store の目的ではありません。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/training/distributed-training",
+            "reference_label": "Vertex AI 分散トレーニング"
+          }
+        },
+        {
+          "key": "C",
+          "text": "モデルのハイパーパラメータを自動調整するため",
+          "explanation": {
+            "text": "ハイパーパラメータ調整は Vertex AI Hyperparameter Tuning の役割です。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/training/hyperparameter-tuning-overview",
+            "reference_label": "Vertex AI Hyperparameter Tuning"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ML モデルの解釈性を可視化するため",
+          "explanation": {
+            "text": "モデル解釈は Vertex Explainable AI が提供する機能です。",
+            "reference": "https://cloud.google.com/explainable-ai",
+            "reference_label": "Explainable AI"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Feature Store は特徴量を統合的に管理し、学習時と推論時で同じデータを使えるように設計されています。",
+        "reference": "https://cloud.google.com/vertex-ai/docs/featurestore",
+        "reference_label": "Vertex AI Feature Store ドキュメント"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q2",
+      "question": "AutoML とカスタムトレーニングの主な違いはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AutoML はデータセットを入力するだけでモデルを自動構築できるが、カスタムトレーニングは独自コードを利用する",
+          "explanation": {
+            "text": "AutoML はコード不要でモデル構築を行えます。カスタムトレーニングは TensorFlow, PyTorch などの独自コードを使用します。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/start/automl-users",
+            "reference_label": "Vertex AI AutoML"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AutoML では GPU を利用できないが、カスタムトレーニングでは利用可能である",
+          "explanation": {
+            "text": "AutoML でも GPU 利用は可能です。制約はモデルタイプによって異なります。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/general/locations",
+            "reference_label": "Vertex AI サービス仕様"
+          }
+        },
+        {
+          "key": "C",
+          "text": "カスタムトレーニングはモデル評価を行えないが、AutoML は自動評価を行う",
+          "explanation": {
+            "text": "両方ともモデル評価は可能です。評価方法が異なるだけです。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/training",
+            "reference_label": "Vertex AI トレーニング"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AutoML は BigQuery と統合できないが、カスタムトレーニングは統合できる",
+          "explanation": {
+            "text": "AutoML も BigQuery から直接データを取り込むことが可能です。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/beginner/bq-start",
+            "reference_label": "Vertex AI と BigQuery 統合"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "AutoML はコードレスでモデルを構築可能、カスタムトレーニングはフルコントロール可能なコード実装方式です。",
+        "reference": "https://cloud.google.com/vertex-ai/docs/start/automl-users",
+        "reference_label": "Vertex AI AutoML"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q3",
+      "question": "モデルのデプロイ後、Vertex AI Prediction で大規模なトラフィックを処理するために必要な設定はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "エンドポイントでオートスケーリングを有効化する",
+          "explanation": {
+            "text": "Vertex AI Prediction エンドポイントはオートスケーリングを設定することで大規模リクエストに対応できます。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/predictions/online-predictions",
+            "reference_label": "オンライン予測 - Vertex AI"
+          }
+        },
+        {
+          "key": "B",
+          "text": "BigQuery にモデルをエクスポートして実行する",
+          "explanation": {
+            "text": "BigQuery ML でも推論は可能ですが、Vertex AI Prediction のスケーリングとは異なる仕組みです。",
+            "reference": "https://cloud.google.com/bigquery-ml/docs/introduction",
+            "reference_label": "BigQuery ML"
+          }
+        },
+        {
+          "key": "C",
+          "text": "モデルを AutoML に再学習させる",
+          "explanation": {
+            "text": "AutoML はモデル再構築に使いますが、Prediction のスケーリングには関係しません。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/start/automl-users",
+            "reference_label": "Vertex AI AutoML"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud Functions によるリクエスト制御を追加する",
+          "explanation": {
+            "text": "Cloud Functions はイベント駆動型であり、Prediction のオートスケーリングに代わる仕組みではありません。",
+            "reference": "https://cloud.google.com/functions/docs/concepts",
+            "reference_label": "Cloud Functions"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Vertex AI Prediction では、オートスケーリングの設定によってリクエスト数に応じたインスタンス増加が可能です。",
+        "reference": "https://cloud.google.com/vertex-ai/docs/predictions/online-predictions",
+        "reference_label": "オンライン予測 - Vertex AI"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q4",
+      "question": "Cloud Dataflow を利用して学習データを前処理する主な利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "大規模データの分散処理を自動スケーリングで実行できる",
+          "explanation": {
+            "text": "Dataflow は Apache Beam ベースで分散処理をスケーラブルに行えます。",
+            "reference": "https://cloud.google.com/dataflow/docs",
+            "reference_label": "Cloud Dataflow ドキュメント"
+          }
+        },
+        {
+          "key": "B",
+          "text": "リアルタイム推論 API を直接提供できる",
+          "explanation": {
+            "text": "リアルタイム推論は Vertex AI Prediction の役割です。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/predictions",
+            "reference_label": "Vertex AI Prediction"
+          }
+        },
+        {
+          "key": "C",
+          "text": "モデルのハイパーパラメータを自動調整できる",
+          "explanation": {
+            "text": "ハイパーパラメータ調整は Vertex AI Hyperparameter Tuning の機能です。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/training/hyperparameter-tuning-overview",
+            "reference_label": "Vertex AI Hyperparameter Tuning"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Explainable AI を組み込んで解釈性を高められる",
+          "explanation": {
+            "text": "Explainable AI はモデル解釈に用いられるもので、Dataflow の主機能ではありません。",
+            "reference": "https://cloud.google.com/explainable-ai",
+            "reference_label": "Explainable AI"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Dataflow はサーバーレスで大規模データを並列処理でき、学習前の前処理に最適です。",
+        "reference": "https://cloud.google.com/dataflow/docs",
+        "reference_label": "Cloud Dataflow ドキュメント"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q5",
+      "question": "BigQuery ML を利用する利点はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "SQL だけでモデルを構築し、データを移動せずに学習できる",
+          "explanation": {
+            "text": "BigQuery ML は SQL クエリで直接 ML モデルを構築・学習できます。",
+            "reference": "https://cloud.google.com/bigquery-ml/docs/introduction",
+            "reference_label": "BigQuery ML ドキュメント"
+          }
+        },
+        {
+          "key": "B",
+          "text": "分散学習に必ず GPU を利用する",
+          "explanation": {
+            "text": "BigQuery ML は CPU ベースで動作し、必ず GPU を使うわけではありません。",
+            "reference": "https://cloud.google.com/bigquery-ml/docs/introduction",
+            "reference_label": "BigQuery ML ドキュメント"
+          }
+        },
+        {
+          "key": "C",
+          "text": "特徴量エンジニアリングを完全に自動化する",
+          "explanation": {
+            "text": "BigQuery ML は自動特徴量生成までは行いません。ユーザーが SQL で加工します。",
+            "reference": "https://cloud.google.com/bigquery-ml/docs/introduction",
+            "reference_label": "BigQuery ML ドキュメント"
+          }
+        },
+        {
+          "key": "D",
+          "text": "学習済みモデルを Vertex AI に必ずエクスポートする必要がある",
+          "explanation": {
+            "text": "BigQuery ML は BigQuery 内で直接推論可能で、Vertex AI に移行は必須ではありません。",
+            "reference": "https://cloud.google.com/bigquery-ml/docs/predict-syntax",
+            "reference_label": "BigQuery ML 予測"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "BigQuery ML の最大の特徴は、データを移動せずに SQL で直接モデリングできる点です。",
+        "reference": "https://cloud.google.com/bigquery-ml/docs/introduction",
+        "reference_label": "BigQuery ML ドキュメント"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q6",
+      "question": "機械学習パイプラインの再現性を高めるために有効な Vertex AI の機能はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Vertex AI Pipelines",
+          "explanation": {
+            "text": "Vertex AI Pipelines は ML ワークフローを再現性・再利用性高く管理できます。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/pipelines",
+            "reference_label": "Vertex AI Pipelines"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Vertex Explainable AI",
+          "explanation": {
+            "text": "Explainable AI はモデル解釈性に関する機能であり、再現性管理ではありません。",
+            "reference": "https://cloud.google.com/explainable-ai",
+            "reference_label": "Explainable AI"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Vertex AI Workbench",
+          "explanation": {
+            "text": "Workbench は Jupyter ベースの開発環境ですが、再現性確保は Pipelines の役割です。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/workbench",
+            "reference_label": "Vertex AI Workbench"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud Functions",
+          "explanation": {
+            "text": "Cloud Functions はイベント駆動型サービスであり、ML パイプライン再現性確保には適しません。",
+            "reference": "https://cloud.google.com/functions/docs",
+            "reference_label": "Cloud Functions"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Vertex AI Pipelines によって、ML ワークフローを構成要素ごとに定義し再現性を確保できます。",
+        "reference": "https://cloud.google.com/vertex-ai/docs/pipelines",
+        "reference_label": "Vertex AI Pipelines"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q7",
+      "question": "モデル監視におけるデータドリフト検出の目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "学習時と異なるデータ分布が発生していないか確認する",
+          "explanation": {
+            "text": "データドリフト検出は本番データの分布変化を検出するためです。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/model-monitoring",
+            "reference_label": "Vertex AI モデル監視"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデルのハイパーパラメータを再最適化する",
+          "explanation": {
+            "text": "ハイパーパラメータ最適化はドリフト検出の目的ではありません。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/training/hyperparameter-tuning-overview",
+            "reference_label": "Vertex AI Hyperparameter Tuning"
+          }
+        },
+        {
+          "key": "C",
+          "text": "GPU 使用率を監視してリソースを調整する",
+          "explanation": {
+            "text": "GPU 使用率はインフラ監視の指標であり、データドリフト検出とは関係ありません。",
+            "reference": "https://cloud.google.com/monitoring/docs",
+            "reference_label": "Cloud Monitoring"
+          }
+        },
+        {
+          "key": "D",
+          "text": "トレーニングジョブを自動再実行する",
+          "explanation": {
+            "text": "自動再学習はデータドリフト検出後の対応策ですが、検出自体の目的ではありません。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/model-monitoring",
+            "reference_label": "Vertex AI モデル監視"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "データドリフトは、本番データが学習データと異なる分布になる現象で、モデル精度低下の要因です。",
+        "reference": "https://cloud.google.com/vertex-ai/docs/model-monitoring",
+        "reference_label": "Vertex AI モデル監視"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q8",
+      "question": "学習データにラベルの不均衡がある場合の代表的な対処法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "クラスごとの重み付けを調整する",
+          "explanation": {
+            "text": "ラベル不均衡に対処する一般的手法は損失関数でのクラス重み付けです。",
+            "reference": "https://developers.google.com/machine-learning/data-prep/construct/sampling-splitting/imbalanced-data",
+            "reference_label": "Google ML Guide: Imbalanced Data"
+          }
+        },
+        {
+          "key": "B",
+          "text": "学習データをランダムに削除する",
+          "explanation": {
+            "text": "データを無作為に削除するのは精度低下につながります。",
+            "reference": "https://developers.google.com/machine-learning/data-prep/construct/sampling-splitting/imbalanced-data",
+            "reference_label": "Google ML Guide: Imbalanced Data"
+          }
+        },
+        {
+          "key": "C",
+          "text": "学習率を下げる",
+          "explanation": {
+            "text": "学習率は収束速度の調整に関わるもので、クラス不均衡直接の解決にはなりません。",
+            "reference": "https://developers.google.com/machine-learning/glossary#learning-rate",
+            "reference_label": "Google ML Glossary"
+          }
+        },
+        {
+          "key": "D",
+          "text": "GPU メモリを増加させる",
+          "explanation": {
+            "text": "GPU メモリの増加は計算効率には影響しますが、ラベル不均衡の解決策ではありません。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/training",
+            "reference_label": "Vertex AI トレーニング"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "クラス不均衡は損失関数の重み付けやデータのオーバーサンプリング／アンダーサンプリングで対応可能です。",
+        "reference": "https://developers.google.com/machine-learning/data-prep/construct/sampling-splitting/imbalanced-data",
+        "reference_label": "Google ML Guide: Imbalanced Data"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q9",
+      "question": "Vertex AI Workbench の特徴はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "JupyterLab ベースの開発環境を Google Cloud 上で提供する",
+          "explanation": {
+            "text": "Workbench はマネージド JupyterLab 環境で、ML 開発を容易にします。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/workbench",
+            "reference_label": "Vertex AI Workbench"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ML パイプラインの自動監視機能を提供する",
+          "explanation": {
+            "text": "パイプラインの監視は Vertex AI Pipelines と Model Monitoring の機能です。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/pipelines",
+            "reference_label": "Vertex AI Pipelines"
+          }
+        },
+        {
+          "key": "C",
+          "text": "GPU リソースを必ず利用する",
+          "explanation": {
+            "text": "Workbench は CPU/GPU 両方の環境を選択できます。必須ではありません。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/workbench",
+            "reference_label": "Vertex AI Workbench"
+          }
+        },
+        {
+          "key": "D",
+          "text": "BigQuery ML を自動的にトリガーする",
+          "explanation": {
+            "text": "BigQuery ML との統合は可能ですが、自動トリガーは Workbench の機能ではありません。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/workbench",
+            "reference_label": "Vertex AI Workbench"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Vertex AI Workbench は Google Cloud 上のフルマネージド JupyterLab 環境で、ML モデル開発を効率化します。",
+        "reference": "https://cloud.google.com/vertex-ai/docs/workbench",
+        "reference_label": "Vertex AI Workbench"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q10",
+      "question": "データ前処理で正規化 (Normalization) を行う目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "特徴量のスケールを揃え、学習を安定させる",
+          "explanation": {
+            "text": "正規化は特徴量のスケールを統一することで学習効率を高めます。",
+            "reference": "https://developers.google.com/machine-learning/data-prep/transform/normalization",
+            "reference_label": "Google ML Guide: Normalization"
+          }
+        },
+        {
+          "key": "B",
+          "text": "外れ値を必ず削除する",
+          "explanation": {
+            "text": "正規化は外れ値削除の処理ではありません。",
+            "reference": "https://developers.google.com/machine-learning/data-prep/transform/normalization",
+            "reference_label": "Google ML Guide: Normalization"
+          }
+        },
+        {
+          "key": "C",
+          "text": "欠損値を補完する",
+          "explanation": {
+            "text": "欠損値補完は別の前処理手法であり、正規化とは異なります。",
+            "reference": "https://developers.google.com/machine-learning/data-prep/transform/normalization",
+            "reference_label": "Google ML Guide: Normalization"
+          }
+        },
+        {
+          "key": "D",
+          "text": "特徴量を自動的に削除する",
+          "explanation": {
+            "text": "正規化は削除ではなくスケーリングに関する処理です。",
+            "reference": "https://developers.google.com/machine-learning/data-prep/transform/normalization",
+            "reference_label": "Google ML Guide: Normalization"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "正規化は特徴量のスケールを統一することで勾配降下法の安定性を高めます。",
+        "reference": "https://developers.google.com/machine-learning/data-prep/transform/normalization",
+        "reference_label": "Google ML Guide: Normalization"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q11",
+      "question": "Vertex AI において Explainable AI を利用する目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "予測結果に対する特徴量の寄与度を可視化する",
+          "explanation": {
+            "text": "Explainable AI は SHAP や統計的手法で特徴量寄与度を解釈可能にします。",
+            "reference": "https://cloud.google.com/explainable-ai",
+            "reference_label": "Explainable AI"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデルを再学習する",
+          "explanation": {
+            "text": "Explainable AI はモデル解釈に用いるもので、再学習機能ではありません。",
+            "reference": "https://cloud.google.com/explainable-ai",
+            "reference_label": "Explainable AI"
+          }
+        },
+        {
+          "key": "C",
+          "text": "GPU 利用率を最適化する",
+          "explanation": {
+            "text": "リソース最適化は Explainable AI の機能ではありません。",
+            "reference": "https://cloud.google.com/explainable-ai",
+            "reference_label": "Explainable AI"
+          }
+        },
+        {
+          "key": "D",
+          "text": "モデルのハイパーパラメータを自動探索する",
+          "explanation": {
+            "text": "ハイパーパラメータ探索は Hyperparameter Tuning の機能です。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/training/hyperparameter-tuning-overview",
+            "reference_label": "Vertex AI Hyperparameter Tuning"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Explainable AI を使うと、予測結果がどの特徴量にどれだけ依存しているかを可視化できます。",
+        "reference": "https://cloud.google.com/explainable-ai",
+        "reference_label": "Explainable AI"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q12",
+      "question": "モデルの本番運用でオンライン推論よりバッチ推論を選択すべきケースはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "1日に1回まとめて推論を行うユースケース",
+          "explanation": {
+            "text": "バッチ推論は定期的に大量データを一括処理するのに適しています。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/predictions/batch-predictions",
+            "reference_label": "Vertex AI バッチ予測"
+          }
+        },
+        {
+          "key": "B",
+          "text": "リアルタイムのレコメンド表示",
+          "explanation": {
+            "text": "リアルタイム処理はオンライン推論の適用領域です。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/predictions/online-predictions",
+            "reference_label": "Vertex AI オンライン予測"
+          }
+        },
+        {
+          "key": "C",
+          "text": "対話型チャットボットの応答生成",
+          "explanation": {
+            "text": "チャットボットは低レイテンシーが必要であり、オンライン推論を利用します。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/predictions/online-predictions",
+            "reference_label": "Vertex AI オンライン予測"
+          }
+        },
+        {
+          "key": "D",
+          "text": "リアルタイム不正検知",
+          "explanation": {
+            "text": "不正検知はリアルタイム性が求められるため、オンライン推論を利用すべきです。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/predictions/online-predictions",
+            "reference_label": "Vertex AI オンライン予測"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "バッチ推論は日次や時間単位で一括処理するユースケースに適しています。",
+        "reference": "https://cloud.google.com/vertex-ai/docs/predictions/batch-predictions",
+        "reference_label": "Vertex AI バッチ予測"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q13",
+      "question": "MLOps の目的のひとつとして正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ML モデルのライフサイクルを自動化・標準化する",
+          "explanation": {
+            "text": "MLOps は DevOps の ML 版であり、モデルのデプロイから監視までを標準化します。",
+            "reference": "https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning",
+            "reference_label": "Google Cloud MLOps ガイド"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ML モデルの推論速度を必ず高速化する",
+          "explanation": {
+            "text": "推論速度の改善は間接的な効果ですが、MLOps の主目的ではありません。",
+            "reference": "https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning",
+            "reference_label": "Google Cloud MLOps ガイド"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データ収集を完全に自動化する",
+          "explanation": {
+            "text": "MLOps の範囲にはデータ収集全自動化は含まれません。",
+            "reference": "https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning",
+            "reference_label": "Google Cloud MLOps ガイド"
+          }
+        },
+        {
+          "key": "D",
+          "text": "GPU クラスタの管理を代行する",
+          "explanation": {
+            "text": "MLOps は GPU クラスタ管理サービスではありません。",
+            "reference": "https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning",
+            "reference_label": "Google Cloud MLOps ガイド"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "MLOps の目的は、ML モデルのライフサイクルを DevOps 的に標準化・自動化することです。",
+        "reference": "https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning",
+        "reference_label": "Google Cloud MLOps ガイド"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q14",
+      "question": "モデルのハイパーパラメータチューニングで効率的な探索を行うアルゴリズムはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ベイズ最適化",
+          "explanation": {
+            "text": "ベイズ最適化は探索空間を効率的に探索できる代表的な手法です。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/training/hyperparameter-tuning-overview",
+            "reference_label": "Vertex AI Hyperparameter Tuning"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ランダム探索のみ",
+          "explanation": {
+            "text": "ランダム探索は単純ですが効率性に欠けます。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/training/hyperparameter-tuning-overview",
+            "reference_label": "Vertex AI Hyperparameter Tuning"
+          }
+        },
+        {
+          "key": "C",
+          "text": "単純なグリッド探索",
+          "explanation": {
+            "text": "グリッド探索は計算コストが高く、大規模空間では非効率です。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/training/hyperparameter-tuning-overview",
+            "reference_label": "Vertex AI Hyperparameter Tuning"
+          }
+        },
+        {
+          "key": "D",
+          "text": "k-means クラスタリング",
+          "explanation": {
+            "text": "k-means はクラスタリング手法であり、ハイパーパラメータ探索手法ではありません。",
+            "reference": "https://developers.google.com/machine-learning/glossary#k-means",
+            "reference_label": "Google ML Glossary"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ベイズ最適化は限られた試行回数で効率的に良いハイパーパラメータを探索する手法です。",
+        "reference": "https://cloud.google.com/vertex-ai/docs/training/hyperparameter-tuning-overview",
+        "reference_label": "Vertex AI Hyperparameter Tuning"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q15",
+      "question": "学習済みモデルの推論でレスポンス遅延を減らすために有効な Vertex AI の設定はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Prediction ノードの最小レプリカ数を増やす",
+          "explanation": {
+            "text": "最小レプリカ数を増やすことでコールドスタートを回避し、遅延を減らせます。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/predictions/online-predictions",
+            "reference_label": "Vertex AI オンライン予測"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデルを AutoML に変換する",
+          "explanation": {
+            "text": "AutoML はモデル構築手法であり、レスポンス遅延には直接関係しません。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/start/automl-users",
+            "reference_label": "Vertex AI AutoML"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Cloud Functions にモデルをデプロイする",
+          "explanation": {
+            "text": "Cloud Functions はイベント駆動用途であり、大規模推論に適しません。",
+            "reference": "https://cloud.google.com/functions/docs/concepts",
+            "reference_label": "Cloud Functions"
+          }
+        },
+        {
+          "key": "D",
+          "text": "学習データセットを拡張する",
+          "explanation": {
+            "text": "データセットの拡張は学習精度には寄与しますが、推論時の遅延改善には効果がありません。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/training",
+            "reference_label": "Vertex AI トレーニング"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "最小レプリカ数を設定することで、常に一定数のインスタンスを稼働させ、推論遅延を低減できます。",
+        "reference": "https://cloud.google.com/vertex-ai/docs/predictions/online-predictions",
+        "reference_label": "Vertex AI オンライン予測"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q16",
+      "question": "モデルが過学習していると判断できる典型的な兆候はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "学習データでの精度は高いが、検証データでの精度が低い",
+          "explanation": {
+            "text": "過学習は訓練データに特化しすぎて汎化性能が低下する現象です。",
+            "reference": "https://developers.google.com/machine-learning/crash-course/generalization/peril-of-overfitting",
+            "reference_label": "Google ML Crash Course: Overfitting"
+          }
+        },
+        {
+          "key": "B",
+          "text": "学習データと検証データの両方で精度が低い",
+          "explanation": {
+            "text": "これは過学習ではなくアンダーフィッティングの兆候です。",
+            "reference": "https://developers.google.com/machine-learning/crash-course/generalization/peril-of-overfitting",
+            "reference_label": "Google ML Crash Course: Overfitting"
+          }
+        },
+        {
+          "key": "C",
+          "text": "学習の初期から損失が変化しない",
+          "explanation": {
+            "text": "これは学習率やデータ問題の可能性があり、過学習の特徴ではありません。",
+            "reference": "https://developers.google.com/machine-learning/crash-course/training-loss",
+            "reference_label": "Google ML Crash Course"
+          }
+        },
+        {
+          "key": "D",
+          "text": "推論速度が低下する",
+          "explanation": {
+            "text": "推論速度は過学習とは無関係です。",
+            "reference": "https://developers.google.com/machine-learning/crash-course/generalization/peril-of-overfitting",
+            "reference_label": "Google ML Crash Course: Overfitting"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "過学習は訓練データに対して精度が高い一方、検証データで精度が下がることが典型的です。",
+        "reference": "https://developers.google.com/machine-learning/crash-course/generalization/peril-of-overfitting",
+        "reference_label": "Google ML Crash Course: Overfitting"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q17",
+      "question": "大規模な分散学習で効率を高めるために推奨されるアーキテクチャはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "パラメータサーバー方式",
+          "explanation": {
+            "text": "パラメータサーバー方式は分散学習の効率的な方法で、Google Cloud でも利用可能です。",
+            "reference": "https://cloud.google.com/ai-platform/training/docs/distributed-training-overview",
+            "reference_label": "Google Cloud 分散学習"
+          }
+        },
+        {
+          "key": "B",
+          "text": "シングルスレッド方式",
+          "explanation": {
+            "text": "シングルスレッドでは分散処理ができず、大規模学習には不向きです。",
+            "reference": "https://cloud.google.com/ai-platform/training/docs/distributed-training-overview",
+            "reference_label": "Google Cloud 分散学習"
+          }
+        },
+        {
+          "key": "C",
+          "text": "逐次学習方式",
+          "explanation": {
+            "text": "逐次学習は分散学習とは異なる概念で、大規模分散処理には向きません。",
+            "reference": "https://developers.google.com/machine-learning/crash-course/learning-rate",
+            "reference_label": "Google ML Crash Course"
+          }
+        },
+        {
+          "key": "D",
+          "text": "クラスタリング方式",
+          "explanation": {
+            "text": "クラスタリングは教師なし学習の一種であり、分散学習の効率化手法ではありません。",
+            "reference": "https://developers.google.com/machine-learning/glossary#clustering",
+            "reference_label": "Google ML Glossary"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "パラメータサーバー方式は分散学習の代表的な方法で、大規模なモデルを効率的に学習可能にします。",
+        "reference": "https://cloud.google.com/ai-platform/training/docs/distributed-training-overview",
+        "reference_label": "Google Cloud 分散学習"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q18",
+      "question": "Cloud Storage 上のデータを Vertex AI で直接利用する利点はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データを移動せずに直接参照できる",
+          "explanation": {
+            "text": "Cloud Storage のデータを直接利用することでデータ移動の手間が省けます。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/training/import-data",
+            "reference_label": "Vertex AI データインポート"
+          }
+        },
+        {
+          "key": "B",
+          "text": "必ず GPU 上にキャッシュされる",
+          "explanation": {
+            "text": "Cloud Storage から GPU に自動キャッシュはされません。",
+            "reference": "https://cloud.google.com/storage/docs",
+            "reference_label": "Cloud Storage ドキュメント"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データは自動的に正規化される",
+          "explanation": {
+            "text": "正規化は別途前処理として行う必要があります。",
+            "reference": "https://developers.google.com/machine-learning/data-prep/transform/normalization",
+            "reference_label": "Google ML Guide: Normalization"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Vertex AI 内で必ず自動暗号化される",
+          "explanation": {
+            "text": "暗号化は Cloud Storage 側の機能であり、Vertex AI 専用の仕組みではありません。",
+            "reference": "https://cloud.google.com/storage/docs/encryption",
+            "reference_label": "Cloud Storage 暗号化"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Storage は Vertex AI と統合されており、データを移動させずに直接学習に利用可能です。",
+        "reference": "https://cloud.google.com/vertex-ai/docs/training/import-data",
+        "reference_label": "Vertex AI データインポート"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q19",
+      "question": "モデルを本番運用に移行する前に推奨される検証方法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "A/B テスト",
+          "explanation": {
+            "text": "A/B テストは異なるモデルを実運用環境で比較する検証方法です。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/predictions/deploy-model-a-b-testing",
+            "reference_label": "Vertex AI A/B テスト"
+          }
+        },
+        {
+          "key": "B",
+          "text": "クロスバリデーションのみ",
+          "explanation": {
+            "text": "クロスバリデーションは学習段階の手法であり、本番前検証には限定的です。",
+            "reference": "https://developers.google.com/machine-learning/crash-course/validation/cross-validation",
+            "reference_label": "Google ML Crash Course: Cross Validation"
+          }
+        },
+        {
+          "key": "C",
+          "text": "GPU モニタリング",
+          "explanation": {
+            "text": "GPU 使用率の監視は性能調整には役立ちますが、本番前のモデル検証方法ではありません。",
+            "reference": "https://cloud.google.com/monitoring/docs",
+            "reference_label": "Cloud Monitoring"
+          }
+        },
+        {
+          "key": "D",
+          "text": "モデルサイズの圧縮",
+          "explanation": {
+            "text": "モデル圧縮は推論効率改善の一環ですが、検証方法ではありません。",
+            "reference": "https://developers.google.com/machine-learning/model-optimization",
+            "reference_label": "Google Model Optimization"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "A/B テストにより複数モデルの性能を実際のトラフィックで比較でき、移行判断に有効です。",
+        "reference": "https://cloud.google.com/vertex-ai/docs/predictions/deploy-model-a-b-testing",
+        "reference_label": "Vertex AI A/B テスト"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q20",
+      "question": "データ漏洩 (Data Leakage) を防ぐための代表的な対策はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "学習データと検証データを厳密に分離する",
+          "explanation": {
+            "text": "データ漏洩を防ぐにはデータセットを適切に分割し、学習時に未来の情報を含めないことが重要です。",
+            "reference": "https://developers.google.com/machine-learning/data-prep/construct/sampling-splitting",
+            "reference_label": "Google ML Guide: Data Splitting"
+          }
+        },
+        {
+          "key": "B",
+          "text": "正則化パラメータを大きくする",
+          "explanation": {
+            "text": "正則化は過学習の抑制には役立ちますが、データ漏洩そのものを防ぐ手段ではありません。",
+            "reference": "https://developers.google.com/machine-learning/crash-course/regularization-for-simplicity/l2-regularization",
+            "reference_label": "Google ML Crash Course: Regularization"
+          }
+        },
+        {
+          "key": "C",
+          "text": "バッチサイズを小さくする",
+          "explanation": {
+            "text": "バッチサイズは学習効率に関わるもので、データ漏洩防止には関係ありません。",
+            "reference": "https://developers.google.com/machine-learning/glossary#batch-size",
+            "reference_label": "Google ML Glossary"
+          }
+        },
+        {
+          "key": "D",
+          "text": "GPU メモリを増やす",
+          "explanation": {
+            "text": "GPU メモリは計算性能に影響しますが、データ漏洩防止とは関係がありません。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/training",
+            "reference_label": "Vertex AI トレーニング"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "データ漏洩の典型例は検証データに未来情報や学習データの一部が混入すること。これを防ぐには厳密なデータ分離が必要です。",
+        "reference": "https://developers.google.com/machine-learning/data-prep/construct/sampling-splitting",
+        "reference_label": "Google ML Guide: Data Splitting"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q21",
+      "question": "学習ジョブで TPU を利用する利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "大規模行列計算に最適化され、高速学習が可能",
+          "explanation": {
+            "text": "TPU は行列演算を最適化しており、ディープラーニングに特化したアクセラレータです。",
+            "reference": "https://cloud.google.com/tpu/docs/tpus",
+            "reference_label": "Cloud TPU ドキュメント"
+          }
+        },
+        {
+          "key": "B",
+          "text": "常に GPU より安価である",
+          "explanation": {
+            "text": "コストはジョブの性質に依存し、常に GPU より安価とは限りません。",
+            "reference": "https://cloud.google.com/tpu/docs/pricing",
+            "reference_label": "Cloud TPU 料金"
+          }
+        },
+        {
+          "key": "C",
+          "text": "自動的にデータ前処理を行う",
+          "explanation": {
+            "text": "TPU は演算処理専用で、データ前処理は別のサービスで行う必要があります。",
+            "reference": "https://cloud.google.com/tpu/docs/tpus",
+            "reference_label": "Cloud TPU ドキュメント"
+          }
+        },
+        {
+          "key": "D",
+          "text": "必ず分散学習に対応しているわけではない",
+          "explanation": {
+            "text": "TPU は分散学習に対応可能であり、この選択肢は誤りです。",
+            "reference": "https://cloud.google.com/tpu/docs/tpus",
+            "reference_label": "Cloud TPU ドキュメント"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "TPU はディープラーニングにおける大規模行列計算を高速化する専用ハードウェアです。",
+        "reference": "https://cloud.google.com/tpu/docs/tpus",
+        "reference_label": "Cloud TPU ドキュメント"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q22",
+      "question": "Vertex AI Model Monitoring で概念ドリフト (Concept Drift) を検出する目的はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "入力特徴量とターゲット変数の関係が変化していないか確認する",
+          "explanation": {
+            "text": "概念ドリフトは特徴量とラベルの関係性の変化を検出する仕組みです。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/model-monitoring",
+            "reference_label": "Vertex AI モデル監視"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデルのハイパーパラメータを最適化する",
+          "explanation": {
+            "text": "概念ドリフト検出は学習済みモデルの性能変化を監視するもので、パラメータ最適化ではありません。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/model-monitoring",
+            "reference_label": "Vertex AI モデル監視"
+          }
+        },
+        {
+          "key": "C",
+          "text": "GPU 使用率を最適化する",
+          "explanation": {
+            "text": "GPU 使用率はインフラ監視の対象であり、概念ドリフト検出とは関係ありません。",
+            "reference": "https://cloud.google.com/monitoring/docs",
+            "reference_label": "Cloud Monitoring"
+          }
+        },
+        {
+          "key": "D",
+          "text": "特徴量を自動生成する",
+          "explanation": {
+            "text": "特徴量生成は別の工程であり、概念ドリフト検出の目的ではありません。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/featurestore",
+            "reference_label": "Vertex AI Feature Store"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "概念ドリフトは、時間とともに特徴量とラベルの関係が変化し、モデル精度に影響を与える現象を指します。",
+        "reference": "https://cloud.google.com/vertex-ai/docs/model-monitoring",
+        "reference_label": "Vertex AI モデル監視"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q23",
+      "question": "TensorFlow Extended (TFX) を利用する主な目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ML パイプラインをエンドツーエンドで構築・運用する",
+          "explanation": {
+            "text": "TFX はデータ処理、学習、評価、デプロイを含む ML パイプラインのフレームワークです。",
+            "reference": "https://www.tensorflow.org/tfx",
+            "reference_label": "TensorFlow Extended"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SQL でモデルを構築する",
+          "explanation": {
+            "text": "SQL でモデリングするのは BigQuery ML の特徴です。",
+            "reference": "https://cloud.google.com/bigquery-ml/docs/introduction",
+            "reference_label": "BigQuery ML"
+          }
+        },
+        {
+          "key": "C",
+          "text": "モデルを自動的に GPU に最適化する",
+          "explanation": {
+            "text": "GPU 最適化は TensorFlow やハードウェア設定で対応するもので、TFX の主目的ではありません。",
+            "reference": "https://www.tensorflow.org/tfx",
+            "reference_label": "TensorFlow Extended"
+          }
+        },
+        {
+          "key": "D",
+          "text": "推論 API を提供する",
+          "explanation": {
+            "text": "推論 API 提供は Vertex AI Prediction などの役割です。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/predictions",
+            "reference_label": "Vertex AI Prediction"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "TFX は ML パイプラインを構築・自動化するフレームワークで、再現性と運用性を高めます。",
+        "reference": "https://www.tensorflow.org/tfx",
+        "reference_label": "TensorFlow Extended"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q24",
+      "question": "データ前処理で欠損値処理を行う一般的な方法はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "平均値や中央値で補完する",
+          "explanation": {
+            "text": "数値データの欠損は平均値や中央値で補完するのが一般的です。",
+            "reference": "https://developers.google.com/machine-learning/data-prep/cleaning-missing-data",
+            "reference_label": "Google ML Guide: Missing Data"
+          }
+        },
+        {
+          "key": "B",
+          "text": "必ず行を削除する",
+          "explanation": {
+            "text": "欠損が少ない場合は削除も可能ですが、必ず削除するのは適切ではありません。",
+            "reference": "https://developers.google.com/machine-learning/data-prep/cleaning-missing-data",
+            "reference_label": "Google ML Guide: Missing Data"
+          }
+        },
+        {
+          "key": "C",
+          "text": "GPU で欠損を補う",
+          "explanation": {
+            "text": "GPU は計算資源であり、欠損補完の手法ではありません。",
+            "reference": "https://developers.google.com/machine-learning/data-prep/cleaning-missing-data",
+            "reference_label": "Google ML Guide: Missing Data"
+          }
+        },
+        {
+          "key": "D",
+          "text": "欠損値をランダムに置き換える",
+          "explanation": {
+            "text": "ランダム置換は統計的一貫性を損なう可能性があります。",
+            "reference": "https://developers.google.com/machine-learning/data-prep/cleaning-missing-data",
+            "reference_label": "Google ML Guide: Missing Data"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "欠損値補完には平均値や中央値の代入がよく用いられます。",
+        "reference": "https://developers.google.com/machine-learning/data-prep/cleaning-missing-data",
+        "reference_label": "Google ML Guide: Missing Data"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q25",
+      "question": "モデルの説明責任を果たすために必要な取り組みとして最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "予測根拠をユーザーに説明できるようにする",
+          "explanation": {
+            "text": "説明責任を果たすには Explainable AI を活用し、予測の理由を可視化することが重要です。",
+            "reference": "https://cloud.google.com/explainable-ai",
+            "reference_label": "Explainable AI"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデルサイズを小さくする",
+          "explanation": {
+            "text": "モデルサイズ縮小は推論効率に関するもので、説明責任とは直接関係ありません。",
+            "reference": "https://developers.google.com/machine-learning/model-optimization",
+            "reference_label": "Google Model Optimization"
+          }
+        },
+        {
+          "key": "C",
+          "text": "GPU 利用率を最適化する",
+          "explanation": {
+            "text": "GPU 利用率はリソース効率の問題であり、説明責任には関係ありません。",
+            "reference": "https://cloud.google.com/monitoring/docs",
+            "reference_label": "Cloud Monitoring"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ハイパーパラメータを調整する",
+          "explanation": {
+            "text": "ハイパーパラメータ調整は精度向上の取り組みであり、説明責任とは関係しません。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/training/hyperparameter-tuning-overview",
+            "reference_label": "Vertex AI Hyperparameter Tuning"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "説明責任を果たすには、予測理由を説明可能にする仕組み（Explainable AI）が不可欠です。",
+        "reference": "https://cloud.google.com/explainable-ai",
+        "reference_label": "Explainable AI"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q26",
+      "question": "データ前処理でカテゴリ変数を数値に変換する代表的な手法はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ワンホットエンコーディング",
+          "explanation": {
+            "text": "ワンホットエンコーディングはカテゴリ変数をバイナリベクトルに変換する方法です。",
+            "reference": "https://developers.google.com/machine-learning/crash-course/encoding/categorical-data",
+            "reference_label": "Google ML Crash Course: Categorical Data"
+          }
+        },
+        {
+          "key": "B",
+          "text": "正規化",
+          "explanation": {
+            "text": "正規化は数値データのスケーリング手法であり、カテゴリ変数には適しません。",
+            "reference": "https://developers.google.com/machine-learning/data-prep/transform/normalization",
+            "reference_label": "Google ML Guide: Normalization"
+          }
+        },
+        {
+          "key": "C",
+          "text": "主成分分析 (PCA)",
+          "explanation": {
+            "text": "PCA は次元削減の手法であり、カテゴリ変数の直接変換には使いません。",
+            "reference": "https://developers.google.com/machine-learning/glossary#pca",
+            "reference_label": "Google ML Glossary"
+          }
+        },
+        {
+          "key": "D",
+          "text": "アンダーサンプリング",
+          "explanation": {
+            "text": "アンダーサンプリングはデータ不均衡への対応であり、カテゴリ変数変換の手法ではありません。",
+            "reference": "https://developers.google.com/machine-learning/data-prep/construct/sampling-splitting/imbalanced-data",
+            "reference_label": "Google ML Guide: Imbalanced Data"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "カテゴリ変数の数値化にはワンホットエンコーディングが代表的に利用されます。",
+        "reference": "https://developers.google.com/machine-learning/crash-course/encoding/categorical-data",
+        "reference_label": "Google ML Crash Course: Categorical Data"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q27",
+      "question": "Vertex AI Pipelines を利用する利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ML ワークフローの再現性と自動化を実現できる",
+          "explanation": {
+            "text": "Pipelines は ML ワークフローを定義し、自動化と再現性を保証します。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/pipelines",
+            "reference_label": "Vertex AI Pipelines"
+          }
+        },
+        {
+          "key": "B",
+          "text": "GPU メモリの割り当てを最適化する",
+          "explanation": {
+            "text": "Pipelines はリソース管理よりもワークフロー管理が主目的です。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/pipelines",
+            "reference_label": "Vertex AI Pipelines"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データを自動的に正規化する",
+          "explanation": {
+            "text": "データ正規化はパイプラインに組み込めますが、Pipelines 自体の自動機能ではありません。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/pipelines",
+            "reference_label": "Vertex AI Pipelines"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Explainable AI を必ず有効化する",
+          "explanation": {
+            "text": "Pipelines に Explainable AI は組み込めますが、必須機能ではありません。",
+            "reference": "https://cloud.google.com/explainable-ai",
+            "reference_label": "Explainable AI"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Vertex AI Pipelines は ML ワークフローを自動化し、再現性を保証するために利用されます。",
+        "reference": "https://cloud.google.com/vertex-ai/docs/pipelines",
+        "reference_label": "Vertex AI Pipelines"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q28",
+      "question": "大規模な画像分類タスクにおいてデータ拡張 (Data Augmentation) を行う目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "モデルの汎化性能を高める",
+          "explanation": {
+            "text": "データ拡張は多様なデータを生成し、過学習を防ぎ汎化性能を向上させます。",
+            "reference": "https://developers.google.com/machine-learning/data-prep/augment/images",
+            "reference_label": "Google ML Guide: Data Augmentation"
+          }
+        },
+        {
+          "key": "B",
+          "text": "GPU の利用率を下げる",
+          "explanation": {
+            "text": "データ拡張は GPU 利用率を下げることを目的としていません。",
+            "reference": "https://developers.google.com/machine-learning/data-prep/augment/images",
+            "reference_label": "Google ML Guide: Data Augmentation"
+          }
+        },
+        {
+          "key": "C",
+          "text": "モデルを小型化する",
+          "explanation": {
+            "text": "モデルサイズの縮小は別の技術であり、データ拡張の目的ではありません。",
+            "reference": "https://developers.google.com/machine-learning/model-optimization",
+            "reference_label": "Google Model Optimization"
+          }
+        },
+        {
+          "key": "D",
+          "text": "必ず学習速度を向上させる",
+          "explanation": {
+            "text": "データ拡張は学習速度を速める目的ではなく、精度や汎化性能を改善する手法です。",
+            "reference": "https://developers.google.com/machine-learning/data-prep/augment/images",
+            "reference_label": "Google ML Guide: Data Augmentation"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "データ拡張は学習データを増やし、モデルが新しいデータに対しても汎化できるようにする目的で行われます。",
+        "reference": "https://developers.google.com/machine-learning/data-prep/augment/images",
+        "reference_label": "Google ML Guide: Data Augmentation"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q29",
+      "question": "学習データに外れ値が多い場合に適切な対応はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "外れ値を検出し、必要に応じて除去または修正する",
+          "explanation": {
+            "text": "外れ値処理はモデル精度や安定性の向上に不可欠です。",
+            "reference": "https://developers.google.com/machine-learning/data-prep/cleaning/anomalies",
+            "reference_label": "Google ML Guide: Anomalies"
+          }
+        },
+        {
+          "key": "B",
+          "text": "GPU を増設して高速化する",
+          "explanation": {
+            "text": "外れ値処理は GPU 増設では解決できません。",
+            "reference": "https://developers.google.com/machine-learning/data-prep/cleaning/anomalies",
+            "reference_label": "Google ML Guide: Anomalies"
+          }
+        },
+        {
+          "key": "C",
+          "text": "学習率を下げる",
+          "explanation": {
+            "text": "学習率調整は収束に関わりますが、外れ値対策とは異なります。",
+            "reference": "https://developers.google.com/machine-learning/glossary#learning-rate",
+            "reference_label": "Google ML Glossary"
+          }
+        },
+        {
+          "key": "D",
+          "text": "すべての外れ値をそのまま利用する",
+          "explanation": {
+            "text": "外れ値を放置するとモデルの精度が低下する可能性があります。",
+            "reference": "https://developers.google.com/machine-learning/data-prep/cleaning/anomalies",
+            "reference_label": "Google ML Guide: Anomalies"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "外れ値は分析対象によって有益な情報である場合もありますが、不要な場合は除去・修正が必要です。",
+        "reference": "https://developers.google.com/machine-learning/data-prep/cleaning/anomalies",
+        "reference_label": "Google ML Guide: Anomalies"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q30",
+      "question": "モデルを軽量化するために一般的に利用される手法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "量子化 (Quantization)",
+          "explanation": {
+            "text": "量子化は数値表現の精度を下げてモデルを軽量化する手法です。",
+            "reference": "https://developers.google.com/machine-learning/model-optimization/quantization",
+            "reference_label": "Google Model Optimization: Quantization"
+          }
+        },
+        {
+          "key": "B",
+          "text": "バッチサイズを増加させる",
+          "explanation": {
+            "text": "バッチサイズは学習効率に関わりますが、モデル軽量化には直結しません。",
+            "reference": "https://developers.google.com/machine-learning/glossary#batch-size",
+            "reference_label": "Google ML Glossary"
+          }
+        },
+        {
+          "key": "C",
+          "text": "正則化項を追加する",
+          "explanation": {
+            "text": "正則化は過学習を防ぐ目的であり、軽量化には直接関係ありません。",
+            "reference": "https://developers.google.com/machine-learning/crash-course/regularization-for-simplicity/l2-regularization",
+            "reference_label": "Google ML Crash Course: Regularization"
+          }
+        },
+        {
+          "key": "D",
+          "text": "GPU を増設する",
+          "explanation": {
+            "text": "GPU 増設は処理速度改善ですが、モデル軽量化の方法ではありません。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/training",
+            "reference_label": "Vertex AI トレーニング"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "量子化は精度を保ちながらモデルを軽量化でき、エッジデバイスでの推論に有効です。",
+        "reference": "https://developers.google.com/machine-learning/model-optimization/quantization",
+        "reference_label": "Google Model Optimization: Quantization"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q31",
+      "question": "学習済みモデルを Vertex AI にデプロイする際に必要なステップはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "モデルリソースを登録し、エンドポイントにデプロイする",
+          "explanation": {
+            "text": "Vertex AI ではモデルを登録し、エンドポイントを作成してデプロイします。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/predictions/deploy-model-api",
+            "reference_label": "モデルデプロイ API"
+          }
+        },
+        {
+          "key": "B",
+          "text": "BigQuery にモデルを必ずエクスポートする",
+          "explanation": {
+            "text": "BigQuery ML との統合は可能ですが、必須ではありません。",
+            "reference": "https://cloud.google.com/bigquery-ml/docs/introduction",
+            "reference_label": "BigQuery ML"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Cloud Functions をトリガーとして設定する",
+          "explanation": {
+            "text": "Cloud Functions はデプロイ必須のステップではありません。",
+            "reference": "https://cloud.google.com/functions/docs",
+            "reference_label": "Cloud Functions"
+          }
+        },
+        {
+          "key": "D",
+          "text": "モデルを必ず AutoML で再学習する",
+          "explanation": {
+            "text": "AutoML を利用する必要はなく、カスタムモデルもそのままデプロイ可能です。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/predictions/deploy-model-api",
+            "reference_label": "モデルデプロイ API"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Vertex AI では学習済みモデルを Vertex AI Model リソースに登録し、エンドポイントにデプロイします。",
+        "reference": "https://cloud.google.com/vertex-ai/docs/predictions/deploy-model-api",
+        "reference_label": "モデルデプロイ API"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q32",
+      "question": "学習済みモデルを本番環境で監視する目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "モデル精度の劣化やデータドリフトを検出する",
+          "explanation": {
+            "text": "モデル監視は本番データでの性能変化を検出するために行います。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/model-monitoring",
+            "reference_label": "Vertex AI モデル監視"
+          }
+        },
+        {
+          "key": "B",
+          "text": "学習速度を速める",
+          "explanation": {
+            "text": "学習速度はモデル監視の目的ではありません。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/model-monitoring",
+            "reference_label": "Vertex AI モデル監視"
+          }
+        },
+        {
+          "key": "C",
+          "text": "GPU 使用率を最適化する",
+          "explanation": {
+            "text": "GPU 使用率監視はインフラ面のモニタリングです。",
+            "reference": "https://cloud.google.com/monitoring/docs",
+            "reference_label": "Cloud Monitoring"
+          }
+        },
+        {
+          "key": "D",
+          "text": "推論速度を保証する",
+          "explanation": {
+            "text": "推論速度保証は直接的には監視ではなくリソース設計の領域です。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/model-monitoring",
+            "reference_label": "Vertex AI モデル監視"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "本番環境でのモデル監視は精度劣化やデータドリフトの検出に利用されます。",
+        "reference": "https://cloud.google.com/vertex-ai/docs/model-monitoring",
+        "reference_label": "Vertex AI モデル監視"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q33",
+      "question": "大規模データ処理で Apache Beam を利用するメリットはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "バッチ処理とストリーム処理の両方を統一的に記述できる",
+          "explanation": {
+            "text": "Apache Beam はバッチ・ストリーム両方の処理を統一 API で表現可能です。",
+            "reference": "https://beam.apache.org/documentation/basics/",
+            "reference_label": "Apache Beam Basics"
+          }
+        },
+        {
+          "key": "B",
+          "text": "必ず GPU 上で実行される",
+          "explanation": {
+            "text": "Apache Beam は CPU ベースの分散処理フレームワークであり、GPU 専用ではありません。",
+            "reference": "https://beam.apache.org/documentation/basics/",
+            "reference_label": "Apache Beam Basics"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データを自動的にラベル付けする",
+          "explanation": {
+            "text": "Beam はラベル付け機能を提供しません。",
+            "reference": "https://beam.apache.org/documentation/basics/",
+            "reference_label": "Apache Beam Basics"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Explainable AI を組み込む",
+          "explanation": {
+            "text": "Beam はデータ処理基盤であり、Explainable AI の機能はありません。",
+            "reference": "https://beam.apache.org/documentation/basics/",
+            "reference_label": "Apache Beam Basics"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Apache Beam はバッチ処理とストリーム処理を統一 API で記述できる点が大きな特徴です。",
+        "reference": "https://beam.apache.org/documentation/basics/",
+        "reference_label": "Apache Beam Basics"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q34",
+      "question": "分散学習で同期学習を選択する利点はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "全てのワーカーが同じタイミングで勾配更新を行うため安定した収束が期待できる",
+          "explanation": {
+            "text": "同期学習は安定性が高く、モデルの収束が均一になりやすい利点があります。",
+            "reference": "https://cloud.google.com/ai-platform/training/docs/distributed-training-overview",
+            "reference_label": "Google Cloud 分散学習"
+          }
+        },
+        {
+          "key": "B",
+          "text": "通信コストが常に最小化される",
+          "explanation": {
+            "text": "同期学習は通信コストが高くなる傾向があります。",
+            "reference": "https://cloud.google.com/ai-platform/training/docs/distributed-training-overview",
+            "reference_label": "Google Cloud 分散学習"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データドリフトを自動検出する",
+          "explanation": {
+            "text": "同期学習は学習方式であり、ドリフト検出の機能はありません。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/model-monitoring",
+            "reference_label": "Vertex AI モデル監視"
+          }
+        },
+        {
+          "key": "D",
+          "text": "学習率を自動的に最適化する",
+          "explanation": {
+            "text": "学習率の調整は別のアルゴリズムで行います。",
+            "reference": "https://developers.google.com/machine-learning/glossary#learning-rate",
+            "reference_label": "Google ML Glossary"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "同期学習はすべてのワーカーが同じ勾配情報を共有して更新するため、安定した収束が期待できます。",
+        "reference": "https://cloud.google.com/ai-platform/training/docs/distributed-training-overview",
+        "reference_label": "Google Cloud 分散学習"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q35",
+      "question": "BigQuery ML の線形回帰モデルで予測できる典型的なケースはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "数値の売上予測",
+          "explanation": {
+            "text": "線形回帰は数値予測タスクに利用されます。",
+            "reference": "https://cloud.google.com/bigquery-ml/docs/introduction",
+            "reference_label": "BigQuery ML ドキュメント"
+          }
+        },
+        {
+          "key": "B",
+          "text": "商品カテゴリの分類",
+          "explanation": {
+            "text": "分類タスクにはロジスティック回帰などを利用します。",
+            "reference": "https://cloud.google.com/bigquery-ml/docs/introduction",
+            "reference_label": "BigQuery ML ドキュメント"
+          }
+        },
+        {
+          "key": "C",
+          "text": "異常検知",
+          "explanation": {
+            "text": "異常検知には k-means や時系列モデルがよく用いられます。",
+            "reference": "https://cloud.google.com/bigquery-ml/docs/introduction",
+            "reference_label": "BigQuery ML ドキュメント"
+          }
+        },
+        {
+          "key": "D",
+          "text": "画像分類",
+          "explanation": {
+            "text": "画像分類はディープラーニングモデルが適しています。",
+            "reference": "https://cloud.google.com/bigquery-ml/docs/introduction",
+            "reference_label": "BigQuery ML ドキュメント"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "線形回帰モデルは数値の連続値を予測するタスクに利用されます。",
+        "reference": "https://cloud.google.com/bigquery-ml/docs/introduction",
+        "reference_label": "BigQuery ML ドキュメント"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q36",
+      "question": "モデルの精度を測定するために ROC 曲線を利用する主な理由はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "異なる閾値における真陽性率と偽陽性率の関係を可視化できる",
+          "explanation": {
+            "text": "ROC 曲線は閾値ごとの分類性能を評価するための代表的な手法です。",
+            "reference": "https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc",
+            "reference_label": "Google ML Crash Course: ROC and AUC"
+          }
+        },
+        {
+          "key": "B",
+          "text": "学習速度を測定できる",
+          "explanation": {
+            "text": "ROC 曲線は速度の評価には使いません。",
+            "reference": "https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc",
+            "reference_label": "Google ML Crash Course: ROC and AUC"
+          }
+        },
+        {
+          "key": "C",
+          "text": "GPU の使用効率を評価できる",
+          "explanation": {
+            "text": "ROC 曲線は GPU 使用率には無関係です。",
+            "reference": "https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc",
+            "reference_label": "Google ML Crash Course: ROC and AUC"
+          }
+        },
+        {
+          "key": "D",
+          "text": "クラスタリングの適切さを評価できる",
+          "explanation": {
+            "text": "クラスタリング評価にはシルエットスコアなどを用います。",
+            "reference": "https://developers.google.com/machine-learning/glossary#silhouette-score",
+            "reference_label": "Google ML Glossary"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ROC 曲線はモデルの分類性能を多様な閾値で比較でき、AUC 値で全体的な性能を定量化できます。",
+        "reference": "https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc",
+        "reference_label": "Google ML Crash Course: ROC and AUC"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q37",
+      "question": "BigQuery ML の k-means モデルを利用する典型的なケースはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "顧客セグメンテーション",
+          "explanation": {
+            "text": "k-means はクラスタリング手法で、顧客をグループ分けするのに適しています。",
+            "reference": "https://cloud.google.com/bigquery-ml/docs/kmeans-intro",
+            "reference_label": "BigQuery ML: k-means"
+          }
+        },
+        {
+          "key": "B",
+          "text": "売上予測",
+          "explanation": {
+            "text": "売上予測は回帰モデルが適しています。",
+            "reference": "https://cloud.google.com/bigquery-ml/docs/introduction",
+            "reference_label": "BigQuery ML ドキュメント"
+          }
+        },
+        {
+          "key": "C",
+          "text": "スパム検出",
+          "explanation": {
+            "text": "スパム検出は分類タスクで、ロジスティック回帰やニューラルネットを利用します。",
+            "reference": "https://cloud.google.com/bigquery-ml/docs/introduction",
+            "reference_label": "BigQuery ML ドキュメント"
+          }
+        },
+        {
+          "key": "D",
+          "text": "時系列予測",
+          "explanation": {
+            "text": "時系列予測には ARIMA などのモデルが適しています。",
+            "reference": "https://cloud.google.com/bigquery-ml/docs/introduction",
+            "reference_label": "BigQuery ML ドキュメント"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "k-means モデルは教師なし学習であり、典型的には顧客セグメンテーションなどに使われます。",
+        "reference": "https://cloud.google.com/bigquery-ml/docs/kmeans-intro",
+        "reference_label": "BigQuery ML: k-means"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q38",
+      "question": "学習データと検証データの分割方法として時系列データに適切な手法はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "時間順に分割し、未来のデータを検証用にする",
+          "explanation": {
+            "text": "時系列データは未来を予測するため、時間に沿った分割が必須です。",
+            "reference": "https://developers.google.com/machine-learning/data-prep/construct/sampling-splitting/time-series",
+            "reference_label": "Google ML Guide: Time Series Splitting"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データをランダムに分割する",
+          "explanation": {
+            "text": "ランダム分割は未来情報を混入させる恐れがあり、不適切です。",
+            "reference": "https://developers.google.com/machine-learning/data-prep/construct/sampling-splitting/time-series",
+            "reference_label": "Google ML Guide: Time Series Splitting"
+          }
+        },
+        {
+          "key": "C",
+          "text": "GPU 使用率を考慮して分割する",
+          "explanation": {
+            "text": "GPU 使用率はデータ分割基準ではありません。",
+            "reference": "https://developers.google.com/machine-learning/data-prep/construct/sampling-splitting/time-series",
+            "reference_label": "Google ML Guide: Time Series Splitting"
+          }
+        },
+        {
+          "key": "D",
+          "text": "欠損値の有無で分割する",
+          "explanation": {
+            "text": "欠損値処理は別の工程であり、データ分割の基準ではありません。",
+            "reference": "https://developers.google.com/machine-learning/data-prep/construct/sampling-splitting/time-series",
+            "reference_label": "Google ML Guide: Time Series Splitting"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "時系列データは時間順の分割を守ることで、未来の予測に対する妥当な評価が可能です。",
+        "reference": "https://developers.google.com/machine-learning/data-prep/construct/sampling-splitting/time-series",
+        "reference_label": "Google ML Guide: Time Series Splitting"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q39",
+      "question": "Vertex AI Matching Engine の利用目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "大規模ベクトル検索を低レイテンシーで実行する",
+          "explanation": {
+            "text": "Matching Engine は近似最近傍探索を提供し、大規模ベクトル検索を可能にします。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/matching-engine/overview",
+            "reference_label": "Vertex AI Matching Engine"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデルを軽量化する",
+          "explanation": {
+            "text": "モデル軽量化は Model Optimization の領域です。",
+            "reference": "https://developers.google.com/machine-learning/model-optimization",
+            "reference_label": "Google Model Optimization"
+          }
+        },
+        {
+          "key": "C",
+          "text": "学習ジョブを自動再実行する",
+          "explanation": {
+            "text": "学習ジョブ管理は Pipelines や Workbench で行います。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/pipelines",
+            "reference_label": "Vertex AI Pipelines"
+          }
+        },
+        {
+          "key": "D",
+          "text": "GPU の使用率を最適化する",
+          "explanation": {
+            "text": "Matching Engine の目的はベクトル検索であり、GPU 使用率調整ではありません。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/matching-engine/overview",
+            "reference_label": "Vertex AI Matching Engine"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Matching Engine はレコメンドや検索で大規模ベクトルデータを高速に扱うためのサービスです。",
+        "reference": "https://cloud.google.com/vertex-ai/docs/matching-engine/overview",
+        "reference_label": "Vertex AI Matching Engine"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q40",
+      "question": "機械学習モデルのバイアスを評価する目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "特定のグループに対して不公平な予測を行っていないか確認する",
+          "explanation": {
+            "text": "バイアス評価は公平性を担保するために不可欠です。",
+            "reference": "https://cloud.google.com/responsible-ai",
+            "reference_label": "Responsible AI"
+          }
+        },
+        {
+          "key": "B",
+          "text": "学習速度を速める",
+          "explanation": {
+            "text": "バイアス評価は速度には関係しません。",
+            "reference": "https://cloud.google.com/responsible-ai",
+            "reference_label": "Responsible AI"
+          }
+        },
+        {
+          "key": "C",
+          "text": "モデルサイズを縮小する",
+          "explanation": {
+            "text": "サイズ縮小は別の最適化の領域です。",
+            "reference": "https://developers.google.com/machine-learning/model-optimization",
+            "reference_label": "Google Model Optimization"
+          }
+        },
+        {
+          "key": "D",
+          "text": "GPU 使用効率を改善する",
+          "explanation": {
+            "text": "GPU 利用率はリソースの問題であり、バイアス評価の目的ではありません。",
+            "reference": "https://cloud.google.com/responsible-ai",
+            "reference_label": "Responsible AI"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "バイアス評価は、性別・人種などの属性に依存した不公平な予測を検出する目的で行われます。",
+        "reference": "https://cloud.google.com/responsible-ai",
+        "reference_label": "Responsible AI"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q41",
+      "question": "Vertex AI におけるカスタムトレーニングの利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "独自のコードやフレームワークを利用できる",
+          "explanation": {
+            "text": "カスタムトレーニングは TensorFlow や PyTorch などの独自コードを実行できます。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/training/custom-training",
+            "reference_label": "Vertex AI カスタムトレーニング"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SQL でモデルを作成できる",
+          "explanation": {
+            "text": "SQL モデリングは BigQuery ML の機能です。",
+            "reference": "https://cloud.google.com/bigquery-ml/docs/introduction",
+            "reference_label": "BigQuery ML"
+          }
+        },
+        {
+          "key": "C",
+          "text": "必ず AutoML に変換される",
+          "explanation": {
+            "text": "カスタムトレーニングは AutoML とは異なり、変換はされません。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/training/custom-training",
+            "reference_label": "Vertex AI カスタムトレーニング"
+          }
+        },
+        {
+          "key": "D",
+          "text": "GPU を利用できない",
+          "explanation": {
+            "text": "カスタムトレーニングでは GPU や TPU も利用可能です。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/training/custom-training",
+            "reference_label": "Vertex AI カスタムトレーニング"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "カスタムトレーニングを利用することで、ユーザー独自のコードやライブラリを活用できます。",
+        "reference": "https://cloud.google.com/vertex-ai/docs/training/custom-training",
+        "reference_label": "Vertex AI カスタムトレーニング"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q42",
+      "question": "ハイパーパラメータ探索でランダムサーチを利用する利点はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "探索空間を広くカバーでき、グリッドサーチより効率的な場合がある",
+          "explanation": {
+            "text": "ランダムサーチは少ない試行で広範囲を探索できることが利点です。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/training/hyperparameter-tuning-overview",
+            "reference_label": "Vertex AI Hyperparameter Tuning"
+          }
+        },
+        {
+          "key": "B",
+          "text": "必ず最適解を見つけられる",
+          "explanation": {
+            "text": "ランダムサーチは必ずしも最適解を保証しません。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/training/hyperparameter-tuning-overview",
+            "reference_label": "Vertex AI Hyperparameter Tuning"
+          }
+        },
+        {
+          "key": "C",
+          "text": "探索回数が1回で済む",
+          "explanation": {
+            "text": "ランダムサーチでも複数回の探索が必要です。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/training/hyperparameter-tuning-overview",
+            "reference_label": "Vertex AI Hyperparameter Tuning"
+          }
+        },
+        {
+          "key": "D",
+          "text": "GPU を必ず利用する",
+          "explanation": {
+            "text": "ランダムサーチはアルゴリズムの戦略であり、GPU 利用は関係ありません。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/training/hyperparameter-tuning-overview",
+            "reference_label": "Vertex AI Hyperparameter Tuning"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ランダムサーチは広い探索空間を効率的にカバーでき、特に重要なハイパーパラメータを発見しやすい特徴があります。",
+        "reference": "https://cloud.google.com/vertex-ai/docs/training/hyperparameter-tuning-overview",
+        "reference_label": "Vertex AI Hyperparameter Tuning"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q43",
+      "question": "機械学習における正則化 (Regularization) の目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "モデルの複雑さを抑えて過学習を防ぐ",
+          "explanation": {
+            "text": "正則化は L1/L2 ペナルティでモデルの複雑さを制御し、汎化性能を高めます。",
+            "reference": "https://developers.google.com/machine-learning/crash-course/regularization-for-simplicity/l2-regularization",
+            "reference_label": "Google ML Crash Course: Regularization"
+          }
+        },
+        {
+          "key": "B",
+          "text": "学習率を自動調整する",
+          "explanation": {
+            "text": "学習率の調整は正則化の目的ではありません。",
+            "reference": "https://developers.google.com/machine-learning/glossary#learning-rate",
+            "reference_label": "Google ML Glossary"
+          }
+        },
+        {
+          "key": "C",
+          "text": "GPU 使用効率を改善する",
+          "explanation": {
+            "text": "GPU 利用率はリソースの問題であり、正則化とは関係がありません。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/training",
+            "reference_label": "Vertex AI トレーニング"
+          }
+        },
+        {
+          "key": "D",
+          "text": "欠損値を補完する",
+          "explanation": {
+            "text": "欠損値補完はデータ前処理の一部であり、正則化の目的ではありません。",
+            "reference": "https://developers.google.com/machine-learning/data-prep/cleaning-missing-data",
+            "reference_label": "Google ML Guide: Missing Data"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "正則化はモデルのパラメータに制約を加えて過学習を防ぎ、汎化性能を向上させます。",
+        "reference": "https://developers.google.com/machine-learning/crash-course/regularization-for-simplicity/l2-regularization",
+        "reference_label": "Google ML Crash Course: Regularization"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q44",
+      "question": "Vertex AI Pipelines で Kubeflow Pipelines を利用する利点はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Kubernetes 上でスケーラブルな ML ワークフローを実行できる",
+          "explanation": {
+            "text": "Kubeflow Pipelines は Kubernetes 上で動作し、ML パイプラインのスケーラビリティを提供します。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/pipelines/build-pipeline",
+            "reference_label": "Vertex AI Pipelines"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SQL でパイプラインを記述できる",
+          "explanation": {
+            "text": "SQL での記述は BigQuery ML の機能です。",
+            "reference": "https://cloud.google.com/bigquery-ml/docs/introduction",
+            "reference_label": "BigQuery ML"
+          }
+        },
+        {
+          "key": "C",
+          "text": "GPU を自動割り当てする唯一の方法である",
+          "explanation": {
+            "text": "GPU 割り当てはジョブ設定で可能であり、Kubeflow Pipelines 固有の機能ではありません。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/training/custom-training",
+            "reference_label": "Vertex AI カスタムトレーニング"
+          }
+        },
+        {
+          "key": "D",
+          "text": "必ず AutoML モデルを生成する",
+          "explanation": {
+            "text": "Kubeflow Pipelines は AutoML 専用ではなく、カスタムコードにも対応します。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/pipelines/build-pipeline",
+            "reference_label": "Vertex AI Pipelines"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Kubeflow Pipelines は Kubernetes 上で実行され、Vertex AI と統合してスケーラブルな ML ワークフローを構築可能です。",
+        "reference": "https://cloud.google.com/vertex-ai/docs/pipelines/build-pipeline",
+        "reference_label": "Vertex AI Pipelines"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q45",
+      "question": "機械学習における早期終了 (Early Stopping) の目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "検証誤差が改善しなくなった時点で学習を停止し、過学習を防ぐ",
+          "explanation": {
+            "text": "Early Stopping は検証誤差が一定期間改善しない場合に学習を停止します。",
+            "reference": "https://developers.google.com/machine-learning/crash-course/regularization-for-simplicity/early-stopping",
+            "reference_label": "Google ML Crash Course: Early Stopping"
+          }
+        },
+        {
+          "key": "B",
+          "text": "学習率を自動的に上げる",
+          "explanation": {
+            "text": "学習率調整は Early Stopping の目的ではありません。",
+            "reference": "https://developers.google.com/machine-learning/glossary#learning-rate",
+            "reference_label": "Google ML Glossary"
+          }
+        },
+        {
+          "key": "C",
+          "text": "モデルを小型化する",
+          "explanation": {
+            "text": "モデルサイズ縮小は Early Stopping の目的ではありません。",
+            "reference": "https://developers.google.com/machine-learning/model-optimization",
+            "reference_label": "Google Model Optimization"
+          }
+        },
+        {
+          "key": "D",
+          "text": "欠損値を補完する",
+          "explanation": {
+            "text": "欠損値補完はデータ前処理の一部であり、Early Stopping とは関係がありません。",
+            "reference": "https://developers.google.com/machine-learning/data-prep/cleaning-missing-data",
+            "reference_label": "Google ML Guide: Missing Data"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Early Stopping は過学習防止のために検証誤差を監視し、改善が止まった時点で学習を終了します。",
+        "reference": "https://developers.google.com/machine-learning/crash-course/regularization-for-simplicity/early-stopping",
+        "reference_label": "Google ML Crash Course: Early Stopping"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q46",
+      "question": "Vertex AI Prediction のバッチ予測を利用する利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "大量データを一括処理できる",
+          "explanation": {
+            "text": "バッチ予測は大規模データの一括推論に最適です。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/predictions/batch-predictions",
+            "reference_label": "Vertex AI バッチ予測"
+          }
+        },
+        {
+          "key": "B",
+          "text": "リアルタイムの低レイテンシー推論が可能",
+          "explanation": {
+            "text": "低レイテンシー推論はオンライン予測の特徴です。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/predictions/online-predictions",
+            "reference_label": "Vertex AI オンライン予測"
+          }
+        },
+        {
+          "key": "C",
+          "text": "モデルを自動的に軽量化する",
+          "explanation": {
+            "text": "モデル軽量化はバッチ予測の機能ではありません。",
+            "reference": "https://developers.google.com/machine-learning/model-optimization",
+            "reference_label": "Google Model Optimization"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Explainable AI を必ず組み込む",
+          "explanation": {
+            "text": "Explainable AI はバッチ予測に統合可能ですが、必須機能ではありません。",
+            "reference": "https://cloud.google.com/explainable-ai",
+            "reference_label": "Explainable AI"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Vertex AI バッチ予測は定期的に大量データをまとめて推論するケースに適しています。",
+        "reference": "https://cloud.google.com/vertex-ai/docs/predictions/batch-predictions",
+        "reference_label": "Vertex AI バッチ予測"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q47",
+      "question": "MLOps における CI/CD の目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "モデルやパイプラインの変更を自動的にテスト・デプロイする",
+          "explanation": {
+            "text": "CI/CD によりモデルやコードの変更を安全かつ迅速に本番に反映できます。",
+            "reference": "https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning",
+            "reference_label": "Google Cloud MLOps ガイド"
+          }
+        },
+        {
+          "key": "B",
+          "text": "GPU 使用率を常に最大化する",
+          "explanation": {
+            "text": "CI/CD の目的はリソース利用ではなく自動化です。",
+            "reference": "https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning",
+            "reference_label": "Google Cloud MLOps ガイド"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データ前処理を完全に省略する",
+          "explanation": {
+            "text": "CI/CD はデータ前処理の省略とは関係がありません。",
+            "reference": "https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning",
+            "reference_label": "Google Cloud MLOps ガイド"
+          }
+        },
+        {
+          "key": "D",
+          "text": "モデルサイズを自動的に圧縮する",
+          "explanation": {
+            "text": "モデル圧縮は最適化技術の一部であり、CI/CD の目的ではありません。",
+            "reference": "https://developers.google.com/machine-learning/model-optimization",
+            "reference_label": "Google Model Optimization"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "CI/CD はコードやモデル変更を自動でテスト・デプロイすることで、迅速かつ信頼性のある更新を可能にします。",
+        "reference": "https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning",
+        "reference_label": "Google Cloud MLOps ガイド"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q48",
+      "question": "クラウド上でデータを扱う際にセキュリティ確保のため推奨される方法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データを保存・転送時に暗号化する",
+          "explanation": {
+            "text": "クラウドデータは保存時と転送時に暗号化を行うことが推奨されます。",
+            "reference": "https://cloud.google.com/security/encryption",
+            "reference_label": "Google Cloud Security: Encryption"
+          }
+        },
+        {
+          "key": "B",
+          "text": "必ずパブリックバケットを利用する",
+          "explanation": {
+            "text": "パブリックバケット利用はセキュリティリスクを高めます。",
+            "reference": "https://cloud.google.com/storage/docs/access-control",
+            "reference_label": "Cloud Storage アクセス制御"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データを常にローカルに保存する",
+          "explanation": {
+            "text": "クラウド利用の目的はスケーラビリティであり、ローカル保存のみでは利点を損ないます。",
+            "reference": "https://cloud.google.com/security/encryption",
+            "reference_label": "Google Cloud Security: Encryption"
+          }
+        },
+        {
+          "key": "D",
+          "text": "暗号化を無効化して高速化する",
+          "explanation": {
+            "text": "暗号化を無効化するとセキュリティリスクが高まります。",
+            "reference": "https://cloud.google.com/security/encryption",
+            "reference_label": "Google Cloud Security: Encryption"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "クラウドでのセキュリティ対策の基本は、データを保存時 (at rest) と転送時 (in transit) の両方で暗号化することです。",
+        "reference": "https://cloud.google.com/security/encryption",
+        "reference_label": "Google Cloud Security: Encryption"
+      }
+    },
+    {
+      "id": "gcp-PMLE-P-q49",
+      "question": "Vertex AI Feature Store を利用する際の利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "学習と推論で一貫した特徴量を利用できる",
+          "explanation": {
+            "text": "Feature Store は特徴量の整合性を保証し、再利用性を高めます。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/featurestore",
+            "reference_label": "Vertex AI Feature Store"
+          }
+        },
+        {
+          "key": "B",
+          "text": "必ず AutoML モデルが生成される",
+          "explanation": {
+            "text": "Feature Store は特徴量管理サービスであり、AutoML モデル生成は目的ではありません。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/featurestore",
+            "reference_label": "Vertex AI Feature Store"
+          }
+        },
+        {
+          "key": "C",
+          "text": "GPU 利用率を改善する",
+          "explanation": {
+            "text": "Feature Store は特徴量管理に関するもので、GPU 利用率調整は行いません。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/featurestore",
+            "reference_label": "Vertex AI Feature Store"
+          }
+        },
+        {
+          "key": "D",
+          "text": "欠損値を必ず補完する",
+          "explanation": {
+            "text": "Feature Store は補完処理を必ず行うものではなく、事前処理が必要です。",
+            "reference": "https://cloud.google.com/vertex-ai/docs/featurestore",
+            "reference_label": "Vertex AI Feature Store"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Feature Store は特徴量を中央集約管理し、学習と推論で一貫して利用できるようにします。",
+        "reference": "https://cloud.google.com/vertex-ai/docs/featurestore",
+        "reference_label": "Vertex AI Feature Store"
+      }
+    },
+{
+  "id": "gcp-PMLE-P-q50",
+  "question": "機械学習モデルのフェアネス (Fairness) を確保するために推奨される取り組みはどれか。",
+  "difficulty": "hard",
+  "choices": [
+    {
+      "key": "A",
+      "text": "異なる属性グループごとに性能指標を評価する",
+      "explanation": {
+        "text": "フェアネス評価では、性別や人種などの属性ごとに予測性能を比較することが重要です。",
+        "reference": "https://cloud.google.com/responsible-ai",
+        "reference_label": "Responsible AI"
+      }
+    },
+    {
+      "key": "B",
+      "text": "モデルのサイズを縮小する",
+      "explanation": {
+        "text": "モデルサイズ縮小は効率化の一環であり、フェアネス確保とは関係ありません。",
+        "reference": "https://developers.google.com/machine-learning/model-optimization",
+        "reference_label": "Google Model Optimization"
+      }
+    },
+    {
+      "key": "C",
+      "text": "GPU 使用率を最大化する",
+      "explanation": {
+        "text": "GPU 利用率はリソース効率の問題であり、フェアネス評価とは無関係です。",
+        "reference": "https://cloud.google.com/vertex-ai/docs/training",
+        "reference_label": "Vertex AI トレーニング"
+      }
+    },
+    {
+      "key": "D",
+      "text": "学習データをすべてランダムに削除する",
+      "explanation": {
+        "text": "データをランダム削除することは精度低下を招き、フェアネス改善にはつながりません。",
+        "reference": "https://cloud.google.com/responsible-ai",
+        "reference_label": "Responsible AI"
+      }
+    }
+  ],
+  "answer": "A",
+  "explanation": {
+    "text": "モデルのフェアネスを確保するには、異なる人口統計的グループごとにモデル性能を測定し、不公平がないか確認することが推奨されます。",
+    "reference": "https://cloud.google.com/responsible-ai",
+    "reference_label": "Responsible AI"
+  }
+}
+]
+}

@@ -1,0 +1,2467 @@
+{
+  "exam": {
+    "id": "dp-100",
+    "title": "Data Scientist Associate",
+    "description": "「Microsoft Certified: Azure Data Scientist Associate（試験コード DP‑100: Designing and Implementing a Data Science Solution on Azure）」は、クラウド環境の Azure Machine Learning や MLflow、さらには Azure AI Foundry 等を用いて、データの探索・機械学習モデルの構築・デプロイ・運用監視までを一貫して行える技術を有するデータサイエンティストを認定する中級レベルの資格です。近年では、言語モデル（LLM）による AI アプリケーション最適化も範囲に含まれています。",
+    "version": "2025年04月",
+    "price": "165 USD",
+    "difficulty": "普通",
+    "official-site": "https://learn.microsoft.com/en-us/credentials/certifications/azure-data-scientist/", 
+    "category": {
+      "id": "azure",
+      "name": "Azure"
+    }
+  },
+  "questions": [
+    {
+      "id": "azure-DP-100-q1",
+      "question": "Azure Machine Learning のワークスペースでコンピューティングリソースをスケーリングする主な目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "モデルの推論速度を向上させるため",
+          "explanation": {
+            "text": "スケーリングは主にトレーニングジョブや大量データ処理に必要な計算資源を柔軟に確保するためです。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-compute-target",
+            "reference_label": "Azure ML Compute ターゲット"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ワークスペースのセキュリティを強化するため",
+          "explanation": {
+            "text": "スケーリングはセキュリティではなくリソース効率の向上が目的です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-compute-target",
+            "reference_label": "Azure ML Compute ターゲット"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザーアクセスを制御するため",
+          "explanation": {
+            "text": "アクセス制御はRBACやAzure ADを用いて行います。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-workspace",
+            "reference_label": "Azure ML ワークスペース"
+          }
+        },
+        {
+          "key": "D",
+          "text": "モデルの可視化を容易にするため",
+          "explanation": {
+            "text": "可視化はスケーリングの目的ではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-compute-target",
+            "reference_label": "Azure ML Compute ターゲット"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure ML では大規模データや複雑モデルの学習に合わせてコンピューティングリソースをスケーリングできます。これにより効率的にジョブを完了できます。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-compute-target",
+        "reference_label": "Azure ML Compute ターゲット"
+      }
+    },
+    {
+      "id": "azure-DP-100-q2",
+      "question": "Azure Machine Learning でデータセットを登録する主な利点はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データのバージョン管理が可能になる",
+          "explanation": {
+            "text": "登録されたデータセットはバージョン管理され、再現性のある実験が可能です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-data",
+            "reference_label": "Azure ML データ管理"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データのセキュリティを完全に保証できる",
+          "explanation": {
+            "text": "セキュリティは Azure Storage の設定に依存します。登録のみで完全保証はできません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-data",
+            "reference_label": "Azure ML データ管理"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データを自動的にクレンジングできる",
+          "explanation": {
+            "text": "データセット登録はクレンジング処理を行いません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-data",
+            "reference_label": "Azure ML データ管理"
+          }
+        },
+        {
+          "key": "D",
+          "text": "モデルの精度を自動的に向上させる",
+          "explanation": {
+            "text": "データセット登録自体は精度向上に直結しません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-data",
+            "reference_label": "Azure ML データ管理"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure ML でデータセットを登録するとバージョン管理され、実験の再現性が担保されます。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-data",
+        "reference_label": "Azure ML データ管理"
+      }
+    },
+    {
+      "id": "azure-DP-100-q3",
+      "question": "AutoML を使用する主な利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "複数のアルゴリズムやハイパーパラメータの探索を自動化できる",
+          "explanation": {
+            "text": "AutoML は最適なモデルやハイパーパラメータを自動で探索します。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+            "reference_label": "Azure AutoML"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデルのセキュリティを自動的に保証できる",
+          "explanation": {
+            "text": "セキュリティは AutoML の機能ではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+            "reference_label": "Azure AutoML"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データの前処理を完全に不要にできる",
+          "explanation": {
+            "text": "前処理の一部を支援することはありますが、完全に不要にはなりません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+            "reference_label": "Azure AutoML"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データのストレージコストを削減できる",
+          "explanation": {
+            "text": "AutoML はストレージコスト削減機能を提供しません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+            "reference_label": "Azure AutoML"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "AutoML はアルゴリズムとハイパーパラメータ探索を自動化し、効率的に最適モデルを見つけます。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+        "reference_label": "Azure AutoML"
+      }
+    },
+    {
+      "id": "azure-DP-100-q4",
+      "question": "Azure Machine Learning でパイプラインを利用する主な利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "複雑なワークフローを自動化し再利用可能にする",
+          "explanation": {
+            "text": "パイプラインによりデータ前処理や学習を自動化・再利用できます。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-ml-pipelines",
+            "reference_label": "Azure ML パイプライン"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure Portal の利用料を削減できる",
+          "explanation": {
+            "text": "パイプラインはコスト削減のための機能ではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-ml-pipelines",
+            "reference_label": "Azure ML パイプライン"
+          }
+        },
+        {
+          "key": "C",
+          "text": "モデルの精度を自動的に保証できる",
+          "explanation": {
+            "text": "パイプラインは精度保証を行いません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-ml-pipelines",
+            "reference_label": "Azure ML パイプライン"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure AD の認証を不要にできる",
+          "explanation": {
+            "text": "パイプラインは認証には関与しません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-ml-pipelines",
+            "reference_label": "Azure ML パイプライン"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "パイプラインを利用するとデータ処理から学習、デプロイまでを自動化・再利用できます。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-ml-pipelines",
+        "reference_label": "Azure ML パイプライン"
+      }
+    },
+    {
+      "id": "azure-DP-100-q5",
+      "question": "Azure Machine Learning でモデルをデプロイする際に推奨されるエンドポイントの種類はどれか（リアルタイム推論の場合）。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "リアルタイムエンドポイント",
+          "explanation": {
+            "text": "リアルタイム推論にはリアルタイムエンドポイントを使用します。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-endpoints",
+            "reference_label": "Azure ML エンドポイント"
+          }
+        },
+        {
+          "key": "B",
+          "text": "バッチエンドポイント",
+          "explanation": {
+            "text": "バッチエンドポイントは大量データの一括処理に使います。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-endpoints",
+            "reference_label": "Azure ML エンドポイント"
+          }
+        },
+        {
+          "key": "C",
+          "text": "イベントハブエンドポイント",
+          "explanation": {
+            "text": "イベントハブはメッセージストリーム処理のためで、モデル推論には適しません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-endpoints",
+            "reference_label": "Azure ML エンドポイント"
+          }
+        },
+        {
+          "key": "D",
+          "text": "キューエンドポイント",
+          "explanation": {
+            "text": "キューはストレージメッセージ処理用であり推論には不向きです。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-endpoints",
+            "reference_label": "Azure ML エンドポイント"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "リアルタイム推論にはリアルタイムエンドポイントを利用します。大量処理にはバッチエンドポイントを利用します。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-endpoints",
+        "reference_label": "Azure ML エンドポイント"
+      }
+    },
+    {
+      "id": "azure-DP-100-q6",
+      "question": "Azure Machine Learning で学習済みモデルを MLOps パイプラインに組み込む際の主な利点はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "モデルのライフサイクル管理を効率化できる",
+          "explanation": {
+            "text": "MLOps によりモデルのトレーニングからデプロイ、監視まで自動化できます。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-model-management-and-deployment",
+            "reference_label": "Azure ML モデル管理"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデルの精度を保証できる",
+          "explanation": {
+            "text": "MLOps は精度保証を行いませんが、再学習と監視を支援します。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-model-management-and-deployment",
+            "reference_label": "Azure ML モデル管理"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データのセキュリティ設定を不要にできる",
+          "explanation": {
+            "text": "セキュリティはMLOpsに依存せず、別途設定が必要です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-model-management-and-deployment",
+            "reference_label": "Azure ML モデル管理"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Portal を利用せずにすべての作業ができる",
+          "explanation": {
+            "text": "MLOps の利用に必ずしもPortalを不要にするものではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-model-management-and-deployment",
+            "reference_label": "Azure ML モデル管理"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "MLOps を利用するとモデルのトレーニングからデプロイ・監視まで自動化でき、ライフサイクル管理が効率化されます。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-model-management-and-deployment",
+        "reference_label": "Azure ML モデル管理"
+      }
+    },
+    {
+      "id": "azure-DP-100-q7",
+      "question": "Azure Machine Learning SDK を用いて実験を追跡する際に利用される機能はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Run オブジェクト",
+          "explanation": {
+            "text": "Run オブジェクトを通じて実験ログやメトリクスを記録できます。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-track-experiments",
+            "reference_label": "Azure ML 実験追跡"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Dataset オブジェクト",
+          "explanation": {
+            "text": "Dataset はデータ管理用で、実験の追跡には使用しません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-track-experiments",
+            "reference_label": "Azure ML 実験追跡"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Pipeline オブジェクト",
+          "explanation": {
+            "text": "Pipeline はワークフロー管理であり、直接追跡には使いません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-track-experiments",
+            "reference_label": "Azure ML 実験追跡"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Workspace オブジェクト",
+          "explanation": {
+            "text": "Workspace は環境全体を管理するものであり、追跡自体は Run で行います。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-track-experiments",
+            "reference_label": "Azure ML 実験追跡"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure ML SDK の Run オブジェクトを利用すると、実験のメトリクスやログを記録・可視化できます。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-track-experiments",
+        "reference_label": "Azure ML 実験追跡"
+      }
+    },
+    {
+      "id": "azure-DP-100-q8",
+      "question": "Azure Machine Learning でハイパーパラメータチューニングを効率的に行うために利用される機能はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "HyperDrive",
+          "explanation": {
+            "text": "HyperDrive は分散並列処理によるハイパーパラメータ探索を自動化します。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-tune-hyperparameters",
+            "reference_label": "Azure ML HyperDrive"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AutoScale",
+          "explanation": {
+            "text": "AutoScale はリソーススケーリング機能であり、ハイパーパラメータ探索には使用しません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-tune-hyperparameters",
+            "reference_label": "Azure ML HyperDrive"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Policy",
+          "explanation": {
+            "text": "Azure Policy はリソースガバナンス用です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-tune-hyperparameters",
+            "reference_label": "Azure ML HyperDrive"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Event Grid",
+          "explanation": {
+            "text": "Event Grid はイベント処理用であり、ハイパーパラメータ探索には関係しません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-tune-hyperparameters",
+            "reference_label": "Azure ML HyperDrive"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure ML の HyperDrive を利用すると、効率的にハイパーパラメータ探索を自動化できます。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-tune-hyperparameters",
+        "reference_label": "Azure ML HyperDrive"
+      }
+    },
+    {
+      "id": "azure-DP-100-q9",
+      "question": "Azure Machine Learning の Compute Instance の特徴はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "開発用に個人向けの仮想マシンを提供する",
+          "explanation": {
+            "text": "Compute Instance は Jupyter や VS Code と統合された個人開発環境を提供します。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-compute-instance",
+            "reference_label": "Azure ML Compute Instance"
+          }
+        },
+        {
+          "key": "B",
+          "text": "推論リクエストを大規模に処理する",
+          "explanation": {
+            "text": "推論には Compute Cluster やエンドポイントを利用します。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-compute-instance",
+            "reference_label": "Azure ML Compute Instance"
+          }
+        },
+        {
+          "key": "C",
+          "text": "大規模分散学習に最適化されている",
+          "explanation": {
+            "text": "大規模分散学習には Compute Cluster を利用します。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-compute-instance",
+            "reference_label": "Azure ML Compute Instance"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure AD 認証を不要にする",
+          "explanation": {
+            "text": "Compute Instance 利用時も認証は必要です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-compute-instance",
+            "reference_label": "Azure ML Compute Instance"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Compute Instance は個人開発向けに最適化された仮想マシンで、Jupyter や VS Code を統合できます。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-compute-instance",
+        "reference_label": "Azure ML Compute Instance"
+      }
+    },
+    {
+      "id": "azure-DP-100-q10",
+      "question": "Azure Machine Learning でデータドリフト検出を利用する目的はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "学習データと本番データの統計的差異を監視する",
+          "explanation": {
+            "text": "データドリフトは本番環境のデータ分布変化を監視します。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-monitor-datasets",
+            "reference_label": "Azure ML データ監視"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデルのハイパーパラメータを自動調整する",
+          "explanation": {
+            "text": "データドリフト検出はハイパーパラメータ調整機能ではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-monitor-datasets",
+            "reference_label": "Azure ML データ監視"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure AD の監査ログを収集する",
+          "explanation": {
+            "text": "これは Azure AD の機能であり、データドリフトには関係しません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-monitor-datasets",
+            "reference_label": "Azure ML データ監視"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データのストレージコストを削減する",
+          "explanation": {
+            "text": "データドリフト検出はコスト削減機能ではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-monitor-datasets",
+            "reference_label": "Azure ML データ監視"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure ML のデータドリフト検出は、本番データの分布が学習データと異なっていないかを監視します。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-monitor-datasets",
+        "reference_label": "Azure ML データ監視"
+      }
+    },
+    {
+      "id": "azure-DP-100-q11",
+      "question": "Azure Machine Learning Designer の特徴はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ドラッグ＆ドロップで機械学習パイプラインを構築できる",
+          "explanation": {
+            "text": "Designer はノーコード／ローコードで機械学習パイプラインを作成可能です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-designer",
+            "reference_label": "Azure ML Designer"
+          }
+        },
+        {
+          "key": "B",
+          "text": "分散処理専用のプラットフォームである",
+          "explanation": {
+            "text": "Designer は分散処理専用ではなく、視覚的な設計ツールです。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-designer",
+            "reference_label": "Azure ML Designer"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure AD を不要にできる",
+          "explanation": {
+            "text": "認証は Designer でも必要です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-designer",
+            "reference_label": "Azure ML Designer"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AutoML と同じ機能を完全に置き換える",
+          "explanation": {
+            "text": "Designer は AutoML の代替ではなく、補完的なツールです。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-designer",
+            "reference_label": "Azure ML Designer"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure ML Designer を利用すると、ドラッグ＆ドロップでパイプラインを構築できます。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-designer",
+        "reference_label": "Azure ML Designer"
+      }
+    },
+    {
+      "id": "azure-DP-100-q12",
+      "question": "Azure Machine Learning において Responsible AI に関連する機能はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Fairlearn と InterpretML の統合",
+          "explanation": {
+            "text": "Azure ML は Fairlearn や InterpretML と統合して公平性や説明性を強化できます。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-machine-learning-interpretability",
+            "reference_label": "Azure ML Responsible AI"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure Policy によるリソース制限",
+          "explanation": {
+            "text": "これは Responsible AI ではなくガバナンスに関連します。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-machine-learning-interpretability",
+            "reference_label": "Azure ML Responsible AI"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Data Lake の自動スケーリング",
+          "explanation": {
+            "text": "これはデータストレージに関する機能であり Responsible AI ではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-machine-learning-interpretability",
+            "reference_label": "Azure ML Responsible AI"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Monitor のメトリクス収集",
+          "explanation": {
+            "text": "モニタリングは有効ですが Responsible AI の中核機能ではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-machine-learning-interpretability",
+            "reference_label": "Azure ML Responsible AI"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Responsible AI の一環として Azure ML は Fairlearn や InterpretML を統合し、公平性や説明性を提供します。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-machine-learning-interpretability",
+        "reference_label": "Azure ML Responsible AI"
+      }
+    },
+    {
+      "id": "azure-DP-100-q13",
+      "question": "Azure Machine Learning で学習済みモデルを登録する主な理由はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "モデルのバージョン管理と再利用を可能にする",
+          "explanation": {
+            "text": "登録によりモデルのバージョン管理や再利用が可能になります。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-model",
+            "reference_label": "Azure ML モデル管理"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデルの精度を自動的に向上させる",
+          "explanation": {
+            "text": "登録は精度向上を保証するものではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-model",
+            "reference_label": "Azure ML モデル管理"
+          }
+        },
+        {
+          "key": "C",
+          "text": "モデルのセキュリティを完全に保証する",
+          "explanation": {
+            "text": "セキュリティ保証は登録の直接的機能ではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-model",
+            "reference_label": "Azure ML モデル管理"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure AD 認証を不要にする",
+          "explanation": {
+            "text": "認証はモデル登録後も必要です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-model",
+            "reference_label": "Azure ML モデル管理"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure ML でモデルを登録することで、バージョン管理や再利用が可能になります。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-model",
+        "reference_label": "Azure ML モデル管理"
+      }
+    },
+    {
+      "id": "azure-DP-100-q14",
+      "question": "Azure Machine Learning CLI v2 を利用する利点はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "YAML 定義を用いてリソースをコードとして管理できる",
+          "explanation": {
+            "text": "CLI v2 では YAML による IaC（Infrastructure as Code）が可能です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli",
+            "reference_label": "Azure ML CLI v2"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure AD 認証が不要になる",
+          "explanation": {
+            "text": "CLI v2 利用時も認証は必要です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli",
+            "reference_label": "Azure ML CLI v2"
+          }
+        },
+        {
+          "key": "C",
+          "text": "モデルの精度を自動的に改善する",
+          "explanation": {
+            "text": "CLI v2 自体は精度改善を行いません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli",
+            "reference_label": "Azure ML CLI v2"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ポータル UI の利用を完全に不要にする",
+          "explanation": {
+            "text": "CLI v2 は UI を不要にするものではなく、併用可能です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli",
+            "reference_label": "Azure ML CLI v2"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure ML CLI v2 では YAML による IaC が可能になり、再現性と自動化が向上します。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli",
+        "reference_label": "Azure ML CLI v2"
+      }
+    },
+    {
+      "id": "azure-DP-100-q15",
+      "question": "Azure Machine Learning でデータストア (Datastore) を登録する目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "外部ストレージをワークスペースに接続する",
+          "explanation": {
+            "text": "Datastore を登録すると、Azure Blob Storage や Data Lake などをワークスペースに接続できます。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-data",
+            "reference_label": "Azure ML データ管理"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データを自動的にクリーニングする",
+          "explanation": {
+            "text": "Datastore はクレンジング機能を持ちません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-data",
+            "reference_label": "Azure ML データ管理"
+          }
+        },
+        {
+          "key": "C",
+          "text": "モデルの推論速度を向上させる",
+          "explanation": {
+            "text": "Datastore は推論速度に直接影響しません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-data",
+            "reference_label": "Azure ML データ管理"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure AD 認証を不要にする",
+          "explanation": {
+            "text": "認証はストレージ利用時に引き続き必要です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-data",
+            "reference_label": "Azure ML データ管理"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Datastore を登録することで外部ストレージと Azure ML ワークスペースを統合して利用できます。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-data",
+        "reference_label": "Azure ML データ管理"
+      }
+    },
+    {
+      "id": "azure-DP-100-q16",
+      "question": "Azure Machine Learning で ONNX 形式を利用する主な利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "異なるフレームワーク間でモデルを移植可能にする",
+          "explanation": {
+            "text": "ONNX はフレームワーク間で互換性を持つ標準フォーマットです。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-onnx",
+            "reference_label": "Azure ML ONNX"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデルを自動的に精度向上させる",
+          "explanation": {
+            "text": "ONNX 形式は精度を保証するものではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-onnx",
+            "reference_label": "Azure ML ONNX"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure AD を不要にする",
+          "explanation": {
+            "text": "認証は ONNX に依存しません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-onnx",
+            "reference_label": "Azure ML ONNX"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ストレージコストを削減する",
+          "explanation": {
+            "text": "ONNX 形式はコスト削減機能を提供しません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-onnx",
+            "reference_label": "Azure ML ONNX"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ONNX は異なるフレームワーク間でモデル移植を可能にするため、Azure ML でも広く利用されています。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-onnx",
+        "reference_label": "Azure ML ONNX"
+      }
+    },
+    {
+      "id": "azure-DP-100-q17",
+      "question": "Azure Machine Learning におけるワークスペースの役割はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "実験、モデル、データ、リソースを一元管理する",
+          "explanation": {
+            "text": "ワークスペースは Azure ML の中心であり、リソース管理の単位となります。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-workspace",
+            "reference_label": "Azure ML ワークスペース"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure AD の認証を不要にする",
+          "explanation": {
+            "text": "ワークスペースでも認証は必要です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-workspace",
+            "reference_label": "Azure ML ワークスペース"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ストレージのスケーリングを制御する",
+          "explanation": {
+            "text": "ストレージスケーリングはストレージサービス側で行います。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-workspace",
+            "reference_label": "Azure ML ワークスペース"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データのクレンジングを自動化する",
+          "explanation": {
+            "text": "ワークスペースにはデータクレンジング機能はありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-workspace",
+            "reference_label": "Azure ML ワークスペース"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure ML のワークスペースは、実験、データセット、モデル、計算リソースを管理する中核的なコンポーネントです。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-workspace",
+        "reference_label": "Azure ML ワークスペース"
+      }
+    },
+    {
+      "id": "azure-DP-100-q18",
+      "question": "Azure Machine Learning でリアルタイム推論を行う際の推奨デプロイ先はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Azure Kubernetes Service (AKS)",
+          "explanation": {
+            "text": "AKS はスケーラブルなリアルタイム推論エンドポイントに適しています。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-deployment-target",
+            "reference_label": "Azure ML デプロイターゲット"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure Container Instances (ACI)",
+          "explanation": {
+            "text": "ACI は主に開発・テスト向けで、本番スケーラブル推論には不向きです。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-deployment-target",
+            "reference_label": "Azure ML デプロイターゲット"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Data Lake",
+          "explanation": {
+            "text": "Data Lake はストレージであり、推論エンドポイントではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-deployment-target",
+            "reference_label": "Azure ML デプロイターゲット"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Event Hub",
+          "explanation": {
+            "text": "Event Hub はイベント処理サービスで、推論エンドポイントには適していません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-deployment-target",
+            "reference_label": "Azure ML デプロイターゲット"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "本番環境のリアルタイム推論は AKS にデプロイするのが推奨されます。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-deployment-target",
+        "reference_label": "Azure ML デプロイターゲット"
+      }
+    },
+    {
+      "id": "azure-DP-100-q19",
+      "question": "Azure Machine Learning でバッチ推論を行う場合に推奨されるデプロイ先はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Azure Machine Learning バッチエンドポイント",
+          "explanation": {
+            "text": "バッチ推論にはバッチエンドポイントを利用します。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-endpoints",
+            "reference_label": "Azure ML エンドポイント"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure Virtual Machines",
+          "explanation": {
+            "text": "VM は推論専用の推奨先ではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-endpoints",
+            "reference_label": "Azure ML エンドポイント"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Monitor",
+          "explanation": {
+            "text": "Azure Monitor は監視サービスであり、推論先ではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-endpoints",
+            "reference_label": "Azure ML エンドポイント"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Event Grid",
+          "explanation": {
+            "text": "Event Grid はイベント処理であり推論先ではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-endpoints",
+            "reference_label": "Azure ML エンドポイント"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "大量データ処理の推論は Azure ML バッチエンドポイントを利用するのが推奨されます。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-endpoints",
+        "reference_label": "Azure ML エンドポイント"
+      }
+    },
+    {
+      "id": "azure-DP-100-q20",
+      "question": "Azure Machine Learning で Responsible AI の観点からモデルのバイアスを評価するために利用できるライブラリはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Fairlearn",
+          "explanation": {
+            "text": "Fairlearn はモデルの公平性を評価・軽減するためのライブラリです。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-machine-learning-fairness",
+            "reference_label": "Azure ML Responsible AI"
+          }
+        },
+        {
+          "key": "B",
+          "text": "TensorFlow",
+          "explanation": {
+            "text": "TensorFlow は機械学習フレームワークであり、公平性専用ではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-machine-learning-fairness",
+            "reference_label": "Azure ML Responsible AI"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Scikit-learn",
+          "explanation": {
+            "text": "Scikit-learn は汎用 ML ライブラリであり、公平性に特化していません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-machine-learning-fairness",
+            "reference_label": "Azure ML Responsible AI"
+          }
+        },
+        {
+          "key": "D",
+          "text": "PyTorch",
+          "explanation": {
+            "text": "PyTorch は ML フレームワークであり、公平性専用ではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-machine-learning-fairness",
+            "reference_label": "Azure ML Responsible AI"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Fairlearn は Responsible AI の一環としてバイアス検出や軽減に用いられます。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-machine-learning-fairness",
+        "reference_label": "Azure ML Responsible AI"
+      }
+    },
+    {
+      "id": "azure-DP-100-q21",
+      "question": "Azure Machine Learning でモデルの説明可能性を提供するために統合されているライブラリはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "InterpretML",
+          "explanation": {
+            "text": "InterpretML はモデルの説明可能性を高めるライブラリで Azure ML と統合されています。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-machine-learning-interpretability",
+            "reference_label": "Azure ML Responsible AI"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Matplotlib",
+          "explanation": {
+            "text": "Matplotlib は可視化ライブラリであり、説明可能性に特化していません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-machine-learning-interpretability",
+            "reference_label": "Azure ML Responsible AI"
+          }
+        },
+        {
+          "key": "C",
+          "text": "NumPy",
+          "explanation": {
+            "text": "NumPy は数値計算ライブラリであり、説明可能性には直接関係しません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-machine-learning-interpretability",
+            "reference_label": "Azure ML Responsible AI"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Pandas",
+          "explanation": {
+            "text": "Pandas はデータ処理ライブラリであり、説明可能性には直接関係しません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-machine-learning-interpretability",
+            "reference_label": "Azure ML Responsible AI"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "InterpretML は Azure ML Responsible AI の一環として説明可能性を提供します。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-machine-learning-interpretability",
+        "reference_label": "Azure ML Responsible AI"
+      }
+    },
+    {
+      "id": "azure-DP-100-q22",
+      "question": "Azure Machine Learning における Experiment の役割はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "実行された学習ジョブを整理・追跡する単位",
+          "explanation": {
+            "text": "Experiment は Run をまとめて管理する単位です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-experiment",
+            "reference_label": "Azure ML Experiment"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデルのセキュリティを保証する単位",
+          "explanation": {
+            "text": "Experiment はセキュリティではなく、ジョブの追跡用です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-experiment",
+            "reference_label": "Azure ML Experiment"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データの保存領域",
+          "explanation": {
+            "text": "データ保存は Datastore や Dataset が担当します。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-experiment",
+            "reference_label": "Azure ML Experiment"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure AD 認証の設定対象",
+          "explanation": {
+            "text": "認証は Experiment ではなくワークスペースで行われます。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-experiment",
+            "reference_label": "Azure ML Experiment"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Experiment は複数の Run を管理し、実験結果を整理・追跡するために利用されます。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-experiment",
+        "reference_label": "Azure ML Experiment"
+      }
+    },
+    {
+      "id": "azure-DP-100-q23",
+      "question": "Azure Machine Learning でモデルトレーニングを中断して再開できる仕組みを利用する目的はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "大規模トレーニングを効率的に継続できる",
+          "explanation": {
+            "text": "チェックポイント機能により学習の中断・再開が可能です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-train-with-checkpoints",
+            "reference_label": "Azure ML Checkpoints"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデルのセキュリティを保証できる",
+          "explanation": {
+            "text": "チェックポイントはセキュリティに直接関与しません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-train-with-checkpoints",
+            "reference_label": "Azure ML Checkpoints"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データクレンジングを自動化できる",
+          "explanation": {
+            "text": "チェックポイントはデータ処理機能ではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-train-with-checkpoints",
+            "reference_label": "Azure ML Checkpoints"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure AD 認証を不要にする",
+          "explanation": {
+            "text": "チェックポイント機能と認証は無関係です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-train-with-checkpoints",
+            "reference_label": "Azure ML Checkpoints"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure ML のチェックポイントを利用することで、大規模トレーニングを効率的に継続できます。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-train-with-checkpoints",
+        "reference_label": "Azure ML Checkpoints"
+      }
+    },
+    {
+      "id": "azure-DP-100-q24",
+      "question": "Azure Machine Learning で使用できる主要なジョブの種類に含まれるものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "コマンドジョブ",
+          "explanation": {
+            "text": "スクリプトを実行するための標準的なジョブです。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-train-model",
+            "reference_label": "Azure ML ジョブ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "スプレッドシートジョブ",
+          "explanation": {
+            "text": "スプレッドシートジョブという概念はありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-train-model",
+            "reference_label": "Azure ML ジョブ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "音声通話ジョブ",
+          "explanation": {
+            "text": "Azure ML には音声通話ジョブは存在しません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-train-model",
+            "reference_label": "Azure ML ジョブ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "メール送信ジョブ",
+          "explanation": {
+            "text": "メール送信ジョブは存在しません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-train-model",
+            "reference_label": "Azure ML ジョブ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure ML ではコマンドジョブを用いてスクリプトを実行できます。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-train-model",
+        "reference_label": "Azure ML ジョブ"
+      }
+    },
+    {
+      "id": "azure-DP-100-q25",
+      "question": "Azure Machine Learning で MLflow を利用する主な利点はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "オープンソースのトラッキングとモデル管理を統合できる",
+          "explanation": {
+            "text": "MLflow はトラッキング・モデル管理を行うための OSS で、Azure ML と統合可能です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-mlflow",
+            "reference_label": "Azure ML MLflow"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデルのセキュリティを保証する",
+          "explanation": {
+            "text": "MLflow はセキュリティ保証を提供しません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-mlflow",
+            "reference_label": "Azure ML MLflow"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データを自動的にクレンジングする",
+          "explanation": {
+            "text": "MLflow はデータクレンジングを行いません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-mlflow",
+            "reference_label": "Azure ML MLflow"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure AD を不要にする",
+          "explanation": {
+            "text": "認証は MLflow とは別に必要です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-mlflow",
+            "reference_label": "Azure ML MLflow"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure ML と MLflow の統合により、トラッキングとモデル管理を OSS ベースで利用できます。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-mlflow",
+        "reference_label": "Azure ML MLflow"
+      }
+    },
+    {
+      "id": "azure-DP-100-q26",
+      "question": "Azure Machine Learning で Data Labeling プロジェクトを作成する目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "教師あり学習用データにラベルを付与する",
+          "explanation": {
+            "text": "Data Labeling は画像やテキストなどにラベルを付与する機能です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-label-data",
+            "reference_label": "Azure ML Data Labeling"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データの保存コストを削減する",
+          "explanation": {
+            "text": "ラベリングはコスト削減ではなくデータ準備のためです。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-label-data",
+            "reference_label": "Azure ML Data Labeling"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure AD 認証を不要にする",
+          "explanation": {
+            "text": "ラベリングと認証は関係ありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-label-data",
+            "reference_label": "Azure ML Data Labeling"
+          }
+        },
+        {
+          "key": "D",
+          "text": "モデルの推論速度を上げる",
+          "explanation": {
+            "text": "ラベリングは推論速度には直接関係しません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-label-data",
+            "reference_label": "Azure ML Data Labeling"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "教師あり学習用のデータセットを作成するために、Data Labeling を利用します。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-label-data",
+        "reference_label": "Azure ML Data Labeling"
+      }
+    },
+    {
+      "id": "azure-DP-100-q27",
+      "question": "Azure Machine Learning で学習ジョブの成果物 (artifact) に含まれるものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "モデルファイルやログ",
+          "explanation": {
+            "text": "成果物にはモデルファイル、ログ、出力データが含まれます。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-track-experiments",
+            "reference_label": "Azure ML 実験追跡"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure AD ユーザー情報",
+          "explanation": {
+            "text": "ユーザー情報は成果物には含まれません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-track-experiments",
+            "reference_label": "Azure ML 実験追跡"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Event Hub のメッセージ",
+          "explanation": {
+            "text": "Event Hub は成果物には含まれません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-track-experiments",
+            "reference_label": "Azure ML 実験追跡"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Policy 設定",
+          "explanation": {
+            "text": "ポリシー設定は成果物ではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-track-experiments",
+            "reference_label": "Azure ML 実験追跡"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "学習ジョブの成果物にはモデルファイル、ログ、出力データなどが含まれます。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-track-experiments",
+        "reference_label": "Azure ML 実験追跡"
+      }
+    },
+    {
+      "id": "azure-DP-100-q28",
+      "question": "Azure Machine Learning で Responsible AI を実現するためのダッシュボードで提供される情報はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "モデルの公平性、説明性、エラーレート",
+          "explanation": {
+            "text": "Responsible AI ダッシュボードは公平性、説明性、エラーレートなどを提供します。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/responsible-ai-dashboard",
+            "reference_label": "Azure ML Responsible AI Dashboard"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure AD ログイン履歴",
+          "explanation": {
+            "text": "これはセキュリティ監査であり、Responsible AI には含まれません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/responsible-ai-dashboard",
+            "reference_label": "Azure ML Responsible AI Dashboard"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Resource Manager の利用状況",
+          "explanation": {
+            "text": "これはリソース管理であり Responsible AI とは関係ありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/responsible-ai-dashboard",
+            "reference_label": "Azure ML Responsible AI Dashboard"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ストレージ使用量の推移",
+          "explanation": {
+            "text": "ストレージ使用量は Responsible AI の対象ではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/responsible-ai-dashboard",
+            "reference_label": "Azure ML Responsible AI Dashboard"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Responsible AI ダッシュボードは公平性や説明性を含むメトリクスを提供します。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/responsible-ai-dashboard",
+        "reference_label": "Azure ML Responsible AI Dashboard"
+      }
+    },
+    {
+      "id": "azure-DP-100-q29",
+      "question": "Azure Machine Learning における Compute Cluster の特徴はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "分散トレーニングや大規模ジョブを自動スケーリングで処理できる",
+          "explanation": {
+            "text": "Compute Cluster はスケーラブルで分散処理に適しています。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-compute-cluster",
+            "reference_label": "Azure ML Compute Cluster"
+          }
+        },
+        {
+          "key": "B",
+          "text": "個人用の開発環境を提供する",
+          "explanation": {
+            "text": "個人用開発環境は Compute Instance です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-compute-cluster",
+            "reference_label": "Azure ML Compute Cluster"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データストアを管理する",
+          "explanation": {
+            "text": "データストアはストレージの接続先であり Compute Cluster の役割ではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-compute-cluster",
+            "reference_label": "Azure ML Compute Cluster"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure AD 認証を不要にする",
+          "explanation": {
+            "text": "認証は Compute Cluster とは無関係です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-compute-cluster",
+            "reference_label": "Azure ML Compute Cluster"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Compute Cluster は大規模処理や分散学習を自動スケーリングで実行できるコンピューティングリソースです。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-compute-cluster",
+        "reference_label": "Azure ML Compute Cluster"
+      }
+    },
+    {
+      "id": "azure-DP-100-q30",
+      "question": "Azure Machine Learning のモニタリング機能で、リアルタイムエンドポイントに対して収集できる情報はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "リクエスト数や応答時間",
+          "explanation": {
+            "text": "リアルタイムエンドポイントではパフォーマンス指標を監視可能です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-monitor-online-endpoints",
+            "reference_label": "Azure ML モニタリング"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure AD の認証履歴",
+          "explanation": {
+            "text": "これは Azure AD 側で監査されます。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-monitor-online-endpoints",
+            "reference_label": "Azure ML モニタリング"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ストレージ使用量",
+          "explanation": {
+            "text": "ストレージ使用量は別途管理されます。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-monitor-online-endpoints",
+            "reference_label": "Azure ML モニタリング"
+          }
+        },
+        {
+          "key": "D",
+          "text": "仮想マシンのセキュリティ更新履歴",
+          "explanation": {
+            "text": "これは OS レベルの機能であり、Azure ML モニタリングとは別です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-monitor-online-endpoints",
+            "reference_label": "Azure ML モニタリング"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "リアルタイムエンドポイントではリクエスト数、応答時間、エラー率などを監視可能です。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-monitor-online-endpoints",
+        "reference_label": "Azure ML モニタリング"
+      }
+    },
+    {
+      "id": "azure-DP-100-q31",
+      "question": "Azure Machine Learning で Feature Store を利用する利点はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "特徴量を再利用可能にし一貫性を確保できる",
+          "explanation": {
+            "text": "Feature Store は特徴量を一元管理し、複数モデルで再利用可能にします。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-feature-store",
+            "reference_label": "Azure ML Feature Store"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデルの自動精度向上を保証する",
+          "explanation": {
+            "text": "Feature Store は精度保証を行いません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-feature-store",
+            "reference_label": "Azure ML Feature Store"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure AD 認証を不要にする",
+          "explanation": {
+            "text": "認証は Feature Store とは無関係です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-feature-store",
+            "reference_label": "Azure ML Feature Store"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ストレージコストを削減する",
+          "explanation": {
+            "text": "Feature Store はコスト削減ではなく特徴量管理が目的です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-feature-store",
+            "reference_label": "Azure ML Feature Store"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Feature Store は特徴量を一元管理・再利用できるため、モデル間での一貫性を確保できます。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-feature-store",
+        "reference_label": "Azure ML Feature Store"
+      }
+    },
+    {
+      "id": "azure-DP-100-q32",
+      "question": "Azure Machine Learning で Responsible AI の一環として提供されるエラーバウンド可視化機能の目的はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "モデルの予測に対する不確実性を可視化する",
+          "explanation": {
+            "text": "エラーバウンドは予測の信頼区間を示し、透明性を向上させます。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/responsible-ai-dashboard",
+            "reference_label": "Azure ML Responsible AI Dashboard"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデルのセキュリティを保証する",
+          "explanation": {
+            "text": "セキュリティは Responsible AI の対象ではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/responsible-ai-dashboard",
+            "reference_label": "Azure ML Responsible AI Dashboard"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure AD 認証を不要にする",
+          "explanation": {
+            "text": "認証は Responsible AI の一部ではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/responsible-ai-dashboard",
+            "reference_label": "Azure ML Responsible AI Dashboard"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データクレンジングを自動化する",
+          "explanation": {
+            "text": "データクレンジングは別の工程です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/responsible-ai-dashboard",
+            "reference_label": "Azure ML Responsible AI Dashboard"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "エラーバウンド可視化により予測の不確実性を明示し、モデルの透明性が向上します。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/responsible-ai-dashboard",
+        "reference_label": "Azure ML Responsible AI Dashboard"
+      }
+    },
+    {
+      "id": "azure-DP-100-q33",
+      "question": "Azure Machine Learning の Responsible AI 機能でカウンターファクチュアル分析を行う目的はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "入力の一部を変更した場合に結果がどう変化するかを理解する",
+          "explanation": {
+            "text": "カウンターファクチュアル分析は「もし違う入力なら」という仮定で予測変化を分析します。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/responsible-ai-dashboard",
+            "reference_label": "Azure ML Responsible AI Dashboard"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure AD の監査ログを取得する",
+          "explanation": {
+            "text": "これは Responsible AI 機能ではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/responsible-ai-dashboard",
+            "reference_label": "Azure ML Responsible AI Dashboard"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データのストレージコストを削減する",
+          "explanation": {
+            "text": "コスト削減は Responsible AI の目的ではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/responsible-ai-dashboard",
+            "reference_label": "Azure ML Responsible AI Dashboard"
+          }
+        },
+        {
+          "key": "D",
+          "text": "モデルのハイパーパラメータを調整する",
+          "explanation": {
+            "text": "これはハイパーパラメータチューニングの役割です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/responsible-ai-dashboard",
+            "reference_label": "Azure ML Responsible AI Dashboard"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "カウンターファクチュアル分析は、入力の変更による出力変化を理解するための分析です。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/responsible-ai-dashboard",
+        "reference_label": "Azure ML Responsible AI Dashboard"
+      }
+    },
+    {
+      "id": "azure-DP-100-q34",
+      "question": "Azure Machine Learning でモデル登録時に付与できるタグの利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "モデルを整理・検索しやすくする",
+          "explanation": {
+            "text": "タグを付与することでモデルを分類・検索しやすくなります。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-manage-models",
+            "reference_label": "Azure ML モデル管理"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデルの精度を向上させる",
+          "explanation": {
+            "text": "タグ付けは精度向上に直接寄与しません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-manage-models",
+            "reference_label": "Azure ML モデル管理"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データクレンジングを自動化する",
+          "explanation": {
+            "text": "タグはデータ処理とは無関係です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-manage-models",
+            "reference_label": "Azure ML モデル管理"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure AD 認証を不要にする",
+          "explanation": {
+            "text": "認証はタグ付けとは無関係です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-manage-models",
+            "reference_label": "Azure ML モデル管理"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "モデルにタグを付与すると管理・検索が容易になります。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-manage-models",
+        "reference_label": "Azure ML モデル管理"
+      }
+    },
+    {
+      "id": "azure-DP-100-q35",
+      "question": "Azure Machine Learning でジョブの依存関係を定義する目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ワークフロー内で正しい順序でジョブを実行するため",
+          "explanation": {
+            "text": "依存関係を設定するとジョブの実行順序を制御できます。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-create-pipelines",
+            "reference_label": "Azure ML パイプライン"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデルの精度を自動的に保証する",
+          "explanation": {
+            "text": "依存関係は精度保証のためではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-create-pipelines",
+            "reference_label": "Azure ML パイプライン"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure AD 認証を不要にする",
+          "explanation": {
+            "text": "認証は依存関係設定とは無関係です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-create-pipelines",
+            "reference_label": "Azure ML パイプライン"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ストレージコストを削減する",
+          "explanation": {
+            "text": "依存関係はコスト削減の仕組みではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-create-pipelines",
+            "reference_label": "Azure ML パイプライン"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ジョブ依存関係を定義することで、正しい順序でジョブを実行できます。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-create-pipelines",
+        "reference_label": "Azure ML パイプライン"
+      }
+    },
+    {
+      "id": "azure-DP-100-q36",
+      "question": "Azure Machine Learning でジョブの環境 (Environment) を定義する主な目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "依存ライブラリや実行環境を再現可能にする",
+          "explanation": {
+            "text": "Environment により Python パッケージや Docker イメージを指定し、再現性を確保します。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-environments",
+            "reference_label": "Azure ML Environments"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデルの精度を向上させる",
+          "explanation": {
+            "text": "Environment は精度向上の仕組みではなく再現性確保が目的です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-environments",
+            "reference_label": "Azure ML Environments"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データを自動的にクレンジングする",
+          "explanation": {
+            "text": "データクレンジングは Environment の機能ではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-environments",
+            "reference_label": "Azure ML Environments"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure AD 認証を不要にする",
+          "explanation": {
+            "text": "認証は Environment の機能ではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-environments",
+            "reference_label": "Azure ML Environments"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure ML の Environment を定義することで、ライブラリ依存関係を管理し、実験の再現性を担保できます。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-environments",
+        "reference_label": "Azure ML Environments"
+      }
+    },
+    {
+      "id": "azure-DP-100-q37",
+      "question": "Azure Machine Learning でバッチ推論ジョブをスケジュールする利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "定期的に新しいデータに対して推論を自動実行できる",
+          "explanation": {
+            "text": "スケジュールにより定期的にバッチ推論を実行可能です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-schedule-batch-inference",
+            "reference_label": "Azure ML バッチ推論"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure AD 認証を不要にする",
+          "explanation": {
+            "text": "認証の仕組みはスケジューリングとは無関係です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-schedule-batch-inference",
+            "reference_label": "Azure ML バッチ推論"
+          }
+        },
+        {
+          "key": "C",
+          "text": "モデルを自動的に精度向上させる",
+          "explanation": {
+            "text": "スケジュールは精度向上を保証しません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-schedule-batch-inference",
+            "reference_label": "Azure ML バッチ推論"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ストレージコストを削減する",
+          "explanation": {
+            "text": "スケジュールはコスト削減を目的としません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-schedule-batch-inference",
+            "reference_label": "Azure ML バッチ推論"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure ML でバッチ推論をスケジュールすることで、新しいデータに定期的に推論を実行できます。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-schedule-batch-inference",
+        "reference_label": "Azure ML バッチ推論"
+      }
+    },
+    {
+      "id": "azure-DP-100-q38",
+      "question": "Azure Machine Learning におけるモデルの再トレーニングの自動化に利用できる機能はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Azure ML パイプラインとスケジューラー",
+          "explanation": {
+            "text": "パイプラインとスケジューラーを組み合わせることで再トレーニングを自動化できます。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-trigger-published-pipeline",
+            "reference_label": "Azure ML パイプライン"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure Monitor",
+          "explanation": {
+            "text": "Azure Monitor は監視用であり、再トレーニングの自動化には直接利用しません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-trigger-published-pipeline",
+            "reference_label": "Azure ML パイプライン"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Key Vault",
+          "explanation": {
+            "text": "Key Vault はシークレット管理であり、自動再トレーニングには利用されません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-trigger-published-pipeline",
+            "reference_label": "Azure ML パイプライン"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Event Hub",
+          "explanation": {
+            "text": "Event Hub はイベント処理用であり、直接的に再トレーニングは行いません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-trigger-published-pipeline",
+            "reference_label": "Azure ML パイプライン"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure ML パイプラインを公開し、スケジューラーやイベントでトリガーすることで再トレーニングを自動化できます。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-trigger-published-pipeline",
+        "reference_label": "Azure ML パイプライン"
+      }
+    },
+    {
+      "id": "azure-DP-100-q39",
+      "question": "Azure Machine Learning で Responsible AI の一環として提供される因果推論 (Causal Inference) 機能の目的はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "特徴量と結果の因果関係を分析する",
+          "explanation": {
+            "text": "因果推論は相関ではなく因果関係を明らかにする分析手法です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/responsible-ai-dashboard",
+            "reference_label": "Azure ML Responsible AI"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure AD のユーザー権限を監査する",
+          "explanation": {
+            "text": "これはセキュリティ機能であり Responsible AI ではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/responsible-ai-dashboard",
+            "reference_label": "Azure ML Responsible AI"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データストレージの最適化を行う",
+          "explanation": {
+            "text": "ストレージ最適化は因果推論の目的ではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/responsible-ai-dashboard",
+            "reference_label": "Azure ML Responsible AI"
+          }
+        },
+        {
+          "key": "D",
+          "text": "モデルの精度を自動的に向上させる",
+          "explanation": {
+            "text": "因果推論は精度保証ではなく、解釈性のための手法です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/responsible-ai-dashboard",
+            "reference_label": "Azure ML Responsible AI"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "因果推論機能は特徴量と結果の因果関係を分析することで、モデルの理解と責任ある利用を支援します。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/responsible-ai-dashboard",
+        "reference_label": "Azure ML Responsible AI"
+      }
+    },
+    {
+      "id": "azure-DP-100-q40",
+      "question": "Azure Machine Learning のジョブで Output オブジェクトを利用する主な目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ジョブの成果物を保存・共有する",
+          "explanation": {
+            "text": "Output を利用して成果物（モデルや結果ファイル）を保存・共有できます。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-train-model",
+            "reference_label": "Azure ML ジョブ出力"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure AD 認証を不要にする",
+          "explanation": {
+            "text": "認証は Output オブジェクトの役割ではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-train-model",
+            "reference_label": "Azure ML ジョブ出力"
+          }
+        },
+        {
+          "key": "C",
+          "text": "モデルの精度を向上させる",
+          "explanation": {
+            "text": "Output 自体は精度に影響を与えません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-train-model",
+            "reference_label": "Azure ML ジョブ出力"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データを自動的にクレンジングする",
+          "explanation": {
+            "text": "データクレンジングは Output の機能ではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-train-model",
+            "reference_label": "Azure ML ジョブ出力"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Output オブジェクトは学習済みモデルやログなどの成果物を保存・共有するために利用されます。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-train-model",
+        "reference_label": "Azure ML ジョブ出力"
+      }
+    },
+    {
+      "id": "azure-DP-100-q41",
+      "question": "Azure Machine Learning Studio で Designer を利用する主な利点はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ノーコードで機械学習パイプラインを構築できる",
+          "explanation": {
+            "text": "Designer はドラッグ＆ドロップでパイプラインを構築できます。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-designer",
+            "reference_label": "Azure ML Designer"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure AD 認証を不要にする",
+          "explanation": {
+            "text": "認証は Designer 利用時も必要です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-designer",
+            "reference_label": "Azure ML Designer"
+          }
+        },
+        {
+          "key": "C",
+          "text": "モデルを自動的に精度向上させる",
+          "explanation": {
+            "text": "Designer は精度向上を保証しません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-designer",
+            "reference_label": "Azure ML Designer"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データの保存コストを削減する",
+          "explanation": {
+            "text": "Designer はコスト削減を目的としません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-designer",
+            "reference_label": "Azure ML Designer"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure ML Designer を利用すると、ノーコードでパイプラインを構築でき、素早いプロトタイピングが可能です。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-designer",
+        "reference_label": "Azure ML Designer"
+      }
+    },
+    {
+      "id": "azure-DP-100-q42",
+      "question": "Azure Machine Learning における Data Asset の主な特徴はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "バージョン管理可能なデータの参照を提供する",
+          "explanation": {
+            "text": "Data Asset はデータをバージョン管理し、再現性を担保します。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-data-assets",
+            "reference_label": "Azure ML Data Asset"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データを自動的に匿名化する",
+          "explanation": {
+            "text": "匿名化機能は Data Asset には含まれません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-data-assets",
+            "reference_label": "Azure ML Data Asset"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure AD 認証を不要にする",
+          "explanation": {
+            "text": "認証は Data Asset の機能ではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-data-assets",
+            "reference_label": "Azure ML Data Asset"
+          }
+        },
+        {
+          "key": "D",
+          "text": "モデルの精度を自動的に向上させる",
+          "explanation": {
+            "text": "Data Asset 自体は精度向上の仕組みではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-data-assets",
+            "reference_label": "Azure ML Data Asset"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Data Asset はデータを参照しつつバージョン管理を可能にし、再現性のある実験を支援します。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-data-assets",
+        "reference_label": "Azure ML Data Asset"
+      }
+    },
+    {
+      "id": "azure-DP-100-q43",
+      "question": "Azure Machine Learning の Responsible AI ダッシュボードで利用できる主要な機能はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "公平性、説明可能性、誤差分析を可視化する",
+          "explanation": {
+            "text": "Responsible AI ダッシュボードでは公平性や説明性、誤差の可視化が可能です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/responsible-ai-dashboard",
+            "reference_label": "Azure ML Responsible AI Dashboard"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure AD ユーザーのアクセス権限を監査する",
+          "explanation": {
+            "text": "ユーザー監査は Responsible AI の機能ではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/responsible-ai-dashboard",
+            "reference_label": "Azure ML Responsible AI Dashboard"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データストレージの利用状況を最適化する",
+          "explanation": {
+            "text": "ストレージ最適化は対象外です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/responsible-ai-dashboard",
+            "reference_label": "Azure ML Responsible AI Dashboard"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ハイパーパラメータの自動調整を行う",
+          "explanation": {
+            "text": "ハイパーパラメータ調整は Responsible AI ではなく HyperDrive で実行します。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/responsible-ai-dashboard",
+            "reference_label": "Azure ML Responsible AI Dashboard"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Responsible AI ダッシュボードはモデルの公平性、説明可能性、誤差分析を支援します。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/responsible-ai-dashboard",
+        "reference_label": "Azure ML Responsible AI Dashboard"
+      }
+    },
+    {
+      "id": "azure-DP-100-q44",
+      "question": "Azure Machine Learning における Managed Online Endpoint の特徴はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "スケーラブルなリアルタイム推論を提供する",
+          "explanation": {
+            "text": "Managed Online Endpoint はリアルタイム推論のためのスケーラブルなエンドポイントです。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-endpoints",
+            "reference_label": "Azure ML エンドポイント"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure Storage のバックアップを自動化する",
+          "explanation": {
+            "text": "バックアップはエンドポイントの機能ではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-endpoints",
+            "reference_label": "Azure ML エンドポイント"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データのクレンジングを行う",
+          "explanation": {
+            "text": "データクレンジングはエンドポイントの機能ではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-endpoints",
+            "reference_label": "Azure ML エンドポイント"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure AD 認証を不要にする",
+          "explanation": {
+            "text": "認証は引き続き必要です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-endpoints",
+            "reference_label": "Azure ML エンドポイント"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Managed Online Endpoint はリアルタイム推論用にスケーラブルな環境を提供します。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-endpoints",
+        "reference_label": "Azure ML エンドポイント"
+      }
+    },
+    {
+      "id": "azure-DP-100-q45",
+      "question": "Azure Machine Learning で REST API を利用してジョブを実行する利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "外部システムからプログラム的に実行をトリガーできる",
+          "explanation": {
+            "text": "REST API を利用すれば外部システムと統合してジョブを実行可能です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/reference-rest-api",
+            "reference_label": "Azure ML REST API"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure AD 認証を不要にする",
+          "explanation": {
+            "text": "REST API も Azure AD 認証が必要です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/reference-rest-api",
+            "reference_label": "Azure ML REST API"
+          }
+        },
+        {
+          "key": "C",
+          "text": "モデルを自動的に精度向上させる",
+          "explanation": {
+            "text": "API 実行は精度向上を保証しません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/reference-rest-api",
+            "reference_label": "Azure ML REST API"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Storage の利用コストを削減する",
+          "explanation": {
+            "text": "ストレージコスト削減は REST API の目的ではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/reference-rest-api",
+            "reference_label": "Azure ML REST API"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure ML REST API を利用すると外部システムと統合してジョブを実行できます。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/reference-rest-api",
+        "reference_label": "Azure ML REST API"
+      }
+    },
+    {
+      "id": "azure-DP-100-q46",
+      "question": "Azure Machine Learning で Key Vault を利用する主な目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "シークレットや資格情報を安全に管理する",
+          "explanation": {
+            "text": "Key Vault は認証情報や接続文字列を安全に管理します。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-key-vault",
+            "reference_label": "Azure ML Key Vault"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データのラベリングを行う",
+          "explanation": {
+            "text": "ラベリングは Key Vault の機能ではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-key-vault",
+            "reference_label": "Azure ML Key Vault"
+          }
+        },
+        {
+          "key": "C",
+          "text": "モデルのバージョン管理を行う",
+          "explanation": {
+            "text": "バージョン管理はモデル登録で行います。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-key-vault",
+            "reference_label": "Azure ML Key Vault"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure AD 認証を不要にする",
+          "explanation": {
+            "text": "Key Vault 利用時も認証は必要です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-key-vault",
+            "reference_label": "Azure ML Key Vault"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure ML では Key Vault を利用してシークレットや資格情報を安全に管理します。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-key-vault",
+        "reference_label": "Azure ML Key Vault"
+      }
+    },
+    {
+      "id": "azure-DP-100-q47",
+      "question": "Azure Machine Learning で MLflow Tracking を利用する利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "実験のパラメータやメトリクスを記録できる",
+          "explanation": {
+            "text": "MLflow Tracking を使うと実験ログを管理できます。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-mlflow",
+            "reference_label": "Azure ML MLflow"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure AD 認証を不要にする",
+          "explanation": {
+            "text": "MLflow 利用時も認証は必要です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-mlflow",
+            "reference_label": "Azure ML MLflow"
+          }
+        },
+        {
+          "key": "C",
+          "text": "モデルを自動的に精度向上させる",
+          "explanation": {
+            "text": "MLflow は精度保証の仕組みではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-mlflow",
+            "reference_label": "Azure ML MLflow"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データの保存コストを削減する",
+          "explanation": {
+            "text": "コスト削減は MLflow の目的ではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-mlflow",
+            "reference_label": "Azure ML MLflow"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "MLflow Tracking を利用すると実験のパラメータやメトリクスを効率的に記録・管理できます。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-mlflow",
+        "reference_label": "Azure ML MLflow"
+      }
+    },
+    {
+      "id": "azure-DP-100-q48",
+      "question": "Azure Machine Learning で Responsible AI の観点からデータの公平性を可視化するために利用できるライブラリはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Fairlearn",
+          "explanation": {
+            "text": "Fairlearn は公平性を分析・可視化するためのライブラリです。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-machine-learning-fairness",
+            "reference_label": "Azure ML Responsible AI"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Scikit-learn",
+          "explanation": {
+            "text": "Scikit-learn は汎用 ML ライブラリですが公平性に特化していません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-machine-learning-fairness",
+            "reference_label": "Azure ML Responsible AI"
+          }
+        },
+        {
+          "key": "C",
+          "text": "NumPy",
+          "explanation": {
+            "text": "NumPy は数値計算ライブラリです。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-machine-learning-fairness",
+            "reference_label": "Azure ML Responsible AI"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Matplotlib",
+          "explanation": {
+            "text": "Matplotlib は可視化ライブラリですが公平性評価機能はありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-machine-learning-fairness",
+            "reference_label": "Azure ML Responsible AI"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Fairlearn を利用すると Responsible AI の観点からデータやモデルの公平性を評価できます。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-machine-learning-fairness",
+        "reference_label": "Azure ML Responsible AI"
+      }
+    },
+    {
+      "id": "azure-DP-100-q49",
+      "question": "Azure Machine Learning で Azure Monitor を統合する主な目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "エンドポイントやジョブのメトリクスを収集・監視する",
+          "explanation": {
+            "text": "Azure Monitor を統合することでエンドポイントやジョブの監視が可能になります。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-enable-azure-monitor",
+            "reference_label": "Azure ML モニタリング"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure AD 認証を不要にする",
+          "explanation": {
+            "text": "Azure Monitor 統合時も認証は必要です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-enable-azure-monitor",
+            "reference_label": "Azure ML モニタリング"
+          }
+        },
+        {
+          "key": "C",
+          "text": "モデルを自動的に精度向上させる",
+          "explanation": {
+            "text": "Azure Monitor は精度向上を行いません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-enable-azure-monitor",
+            "reference_label": "Azure ML モニタリング"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ストレージのバックアップを自動化する",
+          "explanation": {
+            "text": "バックアップは Azure Monitor の役割ではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-enable-azure-monitor",
+            "reference_label": "Azure ML モニタリング"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure Monitor 統合により、Azure ML のエンドポイントやジョブのメトリクス監視が可能です。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-enable-azure-monitor",
+        "reference_label": "Azure ML モニタリング"
+      }
+    },
+    {
+      "id": "azure-DP-100-q50",
+      "question": "Azure Machine Learning における Responsible AI の観点からエラー分析 (Error Analysis) を行う主な目的はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "モデルが特定のサブグループで誤分類する傾向を特定する",
+          "explanation": {
+            "text": "エラー分析は特定の属性やサブグループにおける誤分類の傾向を可視化し、公平性や改善点を明らかにします。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/responsible-ai-dashboard",
+            "reference_label": "Azure ML Responsible AI Dashboard"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure AD 認証を不要にする",
+          "explanation": {
+            "text": "エラー分析は認証には関係しません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/responsible-ai-dashboard",
+            "reference_label": "Azure ML Responsible AI Dashboard"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ストレージコストを削減する",
+          "explanation": {
+            "text": "エラー分析はコスト削減を目的としません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/responsible-ai-dashboard",
+            "reference_label": "Azure ML Responsible AI Dashboard"
+          }
+        },
+        {
+          "key": "D",
+          "text": "モデルの精度を自動的に保証する",
+          "explanation": {
+            "text": "エラー分析は精度保証ではなく、改善のための洞察を提供します。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/responsible-ai-dashboard",
+            "reference_label": "Azure ML Responsible AI Dashboard"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Responsible AI におけるエラー分析は、特定サブグループにおける誤分類傾向を特定し、改善や公平性の向上に役立ちます。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/responsible-ai-dashboard",
+        "reference_label": "Azure ML Responsible AI Dashboard"
+      }
+    }
+  ]
+}

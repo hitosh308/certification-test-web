@@ -1,0 +1,2467 @@
+{
+  "exam": {
+    "id": "dp-900",
+    "title": "Azure Data Fundamentals",
+    "description": "この認定試験は、マイクロソフトのクラウドプラットフォームである Microsoft Azure におけるデータ関連サービスおよび基礎的なデータ概念（リレーショナル・非リレーショナル・分析型ワークロード等）に関する知識を証明するものです。データをクラウド上で扱い始めた方向けで、例えばデータの格納、種類、ワークロード、Azure 上のデータサービスの特徴などを理解していることが求められます。",
+    "version": "2024年11月",
+    "price": "99 USD",
+    "difficulty": "普通",
+    "official-site": "https://learn.microsoft.com/credentials/certifications/azure-data-fundamentals/",
+    "category": {
+      "id": "azure",
+      "name": "Azure"
+    }
+  },
+  "questions": [
+    {
+      "id": "azure-DP-900-q1",
+      "question": "リレーショナルデータベースの特徴として最も適切なのはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "スキーマを持ち、テーブル同士をキーで関連付けられる",
+          "explanation": {
+            "text": "リレーショナルデータベースはテーブルとスキーマに基づいて設計され、主キーや外部キーによる関連付けが可能です。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/sql-database-technical-overview",
+            "reference_label": "Microsoft Docs: Azure SQL Database Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "JSON形式のデータをそのまま保存する",
+          "explanation": {
+            "text": "JSONのネイティブ保存はリレーショナルではなくNoSQL型の特徴です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/nosql",
+            "reference_label": "Microsoft Docs: Azure Cosmos DB (NoSQL)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "水平スケールに最適化されている",
+          "explanation": {
+            "text": "リレーショナルDBは伝統的に垂直スケール（スケールアップ）に依存する傾向があります。",
+            "reference": "https://learn.microsoft.com/azure/architecture/data-guide/relational-data",
+            "reference_label": "Microsoft Docs: Relational Data"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データ構造を柔軟に変更できる",
+          "explanation": {
+            "text": "リレーショナルDBはスキーマが固定的であり、柔軟さはNoSQLに比べて低いです。",
+            "reference": "https://learn.microsoft.com/azure/architecture/data-guide/relational-data",
+            "reference_label": "Microsoft Docs: Relational Data"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "リレーショナルデータベースはスキーマに基づき、主キーや外部キーを使ってテーブル間の関係を管理する点が特徴です。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/sql-database-technical-overview",
+        "reference_label": "Microsoft Docs: Azure SQL Database Overview"
+      }
+    },
+    {
+      "id": "azure-DP-900-q2",
+      "question": "Azure Cosmos DBが提供する整合性レベルのうち、最も厳密な整合性モデルはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Strong",
+          "explanation": {
+            "text": "Strong consistencyは最も厳密で、常に最新の書き込みがすべての読み取りに反映されます。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/consistency-levels",
+            "reference_label": "Microsoft Docs: Consistency levels in Azure Cosmos DB"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Eventual",
+          "explanation": {
+            "text": "Eventual consistencyは最も緩やかな整合性で、即時ではなく最終的に整合性が保証されます。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/consistency-levels",
+            "reference_label": "Microsoft Docs: Consistency levels in Azure Cosmos DB"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Bounded staleness",
+          "explanation": {
+            "text": "Bounded stalenessは遅延を許容する中間的な整合性です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/consistency-levels",
+            "reference_label": "Microsoft Docs: Consistency levels in Azure Cosmos DB"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Session",
+          "explanation": {
+            "text": "Sessionはクライアントごとに一貫した整合性を保証しますが、Strongほど厳密ではありません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/consistency-levels",
+            "reference_label": "Microsoft Docs: Consistency levels in Azure Cosmos DB"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cosmos DBの整合性レベルの中で、Strongは最も厳密で、すべての読み取りが直前の書き込みを反映します。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/consistency-levels",
+        "reference_label": "Microsoft Docs: Consistency levels in Azure Cosmos DB"
+      }
+    },
+    {
+      "id": "azure-DP-900-q3",
+      "question": "Azure Synapse Analyticsの主な用途はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "大規模データの分析と統合",
+          "explanation": {
+            "text": "SynapseはDWH（データウェアハウス）とビッグデータ分析を統合するサービスです。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/overview",
+            "reference_label": "Microsoft Docs: What is Azure Synapse Analytics?"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モバイルアプリのデプロイ",
+          "explanation": {
+            "text": "アプリのデプロイはAzure App Serviceなどの役割であり、Synapseではありません。",
+            "reference": "https://learn.microsoft.com/azure/app-service/overview",
+            "reference_label": "Microsoft Docs: Azure App Service Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "コンテナオーケストレーション",
+          "explanation": {
+            "text": "コンテナオーケストレーションはAzure Kubernetes Service (AKS) が担当します。",
+            "reference": "https://learn.microsoft.com/azure/aks/intro-kubernetes",
+            "reference_label": "Microsoft Docs: Introduction to AKS"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ネットワークセキュリティ管理",
+          "explanation": {
+            "text": "セキュリティはAzure FirewallやNSGの機能です。",
+            "reference": "https://learn.microsoft.com/azure/firewall/overview",
+            "reference_label": "Microsoft Docs: Azure Firewall"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure Synapse Analyticsはデータ統合・大規模分析に特化したサービスで、BIや機械学習の基盤として利用されます。",
+        "reference": "https://learn.microsoft.com/azure/synapse-analytics/overview",
+        "reference_label": "Microsoft Docs: What is Azure Synapse Analytics?"
+      }
+    },
+    {
+      "id": "azure-DP-900-q4",
+      "question": "Azure Data Lake Storage Gen2の特徴として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "階層型名前空間をサポートしている",
+          "explanation": {
+            "text": "Data Lake Storage Gen2は階層型名前空間を提供し、ディレクトリ管理やアクセス制御が可能です。",
+            "reference": "https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-introduction",
+            "reference_label": "Microsoft Docs: Introduction to Azure Data Lake Storage Gen2"
+          }
+        },
+        {
+          "key": "B",
+          "text": "NoSQLデータベース機能を持つ",
+          "explanation": {
+            "text": "NoSQL機能はCosmos DBなどが提供し、Data Lake Storageはファイルストレージです。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/introduction",
+            "reference_label": "Microsoft Docs: Introduction to Azure Cosmos DB"
+          }
+        },
+        {
+          "key": "C",
+          "text": "オンプレミスSQL Serverの拡張機能である",
+          "explanation": {
+            "text": "SQL Serverは別製品であり、Data Lake Storageとは直接関係ありません。",
+            "reference": "https://learn.microsoft.com/sql/sql-server/",
+            "reference_label": "Microsoft Docs: SQL Server"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ネットワークファイアウォール機能を持つ",
+          "explanation": {
+            "text": "ファイアウォール機能はAzure Storageアカウントに含まれますが、Data Lake自体の主目的ではありません。",
+            "reference": "https://learn.microsoft.com/azure/storage/common/storage-network-security",
+            "reference_label": "Microsoft Docs: Azure Storage security guide"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure Data Lake Storage Gen2は大規模データ分析向けに設計され、階層型名前空間をサポートしています。",
+        "reference": "https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-introduction",
+        "reference_label": "Microsoft Docs: Introduction to Azure Data Lake Storage Gen2"
+      }
+    },
+    {
+      "id": "azure-DP-900-q5",
+      "question": "トランザクション処理（OLTP）に最適なサービスはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Azure SQL Database",
+          "explanation": {
+            "text": "Azure SQL DatabaseはOLTPワークロードに最適化されたマネージドリレーショナルデータベースです。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/sql-database-paas-overview",
+            "reference_label": "Microsoft Docs: Azure SQL Database Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure Synapse Analytics",
+          "explanation": {
+            "text": "SynapseはOLAP（分析処理）向けであり、トランザクション処理には向きません。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/overview",
+            "reference_label": "Microsoft Docs: Azure Synapse Analytics Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Data Lake Storage",
+          "explanation": {
+            "text": "Data Lakeは非構造化データを保存するためのサービスで、OLTP向けではありません。",
+            "reference": "https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-introduction",
+            "reference_label": "Microsoft Docs: Introduction to Data Lake Storage"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Power BI",
+          "explanation": {
+            "text": "Power BIは可視化・BIツールであり、トランザクション処理を行いません。",
+            "reference": "https://learn.microsoft.com/power-bi/fundamentals/power-bi-overview",
+            "reference_label": "Microsoft Docs: Power BI overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure SQL Databaseは高パフォーマンスのOLTP処理に特化したサービスです。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/sql-database-paas-overview",
+        "reference_label": "Microsoft Docs: Azure SQL Database Overview"
+      }
+    },
+    {
+      "id": "azure-DP-900-q6",
+      "question": "Azure Data Factoryの主な用途はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データの抽出、変換、ロード（ETL/ELT）",
+          "explanation": {
+            "text": "Data FactoryはETL/ELTによりデータ統合を実現するサービスです。",
+            "reference": "https://learn.microsoft.com/azure/data-factory/introduction",
+            "reference_label": "Microsoft Docs: Introduction to Azure Data Factory"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データの可視化",
+          "explanation": {
+            "text": "データの可視化はPower BIの役割です。",
+            "reference": "https://learn.microsoft.com/power-bi/fundamentals/power-bi-overview",
+            "reference_label": "Microsoft Docs: Power BI overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "機械学習モデルのトレーニング",
+          "explanation": {
+            "text": "機械学習はAzure Machine Learningの役割です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/overview-what-is-azure-machine-learning",
+            "reference_label": "Microsoft Docs: Azure Machine Learning overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "リレーショナルデータの保存",
+          "explanation": {
+            "text": "データ保存はSQL DatabaseやCosmos DBの役割です。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/sql-database-paas-overview",
+            "reference_label": "Microsoft Docs: Azure SQL Database Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure Data Factoryはデータパイプラインを構築し、ETL/ELTを通じてデータ統合を行うためのサービスです。",
+        "reference": "https://learn.microsoft.com/azure/data-factory/introduction",
+        "reference_label": "Microsoft Docs: Introduction to Azure Data Factory"
+      }
+    },
+    {
+      "id": "azure-DP-900-q7",
+      "question": "Power BIの役割として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データの可視化とビジネスインテリジェンス",
+          "explanation": {
+            "text": "Power BIはダッシュボードやレポートを通じてデータの可視化とBIを実現します。",
+            "reference": "https://learn.microsoft.com/power-bi/fundamentals/power-bi-overview",
+            "reference_label": "Microsoft Docs: Power BI overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "大規模データの保存",
+          "explanation": {
+            "text": "保存はAzure Data LakeやAzure Blob Storageの役割です。",
+            "reference": "https://learn.microsoft.com/azure/storage/blobs/storage-blobs-introduction",
+            "reference_label": "Microsoft Docs: Azure Blob Storage overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "機械学習モデルの開発",
+          "explanation": {
+            "text": "機械学習はAzure Machine Learningの役割です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/overview-what-is-azure-machine-learning",
+            "reference_label": "Microsoft Docs: Azure Machine Learning overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "トランザクション処理",
+          "explanation": {
+            "text": "トランザクション処理はAzure SQL Databaseなどの役割です。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/sql-database-paas-overview",
+            "reference_label": "Microsoft Docs: Azure SQL Database Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Power BIは可視化とBIのためのクラウドサービスであり、ビジネス上の意思決定を支援します。",
+        "reference": "https://learn.microsoft.com/power-bi/fundamentals/power-bi-overview",
+        "reference_label": "Microsoft Docs: Power BI overview"
+      }
+    },
+    {
+      "id": "azure-DP-900-q8",
+      "question": "Azure Cosmos DBの複数のAPIモデルのうち、MongoDB互換APIを提供するのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Core (SQL) API",
+          "explanation": {
+            "text": "Core (SQL) APIはSQLライクなクエリを提供しますがMongoDB互換ではありません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/introduction",
+            "reference_label": "Microsoft Docs: Introduction to Azure Cosmos DB"
+          }
+        },
+        {
+          "key": "B",
+          "text": "MongoDB API",
+          "explanation": {
+            "text": "Cosmos DBはMongoDB互換APIを提供しており、既存のMongoDBアプリケーションと統合可能です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/mongodb/introduction",
+            "reference_label": "Microsoft Docs: Azure Cosmos DB API for MongoDB"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Cassandra API",
+          "explanation": {
+            "text": "Cassandra APIはApache Cassandra互換であり、MongoDBとは異なります。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/cassandra/introduction",
+            "reference_label": "Microsoft Docs: Azure Cosmos DB API for Cassandra"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Gremlin API",
+          "explanation": {
+            "text": "Gremlin APIはグラフデータベース向けでMongoDB互換ではありません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/graph/graph-introduction",
+            "reference_label": "Microsoft Docs: Azure Cosmos DB Gremlin API"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Cosmos DBはMongoDB互換APIを提供しており、既存のMongoDBワークロードをクラウドに移行可能です。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/mongodb/introduction",
+        "reference_label": "Microsoft Docs: Azure Cosmos DB API for MongoDB"
+      }
+    },
+    {
+      "id": "azure-DP-900-q9",
+      "question": "Azure SQL Databaseのサービスモデルのうち、シングルデータベースとエラスティックプールを統合管理できるモデルはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Managed Instance",
+          "explanation": {
+            "text": "Managed InstanceはオンプレSQL Serverとの互換性を提供しますが、シングルDBやエラスティックプールの統合管理ではありません。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview",
+            "reference_label": "Microsoft Docs: Azure SQL Managed Instance overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Elastic Pool",
+          "explanation": {
+            "text": "Elastic Poolは複数データベースのリソース共有を可能にしますが、シングルDB全般を統合するわけではありません。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/elastic-pool-overview",
+            "reference_label": "Microsoft Docs: Elastic Pool"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Single Database",
+          "explanation": {
+            "text": "Single Databaseは個別のデータベース単位で管理されます。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/single-database-overview",
+            "reference_label": "Microsoft Docs: Single Database overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure SQL Database サービス全体",
+          "explanation": {
+            "text": "Azure SQL Databaseのサービスモデル自体がシングルDB・エラスティックプールを包括します。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/sql-database-paas-overview",
+            "reference_label": "Microsoft Docs: Azure SQL Database overview"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "Azure SQL Databaseサービスはシングルデータベース、エラスティックプール、Managed Instanceを含むPaaSモデルです。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/sql-database-paas-overview",
+        "reference_label": "Microsoft Docs: Azure SQL Database overview"
+      }
+    },
+    {
+      "id": "azure-DP-900-q10",
+      "question": "Azure Stream Analyticsの役割として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "リアルタイムデータの処理と分析",
+          "explanation": {
+            "text": "Stream Analyticsはリアルタイムでのデータ処理に特化しています。",
+            "reference": "https://learn.microsoft.com/azure/stream-analytics/stream-analytics-introduction",
+            "reference_label": "Microsoft Docs: What is Azure Stream Analytics?"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データベースのトランザクション処理",
+          "explanation": {
+            "text": "トランザクション処理はSQL DatabaseやCosmos DBの役割です。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/sql-database-paas-overview",
+            "reference_label": "Microsoft Docs: Azure SQL Database overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "BIレポート作成",
+          "explanation": {
+            "text": "BIレポートはPower BIの役割です。",
+            "reference": "https://learn.microsoft.com/power-bi/fundamentals/power-bi-overview",
+            "reference_label": "Microsoft Docs: Power BI overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ファイルベースデータの保存",
+          "explanation": {
+            "text": "ファイル保存はBlob StorageやData Lakeの役割です。",
+            "reference": "https://learn.microsoft.com/azure/storage/blobs/storage-blobs-introduction",
+            "reference_label": "Microsoft Docs: Azure Blob Storage overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure Stream AnalyticsはIoTやイベント処理のシナリオでリアルタイム分析を行うサービスです。",
+        "reference": "https://learn.microsoft.com/azure/stream-analytics/stream-analytics-introduction",
+        "reference_label": "Microsoft Docs: What is Azure Stream Analytics?"
+      }
+    },
+    {
+      "id": "azure-DP-900-q11",
+      "question": "Azure Data Explorer (Kusto) の主な用途はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ログや時系列データの分析",
+          "explanation": {
+            "text": "Data Explorerはログ・テレメトリ・時系列データのクエリ分析に特化しています。",
+            "reference": "https://learn.microsoft.com/azure/data-explorer/data-explorer-overview",
+            "reference_label": "Microsoft Docs: What is Azure Data Explorer?"
+          }
+        },
+        {
+          "key": "B",
+          "text": "リレーショナルデータベースの運用",
+          "explanation": {
+            "text": "リレーショナルDBはAzure SQL Databaseが担います。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/sql-database-paas-overview",
+            "reference_label": "Microsoft Docs: Azure SQL Database overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "機械学習モデルの訓練",
+          "explanation": {
+            "text": "機械学習はAzure Machine Learningの役割です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/overview-what-is-azure-machine-learning",
+            "reference_label": "Microsoft Docs: Azure Machine Learning overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データパイプラインの構築",
+          "explanation": {
+            "text": "データ統合・パイプラインはAzure Data Factoryが担当します。",
+            "reference": "https://learn.microsoft.com/azure/data-factory/introduction",
+            "reference_label": "Microsoft Docs: Introduction to Azure Data Factory"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure Data Explorerは大規模なログやテレメトリデータを迅速にクエリして分析するためのサービスです。",
+        "reference": "https://learn.microsoft.com/azure/data-explorer/data-explorer-overview",
+        "reference_label": "Microsoft Docs: What is Azure Data Explorer?"
+      }
+    },
+    {
+      "id": "azure-DP-900-q12",
+      "question": "データの機密性を保護するためにAzure SQL Databaseが提供する機能はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Transparent Data Encryption (TDE)",
+          "explanation": {
+            "text": "TDEはデータを暗号化し、ストレージ上のデータを保護します。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/transparent-data-encryption-tde-overview",
+            "reference_label": "Microsoft Docs: Transparent Data Encryption"
+          }
+        },
+        {
+          "key": "B",
+          "text": "仮想ネットワーク統合",
+          "explanation": {
+            "text": "仮想ネットワーク統合はセキュリティの一部ですが、直接的なデータ暗号化ではありません。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/vnet-service-endpoint-rule-overview",
+            "reference_label": "Microsoft Docs: VNet service endpoints"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データレイク階層化",
+          "explanation": {
+            "text": "これはData Lake Storageの機能であり、SQL Databaseの暗号化機能ではありません。",
+            "reference": "https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-introduction",
+            "reference_label": "Microsoft Docs: Data Lake Storage overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "リアルタイムストリーミング処理",
+          "explanation": {
+            "text": "リアルタイム処理はStream Analyticsの機能です。",
+            "reference": "https://learn.microsoft.com/azure/stream-analytics/stream-analytics-introduction",
+            "reference_label": "Microsoft Docs: Azure Stream Analytics"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure SQL DatabaseはTransparent Data Encryption (TDE) を標準でサポートし、保存データの暗号化を行います。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/transparent-data-encryption-tde-overview",
+        "reference_label": "Microsoft Docs: Transparent Data Encryption"
+      }
+    },
+    {
+      "id": "azure-DP-900-q13",
+      "question": "Azure Databricksの特徴として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Apache Sparkベースの分析プラットフォーム",
+          "explanation": {
+            "text": "DatabricksはApache Sparkをベースにした大規模分散処理のための統合分析環境です。",
+            "reference": "https://learn.microsoft.com/azure/databricks/scenarios/what-is-azure-databricks",
+            "reference_label": "Microsoft Docs: What is Azure Databricks?"
+          }
+        },
+        {
+          "key": "B",
+          "text": "オンプレミスSQL Serverの管理ツール",
+          "explanation": {
+            "text": "DatabricksはSQL Serverの管理ツールではありません。",
+            "reference": "https://learn.microsoft.com/azure/databricks/scenarios/what-is-azure-databricks",
+            "reference_label": "Microsoft Docs: What is Azure Databricks?"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データウェアハウスの専用サービス",
+          "explanation": {
+            "text": "データウェアハウスはAzure Synapseが担います。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/overview",
+            "reference_label": "Microsoft Docs: Azure Synapse Analytics"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IoTデバイスの接続サービス",
+          "explanation": {
+            "text": "IoTデバイス接続はAzure IoT Hubが担当します。",
+            "reference": "https://learn.microsoft.com/azure/iot-hub/about-iot-hub",
+            "reference_label": "Microsoft Docs: Azure IoT Hub overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure DatabricksはApache Sparkに基づいたクラウド分析基盤で、ビッグデータ処理や機械学習を支援します。",
+        "reference": "https://learn.microsoft.com/azure/databricks/scenarios/what-is-azure-databricks",
+        "reference_label": "Microsoft Docs: What is Azure Databricks?"
+      }
+    },
+    {
+      "id": "azure-DP-900-q14",
+      "question": "Azure Event Hubsの主な用途はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "大規模なイベントストリーミングの取り込み",
+          "explanation": {
+            "text": "Event Hubsは数百万件/秒規模のイベントを取り込み、ストリーミングデータ処理を可能にします。",
+            "reference": "https://learn.microsoft.com/azure/event-hubs/event-hubs-about",
+            "reference_label": "Microsoft Docs: What is Azure Event Hubs?"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ETLパイプラインの構築",
+          "explanation": {
+            "text": "ETLパイプラインはAzure Data Factoryの役割です。",
+            "reference": "https://learn.microsoft.com/azure/data-factory/introduction",
+            "reference_label": "Microsoft Docs: Introduction to Azure Data Factory"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データ可視化",
+          "explanation": {
+            "text": "可視化はPower BIが担当します。",
+            "reference": "https://learn.microsoft.com/power-bi/fundamentals/power-bi-overview",
+            "reference_label": "Microsoft Docs: Power BI overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "機械学習モデルの運用",
+          "explanation": {
+            "text": "機械学習はAzure Machine Learningの領域です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/overview-what-is-azure-machine-learning",
+            "reference_label": "Microsoft Docs: Azure Machine Learning overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure Event Hubsは大規模なイベント取り込みサービスで、ストリーミングデータをリアルタイムに処理する基盤です。",
+        "reference": "https://learn.microsoft.com/azure/event-hubs/event-hubs-about",
+        "reference_label": "Microsoft Docs: What is Azure Event Hubs?"
+      }
+    },
+    {
+      "id": "azure-DP-900-q15",
+      "question": "Azure Cosmos DBにおけるパーティションキーの役割はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データを分散してスケーラビリティを確保する",
+          "explanation": {
+            "text": "パーティションキーはデータを複数パーティションに分割し、スケーラビリティを提供します。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/partitioning-overview",
+            "reference_label": "Microsoft Docs: Partitioning in Azure Cosmos DB"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データの暗号化方式を指定する",
+          "explanation": {
+            "text": "暗号化はストレージレベルで行われ、パーティションキーの役割ではありません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/database-encryption-at-rest",
+            "reference_label": "Microsoft Docs: Cosmos DB encryption at rest"
+          }
+        },
+        {
+          "key": "C",
+          "text": "クエリの整合性レベルを設定する",
+          "explanation": {
+            "text": "整合性レベルはアカウント設定に依存し、パーティションキーでは制御しません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/consistency-levels",
+            "reference_label": "Microsoft Docs: Consistency levels"
+          }
+        },
+        {
+          "key": "D",
+          "text": "バックアップの保存先を指定する",
+          "explanation": {
+            "text": "バックアップ先は自動的に管理され、パーティションキーで指定するものではありません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/online-backup-and-restore",
+            "reference_label": "Microsoft Docs: Cosmos DB backup and restore"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cosmos DBのパーティションキーはデータを分散して高スケーラビリティとパフォーマンスを実現するために利用されます。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/partitioning-overview",
+        "reference_label": "Microsoft Docs: Partitioning in Azure Cosmos DB"
+      }
+    },
+    {
+      "id": "azure-DP-900-q16",
+      "question": "Azure Synapse Analyticsで提供されるサーバーレスSQLプールの特徴はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データを事前にロードせずに直接クエリできる",
+          "explanation": {
+            "text": "サーバーレスSQLプールはData Lake上のデータを直接クエリ可能です。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview",
+            "reference_label": "Microsoft Docs: Serverless SQL pool"
+          }
+        },
+        {
+          "key": "B",
+          "text": "専用のコンピューティングノードを予約する必要がある",
+          "explanation": {
+            "text": "専用SQLプールはノード予約が必要ですが、サーバーレスSQLプールは不要です。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is",
+            "reference_label": "Microsoft Docs: Dedicated SQL pool"
+          }
+        },
+        {
+          "key": "C",
+          "text": "オンプレミスSQL Serverに接続して動作する",
+          "explanation": {
+            "text": "オンプレ接続は機能としてありますが、サーバーレスSQLプールの主要特徴ではありません。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview",
+            "reference_label": "Microsoft Docs: Serverless SQL pool"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データを保存する役割を持つ",
+          "explanation": {
+            "text": "サーバーレスSQLプール自体はストレージを持たず、分析のみ行います。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview",
+            "reference_label": "Microsoft Docs: Serverless SQL pool"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "サーバーレスSQLプールは、Azure Data Lakeに保存されたファイルを直接クエリできるサービスで、データロード不要です。",
+        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview",
+        "reference_label": "Microsoft Docs: Serverless SQL pool"
+      }
+    },
+    {
+      "id": "azure-DP-900-q17",
+      "question": "Azure Machine Learningの主な用途はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "機械学習モデルの開発とデプロイ",
+          "explanation": {
+            "text": "Azure Machine Learningは機械学習モデルの学習、デプロイ、管理を行うサービスです。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/overview-what-is-azure-machine-learning",
+            "reference_label": "Microsoft Docs: Azure Machine Learning"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データの可視化とダッシュボード作成",
+          "explanation": {
+            "text": "可視化はPower BIの役割です。",
+            "reference": "https://learn.microsoft.com/power-bi/fundamentals/power-bi-overview",
+            "reference_label": "Microsoft Docs: Power BI overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データウェアハウスの構築",
+          "explanation": {
+            "text": "データウェアハウスはAzure Synapseが担当します。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/overview",
+            "reference_label": "Microsoft Docs: Azure Synapse Analytics"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IoTデバイスの管理",
+          "explanation": {
+            "text": "IoTデバイス管理はAzure IoT Hubの役割です。",
+            "reference": "https://learn.microsoft.com/azure/iot-hub/about-iot-hub",
+            "reference_label": "Microsoft Docs: Azure IoT Hub"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure Machine Learningは機械学習のライフサイクル全体をサポートするサービスです。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/overview-what-is-azure-machine-learning",
+        "reference_label": "Microsoft Docs: Azure Machine Learning"
+      }
+    },
+    {
+      "id": "azure-DP-900-q18",
+      "question": "Azure SQL Managed Instanceの特徴はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "SQL Serverとの高い互換性を持つPaaS",
+          "explanation": {
+            "text": "Managed InstanceはオンプレSQL Serverと高い互換性を持ちつつ、PaaSの利点を提供します。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview",
+            "reference_label": "Microsoft Docs: Azure SQL Managed Instance"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データレイクに保存されたデータを直接クエリする",
+          "explanation": {
+            "text": "これはSynapseのサーバーレスSQLプールの特徴です。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview",
+            "reference_label": "Microsoft Docs: Serverless SQL pool"
+          }
+        },
+        {
+          "key": "C",
+          "text": "NoSQL APIを提供する",
+          "explanation": {
+            "text": "NoSQL APIはCosmos DBが提供します。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/introduction",
+            "reference_label": "Microsoft Docs: Cosmos DB"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IoTデータのストリーミング処理を行う",
+          "explanation": {
+            "text": "IoTストリーミング処理はStream Analyticsが担当します。",
+            "reference": "https://learn.microsoft.com/azure/stream-analytics/stream-analytics-introduction",
+            "reference_label": "Microsoft Docs: Stream Analytics"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Managed InstanceはSQL Serverとほぼ完全な互換性を持つPaaSモデルです。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview",
+        "reference_label": "Microsoft Docs: Azure SQL Managed Instance"
+      }
+    },
+    {
+      "id": "azure-DP-900-q19",
+      "question": "Azure Data Factoryでパイプラインを実行する際に利用するコンポーネントはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "アクティビティ",
+          "explanation": {
+            "text": "アクティビティはパイプラインのステップであり、データ移動や変換を実行します。",
+            "reference": "https://learn.microsoft.com/azure/data-factory/concepts-pipelines-activities",
+            "reference_label": "Microsoft Docs: Pipelines and activities"
+          }
+        },
+        {
+          "key": "B",
+          "text": "リソースグループ",
+          "explanation": {
+            "text": "リソースグループはAzure全体でリソースをまとめる単位であり、ADF専用ではありません。",
+            "reference": "https://learn.microsoft.com/azure/azure-resource-manager/management/overview",
+            "reference_label": "Microsoft Docs: Azure Resource Manager overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ダッシュボード",
+          "explanation": {
+            "text": "ダッシュボードはAzure Portalの機能で、ADFの実行コンポーネントではありません。",
+            "reference": "https://learn.microsoft.com/azure/azure-portal/azure-portal-dashboards",
+            "reference_label": "Microsoft Docs: Azure portal dashboards"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ファンクション",
+          "explanation": {
+            "text": "Azure Functionsはサーバーレス実行環境であり、ADFの直接的な構成要素ではありません。",
+            "reference": "https://learn.microsoft.com/azure/azure-functions/functions-overview",
+            "reference_label": "Microsoft Docs: Azure Functions overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure Data Factoryのパイプラインは複数のアクティビティで構成され、これによりデータ処理が実行されます。",
+        "reference": "https://learn.microsoft.com/azure/data-factory/concepts-pipelines-activities",
+        "reference_label": "Microsoft Docs: Pipelines and activities"
+      }
+    },
+    {
+      "id": "azure-DP-900-q20",
+      "question": "Azure SQL Databaseのエラスティックプールを利用する利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "複数データベースでリソースを共有しコストを最適化できる",
+          "explanation": {
+            "text": "エラスティックプールはリソースを共有し、コスト効率を高めます。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/elastic-pool-overview",
+            "reference_label": "Microsoft Docs: Elastic Pool overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SQL Serverの全機能を100%再現できる",
+          "explanation": {
+            "text": "エラスティックプールはリソース効率化機能であり、SQL Server完全互換はManaged Instanceの特徴です。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview",
+            "reference_label": "Microsoft Docs: Managed Instance overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "オンプレミスとのハイブリッド接続が可能になる",
+          "explanation": {
+            "text": "オンプレ接続はエラスティックプールの主な利点ではありません。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/elastic-pool-overview",
+            "reference_label": "Microsoft Docs: Elastic Pool overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "リアルタイムのIoTデータを処理できる",
+          "explanation": {
+            "text": "IoTリアルタイム処理はStream AnalyticsやEvent Hubsが担当します。",
+            "reference": "https://learn.microsoft.com/azure/stream-analytics/stream-analytics-introduction",
+            "reference_label": "Microsoft Docs: Stream Analytics"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure SQL Databaseのエラスティックプールは複数データベース間でリソースを共有し、コスト効率を最適化します。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/elastic-pool-overview",
+        "reference_label": "Microsoft Docs: Elastic Pool overview"
+      }
+    },
+    {
+      "id": "azure-DP-900-q21",
+      "question": "Azure Purview（現 Microsoft Purview）の主な用途はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データガバナンスとカタログ管理",
+          "explanation": {
+            "text": "Microsoft Purviewはデータ資産をカタログ化し、ガバナンスを提供します。",
+            "reference": "https://learn.microsoft.com/azure/purview/overview",
+            "reference_label": "Microsoft Docs: Microsoft Purview overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "IoTデータストリーミング処理",
+          "explanation": {
+            "text": "IoTストリーミング処理はEvent HubsやStream Analyticsの役割です。",
+            "reference": "https://learn.microsoft.com/azure/event-hubs/event-hubs-about",
+            "reference_label": "Microsoft Docs: Event Hubs overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "機械学習モデルのデプロイ",
+          "explanation": {
+            "text": "機械学習はAzure Machine Learningの役割です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/overview-what-is-azure-machine-learning",
+            "reference_label": "Microsoft Docs: Azure Machine Learning"
+          }
+        },
+        {
+          "key": "D",
+          "text": "BIダッシュボード作成",
+          "explanation": {
+            "text": "BIダッシュボードはPower BIの役割です。",
+            "reference": "https://learn.microsoft.com/power-bi/fundamentals/power-bi-overview",
+            "reference_label": "Microsoft Docs: Power BI overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Microsoft Purviewはデータガバナンスのサービスで、データ資産のカタログ化・分類・追跡を支援します。",
+        "reference": "https://learn.microsoft.com/azure/purview/overview",
+        "reference_label": "Microsoft Docs: Microsoft Purview overview"
+      }
+    },
+    {
+      "id": "azure-DP-900-q22",
+      "question": "Azure SQL Databaseのスケーリング方式として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "垂直スケーリングとエラスティックプールによるリソース共有",
+          "explanation": {
+            "text": "Azure SQL Databaseは垂直スケーリングとエラスティックプールでのリソース最適化をサポートします。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/elastic-pool-overview",
+            "reference_label": "Microsoft Docs: Elastic Pool overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ノードの自動シャーディングによる水平スケーリングのみ",
+          "explanation": {
+            "text": "自動シャーディングはCosmos DBの特徴であり、SQL Databaseでは提供されません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/partitioning-overview",
+            "reference_label": "Microsoft Docs: Cosmos DB partitioning"
+          }
+        },
+        {
+          "key": "C",
+          "text": "サーバーレスSQLプールによるオンデマンド分析のみ",
+          "explanation": {
+            "text": "サーバーレスSQLプールはSynapse Analyticsの機能です。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview",
+            "reference_label": "Microsoft Docs: Serverless SQL pool"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IoTデータ専用のスケーリング方式",
+          "explanation": {
+            "text": "IoTデータ専用のスケーリングはEvent HubsやStream Analyticsの役割です。",
+            "reference": "https://learn.microsoft.com/azure/event-hubs/event-hubs-about",
+            "reference_label": "Microsoft Docs: Event Hubs overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure SQL Databaseはリソーススケーリングを柔軟に行え、エラスティックプールで複数DB間の共有も可能です。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/elastic-pool-overview",
+        "reference_label": "Microsoft Docs: Elastic Pool overview"
+      }
+    },
+    {
+      "id": "azure-DP-900-q23",
+      "question": "Azure Cosmos DBのマルチリージョン書き込み機能の利点はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "複数リージョンで同時に書き込みが可能",
+          "explanation": {
+            "text": "マルチリージョン書き込みは複数のリージョンで並行して書き込みを行えるようにします。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/high-availability",
+            "reference_label": "Microsoft Docs: Cosmos DB high availability"
+          }
+        },
+        {
+          "key": "B",
+          "text": "読み取り専用でグローバルレプリケーションが可能",
+          "explanation": {
+            "text": "読み取り専用のレプリケーションはマルチリージョン書き込みとは異なります。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/high-availability",
+            "reference_label": "Microsoft Docs: Cosmos DB high availability"
+          }
+        },
+        {
+          "key": "C",
+          "text": "単一リージョンでしか動作しない",
+          "explanation": {
+            "text": "Cosmos DBはマルチリージョンで動作可能です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/high-availability",
+            "reference_label": "Microsoft Docs: Cosmos DB high availability"
+          }
+        },
+        {
+          "key": "D",
+          "text": "分析ワークロード専用の機能である",
+          "explanation": {
+            "text": "マルチリージョン書き込みは分析専用ではなく、トランザクション処理を含む全体機能です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/high-availability",
+            "reference_label": "Microsoft Docs: Cosmos DB high availability"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "マルチリージョン書き込みにより、複数リージョンで同時に書き込み可能となり、可用性とパフォーマンスが向上します。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/high-availability",
+        "reference_label": "Microsoft Docs: Cosmos DB high availability"
+      }
+    },
+    {
+      "id": "azure-DP-900-q24",
+      "question": "Azure Synapse Analyticsの専用SQLプールの特徴はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "分散並列処理で大規模データを高速に分析できる",
+          "explanation": {
+            "text": "専用SQLプールはMPP（大規模並列処理）に基づいており、大規模データの分析に最適です。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is",
+            "reference_label": "Microsoft Docs: Dedicated SQL pool"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データを事前にロードせずに直接クエリできる",
+          "explanation": {
+            "text": "直接クエリはサーバーレスSQLプールの特徴です。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview",
+            "reference_label": "Microsoft Docs: Serverless SQL pool"
+          }
+        },
+        {
+          "key": "C",
+          "text": "NoSQL APIを提供する",
+          "explanation": {
+            "text": "NoSQL APIはCosmos DBが提供します。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/introduction",
+            "reference_label": "Microsoft Docs: Cosmos DB"
+          }
+        },
+        {
+          "key": "D",
+          "text": "トランザクション処理専用のサービスである",
+          "explanation": {
+            "text": "トランザクション処理はAzure SQL Databaseが担当します。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/sql-database-paas-overview",
+            "reference_label": "Microsoft Docs: Azure SQL Database overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "専用SQLプールはMPPを採用しており、大規模データを効率的に分析できます。",
+        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is",
+        "reference_label": "Microsoft Docs: Dedicated SQL pool"
+      }
+    },
+    {
+      "id": "azure-DP-900-q25",
+      "question": "Azure Data Factoryでリンクサービスが果たす役割はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データソースやシンクへの接続情報を定義する",
+          "explanation": {
+            "text": "リンクサービスは外部データソースとの接続構成を定義します。",
+            "reference": "https://learn.microsoft.com/azure/data-factory/concepts-linked-services",
+            "reference_label": "Microsoft Docs: Linked services in Azure Data Factory"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ETLジョブのスケジュールを管理する",
+          "explanation": {
+            "text": "スケジュール管理はトリガーの役割です。",
+            "reference": "https://learn.microsoft.com/azure/data-factory/concepts-pipelines-activities-triggers",
+            "reference_label": "Microsoft Docs: Triggers in Azure Data Factory"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データの可視化を提供する",
+          "explanation": {
+            "text": "可視化はPower BIの役割です。",
+            "reference": "https://learn.microsoft.com/power-bi/fundamentals/power-bi-overview",
+            "reference_label": "Microsoft Docs: Power BI overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "機械学習モデルをデプロイする",
+          "explanation": {
+            "text": "モデルのデプロイはAzure Machine Learningが担います。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/overview-what-is-azure-machine-learning",
+            "reference_label": "Microsoft Docs: Azure Machine Learning"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure Data Factoryのリンクサービスはデータソースやシンクの接続情報を定義します。",
+        "reference": "https://learn.microsoft.com/azure/data-factory/concepts-linked-services",
+        "reference_label": "Microsoft Docs: Linked services in Azure Data Factory"
+      }
+    },
+    {
+      "id": "azure-DP-900-q26",
+      "question": "Azure SQL Databaseのサーバーレスコンピューティング層の特徴はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "利用に応じて自動的にスケールし、アイドル時は一時停止できる",
+          "explanation": {
+            "text": "サーバーレス層はワークロードに応じたスケーリングとアイドル時の一時停止を提供します。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/serverless-tier-overview",
+            "reference_label": "Microsoft Docs: Serverless tier overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "常に最大リソースを予約する必要がある",
+          "explanation": {
+            "text": "これはプロビジョニング層の特徴です。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/service-tiers-general-purpose-business-critical",
+            "reference_label": "Microsoft Docs: Azure SQL service tiers"
+          }
+        },
+        {
+          "key": "C",
+          "text": "マルチリージョンでの同時書き込みが可能",
+          "explanation": {
+            "text": "マルチリージョン同時書き込みはCosmos DBの特徴です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/high-availability",
+            "reference_label": "Microsoft Docs: Cosmos DB high availability"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IoTストリーミング処理を行う",
+          "explanation": {
+            "text": "IoTストリーミングはEvent HubsやStream Analyticsの役割です。",
+            "reference": "https://learn.microsoft.com/azure/event-hubs/event-hubs-about",
+            "reference_label": "Microsoft Docs: Event Hubs overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure SQL Databaseのサーバーレス層は、自動スケーリングとアイドル時の一時停止によりコスト効率を高めます。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/serverless-tier-overview",
+        "reference_label": "Microsoft Docs: Serverless tier overview"
+      }
+    },
+    {
+      "id": "azure-DP-900-q27",
+      "question": "Azure Data Lake Storage Gen2がサポートするアクセス制御モデルはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "POSIX準拠のアクセス制御リスト（ACL）",
+          "explanation": {
+            "text": "Data Lake Storage Gen2はPOSIX互換のACLによるアクセス制御をサポートします。",
+            "reference": "https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-access-control",
+            "reference_label": "Microsoft Docs: Access control in Data Lake Storage Gen2"
+          }
+        },
+        {
+          "key": "B",
+          "text": "OAuthベースのREST API認証のみ",
+          "explanation": {
+            "text": "OAuthはサポートされますが、ACLが主要なアクセス制御モデルです。",
+            "reference": "https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-access-control",
+            "reference_label": "Microsoft Docs: Access control in Data Lake Storage Gen2"
+          }
+        },
+        {
+          "key": "C",
+          "text": "SQLベースのロール権限",
+          "explanation": {
+            "text": "SQLベースの権限管理はSQL Databaseの機能です。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/logins-create-manage",
+            "reference_label": "Microsoft Docs: Manage logins in SQL Database"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Power BIのワークスペースロール",
+          "explanation": {
+            "text": "Power BIのロールは可視化環境に関するものです。",
+            "reference": "https://learn.microsoft.com/power-bi/collaborate-share/service-roles-new-workspaces",
+            "reference_label": "Microsoft Docs: Roles in Power BI workspaces"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure Data Lake Storage Gen2はPOSIX互換のACLをサポートし、きめ細やかなアクセス制御を実現します。",
+        "reference": "https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-access-control",
+        "reference_label": "Microsoft Docs: Access control in Data Lake Storage Gen2"
+      }
+    },
+    {
+      "id": "azure-DP-900-q28",
+      "question": "Azure Event HubsとAzure IoT Hubの主な違いはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "IoT Hubはデバイス管理を含むが、Event Hubsはストリーミングの取り込み専用",
+          "explanation": {
+            "text": "IoT Hubはデバイス認証や双方向通信を含み、Event Hubsはストリーミング取り込みに特化しています。",
+            "reference": "https://learn.microsoft.com/azure/iot-hub/about-iot-hub",
+            "reference_label": "Microsoft Docs: Azure IoT Hub"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Event HubsはBIツールとして動作する",
+          "explanation": {
+            "text": "BIはPower BIの役割であり、Event Hubsではありません。",
+            "reference": "https://learn.microsoft.com/power-bi/fundamentals/power-bi-overview",
+            "reference_label": "Microsoft Docs: Power BI overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "IoT Hubは専用SQL APIを提供する",
+          "explanation": {
+            "text": "IoT HubはSQL APIを提供しません。",
+            "reference": "https://learn.microsoft.com/azure/iot-hub/about-iot-hub",
+            "reference_label": "Microsoft Docs: Azure IoT Hub"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Event HubsはIoTデバイス管理を提供する",
+          "explanation": {
+            "text": "Event Hubsはイベントストリーミング取り込み専用で、デバイス管理機能はありません。",
+            "reference": "https://learn.microsoft.com/azure/event-hubs/event-hubs-about",
+            "reference_label": "Microsoft Docs: Event Hubs overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "IoT HubはIoTデバイスの認証・管理・双方向通信を含み、Event Hubsは大規模なイベントストリーミング取り込みに特化しています。",
+        "reference": "https://learn.microsoft.com/azure/iot-hub/about-iot-hub",
+        "reference_label": "Microsoft Docs: Azure IoT Hub"
+      }
+    },
+    {
+      "id": "azure-DP-900-q29",
+      "question": "Azure SQL Databaseで自動的にバックアップが行われる主な目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ポイントインタイムリストアを可能にするため",
+          "explanation": {
+            "text": "自動バックアップはポイントインタイムリストアをサポートし、データ復旧を容易にします。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/automated-backups-overview",
+            "reference_label": "Microsoft Docs: Automated backups"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SQL Server Management Studioの機能を拡張するため",
+          "explanation": {
+            "text": "これはバックアップの目的ではありません。",
+            "reference": "https://learn.microsoft.com/sql/ssms/sql-server-management-studio-ssms",
+            "reference_label": "Microsoft Docs: SSMS"
+          }
+        },
+        {
+          "key": "C",
+          "text": "BIレポートを作成するため",
+          "explanation": {
+            "text": "レポート作成はPower BIの役割です。",
+            "reference": "https://learn.microsoft.com/power-bi/fundamentals/power-bi-overview",
+            "reference_label": "Microsoft Docs: Power BI overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IoTデバイスを監視するため",
+          "explanation": {
+            "text": "IoT監視はIoT Hubの役割です。",
+            "reference": "https://learn.microsoft.com/azure/iot-hub/about-iot-hub",
+            "reference_label": "Microsoft Docs: Azure IoT Hub"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure SQL Databaseは自動バックアップによりポイントインタイムリストアを可能にします。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/automated-backups-overview",
+        "reference_label": "Microsoft Docs: Automated backups"
+      }
+    },
+    {
+      "id": "azure-DP-900-q30",
+      "question": "Azure Data Explorerで使用されるクエリ言語はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Kusto Query Language (KQL)",
+          "explanation": {
+            "text": "Azure Data ExplorerはKQLを使用してデータ分析を行います。",
+            "reference": "https://learn.microsoft.com/azure/data-explorer/kusto/query/",
+            "reference_label": "Microsoft Docs: Kusto Query Language"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SQL",
+          "explanation": {
+            "text": "SQLはリレーショナルDBで使用されますが、Data ExplorerではKQLを使用します。",
+            "reference": "https://learn.microsoft.com/azure/data-explorer/kusto/query/",
+            "reference_label": "Microsoft Docs: Kusto Query Language"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Gremlin",
+          "explanation": {
+            "text": "GremlinはCosmos DBのグラフAPIで使用される言語です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/graph/graph-introduction",
+            "reference_label": "Microsoft Docs: Gremlin API"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Python",
+          "explanation": {
+            "text": "Pythonは分析に使えますが、クエリ言語としてはKQLが使用されます。",
+            "reference": "https://learn.microsoft.com/azure/data-explorer/kusto/query/",
+            "reference_label": "Microsoft Docs: Kusto Query Language"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure Data ExplorerはKQL（Kusto Query Language）を使用して時系列データやログをクエリします。",
+        "reference": "https://learn.microsoft.com/azure/data-explorer/kusto/query/",
+        "reference_label": "Microsoft Docs: Kusto Query Language"
+      }
+    },
+    {
+      "id": "azure-DP-900-q31",
+      "question": "Azure Cosmos DBにおいてスループットを表す単位はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Request Units (RU)",
+          "explanation": {
+            "text": "Cosmos DBはリソース消費をRequest Units (RU) で管理します。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/request-units",
+            "reference_label": "Microsoft Docs: Request Units in Azure Cosmos DB"
+          }
+        },
+        {
+          "key": "B",
+          "text": "IOPS",
+          "explanation": {
+            "text": "IOPSは一般的なストレージの性能指標であり、Cosmos DB専用ではありません。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/performance-guidance",
+            "reference_label": "Microsoft Docs: Performance guidance for Azure SQL"
+          }
+        },
+        {
+          "key": "C",
+          "text": "DTU",
+          "explanation": {
+            "text": "DTUはAzure SQL Databaseのリソース単位です。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/service-tiers-dtu",
+            "reference_label": "Microsoft Docs: DTU in Azure SQL Database"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Core",
+          "explanation": {
+            "text": "CoreはCPUリソースの単位ですが、Cosmos DBのスループット指標ではありません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/request-units",
+            "reference_label": "Microsoft Docs: Request Units in Azure Cosmos DB"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure Cosmos DBはリソース消費をRequest Units (RU) という抽象化された単位で表します。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/request-units",
+        "reference_label": "Microsoft Docs: Request Units in Azure Cosmos DB"
+      }
+    },
+    {
+      "id": "azure-DP-900-q32",
+      "question": "Azure Synapse AnalyticsとPower BIを連携させる主な利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "大規模データ分析と視覚的なレポート作成を統合できる",
+          "explanation": {
+            "text": "Synapseは大規模分析を行い、その結果をPower BIで可視化できます。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/get-started-power-bi",
+            "reference_label": "Microsoft Docs: Integrate Power BI with Synapse"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データを暗号化する",
+          "explanation": {
+            "text": "暗号化はSQL DatabaseやStorageの機能であり、SynapseとPower BIの連携目的ではありません。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/transparent-data-encryption-tde-overview",
+            "reference_label": "Microsoft Docs: Transparent Data Encryption"
+          }
+        },
+        {
+          "key": "C",
+          "text": "IoTデバイスの制御を可能にする",
+          "explanation": {
+            "text": "IoTデバイス管理はIoT Hubの役割です。",
+            "reference": "https://learn.microsoft.com/azure/iot-hub/about-iot-hub",
+            "reference_label": "Microsoft Docs: Azure IoT Hub"
+          }
+        },
+        {
+          "key": "D",
+          "text": "NoSQL APIを利用できる",
+          "explanation": {
+            "text": "NoSQL APIはCosmos DBが提供します。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/introduction",
+            "reference_label": "Microsoft Docs: Cosmos DB"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure Synapseで分析したデータをPower BIに接続し、視覚的にレポートできることが大きな利点です。",
+        "reference": "https://learn.microsoft.com/azure/synapse-analytics/get-started-power-bi",
+        "reference_label": "Microsoft Docs: Integrate Power BI with Synapse"
+      }
+    },
+    {
+      "id": "azure-DP-900-q33",
+      "question": "Azure Blob Storageのアクセス層のうち、アクセス頻度が低いデータの保管に最適なのはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Cool",
+          "explanation": {
+            "text": "Cool層はアクセス頻度が低いデータの保管に最適です。",
+            "reference": "https://learn.microsoft.com/azure/storage/blobs/access-tiers-overview",
+            "reference_label": "Microsoft Docs: Blob access tiers"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Hot",
+          "explanation": {
+            "text": "Hot層は頻繁にアクセスされるデータ向けです。",
+            "reference": "https://learn.microsoft.com/azure/storage/blobs/access-tiers-overview",
+            "reference_label": "Microsoft Docs: Blob access tiers"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Archive",
+          "explanation": {
+            "text": "Archive層はほとんどアクセスされない長期保管用です。",
+            "reference": "https://learn.microsoft.com/azure/storage/blobs/access-tiers-overview",
+            "reference_label": "Microsoft Docs: Blob access tiers"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Premium",
+          "explanation": {
+            "text": "Premium層は低レイテンシーと高スループットが必要なシナリオに適しています。",
+            "reference": "https://learn.microsoft.com/azure/storage/blobs/access-tiers-overview",
+            "reference_label": "Microsoft Docs: Blob access tiers"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cool層はアクセス頻度が低いが、長期保存する必要のあるデータに適しています。",
+        "reference": "https://learn.microsoft.com/azure/storage/blobs/access-tiers-overview",
+        "reference_label": "Microsoft Docs: Blob access tiers"
+      }
+    },
+    {
+      "id": "azure-DP-900-q34",
+      "question": "Azure Synapse Analyticsで利用できる統合データ統治機能はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Microsoft Purviewとの統合",
+          "explanation": {
+            "text": "SynapseはMicrosoft Purviewと統合され、データガバナンス機能を提供します。",
+            "reference": "https://learn.microsoft.com/azure/purview/overview",
+            "reference_label": "Microsoft Docs: Microsoft Purview overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Cosmos DBのマルチリージョン機能",
+          "explanation": {
+            "text": "これはCosmos DBの特徴であり、Synapseの統治機能ではありません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/high-availability",
+            "reference_label": "Microsoft Docs: Cosmos DB high availability"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Power BIのデータモデル",
+          "explanation": {
+            "text": "Power BIのデータモデルは可視化用であり、ガバナンス機能ではありません。",
+            "reference": "https://learn.microsoft.com/power-bi/transform-model/desktop-data-modeling",
+            "reference_label": "Microsoft Docs: Power BI modeling"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Functionsのトリガー機能",
+          "explanation": {
+            "text": "Functionsのトリガーはサーバーレスアプリ開発に関する機能です。",
+            "reference": "https://learn.microsoft.com/azure/azure-functions/functions-overview",
+            "reference_label": "Microsoft Docs: Azure Functions overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure Synapse AnalyticsはMicrosoft Purviewと統合され、データガバナンスとデータカタログ管理を実現します。",
+        "reference": "https://learn.microsoft.com/azure/purview/overview",
+        "reference_label": "Microsoft Docs: Microsoft Purview overview"
+      }
+    },
+    {
+      "id": "azure-DP-900-q35",
+      "question": "Azure Data Factoryでトリガーの役割はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "パイプライン実行のスケジュールやイベントを管理する",
+          "explanation": {
+            "text": "トリガーはパイプライン実行をスケジュールまたはイベントに基づいて制御します。",
+            "reference": "https://learn.microsoft.com/azure/data-factory/concepts-pipelines-activities-triggers",
+            "reference_label": "Microsoft Docs: Triggers in Azure Data Factory"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データソースへの接続情報を定義する",
+          "explanation": {
+            "text": "接続情報はリンクサービスで定義します。",
+            "reference": "https://learn.microsoft.com/azure/data-factory/concepts-linked-services",
+            "reference_label": "Microsoft Docs: Linked services in Azure Data Factory"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データの保存先を指定する",
+          "explanation": {
+            "text": "保存先指定はデータセットの役割です。",
+            "reference": "https://learn.microsoft.com/azure/data-factory/concepts-datasets-linked-services",
+            "reference_label": "Microsoft Docs: Datasets in Azure Data Factory"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データパイプラインを視覚化する",
+          "explanation": {
+            "text": "視覚化はADF StudioのUI機能であり、トリガーの役割ではありません。",
+            "reference": "https://learn.microsoft.com/azure/data-factory/introduction",
+            "reference_label": "Microsoft Docs: Introduction to Azure Data Factory"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure Data Factoryのトリガーは、スケジュールやイベントに応じてパイプラインを実行させます。",
+        "reference": "https://learn.microsoft.com/azure/data-factory/concepts-pipelines-activities-triggers",
+        "reference_label": "Microsoft Docs: Triggers in Azure Data Factory"
+      }
+    },
+    {
+      "id": "azure-DP-900-q36",
+      "question": "Azure Cosmos DBの整合性モデルのうち、セッション単位で一貫性を保証するのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Session",
+          "explanation": {
+            "text": "Session整合性は同じクライアントセッション内で一貫性を保証します。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/consistency-levels",
+            "reference_label": "Microsoft Docs: Consistency levels in Cosmos DB"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Strong",
+          "explanation": {
+            "text": "Strong整合性はグローバルに最新データを保証します。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/consistency-levels",
+            "reference_label": "Microsoft Docs: Consistency levels in Cosmos DB"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Eventual",
+          "explanation": {
+            "text": "Eventual整合性は遅延を許容し、最終的に整合性を確保します。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/consistency-levels",
+            "reference_label": "Microsoft Docs: Consistency levels in Cosmos DB"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Bounded staleness",
+          "explanation": {
+            "text": "Bounded stalenessは指定された遅延範囲内で整合性を保証します。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/consistency-levels",
+            "reference_label": "Microsoft Docs: Consistency levels in Cosmos DB"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Session整合性は同じクライアントセッションに対して一貫性を保証するため、一般的な用途で広く使われます。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/consistency-levels",
+        "reference_label": "Microsoft Docs: Consistency levels in Cosmos DB"
+      }
+    },
+    {
+      "id": "azure-DP-900-q37",
+      "question": "Azure SQL DatabaseのDTUモデルにおけるDTUの意味はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Database Transaction Unit",
+          "explanation": {
+            "text": "DTUはCPU、メモリ、I/Oを統合したリソース単位です。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/service-tiers-dtu",
+            "reference_label": "Microsoft Docs: DTU in Azure SQL Database"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Data Transfer Unit",
+          "explanation": {
+            "text": "DTUはデータ転送単位ではありません。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/service-tiers-dtu",
+            "reference_label": "Microsoft Docs: DTU in Azure SQL Database"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Dynamic Table Unit",
+          "explanation": {
+            "text": "DTUはテーブル単位の指標ではありません。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/service-tiers-dtu",
+            "reference_label": "Microsoft Docs: DTU in Azure SQL Database"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Data Transaction Usage",
+          "explanation": {
+            "text": "これは正式なDTUの定義ではありません。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/service-tiers-dtu",
+            "reference_label": "Microsoft Docs: DTU in Azure SQL Database"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "DTUはDatabase Transaction Unitの略で、CPU・メモリ・I/Oをまとめた性能の指標です。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/service-tiers-dtu",
+        "reference_label": "Microsoft Docs: DTU in Azure SQL Database"
+      }
+    },
+    {
+      "id": "azure-DP-900-q38",
+      "question": "Azure Event Hubsのキャプチャ機能の用途はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "イベントデータを自動的にBlob StorageやData Lakeに保存する",
+          "explanation": {
+            "text": "キャプチャ機能はイベントを自動保存し、後続分析を容易にします。",
+            "reference": "https://learn.microsoft.com/azure/event-hubs/event-hubs-capture-overview",
+            "reference_label": "Microsoft Docs: Event Hubs Capture"
+          }
+        },
+        {
+          "key": "B",
+          "text": "イベントをリアルタイムに分析する",
+          "explanation": {
+            "text": "リアルタイム分析はStream Analyticsの役割です。",
+            "reference": "https://learn.microsoft.com/azure/stream-analytics/stream-analytics-introduction",
+            "reference_label": "Microsoft Docs: Stream Analytics overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "イベントソースのデバイス管理を行う",
+          "explanation": {
+            "text": "デバイス管理はIoT Hubの役割です。",
+            "reference": "https://learn.microsoft.com/azure/iot-hub/about-iot-hub",
+            "reference_label": "Microsoft Docs: Azure IoT Hub"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データベースに直接書き込む",
+          "explanation": {
+            "text": "Event Hubsは直接DBに書き込む機能を持ちません。",
+            "reference": "https://learn.microsoft.com/azure/event-hubs/event-hubs-capture-overview",
+            "reference_label": "Microsoft Docs: Event Hubs Capture"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Event Hubsのキャプチャ機能により、イベントデータを自動でBlobやData Lakeに保存できます。",
+        "reference": "https://learn.microsoft.com/azure/event-hubs/event-hubs-capture-overview",
+        "reference_label": "Microsoft Docs: Event Hubs Capture"
+      }
+    },
+    {
+      "id": "azure-DP-900-q39",
+      "question": "Azure Data Lake Storage Gen2で階層型名前空間を有効化する利点はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ディレクトリベースの操作やACLによる制御が可能になる",
+          "explanation": {
+            "text": "階層型名前空間によりディレクトリ操作やPOSIX ACLがサポートされます。",
+            "reference": "https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-namespace",
+            "reference_label": "Microsoft Docs: Hierarchical namespace in Data Lake Storage"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データベースのトランザクション整合性を保証する",
+          "explanation": {
+            "text": "整合性保証はDBサービスの役割であり、Data Lakeの特徴ではありません。",
+            "reference": "https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-namespace",
+            "reference_label": "Microsoft Docs: Hierarchical namespace in Data Lake Storage"
+          }
+        },
+        {
+          "key": "C",
+          "text": "BIダッシュボードを自動生成できる",
+          "explanation": {
+            "text": "BIはPower BIの役割であり、Data Lakeの機能ではありません。",
+            "reference": "https://learn.microsoft.com/power-bi/fundamentals/power-bi-overview",
+            "reference_label": "Microsoft Docs: Power BI overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "NoSQL APIでデータ操作が可能になる",
+          "explanation": {
+            "text": "NoSQL APIはCosmos DBが提供します。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/introduction",
+            "reference_label": "Microsoft Docs: Cosmos DB"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "階層型名前空間を有効にすることで、フォルダ構造を持つファイルシステム操作やACL制御が可能になります。",
+        "reference": "https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-namespace",
+        "reference_label": "Microsoft Docs: Hierarchical namespace in Data Lake Storage"
+      }
+    },
+    {
+      "id": "azure-DP-900-q40",
+      "question": "Power BIでDirectQuery接続を利用する利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データを常に最新の状態で表示できる",
+          "explanation": {
+            "text": "DirectQueryはデータソースに直接クエリするため、常に最新データを表示できます。",
+            "reference": "https://learn.microsoft.com/power-bi/connect-data/service-directquery",
+            "reference_label": "Microsoft Docs: DirectQuery in Power BI"
+          }
+        },
+        {
+          "key": "B",
+          "text": "すべてのデータをPower BIにインポートして保存する",
+          "explanation": {
+            "text": "これはインポートモードの特徴です。",
+            "reference": "https://learn.microsoft.com/power-bi/connect-data/service-directquery",
+            "reference_label": "Microsoft Docs: DirectQuery in Power BI"
+          }
+        },
+        {
+          "key": "C",
+          "text": "オフラインでもクエリが実行できる",
+          "explanation": {
+            "text": "DirectQueryはオンライン接続が必須です。",
+            "reference": "https://learn.microsoft.com/power-bi/connect-data/service-directquery",
+            "reference_label": "Microsoft Docs: DirectQuery in Power BI"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IoTデータストリームを直接処理できる",
+          "explanation": {
+            "text": "IoTストリーム処理はStream Analyticsが担います。",
+            "reference": "https://learn.microsoft.com/azure/stream-analytics/stream-analytics-introduction",
+            "reference_label": "Microsoft Docs: Stream Analytics overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "DirectQueryでは常にソースに対してクエリを実行するため、最新データを反映可能です。",
+        "reference": "https://learn.microsoft.com/power-bi/connect-data/service-directquery",
+        "reference_label": "Microsoft Docs: DirectQuery in Power BI"
+      }
+    },
+    {
+      "id": "azure-DP-900-q41",
+      "question": "Azure Machine LearningのAutoML機能の特徴はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "最適なモデルやハイパーパラメータを自動的に選択する",
+          "explanation": {
+            "text": "AutoMLはアルゴリズムやハイパーパラメータを自動調整します。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+            "reference_label": "Microsoft Docs: Automated ML in Azure Machine Learning"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データを自動でPower BIに可視化する",
+          "explanation": {
+            "text": "可視化はPower BIの役割です。",
+            "reference": "https://learn.microsoft.com/power-bi/fundamentals/power-bi-overview",
+            "reference_label": "Microsoft Docs: Power BI overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "IoTデバイスの接続を管理する",
+          "explanation": {
+            "text": "IoT接続はIoT Hubが担当します。",
+            "reference": "https://learn.microsoft.com/azure/iot-hub/about-iot-hub",
+            "reference_label": "Microsoft Docs: Azure IoT Hub"
+          }
+        },
+        {
+          "key": "D",
+          "text": "SQLクエリを自動生成する",
+          "explanation": {
+            "text": "SQL生成機能はAutoMLの特徴ではありません。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+            "reference_label": "Microsoft Docs: Automated ML in Azure Machine Learning"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "AutoMLはアルゴリズム選択やハイパーパラメータ調整を自動で行い、最適なモデルを導きます。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+        "reference_label": "Microsoft Docs: Automated ML in Azure Machine Learning"
+      }
+    },
+    {
+      "id": "azure-DP-900-q42",
+      "question": "Azure Data Factoryでデータセットの役割はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データの構造や保存先を定義する",
+          "explanation": {
+            "text": "データセットはデータソースのスキーマや保存先を定義します。",
+            "reference": "https://learn.microsoft.com/azure/data-factory/concepts-datasets-linked-services",
+            "reference_label": "Microsoft Docs: Datasets in Azure Data Factory"
+          }
+        },
+        {
+          "key": "B",
+          "text": "パイプラインのスケジュールを管理する",
+          "explanation": {
+            "text": "スケジュール管理はトリガーの役割です。",
+            "reference": "https://learn.microsoft.com/azure/data-factory/concepts-pipelines-activities-triggers",
+            "reference_label": "Microsoft Docs: Triggers in Azure Data Factory"
+          }
+        },
+        {
+          "key": "C",
+          "text": "外部サービスへの接続情報を保持する",
+          "explanation": {
+            "text": "接続情報はリンクサービスが担当します。",
+            "reference": "https://learn.microsoft.com/azure/data-factory/concepts-linked-services",
+            "reference_label": "Microsoft Docs: Linked services in Azure Data Factory"
+          }
+        },
+        {
+          "key": "D",
+          "text": "BIダッシュボードを生成する",
+          "explanation": {
+            "text": "BIダッシュボードはPower BIの役割です。",
+            "reference": "https://learn.microsoft.com/power-bi/fundamentals/power-bi-overview",
+            "reference_label": "Microsoft Docs: Power BI overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "データセットはADFで使用するデータの構造や場所を定義する重要なコンポーネントです。",
+        "reference": "https://learn.microsoft.com/azure/data-factory/concepts-datasets-linked-services",
+        "reference_label": "Microsoft Docs: Datasets in Azure Data Factory"
+      }
+    },
+    {
+      "id": "azure-DP-900-q43",
+      "question": "Azure Synapse AnalyticsでPolyBaseを使用する主な利点はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "外部データを直接クエリできる",
+          "explanation": {
+            "text": "PolyBaseを利用すると、外部データをロードせずに直接クエリ可能です。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/develop-tables-external-tables",
+            "reference_label": "Microsoft Docs: External tables with PolyBase"
+          }
+        },
+        {
+          "key": "B",
+          "text": "自動バックアップを有効にする",
+          "explanation": {
+            "text": "バックアップはPolyBaseの役割ではありません。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/automated-backups-overview",
+            "reference_label": "Microsoft Docs: Automated backups"
+          }
+        },
+        {
+          "key": "C",
+          "text": "機械学習モデルを訓練する",
+          "explanation": {
+            "text": "機械学習はAzure Machine Learningの役割です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/overview-what-is-azure-machine-learning",
+            "reference_label": "Microsoft Docs: Azure Machine Learning"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データの視覚化を行う",
+          "explanation": {
+            "text": "データ視覚化はPower BIの役割です。",
+            "reference": "https://learn.microsoft.com/power-bi/fundamentals/power-bi-overview",
+            "reference_label": "Microsoft Docs: Power BI overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "PolyBaseを使うと、外部データソースのデータを直接クエリできるため、効率的な統合分析が可能です。",
+        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/develop-tables-external-tables",
+        "reference_label": "Microsoft Docs: External tables with PolyBase"
+      }
+    },
+    {
+      "id": "azure-DP-900-q44",
+      "question": "Azure Cosmos DBのGremlin APIの用途はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "グラフデータベースの操作",
+          "explanation": {
+            "text": "Gremlin APIはグラフデータベースを操作するためのAPIです。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/graph/graph-introduction",
+            "reference_label": "Microsoft Docs: Gremlin API"
+          }
+        },
+        {
+          "key": "B",
+          "text": "JSONドキュメントの保存",
+          "explanation": {
+            "text": "JSONドキュメントはCore (SQL) APIやMongoDB APIで扱います。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/introduction",
+            "reference_label": "Microsoft Docs: Cosmos DB Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "キー・バリューデータの保存",
+          "explanation": {
+            "text": "キー・バリューモデルはTable APIが対応します。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/table/introduction",
+            "reference_label": "Microsoft Docs: Cosmos DB Table API"
+          }
+        },
+        {
+          "key": "D",
+          "text": "列指向データの保存",
+          "explanation": {
+            "text": "列指向はCassandra APIの特徴です。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/cassandra/introduction",
+            "reference_label": "Microsoft Docs: Cosmos DB Cassandra API"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cosmos DBのGremlin APIはグラフデータモデルを扱い、ノードやエッジを操作可能です。",
+        "reference": "https://learn.microsoft.com/azure/cosmos-db/graph/graph-introduction",
+        "reference_label": "Microsoft Docs: Gremlin API"
+      }
+    },
+    {
+      "id": "azure-DP-900-q45",
+      "question": "Azure SQL DatabaseのHyperscale層の特徴はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "最大100TBまでスケール可能",
+          "explanation": {
+            "text": "Hyperscaleは大規模スケールを可能にし、100TBまで拡張できます。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/service-tier-hyperscale",
+            "reference_label": "Microsoft Docs: Hyperscale service tier"
+          }
+        },
+        {
+          "key": "B",
+          "text": "IoTストリームを処理できる",
+          "explanation": {
+            "text": "IoTストリーム処理はEvent HubsやStream Analyticsが担当します。",
+            "reference": "https://learn.microsoft.com/azure/stream-analytics/stream-analytics-introduction",
+            "reference_label": "Microsoft Docs: Stream Analytics"
+          }
+        },
+        {
+          "key": "C",
+          "text": "グラフデータモデルをサポートする",
+          "explanation": {
+            "text": "グラフデータはCosmos DBのGremlin APIがサポートします。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/graph/graph-introduction",
+            "reference_label": "Microsoft Docs: Gremlin API"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データの可視化を行う",
+          "explanation": {
+            "text": "可視化はPower BIの役割です。",
+            "reference": "https://learn.microsoft.com/power-bi/fundamentals/power-bi-overview",
+            "reference_label": "Microsoft Docs: Power BI overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Hyperscale層は最大100TBのスケーラビリティを提供し、大規模ワークロードを処理できます。",
+        "reference": "https://learn.microsoft.com/azure/azure-sql/database/service-tier-hyperscale",
+        "reference_label": "Microsoft Docs: Hyperscale service tier"
+      }
+    },
+    {
+      "id": "azure-DP-900-q46",
+      "question": "Azure Data FactoryでIntegration Runtime (IR) の役割はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データ移動や変換を実行するコンピューティング基盤",
+          "explanation": {
+            "text": "IRはADFのデータ統合処理の実行エンジンです。",
+            "reference": "https://learn.microsoft.com/azure/data-factory/concepts-integration-runtime",
+            "reference_label": "Microsoft Docs: Integration Runtime"
+          }
+        },
+        {
+          "key": "B",
+          "text": "BIレポートを生成する",
+          "explanation": {
+            "text": "レポート生成はPower BIの役割です。",
+            "reference": "https://learn.microsoft.com/power-bi/fundamentals/power-bi-overview",
+            "reference_label": "Microsoft Docs: Power BI overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "IoTデバイスを認証する",
+          "explanation": {
+            "text": "IoTデバイス認証はIoT Hubの役割です。",
+            "reference": "https://learn.microsoft.com/azure/iot-hub/about-iot-hub",
+            "reference_label": "Microsoft Docs: Azure IoT Hub"
+          }
+        },
+        {
+          "key": "D",
+          "text": "NoSQL APIを提供する",
+          "explanation": {
+            "text": "NoSQL APIはCosmos DBが提供します。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/introduction",
+            "reference_label": "Microsoft Docs: Cosmos DB"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Integration RuntimeはADFのデータ移動・変換を行う基盤サービスです。",
+        "reference": "https://learn.microsoft.com/azure/data-factory/concepts-integration-runtime",
+        "reference_label": "Microsoft Docs: Integration Runtime"
+      }
+    },
+    {
+      "id": "azure-DP-900-q47",
+      "question": "Azure Blob StorageのArchive層の特徴はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "長期保存向けでアクセスには復元操作が必要",
+          "explanation": {
+            "text": "Archive層は低コストで長期保存向けですが、アクセスには復元が必要です。",
+            "reference": "https://learn.microsoft.com/azure/storage/blobs/access-tiers-overview",
+            "reference_label": "Microsoft Docs: Blob access tiers"
+          }
+        },
+        {
+          "key": "B",
+          "text": "頻繁にアクセスされるデータ向け",
+          "explanation": {
+            "text": "頻繁アクセスはHot層に適しています。",
+            "reference": "https://learn.microsoft.com/azure/storage/blobs/access-tiers-overview",
+            "reference_label": "Microsoft Docs: Blob access tiers"
+          }
+        },
+        {
+          "key": "C",
+          "text": "低レイテンシーと高スループットを提供",
+          "explanation": {
+            "text": "これはPremium層の特徴です。",
+            "reference": "https://learn.microsoft.com/azure/storage/blobs/access-tiers-overview",
+            "reference_label": "Microsoft Docs: Blob access tiers"
+          }
+        },
+        {
+          "key": "D",
+          "text": "リアルタイム処理に適している",
+          "explanation": {
+            "text": "リアルタイム処理はストレージの役割ではなく、Stream Analyticsなどの役割です。",
+            "reference": "https://learn.microsoft.com/azure/stream-analytics/stream-analytics-introduction",
+            "reference_label": "Microsoft Docs: Stream Analytics overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Archive層は長期保存に適しており、データにアクセスするには復元操作が必要です。",
+        "reference": "https://learn.microsoft.com/azure/storage/blobs/access-tiers-overview",
+        "reference_label": "Microsoft Docs: Blob access tiers"
+      }
+    },
+    {
+      "id": "azure-DP-900-q48",
+      "question": "Azure Machine Learningでワークスペースが持つ役割はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ML資産を統合管理する中心的な場所",
+          "explanation": {
+            "text": "ワークスペースはデータ、モデル、実験を統合管理する場所です。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-workspace",
+            "reference_label": "Microsoft Docs: Azure Machine Learning workspace"
+          }
+        },
+        {
+          "key": "B",
+          "text": "IoTデバイスを監視する",
+          "explanation": {
+            "text": "IoT監視はIoT Hubの役割です。",
+            "reference": "https://learn.microsoft.com/azure/iot-hub/about-iot-hub",
+            "reference_label": "Microsoft Docs: Azure IoT Hub"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データレイクを作成する",
+          "explanation": {
+            "text": "データレイクはAzure Data Lake Storageで提供されます。",
+            "reference": "https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-introduction",
+            "reference_label": "Microsoft Docs: Data Lake Storage overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データの可視化を行う",
+          "explanation": {
+            "text": "データの可視化はPower BIの役割です。",
+            "reference": "https://learn.microsoft.com/power-bi/fundamentals/power-bi-overview",
+            "reference_label": "Microsoft Docs: Power BI overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure Machine LearningのワークスペースはML関連資産をまとめて管理する基盤です。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-workspace",
+        "reference_label": "Microsoft Docs: Azure Machine Learning workspace"
+      }
+    },
+    {
+      "id": "azure-DP-900-q49",
+      "question": "Azure Synapse Analyticsでデータ統合を行うために利用できる機能はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Synapse Pipelines",
+          "explanation": {
+            "text": "Synapse PipelinesはData Factoryの機能を統合し、ETL/ELT処理を実現します。",
+            "reference": "https://learn.microsoft.com/azure/synapse-analytics/data-integration/data-flow-overview",
+            "reference_label": "Microsoft Docs: Synapse Pipelines"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure Functions",
+          "explanation": {
+            "text": "Functionsはサーバーレスアプリケーション開発のためのサービスです。",
+            "reference": "https://learn.microsoft.com/azure/azure-functions/functions-overview",
+            "reference_label": "Microsoft Docs: Azure Functions overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Power BI Service",
+          "explanation": {
+            "text": "Power BIは可視化のためのツールです。",
+            "reference": "https://learn.microsoft.com/power-bi/fundamentals/power-bi-overview",
+            "reference_label": "Microsoft Docs: Power BI overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cosmos DB API",
+          "explanation": {
+            "text": "Cosmos DBはNoSQLデータベースであり、ETL/ELT機能は提供しません。",
+            "reference": "https://learn.microsoft.com/azure/cosmos-db/introduction",
+            "reference_label": "Microsoft Docs: Cosmos DB"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Synapse Pipelinesを利用すると、Synapse内でデータ統合やETL処理を行えます。",
+        "reference": "https://learn.microsoft.com/azure/synapse-analytics/data-integration/data-flow-overview",
+        "reference_label": "Microsoft Docs: Synapse Pipelines"
+      }
+    },
+    {
+      "id": "azure-DP-900-q50",
+      "question": "Microsoft Purviewのデータマップ機能の主な役割はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "組織全体のデータ資産をスキャン・検出・カタログ化する",
+          "explanation": {
+            "text": "Purviewのデータマップは、データ資産を自動的にスキャン・カタログ化し、データガバナンスを実現します。",
+            "reference": "https://learn.microsoft.com/azure/purview/concept-data-map",
+            "reference_label": "Microsoft Docs: Microsoft Purview Data Map"
+          }
+        },
+        {
+          "key": "B",
+          "text": "IoTデバイスのイベントを収集する",
+          "explanation": {
+            "text": "IoTイベント収集はIoT HubやEvent Hubsの役割です。",
+            "reference": "https://learn.microsoft.com/azure/iot-hub/about-iot-hub",
+            "reference_label": "Microsoft Docs: Azure IoT Hub"
+          }
+        },
+        {
+          "key": "C",
+          "text": "SQLクエリを自動最適化する",
+          "explanation": {
+            "text": "SQLクエリ最適化はPurviewの機能ではなく、SQL DatabaseやSynapseのエンジン側で行われます。",
+            "reference": "https://learn.microsoft.com/azure/azure-sql/database/performance-guidance",
+            "reference_label": "Microsoft Docs: SQL Database performance guidance"
+          }
+        },
+        {
+          "key": "D",
+          "text": "BIダッシュボードを作成する",
+          "explanation": {
+            "text": "BIダッシュボードはPower BIの役割です。",
+            "reference": "https://learn.microsoft.com/power-bi/fundamentals/power-bi-overview",
+            "reference_label": "Microsoft Docs: Power BI overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Microsoft Purviewのデータマップは、組織のデータ資産をスキャンしてカタログ化し、データガバナンスを支援する中核機能です。",
+        "reference": "https://learn.microsoft.com/azure/purview/concept-data-map",
+        "reference_label": "Microsoft Docs: Microsoft Purview Data Map"
+      }
+    }
+  ]
+}

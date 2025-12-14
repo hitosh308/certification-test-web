@@ -1,0 +1,2467 @@
+{
+  "exam": {
+    "id": "ap",
+    "title": "応用情報技術者試験",
+    "description": "情報処理推進機構（IPA）が主催する国家試験で、ITを活用したサービス・システムの企画・設計・運用において必要な応用的知識・技能を問います。技術・管理・経営の各側面を含み、システム開発・IT基盤構築の現場で高い成果を発揮できるIT人材を対象としています。",
+    "version": "CBT",
+    "price": "7,500円",
+    "difficulty": "難しい",
+    "official-site": "https://www.ipa.go.jp/shiken/kubun/ap.html",
+    "category": {
+      "id": "it",
+      "name": "情報処理技術者"
+    }
+  },
+  "questions": [
+    {
+      "id": "it-AP-q1",
+      "question": "ゼロトラストセキュリティにおいて基本的な考え方として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "社内ネットワークは信頼できる前提でアクセス制御を行う。",
+          "explanation": {
+            "text": "ゼロトラストでは『境界＝信頼』の考え方を否定するため、この記述は誤り。",
+            "reference": "https://www.ipa.go.jp/security/zero-trust.html",
+            "reference_label": "IPA ゼロトラスト解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "すべての通信やユーザを信頼せず、継続的に検証する。",
+          "explanation": {
+            "text": "ゼロトラストの基本理念は『決して信頼せず、常に確認する』であり正しい。",
+            "reference": "https://www.ipa.go.jp/security/zero-trust.html",
+            "reference_label": "IPA ゼロトラスト解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "VPN接続を利用すれば外部からのアクセスは信頼できるとみなす。",
+          "explanation": {
+            "text": "VPN接続のみで信頼を前提とするのはゼロトラストに反する。",
+            "reference": "https://www.ipa.go.jp/security/zero-trust.html",
+            "reference_label": "IPA ゼロトラスト解説"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザ認証は初回のみ行えば十分である。",
+          "explanation": {
+            "text": "ゼロトラストでは継続的な認証・認可が必要であり誤り。",
+            "reference": "https://www.ipa.go.jp/security/zero-trust.html",
+            "reference_label": "IPA ゼロトラスト解説"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ゼロトラストの基本は『信頼を前提にせず、常に検証する』である。従来の境界型セキュリティの弱点を補うために重要な考え方となっている。",
+        "reference": "https://www.ipa.go.jp/security/zero-trust.html",
+        "reference_label": "IPA ゼロトラスト解説"
+      }
+    },
+    {
+      "id": "it-AP-q2",
+      "question": "データベースの正規化に関する説明として適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "冗長性を排除し、データの一貫性を高めることを目的とする。",
+          "explanation": {
+            "text": "正規化は冗長性削減と整合性向上を目的とするため正しい。",
+            "reference": "https://www.ipa.go.jp/jinzai/itss/database.html",
+            "reference_label": "IPA データベース解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "検索性能を常に最大化するための手法である。",
+          "explanation": {
+            "text": "正規化は必ずしも検索性能を最大化するものではない。",
+            "reference": "https://www.ipa.go.jp/jinzai/itss/database.html",
+            "reference_label": "IPA データベース解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "セキュリティ強化のために暗号化を施す手法である。",
+          "explanation": {
+            "text": "暗号化はセキュリティ手法であり、正規化とは無関係。",
+            "reference": "https://www.ipa.go.jp/jinzai/itss/database.html",
+            "reference_label": "IPA データベース解説"
+          }
+        },
+        {
+          "key": "D",
+          "text": "複数のDBMS間でデータを同期させる仕組みである。",
+          "explanation": {
+            "text": "同期はレプリケーションの仕組みであり、正規化ではない。",
+            "reference": "https://www.ipa.go.jp/jinzai/itss/database.html",
+            "reference_label": "IPA データベース解説"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "正規化はデータの冗長性を減らし、更新時の不整合を防ぐために行う設計手法である。",
+        "reference": "https://www.ipa.go.jp/jinzai/itss/database.html",
+        "reference_label": "IPA データベース解説"
+      }
+    },
+    {
+      "id": "it-AP-q3",
+      "question": "アジャイル開発手法の特徴として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "全ての要件を事前に確定してから開発を進める。",
+          "explanation": {
+            "text": "これはウォーターフォール型開発の特徴であり、アジャイルには当てはまらない。",
+            "reference": "https://www.ipa.go.jp/jinzai/itss/agile.html",
+            "reference_label": "IPA アジャイル解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "短い開発サイクルを繰り返し、顧客とのフィードバックを重視する。",
+          "explanation": {
+            "text": "アジャイルの特徴は短い反復開発と継続的な顧客フィードバックであり正しい。",
+            "reference": "https://www.ipa.go.jp/jinzai/itss/agile.html",
+            "reference_label": "IPA アジャイル解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "文書化を徹底し、仕様変更を極力排除する。",
+          "explanation": {
+            "text": "アジャイルでは変化に柔軟に対応するため、仕様変更を排除する考え方とは異なる。",
+            "reference": "https://www.ipa.go.jp/jinzai/itss/agile.html",
+            "reference_label": "IPA アジャイル解説"
+          }
+        },
+        {
+          "key": "D",
+          "text": "開発の全工程を一度だけ実施することを基本とする。",
+          "explanation": {
+            "text": "これは反復を行わないウォーターフォールの特徴であり、アジャイルの特徴ではない。",
+            "reference": "https://www.ipa.go.jp/jinzai/itss/agile.html",
+            "reference_label": "IPA アジャイル解説"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "アジャイルは反復型の開発であり、短い期間で開発とレビューを繰り返す。顧客フィードバックを重視する点が重要。",
+        "reference": "https://www.ipa.go.jp/jinzai/itss/agile.html",
+        "reference_label": "IPA アジャイル解説"
+      }
+    },
+    {
+      "id": "it-AP-q4",
+      "question": "IPv6の特徴として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "アドレス長は32ビットであり、IPv4と互換性がある。",
+          "explanation": {
+            "text": "IPv6のアドレスは128ビットであり、IPv4とは互換性がない。",
+            "reference": "https://www.nic.ad.jp/ja/ipv6/",
+            "reference_label": "JPNIC IPv6解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "アドレス長は128ビットであり、ほぼ無限に近い数のアドレスを提供できる。",
+          "explanation": {
+            "text": "IPv6は128ビット長であり、IPv4の枯渇問題を解決するために導入された。",
+            "reference": "https://www.nic.ad.jp/ja/ipv6/",
+            "reference_label": "JPNIC IPv6解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "NATを前提とした設計である。",
+          "explanation": {
+            "text": "IPv6はNATを前提とせず、エンドツーエンド通信を基本とする。",
+            "reference": "https://www.nic.ad.jp/ja/ipv6/",
+            "reference_label": "JPNIC IPv6解説"
+          }
+        },
+        {
+          "key": "D",
+          "text": "セキュリティ機能は標準仕様に含まれていない。",
+          "explanation": {
+            "text": "IPv6はIPsecを標準仕様に含んでおり、この記述は誤り。",
+            "reference": "https://www.nic.ad.jp/ja/ipv6/",
+            "reference_label": "JPNIC IPv6解説"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "IPv6は128ビットアドレス空間を持ち、インターネットの拡張性を担保する仕組みである。",
+        "reference": "https://www.nic.ad.jp/ja/ipv6/",
+        "reference_label": "JPNIC IPv6解説"
+      }
+    },
+    {
+      "id": "it-AP-q5",
+      "question": "機械学習における教師あり学習の例として適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "クラスタリングによる顧客のグループ分け",
+          "explanation": {
+            "text": "クラスタリングは教師なし学習の代表例であるため誤り。",
+            "reference": "https://www.ipa.go.jp/files/000095877.pdf",
+            "reference_label": "IPA AI白書"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ラベル付きデータを用いたスパムメール判定",
+          "explanation": {
+            "text": "教師あり学習はラベル付きデータを利用して学習するため正しい。",
+            "reference": "https://www.ipa.go.jp/files/000095877.pdf",
+            "reference_label": "IPA AI白書"
+          }
+        },
+        {
+          "key": "C",
+          "text": "強化学習によるゲーム攻略",
+          "explanation": {
+            "text": "強化学習は教師あり学習とは異なる枠組みである。",
+            "reference": "https://www.ipa.go.jp/files/000095877.pdf",
+            "reference_label": "IPA AI白書"
+          }
+        },
+        {
+          "key": "D",
+          "text": "自己符号化器による特徴抽出",
+          "explanation": {
+            "text": "自己符号化器は教師なし学習の例であり、教師あり学習ではない。",
+            "reference": "https://www.ipa.go.jp/files/000095877.pdf",
+            "reference_label": "IPA AI白書"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "教師あり学習は入力データと正解ラベルを対応付けて学習する。スパム判定のような分類問題が典型例である。",
+        "reference": "https://www.ipa.go.jp/files/000095877.pdf",
+        "reference_label": "IPA AI白書"
+      }
+    },
+    {
+      "id": "it-AP-q6",
+      "question": "システム監査の独立性を確保するために最も適切な方法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "監査対象システムの開発部門に属する監査員を配置する。",
+          "explanation": {
+            "text": "開発部門に属していると独立性が確保できない。",
+            "reference": "https://www.ipa.go.jp/sec/isa/",
+            "reference_label": "IPA システム監査基準"
+          }
+        },
+        {
+          "key": "B",
+          "text": "監査部門を経営層直下に置き、独立した権限を与える。",
+          "explanation": {
+            "text": "経営層直下に置くことで監査対象部門からの影響を排除でき、独立性を担保できる。",
+            "reference": "https://www.ipa.go.jp/sec/isa/",
+            "reference_label": "IPA システム監査基準"
+          }
+        },
+        {
+          "key": "C",
+          "text": "監査対象の部門長の承認を得て監査計画を立てる。",
+          "explanation": {
+            "text": "監査対象の部門長に依存すると独立性が損なわれるため不適切。",
+            "reference": "https://www.ipa.go.jp/sec/isa/",
+            "reference_label": "IPA システム監査基準"
+          }
+        },
+        {
+          "key": "D",
+          "text": "監査員が監査対象システムの運用を兼任する。",
+          "explanation": {
+            "text": "運用を兼任すると利害関係が生じ、独立性が確保できない。",
+            "reference": "https://www.ipa.go.jp/sec/isa/",
+            "reference_label": "IPA システム監査基準"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "監査の独立性を確保するためには、監査部門を経営層直下に置き、対象部門からの影響を受けないようにすることが推奨される。",
+        "reference": "https://www.ipa.go.jp/sec/isa/",
+        "reference_label": "IPA システム監査基準"
+      }
+    },
+    {
+      "id": "it-AP-q7",
+      "question": "量子コンピュータに関する記述として適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "量子ビットは常に0か1のどちらかの値をとる。",
+          "explanation": {
+            "text": "量子ビットは重ね合わせ状態をとることができるため誤り。",
+            "reference": "https://www.nict.go.jp/quantum/",
+            "reference_label": "NICT 量子情報技術解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "量子コンピュータは全ての計算において従来型コンピュータより高速である。",
+          "explanation": {
+            "text": "量子コンピュータが有利なのは特定の計算分野であり、すべてではない。",
+            "reference": "https://www.nict.go.jp/quantum/",
+            "reference_label": "NICT 量子情報技術解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "量子アルゴリズムには因数分解や探索に有効なものがある。",
+          "explanation": {
+            "text": "ShorのアルゴリズムやGroverのアルゴリズムは量子計算の代表例であり正しい。",
+            "reference": "https://www.nict.go.jp/quantum/",
+            "reference_label": "NICT 量子情報技術解説"
+          }
+        },
+        {
+          "key": "D",
+          "text": "量子コンピュータはすでに商用で一般的に利用されている。",
+          "explanation": {
+            "text": "現状は研究・限定用途での利用が中心であり、一般的商用利用には至っていない。",
+            "reference": "https://www.nict.go.jp/quantum/",
+            "reference_label": "NICT 量子情報技術解説"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "量子コンピュータは従来型に対して万能に優れているわけではないが、特定分野では強力なアルゴリズムが存在する。代表例がShorのアルゴリズム（因数分解）とGroverのアルゴリズム（探索）。",
+        "reference": "https://www.nict.go.jp/quantum/",
+        "reference_label": "NICT 量子情報技術解説"
+      }
+    },
+    {
+      "id": "it-AP-q8",
+      "question": "クラウドサービスの責任共有モデルにおいて、SaaS利用者が主に責任を負う範囲はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "物理サーバのハードウェア保守",
+          "explanation": {
+            "text": "SaaS利用者は物理ハードウェアに関与しないため誤り。",
+            "reference": "https://aws.amazon.com/compliance/shared-responsibility-model/",
+            "reference_label": "AWS Shared Responsibility Model"
+          }
+        },
+        {
+          "key": "B",
+          "text": "OSやミドルウェアのセキュリティパッチ適用",
+          "explanation": {
+            "text": "SaaSでは提供者が責任を負う部分であり利用者の責任範囲ではない。",
+            "reference": "https://aws.amazon.com/compliance/shared-responsibility-model/",
+            "reference_label": "AWS Shared Responsibility Model"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アプリケーション利用時の認証情報管理",
+          "explanation": {
+            "text": "利用者はアカウントや認証情報の管理責任を持つため正しい。",
+            "reference": "https://aws.amazon.com/compliance/shared-responsibility-model/",
+            "reference_label": "AWS Shared Responsibility Model"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データセンターの物理的セキュリティ",
+          "explanation": {
+            "text": "これはクラウド事業者の責任範囲であり、利用者は関与しない。",
+            "reference": "https://aws.amazon.com/compliance/shared-responsibility-model/",
+            "reference_label": "AWS Shared Responsibility Model"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "SaaSではアプリケーションやインフラは提供者の責任だが、利用者はアカウント管理やデータの利用責任を負う。",
+        "reference": "https://aws.amazon.com/compliance/shared-responsibility-model/",
+        "reference_label": "AWS Shared Responsibility Model"
+      }
+    },
+    {
+      "id": "it-AP-q9",
+      "question": "プロジェクトマネジメントにおけるクリティカルパスの説明として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "プロジェクトのコストを最小化するための経路",
+          "explanation": {
+            "text": "クリティカルパスは時間に関する概念でありコストではない。",
+            "reference": "https://www.pmi.org/",
+            "reference_label": "PMI PMBOK解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "最短の工期でプロジェクトを完了できる作業経路",
+          "explanation": {
+            "text": "クリティカルパスは最短ではなく、遅延すると全体工期に影響する最長経路であるため誤り。",
+            "reference": "https://www.pmi.org/",
+            "reference_label": "PMI PMBOK解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "プロジェクト全体の所要期間を決定する作業経路",
+          "explanation": {
+            "text": "クリティカルパスは最長経路であり、全体の所要期間を決定するため正しい。",
+            "reference": "https://www.pmi.org/",
+            "reference_label": "PMI PMBOK解説"
+          }
+        },
+        {
+          "key": "D",
+          "text": "品質管理におけるボトルネック作業",
+          "explanation": {
+            "text": "品質ではなくスケジュール管理に関連する概念であるため誤り。",
+            "reference": "https://www.pmi.org/",
+            "reference_label": "PMI PMBOK解説"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "クリティカルパスはプロジェクトの最長経路であり、工期を決定する重要な要素である。",
+        "reference": "https://www.pmi.org/",
+        "reference_label": "PMI PMBOK解説"
+      }
+    },
+    {
+      "id": "it-AP-q10",
+      "question": "GDPRにおけるデータ主体の権利として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "事業者に対してデータの完全削除を求める権利",
+          "explanation": {
+            "text": "GDPRには『忘れられる権利』があり、特定条件下で削除を要求できる。",
+            "reference": "https://gdpr-info.eu/art-17-gdpr/",
+            "reference_label": "GDPR 第17条"
+          }
+        },
+        {
+          "key": "B",
+          "text": "事業者に対し無制限に損害賠償を請求できる権利",
+          "explanation": {
+            "text": "損害賠償の請求権はあるが無制限ではなく、適切な条件下で認められる。",
+            "reference": "https://gdpr-info.eu/",
+            "reference_label": "GDPR 条文"
+          }
+        },
+        {
+          "key": "C",
+          "text": "個人データの処理を一方的に禁止できる権利",
+          "explanation": {
+            "text": "GDPRでは異議申し立て権があるが、処理を常に禁止できるわけではない。",
+            "reference": "https://gdpr-info.eu/",
+            "reference_label": "GDPR 条文"
+          }
+        },
+        {
+          "key": "D",
+          "text": "事業者が保持する全てのデータを即時に開示させる権利",
+          "explanation": {
+            "text": "GDPRにはアクセス権があるが、即時かつ無条件の開示義務ではない。",
+            "reference": "https://gdpr-info.eu/",
+            "reference_label": "GDPR 条文"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "GDPR第17条で定義される『忘れられる権利』により、特定の条件下でデータ削除を要求できる。",
+        "reference": "https://gdpr-info.eu/art-17-gdpr/",
+        "reference_label": "GDPR 第17条"
+      }
+    },
+    {
+      "id": "it-AP-q11",
+      "question": "ディープラーニングにおける過学習を防ぐ手法として適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データセットを増やす、またはデータ拡張を行う",
+          "explanation": {
+            "text": "データを増やすことで汎化性能が向上し、過学習を防げる。",
+            "reference": "https://www.ipa.go.jp/files/000095877.pdf",
+            "reference_label": "IPA AI白書"
+          }
+        },
+        {
+          "key": "B",
+          "text": "学習データとテストデータを同じにする",
+          "explanation": {
+            "text": "同じデータを使うと検証ができず、過学習を防ぐどころか助長する。",
+            "reference": "https://www.ipa.go.jp/files/000095877.pdf",
+            "reference_label": "IPA AI白書"
+          }
+        },
+        {
+          "key": "C",
+          "text": "モデルのパラメータを可能な限り増やす",
+          "explanation": {
+            "text": "パラメータを増やすとモデルが複雑化し過学習のリスクが高まる。",
+            "reference": "https://www.ipa.go.jp/files/000095877.pdf",
+            "reference_label": "IPA AI白書"
+          }
+        },
+        {
+          "key": "D",
+          "text": "正解ラベルを意図的に一部間違えて与える",
+          "explanation": {
+            "text": "誤ったラベルは学習精度を低下させるだけであり、過学習防止にはならない。",
+            "reference": "https://www.ipa.go.jp/files/000095877.pdf",
+            "reference_label": "IPA AI白書"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "データ拡張や正則化、ドロップアウトなどは過学習防止に有効である。特にデータを増やすことは基本的な対策の一つ。",
+        "reference": "https://www.ipa.go.jp/files/000095877.pdf",
+        "reference_label": "IPA AI白書"
+      }
+    },
+    {
+      "id": "it-AP-q12",
+      "question": "システム開発におけるDevOpsの目的として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "開発と運用の分離を徹底すること",
+          "explanation": {
+            "text": "DevOpsは分離ではなく連携を目的とする。",
+            "reference": "https://www.ipa.go.jp/jinzai/itss/devops.html",
+            "reference_label": "IPA DevOps解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "開発と運用の協調により、迅速で継続的なサービス提供を実現すること",
+          "explanation": {
+            "text": "DevOpsの目的は開発と運用の連携による効率的なサービス提供であり正しい。",
+            "reference": "https://www.ipa.go.jp/jinzai/itss/devops.html",
+            "reference_label": "IPA DevOps解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "運用の自動化を一切行わないこと",
+          "explanation": {
+            "text": "DevOpsでは自動化はむしろ推奨される。",
+            "reference": "https://www.ipa.go.jp/jinzai/itss/devops.html",
+            "reference_label": "IPA DevOps解説"
+          }
+        },
+        {
+          "key": "D",
+          "text": "運用チームだけで顧客要求に対応すること",
+          "explanation": {
+            "text": "顧客要求対応は開発と運用が協力して行うものであり、運用のみではない。",
+            "reference": "https://www.ipa.go.jp/jinzai/itss/devops.html",
+            "reference_label": "IPA DevOps解説"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "DevOpsは開発（Dev）と運用（Ops）の協調によって迅速で継続的なサービス提供を可能にする。",
+        "reference": "https://www.ipa.go.jp/jinzai/itss/devops.html",
+        "reference_label": "IPA DevOps解説"
+      }
+    },
+    {
+      "id": "it-AP-q13",
+      "question": "情報セキュリティマネジメントシステム（ISMS）の国際規格ISO/IEC 27001において、リスク対応策として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "リスクを必ずすべて回避しなければならない",
+          "explanation": {
+            "text": "リスク対応には回避以外にも低減・移転・受容があるため誤り。",
+            "reference": "https://www.iso.org/isoiec-27001-information-security.html",
+            "reference_label": "ISO/IEC 27001"
+          }
+        },
+        {
+          "key": "B",
+          "text": "リスクを移転する場合、保険の活用も含まれる",
+          "explanation": {
+            "text": "リスク移転の一例として保険の活用があるため正しい。",
+            "reference": "https://www.iso.org/isoiec-27001-information-security.html",
+            "reference_label": "ISO/IEC 27001"
+          }
+        },
+        {
+          "key": "C",
+          "text": "リスクを受容することは規格上認められていない",
+          "explanation": {
+            "text": "規格ではリスク受容も認められており、この記述は誤り。",
+            "reference": "https://www.iso.org/isoiec-27001-information-security.html",
+            "reference_label": "ISO/IEC 27001"
+          }
+        },
+        {
+          "key": "D",
+          "text": "リスク低減は技術的対策のみで実施する",
+          "explanation": {
+            "text": "リスク低減には技術的対策だけでなく組織的・人的対策も含まれる。",
+            "reference": "https://www.iso.org/isoiec-27001-information-security.html",
+            "reference_label": "ISO/IEC 27001"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ISO/IEC 27001ではリスク対応として回避・低減・移転・受容が定義されている。保険の利用は移転の代表例。",
+        "reference": "https://www.iso.org/isoiec-27001-information-security.html",
+        "reference_label": "ISO/IEC 27001"
+      }
+    },
+    {
+      "id": "it-AP-q14",
+      "question": "ソフトウェアテストにおけるブラックボックステストの特徴として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "内部構造を考慮せず、仕様に基づいてテストを行う",
+          "explanation": {
+            "text": "ブラックボックステストは外部仕様に基づくテストであり正しい。",
+            "reference": "https://www.istqb.org/",
+            "reference_label": "ISTQB テスト技術解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "内部ロジックに基づき全ての経路を網羅する",
+          "explanation": {
+            "text": "これはホワイトボックステストの特徴であり誤り。",
+            "reference": "https://www.istqb.org/",
+            "reference_label": "ISTQB テスト技術解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ソースコードの静的解析を行う",
+          "explanation": {
+            "text": "静的解析はブラックボックステストではなく、別の技法。",
+            "reference": "https://www.istqb.org/",
+            "reference_label": "ISTQB テスト技術解説"
+          }
+        },
+        {
+          "key": "D",
+          "text": "プログラマのみが実施できるテスト手法である",
+          "explanation": {
+            "text": "ブラックボックステストはユーザ視点でも行えるため誤り。",
+            "reference": "https://www.istqb.org/",
+            "reference_label": "ISTQB テスト技術解説"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ブラックボックステストはソフトウェアの内部構造を考慮せず、仕様に基づいて入力と出力の正しさを確認する手法である。",
+        "reference": "https://www.istqb.org/",
+        "reference_label": "ISTQB テスト技術解説"
+      }
+    },
+    {
+      "id": "it-AP-q15",
+      "question": "ネットワークにおけるDNSSECの目的として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "DNS問い合わせの通信を暗号化すること",
+          "explanation": {
+            "text": "暗号化を目的とするのはDoHやDoTであり、DNSSECは認証を目的とする。",
+            "reference": "https://www.nic.ad.jp/ja/dns/dnssec/",
+            "reference_label": "JPNIC DNSSEC解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "DNS応答が改ざんされていないことを検証すること",
+          "explanation": {
+            "text": "DNSSECはデジタル署名を利用して応答の正当性を保証する仕組みであり正しい。",
+            "reference": "https://www.nic.ad.jp/ja/dns/dnssec/",
+            "reference_label": "JPNIC DNSSEC解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "DNSサーバの可用性を高めること",
+          "explanation": {
+            "text": "可用性を直接高める仕組みではない。",
+            "reference": "https://www.nic.ad.jp/ja/dns/dnssec/",
+            "reference_label": "JPNIC DNSSEC解説"
+          }
+        },
+        {
+          "key": "D",
+          "text": "DNSキャッシュポイズニング攻撃を完全に防ぐこと",
+          "explanation": {
+            "text": "DNSSECは改ざん検知を可能にするが、攻撃を完全に防ぐものではない。",
+            "reference": "https://www.nic.ad.jp/ja/dns/dnssec/",
+            "reference_label": "JPNIC DNSSEC解説"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "DNSSECは応答に署名を付与することで正当性を保証し、改ざんの有無を検証できる仕組みである。",
+        "reference": "https://www.nic.ad.jp/ja/dns/dnssec/",
+        "reference_label": "JPNIC DNSSEC解説"
+      }
+    },
+    {
+      "id": "it-AP-q16",
+      "question": "IoTデバイスのセキュリティ対策として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "初期設定のままのIDとパスワードを使い続ける",
+          "explanation": {
+            "text": "初期認証情報は攻撃に悪用されやすいため不適切。",
+            "reference": "https://www.ipa.go.jp/security/iot/",
+            "reference_label": "IPA IoTセキュリティ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "セキュリティ更新プログラムを適用する",
+          "explanation": {
+            "text": "脆弱性対策としてアップデートを適用するのは重要で正しい。",
+            "reference": "https://www.ipa.go.jp/security/iot/",
+            "reference_label": "IPA IoTセキュリティ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "外部との通信は常に無制限に許可する",
+          "explanation": {
+            "text": "無制限の通信は攻撃リスクを高めるため不適切。",
+            "reference": "https://www.ipa.go.jp/security/iot/",
+            "reference_label": "IPA IoTセキュリティ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "機器の利用状況を監視する必要はない",
+          "explanation": {
+            "text": "異常検知のためにも監視は重要であるため不適切。",
+            "reference": "https://www.ipa.go.jp/security/iot/",
+            "reference_label": "IPA IoTセキュリティ"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "IoTデバイスは脆弱性の対象になりやすいため、最新のセキュリティ更新を適用することが重要。",
+        "reference": "https://www.ipa.go.jp/security/iot/",
+        "reference_label": "IPA IoTセキュリティ"
+      }
+    },
+    {
+      "id": "it-AP-q17",
+      "question": "情報倫理の観点から、生成AIを利用する際に利用者が留意すべきこととして最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "生成AIの出力は必ず正確であるため、確認せずに利用できる",
+          "explanation": {
+            "text": "生成AIの出力には誤情報が含まれる可能性があるため誤り。",
+            "reference": "https://www.ipa.go.jp/jinzai/ai/",
+            "reference_label": "IPA AI利用ガイドライン"
+          }
+        },
+        {
+          "key": "B",
+          "text": "著作権や個人情報への配慮を行い、利用規約に従う必要がある",
+          "explanation": {
+            "text": "生成AI利用時には著作権やプライバシーに関する配慮が必須であり正しい。",
+            "reference": "https://www.ipa.go.jp/jinzai/ai/",
+            "reference_label": "IPA AI利用ガイドライン"
+          }
+        },
+        {
+          "key": "C",
+          "text": "利用したコンテンツの出所を必ず特定できるため問題はない",
+          "explanation": {
+            "text": "生成AIの出力は出所が不明な場合も多く、この前提は誤り。",
+            "reference": "https://www.ipa.go.jp/jinzai/ai/",
+            "reference_label": "IPA AI利用ガイドライン"
+          }
+        },
+        {
+          "key": "D",
+          "text": "利用規約に従う必要はなく、自由に使ってよい",
+          "explanation": {
+            "text": "各サービスの利用規約に従わなければならないため誤り。",
+            "reference": "https://www.ipa.go.jp/jinzai/ai/",
+            "reference_label": "IPA AI利用ガイドライン"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "生成AIの利用においては、著作権や個人情報保護を含む倫理的配慮が求められる。",
+        "reference": "https://www.ipa.go.jp/jinzai/ai/",
+        "reference_label": "IPA AI利用ガイドライン"
+      }
+    },
+    {
+      "id": "it-AP-q18",
+      "question": "AES暗号の特徴として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "公開鍵暗号方式であり、RSAの後継として利用される",
+          "explanation": {
+            "text": "AESは共通鍵暗号方式であり、公開鍵暗号ではない。",
+            "reference": "https://csrc.nist.gov/projects/block-cipher-techniques/aes",
+            "reference_label": "NIST AES解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "共通鍵暗号方式であり、高速かつ安全性が高い",
+          "explanation": {
+            "text": "AESは共通鍵暗号方式の代表例であり正しい。",
+            "reference": "https://csrc.nist.gov/projects/block-cipher-techniques/aes",
+            "reference_label": "NIST AES解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "暗号鍵の長さは固定で64ビットのみである",
+          "explanation": {
+            "text": "AESは128/192/256ビット鍵長をサポートしており、この記述は誤り。",
+            "reference": "https://csrc.nist.gov/projects/block-cipher-techniques/aes",
+            "reference_label": "NIST AES解説"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ストリーム暗号であり逐次的に暗号化を行う",
+          "explanation": {
+            "text": "AESはブロック暗号であり、ストリーム暗号ではない。",
+            "reference": "https://csrc.nist.gov/projects/block-cipher-techniques/aes",
+            "reference_label": "NIST AES解説"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "AESは高速かつ強力な共通鍵暗号であり、標準規格として広く利用されている。",
+        "reference": "https://csrc.nist.gov/projects/block-cipher-techniques/aes",
+        "reference_label": "NIST AES解説"
+      }
+    },
+    {
+      "id": "it-AP-q19",
+      "question": "アルゴリズムの時間計算量に関する説明として、O(n log n)に分類されるアルゴリズムの例として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "バブルソート",
+          "explanation": {
+            "text": "バブルソートはO(n^2)であり、O(n log n)ではない。",
+            "reference": "https://www.ipa.go.jp/jinzai/itss/algorithm.html",
+            "reference_label": "IPA アルゴリズム解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "マージソート",
+          "explanation": {
+            "text": "マージソートは分割統治法によりO(n log n)の計算量を持つ。",
+            "reference": "https://www.ipa.go.jp/jinzai/itss/algorithm.html",
+            "reference_label": "IPA アルゴリズム解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "線形探索",
+          "explanation": {
+            "text": "線形探索はO(n)であり、O(n log n)ではない。",
+            "reference": "https://www.ipa.go.jp/jinzai/itss/algorithm.html",
+            "reference_label": "IPA アルゴリズム解説"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ハッシュ探索",
+          "explanation": {
+            "text": "ハッシュ探索は平均でO(1)であり、O(n log n)ではない。",
+            "reference": "https://www.ipa.go.jp/jinzai/itss/algorithm.html",
+            "reference_label": "IPA アルゴリズム解説"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "O(n log n)の代表例はマージソートやクイックソートである。",
+        "reference": "https://www.ipa.go.jp/jinzai/itss/algorithm.html",
+        "reference_label": "IPA アルゴリズム解説"
+      }
+    },
+    {
+      "id": "it-AP-q20",
+      "question": "リレーショナルデータベースにおいて、トランザクションのACID特性のうち「I」が表すものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Isolation（独立性）",
+          "explanation": {
+            "text": "IはIsolationであり、トランザクションが互いに干渉しないことを意味する。",
+            "reference": "https://www.ipa.go.jp/jinzai/itss/database.html",
+            "reference_label": "IPA データベース解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Integrity（一貫性）",
+          "explanation": {
+            "text": "一貫性はConsistencyであり、Iではない。",
+            "reference": "https://www.ipa.go.jp/jinzai/itss/database.html",
+            "reference_label": "IPA データベース解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Identity（識別性）",
+          "explanation": {
+            "text": "ACID特性にIdentityは含まれない。",
+            "reference": "https://www.ipa.go.jp/jinzai/itss/database.html",
+            "reference_label": "IPA データベース解説"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Iteration（反復性）",
+          "explanation": {
+            "text": "IterationはACIDの構成要素ではない。",
+            "reference": "https://www.ipa.go.jp/jinzai/itss/database.html",
+            "reference_label": "IPA データベース解説"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ACID特性はAtomicity, Consistency, Isolation, Durabilityの頭文字であり、IはIsolationを意味する。",
+        "reference": "https://www.ipa.go.jp/jinzai/itss/database.html",
+        "reference_label": "IPA データベース解説"
+      }
+    },
+    {
+      "id": "it-AP-q21",
+      "question": "情報セキュリティにおける多要素認証（MFA）の説明として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "パスワードを2つ入力する方式である",
+          "explanation": {
+            "text": "複数のパスワードのみでは多要素認証とは言えない。",
+            "reference": "https://www.ipa.go.jp/security/mfa.html",
+            "reference_label": "IPA 多要素認証解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "異なる種類の要素（知識・所持・生体）を組み合わせる認証方式である",
+          "explanation": {
+            "text": "MFAは異なる要素を組み合わせることで強固な認証を実現するため正しい。",
+            "reference": "https://www.ipa.go.jp/security/mfa.html",
+            "reference_label": "IPA 多要素認証解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "必ず顔認証を含めなければならない方式である",
+          "explanation": {
+            "text": "必ず顔認証を含める必要はなく、要素の種類を組み合わせればよい。",
+            "reference": "https://www.ipa.go.jp/security/mfa.html",
+            "reference_label": "IPA 多要素認証解説"
+          }
+        },
+        {
+          "key": "D",
+          "text": "多要素認証はオンラインサービスでは利用できない",
+          "explanation": {
+            "text": "MFAはオンラインサービスで広く利用されており誤り。",
+            "reference": "https://www.ipa.go.jp/security/mfa.html",
+            "reference_label": "IPA 多要素認証解説"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "多要素認証は『知識要素（パスワード等）』『所持要素（トークン等）』『生体要素（指紋等）』を組み合わせることで強度を高める方式。",
+        "reference": "https://www.ipa.go.jp/security/mfa.html",
+        "reference_label": "IPA 多要素認証解説"
+      }
+    },
+    {
+      "id": "it-AP-q22",
+      "question": "ソーシャルエンジニアリング攻撃の例として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "総当たり攻撃によるパスワード解読",
+          "explanation": {
+            "text": "これは技術的攻撃であり、ソーシャルエンジニアリングには分類されない。",
+            "reference": "https://www.ipa.go.jp/security/ciadr/attack.html",
+            "reference_label": "IPA 攻撃手法解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "従業員に成りすまして電話でパスワードを聞き出す",
+          "explanation": {
+            "text": "人間の心理を突く攻撃であり、ソーシャルエンジニアリングの典型例である。",
+            "reference": "https://www.ipa.go.jp/security/ciadr/attack.html",
+            "reference_label": "IPA 攻撃手法解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "SQLインジェクションによる不正アクセス",
+          "explanation": {
+            "text": "これはWebアプリケーションへの技術的攻撃であり、ソーシャルエンジニアリングではない。",
+            "reference": "https://www.ipa.go.jp/security/ciadr/attack.html",
+            "reference_label": "IPA 攻撃手法解説"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ブルートフォースによる暗号鍵解析",
+          "explanation": {
+            "text": "これは暗号攻撃の一種であり、人間を利用する攻撃ではない。",
+            "reference": "https://www.ipa.go.jp/security/ciadr/attack.html",
+            "reference_label": "IPA 攻撃手法解説"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ソーシャルエンジニアリングは人間の心理や不注意を利用した攻撃手法である。代表例が電話によるパスワード詐取。",
+        "reference": "https://www.ipa.go.jp/security/ciadr/attack.html",
+        "reference_label": "IPA 攻撃手法解説"
+      }
+    },
+    {
+      "id": "it-AP-q23",
+      "question": "IPv6のアドレス自動設定機能（SLAAC）の特徴として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "必ずDHCPサーバを必要とする",
+          "explanation": {
+            "text": "SLAACはルータからのプレフィックス情報を基に自動設定を行い、DHCPサーバは不要である。",
+            "reference": "https://www.nic.ad.jp/ja/ipv6/",
+            "reference_label": "JPNIC IPv6解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ルータ広告を利用してIPアドレスを自動生成する",
+          "explanation": {
+            "text": "SLAACはルータ広告を基にホストが自身のIPv6アドレスを生成する方式であり正しい。",
+            "reference": "https://www.nic.ad.jp/ja/ipv6/",
+            "reference_label": "JPNIC IPv6解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "MACアドレスに依存しないアドレス生成方式である",
+          "explanation": {
+            "text": "従来はMACアドレスを基にしたが、現在はプライバシー拡張アドレスも利用される。",
+            "reference": "https://www.nic.ad.jp/ja/ipv6/",
+            "reference_label": "JPNIC IPv6解説"
+          }
+        },
+        {
+          "key": "D",
+          "text": "SLAACはセキュリティのためにIPsecを必須とする",
+          "explanation": {
+            "text": "SLAACとIPsecは直接関係しない。",
+            "reference": "https://www.nic.ad.jp/ja/ipv6/",
+            "reference_label": "JPNIC IPv6解説"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "SLAACはルータ広告を受信したホストが、自身でIPv6アドレスを生成する仕組みである。",
+        "reference": "https://www.nic.ad.jp/ja/ipv6/",
+        "reference_label": "JPNIC IPv6解説"
+      }
+    },
+    {
+      "id": "it-AP-q24",
+      "question": "システム開発におけるアーキテクチャスタイルの一つであるマイクロサービスの特徴として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "単一の巨大なアプリケーションとして開発する",
+          "explanation": {
+            "text": "これはモノリシックアーキテクチャの特徴であり、マイクロサービスではない。",
+            "reference": "https://www.cncf.io/",
+            "reference_label": "CNCF マイクロサービス解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "サービスごとに独立して開発・デプロイが可能である",
+          "explanation": {
+            "text": "マイクロサービスは独立した小規模サービスの集合であり、独立した開発・運用が可能で正しい。",
+            "reference": "https://www.cncf.io/",
+            "reference_label": "CNCF マイクロサービス解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "必ず同一のデータベースを共有しなければならない",
+          "explanation": {
+            "text": "マイクロサービスはサービスごとに独自のデータストアを持つことが多い。",
+            "reference": "https://www.cncf.io/",
+            "reference_label": "CNCF マイクロサービス解説"
+          }
+        },
+        {
+          "key": "D",
+          "text": "大規模システムには適用できない",
+          "explanation": {
+            "text": "マイクロサービスはむしろ大規模システムでの利用が拡大している。",
+            "reference": "https://www.cncf.io/",
+            "reference_label": "CNCF マイクロサービス解説"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "マイクロサービスは独立したサービスの集合であり、柔軟な開発・デプロイを可能にする。",
+        "reference": "https://www.cncf.io/",
+        "reference_label": "CNCF マイクロサービス解説"
+      }
+    },
+    {
+      "id": "it-AP-q25",
+      "question": "データ分析における機械学習モデルの精度評価指標のうち、二値分類問題で偽陽性を特に重視する場合に適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "再現率（Recall）",
+          "explanation": {
+            "text": "再現率は偽陰性を重視する指標である。",
+            "reference": "https://www.ipa.go.jp/files/000095877.pdf",
+            "reference_label": "IPA AI白書"
+          }
+        },
+        {
+          "key": "B",
+          "text": "適合率（Precision）",
+          "explanation": {
+            "text": "適合率は予測された陽性のうち実際に正しい割合であり、偽陽性を重視する場合に用いられる。",
+            "reference": "https://www.ipa.go.jp/files/000095877.pdf",
+            "reference_label": "IPA AI白書"
+          }
+        },
+        {
+          "key": "C",
+          "text": "F値（F1-score）",
+          "explanation": {
+            "text": "F値は適合率と再現率の調和平均であり、バランスを重視する指標である。",
+            "reference": "https://www.ipa.go.jp/files/000095877.pdf",
+            "reference_label": "IPA AI白書"
+          }
+        },
+        {
+          "key": "D",
+          "text": "正解率（Accuracy）",
+          "explanation": {
+            "text": "正解率は全体の正答率を示すが、クラス不均衡や偽陽性重視には不向き。",
+            "reference": "https://www.ipa.go.jp/files/000095877.pdf",
+            "reference_label": "IPA AI白書"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "偽陽性を抑えたい場合には適合率（Precision）を重視する。",
+        "reference": "https://www.ipa.go.jp/files/000095877.pdf",
+        "reference_label": "IPA AI白書"
+      }
+    },
+    {
+      "id": "it-AP-q26",
+      "question": "システム開発において、ウォーターフォール型の欠点として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "要件変更への柔軟な対応が困難である",
+          "explanation": {
+            "text": "ウォーターフォール型は上流で要件を固定するため変更に弱い。",
+            "reference": "https://www.ipa.go.jp/jinzai/itss/dev.html",
+            "reference_label": "IPA 開発手法解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "進捗が段階的に見える化されるため管理が難しい",
+          "explanation": {
+            "text": "ウォーターフォールは工程ごとに進捗が見える化されやすく、管理はしやすい。",
+            "reference": "https://www.ipa.go.jp/jinzai/itss/dev.html",
+            "reference_label": "IPA 開発手法解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "テスト工程が開発の初期に実施される",
+          "explanation": {
+            "text": "テストは後工程で実施されるため誤り。",
+            "reference": "https://www.ipa.go.jp/jinzai/itss/dev.html",
+            "reference_label": "IPA 開発手法解説"
+          }
+        },
+        {
+          "key": "D",
+          "text": "大規模開発には不向きである",
+          "explanation": {
+            "text": "ウォーターフォールは大規模開発に用いられることが多い。",
+            "reference": "https://www.ipa.go.jp/jinzai/itss/dev.html",
+            "reference_label": "IPA 開発手法解説"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ウォーターフォール型は要件を固定して進めるため、後からの変更に対応しづらい。",
+        "reference": "https://www.ipa.go.jp/jinzai/itss/dev.html",
+        "reference_label": "IPA 開発手法解説"
+      }
+    },
+    {
+      "id": "it-AP-q27",
+      "question": "不正アクセス禁止法における規制対象として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "公開されたWebサイトを誰でも閲覧する行為",
+          "explanation": {
+            "text": "公開されているWeb閲覧は不正アクセスにあたらない。",
+            "reference": "https://elaws.e-gov.go.jp/document?lawid=111AC0000000128",
+            "reference_label": "不正アクセス禁止法"
+          }
+        },
+        {
+          "key": "B",
+          "text": "他人のIDやパスワードを無断で利用する行為",
+          "explanation": {
+            "text": "不正アクセス禁止法ではID・パスワードの不正利用を禁止しているため正しい。",
+            "reference": "https://elaws.e-gov.go.jp/document?lawid=111AC0000000128",
+            "reference_label": "不正アクセス禁止法"
+          }
+        },
+        {
+          "key": "C",
+          "text": "自分が契約している回線を利用する行為",
+          "explanation": {
+            "text": "自分の正規契約での利用は不正アクセスではない。",
+            "reference": "https://elaws.e-gov.go.jp/document?lawid=111AC0000000128",
+            "reference_label": "不正アクセス禁止法"
+          }
+        },
+        {
+          "key": "D",
+          "text": "オープンWi-Fiを正規に利用する行為",
+          "explanation": {
+            "text": "正規利用は不正アクセスに当たらない。",
+            "reference": "https://elaws.e-gov.go.jp/document?lawid=111AC0000000128",
+            "reference_label": "不正アクセス禁止法"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "不正アクセス禁止法では、他人の認証情報を無断で利用する行為が禁止されている。",
+        "reference": "https://elaws.e-gov.go.jp/document?lawid=111AC0000000128",
+        "reference_label": "不正アクセス禁止法"
+      }
+    },
+    {
+      "id": "it-AP-q28",
+      "question": "プロジェクトマネジメントにおけるEVM（Earned Value Management）の指標で、スケジュール差異（SV）の計算式として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "SV = EV - PV",
+          "explanation": {
+            "text": "スケジュール差異は計画値（PV）と出来高（EV）の差として算出するため正しい。",
+            "reference": "https://www.pmi.org/",
+            "reference_label": "PMI PMBOK解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SV = EV - AC",
+          "explanation": {
+            "text": "これはコスト差異（CV）の計算式である。",
+            "reference": "https://www.pmi.org/",
+            "reference_label": "PMI PMBOK解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "SV = PV - AC",
+          "explanation": {
+            "text": "この式はEVMの指標には存在しない。",
+            "reference": "https://www.pmi.org/",
+            "reference_label": "PMI PMBOK解説"
+          }
+        },
+        {
+          "key": "D",
+          "text": "SV = AC - EV",
+          "explanation": {
+            "text": "この式も誤りであり、SVはEV - PVで表される。",
+            "reference": "https://www.pmi.org/",
+            "reference_label": "PMI PMBOK解説"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "スケジュール差異（SV）は EV（出来高） - PV（計画値）で算出される。",
+        "reference": "https://www.pmi.org/",
+        "reference_label": "PMI PMBOK解説"
+      }
+    },
+    {
+      "id": "it-AP-q29",
+      "question": "PKI（公開鍵基盤）において、認証局（CA）の役割として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "公開鍵と利用者の対応関係を証明するデジタル証明書を発行する",
+          "explanation": {
+            "text": "CAは公開鍵と利用者を結びつける証明書を発行する役割を持ち、正しい。",
+            "reference": "https://www.ipa.go.jp/security/pki/",
+            "reference_label": "IPA PKI解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "通信内容を暗号化する処理を実行する",
+          "explanation": {
+            "text": "暗号化は利用者の端末やアプリケーションが行い、CAの役割ではない。",
+            "reference": "https://www.ipa.go.jp/security/pki/",
+            "reference_label": "IPA PKI解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "秘密鍵を全利用者に安全に配布する",
+          "explanation": {
+            "text": "秘密鍵は利用者自身が保持し、CAは配布しない。",
+            "reference": "https://www.ipa.go.jp/security/pki/",
+            "reference_label": "IPA PKI解説"
+          }
+        },
+        {
+          "key": "D",
+          "text": "利用者の認証を一切行わず、公開鍵だけを管理する",
+          "explanation": {
+            "text": "CAは利用者の認証を行い、公開鍵を証明する役割を担うため誤り。",
+            "reference": "https://www.ipa.go.jp/security/pki/",
+            "reference_label": "IPA PKI解説"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "認証局は公開鍵と利用者の関係を保証するデジタル証明書を発行する機関である。",
+        "reference": "https://www.ipa.go.jp/security/pki/",
+        "reference_label": "IPA PKI解説"
+      }
+    },
+    {
+      "id": "it-AP-q30",
+      "question": "ネットワークのQoS（Quality of Service）を確保する仕組みとして最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "パケットの暗号化による秘匿性確保",
+          "explanation": {
+            "text": "これはセキュリティ対策であり、QoS確保の手法ではない。",
+            "reference": "https://www.ietf.org/rfc/rfc2475.txt",
+            "reference_label": "IETF QoS (DiffServ) RFC2475"
+          }
+        },
+        {
+          "key": "B",
+          "text": "トラフィックの優先度制御や帯域幅の予約",
+          "explanation": {
+            "text": "QoSでは遅延や帯域の保証のために優先度制御や帯域幅管理を行う。正しい。",
+            "reference": "https://www.ietf.org/rfc/rfc2475.txt",
+            "reference_label": "IETF QoS (DiffServ) RFC2475"
+          }
+        },
+        {
+          "key": "C",
+          "text": "IPアドレスの自動割り当て",
+          "explanation": {
+            "text": "これはDHCPの機能であり、QoSとは無関係。",
+            "reference": "https://www.ietf.org/rfc/rfc2475.txt",
+            "reference_label": "IETF QoS (DiffServ) RFC2475"
+          }
+        },
+        {
+          "key": "D",
+          "text": "通信相手の認証とアクセス制御",
+          "explanation": {
+            "text": "これはセキュリティ機能であり、QoS確保の仕組みではない。",
+            "reference": "https://www.ietf.org/rfc/rfc2475.txt",
+            "reference_label": "IETF QoS (DiffServ) RFC2475"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "QoSはネットワーク上で遅延や帯域を制御する仕組みであり、優先度付けや帯域確保が典型的な方法である。",
+        "reference": "https://www.ietf.org/rfc/rfc2475.txt",
+        "reference_label": "IETF QoS (DiffServ) RFC2475"
+      }
+    },
+    {
+      "id": "it-AP-q31",
+      "question": "アジャイル開発におけるスクラムの特徴として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "開発工程を一度だけ通して進める",
+          "explanation": {
+            "text": "これはウォーターフォール型の特徴であり、スクラムには当てはまらない。",
+            "reference": "https://scrumguides.org/",
+            "reference_label": "Scrum Guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "短期間のスプリントを繰り返しながら開発を進める",
+          "explanation": {
+            "text": "スクラムはスプリントと呼ばれる反復を重ねることで開発を進める手法であり正しい。",
+            "reference": "https://scrumguides.org/",
+            "reference_label": "Scrum Guide"
+          }
+        },
+        {
+          "key": "C",
+          "text": "全ての作業を詳細に文書化することを重視する",
+          "explanation": {
+            "text": "スクラムでは動くソフトウェアを重視し、文書化は最小限にする。",
+            "reference": "https://scrumguides.org/",
+            "reference_label": "Scrum Guide"
+          }
+        },
+        {
+          "key": "D",
+          "text": "開発の途中で要求変更は認めない",
+          "explanation": {
+            "text": "スクラムは柔軟な変更対応を特徴とするため誤り。",
+            "reference": "https://scrumguides.org/",
+            "reference_label": "Scrum Guide"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "スクラムは短いスプリントを繰り返すことで開発を進めるアジャイル手法の一つである。",
+        "reference": "https://scrumguides.org/",
+        "reference_label": "Scrum Guide"
+      }
+    },
+    {
+      "id": "it-AP-q32",
+      "question": "SWOT分析において、外部環境に含まれる要素として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "自社の持つ特許技術",
+          "explanation": {
+            "text": "特許技術は内部の強み（Strength）に該当する。",
+            "reference": "https://www.jetro.go.jp/",
+            "reference_label": "JETRO 経営戦略解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "市場の成長率",
+          "explanation": {
+            "text": "市場の動向は外部要因であり、機会（Opportunity）に分類される。",
+            "reference": "https://www.jetro.go.jp/",
+            "reference_label": "JETRO 経営戦略解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "社員のスキルレベル",
+          "explanation": {
+            "text": "これは内部要因に分類される。",
+            "reference": "https://www.jetro.go.jp/",
+            "reference_label": "JETRO 経営戦略解説"
+          }
+        },
+        {
+          "key": "D",
+          "text": "保有する資金",
+          "explanation": {
+            "text": "資金は内部の強みに該当する。",
+            "reference": "https://www.jetro.go.jp/",
+            "reference_label": "JETRO 経営戦略解説"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "SWOT分析では市場や競合などの外部要因をOpportunityやThreatとして分類する。市場成長率は外部環境の要素である。",
+        "reference": "https://www.jetro.go.jp/",
+        "reference_label": "JETRO 経営戦略解説"
+      }
+    },
+    {
+      "id": "it-AP-q33",
+      "question": "機械学習における教師なし学習の例として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "スパムメール分類",
+          "explanation": {
+            "text": "スパム分類はラベル付きデータを使うため教師あり学習。",
+            "reference": "https://www.ipa.go.jp/files/000095877.pdf",
+            "reference_label": "IPA AI白書"
+          }
+        },
+        {
+          "key": "B",
+          "text": "画像のクラスタリングによる類似グループ化",
+          "explanation": {
+            "text": "クラスタリングはラベルを用いないため教師なし学習であり正しい。",
+            "reference": "https://www.ipa.go.jp/files/000095877.pdf",
+            "reference_label": "IPA AI白書"
+          }
+        },
+        {
+          "key": "C",
+          "text": "教師データに基づく音声認識モデル",
+          "explanation": {
+            "text": "音声認識は典型的な教師あり学習の事例である。",
+            "reference": "https://www.ipa.go.jp/files/000095877.pdf",
+            "reference_label": "IPA AI白書"
+          }
+        },
+        {
+          "key": "D",
+          "text": "強化学習によるロボットの動作最適化",
+          "explanation": {
+            "text": "強化学習は教師なし学習とは異なる。",
+            "reference": "https://www.ipa.go.jp/files/000095877.pdf",
+            "reference_label": "IPA AI白書"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "教師なし学習はラベルなしデータを利用して構造を発見する手法であり、クラスタリングが代表例。",
+        "reference": "https://www.ipa.go.jp/files/000095877.pdf",
+        "reference_label": "IPA AI白書"
+      }
+    },
+    {
+      "id": "it-AP-q34",
+      "question": "システム監査における監査証拠の適切な特徴はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "監査員の主観的な印象に基づく",
+          "explanation": {
+            "text": "監査証拠は客観的でなければならず、主観的印象は不適切。",
+            "reference": "https://www.ipa.go.jp/sec/isa/",
+            "reference_label": "IPA システム監査基準"
+          }
+        },
+        {
+          "key": "B",
+          "text": "客観的で、十分かつ適切である必要がある",
+          "explanation": {
+            "text": "監査証拠は信頼性と妥当性を担保するため、客観性と十分性が求められる。",
+            "reference": "https://www.ipa.go.jp/sec/isa/",
+            "reference_label": "IPA システム監査基準"
+          }
+        },
+        {
+          "key": "C",
+          "text": "監査対象部門の責任者が保証すれば不要となる",
+          "explanation": {
+            "text": "保証があっても監査証拠は必須である。",
+            "reference": "https://www.ipa.go.jp/sec/isa/",
+            "reference_label": "IPA システム監査基準"
+          }
+        },
+        {
+          "key": "D",
+          "text": "監査人が収集する必要はなく、対象部門に委ねる",
+          "explanation": {
+            "text": "監査証拠は監査人自身が収集し評価する必要がある。",
+            "reference": "https://www.ipa.go.jp/sec/isa/",
+            "reference_label": "IPA システム監査基準"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "監査証拠は客観的・十分・適切であることが求められる。信頼性のある根拠なしでは監査の妥当性を保証できない。",
+        "reference": "https://www.ipa.go.jp/sec/isa/",
+        "reference_label": "IPA システム監査基準"
+      }
+    },
+    {
+      "id": "it-AP-q35",
+      "question": "クラウドネイティブの考え方に基づいたシステム設計の特徴として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "サーバの冗長構成をオンプレミスのみで行う",
+          "explanation": {
+            "text": "クラウドネイティブはクラウドを前提とした設計であり、オンプレミスのみは不適切。",
+            "reference": "https://www.cncf.io/",
+            "reference_label": "CNCF クラウドネイティブ解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "マイクロサービスやコンテナを活用してスケーラブルな設計を行う",
+          "explanation": {
+            "text": "クラウドネイティブの特徴はコンテナ化、マイクロサービス化、動的スケーリングであり正しい。",
+            "reference": "https://www.cncf.io/",
+            "reference_label": "CNCF クラウドネイティブ解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "全てのリソースを固定的に割り当て、動的変更を避ける",
+          "explanation": {
+            "text": "クラウドネイティブは動的なスケーリングを前提とするため誤り。",
+            "reference": "https://www.cncf.io/",
+            "reference_label": "CNCF クラウドネイティブ解説"
+          }
+        },
+        {
+          "key": "D",
+          "text": "クラウド上に構築する場合もオンプレミスと同一の設計を用いる",
+          "explanation": {
+            "text": "クラウドの特性を活かす設計が必要であり、単純なオンプレ設計の流用はクラウドネイティブではない。",
+            "reference": "https://www.cncf.io/",
+            "reference_label": "CNCF クラウドネイティブ解説"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "クラウドネイティブはクラウドの特性を活かし、マイクロサービス・コンテナ・オートスケーリングを前提とする設計思想。",
+        "reference": "https://www.cncf.io/",
+        "reference_label": "CNCF クラウドネイティブ解説"
+      }
+    },
+    {
+      "id": "it-AP-q36",
+      "question": "ランサムウェア攻撃に対する有効な対策として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "定期的なデータバックアップを取り、復元手順を確認しておく",
+          "explanation": {
+            "text": "バックアップは被害後の復旧に有効であり、重要な対策である。",
+            "reference": "https://www.ipa.go.jp/security/ransomware/",
+            "reference_label": "IPA ランサムウェア対策"
+          }
+        },
+        {
+          "key": "B",
+          "text": "攻撃を受けた場合は必ず身代金を支払う",
+          "explanation": {
+            "text": "身代金を支払ってもデータ復旧が保証されないため不適切。",
+            "reference": "https://www.ipa.go.jp/security/ransomware/",
+            "reference_label": "IPA ランサムウェア対策"
+          }
+        },
+        {
+          "key": "C",
+          "text": "OSやソフトウェアの更新を一切行わない",
+          "explanation": {
+            "text": "更新を行わないと脆弱性が残り、攻撃を受けやすくなる。",
+            "reference": "https://www.ipa.go.jp/security/ransomware/",
+            "reference_label": "IPA ランサムウェア対策"
+          }
+        },
+        {
+          "key": "D",
+          "text": "不審なメールを必ず開封して確認する",
+          "explanation": {
+            "text": "不審メールを開封するのはリスクを高める行為であり誤り。",
+            "reference": "https://www.ipa.go.jp/security/ransomware/",
+            "reference_label": "IPA ランサムウェア対策"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ランサムウェアに備えるにはバックアップとソフトウェア更新、不審メールへの注意が重要。特にバックアップは復旧の最後の砦。",
+        "reference": "https://www.ipa.go.jp/security/ransomware/",
+        "reference_label": "IPA ランサムウェア対策"
+      }
+    },
+    {
+      "id": "it-AP-q37",
+      "question": "SDN（Software Defined Networking）の特徴として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "制御プレーンとデータプレーンを分離する",
+          "explanation": {
+            "text": "SDNは制御プレーンを集中管理し、データプレーンを分離する点が特徴である。",
+            "reference": "https://www.ietf.org/topics/sdn/",
+            "reference_label": "IETF SDN解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "全てのルータに静的ルーティングを設定する",
+          "explanation": {
+            "text": "これは従来型の方式であり、SDNの特徴ではない。",
+            "reference": "https://www.ietf.org/topics/sdn/",
+            "reference_label": "IETF SDN解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "物理ネットワーク機器に依存して構成する",
+          "explanation": {
+            "text": "SDNは物理機器依存を減らし、柔軟な制御を可能にする。",
+            "reference": "https://www.ietf.org/topics/sdn/",
+            "reference_label": "IETF SDN解説"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザの端末に直接ルーティング機能を持たせる",
+          "explanation": {
+            "text": "端末にルーティング機能を持たせるのはSDNの考え方ではない。",
+            "reference": "https://www.ietf.org/topics/sdn/",
+            "reference_label": "IETF SDN解説"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "SDNは制御プレーンを集中化し、柔軟なネットワーク制御を可能にする技術である。",
+        "reference": "https://www.ietf.org/topics/sdn/",
+        "reference_label": "IETF SDN解説"
+      }
+    },
+    {
+      "id": "it-AP-q38",
+      "question": "機械学習においてバイアス（bias）が問題となるのはどのような場合か。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "学習データに偏りがあり、特定の属性に不公平な結果を生じる",
+          "explanation": {
+            "text": "データの偏りによって差別的な結果が出るのがAIにおけるバイアス問題である。",
+            "reference": "https://www.ipa.go.jp/jinzai/ai/",
+            "reference_label": "IPA AI倫理解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ニューラルネットワークに含まれる重みパラメータの一つである",
+          "explanation": {
+            "text": "数理的にはbias項があるが、社会的課題としてのバイアス問題とは異なる。",
+            "reference": "https://www.ipa.go.jp/jinzai/ai/",
+            "reference_label": "IPA AI倫理解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "モデルが過学習し、未知データに適応できない",
+          "explanation": {
+            "text": "これは過学習の問題であり、バイアス問題とは別。",
+            "reference": "https://www.ipa.go.jp/jinzai/ai/",
+            "reference_label": "IPA AI倫理解説"
+          }
+        },
+        {
+          "key": "D",
+          "text": "GPUを用いた高速演算で誤差が生じる",
+          "explanation": {
+            "text": "これはハードウェア的な誤差であり、バイアス問題とは関係ない。",
+            "reference": "https://www.ipa.go.jp/jinzai/ai/",
+            "reference_label": "IPA AI倫理解説"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "AIのバイアス問題は、学習データの偏りにより公平性を欠いた出力が生じることである。",
+        "reference": "https://www.ipa.go.jp/jinzai/ai/",
+        "reference_label": "IPA AI倫理解説"
+      }
+    },
+    {
+      "id": "it-AP-q39",
+      "question": "PERTにおけるアロー図の3点見積もりで、期待時間の算出式として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "(楽観値 + 悲観値) / 2",
+          "explanation": {
+            "text": "これは単純平均でありPERTの式ではない。",
+            "reference": "https://www.pmi.org/",
+            "reference_label": "PMI PMBOK解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "(楽観値 + 悲観値 + 最可能値) / 3",
+          "explanation": {
+            "text": "単純平均をとる式であり、PERTの式ではない。",
+            "reference": "https://www.pmi.org/",
+            "reference_label": "PMI PMBOK解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "(楽観値 + 4 × 最可能値 + 悲観値) / 6",
+          "explanation": {
+            "text": "PERTでは最可能値を重み付けした加重平均を用いるため正しい。",
+            "reference": "https://www.pmi.org/",
+            "reference_label": "PMI PMBOK解説"
+          }
+        },
+        {
+          "key": "D",
+          "text": "(楽観値 + 2 × 最可能値 + 悲観値) / 4",
+          "explanation": {
+            "text": "これは誤った式である。",
+            "reference": "https://www.pmi.org/",
+            "reference_label": "PMI PMBOK解説"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "PERTの期待時間は (楽観値 + 4×最可能値 + 悲観値) / 6 で算出する。",
+        "reference": "https://www.pmi.org/",
+        "reference_label": "PMI PMBOK解説"
+      }
+    },
+    {
+      "id": "it-AP-q40",
+      "question": "バリューチェーン分析における支援活動に分類されるものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "購買（調達活動）",
+          "explanation": {
+            "text": "購買は支援活動に含まれる。正しい。",
+            "reference": "https://www.jetro.go.jp/",
+            "reference_label": "JETRO 経営戦略解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "物流（入荷・出荷）",
+          "explanation": {
+            "text": "物流は主活動であり、支援活動ではない。",
+            "reference": "https://www.jetro.go.jp/",
+            "reference_label": "JETRO 経営戦略解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "サービス（保守・サポート）",
+          "explanation": {
+            "text": "サービスは主活動であり、支援活動ではない。",
+            "reference": "https://www.jetro.go.jp/",
+            "reference_label": "JETRO 経営戦略解説"
+          }
+        },
+        {
+          "key": "D",
+          "text": "製造（オペレーション）",
+          "explanation": {
+            "text": "製造は主活動に分類される。",
+            "reference": "https://www.jetro.go.jp/",
+            "reference_label": "JETRO 経営戦略解説"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "バリューチェーン分析では支援活動に購買、人事管理、技術開発、インフラ活動が含まれる。",
+        "reference": "https://www.jetro.go.jp/",
+        "reference_label": "JETRO 経営戦略解説"
+      }
+    },
+    {
+      "id": "it-AP-q41",
+      "question": "データベースにおけるビュー（View）の特徴として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "物理的にデータを保存する表である",
+          "explanation": {
+            "text": "ビューは物理表ではなく、論理的に定義される仮想表である。",
+            "reference": "https://www.ipa.go.jp/jinzai/itss/database.html",
+            "reference_label": "IPA データベース解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "セキュリティ制御の一環として利用できる",
+          "explanation": {
+            "text": "ビューを利用することで必要な列や行だけを利用者に見せることが可能であり正しい。",
+            "reference": "https://www.ipa.go.jp/jinzai/itss/database.html",
+            "reference_label": "IPA データベース解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ビューに定義されたデータは常に更新できる",
+          "explanation": {
+            "text": "ビューの内容によっては更新ができない場合がある。",
+            "reference": "https://www.ipa.go.jp/jinzai/itss/database.html",
+            "reference_label": "IPA データベース解説"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ビューはパフォーマンス向上を保証する",
+          "explanation": {
+            "text": "ビューは必ずしも性能向上を保証しない。",
+            "reference": "https://www.ipa.go.jp/jinzai/itss/database.html",
+            "reference_label": "IPA データベース解説"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ビューは仮想表であり、アクセス制御やセキュリティの観点から特定の情報のみを利用者に見せるために活用される。",
+        "reference": "https://www.ipa.go.jp/jinzai/itss/database.html",
+        "reference_label": "IPA データベース解説"
+      }
+    },
+    {
+      "id": "it-AP-q42",
+      "question": "プロジェクトマネジメントにおけるステークホルダー分析の目的として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "システムの詳細設計仕様を作成すること",
+          "explanation": {
+            "text": "ステークホルダー分析は設計作業ではなく、関係者の利害整理を目的とする。",
+            "reference": "https://www.pmi.org/",
+            "reference_label": "PMI PMBOK解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "関係者の影響度や関心度を把握し、適切な対応を計画すること",
+          "explanation": {
+            "text": "ステークホルダー分析は利害関係者を特定し、その影響や関心を把握するための活動であり正しい。",
+            "reference": "https://www.pmi.org/",
+            "reference_label": "PMI PMBOK解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "プロジェクトの収益性を分析すること",
+          "explanation": {
+            "text": "収益性分析は財務的な評価であり、ステークホルダー分析の目的ではない。",
+            "reference": "https://www.pmi.org/",
+            "reference_label": "PMI PMBOK解説"
+          }
+        },
+        {
+          "key": "D",
+          "text": "テスト計画を立案するための情報を収集すること",
+          "explanation": {
+            "text": "テスト計画は品質管理に関連する活動であり、ステークホルダー分析の目的ではない。",
+            "reference": "https://www.pmi.org/",
+            "reference_label": "PMI PMBOK解説"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ステークホルダー分析は関係者を特定し、その影響度や関心度を把握して適切なマネジメント戦略を立てるために行う。",
+        "reference": "https://www.pmi.org/",
+        "reference_label": "PMI PMBOK解説"
+      }
+    },
+    {
+      "id": "it-AP-q43",
+      "question": "パブリッククラウドを採用する利点として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "利用者ごとに物理サーバを専有できる",
+          "explanation": {
+            "text": "物理サーバ専有は専用ホスティングや一部の専有オプションの特徴であり、一般的なパブリッククラウドの利点ではない。",
+            "reference": "https://www.ipa.go.jp/security/cloud/",
+            "reference_label": "IPA クラウドセキュリティの概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "利用状況に応じてリソースを柔軟に拡張・縮小できる",
+          "explanation": {
+            "text": "パブリッククラウドはスケーラビリティとオンデマンド性が高く、需要に応じた弾力的な拡縮が可能である。",
+            "reference": "https://www.ipa.go.jp/security/cloud/",
+            "reference_label": "IPA クラウドセキュリティの概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "必ず利用者自身でデータセンターを運用できる",
+          "explanation": {
+            "text": "データセンター運用はクラウド事業者の責任であり、利用者が直接運用するわけではない。",
+            "reference": "https://www.ipa.go.jp/security/cloud/",
+            "reference_label": "IPA クラウドセキュリティの概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "オンプレミスと同様に初期投資が必要となる",
+          "explanation": {
+            "text": "クラウドは従量課金やサブスクリプションが基本で、初期投資は抑えられることが多い。",
+            "reference": "https://www.ipa.go.jp/security/cloud/",
+            "reference_label": "IPA クラウドセキュリティの概要"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "パブリッククラウドの代表的メリットは、迅速なリソースの弾力的拡縮と初期投資の低減である。",
+        "reference": "https://www.ipa.go.jp/security/cloud/",
+        "reference_label": "IPA クラウドセキュリティの概要"
+      }
+    },
+    {
+      "id": "it-AP-q44",
+      "question": "情報処理安全確保支援士に関する制度上の特徴として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "登録は一度行えば更新不要である",
+          "explanation": {
+            "text": "支援士は継続的な講習・更新が必要である。",
+            "reference": "https://www.ipa.go.jp/siensi/",
+            "reference_label": "IPA 情報処理安全確保支援士 制度案内"
+          }
+        },
+        {
+          "key": "B",
+          "text": "名称独占資格であり、登録者のみが名乗れる",
+          "explanation": {
+            "text": "支援士は国家資格の名称独占であり、登録を完了した者のみがその名称を使用できる。",
+            "reference": "https://www.ipa.go.jp/siensi/",
+            "reference_label": "IPA 情報処理安全確保支援士 制度案内"
+          }
+        },
+        {
+          "key": "C",
+          "text": "試験合格後、登録しなくても資格を名乗れる",
+          "explanation": {
+            "text": "登録しなければ資格名称を名乗ることはできない。",
+            "reference": "https://www.ipa.go.jp/siensi/",
+            "reference_label": "IPA 情報処理安全確保支援士 制度案内"
+          }
+        },
+        {
+          "key": "D",
+          "text": "国家資格ではなく民間資格である",
+          "explanation": {
+            "text": "支援士は国家資格である。",
+            "reference": "https://www.ipa.go.jp/siensi/",
+            "reference_label": "IPA 情報処理安全確保支援士 制度案内"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "情報処理安全確保支援士は国家資格であり、名称独占資格として登録者のみが名乗れる。",
+        "reference": "https://www.ipa.go.jp/siensi/",
+        "reference_label": "IPA 情報処理安全確保支援士 制度案内"
+      }
+    },
+    {
+      "id": "it-AP-q45",
+      "question": "ディープラーニングにおける畳み込みニューラルネットワーク（CNN）の特徴として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "系列データの解析に特化している",
+          "explanation": {
+            "text": "系列データ解析はRNNやTransformerが得意で、CNNの主用途ではない。",
+            "reference": "https://www.ipa.go.jp/files/000095877.pdf",
+            "reference_label": "IPA AI白書（ディープラーニング概説）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "画像認識に強く、特徴抽出に畳み込み層を利用する",
+          "explanation": {
+            "text": "CNNは畳み込み・プーリングにより空間的特徴を抽出し、画像認識で広く用いられる。",
+            "reference": "https://www.ipa.go.jp/files/000095877.pdf",
+            "reference_label": "IPA AI白書（ディープラーニング概説）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "教師なし学習専用のモデルである",
+          "explanation": {
+            "text": "CNNは主に教師あり学習で用いられ、専用ではない。",
+            "reference": "https://www.ipa.go.jp/files/000095877.pdf",
+            "reference_label": "IPA AI白書（ディープラーニング概説）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "勾配消失問題を解決するために設計された",
+          "explanation": {
+            "text": "勾配消失は主にRNN等で顕在化する課題で、CNNの設計目的ではない。",
+            "reference": "https://www.ipa.go.jp/files/000095877.pdf",
+            "reference_label": "IPA AI白書（ディープラーニング概説）"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "CNNは畳み込み層で局所受容野を用いて画像の特徴を抽出する構造が特徴。",
+        "reference": "https://www.ipa.go.jp/files/000095877.pdf",
+        "reference_label": "IPA AI白書（ディープラーニング概説）"
+      }
+    },
+    {
+      "id": "it-AP-q46",
+      "question": "ゼロデイ攻撃の説明として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "公開済みの脆弱性に対して既知のパッチを適用して行う攻撃",
+          "explanation": {
+            "text": "公開済みの脆弱性と既存パッチはゼロデイの条件に合致しない。",
+            "reference": "https://www.ipa.go.jp/security/vuln/",
+            "reference_label": "IPA 脆弱性対策総合"
+          }
+        },
+        {
+          "key": "B",
+          "text": "脆弱性が公開・修正される前に行われる攻撃",
+          "explanation": {
+            "text": "ゼロデイ攻撃は修正パッチが存在しない段階での脆弱性悪用を指す。",
+            "reference": "https://www.ipa.go.jp/security/vuln/",
+            "reference_label": "IPA 脆弱性対策総合"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ゼロトラスト環境でのみ成立する攻撃",
+          "explanation": {
+            "text": "ゼロデイとゼロトラストは別概念であり無関係。",
+            "reference": "https://www.ipa.go.jp/security/vuln/",
+            "reference_label": "IPA 脆弱性対策総合"
+          }
+        },
+        {
+          "key": "D",
+          "text": "常にDoS攻撃の形態を取る攻撃",
+          "explanation": {
+            "text": "ゼロデイはDoSに限定されず、RCEや権限昇格など多様な形態がある。",
+            "reference": "https://www.ipa.go.jp/security/vuln/",
+            "reference_label": "IPA 脆弱性対策総合"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ゼロデイ攻撃は修正パッチがない段階での脆弱性悪用で、検知・防御が難しい。",
+        "reference": "https://www.ipa.go.jp/security/vuln/",
+        "reference_label": "IPA 脆弱性対策総合"
+      }
+    },
+    {
+      "id": "it-AP-q47",
+      "question": "データ分析における正規分布の特徴として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "平均値を中心とした左右対称の分布である",
+          "explanation": {
+            "text": "正規分布は平均・中央値・最頻値が一致し、平均を中心に対称となる。",
+            "reference": "https://www.ipa.go.jp/jinzai/itss/statistics.html",
+            "reference_label": "IPA 統計の基礎解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "常に右に歪んだ分布となる",
+          "explanation": {
+            "text": "正規分布は歪度0の対称分布であり右に歪むとは限らない。",
+            "reference": "https://www.ipa.go.jp/jinzai/itss/statistics.html",
+            "reference_label": "IPA 統計の基礎解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "平均値と中央値が常に異なる",
+          "explanation": {
+            "text": "正規分布では平均・中央値・最頻値は一致する。",
+            "reference": "https://www.ipa.go.jp/jinzai/itss/statistics.html",
+            "reference_label": "IPA 統計の基礎解説"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データの範囲が0から1に限定される",
+          "explanation": {
+            "text": "正規分布は理論上、実数全域に広がる。",
+            "reference": "https://www.ipa.go.jp/jinzai/itss/statistics.html",
+            "reference_label": "IPA 統計の基礎解説"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "正規分布は平均を中心とする対称分布で、統計推論の前提として頻出。",
+        "reference": "https://www.ipa.go.jp/jinzai/itss/statistics.html",
+        "reference_label": "IPA 統計の基礎解説"
+      }
+    },
+    {
+      "id": "it-AP-q48",
+      "question": "システムの可用性を高める手法としてRAID1が提供する特徴はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データを複数ディスクに分散し、アクセス速度を向上させる",
+          "explanation": {
+            "text": "これはRAID0の特徴で、冗長性は提供しない。",
+            "reference": "https://www.ipa.go.jp/jinzai/itss/storage.html",
+            "reference_label": "IPA ストレージ技術の基礎"
+          }
+        },
+        {
+            "key": "B",
+            "text": "データを複製して保存し、耐障害性を高める",
+            "explanation": {
+              "text": "RAID1はミラーリングによりディスク障害時も継続運用を可能にする。",
+              "reference": "https://www.ipa.go.jp/jinzai/itss/storage.html",
+              "reference_label": "IPA ストレージ技術の基礎"
+            }
+        },
+        {
+          "key": "C",
+          "text": "パリティを利用して誤り訂正を行う",
+          "explanation": {
+            "text": "パリティはRAID5/6などの特徴で、RAID1の方式ではない。",
+            "reference": "https://www.ipa.go.jp/jinzai/itss/storage.html",
+            "reference_label": "IPA ストレージ技術の基礎"
+          }
+        },
+        {
+          "key": "D",
+          "text": "1台のディスクしか利用できない",
+          "explanation": {
+            "text": "RAID1は複数ディスクに同一データを保持する。",
+            "reference": "https://www.ipa.go.jp/jinzai/itss/storage.html",
+            "reference_label": "IPA ストレージ技術の基礎"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "RAID1はミラーリングで冗長化し、単一ディスク障害時の継続運用と迅速な復旧に寄与する。",
+        "reference": "https://www.ipa.go.jp/jinzai/itss/storage.html",
+        "reference_label": "IPA ストレージ技術の基礎"
+      }
+    },
+    {
+      "id": "it-AP-q49",
+      "question": "AIモデルの説明可能性（XAI: Explainable AI）の目的として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "モデルの内部処理をブラックボックス化すること",
+          "explanation": {
+            "text": "XAIは透明性・説明性を高め、ブラックボックス性を低減するためのアプローチである。",
+            "reference": "https://www.ipa.go.jp/jinzai/ai/",
+            "reference_label": "IPA AIの利活用・ガイドライン"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AIの予測結果の根拠を人間に理解できる形で示すこと",
+          "explanation": {
+            "text": "説明可能性の中核は、出力の理由や影響要因を人に理解可能な形で提示すること。",
+            "reference": "https://www.ipa.go.jp/jinzai/ai/",
+            "reference_label": "IPA AIの利活用・ガイドライン"
+          }
+        },
+        {
+          "key": "C",
+          "text": "AIの性能を必ず向上させること",
+          "explanation": {
+            "text": "説明可能性は信頼性や監査性の向上を目的とし、性能向上は保証しない。",
+            "reference": "https://www.ipa.go.jp/jinzai/ai/",
+            "reference_label": "IPA AIの利活用・ガイドライン"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AIの出力をすべて確率値で表すこと",
+          "explanation": {
+            "text": "確率提示は手段の一つに過ぎず、XAIの目的そのものではない。",
+            "reference": "https://www.ipa.go.jp/jinzai/ai/",
+            "reference_label": "IPA AIの利活用・ガイドライン"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "XAIは説明責任・透明性・公平性の確保のため、予測根拠を理解可能に提示することを目指す。",
+        "reference": "https://www.ipa.go.jp/jinzai/ai/",
+        "reference_label": "IPA AIの利活用・ガイドライン"
+      }
+    },
+    {
+      "id": "it-AP-q50",
+      "question": "情報セキュリティにおけるSIEM（Security Information and Event Management）の主な目的として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "組織内の人事管理を効率化する",
+          "explanation": {
+            "text": "SIEMはセキュリティ監視・分析の基盤であり、人事管理の仕組みではない。",
+            "reference": "https://www.nri-secure.co.jp/glossary/siem",
+            "reference_label": "NRIセキュア：SIEMとは（用語集）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "多様な機器やクラウドのログを一元収集・相関分析し、脅威の早期検知と可視化を行う",
+          "explanation": {
+            "text": "SIEMはログを集約・正規化・相関分析してセキュリティ事象を可視化・検知する基盤である。",
+            "reference": "https://www.nttpc.co.jp/column/security/whats_siem.html",
+            "reference_label": "NTTPC：SIEMの仕組みとメリット"
+          }
+        },
+        {
+          "key": "C",
+          "text": "エンドポイントの侵害対応（隔離や復旧）を自動実行する",
+          "explanation": {
+            "text": "自動応答はSOAR/EDRの領域で、SIEM単体の主目的ではない（連携はあり得る）。",
+            "reference": "https://jp.security.ntt/insights_resources/security_magazine/edr-siem-difference/",
+            "reference_label": "NTTセキュリティ：EDRとSIEMの違い"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ログの長期保管は行わず、リアルタイム監視のみに特化する",
+          "explanation": {
+            "text": "SIEMは相関分析や監視に加え、監査・調査のためのログ保管も重要な機能である。",
+            "reference": "https://www.ipa.go.jp/security/reports/oversea/nist/ug65p90000019cp4-att/begoj9000000bfnm.pdf",
+            "reference_label": "IPA（NIST翻訳）：コンピュータセキュリティログ管理ガイド"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "SIEMはサーバ、ネットワーク、クラウド等のログを横断的に収集・正規化し、相関分析やダッシュボード表示で脅威の早期検知と可視化を実現する。",
+        "reference": "https://www.nri-secure.co.jp/glossary/siem",
+        "reference_label": "NRIセキュア：SIEMとは（用語集）"
+      }
+    }
+  ]
+}

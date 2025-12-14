@@ -1,0 +1,2467 @@
+{
+  "exam": {
+    "id": "azure_ai_900",
+    "title": "Azure AI Fundamentals",
+    "description": "「Microsoft Certified: Azure AI Fundamentals」は、クラウド基盤上で AI を活用するための基本概念（機械学習、自然言語処理、コンピューター ビジョン、生成 AI など）と、Microsoft Azure の関連サービスを理解していることを示す認定資格です。技術職・非技術職問わず受験可能で、データサイエンスやソフトウェア開発の専⾨知識は必須ではありません。クラウドの基礎知識とクライアント／サーバー モデルへの理解があればチャレンジ可能です。",
+    "version": "2025年5月",
+    "price": "99 USD",
+    "difficulty": "普通",
+    "official-site": "https://learn.microsoft.com/ja-jp/credentials/certifications/azure-ai-fundamentals/",
+    "category": {
+      "id": "azure",
+      "name": "Azure"
+    }
+  },
+  "questions": [
+    {
+      "id": "azure-AI-900-q1",
+      "question": "AIの分野で「教師あり学習」に分類されるのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "画像から犬か猫かを分類するモデルを作成する",
+          "explanation": {
+            "text": "教師あり学習は正解ラベル付きデータを用いて学習し、分類や回帰を行う。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+            "reference_label": "Microsoft Docs - 自動機械学習の概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ニュース記事を自動でクラスタリングする",
+          "explanation": {
+            "text": "クラスタリングはラベルのないデータをグループ化するため、教師なし学習。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+            "reference_label": "Microsoft Docs - 自動機械学習の概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "エージェントがゲームをプレイして報酬を最大化する",
+          "explanation": {
+            "text": "これは強化学習の典型例であり、教師あり学習ではない。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+            "reference_label": "Microsoft Docs - 自動機械学習の概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "文書をトピックごとに自動でまとめる",
+          "explanation": {
+            "text": "トピックモデリングは教師なし学習の一種。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+            "reference_label": "Microsoft Docs - 自動機械学習の概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "教師あり学習は正解ラベル付きデータを利用して予測モデルを作成する学習方法であり、画像分類は典型例である。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+        "reference_label": "Microsoft Docs - 自動機械学習の概要"
+      }
+    },
+    {
+      "id": "azure-AI-900-q2",
+      "question": "Azure Cognitive Services の『Computer Vision』で実現できることはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "テキストから感情を分析する",
+          "explanation": {
+            "text": "これはText Analyticsの機能であり、Computer Visionではない。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/what-are-cognitive-services",
+            "reference_label": "Microsoft Docs - Cognitive Services"
+          }
+        },
+        {
+          "key": "B",
+          "text": "画像の中の物体を検出する",
+          "explanation": {
+            "text": "Computer Visionは物体検出や画像分類をサポートする。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/computer-vision/",
+            "reference_label": "Microsoft Docs - Computer Vision"
+          }
+        },
+        {
+          "key": "C",
+          "text": "会話を自然な音声に変換する",
+          "explanation": {
+            "text": "これはSpeechサービスのText-to-Speech機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/",
+            "reference_label": "Microsoft Docs - Speech Service"
+          }
+        },
+        {
+          "key": "D",
+          "text": "多言語翻訳を行う",
+          "explanation": {
+            "text": "翻訳はTranslatorサービスの機能である。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/translator/",
+            "reference_label": "Microsoft Docs - Translator"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Azure Cognitive Services の Computer Vision は画像の物体検出や特徴抽出をサポートする。",
+        "reference": "https://learn.microsoft.com/azure/cognitive-services/computer-vision/",
+        "reference_label": "Microsoft Docs - Computer Vision"
+      }
+    },
+    {
+      "id": "azure-AI-900-q3",
+      "question": "Azure Machine Learning で提供される『デザイナー（Designer）』の特徴はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "コードを書かずにドラッグ&ドロップでMLパイプラインを構築できる",
+          "explanation": {
+            "text": "デザイナーはGUIベースでモデル構築を可能にするツール。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-designer",
+            "reference_label": "Microsoft Docs - Designer"
+          }
+        },
+        {
+          "key": "B",
+          "text": "クラウド上のIoTデバイスを直接制御する",
+          "explanation": {
+            "text": "IoT Hubの機能であり、Azure MLのデザイナーではない。",
+            "reference": "https://learn.microsoft.com/azure/iot-hub/",
+            "reference_label": "Microsoft Docs - IoT Hub"
+          }
+        },
+        {
+          "key": "C",
+          "text": "大規模データのETL処理を行う",
+          "explanation": {
+            "text": "これはAzure Data Factoryの役割に近い。",
+            "reference": "https://learn.microsoft.com/azure/data-factory/",
+            "reference_label": "Microsoft Docs - Data Factory"
+          }
+        },
+        {
+          "key": "D",
+          "text": "自然言語処理APIを呼び出す",
+          "explanation": {
+            "text": "自然言語処理はCognitive ServicesのText Analyticsで提供される。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/text-analytics/",
+            "reference_label": "Microsoft Docs - Text Analytics"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure MLのデザイナーはコード不要でドラッグ&ドロップ操作により機械学習モデルのパイプラインを構築できる。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-designer",
+        "reference_label": "Microsoft Docs - Designer"
+      }
+    },
+    {
+      "id": "azure-AI-900-q4",
+      "question": "自然言語処理（NLP）の典型的な用途はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "画像分類",
+          "explanation": {
+            "text": "画像分類はコンピュータビジョンのタスクである。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/computer-vision/",
+            "reference_label": "Microsoft Docs - Computer Vision"
+          }
+        },
+        {
+          "key": "B",
+          "text": "音声合成",
+          "explanation": {
+            "text": "音声合成はSpeechサービスのタスクである。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/",
+            "reference_label": "Microsoft Docs - Speech"
+          }
+        },
+        {
+          "key": "C",
+          "text": "感情分析",
+          "explanation": {
+            "text": "NLPの典型的なタスクの一つである。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/text-analytics/overview",
+            "reference_label": "Microsoft Docs - Text Analytics"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ロボットの動作制御",
+          "explanation": {
+            "text": "ロボット制御は機械学習応用だが、NLPの直接的タスクではない。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/",
+            "reference_label": "Microsoft Docs - Azure ML"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "自然言語処理（NLP）の代表的な利用例は感情分析、翻訳、要約などである。",
+        "reference": "https://learn.microsoft.com/azure/cognitive-services/text-analytics/overview",
+        "reference_label": "Microsoft Docs - Text Analytics"
+      }
+    },
+    {
+      "id": "azure-AI-900-q5",
+      "question": "Azure Cognitive Services の Translator の利用目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "音声認識",
+          "explanation": {
+            "text": "音声認識はSpeechサービスの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/",
+            "reference_label": "Microsoft Docs - Speech Service"
+          }
+        },
+        {
+          "key": "B",
+          "text": "自動翻訳",
+          "explanation": {
+            "text": "Translatorは多言語間の翻訳を提供するサービス。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/translator/",
+            "reference_label": "Microsoft Docs - Translator"
+          }
+        },
+        {
+          "key": "C",
+          "text": "画像解析",
+          "explanation": {
+            "text": "画像解析はComputer Visionの役割。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/computer-vision/",
+            "reference_label": "Microsoft Docs - Computer Vision"
+          }
+        },
+        {
+          "key": "D",
+          "text": "異常検知",
+          "explanation": {
+            "text": "異常検知はAzure Anomaly Detectorの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/anomaly-detector/",
+            "reference_label": "Microsoft Docs - Anomaly Detector"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Azure Translatorはリアルタイムで多言語翻訳を提供する。",
+        "reference": "https://learn.microsoft.com/azure/cognitive-services/translator/",
+        "reference_label": "Microsoft Docs - Translator"
+      }
+    },
+    {
+      "id": "azure-AI-900-q6",
+      "question": "機械学習における『回帰（Regression）』の典型的な用途はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "商品のカテゴリーを予測する",
+          "explanation": {
+            "text": "これは分類問題の例である。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+            "reference_label": "Microsoft Docs - Automated ML"
+          }
+        },
+        {
+          "key": "B",
+          "text": "株価を予測する",
+          "explanation": {
+            "text": "連続値を予測する典型的な回帰問題の例。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+            "reference_label": "Microsoft Docs - Automated ML"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ニュース記事をグループ分けする",
+          "explanation": {
+            "text": "これは教師なし学習のクラスタリング。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+            "reference_label": "Microsoft Docs - Automated ML"
+          }
+        },
+        {
+          "key": "D",
+          "text": "スパムメールか否かを分類する",
+          "explanation": {
+            "text": "これは二値分類の例。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+            "reference_label": "Microsoft Docs - Automated ML"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "回帰分析は売上や株価などの連続値を予測するために使われる。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+        "reference_label": "Microsoft Docs - Automated ML"
+      }
+    },
+    {
+      "id": "azure-AI-900-q7",
+      "question": "AI倫理における『公平性（Fairness）』の考慮事項として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AIがどのように予測したかを人間に説明可能にすること",
+          "explanation": {
+            "text": "これは説明責任（Explainability）の観点であり、公平性とは異なる。",
+            "reference": "https://learn.microsoft.com/azure/architecture/guide/responsible-ai/fairness",
+            "reference_label": "Microsoft Docs - Responsible AI"
+          }
+        },
+        {
+          "key": "B",
+          "text": "トレーニングデータに偏りがないか確認すること",
+          "explanation": {
+            "text": "公平性を確保するためにはバイアスの検出と軽減が重要。",
+            "reference": "https://learn.microsoft.com/azure/architecture/guide/responsible-ai/fairness",
+            "reference_label": "Microsoft Docs - Responsible AI"
+          }
+        },
+        {
+          "key": "C",
+          "text": "システムのセキュリティを強化すること",
+          "explanation": {
+            "text": "セキュリティは重要だが、公平性とは直接の関係がない。",
+            "reference": "https://learn.microsoft.com/azure/security/",
+            "reference_label": "Microsoft Docs - Security"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AIモデルをGPUで学習させること",
+          "explanation": {
+            "text": "これは性能の問題であり、公平性の考慮ではない。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/",
+            "reference_label": "Microsoft Docs - Azure ML"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "AIの公平性を確保するには、偏りのないデータを用いることが重要であり、Responsible AIの中心的な課題である。",
+        "reference": "https://learn.microsoft.com/azure/architecture/guide/responsible-ai/fairness",
+        "reference_label": "Microsoft Docs - Responsible AI"
+      }
+    },
+    {
+      "id": "azure-AI-900-q8",
+      "question": "Azure Cognitive Services の Anomaly Detector の主な用途はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "製品レビューから感情を抽出する",
+          "explanation": {
+            "text": "これはText Analyticsの感情分析機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/text-analytics/",
+            "reference_label": "Microsoft Docs - Text Analytics"
+          }
+        },
+        {
+          "key": "B",
+          "text": "数値データから異常なパターンを検出する",
+          "explanation": {
+            "text": "Anomaly Detectorは時系列データなどから異常値を特定するために利用される。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/anomaly-detector/",
+            "reference_label": "Microsoft Docs - Anomaly Detector"
+          }
+        },
+        {
+          "key": "C",
+          "text": "画像の物体を検出する",
+          "explanation": {
+            "text": "これはComputer Visionの物体検出機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/computer-vision/",
+            "reference_label": "Microsoft Docs - Computer Vision"
+          }
+        },
+        {
+          "key": "D",
+          "text": "多言語翻訳を提供する",
+          "explanation": {
+            "text": "翻訳はTranslatorサービスの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/translator/",
+            "reference_label": "Microsoft Docs - Translator"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Anomaly Detectorはセンサーやログデータなどの時系列から異常パターンを検出するためのサービス。",
+        "reference": "https://learn.microsoft.com/azure/cognitive-services/anomaly-detector/",
+        "reference_label": "Microsoft Docs - Anomaly Detector"
+      }
+    },
+    {
+      "id": "azure-AI-900-q9",
+      "question": "AIにおける『強化学習（Reinforcement Learning）』の特徴はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ラベル付きデータを使って学習する",
+          "explanation": {
+            "text": "これは教師あり学習の特徴である。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+            "reference_label": "Microsoft Docs - Automated ML"
+          }
+        },
+        {
+          "key": "B",
+          "text": "エージェントが環境からの報酬を最大化する行動を学習する",
+          "explanation": {
+            "text": "強化学習は報酬に基づく意思決定の最適化を行う。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+            "reference_label": "Microsoft Docs - Automated ML"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データをクラスタに自動分類する",
+          "explanation": {
+            "text": "これは教師なし学習のクラスタリング。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+            "reference_label": "Microsoft Docs - Automated ML"
+          }
+        },
+        {
+          "key": "D",
+          "text": "入力データを次元削減する",
+          "explanation": {
+            "text": "次元削減は教師なし学習の典型的なタスクである。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+            "reference_label": "Microsoft Docs - Automated ML"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "強化学習は報酬を最大化するための行動をエージェントが学習する手法である。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+        "reference_label": "Microsoft Docs - Automated ML"
+      }
+    },
+    {
+      "id": "azure-AI-900-q10",
+      "question": "Azure Cognitive Services の Face API でできることはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "人物の感情分析を行う",
+          "explanation": {
+            "text": "Face APIは顔から感情を推定できる。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/face/overview",
+            "reference_label": "Microsoft Docs - Face API"
+          }
+        },
+        {
+          "key": "B",
+          "text": "テキストからキーフレーズを抽出する",
+          "explanation": {
+            "text": "これはText Analyticsの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/text-analytics/",
+            "reference_label": "Microsoft Docs - Text Analytics"
+          }
+        },
+        {
+          "key": "C",
+          "text": "自然な音声を生成する",
+          "explanation": {
+            "text": "これはSpeechサービスのText-to-Speech機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/",
+            "reference_label": "Microsoft Docs - Speech Service"
+          }
+        },
+        {
+          "key": "D",
+          "text": "異常な時系列データを検知する",
+          "explanation": {
+            "text": "これはAnomaly Detectorの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/anomaly-detector/",
+            "reference_label": "Microsoft Docs - Anomaly Detector"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Face APIは顔認識に加えて感情推定も可能である。",
+        "reference": "https://learn.microsoft.com/azure/cognitive-services/face/overview",
+        "reference_label": "Microsoft Docs - Face API"
+      }
+    },
+    {
+      "id": "azure-AI-900-q11",
+      "question": "AIシステムにおける『透明性（Transparency）』の観点で重要なことはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AIの処理結果に説明可能性を持たせる",
+          "explanation": {
+            "text": "透明性はAIの意思決定がどのように行われたかを理解可能にすること。",
+            "reference": "https://learn.microsoft.com/azure/architecture/guide/responsible-ai/transparency",
+            "reference_label": "Microsoft Docs - Responsible AI"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AIの推論を高速化する",
+          "explanation": {
+            "text": "性能は重要だが、透明性の直接的な要素ではない。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/",
+            "reference_label": "Microsoft Docs - Azure ML"
+          }
+        },
+        {
+          "key": "C",
+          "text": "学習データをクラウドに保存する",
+          "explanation": {
+            "text": "データの保存場所は透明性の定義とは異なる。",
+            "reference": "https://learn.microsoft.com/azure/architecture/guide/responsible-ai/transparency",
+            "reference_label": "Microsoft Docs - Responsible AI"
+          }
+        },
+        {
+          "key": "D",
+          "text": "GPUを利用して効率的に学習する",
+          "explanation": {
+            "text": "これは計算リソースの問題であり、透明性には関連しない。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/",
+            "reference_label": "Microsoft Docs - Azure ML"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "透明性とは、AIの判断根拠を人間が理解できる形で示すことを指す。",
+        "reference": "https://learn.microsoft.com/azure/architecture/guide/responsible-ai/transparency",
+        "reference_label": "Microsoft Docs - Responsible AI"
+      }
+    },
+    {
+      "id": "azure-AI-900-q12",
+      "question": "Azure Machine Learning で『モデルのデプロイ』を行う目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "学習済みモデルをAPIとして公開する",
+          "explanation": {
+            "text": "モデルをデプロイするとWebサービスとして利用可能になる。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-model-management-and-deployment",
+            "reference_label": "Microsoft Docs - モデルの管理とデプロイ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "学習データをクラウドに保存する",
+          "explanation": {
+            "text": "データ保存はデプロイの目的ではない。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/",
+            "reference_label": "Microsoft Docs - Azure ML"
+          }
+        },
+        {
+          "key": "C",
+          "text": "モデルを再学習させる",
+          "explanation": {
+            "text": "再学習はトレーニングであり、デプロイではない。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/",
+            "reference_label": "Microsoft Docs - Azure ML"
+          }
+        },
+        {
+          "key": "D",
+          "text": "トレーニング済みモデルを評価する",
+          "explanation": {
+            "text": "モデル評価はデプロイ前の工程。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-model-management-and-deployment",
+            "reference_label": "Microsoft Docs - モデルの管理とデプロイ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure MLでのデプロイは、学習済みモデルをWeb APIなどの形で利用可能にするためのプロセス。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-model-management-and-deployment",
+        "reference_label": "Microsoft Docs - モデルの管理とデプロイ"
+      }
+    },
+    {
+      "id": "azure-AI-900-q13",
+      "question": "Azure Bot Service の特徴として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "チャットボットを開発・管理できるサービス",
+          "explanation": {
+            "text": "Azure Bot Serviceは会話型AIの構築・管理を行う。",
+            "reference": "https://learn.microsoft.com/azure/bot-service/",
+            "reference_label": "Microsoft Docs - Azure Bot Service"
+          }
+        },
+        {
+          "key": "B",
+          "text": "画像の中の物体を検出する",
+          "explanation": {
+            "text": "これはComputer Visionの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/computer-vision/",
+            "reference_label": "Microsoft Docs - Computer Vision"
+          }
+        },
+        {
+          "key": "C",
+          "text": "翻訳サービスを提供する",
+          "explanation": {
+            "text": "これはTranslatorの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/translator/",
+            "reference_label": "Microsoft Docs - Translator"
+          }
+        },
+        {
+          "key": "D",
+          "text": "異常データを自動検知する",
+          "explanation": {
+            "text": "これはAnomaly Detectorの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/anomaly-detector/",
+            "reference_label": "Microsoft Docs - Anomaly Detector"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure Bot Serviceはチャットボットを構築・管理するサービス。",
+        "reference": "https://learn.microsoft.com/azure/bot-service/",
+        "reference_label": "Microsoft Docs - Azure Bot Service"
+      }
+    },
+    {
+      "id": "azure-AI-900-q14",
+      "question": "AI倫理の観点で『プライバシーとセキュリティ』に関する正しい配慮はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ユーザーの個人データを必要以上に収集しない",
+          "explanation": {
+            "text": "プライバシー保護の基本原則であり、Responsible AIの重要な要素。",
+            "reference": "https://learn.microsoft.com/azure/architecture/guide/responsible-ai/privacy-security",
+            "reference_label": "Microsoft Docs - Responsible AI"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデルを常にGPUで学習させる",
+          "explanation": {
+            "text": "計算性能の問題であり、プライバシーやセキュリティには関係しない。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/",
+            "reference_label": "Microsoft Docs - Azure ML"
+          }
+        },
+        {
+          "key": "C",
+          "text": "AIを高速に動作させること",
+          "explanation": {
+            "text": "性能の問題であり、プライバシーとは無関係。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/",
+            "reference_label": "Microsoft Docs - Azure ML"
+          }
+        },
+        {
+          "key": "D",
+          "text": "学習データの偏りを減らすこと",
+          "explanation": {
+            "text": "これは公平性に関連するが、プライバシー保護の直接的な要素ではない。",
+            "reference": "https://learn.microsoft.com/azure/architecture/guide/responsible-ai/fairness",
+            "reference_label": "Microsoft Docs - Responsible AI"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Responsible AIにおいて、ユーザーデータを必要以上に収集せず安全に保護することは重要な原則である。",
+        "reference": "https://learn.microsoft.com/azure/architecture/guide/responsible-ai/privacy-security",
+        "reference_label": "Microsoft Docs - Responsible AI"
+      }
+    },
+    {
+      "id": "azure-AI-900-q15",
+      "question": "Azure Cognitive Services の『Language Service』で提供される機能として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "文書の感情分析やキーフレーズ抽出",
+          "explanation": {
+            "text": "Language Service は感情分析、要約、キーフレーズ抽出などの自然言語処理を提供する。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/language-service/overview",
+            "reference_label": "Microsoft Docs - Language Service"
+          }
+        },
+        {
+          "key": "B",
+          "text": "画像のラベル付け",
+          "explanation": {
+            "text": "画像解析はComputer Visionの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/computer-vision/",
+            "reference_label": "Microsoft Docs - Computer Vision"
+          }
+        },
+        {
+          "key": "C",
+          "text": "数値データの異常検知",
+          "explanation": {
+            "text": "異常検知はAnomaly Detectorで提供される。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/anomaly-detector/",
+            "reference_label": "Microsoft Docs - Anomaly Detector"
+          }
+        },
+        {
+          "key": "D",
+          "text": "リアルタイム翻訳",
+          "explanation": {
+            "text": "翻訳はTranslatorサービスで提供される。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/translator/",
+            "reference_label": "Microsoft Docs - Translator"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure Cognitive Services の Language Service は自然言語処理の主要機能を提供する。",
+        "reference": "https://learn.microsoft.com/azure/cognitive-services/language-service/overview",
+        "reference_label": "Microsoft Docs - Language Service"
+      }
+    },
+    {
+      "id": "azure-AI-900-q16",
+      "question": "Azure AI における『モデルの評価』の目的として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "学習済みモデルが新しいデータにどの程度正確に予測できるか確認する",
+          "explanation": {
+            "text": "評価は汎化性能を確認するための重要なプロセス。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-understand-automated-ml",
+            "reference_label": "Microsoft Docs - モデル評価"
+          }
+        },
+        {
+          "key": "B",
+          "text": "学習用データを保存する",
+          "explanation": {
+            "text": "データ保存は評価の目的ではない。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/",
+            "reference_label": "Microsoft Docs - Azure ML"
+          }
+        },
+        {
+          "key": "C",
+          "text": "モデルをクラウドにデプロイする",
+          "explanation": {
+            "text": "デプロイはモデルを利用可能にする段階であり、評価とは異なる。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-model-management-and-deployment",
+            "reference_label": "Microsoft Docs - モデルの管理とデプロイ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "モデルの学習速度を確認する",
+          "explanation": {
+            "text": "学習速度は性能指標だが、評価の主目的は予測精度の確認である。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-understand-automated-ml",
+            "reference_label": "Microsoft Docs - モデル評価"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "モデル評価は、新しいデータに対して正確に予測できるかを検証するプロセス。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-understand-automated-ml",
+        "reference_label": "Microsoft Docs - モデル評価"
+      }
+    },
+    {
+      "id": "azure-AI-900-q17",
+      "question": "AIの利用における『説明責任（Accountability）』に関する正しい説明はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AIの予測がどのように導かれたかを説明できるようにする",
+          "explanation": {
+            "text": "説明責任は意思決定の根拠を明確にし、人間に理解可能にすることを含む。",
+            "reference": "https://learn.microsoft.com/azure/architecture/guide/responsible-ai/accountability",
+            "reference_label": "Microsoft Docs - Responsible AI"
+          }
+        },
+        {
+          "key": "B",
+          "text": "学習データをすべて公開する",
+          "explanation": {
+            "text": "公開は透明性の一部であり、説明責任の要件ではない。",
+            "reference": "https://learn.microsoft.com/azure/architecture/guide/responsible-ai/accountability",
+            "reference_label": "Microsoft Docs - Responsible AI"
+          }
+        },
+        {
+          "key": "C",
+          "text": "常に最新のAIモデルを使用する",
+          "explanation": {
+            "text": "最新性は重要だが、説明責任の本質ではない。",
+            "reference": "https://learn.microsoft.com/azure/architecture/guide/responsible-ai/accountability",
+            "reference_label": "Microsoft Docs - Responsible AI"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AIモデルの学習を高速化する",
+          "explanation": {
+            "text": "性能の向上は説明責任とは関係しない。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/",
+            "reference_label": "Microsoft Docs - Azure ML"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "説明責任はAIの意思決定プロセスを明確にし、ユーザーや社会に説明可能とすることを意味する。",
+        "reference": "https://learn.microsoft.com/azure/architecture/guide/responsible-ai/accountability",
+        "reference_label": "Microsoft Docs - Responsible AI"
+      }
+    },
+    {
+      "id": "azure-AI-900-q18",
+      "question": "Azure Cognitive Services の Speech Service の利用例として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "会話をリアルタイムに文字に変換する",
+          "explanation": {
+            "text": "Speech-to-TextはSpeech Serviceの主要機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/",
+            "reference_label": "Microsoft Docs - Speech Service"
+          }
+        },
+        {
+          "key": "B",
+          "text": "数値データから異常を検出する",
+          "explanation": {
+            "text": "これはAnomaly Detectorの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/anomaly-detector/",
+            "reference_label": "Microsoft Docs - Anomaly Detector"
+          }
+        },
+        {
+          "key": "C",
+          "text": "テキストからキーフレーズを抽出する",
+          "explanation": {
+            "text": "これはLanguage Serviceの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/language-service/",
+            "reference_label": "Microsoft Docs - Language Service"
+          }
+        },
+        {
+          "key": "D",
+          "text": "画像から物体を検出する",
+          "explanation": {
+            "text": "これはComputer Visionの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/computer-vision/",
+            "reference_label": "Microsoft Docs - Computer Vision"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Speech Serviceは音声認識（Speech-to-Text）、音声合成（Text-to-Speech）などを提供する。",
+        "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/",
+        "reference_label": "Microsoft Docs - Speech Service"
+      }
+    },
+    {
+      "id": "azure-AI-900-q19",
+      "question": "AIにおける『分類（Classification）』の典型例はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "スパムメールかどうかを判定する",
+          "explanation": {
+            "text": "分類はデータをカテゴリに分けるタスクであり、スパム判定はその典型例。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+            "reference_label": "Microsoft Docs - Automated ML"
+          }
+        },
+        {
+          "key": "B",
+          "text": "株価を数値で予測する",
+          "explanation": {
+            "text": "これは回帰分析の例。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+            "reference_label": "Microsoft Docs - Automated ML"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ニュース記事を自動的にクラスタリングする",
+          "explanation": {
+            "text": "これは教師なし学習のクラスタリング。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+            "reference_label": "Microsoft Docs - Automated ML"
+          }
+        },
+        {
+          "key": "D",
+          "text": "時系列データの異常を検知する",
+          "explanation": {
+            "text": "これは異常検知のタスクである。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/anomaly-detector/",
+            "reference_label": "Microsoft Docs - Anomaly Detector"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "分類は入力データを離散的なカテゴリに分類するタスクであり、スパムメール判定は典型例である。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+        "reference_label": "Microsoft Docs - Automated ML"
+      }
+    },
+    {
+      "id": "azure-AI-900-q20",
+      "question": "AI倫理の観点で『包括性（Inclusiveness）』を確保する方法として適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "多様なユーザー層を考慮して設計する",
+          "explanation": {
+            "text": "包括性は多様な利用者に対応するための設計を行うこと。",
+            "reference": "https://learn.microsoft.com/azure/architecture/guide/responsible-ai/inclusiveness",
+            "reference_label": "Microsoft Docs - Responsible AI"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデルを常に最新の状態に保つ",
+          "explanation": {
+            "text": "最新化は重要だが、包括性の定義とは異なる。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/",
+            "reference_label": "Microsoft Docs - Azure ML"
+          }
+        },
+        {
+          "key": "C",
+          "text": "計算リソースを増強して効率化する",
+          "explanation": {
+            "text": "性能向上は包括性には直接関係しない。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/",
+            "reference_label": "Microsoft Docs - Azure ML"
+          }
+        },
+        {
+          "key": "D",
+          "text": "モデルの学習速度を早める",
+          "explanation": {
+            "text": "学習速度は包括性の要素ではない。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/",
+            "reference_label": "Microsoft Docs - Azure ML"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "包括性を確保するには、多様なユーザーや状況に対応できるように設計することが求められる。",
+        "reference": "https://learn.microsoft.com/azure/architecture/guide/responsible-ai/inclusiveness",
+        "reference_label": "Microsoft Docs - Responsible AI"
+      }
+    },
+    {
+      "id": "azure-AI-900-q21",
+      "question": "Azure Machine Learning における『AutoML（自動機械学習）』の利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "アルゴリズムやハイパーパラメータの選定を自動化できる",
+          "explanation": {
+            "text": "AutoMLはアルゴリズム選定や調整を自動で行い、効率的にモデルを構築する。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+            "reference_label": "Microsoft Docs - Automated ML"
+          }
+        },
+        {
+          "key": "B",
+          "text": "クラウド上の仮想マシンを管理する",
+          "explanation": {
+            "text": "これはAzure Virtual Machinesの役割である。",
+            "reference": "https://learn.microsoft.com/azure/virtual-machines/",
+            "reference_label": "Microsoft Docs - Virtual Machines"
+          }
+        },
+        {
+          "key": "C",
+          "text": "画像から物体を検出する",
+          "explanation": {
+            "text": "これはComputer Visionの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/computer-vision/",
+            "reference_label": "Microsoft Docs - Computer Vision"
+          }
+        },
+        {
+          "key": "D",
+          "text": "音声をテキストに変換する",
+          "explanation": {
+            "text": "これはSpeech Serviceの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/",
+            "reference_label": "Microsoft Docs - Speech Service"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "AutoMLは機械学習モデルの構築を自動化し、専門知識が少なくても高品質なモデルを作成できる。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+        "reference_label": "Microsoft Docs - Automated ML"
+      }
+    },
+    {
+      "id": "azure-AI-900-q22",
+      "question": "Azure Cognitive Services の『Form Recognizer』の主な利用用途はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "請求書や領収書から構造化データを抽出する",
+          "explanation": {
+            "text": "Form Recognizerはドキュメントからテキストや構造化データを抽出できる。",
+            "reference": "https://learn.microsoft.com/azure/applied-ai-services/form-recognizer/",
+            "reference_label": "Microsoft Docs - Form Recognizer"
+          }
+        },
+        {
+          "key": "B",
+          "text": "テキストから感情を抽出する",
+          "explanation": {
+            "text": "これはLanguage Serviceの感情分析機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/language-service/",
+            "reference_label": "Microsoft Docs - Language Service"
+          }
+        },
+        {
+          "key": "C",
+          "text": "音声をテキストに変換する",
+          "explanation": {
+            "text": "これはSpeech Serviceの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/",
+            "reference_label": "Microsoft Docs - Speech Service"
+          }
+        },
+        {
+          "key": "D",
+          "text": "異常なデータパターンを検出する",
+          "explanation": {
+            "text": "これはAnomaly Detectorの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/anomaly-detector/",
+            "reference_label": "Microsoft Docs - Anomaly Detector"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Form Recognizerは非構造化ドキュメントから構造化データを効率的に抽出するサービス。",
+        "reference": "https://learn.microsoft.com/azure/applied-ai-services/form-recognizer/",
+        "reference_label": "Microsoft Docs - Form Recognizer"
+      }
+    },
+    {
+      "id": "azure-AI-900-q23",
+      "question": "AIにおける『教師なし学習』の例として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "顧客データをクラスタに分ける",
+          "explanation": {
+            "text": "教師なし学習はラベルのないデータを用い、クラスタリングは典型例。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+            "reference_label": "Microsoft Docs - Automated ML"
+          }
+        },
+        {
+          "key": "B",
+          "text": "スパムメールか否かを分類する",
+          "explanation": {
+            "text": "これは教師あり学習の分類タスク。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+            "reference_label": "Microsoft Docs - Automated ML"
+          }
+        },
+        {
+          "key": "C",
+          "text": "株価を予測する",
+          "explanation": {
+            "text": "株価予測は回帰タスクで教師あり学習の例。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+            "reference_label": "Microsoft Docs - Automated ML"
+          }
+        },
+        {
+          "key": "D",
+          "text": "翻訳サービスを利用する",
+          "explanation": {
+            "text": "翻訳は事前学習済みモデルを利用するサービスであり、教師なし学習ではない。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/translator/",
+            "reference_label": "Microsoft Docs - Translator"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "教師なし学習はラベルのないデータからパターンを見つける学習方法であり、クラスタリングはその典型例。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+        "reference_label": "Microsoft Docs - Automated ML"
+      }
+    },
+    {
+      "id": "azure-AI-900-q24",
+      "question": "Azure Cognitive Services の『Custom Vision』の特徴はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ユーザー独自の画像分類モデルを簡単にトレーニングできる",
+          "explanation": {
+            "text": "Custom Visionは独自のデータで画像分類や物体検出モデルを構築可能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/custom-vision-service/",
+            "reference_label": "Microsoft Docs - Custom Vision"
+          }
+        },
+        {
+          "key": "B",
+          "text": "多言語翻訳を行う",
+          "explanation": {
+            "text": "翻訳はTranslatorの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/translator/",
+            "reference_label": "Microsoft Docs - Translator"
+          }
+        },
+        {
+          "key": "C",
+          "text": "自然言語から感情を抽出する",
+          "explanation": {
+            "text": "これはLanguage Serviceの感情分析機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/language-service/",
+            "reference_label": "Microsoft Docs - Language Service"
+          }
+        },
+        {
+          "key": "D",
+          "text": "数値データの異常を検出する",
+          "explanation": {
+            "text": "これはAnomaly Detectorの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/anomaly-detector/",
+            "reference_label": "Microsoft Docs - Anomaly Detector"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Custom Visionは少量のトレーニングデータで独自の画像分類モデルを作成可能なサービス。",
+        "reference": "https://learn.microsoft.com/azure/cognitive-services/custom-vision-service/",
+        "reference_label": "Microsoft Docs - Custom Vision"
+      }
+    },
+    {
+      "id": "azure-AI-900-q25",
+      "question": "AIモデルの『過学習（Overfitting）』を防ぐための一般的な方法はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データセットをトレーニング用とテスト用に分割する",
+          "explanation": {
+            "text": "データを分割して評価することで過学習を検出・軽減できる。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+            "reference_label": "Microsoft Docs - Automated ML"
+          }
+        },
+        {
+          "key": "B",
+          "text": "GPUを利用して学習を高速化する",
+          "explanation": {
+            "text": "計算速度の問題であり、過学習の防止とは無関係。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/",
+            "reference_label": "Microsoft Docs - Azure ML"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データの偏りを意図的に増やす",
+          "explanation": {
+            "text": "偏りは過学習や不公平性を助長するため逆効果。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/",
+            "reference_label": "Microsoft Docs - Azure ML"
+          }
+        },
+        {
+          "key": "D",
+          "text": "モデルの説明可能性を高める",
+          "explanation": {
+            "text": "説明可能性は重要だが過学習防止の直接的な方法ではない。",
+            "reference": "https://learn.microsoft.com/azure/architecture/guide/responsible-ai/transparency",
+            "reference_label": "Microsoft Docs - Responsible AI"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "過学習を防ぐためにはデータを分割して評価し、汎化性能を確保することが有効。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+        "reference_label": "Microsoft Docs - Automated ML"
+      }
+    },
+    {
+      "id": "azure-AI-900-q26",
+      "question": "Azure Cognitive Services の『Immersive Reader』の利用目的として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "読みやすい形式でテキストを表示し、学習を支援する",
+          "explanation": {
+            "text": "Immersive Readerは教育支援のためにテキストを読みやすく変換・朗読する。",
+            "reference": "https://learn.microsoft.com/azure/applied-ai-services/immersive-reader/",
+            "reference_label": "Microsoft Docs - Immersive Reader"
+          }
+        },
+        {
+          "key": "B",
+          "text": "画像から物体を分類する",
+          "explanation": {
+            "text": "これはComputer Visionの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/computer-vision/",
+            "reference_label": "Microsoft Docs - Computer Vision"
+          }
+        },
+        {
+          "key": "C",
+          "text": "異常な数値データを検出する",
+          "explanation": {
+            "text": "これはAnomaly Detectorの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/anomaly-detector/",
+            "reference_label": "Microsoft Docs - Anomaly Detector"
+          }
+        },
+        {
+          "key": "D",
+          "text": "テキストを翻訳する",
+          "explanation": {
+            "text": "翻訳はTranslatorの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/translator/",
+            "reference_label": "Microsoft Docs - Translator"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Immersive Readerは教育やアクセシビリティを目的として、テキストを読みやすく変換・朗読できる。",
+        "reference": "https://learn.microsoft.com/azure/applied-ai-services/immersive-reader/",
+        "reference_label": "Microsoft Docs - Immersive Reader"
+      }
+    },
+    {
+      "id": "azure-AI-900-q27",
+      "question": "AIの分野において『精度（Accuracy）』という指標が意味するのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "全ての予測のうち正しく分類された割合",
+          "explanation": {
+            "text": "Accuracyは正解した予測の割合を示す。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-understand-automated-ml",
+            "reference_label": "Microsoft Docs - モデル評価"
+          }
+        },
+        {
+          "key": "B",
+          "text": "予測したラベルの信頼度スコア",
+          "explanation": {
+            "text": "これは確率スコアであり、Accuracyそのものではない。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/",
+            "reference_label": "Microsoft Docs - Azure ML"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データセット全体の多様性",
+          "explanation": {
+            "text": "これはデータ品質の要素であり、精度指標ではない。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/",
+            "reference_label": "Microsoft Docs - Azure ML"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AIモデルがどれだけ速く処理できるか",
+          "explanation": {
+            "text": "これは処理性能であり、精度とは関係しない。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/",
+            "reference_label": "Microsoft Docs - Azure ML"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "精度（Accuracy）は正解率を意味し、分類モデルの基本的な評価指標。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-understand-automated-ml",
+        "reference_label": "Microsoft Docs - モデル評価"
+      }
+    },
+    {
+      "id": "azure-AI-900-q28",
+      "question": "AI倫理における『信頼性と安全性（Reliability & Safety）』に関する正しい考慮はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AIシステムが予期せぬ状況でも適切に動作するように設計する",
+          "explanation": {
+            "text": "信頼性と安全性の確保は、予期せぬ環境でもAIが正しく動作することを保証する。",
+            "reference": "https://learn.microsoft.com/azure/architecture/guide/responsible-ai/reliability-safety",
+            "reference_label": "Microsoft Docs - Responsible AI"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AIをGPUで実行する",
+          "explanation": {
+            "text": "GPU利用は性能面の話であり、安全性の観点ではない。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/",
+            "reference_label": "Microsoft Docs - Azure ML"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データセットの多様性を確保する",
+          "explanation": {
+            "text": "多様性は公平性の観点に関連するが、安全性の直接的要素ではない。",
+            "reference": "https://learn.microsoft.com/azure/architecture/guide/responsible-ai/fairness",
+            "reference_label": "Microsoft Docs - Responsible AI"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AIモデルの学習時間を短縮する",
+          "explanation": {
+            "text": "学習時間は効率の問題であり、安全性や信頼性とは無関係。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/",
+            "reference_label": "Microsoft Docs - Azure ML"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "AI倫理における信頼性と安全性は、システムが予期せぬ状況でも一貫して正しく動作することを保証することに関係する。",
+        "reference": "https://learn.microsoft.com/azure/architecture/guide/responsible-ai/reliability-safety",
+        "reference_label": "Microsoft Docs - Responsible AI"
+      }
+    },
+    {
+      "id": "azure-AI-900-q29",
+      "question": "Azure Cognitive Services の『Personalizer』の主な利用用途はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ユーザーごとにパーソナライズされたコンテンツを提供する",
+          "explanation": {
+            "text": "Personalizerは強化学習を用いて、ユーザーに最適なコンテンツや体験を提供する。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/personalizer/",
+            "reference_label": "Microsoft Docs - Personalizer"
+          }
+        },
+        {
+          "key": "B",
+          "text": "異常データを検出する",
+          "explanation": {
+            "text": "これはAnomaly Detectorの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/anomaly-detector/",
+            "reference_label": "Microsoft Docs - Anomaly Detector"
+          }
+        },
+        {
+          "key": "C",
+          "text": "文章から感情を抽出する",
+          "explanation": {
+            "text": "これはLanguage Serviceの感情分析。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/language-service/",
+            "reference_label": "Microsoft Docs - Language Service"
+          }
+        },
+        {
+          "key": "D",
+          "text": "画像の中の物体を分類する",
+          "explanation": {
+            "text": "これはComputer VisionやCustom Visionの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/custom-vision-service/",
+            "reference_label": "Microsoft Docs - Custom Vision"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Personalizerはユーザー行動に基づきパーソナライズされた推奨を行うサービス。",
+        "reference": "https://learn.microsoft.com/azure/cognitive-services/personalizer/",
+        "reference_label": "Microsoft Docs - Personalizer"
+      }
+    },
+    {
+      "id": "azure-AI-900-q30",
+      "question": "AIモデルの『汎化性能（Generalization）』を確認する方法として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "学習に使用していないデータでモデルをテストする",
+          "explanation": {
+            "text": "汎化性能は未知データへの予測能力を測るため、未使用データで評価する。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-understand-automated-ml",
+            "reference_label": "Microsoft Docs - モデル評価"
+          }
+        },
+        {
+          "key": "B",
+          "text": "学習に使用したデータで精度を確認する",
+          "explanation": {
+            "text": "これは過学習を検出できず、汎化性能の確認には不十分。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+            "reference_label": "Microsoft Docs - Automated ML"
+          }
+        },
+        {
+          "key": "C",
+          "text": "モデルの学習速度を測定する",
+          "explanation": {
+            "text": "学習速度は性能指標だが、汎化性能の確認にはならない。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/",
+            "reference_label": "Microsoft Docs - Azure ML"
+          }
+        },
+        {
+          "key": "D",
+          "text": "GPUを使用して効率的に学習させる",
+          "explanation": {
+            "text": "GPU利用は計算効率に関わるが、汎化性能の確認ではない。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/",
+            "reference_label": "Microsoft Docs - Azure ML"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "汎化性能は新しいデータに対する予測の正確さを意味し、未使用データで評価することが一般的。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-understand-automated-ml",
+        "reference_label": "Microsoft Docs - モデル評価"
+      }
+    },
+    {
+      "id": "azure-AI-900-q31",
+      "question": "Azure Cognitive Services の『Speech Translation』の機能はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "リアルタイムで音声を翻訳する",
+          "explanation": {
+            "text": "Speech Translationは音声を別の言語に翻訳する機能を持つ。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/speech-translation",
+            "reference_label": "Microsoft Docs - Speech Translation"
+          }
+        },
+        {
+          "key": "B",
+          "text": "画像の物体を検出する",
+          "explanation": {
+            "text": "これはComputer Visionの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/computer-vision/",
+            "reference_label": "Microsoft Docs - Computer Vision"
+          }
+        },
+        {
+          "key": "C",
+          "text": "テキストからキーフレーズを抽出する",
+          "explanation": {
+            "text": "これはLanguage Serviceの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/language-service/",
+            "reference_label": "Microsoft Docs - Language Service"
+          }
+        },
+        {
+          "key": "D",
+          "text": "異常値を検出する",
+          "explanation": {
+            "text": "これはAnomaly Detectorの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/anomaly-detector/",
+            "reference_label": "Microsoft Docs - Anomaly Detector"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Speech Translationは音声を入力としてリアルタイム翻訳を行うサービス。",
+        "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/speech-translation",
+        "reference_label": "Microsoft Docs - Speech Translation"
+      }
+    },
+    {
+      "id": "azure-AI-900-q32",
+      "question": "AI倫理の観点で『バイアス（Bias）』を軽減するための適切な方法はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "多様なデータを収集し、偏りを減らす",
+          "explanation": {
+            "text": "公平性を高めるには、多様性のあるデータを用いることが重要。",
+            "reference": "https://learn.microsoft.com/azure/architecture/guide/responsible-ai/fairness",
+            "reference_label": "Microsoft Docs - Responsible AI"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデルをGPUで学習する",
+          "explanation": {
+            "text": "GPU利用は計算速度の問題であり、バイアス軽減とは無関係。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/",
+            "reference_label": "Microsoft Docs - Azure ML"
+          }
+        },
+        {
+          "key": "C",
+          "text": "常に最新のアルゴリズムを利用する",
+          "explanation": {
+            "text": "最新性は重要だが、バイアス軽減の直接的な解決にはならない。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/",
+            "reference_label": "Microsoft Docs - Azure ML"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AIモデルをできるだけ速く実行する",
+          "explanation": {
+            "text": "処理速度はバイアス問題に関与しない。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/",
+            "reference_label": "Microsoft Docs - Azure ML"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Responsible AIの実践では、多様性のあるデータを使用してバイアスを減らすことが推奨される。",
+        "reference": "https://learn.microsoft.com/azure/architecture/guide/responsible-ai/fairness",
+        "reference_label": "Microsoft Docs - Responsible AI"
+      }
+    },
+    {
+      "id": "azure-AI-900-q33",
+      "question": "Azure Machine Learning の『ワークスペース（Workspace）』の役割はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "機械学習のリソースや実験を一元的に管理する",
+          "explanation": {
+            "text": "ワークスペースはAzure MLの中心であり、リソースや実験をまとめて管理する。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-workspace",
+            "reference_label": "Microsoft Docs - ワークスペース"
+          }
+        },
+        {
+          "key": "B",
+          "text": "クラウド上の仮想マシンを作成する",
+          "explanation": {
+            "text": "これはAzure Virtual Machinesの機能。",
+            "reference": "https://learn.microsoft.com/azure/virtual-machines/",
+            "reference_label": "Microsoft Docs - Virtual Machines"
+          }
+        },
+        {
+          "key": "C",
+          "text": "自然言語処理APIを提供する",
+          "explanation": {
+            "text": "これはCognitive ServicesのLanguage Serviceの役割。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/language-service/",
+            "reference_label": "Microsoft Docs - Language Service"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AIモデルを翻訳する",
+          "explanation": {
+            "text": "翻訳はTranslatorサービスの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/translator/",
+            "reference_label": "Microsoft Docs - Translator"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ワークスペースはAzure MLの中心的なリソースで、実験・データセット・モデルなどを統合管理する。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-workspace",
+        "reference_label": "Microsoft Docs - ワークスペース"
+      }
+    },
+    {
+      "id": "azure-AI-900-q34",
+      "question": "AIにおける『混同行列（Confusion Matrix）』が表すのはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "分類モデルの予測結果と実際のラベルの関係",
+          "explanation": {
+            "text": "混同行列は予測ラベルと実際のラベルのマトリクスで精度指標の基礎。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-understand-automated-ml",
+            "reference_label": "Microsoft Docs - モデル評価"
+          }
+        },
+        {
+          "key": "B",
+          "text": "数値予測モデルの誤差分布",
+          "explanation": {
+            "text": "誤差分布は回帰モデル評価の手法であり、混同行列とは異なる。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/",
+            "reference_label": "Microsoft Docs - Azure ML"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データの相関関係を示す表",
+          "explanation": {
+            "text": "これは相関行列の説明であり、混同行列ではない。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/",
+            "reference_label": "Microsoft Docs - Azure ML"
+          }
+        },
+        {
+          "key": "D",
+          "text": "クラスタリングの結果を可視化したグラフ",
+          "explanation": {
+            "text": "クラスタリング可視化は混同行列とは別物。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/",
+            "reference_label": "Microsoft Docs - Azure ML"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "混同行列は分類モデルの予測結果を実際のラベルと比較するための基本的な表。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-understand-automated-ml",
+        "reference_label": "Microsoft Docs - モデル評価"
+      }
+    },
+    {
+      "id": "azure-AI-900-q35",
+      "question": "Azure Cognitive Services の『Metrics Advisor』が提供する機能はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "時系列データの監視と異常検知",
+          "explanation": {
+            "text": "Metrics Advisorはメトリクスデータを監視し、異常検出と診断を提供する。",
+            "reference": "https://learn.microsoft.com/azure/applied-ai-services/metrics-advisor/",
+            "reference_label": "Microsoft Docs - Metrics Advisor"
+          }
+        },
+        {
+          "key": "B",
+          "text": "テキストの要約生成",
+          "explanation": {
+            "text": "要約はLanguage Serviceの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/language-service/",
+            "reference_label": "Microsoft Docs - Language Service"
+          }
+        },
+        {
+          "key": "C",
+          "text": "音声を翻訳する",
+          "explanation": {
+            "text": "これはSpeech Translationの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/speech-translation",
+            "reference_label": "Microsoft Docs - Speech Translation"
+          }
+        },
+        {
+          "key": "D",
+          "text": "画像内の人物を認識する",
+          "explanation": {
+            "text": "これはFace APIの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/face/overview",
+            "reference_label": "Microsoft Docs - Face API"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Metrics Advisorは異常検知と根本原因分析を行い、運用監視を支援するサービス。",
+        "reference": "https://learn.microsoft.com/azure/applied-ai-services/metrics-advisor/",
+        "reference_label": "Microsoft Docs - Metrics Advisor"
+      }
+    },
+    {
+      "id": "azure-AI-900-q36",
+      "question": "Azure Cognitive Services の『Video Indexer』でできることはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "動画から人物、音声、テキストなどの情報を抽出する",
+          "explanation": {
+            "text": "Video Indexerは映像内の顔、音声、テキストなどを自動的に認識・抽出する。",
+            "reference": "https://learn.microsoft.com/azure/azure-video-analyzer/video-indexer-overview",
+            "reference_label": "Microsoft Docs - Video Indexer"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ニュース記事を自動でクラスタリングする",
+          "explanation": {
+            "text": "これは教師なし学習のクラスタリングに該当する。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+            "reference_label": "Microsoft Docs - Automated ML"
+          }
+        },
+        {
+          "key": "C",
+          "text": "株価データを予測する",
+          "explanation": {
+            "text": "これは機械学習の回帰タスクの例。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+            "reference_label": "Microsoft Docs - Automated ML"
+          }
+        },
+        {
+          "key": "D",
+          "text": "異常なセンサー値を検出する",
+          "explanation": {
+            "text": "これはAnomaly Detectorの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/anomaly-detector/",
+            "reference_label": "Microsoft Docs - Anomaly Detector"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Video Indexerは映像や音声から自動で情報を抽出するAIサービス。",
+        "reference": "https://learn.microsoft.com/azure/azure-video-analyzer/video-indexer-overview",
+        "reference_label": "Microsoft Docs - Video Indexer"
+      }
+    },
+    {
+      "id": "azure-AI-900-q37",
+      "question": "AIモデルの学習において『特徴量（Feature）』が指すものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "モデルが入力として利用するデータの属性",
+          "explanation": {
+            "text": "特徴量はモデルが学習や予測に用いる入力データの変数。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+            "reference_label": "Microsoft Docs - Automated ML"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデルが出力する予測結果",
+          "explanation": {
+            "text": "出力はラベルやターゲット変数であり、特徴量ではない。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/",
+            "reference_label": "Microsoft Docs - Azure ML"
+          }
+        },
+        {
+          "key": "C",
+          "text": "モデルの精度を示す指標",
+          "explanation": {
+            "text": "精度は評価指標であり、特徴量ではない。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-understand-automated-ml",
+            "reference_label": "Microsoft Docs - モデル評価"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AIモデルのアルゴリズムの種類",
+          "explanation": {
+            "text": "アルゴリズムは学習方法であり、特徴量とは異なる。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/",
+            "reference_label": "Microsoft Docs - Azure ML"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "特徴量（Feature）はAIモデルの入力として利用されるデータの属性を指す。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+        "reference_label": "Microsoft Docs - Automated ML"
+      }
+    },
+    {
+      "id": "azure-AI-900-q38",
+      "question": "Azure Cognitive Services の『Language Understanding (LUIS)』の主な用途はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ユーザーの発話から意図（Intent）を理解する",
+          "explanation": {
+            "text": "LUISは自然言語入力からユーザーの意図やエンティティを抽出する。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/luis/",
+            "reference_label": "Microsoft Docs - LUIS"
+          }
+        },
+        {
+          "key": "B",
+          "text": "画像の中の顔を検出する",
+          "explanation": {
+            "text": "これはFace APIの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/face/overview",
+            "reference_label": "Microsoft Docs - Face API"
+          }
+        },
+        {
+          "key": "C",
+          "text": "音声をテキストに変換する",
+          "explanation": {
+            "text": "これはSpeech Serviceの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/",
+            "reference_label": "Microsoft Docs - Speech Service"
+          }
+        },
+        {
+          "key": "D",
+          "text": "数値データの異常を検出する",
+          "explanation": {
+            "text": "これはAnomaly Detectorの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/anomaly-detector/",
+            "reference_label": "Microsoft Docs - Anomaly Detector"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "LUISは自然言語を解析してユーザーの意図を理解するサービス。",
+        "reference": "https://learn.microsoft.com/azure/cognitive-services/luis/",
+        "reference_label": "Microsoft Docs - LUIS"
+      }
+    },
+    {
+      "id": "azure-AI-900-q39",
+      "question": "AIにおける『真陽性（True Positive）』の例はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "スパムメールをスパムと正しく分類する",
+          "explanation": {
+            "text": "真陽性は正例を正しく予測した場合を指す。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-understand-automated-ml",
+            "reference_label": "Microsoft Docs - モデル評価"
+          }
+        },
+        {
+          "key": "B",
+          "text": "スパムでないメールをスパムと誤分類する",
+          "explanation": {
+            "text": "これは偽陽性（False Positive）の例。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-understand-automated-ml",
+            "reference_label": "Microsoft Docs - モデル評価"
+          }
+        },
+        {
+          "key": "C",
+          "text": "スパムでないメールを正しくスパムでないと判定する",
+          "explanation": {
+            "text": "これは真陰性（True Negative）の例。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-understand-automated-ml",
+            "reference_label": "Microsoft Docs - モデル評価"
+          }
+        },
+        {
+          "key": "D",
+          "text": "スパムメールをスパムでないと誤分類する",
+          "explanation": {
+            "text": "これは偽陰性（False Negative）の例。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-understand-automated-ml",
+            "reference_label": "Microsoft Docs - モデル評価"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "真陽性は実際に正のクラスであるデータを正しく正と分類したケースを指す。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-understand-automated-ml",
+        "reference_label": "Microsoft Docs - モデル評価"
+      }
+    },
+    {
+      "id": "azure-AI-900-q40",
+      "question": "Azure Cognitive Services の『Ink Recognizer』の主な用途はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "手書き文字や図形をデジタルデータに変換する",
+          "explanation": {
+            "text": "Ink Recognizerは手書きの文字や図形を認識するサービス。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/ink-recognizer/",
+            "reference_label": "Microsoft Docs - Ink Recognizer"
+          }
+        },
+        {
+          "key": "B",
+          "text": "画像から物体を分類する",
+          "explanation": {
+            "text": "これはComputer VisionやCustom Visionの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/custom-vision-service/",
+            "reference_label": "Microsoft Docs - Custom Vision"
+          }
+        },
+        {
+          "key": "C",
+          "text": "異常な数値データを検出する",
+          "explanation": {
+            "text": "これはAnomaly Detectorの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/anomaly-detector/",
+            "reference_label": "Microsoft Docs - Anomaly Detector"
+          }
+        },
+        {
+          "key": "D",
+          "text": "音声をテキストに変換する",
+          "explanation": {
+            "text": "これはSpeech Serviceの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/",
+            "reference_label": "Microsoft Docs - Speech Service"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Ink Recognizerは手書き入力をデジタル化し、文字や図形を識別できる。",
+        "reference": "https://learn.microsoft.com/azure/cognitive-services/ink-recognizer/",
+        "reference_label": "Microsoft Docs - Ink Recognizer"
+      }
+    },
+    {
+      "id": "azure-AI-900-q41",
+      "question": "AIにおける『精度（Precision）』の指標が表すのはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "予測を正とした中で実際に正である割合",
+          "explanation": {
+            "text": "Precisionは予測が正とされたもののうち、実際に正である割合。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-understand-automated-ml",
+            "reference_label": "Microsoft Docs - モデル評価"
+          }
+        },
+        {
+          "key": "B",
+          "text": "実際に正である中で正と予測した割合",
+          "explanation": {
+            "text": "これは再現率（Recall）の定義。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-understand-automated-ml",
+            "reference_label": "Microsoft Docs - モデル評価"
+          }
+        },
+        {
+          "key": "C",
+          "text": "全体の中で正しく分類された割合",
+          "explanation": {
+            "text": "これは正解率（Accuracy）の定義。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-understand-automated-ml",
+            "reference_label": "Microsoft Docs - モデル評価"
+          }
+        },
+        {
+          "key": "D",
+          "text": "予測のスピード",
+          "explanation": {
+            "text": "スピードは精度指標とは関係ない。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/",
+            "reference_label": "Microsoft Docs - Azure ML"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Precisionは予測が正とされたもののうち、実際に正である割合を示す。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-understand-automated-ml",
+        "reference_label": "Microsoft Docs - モデル評価"
+      }
+    },
+    {
+      "id": "azure-AI-900-q42",
+      "question": "Azure Machine Learning の『モデルカタログ（Model Registry）』の役割はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "学習済みモデルをバージョン管理し、再利用可能にする",
+          "explanation": {
+            "text": "モデルカタログはモデルのバージョン管理と再利用のための仕組み。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-model-management-and-deployment",
+            "reference_label": "Microsoft Docs - モデル管理"
+          }
+        },
+        {
+          "key": "B",
+          "text": "仮想マシンを管理する",
+          "explanation": {
+            "text": "これはAzure Virtual Machinesの機能。",
+            "reference": "https://learn.microsoft.com/azure/virtual-machines/",
+            "reference_label": "Microsoft Docs - Virtual Machines"
+          }
+        },
+        {
+          "key": "C",
+          "text": "自然言語の感情分析を行う",
+          "explanation": {
+            "text": "これはLanguage Serviceの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/language-service/",
+            "reference_label": "Microsoft Docs - Language Service"
+          }
+        },
+        {
+          "key": "D",
+          "text": "動画から音声を抽出する",
+          "explanation": {
+            "text": "これはVideo Indexerの機能。",
+            "reference": "https://learn.microsoft.com/azure/azure-video-analyzer/video-indexer-overview",
+            "reference_label": "Microsoft Docs - Video Indexer"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure MLのModel Registryはモデルを一元管理し、再利用やデプロイを容易にする。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-model-management-and-deployment",
+        "reference_label": "Microsoft Docs - モデル管理"
+      }
+    },
+    {
+      "id": "azure-AI-900-q43",
+      "question": "Azure Cognitive Services の『QnA Maker』の主な利用目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "FAQデータを基に自然な質問応答を提供する",
+          "explanation": {
+            "text": "QnA MakerはFAQやドキュメントからナレッジベースを作成し、自然な質問応答を提供する。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/qnamaker/overview/overview",
+            "reference_label": "Microsoft Docs - QnA Maker"
+          }
+        },
+        {
+          "key": "B",
+          "text": "数値データの異常検知を行う",
+          "explanation": {
+            "text": "異常検知はAnomaly Detectorの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/anomaly-detector/",
+            "reference_label": "Microsoft Docs - Anomaly Detector"
+          }
+        },
+        {
+          "key": "C",
+          "text": "音声をリアルタイムで翻訳する",
+          "explanation": {
+            "text": "これはSpeech Translationの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/speech-translation",
+            "reference_label": "Microsoft Docs - Speech Translation"
+          }
+        },
+        {
+          "key": "D",
+          "text": "画像の物体検出を行う",
+          "explanation": {
+            "text": "物体検出はComputer VisionやCustom Visionの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/custom-vision-service/",
+            "reference_label": "Microsoft Docs - Custom Vision"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "QnA Makerはナレッジベースを活用した質問応答システムを構築できるサービス。",
+        "reference": "https://learn.microsoft.com/azure/cognitive-services/qnamaker/overview/overview",
+        "reference_label": "Microsoft Docs - QnA Maker"
+      }
+    },
+    {
+      "id": "azure-AI-900-q44",
+      "question": "AIにおける『再現率（Recall）』の定義として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "予測を正とした中で実際に正である割合",
+          "explanation": {
+            "text": "これは精度（Precision）の定義。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-understand-automated-ml",
+            "reference_label": "Microsoft Docs - モデル評価"
+          }
+        },
+        {
+          "key": "B",
+          "text": "実際に正であるもののうち正と予測できた割合",
+          "explanation": {
+            "text": "再現率は実際の正例をどれだけ正しく検出できたかを示す。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-understand-automated-ml",
+            "reference_label": "Microsoft Docs - モデル評価"
+          }
+        },
+        {
+          "key": "C",
+          "text": "全体の中で正しく予測できた割合",
+          "explanation": {
+            "text": "これは正解率（Accuracy）の定義。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-understand-automated-ml",
+            "reference_label": "Microsoft Docs - モデル評価"
+          }
+        },
+        {
+          "key": "D",
+          "text": "モデルの学習速度",
+          "explanation": {
+            "text": "学習速度は性能面での指標であり、再現率とは関係しない。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/",
+            "reference_label": "Microsoft Docs - Azure ML"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "再現率（Recall）は実際の正例を正しく検出する割合を示す指標。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-understand-automated-ml",
+        "reference_label": "Microsoft Docs - モデル評価"
+      }
+    },
+    {
+      "id": "azure-AI-900-q45",
+      "question": "Azure Cognitive Services の『Content Moderator』の機能として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "テキスト、画像、動画の不適切コンテンツを検出する",
+          "explanation": {
+            "text": "Content Moderatorは不適切な表現や画像を自動的に検出するサービス。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/content-moderator/",
+            "reference_label": "Microsoft Docs - Content Moderator"
+          }
+        },
+        {
+          "key": "B",
+          "text": "テキストからキーフレーズを抽出する",
+          "explanation": {
+            "text": "これはLanguage Serviceの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/language-service/",
+            "reference_label": "Microsoft Docs - Language Service"
+          }
+        },
+        {
+          "key": "C",
+          "text": "数値データの異常を検出する",
+          "explanation": {
+            "text": "これはAnomaly Detectorの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/anomaly-detector/",
+            "reference_label": "Microsoft Docs - Anomaly Detector"
+          }
+        },
+        {
+          "key": "D",
+          "text": "音声を翻訳する",
+          "explanation": {
+            "text": "これはSpeech Translationの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/speech-translation",
+            "reference_label": "Microsoft Docs - Speech Translation"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Content Moderatorはテキスト、画像、動画の不適切なコンテンツを検出・フィルタリングする。",
+        "reference": "https://learn.microsoft.com/azure/cognitive-services/content-moderator/",
+        "reference_label": "Microsoft Docs - Content Moderator"
+      }
+    },
+    {
+      "id": "azure-AI-900-q46",
+      "question": "AIにおける『回帰（Regression）』モデルの出力として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "連続値の予測結果",
+          "explanation": {
+            "text": "回帰は数値（連続値）を予測するタスク。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+            "reference_label": "Microsoft Docs - Automated ML"
+          }
+        },
+        {
+          "key": "B",
+          "text": "カテゴリラベルの予測結果",
+          "explanation": {
+            "text": "これは分類（Classification）の出力。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+            "reference_label": "Microsoft Docs - Automated ML"
+          }
+        },
+        {
+          "key": "C",
+          "text": "クラスタ番号",
+          "explanation": {
+            "text": "クラスタリングは教師なし学習のタスクであり、回帰ではない。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+            "reference_label": "Microsoft Docs - Automated ML"
+          }
+        },
+        {
+          "key": "D",
+          "text": "音声のテキスト化",
+          "explanation": {
+            "text": "音声認識はSpeech Serviceの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/",
+            "reference_label": "Microsoft Docs - Speech Service"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "回帰分析は連続的な数値を予測するために利用される。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+        "reference_label": "Microsoft Docs - Automated ML"
+      }
+    },
+    {
+      "id": "azure-AI-900-q47",
+      "question": "Azure Machine Learning で『実験（Experiment）』が指すものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "学習ジョブの履歴と結果を記録する仕組み",
+          "explanation": {
+            "text": "実験はモデル学習の実行と結果を記録する単位。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-ml-experiment",
+            "reference_label": "Microsoft Docs - 実験"
+          }
+        },
+        {
+          "key": "B",
+          "text": "学習済みモデルをデプロイする場所",
+          "explanation": {
+            "text": "これはエンドポイントの役割。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-endpoints",
+            "reference_label": "Microsoft Docs - エンドポイント"
+          }
+        },
+        {
+          "key": "C",
+          "text": "仮想マシンを管理する機能",
+          "explanation": {
+            "text": "これはAzure Virtual Machinesの機能。",
+            "reference": "https://learn.microsoft.com/azure/virtual-machines/",
+            "reference_label": "Microsoft Docs - Virtual Machines"
+          }
+        },
+        {
+          "key": "D",
+          "text": "テキスト分析を行うサービス",
+          "explanation": {
+            "text": "これはLanguage Serviceの役割。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/language-service/",
+            "reference_label": "Microsoft Docs - Language Service"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure MLの実験は、学習ジョブの実行とその記録を行う単位。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-ml-experiment",
+        "reference_label": "Microsoft Docs - 実験"
+      }
+    },
+    {
+      "id": "azure-AI-900-q48",
+      "question": "AIにおける『データ前処理』の目的として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "欠損値やノイズを処理し、学習に適したデータを整える",
+          "explanation": {
+            "text": "前処理は欠損値や外れ値の処理などを行い、モデルの品質を向上させる。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-data-preparation",
+            "reference_label": "Microsoft Docs - データ準備"
+          }
+        },
+        {
+          "key": "B",
+          "text": "GPUを使って学習を高速化する",
+          "explanation": {
+            "text": "GPU利用は計算効率に関わるが、前処理の目的ではない。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/",
+            "reference_label": "Microsoft Docs - Azure ML"
+          }
+        },
+        {
+          "key": "C",
+          "text": "モデルをクラウドにデプロイする",
+          "explanation": {
+            "text": "これはデプロイ工程の目的であり、前処理ではない。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/concept-model-management-and-deployment",
+            "reference_label": "Microsoft Docs - モデル管理"
+          }
+        },
+        {
+          "key": "D",
+          "text": "モデルの精度を評価する",
+          "explanation": {
+            "text": "評価は前処理後の段階で行われる。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-understand-automated-ml",
+            "reference_label": "Microsoft Docs - モデル評価"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "データ前処理は欠損値やノイズの処理などを行い、学習に適したデータを作成する工程。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-data-preparation",
+        "reference_label": "Microsoft Docs - データ準備"
+      }
+    },
+    {
+      "id": "azure-AI-900-q49",
+      "question": "Azure Cognitive Services の『Translator』の機能はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "多言語間の翻訳を行う",
+          "explanation": {
+            "text": "Translatorはリアルタイムでの多言語翻訳を提供する。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/translator/",
+            "reference_label": "Microsoft Docs - Translator"
+          }
+        },
+        {
+          "key": "B",
+          "text": "音声から感情を推定する",
+          "explanation": {
+            "text": "これはSpeech Serviceの一部機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/speech-service/",
+            "reference_label": "Microsoft Docs - Speech Service"
+          }
+        },
+        {
+          "key": "C",
+          "text": "異常な数値データを検出する",
+          "explanation": {
+            "text": "これはAnomaly Detectorの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/anomaly-detector/",
+            "reference_label": "Microsoft Docs - Anomaly Detector"
+          }
+        },
+        {
+          "key": "D",
+          "text": "画像の物体を検出する",
+          "explanation": {
+            "text": "これはComputer VisionやCustom Visionの機能。",
+            "reference": "https://learn.microsoft.com/azure/cognitive-services/computer-vision/",
+            "reference_label": "Microsoft Docs - Computer Vision"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure Translatorは多言語翻訳をリアルタイムで提供するサービス。",
+        "reference": "https://learn.microsoft.com/azure/cognitive-services/translator/",
+        "reference_label": "Microsoft Docs - Translator"
+      }
+    },
+    {
+      "id": "azure-AI-900-q50",
+      "question": "AIにおける『F1スコア』の定義として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Precision（適合率）と Recall（再現率）の調和平均",
+          "explanation": {
+            "text": "F1スコアはPrecisionとRecallのバランスを測るために用いられる指標である。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-understand-automated-ml",
+            "reference_label": "Microsoft Docs - モデル評価"
+          }
+        },
+        {
+          "key": "B",
+          "text": "全体の予測に対する正解率",
+          "explanation": {
+            "text": "これはAccuracy（正解率）の定義。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-understand-automated-ml",
+            "reference_label": "Microsoft Docs - モデル評価"
+          }
+        },
+        {
+          "key": "C",
+          "text": "予測結果の分散を示す指標",
+          "explanation": {
+            "text": "分散は統計的なばらつきを示すものであり、F1スコアではない。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/",
+            "reference_label": "Microsoft Docs - Azure ML"
+          }
+        },
+        {
+          "key": "D",
+          "text": "モデルの学習時間と推論時間の比率",
+          "explanation": {
+            "text": "これは性能指標の一種であり、F1スコアの定義ではない。",
+            "reference": "https://learn.microsoft.com/azure/machine-learning/",
+            "reference_label": "Microsoft Docs - Azure ML"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "F1スコアはPrecision（適合率）とRecall（再現率）の調和平均であり、分類モデルの総合的な評価に利用される。",
+        "reference": "https://learn.microsoft.com/azure/machine-learning/how-to-understand-automated-ml",
+        "reference_label": "Microsoft Docs - モデル評価"
+      }
+    }
+  ]
+}

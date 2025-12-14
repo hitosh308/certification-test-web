@@ -1,0 +1,2470 @@
+{
+  "exam": {
+    "id": "cka",
+    "title": "Certified Kubernetes Administrator (CKA)",
+    "description": "CKA は、オープンソースのコンテナオーケストレーションツール Kubernetes を用いたクラスタの設計・インストール・構成、ネットワーク／ストレージ設定、ワークロードの配備、トラブルシューティングなど、実際の運用管理に必要なスキルを問うパフォーマンスベースの認定試験です。受験者はブラウザ上のコンソール環境で、実際にコマンド操作を行いながらタスクをこなす形式で、本番環境レベルの Kubernetes 管理能力を証明できます。クラウドネイティブや DevOps の分野で、インフラ管理者・運用エンジニアとしてのスキルを客観的に示す手段として広く使われています。",
+    "version": "v1.34対応",
+    "price": "445 USD",
+    "difficulty": "難しい",
+    "official-site": "https://training.linuxfoundation.org/certification/certified-kubernetes-administrator-cka/?utm_source=chatgpt.com",
+    "category": {
+      "id": "kube",
+      "name": "Kubernetes技術者認定"
+    }
+  },
+  "questions": [
+    {
+      "id": "kube-cka-1",
+      "question": "Kubernetesクラスタの全ての状態情報（オブジェクト）を永続的に保存するコンポーネントはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "etcd",
+          "explanation": {
+            "text": "Kubernetesの全てのオブジェクト状態はetcdに保存されるため、クラスタのバックアップではetcdのスナップショット取得が重要となる。",
+            "reference": "https://kubernetes.io/docs/concepts/overview/components/",
+            "reference_label": "Kubernetes公式ドキュメント: Kubernetesのコンポーネント"
+          }
+        },
+        {
+          "key": "B",
+          "text": "kube-apiserver",
+          "explanation": {
+            "text": "kube-apiserverはetcdに対するフロントエンドであり、自身は状態を永続保存しない。",
+            "reference": "https://kubernetes.io/docs/concepts/overview/components/",
+            "reference_label": "Kubernetes公式ドキュメント: Kubernetesのコンポーネント"
+          }
+        },
+        {
+          "key": "C",
+          "text": "kube-scheduler",
+          "explanation": {
+            "text": "kube-schedulerはPodをどのノードに配置するかを決定するコンポーネントであり、クラスタ状態の保存は行わない。",
+            "reference": "https://kubernetes.io/docs/concepts/overview/components/",
+            "reference_label": "Kubernetes公式ドキュメント: Kubernetesのコンポーネント"
+          }
+        },
+        {
+          "key": "D",
+          "text": "kubelet",
+          "explanation": {
+            "text": "kubeletは各ノード上のPodを管理するエージェントであり、クラスタ全体の状態を保持する役割は持たない。",
+            "reference": "https://kubernetes.io/docs/concepts/overview/components/",
+            "reference_label": "Kubernetes公式ドキュメント: Kubernetesのコンポーネント"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Kubernetesクラスタの全オブジェクト状態はetcdに保存されるため、etcdがクラスタ状態の唯一の永続ストアとなる。",
+        "reference": "https://kubernetes.io/docs/concepts/overview/components/",
+        "reference_label": "Kubernetes公式ドキュメント: Kubernetesのコンポーネント"
+      }
+    },
+    {
+      "id": "kube-cka-2",
+      "question": "kube-apiserverの主な役割として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ワーカーノード上のPodコンテナを起動・停止する",
+          "explanation": {
+            "text": "Podコンテナの起動・停止は主にkubeletが担当し、kube-apiserverの直接の役割ではない。",
+            "reference": "https://kubernetes.io/docs/concepts/overview/components/",
+            "reference_label": "Kubernetes公式ドキュメント: Kubernetesのコンポーネント"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Kubernetes APIへの全てのリクエストを受け付けるフロントエンドとして動作する",
+          "explanation": {
+            "text": "kube-apiserverはKubernetes APIのフロントエンドとして動作し、クライアントやコンポーネントからの全てのRESTリクエストを受け付ける。",
+            "reference": "https://kubernetes.io/docs/concepts/overview/components/",
+            "reference_label": "Kubernetes公式ドキュメント: Kubernetesのコンポーネント"
+          }
+        },
+        {
+          "key": "C",
+          "text": "クラスタ内ネットワークのルーティングを行う",
+          "explanation": {
+            "text": "ネットワークのルーティングはCNIプラグインやノードのネットワーク設定が担い、kube-apiserverの責務ではない。",
+            "reference": "https://kubernetes.io/docs/concepts/cluster-administration/networking/",
+            "reference_label": "Kubernetes公式ドキュメント: クラスタネットワーキング"
+          }
+        },
+        {
+          "key": "D",
+          "text": "コンテナイメージをレジストリからプルする",
+          "explanation": {
+            "text": "コンテナイメージのプルはkubeletとコンテナランタイムが行い、kube-apiserverは関与しない。",
+            "reference": "https://kubernetes.io/docs/concepts/containers/images/",
+            "reference_label": "Kubernetes公式ドキュメント: コンテナイメージ"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "kube-apiserverはKubernetes APIを外部および内部コンポーネントに公開するフロントエンドであり、認証・認可・検証などを行う中核コンポーネントである。",
+        "reference": "https://kubernetes.io/docs/concepts/overview/components/",
+        "reference_label": "Kubernetes公式ドキュメント: Kubernetesのコンポーネント"
+      }
+    },
+    {
+      "id": "kube-cka-3",
+      "question": "PodのフェーズがRunningであることを確認したい。最も適切なkubectlコマンドはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "kubectl logs",
+          "explanation": {
+            "text": "kubectl logsはコンテナのログを表示するコマンドであり、Podのフェーズ確認には直接利用しない。",
+            "reference": "https://kubernetes.io/docs/reference/kubectl/kubectl/",
+            "reference_label": "Kubernetes公式ドキュメント: kubectlリファレンス"
+          }
+        },
+        {
+          "key": "B",
+          "text": "kubectl get pods",
+          "explanation": {
+            "text": "kubectl get podsはPod一覧とフェーズ（STATUS）を表示できるため、Runningであることの確認に適している。",
+            "reference": "https://kubernetes.io/docs/reference/kubectl/cheatsheet/",
+            "reference_label": "Kubernetes公式ドキュメント: kubectlチートシート"
+          }
+        },
+        {
+          "key": "C",
+          "text": "kubectl exec",
+          "explanation": {
+            "text": "kubectl execはコンテナ内でコマンドを実行するためのもので、フェーズ確認専用ではない。",
+            "reference": "https://kubernetes.io/docs/reference/kubectl/kubectl/",
+            "reference_label": "Kubernetes公式ドキュメント: kubectlリファレンス"
+          }
+        },
+        {
+          "key": "D",
+          "text": "kubectl apply",
+          "explanation": {
+            "text": "kubectl applyはマニフェストを適用するコマンドであり、状態確認には利用しない。",
+            "reference": "https://kubernetes.io/docs/reference/kubectl/cheatsheet/",
+            "reference_label": "Kubernetes公式ドキュメント: kubectlチートシート"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "Podのフェーズはkubectl get podsのSTATUS列で確認するため、この用途にはkubectl get podsが最も適切である。",
+        "reference": "https://kubernetes.io/docs/reference/kubectl/cheatsheet/",
+        "reference_label": "Kubernetes公式ドキュメント: kubectlチートシート"
+      }
+    },
+    {
+      "id": "kube-cka-4",
+      "question": "Podの詳細なイベントやスケジューリング失敗の原因を調べたい場合に、最も適切なコマンドはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "kubectl get pods -o wide",
+          "explanation": {
+            "text": "kubectl get pods -o wideはノード名などの追加情報を表示するが、イベントの詳細は表示しない。",
+            "reference": "https://kubernetes.io/docs/reference/kubectl/cheatsheet/",
+            "reference_label": "Kubernetes公式ドキュメント: kubectlチートシート"
+          }
+        },
+        {
+          "key": "B",
+          "text": "kubectl describe pod <pod名>",
+          "explanation": {
+            "text": "kubectl describeはPodの状態と関連イベントを表示するため、スケジューリング失敗の原因調査に適している。",
+            "reference": "https://kubernetes.io/docs/reference/kubectl/cheatsheet/",
+            "reference_label": "Kubernetes公式ドキュメント: kubectlチートシート"
+          }
+        },
+        {
+          "key": "C",
+          "text": "kubectl logs <pod名>",
+          "explanation": {
+            "text": "kubectl logsはアプリケーションログを表示するが、スケジューリングイベント自体は表示しない。",
+            "reference": "https://kubernetes.io/docs/reference/kubectl/kubectl-logs/",
+            "reference_label": "Kubernetes公式ドキュメント: kubectl logs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "kubectl exec -it <pod名> -- sh",
+          "explanation": {
+            "text": "kubectl execはコンテナ内に入るためのもので、スケジューリングに関するイベント確認には向かない。",
+            "reference": "https://kubernetes.io/docs/reference/kubectl/kubectl-exec/",
+            "reference_label": "Kubernetes公式ドキュメント: kubectl exec"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "スケジューリング失敗などのイベントはkubectl describe podで確認するのが一般的であり、Eventsセクションに詳細が表示される。",
+        "reference": "https://kubernetes.io/docs/reference/kubectl/cheatsheet/",
+        "reference_label": "Kubernetes公式ドキュメント: kubectlチートシート"
+      }
+    },
+    {
+      "id": "kube-cka-5",
+      "question": "Deploymentで指定したreplicas数に対し、常に指定数のPodを維持しようとする役割を持つのはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Deploymentコントローラ",
+          "explanation": {
+            "text": "DeploymentコントローラはReplicaSetを管理し、指定されたreplicas数を維持するようにPod数を調整する。",
+            "reference": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/",
+            "reference_label": "Kubernetes公式ドキュメント: Deployment"
+          }
+        },
+        {
+          "key": "B",
+          "text": "kube-scheduler",
+          "explanation": {
+            "text": "kube-schedulerはPodをどのノードに置くか決めるが、replicas数の維持は担当しない。",
+            "reference": "https://kubernetes.io/docs/concepts/overview/components/",
+            "reference_label": "Kubernetes公式ドキュメント: Kubernetesのコンポーネント"
+          }
+        },
+        {
+          "key": "C",
+          "text": "kube-proxy",
+          "explanation": {
+            "text": "kube-proxyはServiceに対するトラフィックをPodへルーティングするコンポーネントである。",
+            "reference": "https://kubernetes.io/docs/concepts/overview/components/",
+            "reference_label": "Kubernetes公式ドキュメント: Kubernetesのコンポーネント"
+          }
+        },
+        {
+          "key": "D",
+          "text": "StatefulSetコントローラ",
+          "explanation": {
+            "text": "StatefulSetはステートフルなPodを管理するコントローラであり、Deploymentのreplicas維持とは別のリソースである。",
+            "reference": "https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/",
+            "reference_label": "Kubernetes公式ドキュメント: StatefulSet"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "DeploymentコントローラはReplicaSetを通してPod数を管理し、指定されたreplicas数を維持する自己修復機能を提供する。",
+        "reference": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/",
+        "reference_label": "Kubernetes公式ドキュメント: Deployment"
+      }
+    },
+    {
+      "id": "kube-cka-6",
+      "question": "アプリケーションの横方向スケーリング（Pod数の増減）を行いたい。最も適切なリソースはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "DaemonSet",
+          "explanation": {
+            "text": "DaemonSetは各ノードに1つずつPodを配置するためのコントローラであり、replicasによる横方向スケーリングには用いない。",
+            "reference": "https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/",
+            "reference_label": "Kubernetes公式ドキュメント: DaemonSet"
+          }
+        },
+        {
+          "key": "B",
+          "text": "StatefulSet",
+          "explanation": {
+            "text": "StatefulSetはステートフルなPodを一意なID付きで管理するが、単純な横方向スケーリングには通常Deploymentが使われる。",
+            "reference": "https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/",
+            "reference_label": "Kubernetes公式ドキュメント: StatefulSet"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Deployment",
+          "explanation": {
+            "text": "Deploymentはreplicasの変更によりPod数を増減できるため、一般的なステートレスアプリのスケーリングに適している。",
+            "reference": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/",
+            "reference_label": "Kubernetes公式ドキュメント: Deployment"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Job",
+          "explanation": {
+            "text": "Jobは一度きりのバッチ処理を保証するためのリソースであり、常時稼働アプリのスケーリング向きではない。",
+            "reference": "https://kubernetes.io/docs/concepts/workloads/controllers/job/",
+            "reference_label": "Kubernetes公式ドキュメント: Job"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "一般的なステートレスなアプリケーションのスケーリングにはDeploymentを用い、replicas数を変更することでPodを横方向に増減させる。",
+        "reference": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/",
+        "reference_label": "Kubernetes公式ドキュメント: Deployment"
+      }
+    },
+    {
+      "id": "kube-cka-7",
+      "question": "Podの再起動ポリシーとして有効な設定値はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Always",
+          "explanation": {
+            "text": "restartPolicy=AlwaysはDeploymentやReplicaSetのPodにデフォルトで設定される値であり、有効な設定値の1つである。",
+            "reference": "https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/",
+            "reference_label": "Kubernetes公式ドキュメント: Podのライフサイクル"
+          }
+        },
+        {
+          "key": "B",
+          "text": "OnSuccess",
+          "explanation": {
+            "text": "OnSuccessというrestartPolicyは存在せず、有効な値ではない。",
+            "reference": "https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/",
+            "reference_label": "Kubernetes公式ドキュメント: Podのライフサイクル"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Never",
+          "explanation": {
+            "text": "restartPolicy=NeverはJobなどで利用可能な有効な設定値である。",
+            "reference": "https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/",
+            "reference_label": "Kubernetes公式ドキュメント: Podのライフサイクル"
+          }
+        },
+        {
+          "key": "D",
+          "text": "OnDemand",
+          "explanation": {
+            "text": "OnDemandというrestartPolicyはKubernetesの仕様には存在しない。",
+            "reference": "https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/",
+            "reference_label": "Kubernetes公式ドキュメント: Podのライフサイクル"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "restartPolicyの有効な値はAlways・OnFailure・Neverであり、Podの種類やコントローラに応じて使い分ける。",
+        "reference": "https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/",
+        "reference_label": "Kubernetes公式ドキュメント: Podのライフサイクル"
+      }
+    },
+    {
+      "id": "kube-cka-8",
+      "question": "PodのReadiness Probeの主な目的として最も適切な説明はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "コンテナプロセスが存在するかどうかを確認する",
+          "explanation": {
+            "text": "コンテナプロセスの生存確認は主にLiveness Probeの役割であり、Readiness Probeの目的とは異なる。",
+            "reference": "https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/",
+            "reference_label": "Kubernetes公式ドキュメント: Liveness/Readiness/Startup Probe"
+          }
+        },
+        {
+          "key": "B",
+          "text": "アプリケーションがトラフィックを受け付け可能な状態かどうかを確認する",
+          "explanation": {
+            "text": "Readiness Probeはアプリケーションがリクエストを処理できる状態かを判定し、Serviceのエンドポイントに含めるかどうかを制御する。",
+            "reference": "https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/",
+            "reference_label": "Kubernetes公式ドキュメント: Liveness/Readiness/Startup Probe"
+          }
+        },
+        {
+          "key": "C",
+          "text": "コンテナの起動完了までLiveness/Readinessのチェックを遅延させる",
+          "explanation": {
+            "text": "コンテナ起動完了までのチェック遅延はStartup Probeの役割であり、Readiness Probe単体の役割ではない。",
+            "reference": "https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/",
+            "reference_label": "Kubernetes公式ドキュメント: Liveness/Readiness/Startup Probe"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ノードの健康状態を監視しスケジューリング可否を決定する",
+          "explanation": {
+            "text": "ノードの健康監視やスケジューリング可否はkubeletやコントロールプレーンが担い、Readiness Probeの責務ではない。",
+            "reference": "https://kubernetes.io/docs/concepts/overview/components/",
+            "reference_label": "Kubernetes公式ドキュメント: Kubernetesのコンポーネント"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "Readiness Probeはアプリケーションがトラフィックを処理できる状態かを判断し、失敗時にはServiceのエンドポイントから除外してリクエストを送らないようにする。",
+        "reference": "https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/",
+        "reference_label": "Kubernetes公式ドキュメント: Liveness/Readiness/Startup Probe"
+      }
+    },
+    {
+      "id": "kube-cka-9",
+      "question": "ノードの再起動前に、既存Podへの新規スケジューリングを止めつつ、既存Podはそのまま動作させたい。最も適切な操作はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "kubectl delete node <ノード名>",
+          "explanation": {
+            "text": "ノード削除はクラスタからノードを除外する操作であり、単に再起動前の新規スケジューリングを止める目的には適さない。",
+            "reference": "https://kubernetes.io/docs/concepts/architecture/nodes/",
+            "reference_label": "Kubernetes公式ドキュメント: ノード"
+          }
+        },
+        {
+          "key": "B",
+          "text": "kubectl cordon <ノード名>",
+          "explanation": {
+            "text": "kubectl cordonはノードをSchedulingDisabled状態にし、新規Podのスケジューリングを止めるが、既存Podはそのまま動作する。",
+            "reference": "https://kubernetes.io/docs/reference/kubectl/cheatsheet/",
+            "reference_label": "Kubernetes公式ドキュメント: kubectlチートシート"
+          }
+        },
+        {
+          "key": "C",
+          "text": "kubectl drain <ノード名> --ignore-daemonsets",
+          "explanation": {
+            "text": "kubectl drainは対象ノード上のPodを退避させるため、既存Podをそのまま動作させる要件とは異なる。",
+            "reference": "https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/",
+            "reference_label": "Kubernetes公式ドキュメント: ノードの安全なDrain"
+          }
+        },
+        {
+          "key": "D",
+          "text": "kubectl taint nodes <ノード名> node=maintenance:NoSchedule",
+          "explanation": {
+            "text": "taintにより新規スケジューリングを防ぐこともできるが、用途としてはcordonの方がシンプルで意図が明確である。",
+            "reference": "https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/",
+            "reference_label": "Kubernetes公式ドキュメント: TaintとToleration"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "再起動前に新規スケジューリングのみを止めたい場合はkubectl cordonでノードをスケジューリング不可にするのが適切であり、既存Podはそのまま残る。",
+        "reference": "https://kubernetes.io/docs/reference/kubectl/cheatsheet/",
+        "reference_label": "Kubernetes公式ドキュメント: kubectlチートシート"
+      }
+    },
+    {
+      "id": "kube-cka-10",
+      "question": "ノードメンテナンスのために、ノード上の全てのPod（DaemonSetを除く）を安全に退避させたい。最も推奨される操作はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "kubectl cordon <ノード名>",
+          "explanation": {
+            "text": "cordonは新規Podのスケジューリングを止めるのみで、既存Podの退避は行わない。",
+            "reference": "https://kubernetes.io/docs/reference/kubectl/cheatsheet/",
+            "reference_label": "Kubernetes公式ドキュメント: kubectlチートシート"
+          }
+        },
+        {
+          "key": "B",
+          "text": "kubectl drain <ノード名> --ignore-daemonsets --delete-emptydir-data",
+          "explanation": {
+            "text": "kubectl drainはノード上のPodを他ノードへ退避させ、ノードメンテナンス時の推奨手順となる。",
+            "reference": "https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/",
+            "reference_label": "Kubernetes公式ドキュメント: ノードの安全なDrain"
+          }
+        },
+        {
+          "key": "C",
+          "text": "kubectl delete pods --all --node <ノード名>",
+          "explanation": {
+            "text": "Podを直接削除するとコントローラによる再スケジューリングは行われるが、安全なDrain手順とは異なり推奨されない。",
+            "reference": "https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/",
+            "reference_label": "Kubernetes公式ドキュメント: ノードの安全なDrain"
+          }
+        },
+        {
+          "key": "D",
+          "text": "kubectl taint nodes <ノード名> maintenance=true:NoSchedule",
+          "explanation": {
+            "text": "taintは新規スケジューリングの制御には利用できるが、既存Podの退避は自動で行わない。",
+            "reference": "https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/",
+            "reference_label": "Kubernetes公式ドキュメント: TaintとToleration"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ノードメンテナンス時はkubectl drainを用いて対象ノード上のPodを安全に退避させるのが推奨される手順である。",
+        "reference": "https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/",
+        "reference_label": "Kubernetes公式ドキュメント: ノードの安全なDrain"
+      }
+    },
+    {
+      "id": "kube-cka-11",
+      "question": "クラスタ内で固定ポートを使わずに内部ロードバランシングを行いたい場合に使用するServiceのタイプはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ClusterIP",
+          "explanation": {
+            "text": "ClusterIPはクラスタ内部向けの仮想IPを割り当てるデフォルトのServiceタイプであり、内部ロードバランシングに利用される。",
+            "reference": "https://kubernetes.io/docs/concepts/services-networking/service/",
+            "reference_label": "Kubernetes公式ドキュメント: Service"
+          }
+        },
+        {
+          "key": "B",
+          "text": "NodePort",
+          "explanation": {
+            "text": "NodePortは各ノードで固定ポートを開放し、外部からアクセス可能にするServiceタイプである。",
+            "reference": "https://kubernetes.io/docs/concepts/services-networking/service/",
+            "reference_label": "Kubernetes公式ドキュメント: Service"
+          }
+        },
+        {
+          "key": "C",
+          "text": "LoadBalancer",
+          "explanation": {
+            "text": "LoadBalancerはクラウドプロバイダのロードバランサを作成し、外部公開に利用するServiceタイプである。",
+            "reference": "https://kubernetes.io/docs/concepts/services-networking/service/",
+            "reference_label": "Kubernetes公式ドキュメント: Service"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ExternalName",
+          "explanation": {
+            "text": "ExternalNameはクラスタ外のDNS名への名前解決のみ提供し、ロードバランシングは行わない。",
+            "reference": "https://kubernetes.io/docs/concepts/services-networking/service/",
+            "reference_label": "Kubernetes公式ドキュメント: Service"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "クラスタ内部の負荷分散にはClusterIPが使われ、PodのIPが変わっても固定の仮想IPとDNS名でアクセスできる。",
+        "reference": "https://kubernetes.io/docs/concepts/services-networking/service/",
+        "reference_label": "Kubernetes公式ドキュメント: Service"
+      }
+    },
+    {
+      "id": "kube-cka-12",
+      "question": "Ingressの主な役割として最も適切な説明はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "クラスタ内Pod間のL3ネットワークを構成する",
+          "explanation": {
+            "text": "Pod間のL3ネットワーク構成はCNIプラグインの役割であり、Ingressの責務ではない。",
+            "reference": "https://kubernetes.io/docs/concepts/cluster-administration/networking/",
+            "reference_label": "Kubernetes公式ドキュメント: クラスタネットワーキング"
+          }
+        },
+        {
+          "key": "B",
+          "text": "外部トラフィックをHTTP/HTTPSレベルでルーティングするルールを定義する",
+          "explanation": {
+            "text": "Ingressはホスト名やパスに基づいて外部HTTP/HTTPSトラフィックをServiceへルーティングするためのルールを定義する。",
+            "reference": "https://kubernetes.io/docs/concepts/services-networking/ingress/",
+            "reference_label": "Kubernetes公式ドキュメント: Ingress"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Podの水平スケーリング条件を定義する",
+          "explanation": {
+            "text": "Podのスケーリング条件はHorizontalPodAutoscalerなどで定義し、Ingressの役割ではない。",
+            "reference": "https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/",
+            "reference_label": "Kubernetes公式ドキュメント: Horizontal Pod Autoscaler"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Service間のNetworkPolicyを自動生成する",
+          "explanation": {
+            "text": "NetworkPolicyは独立したリソースであり、Ingressが自動生成することはない。",
+            "reference": "https://kubernetes.io/docs/concepts/services-networking/network-policies/",
+            "reference_label": "Kubernetes公式ドキュメント: NetworkPolicy"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "IngressはL7ロードバランサのように振る舞い、HTTP/HTTPSのホスト名・パスベースで外部トラフィックを内部Serviceへルーティングするルールを定義する。",
+        "reference": "https://kubernetes.io/docs/concepts/services-networking/ingress/",
+        "reference_label": "Kubernetes公式ドキュメント: Ingress"
+      }
+    },
+    {
+      "id": "kube-cka-13",
+      "question": "Namespaceを利用する主な目的として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "リソースを論理的に分離し、名前の重複を許容する",
+          "explanation": {
+            "text": "Namespaceはクラスタ内のリソースを論理的に分割し、同じ名前のリソースをNamespaceごとに持てるようにする。",
+            "reference": "https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/",
+            "reference_label": "Kubernetes公式ドキュメント: Namespace"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ノードを物理的に分離する",
+          "explanation": {
+            "text": "ノードの物理的分離はクラスタやネットワーク設計の話であり、NamespaceはAPIオブジェクトの論理分割に関する概念である。",
+            "reference": "https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/",
+            "reference_label": "Kubernetes公式ドキュメント: Namespace"
+          }
+        },
+        {
+          "key": "C",
+          "text": "PodのIPアドレス範囲を制御する",
+          "explanation": {
+            "text": "PodのIPレンジ制御はCNIプラグインやネットワーク設定で行い、Namespaceとは直接関係しない。",
+            "reference": "https://kubernetes.io/docs/concepts/cluster-administration/networking/",
+            "reference_label": "Kubernetes公式ドキュメント: クラスタネットワーキング"
+          }
+        },
+        {
+          "key": "D",
+          "text": "コンテナランタイムの種類を切り替える",
+          "explanation": {
+            "text": "コンテナランタイムの選択はノードやkubeletの設定であり、Namespaceでは制御しない。",
+            "reference": "https://kubernetes.io/docs/setup/production-environment/container-runtimes/",
+            "reference_label": "Kubernetes公式ドキュメント: コンテナランタイム"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Namespaceは同一クラスタ内で複数の論理環境を提供し、リソース名の重複やアクセス制御、リソースクォータの単位として利用される。",
+        "reference": "https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/",
+        "reference_label": "Kubernetes公式ドキュメント: Namespace"
+      }
+    },
+    {
+      "id": "kube-cka-14",
+      "question": "ConfigMapの主な用途として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "機密情報（パスワードやトークン）の暗号化保存",
+          "explanation": {
+            "text": "機密情報の保存にはSecretを使うことが推奨され、ConfigMapはプレーンな設定情報向けである。",
+            "reference": "https://kubernetes.io/docs/concepts/configuration/secret/",
+            "reference_label": "Kubernetes公式ドキュメント: Secret"
+          }
+        },
+        {
+          "key": "B",
+          "text": "アプリケーションの設定値をコードと分離して管理する",
+          "explanation": {
+            "text": "ConfigMapは設定ファイルや環境変数などの設定値をアプリケーションから分離して管理するために利用される。",
+            "reference": "https://kubernetes.io/docs/concepts/configuration/configmap/",
+            "reference_label": "Kubernetes公式ドキュメント: ConfigMap"
+          }
+        },
+        {
+          "key": "C",
+          "text": "コンテナイメージをクラスタ内にキャッシュする",
+          "explanation": {
+            "text": "イメージのキャッシュはコンテナランタイムの機能であり、ConfigMapとは無関係である。",
+            "reference": "https://kubernetes.io/docs/concepts/containers/images/",
+            "reference_label": "Kubernetes公式ドキュメント: コンテナイメージ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ノードのリソース使用量を制限する",
+          "explanation": {
+            "text": "ノードやPodのリソース制御はResourceQuotaやLimitRangeなどで行い、ConfigMapの用途ではない。",
+            "reference": "https://kubernetes.io/docs/concepts/policy/resource-quotas/",
+            "reference_label": "Kubernetes公式ドキュメント: ResourceQuota"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ConfigMapはアプリケーションの設定情報をオブジェクトとして管理し、環境変数やボリュームとしてPodに注入できる。",
+        "reference": "https://kubernetes.io/docs/concepts/configuration/configmap/",
+        "reference_label": "Kubernetes公式ドキュメント: ConfigMap"
+      }
+    },
+    {
+      "id": "kube-cka-15",
+      "question": "Secretの特徴として正しい説明はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "etcd上でも常に平文で保存されるため暗号化できない",
+          "explanation": {
+            "text": "etcd上のSecretはKMSなどで暗号化することが可能であり、平文固定という仕様ではない。",
+            "reference": "https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/",
+            "reference_label": "Kubernetes公式ドキュメント: 機密データの暗号化"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Base64でエンコードされたデータとして送受信される",
+          "explanation": {
+            "text": "SecretのデータフィールドはYAML上ではBase64エンコードで表現されるが、これは秘匿ではなくエンコード形式である。",
+            "reference": "https://kubernetes.io/docs/concepts/configuration/secret/",
+            "reference_label": "Kubernetes公式ドキュメント: Secret"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ConfigMapと同様に機密性のない情報に限定して保存する必要がある",
+          "explanation": {
+            "text": "Secretは機密情報を保存するためのリソースであり、ConfigMapとは用途が異なる。",
+            "reference": "https://kubernetes.io/docs/concepts/configuration/secret/",
+            "reference_label": "Kubernetes公式ドキュメント: Secret"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Podに環境変数としては利用できない",
+          "explanation": {
+            "text": "SecretもConfigMapと同様に環境変数としてPodにマウントできる。",
+            "reference": "https://kubernetes.io/docs/concepts/configuration/secret/",
+            "reference_label": "Kubernetes公式ドキュメント: Secret"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "Secretはパスワードやトークンなどの機密情報を扱うためのリソースであり、etcd暗号化などと組み合わせて保護することが推奨される。",
+        "reference": "https://kubernetes.io/docs/concepts/configuration/secret/",
+        "reference_label": "Kubernetes公式ドキュメント: Secret"
+      }
+    },
+    {
+      "id": "kube-cka-16",
+      "question": "Podが特定のノードにのみスケジューリングされるように、ラベルに基づいて制御したい。最も適切な仕組みはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ResourceQuota",
+          "explanation": {
+            "text": "ResourceQuotaはNamespace単位のリソース上限を設定するもので、ノード選択には利用しない。",
+            "reference": "https://kubernetes.io/docs/concepts/policy/resource-quotas/",
+            "reference_label": "Kubernetes公式ドキュメント: ResourceQuota"
+          }
+        },
+        {
+          "key": "B",
+          "text": "NodeSelector / NodeAffinity",
+          "explanation": {
+            "text": "NodeSelectorやNodeAffinityを使うことで、Podを特定ラベルを持つノードにだけスケジューリングすることができる。",
+            "reference": "https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/",
+            "reference_label": "Kubernetes公式ドキュメント: Podをノードに割り当てる"
+          }
+        },
+        {
+          "key": "C",
+          "text": "TaintとToleration",
+          "explanation": {
+            "text": "TaintとTolerationは特定Podをノードから排除する方向の制御であり、単純な「このノードだけに」の指定にはNodeAffinityがよく使われる。",
+            "reference": "https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/",
+            "reference_label": "Kubernetes公式ドキュメント: TaintとToleration"
+          }
+        },
+        {
+          "key": "D",
+          "text": "PriorityClass",
+          "explanation": {
+            "text": "PriorityClassはスケジューリング優先度を制御する仕組みであり、特定ノードへの割り当てには使わない。",
+            "reference": "https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/",
+            "reference_label": "Kubernetes公式ドキュメント: Pod優先度とプリエンプション"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "特定ラベルを持つノードだけにPodを配置したい場合は、spec.nodeSelectorやnodeAffinityを使ってスケジューリング先ノードを絞り込む。",
+        "reference": "https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/",
+        "reference_label": "Kubernetes公式ドキュメント: Podをノードに割り当てる"
+      }
+    },
+    {
+      "id": "kube-cka-17",
+      "question": "特定の用途以外のPodがノードにスケジューリングされないようにしたい。最も適切な設定はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "nodeSelectorに専用ラベルを指定する",
+          "explanation": {
+            "text": "nodeSelectorだけでは他のPodを排除できず、専用ラベルを指定しないPodもスケジューリングされてしまう可能性がある。",
+            "reference": "https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/",
+            "reference_label": "Kubernetes公式ドキュメント: Podをノードに割り当てる"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ノードにTaintを設定し、特定PodにのみTolerationを付与する",
+          "explanation": {
+            "text": "ノードにTaintを設定することで、Tolerationを持たないPodをスケジューリングできなくし、特定用途のPodだけを許可できる。",
+            "reference": "https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/",
+            "reference_label": "Kubernetes公式ドキュメント: TaintとToleration"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Podに高いPriorityClassを設定する",
+          "explanation": {
+            "text": "PriorityClassはリソース逼迫時のプリエンプションに関わるが、特定ノードへの制限には直接関係しない。",
+            "reference": "https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/",
+            "reference_label": "Kubernetes公式ドキュメント: Pod優先度とプリエンプション"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Namespaceを分けてデフォルトのリソース制限を変える",
+          "explanation": {
+            "text": "Namespace分割は論理的なリソース管理には有効だが、ノード単位のスケジューリング制御とは別の話である。",
+            "reference": "https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/",
+            "reference_label": "Kubernetes公式ドキュメント: Namespace"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "特定用途以外のPodをノードに乗せたくない場合は、ノードにTaintを付け、許可されたPodにのみTolerationを設定するパターンが一般的である。",
+        "reference": "https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/",
+        "reference_label": "Kubernetes公式ドキュメント: TaintとToleration"
+      }
+    },
+    {
+      "id": "kube-cka-18",
+      "question": "ClusterIPタイプのServiceが解決するDNS名として正しい形式はどれか（デフォルト設定を前提）。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "<service名>.<cluster.local>",
+          "explanation": {
+            "text": "通常のFQDNは<service名>.<namespace名>.svc.cluster.localの形式であり、Namespaceやsvcが省略されない。",
+            "reference": "https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/",
+            "reference_label": "Kubernetes公式ドキュメント: DNS for Services and Pods"
+          }
+        },
+        {
+          "key": "B",
+          "text": "<service名>.<namespace名>.svc.cluster.local",
+          "explanation": {
+            "text": "デフォルトDNSドメインではServiceのFQDNは<service名>.<namespace名>.svc.cluster.localの形式になる。",
+            "reference": "https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/",
+            "reference_label": "Kubernetes公式ドキュメント: DNS for Services and Pods"
+          }
+        },
+        {
+          "key": "C",
+          "text": "<service名>.svc.<namespace名>.cluster.local",
+          "explanation": {
+            "text": "svcの位置が誤っており、公式のFQDN形式とは一致しない。",
+            "reference": "https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/",
+            "reference_label": "Kubernetes公式ドキュメント: DNS for Services and Pods"
+          }
+        },
+        {
+          "key": "D",
+          "text": "<namespace名>.<service名>.cluster.local",
+          "explanation": {
+            "text": "NamespaceとService名の順序が逆であり、正しいFQDN形式ではない。",
+            "reference": "https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/",
+            "reference_label": "Kubernetes公式ドキュメント: DNS for Services and Pods"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "KubernetesのServiceは<service名>.<namespace名>.svc.cluster.localというFQDNで解決され、cluster.localはデフォルトドメイン名である。",
+        "reference": "https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/",
+        "reference_label": "Kubernetes公式ドキュメント: DNS for Services and Pods"
+      }
+    },
+    {
+      "id": "kube-cka-19",
+      "question": "NetworkPolicyで制御できるものとして正しい説明はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "PodへのCPUとメモリ使用量の上限",
+          "explanation": {
+            "text": "CPU・メモリの上限はリソース要求/制限で制御し、NetworkPolicyでは扱わない。",
+            "reference": "https://kubernetes.io/docs/concepts/policy/resource-quotas/",
+            "reference_label": "Kubernetes公式ドキュメント: ResourceQuota"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Pod間およびPodと外部との通信許可/拒否ルール",
+          "explanation": {
+            "text": "NetworkPolicyはPodセレクタやIPブロックを用いて、Ingress/ Egressトラフィックの許可/拒否を定義できる。",
+            "reference": "https://kubernetes.io/docs/concepts/services-networking/network-policies/",
+            "reference_label": "Kubernetes公式ドキュメント: NetworkPolicy"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ノード上のkubeletへのアクセス認可",
+          "explanation": {
+            "text": "kubeletへのアクセス認可は認証・認可設定によるものであり、NetworkPolicyの対象ではない。",
+            "reference": "https://kubernetes.io/docs/reference/access-authn-authz/kubelet-authn-authz/",
+            "reference_label": "Kubernetes公式ドキュメント: Kubeletの認証と認可"
+          }
+        },
+        {
+          "key": "D",
+          "text": "APIサーバーへのRBAC権限",
+          "explanation": {
+            "text": "RBACの権限はRole/ClusterRoleとBindingで定義し、NetworkPolicyでは制御しない。",
+            "reference": "https://kubernetes.io/docs/reference/access-authn-authz/rbac/",
+            "reference_label": "Kubernetes公式ドキュメント: RBAC"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "NetworkPolicyはPodに入る・出るトラフィックの許可ルールを定義するためのリソースであり、L3/L4レベルの通信制御に使用される。",
+        "reference": "https://kubernetes.io/docs/concepts/services-networking/network-policies/",
+        "reference_label": "Kubernetes公式ドキュメント: NetworkPolicy"
+      }
+    },
+    {
+      "id": "kube-cka-20",
+      "question": "PersistentVolumeClaim（PVC）のspec.accessModesで指定できるモードとして正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ReadWriteOncePod",
+          "explanation": {
+            "text": "ReadWriteOncePodは一部のCSI実装でサポートされる新しいモードだが、標準的な代表モードとしてはRWO, ROX, RWXがよく利用される。",
+            "reference": "https://kubernetes.io/docs/concepts/storage/persistent-volumes/",
+            "reference_label": "Kubernetes公式ドキュメント: Persistent Volumes"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ReadWriteOnce, ReadOnlyMany, ReadWriteMany",
+          "explanation": {
+            "text": "PVCのaccessModesの代表的な値はReadWriteOnce, ReadOnlyMany, ReadWriteManyであり、それぞれのアクセス特性を表す。",
+            "reference": "https://kubernetes.io/docs/concepts/storage/persistent-volumes/",
+            "reference_label": "Kubernetes公式ドキュメント: Persistent Volumes"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ReadOnce, WriteMany, Exclusive",
+          "explanation": {
+            "text": "ReadOnce, WriteMany, ExclusiveというモードはKubernetesのaccessModesとしては定義されていない。",
+            "reference": "https://kubernetes.io/docs/concepts/storage/persistent-volumes/",
+            "reference_label": "Kubernetes公式ドキュメント: Persistent Volumes"
+          }
+        },
+        {
+          "key": "D",
+          "text": "SharedRead, SharedWrite, LocalOnly",
+          "explanation": {
+            "text": "これらのモード名は公式仕様には存在しない。",
+            "reference": "https://kubernetes.io/docs/concepts/storage/persistent-volumes/",
+            "reference_label": "Kubernetes公式ドキュメント: Persistent Volumes"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "PVCのaccessModesとして代表的なものはReadWriteOnce, ReadOnlyMany, ReadWriteManyであり、ストレージクラスのサポートと合わせて設計する必要がある。",
+        "reference": "https://kubernetes.io/docs/concepts/storage/persistent-volumes/",
+        "reference_label": "Kubernetes公式ドキュメント: Persistent Volumes"
+      }
+    },
+
+    {
+      "id": "kube-cka-21",
+      "question": "StorageClassでdynamic provisioningを有効にする主な目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "PVC作成時に自動的にPVを払い出す",
+          "explanation": {
+            "text": "StorageClassを定義し、PVCで指定することでPVC作成時に対応するPVが自動作成される。",
+            "reference": "https://kubernetes.io/docs/concepts/storage/storage-classes/",
+            "reference_label": "Kubernetes公式ドキュメント: StorageClass"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ノードローカルなemptyDirボリュームを永続化する",
+          "explanation": {
+            "text": "emptyDirはPodライフサイクルに紐づく一時ディスクであり、StorageClassとは無関係である。",
+            "reference": "https://kubernetes.io/docs/concepts/storage/volumes/",
+            "reference_label": "Kubernetes公式ドキュメント: Volumes"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ConfigMapを自動的にボリュームへマウントする",
+          "explanation": {
+            "text": "ConfigMapのマウントはPodのvolume設定で行い、StorageClassは関与しない。",
+            "reference": "https://kubernetes.io/docs/concepts/configuration/configmap/",
+            "reference_label": "Kubernetes公式ドキュメント: ConfigMap"
+          }
+        },
+        {
+          "key": "D",
+          "text": "etcdのバックアップを自動生成する",
+          "explanation": {
+            "text": "etcdバックアップは運用タスクであり、StorageClassの機能ではない。",
+            "reference": "https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/",
+            "reference_label": "Kubernetes公式ドキュメント: etcdの運用"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "StorageClassを用いたdynamic provisioningにより、PVC作成に応じてストレージプラグインがPVを自動作成し、運用負荷を下げられる。",
+        "reference": "https://kubernetes.io/docs/concepts/storage/storage-classes/",
+        "reference_label": "Kubernetes公式ドキュメント: StorageClass"
+      }
+    },
+    {
+      "id": "kube-cka-22",
+      "question": "StatefulSetの特徴として、Deploymentと比較したときに正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Pod名に連番が付き、一意のネットワークIDを維持できる",
+          "explanation": {
+            "text": "StatefulSetはpod-0, pod-1のように安定した名前を払い出し、ステートフルなワークロード向けに一意性を保証する。",
+            "reference": "https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/",
+            "reference_label": "Kubernetes公式ドキュメント: StatefulSet"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Podは常にランダムな名前で作成される",
+          "explanation": {
+            "text": "ランダム名で作成されるのはReplicaSet/DeploymentのPodであり、StatefulSetは安定した名前を付与する。",
+            "reference": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/",
+            "reference_label": "Kubernetes公式ドキュメント: Deployment"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Pod再作成時に新しいPersistentVolumeを必ず割り当てる",
+          "explanation": {
+            "text": "StatefulSetではVolumeClaimTemplatesにより、同じPod名に同じPVCが再アタッチされるため、常に新しいPVとは限らない。",
+            "reference": "https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/",
+            "reference_label": "Kubernetes公式ドキュメント: StatefulSet"
+          }
+        },
+        {
+          "key": "D",
+          "text": "必ずPodDisruptionBudgetをセットで定義する必要がある",
+          "explanation": {
+            "text": "PodDisruptionBudgetは任意のワークロードで利用できるが、StatefulSetに必須ではない。",
+            "reference": "https://kubernetes.io/docs/tasks/run-application/configure-pdb/",
+            "reference_label": "Kubernetes公式ドキュメント: PodDisruptionBudget"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "StatefulSetは安定したPod名と、同一PodへのPVC再アタッチなどステートフルワークロード用の機能を提供する点がDeploymentと異なる。",
+        "reference": "https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/",
+        "reference_label": "Kubernetes公式ドキュメント: StatefulSet"
+      }
+    },
+    {
+      "id": "kube-cka-23",
+      "question": "etcdのスナップショットを利用してKubernetesクラスタを復旧する際に正しい説明はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "任意の古いスナップショットから復元してもAPIバージョン不整合は発生しない",
+          "explanation": {
+            "text": "大きく古いスナップショットからの復元ではAPIオブジェクトの非互換が問題となる可能性があり、バージョン整合性に注意が必要である。",
+            "reference": "https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/",
+            "reference_label": "Kubernetes公式ドキュメント: etcdの運用"
+          }
+        },
+        {
+          "key": "B",
+          "text": "全てのコントロールプレーンノードで同じスナップショットから復元する必要がある",
+          "explanation": {
+            "text": "etcdクラスターのメンバーは同じスナップショットから復元し、一貫したクラスタ状態を再構築する必要がある。",
+            "reference": "https://etcd.io/docs/v3.5/op-guide/recovery/",
+            "reference_label": "etcd公式ドキュメント: Disaster recovery"
+          }
+        },
+        {
+          "key": "C",
+          "text": "スナップショット復元後も古いクラスタIDを保持し続ける",
+          "explanation": {
+            "text": "etcdのsnapshot restoreでは新しいクラスタIDで構成し直すのが基本であり、古いクラスタIDは失われる。",
+            "reference": "https://etcd.io/docs/v3.5/op-guide/recovery/",
+            "reference_label": "etcd公式ドキュメント: Disaster recovery"
+          }
+        },
+        {
+          "key": "D",
+          "text": "スナップショットにはKubernetesオブジェクトは含まれない",
+          "explanation": {
+            "text": "Kubernetesの全オブジェクト状態はetcdに保存されるため、スナップショットにはこれらの状態が含まれる。",
+            "reference": "https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/",
+            "reference_label": "Kubernetes公式ドキュメント: etcdの運用"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "etcdのスナップショット復元では、全メンバーが同じsnapshotから新クラスタとして復元され、古いクラスタIDを引き継がない形で再構成されるのが一般的である。",
+        "reference": "https://etcd.io/docs/v3.5/op-guide/recovery/",
+        "reference_label": "etcd公式ドキュメント: Disaster recovery"
+      }
+    },
+    {
+      "id": "kube-cka-24",
+      "question": "kubeadmで構築したクラスタをマイナーアップグレードする場合の一般的な手順として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ワーカーノードを先にkubeadm upgrade nodeし、その後コントロールプレーンをアップグレードする",
+          "explanation": {
+            "text": "互換性の観点から、通常はコントロールプレーンを先にアップグレードし、次にワーカーノードを順次更新する。",
+            "reference": "https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/",
+            "reference_label": "Kubernetes公式ドキュメント: kubeadm upgrade"
+          }
+        },
+        {
+          "key": "B",
+          "text": "kube-apiserverコンテナだけを新バージョンに入れ替えればよい",
+          "explanation": {
+            "text": "kubeadm環境では関連コンポーネントを一貫してアップグレードする必要があり、apiserver単体の更新では不完全である。",
+            "reference": "https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/",
+            "reference_label": "Kubernetes公式ドキュメント: kubeadm upgrade"
+          }
+        },
+        {
+          "key": "C",
+          "text": "コントロールプレーンノードをkubeadm upgrade applyでアップグレードし、その後ワーカーノードを順番にupgrade nodeする",
+          "explanation": {
+            "text": "kubeadmではまずコントロールプレーンをkubeadm upgrade applyで更新し、その後各ワーカーノードをkubeadm upgrade nodeで更新するのが推奨手順である。",
+            "reference": "https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/",
+            "reference_label": "Kubernetes公式ドキュメント: kubeadm upgrade"
+          }
+        },
+        {
+          "key": "D",
+          "text": "必ず全ノードを同時に停止し、オフラインでアップグレードする必要がある",
+          "explanation": {
+            "text": "HA構成ではローリングアップグレードが可能であり、全ノード停止は必須ではない。",
+            "reference": "https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/",
+            "reference_label": "Kubernetes公式ドキュメント: kubeadm upgrade"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "kubeadmを用いたアップグレードでは、まずコントロールプレーンをkubeadm upgrade applyで更新し、その後ワーカーノードを順次kubeadm upgrade nodeで更新する手順が推奨される。",
+        "reference": "https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/",
+        "reference_label": "Kubernetes公式ドキュメント: kubeadm upgrade"
+      }
+    },
+
+    {
+      "id": "kube-cka-25",
+      "question": "PodがCrashLoopBackOffになっているとき、原因調査として最も優先的に実行すべき操作はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "kubectl get nodesでノード状態を確認する",
+          "explanation": {
+            "text": "ノード状態も重要だが、CrashLoopBackOffはアプリケーションの起動失敗が多く、まずコンテナログを確認するほうが直接的である。",
+            "reference": "https://kubernetes.io/docs/tasks/debug/debug-application/debug-running-pod/",
+            "reference_label": "Kubernetes公式ドキュメント: 実行中のPodのデバッグ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "kubectl logsでコンテナの標準出力・標準エラーを確認する",
+          "explanation": {
+            "text": "CrashLoopBackOffはコンテナが繰り返しクラッシュしている状態のため、kubectl logsでアプリケーションログを確認するのが第一歩となる。",
+            "reference": "https://kubernetes.io/docs/tasks/debug/debug-application/debug-running-pod/",
+            "reference_label": "Kubernetes公式ドキュメント: 実行中のPodのデバッグ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "kubectl cordonでノードをスケジューリング不可にする",
+          "explanation": {
+            "text": "cordonは新規スケジューリングを止める操作であり、CrashLoopBackOff原因調査には直接関与しない。",
+            "reference": "https://kubernetes.io/docs/reference/kubectl/cheatsheet/",
+            "reference_label": "Kubernetes公式ドキュメント: kubectlチートシート"
+          }
+        },
+        {
+          "key": "D",
+          "text": "kubectl scaleでreplicas数を増やす",
+          "explanation": {
+            "text": "クラッシュしているPodを増やしても問題が拡大するだけで、根本原因の調査にはならない。",
+            "reference": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/",
+            "reference_label": "Kubernetes公式ドキュメント: Deployment"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "CrashLoopBackOff時はkubectl logsでアプリケーションのエラーを確認し、起動時例外などの原因を特定するのが一般的な最初のステップである。",
+        "reference": "https://kubernetes.io/docs/tasks/debug/debug-application/debug-running-pod/",
+        "reference_label": "Kubernetes公式ドキュメント: 実行中のPodのデバッグ"
+      }
+    },
+    {
+      "id": "kube-cka-26",
+      "question": "Deploymentのローリングアップデート中に、同時に停止してよいPodの最大割合を指定するフィールドはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "spec.strategy.rollingUpdate.maxSurge",
+          "explanation": {
+            "text": "maxSurgeはアップデート中に一時的に増やしてよいPod数（または割合）を指定するフィールドである。",
+            "reference": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/",
+            "reference_label": "Kubernetes公式ドキュメント: Deployment"
+          }
+        },
+        {
+          "key": "B",
+          "text": "spec.strategy.rollingUpdate.maxUnavailable",
+          "explanation": {
+            "text": "maxUnavailableはローリングアップデート中に同時に停止してよいPodの最大数（または割合）を定義する。",
+            "reference": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/",
+            "reference_label": "Kubernetes公式ドキュメント: Deployment"
+          }
+        },
+        {
+          "key": "C",
+          "text": "spec.replicas",
+          "explanation": {
+            "text": "replicasは望ましいPod数を指定するが、ローリングアップデート中の停止上限は直接制御しない。",
+            "reference": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/",
+            "reference_label": "Kubernetes公式ドキュメント: Deployment"
+          }
+        },
+        {
+          "key": "D",
+          "text": "spec.strategy.type",
+          "explanation": {
+            "text": "strategy.typeはRollingUpdateかRecreateかを選ぶフィールドであり、停止数の割合を指定するものではない。",
+            "reference": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/",
+            "reference_label": "Kubernetes公式ドキュメント: Deployment"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "DeploymentのローリングアップデートではmaxUnavailableで同時停止Pod数、maxSurgeで一時的な超過Pod数を制御する。",
+        "reference": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/",
+        "reference_label": "Kubernetes公式ドキュメント: Deployment"
+      }
+    },
+    {
+      "id": "kube-cka-27",
+      "question": "HorizontalPodAutoscaler（HPA）がスケーリングの判断に利用できるソースとして正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ノードのディスクIO統計のみ",
+          "explanation": {
+            "text": "HPAはPodリソースやカスタムメトリクスを利用し、ノードディスクIOのみを直接利用するわけではない。",
+            "reference": "https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/",
+            "reference_label": "Kubernetes公式ドキュメント: Horizontal Pod Autoscaler"
+          }
+        },
+        {
+          "key": "B",
+          "text": "CPU使用率、メモリ、Custom Metrics APIなどのメトリクス",
+          "explanation": {
+            "text": "HPAはリソースメトリクス、カスタムメトリクス、外部メトリクスを利用してスケーリングを判断できる。",
+            "reference": "https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/",
+            "reference_label": "Kubernetes公式ドキュメント: HPA Walkthrough"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Podのログメッセージ数",
+          "explanation": {
+            "text": "ログメッセージ数自体はHPAで直接扱うメトリクスではない。",
+            "reference": "https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/",
+            "reference_label": "Kubernetes公式ドキュメント: Horizontal Pod Autoscaler"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Deploymentの更新履歴数",
+          "explanation": {
+            "text": "更新履歴数はスケーリング条件とは関係しない。",
+            "reference": "https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/",
+            "reference_label": "Kubernetes公式ドキュメント: Horizontal Pod Autoscaler"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "HPAはCPUやメモリなどのリソースメトリクスやCustom/External Metrics APIの値に基づいてPod数を自動調整する。",
+        "reference": "https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/",
+        "reference_label": "Kubernetes公式ドキュメント: Horizontal Pod Autoscaler"
+      }
+    },
+    {
+      "id": "kube-cka-28",
+      "question": "PodDisruptionBudget（PDB）の主な目的として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Podのリソース使用量（CPU/メモリ）の上限を規定する",
+          "explanation": {
+            "text": "リソース上限はリソース制限やResourceQuotaで定義し、PDBの役割ではない。",
+            "reference": "https://kubernetes.io/docs/concepts/policy/resource-quotas/",
+            "reference_label": "Kubernetes公式ドキュメント: ResourceQuota"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Podを強制的に再起動させる条件を設定する",
+          "explanation": {
+            "text": "Pod再起動条件はProbeやコントローラの挙動によるもので、PDBは関係しない。",
+            "reference": "https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/",
+            "reference_label": "Kubernetes公式ドキュメント: Podのライフサイクル"
+          }
+        },
+        {
+          "key": "C",
+          "text": "計画停止時に同時に落としてよいPod数の下限を定義する",
+          "explanation": {
+            "text": "PDBはeviction時に残しておくべきPod数（または割合）を指定し、可用性を一定以上保つことを目的とする。",
+            "reference": "https://kubernetes.io/docs/tasks/run-application/configure-pdb/",
+            "reference_label": "Kubernetes公式ドキュメント: PodDisruptionBudget"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ノード障害時の自動再スケジューリングを無効化する",
+          "explanation": {
+            "text": "PDBは計画的なevictionに関する設定であり、ノード障害時の自動再スケジューリングは別の仕組みで行われる。",
+            "reference": "https://kubernetes.io/docs/tasks/run-application/configure-pdb/",
+            "reference_label": "Kubernetes公式ドキュメント: PodDisruptionBudget"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "PDBはメンテナンスなどによるeviction時に、最小稼働Pod数や最大不可Pod数を制御し、サービス可用性を保証するための仕組みである。",
+        "reference": "https://kubernetes.io/docs/tasks/run-application/configure-pdb/",
+        "reference_label": "Kubernetes公式ドキュメント: PodDisruptionBudget"
+      }
+    },
+    {
+      "id": "kube-cka-29",
+      "question": "PodのQoSクラスがGuaranteedとなる条件として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "requestsのみ指定し、limitsは指定しない",
+          "explanation": {
+            "text": "limits未指定の場合はBurstableまたはBestEffortとなり、Guaranteedにはならない。",
+            "reference": "https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/",
+            "reference_label": "Kubernetes公式ドキュメント: PodのQoSクラス"
+          }
+        },
+        {
+          "key": "B",
+          "text": "CPUとメモリのrequestsとlimitsを同一値で指定する",
+          "explanation": {
+            "text": "全コンテナでCPU・メモリのrequestsとlimitsが同一の場合、そのPodはGuaranteedクラスとなる。",
+            "reference": "https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/",
+            "reference_label": "Kubernetes公式ドキュメント: PodのQoSクラス"
+          }
+        },
+        {
+          "key": "C",
+          "text": "CPUのみlimitを指定し、メモリは指定しない",
+          "explanation": {
+            "text": "どちらかのリソースが未指定の場合、GuaranteedにはならずBurstable扱いになる。",
+            "reference": "https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/",
+            "reference_label": "Kubernetes公式ドキュメント: PodのQoSクラス"
+          }
+        },
+        {
+          "key": "D",
+          "text": "requestsもlimitsも一切指定しない",
+          "explanation": {
+            "text": "リソース未指定のPodはBestEffortクラスとなる。",
+            "reference": "https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/",
+            "reference_label": "Kubernetes公式ドキュメント: PodのQoSクラス"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "全てのコンテナでCPUとメモリのrequestsとlimitsが一致しているとき、そのPodはQoSクラスGuaranteedとして扱われる。",
+        "reference": "https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/",
+        "reference_label": "Kubernetes公式ドキュメント: PodのQoSクラス"
+      }
+    },
+    {
+      "id": "kube-cka-30",
+      "question": "RBACで特定Namespace内のPod一覧取得だけを許可したい。最も適切なRoleのrules設定はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "apiGroups: [\"\"]; resources: [\"pods\"]; verbs: [\"get\", \"list\", \"watch\"]",
+          "explanation": {
+            "text": "PodはコアAPIグループに属し、get/list/watch権限で一覧取得と監視が可能になる。",
+            "reference": "https://kubernetes.io/docs/reference/access-authn-authz/rbac/",
+            "reference_label": "Kubernetes公式ドキュメント: RBAC"
+          }
+        },
+        {
+          "key": "B",
+          "text": "apiGroups: [\"apps\"]; resources: [\"pods\"]; verbs: [\"list\"]",
+          "explanation": {
+            "text": "Podはappsグループではなくコアグループに属するため、この設定では権限が付与されない。",
+            "reference": "https://kubernetes.io/docs/reference/access-authn-authz/rbac/",
+            "reference_label": "Kubernetes公式ドキュメント: RBAC"
+          }
+        },
+        {
+          "key": "C",
+          "text": "apiGroups: [\"\"]; resources: [\"deployments\"]; verbs: [\"list\"]",
+          "explanation": {
+            "text": "Deploymentはappsグループリソースであり、podsリソースとは異なる。",
+            "reference": "https://kubernetes.io/docs/reference/access-authn-authz/rbac/",
+            "reference_label": "Kubernetes公式ドキュメント: RBAC"
+          }
+        },
+        {
+          "key": "D",
+          "text": "apiGroups: [\"*\"]; resources: [\"*\"]; verbs: [\"*\"]",
+          "explanation": {
+            "text": "全権限付与となり、Pod一覧取得だけという要件を満たす最小権限とは言えない。",
+            "reference": "https://kubernetes.io/docs/reference/access-authn-authz/rbac/",
+            "reference_label": "Kubernetes公式ドキュメント: RBAC"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "PodはコアAPIグループのpodsリソースであり、最小権限で一覧取得したい場合はget/list/watchのみを許可するRoleをNamespace単位で付与する。",
+        "reference": "https://kubernetes.io/docs/reference/access-authn-authz/rbac/",
+        "reference_label": "Kubernetes公式ドキュメント: RBAC"
+      }
+    },
+
+    {
+      "id": "kube-cka-31",
+      "question": "kube-proxyの主な役割として最も適切な説明はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Pod内コンテナの起動と停止を管理する",
+          "explanation": {
+            "text": "コンテナの起動・停止はkubeletの役割であり、kube-proxyの機能ではない。",
+            "reference": "https://kubernetes.io/docs/concepts/overview/components/",
+            "reference_label": "Kubernetes公式ドキュメント: Kubernetesのコンポーネント"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Serviceに対するトラフィックを適切なPodにルーティングする",
+          "explanation": {
+            "text": "kube-proxyはiptablesやIPVSなどを利用して、Service宛のトラフィックをバックエンドPodへ転送する。",
+            "reference": "https://kubernetes.io/docs/concepts/overview/components/",
+            "reference_label": "Kubernetes公式ドキュメント: Kubernetesのコンポーネント"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Podのスケジューリング先ノードを決定する",
+          "explanation": {
+            "text": "Podのスケジューリングはkube-schedulerが行い、kube-proxyは関与しない。",
+            "reference": "https://kubernetes.io/docs/concepts/overview/components/",
+            "reference_label": "Kubernetes公式ドキュメント: Kubernetesのコンポーネント"
+          }
+        },
+        {
+          "key": "D",
+          "text": "クラスタ全体の状態をetcdに保存する",
+          "explanation": {
+            "text": "クラスタ状態を保存するのはetcdであり、kube-proxyはネットワークプロキシである。",
+            "reference": "https://kubernetes.io/docs/concepts/overview/components/",
+            "reference_label": "Kubernetes公式ドキュメント: Kubernetesのコンポーネント"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "kube-proxyはServiceの仮想IPへのトラフィックを、エンドポイントとなるPodへ転送するネットワークプロキシとして動作する。",
+        "reference": "https://kubernetes.io/docs/concepts/overview/components/",
+        "reference_label": "Kubernetes公式ドキュメント: Kubernetesのコンポーネント"
+      }
+    },
+    {
+      "id": "kube-cka-32",
+      "question": "Podに複数コンテナを配置するパターンのうち、サイドカー（sidecar）パターンの主な用途として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "メインコンテナのクラッシュ時に自動的に再起動する",
+          "explanation": {
+            "text": "コンテナの再起動はkubeletとrestartPolicyで制御され、サイドカーの用途ではない。",
+            "reference": "https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/",
+            "reference_label": "Kubernetes公式ドキュメント: Podのライフサイクル"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ログ収集やプロキシなど補助機能を別コンテナとして切り出す",
+          "explanation": {
+            "text": "sidecarパターンはログ収集、プロキシ、設定リロードなどをメインコンテナから分離して実装する用途で使われる。",
+            "reference": "https://kubernetes.io/docs/concepts/workloads/pods/",
+            "reference_label": "Kubernetes公式ドキュメント: Pod"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Pod内で異なるOSカーネルを同時に使用する",
+          "explanation": {
+            "text": "Pod内コンテナは同一ノードのカーネルを共有し、OSカーネルを分けることはできない。",
+            "reference": "https://kubernetes.io/docs/concepts/containers/overview/",
+            "reference_label": "Kubernetes公式ドキュメント: コンテナ概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "複数のPodを論理的にまとめてスケジューリングする",
+          "explanation": {
+            "text": "複数PodのスケジューリングはDeployment等のコントローラが行い、sidecarは単一Pod内の複数コンテナ構成である。",
+            "reference": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/",
+            "reference_label": "Kubernetes公式ドキュメント: Deployment"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "sidecarパターンではメインアプリを補助する機能（ログ、メトリクス、プロキシ等）を別コンテナとして同一Podに同居させる。",
+        "reference": "https://kubernetes.io/docs/concepts/workloads/pods/",
+        "reference_label": "Kubernetes公式ドキュメント: Pod"
+      }
+    },
+    {
+      "id": "kube-cka-33",
+      "question": "クラスタ内でDNS解決が機能していない疑いがある。まず確認すべきコンポーネントはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "kube-scheduler",
+          "explanation": {
+            "text": "kube-schedulerはPodのスケジューリングを担当するコンポーネントであり、DNS解決には直接関与しない。",
+            "reference": "https://kubernetes.io/docs/concepts/overview/components/",
+            "reference_label": "Kubernetes公式ドキュメント: Kubernetesのコンポーネント"
+          }
+        },
+        {
+          "key": "B",
+          "text": "CoreDNSのDeploymentおよびPodの状態",
+          "explanation": {
+            "text": "KubernetesクラスタではCoreDNS（もしくはkube-dns）がDNSサービスを提供しており、DNS障害時はCoreDNSのPod状態とログの確認が第一歩となる。",
+            "reference": "https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/",
+            "reference_label": "Kubernetes公式ドキュメント: DNSのデバッグと名前解決"
+          }
+        },
+        {
+          "key": "C",
+          "text": "kube-controller-managerのログ",
+          "explanation": {
+            "text": "kube-controller-managerは各種コントローラを統合するコンポーネントであり、DNS障害の直接原因にはなりにくい。",
+            "reference": "https://kubernetes.io/docs/concepts/overview/components/",
+            "reference_label": "Kubernetes公式ドキュメント: Kubernetesのコンポーネント"
+          }
+        },
+        {
+          "key": "D",
+          "text": "kubeletの認証・認可設定",
+          "explanation": {
+            "text": "kubeletの認証・認可はノード管理に関するもので、サービス名のDNS解決が失敗している場合の一次切り分け対象ではない。",
+            "reference": "https://kubernetes.io/docs/reference/access-authn-authz/kubelet-authn-authz/",
+            "reference_label": "Kubernetes公式ドキュメント: Kubeletの認証と認可"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "クラスタ内DNSの異常を疑う場合、まずkube-system NamespaceにあるCoreDNSのDeploymentとPodが正常（Running/Ready）であるかを確認し、必要に応じてログを確認するのが基本となる。",
+        "reference": "https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/",
+        "reference_label": "Kubernetes公式ドキュメント: DNSのデバッグと名前解決"
+      }
+    },
+    {
+      "id": "kube-cka-34",
+      "question": "kubeletがノード上で果たす役割として、最も適切な説明はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "クラスタ全体のスケジューリングを行う",
+          "explanation": {
+            "text": "クラスタ全体のスケジューリングはkube-schedulerの役割であり、kubeletは単一ノード上のPod管理を担当する。",
+            "reference": "https://kubernetes.io/docs/concepts/overview/components/",
+            "reference_label": "Kubernetes公式ドキュメント: Kubernetesのコンポーネント"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ノード上でPodのライフサイクルを管理し、コンテナランタイムと連携する",
+          "explanation": {
+            "text": "kubeletはノード上に割り当てられたPodの仕様を監視し、コンテナランタイムを通じてコンテナの作成・削除などを行うエージェントである。",
+            "reference": "https://kubernetes.io/docs/concepts/overview/components/",
+            "reference_label": "Kubernetes公式ドキュメント: Kubernetesのコンポーネント"
+          }
+        },
+        {
+          "key": "C",
+          "text": "クラスタ内のService IPアドレスの割り当てを行う",
+          "explanation": {
+            "text": "Service IPの割り当てはkube-apiserverと関連コントローラ、CNIプラグインなどの役割であり、kubeletの責務ではない。",
+            "reference": "https://kubernetes.io/docs/concepts/services-networking/service/",
+            "reference_label": "Kubernetes公式ドキュメント: Service"
+          }
+        },
+        {
+          "key": "D",
+          "text": "クラスタ全体のRBACポリシーを評価・決定する",
+          "explanation": {
+            "text": "RBACの認可はkube-apiserverで行われ、kubeletは主にノードローカルなPod管理を行う。",
+            "reference": "https://kubernetes.io/docs/reference/access-authn-authz/rbac/",
+            "reference_label": "Kubernetes公式ドキュメント: RBAC"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "kubeletは各ノードでPodの仕様（PodSpec）に従ってコンテナを起動・監視し、コンテナランタイムと連携してノード上のワークロードを管理する役割を持つ。",
+        "reference": "https://kubernetes.io/docs/concepts/overview/components/",
+        "reference_label": "Kubernetes公式ドキュメント: Kubernetesのコンポーネント"
+      }
+    },
+    {
+      "id": "kube-cka-35",
+      "question": "クラスタ外部からHTTP/HTTPSで複数のServiceに対してホスト名ベースでルーティングしたい。最も適切なKubernetesリソースの組み合わせはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "NodePort Service と NetworkPolicy",
+          "explanation": {
+            "text": "NodePortは各ノードのポートを開放するが、ホスト名ベースのL7ルーティングは提供しない。NetworkPolicyは通信制御用でありルーティングではない。",
+            "reference": "https://kubernetes.io/docs/concepts/services-networking/service/",
+            "reference_label": "Kubernetes公式ドキュメント: Service"
+          }
+        },
+        {
+          "key": "B",
+          "text": "LoadBalancer Service と HorizontalPodAutoscaler",
+          "explanation": {
+            "text": "LoadBalancerはL4のロードバランサを提供するのが一般的であり、ホスト名ベースのルールは通常Ingressで定義する。",
+            "reference": "https://kubernetes.io/docs/concepts/services-networking/service/",
+            "reference_label": "Kubernetes公式ドキュメント: Service"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Ingress と IngressClass（Ingressコントローラ）",
+          "explanation": {
+            "text": "Ingressリソースにホスト名とパスベースのルールを定義し、IngressClassで関連付けられたIngressコントローラがHTTP/HTTPSトラフィックを各Serviceへルーティングする。",
+            "reference": "https://kubernetes.io/docs/concepts/services-networking/ingress/",
+            "reference_label": "Kubernetes公式ドキュメント: Ingress"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ConfigMap と ClusterIP Service",
+          "explanation": {
+            "text": "ConfigMapは設定管理用であり、ClusterIPは内部向け仮想IPを提供するが、外部からのホスト名ベースルーティング自体は行わない。",
+            "reference": "https://kubernetes.io/docs/concepts/configuration/configmap/",
+            "reference_label": "Kubernetes公式ドキュメント: ConfigMap"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "L7（HTTP/HTTPS）のホスト名・パスベースで外部トラフィックを内部Serviceへ振り分けるには、IngressとIngressコントローラ（IngressClass）の組み合わせが標準的な方法である。",
+        "reference": "https://kubernetes.io/docs/concepts/services-networking/ingress/",
+        "reference_label": "Kubernetes公式ドキュメント: Ingress"
+      }
+    },
+    {
+      "id": "kube-cka-36",
+      "question": "PodがPending状態のままスケジューリングされない。原因切り分けのために最初に確認するkubectlコマンドとして最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "kubectl get nodes",
+          "explanation": {
+            "text": "利用可能なノード数やノードのReady状態を確認することで、スケジューリング可能なノードが存在するかを素早く把握できる。",
+            "reference": "https://kubernetes.io/docs/tasks/debug/debug-cluster/",
+            "reference_label": "Kubernetes公式ドキュメント: クラスタのデバッグ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "kubectl logs <pod名>",
+          "explanation": {
+            "text": "PodがPendingの間はコンテナが起動しておらず、ログは取得できないことが多い。",
+            "reference": "https://kubernetes.io/docs/tasks/debug/debug-application/debug-pod-replication-controller/",
+            "reference_label": "Kubernetes公式ドキュメント: Podのデバッグ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "kubectl exec -it <pod名> -- sh",
+          "explanation": {
+            "text": "Pending状態のPodはまだノードに割り当てられておらず、execでコンテナに入ることはできない。",
+            "reference": "https://kubernetes.io/docs/tasks/debug/debug-application/debug-running-pod/",
+            "reference_label": "Kubernetes公式ドキュメント: 実行中のPodのデバッグ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "kubectl delete pod <pod名>",
+          "explanation": {
+            "text": "原因調査前にPodを削除してしまうと、元の状態情報が失われてしまうため、まず状態やイベントを確認するのが望ましい。",
+            "reference": "https://kubernetes.io/docs/tasks/debug/debug-application/debug-pod-replication-controller/",
+            "reference_label": "Kubernetes公式ドキュメント: Podのデバッグ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Pending状態の原因として、スケジューリング可能なノード不足（NotReadyやTaintなど）が多いため、まずkubectl get nodesでノード状況を確認するのが効率的である。",
+        "reference": "https://kubernetes.io/docs/tasks/debug/debug-cluster/",
+        "reference_label": "Kubernetes公式ドキュメント: クラスタのデバッグ"
+      }
+    },
+    {
+      "id": "kube-cka-37",
+      "question": "Podに割り当てるServiceAccountを明示的に指定しなかった場合の挙動として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ServiceAccountは割り当てられず、APIサーバーにアクセスできない",
+          "explanation": {
+            "text": "NamespaceにはデフォルトのServiceAccount（default）が存在し、明示指定しない場合はこれが割り当てられる。",
+            "reference": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/",
+            "reference_label": "Kubernetes公式ドキュメント: ServiceAccountの設定"
+          }
+        },
+        {
+          "key": "B",
+          "text": "default ServiceAccountが自動的に割り当てられる",
+          "explanation": {
+            "text": "Podのspec.serviceAccountNameを指定しない場合、そのNamespaceのdefault ServiceAccountが自動的に使用される。",
+            "reference": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/",
+            "reference_label": "Kubernetes公式ドキュメント: ServiceAccountの設定"
+          }
+        },
+        {
+          "key": "C",
+          "text": "cluster-admin権限を持つServiceAccountが割り当てられる",
+          "explanation": {
+            "text": "デフォルトServiceAccountには最小限または権限なしが割り当てられているのが一般的で、cluster-adminにはならない。",
+            "reference": "https://kubernetes.io/docs/reference/access-authn-authz/rbac/",
+            "reference_label": "Kubernetes公式ドキュメント: RBAC"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ServiceAccountはスケジューリング後に自動的にランダム作成される",
+          "explanation": {
+            "text": "ServiceAccountは事前に作成されるリソースであり、Podごとにランダム生成されるわけではない。",
+            "reference": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/",
+            "reference_label": "Kubernetes公式ドキュメント: ServiceAccountの設定"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "PodにserviceAccountNameを指定しない場合、そのNamespaceのdefault ServiceAccountが自動的に割り当てられ、その権限でAPIサーバーへのアクセスが行われる。",
+        "reference": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/",
+        "reference_label": "Kubernetes公式ドキュメント: ServiceAccountの設定"
+      }
+    },
+    {
+      "id": "kube-cka-38",
+      "question": "クラスタのセキュリティを高めるため、特定のNamespace内でコンテナが特権モード（privileged）で実行されることを禁止したい。最も適切な仕組みはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ResourceQuotaでprivilegedフラグを制限する",
+          "explanation": {
+            "text": "ResourceQuotaはCPUやメモリなどのリソース使用量を制限する機能であり、セキュリティコンテキストの詳細な制御は行えない。",
+            "reference": "https://kubernetes.io/docs/concepts/policy/resource-quotas/",
+            "reference_label": "Kubernetes公式ドキュメント: ResourceQuota"
+          }
+        },
+        {
+          "key": "B",
+          "text": "PodSecurity（Pod Security Admission）のenforceレベルで制約を設定する",
+          "explanation": {
+            "text": "Pod Security Admission（旧PodSecurityPolicyの後継）はNamespaceごとにベースラインやrestrictedなどのポリシーレベルを設定し、特権コンテナを禁止できる。",
+            "reference": "https://kubernetes.io/docs/concepts/security/pod-security-standards/",
+            "reference_label": "Kubernetes公式ドキュメント: Pod Security Standards"
+          }
+        },
+        {
+          "key": "C",
+          "text": "HorizontalPodAutoscalerでprivilegedなPod数をゼロにする",
+          "explanation": {
+            "text": "HPAはメトリクスに基づくスケーリング機構であり、特権モード自体を禁止する機能はない。",
+            "reference": "https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/",
+            "reference_label": "Kubernetes公式ドキュメント: Horizontal Pod Autoscaler"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ConfigMapでprivileged=falseを宣言する",
+          "explanation": {
+            "text": "ConfigMapは設定値を保持するだけであり、セキュリティポリシーを強制する仕組みにはならない。",
+            "reference": "https://kubernetes.io/docs/concepts/configuration/configmap/",
+            "reference_label": "Kubernetes公式ドキュメント: ConfigMap"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Pod Security AdmissionとPod Security Standards（restrictedなど）を用いることで、Namespace単位でprivilegedコンテナの作成を拒否する設定が行える。",
+        "reference": "https://kubernetes.io/docs/concepts/security/pod-security-standards/",
+        "reference_label": "Kubernetes公式ドキュメント: Pod Security Standards"
+      }
+    },
+    {
+      "id": "kube-cka-39",
+      "question": "kubeconfigファイルにおけるcontextsエントリの役割として最も適切な説明はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "APIサーバー証明書の署名アルゴリズムを定義する",
+          "explanation": {
+            "text": "証明書の詳細は証明書ファイルや証明書発行時の設定に含まれ、kubeconfigのcontextsでは扱わない。",
+            "reference": "https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/",
+            "reference_label": "Kubernetes公式ドキュメント: kubeconfigによるアクセス管理"
+          }
+        },
+        {
+          "key": "B",
+          "text": "どのcluster・user・namespaceの組み合わせを利用するかを定義する",
+          "explanation": {
+            "text": "contextはcluster、user、namespaceを束ねたプロファイルであり、kubectlがどのクラスタ・権限・Namespaceを対象にするかを決める。",
+            "reference": "https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/",
+            "reference_label": "Kubernetes公式ドキュメント: kubeconfigによるアクセス管理"
+          }
+        },
+        {
+          "key": "C",
+          "text": "利用可能な全てのClusterRole定義を格納する",
+          "explanation": {
+            "text": "ClusterRoleはKubernetesリソースとしてAPIサーバーに保存され、kubeconfigファイルのcontextsとは無関係である。",
+            "reference": "https://kubernetes.io/docs/reference/access-authn-authz/rbac/",
+            "reference_label": "Kubernetes公式ドキュメント: RBAC"
+          }
+        },
+        {
+          "key": "D",
+          "text": "kubectlプラグインの有効・無効を管理する",
+          "explanation": {
+            "text": "kubectlプラグインの管理はkubeconfigのcontextsとは別であり、contextsは接続先クラスタ情報をまとめたものに過ぎない。",
+            "reference": "https://kubernetes.io/docs/tasks/extend-kubectl/kubectl-plugins/",
+            "reference_label": "Kubernetes公式ドキュメント: kubectlプラグイン"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "kubeconfigのcontextはcluster・user・namespaceの組み合わせを定義し、kubectl config use-contextで現在の操作対象を切り替えることができる。",
+        "reference": "https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/",
+        "reference_label": "Kubernetes公式ドキュメント: kubeconfigによるアクセス管理"
+      }
+    },
+    {
+      "id": "kube-cka-40",
+      "question": "クラスタ内の特定Namespaceに対し、リソースの総CPU使用量とメモリ使用量に上限を設けたい。最も適切なリソースはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "LimitRange",
+          "explanation": {
+            "text": "LimitRangeは各Podやコンテナのリソースデフォルト値や上限・下限を設定するが、Namespace全体の総量制限は行わない。",
+            "reference": "https://kubernetes.io/docs/concepts/policy/limit-range/",
+            "reference_label": "Kubernetes公式ドキュメント: LimitRange"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ResourceQuota",
+          "explanation": {
+            "text": "ResourceQuotaはNamespace単位でCPU・メモリなどのリソース使用総量やオブジェクト数に上限を設定できる。",
+            "reference": "https://kubernetes.io/docs/concepts/policy/resource-quotas/",
+            "reference_label": "Kubernetes公式ドキュメント: ResourceQuota"
+          }
+        },
+        {
+          "key": "C",
+          "text": "PodDisruptionBudget",
+          "explanation": {
+            "text": "PodDisruptionBudgetは計画停止時の最低稼働Pod数を定義するもので、リソース上限とは関係しない。",
+            "reference": "https://kubernetes.io/docs/tasks/run-application/configure-pdb/",
+            "reference_label": "Kubernetes公式ドキュメント: PodDisruptionBudget"
+          }
+        },
+        {
+          "key": "D",
+          "text": "NetworkPolicy",
+          "explanation": {
+            "text": "NetworkPolicyはネットワークトラフィックの許可・拒否ルールであり、CPUやメモリの総量制限とは無関係である。",
+            "reference": "https://kubernetes.io/docs/concepts/services-networking/network-policies/",
+            "reference_label": "Kubernetes公式ドキュメント: NetworkPolicy"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Namespaceごとのリソース総量制限（CPU、メモリ、オブジェクト数など）にはResourceQuotaを使用し、必要に応じてLimitRangeと組み合わせて利用する。",
+        "reference": "https://kubernetes.io/docs/concepts/policy/resource-quotas/",
+        "reference_label": "Kubernetes公式ドキュメント: ResourceQuota"
+      }
+    },
+    {
+      "id": "kube-cka-41",
+      "question": "クラスタの監視のために、メトリクス（CPU使用率など）を取得する標準コンポーネントとして推奨されているものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "metrics-server",
+          "explanation": {
+            "text": "metrics-serverはkubeletからリソース使用状況を収集し、KubernetesのResource Metrics APIを提供するアドオンコンポーネントである。",
+            "reference": "https://github.com/kubernetes-sigs/metrics-server",
+            "reference_label": "metrics-server公式リポジトリ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "etcdctl",
+          "explanation": {
+            "text": "etcdctlはetcdを管理するためのCLIツールであり、クラスタ監視メトリクスの収集コンポーネントではない。",
+            "reference": "https://etcd.io/docs/v3.5/op-guide/configuration/",
+            "reference_label": "etcd公式ドキュメント: Configuration"
+          }
+        },
+        {
+          "key": "C",
+          "text": "CoreDNS",
+          "explanation": {
+            "text": "CoreDNSはDNSサービスを提供するコンポーネントであり、メトリクス収集用ではない。",
+            "reference": "https://kubernetes.io/docs/tasks/administer-cluster/coredns/",
+            "reference_label": "Kubernetes公式ドキュメント: CoreDNS"
+          }
+        },
+        {
+          "key": "D",
+          "text": "kube-proxy",
+          "explanation": {
+            "text": "kube-proxyはService向けのネットワークプロキシであり、メトリクスAPIを提供するコンポーネントではない。",
+            "reference": "https://kubernetes.io/docs/concepts/overview/components/",
+            "reference_label": "Kubernetes公式ドキュメント: Kubernetesのコンポーネント"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "metrics-serverはKubernetesクラスターにおけるリソースメトリクス取得の標準アドオンであり、HPAなどが利用するCPU使用率などのデータソースとなる。",
+        "reference": "https://github.com/kubernetes-sigs/metrics-server",
+        "reference_label": "metrics-server公式リポジトリ"
+      }
+    },
+    {
+      "id": "kube-cka-42",
+      "question": "クラスタ内の通信を暗号化し、Pod間トラフィックのゼロトラスト化を実現するサービスメッシュとして、CNCFがホストしているプロジェクトはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Envoy",
+          "explanation": {
+            "text": "Envoyは高性能プロキシであり、多くのサービスメッシュのデータプレーンとして利用されるが、それ自体はサービスメッシュ基盤ではない。",
+            "reference": "https://www.envoyproxy.io/docs",
+            "reference_label": "Envoy公式ドキュメント"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Istio",
+          "explanation": {
+            "text": "Istioは代表的なサービスメッシュ実装で、CNCFのプロジェクトとしてホストされ、mTLSによるPod間通信の暗号化やポリシー制御を提供する。",
+            "reference": "https://istio.io/latest/docs/concepts/what-is-istio/",
+            "reference_label": "Istio公式ドキュメント: What is Istio?"
+          }
+        },
+        {
+          "key": "C",
+          "text": "kube-scheduler",
+          "explanation": {
+            "text": "kube-schedulerはKubernetesネイティブのスケジューラであり、サービスメッシュではない。",
+            "reference": "https://kubernetes.io/docs/concepts/scheduling-eviction/kube-scheduler/",
+            "reference_label": "Kubernetes公式ドキュメント: kube-scheduler"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Flannel",
+          "explanation": {
+            "text": "Flannelはオーバーレイネットワークを提供するCNIプラグインであり、サービスメッシュ機能（mTLS等）は提供しない。",
+            "reference": "https://github.com/flannel-io/flannel",
+            "reference_label": "Flannel公式リポジトリ"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "IstioはEnvoyベースのサービスメッシュとして、mTLSやトラフィック制御、可観測性などを提供するCNCFホストプロジェクトであり、ゼロトラストネットワーク実現に利用される。",
+        "reference": "https://istio.io/latest/docs/concepts/what-is-istio/",
+        "reference_label": "Istio公式ドキュメント: What is Istio?"
+      }
+    },
+    {
+      "id": "kube-cka-43",
+      "question": "kubeletがノードをNotReadyとマークする典型的な理由として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ノード上でPodの再スケジューリングが完了したため",
+          "explanation": {
+            "text": "再スケジューリング完了は正常状態であり、NotReadyを示す理由にはならない。",
+            "reference": "https://kubernetes.io/docs/concepts/architecture/nodes/",
+            "reference_label": "Kubernetes公式ドキュメント: ノード"
+          }
+        },
+        {
+          "key": "B",
+          "text": "kubeletとAPIサーバー間のハートビートが途絶えたため",
+          "explanation": {
+            "text": "kubeletはAPIサーバーに対して定期的にハートビートを送り、これが一定時間途絶えた場合、そのノードはNotReadyと判定される。",
+            "reference": "https://kubernetes.io/docs/concepts/architecture/nodes/",
+            "reference_label": "Kubernetes公式ドキュメント: ノード"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Deploymentのreplicasが0に設定されたため",
+          "explanation": {
+            "text": "Deploymentのreplicas設定はPod数に関するものであり、ノード自体のReady状態とは無関係である。",
+            "reference": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/",
+            "reference_label": "Kubernetes公式ドキュメント: Deployment"
+          }
+        },
+        {
+          "key": "D",
+          "text": "kube-proxyが再起動したため",
+          "explanation": {
+            "text": "kube-proxyの再起動はServiceのトラフィックに影響を与える可能性はあるが、ノードのReady条件とは直接関係しない。",
+            "reference": "https://kubernetes.io/docs/concepts/overview/components/",
+            "reference_label": "Kubernetes公式ドキュメント: Kubernetesのコンポーネント"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ノードのReady/NotReady状態はkubeletからAPIサーバーへのハートビート（NodeStatus更新）に基づき、一定期間更新がない場合にNotReadyと見なされる。",
+        "reference": "https://kubernetes.io/docs/concepts/architecture/nodes/",
+        "reference_label": "Kubernetes公式ドキュメント: ノード"
+      }
+    },
+    {
+      "id": "kube-cka-44",
+      "question": "Kubernetes APIへのアクセス制御において、認証後の認可（Authorization）で利用できるモードとして正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Webhook、RBAC、Node",
+          "explanation": {
+            "text": "Kubernetesは複数の認可モードを提供しており、Webhook、RBAC、Node、ABACなどを組み合わせて利用できる。",
+            "reference": "https://kubernetes.io/docs/reference/access-authn-authz/authorization/",
+            "reference_label": "Kubernetes公式ドキュメント: Authorization Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "BasicAuth、TokenReview、OIDC",
+          "explanation": {
+            "text": "これらは主に認証（Authentication）に関連する仕組みであり、認可モードそのものではない。",
+            "reference": "https://kubernetes.io/docs/reference/access-authn-authz/authentication/",
+            "reference_label": "Kubernetes公式ドキュメント: Authentication"
+          }
+        },
+        {
+          "key": "C",
+          "text": "PodSecurity、NetworkPolicy、ResourceQuota",
+          "explanation": {
+            "text": "これらはセキュリティやリソース制御の仕組みだが、APIリクエストの認可モードではない。",
+            "reference": "https://kubernetes.io/docs/reference/access-authn-authz/authorization/",
+            "reference_label": "Kubernetes公式ドキュメント: Authorization Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "kubeconfig、contexts、users",
+          "explanation": {
+            "text": "kubeconfigは接続先クラスタとクレデンシャル定義であり、認可方式の種類ではない。",
+            "reference": "https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/",
+            "reference_label": "Kubernetes公式ドキュメント: kubeconfigによるアクセス管理"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Kubernetesの認可は、RBAC、Node、Webhookなど複数のモードを組み合わせて構成でき、それぞれAPIリクエストの許可/拒否を判断する。",
+        "reference": "https://kubernetes.io/docs/reference/access-authn-authz/authorization/",
+        "reference_label": "Kubernetes公式ドキュメント: Authorization Overview"
+      }
+    },
+    {
+      "id": "kube-cka-45",
+      "question": "kubeadmで新規クラスタを初期化する際、コントロールプレーンノード上で最初に実行するコマンドとして正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "kubeadm init",
+          "explanation": {
+            "text": "kubeadm initはコントロールプレーンノードでクラスタを初期化し、証明書や各コンポーネントマニフェストなどを生成する。",
+            "reference": "https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/",
+            "reference_label": "Kubernetes公式ドキュメント: kubeadmによるクラスタ作成"
+          }
+        },
+        {
+          "key": "B",
+          "text": "kubeadm join",
+          "explanation": {
+            "text": "kubeadm joinは既に初期化済みのクラスタにノードを参加させるためのコマンドであり、初回のクラスタ作成には使用しない。",
+            "reference": "https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-join/",
+            "reference_label": "Kubernetes公式ドキュメント: kubeadm join"
+          }
+        },
+        {
+          "key": "C",
+          "text": "kubeadm upgrade apply",
+          "explanation": {
+            "text": "kubeadm upgrade applyは既存クラスタのアップグレード用コマンドであり、新規クラスタの初期化では使用しない。",
+            "reference": "https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/",
+            "reference_label": "Kubernetes公式ドキュメント: kubeadm upgrade"
+          }
+        },
+        {
+          "key": "D",
+          "text": "kubeadm reset",
+          "explanation": {
+            "text": "kubeadm resetは既存kubeadmクラスタ構成を削除するコマンドであり、初期化の開始には使わない。",
+            "reference": "https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-reset/",
+            "reference_label": "Kubernetes公式ドキュメント: kubeadm reset"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "kubeadmを使ったクラスタ構築では、まずコントロールプレーンノードでkubeadm initを実行し、その後ワーカーノードでkubeadm joinを実行して参加させる。",
+        "reference": "https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/",
+        "reference_label": "Kubernetes公式ドキュメント: kubeadmによるクラスタ作成"
+      }
+    },
+    {
+      "id": "kube-cka-46",
+      "question": "クラスタのAPIサーバーへのアクセスが急に失敗し始めた。まず確認すべき項目として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "kube-proxyのログ",
+          "explanation": {
+            "text": "kube-proxyはServiceトラフィックの転送を扱うが、kubectlからAPIサーバーへのアクセス失敗とは直接結びつかない場合が多い。",
+            "reference": "https://kubernetes.io/docs/concepts/overview/components/",
+            "reference_label": "Kubernetes公式ドキュメント: Kubernetesのコンポーネント"
+          }
+        },
+        {
+          "key": "B",
+          "text": "APIサーバーのエンドポイント（アドレスとポート）に対するネットワーク到達性",
+          "explanation": {
+            "text": "APIサーバーへのアクセス失敗時は、まずkubectlが参照するkubeconfigのserverフィールドのアドレス/ポートに対して、ネットワーク的に到達可能かを確認することが重要である。",
+            "reference": "https://kubernetes.io/docs/tasks/debug/debug-cluster/",
+            "reference_label": "Kubernetes公式ドキュメント: クラスタのデバッグ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "各PodのlivenessProbe設定",
+          "explanation": {
+            "text": "livenessProbeはアプリケーションコンテナのヘルスチェックであり、APIサーバー自身へのアクセス失敗の原因切り分けとは異なる。",
+            "reference": "https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/",
+            "reference_label": "Kubernetes公式ドキュメント: Liveness/Readiness/Startup Probe"
+          }
+        },
+        {
+          "key": "D",
+          "text": "NamespaceごとのResourceQuota定義",
+          "explanation": {
+            "text": "ResourceQuotaはリソース総量の制限であり、kubectlがAPIサーバーに接続できない状況の主原因ではない。",
+            "reference": "https://kubernetes.io/docs/concepts/policy/resource-quotas/",
+            "reference_label": "Kubernetes公式ドキュメント: ResourceQuota"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "kubectlがAPIサーバーに接続できない場合、まずkubeconfigのserverアドレス/ポートが正しいか、ネットワーク的に疎通できるか（firewallやLB設定含む）を確認するのが基本である。",
+        "reference": "https://kubernetes.io/docs/tasks/debug/debug-cluster/",
+        "reference_label": "Kubernetes公式ドキュメント: クラスタのデバッグ"
+      }
+    },
+    {
+      "id": "kube-cka-47",
+      "question": "クラスタ内で特定のDeploymentだけを一時的に新規スケジューリング対象から外したい（既存Podは残したい）。最も適切な操作はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Deploymentのreplicasを0にスケールダウンする",
+          "explanation": {
+            "text": "replicasを0にすると既存Podも全て削除されてしまい、「既存Podは残す」という要件を満たさない。",
+            "reference": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/",
+            "reference_label": "Kubernetes公式ドキュメント: Deployment"
+          }
+        },
+        {
+          "key": "B",
+          "text": "該当DeploymentのPodTemplateにnodeSelectorを追加し、存在しないラベルを指定する",
+          "explanation": {
+            "text": "存在しないラベルを指定すると、新規Podはスケジューリングされなくなるが、既存Podには即時影響がないため、一時的に新規スケジューリングを止める方法として使える。",
+            "reference": "https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/",
+            "reference_label": "Kubernetes公式ドキュメント: Podをノードに割り当てる"
+          }
+        },
+        {
+          "key": "C",
+          "text": "kubectl cordonで全ノードをSchedulingDisabledにする",
+          "explanation": {
+            "text": "全ノードをcordonするとクラスタ全体に影響が及び、特定Deploymentのみを対象とする要件には過剰である。",
+            "reference": "https://kubernetes.io/docs/reference/kubectl/cheatsheet/",
+            "reference_label": "Kubernetes公式ドキュメント: kubectlチートシート"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Deploymentを一旦削除し、再度同じマニフェストをapplyする",
+          "explanation": {
+            "text": "Deployment削除時に管理下のPodも削除されるのが通常であり、既存Podを残したい要件と矛盾する。",
+            "reference": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/",
+            "reference_label": "Kubernetes公式ドキュメント: Deployment"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "一時的に新規Podのスケジューリングのみを止めるテクニックとして、PodTemplateに存在しないnodeSelectorや適用されないNodeAffinityを追加し、rollout再実行時の新規Podのみスケジューリング不可にする方法がある。",
+        "reference": "https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/",
+        "reference_label": "Kubernetes公式ドキュメント: Podをノードに割り当てる"
+      }
+    },
+    {
+      "id": "kube-cka-48",
+      "question": "クラスタ内で使用されていない（いずれのPodからも参照されていない）PersistentVolumeClaim（PVC）を特定したい。最も効率的な方法はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "kubectl get pvc -A で全PVCを取得し、各Podのvolume定義と突き合わせる",
+          "explanation": {
+            "text": "PVCの利用状況は、Podのspec.volumesやStatefulSet/Deploymentのテンプレートを確認することで把握できるが、手作業では非効率になりやすい。",
+            "reference": "https://kubernetes.io/docs/concepts/storage/persistent-volumes/",
+            "reference_label": "Kubernetes公式ドキュメント: Persistent Volumes"
+          }
+        },
+        {
+          "key": "B",
+          "text": "kubectl describe pvc でイベントを確認し、最近マウントされた形跡がないものを削除する",
+          "explanation": {
+            "text": "イベント履歴は必ずしも完全ではなく、「未使用」を厳密に判断する指標としては不十分な場合がある。",
+            "reference": "https://kubernetes.io/docs/concepts/storage/persistent-volumes/",
+            "reference_label": "Kubernetes公式ドキュメント: Persistent Volumes"
+          }
+        },
+        {
+          "key": "C",
+          "text": "kubectl get pod -A -o json から全volumes.sectionを抽出し、参照されていないPVC名をスクリプトで洗い出す",
+          "explanation": {
+            "text": "全Pod定義からpersistentVolumeClaim型volumeを抽出し、PVC一覧との差分をスクリプトで確認することで、未使用PVCを体系的に特定できる。",
+            "reference": "https://kubernetes.io/docs/concepts/storage/persistent-volumes/",
+            "reference_label": "Kubernetes公式ドキュメント: Persistent Volumes"
+          }
+        },
+        {
+          "key": "D",
+          "text": "kubectl get pv でBound状態のものは必ず使用中とみなし、全て残す",
+          "explanation": {
+            "text": "Bound状態のPVでも、対応するPVCが既にどのPodからもマウントされていないケースがあり、「必ず使用中」とは限らない。",
+            "reference": "https://kubernetes.io/docs/concepts/storage/persistent-volumes/",
+            "reference_label": "Kubernetes公式ドキュメント: Persistent Volumes"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "未使用PVCを体系的に洗い出すには、全Podのvolume定義から参照されているPVC名を抽出し、PVC一覧との差分をとる方法が現実的であり、自動化もしやすい。",
+        "reference": "https://kubernetes.io/docs/concepts/storage/persistent-volumes/",
+        "reference_label": "Kubernetes公式ドキュメント: Persistent Volumes"
+      }
+    },
+    {
+      "id": "kube-cka-49",
+      "question": "クラスタの証明書有効期限切れを事前に検知したい。kubeadmで構築されたクラスタにおいて、証明書情報を確認する推奨コマンドはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "kubeadm certs check-expiration",
+          "explanation": {
+            "text": "kubeadm certs check-expirationを実行すると、kubeadm管理下の主要な証明書と有効期限を一覧で確認できる。",
+            "reference": "https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-certs/",
+            "reference_label": "Kubernetes公式ドキュメント: kubeadm certs"
+          }
+        },
+        {
+          "key": "B",
+          "text": "kubectl get csr",
+          "explanation": {
+            "text": "kubectl get csrはCertificateSigningRequestリソースを表示するが、既存のkubeadm管理証明書の期限を直接一覧するものではない。",
+            "reference": "https://kubernetes.io/docs/reference/access-authn-authz/certificate-signing-requests/",
+            "reference_label": "Kubernetes公式ドキュメント: CSR"
+          }
+        },
+        {
+          "key": "C",
+          "text": "kubeadm init",
+          "explanation": {
+            "text": "kubeadm initは初期化コマンドであり、証明書有効期限の確認には利用しない。",
+            "reference": "https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-init/",
+            "reference_label": "Kubernetes公式ドキュメント: kubeadm init"
+          }
+        },
+        {
+          "key": "D",
+          "text": "kubectl get secret -n kube-system",
+          "explanation": {
+            "text": "Secret一覧から証明書情報を読むこともできるが、有効期限確認用の一覧表示には向かない。",
+            "reference": "https://kubernetes.io/docs/concepts/configuration/secret/",
+            "reference_label": "Kubernetes公式ドキュメント: Secret"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "kubeadm certs check-expirationは、kubeadmクラスタにおける主要証明書の有効期限を一覧で確認するための専用コマンドであり、事前検知に有用である。",
+        "reference": "https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-certs/",
+        "reference_label": "Kubernetes公式ドキュメント: kubeadm certs"
+      }
+    },
+    {
+      "id": "kube-cka-50",
+      "question": "ノードの計画停止を行う際、PodDisruptionBudget（PDB）で守られているDeploymentのPodがある。kubectl drainコマンド実行時に起こり得る挙動として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "PDBに違反する場合でも必ず全Podが強制的に削除される",
+          "explanation": {
+            "text": "kubectl drainはデフォルトではPDBを尊重し、PDB違反となるPodのevictがブロックされる。",
+            "reference": "https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/",
+            "reference_label": "Kubernetes公式ドキュメント: ノードの安全なDrain"
+          }
+        },
+        {
+          "key": "B",
+          "text": "PDBに違反するため、対象Podのevictが失敗し、drainはエラーを返す",
+          "explanation": {
+            "text": "PDBで許容される以上のPodを同時に停止しようとすると、APIサーバーはevictionを拒否し、kubectl drainはエラーを返す。",
+            "reference": "https://kubernetes.io/docs/tasks/run-application/configure-pdb/",
+            "reference_label": "Kubernetes公式ドキュメント: PodDisruptionBudget"
+          }
+        },
+        {
+          "key": "C",
+          "text": "PDBは自動的に無効化され、drainの完了後に再度有効化される",
+          "explanation": {
+            "text": "PDBは明示的に削除しない限り有効であり、drainのために自動的に無効化されることはない。",
+            "reference": "https://kubernetes.io/docs/tasks/run-application/configure-pdb/",
+            "reference_label": "Kubernetes公式ドキュメント: PodDisruptionBudget"
+          }
+        },
+        {
+          "key": "D",
+          "text": "kubectl drainはPDBを認識せず、通常通りPodを削除する",
+          "explanation": {
+            "text": "kubectl drainはPDBを考慮してeviction APIを利用し、PDBを満たせない場合はevictが拒否される挙動となる。",
+            "reference": "https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/",
+            "reference_label": "Kubernetes公式ドキュメント: ノードの安全なDrain"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "PDBは計画停止などでのPod退避時に可用性を守るための仕組みであり、kubectl drain実行時にPDB制約を超えるevictionが発生しそうな場合、APIサーバーはevictを拒否しdrainはエラーとなる。",
+        "reference": "https://kubernetes.io/docs/tasks/run-application/configure-pdb/",
+        "reference_label": "Kubernetes公式ドキュメント: PodDisruptionBudget"
+      }
+    }
+  ]
+}

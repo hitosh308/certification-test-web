@@ -1,0 +1,2467 @@
+{
+  "exam": {
+    "id": "PCSE-P",
+    "title": "Google Professional Cloud Security Engineer",
+    "description": "この資格試験は、Google Cloud におけるアクセス構成、ネットワーク／通信の境界防御、データ保護、運用管理、コンプライアンス支援といったクラウドセキュリティの実践的なスキルを評価します。Google のクラウド環境上で「誰が」「どのように」「何に対して」操作を行えるかを設計・実装・運用できる能力を証明するもので、クラウド移行・運用が進む企業において需要の高いセキュリティ人材を対象としています。",
+    "version": "2024",
+    "price": "200 USD",
+    "difficulty": "難しい",
+    "official-site": "https://cloud.google.com/learn/certification/cloud-security-engineer",
+    "category": {
+      "id": "gcp",
+      "name": "Google Cloud"
+    }
+  },
+  "questions": [
+    {
+      "id": "gcp-PCSE-P-q1",
+      "question": "組織のセキュリティポリシーで「最小権限の原則 (Least Privilege)」を維持するために最も適切なのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Project Owner ロールをすべてのプロジェクトに対して一律で付与する",
+          "explanation": {
+            "text": "Project Owner は非常に広範な権限を持つため、最小権限の原則を満たさない。",
+            "reference": "https://cloud.google.com/iam/docs/overview",
+            "reference_label": "IAM Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "サービスアカウントを使い、そのアカウントに必要最小限の IAM ロールをプロジェクトまたはリソースレベルで付与する",
+          "explanation": {
+            "text": "サービスアカウントを用いて、アクセスする対象（バケット、VMなど）ごとに必要な権限を付与する方法は最小権限を守る良い設計。",
+            "reference": "https://cloud.google.com/iam/docs/best-practices-for-using-service-accounts",
+            "reference_label": "Best Practices for Using Service Accounts"
+          }
+        },
+        {
+          "key": "C",
+          "text": "すべての開発者に対し IAM Editor ロールを付与し、プロジェクトごとに安全にアクセス制御を行う",
+          "explanation": {
+            "text": "Editor ロールは広範な編集権限を持ち、不要なアクセスや誤操作のリスクが高いため、最小権限を守る観点では不適切。",
+            "reference": "https://cloud.google.com/iam/docs/iam-roles",
+            "reference_label": "IAM Roles"
+          }
+        },
+        {
+          "key": "D",
+          "text": "プロジェクト作成時にすべてのユーザーに Viewer ロールを与えておき、必要に応じて追加ロールを付与する",
+          "explanation": {
+            "text": "Viewer は読み取りのみの権限であり、追加で必要な書き込みなどの操作があれば別途権限を付与する。このアプローチは最小権限に近いが、組織全体での権限付与の可視性・管理が難しくなる可能性がある。",
+            "reference": "https://cloud.google.com/iam/docs/overview",
+            "reference_label": "IAM Overview"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "サービスアカウントに必要最小限の権限を付与することが、安全設計における最小権限の原則を具体的に実現する方法として最も適切。",
+        "reference": "https://cloud.google.com/iam/docs/best-practices-for-using-service-accounts",
+        "reference_label": "Best Practices for Using Service Accounts"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q2",
+      "question": "VPC Service Controls を使って「データの越境 (“data exfiltration”)」を防ぐために有効な設定はどれか。**複数選択**。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "サービスペリメータ (Service Perimeter) を構築する",
+          "explanation": {
+            "text": "サービスペリメータは、指定されたリソースへのアクセスを制限する境界を作るため、データの外部流出を防ぐのに役立つ。﻿",
+            "reference": "https://cloud.google.com/vpc-service-controls/docs/best-practices",
+            "reference_label": "VPC Service Controls Best Practices"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ペリメータ外からのアクセスのためにアプリケーションレベルで API キーを公開する",
+          "explanation": {
+            "text": "API キーの公開は越境リスクを増やすため、逆に避けるべき。﻿",
+            "reference": "https://cloud.google.com/vpc-service-controls/docs/access-control",
+            "reference_label": "Access Control with IAM for VPC Service Controls"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ペリメータ内／外の通信を許可／拒否する ingress および egress ルールを設定する",
+          "explanation": {
+            "text": "VPC Service Controls では ingress／egress ルールを設定して、境界外の通信を制御できる。﻿",
+            "reference": "https://cloud.google.com/vpc-service-controls/docs/ingress-egress-rules",
+            "reference_label": "Ingress and Egress Rules"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ペリメータを dry-run モードでまず導入し、それから enforce モードに切り替える",
+          "explanation": {
+            "text": "dry-run モードで挙動をテストしてから強制モードに移行することで、誤設定によるサービス遮断などのリスクを抑制できる。﻿",
+            "reference": "https://cloud.google.com/vpc-service-controls/docs/create-test-perimeter",
+            "reference_label": "Create and Test Service Perimeters"
+          }
+        }
+      ],
+      "answer": "A,C,D",
+      "explanation": {
+        "text": "ペリメータの構築 (A)、ingress/egress ルールで通信を制御すること (C)、dry-run テストから enforce へと移行すること (D) はデータ越境防止に有効。API キーの公開 (B) はセキュリティ上不適切。",
+        "reference": "https://cloud.google.com/vpc-service-controls/docs/best-practices",
+        "reference_label": "VPC Service Controls Best Practices"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q3",
+      "question": "Cloud KMS（Key Management Service）を使う際、次のうち **“顧客管理暗号鍵 (Customer-Managed Encryption Keys: CMEK)”** を利用する利点として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Google が完全に鍵のライフサイクル管理をするため、ユーザが鍵の管理責任を持たなくて済む",
+          "explanation": {
+            "text": "これは “Google 管理” の鍵に近く、CMEK の特徴ではない。CMEK はユーザが鍵管理をコントロールできる方式。",
+            "reference": "https://cloud.google.com/security/encryption-at-rest/customer-managed-encryption-keys",
+            "reference_label": "Customer-Managed Encryption Keys"
+          }
+        },
+        {
+          "key": "B",
+          "text": "鍵のローテーションをユーザ自身が制御できる",
+          "explanation": {
+            "text": "CMEKを使うと、鍵のローテーションのタイミングや方式をユーザが選択可能。",
+            "reference": "https://cloud.google.com/security/encryption-at-rest/customer-managed-encryption-keys",
+            "reference_label": "Customer-Managed Encryption Keys"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Google のデフォルト暗号鍵よりも計算コストが必ず低い",
+          "explanation": {
+            "text": "CMEK は必ずしもコスト削減をもたらすものではなく、オーバーヘッドや手間が増えることもある。﻿",
+            "reference": "https://cloud.google.com/security/encryption-at-rest/customer-managed-encryption-keys",
+            "reference_label": "Customer-Managed Encryption Keys"
+          }
+        },
+        {
+          "key": "D",
+          "text": "鍵を特定のリージョンに限定できる可能性がある",
+          "explanation": {
+            "text": "CMEK を使うことでリージョンやロケーション制約を設け、データレジデンシー（データ所在地）要件を満たしやすくなる。﻿",
+            "reference": "https://cloud.google.com/security/encryption-at-rest/customer-managed-encryption-keys",
+            "reference_label": "Customer-Managed Encryption Keys"
+          }
+        }
+      ],
+      "answer": "B,D",
+      "explanation": {
+        "text": "CMEKではユーザが鍵のローテーションを制御できる (B)、またどのリージョンまたはロケーションで鍵／暗号化が行われるかを選べることがあり、データ所在地に関する法規制やコンプライアンス要件を満たしやすくなる (D)。",
+        "reference": "https://cloud.google.com/security/encryption-at-rest/customer-managed-encryption-keys",
+        "reference_label": "Customer-Managed Encryption Keys"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q4",
+      "question": "組織ポリシー (Organization Policy) を活用して GCP 環境のセキュリティを強化する方法として **最も適切** なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Organization Policy を使って、すべての Compute Engine VM に対し外部 IP アドレスを持たせることを強制する",
+          "explanation": {
+            "text": "外部 IP を持たせることはしばしばアタックサーフェス (attack surface) を広げるため、逆に制限すべき対象であり強制ではなく禁止することが望ましい。﻿",
+            "reference": "https://cloud.google.com/resource-manager/docs/organization-policy/overview",
+            "reference_label": "Organization Policy Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Organization Policy を使って、特定のリージョン以外でリソース作成を禁止する",
+          "explanation": {
+            "text": "データレジデンシーや規制対応のため、リソースを許可されたリージョンに限定することは有効なセキュリティ強化策。﻿",
+            "reference": "https://cloud.google.com/resource-manager/docs/organization-policy/org-policy‐constraints",
+            "reference_label": "Org Policy Constraints"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Organization Policy を使って、暗号化が必要な条件をすべてのリソースにデフォルトで設定するようにする",
+          "explanation": {
+            "text": "暗号化条件をデフォルトで強制することで、リソースが作成されたときに必ず暗号化の要件が満たされるようになる。﻿",
+            "reference": "https://cloud.google.com/security/encryption-at-rest/customer-managed-encryption-keys",
+            "reference_label": "Customer-Managed Encryption Keys"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Organization Policy を使って、プロジェクト全体でビルトイン IAM Owner ロールをデフォルトで拒否する",
+          "explanation": {
+            "text": "Owner ロールは非常に強力なので、デフォルト拒否することは強力だが、すべてを拒否するのは運用面の柔軟性を損ねる可能性がある。最良とは言いにくい。﻿",
+            "reference": "https://cloud.google.com/iam/docs/best-practices-for-roles",
+            "reference_label": "IAM Roles Best Practices"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "特定のリージョン以外でリソース作成を禁止することで、データ所在要件や法規制を担保できる。また不要なリージョンでのリソース展開によるリスクを減らせるため、強力かつ実践的なポリシー強化策。",
+        "reference": "https://cloud.google.com/resource-manager/docs/organization-policy/org-policy-constraints",
+        "reference_label": "Org Policy Constraints"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q5",
+      "question": "Cloud Armor を用いて Web アプリケーションを保護したい。次のうち **正しい組み合わせ** はどれか。**複数選択**。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Cloud Armor でレート制限を設定して DDoS 攻撃を軽減する",
+          "explanation": {
+            "text": "Cloud Armor はレート制限（rate-limiting）機能があり、一定時間内のリクエスト数を制御できる。﻿",
+            "reference": "https://cloud.google.com/armor/docs/rate_limiting",
+            "reference_label": "Cloud Armor Rate Limiting"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Cloud Armor の WAF ルールはすべての脅威（SQL インジェクション、XSS 等）に対して自動で保護するため完全に不要なフィルターを外部で運用することは不要",
+          "explanation": {
+            "text": "Cloud Armor は多くの一般的なアプリケーション層攻撃を防ぐが、“すべて”にはならないため、追加的なセキュリティ対策が必要となる。﻿",
+            "reference": "https://cloud.google.com/armor/docs/security_policy_concepts",
+            "reference_label": "Cloud Armor Security Policy Concepts"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Cloud Armor のカスタムルールで地域制限（geographical restrictions）を設けることが可能",
+          "explanation": {
+            "text": "Cloud Armor のセキュリティポリシーでは地域 IP 制限を設けることができる。﻿",
+            "reference": "https://cloud.google.com/armor/docs/security_policy_concepts",
+            "reference_label": "Cloud Armor Security Policies"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud Armor を設定したロードバランサーに対して、HTTPS ロードバランシングを使う必要はない（HTTP でも可）",
+          "explanation": {
+            "text": "HTTPS 経由のトラフィックであれば暗号化が可能であるが、HTTP のままだと通信の中間で傍受される可能性があるため、セキュリティを重視するなら HTTPS を使うのが望ましい。Cloud Armor ポリシー自体は HTTP または HTTPS 両方に対して設定可能だが、暗号化を確保するためには HTTPS を使うべき。HTTP のみでは安全性が低い。",
+            "reference": "https://cloud.google.com/armor/docs/security_policy_concepts",
+            "reference_label": "Cloud Armor Security Policy Concepts"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "Cloud Armor はレート制限 (A)、地域制限 (C) をサポートする。WAF ルールだけで全脅威を防ぐことはできず (B)、暗号化通信を確保する観点から HTTPS を使うことが望ましい (D は誤り)。",
+        "reference": "https://cloud.google.com/armor/docs/security_policy_concepts",
+        "reference_label": "Cloud Armor Security Policies"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q6",
+      "question": "ログと監視 (Logging & Monitoring) の設計で、GCP のベストプラクティスとして正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Cloud Audit Logs の Data Access ログをすべてのプロジェクトで標準で有効にする",
+          "explanation": {
+            "text": "Data Access ログは詳細な操作ログを含むが、パフォーマンス・コスト・プライバシーの観点から必要なものだけを有効にすることが推奨されており、標準で全てのプロジェクトで有効化するのは過剰となる可能性がある。﻿",
+            "reference": "https://cloud.google.com/logging/docs/audit/data_access",
+            "reference_label": "Cloud Audit Logs Data Access"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Security Command Center や Security Health Analytics を使って脆弱性や設定ミスを検出するようにする",
+          "explanation": {
+            "text": "これらのツールを使うことで設定ミスや脆弱性を継続的に検知できるため、運用監視の強化に資する。﻿",
+            "reference": "https://cloud.google.com/security-command-center/docs/concepts/security-health-analytics",
+            "reference_label": "Security Health Analytics"
+          }
+        },
+        {
+          "key": "C",
+          "text": "監査ログ (Audit Logs) を Cloud Storage バケットにエクスポートして、改ざん防止のためにロックする",
+          "explanation": {
+            "text": "監査ログをエクスポートし、バケットのロック機能などで変更を制限することで、ログの整合性と保全性を高められる。﻿",
+            "reference": "https://cloud.google.com/logging/docs/export/using_exported_logs",
+            "reference_label": "Exporting Logs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "すべての VM について OS レベルで毎日の自動更新を必ず有効にするよう構成管理する",
+          "explanation": {
+            "text": "自動更新は望ましいが、環境によっては影響が出ることもあるため、“必ず有効にする”とするのは運用上のリスクがある。テストや段階的適用が必要。﻿",
+            "reference": "https://cloud.google.com/compute/docs/instances/uptime-checks",
+            "reference_label": "Compute Instance Best Practices"
+          }
+        }
+      ],
+      "answer": "B,C",
+      "explanation": {
+        "text": "Security Command Center／Health Analytics による検出 (B)、監査ログをエクスポートしロックなどで保全性を確保する (C) はベストプラクティス。Data Access ログを無差別に全て有効化するのはコスト・プライバシーの観点で過剰 (A)、OS 更新を “必ず” とするのは運用や互換性の問題がある (D)。",
+        "reference": "https://cloud.google.com/logging/docs/export/using_exported_logs",
+        "reference_label": "Exporting Logs and Best Practices"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q7",
+      "question": "規制対応（Compliance）の要件を満たすために GCP が提供する機能・サービスとして、最も適切でない（誤っている）のはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Assured Workloads を使って、データ処理と保存を特定の規制要件がある地域に限定する",
+          "explanation": {
+            "text": "Assured Workloads はデータ所在地・規制対応を容易にするための機能であり、正しい選択肢の一つ。﻿",
+            "reference": "https://cloud.google.com/assured-workloads/docs",
+            "reference_label": "Assured Workloads Documentation"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Access Transparency を使って Google のスタッフによるインフラアクセスのログを取得する",
+          "explanation": {
+            "text": "Access Transparency により、Google のオペレーターやスタッフのアクセスが記録され、規制監査などでの透明性を高められる。﻿",
+            "reference": "https://cloud.google.com/access-transparency/docs",
+            "reference_label": "Access Transparency Documentation"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Access Approval を使わずに、ユーザがサービスのサポート要求をするたびに Google の承認を要するようにする",
+          "explanation": {
+            "text": "Access Approval を使えば、Google による変更・サポート操作などに対する事前承認を設定できる。﻿",
+            "reference": "https://cloud.google.com/access-approval/docs",
+            "reference_label": "Access Approval Documentation"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud HSM を使って可用性が保証されない暗号鍵の保存を行う",
+          "explanation": {
+            "text": "Cloud HSM は高可用性と耐障害性を考えた設計がされており、「可用性が保証されない暗号鍵保存を行う」ことがないようにするのが適切でない。意図しない誤りを含んでいるため、この選択肢は誤りにあたる。",
+            "reference": "https://cloud.google.com/kms/docs/hsm",
+            "reference_label": "Cloud HSM Documentation"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "Cloud HSM（Hardware Security Module）は設計上可用性と耐障害性を確保するオプションも持っており、「可用性が保証されない鍵保存」というのは誤った説明。A, B, C は GCP の規制対応機能として正しい。",
+        "reference": "https://cloud.google.com/kms/docs/hsm",
+        "reference_label": "Cloud HSM Documentation"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q8",
+      "question": "Cloud Identity を利用する主な利点はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "オンプレミスの Active Directory を完全に置き換えるために必須である",
+          "explanation": {
+            "text": "Cloud Identity は必須の置き換えではなく、連携や補完に利用できる。完全な置換を前提とするのは誤り。",
+            "reference": "https://cloud.google.com/identity/docs/overview",
+            "reference_label": "Cloud Identity Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーとグループの管理をクラウドベースで一元化できる",
+          "explanation": {
+            "text": "Cloud Identity を用いると、GCP と SaaS アプリのユーザーやグループを一元管理できる。",
+            "reference": "https://cloud.google.com/identity/docs/overview",
+            "reference_label": "Cloud Identity Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Cloud KMS と統合しなければ使えない",
+          "explanation": {
+            "text": "Cloud Identity は KMS と独立したサービスであり、統合は必須ではない。",
+            "reference": "https://cloud.google.com/identity/docs/overview",
+            "reference_label": "Cloud Identity Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IAM のロールを全て自動的に割り当ててくれる",
+          "explanation": {
+            "text": "IAM ロールの割り当ては自動ではなく、管理者が明示的に設定する必要がある。",
+            "reference": "https://cloud.google.com/iam/docs/overview",
+            "reference_label": "IAM Overview"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Cloud Identity によりユーザーとグループを一元的に管理し、IAM や SaaS アプリに統合できる点が主要な利点である。",
+        "reference": "https://cloud.google.com/identity/docs/overview",
+        "reference_label": "Cloud Identity Overview"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q9",
+      "question": "Secret Manager を使用する際の推奨プラクティスとして正しいものはどれか。**複数選択**。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "IAM を用いて秘密情報へのアクセスを制御する",
+          "explanation": {
+            "text": "Secret Manager では IAM により、誰が秘密情報を読み書きできるか制御できる。",
+            "reference": "https://cloud.google.com/secret-manager/docs/access-control",
+            "reference_label": "Secret Manager Access Control"
+          }
+        },
+        {
+          "key": "B",
+          "text": "アプリケーションコード内に直接秘密情報を埋め込む",
+          "explanation": {
+            "text": "コードに秘密情報を埋め込むのは推奨されない。Secret Manager に保存すべき。",
+            "reference": "https://cloud.google.com/secret-manager/docs/best-practices",
+            "reference_label": "Secret Manager Best Practices"
+          }
+        },
+        {
+          "key": "C",
+          "text": "秘密情報のバージョン管理を利用する",
+          "explanation": {
+            "text": "Secret Manager はバージョン管理を提供し、ロールバックや段階的な切替に対応できる。",
+            "reference": "https://cloud.google.com/secret-manager/docs/best-practices",
+            "reference_label": "Secret Manager Best Practices"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Secret Manager の API を使って実行時に秘密情報を取得する",
+          "explanation": {
+            "text": "実行時に API を通じて秘密情報を取得するのが推奨パターン。",
+            "reference": "https://cloud.google.com/secret-manager/docs/best-practices",
+            "reference_label": "Secret Manager Best Practices"
+          }
+        }
+      ],
+      "answer": "A,C,D",
+      "explanation": {
+        "text": "Secret Manager のベストプラクティスは、IAM によるアクセス制御 (A)、バージョン管理 (C)、実行時 API アクセス (D)。コード内に秘密情報を直書きするのはNG (B)。",
+        "reference": "https://cloud.google.com/secret-manager/docs/best-practices",
+        "reference_label": "Secret Manager Best Practices"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q10",
+      "question": "Binary Authorization を導入する目的として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "CI/CD パイプラインを完全に自動化する",
+          "explanation": {
+            "text": "Binary Authorization は自動化そのものの機能ではない。",
+            "reference": "https://cloud.google.com/binary-authorization/docs",
+            "reference_label": "Binary Authorization Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "署名されたコンテナイメージのみがデプロイされるようにする",
+          "explanation": {
+            "text": "Binary Authorization はポリシーに基づき、署名済みコンテナイメージのみを許可する仕組み。",
+            "reference": "https://cloud.google.com/binary-authorization/docs",
+            "reference_label": "Binary Authorization Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Cloud Armor の代替としてネットワーク境界を保護する",
+          "explanation": {
+            "text": "Binary Authorization はアプリケーションデプロイ時の認証であり、ネットワーク境界保護ではない。",
+            "reference": "https://cloud.google.com/binary-authorization/docs",
+            "reference_label": "Binary Authorization Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud Logging による監査ログの保存期間を延長する",
+          "explanation": {
+            "text": "Binary Authorization はログの保持期間とは無関係。",
+            "reference": "https://cloud.google.com/binary-authorization/docs",
+            "reference_label": "Binary Authorization Overview"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Binary Authorization の目的は、署名済みコンテナイメージのみをデプロイできるようにし、ソフトウェアサプライチェーンの安全性を確保すること。",
+        "reference": "https://cloud.google.com/binary-authorization/docs",
+        "reference_label": "Binary Authorization Overview"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q11",
+      "question": "Cloud DLP (Data Loss Prevention API) のユースケースとして適切なものはどれか。**複数選択**。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ログやデータセット内からクレジットカード番号などの機密情報を検出する",
+          "explanation": {
+            "text": "Cloud DLP は機密データ検出に特化している。",
+            "reference": "https://cloud.google.com/dlp/docs",
+            "reference_label": "Cloud DLP Documentation"
+          }
+        },
+        {
+          "key": "B",
+          "text": "VPC ネットワークのファイアウォールルールを自動最適化する",
+          "explanation": {
+            "text": "これは DLP の機能ではなく、ネットワーク関連サービスの領域。",
+            "reference": "https://cloud.google.com/dlp/docs",
+            "reference_label": "Cloud DLP Documentation"
+          }
+        },
+        {
+          "key": "C",
+          "text": "検出した機密データをマスキングやトークナイゼーションする",
+          "explanation": {
+            "text": "DLP API は機密データの検出だけでなく、マスキングやトークナイゼーションも可能。",
+            "reference": "https://cloud.google.com/dlp/docs",
+            "reference_label": "Cloud DLP Documentation"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud Storage バケットの暗号化方式を CMEK に変更する",
+          "explanation": {
+            "text": "これは Cloud KMS / Storage の機能であり DLP ではない。",
+            "reference": "https://cloud.google.com/dlp/docs",
+            "reference_label": "Cloud DLP Documentation"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "Cloud DLP の主なユースケースは、機密情報の検出 (A) とマスキング／トークナイゼーション (C)。B と D は別サービス領域。",
+        "reference": "https://cloud.google.com/dlp/docs",
+        "reference_label": "Cloud DLP Documentation"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q12",
+      "question": "GCP における BeyondCorp Enterprise のセキュリティモデルの特徴はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "VPN 接続を前提とした社内境界防御を強化する",
+          "explanation": {
+            "text": "BeyondCorp は VPN に依存せずゼロトラストモデルを採用する。",
+            "reference": "https://cloud.google.com/beyondcorp-enterprise/docs/overview",
+            "reference_label": "BeyondCorp Enterprise Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーやデバイスのコンテキストに基づいてアクセス制御を行う",
+          "explanation": {
+            "text": "ゼロトラストの特徴として、ユーザー・デバイスの状態を基に動的にアクセスを決定する。",
+            "reference": "https://cloud.google.com/beyondcorp-enterprise/docs/overview",
+            "reference_label": "BeyondCorp Enterprise Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "VPC Service Controls を拡張してクラウド間のデータ転送を自動的に暗号化する",
+          "explanation": {
+            "text": "これは BeyondCorp ではなく VPC Service Controls や KMS 領域の機能。",
+            "reference": "https://cloud.google.com/beyondcorp-enterprise/docs/overview",
+            "reference_label": "BeyondCorp Enterprise Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IAM の全ユーザーにオーナーロールを割り当てて利便性を確保する",
+          "explanation": {
+            "text": "これはセキュリティを著しく低下させる誤った設定。",
+            "reference": "https://cloud.google.com/iam/docs/overview",
+            "reference_label": "IAM Overview"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "BeyondCorp Enterprise はゼロトラストモデルに基づき、VPN ではなくユーザー・デバイスのコンテキストに基づくアクセス制御を行う。",
+        "reference": "https://cloud.google.com/beyondcorp-enterprise/docs/overview",
+        "reference_label": "BeyondCorp Enterprise Overview"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q13",
+      "question": "Shielded VM の特徴として正しいものはどれか。**複数選択**。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "セキュアブートにより VM 起動時に改ざんを検出できる",
+          "explanation": {
+            "text": "Shielded VM はセキュアブートを備え、カーネルや OS イメージの改ざんを防ぐ。",
+            "reference": "https://cloud.google.com/security/shielded-vm",
+            "reference_label": "Shielded VM Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "TPM (Trusted Platform Module) を利用して測定起動を行う",
+          "explanation": {
+            "text": "Shielded VM は vTPM を用いた測定起動に対応する。",
+            "reference": "https://cloud.google.com/security/shielded-vm",
+            "reference_label": "Shielded VM Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "OS の自動パッチ適用機能を必ず有効化する",
+          "explanation": {
+            "text": "自動パッチ適用は Shielded VM の必須機能ではない。",
+            "reference": "https://cloud.google.com/security/shielded-vm",
+            "reference_label": "Shielded VM Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "すべての VM がデフォルトで Shielded VM として作成される",
+          "explanation": {
+            "text": "デフォルトで有効化される場合もあるが、全て必ずではない。選択可能。",
+            "reference": "https://cloud.google.com/security/shielded-vm",
+            "reference_label": "Shielded VM Overview"
+          }
+        }
+      ],
+      "answer": "A,B",
+      "explanation": {
+        "text": "Shielded VM の主な特徴はセキュアブート (A) と vTPM を利用した測定起動 (B)。C と D は正確ではない。",
+        "reference": "https://cloud.google.com/security/shielded-vm",
+        "reference_label": "Shielded VM Overview"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q14",
+      "question": "Chronicle (Google Cloud のセキュリティ分析サービス) の利用目的として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "セキュリティイベントの長期保存と高速な検索・相関分析を行う",
+          "explanation": {
+            "text": "Chronicle は大規模セキュリティデータの長期保存・検索・相関分析に特化している。",
+            "reference": "https://cloud.google.com/chronicle/docs",
+            "reference_label": "Chronicle Documentation"
+          }
+        },
+        {
+          "key": "B",
+          "text": "VPC ファイアウォールのルールを自動で生成する",
+          "explanation": {
+            "text": "Chronicle はログ分析が中心であり、ファイアウォールルールの自動生成は行わない。",
+            "reference": "https://cloud.google.com/chronicle/docs",
+            "reference_label": "Chronicle Documentation"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Cloud KMS の鍵管理を代替する",
+          "explanation": {
+            "text": "Chronicle は鍵管理の機能は持たない。",
+            "reference": "https://cloud.google.com/chronicle/docs",
+            "reference_label": "Chronicle Documentation"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザーごとの IAM ロールを自動で最適化する",
+          "explanation": {
+            "text": "IAM のロール最適化は Chronicle の役割ではない。",
+            "reference": "https://cloud.google.com/chronicle/docs",
+            "reference_label": "Chronicle Documentation"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Chronicle はセキュリティイベントやログの大規模データを長期保存し、検索・相関分析することで脅威検出を支援する。",
+        "reference": "https://cloud.google.com/chronicle/docs",
+        "reference_label": "Chronicle Documentation"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q15",
+      "question": "Cloud Logging と Cloud Monitoring を併用する利点として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Cloud Logging はアラート通知を行い、Cloud Monitoring はログを保存する",
+          "explanation": {
+            "text": "逆である。Logging はログ収集と保存、Monitoring はメトリクスとアラートを扱う。",
+            "reference": "https://cloud.google.com/stackdriver/docs",
+            "reference_label": "Operations Suite Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Cloud Logging はログ収集と保存、Cloud Monitoring はメトリクスやアラート管理を行う",
+          "explanation": {
+            "text": "正しい。両者を組み合わせることで統合的な監視体制を実現できる。",
+            "reference": "https://cloud.google.com/stackdriver/docs",
+            "reference_label": "Operations Suite Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "両者を使うと監査ログを削除できる",
+          "explanation": {
+            "text": "監査ログは削除できない。一定の保持期間後に自動削除される。",
+            "reference": "https://cloud.google.com/logging/docs/audit",
+            "reference_label": "Audit Logs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "両者を使うと IAM ポリシーを自動で最適化できる",
+          "explanation": {
+            "text": "IAM ポリシーの最適化はこれらのサービスの機能ではない。",
+            "reference": "https://cloud.google.com/stackdriver/docs",
+            "reference_label": "Operations Suite Overview"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Cloud Logging がログ、Cloud Monitoring がメトリクスとアラートを扱う。両者を組み合わせて運用監視を統合できる。",
+        "reference": "https://cloud.google.com/stackdriver/docs",
+        "reference_label": "Operations Suite Overview"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q16",
+      "question": "IAM 条件付きポリシー (IAM Conditions) の利点として正しいものはどれか。**複数選択**。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "アクセスに有効期限を設定できる",
+          "explanation": {
+            "text": "IAM 条件で日時ベースの制約を設定可能。",
+            "reference": "https://cloud.google.com/iam/docs/conditions-overview",
+            "reference_label": "IAM Conditions Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "リソース属性やリクエスト属性に基づいたアクセス制御が可能",
+          "explanation": {
+            "text": "IAM 条件はコンテキストベースの制御を提供する。",
+            "reference": "https://cloud.google.com/iam/docs/conditions-overview",
+            "reference_label": "IAM Conditions Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "IAM 条件は Compute Engine のみで利用できる",
+          "explanation": {
+            "text": "Compute Engine に限定されず、多くの GCP サービスで利用可能。",
+            "reference": "https://cloud.google.com/iam/docs/conditions-overview",
+            "reference_label": "IAM Conditions Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザーごとに Cloud Billing の自動割引を適用できる",
+          "explanation": {
+            "text": "IAM 条件は課金機能には関与しない。",
+            "reference": "https://cloud.google.com/iam/docs/conditions-overview",
+            "reference_label": "IAM Conditions Overview"
+          }
+        }
+      ],
+      "answer": "A,B",
+      "explanation": {
+        "text": "IAM 条件では日時やリソース属性、リクエスト属性に基づいたきめ細かいアクセス制御が可能。",
+        "reference": "https://cloud.google.com/iam/docs/conditions-overview",
+        "reference_label": "IAM Conditions Overview"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q17",
+      "question": "Cloud Identity-Aware Proxy (IAP) の特徴として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "IAP はアプリケーションへのアクセスを IAM と連携して制御する",
+          "explanation": {
+            "text": "IAP はアプリケーションレベルの認証ゲートウェイとして動作し、IAM と統合してアクセス制御する。",
+            "reference": "https://cloud.google.com/iap/docs/concepts-overview",
+            "reference_label": "IAP Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "IAP はネットワークファイアウォールの代替としてパケットレベルのフィルタリングを行う",
+          "explanation": {
+            "text": "IAP はパケットレベルではなくアプリケーションレベルのアクセス制御。",
+            "reference": "https://cloud.google.com/iap/docs/concepts-overview",
+            "reference_label": "IAP Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "IAP を利用すると内部アプリを公開インターネット経由で誰でもアクセス可能にする",
+          "explanation": {
+            "text": "逆に IAP は未認証アクセスを防ぎ、認証済みユーザーのみに制御する。",
+            "reference": "https://cloud.google.com/iap/docs/concepts-overview",
+            "reference_label": "IAP Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IAP は VM インスタンスの OS パッチを自動適用する",
+          "explanation": {
+            "text": "IAP はアクセス制御の仕組みであり、OS パッチ管理はしない。",
+            "reference": "https://cloud.google.com/iap/docs/concepts-overview",
+            "reference_label": "IAP Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "IAP は IAM と統合してアプリケーションレベルのアクセスを制御するサービス。",
+        "reference": "https://cloud.google.com/iap/docs/concepts-overview",
+        "reference_label": "IAP Overview"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q18",
+      "question": "Cloud SQL のセキュリティ強化策として正しいものはどれか。**複数選択**。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "IAM データベース認証を利用して GCP IAM と統合する",
+          "explanation": {
+            "text": "IAM 認証を使うことでユーザー管理を一元化できる。",
+            "reference": "https://cloud.google.com/sql/docs/mysql/iam-authentication",
+            "reference_label": "Cloud SQL IAM Authentication"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Cloud SQL Admin API を無効化し、すべての操作を手動で行う",
+          "explanation": {
+            "text": "これは利便性とセキュリティ両面で非効率的で推奨されない。",
+            "reference": "https://cloud.google.com/sql/docs",
+            "reference_label": "Cloud SQL Docs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Cloud SQL インスタンスにパブリック IP を必須とする",
+          "explanation": {
+            "text": "パブリック IP はセキュリティリスクが高いため、可能ならプライベート IP を利用すべき。",
+            "reference": "https://cloud.google.com/sql/docs/mysql/private-ip",
+            "reference_label": "Cloud SQL Private IP"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud KMS の CMEK を利用してデータを暗号化する",
+          "explanation": {
+            "text": "CMEK を利用すると暗号鍵のライフサイクルを制御できる。",
+            "reference": "https://cloud.google.com/sql/docs/mysql/configure-cmek",
+            "reference_label": "Cloud SQL CMEK"
+          }
+        }
+      ],
+      "answer": "A,D",
+      "explanation": {
+        "text": "IAM 認証 (A) と CMEK による暗号化 (D) は Cloud SQL のセキュリティ強化策として有効。B と C は推奨されない。",
+        "reference": "https://cloud.google.com/sql/docs",
+        "reference_label": "Cloud SQL Security Docs"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q19",
+      "question": "GCP における DDoS 対策で Cloud Armor と Cloud CDN を併用する利点はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Cloud CDN が静的コンテンツをキャッシュし、Cloud Armor が不正トラフィックをフィルタする",
+          "explanation": {
+            "text": "正しい。両者を組み合わせるとパフォーマンスとセキュリティが向上する。",
+            "reference": "https://cloud.google.com/armor/docs/overview",
+            "reference_label": "Cloud Armor Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Cloud Armor がコンテンツ配信を最適化し、Cloud CDN が攻撃をブロックする",
+          "explanation": {
+            "text": "役割が逆になっており誤り。",
+            "reference": "https://cloud.google.com/armor/docs/overview",
+            "reference_label": "Cloud Armor Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Cloud CDN を使うとログが暗号化されなくなる",
+          "explanation": {
+            "text": "ログ暗号化とは無関係。",
+            "reference": "https://cloud.google.com/cdn/docs/overview",
+            "reference_label": "Cloud CDN Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "両者を使うと OS レベルのパッチ適用が不要になる",
+          "explanation": {
+            "text": "これは誤り。DDoS 対策と OS パッチは関係がない。",
+            "reference": "https://cloud.google.com/armor/docs/overview",
+            "reference_label": "Cloud Armor Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud CDN がコンテンツキャッシュを担当し、Cloud Armor が攻撃トラフィックを防御することで DDoS 耐性を高められる。",
+        "reference": "https://cloud.google.com/armor/docs/overview",
+        "reference_label": "Cloud Armor Overview"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q20",
+      "question": "Workload Identity Federation の利点として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "外部 ID プロバイダと連携し、長期的なサービスアカウント鍵を使わずに認証できる",
+          "explanation": {
+            "text": "正しい。Workload Identity Federation は外部 ID を用いて鍵レスの認証を可能にする。",
+            "reference": "https://cloud.google.com/iam/docs/workload-identity-federation",
+            "reference_label": "Workload Identity Federation Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "すべてのサービスアカウント鍵をローカルに保存する必要がある",
+          "explanation": {
+            "text": "鍵保存を不要にする仕組みなので誤り。",
+            "reference": "https://cloud.google.com/iam/docs/workload-identity-federation",
+            "reference_label": "Workload Identity Federation Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "IAM ポリシーが不要になる",
+          "explanation": {
+            "text": "IAM ポリシーは依然として必要。",
+            "reference": "https://cloud.google.com/iam/docs/workload-identity-federation",
+            "reference_label": "Workload Identity Federation Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Google が外部 ID プロバイダのすべての設定を自動管理する",
+          "explanation": {
+            "text": "外部 ID プロバイダとの設定は管理者が行う必要がある。",
+            "reference": "https://cloud.google.com/iam/docs/workload-identity-federation",
+            "reference_label": "Workload Identity Federation Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Workload Identity Federation により、長期的なサービスアカウント鍵を管理せず、外部 ID プロバイダを利用して認証できる。",
+        "reference": "https://cloud.google.com/iam/docs/workload-identity-federation",
+        "reference_label": "Workload Identity Federation Overview"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q21",
+      "question": "Forseti Security (OSS ツール) の利用目的として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "GCP 環境に対するセキュリティポリシーや構成の監査を行う",
+          "explanation": {
+            "text": "Forseti はポリシー違反や構成不備を検出できる OSS ツール。",
+            "reference": "https://forsetisecurity.org/",
+            "reference_label": "Forseti Security"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Cloud HSM の暗号鍵を管理する",
+          "explanation": {
+            "text": "Forseti は暗号鍵管理ツールではない。",
+            "reference": "https://forsetisecurity.org/",
+            "reference_label": "Forseti Security"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ネットワークトラフィックをリアルタイムに遮断する",
+          "explanation": {
+            "text": "Forseti はリアルタイム制御ツールではなく監査ツール。",
+            "reference": "https://forsetisecurity.org/",
+            "reference_label": "Forseti Security"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud Billing の自動最適化を行う",
+          "explanation": {
+            "text": "Forseti は課金最適化機能は持たない。",
+            "reference": "https://forsetisecurity.org/",
+            "reference_label": "Forseti Security"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Forseti Security は OSS ツールとして GCP 環境の構成や IAM ポリシーの監査を行い、セキュリティのベストプラクティス準拠を支援する。",
+        "reference": "https://forsetisecurity.org/",
+        "reference_label": "Forseti Security"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q22",
+      "question": "Service Account Impersonation（サービスアカウントのなりすまし）の利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "長期的なサービスアカウント鍵を配布せずに済む",
+          "explanation": {
+            "text": "サービスアカウントのなりすましを使うと、一時的に権限を借用できるため鍵を配布せずに済む。",
+            "reference": "https://cloud.google.com/iam/docs/impersonating-service-accounts",
+            "reference_label": "Impersonating Service Accounts"
+          }
+        },
+        {
+          "key": "B",
+          "text": "IAM ポリシーを不要にできる",
+          "explanation": {
+            "text": "IAM ポリシーは依然として必要であり、不要にはならない。",
+            "reference": "https://cloud.google.com/iam/docs/impersonating-service-accounts",
+            "reference_label": "Impersonating Service Accounts"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザーは常にオーナーロールを持つ必要がある",
+          "explanation": {
+            "text": "オーナーロールは不要。権限を限定的に付与すべき。",
+            "reference": "https://cloud.google.com/iam/docs/impersonating-service-accounts",
+            "reference_label": "Impersonating Service Accounts"
+          }
+        },
+        {
+          "key": "D",
+          "text": "サービスアカウントのなりすましを使うと監査ログが出力されなくなる",
+          "explanation": {
+            "text": "監査ログは出力されるため、この記述は誤り。",
+            "reference": "https://cloud.google.com/iam/docs/impersonating-service-accounts",
+            "reference_label": "Impersonating Service Accounts"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "サービスアカウントのなりすましを使うことで、長期的な鍵配布を避け、権限を安全に委任できる。",
+        "reference": "https://cloud.google.com/iam/docs/impersonating-service-accounts",
+        "reference_label": "Impersonating Service Accounts"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q23",
+      "question": "Cloud Storage のセキュリティを高めるための推奨設定として正しいものはどれか。**複数選択**。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Uniform bucket-level access を有効化する",
+          "explanation": {
+            "text": "バケットレベルでアクセス制御を統一できるため推奨される。",
+            "reference": "https://cloud.google.com/storage/docs/uniform-bucket-level-access",
+            "reference_label": "Uniform Bucket-Level Access"
+          }
+        },
+        {
+          "key": "B",
+          "text": "パブリックアクセスを制限する",
+          "explanation": {
+            "text": "パブリックアクセスを無効化するのはベストプラクティス。",
+            "reference": "https://cloud.google.com/storage/docs/public-access-prevention",
+            "reference_label": "Public Access Prevention"
+          }
+        },
+        {
+          "key": "C",
+          "text": "CMEK を使って暗号化を管理する",
+          "explanation": {
+            "text": "CMEK を使うと暗号鍵管理を制御できる。",
+            "reference": "https://cloud.google.com/storage/docs/encryption/customer-managed-keys",
+            "reference_label": "CMEK for Cloud Storage"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ログを無効化してストレージコストを削減する",
+          "explanation": {
+            "text": "ログを無効化するのはセキュリティ上のリスクを高める。",
+            "reference": "https://cloud.google.com/storage/docs/access-logs",
+            "reference_label": "Storage Logs"
+          }
+        }
+      ],
+      "answer": "A,B,C",
+      "explanation": {
+        "text": "Cloud Storage のセキュリティ強化には Uniform bucket-level access (A)、パブリックアクセス制限 (B)、CMEK (C) が推奨。ログを無効化するのは不適切 (D)。",
+        "reference": "https://cloud.google.com/storage/docs/security-best-practices",
+        "reference_label": "Cloud Storage Security Best Practices"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q24",
+      "question": "Cloud VPN と Cloud Interconnect を比較したとき、セキュリティ上の特徴として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Cloud VPN はインターネットを経由するが IPsec トンネルで暗号化する",
+          "explanation": {
+            "text": "VPN は IPsec により暗号化通信を提供する。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/vpn/concepts/overview",
+            "reference_label": "Cloud VPN Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Dedicated Interconnect は暗号化が必須である",
+          "explanation": {
+            "text": "Interconnect はプライベート接続であり暗号化は任意。必須ではない。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/interconnect/concepts/overview",
+            "reference_label": "Cloud Interconnect Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Cloud VPN は高帯域を提供するが、Cloud Interconnect は小規模用途向け",
+          "explanation": {
+            "text": "逆であり、Interconnect が高帯域向け。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/interconnect/concepts/overview",
+            "reference_label": "Cloud Interconnect Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud VPN と Interconnect を併用してセキュリティと帯域を組み合わせることも可能",
+          "explanation": {
+            "text": "ハイブリッド構成として VPN over Interconnect が可能。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/how-to",
+            "reference_label": "Hybrid Connectivity Best Practices"
+          }
+        }
+      ],
+      "answer": "A,D",
+      "explanation": {
+        "text": "VPN は IPsec による暗号化 (A)、Interconnect と組み合わせて VPN over Interconnect を構成できる (D)。B と C は誤り。",
+        "reference": "https://cloud.google.com/network-connectivity/docs",
+        "reference_label": "Hybrid Connectivity Docs"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q25",
+      "question": "Confidential Computing の特徴として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データを保存時のみ暗号化する",
+          "explanation": {
+            "text": "保存時のみではなく、使用中データの暗号化が特徴。",
+            "reference": "https://cloud.google.com/confidential-computing/docs",
+            "reference_label": "Confidential Computing Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "使用中のデータをハードウェアベースの隔離環境で暗号化する",
+          "explanation": {
+            "text": "Confidential VM はメモリ内データも暗号化し、隔離する。",
+            "reference": "https://cloud.google.com/confidential-computing/docs",
+            "reference_label": "Confidential Computing Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザーはハードウェアのセキュリティ機能を直接構成する必要がある",
+          "explanation": {
+            "text": "ユーザーが直接構成する必要はなく、GCP が提供する抽象化された仕組みを利用する。",
+            "reference": "https://cloud.google.com/confidential-computing/docs",
+            "reference_label": "Confidential Computing Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データ使用時の暗号化はサポートされない",
+          "explanation": {
+            "text": "むしろ Confidential Computing のコア機能は使用中データ暗号化。",
+            "reference": "https://cloud.google.com/confidential-computing/docs",
+            "reference_label": "Confidential Computing Overview"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Confidential Computing の特徴は、使用中データを暗号化し、ハードウェアベースで隔離すること。",
+        "reference": "https://cloud.google.com/confidential-computing/docs",
+        "reference_label": "Confidential Computing Overview"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q26",
+      "question": "Security Command Center (SCC) Premium エディションで可能な機能として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "IAM のすべてのロールを自動で削除する",
+          "explanation": {
+            "text": "IAM ロールの削除機能は SCC には存在しない。",
+            "reference": "https://cloud.google.com/security-command-center/docs",
+            "reference_label": "SCC Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "脆弱性スキャンや脅威検出を統合的に提供する",
+          "explanation": {
+            "text": "SCC Premium は脆弱性検出・脅威検出・資産インベントリを提供する。",
+            "reference": "https://cloud.google.com/security-command-center/docs",
+            "reference_label": "SCC Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Cloud Storage の保存コストを最適化する",
+          "explanation": {
+            "text": "ストレージ最適化機能は SCC の範囲外。",
+            "reference": "https://cloud.google.com/security-command-center/docs",
+            "reference_label": "SCC Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Compute Engine の OS パッチを自動適用する",
+          "explanation": {
+            "text": "SCC は脆弱性検出はできるがパッチ適用は行わない。",
+            "reference": "https://cloud.google.com/security-command-center/docs",
+            "reference_label": "SCC Overview"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "SCC Premium では脆弱性検出・脅威検出・資産管理を包括的に実行できる。",
+        "reference": "https://cloud.google.com/security-command-center/docs",
+        "reference_label": "SCC Overview"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q27",
+      "question": "Access Context Manager を利用する主な目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "アクセス制御にコンテキスト（IP 範囲やデバイス属性など）を追加できる",
+          "explanation": {
+            "text": "Access Context Manager により、ネットワークやデバイス属性を条件にした制御が可能。",
+            "reference": "https://cloud.google.com/access-context-manager/docs/overview",
+            "reference_label": "Access Context Manager Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Cloud KMS の暗号鍵を自動で生成する",
+          "explanation": {
+            "text": "暗号鍵管理は KMS の役割であり、Access Context Manager の機能ではない。",
+            "reference": "https://cloud.google.com/access-context-manager/docs/overview",
+            "reference_label": "Access Context Manager Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Cloud Armor の代替として DDoS 攻撃を防御する",
+          "explanation": {
+            "text": "DDoS 防御は Cloud Armor の役割。",
+            "reference": "https://cloud.google.com/access-context-manager/docs/overview",
+            "reference_label": "Access Context Manager Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud Storage バケットの暗号化方式を CMEK に変更する",
+          "explanation": {
+            "text": "暗号化方式の変更は Storage/KMS の範囲。",
+            "reference": "https://cloud.google.com/access-context-manager/docs/overview",
+            "reference_label": "Access Context Manager Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Access Context Manager はアクセス制御にコンテキスト（IP 範囲、デバイス属性など）を追加できるサービス。",
+        "reference": "https://cloud.google.com/access-context-manager/docs/overview",
+        "reference_label": "Access Context Manager Overview"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q28",
+      "question": "Cloud IDS (Intrusion Detection System) の特徴として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ネットワークトラフィックを解析して脅威を検出する",
+          "explanation": {
+            "text": "Cloud IDS はトラフィック解析に基づいて脅威を検出する。",
+            "reference": "https://cloud.google.com/ids/docs",
+            "reference_label": "Cloud IDS Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "自動的に攻撃トラフィックをブロックする",
+          "explanation": {
+            "text": "Cloud IDS は検出のみであり、ブロックはしない。",
+            "reference": "https://cloud.google.com/ids/docs",
+            "reference_label": "Cloud IDS Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Cloud KMS の鍵管理を統合する",
+          "explanation": {
+            "text": "Cloud IDS と KMS は別領域のサービス。",
+            "reference": "https://cloud.google.com/ids/docs",
+            "reference_label": "Cloud IDS Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud Logging の代替としてログ保存機能を提供する",
+          "explanation": {
+            "text": "Cloud IDS はログ保存サービスではなく、脅威検出が目的。",
+            "reference": "https://cloud.google.com/ids/docs",
+            "reference_label": "Cloud IDS Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud IDS はネットワークトラフィックを解析して脅威を検出するが、自動ブロックは行わない。",
+        "reference": "https://cloud.google.com/ids/docs",
+        "reference_label": "Cloud IDS Overview"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q29",
+      "question": "IAM におけるプリンシパル (Principal) に該当するものはどれか。**複数選択**。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Google アカウント",
+          "explanation": {
+            "text": "Google アカウントは IAM プリンシパルの1つ。",
+            "reference": "https://cloud.google.com/iam/docs/overview",
+            "reference_label": "IAM Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "サービスアカウント",
+          "explanation": {
+            "text": "サービスアカウントもプリンシパルに含まれる。",
+            "reference": "https://cloud.google.com/iam/docs/overview",
+            "reference_label": "IAM Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "リソースポリシー",
+          "explanation": {
+            "text": "ポリシーはプリンシパルではなく、アクセス制御のルール。",
+            "reference": "https://cloud.google.com/iam/docs/overview",
+            "reference_label": "IAM Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Google グループ",
+          "explanation": {
+            "text": "Google グループも IAM プリンシパルに含まれる。",
+            "reference": "https://cloud.google.com/iam/docs/overview",
+            "reference_label": "IAM Overview"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "IAM プリンシパルには Google アカウント (A)、サービスアカウント (B)、Google グループ (D) が含まれる。ポリシー自体 (C) はプリンシパルではない。",
+        "reference": "https://cloud.google.com/iam/docs/overview",
+        "reference_label": "IAM Overview"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q30",
+      "question": "Cloud NAT を利用する利点として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "内部 VM がパブリック IP を持たずにインターネットにアクセスできる",
+          "explanation": {
+            "text": "Cloud NAT により内部 VM がパブリック IP なしで外部にアクセス可能になる。",
+            "reference": "https://cloud.google.com/nat/docs/overview",
+            "reference_label": "Cloud NAT Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "外部から内部 VM に直接アクセスできるようになる",
+          "explanation": {
+            "text": "Cloud NAT は外向き通信専用であり、外部からの直接アクセスはできない。",
+            "reference": "https://cloud.google.com/nat/docs/overview",
+            "reference_label": "Cloud NAT Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "DDoS 攻撃を自動的に防御する",
+          "explanation": {
+            "text": "DDoS 防御は Cloud Armor の役割であり、Cloud NAT にはその機能はない。",
+            "reference": "https://cloud.google.com/nat/docs/overview",
+            "reference_label": "Cloud NAT Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud NAT を使うと OS レベルのパッチ適用が不要になる",
+          "explanation": {
+            "text": "Cloud NAT はネットワーク機能であり OS パッチ管理には関与しない。",
+            "reference": "https://cloud.google.com/nat/docs/overview",
+            "reference_label": "Cloud NAT Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud NAT は外部アクセス専用で、内部 VM がパブリック IP を持たずにインターネットへアクセス可能にする。",
+        "reference": "https://cloud.google.com/nat/docs/overview",
+        "reference_label": "Cloud NAT Overview"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q31",
+      "question": "Cloud Armor のカスタムルールで可能なことはどれか。**複数選択**。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "IP アドレス範囲に基づいたアクセス制御",
+          "explanation": {
+            "text": "Cloud Armor では IP アドレス制御が可能。",
+            "reference": "https://cloud.google.com/armor/docs/security-policy-concepts",
+            "reference_label": "Cloud Armor Security Policy"
+          }
+        },
+        {
+          "key": "B",
+          "text": "HTTP ヘッダーに基づいたアクセス制御",
+          "explanation": {
+            "text": "Cloud Armor は HTTP ヘッダーを条件に含められる。",
+            "reference": "https://cloud.google.com/armor/docs/security-policy-concepts",
+            "reference_label": "Cloud Armor Security Policy"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データベースクエリを直接検証して SQL インジェクションを防ぐ",
+          "explanation": {
+            "text": "Cloud Armor は WAF 機能で HTTP レイヤーを対象とし、DB クエリ自体を直接検証するわけではない。",
+            "reference": "https://cloud.google.com/armor/docs/security-policy-concepts",
+            "reference_label": "Cloud Armor Security Policy"
+          }
+        },
+        {
+          "key": "D",
+          "text": "地域（GeoIP）に基づいたアクセス制御",
+          "explanation": {
+            "text": "Cloud Armor では地域制御が可能。",
+            "reference": "https://cloud.google.com/armor/docs/security-policy-concepts",
+            "reference_label": "Cloud Armor Security Policy"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "Cloud Armor のカスタムルールでは IP アドレス (A)、HTTP ヘッダー (B)、地域 (D) に基づいた制御が可能。SQL クエリ検証 (C) は対象外。",
+        "reference": "https://cloud.google.com/armor/docs/security-policy-concepts",
+        "reference_label": "Cloud Armor Security Policy"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q32",
+      "question": "Google Cloud のデフォルトの暗号化方式はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Customer-Managed Encryption Keys (CMEK)",
+          "explanation": {
+            "text": "CMEK は任意で有効化する方式でありデフォルトではない。",
+            "reference": "https://cloud.google.com/security/encryption-at-rest",
+            "reference_label": "Encryption at Rest"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Customer-Supplied Encryption Keys (CSEK)",
+          "explanation": {
+            "text": "CSEK はユーザー提供の鍵を利用する方式でありデフォルトではない。",
+            "reference": "https://cloud.google.com/security/encryption-at-rest",
+            "reference_label": "Encryption at Rest"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Google-managed encryption keys",
+          "explanation": {
+            "text": "デフォルトでは Google 管理の暗号鍵が使われる。",
+            "reference": "https://cloud.google.com/security/encryption-at-rest",
+            "reference_label": "Encryption at Rest"
+          }
+        },
+        {
+          "key": "D",
+          "text": "暗号化はデフォルトで無効",
+          "explanation": {
+            "text": "すべてのデータはデフォルトで暗号化されるため誤り。",
+            "reference": "https://cloud.google.com/security/encryption-at-rest",
+            "reference_label": "Encryption at Rest"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "Google Cloud では保存データはデフォルトで Google 管理の鍵により暗号化される。",
+        "reference": "https://cloud.google.com/security/encryption-at-rest",
+        "reference_label": "Encryption at Rest"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q33",
+      "question": "Cloud Audit Logs のログタイプとして存在するものはどれか。**複数選択**。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Admin Activity",
+          "explanation": {
+            "text": "管理アクションを記録するログタイプ。",
+            "reference": "https://cloud.google.com/logging/docs/audit",
+            "reference_label": "Audit Logs"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Data Access",
+          "explanation": {
+            "text": "ユーザーデータや構成データへのアクセスを記録。",
+            "reference": "https://cloud.google.com/logging/docs/audit",
+            "reference_label": "Audit Logs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "System Events",
+          "explanation": {
+            "text": "システムによるアクションを記録。",
+            "reference": "https://cloud.google.com/logging/docs/audit",
+            "reference_label": "Audit Logs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Billing Optimization",
+          "explanation": {
+            "text": "課金最適化ログは存在しない。",
+            "reference": "https://cloud.google.com/logging/docs/audit",
+            "reference_label": "Audit Logs"
+          }
+        }
+      ],
+      "answer": "A,B,C",
+      "explanation": {
+        "text": "Cloud Audit Logs のタイプは Admin Activity、Data Access、System Events。Billing Optimization (D) は存在しない。",
+        "reference": "https://cloud.google.com/logging/docs/audit",
+        "reference_label": "Audit Logs"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q34",
+      "question": "ゼロトラストアーキテクチャの基本原則に含まれるものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "常に信頼せず、検証を行う",
+          "explanation": {
+            "text": "ゼロトラストの原則として「常に検証」がある。",
+            "reference": "https://cloud.google.com/beyondcorp-enterprise/docs/overview",
+            "reference_label": "BeyondCorp Enterprise"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ネットワーク内部のすべてのトラフィックをデフォルトで信頼する",
+          "explanation": {
+            "text": "ゼロトラストは内部でも信頼しないため誤り。",
+            "reference": "https://cloud.google.com/beyondcorp-enterprise/docs/overview",
+            "reference_label": "BeyondCorp Enterprise"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザーとデバイスのコンテキストに基づいたアクセス制御",
+          "explanation": {
+            "text": "ゼロトラストはユーザーやデバイスの属性を評価してアクセスを決定する。",
+            "reference": "https://cloud.google.com/beyondcorp-enterprise/docs/overview",
+            "reference_label": "BeyondCorp Enterprise"
+          }
+        },
+        {
+          "key": "D",
+          "text": "一度認証されたユーザーは再認証不要",
+          "explanation": {
+            "text": "継続的な検証が原則であり誤り。",
+            "reference": "https://cloud.google.com/beyondcorp-enterprise/docs/overview",
+            "reference_label": "BeyondCorp Enterprise"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "ゼロトラストは「常に検証 (A)」と「ユーザー・デバイスのコンテキストベース制御 (C)」が基本原則。",
+        "reference": "https://cloud.google.com/beyondcorp-enterprise/docs/overview",
+        "reference_label": "BeyondCorp Enterprise"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q35",
+      "question": "Cloud KMS で鍵の自動ローテーションを設定する利点はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "鍵管理の運用負荷を軽減できる",
+          "explanation": {
+            "text": "自動ローテーションにより手動での更新作業が不要になる。",
+            "reference": "https://cloud.google.com/kms/docs/key-rotation",
+            "reference_label": "Cloud KMS Key Rotation"
+          }
+        },
+        {
+          "key": "B",
+          "text": "鍵を一度作成すれば無期限に安全に利用できる",
+          "explanation": {
+            "text": "無期限利用はセキュリティリスクであり誤り。",
+            "reference": "https://cloud.google.com/kms/docs/key-rotation",
+            "reference_label": "Cloud KMS Key Rotation"
+          }
+        },
+        {
+          "key": "C",
+          "text": "鍵のローテーションによりキー利用の可視性が失われる",
+          "explanation": {
+            "text": "可視性は維持され、むしろセキュリティが強化される。",
+            "reference": "https://cloud.google.com/kms/docs/key-rotation",
+            "reference_label": "Cloud KMS Key Rotation"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ローテーションは鍵管理者の承認を常に必要とする",
+          "explanation": {
+            "text": "自動ローテーションは承認不要でスケジュールに基づき行われる。",
+            "reference": "https://cloud.google.com/kms/docs/key-rotation",
+            "reference_label": "Cloud KMS Key Rotation"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud KMS の自動ローテーションは運用負荷を軽減し、セキュリティを高めるために推奨される。",
+        "reference": "https://cloud.google.com/kms/docs/key-rotation",
+        "reference_label": "Cloud KMS Key Rotation"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q36",
+      "question": "IAM Recommender を利用する利点はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "IAM ポリシーの最小権限化を自動で提案する",
+          "explanation": {
+            "text": "IAM Recommender は過去の使用状況に基づいて最小権限を提案する。",
+            "reference": "https://cloud.google.com/iam/docs/recommender-overview",
+            "reference_label": "IAM Recommender Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "不要なユーザーアカウントを自動削除する",
+          "explanation": {
+            "text": "アカウント削除は行わない。提案のみ。",
+            "reference": "https://cloud.google.com/iam/docs/recommender-overview",
+            "reference_label": "IAM Recommender Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "監査ログを自動で保存期間延長する",
+          "explanation": {
+            "text": "ログ保存期間の変更は行わない。",
+            "reference": "https://cloud.google.com/iam/docs/recommender-overview",
+            "reference_label": "IAM Recommender Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud Armor のポリシーを最適化する",
+          "explanation": {
+            "text": "IAM Recommender は IAM 専用であり Cloud Armor とは無関係。",
+            "reference": "https://cloud.google.com/iam/docs/recommender-overview",
+            "reference_label": "IAM Recommender Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "IAM Recommender は過去の利用履歴に基づき最小権限を提案してくれるツールである。",
+        "reference": "https://cloud.google.com/iam/docs/recommender-overview",
+        "reference_label": "IAM Recommender Overview"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q37",
+      "question": "Cloud Armor で利用できる事前構築 (preconfigured) WAF ルールの例として正しいものはどれか。**複数選択**。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "SQL Injection 対策",
+          "explanation": {
+            "text": "SQLi ルールは事前構築済みで利用可能。",
+            "reference": "https://cloud.google.com/armor/docs/rules-overview",
+            "reference_label": "Cloud Armor Rules"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Cross-Site Scripting (XSS) 対策",
+          "explanation": {
+            "text": "XSS 対策ルールも含まれる。",
+            "reference": "https://cloud.google.com/armor/docs/rules-overview",
+            "reference_label": "Cloud Armor Rules"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Cloud KMS 鍵のローテーション",
+          "explanation": {
+            "text": "これは WAF ルールではない。",
+            "reference": "https://cloud.google.com/armor/docs/rules-overview",
+            "reference_label": "Cloud Armor Rules"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Remote File Inclusion (RFI) 対策",
+          "explanation": {
+            "text": "RFI ルールも事前構築済みに含まれる。",
+            "reference": "https://cloud.google.com/armor/docs/rules-overview",
+            "reference_label": "Cloud Armor Rules"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "Cloud Armor の事前構築 WAF ルールには SQLi (A)、XSS (B)、RFI (D) が含まれる。",
+        "reference": "https://cloud.google.com/armor/docs/rules-overview",
+        "reference_label": "Cloud Armor Rules"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q38",
+      "question": "Cloud Logging のログシンク (log sink) を利用する主な目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ログを BigQuery や Cloud Storage にエクスポートする",
+          "explanation": {
+            "text": "ログシンクはエクスポート先を指定してログを保存・分析可能にする。",
+            "reference": "https://cloud.google.com/logging/docs/export",
+            "reference_label": "Exporting Logs"
+          }
+        },
+        {
+          "key": "B",
+          "text": "監査ログの生成を無効化する",
+          "explanation": {
+            "text": "監査ログは無効化できない。",
+            "reference": "https://cloud.google.com/logging/docs/audit",
+            "reference_label": "Audit Logs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "OS パッチを自動適用する",
+          "explanation": {
+            "text": "ログシンクはパッチ管理とは無関係。",
+            "reference": "https://cloud.google.com/logging/docs/export",
+            "reference_label": "Exporting Logs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud NAT のルーティングを最適化する",
+          "explanation": {
+            "text": "ログシンクとネットワークルーティングは関係がない。",
+            "reference": "https://cloud.google.com/logging/docs/export",
+            "reference_label": "Exporting Logs"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ログシンクはログを BigQuery、Cloud Storage、Pub/Sub などにエクスポートするために利用する。",
+        "reference": "https://cloud.google.com/logging/docs/export",
+        "reference_label": "Exporting Logs"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q39",
+      "question": "Cloud Key Visualizer を利用する主な目的はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Cloud Bigtable のアクセスパターンを可視化する",
+          "explanation": {
+            "text": "Key Visualizer は Bigtable のキーアクセスを分析するツール。",
+            "reference": "https://cloud.google.com/bigtable/docs/keyvisualizer-intro",
+            "reference_label": "Bigtable Key Visualizer"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Cloud KMS の鍵使用状況を監視する",
+          "explanation": {
+            "text": "Key Visualizer は Bigtable 用であり KMS ではない。",
+            "reference": "https://cloud.google.com/bigtable/docs/keyvisualizer-intro",
+            "reference_label": "Bigtable Key Visualizer"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Cloud Storage のバケットキーのライフサイクルを管理する",
+          "explanation": {
+            "text": "Storage ではなく Bigtable 用。",
+            "reference": "https://cloud.google.com/bigtable/docs/keyvisualizer-intro",
+            "reference_label": "Bigtable Key Visualizer"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IAM ポリシーの推奨設定を表示する",
+          "explanation": {
+            "text": "IAM とは関係がない。",
+            "reference": "https://cloud.google.com/bigtable/docs/keyvisualizer-intro",
+            "reference_label": "Bigtable Key Visualizer"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Key Visualizer は Bigtable のアクセスパターンを可視化するツール。",
+        "reference": "https://cloud.google.com/bigtable/docs/keyvisualizer-intro",
+        "reference_label": "Bigtable Key Visualizer"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q40",
+      "question": "Cloud Pub/Sub のセキュリティ強化策として正しいものはどれか。**複数選択**。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "IAM によるトピックとサブスクリプションのアクセス制御",
+          "explanation": {
+            "text": "Pub/Sub リソースは IAM で制御できる。",
+            "reference": "https://cloud.google.com/pubsub/docs/access-control",
+            "reference_label": "Pub/Sub Access Control"
+          }
+        },
+        {
+          "key": "B",
+          "text": "VPC Service Controls を使ってデータ越境を防ぐ",
+          "explanation": {
+            "text": "Pub/Sub は VPC-SC と統合可能で、データ流出防止に役立つ。",
+            "reference": "https://cloud.google.com/pubsub/docs/vpc-service-controls",
+            "reference_label": "Pub/Sub and VPC-SC"
+          }
+        },
+        {
+          "key": "C",
+          "text": "メッセージの暗号化に CMEK を利用する",
+          "explanation": {
+            "text": "Pub/Sub は CMEK をサポートし暗号化を強化できる。",
+            "reference": "https://cloud.google.com/pubsub/docs/encryption",
+            "reference_label": "Pub/Sub Encryption"
+          }
+        },
+        {
+          "key": "D",
+          "text": "トピックを公開インターネットに必ず開放して可用性を担保する",
+          "explanation": {
+            "text": "公開はセキュリティリスクであり誤り。",
+            "reference": "https://cloud.google.com/pubsub/docs/access-control",
+            "reference_label": "Pub/Sub Access Control"
+          }
+        }
+      ],
+      "answer": "A,B,C",
+      "explanation": {
+        "text": "Pub/Sub のセキュリティ強化策は IAM 制御 (A)、VPC-SC (B)、CMEK (C)。公開インターネット開放 (D) は不適切。",
+        "reference": "https://cloud.google.com/pubsub/docs/security",
+        "reference_label": "Pub/Sub Security"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q41",
+      "question": "Forseti Security から後継として提供される公式サービスはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Security Command Center",
+          "explanation": {
+            "text": "Forseti の OSS は公式には SCC へと機能移行された。",
+            "reference": "https://cloud.google.com/security-command-center/docs",
+            "reference_label": "SCC Docs"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Cloud KMS",
+          "explanation": {
+            "text": "KMS は暗号鍵管理サービスであり後継ではない。",
+            "reference": "https://cloud.google.com/security-command-center/docs",
+            "reference_label": "SCC Docs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Cloud Armor",
+          "explanation": {
+            "text": "Armor は WAF/DDoS 防御であり後継ではない。",
+            "reference": "https://cloud.google.com/security-command-center/docs",
+            "reference_label": "SCC Docs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud IDS",
+          "explanation": {
+            "text": "IDS は侵入検知であり Forseti の後継ではない。",
+            "reference": "https://cloud.google.com/security-command-center/docs",
+            "reference_label": "SCC Docs"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Forseti OSS プロジェクトは公式には Security Command Center へ機能移行されている。",
+        "reference": "https://cloud.google.com/security-command-center/docs",
+        "reference_label": "SCC Docs"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q42",
+      "question": "GCP における Access Transparency の特徴はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Google 管理者のインフラアクセスをログとして提供する",
+          "explanation": {
+            "text": "Access Transparency は Google 管理者の操作ログをユーザーに提供する。",
+            "reference": "https://cloud.google.com/access-transparency/docs/overview",
+            "reference_label": "Access Transparency Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザー自身のアクセス履歴を保存する",
+          "explanation": {
+            "text": "ユーザーアクセスは Audit Logs で扱う。",
+            "reference": "https://cloud.google.com/access-transparency/docs/overview",
+            "reference_label": "Access Transparency Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Cloud Armor のルールをログに変換する",
+          "explanation": {
+            "text": "Armor とは無関係。",
+            "reference": "https://cloud.google.com/access-transparency/docs/overview",
+            "reference_label": "Access Transparency Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "監査ログを削除する機能を提供する",
+          "explanation": {
+            "text": "ログ削除機能は提供されない。",
+            "reference": "https://cloud.google.com/access-transparency/docs/overview",
+            "reference_label": "Access Transparency Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Access Transparency は Google 管理者が行ったインフラアクセスを記録・提供することで透明性を高める仕組み。",
+        "reference": "https://cloud.google.com/access-transparency/docs/overview",
+        "reference_label": "Access Transparency Overview"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q43",
+      "question": "Cloud DNS のセキュリティ強化策として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "DNSSEC を有効化して応答の改ざんを防ぐ",
+          "explanation": {
+            "text": "DNSSEC を有効化することで改ざん防止が可能。",
+            "reference": "https://cloud.google.com/dns/docs/dnssec",
+            "reference_label": "Cloud DNSSEC"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ゾーン転送を必ずパブリックに公開する",
+          "explanation": {
+            "text": "パブリック公開はリスクであり誤り。",
+            "reference": "https://cloud.google.com/dns/docs/zones",
+            "reference_label": "Cloud DNS Zones"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Cloud Armor で DNS クエリを直接制御する",
+          "explanation": {
+            "text": "Cloud Armor は HTTP(S) トラフィック向けで DNS クエリ制御はしない。",
+            "reference": "https://cloud.google.com/armor/docs/overview",
+            "reference_label": "Cloud Armor Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IAM を使ってゾーン管理権限を制御する",
+          "explanation": {
+            "text": "IAM による権限制御は DNS 管理における基本的なセキュリティ策。",
+            "reference": "https://cloud.google.com/dns/docs/iam",
+            "reference_label": "Cloud DNS IAM"
+          }
+        }
+      ],
+      "answer": "A,D",
+      "explanation": {
+        "text": "Cloud DNS のセキュリティ強化には DNSSEC (A) と IAM 制御 (D) が有効。B と C は誤り。",
+        "reference": "https://cloud.google.com/dns/docs/security",
+        "reference_label": "Cloud DNS Security"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q44",
+      "question": "GCP におけるデータ保存時の暗号化 (Encryption at Rest) に関する正しい記述はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "すべてのデータはデフォルトで Google 管理の鍵で暗号化される",
+          "explanation": {
+            "text": "Google Cloud は保存データをデフォルトで暗号化する。",
+            "reference": "https://cloud.google.com/security/encryption-at-rest",
+            "reference_label": "Encryption at Rest"
+          }
+        },
+        {
+          "key": "B",
+          "text": "暗号化はユーザーが明示的に有効化しない限り行われない",
+          "explanation": {
+            "text": "暗号化はデフォルトで有効。ユーザー操作は不要。",
+            "reference": "https://cloud.google.com/security/encryption-at-rest",
+            "reference_label": "Encryption at Rest"
+          }
+        },
+        {
+          "key": "C",
+          "text": "保存データの暗号化は CMEK のみで可能",
+          "explanation": {
+            "text": "CMEK は任意オプションであり、デフォルトは Google 管理鍵。",
+            "reference": "https://cloud.google.com/security/encryption-at-rest",
+            "reference_label": "Encryption at Rest"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CSEK を利用すると Google が鍵管理を完全に代行する",
+          "explanation": {
+            "text": "CSEK はユーザー管理鍵であり Google が代行するわけではない。",
+            "reference": "https://cloud.google.com/security/encryption-at-rest",
+            "reference_label": "Encryption at Rest"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "保存データはデフォルトで Google 管理の鍵により暗号化される。",
+        "reference": "https://cloud.google.com/security/encryption-at-rest",
+        "reference_label": "Encryption at Rest"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q45",
+      "question": "Cloud Router のセキュリティ運用に関する正しい記述はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Cloud Router は BGP セッションを暗号化しないため、VPN と併用してセキュリティを確保できる",
+          "explanation": {
+            "text": "BGP は暗号化されないため、VPN などと組み合わせてセキュリティを担保するのが一般的。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/router",
+            "reference_label": "Cloud Router Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Cloud Router は IAM によりアクセス制御ができない",
+          "explanation": {
+            "text": "IAM を用いて管理権限を制御可能。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/router",
+            "reference_label": "Cloud Router Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Cloud Router はセキュリティポリシーの適用に Cloud Armor を必須とする",
+          "explanation": {
+            "text": "Cloud Armor とは別サービスであり必須ではない。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/router",
+            "reference_label": "Cloud Router Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud Router はファイアウォールルールを自動生成する",
+          "explanation": {
+            "text": "ファイアウォールルールは自動生成されない。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/router",
+            "reference_label": "Cloud Router Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Router は BGP セッションを暗号化しないため、VPN と併用してセキュリティを確保する。",
+        "reference": "https://cloud.google.com/network-connectivity/docs/router",
+        "reference_label": "Cloud Router Overview"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q46",
+      "question": "OS Login を有効化する主な利点はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "SSH 鍵管理を IAM と統合できる",
+          "explanation": {
+            "text": "OS Login を有効化すると SSH 鍵が IAM と統合される。",
+            "reference": "https://cloud.google.com/compute/docs/oslogin",
+            "reference_label": "OS Login Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "自動的に VM の OS をアップデートする",
+          "explanation": {
+            "text": "OS Login は SSH 認証に関わる機能であり OS 更新は行わない。",
+            "reference": "https://cloud.google.com/compute/docs/oslogin",
+            "reference_label": "OS Login Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "SSH アクセスを無制限に許可する",
+          "explanation": {
+            "text": "IAM 制御を通じて制限するため無制限許可にはならない。",
+            "reference": "https://cloud.google.com/compute/docs/oslogin",
+            "reference_label": "OS Login Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud Armor と統合して DDoS 防御を提供する",
+          "explanation": {
+            "text": "DDoS 防御とは無関係。",
+            "reference": "https://cloud.google.com/compute/docs/oslogin",
+            "reference_label": "OS Login Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "OS Login を使うことで SSH 鍵を IAM と統合し、アクセス管理を簡素化できる。",
+        "reference": "https://cloud.google.com/compute/docs/oslogin",
+        "reference_label": "OS Login Overview"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q47",
+      "question": "GCP におけるセキュリティ境界 (security perimeter) の適切な活用例はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "VPC Service Controls を用いて特定サービスのデータ越境を防ぐ",
+          "explanation": {
+            "text": "セキュリティ境界を定義しデータ流出を防げる。",
+            "reference": "https://cloud.google.com/vpc-service-controls/docs/overview",
+            "reference_label": "VPC-SC Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Cloud Armor でファイアウォールルールを自動生成する",
+          "explanation": {
+            "text": "Cloud Armor は境界防御ではあるがファイアウォール自動生成はしない。",
+            "reference": "https://cloud.google.com/armor/docs/overview",
+            "reference_label": "Cloud Armor Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Cloud Logging の保持期間を制限する",
+          "explanation": {
+            "text": "保持期間はセキュリティ境界の機能ではない。",
+            "reference": "https://cloud.google.com/logging/docs",
+            "reference_label": "Cloud Logging"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Compute Engine の OS パッチ適用を強制する",
+          "explanation": {
+            "text": "OS パッチ強制はセキュリティ境界の機能ではない。",
+            "reference": "https://cloud.google.com/vpc-service-controls/docs/overview",
+            "reference_label": "VPC-SC Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "セキュリティ境界の代表例は VPC Service Controls によるデータ流出防止。",
+        "reference": "https://cloud.google.com/vpc-service-controls/docs/overview",
+        "reference_label": "VPC-SC Overview"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q48",
+      "question": "Cloud HSM の特徴として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "FIPS 140-2 レベル 3 に準拠する",
+          "explanation": {
+            "text": "Cloud HSM は FIPS 140-2 レベル 3 に準拠している。",
+            "reference": "https://cloud.google.com/kms/docs/hsm",
+            "reference_label": "Cloud HSM Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "鍵は常に Google により完全管理される",
+          "explanation": {
+            "text": "Cloud HSM ではユーザーが鍵の管理を制御できる。",
+            "reference": "https://cloud.google.com/kms/docs/hsm",
+            "reference_label": "Cloud HSM Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "鍵を使用中に暗号化せず平文で保持する",
+          "explanation": {
+            "text": "平文保持はなく、常にセキュアに管理される。",
+            "reference": "https://cloud.google.com/kms/docs/hsm",
+            "reference_label": "Cloud HSM Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "暗号鍵を VM インスタンスに保存する",
+          "explanation": {
+            "text": "鍵は HSM 内に保管され、VM に保存されることはない。",
+            "reference": "https://cloud.google.com/kms/docs/hsm",
+            "reference_label": "Cloud HSM Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud HSM は FIPS 140-2 レベル 3 に準拠している。",
+        "reference": "https://cloud.google.com/kms/docs/hsm",
+        "reference_label": "Cloud HSM Overview"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q49",
+      "question": "Chronicle を利用する主な利点はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "大規模セキュリティデータの長期保存と検索・相関分析",
+          "explanation": {
+            "text": "Chronicle は大規模ログを長期保存・分析できる。",
+            "reference": "https://cloud.google.com/chronicle/docs",
+            "reference_label": "Chronicle Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ファイアウォールルールを自動生成する",
+          "explanation": {
+            "text": "Chronicle はログ分析サービスでありファイアウォール管理はしない。",
+            "reference": "https://cloud.google.com/chronicle/docs",
+            "reference_label": "Chronicle Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "OS パッチを自動適用する",
+          "explanation": {
+            "text": "パッチ管理機能はない。",
+            "reference": "https://cloud.google.com/chronicle/docs",
+            "reference_label": "Chronicle Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IAM ポリシーを最適化する",
+          "explanation": {
+            "text": "IAM 管理機能はない。",
+            "reference": "https://cloud.google.com/chronicle/docs",
+            "reference_label": "Chronicle Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Chronicle は大規模なセキュリティデータを長期保存し、高速検索・相関分析を可能にする。",
+        "reference": "https://cloud.google.com/chronicle/docs",
+        "reference_label": "Chronicle Overview"
+      }
+    },
+    {
+      "id": "gcp-PCSE-P-q50",
+      "question": "Assured Workloads の特徴として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "規制要件に応じてデータの保存場所や操作を制御できる",
+          "explanation": {
+            "text": "Assured Workloads は規制対応を目的とし、データ保存場所や操作を制御できる。",
+            "reference": "https://cloud.google.com/assured-workloads/docs",
+            "reference_label": "Assured Workloads Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "DDoS 防御を自動的に提供する",
+          "explanation": {
+            "text": "DDoS 防御は Cloud Armor の役割であり Assured Workloads ではない。",
+            "reference": "https://cloud.google.com/assured-workloads/docs",
+            "reference_label": "Assured Workloads Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "OS パッチを自動的に適用する",
+          "explanation": {
+            "text": "パッチ管理は Assured Workloads の機能ではない。",
+            "reference": "https://cloud.google.com/assured-workloads/docs",
+            "reference_label": "Assured Workloads Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "監査ログを削除できる",
+          "explanation": {
+            "text": "監査ログ削除はできない。",
+            "reference": "https://cloud.google.com/assured-workloads/docs",
+            "reference_label": "Assured Workloads Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Assured Workloads はデータの保存場所やオペレーションを規制要件に従って制御できる。",
+        "reference": "https://cloud.google.com/assured-workloads/docs",
+        "reference_label": "Assured Workloads Overview"
+      }
+    }
+  ]
+}

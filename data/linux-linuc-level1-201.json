@@ -1,0 +1,2484 @@
+{
+  "exam": {
+    "id": "linuc_level2_201",
+    "title": "LinuC レベル2 201試験",
+    "description": "本試験は、Linuxシステムにおける設計・構築・運用・保守の中でも、カーネル、起動プロセス、ファイルシステム、ストレージ、ネットワーク、仮想化／コンテナなど「中〜上級エンジニアに求められる」実践的な技術を問うものです。具体的には、Linuxカーネルの構造やコンパイル、システム起動のカスタマイズ、論理ボリューム管理、仮想マシン・コンテナ技術などを取り扱い、単なる基礎操作から一歩上の運用・設計能力を備えていることを認める試験です。",
+    "version": "v10.0",
+    "price": "16,500円",
+    "difficulty": "普通",
+    "official-site": "https://linuc.org/linuc2",
+    "category": {
+      "id": "linux",
+      "name": "Linux技術者認定"
+    }
+  },
+  "questions": [
+    {
+      "id": "linuc-level2-201-01",
+      "question": "systemd でユニットの依存関係を定義するために使用されるディレクティブはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Requires=",
+          "explanation": {
+            "text": "Requires= は依存サービスが起動できなかった場合、対象サービスも起動失敗とする強い依存関係を定義する。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.unit.html",
+            "reference_label": "systemd.unit(5) - Dependencies"
+          }
+        },
+        {
+          "key": "B",
+          "text": "OrderBy=",
+          "explanation": {
+            "text": "OrderBy= というディレクティブは存在しない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.unit.html",
+            "reference_label": "systemd.unit(5)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Precede=",
+          "explanation": {
+            "text": "Precede は systemd のディレクティブとして存在しない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.unit.html",
+            "reference_label": "systemd.unit(5)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "LinkTo=",
+          "explanation": {
+            "text": "LinkTo= は systemd の依存関係ディレクティブには存在しない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.unit.html",
+            "reference_label": "systemd.unit(5)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "systemd の Requires= は強い依存関係を定義し、依存ユニットが動作しなければ対象ユニットも失敗扱いとなる。",
+        "reference": "https://www.freedesktop.org/software/systemd/man/systemd.unit.html",
+        "reference_label": "systemd.unit(5)"
+      }
+    },
+    {
+      "id": "linuc-level2-201-02",
+      "question": "Linux カーネルモジュールをロードするコマンドとして正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "modprobe",
+          "explanation": {
+            "text": "modprobe は依存関係を解決しつつモジュールをロードできる標準コマンドである。",
+            "reference": "https://www.kernel.org/doc/html/latest/admin-guide/modules.html",
+            "reference_label": "Linux kernel - modules"
+          }
+        },
+        {
+          "key": "B",
+          "text": "insmoddep",
+          "explanation": {
+            "text": "insmoddep というコマンドは存在しない。",
+            "reference": "https://www.kernel.org/doc/html/latest/admin-guide/modules.html",
+            "reference_label": "Linux kernel - modules"
+          }
+        },
+        {
+          "key": "C",
+          "text": "loadmod",
+          "explanation": {
+            "text": "loadmod というコマンドは標準 Linux には存在しない。",
+            "reference": "https://www.kernel.org/doc/html/latest/admin-guide/modules.html",
+            "reference_label": "Linux kernel - modules"
+          }
+        },
+        {
+          "key": "D",
+          "text": "systemctl module-load",
+          "explanation": {
+            "text": "systemd に module-load というユニットは存在しない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+            "reference_label": "systemctl(1)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "modprobe は依存関係を自動的に処理してカーネルモジュールをロードするために推奨される。",
+        "reference": "https://www.kernel.org/doc/html/latest/admin-guide/modules.html",
+        "reference_label": "Linux kernel modules"
+      }
+    },
+
+    {
+      "id": "linuc-level2-201-03",
+      "question": "LVM のスナップショット機能を利用する目的として最も適切なのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "特定時点の論理ボリュームの状態を保持し、バックアップに利用するため",
+          "explanation": {
+            "text": "LVM スナップショットは読み取り専用または書き込み可能な差分領域を用いて、特定時点の状態を保存できる。",
+            "reference": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/logical_volume_manager_administration/assembly_lvm-snapshots_lvm-administration",
+            "reference_label": "RHEL LVM Snapshots"
+          }
+        },
+        {
+          "key": "B",
+          "text": "物理ディスクの I/O 性能を恒久的に向上させるため",
+          "explanation": {
+            "text": "スナップショットは性能向上機能ではなく、短期的に I/O 負荷が増えることもある。",
+            "reference": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/logical_volume_manager_administration/assembly_lvm-snapshots_lvm-administration",
+            "reference_label": "RHEL LVM Snapshots"
+          }
+        },
+        {
+          "key": "C",
+          "text": "物理ボリュームの容量を自動で増やすため",
+          "explanation": {
+            "text": "容量自動拡張はスナップショットではなく LVM Thin Provisioning による機能である。",
+            "reference": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/logical_volume_manager_administration/assembly_thin-provisioning_lvm-administration",
+            "reference_label": "RHEL Thin Provisioning"
+          }
+        },
+        {
+          "key": "D",
+          "text": "RAID の冗長性を向上させるため",
+          "explanation": {
+            "text": "RAID 機能は LVM とは別機能であり、スナップショットは冗長化には利用しない。",
+            "reference": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/logical_volume_manager_administration/index",
+            "reference_label": "RHEL LVM Admin"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "スナップショットは特定時点の状態を保持し、バックアップ作業に利用できるため最も一般的な用途である。",
+        "reference": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/logical_volume_manager_administration/assembly_lvm-snapshots_lvm-administration",
+        "reference_label": "RHEL LVM Snapshots"
+      }
+    },
+
+    {
+      "id": "linuc-level2-201-04",
+      "question": "GRUB2 の設定ファイルとして正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "/boot/grub2/grub.cfg",
+          "explanation": {
+            "text": "GRUB2 の主要設定ファイルは grub.cfg で、手動編集は推奨されない。",
+            "reference": "https://www.gnu.org/software/grub/manual/grub/html_node/Configuration.html",
+            "reference_label": "GNU GRUB Manual"
+          }
+        },
+        {
+          "key": "B",
+          "text": "/etc/grub.conf",
+          "explanation": {
+            "text": "これは GRUB Legacy（GRUB1）の形式であり、GRUB2 では使用されない。",
+            "reference": "https://www.gnu.org/software/grub/manual/grub/html_node/Configuration.html",
+            "reference_label": "GNU GRUB Manual"
+          }
+        },
+        {
+          "key": "C",
+          "text": "/etc/grub.d/conf.cfg",
+          "explanation": {
+            "text": "GRUB2 の設定は /etc/grub.d/ 下にスクリプトがあるが conf.cfg というファイルは存在しない。",
+            "reference": "https://www.gnu.org/software/grub/manual/grub/html_node/Configuration.html",
+            "reference_label": "GNU GRUB Manual"
+          }
+        },
+        {
+          "key": "D",
+          "text": "/boot/grub/menu.lst",
+          "explanation": {
+            "text": "menu.lst は GRUB Legacy の設定ファイルであり GRUB2 では使用しない。",
+            "reference": "https://www.gnu.org/software/grub/manual/grub/html_node/Configuration.html",
+            "reference_label": "GNU GRUB Manual"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "GRUB2 の設定ファイルは /boot/grub2/grub.cfg が正しい。",
+        "reference": "https://www.gnu.org/software/grub/manual/grub/html_node/Configuration.html",
+        "reference_label": "GNU GRUB Manual"
+      }
+    },
+
+    {
+      "id": "linuc-level2-201-05",
+      "question": "systemctl コマンドでユニットの依存関係を可視化するサブコマンドはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "systemctl list-dependencies",
+          "explanation": {
+            "text": "list-dependencies はユニットの依存関係ツリーを表示する。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+            "reference_label": "systemctl(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "systemctl show-dep",
+          "explanation": {
+            "text": "show-dep というサブコマンドは存在しない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+            "reference_label": "systemctl(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "systemctl dep-list",
+          "explanation": {
+            "text": "dep-list というオプションは systemctl には存在しない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+            "reference_label": "systemctl(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "systemctl relation",
+          "explanation": {
+            "text": "relation というコマンドは提供されていない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+            "reference_label": "systemctl(1)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "list-dependencies は systemd ユニットの依存関係を階層的に表示する。",
+        "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+        "reference_label": "systemctl(1)"
+      }
+    },
+
+    {
+      "id": "linuc-level2-201-06",
+      "question": "Linux の NIC ボンディングモードで、LACP を利用する標準的なモードはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "mode=4",
+          "explanation": {
+            "text": "mode=4（802.3ad）は LACP を利用するボンディングモードである。",
+            "reference": "https://www.kernel.org/doc/Documentation/networking/bonding.txt",
+            "reference_label": "Linux Bonding Driver"
+          }
+        },
+        {
+          "key": "B",
+          "text": "mode=1",
+          "explanation": {
+            "text": "mode=1 は Active-Backup モードで LACP は使用しない。",
+            "reference": "https://www.kernel.org/doc/Documentation/networking/bonding.txt",
+            "reference_label": "Linux Bonding Driver"
+          }
+        },
+        {
+          "key": "C",
+          "text": "mode=2",
+          "explanation": {
+            "text": "mode=2 は XOR モードであり LACP ではない。",
+            "reference": "https://www.kernel.org/doc/Documentation/networking/bonding.txt",
+            "reference_label": "Linux Bonding Driver"
+          }
+        },
+        {
+          "key": "D",
+          "text": "mode=7",
+          "explanation": {
+            "text": "mode=7 は Adaptive load balancing であり LACP は使用しない。",
+            "reference": "https://www.kernel.org/doc/Documentation/networking/bonding.txt",
+            "reference_label": "Linux Bonding Driver"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "LACP を利用するボンディングモードは mode=4（802.3ad）である。",
+        "reference": "https://www.kernel.org/doc/Documentation/networking/bonding.txt",
+        "reference_label": "Linux Bonding Driver"
+      }
+    },
+
+    {
+      "id": "linuc-level2-201-07",
+      "question": "SELinux のモードのうち“ポリシーを適用せずログのみ記録するモード”はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Permissive",
+          "explanation": {
+            "text": "Permissive はアクセス拒否は行わず、違反をログに記録するモード。",
+            "reference": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/selinux/index",
+            "reference_label": "RHEL SELinux Guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Enforcing",
+          "explanation": {
+            "text": "Enforcing はポリシーを強制しアクセスを拒否する。",
+            "reference": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/selinux/index",
+            "reference_label": "RHEL SELinux Guide"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Disabled",
+          "explanation": {
+            "text": "Disabled は SELinux が完全に無効化される。",
+            "reference": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/selinux/index",
+            "reference_label": "RHEL SELinux Guide"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AuditOnly",
+          "explanation": {
+            "text": "AuditOnly という SELinux モードは存在しない。",
+            "reference": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/selinux/index",
+            "reference_label": "RHEL SELinux Guide"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Permissive モードでは違反はログ記録のみで拒否は行われない。",
+        "reference": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/selinux/index",
+        "reference_label": "RHEL SELinux Guide"
+      }
+    },
+
+    {
+      "id": "linuc-level2-201-08",
+      "question": "コンテナ技術において、cgroups が提供する主な機能はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "リソース（CPU・メモリなど）の制限・隔離",
+          "explanation": {
+            "text": "cgroups はプロセスに対するリソース割り当てを制御する。",
+            "reference": "https://www.kernel.org/doc/Documentation/cgroup-v2.txt",
+            "reference_label": "Linux Control Groups"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザアカウント管理",
+          "explanation": {
+            "text": "ユーザ管理は cgroups の機能ではない。",
+            "reference": "https://www.kernel.org/doc/Documentation/cgroup-v2.txt",
+            "reference_label": "Linux Control Groups"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ファイル権限管理",
+          "explanation": {
+            "text": "ファイル権限は Linux 標準のパーミッションや ACL が担当する。",
+            "reference": "https://www.kernel.org/doc/Documentation/cgroup-v2.txt",
+            "reference_label": "Linux Control Groups"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ネットワークルーティング管理",
+          "explanation": {
+            "text": "ネットワーク制御は namespace 機能が担う。",
+            "reference": "https://www.kernel.org/doc/Documentation/cgroup-v2.txt",
+            "reference_label": "Linux Control Groups"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "cgroups はプロセスのリソース制限・優先制御を行う主要機能である。",
+        "reference": "https://www.kernel.org/doc/Documentation/cgroup-v2.txt",
+        "reference_label": "Linux Control Groups"
+      }
+    },
+
+    {
+      "id": "linuc-level2-201-09",
+      "question": "systemd-networkd を利用する場合、ネットワーク設定ファイルの拡張子として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": ".network",
+          "explanation": {
+            "text": ".network は networkd がインターフェース設定を読み取る標準形式である。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.network.html",
+            "reference_label": "systemd.network(5)"
+          }
+        },
+        {
+          "key": "B",
+          "text": ".netconf",
+          "explanation": {
+            "text": ".netconf は systemd-networkd の標準形式ではない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.network.html",
+            "reference_label": "systemd.network(5)"
+          }
+        },
+        {
+          "key": "C",
+          "text": ".ifcfg",
+          "explanation": {
+            "text": "ifcfg は RHEL 系ネットワークスクリプトの形式である。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.network.html",
+            "reference_label": "systemd.network(5)"
+          }
+        },
+        {
+          "key": "D",
+          "text": ".nwd",
+          "explanation": {
+            "text": ".nwd という形式は存在しない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.network.html",
+            "reference_label": "systemd.network(5)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "systemd-networkd の設定は .network, .netdev など特定拡張子を利用する。",
+        "reference": "https://www.freedesktop.org/software/systemd/man/systemd.network.html",
+        "reference_label": "systemd.network(5)"
+      }
+    },
+
+    {
+      "id": "linuc-level2-201-10",
+      "question": "DNS のゾーン転送 (AXFR) を許可する際に named.conf で設定すべきオプションはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "allow-transfer",
+          "explanation": {
+            "text": "allow-transfer はゾーン転送を許可するアクセス制御設定である。",
+            "reference": "https://bind9.readthedocs.io/en/latest/reference.html",
+            "reference_label": "BIND9 Administrator Reference"
+          }
+        },
+        {
+          "key": "B",
+          "text": "allow-zone",
+          "explanation": {
+            "text": "allow-zone は BIND のオプションとして存在しない。",
+            "reference": "https://bind9.readthedocs.io/en/latest/reference.html",
+            "reference_label": "BIND9 Administrator Reference"
+          }
+        },
+        {
+          "key": "C",
+          "text": "zone-transfer",
+          "explanation": {
+            "text": "zone-transfer というディレクティブは BIND には存在しない。",
+            "reference": "https://bind9.readthedocs.io/en/latest/reference.html",
+            "reference_label": "BIND9 Administrator Reference"
+          }
+        },
+        {
+          "key": "D",
+          "text": "axfr-allow",
+          "explanation": {
+            "text": "axfr-allow というオプションは存在しない。",
+            "reference": "https://bind9.readthedocs.io/en/latest/reference.html",
+            "reference_label": "BIND9 Administrator Reference"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "AXFR を許可するには allow-transfer で転送元を指定する必要がある。",
+        "reference": "https://bind9.readthedocs.io/en/latest/reference.html",
+        "reference_label": "BIND9 Administrator Reference"
+      }
+    },
+    {
+      "id": "linuc-level2-201-11",
+      "question": "systemd において、一度だけ実行されるサービスを定義する際に使用する Unit Type はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "oneshot",
+          "explanation": {
+            "text": "oneshot は一度だけコマンドを実行し終了するタイプ。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.service.html",
+            "reference_label": "systemd.service(5)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "simple",
+          "explanation": {
+            "text": "simple はプロセスがフォアグラウンドで動作し続けるタイプ。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.service.html",
+            "reference_label": "systemd.service(5)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "forking",
+          "explanation": {
+            "text": "forking はデーモン化するサービスで使用される。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.service.html",
+            "reference_label": "systemd.service(5)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "notify",
+          "explanation": {
+            "text": "notify は systemd-notify を通して状態を伝えるサービス。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.service.html",
+            "reference_label": "systemd.service(5)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "一回実行して終了する Job は oneshot タイプで定義する。",
+        "reference": "https://www.freedesktop.org/software/systemd/man/systemd.service.html",
+        "reference_label": "systemd.service(5)"
+      }
+    },
+
+    {
+      "id": "linuc-level2-201-12",
+      "question": "Linux カーネルの起動パラメータを一時的に変更するために利用されるファイルはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "/proc/cmdline",
+          "explanation": {
+            "text": "cmdline はカーネルに渡された起動パラメータを確認できる仮想ファイル。",
+            "reference": "https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html",
+            "reference_label": "Kernel Parameters"
+          }
+        },
+        {
+          "key": "B",
+          "text": "/etc/kernel/boot.conf",
+          "explanation": {
+            "text": "このファイルは標準 Linux には存在しない。",
+            "reference": "https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html",
+            "reference_label": "Kernel Parameters"
+          }
+        },
+        {
+          "key": "C",
+          "text": "/boot/params",
+          "explanation": {
+            "text": "一般的に /boot に params というファイルは存在しない。",
+            "reference": "https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html",
+            "reference_label": "Kernel Parameters"
+          }
+        },
+        {
+          "key": "D",
+          "text": "/sys/kernel/boot",
+          "explanation": {
+            "text": "boot ディレクトリは存在するが、起動パラメータの変更には利用されない。",
+            "reference": "https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html",
+            "reference_label": "Kernel Parameters"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "/proc/cmdline はカーネル起動パラメータを確認するための仮想ファイルである。",
+        "reference": "https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html",
+        "reference_label": "Kernel Parameters"
+      }
+    },
+
+    {
+      "id": "linuc-level2-201-13",
+      "question": "ext4 ファイルシステムでジャーナリング方式として採用されているデフォルトモードはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ordered",
+          "explanation": {
+            "text": "ext4 のデフォルトは ordered モードで、メタデータのみジャーナリングしデータは書き込み順序を保証する。",
+            "reference": "https://www.kernel.org/doc/Documentation/filesystems/ext4.txt",
+            "reference_label": "ext4 Documentation"
+          }
+        },
+        {
+          "key": "B",
+          "text": "writeback",
+          "explanation": {
+            "text": "writeback は高速だがデータ整合性が低いモードでデフォルトではない。",
+            "reference": "https://www.kernel.org/doc/Documentation/filesystems/ext4.txt",
+            "reference_label": "ext4 Documentation"
+          }
+        },
+        {
+          "key": "C",
+          "text": "full",
+          "explanation": {
+            "text": "full というモードは存在しない。",
+            "reference": "https://www.kernel.org/doc/Documentation/filesystems/ext4.txt",
+            "reference_label": "ext4 Documentation"
+          }
+        },
+        {
+          "key": "D",
+          "text": "metadata-only",
+          "explanation": {
+            "text": "metadata-only という呼び方は一般的ではない。",
+            "reference": "https://www.kernel.org/doc/Documentation/filesystems/ext4.txt",
+            "reference_label": "ext4 Documentation"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ext4 はデフォルトで ordered モードを採用しており、信頼性と性能のバランスが良い。",
+        "reference": "https://www.kernel.org/doc/Documentation/filesystems/ext4.txt",
+        "reference_label": "ext4 Documentation"
+      }
+    },
+
+    {
+      "id": "linuc-level2-201-14",
+      "question": "Linux の KVM 仮想化で仮想マシンの設定を管理する標準ツールはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "libvirt",
+          "explanation": {
+            "text": "libvirt は仮想化管理の標準ライブラリ・ツールで KVM を統合管理できる。",
+            "reference": "https://libvirt.org/intro.html",
+            "reference_label": "Libvirt Introduction"
+          }
+        },
+        {
+          "key": "B",
+          "text": "lvm-virt",
+          "explanation": {
+            "text": "lvm-virt というツールは存在しない。",
+            "reference": "https://libvirt.org/intro.html",
+            "reference_label": "Libvirt Introduction"
+          }
+        },
+        {
+          "key": "C",
+          "text": "qemu-only",
+          "explanation": {
+            "text": "qemu はハイパーバイザーであり、管理ツールではない。",
+            "reference": "https://libvirt.org/intro.html",
+            "reference_label": "Libvirt Introduction"
+          }
+        },
+        {
+          "key": "D",
+          "text": "virtcontrol",
+          "explanation": {
+            "text": "virtcontrol というツールは標準ではない。",
+            "reference": "https://libvirt.org/intro.html",
+            "reference_label": "Libvirt Introduction"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "libvirt は KVM 管理のデファクトスタンダードである。",
+        "reference": "https://libvirt.org/intro.html",
+        "reference_label": "Libvirt Introduction"
+      }
+    },
+
+    {
+      "id": "linuc-level2-201-15",
+      "question": "network namespace の一覧を表示するコマンドとして正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ip netns list",
+          "explanation": {
+            "text": "ip netns list はネットワーク名前空間の一覧を表示する。",
+            "reference": "https://man7.org/linux/man-pages/man8/ip-netns.8.html",
+            "reference_label": "ip-netns(8)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "iptables -L netns",
+          "explanation": {
+            "text": "iptables には netns を列挙する機能はない。",
+            "reference": "https://man7.org/linux/man-pages/man8/iptables.8.html",
+            "reference_label": "iptables(8)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "nsenter --list",
+          "explanation": {
+            "text": "nsenter は名前空間に入るためのコマンドでありリスト表示機能はない。",
+            "reference": "https://man7.org/linux/man-pages/man1/nsenter.1.html",
+            "reference_label": "nsenter(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "netns-show",
+          "explanation": {
+            "text": "netns-show というコマンドは存在しない。",
+            "reference": "https://man7.org/linux/man-pages/man8/ip-netns.8.html",
+            "reference_label": "ip-netns(8)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ip netns list が network namespace のリスト表示に対応している。",
+        "reference": "https://man7.org/linux/man-pages/man8/ip-netns.8.html",
+        "reference_label": "ip-netns(8)"
+      }
+    },
+
+    {
+      "id": "linuc-level2-201-16",
+      "question": "NFSv4 のマウント時にデフォルトで利用されるセキュリティ機構はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Kerberos（sec=sys は fallback）",
+          "explanation": {
+            "text": "NFSv4 は Kerberos 認証に対応し、セキュアな環境では sec=krb5 が利用される。",
+            "reference": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_networking/assembly_nfs-configure-configuring-and-managing-networking",
+            "reference_label": "RHEL NFS Guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SSH トンネリング",
+          "explanation": {
+            "text": "NFS は SSH トンネルを使わない。",
+            "reference": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_networking",
+            "reference_label": "RHEL NFS Guide"
+          }
+        },
+        {
+          "key": "C",
+          "text": "TLS 暗号化が必須",
+          "explanation": {
+            "text": "TLS は NFSv4 の必須機能ではない。",
+            "reference": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_networking",
+            "reference_label": "RHEL NFS Guide"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IPsec のみ利用される",
+          "explanation": {
+            "text": "IPsec は任意であり標準の前提ではない。",
+            "reference": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_networking",
+            "reference_label": "RHEL NFS Guide"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "NFSv4 は Kerberos 認証（sec=krb5 系）をネイティブサポートし推奨されている。",
+        "reference": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_networking",
+        "reference_label": "RHEL NFS Guide"
+      }
+    },
+
+    {
+      "id": "linuc-level2-201-17",
+      "question": "Linux においてプロセスが使用するファイルディスクリプタを確認するために利用するディレクトリはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "/proc/<PID>/fd/",
+          "explanation": {
+            "text": "/proc/<PID>/fd にはプロセスが開いている FD へのリンクがある。",
+            "reference": "https://man7.org/linux/man-pages/man5/proc.5.html",
+            "reference_label": "proc(5)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "/var/fd/<PID>/",
+          "explanation": {
+            "text": "このディレクトリは存在しない。",
+            "reference": "https://man7.org/linux/man-pages/man5/proc.5.html",
+            "reference_label": "proc(5)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "/etc/proc/fd/",
+          "explanation": {
+            "text": "proc は仮想ファイルシステムであり /etc 配下には存在しない。",
+            "reference": "https://man7.org/linux/man-pages/man5/proc.5.html",
+            "reference_label": "proc(5)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "/sys/proc/fds",
+          "explanation": {
+            "text": "sysfs 配下に proc の fd は存在しない。",
+            "reference": "https://man7.org/linux/man-pages/man5/proc.5.html",
+            "reference_label": "proc(5)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "プロセスの FD は /proc/<PID>/fd に symlink として表現される。",
+        "reference": "https://man7.org/linux/man-pages/man5/proc.5.html",
+        "reference_label": "proc(5)"
+      }
+    },
+
+    {
+      "id": "linuc-level2-201-18",
+      "question": "Btrfs の特徴として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "スナップショットとサブボリュームをネイティブサポートする",
+          "explanation": {
+            "text": "Btrfs はスナップショット管理が可能な Copy-on-write FS である。",
+            "reference": "https://btrfs.readthedocs.io/en/latest/",
+            "reference_label": "Btrfs Documentation"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ext4 の後継として標準採用されている",
+          "explanation": {
+            "text": "多くのディストリでは ext4 がデフォルトで Btrfs が必須ではない。",
+            "reference": "https://btrfs.readthedocs.io/en/latest/",
+            "reference_label": "Btrfs Documentation"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ジャーナリングを使用しないため障害に弱い",
+          "explanation": {
+            "text": "Btrfs は CoW による整合性管理を行い、弱いわけではない。",
+            "reference": "https://btrfs.readthedocs.io/en/latest/",
+            "reference_label": "Btrfs Documentation"
+          }
+        },
+        {
+          "key": "D",
+          "text": "RAID0/1 のみサポートする",
+          "explanation": {
+            "text": "Btrfs は RAID10 やより柔軟な構成にも対応する。",
+            "reference": "https://btrfs.readthedocs.io/en/latest/",
+            "reference_label": "Btrfs Documentation"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Btrfs の最大の特徴はスナップショット・サブボリューム機能である。",
+        "reference": "https://btrfs.readthedocs.io/en/latest/",
+        "reference_label": "Btrfs Documentation"
+      }
+    },
+
+    {
+      "id": "linuc-level2-201-19",
+      "question": "rsync で差分のみを効率的に転送するために利用されるアルゴリズムはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ローリングチェックサム",
+          "explanation": {
+            "text": "rsync アルゴリズムはローリングチェックサムと MD5 を組み合わせる。",
+            "reference": "https://download.samba.org/pub/rsync/rsync.html",
+            "reference_label": "rsync manual"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SHA-256 のみを使用する方式",
+          "explanation": {
+            "text": "rsync は SHA-256 を標準では利用しない。",
+            "reference": "https://download.samba.org/pub/rsync/rsync.html",
+            "reference_label": "rsync manual"
+          }
+        },
+        {
+          "key": "C",
+          "text": "差分ハッシュ方式のみ",
+          "explanation": {
+            "text": "単純な差分ハッシュ方式ではない。",
+            "reference": "https://download.samba.org/pub/rsync/rsync.html",
+            "reference_label": "rsync manual"
+          }
+        },
+        {
+          "key": "D",
+          "text": "全ファイルスキャン方式",
+          "explanation": {
+            "text": "rsync は必要部分のみ転送するため全ファイルスキャン方式ではない。",
+            "reference": "https://download.samba.org/pub/rsync/rsync.html",
+            "reference_label": "rsync manual"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "rsync の差分転送はローリングチェックサムを用いた独自方式である。",
+        "reference": "https://download.samba.org/pub/rsync/rsync.html",
+        "reference_label": "rsync manual"
+      }
+    },
+
+    {
+      "id": "linuc-level2-201-20",
+      "question": "systemd でサービスの自動再起動を設定するためのディレクティブはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Restart=",
+          "explanation": {
+            "text": "Restart= はプロセス終了時に再起動させるかどうかを指定する。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.service.html",
+            "reference_label": "systemd.service(5)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Retry=",
+          "explanation": {
+            "text": "Retry= は systemd のディレクティブには存在しない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.service.html",
+            "reference_label": "systemd.service(5)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "RestartOnFail=",
+          "explanation": {
+            "text": "RestartOnFail は古い形式で現在は使用しない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.service.html",
+            "reference_label": "systemd.service(5)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AutoStart=",
+          "explanation": {
+            "text": "AutoStart= は systemd のディレクティブではない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.service.html",
+            "reference_label": "systemd.service(5)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Restart=on-failure などを設定することで自動再起動を実現する。",
+        "reference": "https://www.freedesktop.org/software/systemd/man/systemd.service.html",
+        "reference_label": "systemd.service(5)"
+      }
+    },
+    {
+      "id": "linuc-level2-201-21",
+      "question": "systemd でシステム起動時のデフォルトターゲットを変更するコマンドとして正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "systemctl set-default multi-user.target",
+          "explanation": {
+            "text": "set-default は /etc/systemd/system/default.target のシンボリックリンクを変更し、起動時のデフォルトターゲットを切り替える。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+            "reference_label": "systemctl(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "systemctl default multi-user.target",
+          "explanation": {
+            "text": "default は現在のデフォルトターゲットへ遷移するサブコマンドであり、設定変更は行わない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+            "reference_label": "systemctl(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "systemctl isolate multi-user.target",
+          "explanation": {
+            "text": "isolate はその場で指定ターゲットに切り替えるだけで、デフォルトターゲットは変わらない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+            "reference_label": "systemctl(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "systemctl enable default.target",
+          "explanation": {
+            "text": "enable はユニットの有効化であり、起動時ターゲットの指定には使わない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+            "reference_label": "systemctl(1)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "systemctl set-default で default.target のリンク先を変更することで、起動時のデフォルトターゲットを変更できる。",
+        "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+        "reference_label": "systemctl(1)"
+      }
+    },
+    {
+      "id": "linuc-level2-201-22",
+      "question": "systemd 環境で「直前の起動」に関するログのみを表示したい。適切なコマンドはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "journalctl -b",
+          "explanation": {
+            "text": "-b は現在のブートに対応するログを表示するオプションである。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/journalctl.html",
+            "reference_label": "journalctl(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "journalctl -k",
+          "explanation": {
+            "text": "-k はカーネルメッセージに絞り込むオプションであり、ブート単位の絞り込みではない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/journalctl.html",
+            "reference_label": "journalctl(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "journalctl --system",
+          "explanation": {
+            "text": "--system はシステムジャーナルを対象にするが、起動単位では絞り込まれない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/journalctl.html",
+            "reference_label": "journalctl(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "journalctl --current",
+          "explanation": {
+            "text": "--current というオプションは存在しない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/journalctl.html",
+            "reference_label": "journalctl(1)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "journalctl -b で現在ブートに対応するログのみを表示できる。",
+        "reference": "https://www.freedesktop.org/software/systemd/man/journalctl.html",
+        "reference_label": "journalctl(1)"
+      }
+    },
+    {
+      "id": "linuc-level2-201-23",
+      "question": "ソフトウェア RAID デバイスの状態を簡潔に確認するために参照するファイルとして最も適切なのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "/proc/mdstat",
+          "explanation": {
+            "text": "/proc/mdstat は md デバイスの状態や同期状況を一覧表示する仮想ファイルである。",
+            "reference": "https://man7.org/linux/man-pages/man4/md.4.html",
+            "reference_label": "md(4)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "/etc/mdadm.conf",
+          "explanation": {
+            "text": "mdadm.conf は RAID 構成の定義ファイルであり、リアルタイムな状態確認には向かない。",
+            "reference": "https://man7.org/linux/man-pages/man5/mdadm.conf.5.html",
+            "reference_label": "mdadm.conf(5)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "/sys/block/md0/state",
+          "explanation": {
+            "text": "個々の md デバイス状態は sysfs でも確認できるが、一覧性は /proc/mdstat の方が高い。",
+            "reference": "https://man7.org/linux/man-pages/man4/md.4.html",
+            "reference_label": "md(4)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "/var/log/mdadm.log",
+          "explanation": {
+            "text": "ログファイルは履歴には有用だが、最新の状態一覧は /proc/mdstat で確認するのが一般的である。",
+            "reference": "https://man7.org/linux/man-pages/man4/md.4.html",
+            "reference_label": "md(4)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "/proc/mdstat は md デバイスの状態確認のためによく利用される標準的な場所である。",
+        "reference": "https://man7.org/linux/man-pages/man4/md.4.html",
+        "reference_label": "md(4)"
+      }
+    },
+    {
+      "id": "linuc-level2-201-24",
+      "question": "GPT パーティションテーブルを新規作成する操作の例として最も適切なコマンドはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "parted /dev/sda mklabel gpt",
+          "explanation": {
+            "text": "GNU parted の mklabel サブコマンドでディスクに GPT ラベルを作成できる。",
+            "reference": "https://www.gnu.org/software/parted/manual/html_node/mklabel.html",
+            "reference_label": "GNU Parted manual"
+          }
+        },
+        {
+          "key": "B",
+          "text": "fdisk -t gpt /dev/sda",
+          "explanation": {
+            "text": "fdisk は GPT にも対応するが、-t でラベルを作成する書式ではない。",
+            "reference": "https://man7.org/linux/man-pages/man8/fdisk.8.html",
+            "reference_label": "fdisk(8)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "mkfs.gpt /dev/sda",
+          "explanation": {
+            "text": "mkfs.gpt というコマンドは存在しない。mkfs はファイルシステム作成コマンドである。",
+            "reference": "https://man7.org/linux/man-pages/man8/mkfs.8.html",
+            "reference_label": "mkfs(8)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "lvmcreate -t gpt /dev/sda",
+          "explanation": {
+            "text": "LVM はパーティションテーブルではなく LVM メタデータを扱うため、このようなコマンドは存在しない。",
+            "reference": "https://man7.org/linux/man-pages/man8/lvm.8.html",
+            "reference_label": "lvm(8)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "GPT パーティションテーブルの作成例として parted の mklabel gpt が一般的である。",
+        "reference": "https://www.gnu.org/software/parted/manual/html_node/mklabel.html",
+        "reference_label": "GNU Parted manual"
+      }
+    },
+    {
+      "id": "linuc-level2-201-25",
+      "question": "IPv4 パケットフォワーディングを恒久的に有効にするために /etc/sysctl.conf に設定する行として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "net.ipv4.ip_forward = 1",
+          "explanation": {
+            "text": "ip_forward を 1 に設定することで IPv4 フォワーディングが有効になる。",
+            "reference": "https://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt",
+            "reference_label": "ip-sysctl.txt"
+          }
+        },
+        {
+          "key": "B",
+          "text": "net.ipv4.forwarding = on",
+          "explanation": {
+            "text": "forwarding というキーは存在せず、値も on ではなく数値で指定する。",
+            "reference": "https://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt",
+            "reference_label": "ip-sysctl.txt"
+          }
+        },
+        {
+          "key": "C",
+          "text": "net.ip_forward = 1",
+          "explanation": {
+            "text": "名前空間 net.ip_forward というキーは正しくない。",
+            "reference": "https://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt",
+            "reference_label": "ip-sysctl.txt"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ipv4.ip_forward = yes",
+          "explanation": {
+            "text": "sysctl では yes ではなく 0/1 で指定し、プレフィックスは net.ipv4 である。",
+            "reference": "https://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt",
+            "reference_label": "ip-sysctl.txt"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "IPv4 フォワーディングの標準的な設定項目は net.ipv4.ip_forward であり、1 に設定して有効化する。",
+        "reference": "https://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt",
+        "reference_label": "ip-sysctl.txt"
+      }
+    },
+    {
+      "id": "linuc-level2-201-26",
+      "question": "nftables を利用する場合、ルールセットを編集するための標準的なコマンドはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "nft",
+          "explanation": {
+            "text": "nft コマンドは nftables ルールの作成・表示・削除などを行う標準ツールである。",
+            "reference": "https://man7.org/linux/man-pages/man8/nft.8.html",
+            "reference_label": "nft(8)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "nftables-ctl",
+          "explanation": {
+            "text": "nftables-ctl という標準コマンドは存在しない。",
+            "reference": "https://man7.org/linux/man-pages/man8/nft.8.html",
+            "reference_label": "nft(8)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "iptables-nft",
+          "explanation": {
+            "text": "iptables-nft は互換レイヤ向けのバイナリ名であり、直接 nftables のネイティブルール編集には用いない。",
+            "reference": "https://wiki.nftables.org/wiki-nftables/index.php/Main_Page",
+            "reference_label": "nftables wiki"
+          }
+        },
+        {
+          "key": "D",
+          "text": "netfilter",
+          "explanation": {
+            "text": "netfilter はカーネルのパケットフィルタ機構の名称であり、コマンドではない。",
+            "reference": "https://www.netfilter.org/projects/nftables/",
+            "reference_label": "netfilter/nftables"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "nft コマンドが nftables に対する公式フロントエンドである。",
+        "reference": "https://man7.org/linux/man-pages/man8/nft.8.html",
+        "reference_label": "nft(8)"
+      }
+    },
+    {
+      "id": "linuc-level2-201-27",
+      "question": "OpenSSH サーバの設定ファイルとしてデフォルトで利用されるパスはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "/etc/ssh/sshd_config",
+          "explanation": {
+            "text": "sshd_config が OpenSSH サーバデーモンのメイン設定ファイルである。",
+            "reference": "https://man.openbsd.org/sshd_config",
+            "reference_label": "sshd_config(5)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "/etc/ssh/ssh_config",
+          "explanation": {
+            "text": "ssh_config はクライアント側の設定ファイルである。",
+            "reference": "https://man.openbsd.org/ssh_config",
+            "reference_label": "ssh_config(5)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "/etc/sshd.conf",
+          "explanation": {
+            "text": "sshd.conf というファイル名は OpenSSH で使用されない。",
+            "reference": "https://man.openbsd.org/sshd",
+            "reference_label": "sshd(8)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "/etc/ssh/server.conf",
+          "explanation": {
+            "text": "server.conf という名称は OpenSSH の標準ではない。",
+            "reference": "https://man.openbsd.org/sshd_config",
+            "reference_label": "sshd_config(5)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "OpenSSH サーバデーモン sshd の設定は通常 /etc/ssh/sshd_config に記述する。",
+        "reference": "https://man.openbsd.org/sshd_config",
+        "reference_label": "sshd_config(5)"
+      }
+    },
+    {
+      "id": "linuc-level2-201-28",
+      "question": "定期的なジョブ実行を cron ではなく systemd で行う場合、サービスユニットと組み合わせて使用するユニットタイプはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "timer ユニット（.timer）",
+          "explanation": {
+            "text": "systemd.timer ユニットは指定したタイミングで対応する service ユニットを起動する。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.timer.html",
+            "reference_label": "systemd.timer(5)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "cron ユニット（.cron）",
+          "explanation": {
+            "text": ".cron というユニットタイプは存在しない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.unit.html",
+            "reference_label": "systemd.unit(5)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "schedule ユニット（.schedule）",
+          "explanation": {
+            "text": ".schedule というユニットタイプは定義されていない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.unit.html",
+            "reference_label": "systemd.unit(5)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "job ユニット（.job）",
+          "explanation": {
+            "text": "systemd に .job ユニットタイプは存在しない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.unit.html",
+            "reference_label": "systemd.unit(5)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "systemd.timer ユニットを利用することで cron 相当のスケジューリングを実現できる。",
+        "reference": "https://www.freedesktop.org/software/systemd/man/systemd.timer.html",
+        "reference_label": "systemd.timer(5)"
+      }
+    },
+    {
+      "id": "linuc-level2-201-29",
+      "question": "Linux コンテナでプロセスの PID 空間をホストから分離するために利用されるカーネル機能はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "PID namespace",
+          "explanation": {
+            "text": "PID namespace によりコンテナごとに PID 番号空間を分離し、コンテナ内からホストのプロセスを直接参照できなくする。",
+            "reference": "https://man7.org/linux/man-pages/man7/namespaces.7.html",
+            "reference_label": "namespaces(7)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "cgroup v2",
+          "explanation": {
+            "text": "cgroup はリソース制御であり、PID 番号の分離は namespace の役割である。",
+            "reference": "https://www.kernel.org/doc/Documentation/cgroup-v2.txt",
+            "reference_label": "cgroup v2"
+          }
+        },
+        {
+          "key": "C",
+          "text": "SELinux domain",
+          "explanation": {
+            "text": "SELinux はアクセス制御の枠組みであり、PID 空間の分離は行わない。",
+            "reference": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/selinux/index",
+            "reference_label": "RHEL SELinux Guide"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AppArmor profile",
+          "explanation": {
+            "text": "AppArmor は LSM によるアクセス制御であり、PID 空間そのものは分離しない。",
+            "reference": "https://www.kernel.org/doc/html/latest/admin-guide/LSM/AppArmor.html",
+            "reference_label": "AppArmor LSM"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "コンテナで PID を分離するのは PID namespace の役割である。",
+        "reference": "https://man7.org/linux/man-pages/man7/namespaces.7.html",
+        "reference_label": "namespaces(7)"
+      }
+    },
+    {
+      "id": "linuc-level2-201-30",
+      "question": "新しく作成した swap パーティションを即座に有効化するためのコマンドとして正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "swapon /dev/sdb2",
+          "explanation": {
+            "text": "swapon は指定したデバイスやファイルを swap として有効化する。",
+            "reference": "https://man7.org/linux/man-pages/man8/swapon.8.html",
+            "reference_label": "swapon(8)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "mkswap /dev/sdb2",
+          "explanation": {
+            "text": "mkswap は swap シグネチャを作成するコマンドで、有効化は行わない。",
+            "reference": "https://man7.org/linux/man-pages/man8/mkswap.8.html",
+            "reference_label": "mkswap(8)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "enable-swap /dev/sdb2",
+          "explanation": {
+            "text": "enable-swap というコマンドは存在しない。",
+            "reference": "https://man7.org/linux/man-pages/man8/swapon.8.html",
+            "reference_label": "swapon(8)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "systemctl start swap.target",
+          "explanation": {
+            "text": "swap.target は依存関係に利用されるターゲットであり、個別デバイスの有効化コマンドではない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.swap.html",
+            "reference_label": "systemd.swap(5)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "mkswap で署名を作成した後、swapon で swap を有効化するのが標準的な手順である。",
+        "reference": "https://man7.org/linux/man-pages/man8/swapon.8.html",
+        "reference_label": "swapon(8)"
+      }
+    },
+    {
+      "id": "linuc-level2-201-31",
+      "question": "systemd のサービス起動順序を制御する際、「このユニットは他のユニットより先に起動されるべき」という関係を指定するディレクティブはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Before=",
+          "explanation": {
+            "text": "Before= は依存関係ではなく、起動順序を指定するために使用される。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.unit.html",
+            "reference_label": "systemd.unit(5)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "After=",
+          "explanation": {
+            "text": "After= は指定したユニットより後に起動されることを表す。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.unit.html",
+            "reference_label": "systemd.unit(5)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "RequiresBefore=",
+          "explanation": {
+            "text": "RequiresBefore は存在しないディレクティブ名である。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.unit.html",
+            "reference_label": "systemd.unit(5)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "StartsBefore=",
+          "explanation": {
+            "text": "StartsBefore= は systemd の設定項目として存在しない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.unit.html",
+            "reference_label": "systemd.unit(5)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Before= は依存ではなく起動順序の定義として利用される。",
+        "reference": "https://www.freedesktop.org/software/systemd/man/systemd.unit.html",
+        "reference_label": "systemd.unit(5)"
+      }
+    },
+    {
+      "id": "linuc-level2-201-32",
+      "question": "カーネルの ring buffer を確認する標準的なコマンドはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "dmesg",
+          "explanation": {
+            "text": "dmesg はカーネルリングバッファを表示するためのコマンドである。",
+            "reference": "https://man7.org/linux/man-pages/man1/dmesg.1.html",
+            "reference_label": "dmesg(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "journalctl -b -k",
+          "explanation": {
+            "text": "journalctl でもカーネルログは見られるが、リングバッファ直接ではない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/journalctl.html",
+            "reference_label": "journalctl(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "kernel-log",
+          "explanation": {
+            "text": "kernel-log というコマンドは存在しない。",
+            "reference": "https://man7.org/linux/man-pages/",
+            "reference_label": "man pages"
+          }
+        },
+        {
+          "key": "D",
+          "text": "/proc/kernel/msg",
+          "explanation": {
+            "text": "カーネルログは /proc/kmsg であり msg ではない。",
+            "reference": "https://man7.org/linux/man-pages/man5/proc.5.html",
+            "reference_label": "proc(5)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "dmesg はリングバッファ内容を直接取得する標準コマンドである。",
+        "reference": "https://man7.org/linux/man-pages/man1/dmesg.1.html",
+        "reference_label": "dmesg(1)"
+      }
+    },
+    {
+      "id": "linuc-level2-201-33",
+      "question": "sysfs を介してデバイス情報を確認できるディレクトリとして正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "/sys/class",
+          "explanation": {
+            "text": "/sys/class にはデバイスの論理クラス情報が格納される。",
+            "reference": "https://www.kernel.org/doc/Documentation/filesystems/sysfs.txt",
+            "reference_label": "sysfs documentation"
+          }
+        },
+        {
+          "key": "B",
+          "text": "/sys/dev",
+          "explanation": {
+            "text": "/sys/dev は存在しない。",
+            "reference": "https://www.kernel.org/doc/Documentation/filesystems/sysfs.txt",
+            "reference_label": "sysfs documentation"
+          }
+        },
+        {
+          "key": "C",
+          "text": "/etc/sys/devices",
+          "explanation": {
+            "text": "sysfs は /sys 配下にマウントされる仮想ファイルシステムであり /etc は関係しない。",
+            "reference": "https://www.kernel.org/doc/Documentation/filesystems/sysfs.txt",
+            "reference_label": "sysfs documentation"
+          }
+        },
+        {
+          "key": "D",
+          "text": "/proc/sys/devices",
+          "explanation": {
+            "text": "/proc/sys はカーネルパラメータでありデバイス情報は保持しない。",
+            "reference": "https://man7.org/linux/man-pages/man5/proc.5.html",
+            "reference_label": "proc(5)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "/sys/class はデバイス情報にアクセスする主要パスである。",
+        "reference": "https://www.kernel.org/doc/Documentation/filesystems/sysfs.txt",
+        "reference_label": "sysfs documentation"
+      }
+    },
+    {
+      "id": "linuc-level2-201-34",
+      "question": "GRUB2 の設定を変更した後、設定ファイルを再生成するために使用するコマンドとして正しいものはどれか。（Debian/Ubuntu 系）",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "update-grub",
+          "explanation": {
+            "text": "Debian 系では update-grub が grub.cfg の再生成を行う。",
+            "reference": "https://help.ubuntu.com/community/Grub2",
+            "reference_label": "Ubuntu GRUB2 guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "grub2-mkconfig -o /etc/grub.cfg",
+          "explanation": {
+            "text": "Debian 系では grub.cfg は /boot/grub/ に生成されるため不適切。",
+            "reference": "https://help.ubuntu.com/community/Grub2",
+            "reference_label": "Ubuntu GRUB2 guide"
+          }
+        },
+        {
+          "key": "C",
+          "text": "systemctl reload grub",
+          "explanation": {
+            "text": "GRUB は systemd 管理対象ではない。",
+            "reference": "https://help.ubuntu.com/community/Grub2",
+            "reference_label": "Ubuntu GRUB2 guide"
+          }
+        },
+        {
+          "key": "D",
+          "text": "grub-mkupdate",
+          "explanation": {
+            "text": "grub-mkupdate というコマンドは存在しない。",
+            "reference": "https://help.ubuntu.com/community/Grub2",
+            "reference_label": "Ubuntu GRUB2 guide"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Debian/Ubuntu 系では update-grub が grub.cfg の再生成に用いられる。",
+        "reference": "https://help.ubuntu.com/community/Grub2",
+        "reference_label": "Ubuntu GRUB2 guide"
+      }
+    },
+    {
+      "id": "linuc-level2-201-35",
+      "question": "Linux における NUMA（Non-Uniform Memory Access）の有効性を確認するためのコマンドはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "numactl --hardware",
+          "explanation": {
+            "text": "numactl --hardware で NUMA ノード構成を確認できる。",
+            "reference": "https://linux.die.net/man/8/numactl",
+            "reference_label": "numactl(8)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "lscpu --numa",
+          "explanation": {
+            "text": "lscpu でも NUMA 情報は得られるが、詳細は numactl の方が提供する。",
+            "reference": "https://man7.org/linux/man-pages/man1/lscpu.1.html",
+            "reference_label": "lscpu(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "numa-info",
+          "explanation": {
+            "text": "numa-info という標準コマンドは存在しない。",
+            "reference": "https://linux.die.net/man/8/numactl",
+            "reference_label": "numactl(8)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "lsnuma",
+          "explanation": {
+            "text": "lsnuma というコマンドは存在しない。",
+            "reference": "https://linux.die.net/man/8/numactl",
+            "reference_label": "numactl(8)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "NUMA 有効性は numactl --hardware により確認するのが一般的である。",
+        "reference": "https://linux.die.net/man/8/numactl",
+        "reference_label": "numactl(8)"
+      }
+    },
+    {
+      "id": "linuc-level2-201-36",
+      "question": "auditd が記録するログのデフォルトファイルとして正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "/var/log/audit/audit.log",
+          "explanation": {
+            "text": "auditd の標準ログは /var/log/audit/audit.log である。",
+            "reference": "https://man7.org/linux/man-pages/man8/auditd.8.html",
+            "reference_label": "auditd(8)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "/var/log/auditd.log",
+          "explanation": {
+            "text": "auditd.log という名称は一般的ではない。",
+            "reference": "https://man7.org/linux/man-pages/man8/auditd.8.html",
+            "reference_label": "auditd(8)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "/etc/audit/audit.log",
+          "explanation": {
+            "text": "ログファイルは /var/log 配下に作成される。",
+            "reference": "https://man7.org/linux/man-pages/man8/auditd.8.html",
+            "reference_label": "auditd(8)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "/var/log/selinux/audit.log",
+          "explanation": {
+            "text": "SELinux のログではない。",
+            "reference": "https://man7.org/linux/man-pages/man8/auditd.8.html",
+            "reference_label": "auditd(8)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "auditd のデフォルトログは /var/log/audit/audit.log。",
+        "reference": "https://man7.org/linux/man-pages/man8/auditd.8.html",
+        "reference_label": "auditd(8)"
+      }
+    },
+    {
+      "id": "linuc-level2-201-37",
+      "question": "systemd でカーネルコマンドラインを設定するために編集するファイルとして正しいものはどれか。（EFI 環境）",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "/etc/kernel/cmdline",
+          "explanation": {
+            "text": "systemd-boot を利用する場合、このファイルにカーネルパラメータを記述する。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/kernel-command-line.html",
+            "reference_label": "kernel-command-line"
+          }
+        },
+        {
+          "key": "B",
+          "text": "/boot/grub2/cmdline.cfg",
+          "explanation": {
+            "text": "systemd-boot では grub2 の設定は利用されない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/kernel-command-line.html",
+            "reference_label": "kernel-command-line"
+          }
+        },
+        {
+          "key": "C",
+          "text": "/etc/boot/cmdline",
+          "explanation": {
+            "text": "このファイルは systemd-boot では使用されない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/kernel-command-line.html",
+            "reference_label": "kernel-command-line"
+          }
+        },
+        {
+          "key": "D",
+          "text": "/usr/lib/systemd/cmdline.conf",
+          "explanation": {
+            "text": "cmdline.conf という形式は存在しない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/kernel-command-line.html",
+            "reference_label": "kernel-command-line"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "systemd-boot 利用環境では /etc/kernel/cmdline にカーネルパラメータを書き込む。",
+        "reference": "https://www.freedesktop.org/software/systemd/man/kernel-command-line.html",
+        "reference_label": "kernel-command-line"
+      }
+    },
+    {
+      "id": "linuc-level2-201-38",
+      "question": "tmpfs のマウントに関する説明として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "RAM 上に作成されるファイルシステムで、再起動すると内容は失われる",
+          "explanation": {
+            "text": "tmpfs は揮発性メモリ上に構築される一時領域である。",
+            "reference": "https://man7.org/linux/man-pages/man5/tmpfs.5.html",
+            "reference_label": "tmpfs(5)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ディスク上に永続化される高速ファイルシステムである",
+          "explanation": {
+            "text": "tmpfs は永続化されず RAM 上で動作する。",
+            "reference": "https://man7.org/linux/man-pages/man5/tmpfs.5.html",
+            "reference_label": "tmpfs(5)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "デバイスドライバを要求する特殊なファイルシステムである",
+          "explanation": {
+            "text": "tmpfs は仮想 FS であり専用デバイスは不要。",
+            "reference": "https://man7.org/linux/man-pages/man5/tmpfs.5.html",
+            "reference_label": "tmpfs(5)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "書き込みはすべて swap に対して行われる",
+          "explanation": {
+            "text": "swap へ溢れる可能性はあるが主領域は RAM である。",
+            "reference": "https://man7.org/linux/man-pages/man5/tmpfs.5.html",
+            "reference_label": "tmpfs(5)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "tmpfs は RAM 上に展開される揮発性ファイルシステムで、再起動時に内容は消える。",
+        "reference": "https://man7.org/linux/man-pages/man5/tmpfs.5.html",
+        "reference_label": "tmpfs(5)"
+      }
+    },
+    {
+      "id": "linuc-level2-201-39",
+      "question": "KVM 環境で仮想マシンのライブマイグレーションを行うために必要な前提条件として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "共有ストレージを利用し、両ホストで仮想マシンイメージが参照可能であること",
+          "explanation": {
+            "text": "共有ディスクの利用はライブマイグレーションの一般的前提条件である。",
+            "reference": "https://libvirt.org/migration.html",
+            "reference_label": "libvirt migration"
+          }
+        },
+        {
+          "key": "B",
+          "text": "両ホストが同一 CPU メーカーである必要はない",
+          "explanation": {
+            "text": "実際には互換性のため CPU 特性の一致が望ましい。",
+            "reference": "https://libvirt.org/migration.html",
+            "reference_label": "libvirt migration"
+          }
+        },
+        {
+          "key": "C",
+          "text": "仮想マシンを一時停止してからでないと移行できない",
+          "explanation": {
+            "text": "ライブマイグレーションは停止せず移動する機能である。",
+            "reference": "https://libvirt.org/migration.html",
+            "reference_label": "libvirt migration"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ゲスト OS が必ずストレージをローカルに持つ必要がある",
+          "explanation": {
+            "text": "共有ストレージが必要でありローカルのみは不適切。",
+            "reference": "https://libvirt.org/migration.html",
+            "reference_label": "libvirt migration"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ライブマイグレーションには共有ストレージが前提となるケースが多い。",
+        "reference": "https://libvirt.org/migration.html",
+        "reference_label": "libvirt migration"
+      }
+    },
+    {
+      "id": "linuc-level2-201-40",
+      "question": "systemd-networkd で VLAN インターフェースを設定する場合に使用するファイル拡張子はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": ".netdev",
+          "explanation": {
+            "text": ".netdev ファイルで仮想インターフェース（VLAN、bond 等）を定義する。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.netdev.html",
+            "reference_label": "systemd.netdev(5)"
+          }
+        },
+        {
+          "key": "B",
+          "text": ".vlan",
+          "explanation": {
+            "text": ".vlan ファイルは存在しない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.netdev.html",
+            "reference_label": "systemd.netdev(5)"
+          }
+        },
+        {
+          "key": "C",
+          "text": ".network",
+          "explanation": {
+            "text": ".network はインターフェース設定であり VLAN 構造そのものは .netdev で定義する。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.network.html",
+            "reference_label": "systemd.network(5)"
+          }
+        },
+        {
+          "key": "D",
+          "text": ".iface",
+          "explanation": {
+            "text": ".iface は systemd-networkd で使用されない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.netdev.html",
+            "reference_label": "systemd.netdev(5)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "VLAN などの仮想インターフェースは systemd.netdev(.netdev) で定義する。",
+        "reference": "https://www.freedesktop.org/software/systemd/man/systemd.netdev.html",
+        "reference_label": "systemd.netdev(5)"
+      }
+    },
+    {
+      "id": "linuc-level2-201-41",
+      "question": "systemd のサービスファイルで、サービスの標準出力を journal と syslog の両方に送るために使用する設定値はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "StandardOutput=journal+syslog",
+          "explanation": {
+            "text": "StandardOutput= に journal+syslog を指定することで、両方へログを送出できる。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.exec.html",
+            "reference_label": "systemd.exec(5)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Output=journal,syslog",
+          "explanation": {
+            "text": "Output= というディレクティブは存在せず、複数の出力指定もこの形式ではない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.exec.html",
+            "reference_label": "systemd.exec(5)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "LogTarget=dual",
+          "explanation": {
+            "text": "LogTarget= は systemd-journald の設定項目であり、dual という値も利用しない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd-journald.service.html",
+            "reference_label": "systemd-journald.service(8)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "StandardLog=journal+syslog",
+          "explanation": {
+            "text": "StandardLog というディレクティブは存在しない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.exec.html",
+            "reference_label": "systemd.exec(5)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "systemd の Exec コンテキストでは StandardOutput= に journal+syslog を指定することで両方へログを送り出せる。",
+        "reference": "https://www.freedesktop.org/software/systemd/man/systemd.exec.html",
+        "reference_label": "systemd.exec(5)"
+      }
+    },
+    {
+      "id": "linuc-level2-201-42",
+      "question": "Linux カーネルパラメータを一時的に変更するために使用するコマンドとして適切なのはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "sysctl -w",
+          "explanation": {
+            "text": "sysctl -w key=value で実行中カーネルパラメータを即時反映できる。",
+            "reference": "https://man7.org/linux/man-pages/man8/sysctl.8.html",
+            "reference_label": "sysctl(8)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "kernelctl set",
+          "explanation": {
+            "text": "kernelctl という標準コマンドは存在しない。",
+            "reference": "https://man7.org/linux/man-pages/man8/sysctl.8.html",
+            "reference_label": "sysctl(8)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "echo key=value >> /etc/sysctl.conf",
+          "explanation": {
+            "text": "sysctl.conf を編集しても sysctl -p 等で読み込まない限り即時反映はされない。",
+            "reference": "https://man7.org/linux/man-pages/man5/sysctl.d.5.html",
+            "reference_label": "sysctl.d(5)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "modprobe -p key=value",
+          "explanation": {
+            "text": "modprobe はモジュールのロードに利用され、汎用的なカーネルパラメータ変更機構ではない。",
+            "reference": "https://man7.org/linux/man-pages/man8/modprobe.8.html",
+            "reference_label": "modprobe(8)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "sysctl -w は /proc/sys 配下を書き換え、カーネルパラメータを一時的に変更できる標準的な方法である。",
+        "reference": "https://man7.org/linux/man-pages/man8/sysctl.8.html",
+        "reference_label": "sysctl(8)"
+      }
+    },
+    {
+      "id": "linuc-level2-201-43",
+      "question": "ext4 ファイルシステムでオンラインでの fsck を避けるために、マウント時に読み取り専用としてチェックを行いたい。適切なマウントオプションはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "mount -o ro /dev/sdb1 /mnt",
+          "explanation": {
+            "text": "読み取り専用でマウントすれば、チェック後に安全にアンマウントして fsck を実行しやすい。",
+            "reference": "https://man7.org/linux/man-pages/man8/mount.8.html",
+            "reference_label": "mount(8)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "mount -o check /dev/sdb1 /mnt",
+          "explanation": {
+            "text": "check という標準オプションは ext4 には存在しない。",
+            "reference": "https://man7.org/linux/man-pages/man5/ext4.5.html",
+            "reference_label": "ext4(5)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "mount -o fsck /dev/sdb1 /mnt",
+          "explanation": {
+            "text": "fsck は別コマンドであり、マウントオプションではない。",
+            "reference": "https://man7.org/linux/man-pages/man8/fsck.8.html",
+            "reference_label": "fsck(8)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "mount -o forcecheck /dev/sdb1 /mnt",
+          "explanation": {
+            "text": "forcecheck といったオプションは存在しない。",
+            "reference": "https://man7.org/linux/man-pages/man5/ext4.5.html",
+            "reference_label": "ext4(5)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "読み取り専用でマウントし状態を確認後、アンマウントして fsck を行うのが安全な手順であり、ro オプションを用いる。",
+        "reference": "https://man7.org/linux/man-pages/man8/mount.8.html",
+        "reference_label": "mount(8)"
+      }
+    },
+    {
+      "id": "linuc-level2-201-44",
+      "question": "Linux ブリッジを作成し、物理インターフェース eth0 を参加させるためのコマンドの組み合わせとして最も適切なのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ip link add br0 type bridge; ip link set eth0 master br0",
+          "explanation": {
+            "text": "ip コマンドでブリッジデバイスを作成し、master に指定することでブリッジに参加させることができる。",
+            "reference": "https://man7.org/linux/man-pages/man8/ip-link.8.html",
+            "reference_label": "ip-link(8)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "brctl new br0; brctl addif br0 eth0",
+          "explanation": {
+            "text": "brctl は旧来のツールで new というサブコマンドもないため不適切。",
+            "reference": "https://man7.org/linux/man-pages/man8/brctl.8.html",
+            "reference_label": "brctl(8)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ip addr add br0 dev eth0",
+          "explanation": {
+            "text": "ip addr add はアドレス付与であり、ブリッジ作成や参加操作ではない。",
+            "reference": "https://man7.org/linux/man-pages/man8/ip-address.8.html",
+            "reference_label": "ip-address(8)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "bridge create br0 eth0",
+          "explanation": {
+            "text": "bridge create といった簡略コマンドは標準では存在しない。",
+            "reference": "https://man7.org/linux/man-pages/man8/ip-link.8.html",
+            "reference_label": "ip-link(8)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ip link add br0 type bridge でブリッジ作成、ip link set eth0 master br0 で br0 への参加が現行の推奨手順である。",
+        "reference": "https://man7.org/linux/man-pages/man8/ip-link.8.html",
+        "reference_label": "ip-link(8)"
+      }
+    },
+    {
+      "id": "linuc-level2-201-45",
+      "question": "Docker のコンテナでホスト側のディレクトリ /data をコンテナ内の /mnt に読み取り専用でマウントしたい。適切なオプションはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "docker run -v /data:/mnt:ro イメージ名",
+          "explanation": {
+            "text": "ボリューム指定の末尾に :ro をつけることで読み取り専用マウントとなる。",
+            "reference": "https://docs.docker.com/storage/volumes/",
+            "reference_label": "Docker docs - volumes"
+          }
+        },
+        {
+          "key": "B",
+          "text": "docker run --mount /data:/mnt:ro イメージ名",
+          "explanation": {
+            "text": "--mount は key=value 形式で指定する必要があるため、この書式は誤り。",
+            "reference": "https://docs.docker.com/storage/bind-mounts/",
+            "reference_label": "Docker docs - bind mounts"
+          }
+        },
+        {
+          "key": "C",
+          "text": "docker run --volume-ro /data:/mnt イメージ名",
+          "explanation": {
+            "text": "--volume-ro というオプションは存在しない。",
+            "reference": "https://docs.docker.com/engine/reference/commandline/run/",
+            "reference_label": "docker run reference"
+          }
+        },
+        {
+          "key": "D",
+          "text": "docker run -v /data:/mnt --readonly-volume イメージ名",
+          "explanation": {
+            "text": "--readonly-volume は公式オプションではない。",
+            "reference": "https://docs.docker.com/engine/reference/commandline/run/",
+            "reference_label": "docker run reference"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "-v /host:/container:ro という形式で読み取り専用としてボリュームをマウントできる。",
+        "reference": "https://docs.docker.com/storage/volumes/",
+        "reference_label": "Docker docs - volumes"
+      }
+    },
+    {
+      "id": "linuc-level2-201-46",
+      "question": "OpenSSH サーバで root ユーザによるパスワード認証ログインを禁止しつつ、公開鍵認証は許可したい。sshd_config で設定すべき組み合わせとして正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "PermitRootLogin prohibit-password\nPasswordAuthentication no",
+          "explanation": {
+            "text": "PermitRootLogin prohibit-password で root のパスワード認証を禁止し、PasswordAuthentication no で全体のパスワード認証を無効化すれば鍵認証のみ許可できる。",
+            "reference": "https://man.openbsd.org/sshd_config",
+            "reference_label": "sshd_config(5)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "PermitRootLogin yes\nPasswordAuthentication no",
+          "explanation": {
+            "text": "PermitRootLogin yes は root のログインを許可する設定であり、ポリシー的に弱い。",
+            "reference": "https://man.openbsd.org/sshd_config",
+            "reference_label": "sshd_config(5)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "PermitRootLogin no\nPubkeyAuthentication no",
+          "explanation": {
+            "text": "PubkeyAuthentication no とすると公開鍵認証自体が禁止されてしまう。",
+            "reference": "https://man.openbsd.org/sshd_config",
+            "reference_label": "sshd_config(5)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "PermitRootLogin without-password\nPasswordAuthentication yes",
+          "explanation": {
+            "text": "without-password は古い書き方であり、さらに PasswordAuthentication yes のためパスワード認証が有効になってしまう。",
+            "reference": "https://man.openbsd.org/sshd_config",
+            "reference_label": "sshd_config(5)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "PermitRootLogin prohibit-password と PasswordAuthentication no の組み合わせで、root を含めてパスワード認証を禁止しつつ鍵認証のみ許可できる。",
+        "reference": "https://man.openbsd.org/sshd_config",
+        "reference_label": "sshd_config(5)"
+      }
+    },
+    {
+      "id": "linuc-level2-201-47",
+      "question": "systemd で一定回数連続して失敗したサービスを、しばらくの間起動しないようにする設定に関連するディレクティブはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "StartLimitIntervalSec= と StartLimitBurst=",
+          "explanation": {
+            "text": "StartLimitIntervalSec= と StartLimitBurst= を組み合わせることで、一定時間内の起動試行回数を制限できる。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.service.html",
+            "reference_label": "systemd.service(5)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "RestartDelay= と RestartCount=",
+          "explanation": {
+            "text": "RestartDelay や RestartCount といったディレクティブは存在しない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.service.html",
+            "reference_label": "systemd.service(5)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "RefuseRepeatSec=",
+          "explanation": {
+            "text": "RefuseRepeatSec というディレクティブは無い。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.unit.html",
+            "reference_label": "systemd.unit(5)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "DenyRestartBurstSec=",
+          "explanation": {
+            "text": "DenyRestartBurstSec という名前の設定項目は存在しない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemd.unit.html",
+            "reference_label": "systemd.unit(5)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "StartLimitIntervalSec= および StartLimitBurst= により起動試行回数の上限を設定できる。",
+        "reference": "https://www.freedesktop.org/software/systemd/man/systemd.service.html",
+        "reference_label": "systemd.service(5)"
+      }
+    },
+    {
+      "id": "linuc-level2-201-48",
+      "question": "LVM の thin pool 機能を利用する主な目的として最も適切なのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "論理ボリュームの容量を必要に応じて遅延割り当てし、物理容量を効率的に利用するため",
+          "explanation": {
+            "text": "Thin Provisioning により実際に書き込まれた分だけ物理領域を確保できる。",
+            "reference": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/logical_volume_manager_administration/assembly_thin-provisioning_lvm-administration",
+            "reference_label": "RHEL LVM Thin Provisioning"
+          }
+        },
+        {
+          "key": "B",
+          "text": "RAID5 相当の冗長性を実現するため",
+          "explanation": {
+            "text": "Thin pool 自体は冗長性機能ではなく、RAID は別途構成が必要。",
+            "reference": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/logical_volume_manager_administration/",
+            "reference_label": "RHEL LVM Admin"
+          }
+        },
+        {
+          "key": "C",
+          "text": "スナップショットの作成を禁止するため",
+          "explanation": {
+            "text": "thin pool はスナップショットを効率的に扱う機構でもあり、禁止目的ではない。",
+            "reference": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/logical_volume_manager_administration/assembly_thin-provisioning_lvm-administration",
+            "reference_label": "RHEL LVM Thin Provisioning"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ファイルシステムを自動的に defrag するため",
+          "explanation": {
+            "text": "defrag はファイルシステムの機能であり、LVM thin とは無関係。",
+            "reference": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/logical_volume_manager_administration/",
+            "reference_label": "RHEL LVM Admin"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "LVM thin pool の主目的は Thin Provisioning による物理容量の効率利用である。",
+        "reference": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/logical_volume_manager_administration/assembly_thin-provisioning_lvm-administration",
+        "reference_label": "RHEL LVM Thin Provisioning"
+      }
+    },
+    {
+      "id": "linuc-level2-201-49",
+      "question": "BIND9 でキャッシュ DNS サーバを構成する際、外部への再帰問い合わせを許可するかどうかを制御するオプションはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "recursion",
+          "explanation": {
+            "text": "options{} セクションの recursion yes/no で再帰問い合わせの許可を制御できる。",
+            "reference": "https://bind9.readthedocs.io/en/latest/reference.html",
+            "reference_label": "BIND 9 Administrator Reference"
+          }
+        },
+        {
+          "key": "B",
+          "text": "allow-recursive",
+          "explanation": {
+            "text": "allow-recursive というオプション名は存在しない。",
+            "reference": "https://bind9.readthedocs.io/en/latest/reference.html",
+            "reference_label": "BIND 9 Administrator Reference"
+          }
+        },
+        {
+          "key": "C",
+          "text": "recursive-clients",
+          "explanation": {
+            "text": "recursive-clients は再帰問い合わせの同時クライアント数上限であり、許可/不許可を切り替えるものではない。",
+            "reference": "https://bind9.readthedocs.io/en/latest/reference.html",
+            "reference_label": "BIND 9 Administrator Reference"
+          }
+        },
+        {
+          "key": "D",
+          "text": "allow-axfr",
+          "explanation": {
+            "text": "allow-axfr はゾーン転送関連であり、再帰問い合わせとは別の設定である。",
+            "reference": "https://bind9.readthedocs.io/en/latest/reference.html",
+            "reference_label": "BIND 9 Administrator Reference"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "BIND9 では recursion yes/no で再帰問い合わせの許可を制御する。",
+        "reference": "https://bind9.readthedocs.io/en/latest/reference.html",
+        "reference_label": "BIND 9 Administrator Reference"
+      }
+    },
+    {
+      "id": "linuc-level2-201-50",
+      "question": "Linux サーバで時刻同期に chrony を用いる場合、NTP サーバを指定するために /etc/chrony.conf に記述するディレクティブとして適切なのはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "server ntp.example.com iburst",
+          "explanation": {
+            "text": "server 行で NTP サーバを指定し、iburst オプションで初期同期を高速化できる。",
+            "reference": "https://chrony-project.org/doc/4.5/chrony.conf.html",
+            "reference_label": "chrony.conf manual"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ntp-server ntp.example.com",
+          "explanation": {
+            "text": "ntp-server というディレクティブは chrony.conf には存在しない。",
+            "reference": "https://chrony-project.org/doc/4.5/chrony.conf.html",
+            "reference_label": "chrony.conf manual"
+          }
+        },
+        {
+          "key": "C",
+          "text": "peer ntp.example.com only",
+          "explanation": {
+            "text": "peer は対等な NTP ピアを定義するものであり、単純なクライアント設定には通常 server を用いる。",
+            "reference": "https://chrony-project.org/doc/4.5/chrony.conf.html",
+            "reference_label": "chrony.conf manual"
+          }
+        },
+        {
+          "key": "D",
+          "text": "source ntp.example.com client",
+          "explanation": {
+            "text": "source というディレクティブは chrony.conf には定義されていない。",
+            "reference": "https://chrony-project.org/doc/4.5/chrony.conf.html",
+            "reference_label": "chrony.conf manual"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "chrony.conf では server ディレクティブで時刻同期先 NTP サーバを指定する。",
+        "reference": "https://chrony-project.org/doc/4.5/chrony.conf.html",
+        "reference_label": "chrony.conf manual"
+      }
+    }
+  ]
+}

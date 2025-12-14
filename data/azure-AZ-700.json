@@ -1,0 +1,2467 @@
+{
+    "exam": {
+        "id": "azure-az-700",
+        "title": "Azure Network Engineer Associate",
+        "description": "この認定資格は、Azure ネットワーク エンジニアとして、Azure のネットワーク ソリューションの計画・実装・管理に関する専門知識を有していることを証明します。具体的には、コア ネットワーク インフラストラクチャの設計、ハイブリッド接続、アプリケーション配信サービス、Azure サービスへのプライベートアクセス、ネットワーク セキュリティという領域で活躍できる能力が求められます。",
+        "version": "2025年11月",
+        "price": "165 USD",
+        "difficulty": "難しい",
+        "official-site": "https://learn.microsoft.com/ja-jp/credentials/certifications/azure-network-engineer-associate/",
+        "category": {
+            "id": "azure",
+            "name": "Azure"
+        }
+    },
+    "questions": [
+        {
+            "id": "azure-AZ-700-q1",
+            "question": "Azure Virtual Network Peering の特徴として正しいものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "ピアリングされたVNet間の通信はMicrosoftのバックボーンネットワークを使用する。",
+                    "explanation": {
+                        "text": "VNet PeeringはAzureバックボーンを介して通信が行われ、インターネットを通過しないため低レイテンシー・高帯域幅が確保される。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-network-peering-overview",
+                        "reference_label": "Microsoft Docs - VNet Peering Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "ピアリングを有効化すると自動的にゲートウェイ間VPN接続も構成される。",
+                    "explanation": {
+                        "text": "VPNゲートウェイ接続はVNet Peeringとは独立した構成であり、自動的に作成されることはない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-network-peering-overview",
+                        "reference_label": "Microsoft Docs - VNet Peering Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "異なるAzureリージョン間ではVNet Peeringを構成できない。",
+                    "explanation": {
+                        "text": "Global VNet Peeringを使うことで異なるリージョン間でも接続可能。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-network-peering-overview",
+                        "reference_label": "Microsoft Docs - VNet Peering Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "VNet Peeringを構成すると自動的にNSGルールが同期される。",
+                    "explanation": {
+                        "text": "NSG（Network Security Group）は各VNetで個別に管理され、同期は行われない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-network-peering-overview",
+                        "reference_label": "Microsoft Docs - VNet Peering Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "VNet Peeringでは通信はMicrosoftのバックボーンを通るため、安全かつ効率的にリージョン間やVNet間で通信できる。",
+                "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-network-peering-overview",
+                "reference_label": "Microsoft Docs - VNet Peering Overview"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q2",
+            "question": "Azure Virtual WAN の主な用途はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "グローバル規模での拠点間接続とAzureリソースへの統合的なアクセス提供",
+                    "explanation": {
+                        "text": "Azure Virtual WANはグローバル規模のハブアンドスポーク型アーキテクチャを提供し、拠点間VPNやExpressRouteを集約できる。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-wan/virtual-wan-about",
+                        "reference_label": "Microsoft Docs - Virtual WAN"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "VMのスケーリングを自動化するサービス",
+                    "explanation": {
+                        "text": "これはAzure Virtual Machine Scale Setsの機能であり、Virtual WANの用途ではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machine-scale-sets/overview",
+                        "reference_label": "Microsoft Docs - VMSS Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "コンテナアプリケーションを管理するサービス",
+                    "explanation": {
+                        "text": "これはAzure Kubernetes Service (AKS)の用途であり、Virtual WANとは無関係。",
+                        "reference": "https://learn.microsoft.com/azure/aks/intro-kubernetes",
+                        "reference_label": "Microsoft Docs - AKS Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ストレージアカウントのセキュリティ制御",
+                    "explanation": {
+                        "text": "ストレージのセキュリティはStorage Accountレベルでの設定であり、Virtual WANではない。",
+                        "reference": "https://learn.microsoft.com/azure/storage/common/storage-network-security",
+                        "reference_label": "Microsoft Docs - Storage Security"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Azure Virtual WANはグローバルな拠点接続を簡素化し、VPNやExpressRouteを統合的に管理するために設計されている。",
+                "reference": "https://learn.microsoft.com/azure/virtual-wan/virtual-wan-about",
+                "reference_label": "Microsoft Docs - Virtual WAN"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q3",
+            "question": "Azure ExpressRoute の特徴として正しいものはどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "インターネットを経由して暗号化された接続を提供する。",
+                    "explanation": {
+                        "text": "ExpressRouteはインターネットを経由せず、専用回線を使うためこの説明は誤り。",
+                        "reference": "https://learn.microsoft.com/azure/expressroute/expressroute-introduction",
+                        "reference_label": "Microsoft Docs - ExpressRoute"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Microsoftバックボーンを使用してオンプレミスとAzureを接続する。",
+                    "explanation": {
+                        "text": "ExpressRouteはMicrosoftの専用バックボーンを利用してオンプレミスとAzureを接続する。",
+                        "reference": "https://learn.microsoft.com/azure/expressroute/expressroute-introduction",
+                        "reference_label": "Microsoft Docs - ExpressRoute"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "必ずAzure VPN Gatewayが必要となる。",
+                    "explanation": {
+                        "text": "ExpressRouteはVPN Gatewayを必要とせず、直接接続が可能。",
+                        "reference": "https://learn.microsoft.com/azure/expressroute/expressroute-introduction",
+                        "reference_label": "Microsoft Docs - ExpressRoute"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "トラフィックは必ず暗号化される。",
+                    "explanation": {
+                        "text": "ExpressRouteは専用回線を使うが、暗号化はデフォルトでは行われない。暗号化が必要な場合は追加構成が必要。",
+                        "reference": "https://learn.microsoft.com/azure/expressroute/expressroute-introduction",
+                        "reference_label": "Microsoft Docs - ExpressRoute"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "ExpressRouteは専用回線を用いてMicrosoftのバックボーンネットワーク経由でオンプレミスとAzureを接続する。",
+                "reference": "https://learn.microsoft.com/azure/expressroute/expressroute-introduction",
+                "reference_label": "Microsoft Docs - ExpressRoute"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q4",
+            "question": "Azure Firewall の主な特徴として正しいものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "ステートレスパケットフィルタリングのみを提供する。",
+                    "explanation": {
+                        "text": "Azure Firewallはステートフルなファイアウォールであり、ステートレスではない。",
+                        "reference": "https://learn.microsoft.com/azure/firewall/overview",
+                        "reference_label": "Microsoft Docs - Azure Firewall Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "可用性ゾーンに分散されたスケーラブルなセキュリティサービスである。",
+                    "explanation": {
+                        "text": "Azure Firewallは高可用性とスケーラビリティを備え、可用性ゾーンに分散して提供される。",
+                        "reference": "https://learn.microsoft.com/azure/firewall/overview",
+                        "reference_label": "Microsoft Docs - Azure Firewall Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "NSGと同じ機能を持ち、別に導入する必要はない。",
+                    "explanation": {
+                        "text": "NSGとAzure Firewallは異なる用途であり、Azure Firewallはより高度な制御を提供する。",
+                        "reference": "https://learn.microsoft.com/azure/firewall/overview",
+                        "reference_label": "Microsoft Docs - Azure Firewall Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "オンプレミス専用のファイアウォール機能である。",
+                    "explanation": {
+                        "text": "Azure FirewallはAzure専用のマネージドファイアウォールであり、オンプレミス専用ではない。",
+                        "reference": "https://learn.microsoft.com/azure/firewall/overview",
+                        "reference_label": "Microsoft Docs - Azure Firewall Overview"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "Azure Firewallはクラウドネイティブなステートフルファイアウォールであり、可用性ゾーン対応で高可用性とスケーラビリティを実現している。",
+                "reference": "https://learn.microsoft.com/azure/firewall/overview",
+                "reference_label": "Microsoft Docs - Azure Firewall Overview"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q5",
+            "question": "Azure Application Gateway の主な用途はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "L3レベルのルーティング制御を提供する。",
+                    "explanation": {
+                        "text": "Application GatewayはL7ロードバランサーであり、L3ルーティング制御は行わない。",
+                        "reference": "https://learn.microsoft.com/azure/application-gateway/overview",
+                        "reference_label": "Microsoft Docs - Application Gateway Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Webアプリケーションファイアウォール（WAF）を提供できる。",
+                    "explanation": {
+                        "text": "Application GatewayはWAF機能を提供し、OWASPルールセットを用いてWebアプリを保護する。",
+                        "reference": "https://learn.microsoft.com/azure/application-gateway/overview",
+                        "reference_label": "Microsoft Docs - Application Gateway Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "オンプレミスとAzure間のVPNトンネルを管理する。",
+                    "explanation": {
+                        "text": "これはVPN Gatewayの機能であり、Application Gatewayの用途ではない。",
+                        "reference": "https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways",
+                        "reference_label": "Microsoft Docs - VPN Gateway"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Azure Storageのアクセス制御を行う。",
+                    "explanation": {
+                        "text": "ストレージアクセス制御はStorageアカウントの機能であり、Application Gatewayは関与しない。",
+                        "reference": "https://learn.microsoft.com/azure/storage/common/storage-network-security",
+                        "reference_label": "Microsoft Docs - Storage Security"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "Application GatewayはL7ロードバランサーであり、WAF機能によってWebアプリケーションを攻撃から保護できる。",
+                "reference": "https://learn.microsoft.com/azure/application-gateway/overview",
+                "reference_label": "Microsoft Docs - Application Gateway Overview"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q6",
+            "question": "Azure Bastion の利用目的として正しいものはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "パブリックIPを使わずにVMへ安全にRDP/SSH接続する。",
+                    "explanation": {
+                        "text": "Azure BastionはパブリックIP不要でブラウザ経由のRDP/SSHを提供する。",
+                        "reference": "https://learn.microsoft.com/azure/bastion/bastion-overview",
+                        "reference_label": "Microsoft Docs - Bastion Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "オンプレミスとAzure間のExpressRoute接続を管理する。",
+                    "explanation": {
+                        "text": "これはExpressRouteの機能であり、Bastionの用途ではない。",
+                        "reference": "https://learn.microsoft.com/azure/expressroute/expressroute-introduction",
+                        "reference_label": "Microsoft Docs - ExpressRoute"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Webアプリの負荷分散を提供する。",
+                    "explanation": {
+                        "text": "これはApplication Gatewayの役割であり、Bastionではない。",
+                        "reference": "https://learn.microsoft.com/azure/application-gateway/overview",
+                        "reference_label": "Microsoft Docs - Application Gateway Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Azure VNet間のルーティングを最適化する。",
+                    "explanation": {
+                        "text": "これはVNet PeeringやVirtual WANの役割であり、Bastionではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-network-peering-overview",
+                        "reference_label": "Microsoft Docs - VNet Peering Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Azure BastionはパブリックIP不要で、セキュアにVMへRDPやSSH接続するためのマネージドサービスである。",
+                "reference": "https://learn.microsoft.com/azure/bastion/bastion-overview",
+                "reference_label": "Microsoft Docs - Bastion Overview"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q7",
+            "question": "Azure Load Balancer Standard SKU の特徴はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "ゾーン冗長性をサポートする。",
+                    "explanation": {
+                        "text": "Standard Load Balancerは可用性ゾーンを跨いだ冗長性を提供できる。",
+                        "reference": "https://learn.microsoft.com/azure/load-balancer/load-balancer-overview",
+                        "reference_label": "Microsoft Docs - Load Balancer Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Basic SKUと同様に無料で提供される。",
+                    "explanation": {
+                        "text": "Standard Load Balancerは課金対象であり、Basicとは異なる。",
+                        "reference": "https://learn.microsoft.com/azure/load-balancer/load-balancer-overview",
+                        "reference_label": "Microsoft Docs - Load Balancer Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "インターネット接続専用で内部ロードバランシングには使えない。",
+                    "explanation": {
+                        "text": "Standard Load Balancerは内部ロードバランシングもサポートする。",
+                        "reference": "https://learn.microsoft.com/azure/load-balancer/load-balancer-overview",
+                        "reference_label": "Microsoft Docs - Load Balancer Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "リージョン間負荷分散を提供する。",
+                    "explanation": {
+                        "text": "リージョン間負荷分散はTraffic ManagerやFront Doorで提供される。",
+                        "reference": "https://learn.microsoft.com/azure/frontdoor/front-door-overview",
+                        "reference_label": "Microsoft Docs - Azure Front Door Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Standard Load Balancerは高可用性、ゾーン冗長性、拡張機能を備えたロードバランサーである。",
+                "reference": "https://learn.microsoft.com/azure/load-balancer/load-balancer-overview",
+                "reference_label": "Microsoft Docs - Load Balancer Overview"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q8",
+            "question": "Azure Private Link の利用目的として正しいものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "パブリックエンドポイントを使ってセキュアにAzureサービスへ接続する。",
+                    "explanation": {
+                        "text": "Private Linkはプライベートエンドポイントを用いるため、パブリックエンドポイントを経由しない。",
+                        "reference": "https://learn.microsoft.com/azure/private-link/private-link-overview",
+                        "reference_label": "Microsoft Docs - Private Link Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "AzureサービスへのトラフィックをVNet内のプライベートIP経由でルーティングする。",
+                    "explanation": {
+                        "text": "Private LinkはプライベートIPを割り当て、サービスへのトラフィックをVNet内で完結させる。",
+                        "reference": "https://learn.microsoft.com/azure/private-link/private-link-overview",
+                        "reference_label": "Microsoft Docs - Private Link Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "異なるリージョンのVNetを直接接続する。",
+                    "explanation": {
+                        "text": "これはGlobal VNet Peeringの機能であり、Private Linkではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-network-peering-overview",
+                        "reference_label": "Microsoft Docs - VNet Peering Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "オンプレミスからの接続をExpressRouteに置き換える。",
+                    "explanation": {
+                        "text": "ExpressRouteは専用線接続のサービスであり、Private Linkとは異なる。",
+                        "reference": "https://learn.microsoft.com/azure/expressroute/expressroute-introduction",
+                        "reference_label": "Microsoft Docs - ExpressRoute"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "Azure Private LinkはAzureサービスをVNetのプライベートIPとして公開し、インターネットを経由せずにアクセスできる。",
+                "reference": "https://learn.microsoft.com/azure/private-link/private-link-overview",
+                "reference_label": "Microsoft Docs - Private Link Overview"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q9",
+            "question": "Azure Front Door の主な役割はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "グローバルなアプリケーションの負荷分散と高速化を提供する。",
+                    "explanation": {
+                        "text": "Azure Front Doorはグローバル負荷分散とCDN機能を提供し、アプリケーションを最適化する。",
+                        "reference": "https://learn.microsoft.com/azure/frontdoor/front-door-overview",
+                        "reference_label": "Microsoft Docs - Front Door Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "VNet間のプライベート接続を提供する。",
+                    "explanation": {
+                        "text": "これはVNet Peeringの役割であり、Front Doorの機能ではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-network-peering-overview",
+                        "reference_label": "Microsoft Docs - VNet Peering Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "オンプレミス専用のファイル共有を構築する。",
+                    "explanation": {
+                        "text": "これはAzure FilesやオンプレミスNASの役割であり、Front Doorではない。",
+                        "reference": "https://learn.microsoft.com/azure/storage/files/storage-files-introduction",
+                        "reference_label": "Microsoft Docs - Azure Files"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "L3ルーティングを制御する。",
+                    "explanation": {
+                        "text": "Front DoorはL7ロードバランサーであり、ルーティング制御はしない。",
+                        "reference": "https://learn.microsoft.com/azure/frontdoor/front-door-overview",
+                        "reference_label": "Microsoft Docs - Front Door Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Azure Front Doorはグローバルなアプリケーション配信ネットワークであり、負荷分散、CDN、TLS終端を提供する。",
+                "reference": "https://learn.microsoft.com/azure/frontdoor/front-door-overview",
+                "reference_label": "Microsoft Docs - Front Door Overview"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q10",
+            "question": "Azure VPN Gateway の利用目的として正しいものはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "オンプレミスとAzure VNet間で暗号化されたトンネル接続を確立する。",
+                    "explanation": {
+                        "text": "VPN GatewayはIPSec/IKEベースの暗号化トンネルを提供し、オンプレミスとAzureを安全に接続する。",
+                        "reference": "https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways",
+                        "reference_label": "Microsoft Docs - VPN Gateway Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "VNet内のVMのスケーリングを管理する。",
+                    "explanation": {
+                        "text": "これはVirtual Machine Scale Setsの機能であり、VPN Gatewayではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machine-scale-sets/overview",
+                        "reference_label": "Microsoft Docs - VMSS Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "WebアプリケーションのL7ロードバランシングを提供する。",
+                    "explanation": {
+                        "text": "これはApplication GatewayやFront Doorの役割であり、VPN Gatewayの用途ではない。",
+                        "reference": "https://learn.microsoft.com/azure/application-gateway/overview",
+                        "reference_label": "Microsoft Docs - Application Gateway Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Azure Storageアカウントのアクセス制御を行う。",
+                    "explanation": {
+                        "text": "これはStorageの機能であり、VPN Gatewayは関与しない。",
+                        "reference": "https://learn.microsoft.com/azure/storage/common/storage-network-security",
+                        "reference_label": "Microsoft Docs - Storage Security"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Azure VPN GatewayはオンプレミスとAzure VNet間で暗号化VPN接続を提供し、セキュアな通信を実現する。",
+                "reference": "https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways",
+                "reference_label": "Microsoft Docs - VPN Gateway Overview"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q11",
+            "question": "Azure Traffic Manager のルーティング方法として存在しないものはどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Priority",
+                    "explanation": {
+                        "text": "Traffic Managerは優先度ベースのルーティングを提供する。",
+                        "reference": "https://learn.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods",
+                        "reference_label": "Microsoft Docs - Traffic Manager Routing Methods"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Weighted",
+                    "explanation": {
+                        "text": "Traffic Managerは重み付けルーティングを提供する。",
+                        "reference": "https://learn.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods",
+                        "reference_label": "Microsoft Docs - Traffic Manager Routing Methods"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Latency",
+                    "explanation": {
+                        "text": "Traffic Managerはレイテンシーベースのルーティングを提供する。",
+                        "reference": "https://learn.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods",
+                        "reference_label": "Microsoft Docs - Traffic Manager Routing Methods"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Geo-Replication",
+                    "explanation": {
+                        "text": "Geo-Replicationというルーティング方法は存在しない。代わりに“Geographic”ルーティングがある。",
+                        "reference": "https://learn.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods",
+                        "reference_label": "Microsoft Docs - Traffic Manager Routing Methods"
+                    }
+                }
+            ],
+            "answer": "D",
+            "explanation": {
+                "text": "Traffic ManagerはPriority, Weighted, Performance, Geographicなどを提供するが、Geo-Replicationというルーティング方式は存在しない。",
+                "reference": "https://learn.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods",
+                "reference_label": "Microsoft Docs - Traffic Manager Routing Methods"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q12",
+            "question": "Network Security Group (NSG) の特徴はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "L3およびL4レベルでのアクセス制御を提供する。",
+                    "explanation": {
+                        "text": "NSGはIPアドレス、ポート、プロトコルに基づくL3/L4の制御を提供する。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/network-security-groups-overview",
+                        "reference_label": "Microsoft Docs - NSG Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "L7アプリケーションレベルの制御を行う。",
+                    "explanation": {
+                        "text": "L7制御はApplication GatewayやFirewallのWAF機能に該当し、NSGではない。",
+                        "reference": "https://learn.microsoft.com/azure/firewall/overview",
+                        "reference_label": "Microsoft Docs - Azure Firewall Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "オンプレミスとのVPN接続を提供する。",
+                    "explanation": {
+                        "text": "これはVPN Gatewayの役割であり、NSGは関与しない。",
+                        "reference": "https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways",
+                        "reference_label": "Microsoft Docs - VPN Gateway"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "自動的に全てのトラフィックを許可する。",
+                    "explanation": {
+                        "text": "NSGはデフォルトで制限ルールを持ち、全許可にはならない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/network-security-groups-overview",
+                        "reference_label": "Microsoft Docs - NSG Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "NSGはL3/L4レベルでのアクセス制御を行い、サブネットやNICに適用できる。",
+                "reference": "https://learn.microsoft.com/azure/virtual-network/network-security-groups-overview",
+                "reference_label": "Microsoft Docs - NSG Overview"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q13",
+            "question": "Azure DDoS Protection Standard の特徴として正しいものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "自動スケーリングするWebアプリケーションの負荷分散機能を提供する。",
+                    "explanation": {
+                        "text": "これはApplication GatewayやFront Doorの役割であり、DDoS Protectionではない。",
+                        "reference": "https://learn.microsoft.com/azure/frontdoor/front-door-overview",
+                        "reference_label": "Microsoft Docs - Azure Front Door Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Azureリソースに対するDDoS攻撃を検出し、自動的に軽減する。",
+                    "explanation": {
+                        "text": "DDoS Protection Standardは攻撃検出と自動緩和を提供する。",
+                        "reference": "https://learn.microsoft.com/azure/ddos-protection/ddos-protection-overview",
+                        "reference_label": "Microsoft Docs - DDoS Protection Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "VNet間のプライベート接続を提供する。",
+                    "explanation": {
+                        "text": "これはVNet Peeringの機能であり、DDoS Protectionではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-network-peering-overview",
+                        "reference_label": "Microsoft Docs - VNet Peering Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Azure VMへのSSH接続を管理する。",
+                    "explanation": {
+                        "text": "これはAzure Bastionの機能であり、DDoS Protectionではない。",
+                        "reference": "https://learn.microsoft.com/azure/bastion/bastion-overview",
+                        "reference_label": "Microsoft Docs - Bastion Overview"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "Azure DDoS Protection Standardは大規模なDDoS攻撃に対して自動検出・自動軽減を提供するマネージドサービスである。",
+                "reference": "https://learn.microsoft.com/azure/ddos-protection/ddos-protection-overview",
+                "reference_label": "Microsoft Docs - DDoS Protection Overview"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q14",
+            "question": "Azure Route Table (UDR: User Defined Route) の用途はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "デフォルトルーティングを上書きし、特定の宛先への経路を制御する。",
+                    "explanation": {
+                        "text": "UDRはユーザー定義のルートを作成し、Azureのデフォルトルーティングを上書きできる。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-networks-udr-overview",
+                        "reference_label": "Microsoft Docs - UDR Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "オンプレミスとAzure間で暗号化VPN接続を確立する。",
+                    "explanation": {
+                        "text": "これはVPN Gatewayの役割であり、UDRの用途ではない。",
+                        "reference": "https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways",
+                        "reference_label": "Microsoft Docs - VPN Gateway"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Azure WebアプリケーションをCDN経由で高速化する。",
+                    "explanation": {
+                        "text": "これはAzure Front DoorやCDNの役割であり、UDRの機能ではない。",
+                        "reference": "https://learn.microsoft.com/azure/frontdoor/front-door-overview",
+                        "reference_label": "Microsoft Docs - Front Door Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ストレージアカウントへのアクセスを制御する。",
+                    "explanation": {
+                        "text": "これはStorageのネットワーク制御であり、UDRの役割ではない。",
+                        "reference": "https://learn.microsoft.com/azure/storage/common/storage-network-security",
+                        "reference_label": "Microsoft Docs - Storage Security"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "UDR（ユーザー定義ルート）はAzureのシステムルートを上書きし、特定のトラフィックをNVAや他の経路にリダイレクトできる。",
+                "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-networks-udr-overview",
+                "reference_label": "Microsoft Docs - UDR Overview"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q15",
+            "question": "Azure Virtual Network NAT (NAT Gateway) の特徴はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "VMに直接パブリックIPを割り当てる必要がある。",
+                    "explanation": {
+                        "text": "NAT Gatewayを使えば、VMにパブリックIPを付与せずにアウトバウンド通信が可能となる。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/nat-gateway/nat-overview",
+                        "reference_label": "Microsoft Docs - NAT Gateway Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "アウトバウンド接続のスケーラビリティを提供する。",
+                    "explanation": {
+                        "text": "NAT GatewayはSNATポートを効率的に管理し、大規模なアウトバウンド接続を提供できる。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/nat-gateway/nat-overview",
+                        "reference_label": "Microsoft Docs - NAT Gateway Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "インバウンドのトラフィック制御に利用する。",
+                    "explanation": {
+                        "text": "NAT Gatewayはアウトバウンド専用であり、インバウンド制御は行わない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/nat-gateway/nat-overview",
+                        "reference_label": "Microsoft Docs - NAT Gateway Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "VNet Peeringを置き換える機能を持つ。",
+                    "explanation": {
+                        "text": "VNet間接続はVNet PeeringやVirtual WANで行い、NAT Gatewayではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-network-peering-overview",
+                        "reference_label": "Microsoft Docs - VNet Peering Overview"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "NAT GatewayはSNATを効率的に提供し、大規模なアウトバウンド接続のスケーラビリティと可用性を実現する。",
+                "reference": "https://learn.microsoft.com/azure/virtual-network/nat-gateway/nat-overview",
+                "reference_label": "Microsoft Docs - NAT Gateway Overview"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q16",
+            "question": "Azure Network Watcher の主な用途はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "ネットワークトラフィックの監視とトラブルシューティング",
+                    "explanation": {
+                        "text": "Network Watcherはパケットキャプチャ、接続モニタリング、トラブルシュートに利用される。",
+                        "reference": "https://learn.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview",
+                        "reference_label": "Microsoft Docs - Network Watcher Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "オンプレミスとAzure間の専用回線接続",
+                    "explanation": {
+                        "text": "これはExpressRouteの機能であり、Network Watcherの用途ではない。",
+                        "reference": "https://learn.microsoft.com/azure/expressroute/expressroute-introduction",
+                        "reference_label": "Microsoft Docs - ExpressRoute"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Azure VMの自動スケーリング",
+                    "explanation": {
+                        "text": "これはVirtual Machine Scale Setsの役割であり、Network Watcherではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machine-scale-sets/overview",
+                        "reference_label": "Microsoft Docs - VMSS Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Webアプリケーションの負荷分散",
+                    "explanation": {
+                        "text": "これはApplication GatewayやFront Doorの役割であり、Network Watcherの用途ではない。",
+                        "reference": "https://learn.microsoft.com/azure/application-gateway/overview",
+                        "reference_label": "Microsoft Docs - Application Gateway Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Network Watcherはネットワーク診断、パケットキャプチャ、接続確認など、トラブルシュートに役立つサービスである。",
+                "reference": "https://learn.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview",
+                "reference_label": "Microsoft Docs - Network Watcher Overview"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q17",
+            "question": "Azure DNS Private Zones の用途はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "VNet内のリソースをプライベートDNS名で解決する。",
+                    "explanation": {
+                        "text": "Private DNS ZoneはVNetにリンクされ、内部のリソース名解決を提供する。",
+                        "reference": "https://learn.microsoft.com/azure/dns/private-dns-overview",
+                        "reference_label": "Microsoft Docs - Private DNS Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "インターネット全体に対してドメインを公開する。",
+                    "explanation": {
+                        "text": "これはPublic DNS Zoneの機能であり、Private Zoneではない。",
+                        "reference": "https://learn.microsoft.com/azure/dns/dns-overview",
+                        "reference_label": "Microsoft Docs - Azure DNS Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "オンプレミス専用の名前解決サービスを提供する。",
+                    "explanation": {
+                        "text": "オンプレミス専用ではなく、Azure VNet内で利用される。",
+                        "reference": "https://learn.microsoft.com/azure/dns/private-dns-overview",
+                        "reference_label": "Microsoft Docs - Private DNS Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ロードバランシングを提供する。",
+                    "explanation": {
+                        "text": "DNSラウンドロビンは可能だが、本質的な負荷分散機能は提供しない。",
+                        "reference": "https://learn.microsoft.com/azure/dns/private-dns-overview",
+                        "reference_label": "Microsoft Docs - Private DNS Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Azure Private DNS ZoneはVNet内のリソースをプライベートIPで名前解決できる仕組みを提供する。",
+                "reference": "https://learn.microsoft.com/azure/dns/private-dns-overview",
+                "reference_label": "Microsoft Docs - Private DNS Overview"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q18",
+            "question": "Azure Service Endpoints と Azure Private Link の違いとして正しいものはどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Service EndpointsはプライベートIPを提供し、Private Linkは提供しない。",
+                    "explanation": {
+                        "text": "これは逆で、Private LinkがプライベートIPを提供し、Service Endpointは提供しない。",
+                        "reference": "https://learn.microsoft.com/azure/private-link/private-link-overview",
+                        "reference_label": "Microsoft Docs - Private Link Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Service EndpointsはMicrosoftバックボーン経由で通信し、Private LinkはVNetのプライベートIPを割り当てる。",
+                    "explanation": {
+                        "text": "正しい。Service EndpointはAzureバックボーンを通すがプライベートIPは持たず、Private LinkはプライベートIPを持つ。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview",
+                        "reference_label": "Microsoft Docs - Service Endpoints Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "両方ともインターネットを経由して通信する。",
+                    "explanation": {
+                        "text": "どちらもインターネットを経由せず、Azureバックボーンを利用する。",
+                        "reference": "https://learn.microsoft.com/azure/private-link/private-link-overview",
+                        "reference_label": "Microsoft Docs - Private Link Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Private LinkはすべてのAzureサービスに対応している。",
+                    "explanation": {
+                        "text": "Private Linkは多くのサービスに対応しているが、すべてではない。",
+                        "reference": "https://learn.microsoft.com/azure/private-link/private-link-overview",
+                        "reference_label": "Microsoft Docs - Private Link Overview"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "Service Endpointsはバックボーン経由の接続を提供し、Private LinkはVNet内のプライベートIPを割り当てる点が大きな違いである。",
+                "reference": "https://learn.microsoft.com/azure/private-link/private-link-overview",
+                "reference_label": "Microsoft Docs - Private Link Overview"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q19",
+            "question": "Azure ExpressRoute FastPath の利点はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "オンプレミスからAzureへのトラフィックをVPN Gateway経由にする。",
+                    "explanation": {
+                        "text": "FastPathはVPNを使わず、トラフィックを直接VMに転送する仕組みである。",
+                        "reference": "https://learn.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways",
+                        "reference_label": "Microsoft Docs - ExpressRoute FastPath"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "トラフィックをExpressRoute Gatewayを経由せずに転送し、レイテンシーを減らす。",
+                    "explanation": {
+                        "text": "FastPathを有効化すると、オンプレミスからのトラフィックはGatewayを経由せず直接Azure VMにルーティングされる。",
+                        "reference": "https://learn.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways",
+                        "reference_label": "Microsoft Docs - ExpressRoute FastPath"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "自動的に暗号化を適用する。",
+                    "explanation": {
+                        "text": "ExpressRouteのトラフィックは暗号化されない。FastPathも暗号化を追加しない。",
+                        "reference": "https://learn.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways",
+                        "reference_label": "Microsoft Docs - ExpressRoute FastPath"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "インターネット経由で高速通信を実現する。",
+                    "explanation": {
+                        "text": "ExpressRouteはインターネットを使用しない。FastPathも専用線接続である。",
+                        "reference": "https://learn.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways",
+                        "reference_label": "Microsoft Docs - ExpressRoute FastPath"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "FastPathを有効にするとオンプレミスとAzure VM間の通信がExpressRoute Gatewayを経由せず直接転送され、パフォーマンスが向上する。",
+                "reference": "https://learn.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways",
+                "reference_label": "Microsoft Docs - ExpressRoute FastPath"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q20",
+            "question": "Azure Virtual WAN Hub の役割はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "オンプレミスからのVPN接続やExpressRoute接続を集約する。",
+                    "explanation": {
+                        "text": "Virtual WAN Hubはハブアンドスポーク型の中心としてVPNやExpressRouteを集約する。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-wan/virtual-wan-about",
+                        "reference_label": "Microsoft Docs - Virtual WAN Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "WebアプリケーションのL7負荷分散を提供する。",
+                    "explanation": {
+                        "text": "これはApplication GatewayやFront Doorの役割であり、Virtual WAN Hubの機能ではない。",
+                        "reference": "https://learn.microsoft.com/azure/frontdoor/front-door-overview",
+                        "reference_label": "Microsoft Docs - Azure Front Door Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Azure VMのスケーリングを管理する。",
+                    "explanation": {
+                        "text": "これはVMSSの役割であり、Virtual WAN Hubの機能ではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machine-scale-sets/overview",
+                        "reference_label": "Microsoft Docs - VMSS Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Azure Storageのセキュリティ制御を提供する。",
+                    "explanation": {
+                        "text": "これはStorageの機能であり、Virtual WAN Hubは関与しない。",
+                        "reference": "https://learn.microsoft.com/azure/storage/common/storage-network-security",
+                        "reference_label": "Microsoft Docs - Storage Security"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Virtual WAN HubはVPN GatewayやExpressRoute Gatewayの役割を担い、拠点間接続を集約する中心として機能する。",
+                "reference": "https://learn.microsoft.com/azure/virtual-wan/virtual-wan-about",
+                "reference_label": "Microsoft Docs - Virtual WAN Overview"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q21",
+            "question": "Azure Firewall Policy の利点はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "複数のAzure Firewallに対して一元的にルールを適用できる。",
+                    "explanation": {
+                        "text": "Firewall Policyは複数のFirewallに共通のルールを適用可能にする。",
+                        "reference": "https://learn.microsoft.com/azure/firewall-manager/policy-overview",
+                        "reference_label": "Microsoft Docs - Firewall Policy Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "オンプレミスのFirewallアプライアンスを管理する。",
+                    "explanation": {
+                        "text": "Firewall PolicyはAzure Firewall専用であり、オンプレミス機器には適用されない。",
+                        "reference": "https://learn.microsoft.com/azure/firewall-manager/policy-overview",
+                        "reference_label": "Microsoft Docs - Firewall Policy Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "VNet間のルーティングを自動化する。",
+                    "explanation": {
+                        "text": "ルーティングはUDRやVirtual WANで制御され、Firewall Policyの機能ではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-networks-udr-overview",
+                        "reference_label": "Microsoft Docs - UDR Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "WebアプリケーションのL7負荷分散を提供する。",
+                    "explanation": {
+                        "text": "これはApplication Gatewayの機能であり、Firewall Policyには含まれない。",
+                        "reference": "https://learn.microsoft.com/azure/application-gateway/overview",
+                        "reference_label": "Microsoft Docs - Application Gateway Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Firewall Policyを用いることで複数のAzure Firewallに統一的なルールを適用でき、管理の一元化が可能となる。",
+                "reference": "https://learn.microsoft.com/azure/firewall-manager/policy-overview",
+                "reference_label": "Microsoft Docs - Firewall Policy Overview"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q22",
+            "question": "Azure Virtual Network Service Endpoints を使用する主な利点はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Azureサービスへの通信をインターネット経由にする。",
+                    "explanation": {
+                        "text": "Service Endpointsはインターネットを経由せず、Azureバックボーンを利用する。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview",
+                        "reference_label": "Microsoft Docs - Service Endpoints Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "VNet内のプライベートIPからAzureサービスへ直接接続できる。",
+                    "explanation": {
+                        "text": "Service EndpointsはVNetからAzureサービスへの直接接続を可能にし、セキュリティを強化する。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview",
+                        "reference_label": "Microsoft Docs - Service Endpoints Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "オンプレミスからExpressRoute経由でのみ利用できる。",
+                    "explanation": {
+                        "text": "Service EndpointsはExpressRoute必須ではなく、VNet内から利用できる。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview",
+                        "reference_label": "Microsoft Docs - Service Endpoints Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "全てのAzureサービスに自動的に適用される。",
+                    "explanation": {
+                        "text": "対象サービスごとに有効化する必要がある。自動的に全サービスに適用されるわけではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview",
+                        "reference_label": "Microsoft Docs - Service Endpoints Overview"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "Service EndpointsによりVNet内のプライベートIPからAzureサービスへの通信をバックボーン経由で安全に行える。",
+                "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview",
+                "reference_label": "Microsoft Docs - Service Endpoints Overview"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q23",
+            "question": "Azure Virtual Network Gateway の SKU 選択で考慮すべき要素はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "接続方式（VPN または ExpressRoute）",
+                    "explanation": {
+                        "text": "Gateway SKUはVPN接続用かExpressRoute用かによって異なる。",
+                        "reference": "https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways",
+                        "reference_label": "Microsoft Docs - VPN Gateway Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "サポートされるVMのサイズ",
+                    "explanation": {
+                        "text": "Gateway SKUはVMサイズではなく、スループットや接続数に依存する。",
+                        "reference": "https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways",
+                        "reference_label": "Microsoft Docs - VPN Gateway Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Azure ADのユーザー数",
+                    "explanation": {
+                        "text": "Azure ADのユーザー数とは無関係。",
+                        "reference": "https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways",
+                        "reference_label": "Microsoft Docs - VPN Gateway Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "アプリケーションのロードバランシング要件",
+                    "explanation": {
+                        "text": "ロードバランシングはGatewayのSKU選択条件ではない。",
+                        "reference": "https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways",
+                        "reference_label": "Microsoft Docs - VPN Gateway Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Virtual Network GatewayのSKUはVPN用かExpressRoute用かによって選択する必要がある。",
+                "reference": "https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways",
+                "reference_label": "Microsoft Docs - VPN Gateway Overview"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q24",
+            "question": "Azure Application Gateway の autoscaling 機能の特徴はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "トラフィックの負荷に応じてインスタンス数を自動調整する。",
+                    "explanation": {
+                        "text": "Application Gateway v2 SKUは自動スケーリングに対応している。",
+                        "reference": "https://learn.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant",
+                        "reference_label": "Microsoft Docs - Application Gateway Autoscaling"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "VMSSを必要とする。",
+                    "explanation": {
+                        "text": "Application Gatewayのautoscalingは独自機能であり、VMSSは不要。",
+                        "reference": "https://learn.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant",
+                        "reference_label": "Microsoft Docs - Application Gateway Autoscaling"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Basic SKUでも利用可能。",
+                    "explanation": {
+                        "text": "autoscalingはv2 SKUでのみ利用可能。Basic SKUでは提供されない。",
+                        "reference": "https://learn.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant",
+                        "reference_label": "Microsoft Docs - Application Gateway Autoscaling"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "リージョン間で自動的にスケーリングする。",
+                    "explanation": {
+                        "text": "Application Gatewayはリージョン内のスケーリングであり、リージョン間の拡張はFront Doorで行う。",
+                        "reference": "https://learn.microsoft.com/azure/frontdoor/front-door-overview",
+                        "reference_label": "Microsoft Docs - Azure Front Door Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Application Gateway v2 SKUはトラフィック負荷に応じてインスタンス数を自動調整する autoscaling に対応している。",
+                "reference": "https://learn.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant",
+                "reference_label": "Microsoft Docs - Application Gateway Autoscaling"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q25",
+            "question": "Azure Firewall の Threat Intelligence 機能は何を提供するか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "既知の悪意あるIPやドメインを自動的にブロックする。",
+                    "explanation": {
+                        "text": "Threat IntelligenceはMicrosoftの脅威データベースを利用して悪意あるトラフィックをブロックする。",
+                        "reference": "https://learn.microsoft.com/azure/firewall/threat-intel",
+                        "reference_label": "Microsoft Docs - Firewall Threat Intelligence"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Webアプリケーションの脆弱性スキャンを実行する。",
+                    "explanation": {
+                        "text": "これはAzure Security CenterやDefenderの機能であり、FirewallのThreat Intelligenceではない。",
+                        "reference": "https://learn.microsoft.com/azure/defender-for-cloud/defender-for-cloud-introduction",
+                        "reference_label": "Microsoft Docs - Microsoft Defender for Cloud"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "オンプレミスFirewallの設定を自動管理する。",
+                    "explanation": {
+                        "text": "Threat IntelligenceはAzure Firewallに限定され、オンプレミスには適用されない。",
+                        "reference": "https://learn.microsoft.com/azure/firewall/threat-intel",
+                        "reference_label": "Microsoft Docs - Firewall Threat Intelligence"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "VNet間のルーティングを最適化する。",
+                    "explanation": {
+                        "text": "ルーティングの最適化はFirewallの役割ではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-networks-udr-overview",
+                        "reference_label": "Microsoft Docs - UDR Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Azure FirewallのThreat Intelligenceベースのフィルタリングは、既知の悪意あるIPやドメインへのトラフィックをブロックする。",
+                "reference": "https://learn.microsoft.com/azure/firewall/threat-intel",
+                "reference_label": "Microsoft Docs - Firewall Threat Intelligence"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q26",
+            "question": "Azure Bastion の 'Native Client Support' 機能の利点はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Azure Portal からのみ接続できる。",
+                    "explanation": {
+                        "text": "Native Client SupportではRDP/SSHクライアントから直接接続可能であり、Portalのみではない。",
+                        "reference": "https://learn.microsoft.com/azure/bastion/connect-native-client-windows",
+                        "reference_label": "Microsoft Docs - Bastion Native Client"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "RDP/SSHクライアントを使ってBastion経由でVMに接続できる。",
+                    "explanation": {
+                        "text": "Native Client Supportを有効化すると、既存のRDPやSSHクライアントを使い、Bastion経由で接続できる。",
+                        "reference": "https://learn.microsoft.com/azure/bastion/connect-native-client-windows",
+                        "reference_label": "Microsoft Docs - Bastion Native Client"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "VPN Gatewayを経由してのみ利用できる。",
+                    "explanation": {
+                        "text": "BastionはVPN不要であり、ブラウザやネイティブクライアントから直接利用可能。",
+                        "reference": "https://learn.microsoft.com/azure/bastion/connect-native-client-windows",
+                        "reference_label": "Microsoft Docs - Bastion Native Client"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "VMにパブリックIPを必ず割り当てる必要がある。",
+                    "explanation": {
+                        "text": "BastionはパブリックIP不要であり、プライベート接続を提供する。",
+                        "reference": "https://learn.microsoft.com/azure/bastion/connect-native-client-windows",
+                        "reference_label": "Microsoft Docs - Bastion Native Client"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "BastionのNative Client Supportにより、既存のRDP/SSHクライアントからBastionを経由してVMに安全に接続可能となる。",
+                "reference": "https://learn.microsoft.com/azure/bastion/connect-native-client-windows",
+                "reference_label": "Microsoft Docs - Bastion Native Client"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q27",
+            "question": "Azure Front Door の 'Web Application Firewall (WAF)' の特徴はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "L3/L4レベルのフィルタリングを行う。",
+                    "explanation": {
+                        "text": "Front Door WAFはL7ベースであり、L3/L4制御はNSGやFirewallが行う。",
+                        "reference": "https://learn.microsoft.com/azure/web-application-firewall/afds/afds-overview",
+                        "reference_label": "Microsoft Docs - Azure Front Door WAF"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "OWASPルールセットを使用してWeb攻撃を防御する。",
+                    "explanation": {
+                        "text": "Front Door WAFはOWASP Core Rule Setを利用し、SQLインジェクションやXSS攻撃などを防ぐ。",
+                        "reference": "https://learn.microsoft.com/azure/web-application-firewall/afds/afds-overview",
+                        "reference_label": "Microsoft Docs - Azure Front Door WAF"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ExpressRoute接続を提供する。",
+                    "explanation": {
+                        "text": "ExpressRouteは専用線接続であり、Front Door WAFの機能ではない。",
+                        "reference": "https://learn.microsoft.com/azure/expressroute/expressroute-introduction",
+                        "reference_label": "Microsoft Docs - ExpressRoute"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "オンプレミスVMへのSSH接続を提供する。",
+                    "explanation": {
+                        "text": "SSH接続はBastionやVPN経由で行うものであり、Front Door WAFではない。",
+                        "reference": "https://learn.microsoft.com/azure/bastion/bastion-overview",
+                        "reference_label": "Microsoft Docs - Bastion Overview"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "Front Door WAFはOWASPルールセットを使用し、アプリケーション層の攻撃から保護する。",
+                "reference": "https://learn.microsoft.com/azure/web-application-firewall/afds/afds-overview",
+                "reference_label": "Microsoft Docs - Azure Front Door WAF"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q28",
+            "question": "Azure Virtual WAN の 'Secure Virtual Hub' の特徴はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "ファイアウォールやセキュリティ機能が組み込まれている。",
+                    "explanation": {
+                        "text": "Secure Virtual HubはAzure Firewallやセキュリティ機能を統合して提供する。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-wan/secure-virtual-hub",
+                        "reference_label": "Microsoft Docs - Secure Virtual Hub"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "VMの自動スケーリング機能を持つ。",
+                    "explanation": {
+                        "text": "自動スケーリングはVMSSの機能であり、Secure Virtual Hubの特徴ではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machine-scale-sets/overview",
+                        "reference_label": "Microsoft Docs - VMSS Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ストレージアカウントの暗号化を管理する。",
+                    "explanation": {
+                        "text": "これはAzure Storageの機能であり、Secure Virtual Hubではない。",
+                        "reference": "https://learn.microsoft.com/azure/storage/common/storage-service-encryption",
+                        "reference_label": "Microsoft Docs - Storage Encryption"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "オンプレミスとAzure間の専用回線を提供する。",
+                    "explanation": {
+                        "text": "専用回線はExpressRouteの役割であり、Secure Virtual Hubの機能ではない。",
+                        "reference": "https://learn.microsoft.com/azure/expressroute/expressroute-introduction",
+                        "reference_label": "Microsoft Docs - ExpressRoute"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Secure Virtual HubはAzure Virtual WANにセキュリティ機能を統合し、Azure Firewallを含む保護を提供する。",
+                "reference": "https://learn.microsoft.com/azure/virtual-wan/secure-virtual-hub",
+                "reference_label": "Microsoft Docs - Secure Virtual Hub"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q29",
+            "question": "Azure Load Balancer と Application Gateway の違いとして正しいものはどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Load Balancer は L4、Application Gateway は L7 のロードバランサーである。",
+                    "explanation": {
+                        "text": "Load Balancer は TCP/UDP レベル (L4) を扱い、Application Gateway は HTTP/HTTPS レベル (L7) を扱う。",
+                        "reference": "https://learn.microsoft.com/azure/architecture/example-scenario/gateway/application-gateway-before-traffic-manager",
+                        "reference_label": "Microsoft Docs - Load Balancer vs Application Gateway"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "両方とも L7 のロードバランサーである。",
+                    "explanation": {
+                        "text": "Load Balancer は L4 のロードバランサーであり、L7 ではない。",
+                        "reference": "https://learn.microsoft.com/azure/load-balancer/load-balancer-overview",
+                        "reference_label": "Microsoft Docs - Load Balancer Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "両方ともオンプレミス専用で利用する。",
+                    "explanation": {
+                        "text": "どちらも Azure のサービスであり、オンプレミス専用ではない。",
+                        "reference": "https://learn.microsoft.com/azure/load-balancer/load-balancer-overview",
+                        "reference_label": "Microsoft Docs - Load Balancer Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Application Gateway は VPN 接続を管理できる。",
+                    "explanation": {
+                        "text": "VPN 接続は VPN Gateway の機能であり、Application Gateway ではない。",
+                        "reference": "https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways",
+                        "reference_label": "Microsoft Docs - VPN Gateway Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Azure Load Balancer は L4 (TCP/UDP) を扱い、Application Gateway は L7 (HTTP/HTTPS) を扱う点が最大の違いである。",
+                "reference": "https://learn.microsoft.com/azure/architecture/example-scenario/gateway/application-gateway-before-traffic-manager",
+                "reference_label": "Microsoft Docs - Load Balancer vs Application Gateway"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q30",
+            "question": "Azure ExpressRoute Local の特徴はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "低価格で同一都市圏リージョンへの接続を提供する。",
+                    "explanation": {
+                        "text": "ExpressRoute Local は同一都市圏リージョンのみに接続可能で、コストを抑えられる。",
+                        "reference": "https://learn.microsoft.com/azure/expressroute/expressroute-introduction",
+                        "reference_label": "Microsoft Docs - ExpressRoute Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "グローバルに Azure 全リージョンへ接続できる。",
+                    "explanation": {
+                        "text": "ExpressRoute Global Reach や Standard が必要であり、Local では不可。",
+                        "reference": "https://learn.microsoft.com/azure/expressroute/expressroute-introduction",
+                        "reference_label": "Microsoft Docs - ExpressRoute Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "必ず FastPath を利用する。",
+                    "explanation": {
+                        "text": "FastPath はオプションであり、必須ではない。",
+                        "reference": "https://learn.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways",
+                        "reference_label": "Microsoft Docs - ExpressRoute FastPath"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "VPN Gateway と併用しなければならない。",
+                    "explanation": {
+                        "text": "ExpressRoute は VPN Gateway なしでも利用可能。",
+                        "reference": "https://learn.microsoft.com/azure/expressroute/expressroute-introduction",
+                        "reference_label": "Microsoft Docs - ExpressRoute Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "ExpressRoute Local は接続を地域限定にすることでコストを抑えられるが、利用範囲は制限される。",
+                "reference": "https://learn.microsoft.com/azure/expressroute/expressroute-introduction",
+                "reference_label": "Microsoft Docs - ExpressRoute Overview"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q31",
+            "question": "Azure DDoS Protection Standard の 'Cost Protection' 機能は何を意味するか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "攻撃時に発生する追加リソース利用料を補償する。",
+                    "explanation": {
+                        "text": "DDoS Protection Standard は大規模攻撃時の追加スケーリングコストをクレジットで補償する。",
+                        "reference": "https://learn.microsoft.com/azure/ddos-protection/ddos-protection-overview",
+                        "reference_label": "Microsoft Docs - DDoS Protection Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "攻撃を完全に防ぎ、サービス停止をゼロにする。",
+                    "explanation": {
+                        "text": "DDoS Protectionは攻撃を軽減するが、100%の停止回避を保証するものではない。",
+                        "reference": "https://learn.microsoft.com/azure/ddos-protection/ddos-protection-overview",
+                        "reference_label": "Microsoft Docs - DDoS Protection Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "攻撃検知時に自動的にVMを再起動する。",
+                    "explanation": {
+                        "text": "自動再起動はDDoS Protectionの機能ではない。",
+                        "reference": "https://learn.microsoft.com/azure/ddos-protection/ddos-protection-overview",
+                        "reference_label": "Microsoft Docs - DDoS Protection Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "オンプレミスのDDoS対策をリモートで管理する。",
+                    "explanation": {
+                        "text": "DDoS ProtectionはAzure専用であり、オンプレミスには適用されない。",
+                        "reference": "https://learn.microsoft.com/azure/ddos-protection/ddos-protection-overview",
+                        "reference_label": "Microsoft Docs - DDoS Protection Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Azure DDoS Protection Standard にはコスト保護が含まれ、攻撃に伴う追加リソース使用コストを補償する。",
+                "reference": "https://learn.microsoft.com/azure/ddos-protection/ddos-protection-overview",
+                "reference_label": "Microsoft Docs - DDoS Protection Overview"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q32",
+            "question": "Azure Private DNS Resolver の特徴はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "オンプレミスDNSとAzure Private DNSの名前解決を仲介できる。",
+                    "explanation": {
+                        "text": "Private DNS Resolverを使えば、オンプレミスとAzure間で双方向の名前解決が可能になる。",
+                        "reference": "https://learn.microsoft.com/azure/dns/dns-private-resolver-overview",
+                        "reference_label": "Microsoft Docs - Private DNS Resolver"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "必ずVPN Gatewayを経由しなければならない。",
+                    "explanation": {
+                        "text": "VPN Gatewayは必須ではなく、ExpressRouteでも利用可能。",
+                        "reference": "https://learn.microsoft.com/azure/dns/dns-private-resolver-overview",
+                        "reference_label": "Microsoft Docs - Private DNS Resolver"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "L7のWebアプリケーションファイアウォール機能を持つ。",
+                    "explanation": {
+                        "text": "DNS Resolverは名前解決サービスであり、WAF機能は持たない。",
+                        "reference": "https://learn.microsoft.com/azure/dns/dns-private-resolver-overview",
+                        "reference_label": "Microsoft Docs - Private DNS Resolver"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ストレージアカウントのアクセス制御を行う。",
+                    "explanation": {
+                        "text": "これはStorageの機能であり、DNS Resolverではない。",
+                        "reference": "https://learn.microsoft.com/azure/storage/common/storage-network-security",
+                        "reference_label": "Microsoft Docs - Storage Security"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Azure Private DNS ResolverはオンプレミスとAzureの間で名前解決を仲介できるため、ハイブリッド構成に有効。",
+                "reference": "https://learn.microsoft.com/azure/dns/dns-private-resolver-overview",
+                "reference_label": "Microsoft Docs - Private DNS Resolver"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q33",
+            "question": "Azure Traffic Manager と Azure Front Door の違いとして正しいものはどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Traffic Manager は DNS ベースのルーティングを行い、Front Door はプロキシ型でリアルタイム転送を行う。",
+                    "explanation": {
+                        "text": "Traffic Manager はDNSレベルでルーティングするが、Front Doorはアプリケーションレイヤーでトラフィックをプロキシ転送する。",
+                        "reference": "https://learn.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview",
+                        "reference_label": "Microsoft Docs - Load Balancing Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "両方ともDNSベースのルーティングのみを提供する。",
+                    "explanation": {
+                        "text": "Front Doorはプロキシベースであり、DNSのみではない。",
+                        "reference": "https://learn.microsoft.com/azure/frontdoor/front-door-overview",
+                        "reference_label": "Microsoft Docs - Azure Front Door Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "両方ともオンプレミス専用のサービスである。",
+                    "explanation": {
+                        "text": "どちらもAzureサービスであり、オンプレミス専用ではない。",
+                        "reference": "https://learn.microsoft.com/azure/frontdoor/front-door-overview",
+                        "reference_label": "Microsoft Docs - Azure Front Door Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Traffic Manager は L7 のロードバランサーである。",
+                    "explanation": {
+                        "text": "Traffic ManagerはDNSベースであり、L7のロードバランサーではない。",
+                        "reference": "https://learn.microsoft.com/azure/traffic-manager/traffic-manager-overview",
+                        "reference_label": "Microsoft Docs - Traffic Manager Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Traffic ManagerはDNSレベルのルーティング、Front Doorはアプリケーションレベルのプロキシ型ロードバランシングを行う。",
+                "reference": "https://learn.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview",
+                "reference_label": "Microsoft Docs - Load Balancing Overview"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q34",
+            "question": "Azure Route Server の利用目的はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "NVA（Network Virtual Appliance）とAzure VNet間でBGP経路を交換する。",
+                    "explanation": {
+                        "text": "Route Serverを利用するとBGP経路交換が可能になり、NVAとAzure VNet間で動的ルーティングを行える。",
+                        "reference": "https://learn.microsoft.com/azure/route-server/overview",
+                        "reference_label": "Microsoft Docs - Route Server Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "オンプレミスとAzure間のExpressRoute接続を提供する。",
+                    "explanation": {
+                        "text": "ExpressRouteの役割であり、Route Serverではない。",
+                        "reference": "https://learn.microsoft.com/azure/expressroute/expressroute-introduction",
+                        "reference_label": "Microsoft Docs - ExpressRoute Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "VMの自動スケーリングを行う。",
+                    "explanation": {
+                        "text": "VMSSの役割であり、Route Serverは関与しない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machine-scale-sets/overview",
+                        "reference_label": "Microsoft Docs - VMSS Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Webアプリケーションのロードバランシングを行う。",
+                    "explanation": {
+                        "text": "これはApplication GatewayやFront Doorの役割であり、Route Serverではない。",
+                        "reference": "https://learn.microsoft.com/azure/application-gateway/overview",
+                        "reference_label": "Microsoft Docs - Application Gateway Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Azure Route ServerはBGPを使い、NVAとVNet間で動的ルーティングを提供する。",
+                "reference": "https://learn.microsoft.com/azure/route-server/overview",
+                "reference_label": "Microsoft Docs - Route Server Overview"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q35",
+            "question": "Azure Virtual WAN の Any-to-Any 接続モデルの利点はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "すべての接続（VPN, ExpressRoute, VNet間）が自動的に相互接続される。",
+                    "explanation": {
+                        "text": "Virtual WANではAny-to-Any接続が可能であり、ハブに接続されたリソースは自動的に相互接続される。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-wan/virtual-wan-about",
+                        "reference_label": "Microsoft Docs - Virtual WAN Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "VMのスケーリングを自動で行う。",
+                    "explanation": {
+                        "text": "これはVMSSの役割であり、Virtual WANとは無関係。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machine-scale-sets/overview",
+                        "reference_label": "Microsoft Docs - VMSS Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ストレージアカウントのセキュリティ制御を提供する。",
+                    "explanation": {
+                        "text": "これはStorageの機能であり、Virtual WANではない。",
+                        "reference": "https://learn.microsoft.com/azure/storage/common/storage-network-security",
+                        "reference_label": "Microsoft Docs - Storage Security"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "オンプレミスのルーター設定を自動構成する。",
+                    "explanation": {
+                        "text": "オンプレミス機器は手動で設定が必要であり、Virtual WANが自動構成するわけではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-wan/virtual-wan-about",
+                        "reference_label": "Microsoft Docs - Virtual WAN Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Virtual WANはハブに接続されたすべてのネットワーク間を自動的に相互接続する Any-to-Any モデルを実現する。",
+                "reference": "https://learn.microsoft.com/azure/virtual-wan/virtual-wan-about",
+                "reference_label": "Microsoft Docs - Virtual WAN Overview"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q36",
+            "question": "Azure Network Watcher の Connection Monitor 機能の役割はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "VNet Peering を自動的に作成する。",
+                    "explanation": {
+                        "text": "Connection Monitor は接続の可視化と監視を行うが、VNet Peering を作成する機能はない。",
+                        "reference": "https://learn.microsoft.com/azure/network-watcher/connection-monitor-overview",
+                        "reference_label": "Microsoft Docs - Connection Monitor Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "エンドツーエンドの接続を監視し、遅延やパケット損失を検出する。",
+                    "explanation": {
+                        "text": "Connection Monitor はオンプレミスとAzure間、またはAzure内の接続を監視できる。",
+                        "reference": "https://learn.microsoft.com/azure/network-watcher/connection-monitor-overview",
+                        "reference_label": "Microsoft Docs - Connection Monitor Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "DNS レコードを管理する。",
+                    "explanation": {
+                        "text": "DNS レコード管理は Azure DNS の機能であり、Connection Monitor ではない。",
+                        "reference": "https://learn.microsoft.com/azure/dns/dns-overview",
+                        "reference_label": "Microsoft Docs - Azure DNS Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "VM のスケーリングを制御する。",
+                    "explanation": {
+                        "text": "スケーリングは VMSS の機能であり、Connection Monitor には関与しない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machine-scale-sets/overview",
+                        "reference_label": "Microsoft Docs - VMSS Overview"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "Connection Monitor は Azure 内外の接続を監視し、遅延やパケット損失を可視化する機能を持つ。",
+                "reference": "https://learn.microsoft.com/azure/network-watcher/connection-monitor-overview",
+                "reference_label": "Microsoft Docs - Connection Monitor Overview"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q37",
+            "question": "Azure Firewall と NSG (Network Security Group) の違いとして正しいものはどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "NSG は L3/L4 制御、Firewall は L3-L7 の高度な制御を提供する。",
+                    "explanation": {
+                        "text": "NSG は基本的な IP・ポート制御を行い、Firewall はアプリケーションレベル (L7) まで制御できる。",
+                        "reference": "https://learn.microsoft.com/azure/firewall/overview",
+                        "reference_label": "Microsoft Docs - Firewall Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "両方とも L7 制御を提供する。",
+                    "explanation": {
+                        "text": "NSG は L3/L4 のみであり、L7 制御は行わない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/network-security-groups-overview",
+                        "reference_label": "Microsoft Docs - NSG Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Firewall は VM にのみ適用でき、NSG は VNet 全体に適用される。",
+                    "explanation": {
+                        "text": "Firewall は VNet 全体に適用でき、NSG はサブネットや NIC 単位に適用する。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/network-security-groups-overview",
+                        "reference_label": "Microsoft Docs - NSG Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "NSG はステートフル、Firewall はステートレスである。",
+                    "explanation": {
+                        "text": "両方ともステートフルであり、この説明は誤り。",
+                        "reference": "https://learn.microsoft.com/azure/firewall/overview",
+                        "reference_label": "Microsoft Docs - Firewall Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "NSG は L3/L4 制御のみ、Firewall は L3〜L7 の高度な制御を提供できる点が最大の違いである。",
+                "reference": "https://learn.microsoft.com/azure/firewall/overview",
+                "reference_label": "Microsoft Docs - Firewall Overview"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q38",
+            "question": "Azure Virtual WAN と Hub-Spoke トポロジーの関係として正しいものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Virtual WAN はグローバル規模の Hub-Spoke トポロジーを実現する。",
+                    "explanation": {
+                        "text": "Virtual WAN Hub はハブとなり、複数のスポーク (VNet, VPN, ExpressRoute) を接続できる。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-wan/virtual-wan-about",
+                        "reference_label": "Microsoft Docs - Virtual WAN Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Virtual WAN はオンプレミス専用のトポロジーである。",
+                    "explanation": {
+                        "text": "Virtual WAN は Azure サービスであり、オンプレミス専用ではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-wan/virtual-wan-about",
+                        "reference_label": "Microsoft Docs - Virtual WAN Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Hub-Spoke トポロジーは VNet Peering でしか実現できない。",
+                    "explanation": {
+                        "text": "Hub-Spoke は VNet Peering でも構築できるが、Virtual WAN Hub でも可能。",
+                        "reference": "https://learn.microsoft.com/azure/architecture/networking/hub-spoke",
+                        "reference_label": "Microsoft Docs - Hub-Spoke Topology"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Virtual WAN Hub は VNet 内のサブネット単位でしか適用できない。",
+                    "explanation": {
+                        "text": "Virtual WAN Hub は VNet 全体を接続対象とし、サブネット単位ではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-wan/virtual-wan-about",
+                        "reference_label": "Microsoft Docs - Virtual WAN Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Azure Virtual WAN はグローバル規模の Hub-Spoke トポロジーを構築でき、VNet, VPN, ExpressRoute を集約可能。",
+                "reference": "https://learn.microsoft.com/azure/virtual-wan/virtual-wan-about",
+                "reference_label": "Microsoft Docs - Virtual WAN Overview"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q39",
+            "question": "Azure Bastion を利用する際のセキュリティ上の利点はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "VM にパブリック IP を割り当てずに RDP/SSH 接続できる。",
+                    "explanation": {
+                        "text": "Bastion はプライベート接続を提供するため、パブリック IP を不要にできる。",
+                        "reference": "https://learn.microsoft.com/azure/bastion/bastion-overview",
+                        "reference_label": "Microsoft Docs - Bastion Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "オンプレミスの VPN アプライアンスを管理する。",
+                    "explanation": {
+                        "text": "Bastion は VPN アプライアンスの管理は行わない。",
+                        "reference": "https://learn.microsoft.com/azure/bastion/bastion-overview",
+                        "reference_label": "Microsoft Docs - Bastion Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Web アプリケーションを負荷分散する。",
+                    "explanation": {
+                        "text": "負荷分散は Application Gateway や Load Balancer の機能。",
+                        "reference": "https://learn.microsoft.com/azure/application-gateway/overview",
+                        "reference_label": "Microsoft Docs - Application Gateway Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Azure Storage のアクセスを制御する。",
+                    "explanation": {
+                        "text": "ストレージ制御は Storage アカウントの機能であり、Bastion ではない。",
+                        "reference": "https://learn.microsoft.com/azure/storage/common/storage-network-security",
+                        "reference_label": "Microsoft Docs - Storage Security"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Azure Bastion により、VM にパブリック IP を割り当てずにセキュアな管理接続が可能になる。",
+                "reference": "https://learn.microsoft.com/azure/bastion/bastion-overview",
+                "reference_label": "Microsoft Docs - Bastion Overview"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q40",
+            "question": "Azure Front Door の Global Load Balancing 機能の特徴はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "クライアントから最も近い POP (Point of Presence) にルーティングする。",
+                    "explanation": {
+                        "text": "Front Door は POP を利用してグローバル負荷分散を行い、最適なルーティングを提供する。",
+                        "reference": "https://learn.microsoft.com/azure/frontdoor/front-door-overview",
+                        "reference_label": "Microsoft Docs - Azure Front Door Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "VNet 内のルーティングを制御する。",
+                    "explanation": {
+                        "text": "これは Route Table (UDR) や Route Server の役割であり、Front Door ではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-networks-udr-overview",
+                        "reference_label": "Microsoft Docs - UDR Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "オンプレミスと Azure 間の VPN を自動構成する。",
+                    "explanation": {
+                        "text": "VPN 構成は VPN Gateway の機能であり、Front Door にはない。",
+                        "reference": "https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways",
+                        "reference_label": "Microsoft Docs - VPN Gateway Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "VM の自動スケーリングを行う。",
+                    "explanation": {
+                        "text": "VMSS の役割であり、Front Door の機能ではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machine-scale-sets/overview",
+                        "reference_label": "Microsoft Docs - VMSS Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Azure Front Door は POP を使い、ユーザーを最適なエンドポイントにルーティングしてグローバル負荷分散を提供する。",
+                "reference": "https://learn.microsoft.com/azure/frontdoor/front-door-overview",
+                "reference_label": "Microsoft Docs - Azure Front Door Overview"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q41",
+            "question": "Azure ExpressRoute Global Reach の機能はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "異なるオンプレミス拠点を Azure バックボーン経由で接続できる。",
+                    "explanation": {
+                        "text": "Global Reach を有効化すると、複数のオンプレミス拠点が ExpressRoute 経由で相互接続できる。",
+                        "reference": "https://learn.microsoft.com/azure/expressroute/expressroute-global-reach",
+                        "reference_label": "Microsoft Docs - ExpressRoute Global Reach"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "VM のスケーリングを制御する。",
+                    "explanation": {
+                        "text": "これは VMSS の役割であり、ExpressRoute Global Reach には関係しない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machine-scale-sets/overview",
+                        "reference_label": "Microsoft Docs - VMSS Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Web アプリケーションのグローバル負荷分散を提供する。",
+                    "explanation": {
+                        "text": "これは Azure Front Door の役割であり、ExpressRoute Global Reach ではない。",
+                        "reference": "https://learn.microsoft.com/azure/frontdoor/front-door-overview",
+                        "reference_label": "Microsoft Docs - Azure Front Door Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "DNS レコードの名前解決を提供する。",
+                    "explanation": {
+                        "text": "これは Azure DNS の役割であり、Global Reach ではない。",
+                        "reference": "https://learn.microsoft.com/azure/dns/dns-overview",
+                        "reference_label": "Microsoft Docs - Azure DNS Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "ExpressRoute Global Reach を有効にすると、Azure を介して複数のオンプレミス拠点を相互接続できる。",
+                "reference": "https://learn.microsoft.com/azure/expressroute/expressroute-global-reach",
+                "reference_label": "Microsoft Docs - ExpressRoute Global Reach"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q42",
+            "question": "Azure Load Balancer の Health Probe の役割はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "バックエンドプール内の VM の正常性を監視する。",
+                    "explanation": {
+                        "text": "Health Probe はバックエンド VM の正常性を確認し、異常があればトラフィックを除外する。",
+                        "reference": "https://learn.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview",
+                        "reference_label": "Microsoft Docs - Load Balancer Health Probe"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "オンプレミスと Azure 間の VPN を監視する。",
+                    "explanation": {
+                        "text": "VPN 監視は VPN Gateway の機能であり、Load Balancer Health Probe ではない。",
+                        "reference": "https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways",
+                        "reference_label": "Microsoft Docs - VPN Gateway Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Web アプリケーションの WAF ルールを管理する。",
+                    "explanation": {
+                        "text": "WAF ルールは Application Gateway や Front Door WAF の機能であり、Health Probe ではない。",
+                        "reference": "https://learn.microsoft.com/azure/web-application-firewall/afds/afds-overview",
+                        "reference_label": "Microsoft Docs - Azure Front Door WAF"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "DNS レコードを自動的に更新する。",
+                    "explanation": {
+                        "text": "DNS 更新は Azure DNS の役割であり、Health Probe には含まれない。",
+                        "reference": "https://learn.microsoft.com/azure/dns/dns-overview",
+                        "reference_label": "Microsoft Docs - Azure DNS Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Azure Load Balancer の Health Probe はバックエンド VM の正常性を監視し、異常なインスタンスを自動的に除外する。",
+                "reference": "https://learn.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview",
+                "reference_label": "Microsoft Docs - Load Balancer Health Probe"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q43",
+            "question": "Azure Virtual Network NAT (NAT Gateway) を利用する際の制約として正しいものはどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "NAT Gateway はアウトバウンド専用であり、インバウンド通信を処理できない。",
+                    "explanation": {
+                        "text": "NAT Gateway はアウトバウンド専用であり、インバウンド通信は対象外。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/nat-gateway/nat-overview",
+                        "reference_label": "Microsoft Docs - NAT Gateway Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "NAT Gateway は VM に直接アタッチする必要がある。",
+                    "explanation": {
+                        "text": "NAT Gateway はサブネット単位で適用され、VM に直接割り当てるものではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/nat-gateway/nat-overview",
+                        "reference_label": "Microsoft Docs - NAT Gateway Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "NAT Gateway は VNet Peering を必須とする。",
+                    "explanation": {
+                        "text": "NAT Gateway は VNet Peering なしで利用可能。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/nat-gateway/nat-overview",
+                        "reference_label": "Microsoft Docs - NAT Gateway Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "NAT Gateway は ExpressRoute 専用である。",
+                    "explanation": {
+                        "text": "NAT Gateway は ExpressRoute に限定されず、インターネットアクセス全般に利用可能。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/nat-gateway/nat-overview",
+                        "reference_label": "Microsoft Docs - NAT Gateway Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Azure NAT Gateway はアウトバウンド専用であり、インバウンド通信を処理できない。",
+                "reference": "https://learn.microsoft.com/azure/virtual-network/nat-gateway/nat-overview",
+                "reference_label": "Microsoft Docs - NAT Gateway Overview"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q44",
+            "question": "Azure Application Gateway の 'URL-based routing' 機能の特徴はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "リクエストの URL パスに基づいてバックエンドプールにルーティングできる。",
+                    "explanation": {
+                        "text": "URL ベースルーティングにより、/images や /api などに応じて異なるバックエンドに振り分けられる。",
+                        "reference": "https://learn.microsoft.com/azure/application-gateway/application-gateway-url-route-overview",
+                        "reference_label": "Microsoft Docs - Application Gateway URL Routing"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "クライアントの地理的位置に基づいてルーティングする。",
+                    "explanation": {
+                        "text": "地理的ルーティングは Traffic Manager の機能。",
+                        "reference": "https://learn.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods",
+                        "reference_label": "Microsoft Docs - Traffic Manager Routing"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "オンプレミスの VPN アプライアンスを経由してルーティングする。",
+                    "explanation": {
+                        "text": "VPN アプライアンスは VPN Gateway の機能であり、Application Gateway ではない。",
+                        "reference": "https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways",
+                        "reference_label": "Microsoft Docs - VPN Gateway Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "バックエンド VM の IP アドレスに基づいてルーティングする。",
+                    "explanation": {
+                        "text": "IP ベースルーティングではなく、Application Gateway の特徴は L7 URL ベースルーティングである。",
+                        "reference": "https://learn.microsoft.com/azure/application-gateway/application-gateway-url-route-overview",
+                        "reference_label": "Microsoft Docs - Application Gateway URL Routing"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Application Gateway の URL ベースルーティングは、リクエストパスごとに異なるバックエンドに振り分けることが可能。",
+                "reference": "https://learn.microsoft.com/azure/application-gateway/application-gateway-url-route-overview",
+                "reference_label": "Microsoft Docs - Application Gateway URL Routing"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q45",
+            "question": "Azure ExpressRoute の 'Private Peering' の用途はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "オンプレミスネットワークと Azure VNet 間でプライベートアドレスを利用して通信する。",
+                    "explanation": {
+                        "text": "Private Peering により、オンプレミスと Azure VNet 間で RFC1918 のアドレスを利用できる。",
+                        "reference": "https://learn.microsoft.com/azure/expressroute/expressroute-circuit-peerings",
+                        "reference_label": "Microsoft Docs - ExpressRoute Peerings"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "インターネット経由で Azure Public サービスにアクセスする。",
+                    "explanation": {
+                        "text": "これは Public Peering (廃止) または Microsoft Peering の役割。",
+                        "reference": "https://learn.microsoft.com/azure/expressroute/expressroute-circuit-peerings",
+                        "reference_label": "Microsoft Docs - ExpressRoute Peerings"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Web アプリケーションの負荷分散を提供する。",
+                    "explanation": {
+                        "text": "これは Application Gateway や Front Door の役割であり、Private Peering ではない。",
+                        "reference": "https://learn.microsoft.com/azure/frontdoor/front-door-overview",
+                        "reference_label": "Microsoft Docs - Azure Front Door Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "オンプレミスの DNS を自動的に Azure に同期する。",
+                    "explanation": {
+                        "text": "DNS 同期は ExpressRoute Peering の機能ではない。",
+                        "reference": "https://learn.microsoft.com/azure/dns/private-dns-overview",
+                        "reference_label": "Microsoft Docs - Private DNS Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "ExpressRoute の Private Peering はオンプレミスと Azure VNet をプライベートアドレス空間で接続する。",
+                "reference": "https://learn.microsoft.com/azure/expressroute/expressroute-circuit-peerings",
+                "reference_label": "Microsoft Docs - ExpressRoute Peerings"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q46",
+            "question": "Azure Route Table (UDR) を利用するケースとして正しいものはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "トラフィックを Network Virtual Appliance (NVA) 経由にする。",
+                    "explanation": {
+                        "text": "UDR を使えば、特定の宛先トラフィックを NVA にリダイレクトできる。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-networks-udr-overview",
+                        "reference_label": "Microsoft Docs - UDR Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "VM のスケーリングを自動で行う。",
+                    "explanation": {
+                        "text": "これは VMSS の役割であり、UDR ではない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machine-scale-sets/overview",
+                        "reference_label": "Microsoft Docs - VMSS Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Web アプリケーションの負荷分散を行う。",
+                    "explanation": {
+                        "text": "これは Application Gateway や Front Door の役割。",
+                        "reference": "https://learn.microsoft.com/azure/application-gateway/overview",
+                        "reference_label": "Microsoft Docs - Application Gateway Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ストレージアカウントの暗号化を行う。",
+                    "explanation": {
+                        "text": "これは Storage の機能であり、UDR ではない。",
+                        "reference": "https://learn.microsoft.com/azure/storage/common/storage-service-encryption",
+                        "reference_label": "Microsoft Docs - Storage Encryption"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "UDR を利用すると、トラフィックを明示的に NVA や別の経路にリダイレクトできる。",
+                "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-networks-udr-overview",
+                "reference_label": "Microsoft Docs - UDR Overview"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q47",
+            "question": "Azure Firewall の DNAT ルールの用途はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "外部からのトラフィックを内部 VM などのプライベート IP に転送する。",
+                    "explanation": {
+                        "text": "DNAT ルールにより、パブリック IP 宛のトラフィックを内部 VM に転送できる。",
+                        "reference": "https://learn.microsoft.com/azure/firewall/rule-processing",
+                        "reference_label": "Microsoft Docs - Firewall Rule Processing"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "内部からのアウトバウンド通信をインターネットに転送する。",
+                    "explanation": {
+                        "text": "これは SNAT の役割であり、DNAT ではない。",
+                        "reference": "https://learn.microsoft.com/azure/firewall/rule-processing",
+                        "reference_label": "Microsoft Docs - Firewall Rule Processing"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "VM のスケーリングを管理する。",
+                    "explanation": {
+                        "text": "VMSS の役割であり、DNAT ルールには無関係。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machine-scale-sets/overview",
+                        "reference_label": "Microsoft Docs - VMSS Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Web アプリケーションの URL に基づいてルーティングする。",
+                    "explanation": {
+                        "text": "これは Application Gateway の機能であり、DNAT ルールではない。",
+                        "reference": "https://learn.microsoft.com/azure/application-gateway/overview",
+                        "reference_label": "Microsoft Docs - Application Gateway Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "DNAT ルールを使えば、外部からのリクエストを内部 VM やリソースにマッピングできる。",
+                "reference": "https://learn.microsoft.com/azure/firewall/rule-processing",
+                "reference_label": "Microsoft Docs - Firewall Rule Processing"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q48",
+            "question": "Azure Private Endpoint を利用する際のメリットはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Azure サービスを VNet のプライベート IP として利用できる。",
+                    "explanation": {
+                        "text": "Private Endpoint は Azure サービスを VNet 内のプライベート IP にマッピングする。",
+                        "reference": "https://learn.microsoft.com/azure/private-link/private-endpoint-overview",
+                        "reference_label": "Microsoft Docs - Private Endpoint Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "ExpressRoute を必須とする。",
+                    "explanation": {
+                        "text": "Private Endpoint は ExpressRoute 不要で利用できる。",
+                        "reference": "https://learn.microsoft.com/azure/private-link/private-endpoint-overview",
+                        "reference_label": "Microsoft Docs - Private Endpoint Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "オンプレミスの DNS を自動的に更新する。",
+                    "explanation": {
+                        "text": "Private Endpoint は DNS を自動更新しない。DNS 設定は別途必要。",
+                        "reference": "https://learn.microsoft.com/azure/private-link/private-endpoint-overview",
+                        "reference_label": "Microsoft Docs - Private Endpoint Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "VM のスケーリングを管理する。",
+                    "explanation": {
+                        "text": "これは VMSS の役割であり、Private Endpoint とは無関係。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-machine-scale-sets/overview",
+                        "reference_label": "Microsoft Docs - VMSS Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Azure Private Endpoint を利用すれば、Azure サービスを VNet のプライベート IP 経由でセキュアに利用可能。",
+                "reference": "https://learn.microsoft.com/azure/private-link/private-endpoint-overview",
+                "reference_label": "Microsoft Docs - Private Endpoint Overview"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q49",
+            "question": "Azure Traffic Manager の 'Performance routing' の特徴はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "クライアントから最も低いレイテンシーを持つエンドポイントにルーティングする。",
+                    "explanation": {
+                        "text": "Performance ルーティングはクライアントから最も近い応答速度の良いリージョンに接続する。",
+                        "reference": "https://learn.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods",
+                        "reference_label": "Microsoft Docs - Traffic Manager Routing"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "全てのエンドポイントに均等にトラフィックを分散する。",
+                    "explanation": {
+                        "text": "これは Weighted ルーティングの機能。",
+                        "reference": "https://learn.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods",
+                        "reference_label": "Microsoft Docs - Traffic Manager Routing"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "特定のエンドポイントを優先的に利用する。",
+                    "explanation": {
+                        "text": "これは Priority ルーティングの機能。",
+                        "reference": "https://learn.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods",
+                        "reference_label": "Microsoft Docs - Traffic Manager Routing"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "クライアントの地理的な場所に基づいてルーティングする。",
+                    "explanation": {
+                        "text": "これは Geographic ルーティングの機能。",
+                        "reference": "https://learn.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods",
+                        "reference_label": "Microsoft Docs - Traffic Manager Routing"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Performance ルーティングはレイテンシーに基づいて最も高速に応答できるエンドポイントへ接続させる。",
+                "reference": "https://learn.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods",
+                "reference_label": "Microsoft Docs - Traffic Manager Routing"
+            }
+        },
+        {
+            "id": "azure-AZ-700-q50",
+            "question": "Azure Virtual Network Peering の制約として正しいものはどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "アドレス空間が重複している VNet 同士はピアリングできない。",
+                    "explanation": {
+                        "text": "VNet Peering ではアドレス空間が重複している場合は接続できない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-network-peering-overview",
+                        "reference_label": "Microsoft Docs - VNet Peering Overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "異なるリージョン間でピアリングすることはできない。",
+                    "explanation": {
+                        "text": "グローバル VNet Peering を利用すれば異なるリージョン間でも接続可能。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-network-peering-overview",
+                        "reference_label": "Microsoft Docs - VNet Peering Overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ピアリングを利用するには必ず VPN Gateway が必要である。",
+                    "explanation": {
+                        "text": "VNet Peering は直接バックボーンで接続されるため、VPN Gateway は不要。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-network-peering-overview",
+                        "reference_label": "Microsoft Docs - VNet Peering Overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "通信は常にインターネットを経由する。",
+                    "explanation": {
+                        "text": "VNet Peering の通信は Azure バックボーンを利用し、インターネットは経由しない。",
+                        "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-network-peering-overview",
+                        "reference_label": "Microsoft Docs - VNet Peering Overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "VNet Peering はアドレス空間が重複している VNet 同士では設定できないという制約がある。",
+                "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-network-peering-overview",
+                "reference_label": "Microsoft Docs - VNet Peering Overview"
+            }
+        }
+    ]
+}

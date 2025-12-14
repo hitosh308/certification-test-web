@@ -1,0 +1,2514 @@
+{
+  "exam": {
+    "id": "comptia-network",
+    "title": "CompTIA Network+",
+    "description": "CompTIA Network+ は、企業や組織のネットワーク構築・運用・保守・トラブルシューティングのために必要な実践的なネットワークスキルを認定する国際資格です。ベンダーニュートラルで、特定の機器や OS に依存せず、ネットワークの基礎から応用、セキュリティ、トラブル対応まで広くカバー。ネットワークエンジニアやヘルプデスク、ITサポート技術者など、ネットワークに関わる職種で一定の実務能力を証明できます。",
+    "version": "N10-009",
+    "price": "369 USD",
+    "difficulty": "普通",
+    "official-site": "https://www.comptia.org/ja-jp/certifications/network/",
+    "category": {
+      "id": "comptia",
+      "name": "CompTIA"
+    }
+  },
+  "questions": [
+
+    {
+      "id": "comptia-network-1",
+      "question": "IPv6 で近隣ノードの MAC アドレスを解決するために使用されるプロトコルはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "NDP (Neighbor Discovery Protocol)",
+          "explanation": {
+            "text": "IPv6 では ARP の代わりに NDP を利用して隣接ノードのアドレス情報を解決します。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4861",
+            "reference_label": "RFC 4861 Neighbor Discovery"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ARP",
+          "explanation": {
+            "text": "ARP は IPv4 特有の仕組みであり、IPv6 では使用されません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc826",
+            "reference_label": "RFC 826 ARP"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ICMP Redirect",
+          "explanation": {
+            "text": "ICMP Redirect は誤ったデフォルトゲートウェイ通知に使われ、アドレス解決とは異なります。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4861",
+            "reference_label": "RFC 4861 NDP"
+          }
+        },
+        {
+          "key": "D",
+          "text": "DHCPv6",
+          "explanation": {
+            "text": "DHCPv6 は IPv6 アドレス配布プロトコルであり、MAC 解決には関与しません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc3315",
+            "reference_label": "RFC 3315 DHCPv6"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "NDP は IPv6 の基本機能の一つであり、隣接ノードの MAC アドレス解決を担当します。",
+        "reference": "https://www.rfc-editor.org/rfc/rfc4861",
+        "reference_label": "RFC 4861"
+      }
+    },
+
+    {
+      "id": "comptia-network-2",
+      "question": "WPA3-Enterprise で推奨される認証方式として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "EAP-FAST",
+          "explanation": {
+            "text": "EAP-FAST は Cisco 独自方式であり、WPA3推奨方式ではありません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4851",
+            "reference_label": "RFC 4851 EAP-FAST"
+          }
+        },
+        {
+          "key": "B",
+          "text": "EAP-TLS",
+          "explanation": {
+            "text": "WPA3-Enterprise では証明書ベースの EAP-TLS が推奨されています。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc5216",
+            "reference_label": "RFC 5216 EAP-TLS"
+          }
+        },
+        {
+          "key": "C",
+          "text": "PSK",
+          "explanation": {
+            "text": "PSK は Personal モード向けの方式で、Enterprise には使用されません。",
+            "reference": "https://www.wi-fi.org/discover-wi-fi/security",
+            "reference_label": "Wi-Fi Security"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Open System Authentication",
+          "explanation": {
+            "text": "WEP 時代の古い方式で、現在は推奨されません。",
+            "reference": "https://www.ieee802.org/11/",
+            "reference_label": "IEEE 802.11"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "WPA3-Enterprise の推奨方式は証明書ベースの EAP-TLS です。",
+        "reference": "https://www.rfc-editor.org/rfc/rfc5216",
+        "reference_label": "RFC 5216"
+      }
+    },
+
+    {
+      "id": "comptia-network-3",
+      "question": "スイッチがフレームの宛先 MAC アドレスを学習する仕組みを正しく説明しているものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ARP を参照して MAC アドレスを学習する",
+          "explanation": {
+            "text": "ARP を参照するのはホストであり、スイッチは ARP を使用しません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc826",
+            "reference_label": "RFC 826 ARP"
+          }
+        },
+        {
+          "key": "B",
+          "text": "受信したフレームの送信元 MAC アドレスを記録する",
+          "explanation": {
+            "text": "スイッチは受信フレームの送信元 MAC をポートに紐づけて学習します。",
+            "reference": "https://www.ieee802.org/1/pages/802.1D.html",
+            "reference_label": "IEEE 802.1D"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ルーターから送信されるルーティングテーブルを参照する",
+          "explanation": {
+            "text": "スイッチはルーティング情報を使用しません。",
+            "reference": "https://www.ieee802.org/1/pages/802.1D.html",
+            "reference_label": "IEEE 802.1D"
+          }
+        },
+        {
+          "key": "D",
+          "text": "DHCP から MAC 情報を取得する",
+          "explanation": {
+            "text": "DHCP は IP 管理の仕組みであり、MAC 学習には関与しません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc2131",
+            "reference_label": "RFC 2131 DHCP"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "学習スイッチは受信フレームの送信元 MAC をもとにテーブルを更新します。",
+        "reference": "https://www.ieee802.org/1/pages/802.1D.html",
+        "reference_label": "IEEE 802.1D"
+      }
+    },
+
+    {
+      "id": "comptia-network-4",
+      "question": "10GBase-SR が使用することが一般的なケーブルタイプはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "CAT6 UTP",
+          "explanation": {
+            "text": "UTP は銅線であり、10GBase-SR は光ファイバーを使用します。",
+            "reference": "https://www.ieee802.org/3/",
+            "reference_label": "IEEE 802.3"
+          }
+        },
+        {
+          "key": "B",
+          "text": "シングルモードファイバー",
+          "explanation": {
+            "text": "SMF は 10GBase-LR など長距離向けに使用されます。",
+            "reference": "https://www.ieee802.org/3/",
+            "reference_label": "IEEE 802.3"
+          }
+        },
+        {
+          "key": "C",
+          "text": "マルチモードファイバー",
+          "explanation": {
+            "text": "10GBase-SR は短距離用で、マルチモードファイバーを使用します。",
+            "reference": "https://www.ieee802.org/3/",
+            "reference_label": "IEEE 802.3"
+          }
+        },
+        {
+          "key": "D",
+          "text": "同軸ケーブル",
+          "explanation": {
+            "text": "同軸は古い Ethernet（10Base-2/5）で使用されたもので、10Gbpsには対応しません。",
+            "reference": "https://www.ieee802.org/3/",
+            "reference_label": "IEEE 802.3"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "10GBase-SR（Short Range）はマルチモードファイバーを使用します。",
+        "reference": "https://www.ieee802.org/3/",
+        "reference_label": "IEEE 802.3"
+      }
+    },
+
+    {
+      "id": "comptia-network-5",
+      "question": "VPN の分野において、SSL VPN が主に利用するポート番号はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "22",
+          "explanation": {
+            "text": "22 は SSH の標準ポートです。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4251",
+            "reference_label": "RFC 4251 SSH"
+          }
+        },
+        {
+          "key": "B",
+          "text": "80",
+          "explanation": {
+            "text": "80 は HTTP で、SSL/TLS 通信には利用されません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc9110",
+            "reference_label": "RFC 9110 HTTP"
+          }
+        },
+        {
+          "key": "C",
+          "text": "443",
+          "explanation": {
+            "text": "SSL VPN は HTTPS（TCP 443）上で動作するのが一般的です。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc8446",
+            "reference_label": "RFC 8446 TLS 1.3"
+          }
+        },
+        {
+          "key": "D",
+          "text": "500",
+          "explanation": {
+            "text": "UDP 500 は IPsec IKE で使用されます。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc7296",
+            "reference_label": "RFC 7296 IKEv2"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "SSL VPN は主に HTTPS（TCP 443）を使用するため、通信が容易に通過します。",
+        "reference": "https://www.rfc-editor.org/rfc/rfc8446",
+        "reference_label": "RFC 8446"
+      }
+    },
+
+    {
+      "id": "comptia-network-6",
+      "question": "帯域幅を効率化するために複数の物理リンクを論理的に束ねる技術として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "STP",
+          "explanation": {
+            "text": "STP はループ防止であり、帯域の集約には使用しません。",
+            "reference": "https://www.ieee802.org/1/pages/802.1D.html",
+            "reference_label": "IEEE 802.1D"
+          }
+        },
+        {
+          "key": "B",
+          "text": "LACP",
+          "explanation": {
+            "text": "LACP は複数リンクをまとめる IEEE 802.3ad の技術です。",
+            "reference": "https://www.ieee802.org/3/",
+            "reference_label": "IEEE 802.3ad"
+          }
+        },
+        {
+          "key": "C",
+          "text": "RIP",
+          "explanation": {
+            "text": "RIP は距離ベクトル型ルーティングプロトコルです。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc2453",
+            "reference_label": "RFC 2453 RIP"
+          }
+        },
+        {
+          "key": "D",
+          "text": "DHCP Relay",
+          "explanation": {
+            "text": "DHCP Relay は DHCP パケット転送の技術です。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc1542",
+            "reference_label": "RFC 1542 DHCP Relay"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "LACP は複数の物理リンクを束ねる Link Aggregation 技術です。",
+        "reference": "https://www.ieee802.org/3/",
+        "reference_label": "IEEE 802.3ad"
+      }
+    },
+
+    {
+      "id": "comptia-network-7",
+      "question": "ルーティングプロトコル OSPF で使用されるアルゴリズムはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Bellman-Ford",
+          "explanation": {
+            "text": "Bellman-Ford は RIP で使用されます。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc2453",
+            "reference_label": "RFC 2453 RIP"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Dijkstra（SPF）",
+          "explanation": {
+            "text": "OSPF は SPF アルゴリズム（Dijkstra）を使用します。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc2328",
+            "reference_label": "RFC 2328 OSPFv2"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Path Vector",
+          "explanation": {
+            "text": "Path Vector は BGP の仕組みです。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4271",
+            "reference_label": "RFC 4271 BGP"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Random Early Detection",
+          "explanation": {
+            "text": "これはキュー管理方式であり、OSPF とは無関係です。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc2309",
+            "reference_label": "RFC 2309 RED"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "OSPF はリンクステート型で、SPF（Dijkstra）によって最短経路を計算します。",
+        "reference": "https://www.rfc-editor.org/rfc/rfc2328",
+        "reference_label": "RFC 2328"
+      }
+    },
+
+    {
+      "id": "comptia-network-8",
+      "question": "ネットワーク監視において、ICMP Echo Request を送信する主な目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ARP テーブルの更新",
+          "explanation": {
+            "text": "ARP テーブルの更新は ICMP では行いません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc826",
+            "reference_label": "RFC 826 ARP"
+          }
+        },
+        {
+          "key": "B",
+          "text": "名前解決の実施",
+          "explanation": {
+            "text": "名前解決は DNS が行う処理です。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc1034",
+            "reference_label": "RFC 1034 DNS"
+          }
+        },
+        {
+          "key": "C",
+          "text": "到達性の確認（Ping）",
+          "explanation": {
+            "text": "ICMP Echo Request はターゲットの到達性を確認するために使用されます。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc792",
+            "reference_label": "RFC 792 ICMP"
+          }
+        },
+        {
+          "key": "D",
+          "text": "転送経路の記録",
+          "explanation": {
+            "text": "転送経路の調査は traceroute で行います。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc1812",
+            "reference_label": "RFC 1812 Routers"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "Ping は ICMP Echo を使ってターゲットの応答性を確認します。",
+        "reference": "https://www.rfc-editor.org/rfc/rfc792",
+        "reference_label": "RFC 792"
+      }
+    },
+
+    {
+      "id": "comptia-network-9",
+      "question": "ネットワークの可用性を高めるために、デフォルトゲートウェイを冗長化するプロトコルはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "VRRP",
+          "explanation": {
+            "text": "VRRP は仮想ルーターを提供しデフォルトゲートウェイ冗長化を実現します。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc5798",
+            "reference_label": "RFC 5798 VRRP"
+          }
+        },
+        {
+          "key": "B",
+          "text": "LLDP",
+          "explanation": {
+            "text": "LLDP は機器情報共有プロトコルであり、冗長化には使用しません。",
+            "reference": "https://www.ieee802.org/1/pages/802.1AB.html",
+            "reference_label": "IEEE 802.1AB LLDP"
+          }
+        },
+        {
+          "key": "C",
+          "text": "SCP",
+          "explanation": {
+            "text": "SCP はファイル転送プロトコルです。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4251",
+            "reference_label": "RFC 4251 SSH"
+          }
+        },
+        {
+          "key": "D",
+          "text": "NAT",
+          "explanation": {
+            "text": "NAT はアドレス変換であり、冗長化の仕組みではありません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc3022",
+            "reference_label": "RFC 3022 NAT"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "VRRP は仮想 IP を使いゲートウェイ冗長化を提供する標準プロトコルです。",
+        "reference": "https://www.rfc-editor.org/rfc/rfc5798",
+        "reference_label": "RFC 5798"
+      }
+    },
+
+    {
+      "id": "comptia-network-10",
+      "question": "DNS で使用されるレコードのうち、メールサーバの優先度と宛先を指定するものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "A レコード",
+          "explanation": {
+            "text": "A レコードは IPv4 アドレスを示します。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc1035",
+            "reference_label": "RFC 1035 DNS"
+          }
+        },
+        {
+          "key": "B",
+          "text": "CNAME レコード",
+          "explanation": {
+            "text": "CNAME は別名定義であり、メールとは関係しません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc1035",
+            "reference_label": "RFC 1035 DNS"
+          }
+        },
+        {
+          "key": "C",
+          "text": "TXT レコード",
+          "explanation": {
+            "text": "TXT は任意テキスト情報で、メールサーバ定義ではありません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc1035",
+            "reference_label": "RFC 1035 DNS"
+          }
+        },
+        {
+          "key": "D",
+          "text": "MX レコード",
+          "explanation": {
+            "text": "MX はメールサーバの宛先と優先度を定義するレコードです。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc1035",
+            "reference_label": "RFC 1035 DNS"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "MX レコードはメールサーバの優先度と宛先を示すための DNS レコードです。",
+        "reference": "https://www.rfc-editor.org/rfc/rfc1035",
+        "reference_label": "RFC 1035"
+      }
+    }, 
+    {
+      "id": "comptia-network-11",
+      "question": "OSI 参照モデルにおいて、TCP セグメントのカプセル化を主に担当するレイヤはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ネットワーク層",
+          "explanation": {
+            "text": "ネットワーク層は IP パケットの経路選択を担当します。",
+            "reference": "https://www.itu.int/rec/T-REC-X.200",
+            "reference_label": "ITU-T X.200 OSI参照モデル"
+          }
+        },
+        {
+          "key": "B",
+          "text": "トランスポート層",
+          "explanation": {
+            "text": "TCP/UDP のセグメント化はトランスポート層の役割です。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc793",
+            "reference_label": "RFC 793 TCP"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データリンク層",
+          "explanation": {
+            "text": "データリンク層はフレーム化やMACアドレス制御を行います。",
+            "reference": "https://www.ieee802.org/3/",
+            "reference_label": "IEEE 802.3 Ethernet"
+          }
+        },
+        {
+          "key": "D",
+          "text": "物理層",
+          "explanation": {
+            "text": "物理層はビット列の送受信を担当します。",
+            "reference": "https://www.itu.int/rec/T-REC-X.200",
+            "reference_label": "ITU-T X.200 OSI参照モデル"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "TCP セグメントを作成し、ポート番号を付与するのはトランスポート層の役割です。",
+        "reference": "https://www.rfc-editor.org/rfc/rfc793",
+        "reference_label": "RFC 793 TCP"
+      }
+    },
+
+    {
+      "id": "comptia-network-12",
+      "question": "エンタープライズネットワークにおいて、ルータの設定バックアップを安全にリモート取得する方法として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "TFTP で構成ファイルを取得する",
+          "explanation": {
+            "text": "TFTP は暗号化や認証がなくセキュアではありません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc1350",
+            "reference_label": "RFC 1350 TFTP"
+          }
+        },
+        {
+          "key": "B",
+          "text": "FTP で平文パスワードを用いてダウンロードする",
+          "explanation": {
+            "text": "FTP は制御・データともに平文であり盗聴に弱いです。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc959",
+            "reference_label": "RFC 959 FTP"
+          }
+        },
+        {
+          "key": "C",
+          "text": "SCP で暗号化されたチャネルを用いてコピーする",
+          "explanation": {
+            "text": "SCP は SSH を利用して暗号化された経路でファイルを転送できます。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4251",
+            "reference_label": "RFC 4251 SSH プロトコル"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Telnet セッション中に構成を画面コピーする",
+          "explanation": {
+            "text": "Telnet は平文であり、構成情報も盗聴される可能性があります。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc854",
+            "reference_label": "RFC 854 Telnet"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "SCP は SSH ベースで暗号化・認証を提供し、構成バックアップに適した安全な手段です。",
+        "reference": "https://www.rfc-editor.org/rfc/rfc4251",
+        "reference_label": "RFC 4251 SSH プロトコル"
+      }
+    },
+
+    {
+      "id": "comptia-network-13",
+      "question": "ネットワークアドレス 192.168.10.0/27 のサブネットで、ホストとして使用可能な IP アドレスの範囲として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "192.168.10.0 ～ 192.168.10.31",
+          "explanation": {
+            "text": "ネットワークアドレスとブロードキャストアドレスを含んでおり、正しくありません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4632",
+            "reference_label": "RFC 4632 Classless Inter-domain Routing"
+          }
+        },
+        {
+          "key": "B",
+          "text": "192.168.10.1 ～ 192.168.10.30",
+          "explanation": {
+            "text": "/27 は 32 アドレスで、0がネットワーク、31がブロードキャストのため、1～30 がホストです。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4632",
+            "reference_label": "RFC 4632 CIDR"
+          }
+        },
+        {
+          "key": "C",
+          "text": "192.168.10.2 ～ 192.168.10.29",
+          "explanation": {
+            "text": "ホストとして利用可能ですが範囲が狭く、1と30も利用可能です。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4632",
+            "reference_label": "RFC 4632 CIDR"
+          }
+        },
+        {
+          "key": "D",
+          "text": "192.168.10.32 ～ 192.168.10.62",
+          "explanation": {
+            "text": "これは次の /27 サブネット (192.168.10.32/27) に属します。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4632",
+            "reference_label": "RFC 4632 CIDR"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "/27 では 32 アドレスのうち先頭がネットワーク、末尾がブロードキャストとなるため、1～30 がホストとして利用できます。",
+        "reference": "https://www.rfc-editor.org/rfc/rfc4632",
+        "reference_label": "RFC 4632 CIDR"
+      }
+    },
+
+    {
+      "id": "comptia-network-14",
+      "question": "SNMP を用いたネットワーク監視において、ポーリングではなく装置側から能動的に送信される通知メッセージはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "GetRequest",
+          "explanation": {
+            "text": "GetRequest は管理ステーションからエージェントへ送信される要求です。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc3416",
+            "reference_label": "RFC 3416 SNMPv2 Protocol Operations"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SetRequest",
+          "explanation": {
+            "text": "SetRequest はエージェント上の値変更要求であり、通知ではありません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc3416",
+            "reference_label": "RFC 3416 SNMPv2 Protocol Operations"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Trap",
+          "explanation": {
+            "text": "Trap はエージェントから管理ステーションへ送信される一方向の通知です。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc3416",
+            "reference_label": "RFC 3416 SNMPv2 Protocol Operations"
+          }
+        },
+        {
+          "key": "D",
+          "text": "GetNextRequest",
+          "explanation": {
+            "text": "GetNextRequest は連続した MIB 要素を取得するための要求です。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc3416",
+            "reference_label": "RFC 3416 SNMPv2 Protocol Operations"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "Trap は装置側から能動的に送られる SNMP 通知で、障害検知などに利用されます。",
+        "reference": "https://www.rfc-editor.org/rfc/rfc3416",
+        "reference_label": "RFC 3416 SNMPv2 Protocol Operations"
+      }
+    },
+
+    {
+      "id": "comptia-network-15",
+      "question": "無線LANにおいて、同一チャネル内で多数の AP を密集配置した場合に主に問題となる現象はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "チャネルボンディング",
+          "explanation": {
+            "text": "チャネルボンディングは帯域幅を広げる機能であり、問題ではありません。",
+            "reference": "https://www.ieee802.org/11/",
+            "reference_label": "IEEE 802.11n/ac 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SSID ブロードキャスト",
+          "explanation": {
+            "text": "SSID ブロードキャスト自体は通常の動作です。",
+            "reference": "https://www.ieee802.org/11/",
+            "reference_label": "IEEE 802.11"
+          }
+        },
+        {
+          "key": "C",
+          "text": "コチャネル干渉",
+          "explanation": {
+            "text": "同一チャネルを複数APが利用すると、コチャネル干渉でスループット低下が発生します。",
+            "reference": "https://www.wi-fi.org/discover-wi-fi",
+            "reference_label": "Wi-Fi Alliance 技術解説"
+          }
+        },
+        {
+          "key": "D",
+          "text": "VLAN フラッピング",
+          "explanation": {
+            "text": "VLAN フラッピングはスイッチ設定の問題であり、無線チャネルとは無関係です。",
+            "reference": "https://www.ieee802.org/1/pages/802.1Q.html",
+            "reference_label": "IEEE 802.1Q VLAN"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "同一チャネルに AP が密集すると、CSMA/CA による待ち時間増加や衝突回避処理により性能が低下します。",
+        "reference": "https://www.wi-fi.org/discover-wi-fi",
+        "reference_label": "Wi-Fi Alliance 技術解説"
+      }
+    },
+
+    {
+      "id": "comptia-network-16",
+      "question": "ファイアウォールで、外部から内部ネットワークへの不正侵入を検知・遮断する機能として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "NAT (Network Address Translation)",
+          "explanation": {
+            "text": "NAT はアドレス変換が目的であり、侵入検知・防御機能はありません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc3022",
+            "reference_label": "RFC 3022 Traditional NAT"
+          }
+        },
+        {
+          "key": "B",
+          "text": "QoS (Quality of Service)",
+          "explanation": {
+            "text": "QoS はトラフィックの優先制御で、セキュリティ機能ではありません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc2475",
+            "reference_label": "RFC 2475 DiffServ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "IDS (Intrusion Detection System)",
+          "explanation": {
+            "text": "IDS は侵入を検知しますが、通常はパッシブで遮断は行いません。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-94/final",
+            "reference_label": "NIST SP 800-94 IDS/IPS ガイド"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IPS (Intrusion Prevention System)",
+          "explanation": {
+            "text": "IPS は侵入検知に加えて不正トラフィックをブロックする機能を持ちます。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-94/final",
+            "reference_label": "NIST SP 800-94 IDS/IPS ガイド"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "IPS はファイアウォールと連携して不正トラフィックをリアルタイムに遮断できる仕組みです。",
+        "reference": "https://csrc.nist.gov/publications/detail/sp/800-94/final",
+        "reference_label": "NIST SP 800-94 IDS/IPS ガイド"
+      }
+    },
+
+    {
+      "id": "comptia-network-17",
+      "question": "企業ネットワークにおいて、802.1X によるポートベース認証を行う際に、認証サーバとして一般的に利用されるプロトコルはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "RADIUS",
+          "explanation": {
+            "text": "802.1X では認証サーバとして RADIUS が広く利用されています。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc2865",
+            "reference_label": "RFC 2865 RADIUS"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SNMP",
+          "explanation": {
+            "text": "SNMP は監視プロトコルであり、認証サーバとしては利用されません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc3411",
+            "reference_label": "RFC 3411 SNMP Framework"
+          }
+        },
+        {
+          "key": "C",
+          "text": "NTP",
+          "explanation": {
+            "text": "NTP は時刻同期プロトコルです。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc5905",
+            "reference_label": "RFC 5905 NTPv4"
+          }
+        },
+        {
+          "key": "D",
+          "text": "TACACS (TCP/49)",
+          "explanation": {
+            "text": "TACACS+ は機器管理などに利用されますが、802.1X では標準的には RADIUS が利用されます。",
+            "reference": "https://datatracker.ietf.org/doc/html/draft-grant-tacacs",
+            "reference_label": "TACACS+ Internet Draft"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "802.1X 環境では、スイッチ/無線APがRADIUSサーバと連携してユーザ認証を行う構成が一般的です。",
+        "reference": "https://www.rfc-editor.org/rfc/rfc3580",
+        "reference_label": "RFC 3580 IEEE 802.1X と RADIUS"
+      }
+    },
+
+    {
+      "id": "comptia-network-18",
+      "question": "ネットワーク設計において、DMZ（非武装地帯）に配置するのが最も適切なサーバはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "社内ファイルサーバ（機密データを保存）",
+          "explanation": {
+            "text": "機密データを保存するサーバは内部ネットワークに置き、DMZ には配置しません。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-41/rev-1/final",
+            "reference_label": "NIST SP 800-41 Firewalls Guidelines"
+          }
+        },
+        {
+          "key": "B",
+          "text": "外部公開 Web サーバ",
+          "explanation": {
+            "text": "インターネットからアクセスされる Web サーバは DMZ に配置するのが一般的です。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-41/rev-1/final",
+            "reference_label": "NIST SP 800-41 Firewalls Guidelines"
+          }
+        },
+        {
+          "key": "C",
+          "text": "内部 DNS のみを提供するサーバ",
+          "explanation": {
+            "text": "内部 DNS 専用サーバは内側ネットワークに置くのが一般的です。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc8499",
+            "reference_label": "RFC 8499 DNS Terminology"
+          }
+        },
+        {
+          "key": "D",
+          "text": "社内人事システムサーバ",
+          "explanation": {
+            "text": "人事情報は機密性が高く、DMZ ではなく内部ネットワークに設置します。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-41/rev-1/final",
+            "reference_label": "NIST SP 800-41 Firewalls Guidelines"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "DMZ はインターネット公開サーバを内部ネットワークから分離するためのゾーンであり、Web や公開 DNS などを配置します。",
+        "reference": "https://csrc.nist.gov/publications/detail/sp/800-41/rev-1/final",
+        "reference_label": "NIST SP 800-41 Firewalls Guidelines"
+      }
+    },
+
+    {
+      "id": "comptia-network-19",
+      "question": "ケーブルテスタの結果として「NEXT（近端漏話）」値が基準を下回っている場合に想定される問題として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ケーブルが長すぎて遅延が発生している",
+          "explanation": {
+            "text": "ケーブル長の問題は伝搬遅延や減衰として検出されます。",
+            "reference": "https://www.tiaonline.org/standards/",
+            "reference_label": "TIA/EIA-568 ケーブリング規格"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ケーブルペア間のクロストークが大きい",
+          "explanation": {
+            "text": "NEXT は近端でのペア間クロストークを示し、値が悪いと干渉が大きいことを示します。",
+            "reference": "https://www.tiaonline.org/standards/",
+            "reference_label": "TIA/EIA-568 ケーブリング規格"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ファイバのコネクタが汚れている",
+          "explanation": {
+            "text": "この問題は光損失や反射増加として測定されます。",
+            "reference": "https://www.iec.ch/dyn/www/f?p=103:38:0",
+            "reference_label": "IEC 14763 光ファイバ試験"
+          }
+        },
+        {
+          "key": "D",
+          "text": "MAC アドレステーブルがあふれている",
+          "explanation": {
+            "text": "これはスイッチの論理的な問題であり、ケーブルテスタでは検出されません。",
+            "reference": "https://www.ieee802.org/1/pages/802.1D.html",
+            "reference_label": "IEEE 802.1D MAC学習"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "NEXT 不良はツイストが甘い・ペア誤結線などによりペア同士の干渉が大きくなっていることを意味します。",
+        "reference": "https://www.tiaonline.org/standards/",
+        "reference_label": "TIA/EIA-568 ケーブリング規格"
+      }
+    },
+
+    {
+      "id": "comptia-network-20",
+      "question": "ログ収集基盤において、複数のネットワーク機器から Syslog メッセージを受信するサーバの役割として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "DHCP リレー",
+          "explanation": {
+            "text": "DHCP リレーは DHCP ブロードキャストを中継する機能です。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc1542",
+            "reference_label": "RFC 1542 DHCP Relay"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Syslog サーバ",
+          "explanation": {
+            "text": "Syslog サーバはUDP 514/TCP 6514 などでログを受信し保存・解析します。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc5424",
+            "reference_label": "RFC 5424 Syslog Protocol"
+          }
+        },
+        {
+          "key": "C",
+          "text": "NTP サーバ",
+          "explanation": {
+            "text": "NTP サーバは時刻同期を提供します。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc5905",
+            "reference_label": "RFC 5905 NTPv4"
+          }
+        },
+        {
+          "key": "D",
+          "text": "RADIUS サーバ",
+          "explanation": {
+            "text": "RADIUS サーバは認証・認可・課金(AAA) を提供します。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc2865",
+            "reference_label": "RFC 2865 RADIUS"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Syslog サーバはネットワーク機器からのログメッセージを集中管理する役割を持ちます。",
+        "reference": "https://www.rfc-editor.org/rfc/rfc5424",
+        "reference_label": "RFC 5424 Syslog Protocol"
+      }
+    },
+    {
+      "id": "comptia-network-21",
+      "question": "サーバ仮想化環境において、仮想スイッチ間で VLAN タグを保持したまま通信するために必要な機能はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "トランクポート",
+          "explanation": {
+            "text": "トランクポートは複数 VLAN のタグを保持したまま転送できます。",
+            "reference": "https://www.ieee802.org/1/pages/802.1Q.html",
+            "reference_label": "IEEE 802.1Q VLAN"
+          }
+        },
+        {
+          "key": "B",
+          "text": "アクセスポート",
+          "explanation": {
+            "text": "アクセスポートは 1 VLAN のみでタグを外します。",
+            "reference": "https://www.ieee802.org/1/pages/802.1Q.html",
+            "reference_label": "IEEE 802.1Q VLAN"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ルーティングポート",
+          "explanation": {
+            "text": "L3 ポートは VLAN タグを保持しません。",
+            "reference": "https://www.ieee802.org/1/pages/802.1Q.html",
+            "reference_label": "IEEE 802.1Q VLAN"
+          }
+        },
+        {
+          "key": "D",
+          "text": "SPAN ポート",
+          "explanation": {
+            "text": "SPAN ポートはミラーリング用でタグ管理とは無関係です。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6500-series-switches/10570-41.html",
+            "reference_label": "Cisco SPAN 技術文書"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "トランクは複数の VLAN をタグ付のまま転送し、仮想環境でも広く利用されます。",
+        "reference": "https://www.ieee802.org/1/pages/802.1Q.html",
+        "reference_label": "IEEE 802.1Q"
+      }
+    },
+
+    {
+      "id": "comptia-network-22",
+      "question": "IPv6 のアドレス構造において、ユニークローカルアドレス(ULA)のプレフィックスとして正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ff00::/8",
+          "explanation": {
+            "text": "ff00::/8 は IPv6 マルチキャストのプレフィックスです。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4291",
+            "reference_label": "RFC 4291 IPv6 Addressing"
+          }
+        },
+        {
+          "key": "B",
+          "text": "fe80::/10",
+          "explanation": {
+            "text": "fe80::/10 はリンクローカルアドレスです。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4291",
+            "reference_label": "RFC 4291 IPv6 Addressing"
+          }
+        },
+        {
+          "key": "C",
+          "text": "fc00::/7",
+          "explanation": {
+            "text": "fc00::/7 はユニークローカルアドレスに割り当てられています。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4193",
+            "reference_label": "RFC 4193 ULA"
+          }
+        },
+        {
+          "key": "D",
+          "text": "2000::/3",
+          "explanation": {
+            "text": "2000::/3 はグローバルユニキャストアドレスです。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4291",
+            "reference_label": "RFC 4291 IPv6 Addressing"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "fc00::/7 が ULA の範囲で、企業内部などで利用されます。",
+        "reference": "https://www.rfc-editor.org/rfc/rfc4193",
+        "reference_label": "RFC 4193"
+      }
+    },
+
+    {
+      "id": "comptia-network-23",
+      "question": "ハードウェア障害やサービス停止の影響を最小限にするため、複数のデータセンターへ同じサービスを分散する設計を何というか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ロードバランシング",
+          "explanation": {
+            "text": "ロードバランシングは同一サイト内の分散で、複数DC設計とは異なります。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc6797",
+            "reference_label": "RFC 6797 HSTS"
+          }
+        },
+        {
+          "key": "B",
+          "text": "フォールトトレランス",
+          "explanation": {
+            "text": "耐障害設計の概念ですが、具体的に複数DC配置ではありません。",
+            "reference": "https://www.iso.org/standard/63555.html",
+            "reference_label": "ISO/IEC 27031"
+          }
+        },
+        {
+          "key": "C",
+          "text": "地理的冗長化 (Geo-Redundancy)",
+          "explanation": {
+            "text": "複数データセンターでサービスを維持する設計を指します。",
+            "reference": "https://www.iso.org/standard/44374.html",
+            "reference_label": "ISO 24762 BC/DR"
+          }
+        },
+        {
+          "key": "D",
+          "text": "キャパシティプランニング",
+          "explanation": {
+            "text": "これは必要リソースを見積もる作業です。",
+            "reference": "https://www.iso.org/standard/66579.html",
+            "reference_label": "ISO 20000-1"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "地理的冗長化により、一拠点障害でもサービス継続が可能になります。",
+        "reference": "https://www.iso.org/standard/44374.html",
+        "reference_label": "ISO 24762"
+      }
+    },
+
+    {
+      "id": "comptia-network-24",
+      "question": "無線LANで、クライアントの位置や電波特性を分析して最適な AP へ自動的に接続先を変更する仕組みを何と呼ぶか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "バンドステアリング",
+          "explanation": {
+            "text": "2.4GHz/5GHz の誘導機能で、AP切替ではありません。",
+            "reference": "https://www.wi-fi.org/discover-wi-fi",
+            "reference_label": "Wi-Fi Alliance"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ローミング",
+          "explanation": {
+            "text": "ローミングは AP 間をシームレスに移動する仕組みです。",
+            "reference": "https://www.ieee802.org/11/",
+            "reference_label": "IEEE 802.11"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ビームフォーミング",
+          "explanation": {
+            "text": "ビームフォーミングは電波指向性制御の技術です。",
+            "reference": "https://www.ieee802.org/11/",
+            "reference_label": "IEEE 802.11ac"
+          }
+        },
+        {
+          "key": "D",
+          "text": "RTS/CTS",
+          "explanation": {
+            "text": "RTS/CTS は衝突回避の仕組みです。",
+            "reference": "https://www.ieee802.org/11/",
+            "reference_label": "IEEE 802.11"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ローミングが AP 間での自動接続切替機能です。",
+        "reference": "https://www.ieee802.org/11/",
+        "reference_label": "IEEE 802.11"
+      }
+    },
+
+    {
+      "id": "comptia-network-25",
+      "question": "マルチキャスト通信において、ルータがホストのグループ参加状況を確認するために使用されるプロトコルはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "IGMP",
+          "explanation": {
+            "text": "IGMP は IPv4 マルチキャストでホストの参加状況を管理します。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc3376",
+            "reference_label": "RFC 3376 IGMPv3"
+          }
+        },
+        {
+          "key": "B",
+          "text": "MLD",
+          "explanation": {
+            "text": "MLD は IPv6 用であり、IPv4ではありません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc3810",
+            "reference_label": "RFC 3810 MLDv2"
+          }
+        },
+        {
+          "key": "C",
+          "text": "PIM",
+          "explanation": {
+            "text": "PIM はルータ間のマルチキャスト構築プロトコルです。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc7761",
+            "reference_label": "RFC 7761 PIM-SM"
+          }
+        },
+        {
+          "key": "D",
+          "text": "BGP",
+          "explanation": {
+            "text": "BGP は経路制御であり、ホスト参加管理ではありません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4271",
+            "reference_label": "RFC 4271 BGP"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "IPv4 マルチキャスト参加管理は IGMP が担当します。",
+        "reference": "https://www.rfc-editor.org/rfc/rfc3376",
+        "reference_label": "RFC 3376"
+      }
+    },
+
+    {
+      "id": "comptia-network-26",
+      "question": "ネットワークスイッチで、STP の収束時間を短縮するために Rapid Spanning Tree Protocol として策定された規格番号はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "802.1D",
+          "explanation": {
+            "text": "802.1D は従来の STP の規格です。",
+            "reference": "https://www.ieee802.org/1/pages/802.1D.html",
+            "reference_label": "IEEE 802.1D"
+          }
+        },
+        {
+          "key": "B",
+          "text": "802.1Q",
+          "explanation": {
+            "text": "802.1Q は VLAN タグの規格です。",
+            "reference": "https://www.ieee802.org/1/pages/802.1Q.html",
+            "reference_label": "IEEE 802.1Q"
+          }
+        },
+        {
+          "key": "C",
+          "text": "802.1w",
+          "explanation": {
+            "text": "802.1w は Rapid Spanning Tree Protocol (RSTP) の規格です。",
+            "reference": "https://www.ieee802.org/1/pages/802.1w.html",
+            "reference_label": "IEEE 802.1w"
+          }
+        },
+        {
+          "key": "D",
+          "text": "802.1X",
+          "explanation": {
+            "text": "802.1X はネットワークアクセス制御の規格です。",
+            "reference": "https://www.ieee802.org/1/pages/802.1X.html",
+            "reference_label": "IEEE 802.1X"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "802.1w は RSTP として従来 ST  より高速に収束します。",
+        "reference": "https://www.ieee802.org/1/pages/802.1w.html",
+        "reference_label": "IEEE 802.1w"
+      }
+    },
+
+    {
+      "id": "comptia-network-27",
+      "question": "ケーブル規格において、CAT6A がサポートする最大伝送距離で 10GBASE-T を利用できる距離はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "30m",
+          "explanation": {
+            "text": "CAT6A では 10Gbps を 30m に制限することはありません。",
+            "reference": "https://standards.tiaonline.org/",
+            "reference_label": "TIA-568"
+          }
+        },
+        {
+          "key": "B",
+          "text": "55m",
+          "explanation": {
+            "text": "55m は CAT6 の制限です。",
+            "reference": "https://standards.tiaonline.org/",
+            "reference_label": "TIA-568"
+          }
+        },
+        {
+          "key": "C",
+          "text": "100m",
+          "explanation": {
+            "text": "CAT6A は 10Gbps を 100m でサポートします。",
+            "reference": "https://standards.tiaonline.org/",
+            "reference_label": "TIA-568"
+          }
+        },
+        {
+          "key": "D",
+          "text": "150m",
+          "explanation": {
+            "text": "150m のサポートは標準化されていません。",
+            "reference": "https://standards.tiaonline.org/",
+            "reference_label": "TIA-568"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "CAT6A ケーブルは 10GBASE-T を最大 100m でサポートします。",
+        "reference": "https://standards.tiaonline.org/",
+        "reference_label": "TIA-568"
+      }
+    },
+
+    {
+      "id": "comptia-network-28",
+      "question": "クラウド環境で複数の仮想マシンが同一物理 NIC を共有する手法を何と呼ぶか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "NIC チーミング",
+          "explanation": {
+            "text": "NICチーミングは複数物理NICを束ねる技術です。",
+            "reference": "https://learn.microsoft.com/en-us/windows-server/networking/technologies/nic-teaming/",
+            "reference_label": "Microsoft NIC Teaming"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SR-IOV",
+          "explanation": {
+            "text": "SR-IOV は物理 NIC を複数の仮想関数(VF)として VM に割り当て共有させる技術です。",
+            "reference": "https://www.pcisig.com/specifications/iov",
+            "reference_label": "PCI-SIG SR-IOV"
+          }
+        },
+        {
+          "key": "C",
+          "text": "QoS スケジューリング",
+          "explanation": {
+            "text": "これは帯域制御技術です。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc2475",
+            "reference_label": "RFC 2475 DiffServ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "VLAN タグストリッピング",
+          "explanation": {
+            "text": "タグストリッピングは VLAN 処理であり、NIC共有とは関係ありません。",
+            "reference": "https://www.ieee802.org/1/pages/802.1Q.html",
+            "reference_label": "IEEE 802.1Q"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "SR-IOV は1つの物理NICを複数のVMが高速・低遅延で共有できる技術です。",
+        "reference": "https://www.pcisig.com/specifications/iov",
+        "reference_label": "PCI-SIG SR-IOV"
+      }
+    },
+
+    {
+      "id": "comptia-network-29",
+      "question": "ARP テーブルのエントリが頻繁に変化する原因として最も考えられる問題はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "MAC フラッピング",
+          "explanation": {
+            "text": "複数ポートで同じMACが頻繁に学習されることで、ARPも更新が多くなります。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6500-series-switches/11627-41.html",
+            "reference_label": "Cisco MAC Flapping"
+          }
+        },
+        {
+          "key": "B",
+          "text": "DNS キャッシュのクリア",
+          "explanation": {
+            "text": "DNS と ARP は関係ありません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc1034",
+            "reference_label": "RFC 1034 DNS"
+          }
+        },
+        {
+          "key": "C",
+          "text": "NTP ずれによる時刻不一致",
+          "explanation": {
+            "text": "時刻と ARP の更新は関連ありません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc5905",
+            "reference_label": "RFC 5905 NTP"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ICMP フラグメント禁止",
+          "explanation": {
+            "text": "ICMP フラグメント禁止は MTU 関連であり、ARPに影響しません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc1191",
+            "reference_label": "RFC 1191 Path MTU"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "MAC フラッピングにより ARP 解決が頻発し、テーブルが頻繁に更新されます。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6500-series-switches/11627-41.html",
+        "reference_label": "Cisco MAC Flapping"
+      }
+    },
+
+    {
+      "id": "comptia-network-30",
+      "question": "ネットワーク管理者がトラブルシューティングでパケットの送受信状況をリアルタイムに確認する際に最も使用されるツールはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Nmap",
+          "explanation": {
+            "text": "Nmap はポートスキャンツールです。",
+            "reference": "https://nmap.org/book/man.html",
+            "reference_label": "Nmap マニュアル"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Wireshark",
+          "explanation": {
+            "text": "Wireshark はパケットキャプチャツールの標準で、リアルタイム解析が可能です。",
+            "reference": "https://www.wireshark.org/docs/",
+            "reference_label": "Wireshark Documentation"
+          }
+        },
+        {
+          "key": "C",
+          "text": "OpenVPN",
+          "explanation": {
+            "text": "OpenVPN は VPN 構築ソフトウェアです。",
+            "reference": "https://openvpn.net/",
+            "reference_label": "OpenVPN Docs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "iperf",
+          "explanation": {
+            "text": "iperf は性能測定ツールであり、リアルタイムパケット解析とは異なります。",
+            "reference": "https://iperf.fr/",
+            "reference_label": "iPerf Docs"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Wireshark はパケットをリアルタイムにキャプチャし、詳細解析できるツールです。",
+        "reference": "https://www.wireshark.org/docs/",
+        "reference_label": "Wireshark Documentation"
+      }
+    },
+    {
+      "id": "comptia-network-31",
+      "question": "ネットワーク監視において、しきい値を超えたときだけ通知を送る設定を行う主な目的として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "アラートのノイズを減らし、本当に重要なイベントに集中するため",
+          "explanation": {
+            "text": "しきい値監視は、通常の揺らぎではなく重大な変化のみを通知させることで運用負荷を下げます。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/solutions/Enterprise/management/Guide/Campus_Mgnt_Guide/cmg.html",
+            "reference_label": "Cisco Network Management Design Guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ネットワーク機器のファームウェアを自動アップデートするため",
+          "explanation": {
+            "text": "ファームウェアアップデートは別の仕組みで行われ、しきい値アラートとは無関係です。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/switches/catalyst-3850-series-switches/118763-technote-ios-upgrade-00.html",
+            "reference_label": "Cisco Software Upgrade Best Practices"
+          }
+        },
+        {
+          "key": "C",
+          "text": "QoS 設定を自動的に変更するため",
+          "explanation": {
+            "text": "一般的な監視システムのしきい値は通知目的であり、QoS を自動変更するものではありません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc2475",
+            "reference_label": "RFC 2475 An Architecture for Differentiated Services"
+          }
+        },
+        {
+          "key": "D",
+          "text": "暗号化方式を自動的に切り替えるため",
+          "explanation": {
+            "text": "暗号化方式の選択は別のポリシーで決定され、しきい値アラートの主目的ではありません。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-137/final",
+            "reference_label": "NIST SP 800-137 Information Security Continuous Monitoring"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "しきい値を適切に設定することで、運用担当者が本当に対応すべきイベントだけに集中できるようになります。",
+        "reference": "https://csrc.nist.gov/publications/detail/sp/800-137/final",
+        "reference_label": "NIST SP 800-137 Information Security Continuous Monitoring"
+      }
+    },
+
+    {
+      "id": "comptia-network-32",
+      "question": "DHCP サーバから IP アドレスを取得できないクライアントが、Windows 環境で自動的に設定する IPv4 アドレスとして最も適切な説明はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "10.0.0.0/8 内の任意のアドレスをランダムに選ぶ",
+          "explanation": {
+            "text": "10.0.0.0/8 は RFC1918 プライベートアドレスであり、自動割り当て専用ではありません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc1918",
+            "reference_label": "RFC 1918 Address Allocation for Private Internets"
+          }
+        },
+        {
+          "key": "B",
+          "text": "192.168.0.0/16 から予約された APIPA アドレスを利用する",
+          "explanation": {
+            "text": "APIPA は 169.254.0.0/16 範囲であり、192.168.0.0/16 ではありません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc3927",
+            "reference_label": "RFC 3927 IPv4 Link-Local Addresses"
+          }
+        },
+        {
+          "key": "C",
+          "text": "0.0.0.0 を一時的アドレスとして利用し続ける",
+          "explanation": {
+            "text": "0.0.0.0 は未設定やデフォルトルート表現に用いられ、ホストアドレスとしては使用しません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc5735",
+            "reference_label": "RFC 5735 Special Use IPv4 Addresses"
+          }
+        },
+        {
+          "key": "D",
+          "text": "169.254.0.0/16 の範囲から自動的にアドレスを生成する",
+          "explanation": {
+            "text": "DHCP に失敗した場合、APIPA として 169.254.0.0/16 のリンクローカルアドレスが自動設定されます。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc3927",
+            "reference_label": "RFC 3927 IPv4 Link-Local Addresses"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "Windows など多くの OS は DHCP でアドレス取得に失敗すると APIPA（169.254.0.0/16）を自動設定します。",
+        "reference": "https://www.rfc-editor.org/rfc/rfc3927",
+        "reference_label": "RFC 3927 IPv4 Link-Local Addresses"
+      }
+    },
+
+    {
+      "id": "comptia-network-33",
+      "question": "ネットワークセキュリティにおいて、平文パスワードをネットワーク上に流さないため、Telnet の代わりに推奨されるプロトコルはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "FTP",
+          "explanation": {
+            "text": "FTP は制御および認証情報が平文で送信されるため、セキュアではありません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc959",
+            "reference_label": "RFC 959 File Transfer Protocol"
+          }
+        },
+        {
+          "key": "B",
+          "text": "HTTP",
+          "explanation": {
+            "text": "HTTP も平文通信であり、管理プロトコルとして利用するのは危険です。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc9110",
+            "reference_label": "RFC 9110 HTTP Semantics"
+          }
+        },
+        {
+          "key": "C",
+          "text": "SSH",
+          "explanation": {
+            "text": "SSH は暗号化と認証を提供するリモートログインプロトコルで、Telnet の安全な代替です。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4251",
+            "reference_label": "RFC 4251 Secure Shell (SSH) Protocol Architecture"
+          }
+        },
+        {
+          "key": "D",
+          "text": "SNMPv1",
+          "explanation": {
+            "text": "SNMPv1 はコミュニティ文字列が平文で送信され、機器管理において安全ではありません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc1157",
+            "reference_label": "RFC 1157 SNMPv1"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "SSH は暗号化されたチャネル上で認証とコマンド実行を行うため、Telnet の安全な代替として標準的に利用されます。",
+        "reference": "https://www.rfc-editor.org/rfc/rfc4251",
+        "reference_label": "RFC 4251 Secure Shell (SSH) Protocol Architecture"
+      }
+    },
+
+    {
+      "id": "comptia-network-34",
+      "question": "冗長構成のルータ間で、どちらをアクティブルータとするかを決定するために「優先度（priority）」値を用いるプロトコルはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "OSPF",
+          "explanation": {
+            "text": "OSPF でも DR/BDR 選出に priority を使いますが、ゲートウェイ冗長プロトコルではありません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc2328",
+            "reference_label": "RFC 2328 OSPFv2"
+          }
+        },
+        {
+          "key": "B",
+          "text": "HSRP",
+          "explanation": {
+            "text": "HSRP は Cisco 独自のゲートウェイ冗長プロトコルで priority を用いますが標準ではありません。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/hot-standby-router-protocol-hsrp/9234-hsrp.html",
+            "reference_label": "Cisco HSRP 設計ガイド"
+          }
+        },
+        {
+          "key": "C",
+          "text": "BGP",
+          "explanation": {
+            "text": "BGP は AS 間ルーティングであり、priority という名前のフィールドを使った冗長制御は行いません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4271",
+            "reference_label": "RFC 4271 BGP-4"
+          }
+        },
+        {
+          "key": "D",
+          "text": "VRRP",
+          "explanation": {
+            "text": "VRRP は仮想ルータのマスタ選出に priority を用いる標準化されたゲートウェイ冗長プロトコルです。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc5798",
+            "reference_label": "RFC 5798 Virtual Router Redundancy Protocol (VRRP)"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "VRRP は priority と IP アドレスを用いてマスタルータを決定し、デフォルトゲートウェイの冗長化を実現します。",
+        "reference": "https://www.rfc-editor.org/rfc/rfc5798",
+        "reference_label": "RFC 5798 VRRP Version 3"
+      }
+    },
+
+    {
+      "id": "comptia-network-35",
+      "question": "ネットワーク設計において、スイッチのコア層・ディストリビューション層・アクセス層の3階層モデルを採用する主な利点として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "スケーラビリティと障害分離をしやすくするため",
+          "explanation": {
+            "text": "3階層モデルは役割分担を明確にし、拡張性・冗長性・障害分離を向上させます。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/switches/lan/campus_lan_design/guide/campusdesign.html",
+            "reference_label": "Cisco Campus Network for High Availability Design Guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "MAC アドレステーブルを完全に不要にするため",
+          "explanation": {
+            "text": "階層モデルでも L2 スイッチは MAC テーブルを利用し続けます。",
+            "reference": "https://www.ieee802.org/1/pages/802.1D.html",
+            "reference_label": "IEEE 802.1D MAC Bridges"
+          }
+        },
+        {
+          "key": "C",
+          "text": "VLAN を使用しなくてもブロードキャストドメインを分割できるため",
+          "explanation": {
+            "text": "ブロードキャストドメインの分割には VLAN やルータが必要で、階層だけでは実現しません。",
+            "reference": "https://www.ieee802.org/1/pages/802.1Q.html",
+            "reference_label": "IEEE 802.1Q VLAN"
+          }
+        },
+        {
+          "key": "D",
+          "text": "全てのトラフィックが必ず1台のスイッチを経由するようにするため",
+          "explanation": {
+            "text": "単一スイッチ集中は可用性を下げるため、設計の目的とは逆です。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/switches/lan/campus_lan_design/guide/campusdesign.html",
+            "reference_label": "Cisco Campus Network Design"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "3階層モデルは役割を分割することで、機器追加・冗長化・障害対応を柔軟に行えるようにする設計思想です。",
+        "reference": "https://www.cisco.com/c/en/us/td/docs/switches/lan/campus_lan_design/guide/campusdesign.html",
+        "reference_label": "Cisco Campus Network Design"
+      }
+    },
+
+    {
+      "id": "comptia-network-36",
+      "question": "ファイバケーブルで発生する「マイクロベンド」や「マクロベンド」による主な影響として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ケーブルのインピーダンスがゼロになる",
+          "explanation": {
+            "text": "インピーダンスがゼロになることはなく、主に損失増大として現れます。",
+            "reference": "https://www.iec.ch/dyn/www/f?p=103:38:0",
+            "reference_label": "IEC 光ファイバ試験規格概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "CRC エラーがアプリケーション層でのみ発生する",
+          "explanation": {
+            "text": "CRC はデータリンク層で検出され、アプリケーション層に限定されません。",
+            "reference": "https://www.ieee802.org/3/",
+            "reference_label": "IEEE 802.3 Ethernet"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ファイバ内で波長多重が不可能になる",
+          "explanation": {
+            "text": "曲げは損失や反射を引き起こしますが、波長多重の可否とは直接関係しません。",
+            "reference": "https://www.itu.int/rec/T-REC-G.652",
+            "reference_label": "ITU-T G.652 Characteristics of a single-mode optical fibre"
+          }
+        },
+        {
+          "key": "D",
+          "text": "光損失が増加し、リンクマージンが不足しやすくなる",
+          "explanation": {
+            "text": "マイクロベンド・マクロベンドは光が外部に漏れ出す原因となり、損失増加やリンクダウンを招きます。",
+            "reference": "https://www.iec.ch/dyn/www/f?p=103:38:0",
+            "reference_label": "IEC Optical fibre bend testing"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "曲げによる損失が大きくなると、受信側で必要な光レベルを満たせず、誤り率増加やリンクダウンにつながります。",
+        "reference": "https://www.itu.int/rec/T-REC-G.652",
+        "reference_label": "ITU-T G.652 Single-mode fibre"
+      }
+    },
+
+    {
+      "id": "comptia-network-37",
+      "question": "NetFlow や sFlow などのフローベース監視を導入する主な目的として、最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "パケットをすべてフルキャプチャして詳細なペイロードを保存するため",
+          "explanation": {
+            "text": "NetFlow/sFlow はヘッダ中心であり、フルペイロードキャプチャには向きません。",
+            "reference": "https://www.ietf.org/rfc/rfc3954.txt",
+            "reference_label": "RFC 3954 NetFlow Services Export"
+          }
+        },
+        {
+          "key": "B",
+          "text": "トラフィックの傾向や会話（フロー）単位での利用状況を可視化するため",
+          "explanation": {
+            "text": "フロー監視は送信元/宛先/ポートなどを軸にトラフィックを可視化し、分析に利用します。",
+            "reference": "https://www.ietf.org/rfc/rfc7011.txt",
+            "reference_label": "RFC 7011 IP Flow Information Export (IPFIX)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "機器の CPU 温度やファン回転数を取得するため",
+          "explanation": {
+            "text": "これらは SNMP による監視項目です。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc3411",
+            "reference_label": "RFC 3411 SNMP Management Framework"
+          }
+        },
+        {
+          "key": "D",
+          "text": "暗号化トラフィックの復号を行うため",
+          "explanation": {
+            "text": "フロー監視はヘッダ情報の記録であり、暗号化解除は行いません。",
+            "reference": "https://www.ietf.org/rfc/rfc7011.txt",
+            "reference_label": "RFC 7011 IPFIX"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "フローベース監視は「誰が・どこへ・どのポートで・どれくらい」通信しているかを把握する用途に適しています。",
+        "reference": "https://www.ietf.org/rfc/rfc7011.txt",
+        "reference_label": "RFC 7011 IPFIX"
+      }
+    },
+
+    {
+      "id": "comptia-network-38",
+      "question": "ケーブルテストで「オープン（open）」と表示された場合に想定される物理的な状態として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "2本の導線がショートしている",
+          "explanation": {
+            "text": "ショートは互いに接触した状態であり、open の逆です。",
+            "reference": "https://www.tiaonline.org/standards/",
+            "reference_label": "TIA-568 Structured Cabling Standard"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ペアの結線順序が入れ替わっている",
+          "explanation": {
+            "text": "これはスプリットペアやペアミスワイヤとして報告されることが多いです。",
+            "reference": "https://www.tiaonline.org/standards/",
+            "reference_label": "TIA-568 Structured Cabling Standard"
+          }
+        },
+        {
+          "key": "C",
+          "text": "導線がどこかで断線している、または片側が未接続である",
+          "explanation": {
+            "text": "open は回路が閉じておらず、信号が戻ってこない状態を示します。",
+            "reference": "https://www.iec.ch/dyn/www/f?p=103:38:0",
+            "reference_label": "IEC Copper cable testing"
+          }
+        },
+        {
+          "key": "D",
+          "text": "コネクタに極性が反転して接続されている",
+          "explanation": {
+            "text": "極性反転は別種の結線ミスとして報告されます。",
+            "reference": "https://www.tiaonline.org/standards/",
+            "reference_label": "TIA-568 Structured Cabling Standard"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "open は配線がどこかで切れている、あるいは端子が接続されていない状態を意味し、信号が往復できません。",
+        "reference": "https://www.iec.ch/dyn/www/f?p=103:38:0",
+        "reference_label": "IEC Cable Testing Methods"
+      }
+    },
+
+    {
+      "id": "comptia-network-39",
+      "question": "クラウドサービスモデルのうち、利用者が OS やミドルウェアの管理を行い、クラウド事業者が物理ハードウェアやハイパーバイザを管理する形態はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "IaaS",
+          "explanation": {
+            "text": "IaaS では仮想マシン単位で提供され、OS 以降は利用者が管理します。",
+            "reference": "https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-145.pdf",
+            "reference_label": "NIST SP 800-145 The NIST Definition of Cloud Computing"
+          }
+        },
+        {
+          "key": "B",
+          "text": "PaaS",
+          "explanation": {
+            "text": "PaaS では OS やランタイムまで事業者が管理するのが一般的です。",
+            "reference": "https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-145.pdf",
+            "reference_label": "NIST SP 800-145"
+          }
+        },
+        {
+          "key": "C",
+          "text": "SaaS",
+          "explanation": {
+            "text": "SaaS はアプリケーションを含めて全て事業者が管理します。",
+            "reference": "https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-145.pdf",
+            "reference_label": "NIST SP 800-145"
+          }
+        },
+        {
+          "key": "D",
+          "text": "FaaS",
+          "explanation": {
+            "text": "FaaS / Serverless はコード単位の実行環境を提供し、OS 管理は事業者側です。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-210/final",
+            "reference_label": "NIST SP 800-210 General Access Control Guidance for Cloud Systems"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "IaaS では仮想マシンの OS・ミドルウェアは利用者管理であり、物理層や仮想化基盤はクラウド事業者が管理します。",
+        "reference": "https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-145.pdf",
+        "reference_label": "NIST SP 800-145 The NIST Definition of Cloud Computing"
+      }
+    },
+
+    {
+      "id": "comptia-network-40",
+      "question": "ネットワークセグメント間の通信をフィルタリングするにあたり、アプリケーション層情報（URL や HTTP メソッドなど）も参照して許可/拒否を判断できるファイアウォールのタイプはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "パケットフィルタ型ファイアウォール",
+          "explanation": {
+            "text": "主に IP アドレスやポート番号など L3/L4 情報を基に制御します。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-41/rev-1/final",
+            "reference_label": "NIST SP 800-41 Rev.1 Guidelines on Firewalls"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ステートフルインスペクション型ファイアウォール",
+          "explanation": {
+            "text": "セッション状態を保持しますが、基本的には L3/L4 までの情報が中心です。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-41/rev-1/final",
+            "reference_label": "NIST SP 800-41 Rev.1"
+          }
+        },
+        {
+          "key": "C",
+          "text": "サーキットレベルゲートウェイ",
+          "explanation": {
+            "text": "TCP セッションの確立を制御しますが、アプリケーションデータの中身までは見ません。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-41/rev-1/final",
+            "reference_label": "NIST SP 800-41 Rev.1"
+          }
+        },
+        {
+          "key": "D",
+          "text": "アプリケーションゲートウェイ（プロキシ型ファイアウォール）",
+          "explanation": {
+            "text": "アプリケーションゲートウェイはプロキシとして動作し、HTTP など L7 情報を参照して細かな制御が可能です。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-41/rev-1/final",
+            "reference_label": "NIST SP 800-41 Rev.1 Guidelines on Firewalls"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "アプリケーションゲートウェイ（プロキシ型）は、L7 のコンテンツまで解析できるため、URL 単位などのきめ細かな制御が可能です。",
+        "reference": "https://csrc.nist.gov/publications/detail/sp/800-41/rev-1/final",
+        "reference_label": "NIST SP 800-41 Rev.1"
+      }
+    },
+    {
+      "id": "comptia-network-41",
+      "question": "ネットワーク障害調査において、ARP 要求が異常に多く発生している場合に最も考えられる原因はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "デフォルトゲートウェイの ARP キャッシュが満杯である",
+          "explanation": {
+            "text": "ARP キャッシュ満杯は稀で、異常な ARP フラッディングの主原因ではありません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc826",
+            "reference_label": "RFC 826 ARP"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ネットワーク上で ARP スプーフィング／ポイズニングが発生している",
+          "explanation": {
+            "text": "ARP スプーフィングが発生するとキャッシュ書き換え攻撃により ARP ブロードキャストが急増します。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-94/final",
+            "reference_label": "NIST SP 800-94 IDS/IPS Guide"
+          }
+        },
+        {
+          "key": "C",
+          "text": "DNS サーバの応答時間が遅くなっている",
+          "explanation": {
+            "text": "DNS 応答遅延と ARP の異常増加は直接関係しません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc1034",
+            "reference_label": "RFC 1034 DNS"
+          }
+        },
+        {
+          "key": "D",
+          "text": "スイッチのポートセキュリティが無効化されている",
+          "explanation": {
+            "text": "ポートセキュリティ無効化は MAC 学習範囲に影響しますが、ARP 急増の直接原因ではありません。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/switches/catalyst-2960-series-switches/11649-ports-ecurity.html",
+            "reference_label": "Cisco Port Security Overview"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ARP スプーフィングは ARP を大量に発生させる典型的な攻撃で、異常検知の重要指標になります。",
+        "reference": "https://csrc.nist.gov/publications/detail/sp/800-94/final",
+        "reference_label": "NIST SP 800-94"
+      }
+    },
+
+    {
+      "id": "comptia-network-42",
+      "question": "SNMPv3 の主な特徴として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "コミュニティ文字列によりアクセス制御を行う",
+          "explanation": {
+            "text": "コミュニティ文字列を使用するのは SNMPv1/v2c で、暗号化されません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc3411",
+            "reference_label": "RFC 3411 SNMP Management Framework"
+          }
+        },
+        {
+          "key": "B",
+          "text": "認証と暗号化（AuthPriv）に対応し、安全性が高い",
+          "explanation": {
+            "text": "SNMPv3 は認証 (HMAC) と暗号化 (AES など) を提供し、セキュリティが強化されています。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc3414",
+            "reference_label": "RFC 3414 User-based Security Model (USM)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Trap 機能が利用できなくなる",
+          "explanation": {
+            "text": "SNMPv3 でも Trap は利用できます。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc3416",
+            "reference_label": "RFC 3416 SNMP Protocol Operations"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データを XML 形式で送信するよう変更された",
+          "explanation": {
+            "text": "SNMP は ASN.1/BER 形式であり、XML は使用しません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc3411",
+            "reference_label": "RFC 3411 SNMP Framework"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "SNMPv3 は認証と暗号化の仕組みを取り入れ、安全に管理情報を扱えるよう設計されています。",
+        "reference": "https://www.rfc-editor.org/rfc/rfc3414",
+        "reference_label": "RFC 3414"
+      }
+    },
+
+    {
+      "id": "comptia-network-43",
+      "question": "ネットワークスイッチで BPDU Guard を有効化するとどのような動作になるか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "BPDU を受信したポートをエラーディセーブル状態にする",
+          "explanation": {
+            "text": "BPDU Guard は誤接続防止のため BPDU を受信するとポートを遮断します。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/10591-79.html",
+            "reference_label": "Cisco BPDU Guard"
+          }
+        },
+        {
+          "key": "B",
+          "text": "BPDU をすべて破棄して学習スイッチとして動作させる",
+          "explanation": {
+            "text": "BPDU 破棄だけなら BPDU Filter の挙動です。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/10591-79.html",
+            "reference_label": "Cisco BPDU Filter"
+          }
+        },
+        {
+          "key": "C",
+          "text": "受信した BPDU を他ポートへブロードキャストする",
+          "explanation": {
+            "text": "BPDU をブロードキャストする機能はありません。",
+            "reference": "https://www.ieee802.org/1/pages/802.1D.html",
+            "reference_label": "IEEE 802.1D STP"
+          }
+        },
+        {
+          "key": "D",
+          "text": "BPDU を検出したポートをルートポートに変更する",
+          "explanation": {
+            "text": "ルートポート選定は BPDU Guard とは無関係です。",
+            "reference": "https://www.ieee802.org/1/pages/802.1D.html",
+            "reference_label": "IEEE 802.1D"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "BPDU Guard はエッジポートに BPDU が誤って流れ込むことを防ぐ重要な保護機能です。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/10591-79.html",
+        "reference_label": "Cisco BPDU Guard"
+      }
+    },
+
+    {
+      "id": "comptia-network-44",
+      "question": "IPv6 において SLAAC を使用する場合、ホストはどの情報を自動設定できるか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "DNS サーバ情報のみ",
+          "explanation": {
+            "text": "DNS 情報は RDNSS など拡張が必要で SLAAC 単体では提供されません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc8106",
+            "reference_label": "RFC 8106 IPv6 DNS RA Options"
+          }
+        },
+        {
+          "key": "B",
+          "text": "IPv6 アドレスとデフォルトルータ情報",
+          "explanation": {
+            "text": "SLAAC はプレフィックス情報とルータ広告 (RA) からアドレスとデフォルトルータ設定を行えます。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4862",
+            "reference_label": "RFC 4862 IPv6 Stateless Address Autoconfiguration"
+          }
+        },
+        {
+          "key": "C",
+          "text": "MAC アドレス",
+          "explanation": {
+            "text": "MAC アドレスは NIC 固有であり、SLAAC では設定されません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4291",
+            "reference_label": "RFC 4291 IPv6 Addressing"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IPv4 互換アドレス",
+          "explanation": {
+            "text": "IPv4 互換アドレスは廃止されており、SLAAC とも無関係です。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4291",
+            "reference_label": "RFC 4291 IPv6 Addressing"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "SLAAC では RA を用いて IPv6 アドレスとデフォルトルータを自動設定できます。",
+        "reference": "https://www.rfc-editor.org/rfc/rfc4862",
+        "reference_label": "RFC 4862"
+      }
+    },
+
+    {
+      "id": "comptia-network-45",
+      "question": "無線LANの 802.11ac における MU-MIMO の特徴として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "複数クライアントへ同時に異なるデータストリームを送信できる",
+          "explanation": {
+            "text": "MU-MIMO は複数端末へ同時送信が可能な技術です。",
+            "reference": "https://www.ieee802.org/11/",
+            "reference_label": "IEEE 802.11ac"
+          }
+        },
+        {
+          "key": "B",
+          "text": "複数 AP を 1 台の論理 AP として動作させる機能である",
+          "explanation": {
+            "text": "これはコントローラベースの AP クラスタ機能で、MU-MIMO ではありません。",
+            "reference": "https://www.wi-fi.org/discover-wi-fi",
+            "reference_label": "Wi-Fi Alliance"
+          }
+        },
+        {
+          "key": "C",
+          "text": "チャネルボンディングを無効化する必要がある",
+          "explanation": {
+            "text": "チャネルボンディングは並行して利用可能です。",
+            "reference": "https://www.ieee802.org/11/",
+            "reference_label": "IEEE 802.11ac"
+          }
+        },
+        {
+          "key": "D",
+          "text": "2.4GHz帯でのみ利用できる技術である",
+          "explanation": {
+            "text": "MU-MIMO は主に 5GHz で利用されます。",
+            "reference": "https://www.wi-fi.org/discover-wi-fi",
+            "reference_label": "Wi-Fi Alliance"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "MU-MIMO はダウンリンクで複数クライアントへの同時送信を実現しスループットを向上させます。",
+        "reference": "https://www.ieee802.org/11/",
+        "reference_label": "IEEE 802.11ac"
+      }
+    },
+
+    {
+      "id": "comptia-network-46",
+      "question": "PoE (Power over Ethernet) において、電力クラスのネゴシエーションに使用される規格として適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "802.1X",
+          "explanation": {
+            "text": "802.1X は認証プロトコルで PoE とは関係ありません。",
+            "reference": "https://www.ieee802.org/1/pages/802.1X.html",
+            "reference_label": "IEEE 802.1X"
+          }
+        },
+        {
+          "key": "B",
+          "text": "802.3af/at/bt",
+          "explanation": {
+            "text": "PoE の給電・クラスネゴシエーションは IEEE 802.3af/at/bt によって規定されています。",
+            "reference": "https://www.ieee802.org/3/",
+            "reference_label": "IEEE 802.3af/at/bt"
+          }
+        },
+        {
+          "key": "C",
+          "text": "802.11r",
+          "explanation": {
+            "text": "802.11r は無線ローミングの規格です。",
+            "reference": "https://www.ieee802.org/11/",
+            "reference_label": "IEEE 802.11r"
+          }
+        },
+        {
+          "key": "D",
+          "text": "802.1D",
+          "explanation": {
+            "text": "802.1D は STP の仕様で PoE とは無関係です。",
+            "reference": "https://www.ieee802.org/1/pages/802.1D.html",
+            "reference_label": "IEEE 802.1D"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "PoE は 802.3af (PoE)、at (PoE+)、bt (PoE++) として標準化され、給電クラスなどのネゴシエーションも定義されています。",
+        "reference": "https://www.ieee802.org/3/",
+        "reference_label": "IEEE 802.3"
+      }
+    },
+
+    {
+      "id": "comptia-network-47",
+      "question": "ケーブル診断で「スプリットペア」と判断された場合の説明として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ペア内の 2 本の導線が他のペアと混ざって配線されている",
+          "explanation": {
+            "text": "スプリットペアは対となるべき線が別ペアに混ざってしまう誤配線です。",
+            "reference": "https://www.tiaonline.org/standards/",
+            "reference_label": "TIA-568 Structured Cabling"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ケーブルが規定長を超えている",
+          "explanation": {
+            "text": "規定長超過は length エラーで報告されます。",
+            "reference": "https://www.tiaonline.org/standards/",
+            "reference_label": "TIA-568"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ケーブルが断線している",
+          "explanation": {
+            "text": "断線は open として検出されます。",
+            "reference": "https://www.iec.ch/dyn/www/f?p=103:38:0",
+            "reference_label": "IEC Cable Test"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ケーブルが短絡している",
+          "explanation": {
+            "text": "短絡は short として検出されます。",
+            "reference": "https://www.tiaonline.org/standards/",
+            "reference_label": "TIA-568"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "スプリットペアはより線の順序が崩れ、クロストーク増大や帯域不足の原因になります。",
+        "reference": "https://www.tiaonline.org/standards/",
+        "reference_label": "TIA-568"
+      }
+    },
+
+    {
+      "id": "comptia-network-48",
+      "question": "LACP を利用したリンクアグリゲーションの特徴として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "スタティック設定が必須であり、ネゴシエーションは行われない",
+          "explanation": {
+            "text": "LACP は動的ネゴシエーションが特徴であり、静的のみではありません。",
+            "reference": "https://www.ieee802.org/3/",
+            "reference_label": "IEEE 802.3ad"
+          }
+        },
+        {
+          "key": "B",
+          "text": "リンク障害時に自動的に別のリンクへフェイルオーバーする",
+          "explanation": {
+            "text": "LACP はメンバリンク健康監視により自動フェイルオーバーが可能です。",
+            "reference": "https://www.ieee802.org/3/",
+            "reference_label": "IEEE 802.3ad"
+          }
+        },
+        {
+          "key": "C",
+          "text": "物理リンクを束ねるが MAC アドレスはリンクごとに異なる",
+          "explanation": {
+            "text": "アグリゲーション後は論理インターフェイスとして単一 MAC を使用します。",
+            "reference": "https://www.ieee802.org/3/",
+            "reference_label": "IEEE 802.3ad"
+          }
+        },
+        {
+          "key": "D",
+          "text": "スパニングツリーの動作を無効化しなければならない",
+          "explanation": {
+            "text": "LACP と STP は共存できます。",
+            "reference": "https://www.ieee802.org/1/pages/802.1D.html",
+            "reference_label": "IEEE 802.1D"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "LACP はネゴシエーションとフェイルオーバーを提供し、可用性向上に使われます。",
+        "reference": "https://www.ieee802.org/3/",
+        "reference_label": "IEEE 802.3ad"
+      }
+    },
+
+    {
+      "id": "comptia-network-49",
+      "question": "NAT において、多数の内部ホストが同一グローバル IP を共有して外部通信を行う方式はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "SNAT（静的 NAT）",
+          "explanation": {
+            "text": "SNAT は 1 対 1 の静的変換です。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc3022",
+            "reference_label": "RFC 3022 NAT"
+          }
+        },
+        {
+          "key": "B",
+          "text": "PAT（ポートアドレス変換）",
+          "explanation": {
+            "text": "PAT は多数の内部ホストを 1 つのグローバル IP に対してポート番号で識別します。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc3022",
+            "reference_label": "RFC 3022 NAT"
+          }
+        },
+        {
+          "key": "C",
+          "text": "DNAT（宛先 NAT）",
+          "explanation": {
+            "text": "DNAT は外部 → 内部ホストへの到達変換です。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc3022",
+            "reference_label": "RFC 3022 NAT"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ALG（アプリケーションゲートウェイ）",
+          "explanation": {
+            "text": "ALG は特定プロトコル解析補助で、NAT 方式ではありません。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc3235",
+            "reference_label": "RFC 3235 NAT Behavioral Requirements"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "PAT は内部ホストが多数いてもグローバル IP を節約しつつ外部通信できる方式です。",
+        "reference": "https://www.rfc-editor.org/rfc/rfc3022",
+        "reference_label": "RFC 3022 NAT"
+      }
+    },
+
+    {
+      "id": "comptia-network-50",
+      "question": "ネットワーク冗長化の設計において、単一点障害（SPOF）を排除するために最も適切な対策はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "同一ラック内にすべてのネットワーク機器を集約する",
+          "explanation": {
+            "text": "同一ラックへの集約は SPOF を増やす危険性があります。",
+            "reference": "https://www.iso.org/standard/44374.html",
+            "reference_label": "ISO 24762 BC/DR"
+          }
+        },
+        {
+          "key": "B",
+          "text": "コアスイッチを 1 台構成とし、設定を冗長化する",
+          "explanation": {
+            "text": "物理 1 台構成では冗長化は実現できません。",
+            "reference": "https://www.iso.org/standard/24762.html",
+            "reference_label": "ISO 24762"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ネットワーク機器を複数ルート・複数電源系統で冗長化する",
+          "explanation": {
+            "text": "真の冗長化には複数機器・複数経路・複数電源が必要です。",
+            "reference": "https://www.iso.org/standard/63555.html",
+            "reference_label": "ISO/IEC 27031"
+          }
+        },
+        {
+          "key": "D",
+          "text": "同一スイッチ上に全 VLAN を集約して運用する",
+          "explanation": {
+            "text": "単一スイッチ構成ではスイッチ障害で全 VLAN が停止します。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/enterprise/design-zone-campus.html",
+            "reference_label": "Cisco Campus Design"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "冗長性設計では物理経路・機器・電源を多重化し、単一点障害を排除することが基本です。",
+        "reference": "https://www.iso.org/standard/63555.html",
+        "reference_label": "ISO/IEC 27031"
+      }
+    }
+
+  ]
+}

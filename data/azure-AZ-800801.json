@@ -1,0 +1,2467 @@
+{
+  "exam": {
+    "id": "windows_server_hybrid_admin_associate",
+    "title": "Windows Server Hybrid Administrator Associate",
+    "description": "この認定は、オンプレミスおよびハイブリッド環境の両方で Windows Server をワークロードとして管理する技術を検証します。候補者は Azure とオンプレミスを統合し、ID／アクセス、管理、コンピューティング、ネットワーク、ストレージ、監視、高可用性および災害復旧の実装・運用・トラブルシューティングを行います。管理ツールとして Windows Admin Center、PowerShell、Azure Arc、Azure Policy、Azure Monitor、Azure Update Manager、Microsoft Defender for Cloud 等を使用します。受験には、Windows Server オペレーティングシステムで数年の実務経験があることが望まれます。",
+    "version": "2025年10月",
+    "price": "165 USD",
+    "difficulty": "難しい",
+    "official-site": "https://learn.microsoft.com/credentials/certifications/windows-server-hybrid-administrator/",
+    "category": {
+      "id": "azure",
+      "name": "Azure"
+    }
+  },
+  "questions": [
+    {
+      "id": "azure-AZ-800801-q1",
+      "question": "オンプレミスの AD DS フォレストに Azure 上のドメイン コントローラー (DC) を追加し、レプリケーションを安定させたい。必須の前提として最も適切なのはどれか。1つ選べ。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Azure 側 DNS にオンプレミス ドメイン名の DNS フォワーダーを必ず設定する",
+          "explanation": {
+            "text": "DNS フォワーダーは有用だが、AD DS レプリケーションの必須条件ではない。レプリケーションの基本は AD サイト/サブネット設計と必要ポートの到達性。",
+            "reference": "https://learn.microsoft.com/windows-server/identity/ad-ds/plan/replication-topology",
+            "reference_label": "Designing the AD DS Replication Topology"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AD サイトとサブネットを正しく定義し、サイト間レプリケーションが許可されていること",
+          "explanation": {
+            "text": "サイト/サブネットの正確なマッピングはレプリケーションの前提。帯域・遅延に応じたトポロジ/スケジュール制御を行う。",
+            "reference": "https://learn.microsoft.com/windows-server/identity/ad-ds/plan/replication-topology",
+            "reference_label": "Designing the AD DS Replication Topology"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure 上の DC は必ず RODC としてのみ設置する",
+          "explanation": {
+            "text": "RODC は選択肢の一つだが必須ではない。Azure 上に書き込み可能 DC を配置できる。",
+            "reference": "https://learn.microsoft.com/windows-server/identity/ad-ds/plan/rodc/rodc-planning",
+            "reference_label": "Planning for Read-Only Domain Controllers"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure の DC にオンプレミス DC と同一の FSMO ロールを持たせる",
+          "explanation": {
+            "text": "FSMO ロールは分散配置し、重複させない。新規追加 DC に FSMO を複製する要件はない。",
+            "reference": "https://learn.microsoft.com/windows-server/identity/ad-ds/plan/operations-master-roles",
+            "reference_label": "Active Directory Operations Master Roles"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Azure 上に DC を追加する際は、AD サイト/サブネットの正確な定義と、必要ポートの双方向到達性が不可欠。これによりレプリケーションの経路とスケジュールを適切に制御できる。",
+        "reference": "https://learn.microsoft.com/windows-server/identity/ad-ds/plan/replication-topology",
+        "reference_label": "Designing the AD DS Replication Topology"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q2",
+      "question": "多サイト/多ドメインの AD DS でレプリケーション遅延を低減したい。効果が高い対策をすべて選べ。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "サイト間レプリケーションのスケジュールを短縮する",
+          "explanation": {
+            "text": "スケジュール短縮により変更の伝播間隔が縮まり、遅延が減る。",
+            "reference": "https://learn.microsoft.com/windows-server/identity/ad-ds/plan/replication-topology",
+            "reference_label": "AD DS Replication Topology"
+          }
+        },
+        {
+          "key": "B",
+          "text": "すべてのサイト間をフルメッシュ トポロジにして接続数を最大化する",
+          "explanation": {
+            "text": "過度なメッシュはトラフィックを増やし逆効果となることがある。設計指針に基づく最小接続が推奨。",
+            "reference": "https://learn.microsoft.com/windows-server/identity/ad-ds/plan/replication-topology",
+            "reference_label": "AD DS Replication Topology"
+          }
+        },
+        {
+          "key": "C",
+          "text": "各サイトにグローバル カタログ (GC) を配置する",
+          "explanation": {
+            "text": "GC でログオンやフォレスト横断の参照が局所化し、応答性が向上する。",
+            "reference": "https://learn.microsoft.com/windows-server/identity/ad-ds/plan/operations-master-roles#global-catalog",
+            "reference_label": "Global Catalog (overview)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "サイトリンク コストを調整して高速リンクを優先させる",
+          "explanation": {
+            "text": "コストでレプリケーション経路を誘導でき、遅延の少ないリンクを選ばせられる。",
+            "reference": "https://learn.microsoft.com/windows-server/identity/ad-ds/plan/understanding-active-directory-site-topology",
+            "reference_label": "Understanding AD Site Topology"
+          }
+        }
+      ],
+      "answer": "A,C,D",
+      "explanation": {
+        "text": "遅延の主因は伝播間隔・経路・参照性。スケジュール短縮、GC の局所配置、サイトリンク コスト調整が定石。無秩序なメッシュ化はトラフィック増を招く。",
+        "reference": "https://learn.microsoft.com/windows-server/identity/ad-ds/plan/replication-topology",
+        "reference_label": "AD DS Replication Topology"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q3",
+      "question": "オンプレミス DC を Azure VM 化した後に追加で確認すべき重要ポイントはどれか。2つ選べ。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "DC 用として OS/機能がサポート対象であること",
+          "explanation": {
+            "text": "サポートされる Windows Server バージョン/機能であることが大前提。",
+            "reference": "https://learn.microsoft.com/windows-server/get-started/windows-server-release-info",
+            "reference_label": "Windows Server release info"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Microsoft の TAM へ事前申請を必ず行うこと",
+          "explanation": {
+            "text": "契約に依存する事項で必須要件ではない。",
+            "reference": "https://learn.microsoft.com/azure/virtual-machines/workloads/windows/overview",
+            "reference_label": "Windows on Azure VMs overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Backup が有効なら AD のバックアップ設計は不要である",
+          "explanation": {
+            "text": "AD 専用の復旧要件（権限ある復元など）は別途考慮が必要。Backup 有効=十分とは限らない。",
+            "reference": "https://learn.microsoft.com/windows-server/identity/ad-ds/backup-and-recovery/active-directory-backup-and-restore",
+            "reference_label": "Active Directory Backup and Restore"
+          }
+        },
+        {
+          "key": "D",
+          "text": "NSG/ファイアウォールでレプリケーションや LDAP/Kerberos の必要ポートが到達可能であること",
+          "explanation": {
+            "text": "AD レプリケーション/認証ポートが閉じていると動作しない。NSG と OS/ネットワーク FW を確認。",
+            "reference": "https://learn.microsoft.com/troubleshoot/windows-server/identity/list-of-rpc-and-ports-used-by-ad-replication",
+            "reference_label": "Ports used by AD replication"
+          }
+        }
+      ],
+      "answer": "A,D",
+      "explanation": {
+        "text": "サポート バージョンの遵守と、NSG/ファイアウォールで必要ポートの到達性を確保することが要。TAM 申請は必須ではなく、Backup だけで AD 復旧要件を満たすとは限らない。",
+        "reference": "https://learn.microsoft.com/troubleshoot/windows-server/identity/list-of-rpc-and-ports-used-by-ad-replication",
+        "reference_label": "Ports used by AD replication"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q4",
+      "question": "Azure AD Connect を用いたハイブリッド ID でフェデレーション認証（AD FS など）を選ぶ主な理由をすべて選べ。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "パススルー認証より導入が単純で低コストだから",
+          "explanation": {
+            "text": "一般には逆。フェデレーションはインフラと運用が複雑になりやすい。",
+            "reference": "https://learn.microsoft.com/azure/active-directory/hybrid/choose-ad-authn",
+            "reference_label": "Choose the right authentication method"
+          }
+        },
+        {
+          "key": "B",
+          "text": "オンプレミスの認証ポリシー（例: MFA/条件付きアクセス）を引き続き自社側で制御したい",
+          "explanation": {
+            "text": "オンプレ側のポリシー/カスタム要件を維持したい場合にフェデレーションは有効。",
+            "reference": "https://learn.microsoft.com/azure/active-directory/hybrid/whatis-fed",
+            "reference_label": "What is federation with Microsoft Entra ID"
+          }
+        },
+        {
+          "key": "C",
+          "text": "パスワード ハッシュをクラウドへ同期せず、認証をオンプレミスで完結させたい",
+          "explanation": {
+            "text": "フェデレーションでは認証要求をオンプレの STS/AD FS にリダイレクトできる。",
+            "reference": "https://learn.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-whatis",
+            "reference_label": "Federation basics"
+          }
+        },
+        {
+          "key": "D",
+          "text": "セキュリティ方針上、認証処理を自社境内で完全にコントロールしたい",
+          "explanation": {
+            "text": "フェデレーションは自社運用により厳格な統制が可能。",
+            "reference": "https://learn.microsoft.com/azure/active-directory/hybrid/choose-ad-authn",
+            "reference_label": "Choose the right authentication method"
+          }
+        }
+      ],
+      "answer": "B,C,D",
+      "explanation": {
+        "text": "フェデレーションの主目的は“制御の保持”。オンプレでポリシーや認証を完結させたい/パスワードハッシュを持ち出したくない要件に適する。",
+        "reference": "https://learn.microsoft.com/azure/active-directory/hybrid/choose-ad-authn",
+        "reference_label": "Choose the right authentication method"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q5",
+      "question": "RID マスター (FSMO) が長期間ダウンした場合に起こりうる事象として正しいものをすべて選べ。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "新しいセキュリティ グループが作成できない",
+          "explanation": {
+            "text": "新規のセキュリティ プリンシパル（ユーザー/グループ/コンピュータ）は RID を必要とするため影響を受ける。",
+            "reference": "https://learn.microsoft.com/windows-server/identity/ad-ds/plan/operations-master-roles#rid-master",
+            "reference_label": "RID Master role"
+          }
+        },
+        {
+          "key": "B",
+          "text": "新しいコンピュータ アカウントのドメイン参加ができない",
+          "explanation": {
+            "text": "RID プール枯渇により新規 SID 発行が滞る可能性がある。",
+            "reference": "https://learn.microsoft.com/windows-server/identity/ad-ds/plan/operations-master-roles#rid-master",
+            "reference_label": "RID Master role"
+          }
+        },
+        {
+          "key": "C",
+          "text": "重複 RID の発行により同一 SID 衝突が発生する可能性",
+          "explanation": {
+            "text": "誤った操作や不適切な復旧で RID 割り当ての競合/重複が生じうる。",
+            "reference": "https://learn.microsoft.com/windows-server/identity/ad-ds/plan/operations-master-roles#rid-master",
+            "reference_label": "RID Master role"
+          }
+        },
+        {
+          "key": "D",
+          "text": "既存アカウントのトークン更新 (Kerberos) が停止する",
+          "explanation": {
+            "text": "トークン更新は通常 RID マスターとは無関係で、KDC/時刻同期の問題が主因となる。",
+            "reference": "https://learn.microsoft.com/windows/security/identity-protection/kerberos/kerberos-authentication-overview",
+            "reference_label": "Kerberos authentication overview"
+          }
+        }
+      ],
+      "answer": "A,B,C",
+      "explanation": {
+        "text": "RID マスター障害は新規 SID 発行に直結し、新規ユーザー/グループ/コンピュータの作成不能や割当競合のリスクを招く。一方、既存トークン更新は別問題。",
+        "reference": "https://learn.microsoft.com/windows-server/identity/ad-ds/plan/operations-master-roles#rid-master",
+        "reference_label": "RID Master role"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q6",
+      "question": "Azure 上に DC を配置してハイブリッド AD を運用する際の“特に重要な”考慮点をすべて選べ。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Azure サブネット/NSG/ファイアウォールでレプリケーション・LDAP・Kerberos 等の必須ポートを開放する",
+          "explanation": {
+            "text": "到達性が確保できなければ認証/レプリケーションが成立しない。",
+            "reference": "https://learn.microsoft.com/troubleshoot/windows-server/identity/list-of-rpc-and-ports-used-by-ad-replication",
+            "reference_label": "Ports used by AD replication"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Windows Server Core 以外はサポートされないため GUI は不可",
+          "explanation": {
+            "text": "Core/GUI は要件に応じて選択可能で、GUI 禁止の制約はない。",
+            "reference": "https://learn.microsoft.com/windows-server/get-started/get-started-with-windows-server",
+            "reference_label": "Get started with Windows Server"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure 上の DC は必ず Read-Write のみで RODC は不可",
+          "explanation": {
+            "text": "RODC は利用可能。セキュリティ/要件に応じて選択する。",
+            "reference": "https://learn.microsoft.com/windows-server/identity/ad-ds/plan/rodc/rodc-planning",
+            "reference_label": "RODC planning"
+          }
+        },
+        {
+          "key": "D",
+          "text": "オンプレミスと Azure 間で厳密な時刻同期 (NTP) を維持する",
+          "explanation": {
+            "text": "Kerberos/証明書/ログ相関のため時間ずれは最小化する必要がある。",
+            "reference": "https://learn.microsoft.com/windows-server/networking/windows-time-service/windows-time-service-overview",
+            "reference_label": "Windows Time Service overview"
+          }
+        }
+      ],
+      "answer": "A,D",
+      "explanation": {
+        "text": "AD はポート到達性と時刻整合に敏感。NSG/FW での許可と、W32Time による正確な同期が安定運用の鍵。",
+        "reference": "https://learn.microsoft.com/windows-server/networking/windows-time-service/windows-time-service-overview",
+        "reference_label": "Windows Time Service overview"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q7",
+      "question": "Azure AD Connect のパスワード ハッシュ同期 (PHS) を利用し続ける際の主な懸念点はどれか。2つ選べ。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ハッシュ（保護済み）とはいえ、クラウド側にパスワード関連データを保持することへのポリシー適合性",
+          "explanation": {
+            "text": "一部組織では規程/法令上の懸念があり、PHS を避ける判断材料となりうる。",
+            "reference": "https://learn.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization",
+            "reference_label": "Password hash synchronization"
+          }
+        },
+        {
+          "key": "B",
+          "text": "オンプレミスのパスワード有効期限や複雑性ポリシーが完全に無効化される",
+          "explanation": {
+            "text": "PHS でもオンプレのポリシーは適用される。『無効化』されるわけではない。",
+            "reference": "https://learn.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization",
+            "reference_label": "Password hash synchronization"
+          }
+        },
+        {
+          "key": "C",
+          "text": "オンプレでのパスワード変更がクラウドに反映されるまで同期遅延が発生する可能性",
+          "explanation": {
+            "text": "同期はほぼリアルタイム化されているが、タイムラグはゼロではない。",
+            "reference": "https://learn.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization#how-often",
+            "reference_label": "PHS frequency and latency"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ネットワーク帯域消費が極大化し、PHS は大規模組織では実用にならない",
+          "explanation": {
+            "text": "PHS の帯域負担は一般に小さく、スケールでの実用性が確立している。",
+            "reference": "https://learn.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization",
+            "reference_label": "Password hash synchronization"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "PHS は運用容易だが、規程上の許容と同期遅延の許容が論点。ポリシー無効化や極端な帯域浪費といった懸念は一般化できない。",
+        "reference": "https://learn.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization",
+        "reference_label": "Password hash synchronization"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q8",
+      "question": "Windows Admin Center (WAC) がハイブリッド Windows Server 管理に有用である理由として最も正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "WAC はオンプレミスのみ管理可能でクラウド統合機能はない",
+          "explanation": {
+            "text": "誤り。WAC は Azure Arc などと統合でき、クラウド機能も利用可能。",
+            "reference": "https://learn.microsoft.com/windows-server/manage/windows-admin-center/overview",
+            "reference_label": "Windows Admin Center overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "WAC は Windows Server の GUI を完全に置き換える",
+          "explanation": {
+            "text": "誤り。GUI の完全代替ではなく、管理の統合ツール。",
+            "reference": "https://learn.microsoft.com/windows-server/manage/windows-admin-center/overview",
+            "reference_label": "Windows Admin Center overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "WAC は Azure Arc を通してオンプレ/クラウドの Windows Server を一元管理できる",
+          "explanation": {
+            "text": "正解。Azure Arc と連携し、オンプレとクラウド双方を一元管理できる。",
+            "reference": "https://learn.microsoft.com/windows-server/manage/windows-admin-center/azure/azure-integration",
+            "reference_label": "Integrate Windows Admin Center with Azure"
+          }
+        },
+        {
+          "key": "D",
+          "text": "WAC は Office 製品ライセンス管理専用ツールである",
+          "explanation": {
+            "text": "誤り。Office 管理機能は持たない。",
+            "reference": "https://learn.microsoft.com/windows-server/manage/windows-admin-center/overview",
+            "reference_label": "Windows Admin Center overview"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "WAC は Azure Arc 連携を通じて、オンプレとクラウド両方の Windows Server をポータルから一元管理できるのが最大の特徴。",
+        "reference": "https://learn.microsoft.com/windows-server/manage/windows-admin-center/azure/azure-integration",
+        "reference_label": "Integrate Windows Admin Center with Azure"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q9",
+      "question": "ハイブリッド環境でリモート管理を強化する推奨手法はどれか。複数選択可。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Just Enough Administration (JEA) を導入する",
+          "explanation": {
+            "text": "正解。最小権限で管理を可能にする。",
+            "reference": "https://learn.microsoft.com/powershell/scripting/learn/remoting/jea/overview",
+            "reference_label": "JEA Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "パスワードレス認証導入のためパスワード同期を停止する",
+          "explanation": {
+            "text": "誤り。パスワードレスは導入可能だが、同期停止は推奨されない。",
+            "reference": "https://learn.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless",
+            "reference_label": "Passwordless authentication"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Privileged Access Workstation (PAW) を設定する",
+          "explanation": {
+            "text": "正解。権限管理を専用ワークステーションで行うことでセキュリティを向上。",
+            "reference": "https://learn.microsoft.com/security/compass/privileged-access-devices",
+            "reference_label": "Privileged Access Workstations"
+          }
+        },
+        {
+          "key": "D",
+          "text": "管理トラフィックをすべてパブリックインターネット経由にする",
+          "explanation": {
+            "text": "誤り。セキュリティリスクを増やすため推奨されない。",
+            "reference": "https://learn.microsoft.com/azure/architecture/framework/security/design-network",
+            "reference_label": "Network security design"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "最小権限 (JEA) と専用端末 (PAW) は推奨されるリモート管理の強化策。インターネット経由や同期停止はリスクとなる。",
+        "reference": "https://learn.microsoft.com/security/compass/privileged-access-devices",
+        "reference_label": "Privileged Access Workstations"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q10",
+      "question": "Azure Arc によりオンプレ Windows Server を接続後に可能となる機能はどれか。複数選択可。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Azure Policy によるセキュリティ構成適用",
+          "explanation": {
+            "text": "正解。Arc 管理対象として Azure Policy が適用可能。",
+            "reference": "https://learn.microsoft.com/azure/azure-arc/servers/overview",
+            "reference_label": "Azure Arc-enabled servers"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ファイル単位バックアップのみ利用可能になる",
+          "explanation": {
+            "text": "誤り。Arc はバックアップの機能提供者ではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-arc/servers/overview",
+            "reference_label": "Azure Arc-enabled servers"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Monitor でオンプレ サーバーのパフォーマンスを監視",
+          "explanation": {
+            "text": "正解。Arc によりメトリクス収集が可能になる。",
+            "reference": "https://learn.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-overview",
+            "reference_label": "Azure Monitor Agent"
+          }
+        },
+        {
+          "key": "D",
+          "text": "自動で VM OS バックアップと復元機能が提供される",
+          "explanation": {
+            "text": "誤り。Arc 自体はバックアップ/リストア機能を持たない。",
+            "reference": "https://learn.microsoft.com/azure/azure-arc/servers/overview",
+            "reference_label": "Azure Arc-enabled servers"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "Arc でオンプレ サーバーを Azure リソースとして扱え、Azure Policy や Azure Monitor を利用できる。",
+        "reference": "https://learn.microsoft.com/azure/azure-arc/servers/overview",
+        "reference_label": "Azure Arc-enabled servers"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q11",
+      "question": "ハイブリッド環境で Windows Server のアップデート管理におけるベストプラクティスはどれか。複数選択可。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "常に Azure Update Manager 経由で一括適用する",
+          "explanation": {
+            "text": "誤り。環境に応じた計画的適用が必要。",
+            "reference": "https://learn.microsoft.com/windows-server/administration/windows-server-update-services/deploy/plan/plan-your-wsus-deployment",
+            "reference_label": "Plan your WSUS deployment"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ステージング環境でテストを行う",
+          "explanation": {
+            "text": "正解。テスト後に本番へ適用するのが推奨。",
+            "reference": "https://learn.microsoft.com/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment",
+            "reference_label": "Plan your WSUS deployment"
+          }
+        },
+        {
+          "key": "C",
+          "text": "すべての更新プログラムを即時自動適用するのが最適",
+          "explanation": {
+            "text": "誤り。即時適用はリスクがある。",
+            "reference": "https://learn.microsoft.com/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment",
+            "reference_label": "Plan your WSUS deployment"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ダウンタイム最小化のため Azure Automanage や Hotpatch を利用する",
+          "explanation": {
+            "text": "正解。再起動不要パッチ適用で可用性を高められる。",
+            "reference": "https://learn.microsoft.com/azure/automanage/automanage-hotpatch",
+            "reference_label": "Automanage Hotpatch"
+          }
+        }
+      ],
+      "answer": "B,D",
+      "explanation": {
+        "text": "アップデートはテストを経て適用し、Azure Automanage や Hotpatch でダウンタイムを最小化するのが推奨。",
+        "reference": "https://learn.microsoft.com/azure/automanage/automanage-hotpatch",
+        "reference_label": "Automanage Hotpatch"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q12",
+      "question": "ハイブリッド環境で時間同期が重要な理由をすべて選べ。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Kerberos 認証が時刻ずれに敏感であるため",
+          "explanation": {
+            "text": "正解。Kerberos チケットは時刻に依存する。",
+            "reference": "https://learn.microsoft.com/windows-server/networking/windows-time-service/windows-time-service-tools-and-settings",
+            "reference_label": "Windows Time Service tools"
+          }
+        },
+        {
+          "key": "B",
+          "text": "イベントログ時刻がずれるとトラブルシューティングに混乱を生む",
+          "explanation": {
+            "text": "正解。ログ相関が困難になる。",
+            "reference": "https://learn.microsoft.com/windows-server/networking/windows-time-service/windows-time-service-overview",
+            "reference_label": "Windows Time Service overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "DFS レプリケーションが失敗する可能性がある",
+          "explanation": {
+            "text": "正解。レプリケーション整合性に影響する。",
+            "reference": "https://learn.microsoft.com/windows-server/storage/dfs-replication/dfsr-overview",
+            "reference_label": "DFS Replication overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Hyper-V のライブマイグレーションは時刻同期不要",
+          "explanation": {
+            "text": "誤り。ホスト間の時刻ずれは推奨されない。",
+            "reference": "https://learn.microsoft.com/windows-server/virtualization/hyper-v/manage/live-migration-overview",
+            "reference_label": "Live migration overview"
+          }
+        }
+      ],
+      "answer": "A,B,C",
+      "explanation": {
+        "text": "Kerberos・ログ相関・DFS などが時刻同期に依存する。Hyper-V も正確な時刻が推奨される。",
+        "reference": "https://learn.microsoft.com/windows-server/networking/windows-time-service/windows-time-service-overview",
+        "reference_label": "Windows Time Service overview"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q13",
+      "question": "Windows Server 2022 Datacenter: Azure Edition の特徴として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Hotpatch により再起動なしで更新を適用可能",
+          "explanation": {
+            "text": "正解。Azure Edition の大きな特徴。",
+            "reference": "https://learn.microsoft.com/windows-server/get-started/whats-new-in-windows-server-2022",
+            "reference_label": "What's new in Windows Server 2022"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SMB over QUIC はサポートされない",
+          "explanation": {
+            "text": "誤り。Azure Edition では SMB over QUIC をサポート。",
+            "reference": "https://learn.microsoft.com/windows-server/storage/file-server/smb-over-quic",
+            "reference_label": "SMB over QUIC"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Extended Network でオンプレと Azure のネットワークを拡張できる",
+          "explanation": {
+            "text": "正解。ハイブリッドネットワーク強化機能を持つ。",
+            "reference": "https://learn.microsoft.com/windows-server/get-started/whats-new-in-windows-server-2022",
+            "reference_label": "What's new in Windows Server 2022"
+          }
+        },
+        {
+          "key": "D",
+          "text": "必ず GUI を持たない (Core 専用)",
+          "explanation": {
+            "text": "誤り。GUI 版も選択可能。",
+            "reference": "https://learn.microsoft.com/windows-server/get-started/whats-new-in-windows-server-2022",
+            "reference_label": "What's new in Windows Server 2022"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "Azure Edition の特徴は Hotpatch とネットワーク拡張機能。SMB over QUIC も利用可能。",
+        "reference": "https://learn.microsoft.com/windows-server/get-started/whats-new-in-windows-server-2022",
+        "reference_label": "What's new in Windows Server 2022"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q14",
+      "question": "Hyper-V VM の CPU 使用率が高い場合、最初に確認すべきものはどれか。2つ選べ。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "統合サービス (Integration Services) のバージョン",
+          "explanation": {
+            "text": "古い統合サービスはパフォーマンス低下の原因になり得る。",
+            "reference": "https://learn.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services",
+            "reference_label": "Manage Hyper-V Integration Services"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ゲスト OS のタイムゾーン設定",
+          "explanation": {
+            "text": "タイムゾーンは CPU 使用率に直接影響しない。",
+            "reference": "https://learn.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services",
+            "reference_label": "Manage Hyper-V Integration Services"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ホストの物理メモリ使用率",
+          "explanation": {
+            "text": "リソース不足は VM のパフォーマンス低下に直結する。",
+            "reference": "https://learn.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-performance",
+            "reference_label": "Manage Hyper-V Performance"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ゲスト OS の IP アドレス状態",
+          "explanation": {
+            "text": "ネットワーク疎通には関係するが CPU 使用率とは無関係。",
+            "reference": "https://learn.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-performance",
+            "reference_label": "Manage Hyper-V Performance"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "CPU 高負荷時は統合サービスの更新とホストのリソース状況確認が基本的な切り分けポイント。",
+        "reference": "https://learn.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-performance",
+        "reference_label": "Manage Hyper-V Performance"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q15",
+      "question": "Windows コンテナ利用時の注意点として正しいものをすべて選べ。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Linux コンテナより起動が速い",
+          "explanation": {
+            "text": "誤り。Windows コンテナは初期化が重く遅い場合が多い。",
+            "reference": "https://learn.microsoft.com/virtualization/windowscontainers/about/overview",
+            "reference_label": "Windows containers overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ホスト OS とコンテナ OS のバージョン整合性が重要",
+          "explanation": {
+            "text": "正解。互換性がないとコンテナが動作しないことがある。",
+            "reference": "https://learn.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility",
+            "reference_label": "Container version compatibility"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Kubernetes のノードとして利用可能",
+          "explanation": {
+            "text": "正解。Windows Server は Kubernetes ワーカーノードとしてサポートされる。",
+            "reference": "https://learn.microsoft.com/virtualization/windowscontainers/kubernetes/getting-started-kubernetes-windows",
+            "reference_label": "Kubernetes on Windows"
+          }
+        },
+        {
+          "key": "D",
+          "text": "コンテナはドメイン参加や GPO 適用が可能",
+          "explanation": {
+            "text": "誤り。コンテナは分離度の制約があり完全なドメイン機能は持たない。",
+            "reference": "https://learn.microsoft.com/virtualization/windowscontainers/manage-containers/container-security",
+            "reference_label": "Container security"
+          }
+        }
+      ],
+      "answer": "B,C",
+      "explanation": {
+        "text": "Windows コンテナはバージョン整合性と Kubernetes サポートが重要。ドメイン参加/GPO は制限がある。",
+        "reference": "https://learn.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility",
+        "reference_label": "Container version compatibility"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q16",
+      "question": "Azure VM を高可用性構成にする適切な方法を選べ。複数選択可。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Availability Set に配置する",
+          "explanation": {
+            "text": "正解。障害/更新ドメインに分散される。",
+            "reference": "https://learn.microsoft.com/azure/virtual-machines/availability-set-overview",
+            "reference_label": "Availability sets overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Availability Zone を跨いで配置する",
+          "explanation": {
+            "text": "正解。ゾーン障害に耐性を持てる。",
+            "reference": "https://learn.microsoft.com/azure/virtual-machines/availability-zones-overview",
+            "reference_label": "Availability zones overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "OS ディスクを Standard HDD にする",
+          "explanation": {
+            "text": "誤り。可用性には Premium SSD が推奨される。",
+            "reference": "https://learn.microsoft.com/azure/virtual-machines/disks-types",
+            "reference_label": "Azure managed disk types"
+          }
+        },
+        {
+          "key": "D",
+          "text": "複数リージョンにレプリケーションする",
+          "explanation": {
+            "text": "正解。リージョン障害に備えられる。",
+            "reference": "https://learn.microsoft.com/azure/site-recovery/azure-to-azure-architecture",
+            "reference_label": "Azure to Azure disaster recovery"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "VM の高可用性には可用性セット/ゾーン分散/リージョンレプリケーションが効果的。HDD は推奨されない。",
+        "reference": "https://learn.microsoft.com/azure/virtual-machines/availability-options",
+        "reference_label": "Availability options"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q17",
+      "question": "Hyper-V ライブマイグレーションの要件として正しいものをすべて選べ。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ホスト同士が同じドメインに参加していること",
+          "explanation": {
+            "text": "正解。認証のため必須。",
+            "reference": "https://learn.microsoft.com/windows-server/virtualization/hyper-v/manage/live-migration-overview",
+            "reference_label": "Live migration overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "VHDX は固定サイズでなければならない",
+          "explanation": {
+            "text": "誤り。サイズ形式は要件ではない。",
+            "reference": "https://learn.microsoft.com/windows-server/virtualization/hyper-v/manage/live-migration-overview",
+            "reference_label": "Live migration overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "十分な帯域と低レイテンシのネットワーク",
+          "explanation": {
+            "text": "正解。大規模データ転送に必要。",
+            "reference": "https://learn.microsoft.com/windows-server/virtualization/hyper-v/manage/live-migration-overview",
+            "reference_label": "Live migration overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ホストの CPU 機能セットが同じであること",
+          "explanation": {
+            "text": "正解。互換性がないと移行が失敗する可能性。",
+            "reference": "https://learn.microsoft.com/windows-server/virtualization/hyper-v/manage/live-migration-overview",
+            "reference_label": "Live migration overview"
+          }
+        }
+      ],
+      "answer": "A,C,D",
+      "explanation": {
+        "text": "ライブマイグレーションはドメイン参加・ネットワーク性能・CPU 互換性が要件。VHDX の形式は無関係。",
+        "reference": "https://learn.microsoft.com/windows-server/virtualization/hyper-v/manage/live-migration-overview",
+        "reference_label": "Live migration overview"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q18",
+      "question": "Windows コンテナを使った Kubernetes 環境において懸念すべき点をすべて選べ。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "古いコンテナイメージを使い脆弱性パッチが未適用",
+          "explanation": {
+            "text": "正解。更新されていないイメージはリスク。",
+            "reference": "https://learn.microsoft.com/azure/defender-for-cloud/defender-for-containers-introduction",
+            "reference_label": "Defender for Containers"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ホスト OS とカーネルを共有することで影響範囲が拡大",
+          "explanation": {
+            "text": "正解。プロセス分離ではホスト影響の懸念あり。",
+            "reference": "https://learn.microsoft.com/virtualization/windowscontainers/manage-containers/container-security",
+            "reference_label": "Container security"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ポッド間通信を最小化するネットワークポリシーを未設定",
+          "explanation": {
+            "text": "正解。通信制御がないと攻撃面が拡大。",
+            "reference": "https://kubernetes.io/docs/concepts/services-networking/network-policies/",
+            "reference_label": "Kubernetes Network Policies"
+          }
+        },
+        {
+          "key": "D",
+          "text": "コンテナに AD 認証を適用している",
+          "explanation": {
+            "text": "誤り。セキュリティ強化につながるので懸念点ではない。",
+            "reference": "https://learn.microsoft.com/virtualization/windowscontainers/manage-containers/container-security",
+            "reference_label": "Container security"
+          }
+        }
+      ],
+      "answer": "A,B,C",
+      "explanation": {
+        "text": "懸念点はイメージ更新不足・カーネル共有のリスク・通信制御不足。AD 認証強制は強化策であり懸念点ではない。",
+        "reference": "https://learn.microsoft.com/virtualization/windowscontainers/manage-containers/container-security",
+        "reference_label": "Container security"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q19",
+      "question": "Azure VM のバックアップに一般的に使われるサービス/機能を選べ。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Azure Backup",
+          "explanation": {
+            "text": "正解。VM レベルのバックアップに対応する。",
+            "reference": "https://learn.microsoft.com/azure/backup/backup-overview",
+            "reference_label": "Azure Backup overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Windows Server Backup のみ",
+          "explanation": {
+            "text": "誤り。オンプレ専用でクラウド DR には不足。",
+            "reference": "https://learn.microsoft.com/windows-server/administration/windows-server-backup/windows-server-backup",
+            "reference_label": "Windows Server Backup"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Site Recovery",
+          "explanation": {
+            "text": "正解。DR 用にレプリケーション可能。",
+            "reference": "https://learn.microsoft.com/azure/site-recovery/site-recovery-overview",
+            "reference_label": "Azure Site Recovery overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ストレージ アカウントのスナップショット",
+          "explanation": {
+            "text": "正解。ディスクのスナップショットは簡易バックアップとして利用可能。",
+            "reference": "https://learn.microsoft.com/azure/virtual-machines/snapshots",
+            "reference_label": "Azure VM snapshots"
+          }
+        }
+      ],
+      "answer": "A,C,D",
+      "explanation": {
+        "text": "Azure VM の保護は Azure Backup・Site Recovery・スナップショットが一般的。Windows Server Backup 単体では不足。",
+        "reference": "https://learn.microsoft.com/azure/backup/backup-overview",
+        "reference_label": "Azure Backup overview"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q20",
+      "question": "ハイブリッド環境で DNS フォワーダーを利用する主な目的として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "オンプレミス DNS 名を Azure 上で解決するため",
+          "explanation": {
+            "text": "正解。Azure 側からオンプレミスのドメイン名を解決する際にフォワーダーを使用する。",
+            "reference": "https://learn.microsoft.com/windows-server/identity/ad-ds/plan/understanding-dns",
+            "reference_label": "Understanding DNS in Active Directory"
+          }
+        },
+        {
+          "key": "B",
+          "text": "フォワーダーを使うと DNSSEC が不要になる",
+          "explanation": {
+            "text": "誤り。DNSSEC の必要性を排除できない。",
+            "reference": "https://learn.microsoft.com/windows-server/identity/ad-ds/plan/understanding-dns",
+            "reference_label": "Understanding DNS in Active Directory"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure DNS はオンプレ DNS を自動同期するのでフォワーダーは必須",
+          "explanation": {
+            "text": "誤り。自動同期は行われない。",
+            "reference": "https://learn.microsoft.com/azure/dns/dns-private-resolver-overview",
+            "reference_label": "Azure DNS Private Resolver"
+          }
+        },
+        {
+          "key": "D",
+          "text": "フォワーダー利用で遅延がなくなる",
+          "explanation": {
+            "text": "誤り。フォワード先によっては遅延が増える場合もある。",
+            "reference": "https://learn.microsoft.com/windows-server/identity/ad-ds/plan/understanding-dns",
+            "reference_label": "Understanding DNS in Active Directory"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "オンプレのドメイン解決を Azure 側から行うために DNS フォワーダーを利用するのが一般的。",
+        "reference": "https://learn.microsoft.com/azure/dns/dns-private-resolver-overview",
+        "reference_label": "Azure DNS Private Resolver"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q21",
+      "question": "複数オンプレ拠点と複数 Azure VNet を接続する設計として適切なものを選べ。複数選択可。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "各拠点から VPN または ExpressRoute を使って Azure VNet へ接続",
+          "explanation": {
+            "text": "正解。拠点接続の基本手段。",
+            "reference": "https://learn.microsoft.com/azure/architecture/example-scenario/networking/hub-spoke-network",
+            "reference_label": "Hub-spoke network topology"
+          }
+        },
+        {
+          "key": "B",
+          "text": "オンプレと Azure で同じサブネットを共有する",
+          "explanation": {
+            "text": "誤り。IP 重複や設計制約の原因になる。",
+            "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-networks-overview",
+            "reference_label": "Azure Virtual Network overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Virtual WAN を使って集約接続を構成",
+          "explanation": {
+            "text": "正解。複数拠点の統合に最適。",
+            "reference": "https://learn.microsoft.com/azure/virtual-wan/virtual-wan-about",
+            "reference_label": "Azure Virtual WAN overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "すべての通信を NAT 経由に限定する",
+          "explanation": {
+            "text": "誤り。必須要件ではなく効率低下の恐れがある。",
+            "reference": "https://learn.microsoft.com/azure/virtual-network/nat-gateway/nat-overview",
+            "reference_label": "Azure NAT overview"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "ハイブリッド設計では VPN/ExpressRoute と Virtual WAN が代表的な推奨手段。",
+        "reference": "https://learn.microsoft.com/azure/virtual-wan/virtual-wan-about",
+        "reference_label": "Azure Virtual WAN overview"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q22",
+      "question": "Azure VNet で DHCP を利用する際に正しい説明を選べ。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Azure VNet は独自に DHCP サーバーを設置できず Azure により IP 割り当てされる",
+          "explanation": {
+            "text": "正解。DHCP サーバーは Azure 管理の仕組みで提供される。",
+            "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-networks-overview",
+            "reference_label": "Azure Virtual Network overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "オンプレ DHCP を VPN 越しに Azure VNet に提供するのが標準",
+          "explanation": {
+            "text": "誤り。非推奨であり Azure 側の仕組みを使う。",
+            "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-networks-overview",
+            "reference_label": "Azure Virtual Network overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "各 VNet は独自のサブネットを持ちアドレス範囲を管理できる",
+          "explanation": {
+            "text": "正解。アドレス範囲は管理者が定義できる。",
+            "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-networks-overview",
+            "reference_label": "Azure Virtual Network overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "DHCP リース期間はオンプレと Azure で同じでなければならない",
+          "explanation": {
+            "text": "誤り。異なる値で問題ない。",
+            "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-networks-overview",
+            "reference_label": "Azure Virtual Network overview"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "Azure VNet の IP 割り当ては Azure により提供され、サブネットごとに管理できる。",
+        "reference": "https://learn.microsoft.com/azure/virtual-network/virtual-networks-overview",
+        "reference_label": "Azure Virtual Network overview"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q23",
+      "question": "ハイブリッドネットワークでセキュリティを強化する手法として正しいものを選べ。複数選択可。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "サブネットごとに NSG を設置して通信制御を行う",
+          "explanation": {
+            "text": "正解。基本的な分割制御手段。",
+            "reference": "https://learn.microsoft.com/azure/virtual-network/network-security-groups-overview",
+            "reference_label": "Network security groups"
+          }
+        },
+        {
+          "key": "B",
+          "text": "オンプレと Azure 間通信は VPN で暗号化する",
+          "explanation": {
+            "text": "正解。通信の秘匿性を確保できる。",
+            "reference": "https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways",
+            "reference_label": "VPN Gateway overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Virtual WAN を平文通信にして可視性を確保する",
+          "explanation": {
+            "text": "誤り。平文はセキュリティリスク。",
+            "reference": "https://learn.microsoft.com/azure/virtual-wan/virtual-wan-about",
+            "reference_label": "Virtual WAN overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Firewall または NVA で境界セキュリティを確保する",
+          "explanation": {
+            "text": "正解。境界保護はベストプラクティス。",
+            "reference": "https://learn.microsoft.com/azure/firewall/overview",
+            "reference_label": "Azure Firewall overview"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "セキュリティ強化は NSG・VPN 暗号化・Azure Firewall など境界保護が基本。平文通信は推奨されない。",
+        "reference": "https://learn.microsoft.com/azure/firewall/overview",
+        "reference_label": "Azure Firewall overview"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q24",
+      "question": "名前解決と認証問題を防ぐ正しい構成を選べ。複数選択可。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Azure Private DNS Zone でハイブリッドドメインを解決",
+          "explanation": {
+            "text": "正解。クラウド内でプライベート解決を提供できる。",
+            "reference": "https://learn.microsoft.com/azure/dns/private-dns-overview",
+            "reference_label": "Azure Private DNS overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "オンプレ DNS をすべて Azure DNS に複製して完全移行する",
+          "explanation": {
+            "text": "誤り。完全移行は必須ではないしリスクがある。",
+            "reference": "https://learn.microsoft.com/azure/dns/dns-private-resolver-overview",
+            "reference_label": "Azure DNS Private Resolver"
+          }
+        },
+        {
+          "key": "C",
+          "text": "DNS レプリケーションをドメイン全体に有効化する",
+          "explanation": {
+            "text": "正解。冗長性と可用性を高める。",
+            "reference": "https://learn.microsoft.com/windows-server/identity/ad-ds/plan/understanding-dns",
+            "reference_label": "Understanding DNS in AD DS"
+          }
+        },
+        {
+          "key": "D",
+          "text": "DNSSEC を設定しキャッシュポイズニング対策を行う",
+          "explanation": {
+            "text": "正解。DNS 応答改ざん防止に有効。",
+            "reference": "https://learn.microsoft.com/windows-server/networking/dns/dns-security-extensions-overview",
+            "reference_label": "DNS Security Extensions overview"
+          }
+        }
+      ],
+      "answer": "A,C,D",
+      "explanation": {
+        "text": "Private DNS Zone・DNS レプリケーション・DNSSEC は名前解決の安定とセキュリティを保証する方法。",
+        "reference": "https://learn.microsoft.com/azure/dns/private-dns-overview",
+        "reference_label": "Azure Private DNS overview"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q25",
+      "question": "ExpressRoute と VPN の違いとして正しいものを選べ。複数選択可。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "VPN はインターネット経由で帯域と遅延が不安定になる可能性がある",
+          "explanation": {
+            "text": "正解。VPN は暗号化付きだが遅延は不安定。",
+            "reference": "https://learn.microsoft.com/azure/expressroute/expressroute-introduction",
+            "reference_label": "ExpressRoute overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ExpressRoute は専用回線でより安定した性能を提供する",
+          "explanation": {
+            "text": "正解。MPLS 等を使い安定性が高い。",
+            "reference": "https://learn.microsoft.com/azure/expressroute/expressroute-introduction",
+            "reference_label": "ExpressRoute overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ExpressRoute を使うと Azure 内通信は常に無料",
+          "explanation": {
+            "text": "誤り。転送量課金が適用される場合がある。",
+            "reference": "https://learn.microsoft.com/azure/expressroute/expressroute-pricing",
+            "reference_label": "ExpressRoute pricing"
+          }
+        },
+        {
+          "key": "D",
+          "text": "VPN は ExpressRoute よりコストが低い",
+          "explanation": {
+            "text": "正解。構成がシンプルでコストが低い傾向。",
+            "reference": "https://learn.microsoft.com/azure/expressroute/expressroute-introduction",
+            "reference_label": "ExpressRoute overview"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "VPN は低コストだが不安定、ExpressRoute は高コストだが安定性が高い。データ転送は無料とは限らない。",
+        "reference": "https://learn.microsoft.com/azure/expressroute/expressroute-introduction",
+        "reference_label": "ExpressRoute overview"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q26",
+      "question": "ハイブリッド環境でファイル共有を提供する一般的な方法として正しいものを選べ。複数選択可。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "オンプレミス Windows Server 上の SMB ファイル共有",
+          "explanation": {
+            "text": "正解。最も基本的なファイル共有方式。",
+            "reference": "https://learn.microsoft.com/windows-server/storage/file-server/file-server-smb-overview",
+            "reference_label": "SMB file server overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure Files を利用してクラウドで共有を提供",
+          "explanation": {
+            "text": "正解。クラウド統合を容易にする。",
+            "reference": "https://learn.microsoft.com/azure/storage/files/storage-files-introduction",
+            "reference_label": "Azure Files introduction"
+          }
+        },
+        {
+          "key": "C",
+          "text": "FTP サーバーを公開しインターネット経由で利用させる",
+          "explanation": {
+            "text": "誤り。セキュリティ上非推奨。",
+            "reference": "https://learn.microsoft.com/windows-server/storage/file-server/file-server-smb-overview",
+            "reference_label": "SMB file server overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "DFS を用いて複数サーバー間で共有をレプリケーションする",
+          "explanation": {
+            "text": "正解。可用性/冗長性を高める方法。",
+            "reference": "https://learn.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview",
+            "reference_label": "DFS overview"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "ハイブリッド環境では SMB, Azure Files, DFS が代表的な手段。FTP 公開はセキュリティリスク。",
+        "reference": "https://learn.microsoft.com/azure/storage/files/storage-files-introduction",
+        "reference_label": "Azure Files introduction"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q27",
+      "question": "Storage Replica を用いたオンプレ/Azure 間レプリケーションで注意すべき要件をすべて選べ。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ソースとターゲットのストレージは同じ種類でなければならない",
+          "explanation": {
+            "text": "誤り。種類が異なっても構成可能。",
+            "reference": "https://learn.microsoft.com/windows-server/storage/storage-replica/overview",
+            "reference_label": "Storage Replica overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "十分な帯域と低レイテンシが必要",
+          "explanation": {
+            "text": "正解。ネットワーク性能に依存する。",
+            "reference": "https://learn.microsoft.com/windows-server/storage/storage-replica/overview",
+            "reference_label": "Storage Replica overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "整合性確保のためアクティブ-アクティブが必須",
+          "explanation": {
+            "text": "誤り。アクティブ-パッシブも一般的に利用される。",
+            "reference": "https://learn.microsoft.com/windows-server/storage/storage-replica/overview",
+            "reference_label": "Storage Replica overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "レプリケーションポートをファイアウォールで開放する必要がある",
+          "explanation": {
+            "text": "正解。必要ポートが閉じていると動作しない。",
+            "reference": "https://learn.microsoft.com/windows-server/storage/storage-replica/overview",
+            "reference_label": "Storage Replica overview"
+          }
+        }
+      ],
+      "answer": "B,D",
+      "explanation": {
+        "text": "Storage Replica はネットワーク帯域とポート到達性が重要。ストレージ種類やモードは柔軟。",
+        "reference": "https://learn.microsoft.com/windows-server/storage/storage-replica/overview",
+        "reference_label": "Storage Replica overview"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q28",
+      "question": "Azure Files とオンプレ AD DS を統合して SMB 認証を行うために必要な要件はどれか。複数選択可。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Azure Files をドメインに参加させる",
+          "explanation": {
+            "text": "正解。AD DS 認証を使うためにはドメイン参加が必要。",
+            "reference": "https://learn.microsoft.com/azure/storage/files/storage-files-active-directory-overview",
+            "reference_label": "Azure Files AD DS integration"
+          }
+        },
+        {
+          "key": "B",
+          "text": "オンプレ DNS で Azure Files の名前解決を行う",
+          "explanation": {
+            "text": "正解。適切な名前解決が必要。",
+            "reference": "https://learn.microsoft.com/azure/storage/files/storage-files-active-directory-overview",
+            "reference_label": "Azure Files AD DS integration"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Files は NTLM のみをサポートする",
+          "explanation": {
+            "text": "誤り。Kerberos を利用可能。",
+            "reference": "https://learn.microsoft.com/azure/storage/files/storage-files-active-directory-overview",
+            "reference_label": "Azure Files AD DS integration"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AD DS サービスアカウントの作成",
+          "explanation": {
+            "text": "正解。認証のため必要。",
+            "reference": "https://learn.microsoft.com/azure/storage/files/storage-files-active-directory-overview",
+            "reference_label": "Azure Files AD DS integration"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "Azure Files の AD DS 統合にはドメイン参加・DNS 解決・サービスアカウントが必須。",
+        "reference": "https://learn.microsoft.com/azure/storage/files/storage-files-active-directory-overview",
+        "reference_label": "Azure Files AD DS integration"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q29",
+      "question": "Storage Spaces Direct (S2D) の特徴として正しいものを選べ。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "専用 SAN ストレージが必須である",
+          "explanation": {
+            "text": "誤り。S2D はローカルディスクをクラスタ化する技術。",
+            "reference": "https://learn.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview",
+            "reference_label": "Storage Spaces Direct overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ソフトウェア定義ストレージ技術である",
+          "explanation": {
+            "text": "正解。サーバー内蔵ディスクを使い SDS を構築。",
+            "reference": "https://learn.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview",
+            "reference_label": "Storage Spaces Direct overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ハードウェア RAID が必須",
+          "explanation": {
+            "text": "誤り。S2D 自体が冗長性を提供する。",
+            "reference": "https://learn.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview",
+            "reference_label": "Storage Spaces Direct overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Stack HCI と統合して利用できる",
+          "explanation": {
+            "text": "正解。Azure Stack HCI の基盤技術として使われる。",
+            "reference": "https://learn.microsoft.com/azure-stack/hci/overview",
+            "reference_label": "Azure Stack HCI overview"
+          }
+        }
+      ],
+      "answer": "B,D",
+      "explanation": {
+        "text": "S2D は SDS 技術で Azure Stack HCI と統合して利用可能。SAN/RAID は不要。",
+        "reference": "https://learn.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview",
+        "reference_label": "Storage Spaces Direct overview"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q30",
+      "question": "DFS 名前空間 (DFS-N) の利用目的として正しいものを選べ。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "複数サーバーの共有を単一の論理的パスでまとめる",
+          "explanation": {
+            "text": "正解。DFS-N の基本機能。",
+            "reference": "https://learn.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview",
+            "reference_label": "DFS overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ファイルの同期をリアルタイムで行う",
+          "explanation": {
+            "text": "誤り。それは DFS Replication の機能。",
+            "reference": "https://learn.microsoft.com/windows-server/storage/dfs-replication/dfsr-overview",
+            "reference_label": "DFS Replication overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "名前解決を Azure DNS に統合する",
+          "explanation": {
+            "text": "誤り。DFS-N は DNS と直接関係しない。",
+            "reference": "https://learn.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview",
+            "reference_label": "DFS overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "フォルダーアクセスに必ず Kerberos 認証を要求する",
+          "explanation": {
+            "text": "誤り。DFS-N 自体に認証方式の強制機能はない。",
+            "reference": "https://learn.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview",
+            "reference_label": "DFS overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "DFS-N は複数共有を単一論理パスに統合し、利用者に透過的なアクセスを提供する。",
+        "reference": "https://learn.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview",
+        "reference_label": "DFS overview"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q31",
+      "question": "SMB over QUIC の特徴として正しいものを選べ。複数選択可。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "VPN なしで安全な SMB アクセスを提供する",
+          "explanation": {
+            "text": "正解。TLS 1.3 ベースの QUIC を利用する。",
+            "reference": "https://learn.microsoft.com/windows-server/storage/file-server/smb-over-quic",
+            "reference_label": "SMB over QUIC"
+          }
+        },
+        {
+          "key": "B",
+          "text": "TCP ベースで通信する",
+          "explanation": {
+            "text": "誤り。QUIC は UDP ベース。",
+            "reference": "https://learn.microsoft.com/windows-server/storage/file-server/smb-over-quic",
+            "reference_label": "SMB over QUIC"
+          }
+        },
+        {
+          "key": "C",
+          "text": "モバイルクライアントや外部接続に最適",
+          "explanation": {
+            "text": "正解。インターネット経由での SMB を安全に可能にする。",
+            "reference": "https://learn.microsoft.com/windows-server/storage/file-server/smb-over-quic",
+            "reference_label": "SMB over QUIC"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Edition の Windows Server のみで利用可能",
+          "explanation": {
+            "text": "正解。Windows Server 2022 Datacenter: Azure Edition で提供される。",
+            "reference": "https://learn.microsoft.com/windows-server/storage/file-server/smb-over-quic",
+            "reference_label": "SMB over QUIC"
+          }
+        }
+      ],
+      "answer": "A,C,D",
+      "explanation": {
+        "text": "SMB over QUIC は VPN 不要・UDP/QUIC ベースで安全に SMB を提供。Azure Edition に実装される。",
+        "reference": "https://learn.microsoft.com/windows-server/storage/file-server/smb-over-quic",
+        "reference_label": "SMB over QUIC"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q32",
+      "question": "オンプレのファイルサーバーを Azure File Sync で拡張するメリットを選べ。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "オンプレファイルを Azure Files と同期しクラウドキャッシュを提供",
+          "explanation": {
+            "text": "正解。ハイブリッドストレージを実現。",
+            "reference": "https://learn.microsoft.com/azure/storage/file-sync/file-sync-deployment-guide",
+            "reference_label": "Azure File Sync deployment guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "DFS 機能を完全に置き換える",
+          "explanation": {
+            "text": "誤り。DFS の全機能を置換するものではない。",
+            "reference": "https://learn.microsoft.com/azure/storage/file-sync/file-sync-deployment-guide",
+            "reference_label": "Azure File Sync deployment guide"
+          }
+        },
+        {
+          "key": "C",
+          "text": "クラウドバックアップを容易に統合可能",
+          "explanation": {
+            "text": "正解。Azure Backup と連携して保護できる。",
+            "reference": "https://learn.microsoft.com/azure/storage/file-sync/file-sync-deployment-guide",
+            "reference_label": "Azure File Sync deployment guide"
+          }
+        },
+        {
+          "key": "D",
+          "text": "オンプレミスサーバーが不要になる",
+          "explanation": {
+            "text": "誤り。キャッシュ用途としてサーバーは引き続き必要。",
+            "reference": "https://learn.microsoft.com/azure/storage/file-sync/file-sync-deployment-guide",
+            "reference_label": "Azure File Sync deployment guide"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "Azure File Sync によりオンプレをクラウド拡張し、キャッシュとクラウドバックアップを容易に実現可能。",
+        "reference": "https://learn.microsoft.com/azure/storage/file-sync/file-sync-deployment-guide",
+        "reference_label": "Azure File Sync deployment guide"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q33",
+      "question": "Azure Backup を Windows Server 環境で利用する際の正しい特徴を選べ。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "オンプレサーバーを直接 Azure Recovery Services コンテナに登録できる",
+          "explanation": {
+            "text": "正解。エージェントを用いて直接バックアップ可能。",
+            "reference": "https://learn.microsoft.com/azure/backup/backup-configure-vault",
+            "reference_label": "Configure Recovery Services vault"
+          }
+        },
+        {
+          "key": "B",
+          "text": "オンプレのバックアップには必ず System Center DPM が必要",
+          "explanation": {
+            "text": "誤り。DPM がなくても利用可能。",
+            "reference": "https://learn.microsoft.com/azure/backup/backup-overview",
+            "reference_label": "Azure Backup overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "バックアップデータは暗号化されて保存される",
+          "explanation": {
+            "text": "正解。既定で暗号化が適用される。",
+            "reference": "https://learn.microsoft.com/azure/backup/backup-encryption",
+            "reference_label": "Azure Backup encryption"
+          }
+        },
+        {
+          "key": "D",
+          "text": "オンプレから Azure への転送は常に平文通信で行われる",
+          "explanation": {
+            "text": "誤り。TLS により暗号化される。",
+            "reference": "https://learn.microsoft.com/azure/backup/backup-overview",
+            "reference_label": "Azure Backup overview"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "Azure Backup はエージェントで直接登録可能で、バックアップデータは暗号化保存される。",
+        "reference": "https://learn.microsoft.com/azure/backup/backup-encryption",
+        "reference_label": "Azure Backup encryption"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q34",
+      "question": "Azure Site Recovery (ASR) を利用する主な目的をすべて選べ。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "オンプレミス VM を Azure にレプリケートして災害復旧を実現",
+          "explanation": {
+            "text": "正解。ASR の主要な用途。",
+            "reference": "https://learn.microsoft.com/azure/site-recovery/site-recovery-overview",
+            "reference_label": "Azure Site Recovery overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "クラウドへのバックアップの置き換え",
+          "explanation": {
+            "text": "誤り。バックアップと DR は異なる概念。",
+            "reference": "https://learn.microsoft.com/azure/site-recovery/site-recovery-overview",
+            "reference_label": "Azure Site Recovery overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure VM 間のクロスリージョン DR",
+          "explanation": {
+            "text": "正解。Azure VM を別リージョンへ保護できる。",
+            "reference": "https://learn.microsoft.com/azure/site-recovery/azure-to-azure-architecture",
+            "reference_label": "Azure to Azure DR"
+          }
+        },
+        {
+          "key": "D",
+          "text": "アプリケーション整合性のあるレプリケーションを提供",
+          "explanation": {
+            "text": "正解。VSS によりアプリ整合性を保証できる。",
+            "reference": "https://learn.microsoft.com/azure/site-recovery/site-recovery-overview",
+            "reference_label": "Azure Site Recovery overview"
+          }
+        }
+      ],
+      "answer": "A,C,D",
+      "explanation": {
+        "text": "ASR はオンプレ→Azure・Azure→Azure 双方の DR をサポートし、アプリ整合性も確保する。",
+        "reference": "https://learn.microsoft.com/azure/site-recovery/site-recovery-overview",
+        "reference_label": "Azure Site Recovery overview"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q35",
+      "question": "Windows Server における VSS (Volume Shadow Copy Service) の利用目的を正しく説明しているものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "稼働中のアプリケーション データを一貫性のある状態でバックアップ可能にする",
+          "explanation": {
+            "text": "正解。スナップショットにより整合性を確保する。",
+            "reference": "https://learn.microsoft.com/windows-server/storage/file-server/volume-shadow-copy-service",
+            "reference_label": "VSS overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ディスク暗号化を強制する仕組み",
+          "explanation": {
+            "text": "誤り。暗号化は BitLocker の役割。",
+            "reference": "https://learn.microsoft.com/windows-server/storage/file-server/volume-shadow-copy-service",
+            "reference_label": "VSS overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ストレージ重複排除を自動化する仕組み",
+          "explanation": {
+            "text": "誤り。データ重複排除とは別機能。",
+            "reference": "https://learn.microsoft.com/windows-server/storage/file-server/volume-shadow-copy-service",
+            "reference_label": "VSS overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ネットワーク共有を高速化するキャッシュ機能",
+          "explanation": {
+            "text": "誤り。キャッシュではなくバックアップ整合性機能。",
+            "reference": "https://learn.microsoft.com/windows-server/storage/file-server/volume-shadow-copy-service",
+            "reference_label": "VSS overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "VSS は稼働中アプリの整合性を保ちつつスナップショットを取得するために利用される。",
+        "reference": "https://learn.microsoft.com/windows-server/storage/file-server/volume-shadow-copy-service",
+        "reference_label": "VSS overview"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q36",
+      "question": "Azure Backup のバックアップポリシー設定に関する正しい説明を選べ。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "バックアップは 1 日 1 回に固定され変更できない",
+          "explanation": {
+            "text": "誤り。柔軟にスケジュール設定可能。",
+            "reference": "https://learn.microsoft.com/azure/backup/backup-azure-vms-first-look-arm",
+            "reference_label": "Azure VM backup"
+          }
+        },
+        {
+          "key": "B",
+          "text": "保持期間は短期・長期の両方を組み合わせられる",
+          "explanation": {
+            "text": "正解。日次・週次・月次・年次の保持ポリシーを設定可能。",
+            "reference": "https://learn.microsoft.com/azure/backup/backup-azure-vms-first-look-arm",
+            "reference_label": "Azure VM backup"
+          }
+        },
+        {
+          "key": "C",
+          "text": "バックアップポリシーは一度設定すると変更できない",
+          "explanation": {
+            "text": "誤り。変更可能。",
+            "reference": "https://learn.microsoft.com/azure/backup/backup-azure-vms-first-look-arm",
+            "reference_label": "Azure VM backup"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ポリシーはサブスクリプション単位でしか適用できない",
+          "explanation": {
+            "text": "誤り。リソース単位でも適用できる。",
+            "reference": "https://learn.microsoft.com/azure/backup/backup-azure-vms-first-look-arm",
+            "reference_label": "Azure VM backup"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Azure Backup は柔軟な保持ポリシーを提供し、短期・長期を組み合わせ可能。",
+        "reference": "https://learn.microsoft.com/azure/backup/backup-azure-vms-first-look-arm",
+        "reference_label": "Azure VM backup"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q37",
+      "question": "Azure Site Recovery を用いたフェイルオーバー実行時の特徴を選べ。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "フェイルオーバー後の VM は新しい Azure リソースとして作成される",
+          "explanation": {
+            "text": "正解。既存 VM を直接利用するのではなく新規作成される。",
+            "reference": "https://learn.microsoft.com/azure/site-recovery/site-recovery-overview",
+            "reference_label": "ASR overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "オンプレに自動で逆同期される",
+          "explanation": {
+            "text": "誤り。逆方向はフェイルバック処理が必要。",
+            "reference": "https://learn.microsoft.com/azure/site-recovery/site-recovery-overview",
+            "reference_label": "ASR overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "テストフェイルオーバーを行い本番環境に影響を与えずに検証できる",
+          "explanation": {
+            "text": "正解。ASR の大きなメリット。",
+            "reference": "https://learn.microsoft.com/azure/site-recovery/site-recovery-test-failover-to-azure",
+            "reference_label": "ASR test failover"
+          }
+        },
+        {
+          "key": "D",
+          "text": "フェイルオーバーは元に戻せない",
+          "explanation": {
+            "text": "誤り。フェイルバックが可能。",
+            "reference": "https://learn.microsoft.com/azure/site-recovery/site-recovery-overview",
+            "reference_label": "ASR overview"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "ASR フェイルオーバーは新規 VM を作成し、テストフェイルオーバーも可能。逆同期は自動ではなくフェイルバックが必要。",
+        "reference": "https://learn.microsoft.com/azure/site-recovery/site-recovery-overview",
+        "reference_label": "ASR overview"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q38",
+      "question": "Windows Server Backup の制限として正しいものを選べ。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "システム状態のバックアップは可能",
+          "explanation": {
+            "text": "正解。AD DS などの復元に利用可能。",
+            "reference": "https://learn.microsoft.com/windows-server/administration/windows-server-backup/windows-server-backup",
+            "reference_label": "Windows Server Backup"
+          }
+        },
+        {
+          "key": "B",
+          "text": "テープへのバックアップをネイティブサポートする",
+          "explanation": {
+            "text": "誤り。テープはサポートされない。",
+            "reference": "https://learn.microsoft.com/windows-server/administration/windows-server-backup/windows-server-backup",
+            "reference_label": "Windows Server Backup"
+          }
+        },
+        {
+          "key": "C",
+          "text": "クラウドへの直接バックアップを提供する",
+          "explanation": {
+            "text": "誤り。Azure Backup などの追加サービスが必要。",
+            "reference": "https://learn.microsoft.com/windows-server/administration/windows-server-backup/windows-server-backup",
+            "reference_label": "Windows Server Backup"
+          }
+        },
+        {
+          "key": "D",
+          "text": "単一ファイルの復元はサポートされない",
+          "explanation": {
+            "text": "誤り。ファイル単位で復元可能。",
+            "reference": "https://learn.microsoft.com/windows-server/administration/windows-server-backup/windows-server-backup",
+            "reference_label": "Windows Server Backup"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Windows Server Backup はシステム状態を含むが、テープやクラウドへの直接バックアップは非対応。",
+        "reference": "https://learn.microsoft.com/windows-server/administration/windows-server-backup/windows-server-backup",
+        "reference_label": "Windows Server Backup"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q39",
+      "question": "バックアップの 3-2-1 ルールとは何を指すか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "3 世代のバックアップを残し、2 種類のメディアを使用し、1 つをオフサイトに保管する",
+          "explanation": {
+            "text": "正解。最も有名なバックアップ戦略。",
+            "reference": "https://learn.microsoft.com/azure/backup/backup-best-practices",
+            "reference_label": "Backup best practices"
+          }
+        },
+        {
+          "key": "B",
+          "text": "3 日ごとにバックアップを取り、2 回テストし、1 回リストアする",
+          "explanation": {
+            "text": "誤り。3-2-1 ルールの定義ではない。",
+            "reference": "https://learn.microsoft.com/azure/backup/backup-best-practices",
+            "reference_label": "Backup best practices"
+          }
+        },
+        {
+          "key": "C",
+          "text": "3 時間以内に復元し、2 分以内にバックアップし、1 秒以内に同期する",
+          "explanation": {
+            "text": "誤り。SLA の定義ではない。",
+            "reference": "https://learn.microsoft.com/azure/backup/backup-best-practices",
+            "reference_label": "Backup best practices"
+          }
+        },
+        {
+          "key": "D",
+          "text": "3 リージョンにバックアップを置き、2 つのクラウドにコピーし、1 つをオンプレに戻す",
+          "explanation": {
+            "text": "誤り。定義に該当しない。",
+            "reference": "https://learn.microsoft.com/azure/backup/backup-best-practices",
+            "reference_label": "Backup best practices"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "3-2-1 ルールは 3 つのコピーを 2 種類のメディアに保持し、1 つをオフサイトに保管すること。",
+        "reference": "https://learn.microsoft.com/azure/backup/backup-best-practices",
+        "reference_label": "Backup best practices"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q40",
+      "question": "Windows Server の BitLocker を使用する目的として正しいものを選べ。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ストレージの暗号化によるデータ保護",
+          "explanation": {
+            "text": "正解。BitLocker はディスク暗号化技術である。",
+            "reference": "https://learn.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview",
+            "reference_label": "BitLocker overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ネットワーク通信を暗号化する",
+          "explanation": {
+            "text": "誤り。通信暗号化は TLS/IPsec が担う。",
+            "reference": "https://learn.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview",
+            "reference_label": "BitLocker overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ファイル単位のアクセス権を制御する",
+          "explanation": {
+            "text": "誤り。それは NTFS ACL の役割。",
+            "reference": "https://learn.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview",
+            "reference_label": "BitLocker overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Key Vault と連携して暗号化キーを管理できる",
+          "explanation": {
+            "text": "正解。ハイブリッドシナリオで利用可能。",
+            "reference": "https://learn.microsoft.com/azure/key-vault/general/overview",
+            "reference_label": "Azure Key Vault overview"
+          }
+        }
+      ],
+      "answer": "A,D",
+      "explanation": {
+        "text": "BitLocker はディスク暗号化によるデータ保護を提供し、キー管理を Azure Key Vault で統合可能。",
+        "reference": "https://learn.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview",
+        "reference_label": "BitLocker overview"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q41",
+      "question": "Windows Defender Credential Guard の目的を正しく説明しているものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "資格情報を分離された仮想化ベース環境に保護する",
+          "explanation": {
+            "text": "正解。Pass-the-Hash などの攻撃を防止する。",
+            "reference": "https://learn.microsoft.com/windows/security/identity-protection/credential-guard/credential-guard",
+            "reference_label": "Credential Guard"
+          }
+        },
+        {
+          "key": "B",
+          "text": "OS 起動時に BIOS を暗号化する",
+          "explanation": {
+            "text": "誤り。Credential Guard は BIOS 暗号化機能ではない。",
+            "reference": "https://learn.microsoft.com/windows/security/identity-protection/credential-guard/credential-guard",
+            "reference_label": "Credential Guard"
+          }
+        },
+        {
+          "key": "C",
+          "text": "VPN 通信を自動的に暗号化する",
+          "explanation": {
+            "text": "誤り。VPN の暗号化は別の仕組みで実現。",
+            "reference": "https://learn.microsoft.com/windows/security/identity-protection/credential-guard/credential-guard",
+            "reference_label": "Credential Guard"
+          }
+        },
+        {
+          "key": "D",
+          "text": "全てのユーザーに必ず多要素認証を適用する",
+          "explanation": {
+            "text": "誤り。多要素認証は Azure AD 側の機能である。",
+            "reference": "https://learn.microsoft.com/windows/security/identity-protection/credential-guard/credential-guard",
+            "reference_label": "Credential Guard"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Credential Guard は仮想化ベースのセキュリティを使い資格情報を保護する。",
+        "reference": "https://learn.microsoft.com/windows/security/identity-protection/credential-guard/credential-guard",
+        "reference_label": "Credential Guard"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q42",
+      "question": "Just Enough Administration (JEA) のメリットとして正しいものを選べ。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "管理者が必要最小限のコマンドのみ実行可能になる",
+          "explanation": {
+            "text": "正解。最小権限での管理を実現。",
+            "reference": "https://learn.microsoft.com/powershell/scripting/learn/remoting/jea/overview",
+            "reference_label": "JEA overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "全管理者にドメイン管理者権限を自動で付与する",
+          "explanation": {
+            "text": "誤り。JEA は逆に権限を制限する仕組み。",
+            "reference": "https://learn.microsoft.com/powershell/scripting/learn/remoting/jea/overview",
+            "reference_label": "JEA overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "常に GUI で権限を管理する",
+          "explanation": {
+            "text": "誤り。PowerShell ベースでの構成。",
+            "reference": "https://learn.microsoft.com/powershell/scripting/learn/remoting/jea/overview",
+            "reference_label": "JEA overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ネットワーク経路を暗号化する",
+          "explanation": {
+            "text": "誤り。暗号化は TLS/WinRM が行う。",
+            "reference": "https://learn.microsoft.com/powershell/scripting/learn/remoting/jea/overview",
+            "reference_label": "JEA overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "JEA は管理者に最小限の権限で操作させることでセキュリティを強化する。",
+        "reference": "https://learn.microsoft.com/powershell/scripting/learn/remoting/jea/overview",
+        "reference_label": "JEA overview"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q43",
+      "question": "Privileged Access Workstation (PAW) の推奨利用目的をすべて選べ。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "日常的なインターネット閲覧とメール利用を行う端末",
+          "explanation": {
+            "text": "誤り。PAW は管理作業専用で一般利用には使わない。",
+            "reference": "https://learn.microsoft.com/security/compass/privileged-access-devices",
+            "reference_label": "Privileged Access Workstations"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ドメイン管理やサーバー構成など特権操作を行う端末",
+          "explanation": {
+            "text": "正解。特権タスク専用端末が PAW の役割。",
+            "reference": "https://learn.microsoft.com/security/compass/privileged-access-devices",
+            "reference_label": "Privileged Access Workstations"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure AD やオンプレ AD DS 管理に用いる端末",
+          "explanation": {
+            "text": "正解。特権 ID を安全に扱う用途。",
+            "reference": "https://learn.microsoft.com/security/compass/privileged-access-devices",
+            "reference_label": "Privileged Access Workstations"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ゲームや社内娯楽利用専用端末",
+          "explanation": {
+            "text": "誤り。PAW は業務外利用には不適。",
+            "reference": "https://learn.microsoft.com/security/compass/privileged-access-devices",
+            "reference_label": "Privileged Access Workstations"
+          }
+        }
+      ],
+      "answer": "B,C",
+      "explanation": {
+        "text": "PAW は特権操作専用端末であり、AD 管理など高リスク作業に利用される。",
+        "reference": "https://learn.microsoft.com/security/compass/privileged-access-devices",
+        "reference_label": "Privileged Access Workstations"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q44",
+      "question": "Windows Server における LAPS (Local Administrator Password Solution) の役割を正しく説明しているものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ローカル管理者アカウントのパスワードを自動的に管理し定期変更する",
+          "explanation": {
+            "text": "正解。LAPS の基本的な目的。",
+            "reference": "https://learn.microsoft.com/windows-server/identity/laps/laps-overview",
+            "reference_label": "LAPS overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "すべてのユーザーのパスワードを Azure AD に同期する",
+          "explanation": {
+            "text": "誤り。LAPS はローカル管理者アカウント対象。",
+            "reference": "https://learn.microsoft.com/windows-server/identity/laps/laps-overview",
+            "reference_label": "LAPS overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "BitLocker 回復キーを保存する",
+          "explanation": {
+            "text": "誤り。BitLocker 管理とは別。",
+            "reference": "https://learn.microsoft.com/windows-server/identity/laps/laps-overview",
+            "reference_label": "LAPS overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザーごとに異なる強制パスワードポリシーを設定する",
+          "explanation": {
+            "text": "誤り。LAPS はポリシーではなく自動生成・格納の仕組み。",
+            "reference": "https://learn.microsoft.com/windows-server/identity/laps/laps-overview",
+            "reference_label": "LAPS overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "LAPS はローカル管理者パスワードの自動生成・定期変更・安全保管を行う。",
+        "reference": "https://learn.microsoft.com/windows-server/identity/laps/laps-overview",
+        "reference_label": "LAPS overview"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q45",
+      "question": "Windows Server のグループポリシーで制御可能な項目をすべて選べ。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ユーザーのログオンスクリプトの指定",
+          "explanation": {
+            "text": "正解。グループポリシーで制御可能。",
+            "reference": "https://learn.microsoft.com/windows-server/identity/group-policy/group-policy-overview",
+            "reference_label": "Group Policy overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Windows Update の構成",
+          "explanation": {
+            "text": "正解。更新管理が可能。",
+            "reference": "https://learn.microsoft.com/windows-server/identity/group-policy/group-policy-overview",
+            "reference_label": "Group Policy overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure VM のサイズ変更",
+          "explanation": {
+            "text": "誤り。Azure 管理機能であり GPO の範囲外。",
+            "reference": "https://learn.microsoft.com/windows-server/identity/group-policy/group-policy-overview",
+            "reference_label": "Group Policy overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "セキュリティオプションの設定（例: パスワードポリシー）",
+          "explanation": {
+            "text": "正解。セキュリティ設定は GPO の主要用途。",
+            "reference": "https://learn.microsoft.com/windows-server/identity/group-policy/group-policy-overview",
+            "reference_label": "Group Policy overview"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "GPO で制御できるのはログオンスクリプト・更新構成・セキュリティ設定など。Azure VM 管理は対象外。",
+        "reference": "https://learn.microsoft.com/windows-server/identity/group-policy/group-policy-overview",
+        "reference_label": "Group Policy overview"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q46",
+      "question": "Active Directory Federation Services (AD FS) をハイブリッド環境で利用する主な目的を選べ。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "オンプレ AD と Azure AD 間でシングルサインオンを提供する",
+          "explanation": {
+            "text": "正解。AD FS はオンプレとクラウド間の認証連携を可能にする。",
+            "reference": "https://learn.microsoft.com/windows-server/identity/ad-fs/ad-fs-overview",
+            "reference_label": "AD FS overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "オンプレファイルサーバーのレプリケーションを行う",
+          "explanation": {
+            "text": "誤り。AD FS は認証関連機能でありファイル同期は行わない。",
+            "reference": "https://learn.microsoft.com/windows-server/identity/ad-fs/ad-fs-overview",
+            "reference_label": "AD FS overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "DNS 名前解決を自動的にクラウドに統合する",
+          "explanation": {
+            "text": "誤り。DNS とは無関係。",
+            "reference": "https://learn.microsoft.com/windows-server/identity/ad-fs/ad-fs-overview",
+            "reference_label": "AD FS overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Hyper-V の VM ライブマイグレーションを可能にする",
+          "explanation": {
+            "text": "誤り。AD FS は認証基盤であり仮想化機能ではない。",
+            "reference": "https://learn.microsoft.com/windows-server/identity/ad-fs/ad-fs-overview",
+            "reference_label": "AD FS overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "AD FS はオンプレとクラウド間でシングルサインオンを提供するために利用される。",
+        "reference": "https://learn.microsoft.com/windows-server/identity/ad-fs/ad-fs-overview",
+        "reference_label": "AD FS overview"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q47",
+      "question": "オンプレ AD DS と Azure AD の違いを正しく説明しているものを選べ。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AD DS はオンプレ環境でドメインコントローラーが管理するが、Azure AD はクラウドベースの ID 管理サービスである",
+          "explanation": {
+            "text": "正解。両者の根本的な違い。",
+            "reference": "https://learn.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis",
+            "reference_label": "What is Azure AD?"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AD DS は常にクラウドにホストされる",
+          "explanation": {
+            "text": "誤り。AD DS はオンプレで稼働する。",
+            "reference": "https://learn.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis",
+            "reference_label": "What is Azure AD?"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure AD はオンプレのグループポリシーをそのまま適用できる",
+          "explanation": {
+            "text": "誤り。Azure AD には GPO は存在しない。",
+            "reference": "https://learn.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis",
+            "reference_label": "What is Azure AD?"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AD DS はクラウド専用サービスである",
+          "explanation": {
+            "text": "誤り。オンプレ環境での利用が基本。",
+            "reference": "https://learn.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis",
+            "reference_label": "What is Azure AD?"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "AD DS はオンプレのドメイン管理、Azure AD はクラウドベースの ID サービスという違いがある。",
+        "reference": "https://learn.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis",
+        "reference_label": "What is Azure AD?"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q48",
+      "question": "Azure AD Connect を利用する目的として正しいものを選べ。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "オンプレ AD DS アカウントを Azure AD に同期する",
+          "explanation": {
+            "text": "正解。ハイブリッド ID を実現する仕組み。",
+            "reference": "https://learn.microsoft.com/azure/active-directory/hybrid/whatis-azure-ad-connect",
+            "reference_label": "Azure AD Connect overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "オンプレファイルサーバーを Azure Files に自動移行する",
+          "explanation": {
+            "text": "誤り。Azure AD Connect は ID 同期が目的。",
+            "reference": "https://learn.microsoft.com/azure/active-directory/hybrid/whatis-azure-ad-connect",
+            "reference_label": "Azure AD Connect overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Hyper-V VM を Azure に自動レプリケートする",
+          "explanation": {
+            "text": "誤り。これは Azure Site Recovery の役割。",
+            "reference": "https://learn.microsoft.com/azure/active-directory/hybrid/whatis-azure-ad-connect",
+            "reference_label": "Azure AD Connect overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "オンプレ DNS サーバーを Azure DNS に統合する",
+          "explanation": {
+            "text": "誤り。DNS 統合機能は持たない。",
+            "reference": "https://learn.microsoft.com/azure/active-directory/hybrid/whatis-azure-ad-connect",
+            "reference_label": "Azure AD Connect overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure AD Connect はオンプレ AD アカウントを Azure AD に同期してハイブリッド ID を実現する。",
+        "reference": "https://learn.microsoft.com/azure/active-directory/hybrid/whatis-azure-ad-connect",
+        "reference_label": "Azure AD Connect overview"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q49",
+      "question": "Azure AD Join と Hybrid Azure AD Join の違いを正しく説明しているものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Azure AD Join はクラウド専用デバイス登録、Hybrid Azure AD Join はオンプレ AD に参加済みデバイスを Azure AD にも登録する",
+          "explanation": {
+            "text": "正解。両者の根本的な違い。",
+            "reference": "https://learn.microsoft.com/azure/active-directory/devices/concept-azure-ad-join-hybrid-azure-ad-join",
+            "reference_label": "Azure AD Join vs Hybrid Join"
+          }
+        },
+        {
+          "key": "B",
+          "text": "両者は全く同じ仕組みで呼称が異なるだけ",
+          "explanation": {
+            "text": "誤り。実装も利用シナリオも異なる。",
+            "reference": "https://learn.microsoft.com/azure/active-directory/devices/concept-azure-ad-join-hybrid-azure-ad-join",
+            "reference_label": "Azure AD Join vs Hybrid Join"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Hybrid Azure AD Join では Azure AD 側にアカウントは作成されない",
+          "explanation": {
+            "text": "誤り。両方に登録される。",
+            "reference": "https://learn.microsoft.com/azure/active-directory/devices/concept-azure-ad-join-hybrid-azure-ad-join",
+            "reference_label": "Azure AD Join vs Hybrid Join"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure AD Join はオンプレ専用",
+          "explanation": {
+            "text": "誤り。Azure AD Join はクラウド専用の概念。",
+            "reference": "https://learn.microsoft.com/azure/active-directory/devices/concept-azure-ad-join-hybrid-azure-ad-join",
+            "reference_label": "Azure AD Join vs Hybrid Join"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure AD Join はクラウド専用デバイス、Hybrid Azure AD Join はオンプレ参加済みデバイスを Azure AD にも登録する仕組み。",
+        "reference": "https://learn.microsoft.com/azure/active-directory/devices/concept-azure-ad-join-hybrid-azure-ad-join",
+        "reference_label": "Azure AD Join vs Hybrid Join"
+      }
+    },
+    {
+      "id": "azure-AZ-800801-q50",
+      "question": "オンプレ AD DS のパスワードハッシュ同期 (PHS) とフェデレーション認証 (AD FS) の違いを正しく説明しているものを選べ。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "PHS は Azure AD にパスワードハッシュを同期し Azure 側で認証、AD FS はオンプレのフェデレーションサーバーで認証",
+          "explanation": {
+            "text": "正解。両者の認証処理の違い。",
+            "reference": "https://learn.microsoft.com/azure/active-directory/hybrid/choose-ad-authn",
+            "reference_label": "Choose the right authentication method"
+          }
+        },
+        {
+          "key": "B",
+          "text": "PHS はクラウド専用でありオンプレユーザーは利用できない",
+          "explanation": {
+            "text": "誤り。オンプレユーザーも Azure AD に同期され利用可能。",
+            "reference": "https://learn.microsoft.com/azure/active-directory/hybrid/choose-ad-authn",
+            "reference_label": "Choose the right authentication method"
+          }
+        },
+        {
+          "key": "C",
+          "text": "AD FS は Azure 側のクラウドのみで利用できる",
+          "explanation": {
+            "text": "誤り。オンプレに設置されたフェデレーションサーバーで認証を行う。",
+            "reference": "https://learn.microsoft.com/azure/active-directory/hybrid/choose-ad-authn",
+            "reference_label": "Choose the right authentication method"
+          }
+        },
+        {
+          "key": "D",
+          "text": "PHS はパスワードを平文で Azure に送信する",
+          "explanation": {
+            "text": "誤り。ハッシュ化されたパスワードのみが同期される。",
+            "reference": "https://learn.microsoft.com/azure/active-directory/hybrid/choose-ad-authn",
+            "reference_label": "Choose the right authentication method"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "PHS は Azure 側で認証、AD FS はオンプレ側で認証するという違いがある。",
+        "reference": "https://learn.microsoft.com/azure/active-directory/hybrid/choose-ad-authn",
+        "reference_label": "Choose the right authentication method"
+      }
+    }
+  ]
+}

@@ -1,0 +1,2467 @@
+{
+  "exam": {
+    "id": "g_test",
+    "title": "G検定",
+    "description": "G検定は、一般社団法人日本ディープラーニング協会（JDLA）が実施する、AI・ディープラーニングを事業活用するためのリテラシーを測る検定試験です。「AIで何ができて何ができないか」「どこにAIを活用すればよいか」「AI活用には何が必要か」といった知識を体系的に学び、ビジネスやキャリアの可能性を広げることを目的としています。受験資格の制限はなく、オンラインで自宅受験が可能です。試験時間は120分、出題数は160問程度（最新改定以降）で、AIの基礎からビジネス活用、倫理・法務まで幅広く問われます。",
+    "version": "2024",
+    "price": "13,200円（割引あり）",
+    "difficulty": "普通",
+    "official-site": "https://www.jdla.org/certificate/general/",
+    "category": {
+      "id": "ai",
+      "name": "AI"
+    }
+  },
+  "questions": [
+    {
+      "id": "ai-g-q1",
+      "question": "ニューラルネットワークの学習において、過学習を防ぐための代表的な手法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ドロップアウト",
+          "explanation": {
+            "text": "ドロップアウトは学習時にランダムにノードを無効化し、過学習を抑制する手法です。",
+            "reference": "https://keras.io/api/layers/regularizers/dropout/",
+            "reference_label": "Keras Dropout レイヤー"
+          }
+        },
+        {
+          "key": "B",
+          "text": "バッチ正規化",
+          "explanation": {
+            "text": "バッチ正規化は勾配消失の緩和や学習の安定化に効果がありますが、過学習抑制の主目的ではありません。",
+            "reference": "https://arxiv.org/abs/1502.03167",
+            "reference_label": "Batch Normalization 論文"
+          }
+        },
+        {
+          "key": "C",
+          "text": "活性化関数の変更",
+          "explanation": {
+            "text": "活性化関数は表現力や勾配伝播に影響しますが、過学習そのものを防ぐ直接的な手段ではありません。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        },
+        {
+          "key": "D",
+          "text": "学習率の調整",
+          "explanation": {
+            "text": "学習率は収束速度に影響しますが、過学習を直接防ぐ手法ではありません。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "過学習を防ぐための代表的な手法はドロップアウトです。他にもデータ拡張や正則化手法が用いられます。",
+        "reference": "https://keras.io/api/layers/regularizers/dropout/",
+        "reference_label": "Keras Dropout レイヤー"
+      }
+    },
+    {
+      "id": "ai-g-q2",
+      "question": "強化学習において「報酬」とは何を意味するか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "エージェントが行動後に得るフィードバック",
+          "explanation": {
+            "text": "報酬は行動の結果として環境から返される値であり、エージェントはこれを最大化するように学習します。",
+            "reference": "https://spinningup.openai.com/en/latest/spinningup/rl_intro.html",
+            "reference_label": "OpenAI Spinning Up: Introduction to RL"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ニューラルネットワークのパラメータ",
+          "explanation": {
+            "text": "パラメータは学習により更新される重みであり、報酬そのものではありません。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        },
+        {
+          "key": "C",
+          "text": "学習率の設定値",
+          "explanation": {
+            "text": "学習率は勾配降下法での更新幅を決める値であり、報酬とは異なります。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        },
+        {
+          "key": "D",
+          "text": "環境の状態そのもの",
+          "explanation": {
+            "text": "環境の状態はエージェントの観測対象であり、報酬とは別です。",
+            "reference": "https://spinningup.openai.com/en/latest/spinningup/rl_intro.html",
+            "reference_label": "OpenAI Spinning Up: Introduction to RL"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "強化学習における報酬は、行動の良し悪しを示す指標です。エージェントは累積報酬を最大化する方策を学習します。",
+        "reference": "https://spinningup.openai.com/en/latest/spinningup/rl_intro.html",
+        "reference_label": "OpenAI Spinning Up: Introduction to RL"
+      }
+    },
+    {
+      "id": "ai-g-q3",
+      "question": "畳み込みニューラルネットワーク（CNN）の畳み込み層が果たす主な役割はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "画像から局所的特徴を抽出する",
+          "explanation": {
+            "text": "畳み込み層はフィルタを用いて局所的特徴を抽出し、画像認識などで有効です。",
+            "reference": "https://cs231n.github.io/convolutional-networks/",
+            "reference_label": "Stanford CS231n Convolutional Networks"
+          }
+        },
+        {
+          "key": "B",
+          "text": "全結合層のパラメータを削減する",
+          "explanation": {
+            "text": "畳み込み層は局所性を利用するためパラメータ削減に寄与しますが、それ自体の主目的は特徴抽出です。",
+            "reference": "https://cs231n.github.io/convolutional-networks/",
+            "reference_label": "Stanford CS231n Convolutional Networks"
+          }
+        },
+        {
+          "key": "C",
+          "text": "勾配消失を防ぐ",
+          "explanation": {
+            "text": "勾配消失を防ぐのは主に活性化関数や正規化技術であり、畳み込み層の直接的な目的ではありません。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        },
+        {
+          "key": "D",
+          "text": "学習率を自動調整する",
+          "explanation": {
+            "text": "学習率調整は最適化アルゴリズムの役割であり、畳み込み層の機能ではありません。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "CNNの畳み込み層は局所的なパターンを抽出する役割を持ち、低レベルから高レベルの特徴へと積み重なります。",
+        "reference": "https://cs231n.github.io/convolutional-networks/",
+        "reference_label": "Stanford CS231n Convolutional Networks"
+      }
+    },
+    {
+      "id": "ai-g-q4",
+      "question": "教師あり学習と教師なし学習の違いとして正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "教師あり学習はラベル付きデータを使用するが、教師なし学習はラベルなしデータを使用する",
+          "explanation": {
+            "text": "教師あり学習では入力と正解ラベルの対応を学習する。一方、教師なし学習はクラスタリングなどラベルのないデータからパターンを見つける。",
+            "reference": "https://scikit-learn.org/stable/supervised_learning.html",
+            "reference_label": "Scikit-learn Supervised learning"
+          }
+        },
+        {
+          "key": "B",
+          "text": "教師あり学習は画像処理に使えないが、教師なし学習は使える",
+          "explanation": {
+            "text": "教師あり学習も画像分類などで広く使われるため、この記述は誤り。",
+            "reference": "https://scikit-learn.org/stable/supervised_learning.html",
+            "reference_label": "Scikit-learn Supervised learning"
+          }
+        },
+        {
+          "key": "C",
+          "text": "教師あり学習はクラスタリングを行うが、教師なし学習は回帰を行う",
+          "explanation": {
+            "text": "これは逆であり、教師なし学習の代表例がクラスタリング、教師あり学習の代表例が回帰である。",
+            "reference": "https://scikit-learn.org/stable/unsupervised_learning.html",
+            "reference_label": "Scikit-learn Unsupervised learning"
+          }
+        },
+        {
+          "key": "D",
+          "text": "教師なし学習では常に精度評価が可能である",
+          "explanation": {
+            "text": "教師なし学習はラベルがないため、精度評価は難しい場合が多い。",
+            "reference": "https://scikit-learn.org/stable/unsupervised_learning.html",
+            "reference_label": "Scikit-learn Unsupervised learning"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "教師あり学習はラベル付きデータを使って入力と出力の関係を学習し、教師なし学習はラベルなしデータからパターンを抽出する。",
+        "reference": "https://scikit-learn.org/stable/supervised_learning.html",
+        "reference_label": "Scikit-learn Supervised learning"
+      }
+    },
+    {
+      "id": "ai-g-q5",
+      "question": "生成モデルの代表的な手法として誤っているものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "GAN（敵対的生成ネットワーク）",
+          "explanation": {
+            "text": "GANは生成モデルの代表的な手法であり、画像生成などで広く使われる。",
+            "reference": "https://arxiv.org/abs/1406.2661",
+            "reference_label": "GAN 論文"
+          }
+        },
+        {
+          "key": "B",
+          "text": "VAE（変分オートエンコーダ）",
+          "explanation": {
+            "text": "VAEは確率的潜在変数モデルを用いた代表的な生成モデルである。",
+            "reference": "https://arxiv.org/abs/1312.6114",
+            "reference_label": "VAE 論文"
+          }
+        },
+        {
+          "key": "C",
+          "text": "リカレントニューラルネットワーク（RNN）",
+          "explanation": {
+            "text": "RNNは時系列データ処理に使われるが、生成モデルそのものではない。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        },
+        {
+          "key": "D",
+          "text": "拡散モデル（Diffusion Model）",
+          "explanation": {
+            "text": "拡散モデルは近年注目される生成モデルであり、画像生成で強力な成果を挙げている。",
+            "reference": "https://arxiv.org/abs/2006.11239",
+            "reference_label": "Denoising Diffusion Probabilistic Models"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "RNNは生成モデルではなく時系列処理や自然言語処理に用いられる構造。生成モデルの代表例はGAN、VAE、拡散モデルなどである。",
+        "reference": "https://www.deeplearningbook.org/",
+        "reference_label": "Deep Learning Book"
+      }
+    },
+    {
+      "id": "ai-g-q6",
+      "question": "バイアスとバリアンスの関係について正しい記述はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "高バイアスは過学習を引き起こしやすい",
+          "explanation": {
+            "text": "高バイアスはむしろ単純すぎるモデルによる学習不足（アンダーフィッティング）を招きやすい。",
+            "reference": "https://scikit-learn.org/stable/modules/learning_curve.html",
+            "reference_label": "Scikit-learn Bias-Variance tradeoff"
+          }
+        },
+        {
+          "key": "B",
+          "text": "高バリアンスは過学習を引き起こしやすい",
+          "explanation": {
+            "text": "バリアンスが高いとモデルはデータに過度に適合し、過学習を引き起こす。",
+            "reference": "https://scikit-learn.org/stable/modules/learning_curve.html",
+            "reference_label": "Scikit-learn Bias-Variance tradeoff"
+          }
+        },
+        {
+          "key": "C",
+          "text": "低バイアスかつ低バリアンスのモデルが理想的である",
+          "explanation": {
+            "text": "理想的なモデルはバイアスもバリアンスも低い状態。",
+            "reference": "https://scikit-learn.org/stable/modules/learning_curve.html",
+            "reference_label": "Scikit-learn Bias-Variance tradeoff"
+          }
+        },
+        {
+          "key": "D",
+          "text": "バイアスとバリアンスは同時に小さくできない",
+          "explanation": {
+            "text": "現実にはトレードオフが存在するが、適切な正則化やデータ量増加により同時に小さくすることも可能。",
+            "reference": "https://scikit-learn.org/stable/modules/learning_curve.html",
+            "reference_label": "Scikit-learn Bias-Variance tradeoff"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "バイアスとバリアンスはトレードオフの関係にある。高バリアンスは過学習、高バイアスは未学習を招く。",
+        "reference": "https://scikit-learn.org/stable/modules/learning_curve.html",
+        "reference_label": "Scikit-learn Bias-Variance tradeoff"
+      }
+    },
+    {
+      "id": "ai-g-q7",
+      "question": "AI倫理における「ブラックボックス問題」とは何を指すか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AIの判断根拠が人間にとって理解しづらいこと",
+          "explanation": {
+            "text": "ブラックボックス問題とは、モデルの内部判断過程が不透明で説明困難であることを指す。",
+            "reference": "https://ec.europa.eu/newsroom/dae/document.cfm?doc_id=68342",
+            "reference_label": "European Commission: Ethics guidelines for trustworthy AI"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AIが必ず不正確な判断をすること",
+          "explanation": {
+            "text": "ブラックボックス問題は不正確さの問題ではなく、説明可能性の欠如に関する問題である。",
+            "reference": "https://ec.europa.eu/newsroom/dae/document.cfm?doc_id=68342",
+            "reference_label": "European Commission: Ethics guidelines for trustworthy AI"
+          }
+        },
+        {
+          "key": "C",
+          "text": "AIの処理速度が人間より遅いこと",
+          "explanation": {
+            "text": "処理速度の問題はブラックボックス問題とは無関係である。",
+            "reference": "https://ec.europa.eu/newsroom/dae/document.cfm?doc_id=68342",
+            "reference_label": "European Commission: Ethics guidelines for trustworthy AI"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AIが常にバイアスを持つこと",
+          "explanation": {
+            "text": "AIのバイアス問題は重要だが、ブラックボックス問題とは区別される。",
+            "reference": "https://ec.europa.eu/newsroom/dae/document.cfm?doc_id=68342",
+            "reference_label": "European Commission: Ethics guidelines for trustworthy AI"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ブラックボックス問題はAIの透明性と説明可能性の欠如を意味し、倫理的に重要な課題とされる。",
+        "reference": "https://ec.europa.eu/newsroom/dae/document.cfm?doc_id=68342",
+        "reference_label": "European Commission: Ethics guidelines for trustworthy AI"
+      }
+    },
+    {
+      "id": "ai-g-q8",
+      "question": "自然言語処理において、単語を数値ベクトルに変換する代表的な手法はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Word2Vec",
+          "explanation": {
+            "text": "Word2Vecは単語をベクトル空間に埋め込み、意味的な類似性を捉える手法です。",
+            "reference": "https://arxiv.org/abs/1301.3781",
+            "reference_label": "Word2Vec 論文"
+          }
+        },
+        {
+          "key": "B",
+          "text": "CNN",
+          "explanation": {
+            "text": "CNNは主に画像処理に使われるネットワークで、単語ベクトル化の手法ではありません。",
+            "reference": "https://cs231n.github.io/convolutional-networks/",
+            "reference_label": "Stanford CS231n"
+          }
+        },
+        {
+          "key": "C",
+          "text": "強化学習",
+          "explanation": {
+            "text": "強化学習はエージェントと環境の相互作用による学習手法であり、単語埋め込みの方法ではありません。",
+            "reference": "https://spinningup.openai.com/",
+            "reference_label": "OpenAI Spinning Up"
+          }
+        },
+        {
+          "key": "D",
+          "text": "決定木",
+          "explanation": {
+            "text": "決定木は分類や回帰で使うアルゴリズムであり、単語ベクトル化の手法ではありません。",
+            "reference": "https://scikit-learn.org/stable/modules/tree.html",
+            "reference_label": "Scikit-learn Decision Trees"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Word2Vecは自然言語処理において単語を数値ベクトルに変換する代表的な手法です。",
+        "reference": "https://arxiv.org/abs/1301.3781",
+        "reference_label": "Word2Vec 論文"
+      }
+    },
+    {
+      "id": "ai-g-q9",
+      "question": "次のうち、トランスフォーマーモデルの中核をなす仕組みはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "畳み込み演算",
+          "explanation": {
+            "text": "畳み込みはCNNで使われる技術であり、トランスフォーマーの中心技術ではない。",
+            "reference": "https://arxiv.org/abs/1706.03762",
+            "reference_label": "Attention is All You Need"
+          }
+        },
+        {
+          "key": "B",
+          "text": "自己注意機構（Self-Attention）",
+          "explanation": {
+            "text": "自己注意機構は入力系列内の依存関係を捉えるトランスフォーマーの中核技術です。",
+            "reference": "https://arxiv.org/abs/1706.03762",
+            "reference_label": "Attention is All You Need"
+          }
+        },
+        {
+          "key": "C",
+          "text": "勾配消失防止",
+          "explanation": {
+            "text": "勾配消失防止は活性化関数や正規化技術で対応するが、トランスフォーマーの中心技術ではない。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        },
+        {
+          "key": "D",
+          "text": "状態遷移確率",
+          "explanation": {
+            "text": "状態遷移確率はマルコフ過程などで用いられる概念で、トランスフォーマーの主要要素ではない。",
+            "reference": "https://en.wikipedia.org/wiki/Markov_chain",
+            "reference_label": "Markov chain"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "トランスフォーマーモデルの中核は自己注意機構であり、系列全体の依存関係を並列的に捉えることが可能です。",
+        "reference": "https://arxiv.org/abs/1706.03762",
+        "reference_label": "Attention is All You Need"
+      }
+    },
+    {
+      "id": "ai-g-q10",
+      "question": "機械学習モデルにおける正則化の目的は何か。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "過学習を防ぐこと",
+          "explanation": {
+            "text": "正則化はモデルの複雑さにペナルティを課し、過学習を防ぐことを目的とします。",
+            "reference": "https://scikit-learn.org/stable/modules/linear_model.html",
+            "reference_label": "Scikit-learn Linear models with regularization"
+          }
+        },
+        {
+          "key": "B",
+          "text": "学習率を調整すること",
+          "explanation": {
+            "text": "学習率の調整は最適化アルゴリズムの役割であり、正則化の目的ではありません。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データを正規化すること",
+          "explanation": {
+            "text": "データの正規化は前処理の一環であり、正則化とは異なります。",
+            "reference": "https://scikit-learn.org/stable/modules/preprocessing.html",
+            "reference_label": "Scikit-learn Preprocessing"
+          }
+        },
+        {
+          "key": "D",
+          "text": "勾配消失を防ぐこと",
+          "explanation": {
+            "text": "勾配消失は主に活性化関数の選択で対処します。正則化の直接の目的ではありません。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "正則化は過学習を防ぐために導入され、L1正則化やL2正則化などが広く用いられます。",
+        "reference": "https://scikit-learn.org/stable/modules/linear_model.html",
+        "reference_label": "Scikit-learn Linear models with regularization"
+      }
+    },
+    {
+      "id": "ai-g-q11",
+      "question": "次のうち、クラスタリング手法に含まれるものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "K-means法",
+          "explanation": {
+            "text": "K-meansは代表的なクラスタリング手法の1つです。",
+            "reference": "https://scikit-learn.org/stable/modules/clustering.html",
+            "reference_label": "Scikit-learn Clustering"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ロジスティック回帰",
+          "explanation": {
+            "text": "ロジスティック回帰は分類手法であり、クラスタリング手法ではありません。",
+            "reference": "https://scikit-learn.org/stable/modules/linear_model.html",
+            "reference_label": "Scikit-learn Linear models"
+          }
+        },
+        {
+          "key": "C",
+          "text": "サポートベクターマシン（SVM）",
+          "explanation": {
+            "text": "SVMは分類や回帰に使われる手法で、クラスタリングには分類されません。",
+            "reference": "https://scikit-learn.org/stable/modules/svm.html",
+            "reference_label": "Scikit-learn SVM"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ランダムフォレスト",
+          "explanation": {
+            "text": "ランダムフォレストはアンサンブル学習の一種で、クラスタリング手法ではありません。",
+            "reference": "https://scikit-learn.org/stable/modules/ensemble.html",
+            "reference_label": "Scikit-learn Ensemble methods"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "クラスタリング手法にはK-meansや階層型クラスタリングなどがあり、教師なし学習の代表例です。",
+        "reference": "https://scikit-learn.org/stable/modules/clustering.html",
+        "reference_label": "Scikit-learn Clustering"
+      }
+    },
+    {
+      "id": "ai-g-q12",
+      "question": "深層学習で活性化関数としてReLUがよく用いられる理由はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "勾配消失問題を緩和できるから",
+          "explanation": {
+            "text": "ReLUは0より大きい入力に対して線形に反応するため、勾配消失問題を緩和します。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        },
+        {
+          "key": "B",
+          "text": "常に出力が確率になるから",
+          "explanation": {
+            "text": "ReLUは確率を出力する関数ではありません。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        },
+        {
+          "key": "C",
+          "text": "全ての入力をスケーリングするから",
+          "explanation": {
+            "text": "ReLUは入力をスケーリングする機能を持ちません。単純な閾値関数です。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        },
+        {
+          "key": "D",
+          "text": "学習率を自動調整するから",
+          "explanation": {
+            "text": "学習率調整は最適化アルゴリズムの役割であり、ReLUの特性ではありません。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ReLUは勾配消失問題を緩和するため、深層学習で広く使われています。",
+        "reference": "https://www.deeplearningbook.org/",
+        "reference_label": "Deep Learning Book"
+      }
+    },
+    {
+      "id": "ai-g-q13",
+      "question": "ディープラーニングの学習において、GPUがCPUより優れている理由はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "並列計算に優れているため",
+          "explanation": {
+            "text": "GPUは多数のコアを持ち、大規模行列計算の並列処理に適しています。",
+            "reference": "https://developer.nvidia.com/cuda-zone",
+            "reference_label": "NVIDIA CUDA"
+          }
+        },
+        {
+          "key": "B",
+          "text": "より高いクロック周波数を持つため",
+          "explanation": {
+            "text": "GPUはCPUよりクロック周波数が低いことが多く、性能の理由は並列性にあります。",
+            "reference": "https://developer.nvidia.com/cuda-zone",
+            "reference_label": "NVIDIA CUDA"
+          }
+        },
+        {
+          "key": "C",
+          "text": "メモリ容量が常に大きいから",
+          "explanation": {
+            "text": "GPUのメモリは大きい場合もありますが、必ずしもCPUより大容量ではありません。",
+            "reference": "https://developer.nvidia.com/cuda-zone",
+            "reference_label": "NVIDIA CUDA"
+          }
+        },
+        {
+          "key": "D",
+          "text": "必ずCPUより低消費電力だから",
+          "explanation": {
+            "text": "GPUは高消費電力であることが多く、性能の理由ではありません。",
+            "reference": "https://developer.nvidia.com/cuda-zone",
+            "reference_label": "NVIDIA CUDA"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "GPUは並列計算に強く、大規模なディープラーニングの学習に向いています。",
+        "reference": "https://developer.nvidia.com/cuda-zone",
+        "reference_label": "NVIDIA CUDA"
+      }
+    },
+    {
+      "id": "ai-g-q14",
+      "question": "転移学習が有効に働くのはどのような状況か。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ラベル付きデータが少ないとき",
+          "explanation": {
+            "text": "転移学習は事前学習済みモデルを利用できるため、少量のラベル付きデータで効果を発揮します。",
+            "reference": "https://cs231n.github.io/transfer-learning/",
+            "reference_label": "Stanford CS231n Transfer Learning"
+          }
+        },
+        {
+          "key": "B",
+          "text": "学習率を調整できないとき",
+          "explanation": {
+            "text": "転移学習は学習率調整とは関係ありません。",
+            "reference": "https://cs231n.github.io/transfer-learning/",
+            "reference_label": "Stanford CS231n Transfer Learning"
+          }
+        },
+        {
+          "key": "C",
+          "text": "GPUが利用できないとき",
+          "explanation": {
+            "text": "転移学習はGPUの有無とは関係ありません。",
+            "reference": "https://cs231n.github.io/transfer-learning/",
+            "reference_label": "Stanford CS231n Transfer Learning"
+          }
+        },
+        {
+          "key": "D",
+          "text": "教師なし学習しか使えないとき",
+          "explanation": {
+            "text": "転移学習は教師あり学習でも効果的であり、教師なし学習に限定されません。",
+            "reference": "https://cs231n.github.io/transfer-learning/",
+            "reference_label": "Stanford CS231n Transfer Learning"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "転移学習は少量のデータで効果的に学習を進めるために利用され、特にデータが不足している分野で有効です。",
+        "reference": "https://cs231n.github.io/transfer-learning/",
+        "reference_label": "Stanford CS231n Transfer Learning"
+      }
+    },
+    {
+      "id": "ai-g-q15",
+      "question": "深層強化学習で用いられる「経験再生（Experience Replay）」の目的はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "学習データの相関を弱めるため",
+          "explanation": {
+            "text": "経験再生は過去の経験をランダムにサンプリングして使うことで、データの相関を減らし学習の安定化を図ります。",
+            "reference": "https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf",
+            "reference_label": "DQN 論文"
+          }
+        },
+        {
+          "key": "B",
+          "text": "報酬を大きくするため",
+          "explanation": {
+            "text": "経験再生は報酬を直接大きくするものではなく、学習を安定させるための手法です。",
+            "reference": "https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf",
+            "reference_label": "DQN 論文"
+          }
+        },
+        {
+          "key": "C",
+          "text": "学習率を自動調整するため",
+          "explanation": {
+            "text": "学習率調整は別のアルゴリズムの役割であり、経験再生の目的ではありません。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ニューラルネットワークのパラメータを削減するため",
+          "explanation": {
+            "text": "経験再生はネットワーク構造の簡略化ではなく、学習データの利用方法に関する工夫です。",
+            "reference": "https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf",
+            "reference_label": "DQN 論文"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "経験再生は学習データの相関を弱め、学習の安定性を向上させる手法です。",
+        "reference": "https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf",
+        "reference_label": "DQN 論文"
+      }
+    },
+    {
+      "id": "ai-g-q16",
+      "question": "教師なし学習の代表的な応用例はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "クラスタリング",
+          "explanation": {
+            "text": "クラスタリングは教師なし学習の代表的な応用例で、ラベルなしデータをグループ化します。",
+            "reference": "https://scikit-learn.org/stable/modules/clustering.html",
+            "reference_label": "Scikit-learn Clustering"
+          }
+        },
+        {
+          "key": "B",
+          "text": "回帰分析",
+          "explanation": {
+            "text": "回帰分析は教師あり学習の応用例です。",
+            "reference": "https://scikit-learn.org/stable/supervised_learning.html",
+            "reference_label": "Scikit-learn Supervised learning"
+          }
+        },
+        {
+          "key": "C",
+          "text": "画像分類",
+          "explanation": {
+            "text": "画像分類は教師あり学習が典型的に使われます。",
+            "reference": "https://scikit-learn.org/stable/supervised_learning.html",
+            "reference_label": "Scikit-learn Supervised learning"
+          }
+        },
+        {
+          "key": "D",
+          "text": "強化学習エージェントの訓練",
+          "explanation": {
+            "text": "強化学習は教師なし学習とは異なるカテゴリーです。",
+            "reference": "https://spinningup.openai.com/",
+            "reference_label": "OpenAI Spinning Up"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "教師なし学習の代表例はクラスタリングや次元削減などです。",
+        "reference": "https://scikit-learn.org/stable/modules/clustering.html",
+        "reference_label": "Scikit-learn Clustering"
+      }
+    },
+    {
+      "id": "ai-g-q17",
+      "question": "過学習を防ぐために、データセットを訓練用・検証用・テスト用に分割する理由はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "モデルの汎化性能を評価するため",
+          "explanation": {
+            "text": "検証用・テスト用データはモデルの汎化性能を測るために使われます。",
+            "reference": "https://scikit-learn.org/stable/modules/cross_validation.html",
+            "reference_label": "Scikit-learn Model evaluation"
+          }
+        },
+        {
+          "key": "B",
+          "text": "学習速度を向上させるため",
+          "explanation": {
+            "text": "データ分割は速度向上の目的ではありません。",
+            "reference": "https://scikit-learn.org/stable/modules/cross_validation.html",
+            "reference_label": "Scikit-learn Model evaluation"
+          }
+        },
+        {
+          "key": "C",
+          "text": "特徴量の数を減らすため",
+          "explanation": {
+            "text": "特徴量削減は次元削減など別の手法です。",
+            "reference": "https://scikit-learn.org/stable/modules/feature_selection.html",
+            "reference_label": "Scikit-learn Feature selection"
+          }
+        },
+        {
+          "key": "D",
+          "text": "損失関数を最適化するため",
+          "explanation": {
+            "text": "損失関数の最適化は訓練過程で行うものであり、データ分割の目的ではありません。",
+            "reference": "https://scikit-learn.org/stable/modules/cross_validation.html",
+            "reference_label": "Scikit-learn Model evaluation"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "データを分割するのは、モデルが未知のデータに対しても適切に予測できるか確認するためです。",
+        "reference": "https://scikit-learn.org/stable/modules/cross_validation.html",
+        "reference_label": "Scikit-learn Model evaluation"
+      }
+    },
+    {
+      "id": "ai-g-q18",
+      "question": "オートエンコーダが持つ特徴として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "入力データを低次元に圧縮して再構成する",
+          "explanation": {
+            "text": "オートエンコーダは入力を潜在空間に圧縮し、そこから復元する仕組みを持ちます。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        },
+        {
+          "key": "B",
+          "text": "常に教師あり学習で利用される",
+          "explanation": {
+            "text": "オートエンコーダは教師なし学習に分類されることが多いです。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        },
+        {
+          "key": "C",
+          "text": "分類タスクに特化している",
+          "explanation": {
+            "text": "オートエンコーダは特徴抽出や次元削減に使われ、分類専用ではありません。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        },
+        {
+          "key": "D",
+          "text": "系列データの解析専用である",
+          "explanation": {
+            "text": "系列データ専用ではなく、画像やテーブルデータにも利用可能です。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "オートエンコーダは次元圧縮と再構成を通じてデータ表現を学習します。",
+        "reference": "https://www.deeplearningbook.org/",
+        "reference_label": "Deep Learning Book"
+      }
+    },
+    {
+      "id": "ai-g-q19",
+      "question": "AIにおける説明可能性（Explainability）の重要性として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AIの判断理由を人間が理解できるようにするため",
+          "explanation": {
+            "text": "説明可能性はAIの意思決定プロセスを人間が理解できるようにするために重要です。",
+            "reference": "https://ec.europa.eu/newsroom/dae/document.cfm?doc_id=68342",
+            "reference_label": "EU 倫理指針 Trustworthy AI"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AIの学習速度を上げるため",
+          "explanation": {
+            "text": "説明可能性は学習速度の向上とは無関係です。",
+            "reference": "https://ec.europa.eu/newsroom/dae/document.cfm?doc_id=68342",
+            "reference_label": "EU 倫理指針 Trustworthy AI"
+          }
+        },
+        {
+          "key": "C",
+          "text": "必ず精度を向上させるため",
+          "explanation": {
+            "text": "説明可能性は精度向上そのものを目的としません。",
+            "reference": "https://ec.europa.eu/newsroom/dae/document.cfm?doc_id=68342",
+            "reference_label": "EU 倫理指針 Trustworthy AI"
+          }
+        },
+        {
+          "key": "D",
+          "text": "モデルのパラメータ数を減らすため",
+          "explanation": {
+            "text": "パラメータ数削減は説明可能性の直接の目的ではありません。",
+            "reference": "https://ec.europa.eu/newsroom/dae/document.cfm?doc_id=68342",
+            "reference_label": "EU 倫理指針 Trustworthy AI"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "説明可能性はAIの透明性を高め、信頼性や責任ある利用に不可欠です。",
+        "reference": "https://ec.europa.eu/newsroom/dae/document.cfm?doc_id=68342",
+        "reference_label": "EU 倫理指針 Trustworthy AI"
+      }
+    },
+    {
+      "id": "ai-g-q20",
+      "question": "アンサンブル学習の代表的な手法である「バギング」の特徴はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "複数の弱学習器を並列に学習させる",
+          "explanation": {
+            "text": "バギングはブートストラップサンプリングしたデータで複数のモデルを並列に学習させ、最終的に統合します。",
+            "reference": "https://scikit-learn.org/stable/modules/ensemble.html#bagging-meta-estimator",
+            "reference_label": "Scikit-learn Bagging"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデルを逐次的に学習させ、誤りに重点を置く",
+          "explanation": {
+            "text": "これはブースティングの特徴です。",
+            "reference": "https://scikit-learn.org/stable/modules/ensemble.html#boosting",
+            "reference_label": "Scikit-learn Boosting"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ニューラルネットワークの深さを増す",
+          "explanation": {
+            "text": "これはディープラーニングの特徴であり、バギングの説明ではありません。",
+            "reference": "https://scikit-learn.org/stable/modules/ensemble.html",
+            "reference_label": "Scikit-learn Ensemble methods"
+          }
+        },
+        {
+          "key": "D",
+          "text": "教師なし学習に限定される",
+          "explanation": {
+            "text": "バギングは教師あり学習で用いられることが多いです。",
+            "reference": "https://scikit-learn.org/stable/modules/ensemble.html",
+            "reference_label": "Scikit-learn Ensemble methods"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "バギングは並列学習によって分散を抑え、汎化性能を高める手法です。",
+        "reference": "https://scikit-learn.org/stable/modules/ensemble.html#bagging-meta-estimator",
+        "reference_label": "Scikit-learn Bagging"
+      }
+    },
+    {
+      "id": "ai-g-q21",
+      "question": "畳み込みニューラルネットワーク（CNN）でプーリング層を使う主な目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "特徴マップの次元削減",
+          "explanation": {
+            "text": "プーリング層は特徴マップのサイズを小さくし、計算量を減らすと同時に局所的な特徴を保持します。",
+            "reference": "https://cs231n.github.io/convolutional-networks/",
+            "reference_label": "Stanford CS231n CNN"
+          }
+        },
+        {
+          "key": "B",
+          "text": "勾配消失を完全に防ぐ",
+          "explanation": {
+            "text": "勾配消失を防ぐのは主に活性化関数や正規化の役割であり、プーリング層の直接的な目的ではありません。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        },
+        {
+          "key": "C",
+          "text": "学習率を調整する",
+          "explanation": {
+            "text": "学習率は最適化手法で制御されるものであり、プーリング層の機能ではありません。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        },
+        {
+          "key": "D",
+          "text": "新しい特徴を生成する",
+          "explanation": {
+            "text": "プーリングは既存の特徴を圧縮する役割であり、新規に生成するわけではありません。",
+            "reference": "https://cs231n.github.io/convolutional-networks/",
+            "reference_label": "Stanford CS231n CNN"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "プーリング層は特徴マップの次元を削減し、計算効率と過学習防止に寄与します。",
+        "reference": "https://cs231n.github.io/convolutional-networks/",
+        "reference_label": "Stanford CS231n CNN"
+      }
+    },
+    {
+      "id": "ai-g-q22",
+      "question": "機械学習におけるハイパーパラメータの例として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "学習率",
+          "explanation": {
+            "text": "学習率はハイパーパラメータであり、モデルの更新速度を決定します。",
+            "reference": "https://scikit-learn.org/stable/glossary.html#term-hyperparameter",
+            "reference_label": "Scikit-learn Glossary"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ニューラルネットワークの重み",
+          "explanation": {
+            "text": "重みは学習によって決まるパラメータであり、ハイパーパラメータではありません。",
+            "reference": "https://scikit-learn.org/stable/glossary.html#term-parameter",
+            "reference_label": "Scikit-learn Glossary"
+          }
+        },
+        {
+          "key": "C",
+          "text": "損失関数の値",
+          "explanation": {
+            "text": "損失関数の値は学習中に計算されるもので、ハイパーパラメータではありません。",
+            "reference": "https://scikit-learn.org/stable/glossary.html#term-loss-function",
+            "reference_label": "Scikit-learn Glossary"
+          }
+        },
+        {
+          "key": "D",
+          "text": "入力データの特徴量",
+          "explanation": {
+            "text": "特徴量はデータそのものの属性であり、ハイパーパラメータではありません。",
+            "reference": "https://scikit-learn.org/stable/glossary.html",
+            "reference_label": "Scikit-learn Glossary"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ハイパーパラメータは学習前に設定される値で、代表例は学習率、バッチサイズ、隠れ層の数などです。",
+        "reference": "https://scikit-learn.org/stable/glossary.html#term-hyperparameter",
+        "reference_label": "Scikit-learn Glossary"
+      }
+    },
+    {
+      "id": "ai-g-q23",
+      "question": "生成モデルの評価指標としてよく用いられるものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "FID（Fréchet Inception Distance）",
+          "explanation": {
+            "text": "FIDは生成画像の分布と実画像の分布の距離を測る評価指標です。",
+            "reference": "https://arxiv.org/abs/1706.08500",
+            "reference_label": "FID 論文"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ROC曲線",
+          "explanation": {
+            "text": "ROC曲線は分類モデルの評価に用いられるもので、生成モデルには適用されにくいです。",
+            "reference": "https://en.wikipedia.org/wiki/Receiver_operating_characteristic",
+            "reference_label": "ROC曲線"
+          }
+        },
+        {
+          "key": "C",
+          "text": "平均平方誤差（MSE）",
+          "explanation": {
+            "text": "MSEは回帰タスクの評価指標として一般的ですが、生成モデルの品質を測る指標としては不十分です。",
+            "reference": "https://scikit-learn.org/stable/modules/model_evaluation.html",
+            "reference_label": "Scikit-learn Metrics"
+          }
+        },
+        {
+          "key": "D",
+          "text": "適合率（Precision）",
+          "explanation": {
+            "text": "適合率は分類モデルの性能評価指標です。",
+            "reference": "https://scikit-learn.org/stable/modules/model_evaluation.html",
+            "reference_label": "Scikit-learn Metrics"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "FIDは生成モデルの性能評価に広く使われる指標で、生成分布と実分布の差異を測ります。",
+        "reference": "https://arxiv.org/abs/1706.08500",
+        "reference_label": "FID 論文"
+      }
+    },
+    {
+      "id": "ai-g-q24",
+      "question": "LSTMが従来のRNNより優れている点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "長期依存関係を保持しやすい",
+          "explanation": {
+            "text": "LSTMはゲート機構を持ち、長期依存関係を保持しやすい構造です。",
+            "reference": "https://www.bioinf.jku.at/publications/older/2604.pdf",
+            "reference_label": "LSTM 論文"
+          }
+        },
+        {
+          "key": "B",
+          "text": "計算コストが常に低い",
+          "explanation": {
+            "text": "LSTMはRNNよりも複雑で、計算コストは高い傾向にあります。",
+            "reference": "https://www.bioinf.jku.at/publications/older/2604.pdf",
+            "reference_label": "LSTM 論文"
+          }
+        },
+        {
+          "key": "C",
+          "text": "教師なし学習に特化している",
+          "explanation": {
+            "text": "LSTMは教師なし専用ではなく、教師あり学習にも利用されます。",
+            "reference": "https://www.bioinf.jku.at/publications/older/2604.pdf",
+            "reference_label": "LSTM 論文"
+          }
+        },
+        {
+          "key": "D",
+          "text": "パラメータ更新が不要",
+          "explanation": {
+            "text": "LSTMもニューラルネットワークの一種であり、勾配降下法でパラメータ更新が必要です。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "LSTMはゲート構造を導入し、長期依存関係の保持を可能にしました。",
+        "reference": "https://www.bioinf.jku.at/publications/older/2604.pdf",
+        "reference_label": "LSTM 論文"
+      }
+    },
+    {
+      "id": "ai-g-q25",
+      "question": "次のうち、AI倫理における「公平性（Fairness）」の課題に該当するものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AIの判断が特定の集団に偏ること",
+          "explanation": {
+            "text": "公平性の課題はAIが特定の人種や性別などに偏った判断を下すリスクを指します。",
+            "reference": "https://ec.europa.eu/newsroom/dae/document.cfm?doc_id=68342",
+            "reference_label": "EU 倫理指針 Trustworthy AI"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AIが説明不可能な判断を下すこと",
+          "explanation": {
+            "text": "これは公平性ではなく説明可能性の問題です。",
+            "reference": "https://ec.europa.eu/newsroom/dae/document.cfm?doc_id=68342",
+            "reference_label": "EU 倫理指針 Trustworthy AI"
+          }
+        },
+        {
+          "key": "C",
+          "text": "AIが常に正確に予測できないこと",
+          "explanation": {
+            "text": "精度の問題は公平性の議論とは異なります。",
+            "reference": "https://ec.europa.eu/newsroom/dae/document.cfm?doc_id=68342",
+            "reference_label": "EU 倫理指針 Trustworthy AI"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AIが高い計算コストを必要とすること",
+          "explanation": {
+            "text": "計算コストは公平性の課題とは関係ありません。",
+            "reference": "https://ec.europa.eu/newsroom/dae/document.cfm?doc_id=68342",
+            "reference_label": "EU 倫理指針 Trustworthy AI"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "公平性の課題は、AIの出力が社会的に不公平な結果をもたらさないようにする点にあります。",
+        "reference": "https://ec.europa.eu/newsroom/dae/document.cfm?doc_id=68342",
+        "reference_label": "EU 倫理指針 Trustworthy AI"
+      }
+    },
+    {
+      "id": "ai-g-q26",
+      "question": "勾配消失問題が発生しやすいのはどのような場合か。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ネットワークが非常に深い場合",
+          "explanation": {
+            "text": "深いネットワークでは勾配が小さくなり、消失して学習が進まなくなることがあります。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        },
+        {
+          "key": "B",
+          "text": "学習率が高すぎる場合",
+          "explanation": {
+            "text": "学習率が高すぎると発散する可能性があり、勾配消失とは異なります。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データがラベル付きでない場合",
+          "explanation": {
+            "text": "データのラベル有無は勾配消失問題とは直接関係ありません。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        },
+        {
+          "key": "D",
+          "text": "特徴量の数が少ない場合",
+          "explanation": {
+            "text": "特徴量の数が少なくても勾配消失問題とは直結しません。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "勾配消失問題は特に深いニューラルネットワークやシグモイド関数の使用時に起こりやすいです。",
+        "reference": "https://www.deeplearningbook.org/",
+        "reference_label": "Deep Learning Book"
+      }
+    },
+    {
+      "id": "ai-g-q27",
+      "question": "リカレントニューラルネットワーク（RNN）の主な用途はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "時系列データの処理",
+          "explanation": {
+            "text": "RNNは時系列データの依存関係を捉えることが得意です。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        },
+        {
+          "key": "B",
+          "text": "画像から局所特徴を抽出する",
+          "explanation": {
+            "text": "これはCNNの特徴であり、RNNの用途ではありません。",
+            "reference": "https://cs231n.github.io/convolutional-networks/",
+            "reference_label": "Stanford CS231n"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データをクラスタリングする",
+          "explanation": {
+            "text": "クラスタリングは教師なし学習の典型であり、RNNの主な用途ではありません。",
+            "reference": "https://scikit-learn.org/stable/modules/clustering.html",
+            "reference_label": "Scikit-learn Clustering"
+          }
+        },
+        {
+          "key": "D",
+          "text": "強化学習の方策最適化",
+          "explanation": {
+            "text": "RNNは強化学習に使われることもありますが、主な用途は時系列データ処理です。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "RNNは文章や音声など、時系列依存を持つデータの処理に広く使われています。",
+        "reference": "https://www.deeplearningbook.org/",
+        "reference_label": "Deep Learning Book"
+      }
+    },
+    {
+      "id": "ai-g-q28",
+      "question": "AIシステムの社会実装において「アカウンタビリティ（説明責任）」が求められるのはなぜか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AIの判断に対して責任を持つ主体を明確にするため",
+          "explanation": {
+            "text": "アカウンタビリティは、AIの判断の結果に対して責任を追及できるようにするために重要です。",
+            "reference": "https://ec.europa.eu/newsroom/dae/document.cfm?doc_id=68342",
+            "reference_label": "EU 倫理指針 Trustworthy AI"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AIが必ず正しい判断をするため",
+          "explanation": {
+            "text": "アカウンタビリティはAIの正確さを保証するものではありません。",
+            "reference": "https://ec.europa.eu/newsroom/dae/document.cfm?doc_id=68342",
+            "reference_label": "EU 倫理指針 Trustworthy AI"
+          }
+        },
+        {
+          "key": "C",
+          "text": "AIの処理速度を高めるため",
+          "explanation": {
+            "text": "処理速度はアカウンタビリティの目的ではありません。",
+            "reference": "https://ec.europa.eu/newsroom/dae/document.cfm?doc_id=68342",
+            "reference_label": "EU 倫理指針 Trustworthy AI"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AIのバイアスを完全に排除するため",
+          "explanation": {
+            "text": "バイアス排除は公平性の課題であり、アカウンタビリティとは別の問題です。",
+            "reference": "https://ec.europa.eu/newsroom/dae/document.cfm?doc_id=68342",
+            "reference_label": "EU 倫理指針 Trustworthy AI"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "アカウンタビリティは、AIの出力の責任を明確にし、社会的信頼を確保するために必要です。",
+        "reference": "https://ec.europa.eu/newsroom/dae/document.cfm?doc_id=68342",
+        "reference_label": "EU 倫理指針 Trustworthy AI"
+      }
+    },
+    {
+      "id": "ai-g-q29",
+      "question": "勾配爆発を防ぐために用いられる代表的な手法はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "勾配クリッピング",
+          "explanation": {
+            "text": "勾配クリッピングは勾配の値を一定の範囲に制御することで、勾配爆発を防ぐ手法です。",
+            "reference": "https://papers.nips.cc/paper/2013/file/9aa42b31882ec039965f3c4923ce901b-Paper.pdf",
+            "reference_label": "Gradient Clipping 論文"
+          }
+        },
+        {
+          "key": "B",
+          "text": "バッチ正規化",
+          "explanation": {
+            "text": "バッチ正規化は学習の安定化に役立ちますが、勾配爆発を直接防ぐ目的ではありません。",
+            "reference": "https://arxiv.org/abs/1502.03167",
+            "reference_label": "Batch Normalization 論文"
+          }
+        },
+        {
+          "key": "C",
+          "text": "学習率スケジューリング",
+          "explanation": {
+            "text": "学習率の調整は学習効率に影響しますが、勾配爆発そのものを直接防ぐ方法ではありません。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ドロップアウト",
+          "explanation": {
+            "text": "ドロップアウトは過学習防止のための手法で、勾配爆発を直接防ぐものではありません。",
+            "reference": "https://keras.io/api/layers/regularizers/dropout/",
+            "reference_label": "Keras Dropout"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "勾配爆発は特にRNNなどで起こりやすく、勾配クリッピングが代表的な対策です。",
+        "reference": "https://papers.nips.cc/paper/2013/file/9aa42b31882ec039965f3c4923ce901b-Paper.pdf",
+        "reference_label": "Gradient Clipping 論文"
+      }
+    },
+    {
+      "id": "ai-g-q30",
+      "question": "特徴量エンジニアリングの目的として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "モデルの性能を高めるためにデータの表現を改善すること",
+          "explanation": {
+            "text": "特徴量エンジニアリングは、モデルが学習しやすい表現にデータを変換することで性能向上を狙います。",
+            "reference": "https://scikit-learn.org/stable/data_transforms.html",
+            "reference_label": "Scikit-learn Data preprocessing"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ニューラルネットワークの層数を増やすこと",
+          "explanation": {
+            "text": "層数を増やすのはモデル設計の問題であり、特徴量エンジニアリングとは異なります。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        },
+        {
+          "key": "C",
+          "text": "訓練データを分割すること",
+          "explanation": {
+            "text": "データ分割は評価のための手順であり、特徴量エンジニアリングとは別です。",
+            "reference": "https://scikit-learn.org/stable/modules/cross_validation.html",
+            "reference_label": "Scikit-learn Model evaluation"
+          }
+        },
+        {
+          "key": "D",
+          "text": "損失関数を選択すること",
+          "explanation": {
+            "text": "損失関数の選択は学習戦略に関わるもので、特徴量エンジニアリングとは異なります。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "特徴量エンジニアリングはモデルが持つ情報をより効果的に活用できるようにするためのプロセスです。",
+        "reference": "https://scikit-learn.org/stable/data_transforms.html",
+        "reference_label": "Scikit-learn Data preprocessing"
+      }
+    },
+    {
+      "id": "ai-g-q31",
+      "question": "ディープラーニングにおいてバッチサイズが大きすぎる場合に起こりやすい現象はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "汎化性能が低下する",
+          "explanation": {
+            "text": "バッチサイズが大きすぎると最適化の局所的なランダム性が失われ、汎化性能が低下する可能性があります。",
+            "reference": "https://arxiv.org/abs/1609.04836",
+            "reference_label": "Large Batch Training 論文"
+          }
+        },
+        {
+          "key": "B",
+          "text": "勾配爆発が必ず起きる",
+          "explanation": {
+            "text": "バッチサイズと勾配爆発には直接的な因果関係はありません。",
+            "reference": "https://arxiv.org/abs/1609.04836",
+            "reference_label": "Large Batch Training 論文"
+          }
+        },
+        {
+          "key": "C",
+          "text": "計算効率が下がる",
+          "explanation": {
+            "text": "大きなバッチはむしろGPUの効率的利用につながるため、計算効率は下がりません。",
+            "reference": "https://arxiv.org/abs/1609.04836",
+            "reference_label": "Large Batch Training 論文"
+          }
+        },
+        {
+          "key": "D",
+          "text": "学習率を設定できなくなる",
+          "explanation": {
+            "text": "学習率は設定可能であり、バッチサイズの大きさで不可能になることはありません。",
+            "reference": "https://arxiv.org/abs/1609.04836",
+            "reference_label": "Large Batch Training 論文"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "大規模バッチ学習では汎化性能が低下するリスクがあり、小さいバッチと比較して注意が必要です。",
+        "reference": "https://arxiv.org/abs/1609.04836",
+        "reference_label": "Large Batch Training 論文"
+      }
+    },
+    {
+      "id": "ai-g-q32",
+      "question": "ディープラーニングで使用される最適化アルゴリズムの1つであるAdamの特徴はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "モーメントと適応学習率を組み合わせている",
+          "explanation": {
+            "text": "Adamはモーメントと適応学習率を組み合わせたアルゴリズムで、収束が速い特徴を持ちます。",
+            "reference": "https://arxiv.org/abs/1412.6980",
+            "reference_label": "Adam 論文"
+          }
+        },
+        {
+          "key": "B",
+          "text": "常に最小のパラメータ数で学習する",
+          "explanation": {
+            "text": "Adamはパラメータ数を減らす仕組みではありません。",
+            "reference": "https://arxiv.org/abs/1412.6980",
+            "reference_label": "Adam 論文"
+          }
+        },
+        {
+          "key": "C",
+          "text": "決定木と組み合わせて利用する",
+          "explanation": {
+            "text": "決定木は別のアルゴリズムであり、Adamの特徴ではありません。",
+            "reference": "https://arxiv.org/abs/1412.6980",
+            "reference_label": "Adam 論文"
+          }
+        },
+        {
+          "key": "D",
+          "text": "学習率を固定して変化させない",
+          "explanation": {
+            "text": "Adamは適応的に学習率を調整します。",
+            "reference": "https://arxiv.org/abs/1412.6980",
+            "reference_label": "Adam 論文"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "AdamはRMSPropとモーメント法を組み合わせた手法で、ディープラーニングで広く使われています。",
+        "reference": "https://arxiv.org/abs/1412.6980",
+        "reference_label": "Adam 論文"
+      }
+    },
+    {
+      "id": "ai-g-q33",
+      "question": "決定木アルゴリズムで分割の良さを評価する指標としてよく使われるものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ジニ不純度",
+          "explanation": {
+            "text": "ジニ不純度は分類の純度を測定する指標で、決定木の分割基準によく使われます。",
+            "reference": "https://scikit-learn.org/stable/modules/tree.html",
+            "reference_label": "Scikit-learn Decision Trees"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ROC曲線",
+          "explanation": {
+            "text": "ROC曲線はモデル全体の性能評価に使う指標であり、分割基準ではありません。",
+            "reference": "https://scikit-learn.org/stable/modules/model_evaluation.html",
+            "reference_label": "Scikit-learn Model evaluation"
+          }
+        },
+        {
+          "key": "C",
+          "text": "コサイン類似度",
+          "explanation": {
+            "text": "コサイン類似度はベクトル間の類似性を測る指標で、決定木の分割基準には使われません。",
+            "reference": "https://en.wikipedia.org/wiki/Cosine_similarity",
+            "reference_label": "Cosine similarity"
+          }
+        },
+        {
+          "key": "D",
+          "text": "FIDスコア",
+          "explanation": {
+            "text": "FIDスコアは生成モデルの評価指標です。",
+            "reference": "https://arxiv.org/abs/1706.08500",
+            "reference_label": "FID 論文"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ジニ不純度は決定木の分割基準として広く用いられています。",
+        "reference": "https://scikit-learn.org/stable/modules/tree.html",
+        "reference_label": "Scikit-learn Decision Trees"
+      }
+    },
+    {
+      "id": "ai-g-q34",
+      "question": "次のうち、自己教師あり学習の例として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "入力の一部を隠して予測させるタスク",
+          "explanation": {
+            "text": "自己教師あり学習では入力の一部を隠すなどして擬似ラベルを生成し、それを学習に利用します。",
+            "reference": "https://arxiv.org/abs/2003.10555",
+            "reference_label": "Self-Supervised Learning Survey"
+          }
+        },
+        {
+          "key": "B",
+          "text": "正解ラベル付きデータを利用した分類タスク",
+          "explanation": {
+            "text": "これは教師あり学習に該当します。",
+            "reference": "https://scikit-learn.org/stable/supervised_learning.html",
+            "reference_label": "Scikit-learn Supervised learning"
+          }
+        },
+        {
+          "key": "C",
+          "text": "報酬に基づく方策学習",
+          "explanation": {
+            "text": "これは強化学習に該当します。",
+            "reference": "https://spinningup.openai.com/",
+            "reference_label": "OpenAI Spinning Up"
+          }
+        },
+        {
+          "key": "D",
+          "text": "クラスタリングによるグループ分け",
+          "explanation": {
+            "text": "クラスタリングは教師なし学習の代表例であり、自己教師あり学習ではありません。",
+            "reference": "https://scikit-learn.org/stable/modules/clustering.html",
+            "reference_label": "Scikit-learn Clustering"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "自己教師あり学習では擬似ラベルを生成して学習に活用し、表現学習に広く利用されています。",
+        "reference": "https://arxiv.org/abs/2003.10555",
+        "reference_label": "Self-Supervised Learning Survey"
+      }
+    },
+    {
+      "id": "ai-g-q35",
+      "question": "AIシステムにおける「ロバスト性（Robustness）」が意味するのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "入力データの変動に対しても安定して動作すること",
+          "explanation": {
+            "text": "ロバスト性は入力のノイズや変動があっても安定した性能を維持できる性質を指します。",
+            "reference": "https://ec.europa.eu/newsroom/dae/document.cfm?doc_id=68342",
+            "reference_label": "EU 倫理指針 Trustworthy AI"
+          }
+        },
+        {
+          "key": "B",
+          "text": "必ず人間より高い精度を出すこと",
+          "explanation": {
+            "text": "ロバスト性は精度比較ではなく安定性に関わります。",
+            "reference": "https://ec.europa.eu/newsroom/dae/document.cfm?doc_id=68342",
+            "reference_label": "EU 倫理指針 Trustworthy AI"
+          }
+        },
+        {
+          "key": "C",
+          "text": "必ず透明性を確保できること",
+          "explanation": {
+            "text": "透明性は説明可能性の概念に近く、ロバスト性とは別です。",
+            "reference": "https://ec.europa.eu/newsroom/dae/document.cfm?doc_id=68342",
+            "reference_label": "EU 倫理指針 Trustworthy AI"
+          }
+        },
+        {
+          "key": "D",
+          "text": "必ず公平性を担保できること",
+          "explanation": {
+            "text": "公平性は倫理上の重要な概念ですが、ロバスト性とは異なります。",
+            "reference": "https://ec.europa.eu/newsroom/dae/document.cfm?doc_id=68342",
+            "reference_label": "EU 倫理指針 Trustworthy AI"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ロバスト性はAIが多様な環境や入力に対しても安定して機能する特性を意味します。",
+        "reference": "https://ec.europa.eu/newsroom/dae/document.cfm?doc_id=68342",
+        "reference_label": "EU 倫理指針 Trustworthy AI"
+      }
+    },
+    {
+      "id": "ai-g-q36",
+      "question": "転移学習でよく使われる「ファインチューニング」の説明として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "事前学習済みモデルの一部または全部を再学習させること",
+          "explanation": {
+            "text": "ファインチューニングは事前学習済みモデルを基に、新しいタスクに適応させるため再学習する手法です。",
+            "reference": "https://cs231n.github.io/transfer-learning/",
+            "reference_label": "Stanford CS231n Transfer Learning"
+          }
+        },
+        {
+          "key": "B",
+          "text": "常にランダムに重みを初期化して学習すること",
+          "explanation": {
+            "text": "これは通常の学習手法であり、転移学習ではありません。",
+            "reference": "https://cs231n.github.io/transfer-learning/",
+            "reference_label": "Stanford CS231n Transfer Learning"
+          }
+        },
+        {
+          "key": "C",
+          "text": "学習済みモデルをそのまま利用し重みを更新しないこと",
+          "explanation": {
+            "text": "これは「特徴量抽出」の利用方法であり、ファインチューニングとは異なります。",
+            "reference": "https://cs231n.github.io/transfer-learning/",
+            "reference_label": "Stanford CS231n Transfer Learning"
+          }
+        },
+        {
+          "key": "D",
+          "text": "学習率を必ず固定して調整しないこと",
+          "explanation": {
+            "text": "学習率はタスクに応じて調整される場合が多いです。固定が必須ではありません。",
+            "reference": "https://cs231n.github.io/transfer-learning/",
+            "reference_label": "Stanford CS231n Transfer Learning"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ファインチューニングは事前学習済みモデルを再学習して新しいタスクに適応させる手法です。",
+        "reference": "https://cs231n.github.io/transfer-learning/",
+        "reference_label": "Stanford CS231n Transfer Learning"
+      }
+    },
+    {
+      "id": "ai-g-q37",
+      "question": "自然言語処理におけるBERTモデルの特徴はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "双方向の文脈を考慮する",
+          "explanation": {
+            "text": "BERTは双方向の自己注意を用いて文脈を捉える点が特徴です。",
+            "reference": "https://arxiv.org/abs/1810.04805",
+            "reference_label": "BERT 論文"
+          }
+        },
+        {
+          "key": "B",
+          "text": "一方向のみの文脈を考慮する",
+          "explanation": {
+            "text": "従来の言語モデルは一方向でしたが、BERTは双方向に対応しています。",
+            "reference": "https://arxiv.org/abs/1810.04805",
+            "reference_label": "BERT 論文"
+          }
+        },
+        {
+          "key": "C",
+          "text": "画像認識専用に設計されている",
+          "explanation": {
+            "text": "BERTは自然言語処理のために設計されたモデルです。",
+            "reference": "https://arxiv.org/abs/1810.04805",
+            "reference_label": "BERT 論文"
+          }
+        },
+        {
+          "key": "D",
+          "text": "教師なし学習専用のモデルである",
+          "explanation": {
+            "text": "BERTは事前学習は自己教師ありで行い、その後ファインチューニングで教師あり学習も利用します。",
+            "reference": "https://arxiv.org/abs/1810.04805",
+            "reference_label": "BERT 論文"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "BERTは双方向の文脈理解を可能にすることで高性能を発揮します。",
+        "reference": "https://arxiv.org/abs/1810.04805",
+        "reference_label": "BERT 論文"
+      }
+    },
+    {
+      "id": "ai-g-q38",
+      "question": "畳み込みニューラルネットワークにおけるフィルタ（カーネル）の役割は何か。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "入力から特徴を抽出する",
+          "explanation": {
+            "text": "フィルタは入力画像から局所的特徴を抽出する役割を持ちます。",
+            "reference": "https://cs231n.github.io/convolutional-networks/",
+            "reference_label": "Stanford CS231n CNN"
+          }
+        },
+        {
+          "key": "B",
+          "text": "入力データを分類する",
+          "explanation": {
+            "text": "分類は全結合層で行われることが多く、フィルタの直接的役割ではありません。",
+            "reference": "https://cs231n.github.io/convolutional-networks/",
+            "reference_label": "Stanford CS231n CNN"
+          }
+        },
+        {
+          "key": "C",
+          "text": "損失関数を定義する",
+          "explanation": {
+            "text": "損失関数は学習戦略の一部であり、フィルタの役割ではありません。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        },
+        {
+          "key": "D",
+          "text": "学習率を調整する",
+          "explanation": {
+            "text": "学習率調整は最適化アルゴリズムの役割であり、フィルタの役割ではありません。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "CNNのフィルタは特徴抽出のために利用され、学習により最適なパターンを捉えるようになります。",
+        "reference": "https://cs231n.github.io/convolutional-networks/",
+        "reference_label": "Stanford CS231n CNN"
+      }
+    },
+    {
+      "id": "ai-g-q39",
+      "question": "強化学習のアルゴリズム「Q学習」において、Q値が表すものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "状態と行動の組に対する将来の報酬の期待値",
+          "explanation": {
+            "text": "Q値は状態と行動のペアにおける期待報酬を表します。",
+            "reference": "https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf",
+            "reference_label": "DQN 論文"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデルの正答率",
+          "explanation": {
+            "text": "正答率は分類モデルの性能指標であり、Q値ではありません。",
+            "reference": "https://spinningup.openai.com/",
+            "reference_label": "OpenAI Spinning Up"
+          }
+        },
+        {
+          "key": "C",
+          "text": "学習率の値",
+          "explanation": {
+            "text": "学習率はハイパーパラメータであり、Q値とは異なります。",
+            "reference": "https://spinningup.openai.com/",
+            "reference_label": "OpenAI Spinning Up"
+          }
+        },
+        {
+          "key": "D",
+          "text": "環境の状態そのもの",
+          "explanation": {
+            "text": "環境の状態はQ値の入力の一部であり、Q値そのものではありません。",
+            "reference": "https://spinningup.openai.com/",
+            "reference_label": "OpenAI Spinning Up"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Q学習のQ値は、状態と行動の組み合わせに対して将来得られる報酬の期待値を表します。",
+        "reference": "https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf",
+        "reference_label": "DQN 論文"
+      }
+    },
+    {
+      "id": "ai-g-q40",
+      "question": "勾配降下法における「学習率」が大きすぎる場合の典型的な問題はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "最適解に収束せず発散する",
+          "explanation": {
+            "text": "学習率が大きすぎるとパラメータ更新が荒くなり、発散してしまう可能性があります。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        },
+        {
+          "key": "B",
+          "text": "学習が極端に遅くなる",
+          "explanation": {
+            "text": "学習率が小さすぎる場合に学習が遅くなります。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        },
+        {
+          "key": "C",
+          "text": "常に局所最適解に留まる",
+          "explanation": {
+            "text": "局所最適に留まるのは学習率よりも最適化の難しさに依存します。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        },
+        {
+          "key": "D",
+          "text": "勾配がゼロになる",
+          "explanation": {
+            "text": "勾配がゼロになるのは停留点や活性化関数の特性によるもので、学習率が原因ではありません。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "学習率が大きすぎると更新が不安定になり、発散するリスクがあります。",
+        "reference": "https://www.deeplearningbook.org/",
+        "reference_label": "Deep Learning Book"
+      }
+    },
+    {
+      "id": "ai-g-q41",
+      "question": "AIモデルのバイアスを検出・緩和するために用いられる手法の1つはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "フェアネス指標の導入",
+          "explanation": {
+            "text": "フェアネス指標を導入して評価することで、AIモデルに潜むバイアスを測定・緩和できます。",
+            "reference": "https://fairmlbook.org/",
+            "reference_label": "Fairness and Machine Learning Book"
+          }
+        },
+        {
+          "key": "B",
+          "text": "学習率を下げる",
+          "explanation": {
+            "text": "学習率の調整は学習効率に関する問題であり、バイアス検出とは関係ありません。",
+            "reference": "https://fairmlbook.org/",
+            "reference_label": "Fairness and Machine Learning Book"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データを標準化する",
+          "explanation": {
+            "text": "標準化はスケーリングのための前処理であり、バイアスそのものの検出・緩和には直接関与しません。",
+            "reference": "https://fairmlbook.org/",
+            "reference_label": "Fairness and Machine Learning Book"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ニューラルネットワークを浅くする",
+          "explanation": {
+            "text": "ネットワークの深さは表現力に関する要素で、バイアス検出・緩和とは関係ありません。",
+            "reference": "https://fairmlbook.org/",
+            "reference_label": "Fairness and Machine Learning Book"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "フェアネス指標の導入はバイアスの測定・緩和のための主要手法です。",
+        "reference": "https://fairmlbook.org/",
+        "reference_label": "Fairness and Machine Learning Book"
+      }
+    },
+    {
+      "id": "ai-g-q42",
+      "question": "生成モデルの一種であるVAE（変分オートエンコーダ）の特徴はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "潜在変数を確率的に表現する",
+          "explanation": {
+            "text": "VAEは潜在空間を確率分布として扱う点が特徴です。",
+            "reference": "https://arxiv.org/abs/1312.6114",
+            "reference_label": "VAE 論文"
+          }
+        },
+        {
+          "key": "B",
+          "text": "潜在変数を固定値として扱う",
+          "explanation": {
+            "text": "固定値として扱うのは従来のオートエンコーダです。",
+            "reference": "https://arxiv.org/abs/1312.6114",
+            "reference_label": "VAE 論文"
+          }
+        },
+        {
+          "key": "C",
+          "text": "常にGANより高性能である",
+          "explanation": {
+            "text": "VAEとGANは異なる特徴を持ち、必ずしもVAEが優れるわけではありません。",
+            "reference": "https://arxiv.org/abs/1312.6114",
+            "reference_label": "VAE 論文"
+          }
+        },
+        {
+          "key": "D",
+          "text": "潜在変数を必ず教師ありで学習する",
+          "explanation": {
+            "text": "VAEは教師なし学習として設計されており、教師ありに限定されません。",
+            "reference": "https://arxiv.org/abs/1312.6114",
+            "reference_label": "VAE 論文"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "VAEは潜在変数を確率的に扱い、分布を学習することで生成能力を持ちます。",
+        "reference": "https://arxiv.org/abs/1312.6114",
+        "reference_label": "VAE 論文"
+      }
+    },
+    {
+      "id": "ai-g-q43",
+      "question": "機械学習における交差検証（Cross Validation）の目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "モデルの汎化性能をより正確に評価するため",
+          "explanation": {
+            "text": "交差検証はデータを複数の分割に使い回すことで、過学習を防ぎつつ汎化性能を正しく評価します。",
+            "reference": "https://scikit-learn.org/stable/modules/cross_validation.html",
+            "reference_label": "Scikit-learn Cross-validation"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデルの計算速度を上げるため",
+          "explanation": {
+            "text": "交差検証は計算量が増えるため、速度向上の目的ではありません。",
+            "reference": "https://scikit-learn.org/stable/modules/cross_validation.html",
+            "reference_label": "Scikit-learn Cross-validation"
+          }
+        },
+        {
+          "key": "C",
+          "text": "必ずバイアスを減らすため",
+          "explanation": {
+            "text": "交差検証はバイアス削減だけを目的とするものではありません。",
+            "reference": "https://scikit-learn.org/stable/modules/cross_validation.html",
+            "reference_label": "Scikit-learn Cross-validation"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ニューラルネットワークに限定して使われる手法である",
+          "explanation": {
+            "text": "交差検証は機械学習全般で用いられる手法です。",
+            "reference": "https://scikit-learn.org/stable/modules/cross_validation.html",
+            "reference_label": "Scikit-learn Cross-validation"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "交差検証はデータを複数回使い分けることで汎化性能を安定的に評価できます。",
+        "reference": "https://scikit-learn.org/stable/modules/cross_validation.html",
+        "reference_label": "Scikit-learn Cross-validation"
+      }
+    },
+    {
+      "id": "ai-g-q44",
+      "question": "敵対的生成ネットワーク（GAN）で「判別器」の役割はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "本物のデータと生成データを識別する",
+          "explanation": {
+            "text": "判別器は入力が本物か生成かを見分ける役割を持ちます。",
+            "reference": "https://arxiv.org/abs/1406.2661",
+            "reference_label": "GAN 論文"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ノイズから新しいデータを生成する",
+          "explanation": {
+            "text": "これは生成器の役割です。",
+            "reference": "https://arxiv.org/abs/1406.2661",
+            "reference_label": "GAN 論文"
+          }
+        },
+        {
+          "key": "C",
+          "text": "損失関数を定義する",
+          "explanation": {
+            "text": "損失関数はGAN全体の設計要素であり、判別器自体の役割ではありません。",
+            "reference": "https://arxiv.org/abs/1406.2661",
+            "reference_label": "GAN 論文"
+          }
+        },
+        {
+          "key": "D",
+          "text": "モデルの学習率を調整する",
+          "explanation": {
+            "text": "学習率は最適化アルゴリズムで管理され、判別器の役割ではありません。",
+            "reference": "https://arxiv.org/abs/1406.2661",
+            "reference_label": "GAN 論文"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "GANの判別器は本物データと偽物データを見分ける役割を持ち、生成器と競い合います。",
+        "reference": "https://arxiv.org/abs/1406.2661",
+        "reference_label": "GAN 論文"
+      }
+    },
+    {
+      "id": "ai-g-q45",
+      "question": "AI倫理における「説明可能性（Explainability）」が重要とされる理由はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AIの判断根拠を人間が理解できるようにするため",
+          "explanation": {
+            "text": "説明可能性はAIの意思決定過程を人間が理解できるようにするために不可欠です。",
+            "reference": "https://ec.europa.eu/newsroom/dae/document.cfm?doc_id=68342",
+            "reference_label": "EU 倫理指針 Trustworthy AI"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AIの計算速度を上げるため",
+          "explanation": {
+            "text": "説明可能性は速度改善の目的ではありません。",
+            "reference": "https://ec.europa.eu/newsroom/dae/document.cfm?doc_id=68342",
+            "reference_label": "EU 倫理指針 Trustworthy AI"
+          }
+        },
+        {
+          "key": "C",
+          "text": "AIのコストを必ず下げるため",
+          "explanation": {
+            "text": "コスト削減は説明可能性の直接的な目的ではありません。",
+            "reference": "https://ec.europa.eu/newsroom/dae/document.cfm?doc_id=68342",
+            "reference_label": "EU 倫理指針 Trustworthy AI"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AIを常に公平にするため",
+          "explanation": {
+            "text": "公平性は別の重要な課題ですが、説明可能性とは異なります。",
+            "reference": "https://ec.europa.eu/newsroom/dae/document.cfm?doc_id=68342",
+            "reference_label": "EU 倫理指針 Trustworthy AI"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "説明可能性は社会的信頼性を高める上で欠かせない要素です。",
+        "reference": "https://ec.europa.eu/newsroom/dae/document.cfm?doc_id=68342",
+        "reference_label": "EU 倫理指針 Trustworthy AI"
+      }
+    },
+    {
+      "id": "ai-g-q46",
+      "question": "機械学習における「特徴量スケーリング」の目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "特徴量のスケールを揃えて学習を安定させる",
+          "explanation": {
+            "text": "特徴量スケーリングは異なる単位のデータを揃え、学習を効率化します。",
+            "reference": "https://scikit-learn.org/stable/modules/preprocessing.html",
+            "reference_label": "Scikit-learn Preprocessing"
+          }
+        },
+        {
+          "key": "B",
+          "text": "特徴量の数を減らす",
+          "explanation": {
+            "text": "特徴量削減は次元削減の技術であり、スケーリングとは異なります。",
+            "reference": "https://scikit-learn.org/stable/modules/feature_selection.html",
+            "reference_label": "Scikit-learn Feature selection"
+          }
+        },
+        {
+          "key": "C",
+          "text": "損失関数を最適化する",
+          "explanation": {
+            "text": "損失関数の最適化は別のプロセスであり、スケーリングの目的ではありません。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        },
+        {
+          "key": "D",
+          "text": "学習率を小さくする",
+          "explanation": {
+            "text": "学習率の設定は最適化アルゴリズムで行うものであり、スケーリングの目的ではありません。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "スケーリングは異なる単位の特徴量を揃えることで学習を安定化させます。",
+        "reference": "https://scikit-learn.org/stable/modules/preprocessing.html",
+        "reference_label": "Scikit-learn Preprocessing"
+      }
+    },
+    {
+      "id": "ai-g-q47",
+      "question": "深層学習で使われる「バッチ正規化（Batch Normalization）」の効果はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "内部共変量シフトを軽減し学習を安定化させる",
+          "explanation": {
+            "text": "バッチ正規化は層ごとの出力を正規化し、学習の安定性を高めます。",
+            "reference": "https://arxiv.org/abs/1502.03167",
+            "reference_label": "Batch Normalization 論文"
+          }
+        },
+        {
+          "key": "B",
+          "text": "必ず過学習を防ぐ",
+          "explanation": {
+            "text": "過学習を防ぐ効果もありますが、必ずではありません。",
+            "reference": "https://arxiv.org/abs/1502.03167",
+            "reference_label": "Batch Normalization 論文"
+          }
+        },
+        {
+          "key": "C",
+          "text": "学習率の調整が不要になる",
+          "explanation": {
+            "text": "学習率の調整は依然として必要です。",
+            "reference": "https://arxiv.org/abs/1502.03167",
+            "reference_label": "Batch Normalization 論文"
+          }
+        },
+        {
+          "key": "D",
+          "text": "パラメータ更新が不要になる",
+          "explanation": {
+            "text": "バッチ正規化自体も学習されるパラメータを持ちます。",
+            "reference": "https://arxiv.org/abs/1502.03167",
+            "reference_label": "Batch Normalization 論文"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "バッチ正規化は内部共変量シフトを緩和し、学習を安定化させます。",
+        "reference": "https://arxiv.org/abs/1502.03167",
+        "reference_label": "Batch Normalization 論文"
+      }
+    },
+    {
+      "id": "ai-g-q48",
+      "question": "AIにおける「アライメント問題」とは何を指すか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AIの目的が人間の意図と一致しないリスク",
+          "explanation": {
+            "text": "アライメント問題は、AIが人間の意図しない行動を取るリスクを指します。",
+            "reference": "https://arxiv.org/abs/1606.06565",
+            "reference_label": "Concrete Problems in AI Safety"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AIが必ず説明不可能な判断をすること",
+          "explanation": {
+            "text": "説明可能性の課題とは区別されます。",
+            "reference": "https://arxiv.org/abs/1606.06565",
+            "reference_label": "Concrete Problems in AI Safety"
+          }
+        },
+        {
+          "key": "C",
+          "text": "AIが常に過学習を起こすこと",
+          "explanation": {
+            "text": "過学習はアライメント問題とは関係ありません。",
+            "reference": "https://arxiv.org/abs/1606.06565",
+            "reference_label": "Concrete Problems in AI Safety"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AIが必ず人間より正確であること",
+          "explanation": {
+            "text": "アライメント問題は精度ではなく意図の一致に関する問題です。",
+            "reference": "https://arxiv.org/abs/1606.06565",
+            "reference_label": "Concrete Problems in AI Safety"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "アライメント問題はAIの目的と人間の意図が一致しないリスクを指し、安全性の重要課題です。",
+        "reference": "https://arxiv.org/abs/1606.06565",
+        "reference_label": "Concrete Problems in AI Safety"
+      }
+    },
+    {
+      "id": "ai-g-q49",
+      "question": "クラスタリング手法の一つである「階層型クラスタリング」の特徴はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "クラスタを階層的に統合または分割していく",
+          "explanation": {
+            "text": "階層型クラスタリングはデンドログラムを用いてクラスタを階層的に表現します。",
+            "reference": "https://scikit-learn.org/stable/modules/clustering.html#hierarchical-clustering",
+            "reference_label": "Scikit-learn Hierarchical Clustering"
+          }
+        },
+        {
+          "key": "B",
+          "text": "必ずクラスタ数を事前に決める必要がある",
+          "explanation": {
+            "text": "クラスタ数を固定する必要はなく、デンドログラムから柔軟に決定できます。",
+            "reference": "https://scikit-learn.org/stable/modules/clustering.html#hierarchical-clustering",
+            "reference_label": "Scikit-learn Hierarchical Clustering"
+          }
+        },
+        {
+          "key": "C",
+          "text": "教師あり学習の一種である",
+          "explanation": {
+            "text": "クラスタリングは教師なし学習です。",
+            "reference": "https://scikit-learn.org/stable/modules/clustering.html",
+            "reference_label": "Scikit-learn Clustering"
+          }
+        },
+        {
+          "key": "D",
+          "text": "決定木を用いる手法である",
+          "explanation": {
+            "text": "決定木は分類や回帰に使う手法であり、階層型クラスタリングとは異なります。",
+            "reference": "https://scikit-learn.org/stable/modules/tree.html",
+            "reference_label": "Scikit-learn Decision Trees"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "階層型クラスタリングはデータを階層的に統合・分割し、構造を視覚的に表現する方法です。",
+        "reference": "https://scikit-learn.org/stable/modules/clustering.html#hierarchical-clustering",
+        "reference_label": "Scikit-learn Hierarchical Clustering"
+      }
+    },
+    {
+      "id": "ai-g-q50",
+      "question": "AI分野でよく議論される「ブラックボックス問題」が意味するものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AIの内部処理が人間にとって理解困難であること",
+          "explanation": {
+            "text": "ブラックボックス問題は、ディープラーニングなどのAIモデルが高精度であっても、意思決定の理由を人間が理解しにくいことを指します。",
+            "reference": "https://ec.europa.eu/newsroom/dae/document.cfm?doc_id=68342",
+            "reference_label": "EU 倫理指針 Trustworthy AI"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AIの計算速度が遅いこと",
+          "explanation": {
+            "text": "計算速度の問題はハードウェアやアルゴリズムの効率性に関するものであり、ブラックボックス問題とは異なります。",
+            "reference": "https://ec.europa.eu/newsroom/dae/document.cfm?doc_id=68342",
+            "reference_label": "EU 倫理指針 Trustworthy AI"
+          }
+        },
+        {
+          "key": "C",
+          "text": "AIが必ず誤った判断をすること",
+          "explanation": {
+            "text": "ブラックボックス問題は精度そのものではなく、判断根拠が不明確である点に関する課題です。",
+            "reference": "https://ec.europa.eu/newsroom/dae/document.cfm?doc_id=68342",
+            "reference_label": "EU 倫理指針 Trustworthy AI"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AIが必ず過学習を起こすこと",
+          "explanation": {
+            "text": "過学習は別の技術的課題であり、ブラックボックス問題とは直接関係しません。",
+            "reference": "https://www.deeplearningbook.org/",
+            "reference_label": "Deep Learning Book"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ブラックボックス問題はAIの意思決定過程が不透明であることを指し、説明可能性や透明性が重要な研究課題となっています。",
+        "reference": "https://ec.europa.eu/newsroom/dae/document.cfm?doc_id=68342",
+        "reference_label": "EU 倫理指針 Trustworthy AI"
+      }
+    }
+  ]
+}

@@ -1,0 +1,2467 @@
+{
+  "exam": {
+    "id": "comptia-linux",
+    "title": "CompTIA Linux+",
+    "description": "CompTIA Linux+ は、Linux OS によるサーバ運用・管理・自動化・セキュリティ・トラブルシューティングなどの実務スキルを評価する国際認定資格です。ベンダーに依存しない「ベンダーニュートラル」な資格で、企業のインフラ管理者やシステム管理者、ネットワークエンジニアなど、Linux を使った業務に携わる人の基本かつ実践的な能力を証明します。",
+    "version": "V8",
+    "price": "369 USD",
+    "difficulty": "普通",
+    "official-site": "https://www.comptia.jp/certifications/linux",
+    "category": {
+      "id": "comptia",
+      "name": "CompTIA"
+    }
+  },
+  "questions": [
+    {
+      "id": "comptia-linux-01",
+      "question": "systemdベースのディストリビューションで、Webサーバhttpdの現在の状態を確認する最も適切なコマンドはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "systemctl autostatus httpd",
+          "explanation": {
+            "text": "autostatusというサブコマンドは存在しない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+            "reference_label": "systemctl — Control the systemd system and service manager"
+          }
+        },
+        {
+          "key": "B",
+          "text": "systemctl status httpd",
+          "explanation": {
+            "text": "statusサブコマンドでユニットの現在の状態やログを確認できる。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+            "reference_label": "systemctl — Service unit status表示"
+          }
+        },
+        {
+          "key": "C",
+          "text": "systemctl show-logs httpd",
+          "explanation": {
+            "text": "show-logsというサブコマンドは存在せず、ログ参照はjournalctlを使用する。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+            "reference_label": "systemctl — Subcommands"
+          }
+        },
+        {
+          "key": "D",
+          "text": "systemctl list-units httpd",
+          "explanation": {
+            "text": "list-unitsはユニット一覧表示であり、特定サービスの詳細状態表示ではない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+            "reference_label": "systemctl — list-units"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "systemctl status ユニット名 で、そのサービスの起動状態・Main PID・直近のログなどを確認できる。",
+        "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+        "reference_label": "systemctl — status"
+      }
+    },
+    {
+      "id": "comptia-linux-02",
+      "question": "Linuxでシンボリックリンクを作成するためのコマンドとして最も適切なのはどれか。元ファイルがfile1、リンク名をlink1とする。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ln file1 link1",
+          "explanation": {
+            "text": "lnのみだとデフォルトでハードリンクを作成する。",
+            "reference": "https://man7.org/linux/man-pages/man1/ln.1.html",
+            "reference_label": "ln(1) — make links between files"
+          }
+        },
+        {
+          "key": "B",
+          "text": "cp -s file1 link1",
+          "explanation": {
+            "text": "cp -sオプションはシンボリックリンクを作成できるが、一般的な手段ではない。",
+            "reference": "https://man7.org/linux/man-pages/man1/cp.1.html",
+            "reference_label": "cp(1) — backup and symlink options"
+          }
+        },
+        {
+          "key": "C",
+          "text": "mv -s file1 link1",
+          "explanation": {
+            "text": "mvにシンボリックリンクを作成する機能はない。",
+            "reference": "https://man7.org/linux/man-pages/man1/mv.1.html",
+            "reference_label": "mv(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ln -s file1 link1",
+          "explanation": {
+            "text": "ln -s でfile1を参照するシンボリックリンクlink1を作成できる。",
+            "reference": "https://man7.org/linux/man-pages/man1/ln.1.html",
+            "reference_label": "ln(1) — symbolic link作成"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "シンボリックリンク作成の標準的な形式は ln -s 対象 リンク名 である。",
+        "reference": "https://man7.org/linux/man-pages/man1/ln.1.html",
+        "reference_label": "ln(1)"
+      }
+    },
+    {
+      "id": "comptia-linux-03",
+      "question": "SELinuxがPermissiveモードのときの動作として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ポリシー違反を許可しつつ、ログに記録する",
+          "explanation": {
+            "text": "Permissiveモードではアクセスをブロックせず、違反をログに記録してデバッグに利用できる。",
+            "reference": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/security_hardening/assembly_selinux-basics_security-hardening",
+            "reference_label": "Red Hat SELinux basics"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ポリシー違反をブロックし、アクセスを拒否する",
+          "explanation": {
+            "text": "これはEnforcingモードの挙動である。",
+            "reference": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/security_hardening/assembly_selinux-basics_security-hardening",
+            "reference_label": "SELinux modes — Enforcing"
+          }
+        },
+        {
+          "key": "C",
+          "text": "SELinux機能を完全に無効化する",
+          "explanation": {
+            "text": "DisabledモードでSELinuxは無効化され、ポリシーも評価されない。",
+            "reference": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/security_hardening/assembly_selinux-basics_security-hardening",
+            "reference_label": "SELinux modes — Disabled"
+          }
+        },
+        {
+          "key": "D",
+          "text": "許可された操作だけをログに記録し、違反は記録しない",
+          "explanation": {
+            "text": "実際には許可・拒否いずれも監査ログに記録されうる。",
+            "reference": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/security_hardening/assembly_selinux-troubleshooting_security-hardening",
+            "reference_label": "SELinux troubleshooting"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Permissiveモードはポリシー違反をブロックせずにログに記録するため、ポリシー調整時の検証に使われる。",
+        "reference": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/security_hardening/assembly_selinux-basics_security-hardening",
+        "reference_label": "SELinux modes"
+      }
+    },
+    {
+      "id": "comptia-linux-04",
+      "question": "ext4ファイルシステムがマウントされているデバイス/dev/sdb1の使用状況を、人間に読みやすい形式で確認したい。最も適切なコマンドはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ls -lh /dev/sdb1",
+          "explanation": {
+            "text": "lsはファイルやデバイスノード自体の情報を表示するだけで、ファイルシステム使用量は表示しない。",
+            "reference": "https://man7.org/linux/man-pages/man1/ls.1.html",
+            "reference_label": "ls(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "du -sh /dev/sdb1",
+          "explanation": {
+            "text": "duはディレクトリ以下の使用量を集計するコマンドであり、デバイスを直接指定する使い方は一般的でない。",
+            "reference": "https://man7.org/linux/man-pages/man1/du.1.html",
+            "reference_label": "du(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "df -h /dev/sdb1",
+          "explanation": {
+            "text": "dfはファイルシステムごとの使用量を表示し、-hで人間に読みやすい単位（GiBなど）になる。",
+            "reference": "https://man7.org/linux/man-pages/man1/df.1.html",
+            "reference_label": "df(1) — report file system disk space usage"
+          }
+        },
+        {
+          "key": "D",
+          "text": "stat /dev/sdb1",
+          "explanation": {
+            "text": "statはファイルやデバイスノードのメタデータを表示するが、使用量の集計は行わない。",
+            "reference": "https://man7.org/linux/man-pages/man1/stat.1.html",
+            "reference_label": "stat(1)"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "df -h はディスク使用量確認の標準的なコマンドであり、特定のデバイスやマウントポイントを指定して使用状況を確認できる。",
+        "reference": "https://man7.org/linux/man-pages/man1/df.1.html",
+        "reference_label": "df(1)"
+      }
+    },
+    {
+      "id": "comptia-linux-05",
+      "question": "LVM環境でボリュームグループvgdataに新しい物理ボリューム/dev/sdc1を追加したい。最も適切なコマンドはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "lvextend vgdata /dev/sdc1",
+          "explanation": {
+            "text": "lvextendは論理ボリュームのサイズ拡張に使用するコマンドであり、VGへのPV追加には使わない。",
+            "reference": "https://man7.org/linux/man-pages/man8/lvextend.8.html",
+            "reference_label": "lvextend(8)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "vgextend vgdata /dev/sdc1",
+          "explanation": {
+            "text": "vgextendで既存のボリュームグループに新しい物理ボリュームを追加できる。",
+            "reference": "https://man7.org/linux/man-pages/man8/vgextend.8.html",
+            "reference_label": "vgextend(8) — extend volume group"
+          }
+        },
+        {
+          "key": "C",
+          "text": "pvextend vgdata /dev/sdc1",
+          "explanation": {
+            "text": "pvextendというコマンドは存在しない（pvresizeなどはある）。",
+            "reference": "https://man7.org/linux/man-pages/man8/pvresize.8.html",
+            "reference_label": "pvresize(8)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "mkfs.ext4 vgdata /dev/sdc1",
+          "explanation": {
+            "text": "mkfs.ext4はファイルシステム作成であり、VGへのPV追加ではない。",
+            "reference": "https://man7.org/linux/man-pages/man8/mke2fs.8.html",
+            "reference_label": "mke2fs(8)"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "vgextend ボリュームグループ名 物理ボリューム で、既存VGにPVを追加して容量を増やすことができる。",
+        "reference": "https://man7.org/linux/man-pages/man8/vgextend.8.html",
+        "reference_label": "vgextend(8)"
+      }
+    },
+    {
+      "id": "comptia-linux-06",
+      "question": "SSH公開鍵認証を有効にするために、サーバ側sshd_configで無効にすべき設定として最も適切なのはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "PubkeyAuthentication no",
+          "explanation": {
+            "text": "公開鍵認証を利用する場合はyesにすべきであり、noにすると利用できない。",
+            "reference": "https://man.openbsd.org/sshd_config",
+            "reference_label": "sshd_config(5) — PubkeyAuthentication"
+          }
+        },
+        {
+          "key": "B",
+          "text": "PasswordAuthentication yes",
+          "explanation": {
+            "text": "パスワード認証を有効にする設定であり、公開鍵のみを使いたい場合はnoに設定することが推奨される。",
+            "reference": "https://man.openbsd.org/sshd_config",
+            "reference_label": "sshd_config(5) — PasswordAuthentication"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ChallengeResponseAuthentication no",
+          "explanation": {
+            "text": "チャレンジレスポンス認証を無効化するが、公開鍵認証とは直接関係ない。",
+            "reference": "https://man.openbsd.org/sshd_config",
+            "reference_label": "sshd_config(5) — ChallengeResponseAuthentication"
+          }
+        },
+        {
+          "key": "D",
+          "text": "PasswordAuthentication no",
+          "explanation": {
+            "text": "公開鍵認証を強制する場合、PasswordAuthenticationをnoにしてパスワードログインを禁止するのがよく行われる。",
+            "reference": "https://man.openbsd.org/sshd_config",
+            "reference_label": "sshd_config(5) — hardening SSH"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "公開鍵認証のみにしたい場合、PasswordAuthentication no としてパスワード認証を無効化し、総当たり攻撃のリスクを下げる構成が推奨される。",
+        "reference": "https://man.openbsd.org/sshd_config",
+        "reference_label": "sshd_config(5)"
+      }
+    },
+    {
+      "id": "comptia-linux-07",
+      "question": "Linuxで実行中プロセスの一覧を瞬時に確認し、PIDやCPU使用率などを確認したい。最も一般的に使用されるコマンドはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ps aux",
+          "explanation": {
+            "text": "ps auxはすべてのプロセス一覧を表示し、PIDやCPU使用率等の情報を確認できる。",
+            "reference": "https://man7.org/linux/man-pages/man1/ps.1.html",
+            "reference_label": "ps(1) — report a snapshot of current processes"
+          }
+        },
+        {
+          "key": "B",
+          "text": "who",
+          "explanation": {
+            "text": "whoはログインユーザーを表示するコマンドであり、プロセス一覧ではない。",
+            "reference": "https://man7.org/linux/man-pages/man1/who.1.html",
+            "reference_label": "who(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "id",
+          "explanation": {
+            "text": "idはユーザーIDやグループIDを表示するコマンドである。",
+            "reference": "https://man7.org/linux/man-pages/man1/id.1.html",
+            "reference_label": "id(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "uptime",
+          "explanation": {
+            "text": "uptimeは稼働時間やロードアベレージを表示するが、プロセス一覧は表示しない。",
+            "reference": "https://man7.org/linux/man-pages/man1/uptime.1.html",
+            "reference_label": "uptime(1)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ps auxはスナップショットだが、ほぼすべてのプロセスを一覧表示する代表的な形式である。",
+        "reference": "https://man7.org/linux/man-pages/man1/ps.1.html",
+        "reference_label": "ps(1)"
+      }
+    },
+    {
+      "id": "comptia-linux-08",
+      "question": "cronを使って毎週月曜日の2:30にバックアップスクリプト /usr/local/bin/backup.sh を実行したい。正しいcrontabエントリはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "30 2 * * 1-5 /usr/local/bin/backup.sh",
+          "explanation": {
+            "text": "1-5は月〜金を示し、毎週平日に実行される設定となる。",
+            "reference": "https://man7.org/linux/man-pages/man5/crontab.5.html",
+            "reference_label": "crontab(5) — ranges"
+          }
+        },
+        {
+          "key": "B",
+          "text": "2 30 * * 1 /usr/local/bin/backup.sh",
+          "explanation": {
+            "text": "分と時の順序が逆であり、無効な形式になる。",
+            "reference": "https://man7.org/linux/man-pages/man5/crontab.5.html",
+            "reference_label": "crontab(5) — field order"
+          }
+        },
+        {
+          "key": "C",
+          "text": "30 2 * * 1 /usr/local/bin/backup.sh",
+          "explanation": {
+            "text": "分 30、時 2、曜日 1(月曜日) の組み合わせで、毎週月曜日2:30に実行される。",
+            "reference": "https://man7.org/linux/man-pages/man5/crontab.5.html",
+            "reference_label": "crontab(5)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "30 2 1 * * /usr/local/bin/backup.sh",
+          "explanation": {
+            "text": "これは毎月1日の2:30実行を意味し、曜日は指定していない。",
+            "reference": "https://man7.org/linux/man-pages/man5/crontab.5.html",
+            "reference_label": "crontab(5) — day-of-month vs day-of-week"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "crontabの書式は「分 時 日 月 曜日」であり、30 2 * * 1 で毎週月曜日2時30分の実行を指定できる。",
+        "reference": "https://man7.org/linux/man-pages/man5/crontab.5.html",
+        "reference_label": "crontab(5)"
+      }
+    },
+    {
+      "id": "comptia-linux-09",
+      "question": "tarコマンドで現在のディレクトリ配下をgzip圧縮したアーカイブbackup.tar.gzとして作成したい。最も適切なコマンドはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "tar -xzf backup.tar.gz .",
+          "explanation": {
+            "text": "-xは展開(extract)用のオプションであり、アーカイブの作成ではない。",
+            "reference": "https://man7.org/linux/man-pages/man1/tar.1.html",
+            "reference_label": "tar(1) — extract"
+          }
+        },
+        {
+          "key": "B",
+          "text": "tar -czf backup.tar.gz .",
+          "explanation": {
+            "text": "-cでアーカイブ作成、-zでgzip圧縮、-fでファイル名指定となり、目的を満たす。",
+            "reference": "https://man7.org/linux/man-pages/man1/tar.1.html",
+            "reference_label": "tar(1) — create with gzip"
+          }
+        },
+        {
+          "key": "C",
+          "text": "tar -cfz backup.tar.gz .",
+          "explanation": {
+            "text": "一部の実装ではオプションの順序が問題になる可能性があり、慣例的に -czf のように書く。",
+            "reference": "https://man7.org/linux/man-pages/man1/tar.1.html",
+            "reference_label": "tar(1) — option ordering"
+          }
+        },
+        {
+          "key": "D",
+          "text": "tar --list backup.tar.gz .",
+          "explanation": {
+            "text": "--listはアーカイブ内容の一覧を表示するためのオプションで、作成ではない。",
+            "reference": "https://man7.org/linux/man-pages/man1/tar.1.html",
+            "reference_label": "tar(1) — list"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "一般的な形式は tar -czf ファイル名 対象 であり、backup.tar.gzとしてカレントディレクトリ以下をgzip圧縮できる。",
+        "reference": "https://man7.org/linux/man-pages/man1/tar.1.html",
+        "reference_label": "tar(1)"
+      }
+    },
+    {
+      "id": "comptia-linux-10",
+      "question": "Debian系LinuxでAPTを使い、すべてのインストール済みパッケージを最新バージョンに更新したい。最も適切なコマンドはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "apt update && apt clean",
+          "explanation": {
+            "text": "apt updateはパッケージリスト更新のみであり、パッケージ自体のアップグレードは行わない。apt cleanはキャッシュ削除。",
+            "reference": "https://manpages.debian.org/apt.8",
+            "reference_label": "apt(8) — update, clean"
+          }
+        },
+        {
+          "key": "B",
+          "text": "apt search --upgrade",
+          "explanation": {
+            "text": "apt searchはパッケージ検索であり、アップグレードは行わない。",
+            "reference": "https://manpages.debian.org/apt-cache.8",
+            "reference_label": "apt search"
+          }
+        },
+        {
+          "key": "C",
+          "text": "apt install --latest",
+          "explanation": {
+            "text": "installに--latestという一般的なオプションはなく、システム全体の更新用途ではない。",
+            "reference": "https://manpages.debian.org/apt.8",
+            "reference_label": "apt(8)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "apt update && apt upgrade",
+          "explanation": {
+            "text": "apt updateでパッケージリストを更新し、その後apt upgradeでインストール済みパッケージを利用可能な最新バージョンに更新する。",
+            "reference": "https://manpages.debian.org/apt.8",
+            "reference_label": "apt(8) — update, upgrade"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "APT系ではまずapt updateでリポジトリ情報を更新し、その後apt upgradeで更新可能なパッケージを一括アップグレードするのが一般的である。",
+        "reference": "https://manpages.debian.org/apt.8",
+        "reference_label": "apt(8)"
+      }
+    },
+    {
+      "id": "comptia-linux-11",
+      "question": "systemd-journaldを利用しているシステムで、特定サービスssh.serviceのログのみを確認したい。最も適切なコマンドはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "systemctl log ssh.service",
+          "explanation": {
+            "text": "systemctlにlogというサブコマンドはなく、ログの参照はjournalctlで行う。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+            "reference_label": "systemctl(1) — systemdユニット管理"
+          }
+        },
+        {
+          "key": "B",
+          "text": "journalctl | grep ssh.service",
+          "explanation": {
+            "text": "grepでフィルタすることもできるが、ユニット名によるフィルタリング専用のオプションを使う方が効率的で正確である。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/journalctl.html",
+            "reference_label": "journalctl(1) — 基本的な使い方"
+          }
+        },
+        {
+          "key": "C",
+          "text": "journalctl -u ssh.service",
+          "explanation": {
+            "text": "-uオプションで指定したsystemdユニットのログのみを表示できる。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/journalctl.html",
+            "reference_label": "journalctl(1) — -u, --unit"
+          }
+        },
+        {
+          "key": "D",
+          "text": "dmesg -u ssh.service",
+          "explanation": {
+            "text": "dmesgは主にカーネルリングバッファの表示に用いられ、systemdユニット名でフィルタする機能はない。",
+            "reference": "https://man7.org/linux/man-pages/man1/dmesg.1.html",
+            "reference_label": "dmesg(1)"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "systemd環境ではjournalctl -u ユニット名 で、そのユニットに関連するログのみを簡潔に確認できる。",
+        "reference": "https://www.freedesktop.org/software/systemd/man/journalctl.html",
+        "reference_label": "journalctl(1)"
+      }
+    },
+    {
+      "id": "comptia-linux-12",
+      "question": "カレントディレクトリ配下から、「.conf」で終わるファイルのみを再帰的に検索したい。最も適切なfindコマンドはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "find . -type f -name \"*.conf\"",
+          "explanation": {
+            "text": "カレントディレクトリ(.)から通常ファイル(-type f)で名前が*.confにマッチするものを検索する正しい構文である。",
+            "reference": "https://man7.org/linux/man-pages/man1/find.1.html",
+            "reference_label": "find(1) — -type, -name"
+          }
+        },
+        {
+          "key": "B",
+          "text": "find . -name *.conf",
+          "explanation": {
+            "text": "シェルによるワイルドカード展開の影響を受ける可能性があり、パターンは引用符で囲むのが望ましい。",
+            "reference": "https://man7.org/linux/man-pages/man1/find.1.html",
+            "reference_label": "find(1) — パターンのクォート"
+          }
+        },
+        {
+          "key": "C",
+          "text": "find / -conf '*.conf'",
+          "explanation": {
+            "text": "findに-confというオプションはなく、構文として誤りである。",
+            "reference": "https://man7.org/linux/man-pages/man1/find.1.html",
+            "reference_label": "find(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "find . -type d -name \"*.conf\"",
+          "explanation": {
+            "text": "-type dはディレクトリを対象とするため、ファイル検索には適さない。",
+            "reference": "https://man7.org/linux/man-pages/man1/find.1.html",
+            "reference_label": "find(1) — -type"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "拡張子によるファイル検索の代表的なパターンは find . -type f -name \"*.拡張子\" である。",
+        "reference": "https://man7.org/linux/man-pages/man1/find.1.html",
+        "reference_label": "find(1)"
+      }
+    },
+    {
+      "id": "comptia-linux-13",
+      "question": "/tmpディレクトリで、すべてのユーザが書き込み可能だが、ファイルの削除は所有者のみが行えるようにしたい。この目的に合致するパーミッション設定はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "chmod 0777 /tmp",
+          "explanation": {
+            "text": "誰でも読み書き・実行(検索)可能になるが、stickyビットがないため他人のファイル削除も可能になってしまう。",
+            "reference": "https://man7.org/linux/man-pages/man1/chmod.1.html",
+            "reference_label": "chmod(1) — モード0777"
+          }
+        },
+        {
+          "key": "B",
+          "text": "chmod 0700 /tmp",
+          "explanation": {
+            "text": "所有者のみアクセス可能となり、他ユーザは/tmpを利用できなくなる。",
+            "reference": "https://man7.org/linux/man-pages/man1/chmod.1.html",
+            "reference_label": "chmod(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "chmod 1770 /tmp",
+          "explanation": {
+            "text": "stickyビット付きだが、グループ以外のユーザが書き込みできないため、一般的な/tmpの要件を満たさない。",
+            "reference": "https://man7.org/linux/man-pages/man1/chmod.1.html",
+            "reference_label": "chmod(1) — sticky bit"
+          }
+        },
+        {
+          "key": "D",
+          "text": "chmod 1777 /tmp",
+          "explanation": {
+            "text": "先頭の1がstickyビットで、他人のファイル削除を防ぎつつ、全ユーザに読み書き・実行(検索)を許可できる。",
+            "reference": "https://man7.org/linux/man-pages/man1/chmod.1.html",
+            "reference_label": "chmod(1) — stickyビットの意味"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "多くのUnix系システムで/tmpは1777(stickyビット+フルアクセス)に設定されており、他人のファイル削除を防ぐ標準的な方法である。",
+        "reference": "https://man7.org/linux/man-pages/man1/chmod.1.html",
+        "reference_label": "chmod(1)"
+      }
+    },
+    {
+      "id": "comptia-linux-14",
+      "question": "現在のIPv4ルーティングテーブルの内容を確認したい。現行のiproute2コマンドを用いた推奨方法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "route -n",
+          "explanation": {
+            "text": "routeコマンドは旧来のnet-toolsに含まれ、現在は非推奨とされることが多い。",
+            "reference": "https://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt",
+            "reference_label": "Linux networking docs（routeの非推奨言及）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ip route show",
+          "explanation": {
+            "text": "ipコマンドはiproute2パッケージに含まれ、ip route showでルーティングテーブルを表示できる。",
+            "reference": "https://man7.org/linux/man-pages/man8/ip-route.8.html",
+            "reference_label": "ip-route(8)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ip addr route",
+          "explanation": {
+            "text": "ip addrはアドレス情報表示であり、routeとは別のサブコマンドである。",
+            "reference": "https://man7.org/linux/man-pages/man8/ip.8.html",
+            "reference_label": "ip(8) — addrとrouteの違い"
+          }
+        },
+        {
+          "key": "D",
+          "text": "netstat -g",
+          "explanation": {
+            "text": "netstat -gはマルチキャストグループ情報などを表示し、ルーティングテーブル表示とは異なる。",
+            "reference": "https://man7.org/linux/man-pages/man8/netstat.8.html",
+            "reference_label": "netstat(8)"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "iproute2では ip route show が推奨されるルーティングテーブル表示方法であり、Linux+でもipコマンドの利用が重要となる。",
+        "reference": "https://man7.org/linux/man-pages/man8/ip-route.8.html",
+        "reference_label": "ip-route(8)"
+      }
+    },
+    {
+      "id": "comptia-linux-15",
+      "question": "RHEL系ディストリビューションで、dnfを使ってパッケージhttpdをアンインストールしたい。最も適切なコマンドはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "dnf purge httpd",
+          "explanation": {
+            "text": "purgeというサブコマンドはAPT系で用いられる表現であり、dnfには存在しない。",
+            "reference": "https://dnf.readthedocs.io/en/latest/command_ref.html",
+            "reference_label": "DNF Command Reference"
+          }
+        },
+        {
+          "key": "B",
+          "text": "dnf disable httpd",
+          "explanation": {
+            "text": "disableはパッケージ操作ではなく、リポジトリなどを無効化する際に使われる表現であり、一般的なパッケージ削除ではない。",
+            "reference": "https://dnf.readthedocs.io/en/latest/command_ref.html",
+            "reference_label": "dnf config-manager など"
+          }
+        },
+        {
+          "key": "C",
+          "text": "dnf remove httpd",
+          "explanation": {
+            "text": "remove（またはerase）はパッケージのアンインストールに使用する正しいサブコマンドである。",
+            "reference": "https://dnf.readthedocs.io/en/latest/command_ref.html#remove-command",
+            "reference_label": "dnf remove"
+          }
+        },
+        {
+          "key": "D",
+          "text": "dnf uninstall httpd",
+          "explanation": {
+            "text": "uninstallというサブコマンドはdnfの標準サブコマンドには存在しない。",
+            "reference": "https://dnf.readthedocs.io/en/latest/command_ref.html",
+            "reference_label": "DNF Command Reference"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "dnf remove httpd により、指定したパッケージをシステムから削除できる。",
+        "reference": "https://dnf.readthedocs.io/en/latest/command_ref.html#remove-command",
+        "reference_label": "dnf remove"
+      }
+    },
+    {
+      "id": "comptia-linux-16",
+      "question": "実行中のプロセスPID 1234の優先度（nice値）を5だけ低くし、より低い優先度で動作させたい。最も適切なコマンドはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "nice -n +5 1234",
+          "explanation": {
+            "text": "niceは新しく起動するコマンドの優先度を変更するためのもので、既存のPIDには直接適用できない。",
+            "reference": "https://man7.org/linux/man-pages/man1/nice.1.html",
+            "reference_label": "nice(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "renice -n -5 -p 1234",
+          "explanation": {
+            "text": "負のnice値は優先度を高くする方向の変更であり、ここでは要求と逆である。",
+            "reference": "https://man7.org/linux/man-pages/man1/renice.1.html",
+            "reference_label": "renice(1) — nice値の符号"
+          }
+        },
+        {
+          "key": "C",
+          "text": "renice 5 1234",
+          "explanation": {
+            "text": "実装によってはこの形式もあるが、多くの例では -n と -p を明示的に指定する形が推奨される。",
+            "reference": "https://man7.org/linux/man-pages/man1/renice.1.html",
+            "reference_label": "renice(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "renice -n +5 -p 1234",
+          "explanation": {
+            "text": "reniceコマンドで指定PIDのnice値を5増加させ、より低い優先度で動作させることができる。",
+            "reference": "https://man7.org/linux/man-pages/man1/renice.1.html",
+            "reference_label": "renice(1) — -n, -p"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "既存プロセスの優先度変更にはreniceを使用し、renice -n +5 -p PID のように指定するのが一般的である。",
+        "reference": "https://man7.org/linux/man-pages/man1/renice.1.html",
+        "reference_label": "renice(1)"
+      }
+    },
+    {
+      "id": "comptia-linux-17",
+      "question": "systemdベースのシステムで、次回以降のブート時にデフォルトターゲットをmulti-user.targetに変更したい。最も適切なコマンドはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "systemctl isolate multi-user.target",
+          "explanation": {
+            "text": "isolateは即座に指定したターゲットへ切り替えるが、デフォルトターゲットの永続的変更は行わない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+            "reference_label": "systemctl(1) — isolate"
+          }
+        },
+        {
+          "key": "B",
+          "text": "systemctl set-default multi-user.target",
+          "explanation": {
+            "text": "set-defaultサブコマンドで、次回ブート時に使用されるデフォルトターゲットを設定できる。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+            "reference_label": "systemctl(1) — set-default"
+          }
+        },
+        {
+          "key": "C",
+          "text": "systemctl change-default multi-user.target",
+          "explanation": {
+            "text": "change-defaultというサブコマンドは存在しない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+            "reference_label": "systemctl(1) — サブコマンド一覧"
+          }
+        },
+        {
+          "key": "D",
+          "text": "systemctl enable multi-user.target",
+          "explanation": {
+            "text": "enableはユニットを有効化し、依存するシンボリックリンクを張る操作であり、デフォルトターゲットの設定とは別である。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+            "reference_label": "systemctl(1) — enable"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "デフォルトターゲットを変更する際は systemctl set-default ターゲット名 を用いる。",
+        "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+        "reference_label": "systemctl(1)"
+      }
+    },
+    {
+      "id": "comptia-linux-18",
+      "question": "tarを用いてディレクトリdirをxz形式で圧縮したアーカイブarchive.tar.xzとして作成したい。最も適切なコマンドはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "tar -cJf archive.tar.xz dir",
+          "explanation": {
+            "text": "-cで作成、-Jでxz圧縮、-fでファイル名指定となり、xz圧縮tarアーカイブを生成できる。",
+            "reference": "https://man7.org/linux/man-pages/man1/tar.1.html",
+            "reference_label": "tar(1) — -J, --xz"
+          }
+        },
+        {
+          "key": "B",
+          "text": "tar -czf archive.tar.xz dir",
+          "explanation": {
+            "text": "-zはgzip圧縮であり、拡張子.tar.xzと内容が一致しない。",
+            "reference": "https://man7.org/linux/man-pages/man1/tar.1.html",
+            "reference_label": "tar(1) — -z, --gzip"
+          }
+        },
+        {
+          "key": "C",
+          "text": "tar -cjf archive.tar.xz dir",
+          "explanation": {
+            "text": "-jはbzip2圧縮を意味し、xz形式の指定には使用しない。",
+            "reference": "https://man7.org/linux/man-pages/man1/tar.1.html",
+            "reference_label": "tar(1) — -j, --bzip2"
+          }
+        },
+        {
+          "key": "D",
+          "text": "tar --xz -xvf archive.tar.xz dir",
+          "explanation": {
+            "text": "-xは展開(extract)であり、アーカイブ作成ではない。",
+            "reference": "https://man7.org/linux/man-pages/man1/tar.1.html",
+            "reference_label": "tar(1) — create vs extract"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "xz圧縮アーカイブを作成するには tar -cJf ファイル名 対象 を利用するのが一般的である。",
+        "reference": "https://man7.org/linux/man-pages/man1/tar.1.html",
+        "reference_label": "tar(1)"
+      }
+    },
+    {
+      "id": "comptia-linux-19",
+      "question": "現在システム上でLISTEN状態にあるTCP/UDPポートを、サービス名解決を行わずに確認したい。最も適切なコマンドはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "netstat -tuln",
+          "explanation": {
+            "text": "LISTENポートを表示するオプションだが、netstatは非推奨のnet-toolsに属していることが多い。",
+            "reference": "https://man7.org/linux/man-pages/man8/netstat.8.html",
+            "reference_label": "netstat(8)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ss -tuln",
+          "explanation": {
+            "text": "ssはiproute2に含まれるツールで、-tulnでTCP/UDPのLISTENソケットを名前解決なしで表示できる。",
+            "reference": "https://man7.org/linux/man-pages/man8/ss.8.html",
+            "reference_label": "ss(8)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ss -a",
+          "explanation": {
+            "text": "-aはすべてのソケットを表示し、LISTENに限定されない。またサービス名解決を抑制するオプションも付与していない。",
+            "reference": "https://man7.org/linux/man-pages/man8/ss.8.html",
+            "reference_label": "ss(8) — options"
+          }
+        },
+        {
+          "key": "D",
+          "text": "lsof",
+          "explanation": {
+            "text": "lsofでもネットワークソケットを表示できるが、指定なしではファイルディスクリプタ全体の一覧となり、LISTENポート専用ではない。",
+            "reference": "https://man7.org/linux/man-pages/man8/lsof.8.html",
+            "reference_label": "lsof(8)"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "iproute2のssコマンドはLISTENポート確認に推奨されており、ss -tuln がTCP/UDPの待ち受けポートを簡潔に確認する典型的な使い方である。",
+        "reference": "https://man7.org/linux/man-pages/man8/ss.8.html",
+        "reference_label": "ss(8)"
+      }
+    },
+    {
+      "id": "comptia-linux-20",
+      "question": "RPMベースのシステムで、ファイル/usr/bin/python3がどのパッケージから提供されているかを確認したい。最も適切なコマンドはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "rpm -qf /usr/bin/python3",
+          "explanation": {
+            "text": "-qfオプションで指定したファイルを提供しているインストール済みパッケージ名を問い合わせることができる。",
+            "reference": "https://man7.org/linux/man-pages/man8/rpm.8.html",
+            "reference_label": "rpm(8) — -qf"
+          }
+        },
+        {
+          "key": "B",
+          "text": "rpm -qi /usr/bin/python3",
+          "explanation": {
+            "text": "-qiはパッケージ名に対する情報表示であり、ファイルパスを直接指定する用途ではない。",
+            "reference": "https://man7.org/linux/man-pages/man8/rpm.8.html",
+            "reference_label": "rpm(8) — -qi"
+          }
+        },
+        {
+          "key": "C",
+          "text": "dnf provides python3",
+          "explanation": {
+            "text": "dnf providesは、リポジトリ内のパッケージ検索に有用だが、既にインストールされている特定ファイルの所属パッケージ確認にはrpm -qfがより直接的である。",
+            "reference": "https://dnf.readthedocs.io/en/latest/command_ref.html#detailed-command-reference",
+            "reference_label": "dnf provides"
+          }
+        },
+        {
+          "key": "D",
+          "text": "rpm -Va /usr/bin/python3",
+          "explanation": {
+            "text": "-Vは検証(verify)オプションであり、パッケージの整合性確認に用いられる。",
+            "reference": "https://man7.org/linux/man-pages/man8/rpm.8.html",
+            "reference_label": "rpm(8) — verify"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "インストール済みファイルの所属パッケージを調べる典型的な方法は rpm -qf ファイルパス である。",
+        "reference": "https://man7.org/linux/man-pages/man8/rpm.8.html",
+        "reference_label": "rpm(8)"
+      }
+    },
+    {
+      "id": "comptia-linux-21",
+      "question": "Linuxでユーザtestuserのパスワード有効期限情報を確認したい。最も適切なコマンドはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "passwd --show testuser",
+          "explanation": {
+            "text": "passwdコマンドには--showオプションはなく、パスワード有効期限確認には使用しない。",
+            "reference": "https://man7.org/linux/man-pages/man1/passwd.1.html",
+            "reference_label": "passwd(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "chage -l testuser",
+          "explanation": {
+            "text": "-lオプションでパスワードの有効期限、最終変更日などを一覧表示できる。",
+            "reference": "https://man7.org/linux/man-pages/man1/chage.1.html",
+            "reference_label": "chage(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "passwd -l testuser",
+          "explanation": {
+            "text": "-lはパスワードロックのためのオプションであり、有効期限確認とは関係がない。",
+            "reference": "https://man7.org/linux/man-pages/man1/passwd.1.html",
+            "reference_label": "passwd(1) — lock"
+          }
+        },
+        {
+          "key": "D",
+          "text": "useradd -l testuser",
+          "explanation": {
+            "text": "useraddはユーザ作成であり、既存ユーザのパスワード期限確認には使用しない。",
+            "reference": "https://man7.org/linux/man-pages/man8/useradd.8.html",
+            "reference_label": "useradd(8)"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "パスワード期限や最終変更日は chage -l ユーザ名 で確認するのが標準である。",
+        "reference": "https://man7.org/linux/man-pages/man1/chage.1.html",
+        "reference_label": "chage(1)"
+      }
+    },
+    {
+      "id": "comptia-linux-22",
+      "question": "Linuxでスワップ領域を確認する最も一般的な方法はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "df -h",
+          "explanation": {
+            "text": "dfはファイルシステムのディスク使用量表示であり、スワップには対応しない。",
+            "reference": "https://man7.org/linux/man-pages/man1/df.1.html",
+            "reference_label": "df(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "free -h",
+          "explanation": {
+            "text": "freeはメモリとスワップ領域をまとめて表示し、-hで読みやすい形式になる。",
+            "reference": "https://man7.org/linux/man-pages/man1/free.1.html",
+            "reference_label": "free(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "lsblk -s",
+          "explanation": {
+            "text": "-sは親子関係を逆順表示するが、スワップ利用量までは確認できない。",
+            "reference": "https://man7.org/linux/man-pages/man8/lsblk.8.html",
+            "reference_label": "lsblk(8)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "du -sh /swapfile",
+          "explanation": {
+            "text": "duはディレクトリサイズ確認であり、スワップの使用量を表示するものではない。",
+            "reference": "https://man7.org/linux/man-pages/man1/du.1.html",
+            "reference_label": "du(1)"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "メモリおよびスワップの使用状況確認には free が最も一般的である。",
+        "reference": "https://man7.org/linux/man-pages/man1/free.1.html",
+        "reference_label": "free(1)"
+      }
+    },
+    {
+      "id": "comptia-linux-23",
+      "question": "Gitで最新コミットのログ1件だけを表示したい。最も適切なコマンドはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "git log --latest",
+          "explanation": {
+            "text": "--latestというオプションは存在しない。",
+            "reference": "https://git-scm.com/docs/git-log",
+            "reference_label": "git-log documentation"
+          }
+        },
+        {
+          "key": "B",
+          "text": "git log -1",
+          "explanation": {
+            "text": "-1で最新の1件のみを表示できる。",
+            "reference": "https://git-scm.com/docs/git-log",
+            "reference_label": "git-log"
+          }
+        },
+        {
+          "key": "C",
+          "text": "git status -1",
+          "explanation": {
+            "text": "git statusはワーキングツリーの状態確認であり、コミットログ表示ではない。",
+            "reference": "https://git-scm.com/docs/git-status",
+            "reference_label": "git-status"
+          }
+        },
+        {
+          "key": "D",
+          "text": "git show-commit",
+          "explanation": {
+            "text": "show-commitというサブコマンドは存在しない。",
+            "reference": "https://git-scm.com/docs",
+            "reference_label": "Git commands"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "最新コミットのみを確認する場合、git log -1 が最もシンプルで一般的である。",
+        "reference": "https://git-scm.com/docs/git-log",
+        "reference_label": "git-log"
+      }
+    },
+    {
+      "id": "comptia-linux-24",
+      "question": "systemdのタイマーユニットを一覧表示するために使用するコマンドはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "systemctl list-timers",
+          "explanation": {
+            "text": "list-timersでタイマーユニットの一覧と次回実行予定などを確認できる。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+            "reference_label": "systemctl(1) — list-timers"
+          }
+        },
+        {
+          "key": "B",
+          "text": "systemctl timers",
+          "explanation": {
+            "text": "timersというサブコマンドは存在しない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+            "reference_label": "systemctl subcommands"
+          }
+        },
+        {
+          "key": "C",
+          "text": "journalctl --timers",
+          "explanation": {
+            "text": "journalctlはログ参照コマンドであり、タイマーユニット一覧を表示するものではない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/journalctl.html",
+            "reference_label": "journalctl(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "systemd-timer list",
+          "explanation": {
+            "text": "systemd-timerというコマンドは存在しない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man",
+            "reference_label": "systemd manuals"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "タイマーユニットは systemctl list-timers で確認する。",
+        "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+        "reference_label": "systemctl — list-timers"
+      }
+    },
+    {
+      "id": "comptia-linux-25",
+      "question": "ファイル/etc/hostsのSELinuxコンテキストを確認したい。最も適切なコマンドはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "sestatus /etc/hosts",
+          "explanation": {
+            "text": "sestatusはSELinuxの全体ステータス表示であり、特定ファイルのコンテキストは表示しない。",
+            "reference": "https://man7.org/linux/man-pages/man8/sestatus.8.html",
+            "reference_label": "sestatus(8)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ls -lZ /etc/hosts",
+          "explanation": {
+            "text": "-ZオプションでSELinuxコンテキストを表示できる。",
+            "reference": "https://man7.org/linux/man-pages/man1/ls.1.html",
+            "reference_label": "ls(1) — -Z"
+          }
+        },
+        {
+          "key": "C",
+          "text": "chcon -l /etc/hosts",
+          "explanation": {
+            "text": "chconはコンテキスト変更コマンドであり、-lというオプションは存在しない。",
+            "reference": "https://man7.org/linux/man-pages/man1/chcon.1.html",
+            "reference_label": "chcon(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "seinfo /etc/hosts",
+          "explanation": {
+            "text": "seinfoはSELinuxポリシー情報を表示するツールであり、特定ファイルのコンテキスト確認には使わない。",
+            "reference": "https://selinuxproject.org/page/SETools",
+            "reference_label": "SETools"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ファイルのSELinuxラベルを確認する最も簡単な方法は ls -Z を使うことである。",
+        "reference": "https://man7.org/linux/man-pages/man1/ls.1.html",
+        "reference_label": "ls(1)"
+      }
+    },
+    {
+      "id": "comptia-linux-26",
+      "question": "ネットワークインタフェースの有効化/無効化を行うnmcliコマンドの利用例として正しいのはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "nmcli interface eth0 up",
+          "explanation": {
+            "text": "nmcliでのインタフェース操作はdeviceサブコマンドで行うため、この形式は正しくない。",
+            "reference": "https://developer.gnome.org/NetworkManager/stable/nmcli.html",
+            "reference_label": "nmcli documentation"
+          }
+        },
+        {
+          "key": "B",
+          "text": "nmcli dev disconnect eth0",
+          "explanation": {
+            "text": "disconnectは接続の切断であり、インタフェースの状態変更とは異なる。",
+            "reference": "https://developer.gnome.org/NetworkManager/stable/nmcli.html",
+            "reference_label": "nmcli device"
+          }
+        },
+        {
+          "key": "C",
+          "text": "nmcli device set eth0 managed no",
+          "explanation": {
+            "text": "managedの設定変更はネットワーク管理の対象にするかどうかであり、インタフェース状態のup/downではない。",
+            "reference": "https://developer.gnome.org/NetworkManager/stable/nmcli.html",
+            "reference_label": "nmcli device set"
+          }
+        },
+        {
+          "key": "D",
+          "text": "nmcli device connect eth0",
+          "explanation": {
+            "text": "nmcli device connect/disconnectでインタフェースの有効化/無効化が行える。",
+            "reference": "https://developer.gnome.org/NetworkManager/stable/nmcli.html",
+            "reference_label": "nmcli device connect"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "nmcliでは device connect インタフェース名 でNICを有効化できる。",
+        "reference": "https://developer.gnome.org/NetworkManager/stable/nmcli.html",
+        "reference_label": "nmcli"
+      }
+    },
+    {
+      "id": "comptia-linux-27",
+      "question": "NFSマウントに関する設定で、/etc/fstabを用いてシステム起動時に自動マウントしたい。適切なオプションはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "defaults,noauto",
+          "explanation": {
+            "text": "noautoを指定すると自動マウントされない。",
+            "reference": "https://man7.org/linux/man-pages/man5/fstab.5.html",
+            "reference_label": "fstab(5)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "defaults,_netdev",
+          "explanation": {
+            "text": "_netdevはネットワーク依存デバイスであることを示し、起動時の適切な順序でマウントされるようにする。",
+            "reference": "https://man7.org/linux/man-pages/man5/fstab.5.html",
+            "reference_label": "fstab(5) — _netdev"
+          }
+        },
+        {
+          "key": "C",
+          "text": "defaults,nosuid",
+          "explanation": {
+            "text": "nosuidはSUIDビット無効化に関する設定であり、自動マウントとの関連はない。",
+            "reference": "https://man7.org/linux/man-pages/man5/fstab.5.html",
+            "reference_label": "fstab options"
+          }
+        },
+        {
+          "key": "D",
+          "text": "defaults,nodev",
+          "explanation": {
+            "text": "nodevはデバイスファイル無効化の設定であり、自動マウントの可否には関連しない。",
+            "reference": "https://man7.org/linux/man-pages/man5/fstab.5.html",
+            "reference_label": "fstab options"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "_netdevによりネットワーク接続後にマウントが実行されるよう適切に制御されるため、NFS自動マウントに使用される。",
+        "reference": "https://man7.org/linux/man-pages/man5/fstab.5.html",
+        "reference_label": "fstab(5)"
+      }
+    },
+    {
+      "id": "comptia-linux-28",
+      "question": "ファイルシステムext4を/dev/sdb1に作成するときの標準的なコマンドはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "mkfs.ext3 /dev/sdb1",
+          "explanation": {
+            "text": "ext3を作成するコマンドであり、ext4にはならない。",
+            "reference": "https://man7.org/linux/man-pages/man8/mke2fs.8.html",
+            "reference_label": "mke2fs(8)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "mkfs -t xfs /dev/sdb1",
+          "explanation": {
+            "text": "xfsファイルシステムを作成するコマンドとなり、ext4ではない。",
+            "reference": "https://man7.org/linux/man-pages/man8/mkfs.xfs.8.html",
+            "reference_label": "mkfs.xfs(8)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "mkfs.ext4 /dev/sdb1",
+          "explanation": {
+            "text": "ext4ファイルシステムを作成する標準的なコマンドである。",
+            "reference": "https://man7.org/linux/man-pages/man8/mke2fs.8.html",
+            "reference_label": "mke2fs(8)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "fscreate ext4 /dev/sdb1",
+          "explanation": {
+            "text": "fscreateというコマンドは存在しない。",
+            "reference": "https://man7.org/linux/man-pages",
+            "reference_label": "Linux man-pages"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "ext4を作る場合は mkfs.ext4 デバイス名 が標準的な作成手順である。",
+        "reference": "https://man7.org/linux/man-pages/man8/mke2fs.8.html",
+        "reference_label": "mke2fs(8)"
+      }
+    },
+    {
+      "id": "comptia-linux-29",
+      "question": "現在利用しているシェルの種類を確認するために一般的に使用される環境変数はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "$PROMPT",
+          "explanation": {
+            "text": "PROMPTという環境変数は一般的には存在しない（PS1などが関連）。",
+            "reference": "https://www.gnu.org/software/bash/manual/bash.html",
+            "reference_label": "GNU Bash manual — PS1"
+          }
+        },
+        {
+          "key": "B",
+          "text": "$SHELL",
+          "explanation": {
+            "text": "ログイン時に設定されるユーザのデフォルトシェルを表す環境変数である。",
+            "reference": "https://www.gnu.org/software/bash/manual/bash.html",
+            "reference_label": "Bash environment variables"
+          }
+        },
+        {
+          "key": "C",
+          "text": "$CURSHELL",
+          "explanation": {
+            "text": "一般的な環境変数ではない。",
+            "reference": "https://www.gnu.org/software/bash/manual/bash.html",
+            "reference_label": "Shell variables"
+          }
+        },
+        {
+          "key": "D",
+          "text": "$RUNSHELL",
+          "explanation": {
+            "text": "Linux標準にこのような環境変数はない。",
+            "reference": "https://www.gnu.org/software/bash/manual/bash.html",
+            "reference_label": "Environment variables"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "$SHELLはユーザデフォルトシェルを示す代表的な環境変数である。",
+        "reference": "https://www.gnu.org/software/bash/manual/bash.html",
+        "reference_label": "Bash manual"
+      }
+    },
+    {
+      "id": "comptia-linux-30",
+      "question": "ファイルの行数・単語数・バイト数をまとめて確認したい場合に使用されるコマンドとして最も適切なのはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "wc file.txt",
+          "explanation": {
+            "text": "wcは行数・単語数・バイト数をまとめて表示する標準的なコマンドである。",
+            "reference": "https://man7.org/linux/man-pages/man1/wc.1.html",
+            "reference_label": "wc(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "count file.txt",
+          "explanation": {
+            "text": "countという標準コマンドは存在しない。",
+            "reference": "https://man7.org/linux/man-pages",
+            "reference_label": "Linux commands"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ls -l file.txt",
+          "explanation": {
+            "text": "ls -lではファイルサイズは確認できるが行数や単語数は表示されない。",
+            "reference": "https://man7.org/linux/man-pages/man1/ls.1.html",
+            "reference_label": "ls(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "cat -n file.txt",
+          "explanation": {
+            "text": "cat -nは行番号を付けて表示するが、単語数やバイト数はわからない。",
+            "reference": "https://man7.org/linux/man-pages/man1/cat.1.html",
+            "reference_label": "cat(1)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "wc コマンドは行数・単語数・バイト数を一括確認できるユーティリティである。",
+        "reference": "https://man7.org/linux/man-pages/man1/wc.1.html",
+        "reference_label": "wc(1)"
+      }
+    },
+    {
+      "id": "comptia-linux-31",
+      "question": "LinuxサーバでRAID1をソフトウェア的に構成したい。新規にミラーリングアレイ/dev/md0をデバイス/dev/sdb1と/dev/sdc1で作成する標準的なコマンドはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "mdadm --create /dev/md0 --level=0 --raid-devices=2 /dev/sdb1 /dev/sdc1",
+          "explanation": {
+            "text": "level=0はストライピングであり、冗長性を持たないRAID0となる。",
+            "reference": "https://man7.org/linux/man-pages/man8/mdadm.8.html",
+            "reference_label": "mdadm(8) — RAIDレベル"
+          }
+        },
+        {
+          "key": "B",
+          "text": "mdadm --new /dev/md0 --raid1 /dev/sdb1 /dev/sdc1",
+          "explanation": {
+            "text": "--newや--raid1といった指定は正式なオプション名ではない。",
+            "reference": "https://man7.org/linux/man-pages/man8/mdadm.8.html",
+            "reference_label": "mdadm(8) — オプション一覧"
+          }
+        },
+        {
+          "key": "C",
+          "text": "mdadm --create /dev/md0 --level=5 --raid-devices=2 /dev/sdb1 /dev/sdc1",
+          "explanation": {
+            "text": "RAID5は最低3台のデバイスが必要であり、2台では構成できない。",
+            "reference": "https://www.kernel.org/doc/Documentation/md.txt",
+            "reference_label": "Linux Software RAID HOWTO"
+          }
+        },
+        {
+          "key": "D",
+          "text": "mdadm --create /dev/md0 --level=1 --raid-devices=2 /dev/sdb1 /dev/sdc1",
+          "explanation": {
+            "text": "level=1はミラーリングであり、2台のデバイスでRAID1を構成できる正しい指定である。",
+            "reference": "https://man7.org/linux/man-pages/man8/mdadm.8.html",
+            "reference_label": "mdadm(8) — create RAID1"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "RAID1をmdadmで作成する場合、--level=1 と --raid-devices=台数 を指定するのが正しい。RAID1はミラーリングであり、最低2台のデバイスで構成する。",
+        "reference": "https://man7.org/linux/man-pages/man8/mdadm.8.html",
+        "reference_label": "mdadm(8)"
+      }
+    },
+    {
+      "id": "comptia-linux-32",
+      "question": "/etc/shadowファイルの1行に含まれる2フィールド目の意味として最も適切な説明はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ユーザのUID番号",
+          "explanation": {
+            "text": "UIDは/etc/passwdに保存され、/etc/shadowの2フィールド目ではない。",
+            "reference": "https://man7.org/linux/man-pages/man5/passwd.5.html",
+            "reference_label": "passwd(5)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "アカウントのロック状態のみを示すフラグ",
+          "explanation": {
+            "text": "ロック状態はパスワードフィールド内で!や*などにより表現されるが、2フィールド目は単なるフラグだけではなく暗号化パスワード全体を保持する。",
+            "reference": "https://man7.org/linux/man-pages/man5/shadow.5.html",
+            "reference_label": "shadow(5)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "暗号化されたパスワードフィールド",
+          "explanation": {
+            "text": "/etc/shadowの2フィールド目には暗号化されたパスワード文字列（またはロックを示す特殊文字列）が格納される。",
+            "reference": "https://man7.org/linux/man-pages/man5/shadow.5.html",
+            "reference_label": "shadow(5) — フィールド構造"
+          }
+        },
+        {
+          "key": "D",
+          "text": "パスワード最終変更日を表す日数（エポックからの経過日数）",
+          "explanation": {
+            "text": "パスワード最終変更日は3フィールド目に保存される。",
+            "reference": "https://man7.org/linux/man-pages/man5/shadow.5.html",
+            "reference_label": "shadow(5) — 3番目のフィールド"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "/etc/shadowの構造では、1フィールド目がログイン名、2フィールド目が暗号化パスワード、3フィールド目以降に有効期限情報が続く。",
+        "reference": "https://man7.org/linux/man-pages/man5/shadow.5.html",
+        "reference_label": "shadow(5)"
+      }
+    },
+    {
+      "id": "comptia-linux-33",
+      "question": "firewalldを使用しているRHEL系システムで、即時にSSHサービスをデフォルトゾーンに恒久的に許可したい。最も適切なコマンドはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "firewall-cmd --add-service=ssh --permanent && firewall-cmd --reload",
+          "explanation": {
+            "text": "--permanentで永続設定を行い、reloadで反映することでSSHを恒久的に許可できる。",
+            "reference": "https://firewalld.org/documentation/howto/add-a-service.html",
+            "reference_label": "firewalld — add service"
+          }
+        },
+        {
+          "key": "B",
+          "text": "firewallctl enable ssh",
+          "explanation": {
+            "text": "firewallctlというコマンドは標準的には存在しない。",
+            "reference": "https://firewalld.org/",
+            "reference_label": "firewalld docs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "iptables -A INPUT -p tcp --dport 22 -j ACCEPT --permanent",
+          "explanation": {
+            "text": "firewalld利用時に直接iptablesを編集するのは推奨されず、--permanentというオプションもiptablesには存在しない。",
+            "reference": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/security_hardening/using-and-configuring-firewalld_security-hardening",
+            "reference_label": "RHEL firewalld guide"
+          }
+        },
+        {
+          "key": "D",
+          "text": "firewall-cmd --service=ssh --open",
+          "explanation": {
+            "text": "--serviceや--openといったオプションは正しい形式ではない。",
+            "reference": "https://firewalld.org/documentation/man-pages/firewall-cmd.html",
+            "reference_label": "firewall-cmd(1)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "firewalldでは firewall-cmd --add-service=ssh --permanent で永続設定し、firewall-cmd --reload でランタイム設定に反映するのが一般的な手順である。",
+        "reference": "https://firewalld.org/documentation/howto/add-a-service.html",
+        "reference_label": "firewalld howto"
+      }
+    },
+    {
+      "id": "comptia-linux-34",
+      "question": "logrotateを用いて/var/log/custom.logを毎日ローテーションし、7世代保持しつつ古いログはgzipで圧縮したい。/etc/logrotate.d/custom に記載すべきディレクティブの組み合わせとして最も適切なのはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "daily, rotate 7, compress",
+          "explanation": {
+            "text": "dailyは日次ローテーション、rotate 7は7世代保持、compressは古いログの圧縮を意味し、要件を満たす。",
+            "reference": "https://man7.org/linux/man-pages/man8/logrotate.8.html",
+            "reference_label": "logrotate(8)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "weekly, rotate 7, nocompress",
+          "explanation": {
+            "text": "weeklyは週次ローテーションを意味し、nocompressは圧縮を行わないため要件と異なる。",
+            "reference": "https://man7.org/linux/man-pages/man8/logrotate.8.html",
+            "reference_label": "logrotate(8) — options"
+          }
+        },
+        {
+          "key": "C",
+          "text": "daily, rotate 30, compress",
+          "explanation": {
+            "text": "30世代保持になるため、7世代保持という条件を満たさない。",
+            "reference": "https://man7.org/linux/man-pages/man8/logrotate.8.html",
+            "reference_label": "logrotate(8) — rotate N"
+          }
+        },
+        {
+          "key": "D",
+          "text": "hourly, rotate 7, compress",
+          "explanation": {
+            "text": "hourlyという標準ディレクティブはなく、日単位のローテーション指定にはdailyを用いる。",
+            "reference": "https://man7.org/linux/man-pages/man8/logrotate.8.html",
+            "reference_label": "logrotate(8) — frequency"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "logrotate設定では、daily・rotate 7・compress の組み合わせにより、日次ローテーション・7世代保持・古いログの圧縮が実現できる。",
+        "reference": "https://man7.org/linux/man-pages/man8/logrotate.8.html",
+        "reference_label": "logrotate(8)"
+      }
+    },
+    {
+      "id": "comptia-linux-35",
+      "question": "grepを用いて、行頭が#で始まるコメント行だけを設定ファイルconfig.confから抽出したい。最も適切なコマンドはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "grep \"#\" config.conf",
+          "explanation": {
+            "text": "行中に#を含むすべての行がマッチし、行頭限定にはならない。",
+            "reference": "https://man7.org/linux/man-pages/man1/grep.1.html",
+            "reference_label": "grep(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "grep \"^#\" config.conf",
+          "explanation": {
+            "text": "^は行頭を意味するため、行頭が#の行のみを抽出できる。",
+            "reference": "https://man7.org/linux/man-pages/man1/grep.1.html",
+            "reference_label": "grep(1) — 正規表現"
+          }
+        },
+        {
+          "key": "C",
+          "text": "grep \"#$\" config.conf",
+          "explanation": {
+            "text": "$は行末を意味するため、行末が#で終わる行にマッチする。",
+            "reference": "https://man7.org/linux/man-pages/man7/regex.7.html",
+            "reference_label": "regex(7)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "grep -e \"#^\" config.conf",
+          "explanation": {
+            "text": "#^というパターン自体に特別な意味はなく、行頭マッチにはならない。",
+            "reference": "https://man7.org/linux/man-pages/man7/regex.7.html",
+            "reference_label": "regex(7)"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "正規表現において^は行頭を表すため、grep \"^#\" で行頭が#のコメント行のみを抽出できる。",
+        "reference": "https://man7.org/linux/man-pages/man1/grep.1.html",
+        "reference_label": "grep(1)"
+      }
+    },
+    {
+      "id": "comptia-linux-36",
+      "question": "コンテナランタイムとしてpodmanを使用している環境で、イメージからコンテナをバックグラウンド実行したい。最も標準的なコマンドはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "podman exec -d image_name",
+          "explanation": {
+            "text": "execはすでに実行中のコンテナ内でコマンドを実行するためのもので、イメージから新規コンテナを起動するものではない。",
+            "reference": "https://docs.podman.io/en/latest/markdown/podman-exec.1.html",
+            "reference_label": "podman-exec(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "podman run image_name",
+          "explanation": {
+            "text": "runでコンテナを起動できるが、このままではフォアグラウンドで実行される。",
+            "reference": "https://docs.podman.io/en/latest/markdown/podman-run.1.html",
+            "reference_label": "podman-run(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "podman start -d image_name",
+          "explanation": {
+            "text": "startは停止中の既存コンテナを再起動するコマンドであり、イメージ名を直接指定する使い方はしない。",
+            "reference": "https://docs.podman.io/en/latest/markdown/podman-start.1.html",
+            "reference_label": "podman-start(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "podman run -d image_name",
+          "explanation": {
+            "text": "-dオプションを付けることでコンテナをデタッチド（バックグラウンド）モードで起動できる。",
+            "reference": "https://docs.podman.io/en/latest/markdown/podman-run.1.html",
+            "reference_label": "podman-run(1) — -d"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "podman run -d イメージ名 で、コンテナをバックグラウンド実行できる点はDockerと同様である。",
+        "reference": "https://docs.podman.io/en/latest/markdown/podman-run.1.html",
+        "reference_label": "podman-run(1)"
+      }
+    },
+    {
+      "id": "comptia-linux-37",
+      "question": "ユーザdeveloperを新規作成し、ホームディレクトリをデフォルトの/homeではなく /srv/devhome にしたい。最も適切なuseraddの使用例はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "useradd -m -d /srv/devhome developer",
+          "explanation": {
+            "text": "-mでホームディレクトリを作成し、-dで指定ディレクトリをホームにできる。",
+            "reference": "https://man7.org/linux/man-pages/man8/useradd.8.html",
+            "reference_label": "useradd(8)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "useradd -H /srv/devhome developer",
+          "explanation": {
+            "text": "-Hというオプションはなく、ホームディレクトリ指定には-dを用いる。",
+            "reference": "https://man7.org/linux/man-pages/man8/useradd.8.html",
+            "reference_label": "useradd(8) — options"
+          }
+        },
+        {
+          "key": "C",
+          "text": "useradd -m developer /srv/devhome",
+          "explanation": {
+            "text": "useraddの最後の位置引数はユーザ名であり、パスはオプションで指定する必要がある。",
+            "reference": "https://man7.org/linux/man-pages/man8/useradd.8.html",
+            "reference_label": "useradd(8) — usage"
+          }
+        },
+        {
+          "key": "D",
+          "text": "useradd -d /srv/devhome -nohome developer",
+          "explanation": {
+            "text": "-nohomeのようなオプションは存在しない。",
+            "reference": "https://man7.org/linux/man-pages/man8/useradd.8.html",
+            "reference_label": "useradd(8)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "useradd -m -d /カスタムパス ユーザ名 で、指定したパスにホームディレクトリを作成しつつユーザを作成できる。",
+        "reference": "https://man7.org/linux/man-pages/man8/useradd.8.html",
+        "reference_label": "useradd(8)"
+      }
+    },
+    {
+      "id": "comptia-linux-38",
+      "question": "awkコマンドで、/etc/passwdから3フィールド目(UID)が1000以上の行だけを表示したい。最も適切なコマンドはどれか。フィールド区切りは「:」とする。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "awk -F: '$3 > \"1000\"' /etc/passwd",
+          "explanation": {
+            "text": "文字列比較となり、数値比較として正しく動作しないケースがある。",
+            "reference": "https://www.gnu.org/software/gawk/manual/gawk.html",
+            "reference_label": "GAWK manual — string vs numeric"
+          }
+        },
+        {
+          "key": "B",
+          "text": "awk '$3 >= 1000' /etc/passwd",
+          "explanation": {
+            "text": "フィールド区切り(-F)を指定していないため、デフォルトの空白区切りとなり、3フィールド目がUIDとは限らない。",
+            "reference": "https://www.gnu.org/software/gawk/manual/gawk.html",
+            "reference_label": "GAWK — field separator"
+          }
+        },
+        {
+          "key": "C",
+          "text": "awk -F: '$3 >= 1000' /etc/passwd",
+          "explanation": {
+            "text": "-F:でフィールド区切りを「:」に指定し、数値比較でUIDが1000以上の行にマッチさせる正しい方法。",
+            "reference": "https://www.gnu.org/software/gawk/manual/gawk.html",
+            "reference_label": "GAWK — numeric comparison"
+          }
+        },
+        {
+          "key": "D",
+          "text": "awk -F: '$1 >= 1000' /etc/passwd",
+          "explanation": {
+            "text": "1フィールド目はユーザ名であり、UIDではない。",
+            "reference": "https://man7.org/linux/man-pages/man5/passwd.5.html",
+            "reference_label": "passwd(5)"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "awkでは-Fでフィールド区切りを指定し、$3 >= 1000のように数値比較することでUIDが1000以上の行を抽出できる。",
+        "reference": "https://www.gnu.org/software/gawk/manual/gawk.html",
+        "reference_label": "GAWK manual"
+      }
+    },
+    {
+      "id": "comptia-linux-39",
+      "question": "rsyncを用いて/var/www/配下のファイルをリモートホストweb01の/backup/www/へ増分バックアップしたい。属性も可能な限り保持しつつ、進行状況を表示する一般的なコマンドはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "rsync /var/www web01:/backup/www",
+          "explanation": {
+            "text": "最低限の同期は行えるが、アーカイブモード(-a)や進行表示(-v)などがないため、バックアップ用途としては情報が不十分。",
+            "reference": "https://download.samba.org/pub/rsync/rsync.1.html",
+            "reference_label": "rsync(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "rsync -avz /var/www/ web01:/backup/www/",
+          "explanation": {
+            "text": "-aで属性を保持し、-vで詳細表示、-zで転送中圧縮を行うバックアップでよく用いられる形である。末尾のスラッシュによりディレクトリ内容をコピーする。",
+            "reference": "https://download.samba.org/pub/rsync/rsync.1.html",
+            "reference_label": "rsync(1) — -a, -v, -z"
+          }
+        },
+        {
+          "key": "C",
+          "text": "rsync -r /var/www web01:/backup/www",
+          "explanation": {
+            "text": "-rは再帰コピーだが、所有者やパーミッションなどを完全には保持しない。",
+            "reference": "https://download.samba.org/pub/rsync/rsync.1.html",
+            "reference_label": "rsync(1) — -r vs -a"
+          }
+        },
+        {
+          "key": "D",
+          "text": "rsync --mirror /var/www/ web01:/backup/www/",
+          "explanation": {
+            "text": "--mirrorというオプションは標準rsyncにはない。",
+            "reference": "https://download.samba.org/pub/rsync/rsync.1.html",
+            "reference_label": "rsync(1)"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "rsync -avz はバックアップで頻用されるオプションセットであり、属性保持と進行状況の表示、圧縮を行いながら効率的に同期できる。",
+        "reference": "https://download.samba.org/pub/rsync/rsync.1.html",
+        "reference_label": "rsync(1)"
+      }
+    },
+    {
+      "id": "comptia-linux-40",
+      "question": "システムがどのカーネルバージョンで起動しているかを確認したい。最も一般的に使用されるコマンドはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "uname -r",
+          "explanation": {
+            "text": "uname -rは実行中のカーネルのリリース番号を表示する。",
+            "reference": "https://man7.org/linux/man-pages/man1/uname.1.html",
+            "reference_label": "uname(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "kernel --version",
+          "explanation": {
+            "text": "kernelというコマンドは存在せず、--versionオプションも使用できない。",
+            "reference": "https://man7.org/linux/man-pages",
+            "reference_label": "Linux man-pages"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ls /boot/vmlinuz-*",
+          "explanation": {
+            "text": "インストール済みカーネルイメージは確認できるが、現在起動中のバージョンとは限らない。",
+            "reference": "https://www.kernel.org/doc/",
+            "reference_label": "Linux kernel docs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "cat /etc/kernel-release",
+          "explanation": {
+            "text": "/etc/kernel-releaseというファイルは標準的には存在しない。",
+            "reference": "https://www.kernel.org/doc/",
+            "reference_label": "Linux kernel docs"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "実行中カーネルのバージョン確認には uname -r を使うのが最も一般的である。",
+        "reference": "https://man7.org/linux/man-pages/man1/uname.1.html",
+        "reference_label": "uname(1)"
+      }
+    },
+    {
+      "id": "comptia-linux-41",
+      "question": "mailコマンドを使わず、postfixのキューに溜まっているメール一覧を確認したい。最も適切なコマンドはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "postqueue -p",
+          "explanation": {
+            "text": "postqueue -pで現在のメールキュー一覧を表示できる。",
+            "reference": "http://www.postfix.org/postqueue.1.html",
+            "reference_label": "postqueue(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "postfix list",
+          "explanation": {
+            "text": "postfixにlistというサブコマンドは存在しない。",
+            "reference": "http://www.postfix.org/postfix.1.html",
+            "reference_label": "postfix(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "mailq -list",
+          "explanation": {
+            "text": "mailqはキュー表示だが -list オプションはない。",
+            "reference": "http://www.postfix.org/mailq.1.html",
+            "reference_label": "mailq(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "systemctl show postfix --queue",
+          "explanation": {
+            "text": "systemctlにはqueue関連のオプションはなく、メールキュー表示はできない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+            "reference_label": "systemctl(1)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "postqueue -p はpostfixのメールキューを確認する最も一般的な方法である。",
+        "reference": "http://www.postfix.org/postqueue.1.html",
+        "reference_label": "postqueue(1)"
+      }
+    },
+    {
+      "id": "comptia-linux-42",
+      "question": "iptablesを利用する環境で、現在適用されているIPv4フィルタテーブルのルール一覧を表示したい。最も適切なコマンドはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "iptables -L -n -v",
+          "explanation": {
+            "text": "-Lでルール一覧、-nで名前解決無効化、-vで詳細出力となり、標準的な確認方法である。",
+            "reference": "https://man7.org/linux/man-pages/man8/iptables.8.html",
+            "reference_label": "iptables(8)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "iptables --show",
+          "explanation": {
+            "text": "--showというオプションは存在しない。",
+            "reference": "https://man7.org/linux/man-pages/man8/iptables.8.html",
+            "reference_label": "iptables options"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ip firewall show",
+          "explanation": {
+            "text": "iproute2にはfirewallというサブコマンドはなく、iptablesルールは表示できない。",
+            "reference": "https://man7.org/linux/man-pages/man8/ip.8.html",
+            "reference_label": "ip(8)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "iptables -F",
+          "explanation": {
+            "text": "-Fはルールフラッシュであり、表示ではなく削除してしまう。",
+            "reference": "https://man7.org/linux/man-pages/man8/iptables.8.html",
+            "reference_label": "iptables flush"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "iptables -L -n -v は現在のIPv4フィルタテーブルを詳細に表示する標準的コマンドである。",
+        "reference": "https://man7.org/linux/man-pages/man8/iptables.8.html",
+        "reference_label": "iptables(8)"
+      }
+    },
+    {
+      "id": "comptia-linux-43",
+      "question": "OpenSSHクライアントで、scpではなくSFTPを対話的に利用してリモートサーバへ接続したい。最も適切なコマンドはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ftp user@host",
+          "explanation": {
+            "text": "ftpは暗号化を行わない古典的なFTPクライアントであり、SFTPとは異なる。",
+            "reference": "https://man7.org/linux/man-pages/man1/ftp.1.html",
+            "reference_label": "ftp(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ssh -sftp user@host",
+          "explanation": {
+            "text": "-sftpというオプションは存在せず、sftpサブシステムを利用しない。",
+            "reference": "https://man.openbsd.org/ssh",
+            "reference_label": "ssh(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "sftp user@host",
+          "explanation": {
+            "text": "sftpコマンドはOpenSSHに付属するSFTPクライアントであり、対話的にファイル操作できる。",
+            "reference": "https://man.openbsd.org/sftp",
+            "reference_label": "sftp(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "scp -i sftp user@host",
+          "explanation": {
+            "text": "scpはコピーコマンドであり、対話的なSFTP操作とは異なる。",
+            "reference": "https://man.openbsd.org/scp",
+            "reference_label": "scp(1)"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "sftp user@host によりSSHベースのSFTP対話シェルへ接続できる。",
+        "reference": "https://man.openbsd.org/sftp",
+        "reference_label": "sftp(1)"
+      }
+    },
+    {
+      "id": "comptia-linux-44",
+      "question": "SELinuxでアプリケーションを特定ポートへバインド可能にするため、HTTPサービス(http_port_t)へTCP/8080を追加したい。最も適切なコマンドはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "semanage port -a -t http_port_t -p tcp 8080",
+          "explanation": {
+            "text": "semanage port -a によりSELinuxポートコンテキストへ新しいポートを追加できる正しい形式。",
+            "reference": "https://man7.org/linux/man-pages/man8/semanage.8.html",
+            "reference_label": "semanage(8)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "semanage add-port http_port_t tcp 8080",
+          "explanation": {
+            "text": "add-portというサブコマンドは存在しない。",
+            "reference": "https://man7.org/linux/man-pages/man8/semanage.8.html",
+            "reference_label": "semanage commands"
+          }
+        },
+        {
+          "key": "C",
+          "text": "setsebool -P http_port_t=8080",
+          "explanation": {
+            "text": "setseboolはSELinuxブール値設定であり、ポート定義は変更できない。",
+            "reference": "https://man7.org/linux/man-pages/man8/setsebool.8.html",
+            "reference_label": "setsebool(8)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "restorecon -p tcp 8080",
+          "explanation": {
+            "text": "restoreconはファイルコンテキストの復元であり、ポート定義には使用しない。",
+            "reference": "https://man7.org/linux/man-pages/man8/restorecon.8.html",
+            "reference_label": "restorecon(8)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "SELinuxでポートを追加するには semanage port -a -t タイプ -p プロトコル ポート番号 を使用する。",
+        "reference": "https://man7.org/linux/man-pages/man8/semanage.8.html",
+        "reference_label": "semanage(8)"
+      }
+    },
+    {
+      "id": "comptia-linux-45",
+      "question": "システムの負荷状況を確認するため、ロードアベレージ・実行中プロセス数・ログインユーザ数などをまとめて表示する代表的コマンドはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "top -a",
+          "explanation": {
+            "text": "-aは並べ替えオプションであり、topは負荷確認に使えるが総覧的情報というよりプロセス中心の表示である。",
+            "reference": "https://man7.org/linux/man-pages/man1/top.1.html",
+            "reference_label": "top(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "who",
+          "explanation": {
+            "text": "whoはログインユーザ情報を表示し、負荷情報は掲載されない。",
+            "reference": "https://man7.org/linux/man-pages/man1/who.1.html",
+            "reference_label": "who(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "w",
+          "explanation": {
+            "text": "wコマンドはログインユーザ・ロードアベレージ・実行中プロセス概要をまとめて表示する。",
+            "reference": "https://man7.org/linux/man-pages/man1/w.1.html",
+            "reference_label": "w(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "uptime -l",
+          "explanation": {
+            "text": "uptimeはロードアベレージなどを表示するが-lなどのオプションはなく、ユーザ一覧などは含まれない。",
+            "reference": "https://man7.org/linux/man-pages/man1/uptime.1.html",
+            "reference_label": "uptime(1)"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "wは負荷状況とユーザ状況をまとめて出力できる代表的なコマンドである。",
+        "reference": "https://man7.org/linux/man-pages/man1/w.1.html",
+        "reference_label": "w(1)"
+      }
+    },
+    {
+      "id": "comptia-linux-46",
+      "question": "podmanで利用できるクルーネームスペース（user namespace）を有効にしたコンテナ実行が必要である。ユーザ名前空間を有効化する一般的なオプションはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "podman run --userns=keep-id image",
+          "explanation": {
+            "text": "--userns=keep-id はホストユーザIDを維持したままuser namespaceを利用できる。",
+            "reference": "https://docs.podman.io/en/latest/markdown/podman-run.1.html",
+            "reference_label": "podman-run(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "podman run --namespace=user image",
+          "explanation": {
+            "text": "--namespaceというオプションは存在しない。",
+            "reference": "https://docs.podman.io/en/latest/markdown/podman-run.1.html",
+            "reference_label": "podman options"
+          }
+        },
+        {
+          "key": "C",
+          "text": "podman run --uidmap=image",
+          "explanation": {
+            "text": "uidmapは名前空間マッピングを指定するオプションだが、この形式は無効である。",
+            "reference": "https://docs.podman.io/en/latest/markdown/podman-run.1.html",
+            "reference_label": "podman-run(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "podman --userns-run image",
+          "explanation": {
+            "text": "userns-runというオプションは存在しない。",
+            "reference": "https://docs.podman.io/en/latest/markdown/podman.1.html",
+            "reference_label": "podman(1)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Podmanでユーザ名前空間を有効化するには --userns=keep-id や --userns=container がよく使われる。",
+        "reference": "https://docs.podman.io/en/latest/markdown/podman-run.1.html",
+        "reference_label": "podman-run(1)"
+      }
+    },
+    {
+      "id": "comptia-linux-47",
+      "question": "SSHポートフォワーディングで、ローカルポート8080をリモートのlocalhost:80に転送したい。適切なコマンドはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ssh -R 8080:localhost:80 user@remote",
+          "explanation": {
+            "text": "-Rはリモートポートフォワードであり、ローカル→リモートではない。",
+            "reference": "https://man.openbsd.org/ssh",
+            "reference_label": "ssh(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ssh -L 8080:localhost:80 user@remote",
+          "explanation": {
+            "text": "-Lはローカルポートフォワードであり、local:8080 → remote:localhost:80 の経路を作れる。",
+            "reference": "https://man.openbsd.org/ssh",
+            "reference_label": "ssh(1) — -L"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ssh --port-forward 8080 80 user@remote",
+          "explanation": {
+            "text": "sshに--port-forwardというオプションは存在しない。",
+            "reference": "https://man.openbsd.org/ssh",
+            "reference_label": "ssh(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ssh -FP 8080:80 user@remote",
+          "explanation": {
+            "text": "-FPというオプションやポート転送構文はsshには存在しない。",
+            "reference": "https://man.openbsd.org/ssh",
+            "reference_label": "ssh(1)"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ローカル→リモートのポートフォワードは ssh -L localport:host:remoteport で行う。",
+        "reference": "https://man.openbsd.org/ssh",
+        "reference_label": "ssh(1)"
+      }
+    },
+    {
+      "id": "comptia-linux-48",
+      "question": "Linuxで、メモリマップドファイルを利用するアプリケーションの動作を確認したい場合、プロセスのメモリマップを確認する代表的な方法はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "cat /proc/<PID>/maps",
+          "explanation": {
+            "text": "/proc/PID/maps にはそのプロセスが使用しているメモリマッピング情報が記録されている。",
+            "reference": "https://man7.org/linux/man-pages/man5/proc.5.html",
+            "reference_label": "proc(5)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ps --maps <PID>",
+          "explanation": {
+            "text": "psに--mapsというオプションは存在しない。",
+            "reference": "https://man7.org/linux/man-pages/man1/ps.1.html",
+            "reference_label": "ps(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ls -m /proc/<PID>/",
+          "explanation": {
+            "text": "lsはファイル一覧表示であり、メモリマップは確認できない。",
+            "reference": "https://man7.org/linux/man-pages/man1/ls.1.html",
+            "reference_label": "ls(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "dmesg --maps",
+          "explanation": {
+            "text": "dmesgはカーネルログ出力であり、プロセスのメモリマップは表示しない。",
+            "reference": "https://man7.org/linux/man-pages/man1/dmesg.1.html",
+            "reference_label": "dmesg(1)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "プロセスごとのメモリマッピングは /proc/PID/maps に記録されている。",
+        "reference": "https://man7.org/linux/man-pages/man5/proc.5.html",
+        "reference_label": "proc(5)"
+      }
+    },
+    {
+      "id": "comptia-linux-49",
+      "question": "Linuxでファイルのアクセス時刻(atime)更新を抑制し、ディスクI/Oを削減したい。/etc/fstabに設定する代表的なマウントオプションはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "noatime",
+          "explanation": {
+            "text": "noatimeによりアクセス時刻更新を抑制でき、I/O削減に役立つ。",
+            "reference": "https://man7.org/linux/man-pages/man5/fstab.5.html",
+            "reference_label": "fstab(5)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "nodelete",
+          "explanation": {
+            "text": "nodeleteというオプションは存在しない。",
+            "reference": "https://man7.org/linux/man-pages/man5/fstab.5.html",
+            "reference_label": "fstab options"
+          }
+        },
+        {
+          "key": "C",
+          "text": "sync",
+          "explanation": {
+            "text": "syncは書き込みを同期的に行うため、I/O負荷はむしろ増える。",
+            "reference": "https://man7.org/linux/man-pages/man5/fstab.5.html",
+            "reference_label": "sync option"
+          }
+        },
+        {
+          "key": "D",
+          "text": "autoatime",
+          "explanation": {
+            "text": "autoatimeは存在せず、atime管理にはnoatimeまたはrelatimeを使用する。",
+            "reference": "https://man7.org/linux/man-pages/man5/fstab.5.html",
+            "reference_label": "fstab options"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ファイルアクセス時刻更新を抑制するにはnoatimeを使用する。",
+        "reference": "https://man7.org/linux/man-pages/man5/fstab.5.html",
+        "reference_label": "fstab(5)"
+      }
+    },
+    {
+      "id": "comptia-linux-50",
+      "question": "Linuxにおいて、システムの起動時に実行されるカーネルコマンドラインパラメータを確認したい。最も適切な方法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "cat /proc/cmdline",
+          "explanation": {
+            "text": "/proc/cmdlineはブート時に渡されたカーネルパラメータを表示する標準的な手段である。",
+            "reference": "https://man7.org/linux/man-pages/man5/proc.5.html",
+            "reference_label": "proc(5)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "uname --cmdline",
+          "explanation": {
+            "text": "unameには--cmdlineというオプションは存在しない。",
+            "reference": "https://man7.org/linux/man-pages/man1/uname.1.html",
+            "reference_label": "uname(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ls /sys/kernel/cmd",
+          "explanation": {
+            "text": "このようなパスは存在せず、カーネルパラメータ確認には使用しない。",
+            "reference": "https://www.kernel.org/doc/",
+            "reference_label": "kernel docs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "dmesg | grep cmdline",
+          "explanation": {
+            "text": "カーネルパラメータに関するログが出力される可能性はあるが、確実で標準的な方法ではない。",
+            "reference": "https://man7.org/linux/man-pages/man1/dmesg.1.html",
+            "reference_label": "dmesg(1)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "/proc/cmdline は現在のカーネルが起動したときに指定されたパラメータをそのまま参照できる。",
+        "reference": "https://man7.org/linux/man-pages/man5/proc.5.html",
+        "reference_label": "proc(5)"
+      }
+    }
+  ]
+}

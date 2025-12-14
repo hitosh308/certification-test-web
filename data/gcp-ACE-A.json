@@ -1,0 +1,2467 @@
+{
+  "exam": {
+    "id": "ACE-A",
+    "title": "Google Associate Cloud Engineer",
+    "description": "この試験では、Google Cloud Platform を使ってクラウドソリューションを設定・導入・運用・管理できるエンジニアを対象としています。受験者はクラウド環境の構築、サービスのデプロイ、運用の監視、アクセスとセキュリティの構成などの実践スキルを問われます。初心者～中級者でもチャレンジできるよう設計され、クラウド基盤を活かしたソリューション構築を目指す方に適しています。",
+    "version": "2025",
+    "price": "125 USD",
+    "difficulty": "普通",
+    "official-site": "https://cloud.google.com/learn/certification/cloud-engineer",
+    "category": {
+      "id": "gcp",
+      "name": "Google Cloud"
+    }
+  },
+  "questions": [
+    {
+      "id": "gcp-ACE-A-q1",
+      "question": "Compute Engine インスタンスを停止した場合に発生することとして正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "インスタンスに割り当てられた外部IPアドレスは解放される可能性がある。",
+          "explanation": {
+            "text": "エフェメラル（動的）外部IPアドレスは停止時に解放されるが、静的IPは保持される。",
+            "reference": "https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address",
+            "reference_label": "Google Cloud 公式 - IPアドレス"
+          }
+        },
+        {
+          "key": "B",
+          "text": "永続ディスクはすべて削除される。",
+          "explanation": {
+            "text": "インスタンス停止では永続ディスクは削除されない。削除されるのはインスタンス削除時のみ。",
+            "reference": "https://cloud.google.com/compute/docs/disks/persistent-disks",
+            "reference_label": "Google Cloud 公式 - 永続ディスク"
+          }
+        },
+        {
+          "key": "C",
+          "text": "CPUとメモリの課金は停止中も続く。",
+          "explanation": {
+            "text": "停止中はCPU・メモリの課金は発生せず、ディスクやIPなどのリソースだけ課金される。",
+            "reference": "https://cloud.google.com/compute/vm-instance-pricing",
+            "reference_label": "Google Cloud 公式 - VMインスタンス料金"
+          }
+        },
+        {
+          "key": "D",
+          "text": "停止中でもSSHで接続できる。",
+          "explanation": {
+            "text": "インスタンス停止中は起動していないためSSH接続はできない。",
+            "reference": "https://cloud.google.com/compute/docs/instances/stop-start-instance",
+            "reference_label": "Google Cloud 公式 - インスタンスの停止と開始"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Compute Engine インスタンス停止時は、動的外部IPは解放される可能性がある。永続ディスクは保持され、CPU・メモリの課金は停止する。",
+        "reference": "https://cloud.google.com/compute/docs/instances/stop-start-instance",
+        "reference_label": "Google Cloud 公式 - インスタンスの停止と開始"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q2",
+      "question": "Cloud Storage バケットに保存されたオブジェクトを世界中のユーザーに低遅延で配信するために適切なサービスはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Cloud CDN",
+          "explanation": {
+            "text": "Cloud CDNはGoogleのエッジキャッシュを利用してオブジェクトを高速配信できる。",
+            "reference": "https://cloud.google.com/cdn/docs/overview",
+            "reference_label": "Google Cloud 公式 - Cloud CDN"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Cloud Spanner",
+          "explanation": {
+            "text": "Cloud Spannerは分散リレーショナルデータベースであり、コンテンツ配信には使わない。",
+            "reference": "https://cloud.google.com/spanner/docs/overview",
+            "reference_label": "Google Cloud 公式 - Cloud Spanner"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Pub/Sub",
+          "explanation": {
+            "text": "Pub/Subはメッセージングサービスであり、配信キャッシュの仕組みは持たない。",
+            "reference": "https://cloud.google.com/pubsub/docs/overview",
+            "reference_label": "Google Cloud 公式 - Pub/Sub"
+          }
+        },
+        {
+          "key": "D",
+          "text": "BigQuery",
+          "explanation": {
+            "text": "BigQueryはデータウェアハウスであり、オブジェクト配信には関係しない。",
+            "reference": "https://cloud.google.com/bigquery/docs/introduction",
+            "reference_label": "Google Cloud 公式 - BigQuery"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Storage バケットの静的コンテンツをグローバルに低遅延で配信するにはCloud CDNを利用するのが最適。",
+        "reference": "https://cloud.google.com/cdn/docs/overview",
+        "reference_label": "Google Cloud 公式 - Cloud CDN"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q3",
+      "question": "IAMポリシーで特定のユーザーに特定のプロジェクトリソースへのアクセス権を付与したい場合に使用するべき概念はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ロール",
+          "explanation": {
+            "text": "ロールは権限の集合であり、ユーザーに割り当てることでアクセス権限を管理する。",
+            "reference": "https://cloud.google.com/iam/docs/roles-overview",
+            "reference_label": "Google Cloud 公式 - IAMロール"
+          }
+        },
+        {
+          "key": "B",
+          "text": "グループ",
+          "explanation": {
+            "text": "グループは複数のユーザーをまとめる仕組みだが、それ自体は権限を定義しない。",
+            "reference": "https://cloud.google.com/iam/docs/groups-in-cloud-iam",
+            "reference_label": "Google Cloud 公式 - IAMグループ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "フォルダ",
+          "explanation": {
+            "text": "フォルダはリソースを組織的に管理する単位であり、IAM権限付与の単位ではない。",
+            "reference": "https://cloud.google.com/resource-manager/docs/creating-managing-folders",
+            "reference_label": "Google Cloud 公式 - フォルダ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ポリシータグ",
+          "explanation": {
+            "text": "ポリシータグはBigQueryデータセットのデータ分類用であり、IAM権限付与の仕組みではない。",
+            "reference": "https://cloud.google.com/bigquery/docs/column-level-security-intro",
+            "reference_label": "Google Cloud 公式 - ポリシータグ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "IAMにおけるアクセス権限はロールを通じて付与される。ユーザーやグループにロールをバインドすることでアクセス制御が可能となる。",
+        "reference": "https://cloud.google.com/iam/docs/roles-overview",
+        "reference_label": "Google Cloud 公式 - IAMロール"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q4",
+      "question": "Cloud Monitoringでアラートポリシーを設定する際、通知を送るために必要なコンポーネントはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "通知チャネル",
+          "explanation": {
+            "text": "通知チャネル（例: Email, Slack, Pub/Sub）を設定することで、アラート発生時に通知が送信される。",
+            "reference": "https://cloud.google.com/monitoring/support/notification-options",
+            "reference_label": "Google Cloud 公式 - 通知チャネル"
+          }
+        },
+        {
+          "key": "B",
+          "text": "サービスアカウント",
+          "explanation": {
+            "text": "サービスアカウントは権限付与のためのものであり、直接通知を送る仕組みではない。",
+            "reference": "https://cloud.google.com/iam/docs/service-accounts",
+            "reference_label": "Google Cloud 公式 - サービスアカウント"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Cloud Router",
+          "explanation": {
+            "text": "Cloud Routerはネットワークルーティング用であり、モニタリング通知とは無関係。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/router/concepts/overview",
+            "reference_label": "Google Cloud 公式 - Cloud Router"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Firewall ルール",
+          "explanation": {
+            "text": "Firewallルールはネットワークアクセス制御であり、通知とは関係がない。",
+            "reference": "https://cloud.google.com/vpc/docs/firewalls",
+            "reference_label": "Google Cloud 公式 - Firewall"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Monitoringでアラートを通知するには通知チャネルが必要。これにより特定の宛先に通知を送信可能。",
+        "reference": "https://cloud.google.com/monitoring/support/notification-options",
+        "reference_label": "Google Cloud 公式 - 通知チャネル"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q5",
+      "question": "Cloud SQL インスタンスで高可用性を実現するために有効な構成はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "マルチゾーン構成（HA構成）",
+          "explanation": {
+            "text": "Cloud SQLのHA構成はマルチゾーンにレプリカを持ち、自動フェイルオーバーを提供する。",
+            "reference": "https://cloud.google.com/sql/docs/mysql/high-availability",
+            "reference_label": "Google Cloud 公式 - Cloud SQL 高可用性"
+          }
+        },
+        {
+          "key": "B",
+          "text": "バックアップを有効化",
+          "explanation": {
+            "text": "バックアップはデータ保護には有効だが、即時の高可用性を保証するものではない。",
+            "reference": "https://cloud.google.com/sql/docs/mysql/backup-recovery/backups",
+            "reference_label": "Google Cloud 公式 - Cloud SQL バックアップ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "読み取り専用レプリカ",
+          "explanation": {
+            "text": "読み取り専用レプリカはスケーリング用であり、自動フェイルオーバーは提供しない。",
+            "reference": "https://cloud.google.com/sql/docs/mysql/replication/replicas",
+            "reference_label": "Google Cloud 公式 - Cloud SQL レプリカ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud Armor",
+          "explanation": {
+            "text": "Cloud ArmorはDDoS防御サービスであり、DB高可用性とは関係がない。",
+            "reference": "https://cloud.google.com/armor/docs/overview",
+            "reference_label": "Google Cloud 公式 - Cloud Armor"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud SQLで高可用性を確保するにはマルチゾーン構成（HA構成）を利用する。",
+        "reference": "https://cloud.google.com/sql/docs/mysql/high-availability",
+        "reference_label": "Google Cloud 公式 - Cloud SQL 高可用性"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q6",
+      "question": "VPCネットワークに新しいサブネットを作成したとき、自動的に作成されるリソースはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ルート",
+          "explanation": {
+            "text": "新しいサブネットを作成すると、そのサブネットへのルートが自動的に作成される。",
+            "reference": "https://cloud.google.com/vpc/docs/vpc",
+            "reference_label": "Google Cloud 公式 - VPC"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Firewall ルール",
+          "explanation": {
+            "text": "Firewallルールは自動では作成されず、ユーザーが必要に応じて定義する必要がある。",
+            "reference": "https://cloud.google.com/vpc/docs/firewalls",
+            "reference_label": "Google Cloud 公式 - Firewall"
+          }
+        },
+        {
+          "key": "C",
+          "text": "VPNトンネル",
+          "explanation": {
+            "text": "VPNトンネルは自動で作成されず、別途設定が必要。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/vpn",
+            "reference_label": "Google Cloud 公式 - VPN"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ロードバランサ",
+          "explanation": {
+            "text": "ロードバランサはサブネット作成時には自動生成されない。",
+            "reference": "https://cloud.google.com/load-balancing/docs",
+            "reference_label": "Google Cloud 公式 - ロードバランサ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "VPCネットワークでサブネットを作成すると、そのサブネットのルートが自動で作成される。",
+        "reference": "https://cloud.google.com/vpc/docs/vpc",
+        "reference_label": "Google Cloud 公式 - VPC"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q7",
+      "question": "Google Kubernetes Engine (GKE) のオートスケーリング機能で、ノード数を自動で調整する機能はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Cluster Autoscaler",
+          "explanation": {
+            "text": "Cluster Autoscalerはノードプールのサイズを自動調整する。",
+            "reference": "https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler",
+            "reference_label": "Google Cloud 公式 - Cluster Autoscaler"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Horizontal Pod Autoscaler",
+          "explanation": {
+            "text": "Horizontal Pod AutoscalerはPod数をスケールさせるが、ノード数は調整しない。",
+            "reference": "https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/",
+            "reference_label": "Kubernetes 公式 - HPA"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Vertical Pod Autoscaler",
+          "explanation": {
+            "text": "Vertical Pod AutoscalerはPodのリソース割当を調整するが、ノード数には影響しない。",
+            "reference": "https://cloud.google.com/kubernetes-engine/docs/concepts/verticalpodautoscaler",
+            "reference_label": "Google Cloud 公式 - VPA"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud Scheduler",
+          "explanation": {
+            "text": "Cloud Schedulerはジョブ実行サービスであり、GKEのオートスケーリング機能ではない。",
+            "reference": "https://cloud.google.com/scheduler/docs",
+            "reference_label": "Google Cloud 公式 - Cloud Scheduler"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "GKEでノード数を自動的に増減させるのはCluster Autoscalerの役割。",
+        "reference": "https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler",
+        "reference_label": "Google Cloud 公式 - Cluster Autoscaler"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q8",
+      "question": "Cloud Functions を利用する際に、自動的にスケーリングされる単位はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "関数インスタンス",
+          "explanation": {
+            "text": "Cloud Functionsはリクエストごとに関数インスタンスを自動的にスケーリングする。",
+            "reference": "https://cloud.google.com/functions/docs/concepts/exec",
+            "reference_label": "Google Cloud 公式 - Cloud Functions 実行"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Compute Engine VM",
+          "explanation": {
+            "text": "Cloud FunctionsはVMを直接管理しない。マネージド環境で関数単位のスケーリングが行われる。",
+            "reference": "https://cloud.google.com/functions/docs/concepts/exec",
+            "reference_label": "Google Cloud 公式 - Cloud Functions 実行"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Kubernetes Pod",
+          "explanation": {
+            "text": "PodはGKEで利用される単位であり、Cloud Functionsのスケーリング単位ではない。",
+            "reference": "https://kubernetes.io/docs/concepts/workloads/pods/",
+            "reference_label": "Kubernetes 公式 - Pod"
+          }
+        },
+        {
+          "key": "D",
+          "text": "BigQuery ジョブ",
+          "explanation": {
+            "text": "BigQueryジョブは分析処理の単位であり、Cloud Functionsとは無関係。",
+            "reference": "https://cloud.google.com/bigquery/docs/running-queries",
+            "reference_label": "Google Cloud 公式 - BigQuery"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Functionsはリクエスト数に応じて関数インスタンスが自動でスケーリングされる。",
+        "reference": "https://cloud.google.com/functions/docs/concepts/exec",
+        "reference_label": "Google Cloud 公式 - Cloud Functions 実行"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q9",
+      "question": "Cloud Storageでライフサイクル管理ルールを設定する目的として最も適切なのはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "オブジェクトの自動削除やストレージクラス変更",
+          "explanation": {
+            "text": "ライフサイクルルールにより、一定期間経過後に削除やストレージクラスの変更を自動化できる。",
+            "reference": "https://cloud.google.com/storage/docs/lifecycle",
+            "reference_label": "Google Cloud 公式 - Cloud Storage ライフサイクル管理"
+          }
+        },
+        {
+          "key": "B",
+          "text": "アクセス権限の管理",
+          "explanation": {
+            "text": "アクセス権限はIAMやACLで制御し、ライフサイクルルールでは行わない。",
+            "reference": "https://cloud.google.com/storage/docs/access-control",
+            "reference_label": "Google Cloud 公式 - アクセス制御"
+          }
+        },
+        {
+          "key": "C",
+          "text": "オブジェクトの暗号化方式を変更",
+          "explanation": {
+            "text": "暗号化は別途設定されるもので、ライフサイクルルールでは制御できない。",
+            "reference": "https://cloud.google.com/storage/docs/encryption",
+            "reference_label": "Google Cloud 公式 - 暗号化"
+          }
+        },
+        {
+          "key": "D",
+          "text": "バケットのレプリケーション設定",
+          "explanation": {
+            "text": "バケットのレプリケーションはライフサイクルルールではなく、別の機能で設定する。",
+            "reference": "https://cloud.google.com/storage/docs/dual-region",
+            "reference_label": "Google Cloud 公式 - レプリケーション"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Storageライフサイクル管理ルールは、コスト最適化のためにオブジェクトの削除やストレージクラス変更を自動化する。",
+        "reference": "https://cloud.google.com/storage/docs/lifecycle",
+        "reference_label": "Google Cloud 公式 - Cloud Storage ライフサイクル管理"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q10",
+      "question": "VPC ピアリングを利用する主な目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "異なるVPC間でプライベート通信を可能にする",
+          "explanation": {
+            "text": "VPCピアリングは2つのVPC間でプライベートIPを使った通信を実現する。",
+            "reference": "https://cloud.google.com/vpc/docs/vpc-peering",
+            "reference_label": "Google Cloud 公式 - VPCピアリング"
+          }
+        },
+        {
+          "key": "B",
+          "text": "異なるVPCを統合して1つのネットワークにする",
+          "explanation": {
+            "text": "VPCピアリングは統合ではなく接続であり、VPCは独立したまま通信が可能になる。",
+            "reference": "https://cloud.google.com/vpc/docs/vpc-peering",
+            "reference_label": "Google Cloud 公式 - VPCピアリング"
+          }
+        },
+        {
+          "key": "C",
+          "text": "外部インターネット接続の帯域を拡張する",
+          "explanation": {
+            "text": "VPCピアリングはインターネット帯域の拡張には関係しない。",
+            "reference": "https://cloud.google.com/vpc/docs/vpc-peering",
+            "reference_label": "Google Cloud 公式 - VPCピアリング"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud Armorと連携してDDoS攻撃を防御する",
+          "explanation": {
+            "text": "Cloud ArmorはDDoS防御のサービスであり、VPCピアリングとは関係がない。",
+            "reference": "https://cloud.google.com/armor/docs/overview",
+            "reference_label": "Google Cloud 公式 - Cloud Armor"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "VPCピアリングを使うと、異なるVPC間でプライベートIPによる通信が可能になる。",
+        "reference": "https://cloud.google.com/vpc/docs/vpc-peering",
+        "reference_label": "Google Cloud 公式 - VPCピアリング"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q11",
+      "question": "Cloud LoggingでログをBigQueryにエクスポートする主な理由はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ログデータの分析や可視化を行うため",
+          "explanation": {
+            "text": "BigQueryにエクスポートすればSQLでログを分析できる。",
+            "reference": "https://cloud.google.com/logging/docs/export",
+            "reference_label": "Google Cloud 公式 - Cloud Logging エクスポート"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ログの保持期間を無制限にするため",
+          "explanation": {
+            "text": "BigQueryへのエクスポートで保持期間を延長できるが、保持目的だけでなく分析用途が主。",
+            "reference": "https://cloud.google.com/logging/docs/export",
+            "reference_label": "Google Cloud 公式 - Cloud Logging エクスポート"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ログをCloud Functionsで処理するため",
+          "explanation": {
+            "text": "Cloud Functionsとの統合はPub/Subを経由することが多い。",
+            "reference": "https://cloud.google.com/logging/docs/export",
+            "reference_label": "Google Cloud 公式 - Cloud Logging エクスポート"
+          }
+        },
+        {
+          "key": "D",
+          "text": "リアルタイムの通知を受け取るため",
+          "explanation": {
+            "text": "通知にはアラートポリシーを使うのが適切で、BigQueryエクスポートではない。",
+            "reference": "https://cloud.google.com/monitoring/alerts",
+            "reference_label": "Google Cloud 公式 - アラート"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud LoggingのエクスポートをBigQueryに行うと、大量のログをSQLで効率的に分析できる。",
+        "reference": "https://cloud.google.com/logging/docs/export",
+        "reference_label": "Google Cloud 公式 - Cloud Logging エクスポート"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q12",
+      "question": "Cloud Run の特徴として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "コンテナをサーバレスで実行できる",
+          "explanation": {
+            "text": "Cloud Runはコンテナをサーバレスでデプロイ・スケーリングできる。",
+            "reference": "https://cloud.google.com/run/docs/overview",
+            "reference_label": "Google Cloud 公式 - Cloud Run"
+          }
+        },
+        {
+          "key": "B",
+          "text": "VM上で手動スケーリングが必要",
+          "explanation": {
+            "text": "Cloud Runは完全マネージドであり、手動でスケーリングする必要はない。",
+            "reference": "https://cloud.google.com/run/docs/overview",
+            "reference_label": "Google Cloud 公式 - Cloud Run"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Pod単位でスケーリングする",
+          "explanation": {
+            "text": "PodはGKEの単位であり、Cloud Runの仕組みではない。",
+            "reference": "https://cloud.google.com/run/docs/overview",
+            "reference_label": "Google Cloud 公式 - Cloud Run"
+          }
+        },
+        {
+          "key": "D",
+          "text": "常時稼働する必要がある",
+          "explanation": {
+            "text": "Cloud Runはリクエストがないときに自動的にスケールダウンできる。",
+            "reference": "https://cloud.google.com/run/docs/overview",
+            "reference_label": "Google Cloud 公式 - Cloud Run"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Runはコンテナをサーバレスで実行でき、リクエストベースでスケーリングされる。",
+        "reference": "https://cloud.google.com/run/docs/overview",
+        "reference_label": "Google Cloud 公式 - Cloud Run"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q13",
+      "question": "Cloud Identityを利用する主な目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ユーザーとデバイスの管理",
+          "explanation": {
+            "text": "Cloud Identityはユーザーとデバイスを管理するIDaaS（Identity as a Service）である。",
+            "reference": "https://cloud.google.com/identity/docs/overview",
+            "reference_label": "Google Cloud 公式 - Cloud Identity"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ネットワークトラフィックの監視",
+          "explanation": {
+            "text": "ネットワーク監視はCloud MonitoringやVPC Flow Logsを利用する。",
+            "reference": "https://cloud.google.com/vpc/docs/flow-logs",
+            "reference_label": "Google Cloud 公式 - VPC Flow Logs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アプリケーションコードのデバッグ",
+          "explanation": {
+            "text": "デバッグはCloud Debuggerなどのサービスを利用する。",
+            "reference": "https://cloud.google.com/debugger/docs",
+            "reference_label": "Google Cloud 公式 - Cloud Debugger"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データベーススキーマの設計",
+          "explanation": {
+            "text": "スキーマ設計はCloud SQLやBigQueryで行うものであり、Cloud Identityではない。",
+            "reference": "https://cloud.google.com/sql/docs",
+            "reference_label": "Google Cloud 公式 - Cloud SQL"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Identityは組織内のユーザーやデバイスを管理するために利用される。",
+        "reference": "https://cloud.google.com/identity/docs/overview",
+        "reference_label": "Google Cloud 公式 - Cloud Identity"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q14",
+      "question": "Cloud Deployment Managerを利用するメリットはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "インフラをコードとして管理できる",
+          "explanation": {
+            "text": "Deployment ManagerはYAMLやPythonでリソース構成を記述し、IaC（Infrastructure as Code）を実現できる。",
+            "reference": "https://cloud.google.com/deployment-manager/docs/overview",
+            "reference_label": "Google Cloud 公式 - Deployment Manager"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SQLクエリを自動生成する",
+          "explanation": {
+            "text": "SQLクエリ生成はBigQuery関連の機能であり、Deployment Managerの機能ではない。",
+            "reference": "https://cloud.google.com/deployment-manager/docs/overview",
+            "reference_label": "Google Cloud 公式 - Deployment Manager"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アプリケーションコードをコンパイルする",
+          "explanation": {
+            "text": "Deployment Managerはインフラ管理ツールであり、コードコンパイルは行わない。",
+            "reference": "https://cloud.google.com/deployment-manager/docs/overview",
+            "reference_label": "Google Cloud 公式 - Deployment Manager"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ネットワーク遅延を自動最適化する",
+          "explanation": {
+            "text": "ネットワーク最適化は別のサービスで行い、Deployment Managerの機能ではない。",
+            "reference": "https://cloud.google.com/deployment-manager/docs/overview",
+            "reference_label": "Google Cloud 公式 - Deployment Manager"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Deployment ManagerはInfrastructure as Codeを実現し、再現性と一貫性を持ったリソース管理が可能。",
+        "reference": "https://cloud.google.com/deployment-manager/docs/overview",
+        "reference_label": "Google Cloud 公式 - Deployment Manager"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q15",
+      "question": "Compute Engine のプリエンプティブル VM の特徴として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "低コストで利用できるが、最大24時間で強制終了される。",
+          "explanation": {
+            "text": "プリエンプティブル VM は安価に利用できるが、最大24時間で終了する可能性がある。",
+            "reference": "https://cloud.google.com/compute/docs/instances/preemptible",
+            "reference_label": "Google Cloud 公式 - プリエンプティブル VM"
+          }
+        },
+        {
+          "key": "B",
+          "text": "常に高可用性が保証される。",
+          "explanation": {
+            "text": "プリエンプティブル VM は安定稼働を目的としたものではなく、高可用性は保証されない。",
+            "reference": "https://cloud.google.com/compute/docs/instances/preemptible",
+            "reference_label": "Google Cloud 公式 - プリエンプティブル VM"
+          }
+        },
+        {
+          "key": "C",
+          "text": "自動的に別のゾーンにフェイルオーバーする。",
+          "explanation": {
+            "text": "プリエンプティブル VM にフェイルオーバー機能はなく、強制終了されたら再起動が必要。",
+            "reference": "https://cloud.google.com/compute/docs/instances/preemptible",
+            "reference_label": "Google Cloud 公式 - プリエンプティブル VM"
+          }
+        },
+        {
+          "key": "D",
+          "text": "停止しても課金は継続される。",
+          "explanation": {
+            "text": "停止中はCPU/メモリ課金は発生しない。",
+            "reference": "https://cloud.google.com/compute/docs/instances/preemptible",
+            "reference_label": "Google Cloud 公式 - プリエンプティブル VM"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "プリエンプティブル VM は安価に利用可能だが、24時間以内に強制終了される特性がある。",
+        "reference": "https://cloud.google.com/compute/docs/instances/preemptible",
+        "reference_label": "Google Cloud 公式 - プリエンプティブル VM"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q16",
+      "question": "Cloud Pub/Sub のサブスクリプションで Pull モデルを使用する場合、サブスクライバーの動作として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "サブスクライバーが明示的にメッセージを取得する。",
+          "explanation": {
+            "text": "Pull モデルではサブスクライバーがメッセージを明示的にリクエストする。",
+            "reference": "https://cloud.google.com/pubsub/docs/pull",
+            "reference_label": "Google Cloud 公式 - Pull サブスクリプション"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Pub/Sub が自動的にメッセージを送信する。",
+          "explanation": {
+            "text": "Push モデルの場合、Pub/Sub が自動的に送信するが、Pull モデルではサブスクライバーがリクエストする。",
+            "reference": "https://cloud.google.com/pubsub/docs/push",
+            "reference_label": "Google Cloud 公式 - Push サブスクリプション"
+          }
+        },
+        {
+          "key": "C",
+          "text": "サブスクライバーはメッセージを削除できない。",
+          "explanation": {
+            "text": "Pull モデルでも ACK を返すことでメッセージを削除可能。",
+            "reference": "https://cloud.google.com/pubsub/docs/subscriber",
+            "reference_label": "Google Cloud 公式 - サブスクリプション"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Push モデルと同様にエンドポイントが必要。",
+          "explanation": {
+            "text": "Pull モデルではエンドポイントは不要で、クライアントが取得する。",
+            "reference": "https://cloud.google.com/pubsub/docs/pull",
+            "reference_label": "Google Cloud 公式 - Pull サブスクリプション"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Pull モデルではクライアントがリクエストを送信してメッセージを取得する。",
+        "reference": "https://cloud.google.com/pubsub/docs/pull",
+        "reference_label": "Google Cloud 公式 - Pull サブスクリプション"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q17",
+      "question": "Cloud Bigtable の利用に適したユースケースはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "時系列データの保存と分析",
+          "explanation": {
+            "text": "Bigtable は大規模な時系列データや IoT データの保存に適している。",
+            "reference": "https://cloud.google.com/bigtable/docs/overview",
+            "reference_label": "Google Cloud 公式 - Bigtable"
+          }
+        },
+        {
+          "key": "B",
+          "text": "リレーショナルデータの複雑なJOINクエリ",
+          "explanation": {
+            "text": "JOINなどの複雑なリレーショナルクエリは Cloud Spanner や Cloud SQL が適切。",
+            "reference": "https://cloud.google.com/spanner/docs/overview",
+            "reference_label": "Google Cloud 公式 - Spanner"
+          }
+        },
+        {
+          "key": "C",
+          "text": "トランザクション整合性が必要なアプリケーション",
+          "explanation": {
+            "text": "トランザクション整合性は Spanner や Cloud SQL で提供される。",
+            "reference": "https://cloud.google.com/spanner/docs/overview",
+            "reference_label": "Google Cloud 公式 - Spanner"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データウェアハウスによる大規模分析",
+          "explanation": {
+            "text": "データウェアハウスには BigQuery が適しており、Bigtable ではない。",
+            "reference": "https://cloud.google.com/bigquery/docs/introduction",
+            "reference_label": "Google Cloud 公式 - BigQuery"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Bigtable はスケーラブルな NoSQL データベースであり、時系列データや IoT データに適している。",
+        "reference": "https://cloud.google.com/bigtable/docs/overview",
+        "reference_label": "Google Cloud 公式 - Bigtable"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q18",
+      "question": "Cloud Armor の利用目的として最も適切なのはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "DDoS攻撃や不正アクセスからアプリケーションを保護する",
+          "explanation": {
+            "text": "Cloud Armor はDDoS防御やアクセス制御ポリシーを提供する。",
+            "reference": "https://cloud.google.com/armor/docs/overview",
+            "reference_label": "Google Cloud 公式 - Cloud Armor"
+          }
+        },
+        {
+          "key": "B",
+          "text": "VMの自動スケーリングを行う",
+          "explanation": {
+            "text": "自動スケーリングは Instance Groups の機能であり、Cloud Armor ではない。",
+            "reference": "https://cloud.google.com/compute/docs/autoscaler",
+            "reference_label": "Google Cloud 公式 - オートスケーリング"
+          }
+        },
+        {
+          "key": "C",
+          "text": "SQLクエリの最適化を行う",
+          "explanation": {
+            "text": "SQL最適化は Cloud SQL や BigQuery の機能であり、Cloud Armor ではない。",
+            "reference": "https://cloud.google.com/sql/docs",
+            "reference_label": "Google Cloud 公式 - Cloud SQL"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud Functions のトリガーを設定する",
+          "explanation": {
+            "text": "トリガーは Pub/Sub や Cloud Storage を利用するもので、Cloud Armor ではない。",
+            "reference": "https://cloud.google.com/functions/docs/calling",
+            "reference_label": "Google Cloud 公式 - Cloud Functions"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Armor はDDoS攻撃や不正アクセスから保護するためのセキュリティサービス。",
+        "reference": "https://cloud.google.com/armor/docs/overview",
+        "reference_label": "Google Cloud 公式 - Cloud Armor"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q19",
+      "question": "GKE のマネージドコントロールプレーンの役割はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "クラスタの API サーバやスケジューラを管理する",
+          "explanation": {
+            "text": "GKE のコントロールプレーンは Kubernetes API サーバやスケジューラをマネージドで提供する。",
+            "reference": "https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture",
+            "reference_label": "Google Cloud 公式 - GKE アーキテクチャ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "アプリケーションのコンテナイメージをビルドする",
+          "explanation": {
+            "text": "コンテナビルドは Cloud Build などで行い、コントロールプレーンの役割ではない。",
+            "reference": "https://cloud.google.com/build/docs/overview",
+            "reference_label": "Google Cloud 公式 - Cloud Build"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アプリケーションのログを保存する",
+          "explanation": {
+            "text": "ログ保存は Cloud Logging の役割であり、コントロールプレーンではない。",
+            "reference": "https://cloud.google.com/logging/docs",
+            "reference_label": "Google Cloud 公式 - Cloud Logging"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ノード VM のパッチ管理を行う",
+          "explanation": {
+            "text": "ノード VM の管理は GKE Autopilot またはユーザー管理の範疇であり、コントロールプレーンの役割ではない。",
+            "reference": "https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture",
+            "reference_label": "Google Cloud 公式 - GKE アーキテクチャ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "GKE のマネージドコントロールプレーンは Kubernetes API サーバ、etcd、スケジューラなどを Google が管理する。",
+        "reference": "https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture",
+        "reference_label": "Google Cloud 公式 - GKE アーキテクチャ"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q20",
+      "question": "Cloud Interconnect の Dedicated Interconnect の特徴はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "オンプレミスからGoogle Cloudへの専用物理接続を提供する",
+          "explanation": {
+            "text": "Dedicated InterconnectはオンプレミスとGoogle Cloud間の専用接続を提供する。",
+            "reference": "https://cloud.google.com/interconnect/docs/concepts/dedicated-overview",
+            "reference_label": "Google Cloud 公式 - Dedicated Interconnect"
+          }
+        },
+        {
+          "key": "B",
+          "text": "VPNトンネルを利用して接続する",
+          "explanation": {
+            "text": "VPNは別のサービスであり、Dedicated Interconnectでは物理接続を利用する。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/vpn",
+            "reference_label": "Google Cloud 公式 - VPN"
+          }
+        },
+        {
+          "key": "C",
+          "text": "インターネットを経由して暗号化通信を行う",
+          "explanation": {
+            "text": "インターネットを経由するのは Partner Interconnect や VPN であり、Dedicated Interconnect は物理専用線。",
+            "reference": "https://cloud.google.com/interconnect/docs/concepts/dedicated-overview",
+            "reference_label": "Google Cloud 公式 - Dedicated Interconnect"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud CDN と統合してコンテンツ配信を最適化する",
+          "explanation": {
+            "text": "CDNは別のサービスであり、Dedicated Interconnectとは役割が異なる。",
+            "reference": "https://cloud.google.com/cdn/docs/overview",
+            "reference_label": "Google Cloud 公式 - Cloud CDN"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Dedicated InterconnectはオンプレミスからGoogle Cloudへの高帯域・低レイテンシーの専用物理接続を提供する。",
+        "reference": "https://cloud.google.com/interconnect/docs/concepts/dedicated-overview",
+        "reference_label": "Google Cloud 公式 - Dedicated Interconnect"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q21",
+      "question": "Cloud Spanner の特長として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "グローバル分散と強整合性を両立するリレーショナルデータベース",
+          "explanation": {
+            "text": "Spanner はグローバルに分散しながら強整合性を保証するリレーショナルDB。",
+            "reference": "https://cloud.google.com/spanner/docs/overview",
+            "reference_label": "Google Cloud 公式 - Cloud Spanner"
+          }
+        },
+        {
+          "key": "B",
+          "text": "NoSQLデータモデルを持つカラム指向データベース",
+          "explanation": {
+            "text": "これは Bigtable の特徴であり、Spanner ではない。",
+            "reference": "https://cloud.google.com/bigtable/docs/overview",
+            "reference_label": "Google Cloud 公式 - Bigtable"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データウェアハウスとしてSQL分析に最適化されている",
+          "explanation": {
+            "text": "SQL分析に最適化されたデータウェアハウスは BigQuery。",
+            "reference": "https://cloud.google.com/bigquery/docs/introduction",
+            "reference_label": "Google Cloud 公式 - BigQuery"
+          }
+        },
+        {
+          "key": "D",
+          "text": "単一リージョン内でのみ利用可能",
+          "explanation": {
+            "text": "Spannerはマルチリージョンやグローバル分散をサポートしている。",
+            "reference": "https://cloud.google.com/spanner/docs/instances",
+            "reference_label": "Google Cloud 公式 - Spanner インスタンス"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Spanner はグローバル分散しつつ強整合性を保証するユニークなリレーショナルデータベース。",
+        "reference": "https://cloud.google.com/spanner/docs/overview",
+        "reference_label": "Google Cloud 公式 - Cloud Spanner"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q22",
+      "question": "コンテナイメージのホスティングにおける最新の推奨サービスはどれか。組織全体で標準化する目的で、今から新規に利用を開始する場合を想定する。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Artifact Registry",
+          "explanation": {
+            "text": "Artifact Registry はコンテナイメージや言語パッケージを統合管理できる推奨のリポジトリサービスで、リージョン選択や細かな権限管理が可能。",
+            "reference": "https://cloud.google.com/artifact-registry/docs/overview",
+            "reference_label": "Google Cloud 公式 — Artifact Registry 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Container Registry",
+          "explanation": {
+            "text": "Container Registry は既存ユーザー向けに提供されるが、新規ワークロードは Artifact Registry への移行・利用が推奨されている。",
+            "reference": "https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr",
+            "reference_label": "Google Cloud 公式 — Container Registry からの移行"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Cloud Storage バケット直置き",
+          "explanation": {
+            "text": "Cloud Storage はオブジェクトストレージであり、コンテナレジストリの機能（タグ付けや脆弱性スキャン統合など）は提供しない。",
+            "reference": "https://cloud.google.com/storage/docs/introduction",
+            "reference_label": "Google Cloud 公式 — Cloud Storage 入門"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud Build のアーティファクト一時保存",
+          "explanation": {
+            "text": "Cloud Build はビルドサービスで、恒久的なイメージ配布のためのレジストリではない。",
+            "reference": "https://cloud.google.com/build/docs/overview",
+            "reference_label": "Google Cloud 公式 — Cloud Build 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "新規のコンテナイメージ管理は Artifact Registry が推奨。Container Registry からの移行ガイダンスも用意されている。",
+        "reference": "https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr",
+        "reference_label": "Google Cloud 公式 — Container Registry からの移行"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q23",
+      "question": "IAM 条件（IAM Conditions）の主目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "アクセスを属性（リソース名、日時、リクエスト元など）の条件に基づいてきめ細かく制御する",
+          "explanation": {
+            "text": "IAM 条件はユーザー/ロールのバインディングに条件式を付与して、ABAC（属性ベース）でのアクセス制御を実現する。",
+            "reference": "https://cloud.google.com/iam/docs/conditions-overview",
+            "reference_label": "Google Cloud 公式 — IAM 条件の概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "プロジェクト配下の全リソースを自動的に暗号化する",
+          "explanation": {
+            "text": "暗号化は CMEK など別機能の対象であり、IAM 条件の目的ではない。",
+            "reference": "https://cloud.google.com/security/encryption-at-rest",
+            "reference_label": "Google Cloud 公式 — 保存データの暗号化"
+          }
+        },
+        {
+          "key": "C",
+          "text": "監査ログの保持期間を条件で切り替える",
+          "explanation": {
+            "text": "ログ保持は Logging 側の設定で行う。IAM 条件はアクセス制御の拡張。",
+            "reference": "https://cloud.google.com/logging/docs/audit",
+            "reference_label": "Google Cloud 公式 — 監査ログ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "サービス アカウント キーのローテーションを自動化する",
+          "explanation": {
+            "text": "キー管理は別機能。IAM 条件は認可のスコープを条件付きで絞るための機能。",
+            "reference": "https://cloud.google.com/iam/docs/service-accounts",
+            "reference_label": "Google Cloud 公式 — サービス アカウント"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "IAM 条件はロール付与に条件式を付けることで、時間帯やリソース名パターン、リクエスト属性などで柔軟にアクセス制御できる。",
+        "reference": "https://cloud.google.com/iam/docs/conditions-overview",
+        "reference_label": "Google Cloud 公式 — IAM 条件の概要"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q24",
+      "question": "Cloud Storage バケットで Uniform bucket-level access（バケット単位の一元的なアクセス制御）を有効にすると何が起こるか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ACL による個々のオブジェクト/バケットのアクセス制御が無効化され、IAM による一元管理に限定される",
+          "explanation": {
+            "text": "UBLA を有効化すると ACL は無効化され、IAM ベースの権限管理のみになる。",
+            "reference": "https://cloud.google.com/storage/docs/uniform-bucket-level-access",
+            "reference_label": "Google Cloud 公式 — Uniform bucket-level access"
+          }
+        },
+        {
+          "key": "B",
+          "text": "公開アクセスが強制的に許可される",
+          "explanation": {
+            "text": "公開可否は別設定（Public Access Prevention 等）。UBLA は IAM へ権限管理を統一する設定。",
+            "reference": "https://cloud.google.com/storage/docs/public-access-prevention",
+            "reference_label": "Google Cloud 公式 — Public Access Prevention"
+          }
+        },
+        {
+          "key": "C",
+          "text": "自動的にマルチリージョンへレプリケーションされる",
+          "explanation": {
+            "text": "レプリケーション/リージョン構成はストレージクラス/リージョン選択の話で、UBLA とは無関係。",
+            "reference": "https://cloud.google.com/storage/docs/storage-classes",
+            "reference_label": "Google Cloud 公式 — ストレージクラス"
+          }
+        },
+        {
+          "key": "D",
+          "text": "オブジェクトの暗号化キーが CMEK に必ず切り替わる",
+          "explanation": {
+            "text": "暗号化方式は別設定。UBLA の有効化では暗号化方式は変わらない。",
+            "reference": "https://cloud.google.com/storage/docs/encryption",
+            "reference_label": "Google Cloud 公式 — Cloud Storage の暗号化"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "UBLA で ACL を無効化し、IAM による一元的な権限管理へ統一することで、誤設定を減らしガバナンスを強化できる。",
+        "reference": "https://cloud.google.com/storage/docs/uniform-bucket-level-access",
+        "reference_label": "Google Cloud 公式 — Uniform bucket-level access"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q25",
+      "question": "外部 IP を持たない Compute Engine インスタンスからインターネットへアウトバウンド接続を許可したい。最も適切なサービスはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Cloud NAT",
+          "explanation": {
+            "text": "Cloud NAT はプライベート VM からのアウトバウンド インターネット接続を提供するマネージド NAT サービス。",
+            "reference": "https://cloud.google.com/nat/docs/overview",
+            "reference_label": "Google Cloud 公式 — Cloud NAT 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Private Service Connect",
+          "explanation": {
+            "text": "PSC はプライベートなエンドポイント経由で Google/サードパーティのサービスに接続する仕組みで、汎用のインターネット出口には使わない。",
+            "reference": "https://cloud.google.com/vpc/docs/private-service-connect",
+            "reference_label": "Google Cloud 公式 — Private Service Connect"
+          }
+        },
+        {
+          "key": "C",
+          "text": "VPC ピアリング",
+          "explanation": {
+            "text": "VPC ピアリングは VPC 間のプライベート接続であり、インターネットへの出口にはならない。",
+            "reference": "https://cloud.google.com/vpc/docs/vpc-peering",
+            "reference_label": "Google Cloud 公式 — VPC ピアリング"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud VPN",
+          "explanation": {
+            "text": "Cloud VPN はオンプレミス/他ネットワークとの暗号化接続であり、NAT によるインターネット出口ではない。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/vpn",
+            "reference_label": "Google Cloud 公式 — Cloud VPN"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "プライベートのみの VM からインターネットへ出るには、マネージドの Cloud NAT が最適。",
+        "reference": "https://cloud.google.com/nat/docs/overview",
+        "reference_label": "Google Cloud 公式 — Cloud NAT 概要"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q26",
+      "question": "VPC Service Controls の主な目的として最も正しい説明はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データの境界（セキュリティ境界）を定義し、Authorized networks 外からのデータ持ち出しを防ぐための保護を提供する",
+          "explanation": {
+            "text": "VPC-SC はサービesperimeter でデータの抜け道（データ エクスフィルトレーション）を防止する層を追加する。",
+            "reference": "https://cloud.google.com/vpc-service-controls/docs/overview",
+            "reference_label": "Google Cloud 公式 — VPC Service Controls 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "L7 の DDoS 緩和を行う",
+          "explanation": {
+            "text": "L7 DDoS 緩和は Cloud Armor の役割で、VPC-SC の目的ではない。",
+            "reference": "https://cloud.google.com/armor/docs/overview",
+            "reference_label": "Google Cloud 公式 — Cloud Armor 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "VM の OS パッチを自動適用する",
+          "explanation": {
+            "text": "OS パッチ管理は OS Config 等の機能であり、VPC-SC とは無関係。",
+            "reference": "https://cloud.google.com/compute/docs/manage-os",
+            "reference_label": "Google Cloud 公式 — OS 管理（OS Config）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud Storage のデータを自動的に暗号化する",
+          "explanation": {
+            "text": "暗号化は既定で行われるが、VPC-SC はネットワーク境界でのアクセス制御強化が目的。",
+            "reference": "https://cloud.google.com/security/encryption-at-rest",
+            "reference_label": "Google Cloud 公式 — 保存データの暗号化"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "VPC-SC は境界ベースの防御で、特定境界外からの API への不正アクセス経由のデータ持ち出しリスクを軽減する。",
+        "reference": "https://cloud.google.com/vpc-service-controls/docs/overview",
+        "reference_label": "Google Cloud 公式 — VPC Service Controls 概要"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q27",
+      "question": "グローバル anycast IP を用いて L7（HTTP/HTTPS）で負荷分散し、単一のフロントエンドで複数リージョンにトラフィックを分散したい。適切なロードバランサの種類はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "External HTTP(S) Load Balancing（グローバル）",
+          "explanation": {
+            "text": "グローバル外部 HTTP(S) LB は anycast IP と単一のフロントエンドでマルチリージョン配下のバックエンドにルーティングできる。",
+            "reference": "https://cloud.google.com/load-balancing/docs/https",
+            "reference_label": "Google Cloud 公式 — 外部 HTTP(S) 負荷分散"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Internal HTTP(S) Load Balancing",
+          "explanation": {
+            "text": "内部 LB はプライベート トラフィック向けで、インターネット公開の anycast には使わない。",
+            "reference": "https://cloud.google.com/load-balancing/docs/l7-internal",
+            "reference_label": "Google Cloud 公式 — 内部 HTTP(S) LB"
+          }
+        },
+        {
+          "key": "C",
+          "text": "External TCP/UDP Network Load Balancing（リージョナル）",
+          "explanation": {
+            "text": "Network LB は L4 であり、L7 のルーティング機能やグローバル anycast は提供しない。",
+            "reference": "https://cloud.google.com/load-balancing/docs/network",
+            "reference_label": "Google Cloud 公式 — ネットワーク負荷分散"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud CDN のみ",
+          "explanation": {
+            "text": "Cloud CDN はキャッシュ最適化であり、単体では L7 ルーティングやバックエンド健全性監視を提供しない（HTTP(S) LB と併用）。",
+            "reference": "https://cloud.google.com/cdn/docs/overview",
+            "reference_label": "Google Cloud 公式 — Cloud CDN 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "グローバル anycast + L7 ルーティングは外部 HTTP(S) LB が該当。Cloud CDN はこれに組み合わせて利用する。",
+        "reference": "https://cloud.google.com/load-balancing/docs/https",
+        "reference_label": "Google Cloud 公式 — 外部 HTTP(S) 負荷分散"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q28",
+      "question": "GKE 上で動作するアプリケーションから Google API への認証を安全に行い、長寿命のサービス アカウント キー配布を避けたい。推奨される方法はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Workload Identity（KSA を GSA にバインド）を使用する",
+          "explanation": {
+            "text": "GKE Workload Identity は Kubernetes サービス アカウントを Google サービス アカウントに関連付け、短期クレデンシャルで安全に Google API を利用できる。",
+            "reference": "https://cloud.google.com/kubernetes-engine/docs/concepts/workload-identity",
+            "reference_label": "Google Cloud 公式 — Workload Identity（GKE）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザー管理のサービス アカウント キー（JSON）を Secret として配布",
+          "explanation": {
+            "text": "長寿命キーの配布は漏えいリスクが高く、現在は非推奨のパターン。",
+            "reference": "https://cloud.google.com/iam/docs/best-practices-for-managing-service-account-keys",
+            "reference_label": "Google Cloud 公式 — サービス アカウント キーのベストプラクティス"
+          }
+        },
+        {
+          "key": "C",
+          "text": "各 Pod にユーザーの個人アカウント資格情報を配置",
+          "explanation": {
+            "text": "個人アカウントの資格情報配布はセキュリティ/運用の観点で不適切。",
+            "reference": "https://cloud.google.com/iam/docs/service-accounts",
+            "reference_label": "Google Cloud 公式 — サービス アカウント"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud Functions を仲介し、静的キーで署名させる",
+          "explanation": {
+            "text": "仲介しても根本は鍵管理の問題を残す。GKE には Workload Identity が推奨。",
+            "reference": "https://cloud.google.com/kubernetes-engine/docs/concepts/workload-identity",
+            "reference_label": "Google Cloud 公式 — Workload Identity（GKE）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "GKE では Workload Identity により長寿命キー不要で安全に Google API へアクセスできるのが推奨アプローチ。",
+        "reference": "https://cloud.google.com/kubernetes-engine/docs/concepts/workload-identity",
+        "reference_label": "Google Cloud 公式 — Workload Identity（GKE）"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q29",
+      "question": "Cloud Logging に保存されるログの保持期間を延長または無期限に保持したい場合に推奨される方法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ログシンクを作成し、BigQuery や Cloud Storage にエクスポートする",
+          "explanation": {
+            "text": "ログシンクを用いることで、保持期間の制限を超えて BigQuery や GCS に保存し長期分析・保管できる。",
+            "reference": "https://cloud.google.com/logging/docs/export",
+            "reference_label": "Google Cloud 公式 — ログのエクスポート"
+          }
+        },
+        {
+          "key": "B",
+          "text": "IAM 条件で保持期間を延長する",
+          "explanation": {
+            "text": "IAM 条件はアクセス制御の仕組みであり、ログ保持期間とは関係がない。",
+            "reference": "https://cloud.google.com/iam/docs/conditions-overview",
+            "reference_label": "Google Cloud 公式 — IAM 条件"
+          }
+        },
+        {
+          "key": "C",
+          "text": "VPC Service Controls を設定する",
+          "explanation": {
+            "text": "VPC-SC はデータ境界制御の仕組みであり、ログ保持の延長は行わない。",
+            "reference": "https://cloud.google.com/vpc-service-controls/docs/overview",
+            "reference_label": "Google Cloud 公式 — VPC Service Controls"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud Scheduler でログ削除を抑止するジョブを作成する",
+          "explanation": {
+            "text": "削除抑止は設定できない。保持は Logging のデフォルトかエクスポートで管理する。",
+            "reference": "https://cloud.google.com/logging/docs/export",
+            "reference_label": "Google Cloud 公式 — ログのエクスポート"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Logging の保持期間を超えてデータを扱うには、ログシンクで BigQuery や Cloud Storage にエクスポートするのが推奨。",
+        "reference": "https://cloud.google.com/logging/docs/export",
+        "reference_label": "Google Cloud 公式 — ログのエクスポート"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q30",
+      "question": "Cloud SQL インスタンスにおいて、クライアントがセキュアに接続するために推奨される方式はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Cloud SQL Auth Proxy を利用する",
+          "explanation": {
+            "text": "Auth Proxy は IAM ベースで認証し、接続を TLS で保護する推奨方法。",
+            "reference": "https://cloud.google.com/sql/docs/mysql/sql-proxy",
+            "reference_label": "Google Cloud 公式 — Cloud SQL Auth Proxy"
+          }
+        },
+        {
+          "key": "B",
+          "text": "外部 IP とファイアウォールルールだけでアクセス",
+          "explanation": {
+            "text": "外部 IP でのアクセスは可能だがセキュリティリスクが高く、推奨されない。",
+            "reference": "https://cloud.google.com/sql/docs/mysql/connect-external-app",
+            "reference_label": "Google Cloud 公式 — 外部接続"
+          }
+        },
+        {
+          "key": "C",
+          "text": "VM にサービス アカウントキーを配置",
+          "explanation": {
+            "text": "長寿命のサービス アカウントキーはセキュリティリスクが高く非推奨。",
+            "reference": "https://cloud.google.com/iam/docs/best-practices-for-managing-service-account-keys",
+            "reference_label": "Google Cloud 公式 — サービスアカウントキー管理ベストプラクティス"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud VPN を必ず経由させる",
+          "explanation": {
+            "text": "VPN は利用できるが必須ではなく、Auth Proxy の利用が推奨。",
+            "reference": "https://cloud.google.com/sql/docs/mysql/sql-proxy",
+            "reference_label": "Google Cloud 公式 — Cloud SQL Auth Proxy"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud SQL へのセキュアな接続は Cloud SQL Auth Proxy が推奨される方法。",
+        "reference": "https://cloud.google.com/sql/docs/mysql/sql-proxy",
+        "reference_label": "Google Cloud 公式 — Cloud SQL Auth Proxy"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q31",
+      "question": "Cloud Build の主な利用目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "アプリケーションコードをビルド・テスト・デプロイする自動化基盤",
+          "explanation": {
+            "text": "Cloud Build は CI/CD の一環でコードのビルド、テスト、デプロイを自動化できる。",
+            "reference": "https://cloud.google.com/build/docs/overview",
+            "reference_label": "Google Cloud 公式 — Cloud Build 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データ分析用のサーバレス SQL クエリエンジン",
+          "explanation": {
+            "text": "これは BigQuery の特徴であり、Cloud Build ではない。",
+            "reference": "https://cloud.google.com/bigquery/docs/introduction",
+            "reference_label": "Google Cloud 公式 — BigQuery"
+          }
+        },
+        {
+          "key": "C",
+          "text": "大規模な NoSQL データストア",
+          "explanation": {
+            "text": "これは Cloud Bigtable の特徴であり、Cloud Build ではない。",
+            "reference": "https://cloud.google.com/bigtable/docs/overview",
+            "reference_label": "Google Cloud 公式 — Bigtable"
+          }
+        },
+        {
+          "key": "D",
+          "text": "アプリケーションログを集中管理するサービス",
+          "explanation": {
+            "text": "ログ管理は Cloud Logging の役割であり、Cloud Build ではない。",
+            "reference": "https://cloud.google.com/logging/docs",
+            "reference_label": "Google Cloud 公式 — Cloud Logging"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Build は CI/CD を実現するためにコードのビルド、テスト、デプロイを自動化できるサービス。",
+        "reference": "https://cloud.google.com/build/docs/overview",
+        "reference_label": "Google Cloud 公式 — Cloud Build 概要"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q32",
+      "question": "Cloud Functions と Cloud Run の違いとして正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Cloud Functions はイベント駆動型関数、Cloud Run は任意のコンテナを実行できる",
+          "explanation": {
+            "text": "Cloud Functions はイベントベースの関数実行、Cloud Run は HTTP リクエスト駆動のコンテナ実行環境を提供する。",
+            "reference": "https://cloud.google.com/functions/docs/compare-functions-run",
+            "reference_label": "Google Cloud 公式 — Cloud Functions と Cloud Run の比較"
+          }
+        },
+        {
+          "key": "B",
+          "text": "両者とも VM ベースの固定インフラを前提とする",
+          "explanation": {
+            "text": "両者ともサーバレスであり、VM 管理を必要としない。",
+            "reference": "https://cloud.google.com/functions/docs/overview",
+            "reference_label": "Google Cloud 公式 — Cloud Functions"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Cloud Run はイベント駆動に対応せず、常時稼働する必要がある",
+          "explanation": {
+            "text": "Cloud Run もイベント駆動（Pub/Sub など）に対応し、常時稼働不要。",
+            "reference": "https://cloud.google.com/run/docs/overview",
+            "reference_label": "Google Cloud 公式 — Cloud Run 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud Functions はコンテナイメージを直接デプロイできる",
+          "explanation": {
+            "text": "Cloud Functions はソースコードベースでデプロイし、コンテナイメージは Cloud Run の特徴。",
+            "reference": "https://cloud.google.com/functions/docs/compare-functions-run",
+            "reference_label": "Google Cloud 公式 — Cloud Functions と Cloud Run の比較"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Functions はイベント駆動関数、Cloud Run はコンテナ実行環境であり、それぞれユースケースが異なる。",
+        "reference": "https://cloud.google.com/functions/docs/compare-functions-run",
+        "reference_label": "Google Cloud 公式 — Cloud Functions と Cloud Run の比較"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q33",
+      "question": "Cloud Monitoring のダッシュボードを利用する主な目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "リソースのメトリクスを可視化してシステムの健全性を監視する",
+          "explanation": {
+            "text": "Cloud Monitoring ダッシュボードはメトリクスを視覚的に表示し、健全性や傾向を確認できる。",
+            "reference": "https://cloud.google.com/monitoring/dashboards",
+            "reference_label": "Google Cloud 公式 — Monitoring ダッシュボード"
+          }
+        },
+        {
+          "key": "B",
+          "text": "IAM ロールの割り当てを管理する",
+          "explanation": {
+            "text": "IAM ロール管理は Monitoring ダッシュボードでは行わない。",
+            "reference": "https://cloud.google.com/iam/docs/overview",
+            "reference_label": "Google Cloud 公式 — IAM"
+          }
+        },
+        {
+          "key": "C",
+          "text": "VPC ネットワークのルートを編集する",
+          "explanation": {
+            "text": "ネットワーク管理は VPC 設定であり、Monitoring ダッシュボードの機能ではない。",
+            "reference": "https://cloud.google.com/vpc/docs/routes",
+            "reference_label": "Google Cloud 公式 — VPC ルート"
+          }
+        },
+        {
+          "key": "D",
+          "text": "BigQuery テーブルスキーマを更新する",
+          "explanation": {
+            "text": "スキーマ更新は BigQuery 側で行う。Monitoring ダッシュボードは関係しない。",
+            "reference": "https://cloud.google.com/bigquery/docs/schemas",
+            "reference_label": "Google Cloud 公式 — BigQuery スキーマ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Monitoring ダッシュボードはメトリクスの可視化を目的としており、運用者がリソースの状態を把握できる。",
+        "reference": "https://cloud.google.com/monitoring/dashboards",
+        "reference_label": "Google Cloud 公式 — Monitoring ダッシュボード"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q34",
+      "question": "Cloud IAM のサービス アカウントにおける「インパーソネーション（impersonation）」の目的はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ユーザーや別サービス アカウントが一時的に対象サービス アカウントとして操作する",
+          "explanation": {
+            "text": "インパーソネーションを使うと長寿命キー不要で、指定アカウントに成り代わって認証できる。",
+            "reference": "https://cloud.google.com/iam/docs/service-accounts#impersonating_service_accounts",
+            "reference_label": "Google Cloud 公式 — サービス アカウントのインパーソネーション"
+          }
+        },
+        {
+          "key": "B",
+          "text": "サービス アカウントキーを自動的にローテーションする",
+          "explanation": {
+            "text": "キーのローテーションではなく、認証時の権限移譲の仕組み。",
+            "reference": "https://cloud.google.com/iam/docs/service-accounts",
+            "reference_label": "Google Cloud 公式 — サービス アカウント"
+          }
+        },
+        {
+          "key": "C",
+          "text": "異なるプロジェクトに存在するサービス アカウントを統合する",
+          "explanation": {
+            "text": "統合ではなく、アクセス権限を借用するための機能。",
+            "reference": "https://cloud.google.com/iam/docs/service-accounts#impersonating_service_accounts",
+            "reference_label": "Google Cloud 公式 — サービス アカウントのインパーソネーション"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud Audit Logs を生成する対象を切り替える",
+          "explanation": {
+            "text": "監査ログの生成対象は IAM インパーソネーションとは別の設定。",
+            "reference": "https://cloud.google.com/logging/docs/audit",
+            "reference_label": "Google Cloud 公式 — Cloud Audit Logs"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "サービス アカウントのインパーソネーションにより、キーを配布せずに安全に権限移譲が可能となる。",
+        "reference": "https://cloud.google.com/iam/docs/service-accounts#impersonating_service_accounts",
+        "reference_label": "Google Cloud 公式 — サービス アカウントのインパーソネーション"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q35",
+      "question": "Cloud Tasks を利用するユースケースとして適切なのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "非同期処理やバックグラウンドジョブをキューイングし、ワーカーに配信する",
+          "explanation": {
+            "text": "Cloud Tasks は分散タスクキューで、非同期ジョブ処理やリトライ制御が可能。",
+            "reference": "https://cloud.google.com/tasks/docs/overview",
+            "reference_label": "Google Cloud 公式 — Cloud Tasks 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "大規模な時系列データベースとして利用する",
+          "explanation": {
+            "text": "時系列データベースは Bigtable が適切で、Cloud Tasks の用途ではない。",
+            "reference": "https://cloud.google.com/bigtable/docs/overview",
+            "reference_label": "Google Cloud 公式 — Bigtable"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ログデータの長期保存を行う",
+          "explanation": {
+            "text": "ログ保存は Cloud Logging や GCS によるエクスポートで行う。",
+            "reference": "https://cloud.google.com/logging/docs/export",
+            "reference_label": "Google Cloud 公式 — ログのエクスポート"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザーの認証と認可を管理する",
+          "explanation": {
+            "text": "認証認可は IAM や Identity Platform の役割であり、Cloud Tasks ではない。",
+            "reference": "https://cloud.google.com/identity-platform/docs/overview",
+            "reference_label": "Google Cloud 公式 — Identity Platform"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Tasks は分散タスクキューとして、非同期処理やジョブ制御を担うのに適している。",
+        "reference": "https://cloud.google.com/tasks/docs/overview",
+        "reference_label": "Google Cloud 公式 — Cloud Tasks 概要"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q36",
+      "question": "Cloud DNS の利用目的として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ドメイン名を管理し、Google のグローバル DNS インフラを用いて名前解決を提供する",
+          "explanation": {
+            "text": "Cloud DNS はフルマネージドなスケーラブル DNS サービスで、ドメイン名解決を提供する。",
+            "reference": "https://cloud.google.com/dns/docs/overview",
+            "reference_label": "Google Cloud 公式 — Cloud DNS 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "HTTP(S) トラフィックの L7 負荷分散を行う",
+          "explanation": {
+            "text": "これは Cloud Load Balancing の役割であり、DNS 自体はロードバランシングを提供しない。",
+            "reference": "https://cloud.google.com/load-balancing/docs/https",
+            "reference_label": "Google Cloud 公式 — HTTP(S) 負荷分散"
+          }
+        },
+        {
+          "key": "C",
+          "text": "VM のオペレーティングシステムを自動更新する",
+          "explanation": {
+            "text": "OS 更新は OS Config で行うものであり、Cloud DNS の役割ではない。",
+            "reference": "https://cloud.google.com/compute/docs/manage-os",
+            "reference_label": "Google Cloud 公式 — OS Config"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IAM ロールを動的に割り当てる",
+          "explanation": {
+            "text": "IAM 管理は DNS とは無関係である。",
+            "reference": "https://cloud.google.com/iam/docs/overview",
+            "reference_label": "Google Cloud 公式 — IAM 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud DNS はフルマネージドなスケーラブル DNS サービスで、信頼性の高いドメイン解決を提供する。",
+        "reference": "https://cloud.google.com/dns/docs/overview",
+        "reference_label": "Google Cloud 公式 — Cloud DNS 概要"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q37",
+      "question": "Cloud Storage における Signed URL（署名付き URL）の利用目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "期限付きでオブジェクトへのアクセスを一時的に許可する",
+          "explanation": {
+            "text": "Signed URL を使うと、IAM 権限を持たないユーザーにも一時的にオブジェクトアクセスを提供できる。",
+            "reference": "https://cloud.google.com/storage/docs/access-control/signed-urls",
+            "reference_label": "Google Cloud 公式 — Signed URL"
+          }
+        },
+        {
+          "key": "B",
+          "text": "オブジェクトの保存期間を延長する",
+          "explanation": {
+            "text": "オブジェクト保持はライフサイクル管理で行い、Signed URL の役割ではない。",
+            "reference": "https://cloud.google.com/storage/docs/lifecycle",
+            "reference_label": "Google Cloud 公式 — ライフサイクル管理"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データを暗号化する方式を指定する",
+          "explanation": {
+            "text": "暗号化方式はバケットやオブジェクトの設定であり、Signed URL の機能ではない。",
+            "reference": "https://cloud.google.com/storage/docs/encryption",
+            "reference_label": "Google Cloud 公式 — 暗号化"
+          }
+        },
+        {
+          "key": "D",
+          "text": "監査ログを自動的に生成する",
+          "explanation": {
+            "text": "ログ生成は Cloud Audit Logs によるものであり、Signed URL の目的ではない。",
+            "reference": "https://cloud.google.com/logging/docs/audit",
+            "reference_label": "Google Cloud 公式 — 監査ログ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Signed URL は短期的に安全なリソース共有を可能にする手段である。",
+        "reference": "https://cloud.google.com/storage/docs/access-control/signed-urls",
+        "reference_label": "Google Cloud 公式 — Signed URL"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q38",
+      "question": "Cloud Shell の主な特徴はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ブラウザ上から Google Cloud リソースを操作できる管理用のシェル環境",
+          "explanation": {
+            "text": "Cloud Shell は gcloud CLI や各種ツールを備えた管理環境をブラウザ上で利用可能にする。",
+            "reference": "https://cloud.google.com/shell/docs/overview",
+            "reference_label": "Google Cloud 公式 — Cloud Shell"
+          }
+        },
+        {
+          "key": "B",
+          "text": "アプリケーションコードをサーバレスでホストする環境",
+          "explanation": {
+            "text": "これは Cloud Run や Cloud Functions の特徴である。",
+            "reference": "https://cloud.google.com/run/docs/overview",
+            "reference_label": "Google Cloud 公式 — Cloud Run"
+          }
+        },
+        {
+          "key": "C",
+          "text": "永続的に VM を起動して利用できる環境",
+          "explanation": {
+            "text": "Cloud Shell VM は一時的な環境であり、長期稼働はできない。",
+            "reference": "https://cloud.google.com/shell/docs/overview",
+            "reference_label": "Google Cloud 公式 — Cloud Shell"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ログデータを自動的に保存・検索するサービス",
+          "explanation": {
+            "text": "これは Cloud Logging の役割であり、Cloud Shell の特徴ではない。",
+            "reference": "https://cloud.google.com/logging/docs",
+            "reference_label": "Google Cloud 公式 — Cloud Logging"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Shell は gcloud CLI などを備えたブラウザベースの管理用シェル環境である。",
+        "reference": "https://cloud.google.com/shell/docs/overview",
+        "reference_label": "Google Cloud 公式 — Cloud Shell"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q39",
+      "question": "Cloud Key Management Service (KMS) の利用目的として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "暗号鍵を管理し、Google Cloud サービスでのデータ暗号化に利用する",
+          "explanation": {
+            "text": "Cloud KMS は顧客管理鍵 (CMEK) を作成し、他サービスの暗号化に利用できる。",
+            "reference": "https://cloud.google.com/kms/docs",
+            "reference_label": "Google Cloud 公式 — Cloud KMS"
+          }
+        },
+        {
+          "key": "B",
+          "text": "アクセスログを自動的に収集する",
+          "explanation": {
+            "text": "ログ収集は Cloud Logging の役割であり、KMS の機能ではない。",
+            "reference": "https://cloud.google.com/logging/docs",
+            "reference_label": "Google Cloud 公式 — Cloud Logging"
+          }
+        },
+        {
+          "key": "C",
+          "text": "コンテナイメージをスキャンして脆弱性を検出する",
+          "explanation": {
+            "text": "脆弱性スキャンは Artifact Analysis の機能である。",
+            "reference": "https://cloud.google.com/artifact-analysis/docs/overview",
+            "reference_label": "Google Cloud 公式 — Artifact Analysis"
+          }
+        },
+        {
+          "key": "D",
+          "text": "VM インスタンスを自動スケーリングする",
+          "explanation": {
+            "text": "オートスケーリングは Compute Engine Managed Instance Groups の役割。",
+            "reference": "https://cloud.google.com/compute/docs/autoscaler",
+            "reference_label": "Google Cloud 公式 — オートスケーリング"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud KMS は暗号鍵を管理し、CMEK を通じてデータ暗号化を制御できるサービス。",
+        "reference": "https://cloud.google.com/kms/docs",
+        "reference_label": "Google Cloud 公式 — Cloud KMS"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q40",
+      "question": "Cloud SQL の自動バックアップを有効化すると得られるメリットはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "特定時点へのポイントインタイムリカバリが可能になる",
+          "explanation": {
+            "text": "自動バックアップを有効化すると、指定した時間に戻す PITR が可能になる。",
+            "reference": "https://cloud.google.com/sql/docs/mysql/backup-recovery/backups",
+            "reference_label": "Google Cloud 公式 — Cloud SQL バックアップ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "高可用性構成が自動的に有効化される",
+          "explanation": {
+            "text": "高可用性は別途 HA 構成を有効化する必要があり、自動バックアップとは別。",
+            "reference": "https://cloud.google.com/sql/docs/mysql/high-availability",
+            "reference_label": "Google Cloud 公式 — Cloud SQL 高可用性"
+          }
+        },
+        {
+          "key": "C",
+          "text": "読み取り専用レプリカが必ず作成される",
+          "explanation": {
+            "text": "レプリカはオプションであり、自動バックアップの設定とは別である。",
+            "reference": "https://cloud.google.com/sql/docs/mysql/replication/replicas",
+            "reference_label": "Google Cloud 公式 — Cloud SQL レプリカ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "SQL クエリの最適化が自動化される",
+          "explanation": {
+            "text": "クエリ最適化は Cloud SQL バックアップの機能ではない。",
+            "reference": "https://cloud.google.com/sql/docs",
+            "reference_label": "Google Cloud 公式 — Cloud SQL"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "自動バックアップを有効化することで、ポイントインタイムリカバリ (PITR) が可能になる。",
+        "reference": "https://cloud.google.com/sql/docs/mysql/backup-recovery/backups",
+        "reference_label": "Google Cloud 公式 — Cloud SQL バックアップ"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q41",
+      "question": "Cloud Monitoring のアラートポリシーで MQL（Monitoring Query Language）を利用する主な利点はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "複雑なメトリクス条件を柔軟にクエリとして定義できる",
+          "explanation": {
+            "text": "MQL を利用するとメトリクスを集計・フィルタリングして高度な条件を定義できる。",
+            "reference": "https://cloud.google.com/monitoring/mql",
+            "reference_label": "Google Cloud 公式 — MQL"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SQL と互換性のあるクエリで BigQuery に直接送信できる",
+          "explanation": {
+            "text": "MQL は BigQuery の SQL と互換ではなく、Monitoring 独自のクエリ言語である。",
+            "reference": "https://cloud.google.com/monitoring/mql",
+            "reference_label": "Google Cloud 公式 — MQL"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アラート発生時に Cloud Functions を自動デプロイできる",
+          "explanation": {
+            "text": "Cloud Functions の自動デプロイ機能はなく、通知チャネルや Pub/Sub と連携する。",
+            "reference": "https://cloud.google.com/monitoring/alerts",
+            "reference_label": "Google Cloud 公式 — アラート"
+          }
+        },
+        {
+          "key": "D",
+          "text": "VM の OS アップデートをトリガーできる",
+          "explanation": {
+            "text": "MQL はメトリクス監視用であり、OS アップデートの制御は行わない。",
+            "reference": "https://cloud.google.com/monitoring/mql",
+            "reference_label": "Google Cloud 公式 — MQL"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "MQL を使うことで、柔軟かつ複雑なメトリクスベースのアラート条件を記述できる。",
+        "reference": "https://cloud.google.com/monitoring/mql",
+        "reference_label": "Google Cloud 公式 — MQL"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q42",
+      "question": "Cloud Armor のセキュリティポリシーで利用できる機能はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "IP アドレスや地理的な場所に基づいたアクセス制御",
+          "explanation": {
+            "text": "Cloud Armor では IP やジオロケーションに基づいたフィルタリングを行える。",
+            "reference": "https://cloud.google.com/armor/docs/rules-language-reference",
+            "reference_label": "Google Cloud 公式 — Cloud Armor ルール言語"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SQL クエリの実行計画最適化",
+          "explanation": {
+            "text": "これはデータベースの役割であり、Cloud Armor ではない。",
+            "reference": "https://cloud.google.com/sql/docs",
+            "reference_label": "Google Cloud 公式 — Cloud SQL"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Cloud Storage オブジェクトのバージョニング",
+          "explanation": {
+            "text": "バージョニングは Cloud Storage の機能であり、Cloud Armor とは無関係。",
+            "reference": "https://cloud.google.com/storage/docs/object-versioning",
+            "reference_label": "Google Cloud 公式 — オブジェクトバージョニング"
+          }
+        },
+        {
+          "key": "D",
+          "text": "BigQuery データセットのパーティション管理",
+          "explanation": {
+            "text": "パーティション管理は BigQuery の機能であり、Cloud Armor ではない。",
+            "reference": "https://cloud.google.com/bigquery/docs/partitioned-tables",
+            "reference_label": "Google Cloud 公式 — BigQuery パーティション"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Armor のセキュリティポリシーでは、IP やジオロケーションを条件としたアクセス制御を行える。",
+        "reference": "https://cloud.google.com/armor/docs/rules-language-reference",
+        "reference_label": "Google Cloud 公式 — Cloud Armor ルール言語"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q43",
+      "question": "Cloud Run において最小インスタンス数 (minimum instances) を設定する主な目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "コールドスタートを減らして応答時間を短縮する",
+          "explanation": {
+            "text": "最小インスタンスを維持することで、常時稼働中のコンテナが存在し、コールドスタートを避けられる。",
+            "reference": "https://cloud.google.com/run/docs/configuring/min-instances",
+            "reference_label": "Google Cloud 公式 — Cloud Run 最小インスタンス"
+          }
+        },
+        {
+          "key": "B",
+          "text": "オートスケーリングを完全に無効化する",
+          "explanation": {
+            "text": "最小インスタンスはオートスケーリングを無効化せず、下限を指定するだけである。",
+            "reference": "https://cloud.google.com/run/docs/configuring/min-instances",
+            "reference_label": "Google Cloud 公式 — Cloud Run 最小インスタンス"
+          }
+        },
+        {
+          "key": "C",
+          "text": "サービスの同時リクエスト数を制限する",
+          "explanation": {
+            "text": "同時リクエスト制御は Concurrency 設定で行う。",
+            "reference": "https://cloud.google.com/run/docs/about-concurrency",
+            "reference_label": "Google Cloud 公式 — Cloud Run Concurrency"
+          }
+        },
+        {
+          "key": "D",
+          "text": "トラフィック分割を無効化する",
+          "explanation": {
+            "text": "トラフィック分割はリリース設定の一部であり、最小インスタンスとは関係がない。",
+            "reference": "https://cloud.google.com/run/docs/rollouts-rollbacks",
+            "reference_label": "Google Cloud 公式 — Cloud Run ロールアウト"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Run の最小インスタンス数は、コールドスタートを減らし、応答性を改善するために利用する。",
+        "reference": "https://cloud.google.com/run/docs/configuring/min-instances",
+        "reference_label": "Google Cloud 公式 — Cloud Run 最小インスタンス"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q44",
+      "question": "Cloud Identity-Aware Proxy (IAP) の利用目的として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ユーザー認証を経由してアプリケーションやリソースへのアクセスを制御する",
+          "explanation": {
+            "text": "IAP は Google アカウント認証を経由させ、IAM と統合してアクセス制御を提供する。",
+            "reference": "https://cloud.google.com/iap/docs/concepts-overview",
+            "reference_label": "Google Cloud 公式 — IAP 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データベースクエリの実行を最適化する",
+          "explanation": {
+            "text": "IAP は DB 最適化には関与せず、アクセス制御の仕組みである。",
+            "reference": "https://cloud.google.com/iap/docs/concepts-overview",
+            "reference_label": "Google Cloud 公式 — IAP 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ネットワーク帯域を自動調整する",
+          "explanation": {
+            "text": "帯域制御はネットワークサービスの範疇であり、IAP の機能ではない。",
+            "reference": "https://cloud.google.com/vpc/docs",
+            "reference_label": "Google Cloud 公式 — VPC"
+          }
+        },
+        {
+          "key": "D",
+          "text": "VM インスタンスのスケーリングを行う",
+          "explanation": {
+            "text": "IAP は認証プロキシであり、インスタンスのスケーリングには関与しない。",
+            "reference": "https://cloud.google.com/iap/docs/concepts-overview",
+            "reference_label": "Google Cloud 公式 — IAP 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "IAP は Google 認証を経由させてアクセス制御を強化するために利用される。",
+        "reference": "https://cloud.google.com/iap/docs/concepts-overview",
+        "reference_label": "Google Cloud 公式 — IAP 概要"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q45",
+      "question": "Cloud Deployment Manager のテンプレートを利用する利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "リソース構成をコードとして記述し、再利用性と一貫性を確保できる",
+          "explanation": {
+            "text": "Deployment Manager は IaC を実現し、構成をコード化することで一貫したデプロイが可能。",
+            "reference": "https://cloud.google.com/deployment-manager/docs/overview",
+            "reference_label": "Google Cloud 公式 — Deployment Manager 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "VM の OS パッチを自動で適用する",
+          "explanation": {
+            "text": "OS パッチ管理は OS Config の役割であり、Deployment Manager の機能ではない。",
+            "reference": "https://cloud.google.com/compute/docs/manage-os",
+            "reference_label": "Google Cloud 公式 — OS Config"
+          }
+        },
+        {
+          "key": "C",
+          "text": "SQL クエリの実行を最適化する",
+          "explanation": {
+            "text": "クエリ最適化は BigQuery や SQL の役割であり、Deployment Manager の機能ではない。",
+            "reference": "https://cloud.google.com/bigquery/docs/introduction",
+            "reference_label": "Google Cloud 公式 — BigQuery"
+          }
+        },
+        {
+          "key": "D",
+          "text": "アプリケーションの脆弱性スキャンを自動で実行する",
+          "explanation": {
+            "text": "脆弱性スキャンは Artifact Analysis などの機能であり、Deployment Manager とは関係ない。",
+            "reference": "https://cloud.google.com/artifact-analysis/docs/overview",
+            "reference_label": "Google Cloud 公式 — Artifact Analysis"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Deployment Manager はインフラをコードとして管理し、再現性と一貫性を提供する。",
+        "reference": "https://cloud.google.com/deployment-manager/docs/overview",
+        "reference_label": "Google Cloud 公式 — Deployment Manager 概要"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q46",
+      "question": "Cloud Storage のオブジェクトバージョニングを有効にすると得られる利点はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "オブジェクトの上書きや削除時に以前のバージョンを保持できる",
+          "explanation": {
+            "text": "オブジェクトバージョニングにより、誤削除や誤上書きから復旧可能になる。",
+            "reference": "https://cloud.google.com/storage/docs/object-versioning",
+            "reference_label": "Google Cloud 公式 — オブジェクトバージョニング"
+          }
+        },
+        {
+          "key": "B",
+          "text": "自動的にオブジェクトが圧縮保存される",
+          "explanation": {
+            "text": "圧縮は別設定であり、バージョニングの機能ではない。",
+            "reference": "https://cloud.google.com/storage/docs/object-versioning",
+            "reference_label": "Google Cloud 公式 — オブジェクトバージョニング"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ライフサイクル管理が不要になる",
+          "explanation": {
+            "text": "バージョニングとライフサイクル管理は補完的な機能であり、両方利用可能。",
+            "reference": "https://cloud.google.com/storage/docs/lifecycle",
+            "reference_label": "Google Cloud 公式 — ライフサイクル管理"
+          }
+        },
+        {
+          "key": "D",
+          "text": "オブジェクトの暗号化が強制される",
+          "explanation": {
+            "text": "暗号化はデフォルトで有効だが、バージョニング機能とは無関係。",
+            "reference": "https://cloud.google.com/storage/docs/encryption",
+            "reference_label": "Google Cloud 公式 — 暗号化"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "オブジェクトバージョニングは、誤削除や上書きからデータを保護するための仕組みである。",
+        "reference": "https://cloud.google.com/storage/docs/object-versioning",
+        "reference_label": "Google Cloud 公式 — オブジェクトバージョニング"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q47",
+      "question": "BigQuery のパーティション分割テーブルを利用する利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "クエリ対象データを制限してコスト削減とパフォーマンス向上を実現できる",
+          "explanation": {
+            "text": "パーティションを利用するとクエリが必要なデータに限定され、スキャン量削減につながる。",
+            "reference": "https://cloud.google.com/bigquery/docs/partitioned-tables",
+            "reference_label": "Google Cloud 公式 — パーティションテーブル"
+          }
+        },
+        {
+          "key": "B",
+          "text": "自動的にデータを暗号化して保存する",
+          "explanation": {
+            "text": "暗号化は BigQuery にデフォルトで有効だが、パーティション分割機能とは関係がない。",
+            "reference": "https://cloud.google.com/bigquery/docs/encryption",
+            "reference_label": "Google Cloud 公式 — BigQuery 暗号化"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データの保持期間を無制限に延長できる",
+          "explanation": {
+            "text": "保持期間は別途設定可能だが、パーティション分割の機能ではない。",
+            "reference": "https://cloud.google.com/bigquery/docs/partitioned-tables",
+            "reference_label": "Google Cloud 公式 — パーティションテーブル"
+          }
+        },
+        {
+          "key": "D",
+          "text": "オブジェクトストレージと自動同期される",
+          "explanation": {
+            "text": "Cloud Storage との連携は可能だが、パーティション分割とは無関係。",
+            "reference": "https://cloud.google.com/bigquery/docs/loading-data-cloud-storage",
+            "reference_label": "Google Cloud 公式 — GCS からのデータロード"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "パーティション分割テーブルを利用すると、不要なスキャンを避けてクエリコストを削減できる。",
+        "reference": "https://cloud.google.com/bigquery/docs/partitioned-tables",
+        "reference_label": "Google Cloud 公式 — パーティションテーブル"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q48",
+      "question": "Cloud Interconnect の Partner Interconnect の特徴はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "サービスプロバイダ経由で Google Cloud との接続を提供する",
+          "explanation": {
+            "text": "Partner Interconnect はサービスプロバイダのネットワークを利用して GCP に接続できる。",
+            "reference": "https://cloud.google.com/interconnect/docs/concepts/partner-overview",
+            "reference_label": "Google Cloud 公式 — Partner Interconnect 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "オンプレミスから Google Cloud へ直接物理接続する",
+          "explanation": {
+            "text": "これは Dedicated Interconnect の特徴である。",
+            "reference": "https://cloud.google.com/interconnect/docs/concepts/dedicated-overview",
+            "reference_label": "Google Cloud 公式 — Dedicated Interconnect 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "VPN トンネルを使ってインターネット経由で接続する",
+          "explanation": {
+            "text": "VPN は別のサービスであり、Partner Interconnect ではない。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/vpn",
+            "reference_label": "Google Cloud 公式 — VPN 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud CDN と統合してグローバルキャッシュを提供する",
+          "explanation": {
+            "text": "Cloud CDN はコンテンツ配信最適化であり、Partner Interconnect の役割ではない。",
+            "reference": "https://cloud.google.com/cdn/docs/overview",
+            "reference_label": "Google Cloud 公式 — Cloud CDN 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Partner Interconnect はプロバイダ経由で接続を確立でき、帯域や場所の柔軟性がある。",
+        "reference": "https://cloud.google.com/interconnect/docs/concepts/partner-overview",
+        "reference_label": "Google Cloud 公式 — Partner Interconnect 概要"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q49",
+      "question": "Cloud Scheduler の主なユースケースはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "特定のスケジュールで HTTP ターゲットや Pub/Sub トピックをトリガーする",
+          "explanation": {
+            "text": "Cloud Scheduler は cron ライクなスケジュール実行を提供する。",
+            "reference": "https://cloud.google.com/scheduler/docs/overview",
+            "reference_label": "Google Cloud 公式 — Cloud Scheduler 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SQL クエリをリアルタイムで最適化する",
+          "explanation": {
+            "text": "SQL 最適化は Cloud Scheduler の役割ではない。",
+            "reference": "https://cloud.google.com/bigquery/docs/introduction",
+            "reference_label": "Google Cloud 公式 — BigQuery"
+          }
+        },
+        {
+          "key": "C",
+          "text": "VM インスタンスを自動的にフェイルオーバーする",
+          "explanation": {
+            "text": "フェイルオーバーは MIG や HA 構成の役割であり、Scheduler ではない。",
+            "reference": "https://cloud.google.com/compute/docs/instance-groups",
+            "reference_label": "Google Cloud 公式 — インスタンスグループ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "オブジェクトストレージのライフサイクル管理を自動化する",
+          "explanation": {
+            "text": "ライフサイクル管理は Cloud Storage 側の機能であり、Scheduler の役割ではない。",
+            "reference": "https://cloud.google.com/storage/docs/lifecycle",
+            "reference_label": "Google Cloud 公式 — ライフサイクル管理"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Scheduler は cron ジョブのように HTTP や Pub/Sub を定期実行するサービス。",
+        "reference": "https://cloud.google.com/scheduler/docs/overview",
+        "reference_label": "Google Cloud 公式 — Cloud Scheduler 概要"
+      }
+    },
+    {
+      "id": "gcp-ACE-A-q50",
+      "question": "Cloud Functions 第2世代（Cloud Run functions）に関する説明として最も正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Cloud Run と Eventarc の基盤上で動作し、より多くのイベントソースと高い同時実行、リビジョン単位のトラフィック分割に対応する。",
+          "explanation": {
+            "text": "第2世代は Cloud Run/Eventarc 上に実装され、1世代より広いイベント対応・最大1,000の同時実行・リビジョン/トラフィック分割などを提供する。",
+            "reference": "https://cloud.google.com/blog/products/serverless/cloud-functions-2nd-generation-now-generally-available",
+            "reference_label": "Google Cloud 公式ブログ — Cloud Functions 2nd gen GA（同時実行・イベント拡張・トラフィック分割）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "常に同時実行数は1に固定され、同時処理はできない。",
+          "explanation": {
+            "text": "第2世代はインスタンスあたり最大1,000の同時実行を設定可能で、同時実行1に固定ではない。",
+            "reference": "https://cloud.google.com/blog/products/serverless/cloud-functions-2nd-generation-now-generally-available",
+            "reference_label": "Google Cloud 公式ブログ — 同時実行の上限"
+          }
+        },
+        {
+          "key": "C",
+          "text": "第1世代より対応するイベントソースが少ないため、イベント駆動には不向きである。",
+          "explanation": {
+            "text": "第2世代は Eventarc 統合により第1世代より大幅に多いイベントソース（公式発表では14倍）を扱える。",
+            "reference": "https://cloud.google.com/blog/products/serverless/cloud-functions-2nd-generation-now-generally-available",
+            "reference_label": "Google Cloud 公式ブログ — イベントソース拡張"
+          }
+        },
+        {
+          "key": "D",
+          "text": "デプロイ先のイメージは必ず Container Registry（gcr.io）に置く必要がある。",
+          "explanation": {
+            "text": "新規は Artifact Registry 利用が推奨。Container Registry への新規依存は推奨されない。",
+            "reference": "https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr",
+            "reference_label": "Google Cloud 公式 — Container Registry からの移行ガイド"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Functions 第2世代（Cloud Run functions）は Cloud Run/Eventarc 基盤により、第1世代より広いイベントソース、インスタンス同時実行（最大1,000）、およびリビジョン単位のトラフィック分割・ロールバックを提供する。",
+        "reference": "https://cloud.google.com/blog/products/serverless/cloud-functions-2nd-generation-now-generally-available",
+        "reference_label": "Google Cloud 公式ブログ — Cloud Functions 2nd gen GA"
+      }
+    }
+  ]
+}

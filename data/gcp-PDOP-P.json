@@ -1,0 +1,2467 @@
+{
+  "exam": {
+    "id": "PDOP-P",
+    "title": "Google Professional Cloud DevOps Engineer",
+    "description": "この試験は、Google Cloud が推奨する方法とツールを用いて、システム開発ライフサイクル全体においてプロセスを実装し、開発速度とサービス信頼性をバランス良く実現できるエンジニアを評価するものです。具体的には、クラウド組織の構築・維持、CI／CD パイプラインの構築・実装、観測性（オブザーバビリティ）やサイト信頼性エンジニアリング（SRE）に関する実践、運用中システムの最適化・トラブルシューティングなどを問います。",
+    "version": "2025",
+    "price": "200 USD",
+    "difficulty": "難しい",
+    "official-site": "https://cloud.google.com/learn/certification/cloud-devops-engineer",
+    "category": {
+      "id": "gcp",
+      "name": "Google Cloud"
+    }
+  },
+  "questions": [
+    {
+      "id": "gcp-PDOP-P-q1",
+      "question": "SREの原則に基づくエラーバジェット（Error Budget）の主な目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "サービスのSLAを緩和し、運用コストを削減するため",
+          "explanation": {
+            "text": "エラーバジェットはSLAを緩和する仕組みではなく、信頼性とリリース速度のバランスを取るために用いられる。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-measurement-sre",
+            "reference_label": "Google Cloud DevOps SRE Guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "信頼性とリリース速度のバランスを取るための指標として利用する",
+          "explanation": {
+            "text": "エラーバジェットはSLOを超えるエラーの許容量を示し、新機能リリースと安定性のトレードオフを管理するために利用される。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-measurement-sre",
+            "reference_label": "Google Cloud DevOps SRE Guide"
+          }
+        },
+        {
+          "key": "C",
+          "text": "セキュリティインシデントの発生頻度を測定するため",
+          "explanation": {
+            "text": "エラーバジェットはセキュリティインシデントの測定とは無関係である。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-measurement-sre",
+            "reference_label": "Google Cloud DevOps SRE Guide"
+          }
+        },
+        {
+          "key": "D",
+          "text": "コスト最適化のためにインフラの使用率を管理するため",
+          "explanation": {
+            "text": "エラーバジェットはインフラコスト管理ではなく、サービスの信頼性を測る指標である。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-measurement-sre",
+            "reference_label": "Google Cloud DevOps SRE Guide"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "エラーバジェットはサービスレベル目標（SLO）を超えて許容されるエラーの範囲を示し、新機能のリリースと安定性のバランスを管理するための仕組みである。",
+        "reference": "https://cloud.google.com/architecture/devops/devops-measurement-sre",
+        "reference_label": "Google Cloud DevOps SRE Guide"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q2",
+      "question": "CI/CDパイプラインにおいて、Blue-Greenデプロイメントの利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "障害発生時に即座に以前の環境へ切り戻せる",
+          "explanation": {
+            "text": "Blue-Greenデプロイメントでは2つの環境を用意し、新バージョンで問題があればトラフィックを旧環境へ戻すことで即座にロールバックできる。",
+            "reference": "https://cloud.google.com/architecture/application-deployment-and-testing-strategies",
+            "reference_label": "Google Cloud Deployment Strategies"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ゼロコストで環境を構築できる",
+          "explanation": {
+            "text": "環境を2つ用意するため追加コストが発生する。",
+            "reference": "https://cloud.google.com/architecture/application-deployment-and-testing-strategies",
+            "reference_label": "Google Cloud Deployment Strategies"
+          }
+        },
+        {
+          "key": "C",
+          "text": "テスト環境が不要になる",
+          "explanation": {
+            "text": "テスト環境が不要になるわけではなく、本番環境切り替えの安全性を高める戦略である。",
+            "reference": "https://cloud.google.com/architecture/application-deployment-and-testing-strategies",
+            "reference_label": "Google Cloud Deployment Strategies"
+          }
+        },
+        {
+          "key": "D",
+          "text": "セキュリティ強化が自動で実行される",
+          "explanation": {
+            "text": "Blue-Greenはセキュリティ強化の仕組みではない。",
+            "reference": "https://cloud.google.com/architecture/application-deployment-and-testing-strategies",
+            "reference_label": "Google Cloud Deployment Strategies"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Blue-Greenデプロイメントでは2つの環境を並行して運用し、トラフィック切り替えにより即座にロールバックが可能となる。",
+        "reference": "https://cloud.google.com/architecture/application-deployment-and-testing-strategies",
+        "reference_label": "Google Cloud Deployment Strategies"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q3",
+      "question": "Google CloudにおけるInfrastructure as Code（IaC）のベストプラクティスとして最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Cloud Consoleを使ってリソースを都度手動で作成する",
+          "explanation": {
+            "text": "手動操作はIaCの考え方に反し、再現性や自動化が欠如する。",
+            "reference": "https://cloud.google.com/docs/terraform/best-practices-for-terraform",
+            "reference_label": "Terraform on Google Cloud Best Practices"
+          }
+        },
+        {
+          "key": "B",
+          "text": "TerraformやDeployment Managerを利用し、コードでインフラを管理する",
+          "explanation": {
+            "text": "IaCの本質はインフラをコードで記述し、再現性と自動化を担保することにある。",
+            "reference": "https://cloud.google.com/docs/terraform/best-practices-for-terraform",
+            "reference_label": "Terraform on Google Cloud Best Practices"
+          }
+        },
+        {
+          "key": "C",
+          "text": "スクリプトを個人のPCに保存して管理する",
+          "explanation": {
+            "text": "IaCはバージョン管理システム（例: Git）で管理すべきであり、個人PC管理はリスクが高い。",
+            "reference": "https://cloud.google.com/docs/terraform/best-practices-for-terraform",
+            "reference_label": "Terraform on Google Cloud Best Practices"
+          }
+        },
+        {
+          "key": "D",
+          "text": "変更はすべて手動でレビューせず自動的に適用する",
+          "explanation": {
+            "text": "IaCでも変更管理のレビューは必要である。",
+            "reference": "https://cloud.google.com/docs/terraform/best-practices-for-terraform",
+            "reference_label": "Terraform on Google Cloud Best Practices"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "IaCではTerraformやDeployment Managerのようなツールを用いてコードとしてインフラを記述し、Gitなどで管理するのがベストプラクティスである。",
+        "reference": "https://cloud.google.com/docs/terraform/best-practices-for-terraform",
+        "reference_label": "Terraform on Google Cloud Best Practices"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q4",
+      "question": "SREのプラクティスにおいて、SLI（Service Level Indicator）の例として最も適切なのはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "CPU使用率",
+          "explanation": {
+            "text": "CPU使用率はインフラのメトリクスであり、ユーザー体験を直接表さないためSLIには不適切。",
+            "reference": "https://cloud.google.com/architecture/sre-sli-slo",
+            "reference_label": "SLI and SLO Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "リクエストの成功率",
+          "explanation": {
+            "text": "ユーザーが体感するサービスの信頼性を示す典型的なSLIの例。",
+            "reference": "https://cloud.google.com/architecture/sre-sli-slo",
+            "reference_label": "SLI and SLO Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "開発者の生産性",
+          "explanation": {
+            "text": "開発者の生産性はビジネス指標であり、SLIとは関係がない。",
+            "reference": "https://cloud.google.com/architecture/sre-sli-slo",
+            "reference_label": "SLI and SLO Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "コスト削減率",
+          "explanation": {
+            "text": "コストは財務指標であり、SLIではない。",
+            "reference": "https://cloud.google.com/architecture/sre-sli-slo",
+            "reference_label": "SLI and SLO Overview"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "SLIはユーザー体験に直結するサービスの信頼性指標を示し、リクエスト成功率やレイテンシが典型例である。",
+        "reference": "https://cloud.google.com/architecture/sre-sli-slo",
+        "reference_label": "SLI and SLO Overview"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q5",
+      "question": "Google Kubernetes Engine (GKE) でのオートスケーリングの仕組みについて正しい説明はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Horizontal Pod AutoscalerはPod数をトラフィックやリソース使用率に応じて調整する",
+          "explanation": {
+            "text": "HPAはCPUやメモリ使用率、またはカスタムメトリクスを元にPod数をスケーリングする。",
+            "reference": "https://cloud.google.com/kubernetes-engine/docs/concepts/horizontalpodautoscaler",
+            "reference_label": "GKE Autoscaling"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Cluster Autoscalerはアプリケーションのエラー数に応じてPodを増減する",
+          "explanation": {
+            "text": "Cluster Autoscalerはエラー数ではなく、リソース要求を満たすためにノード数を調整する。",
+            "reference": "https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler",
+            "reference_label": "Cluster Autoscaler"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Vertical Pod AutoscalerはPod数を調整する",
+          "explanation": {
+            "text": "VPAはPod数ではなく、Podに割り当てるCPUやメモリを自動調整する。",
+            "reference": "https://cloud.google.com/kubernetes-engine/docs/concepts/verticalpodautoscaler",
+            "reference_label": "Vertical Pod Autoscaler"
+          }
+        },
+        {
+          "key": "D",
+          "text": "オートスケーリングはGKEでは利用できない",
+          "explanation": {
+            "text": "GKEは複数のオートスケーリング機能を提供している。",
+            "reference": "https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler",
+            "reference_label": "Cluster Autoscaler"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "HPAはトラフィックやリソース使用率に応じてPod数をスケールアウト/インし、GKEの主要なオートスケーリング機能のひとつである。",
+        "reference": "https://cloud.google.com/kubernetes-engine/docs/concepts/horizontalpodautoscaler",
+        "reference_label": "GKE Autoscaling"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q6",
+      "question": "Cloud Monitoringにおいて、アラートポリシーを設定する主な目的は何か。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "コスト削減を自動化するため",
+          "explanation": {
+            "text": "アラートはコスト管理ではなく、システム状態の監視に利用される。",
+            "reference": "https://cloud.google.com/monitoring/alerts",
+            "reference_label": "Cloud Monitoring Alerts"
+          }
+        },
+        {
+          "key": "B",
+          "text": "リソースの使用状況を追跡し、異常が発生した際に通知するため",
+          "explanation": {
+            "text": "アラートポリシーはしきい値を超えた場合や条件が満たされた場合に通知を送る仕組みである。",
+            "reference": "https://cloud.google.com/monitoring/alerts",
+            "reference_label": "Cloud Monitoring Alerts"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ログの保存期間を制御するため",
+          "explanation": {
+            "text": "ログの保存期間はアラートポリシーではなくログの設定で管理される。",
+            "reference": "https://cloud.google.com/monitoring/alerts",
+            "reference_label": "Cloud Monitoring Alerts"
+          }
+        },
+        {
+          "key": "D",
+          "text": "セキュリティの脆弱性を修正するため",
+          "explanation": {
+            "text": "アラートポリシーは通知の仕組みであり、脆弱性修正は目的ではない。",
+            "reference": "https://cloud.google.com/monitoring/alerts",
+            "reference_label": "Cloud Monitoring Alerts"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Cloud Monitoringのアラートポリシーは、しきい値や条件に基づいて異常を検出し、通知を送信するために利用される。",
+        "reference": "https://cloud.google.com/monitoring/alerts",
+        "reference_label": "Cloud Monitoring Alerts"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q7",
+      "question": "DevOpsのプラクティスにおけるカナリアリリースの特徴はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "全ユーザーに同時に新バージョンを適用する方式",
+          "explanation": {
+            "text": "これは一斉リリースの方式であり、カナリアリリースではない。",
+            "reference": "https://cloud.google.com/architecture/application-deployment-and-testing-strategies",
+            "reference_label": "Deployment Strategies"
+          }
+        },
+        {
+          "key": "B",
+          "text": "一部のユーザーやトラフィックに限定して新バージョンを適用し、問題がないか確認する方式",
+          "explanation": {
+            "text": "カナリアリリースは少数のユーザーに対して新バージョンを先行適用し、問題がなければ徐々に範囲を拡大する方式である。",
+            "reference": "https://cloud.google.com/architecture/application-deployment-and-testing-strategies",
+            "reference_label": "Deployment Strategies"
+          }
+        },
+        {
+          "key": "C",
+          "text": "新バージョンをローカル環境のみでテストする方式",
+          "explanation": {
+            "text": "ローカルテストはデプロイ戦略ではなく、カナリアリリースとも異なる。",
+            "reference": "https://cloud.google.com/architecture/application-deployment-and-testing-strategies",
+            "reference_label": "Deployment Strategies"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Blue-Greenデプロイメントと同義である",
+          "explanation": {
+            "text": "カナリアリリースとBlue-Greenは異なる戦略である。",
+            "reference": "https://cloud.google.com/architecture/application-deployment-and-testing-strategies",
+            "reference_label": "Deployment Strategies"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "カナリアリリースはリスクを最小化するために新バージョンを限定的に展開し、徐々に拡大する方式である。",
+        "reference": "https://cloud.google.com/architecture/application-deployment-and-testing-strategies",
+        "reference_label": "Deployment Strategies"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q8",
+      "question": "CI/CD パイプラインにおけるテスト自動化の主な利点はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "リリース頻度を減らすことができる",
+          "explanation": {
+            "text": "自動化はリリース頻度を減らすのではなく、増やすことを可能にする。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-measurement-automation",
+            "reference_label": "DevOps Automation"
+          }
+        },
+        {
+          "key": "B",
+          "text": "人為的エラーを減らし、品質を向上させる",
+          "explanation": {
+            "text": "テスト自動化により、一貫性が確保され、人為的エラーを減らし品質を向上できる。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-measurement-automation",
+            "reference_label": "DevOps Automation"
+          }
+        },
+        {
+          "key": "C",
+          "text": "手動レビューが不要になる",
+          "explanation": {
+            "text": "コードレビューなどは依然として重要であり、自動化で完全に不要になるわけではない。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-measurement-automation",
+            "reference_label": "DevOps Automation"
+          }
+        },
+        {
+          "key": "D",
+          "text": "コストが自動的に削減される",
+          "explanation": {
+            "text": "自動化の直接的な目的はコスト削減ではなく、効率と品質向上である。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-measurement-automation",
+            "reference_label": "DevOps Automation"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "テスト自動化は品質の一貫性を確保し、人為的エラーを減らしてリリースを加速させる効果がある。",
+        "reference": "https://cloud.google.com/architecture/devops/devops-measurement-automation",
+        "reference_label": "DevOps Automation"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q9",
+      "question": "Site Reliability Engineering (SRE) における Toil（単純作業）の特徴はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "自動化によって削減可能な繰り返し作業である",
+          "explanation": {
+            "text": "Toilは本質的に手作業で繰り返し発生し、自動化で削減すべき対象である。",
+            "reference": "https://sre.google/sre-book/eliminating-toil/",
+            "reference_label": "Eliminating Toil"
+          }
+        },
+        {
+          "key": "B",
+          "text": "システムの信頼性を高める戦略的な作業である",
+          "explanation": {
+            "text": "Toilは戦略的価値がなく、繰り返し発生する手作業である。",
+            "reference": "https://sre.google/sre-book/eliminating-toil/",
+            "reference_label": "Eliminating Toil"
+          }
+        },
+        {
+          "key": "C",
+          "text": "サービスの新機能開発に直結する作業である",
+          "explanation": {
+            "text": "Toilは新機能開発には直結しない。",
+            "reference": "https://sre.google/sre-book/eliminating-toil/",
+            "reference_label": "Eliminating Toil"
+          }
+        },
+        {
+          "key": "D",
+          "text": "削減する必要はなく、むしろ増加が望ましい",
+          "explanation": {
+            "text": "Toilは削減すべきであり、増加は望ましくない。",
+            "reference": "https://sre.google/sre-book/eliminating-toil/",
+            "reference_label": "Eliminating Toil"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Toilは価値を生まない繰り返し作業であり、自動化によって削減することがSREの重要な目標である。",
+        "reference": "https://sre.google/sre-book/eliminating-toil/",
+        "reference_label": "Eliminating Toil"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q10",
+      "question": "Google Cloud Build を利用する主な利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ソースコードのビルドとテストをスケーラブルに自動化できる",
+          "explanation": {
+            "text": "Cloud Buildはビルドとテストの自動化を提供し、スケーラブルに実行できる。",
+            "reference": "https://cloud.google.com/build/docs/overview",
+            "reference_label": "Cloud Build Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ローカル環境のみでビルドが可能である",
+          "explanation": {
+            "text": "Cloud Buildはクラウドサービスであり、ローカル環境専用ではない。",
+            "reference": "https://cloud.google.com/build/docs/overview",
+            "reference_label": "Cloud Build Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "セキュリティスキャンを完全に不要にできる",
+          "explanation": {
+            "text": "セキュリティスキャンを不要にする機能は存在しない。",
+            "reference": "https://cloud.google.com/build/docs/overview",
+            "reference_label": "Cloud Build Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ビルドプロセスを一度しか実行できない",
+          "explanation": {
+            "text": "Cloud Buildは複数回の実行や並列処理が可能である。",
+            "reference": "https://cloud.google.com/build/docs/overview",
+            "reference_label": "Cloud Build Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud BuildはCI/CDの一環として、ビルドやテストを自動化し、スケーラブルに実行できるのが利点である。",
+        "reference": "https://cloud.google.com/build/docs/overview",
+        "reference_label": "Cloud Build Overview"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q11",
+      "question": "Google Cloud Operations Suite (旧Stackdriver) において、トレース機能の目的は何か。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "アプリケーションの分散トランザクションを可視化する",
+          "explanation": {
+            "text": "Cloud Traceは分散トランザクションのレイテンシを分析し、ボトルネックを特定するために利用される。",
+            "reference": "https://cloud.google.com/trace/docs/overview",
+            "reference_label": "Cloud Trace Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ログの保存期間を制御する",
+          "explanation": {
+            "text": "ログの保存はCloud Loggingの役割である。",
+            "reference": "https://cloud.google.com/trace/docs/overview",
+            "reference_label": "Cloud Trace Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "IAMポリシーを適用する",
+          "explanation": {
+            "text": "IAMポリシーの適用はアクセス制御であり、トレース機能ではない。",
+            "reference": "https://cloud.google.com/trace/docs/overview",
+            "reference_label": "Cloud Trace Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データのバックアップを自動化する",
+          "explanation": {
+            "text": "トレースはバックアップ機能を持たない。",
+            "reference": "https://cloud.google.com/trace/docs/overview",
+            "reference_label": "Cloud Trace Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Traceは分散アプリケーションのパフォーマンス分析に特化し、トランザクション全体の可視化を提供する。",
+        "reference": "https://cloud.google.com/trace/docs/overview",
+        "reference_label": "Cloud Trace Overview"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q12",
+      "question": "Infrastructure as Code (IaC) において、GitOps の特徴はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "コード変更はすべてGitリポジトリに反映され、宣言的に適用される",
+          "explanation": {
+            "text": "GitOpsはGitを唯一の信頼できるソースとし、宣言的にインフラ変更を適用する仕組みである。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-tech-gitops",
+            "reference_label": "GitOps on Google Cloud"
+          }
+        },
+        {
+          "key": "B",
+          "text": "インフラの変更はすべて手動で適用する",
+          "explanation": {
+            "text": "GitOpsは自動化が前提であり、手動適用はGitOpsの考えに反する。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-tech-gitops",
+            "reference_label": "GitOps on Google Cloud"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ログベースでインフラの状態を管理する",
+          "explanation": {
+            "text": "GitOpsはログではなく、Gitリポジトリをソースとする。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-tech-gitops",
+            "reference_label": "GitOps on Google Cloud"
+          }
+        },
+        {
+          "key": "D",
+          "text": "インフラ構成はコード化せずに口頭で伝達する",
+          "explanation": {
+            "text": "これはIaCやGitOpsの原則に反する。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-tech-gitops",
+            "reference_label": "GitOps on Google Cloud"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "GitOpsはインフラ構成の唯一のソースをGitとし、宣言的な管理と自動適用を実現する方法論である。",
+        "reference": "https://cloud.google.com/architecture/devops/devops-tech-gitops",
+        "reference_label": "GitOps on Google Cloud"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q13",
+      "question": "Google Cloud におけるサービスアカウントのベストプラクティスとして正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "1つのサービスアカウントをすべてのアプリケーションで共有する",
+          "explanation": {
+            "text": "共有はセキュリティリスクが高く、推奨されない。",
+            "reference": "https://cloud.google.com/iam/docs/service-accounts-best-practices",
+            "reference_label": "Service Accounts Best Practices"
+          }
+        },
+        {
+          "key": "B",
+          "text": "最小権限の原則に基づいて役割を付与する",
+          "explanation": {
+            "text": "サービスアカウントには必要最小限の権限を付与するのがベストプラクティスである。",
+            "reference": "https://cloud.google.com/iam/docs/service-accounts-best-practices",
+            "reference_label": "Service Accounts Best Practices"
+          }
+        },
+        {
+          "key": "C",
+          "text": "サービスアカウントの秘密鍵をチーム全員で共有する",
+          "explanation": {
+            "text": "秘密鍵の共有はセキュリティリスクが高く、推奨されない。",
+            "reference": "https://cloud.google.com/iam/docs/service-accounts-best-practices",
+            "reference_label": "Service Accounts Best Practices"
+          }
+        },
+        {
+          "key": "D",
+          "text": "サービスアカウントにオーナーロールを付与する",
+          "explanation": {
+            "text": "オーナーロールは強力すぎ、最小権限の原則に反する。",
+            "reference": "https://cloud.google.com/iam/docs/service-accounts-best-practices",
+            "reference_label": "Service Accounts Best Practices"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "サービスアカウントのベストプラクティスは、最小権限の原則に基づき、必要最小限の権限のみを付与することである。",
+        "reference": "https://cloud.google.com/iam/docs/service-accounts-best-practices",
+        "reference_label": "Service Accounts Best Practices"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q14",
+      "question": "SREの「エラーバジェットポリシー」に違反した場合の対応として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "新機能のリリースを一時停止し、信頼性改善に注力する",
+          "explanation": {
+            "text": "エラーバジェットを消費し尽くした場合、新機能リリースを停止し信頼性改善を優先するのが原則である。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-measurement-sre",
+            "reference_label": "Google Cloud DevOps SRE Guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "全てのアラート通知を停止する",
+          "explanation": {
+            "text": "アラート通知を停止するのは誤りである。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-measurement-sre",
+            "reference_label": "Google Cloud DevOps SRE Guide"
+          }
+        },
+        {
+          "key": "C",
+          "text": "サービスSLAを即座に変更する",
+          "explanation": {
+            "text": "SLAを一方的に変更するのは適切な対応ではない。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-measurement-sre",
+            "reference_label": "Google Cloud DevOps SRE Guide"
+          }
+        },
+        {
+          "key": "D",
+          "text": "リリース速度をさらに上げる",
+          "explanation": {
+            "text": "リリースを加速するのは逆効果である。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-measurement-sre",
+            "reference_label": "Google Cloud DevOps SRE Guide"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "エラーバジェットポリシーに違反した場合は、新機能リリースを一時停止し、信頼性の改善を優先する必要がある。",
+        "reference": "https://cloud.google.com/architecture/devops/devops-measurement-sre",
+        "reference_label": "Google Cloud DevOps SRE Guide"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q15",
+      "question": "DevOps文化における「シフトレフトテスト」の主な目的は何か。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "テストを開発サイクルの初期段階に導入することで欠陥を早期に発見する",
+          "explanation": {
+            "text": "シフトレフトの考え方はテストを早期に実施し、不具合を迅速に検出すること。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-tech-test-automation",
+            "reference_label": "Test Automation in DevOps"
+          }
+        },
+        {
+          "key": "B",
+          "text": "テストをリリース直前に集中して行う",
+          "explanation": {
+            "text": "従来型の手法であり、シフトレフトではない。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-tech-test-automation",
+            "reference_label": "Test Automation in DevOps"
+          }
+        },
+        {
+          "key": "C",
+          "text": "テストを外部委託し、社内で行わない",
+          "explanation": {
+            "text": "シフトレフトとは無関係の考え方である。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-tech-test-automation",
+            "reference_label": "Test Automation in DevOps"
+          }
+        },
+        {
+          "key": "D",
+          "text": "テストを省略して開発速度を優先する",
+          "explanation": {
+            "text": "シフトレフトはテストを重視するものであり、省略とは逆である。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-tech-test-automation",
+            "reference_label": "Test Automation in DevOps"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "シフトレフトテストは開発初期にテストを導入することで欠陥を早期に発見し、修正コストを削減する。",
+        "reference": "https://cloud.google.com/architecture/devops/devops-tech-test-automation",
+        "reference_label": "Test Automation in DevOps"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q16",
+      "question": "Cloud Logging のログルーターを使用する主な利点は何か。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ログを特定の宛先（BigQuery、Pub/Sub、Cloud Storageなど）に転送できる",
+          "explanation": {
+            "text": "ログルーターは宛先を柔軟に選択して転送できる。",
+            "reference": "https://cloud.google.com/logging/docs/routing/overview",
+            "reference_label": "Cloud Logging Router Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ログを無制限に保存できる",
+          "explanation": {
+            "text": "保存期間には制限があり、ログルーターの目的ではない。",
+            "reference": "https://cloud.google.com/logging/docs/routing/overview",
+            "reference_label": "Cloud Logging Router Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ログを自動的に翻訳する",
+          "explanation": {
+            "text": "翻訳機能は存在しない。",
+            "reference": "https://cloud.google.com/logging/docs/routing/overview",
+            "reference_label": "Cloud Logging Router Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ログの保存コストをゼロにできる",
+          "explanation": {
+            "text": "コスト削減効果はあるがゼロにはできない。",
+            "reference": "https://cloud.google.com/logging/docs/routing/overview",
+            "reference_label": "Cloud Logging Router Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Logging のログルーターはログを宛先に転送でき、分析や保存の柔軟性を高める。",
+        "reference": "https://cloud.google.com/logging/docs/routing/overview",
+        "reference_label": "Cloud Logging Router Overview"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q17",
+      "question": "Google Cloud のエラーレポーティングの特徴として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "リアルタイムでアプリケーションエラーを集約し、ダッシュボードに表示できる",
+          "explanation": {
+            "text": "Error Reportingはエラーを自動的に集約してリアルタイムで表示する。",
+            "reference": "https://cloud.google.com/error-reporting/docs/overview",
+            "reference_label": "Error Reporting Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "アプリケーションコードを自動修正する",
+          "explanation": {
+            "text": "Error Reportingは自動修正機能を持たない。",
+            "reference": "https://cloud.google.com/error-reporting/docs/overview",
+            "reference_label": "Error Reporting Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "セキュリティパッチを自動適用する",
+          "explanation": {
+            "text": "パッチ適用機能は存在しない。",
+            "reference": "https://cloud.google.com/error-reporting/docs/overview",
+            "reference_label": "Error Reporting Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "アプリケーションのログ保存期間を延長する",
+          "explanation": {
+            "text": "保存期間の管理はCloud Loggingで行う。",
+            "reference": "https://cloud.google.com/error-reporting/docs/overview",
+            "reference_label": "Error Reporting Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Error Reportingはエラーを集約してリアルタイム表示し、問題解決を迅速化する。",
+        "reference": "https://cloud.google.com/error-reporting/docs/overview",
+        "reference_label": "Error Reporting Overview"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q18",
+      "question": "カナリアリリースとBlue-Greenデプロイメントの違いとして正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "カナリアリリースは限定的に新バージョンを適用し、Blue-Greenは全ユーザーを一度に切り替える",
+          "explanation": {
+            "text": "カナリアは部分的展開、Blue-Greenは環境全体の切替を特徴とする。",
+            "reference": "https://cloud.google.com/architecture/application-deployment-and-testing-strategies",
+            "reference_label": "Deployment Strategies"
+          }
+        },
+        {
+          "key": "B",
+          "text": "両者は全く同じデプロイ方式である",
+          "explanation": {
+            "text": "戦略的に異なる方式である。",
+            "reference": "https://cloud.google.com/architecture/application-deployment-and-testing-strategies",
+            "reference_label": "Deployment Strategies"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Blue-Greenは部分的展開であり、カナリアは全体切り替えである",
+          "explanation": {
+            "text": "この説明は逆である。",
+            "reference": "https://cloud.google.com/architecture/application-deployment-and-testing-strategies",
+            "reference_label": "Deployment Strategies"
+          }
+        },
+        {
+          "key": "D",
+          "text": "両者ともリスクを増大させる方式である",
+          "explanation": {
+            "text": "どちらもリスクを減らす方式である。",
+            "reference": "https://cloud.google.com/architecture/application-deployment-and-testing-strategies",
+            "reference_label": "Deployment Strategies"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "カナリアリリースは一部ユーザーへの段階的適用、Blue-Greenは2環境間で即時切替する方式であり、目的は異なるがどちらもリスク低減を図る。",
+        "reference": "https://cloud.google.com/architecture/application-deployment-and-testing-strategies",
+        "reference_label": "Deployment Strategies"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q19",
+      "question": "Cloud Monitoring でダッシュボードを利用する主な目的は何か。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "サービスの指標を可視化してチーム全体で共有する",
+          "explanation": {
+            "text": "ダッシュボードはメトリクスの可視化と共有を目的とする。",
+            "reference": "https://cloud.google.com/monitoring/charts/dashboards",
+            "reference_label": "Monitoring Dashboards"
+          }
+        },
+        {
+          "key": "B",
+          "text": "アプリケーションコードを自動修正する",
+          "explanation": {
+            "text": "ダッシュボードは修正機能を持たない。",
+            "reference": "https://cloud.google.com/monitoring/charts/dashboards",
+            "reference_label": "Monitoring Dashboards"
+          }
+        },
+        {
+          "key": "C",
+          "text": "インフラリソースのコストをゼロにする",
+          "explanation": {
+            "text": "コスト削減効果はあるがゼロにはできない。",
+            "reference": "https://cloud.google.com/monitoring/charts/dashboards",
+            "reference_label": "Monitoring Dashboards"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IAMポリシーを適用する",
+          "explanation": {
+            "text": "IAMはアクセス管理であり、ダッシュボードの目的ではない。",
+            "reference": "https://cloud.google.com/monitoring/charts/dashboards",
+            "reference_label": "Monitoring Dashboards"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Monitoring ダッシュボードはメトリクスを視覚化し、チーム全体で状況を共有できる。",
+        "reference": "https://cloud.google.com/monitoring/charts/dashboards",
+        "reference_label": "Monitoring Dashboards"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q20",
+      "question": "GKE におけるPod Disruption Budget (PDB) の目的は何か。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "同時に停止できるPodの数を制御し、アプリケーションの可用性を保つ",
+          "explanation": {
+            "text": "PDBはPodの計画的な停止を制御し、可用性を維持する。",
+            "reference": "https://cloud.google.com/kubernetes-engine/docs/concepts/pod-disruption-budgets",
+            "reference_label": "Pod Disruption Budgets"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Podに割り当てるCPUやメモリを自動調整する",
+          "explanation": {
+            "text": "これはVertical Pod Autoscalerの機能である。",
+            "reference": "https://cloud.google.com/kubernetes-engine/docs/concepts/pod-disruption-budgets",
+            "reference_label": "Pod Disruption Budgets"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Pod数を自動スケーリングする",
+          "explanation": {
+            "text": "これはHorizontal Pod Autoscalerの機能である。",
+            "reference": "https://cloud.google.com/kubernetes-engine/docs/concepts/pod-disruption-budgets",
+            "reference_label": "Pod Disruption Budgets"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Podのセキュリティ設定を管理する",
+          "explanation": {
+            "text": "PDBはセキュリティ管理とは関係がない。",
+            "reference": "https://cloud.google.com/kubernetes-engine/docs/concepts/pod-disruption-budgets",
+            "reference_label": "Pod Disruption Budgets"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "PDBはアプリケーションの可用性を守るために、同時に停止可能なPod数を制御する仕組みである。",
+        "reference": "https://cloud.google.com/kubernetes-engine/docs/concepts/pod-disruption-budgets",
+        "reference_label": "Pod Disruption Budgets"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q21",
+      "question": "Cloud Deployment Manager の特徴として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "YAML 形式のテンプレートを使用してGoogle Cloudリソースを定義できる",
+          "explanation": {
+            "text": "Deployment ManagerはYAMLやPythonテンプレートを利用してリソースをコード化できる。",
+            "reference": "https://cloud.google.com/deployment-manager/docs/overview",
+            "reference_label": "Deployment Manager Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ローカル環境でのみ動作する",
+          "explanation": {
+            "text": "Deployment Managerはクラウドサービスであり、ローカル専用ではない。",
+            "reference": "https://cloud.google.com/deployment-manager/docs/overview",
+            "reference_label": "Deployment Manager Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "リソースの構成はコード化できない",
+          "explanation": {
+            "text": "Deployment ManagerはIaCのためのサービスであり、コード化できる。",
+            "reference": "https://cloud.google.com/deployment-manager/docs/overview",
+            "reference_label": "Deployment Manager Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "セキュリティパッチを自動適用する",
+          "explanation": {
+            "text": "パッチ適用機能は持たない。",
+            "reference": "https://cloud.google.com/deployment-manager/docs/overview",
+            "reference_label": "Deployment Manager Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Deployment ManagerはYAMLやPythonテンプレートを利用し、Google Cloudリソースを宣言的に定義・管理できる。",
+        "reference": "https://cloud.google.com/deployment-manager/docs/overview",
+        "reference_label": "Deployment Manager Overview"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q22",
+      "question": "SREのプラクティスにおけるポストモーテム(Postmortem)の目的として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "障害の責任者を特定して罰則を与える",
+          "explanation": {
+            "text": "SREのポストモーテムは責任追及ではなく、再発防止が目的である。",
+            "reference": "https://sre.google/sre-book/postmortem/",
+            "reference_label": "Google SRE Book - Postmortem Culture"
+          }
+        },
+        {
+          "key": "B",
+          "text": "障害の原因を分析し、学びを文書化して共有する",
+          "explanation": {
+            "text": "ポストモーテムは原因分析と再発防止策の共有を目的とする。",
+            "reference": "https://sre.google/sre-book/postmortem/",
+            "reference_label": "Google SRE Book - Postmortem Culture"
+          }
+        },
+        {
+          "key": "C",
+          "text": "障害を隠蔽し顧客に通知しない",
+          "explanation": {
+            "text": "透明性はSRE文化の基本であり、隠蔽は推奨されない。",
+            "reference": "https://sre.google/sre-book/postmortem/",
+            "reference_label": "Google SRE Book - Postmortem Culture"
+          }
+        },
+        {
+          "key": "D",
+          "text": "すべてのテストを削除する",
+          "explanation": {
+            "text": "テスト削除は誤りであり、ポストモーテムとは無関係である。",
+            "reference": "https://sre.google/sre-book/postmortem/",
+            "reference_label": "Google SRE Book - Postmortem Culture"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ポストモーテムは非難を目的とせず、透明性をもって原因分析と改善策の共有を行う文化を指す。",
+        "reference": "https://sre.google/sre-book/postmortem/",
+        "reference_label": "Google SRE Book - Postmortem Culture"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q23",
+      "question": "Cloud Monitoring におけるSLOダッシュボードの主な利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "サービスレベル指標を可視化し、エラーバジェットの消費を追跡できる",
+          "explanation": {
+            "text": "SLOダッシュボードは信頼性を可視化し、エラーバジェットを追跡するのに有効である。",
+            "reference": "https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring",
+            "reference_label": "SLO Monitoring in Cloud Monitoring"
+          }
+        },
+        {
+          "key": "B",
+          "text": "IAMポリシーの適用状況を表示する",
+          "explanation": {
+            "text": "IAMはSLOダッシュボードの対象外である。",
+            "reference": "https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring",
+            "reference_label": "SLO Monitoring in Cloud Monitoring"
+          }
+        },
+        {
+          "key": "C",
+          "text": "サービスアカウントの利用状況を監視する",
+          "explanation": {
+            "text": "サービスアカウントはSLO監視対象ではない。",
+            "reference": "https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring",
+            "reference_label": "SLO Monitoring in Cloud Monitoring"
+          }
+        },
+        {
+          "key": "D",
+          "text": "コスト削減効果を自動的に計算する",
+          "explanation": {
+            "text": "コスト分析はSLOダッシュボードの目的ではない。",
+            "reference": "https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring",
+            "reference_label": "SLO Monitoring in Cloud Monitoring"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud MonitoringのSLOダッシュボードは、SLIとSLOを可視化し、エラーバジェット消費を追跡できる。",
+        "reference": "https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring",
+        "reference_label": "SLO Monitoring in Cloud Monitoring"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q24",
+      "question": "DevOpsにおけるMTTR（Mean Time To Recovery）の指標が示すものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "障害から復旧するまでの平均時間",
+          "explanation": {
+            "text": "MTTRはシステムが障害から回復するまでにかかる平均時間を指す。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-measurement-reliability",
+            "reference_label": "DevOps Reliability Metrics"
+          }
+        },
+        {
+          "key": "B",
+          "text": "平均応答時間",
+          "explanation": {
+            "text": "応答時間はレイテンシの指標であり、MTTRではない。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-measurement-reliability",
+            "reference_label": "DevOps Reliability Metrics"
+          }
+        },
+        {
+          "key": "C",
+          "text": "障害発生までの平均時間",
+          "explanation": {
+            "text": "これはMTBF（平均故障間隔）の指標である。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-measurement-reliability",
+            "reference_label": "DevOps Reliability Metrics"
+          }
+        },
+        {
+          "key": "D",
+          "text": "デプロイ時間の平均",
+          "explanation": {
+            "text": "デプロイ時間はMTTRとは別の指標である。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-measurement-reliability",
+            "reference_label": "DevOps Reliability Metrics"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "MTTRは障害復旧までの平均時間を表し、信頼性評価において重要な指標である。",
+        "reference": "https://cloud.google.com/architecture/devops/devops-measurement-reliability",
+        "reference_label": "DevOps Reliability Metrics"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q25",
+      "question": "Google Kubernetes Engine (GKE) におけるセキュリティベストプラクティスとして最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "すべてのPodにデフォルトでクラスタ管理者権限を与える",
+          "explanation": {
+            "text": "権限の過剰付与はセキュリティリスクであり、推奨されない。",
+            "reference": "https://cloud.google.com/kubernetes-engine/docs/best-practices",
+            "reference_label": "GKE Security Best Practices"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Podに対して最小権限のサービスアカウントを割り当てる",
+          "explanation": {
+            "text": "最小権限の原則に基づいてサービスアカウントを使用することがベストプラクティスである。",
+            "reference": "https://cloud.google.com/kubernetes-engine/docs/best-practices",
+            "reference_label": "GKE Security Best Practices"
+          }
+        },
+        {
+          "key": "C",
+          "text": "すべての通信をHTTPで行う",
+          "explanation": {
+            "text": "HTTPは暗号化されず、セキュリティ上不適切である。",
+            "reference": "https://cloud.google.com/kubernetes-engine/docs/best-practices",
+            "reference_label": "GKE Security Best Practices"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ノードにSSH接続して直接設定変更を行う",
+          "explanation": {
+            "text": "SSHによる直接操作は推奨されず、Infrastructure as Codeを利用すべきである。",
+            "reference": "https://cloud.google.com/kubernetes-engine/docs/best-practices",
+            "reference_label": "GKE Security Best Practices"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "GKEのセキュリティベストプラクティスは最小権限の原則を適用し、Podには適切に制限されたサービスアカウントを割り当てることである。",
+        "reference": "https://cloud.google.com/kubernetes-engine/docs/best-practices",
+        "reference_label": "GKE Security Best Practices"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q26",
+      "question": "Cloud Build トリガーの利用目的として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "コード変更に応じて自動的にビルドを実行する",
+          "explanation": {
+            "text": "トリガーを設定することでGitHubやCloud Source Repositoriesの変更に応じて自動ビルドできる。",
+            "reference": "https://cloud.google.com/build/docs/automating-builds/create-build-triggers",
+            "reference_label": "Cloud Build Triggers"
+          }
+        },
+        {
+          "key": "B",
+          "text": "デプロイ後の手動テストを省略する",
+          "explanation": {
+            "text": "テスト省略は目的ではなく、CI/CDを強化するために利用される。",
+            "reference": "https://cloud.google.com/build/docs/automating-builds/create-build-triggers",
+            "reference_label": "Cloud Build Triggers"
+          }
+        },
+        {
+          "key": "C",
+          "text": "サービスアカウントの管理を自動化する",
+          "explanation": {
+            "text": "サービスアカウント管理とは無関係である。",
+            "reference": "https://cloud.google.com/build/docs/automating-builds/create-build-triggers",
+            "reference_label": "Cloud Build Triggers"
+          }
+        },
+        {
+          "key": "D",
+          "text": "監査ログを自動的に削除する",
+          "explanation": {
+            "text": "ログ削除機能は存在しない。",
+            "reference": "https://cloud.google.com/build/docs/automating-builds/create-build-triggers",
+            "reference_label": "Cloud Build Triggers"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Build トリガーを設定すると、コードの変更イベントに応じて自動的にビルドを実行できる。",
+        "reference": "https://cloud.google.com/build/docs/automating-builds/create-build-triggers",
+        "reference_label": "Cloud Build Triggers"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q27",
+      "question": "SREにおける『信頼性は機能より優先される』という原則の意味はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "新機能追加よりもサービスの安定稼働を優先する",
+          "explanation": {
+            "text": "SREでは機能開発よりも信頼性を優先し、SLOを維持することを基本とする。",
+            "reference": "https://sre.google/sre-book/introduction/",
+            "reference_label": "Google SRE Book - Introduction"
+          }
+        },
+        {
+          "key": "B",
+          "text": "サービス開発を完全に停止し、安定性だけに集中する",
+          "explanation": {
+            "text": "新機能開発を完全に停止するわけではなく、バランスを取ることが重要である。",
+            "reference": "https://sre.google/sre-book/introduction/",
+            "reference_label": "Google SRE Book - Introduction"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザーが求める機能は提供しなくてもよい",
+          "explanation": {
+            "text": "機能提供は依然として必要である。",
+            "reference": "https://sre.google/sre-book/introduction/",
+            "reference_label": "Google SRE Book - Introduction"
+          }
+        },
+        {
+          "key": "D",
+          "text": "リリースのたびにサービスを停止することを許容する",
+          "explanation": {
+            "text": "SREの目標は停止ではなく、安定したリリースである。",
+            "reference": "https://sre.google/sre-book/introduction/",
+            "reference_label": "Google SRE Book - Introduction"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "SREでは信頼性が最優先であり、機能開発は信頼性を損なわない範囲で行うべきという考え方である。",
+        "reference": "https://sre.google/sre-book/introduction/",
+        "reference_label": "Google SRE Book - Introduction"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q28",
+      "question": "Cloud Source Repositories の特徴として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Google Cloud上でホストされるフルマネージドGitリポジトリである",
+          "explanation": {
+            "text": "Cloud Source RepositoriesはGoogle Cloud上で動作するGitベースのリポジトリサービスである。",
+            "reference": "https://cloud.google.com/source-repositories/docs/overview",
+            "reference_label": "Cloud Source Repositories Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ローカルPCでのみ利用できるGitクライアントである",
+          "explanation": {
+            "text": "Cloud Source Repositoriesはクラウドサービスであり、ローカル専用ではない。",
+            "reference": "https://cloud.google.com/source-repositories/docs/overview",
+            "reference_label": "Cloud Source Repositories Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "コードの自動修正機能を提供する",
+          "explanation": {
+            "text": "コード修正機能は提供していない。",
+            "reference": "https://cloud.google.com/source-repositories/docs/overview",
+            "reference_label": "Cloud Source Repositories Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "セキュリティスキャンを強制的に実行する",
+          "explanation": {
+            "text": "セキュリティスキャンは別サービスであり、リポジトリ自体の機能ではない。",
+            "reference": "https://cloud.google.com/source-repositories/docs/overview",
+            "reference_label": "Cloud Source Repositories Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Source RepositoriesはGoogle Cloudが提供するマネージドGitリポジトリサービスである。",
+        "reference": "https://cloud.google.com/source-repositories/docs/overview",
+        "reference_label": "Cloud Source Repositories Overview"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q29",
+      "question": "DevOpsにおける『継続的デリバリー (Continuous Delivery)』の特徴として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "すべての変更が自動的に本番環境にデプロイされる",
+          "explanation": {
+            "text": "これは『継続的デプロイ (Continuous Deployment)』の定義であり、継続的デリバリーではない。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-tech-continuous-delivery",
+            "reference_label": "Continuous Delivery Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "本番環境へのデプロイ準備が常に整っている状態を維持する",
+          "explanation": {
+            "text": "継続的デリバリーは常にリリース可能な状態を保つことが目的である。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-tech-continuous-delivery",
+            "reference_label": "Continuous Delivery Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "手動テストを完全に不要にする",
+          "explanation": {
+            "text": "テストの一部は依然として手動で行われる場合がある。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-tech-continuous-delivery",
+            "reference_label": "Continuous Delivery Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "デプロイの頻度を制限する",
+          "explanation": {
+            "text": "デリバリーは頻度を制限するのではなく、迅速化する。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-tech-continuous-delivery",
+            "reference_label": "Continuous Delivery Overview"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "継続的デリバリーは、変更がいつでも本番環境にリリース可能な状態を保つプラクティスである。",
+        "reference": "https://cloud.google.com/architecture/devops/devops-tech-continuous-delivery",
+        "reference_label": "Continuous Delivery Overview"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q30",
+      "question": "Cloud Monitoring のUptimeチェックの主な利用目的は何か。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "サービスが外部から利用可能かを定期的に確認する",
+          "explanation": {
+            "text": "Uptimeチェックはエンドポイントの可用性を外部から監視するために利用される。",
+            "reference": "https://cloud.google.com/monitoring/uptime-checks",
+            "reference_label": "Uptime Checks"
+          }
+        },
+        {
+          "key": "B",
+          "text": "内部ネットワークの帯域幅を測定する",
+          "explanation": {
+            "text": "帯域幅測定はUptimeチェックの目的ではない。",
+            "reference": "https://cloud.google.com/monitoring/uptime-checks",
+            "reference_label": "Uptime Checks"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザーの行動分析を行う",
+          "explanation": {
+            "text": "行動分析はAnalyticsの領域であり、Uptimeチェックではない。",
+            "reference": "https://cloud.google.com/monitoring/uptime-checks",
+            "reference_label": "Uptime Checks"
+          }
+        },
+        {
+          "key": "D",
+          "text": "アプリケーションコードの静的解析を実行する",
+          "explanation": {
+            "text": "静的解析は別のツールの役割であり、Uptimeチェックには含まれない。",
+            "reference": "https://cloud.google.com/monitoring/uptime-checks",
+            "reference_label": "Uptime Checks"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Monitoring のUptimeチェックは、外部からエンドポイントにアクセス可能かどうかを定期的に監視する。",
+        "reference": "https://cloud.google.com/monitoring/uptime-checks",
+        "reference_label": "Uptime Checks"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q31",
+      "question": "Google Cloud のサービスメッシュ Anthos Service Mesh (ASM) の利点として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "サービス間通信のトラフィック制御とセキュリティを統合的に管理できる",
+          "explanation": {
+            "text": "ASMはトラフィック管理、mTLSによるセキュリティ、可観測性を提供する。",
+            "reference": "https://cloud.google.com/service-mesh/docs/overview",
+            "reference_label": "Anthos Service Mesh Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "アプリケーションコードを自動的に最適化する",
+          "explanation": {
+            "text": "コードの最適化機能は持たない。",
+            "reference": "https://cloud.google.com/service-mesh/docs/overview",
+            "reference_label": "Anthos Service Mesh Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "すべてのサービスをモノリシックに統合する",
+          "explanation": {
+            "text": "サービスメッシュはマイクロサービスの連携を支援するものであり、モノリス化するものではない。",
+            "reference": "https://cloud.google.com/service-mesh/docs/overview",
+            "reference_label": "Anthos Service Mesh Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ログ保存期間を自動的に延長する",
+          "explanation": {
+            "text": "ログ管理はASMの目的ではない。",
+            "reference": "https://cloud.google.com/service-mesh/docs/overview",
+            "reference_label": "Anthos Service Mesh Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Anthos Service Meshはマイクロサービス間通信の管理を容易にし、セキュリティ、可観測性、トラフィック制御を提供する。",
+        "reference": "https://cloud.google.com/service-mesh/docs/overview",
+        "reference_label": "Anthos Service Mesh Overview"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q32",
+      "question": "Infrastructure as Code (IaC) において不変インフラストラクチャ（Immutable Infrastructure）の利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "サーバーを再利用し設定を変更することで柔軟性を高める",
+          "explanation": {
+            "text": "不変インフラはサーバーを再利用せず、新しい構成を持つリソースを再作成する。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-tech-immutable-infrastructure",
+            "reference_label": "Immutable Infrastructure"
+          }
+        },
+        {
+          "key": "B",
+          "text": "サーバーを破棄して新しい構成で置き換えることで一貫性を保つ",
+          "explanation": {
+            "text": "不変インフラはサーバーを更新せず、再作成することで一貫性を維持する。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-tech-immutable-infrastructure",
+            "reference_label": "Immutable Infrastructure"
+          }
+        },
+        {
+          "key": "C",
+          "text": "インフラを手動で変更できるようにする",
+          "explanation": {
+            "text": "手動変更は不変インフラの考え方に反する。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-tech-immutable-infrastructure",
+            "reference_label": "Immutable Infrastructure"
+          }
+        },
+        {
+          "key": "D",
+          "text": "セキュリティスキャンを不要にする",
+          "explanation": {
+            "text": "セキュリティスキャンの必要性がなくなるわけではない。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-tech-immutable-infrastructure",
+            "reference_label": "Immutable Infrastructure"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "不変インフラは既存のリソースを更新せず、新しい構成のリソースで置き換えることで一貫性を担保する。",
+        "reference": "https://cloud.google.com/architecture/devops/devops-tech-immutable-infrastructure",
+        "reference_label": "Immutable Infrastructure"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q33",
+      "question": "Cloud Monitoring のカスタムメトリクスを利用する主な目的は何か。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "アプリケーション固有の指標を収集・可視化する",
+          "explanation": {
+            "text": "カスタムメトリクスはユーザー定義の指標を収集し、サービスの状況をより詳細に監視するために利用される。",
+            "reference": "https://cloud.google.com/monitoring/custom-metrics",
+            "reference_label": "Custom Metrics"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Google Cloudの標準メトリクスを削除する",
+          "explanation": {
+            "text": "標準メトリクスを削除する機能はない。",
+            "reference": "https://cloud.google.com/monitoring/custom-metrics",
+            "reference_label": "Custom Metrics"
+          }
+        },
+        {
+          "key": "C",
+          "text": "セキュリティログを置き換える",
+          "explanation": {
+            "text": "セキュリティログの代替にはならない。",
+            "reference": "https://cloud.google.com/monitoring/custom-metrics",
+            "reference_label": "Custom Metrics"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IAMポリシーを管理する",
+          "explanation": {
+            "text": "IAMポリシーの管理はCloud IAMの役割であり、メトリクスとは無関係。",
+            "reference": "https://cloud.google.com/monitoring/custom-metrics",
+            "reference_label": "Custom Metrics"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "カスタムメトリクスは標準メトリクスでは得られないアプリケーション固有の情報を収集・可視化するために使用される。",
+        "reference": "https://cloud.google.com/monitoring/custom-metrics",
+        "reference_label": "Custom Metrics"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q34",
+      "question": "Cloud Build でビルドステップを定義する際に利用するファイルはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "cloudbuild.yaml",
+          "explanation": {
+            "text": "Cloud Build のビルドステップは cloudbuild.yaml または cloudbuild.json で定義する。",
+            "reference": "https://cloud.google.com/build/docs/build-config-file-schema",
+            "reference_label": "Cloud Build Config File"
+          }
+        },
+        {
+          "key": "B",
+          "text": "docker-compose.yml",
+          "explanation": {
+            "text": "docker-compose はローカル環境のコンテナ管理ツールであり、Cloud Buildには直接関係ない。",
+            "reference": "https://cloud.google.com/build/docs/build-config-file-schema",
+            "reference_label": "Cloud Build Config File"
+          }
+        },
+        {
+          "key": "C",
+          "text": "package.json",
+          "explanation": {
+            "text": "package.json はNode.jsの依存関係管理用であり、Cloud Build設定ファイルではない。",
+            "reference": "https://cloud.google.com/build/docs/build-config-file-schema",
+            "reference_label": "Cloud Build Config File"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Jenkinsfile",
+          "explanation": {
+            "text": "JenkinsfileはJenkinsのCI/CDパイプライン定義に使用される。",
+            "reference": "https://cloud.google.com/build/docs/build-config-file-schema",
+            "reference_label": "Cloud Build Config File"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Build のビルドプロセスは cloudbuild.yaml または cloudbuild.json で定義する。",
+        "reference": "https://cloud.google.com/build/docs/build-config-file-schema",
+        "reference_label": "Cloud Build Config File"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q35",
+      "question": "DevOpsの主要な指標である『デプロイ頻度』が高いことの利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "変更を小さく保ち、リスクを低減できる",
+          "explanation": {
+            "text": "頻繁なデプロイは変更を小さく保ち、リスクを分散できる。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-measurement-speed",
+            "reference_label": "DevOps Speed Metrics"
+          }
+        },
+        {
+          "key": "B",
+          "text": "復旧時間が必ず長くなる",
+          "explanation": {
+            "text": "復旧時間は短縮されるのが一般的である。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-measurement-speed",
+            "reference_label": "DevOps Speed Metrics"
+          }
+        },
+        {
+          "key": "C",
+          "text": "開発チーム間の連携が不要になる",
+          "explanation": {
+            "text": "連携は依然として必要である。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-measurement-speed",
+            "reference_label": "DevOps Speed Metrics"
+          }
+        },
+        {
+          "key": "D",
+          "text": "セキュリティ監査が不要になる",
+          "explanation": {
+            "text": "セキュリティ監査は依然として必要である。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-measurement-speed",
+            "reference_label": "DevOps Speed Metrics"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "デプロイ頻度を高めると変更が小さく分割されるため、リスクを低減し復旧も容易になる。",
+        "reference": "https://cloud.google.com/architecture/devops/devops-measurement-speed",
+        "reference_label": "DevOps Speed Metrics"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q36",
+      "question": "Google Cloud におけるSecret Managerの利用目的として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "パスワードやAPIキーなどの機密情報を安全に保存・管理する",
+          "explanation": {
+            "text": "Secret Managerは機密情報を安全に保存し、IAMを用いてアクセスを制御する。",
+            "reference": "https://cloud.google.com/secret-manager/docs/overview",
+            "reference_label": "Secret Manager Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "サービスアカウントを自動的に作成する",
+          "explanation": {
+            "text": "Secret Managerはアカウント作成機能を持たない。",
+            "reference": "https://cloud.google.com/secret-manager/docs/overview",
+            "reference_label": "Secret Manager Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "監査ログを保存する",
+          "explanation": {
+            "text": "ログ保存はCloud Loggingの機能である。",
+            "reference": "https://cloud.google.com/secret-manager/docs/overview",
+            "reference_label": "Secret Manager Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "コードの依存関係を管理する",
+          "explanation": {
+            "text": "依存関係管理はSecret Managerの目的ではない。",
+            "reference": "https://cloud.google.com/secret-manager/docs/overview",
+            "reference_label": "Secret Manager Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Secret ManagerはAPIキーやパスワードなどの機密情報を安全に保存し、アクセス制御やローテーションを容易にする。",
+        "reference": "https://cloud.google.com/secret-manager/docs/overview",
+        "reference_label": "Secret Manager Overview"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q37",
+      "question": "SREにおける『サービスレベル目標 (SLO)』の定義として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "サービスが達成すべき具体的な信頼性の目標値",
+          "explanation": {
+            "text": "SLOはSLAを支える内部的な目標値であり、サービスの信頼性を定量化する。",
+            "reference": "https://cloud.google.com/architecture/sre-sli-slo",
+            "reference_label": "SLI and SLO Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "顧客と契約する公式の信頼性保証",
+          "explanation": {
+            "text": "これはSLA（Service Level Agreement）の定義である。",
+            "reference": "https://cloud.google.com/architecture/sre-sli-slo",
+            "reference_label": "SLI and SLO Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "サービスのエラーバジェット消費率",
+          "explanation": {
+            "text": "エラーバジェットはSLOに基づいて算出される指標であり、SLOそのものではない。",
+            "reference": "https://cloud.google.com/architecture/sre-sli-slo",
+            "reference_label": "SLI and SLO Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "開発者の生産性指標",
+          "explanation": {
+            "text": "開発者生産性はSLOの対象外である。",
+            "reference": "https://cloud.google.com/architecture/sre-sli-slo",
+            "reference_label": "SLI and SLO Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "SLOはSLAに準拠するために内部で設定される目標値であり、サービスの信頼性を数値で定義する。",
+        "reference": "https://cloud.google.com/architecture/sre-sli-slo",
+        "reference_label": "SLI and SLO Overview"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q38",
+      "question": "Google Cloud Buildにおいて、キャッシュ機能を利用する主な利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "同じ依存関係やビルド成果物を再利用し、ビルド時間を短縮できる",
+          "explanation": {
+            "text": "キャッシュは依存関係や中間成果物を再利用することでビルド効率を高める。",
+            "reference": "https://cloud.google.com/build/docs/speeding-up-builds",
+            "reference_label": "Cloud Build Caching"
+          }
+        },
+        {
+          "key": "B",
+          "text": "サービスアカウントを自動作成する",
+          "explanation": {
+            "text": "Cloud Buildのキャッシュ機能はアカウント作成には関係しない。",
+            "reference": "https://cloud.google.com/build/docs/speeding-up-builds",
+            "reference_label": "Cloud Build Caching"
+          }
+        },
+        {
+          "key": "C",
+          "text": "セキュリティスキャンを不要にする",
+          "explanation": {
+            "text": "セキュリティスキャンは依然として必要である。",
+            "reference": "https://cloud.google.com/build/docs/speeding-up-builds",
+            "reference_label": "Cloud Build Caching"
+          }
+        },
+        {
+          "key": "D",
+          "text": "アラート通知を自動生成する",
+          "explanation": {
+            "text": "キャッシュ機能は通知生成には関与しない。",
+            "reference": "https://cloud.google.com/build/docs/speeding-up-builds",
+            "reference_label": "Cloud Build Caching"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Buildのキャッシュを利用すると依存関係や中間成果物を再利用でき、ビルド時間を短縮できる。",
+        "reference": "https://cloud.google.com/build/docs/speeding-up-builds",
+        "reference_label": "Cloud Build Caching"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q39",
+      "question": "Cloud Operations Suite において、Cloud Profiler の利用目的はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "アプリケーションのCPUやメモリ使用状況を分析し、パフォーマンスボトルネックを特定する",
+          "explanation": {
+            "text": "Cloud Profilerはリソース使用状況を分析し、最適化のための情報を提供する。",
+            "reference": "https://cloud.google.com/profiler/docs/overview",
+            "reference_label": "Cloud Profiler Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "アプリケーションコードのセキュリティ脆弱性を検出する",
+          "explanation": {
+            "text": "脆弱性検出はCloud Profilerの目的ではない。",
+            "reference": "https://cloud.google.com/profiler/docs/overview",
+            "reference_label": "Cloud Profiler Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "サービスアカウントの利用状況を監査する",
+          "explanation": {
+            "text": "監査機能はIAMやCloud Audit Logsの役割である。",
+            "reference": "https://cloud.google.com/profiler/docs/overview",
+            "reference_label": "Cloud Profiler Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "デプロイの自動ロールバックを行う",
+          "explanation": {
+            "text": "ロールバック機能はCloud Profilerにはない。",
+            "reference": "https://cloud.google.com/profiler/docs/overview",
+            "reference_label": "Cloud Profiler Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Profilerはアプリケーションのリソース使用を継続的に監視し、パフォーマンスボトルネックを分析するためのツールである。",
+        "reference": "https://cloud.google.com/profiler/docs/overview",
+        "reference_label": "Cloud Profiler Overview"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q40",
+      "question": "Google Cloud でのInfrastructure as Code (IaC) 運用において、ポリシーエンフォースメントを行う代表的なサービスはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Policy Controller (Anthos Config Management)",
+          "explanation": {
+            "text": "Policy ControllerはKubernetes環境での構成ポリシー適用を実現する。",
+            "reference": "https://cloud.google.com/anthos-config-management/docs/concepts/policy-controller",
+            "reference_label": "Policy Controller Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Cloud Functions",
+          "explanation": {
+            "text": "Cloud Functionsはイベント駆動の関数実行環境であり、ポリシー管理ではない。",
+            "reference": "https://cloud.google.com/anthos-config-management/docs/concepts/policy-controller",
+            "reference_label": "Policy Controller Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Cloud Scheduler",
+          "explanation": {
+            "text": "Cloud Schedulerはジョブスケジューリングサービスである。",
+            "reference": "https://cloud.google.com/anthos-config-management/docs/concepts/policy-controller",
+            "reference_label": "Policy Controller Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud Storage",
+          "explanation": {
+            "text": "Cloud Storageはオブジェクトストレージであり、ポリシー管理とは関係がない。",
+            "reference": "https://cloud.google.com/anthos-config-management/docs/concepts/policy-controller",
+            "reference_label": "Policy Controller Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Anthos Config ManagementのPolicy Controllerは構成ポリシーを適用し、IaC環境でのガバナンスを強化する。",
+        "reference": "https://cloud.google.com/anthos-config-management/docs/concepts/policy-controller",
+        "reference_label": "Policy Controller Overview"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q41",
+      "question": "DevOpsのカルチャーにおける『ブランメンテナンスの排除』とは何を意味するか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "定期的にサービスを停止してメンテナンスを行うのではなく、ローリングアップデートなどで無停止運用を実現する",
+          "explanation": {
+            "text": "DevOpsではサービスの可用性を重視し、無停止での更新を目指す。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-tech-continuous-delivery",
+            "reference_label": "Continuous Delivery in DevOps"
+          }
+        },
+        {
+          "key": "B",
+          "text": "メンテナンス作業をすべて外部委託する",
+          "explanation": {
+            "text": "外部委託とは関係がない。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-tech-continuous-delivery",
+            "reference_label": "Continuous Delivery in DevOps"
+          }
+        },
+        {
+          "key": "C",
+          "text": "メンテナンスを完全に行わない",
+          "explanation": {
+            "text": "メンテナンスは必要であり、無停止で実行するのが理想。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-tech-continuous-delivery",
+            "reference_label": "Continuous Delivery in DevOps"
+          }
+        },
+        {
+          "key": "D",
+          "text": "メンテナンス作業を手動でのみ行う",
+          "explanation": {
+            "text": "自動化がDevOpsの基本であり、手動のみは適切でない。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-tech-continuous-delivery",
+            "reference_label": "Continuous Delivery in DevOps"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "DevOpsではローリングアップデートやカナリアリリースを利用し、サービス停止を伴わない継続的な更新を行う。",
+        "reference": "https://cloud.google.com/architecture/devops/devops-tech-continuous-delivery",
+        "reference_label": "Continuous Delivery in DevOps"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q42",
+      "question": "Cloud Operations Suite におけるCloud Debuggerの特徴はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "本番環境のアプリケーションを停止せずに変数の値を確認できる",
+          "explanation": {
+            "text": "Cloud Debuggerは本番環境を停止せずに動的に変数を確認できる。",
+            "reference": "https://cloud.google.com/debugger/docs/overview",
+            "reference_label": "Cloud Debugger Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "アプリケーションコードを自動修正する",
+          "explanation": {
+            "text": "自動修正機能はない。",
+            "reference": "https://cloud.google.com/debugger/docs/overview",
+            "reference_label": "Cloud Debugger Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "サービスアカウントの権限を管理する",
+          "explanation": {
+            "text": "IAM権限管理はCloud Debuggerの役割ではない。",
+            "reference": "https://cloud.google.com/debugger/docs/overview",
+            "reference_label": "Cloud Debugger Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "セキュリティ脆弱性をスキャンする",
+          "explanation": {
+            "text": "脆弱性スキャン機能は存在しない。",
+            "reference": "https://cloud.google.com/debugger/docs/overview",
+            "reference_label": "Cloud Debugger Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Debuggerは本番アプリを停止せずに動作中のコードをデバッグし、変数値を確認できる。",
+        "reference": "https://cloud.google.com/debugger/docs/overview",
+        "reference_label": "Cloud Debugger Overview"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q43",
+      "question": "Google Cloud におけるCloud Schedulerの主な利用目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "定期的なジョブやタスクをスケジュール実行する",
+          "explanation": {
+            "text": "Cloud Schedulerはcronベースでジョブを定期実行できるサービスである。",
+            "reference": "https://cloud.google.com/scheduler/docs/overview",
+            "reference_label": "Cloud Scheduler Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "アプリケーションコードをデバッグする",
+          "explanation": {
+            "text": "デバッグはCloud Debuggerの役割である。",
+            "reference": "https://cloud.google.com/scheduler/docs/overview",
+            "reference_label": "Cloud Scheduler Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "APIキーを安全に保存する",
+          "explanation": {
+            "text": "機密情報の管理はSecret Managerが担う。",
+            "reference": "https://cloud.google.com/scheduler/docs/overview",
+            "reference_label": "Cloud Scheduler Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "サービスアカウントの権限を割り当てる",
+          "explanation": {
+            "text": "IAM権限管理はSchedulerの機能ではない。",
+            "reference": "https://cloud.google.com/scheduler/docs/overview",
+            "reference_label": "Cloud Scheduler Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Schedulerはcron形式で定期ジョブを実行でき、HTTPリクエストやPub/Subメッセージをトリガーできる。",
+        "reference": "https://cloud.google.com/scheduler/docs/overview",
+        "reference_label": "Cloud Scheduler Overview"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q44",
+      "question": "SREにおける『エラーバジェットポリシー』の役割はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "新機能リリースとサービス信頼性のバランスを取る",
+          "explanation": {
+            "text": "エラーバジェットポリシーは信頼性とリリース速度の調整に利用される。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-measurement-sre",
+            "reference_label": "Google Cloud DevOps SRE Guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "セキュリティパッチの適用を自動化する",
+          "explanation": {
+            "text": "パッチ適用はエラーバジェットとは関係がない。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-measurement-sre",
+            "reference_label": "Google Cloud DevOps SRE Guide"
+          }
+        },
+        {
+          "key": "C",
+          "text": "コスト最適化を保証する",
+          "explanation": {
+            "text": "コスト最適化はエラーバジェットポリシーの役割ではない。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-measurement-sre",
+            "reference_label": "Google Cloud DevOps SRE Guide"
+          }
+        },
+        {
+          "key": "D",
+          "text": "開発者の作業時間を制御する",
+          "explanation": {
+            "text": "開発者時間の管理はポリシーの目的ではない。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-measurement-sre",
+            "reference_label": "Google Cloud DevOps SRE Guide"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "エラーバジェットポリシーはSLO違反を防ぐため、信頼性と機能リリースのバランスを調整する仕組みである。",
+        "reference": "https://cloud.google.com/architecture/devops/devops-measurement-sre",
+        "reference_label": "Google Cloud DevOps SRE Guide"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q45",
+      "question": "Cloud Pub/Subの特徴として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "非同期メッセージングを実現する分散型メッセージサービスである",
+          "explanation": {
+            "text": "Pub/Subは非同期通信を実現し、スケーラブルにイベントを配信できる。",
+            "reference": "https://cloud.google.com/pubsub/docs/overview",
+            "reference_label": "Cloud Pub/Sub Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データベースのバックアップを管理する",
+          "explanation": {
+            "text": "バックアップはPub/Subの機能ではない。",
+            "reference": "https://cloud.google.com/pubsub/docs/overview",
+            "reference_label": "Cloud Pub/Sub Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アプリケーションコードを自動修正する",
+          "explanation": {
+            "text": "Pub/Subはコード修正機能を持たない。",
+            "reference": "https://cloud.google.com/pubsub/docs/overview",
+            "reference_label": "Cloud Pub/Sub Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IAMロールを自動的に適用する",
+          "explanation": {
+            "text": "IAMロールは別途設定が必要である。",
+            "reference": "https://cloud.google.com/pubsub/docs/overview",
+            "reference_label": "Cloud Pub/Sub Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Pub/Subはスケーラブルな非同期メッセージングを提供し、イベント駆動型アーキテクチャを支える。",
+        "reference": "https://cloud.google.com/pubsub/docs/overview",
+        "reference_label": "Cloud Pub/Sub Overview"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q46",
+      "question": "DevOpsにおける『リードタイム (Lead Time)』の指標が示すものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "コードの変更が本番環境にデプロイされるまでの時間",
+          "explanation": {
+            "text": "リードタイムは開発から本番リリースまでの時間を測定する。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-measurement-speed",
+            "reference_label": "DevOps Speed Metrics"
+          }
+        },
+        {
+          "key": "B",
+          "text": "障害から復旧するまでの平均時間",
+          "explanation": {
+            "text": "これはMTTRの定義である。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-measurement-speed",
+            "reference_label": "DevOps Speed Metrics"
+          }
+        },
+        {
+          "key": "C",
+          "text": "サービスの稼働率",
+          "explanation": {
+            "text": "稼働率は可用性の指標であり、リードタイムとは異なる。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-measurement-speed",
+            "reference_label": "DevOps Speed Metrics"
+          }
+        },
+        {
+          "key": "D",
+          "text": "開発者の作業時間",
+          "explanation": {
+            "text": "リードタイムは開発者の作業時間そのものではない。",
+            "reference": "https://cloud.google.com/architecture/devops/devops-measurement-speed",
+            "reference_label": "DevOps Speed Metrics"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "リードタイムはコード変更が本番に反映されるまでの時間を測るDevOpsの重要指標である。",
+        "reference": "https://cloud.google.com/architecture/devops/devops-measurement-speed",
+        "reference_label": "DevOps Speed Metrics"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q47",
+      "question": "Cloud Spannerを利用する利点として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "グローバル分散トランザクションをサポートするリレーショナルデータベースである",
+          "explanation": {
+            "text": "Cloud Spannerは水平スケーラブルで、強整合性を持つ分散RDBである。",
+            "reference": "https://cloud.google.com/spanner/docs/overview",
+            "reference_label": "Cloud Spanner Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "インメモリキャッシュとしてのみ利用できる",
+          "explanation": {
+            "text": "SpannerはRDBであり、キャッシュ専用ではない。",
+            "reference": "https://cloud.google.com/spanner/docs/overview",
+            "reference_label": "Cloud Spanner Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データ保存に強整合性を提供しない",
+          "explanation": {
+            "text": "Spannerは強整合性を保証することが特徴である。",
+            "reference": "https://cloud.google.com/spanner/docs/overview",
+            "reference_label": "Cloud Spanner Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "単一リージョンでしか利用できない",
+          "explanation": {
+            "text": "Spannerはグローバル分散をサポートしている。",
+            "reference": "https://cloud.google.com/spanner/docs/overview",
+            "reference_label": "Cloud Spanner Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Spannerはグローバル分散型で強整合性を持つリレーショナルデータベースである。",
+        "reference": "https://cloud.google.com/spanner/docs/overview",
+        "reference_label": "Cloud Spanner Overview"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q48",
+      "question": "Cloud Operations Suite のLogging機能でログベースの指標を作成する目的は何か。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ログに基づいてメトリクスを生成し、監視やアラートに活用する",
+          "explanation": {
+            "text": "ログベースの指標はアラートや可観測性の強化に利用できる。",
+            "reference": "https://cloud.google.com/logging/docs/logs-based-metrics",
+            "reference_label": "Logs-based Metrics"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ログを永続的に削除する",
+          "explanation": {
+            "text": "削除ではなく、メトリクス化が目的である。",
+            "reference": "https://cloud.google.com/logging/docs/logs-based-metrics",
+            "reference_label": "Logs-based Metrics"
+          }
+        },
+        {
+          "key": "C",
+          "text": "IAMロールを自動生成する",
+          "explanation": {
+            "text": "IAMロールはLoggingの役割ではない。",
+            "reference": "https://cloud.google.com/logging/docs/logs-based-metrics",
+            "reference_label": "Logs-based Metrics"
+          }
+        },
+        {
+          "key": "D",
+          "text": "アプリケーションコードを修正する",
+          "explanation": {
+            "text": "コード修正機能はLoggingにはない。",
+            "reference": "https://cloud.google.com/logging/docs/logs-based-metrics",
+            "reference_label": "Logs-based Metrics"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ログベースの指標を使うと、ログから抽出した情報をメトリクス化して監視やアラートに活用できる。",
+        "reference": "https://cloud.google.com/logging/docs/logs-based-metrics",
+        "reference_label": "Logs-based Metrics"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q49",
+      "question": "CI/CD パイプラインにおけるアーティファクトリポジトリの役割はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ビルド成果物を保存し、再利用可能にする",
+          "explanation": {
+            "text": "アーティファクトリポジトリはビルド成果物を保管・配布するために利用される。",
+            "reference": "https://cloud.google.com/artifact-registry/docs/overview",
+            "reference_label": "Artifact Registry Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "サービスアカウントの権限を管理する",
+          "explanation": {
+            "text": "IAM管理とは関係がない。",
+            "reference": "https://cloud.google.com/artifact-registry/docs/overview",
+            "reference_label": "Artifact Registry Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アプリケーションログを保存する",
+          "explanation": {
+            "text": "ログ保存はCloud Loggingの役割である。",
+            "reference": "https://cloud.google.com/artifact-registry/docs/overview",
+            "reference_label": "Artifact Registry Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "本番環境を自動的に監視する",
+          "explanation": {
+            "text": "監視はCloud Monitoringの役割である。",
+            "reference": "https://cloud.google.com/artifact-registry/docs/overview",
+            "reference_label": "Artifact Registry Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "アーティファクトリポジトリはビルド成果物を保管し、デプロイや再利用に利用できる。",
+        "reference": "https://cloud.google.com/artifact-registry/docs/overview",
+        "reference_label": "Artifact Registry Overview"
+      }
+    },
+    {
+      "id": "gcp-PDOP-P-q50",
+      "question": "Google Cloud におけるCloud Runの特徴として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "コンテナ化されたアプリケーションをフルマネージドで実行できる",
+          "explanation": {
+            "text": "Cloud Runはコンテナをサーバーレスで実行できるマネージドサービスである。",
+            "reference": "https://cloud.google.com/run/docs/overview",
+            "reference_label": "Cloud Run Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "仮想マシンを手動で管理する必要がある",
+          "explanation": {
+            "text": "Cloud Runは基盤管理を必要とせず、サーバーレスで動作する。",
+            "reference": "https://cloud.google.com/run/docs/overview",
+            "reference_label": "Cloud Run Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Kubernetesクラスタを必ず構築する必要がある",
+          "explanation": {
+            "text": "Cloud RunはKnativeを基盤としているが、ユーザーがクラスタを構築する必要はない。",
+            "reference": "https://cloud.google.com/run/docs/overview",
+            "reference_label": "Cloud Run Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "サーバー常時稼働が必須である",
+          "explanation": {
+            "text": "Cloud Runはリクエストベースでスケールし、アイドル時にはリソースを消費しない。",
+            "reference": "https://cloud.google.com/run/docs/overview",
+            "reference_label": "Cloud Run Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Runはコンテナ化アプリをサーバーレスで実行でき、インフラ管理不要で自動スケーリングする。",
+        "reference": "https://cloud.google.com/run/docs/overview",
+        "reference_label": "Cloud Run Overview"
+      }
+    }
+  ]
+}

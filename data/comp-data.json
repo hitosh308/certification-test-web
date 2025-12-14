@@ -1,0 +1,2512 @@
+{
+    "exam": {
+        "id": "comptia_data_plus",
+        "title": "CompTIA Data+",
+        "description": "CompTIA Data+ は、ビジネス データを収集・整形・分析・可視化し、組織の意思決定に活かすためのスキルを証明するデータ分析の国際認定資格です。データの概念、データマイニング、データ分析、ビジュアライゼーション、データガバナンス／品質管理といったデータライフサイクル全体をカバーし、データドリブンなビジネス判断やレポーティング能力を証明できます。",
+        "version": "DA0-002",
+        "price": "255 USD",
+        "difficulty": "普通",
+        "official-site": "https://www.comptia.org/certifications/data",
+        "category": {
+            "id": "comptia",
+            "name": "CompTIA"
+        }
+    },
+    "questions": [
+        {
+            "id": "comptia-data-1",
+            "question": "データの正規化（Normalization）を実施する主な目的はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "データの重複を減らし整合性を高める",
+                    "explanation": {
+                        "text": "正規化の最も基本的な目的は重複排除と整合性向上である。",
+                        "reference": "https://learn.microsoft.com/sql/relational-databases/database-normalization-basics",
+                        "reference_label": "Microsoft Docs – Database normalization basics"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "クエリ性能を最大化する",
+                    "explanation": {
+                        "text": "正規化は性能より整合性向上が目的。性能向上は必ずしも保証されない。",
+                        "reference": "https://learn.microsoft.com/sql/relational-databases/database-normalization-basics",
+                        "reference_label": "Microsoft Docs"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "データの暗号化を行う",
+                    "explanation": {
+                        "text": "暗号化はセキュリティ領域であり正規化とは直接関係しない。",
+                        "reference": "https://www.comptia.org/certifications/data",
+                        "reference_label": "CompTIA Data+ Exam Objectives"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "データのバックアップを効率化する",
+                    "explanation": {
+                        "text": "バックアップ効率化は正規化の目的ではない。",
+                        "reference": "https://learn.microsoft.com/sql/relational-databases/database-normalization-basics",
+                        "reference_label": "Microsoft Docs"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "正規化はデータ構造を整理し重複を排除して整合性を保つための手法である。",
+                "reference": "https://learn.microsoft.com/sql/relational-databases/database-normalization-basics",
+                "reference_label": "Microsoft Docs"
+            }
+        },
+
+        {
+            "id": "comptia-data-2",
+            "question": "データ品質指標のうち、「データが最新であるか」を測定するものはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "完全性（Completeness）",
+                    "explanation": {
+                        "text": "完全性はデータの欠落がないかどうかを示す。",
+                        "reference": "https://www.iso.org/standard/81167.html",
+                        "reference_label": "ISO 8000 (Data Quality)"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "正確性（Accuracy）",
+                    "explanation": {
+                        "text": "正確性はデータの真実性・正しさ。",
+                        "reference": "https://www.iso.org/standard/81167.html",
+                        "reference_label": "ISO 8000"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "一貫性（Consistency）",
+                    "explanation": {
+                        "text": "一貫性はデータ間の矛盾のなさ。",
+                        "reference": "https://www.iso.org/standard/81167.html",
+                        "reference_label": "ISO 8000"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "タイムリネス（Timeliness）",
+                    "explanation": {
+                        "text": "データが最新かを示す指標はタイムリネスである。",
+                        "reference": "https://www.iso.org/standard/81167.html",
+                        "reference_label": "ISO 8000"
+                    }
+                }
+            ],
+            "answer": "D",
+            "explanation": {
+                "text": "データ品質の“タイムリネス”は最新性・即時性を測定する指標である。",
+                "reference": "https://www.iso.org/standard/81167.html",
+                "reference_label": "ISO 8000"
+            }
+        },
+
+        {
+            "id": "comptia-data-3",
+            "question": "ETLプロセスの“Transform”フェーズに含まれる典型的な操作はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "生データの収集",
+                    "explanation": {
+                        "text": "データ収集はExtract段階に属する。",
+                        "reference": "https://learn.microsoft.com/azure/data-factory/introduction",
+                        "reference_label": "Microsoft Azure Data Factory"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "データのクリーニング",
+                    "explanation": {
+                        "text": "Transformフェーズにはクリーニング、正規化、型変換等が含まれる。",
+                        "reference": "https://learn.microsoft.com/azure/data-factory/introduction",
+                        "reference_label": "Microsoft Docs"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "データのロード",
+                    "explanation": {
+                        "text": "ロードはLoadフェーズに属する。",
+                        "reference": "https://learn.microsoft.com/azure/data-factory/introduction",
+                        "reference_label": "Microsoft Docs"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "データのアーカイブ",
+                    "explanation": {
+                        "text": "アーカイブはETL外のデータライフサイクル管理工程。",
+                        "reference": "https://www.comptia.org/certifications/data",
+                        "reference_label": "CompTIA Data+ Objectives"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "Transformはクリーニングや標準化などデータ加工の工程である。",
+                "reference": "https://learn.microsoft.com/azure/data-factory/introduction",
+                "reference_label": "Microsoft Docs"
+            }
+        },
+
+        {
+            "id": "comptia-data-4",
+            "question": "相関係数が -0.95 の場合、どのような関係を示すか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "強い正の相関",
+                    "explanation": {
+                        "text": "正の相関は正の値を取る場合。",
+                        "reference": "https://statistics.laerd.com/statistical-guides/pearson-correlation-coefficient-statistical-guide.php",
+                        "reference_label": "Laerd Statistics – Pearson"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "弱い正の相関",
+                    "explanation": {
+                        "text": "弱い相関は絶対値が小さいとき。",
+                        "reference": "https://statistics.laerd.com/statistical-guides/pearson-correlation-coefficient-statistical-guide.php",
+                        "reference_label": "Laerd Statistics"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "強い負の相関",
+                    "explanation": {
+                        "text": "−0.95は強い負の相関を示す。",
+                        "reference": "https://statistics.laerd.com/statistical-guides/pearson-correlation-coefficient-statistical-guide.php",
+                        "reference_label": "Laerd Statistics"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "相関なし",
+                    "explanation": {
+                        "text": "0付近で相関なし。",
+                        "reference": "https://statistics.laerd.com/statistical-guides/pearson-correlation-coefficient-statistical-guide.php",
+                        "reference_label": "Laerd Statistics"
+                    }
+                }
+            ],
+            "answer": "C",
+            "explanation": {
+                "text": "相関係数が -1 に近いほど強い負の相関を示す。",
+                "reference": "https://statistics.laerd.com/statistical-guides/pearson-correlation-coefficient-statistical-guide.php",
+                "reference_label": "Laerd Statistics"
+            }
+        },
+
+        {
+            "id": "comptia-data-5",
+            "question": "ダッシュボード設計のベストプラクティスとして最も適切なものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "すべての情報を1画面に詰め込む",
+                    "explanation": {
+                        "text": "情報過多は可読性を損なう。",
+                        "reference": "https://www.tableau.com/learn/articles/dashboard-best-practices",
+                        "reference_label": "Tableau Dashboard Best Practices"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "KPIを最も重要な位置に配置する",
+                    "explanation": {
+                        "text": "KPIを視線の中心に置くことは基本的なベストプラクティス。",
+                        "reference": "https://www.tableau.com/learn/articles/dashboard-best-practices",
+                        "reference_label": "Tableau Docs"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "色は最大限カラフルにする",
+                    "explanation": {
+                        "text": "過度な色使いは混乱を招く。",
+                        "reference": "https://www.tableau.com/learn/articles/dashboard-best-practices",
+                        "reference_label": "Tableau Docs"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "フィルタはできるだけ使用しない",
+                    "explanation": {
+                        "text": "必要なフィルタはユーザビリティを向上させる。",
+                        "reference": "https://www.tableau.com/learn/articles/dashboard-best-practices",
+                        "reference_label": "Tableau Docs"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "重要KPIを中心に配置することはダッシュボード設計の基本指針である。",
+                "reference": "https://www.tableau.com/learn/articles/dashboard-best-practices",
+                "reference_label": "Tableau Docs"
+            }
+        },
+
+        {
+            "id": "comptia-data-6",
+            "question": "データガバナンスにおける“データスチュワード”の主な役割として最も適切なものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "データの技術的インフラの運用管理",
+                    "explanation": {
+                        "text": "インフラ運用はデータエンジニアやIT管理者の役割。",
+                        "reference": "https://www.datamanagementassociation.org/",
+                        "reference_label": "DAMA-DMBOK"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "データ品質ルールと業務定義の管理",
+                    "explanation": {
+                        "text": "データスチュワードは業務側でデータ定義・品質を監督する役割。",
+                        "reference": "https://www.datamanagementassociation.org/",
+                        "reference_label": "DAMA-DMBOK"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "データセンターの物理的保守",
+                    "explanation": {
+                        "text": "物理保守はファシリティの領域。",
+                        "reference": "https://www.datamanagementassociation.org/",
+                        "reference_label": "DAMA-DMBOK"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ネットワーク監視",
+                    "explanation": {
+                        "text": "ネットワーク監視はガバナンスではなくIT運用。",
+                        "reference": "https://www.datamanagementassociation.org/",
+                        "reference_label": "DAMA-DMBOK"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "データスチュワードはビジネス側でデータ品質と定義を管理する役割である。",
+                "reference": "https://www.datamanagementassociation.org/",
+                "reference_label": "DAMA-DMBOK"
+            }
+        },
+
+        {
+            "id": "comptia-data-7",
+            "question": "アウトライア検出の一般的な手法として最も適切なものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Zスコア法",
+                    "explanation": {
+                        "text": "Zスコアは統計的外れ値検出でよく使われる。",
+                        "reference": "https://statistics.laerd.com/statistical-guides/standard-score.php",
+                        "reference_label": "Laerd Statistics"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Min-Max正規化",
+                    "explanation": {
+                        "text": "Min-Maxはスケーリングであって外れ値検出ではない。",
+                        "reference": "https://scikit-learn.org/stable/modules/preprocessing.html",
+                        "reference_label": "sklearn Preprocessing"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "One-Hot Encoding",
+                    "explanation": {
+                        "text": "カテゴリ変換であり外れ値検出ではない。",
+                        "reference": "https://scikit-learn.org/stable/modules/preprocessing.html",
+                        "reference_label": "sklearn"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ラベルエンコーディング",
+                    "explanation": {
+                        "text": "カテゴリ変換であり外れ値検出ではない。",
+                        "reference": "https://scikit-learn.org/stable/modules/preprocessing.html",
+                        "reference_label": "sklearn"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Zスコア法は外れ値を統計的に判定する基本手法である。",
+                "reference": "https://statistics.laerd.com/statistical-guides/standard-score.php",
+                "reference_label": "Laerd Statistics"
+            }
+        },
+
+        {
+            "id": "comptia-data-8",
+            "question": "機密データを分析環境へ移動する際の最も基本的なセキュリティ対策はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "可視化を先に作成する",
+                    "explanation": {
+                        "text": "セキュリティ対策とは関係しない。",
+                        "reference": "https://www.nist.gov/privacy-framework",
+                        "reference_label": "NIST Privacy Framework"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "データを匿名化またはマスキングする",
+                    "explanation": {
+                        "text": "機密情報保護の基本手法は匿名化/マスキングである。",
+                        "reference": "https://www.nist.gov/privacy-framework",
+                        "reference_label": "NIST Privacy Framework"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "データをすべて削除する",
+                    "explanation": {
+                        "text": "分析目的を果たせないため不適切。",
+                        "reference": "https://www.nist.gov/privacy-framework",
+                        "reference_label": "NIST Privacy Framework"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "データを完全に暗号化解除してから送信",
+                    "explanation": {
+                        "text": "送信前に暗号解除するのはリスクが高い。",
+                        "reference": "https://www.nist.gov/privacy-framework",
+                        "reference_label": "NIST Privacy Framework"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "匿名化やマスキングはデータ保護の標準手法である。",
+                "reference": "https://www.nist.gov/privacy-framework",
+                "reference_label": "NIST Privacy Framework"
+            }
+        },
+
+        {
+            "id": "comptia-data-9",
+            "question": "データ可視化において「棒グラフ」が適しているケースはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "割合で全体構成を示す場合",
+                    "explanation": {
+                        "text": "割合は円グラフやサンバーストが適する。",
+                        "reference": "https://www.tableau.com/learn/articles/data-visualization-best-practices",
+                        "reference_label": "Tableau"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "カテゴリ間の比較を行う場合",
+                    "explanation": {
+                        "text": "棒グラフはカテゴリ比較の代表的手法。",
+                        "reference": "https://www.tableau.com/learn/articles/data-visualization-best-practices",
+                        "reference_label": "Tableau Docs"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "時系列のトレンドを示す場合",
+                    "explanation": {
+                        "text": "トレンドは折れ線が適する。",
+                        "reference": "https://www.tableau.com/learn/articles/data-visualization-best-practices",
+                        "reference_label": "Tableau Docs"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "相関関係を示す場合",
+                    "explanation": {
+                        "text": "相関は散布図が適する。",
+                        "reference": "https://www.tableau.com/learn/articles/data-visualization-best-practices",
+                        "reference_label": "Tableau Docs"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "棒グラフはカテゴリ比較に最適である。",
+                "reference": "https://www.tableau.com/learn/articles/data-visualization-best-practices",
+                "reference_label": "Tableau"
+            }
+        },
+
+        {
+            "id": "comptia-data-10",
+            "question": "欠損値処理として“中央値で補完する”方法が適しているケースはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "データが大きく歪んでいる場合",
+                    "explanation": {
+                        "text": "歪度が大きい場合は平均値より中央値が頑健で適切。",
+                        "reference": "https://statistics.laerd.com/statistical-guides/measures-central-tendency-mean-mode-median.php",
+                        "reference_label": "Laerd Statistics"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "データがすべてカテゴリ値の場合",
+                    "explanation": {
+                        "text": "カテゴリ値には中央値は使えない。",
+                        "reference": "https://statistics.laerd.com",
+                        "reference_label": "Laerd Statistics"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "欠損が完全に無作為でない場合",
+                    "explanation": {
+                        "text": "非無作為欠損にはより高度な手法が必要。",
+                        "reference": "https://statistics.laerd.com",
+                        "reference_label": "Laerd Statistics"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "外れ値が存在しない場合",
+                    "explanation": {
+                        "text": "外れ値がない場合は平均値で補完することの方が自然。",
+                        "reference": "https://statistics.laerd.com",
+                        "reference_label": "Laerd Statistics"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "中央値は外れ値や歪度に強いため、歪んだ分布に適する。",
+                "reference": "https://statistics.laerd.com/statistical-guides/measures-central-tendency-mean-mode-median.php",
+                "reference_label": "Laerd Statistics"
+            }
+        },
+        {
+            "id": "comptia-data-11",
+            "question": "データ辞書（Data Dictionary）の主な目的として最も適切なものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "データの物理的保存方式を制御する",
+                    "explanation": {
+                        "text": "保存方式の管理はストレージ設計の領域でありデータ辞書が直接担う役割ではない。",
+                        "reference": "https://www.datamanagementassociation.org/",
+                        "reference_label": "DAMA-DMBOK"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "ビジネス用語やデータ定義を一元管理する",
+                    "explanation": {
+                        "text": "データ辞書はメタデータ管理の中心であり、データ定義の統一が主目的である。",
+                        "reference": "https://www.datamanagementassociation.org/",
+                        "reference_label": "DAMA-DMBOK"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ネットワーク通信量を削減する",
+                    "explanation": {
+                        "text": "通信量削減はネットワーク設計の領域でデータ辞書とは無関係。",
+                        "reference": "https://www.datamanagementassociation.org/",
+                        "reference_label": "DAMA-DMBOK"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "データの暗号化キーを保存する",
+                    "explanation": {
+                        "text": "暗号化キーはKMSなどの専用システムで管理され、データ辞書では扱わない。",
+                        "reference": "https://www.nist.gov/privacy-framework",
+                        "reference_label": "NIST Privacy Framework"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "データ辞書はデータ項目の意味・定義・属性を一元管理するために使用される。",
+                "reference": "https://www.datamanagementassociation.org/",
+                "reference_label": "DAMA-DMBOK"
+            }
+        },
+
+        {
+            "id": "comptia-data-12",
+            "question": "カテゴリデータの可視化として最も適切なチャートはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "散布図（Scatter Plot）",
+                    "explanation": {
+                        "text": "散布図は数値データ間の相関を示すチャートでカテゴリデータには向かない。",
+                        "reference": "https://www.tableau.com/learn/articles/data-visualization-best-practices",
+                        "reference_label": "Tableau"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "折れ線グラフ（Line Chart）",
+                    "explanation": {
+                        "text": "折れ線は時系列連続データ向けでカテゴリ比較は難しい。",
+                        "reference": "https://www.tableau.com/learn/articles/data-visualization-best-practices",
+                        "reference_label": "Tableau Docs"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "棒グラフ（Bar Chart）",
+                    "explanation": {
+                        "text": "棒グラフはカテゴリ間比較に適した標準チャートである。",
+                        "reference": "https://www.tableau.com/learn/articles/data-visualization-best-practices",
+                        "reference_label": "Tableau Docs"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ヒートマップ（Heatmap）",
+                    "explanation": {
+                        "text": "ヒートマップは二次元変数と強度表現に使われることが多い。",
+                        "reference": "https://www.tableau.com/learn/articles/data-visualization-best-practices",
+                        "reference_label": "Tableau Docs"
+                    }
+                }
+            ],
+            "answer": "C",
+            "explanation": {
+                "text": "カテゴリデータの比較には棒グラフが最適である。",
+                "reference": "https://www.tableau.com/learn/articles/data-visualization-best-practices",
+                "reference_label": "Tableau Docs"
+            }
+        },
+
+        {
+            "id": "comptia-data-13",
+            "question": "ビジネス質問を分析質問へ変換する際に最も重要なステップはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "データをすべて収集してから目的を決める",
+                    "explanation": {
+                        "text": "目的を決める前にデータ収集するのは非効率で推奨されない。",
+                        "reference": "https://www.comptia.org/certifications/data",
+                        "reference_label": "CompTIA Data+ Objectives"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "KPIと成功基準を明確化する",
+                    "explanation": {
+                        "text": "ビジネス質問を実行可能にするにはKPI定義が不可欠である。",
+                        "reference": "https://www.comptia.org/certifications/data",
+                        "reference_label": "CompTIA Data+"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "視覚的に魅力的なチャートを先に作る",
+                    "explanation": {
+                        "text": "チャート作成は分析後の工程である。",
+                        "reference": "https://www.comptia.org/certifications/data",
+                        "reference_label": "CompTIA Data+"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "IT部門へ分析作業を全て委任する",
+                    "explanation": {
+                        "text": "分析質問の定義はビジネス側が主体となる必要がある。",
+                        "reference": "https://www.comptia.org/certifications/data",
+                        "reference_label": "CompTIA Data+ Objectives"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "ビジネス質問を分析質問に変換する際にはKPI・成功基準の明確化が重要である。",
+                "reference": "https://www.comptia.org/certifications/data",
+                "reference_label": "CompTIA Data+ Objectives"
+            }
+        },
+
+        {
+            "id": "comptia-data-14",
+            "question": "SQLのGROUP BY句を使用する目的として正しいものはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "テーブルを物理的に結合する",
+                    "explanation": {
+                        "text": "テーブル結合はJOIN句の役割である。",
+                        "reference": "https://learn.microsoft.com/sql/t-sql/queries/select-group-by-transact-sql",
+                        "reference_label": "Microsoft Docs"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "データを集計単位で分類する",
+                    "explanation": {
+                        "text": "GROUP BYは集計処理を行うための分類機能である。",
+                        "reference": "https://learn.microsoft.com/sql/t-sql/queries/select-group-by-transact-sql",
+                        "reference_label": "Microsoft Docs"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "SQL文を高速化する",
+                    "explanation": {
+                        "text": "高速化は副次効果であり、主目的ではない。",
+                        "reference": "https://learn.microsoft.com/sql/t-sql/queries/select-group-by-transact-sql",
+                        "reference_label": "Microsoft Docs"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "データ型を自動的に変換する",
+                    "explanation": {
+                        "text": "データ型変換はCAST/CONVERTの役割でありGROUP BYの目的ではない。",
+                        "reference": "https://learn.microsoft.com/sql/t-sql/queries/select-group-by-transact-sql",
+                        "reference_label": "Microsoft Docs"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "GROUP BYは指定した列ごとにデータをグループ化し集計処理を行う。",
+                "reference": "https://learn.microsoft.com/sql/t-sql/queries/select-group-by-transact-sql",
+                "reference_label": "Microsoft Docs"
+            }
+        },
+
+        {
+            "id": "comptia-data-15",
+            "question": "データパイプラインの監視項目として最も適切なものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "データ処理のレイテンシ",
+                    "explanation": {
+                        "text": "レイテンシ監視はパイプラインの健全性確認に不可欠である。",
+                        "reference": "https://cloud.google.com/dataflow/docs",
+                        "reference_label": "Google Dataflow Docs"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "利用者のメールアドレス一覧",
+                    "explanation": {
+                        "text": "利用者管理はパイプライン監視とは関係しない。",
+                        "reference": "https://cloud.google.com/dataflow/docs",
+                        "reference_label": "Google Docs"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "業務部門の組織図",
+                    "explanation": {
+                        "text": "組織図は監視対象ではない。",
+                        "reference": "https://cloud.google.com/dataflow/docs",
+                        "reference_label": "Google Dataflow Docs"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "デバイスの物理温度",
+                    "explanation": {
+                        "text": "クラウド環境では物理温度は通常関係しない。",
+                        "reference": "https://cloud.google.com/dataflow/docs",
+                        "reference_label": "Google Dataflow Docs"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "遅延（レイテンシ）はパイプラインの正常動作判断に不可欠である。",
+                "reference": "https://cloud.google.com/dataflow/docs",
+                "reference_label": "Google Dataflow Docs"
+            }
+        },
+
+        {
+            "id": "comptia-data-16",
+            "question": "データモデリングにおいてER図を使用する主目的はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "ネットワーク構成を可視化する",
+                    "explanation": {
+                        "text": "ネットワーク可視化はER図の目的ではない。",
+                        "reference": "https://www.ibm.com/docs/en/ida",
+                        "reference_label": "IBM Data Architecture"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "エンティティ間の関係を明確化する",
+                    "explanation": {
+                        "text": "ER図はデータ構造と関係性を表すために使用される。",
+                        "reference": "https://www.ibm.com/docs/en/ida",
+                        "reference_label": "IBM Docs"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "物理サーバの配置を管理する",
+                    "explanation": {
+                        "text": "物理配置はインフラ設計でありER図とは無関係。",
+                        "reference": "https://www.ibm.com/docs/en/ida",
+                        "reference_label": "IBM Docs"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ユーザー権限を可視化する",
+                    "explanation": {
+                        "text": "権限管理はRBACなどで扱われる領域である。",
+                        "reference": "https://www.ibm.com/docs/en/ida",
+                        "reference_label": "IBM Docs"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "ER図はデータモデリングでエンティティとその関係性を表現する。",
+                "reference": "https://www.ibm.com/docs/en/ida",
+                "reference_label": "IBM Docs"
+            }
+        },
+
+        {
+            "id": "comptia-data-17",
+            "question": "データクレンジングの工程として最も適切なものはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "データの暗号化方式選定",
+                    "explanation": {
+                        "text": "暗号化はセキュリティ領域でクレンジングとは別。",
+                        "reference": "https://www.nist.gov/privacy-framework",
+                        "reference_label": "NIST Privacy Framework"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "重複データの削除",
+                    "explanation": {
+                        "text": "重複削除は標準的なクレンジング作業の1つである。",
+                        "reference": "https://www.iso.org/standard/81167.html",
+                        "reference_label": "ISO 8000"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ネットワーク帯域の最適化",
+                    "explanation": {
+                        "text": "ネットワークはクレンジング工程に含まれない。",
+                        "reference": "https://www.iso.org/standard/81167.html",
+                        "reference_label": "ISO 8000"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ハードウェア障害の監視",
+                    "explanation": {
+                        "text": "インフラ監視でありクレンジングとは無関係。",
+                        "reference": "https://www.iso.org/standard/81167.html",
+                        "reference_label": "ISO 8000"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "データクレンジングでは重複排除など品質向上を目的とした加工を行う。",
+                "reference": "https://www.iso.org/standard/81167.html",
+                "reference_label": "ISO 8000"
+            }
+        },
+
+        {
+            "id": "comptia-data-18",
+            "question": "データライフサイクル管理において“アーカイブ”の目的として最も適切なものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "即時分析のために高速アクセスを提供する",
+                    "explanation": {
+                        "text": "アーカイブは高速アクセスではなく長期保存を目的とする。",
+                        "reference": "https://www.nist.gov/privacy-framework",
+                        "reference_label": "NIST Data Lifecycle"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "長期間保持が必要なデータを低コストで保存する",
+                    "explanation": {
+                        "text": "アーカイブは頻繁に参照しないデータを低コストで保管することが主目的。",
+                        "reference": "https://www.nist.gov/privacy-framework",
+                        "reference_label": "NIST Data Lifecycle"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "リアルタイム処理を高速化する",
+                    "explanation": {
+                        "text": "リアルタイム処理はアーカイブとは無関係。",
+                        "reference": "https://www.nist.gov/privacy-framework",
+                        "reference_label": "NIST"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ネットワーク帯域を増加させる",
+                    "explanation": {
+                        "text": "帯域の増加はデータライフサイクル管理とは関係しない。",
+                        "reference": "https://www.nist.gov/privacy-framework",
+                        "reference_label": "NIST"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "アーカイブは長期保管とコスト最適化を目的に行う工程である。",
+                "reference": "https://www.nist.gov/privacy-framework",
+                "reference_label": "NIST Data Lifecycle"
+            }
+        },
+
+        {
+            "id": "comptia-data-19",
+            "question": "データ可視化において“色相（Hue）”を使う最も適切な目的はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "数量の大小を表現する",
+                    "explanation": {
+                        "text": "量の大小は明度（Lightness）や彩度（Saturation）で表すことが多い。",
+                        "reference": "https://www.tableau.com/learn/articles/data-visualization-best-practices",
+                        "reference_label": "Tableau Docs"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "カテゴリの違いを表現する",
+                    "explanation": {
+                        "text": "色相はカテゴリ間の識別に最適である。",
+                        "reference": "https://www.tableau.com/learn/articles/data-visualization-best-practices",
+                        "reference_label": "Tableau"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "時系列の変化速度を示す",
+                    "explanation": {
+                        "text": "時系列の変化速度は折れ線の傾きなどで表現する。",
+                        "reference": "https://www.tableau.com/learn/articles/data-visualization-best-practices",
+                        "reference_label": "Tableau"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "相関の強さを数値化する",
+                    "explanation": {
+                        "text": "相関は統計的指標（例：ピアソン相関）で表す。",
+                        "reference": "https://statistics.laerd.com",
+                        "reference_label": "Laerd Statistics"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "色相（Hue）はカテゴリ識別に適した視覚属性である。",
+                "reference": "https://www.tableau.com/learn/articles/data-visualization-best-practices",
+                "reference_label": "Tableau Docs"
+            }
+        },
+
+        {
+            "id": "comptia-data-20",
+            "question": "データ分析の前に実施すべき探索的データ分析（EDA）の目的として適切なものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "分析モデルのパラメータチューニングを行う",
+                    "explanation": {
+                        "text": "パラメータ調整はモデル構築後の工程でありEDAの目的ではない。",
+                        "reference": "https://www.ibm.com/topics/exploratory-data-analysis",
+                        "reference_label": "IBM EDA"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "データの分布や特徴を把握する",
+                    "explanation": {
+                        "text": "EDAは分布・外れ値・傾向などを理解するための分析前工程である。",
+                        "reference": "https://www.ibm.com/topics/exploratory-data-analysis",
+                        "reference_label": "IBM Docs"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "最終的なダッシュボードを作成する",
+                    "explanation": {
+                        "text": "ダッシュボード作成はEDA後の工程。",
+                        "reference": "https://www.ibm.com/topics/exploratory-data-analysis",
+                        "reference_label": "IBM Docs"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "データの完全削除ポリシーを策定する",
+                    "explanation": {
+                        "text": "削除ポリシー策定はガバナンス領域でEDAの範囲外。",
+                        "reference": "https://www.nist.gov/privacy-framework",
+                        "reference_label": "NIST Privacy Framework"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "EDAはデータの分布・特徴・外れ値の把握が目的である。",
+                "reference": "https://www.ibm.com/topics/exploratory-data-analysis",
+                "reference_label": "IBM EDA"
+            }
+        },
+    {
+      "id": "comptia-data-21",
+      "question": "ヒストグラムを用いた可視化が最も有効なのはどのような目的か。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "カテゴリごとの売上金額を比較する",
+          "explanation": {
+            "text": "カテゴリ比較には棒グラフが一般的であり、ヒストグラムの主目的ではない。",
+            "reference": "https://www.tableau.com/learn/articles/data-visualization-best-practices",
+            "reference_label": "Tableau – データ可視化ベストプラクティス"
+          }
+        },
+        {
+          "key": "B",
+          "text": "数値データの分布形状を把握する",
+          "explanation": {
+            "text": "ヒストグラムはビンに区切った度数分布を示し、分布形状の把握に最も適している。",
+            "reference": "https://www.ibm.com/docs/en/cognos-analytics/11.1.0?topic=types-histograms",
+            "reference_label": "IBM – ヒストグラムの概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "2つの変数間の相関を確認する",
+          "explanation": {
+            "text": "相関を見る際は散布図が典型的であり、ヒストグラム単体では不向きである。",
+            "reference": "https://www.tableau.com/learn/articles/data-visualization-best-practices",
+            "reference_label": "Tableau – 散布図の用途"
+          }
+        },
+        {
+          "key": "D",
+          "text": "プロセスフローを時系列で示す",
+          "explanation": {
+            "text": "プロセスや時系列の表現にはガントチャートや折れ線グラフなどを用いる。",
+            "reference": "https://www.tableau.com/learn/articles/data-visualization-best-practices",
+            "reference_label": "Tableau – 時系列可視化"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ヒストグラムは連続値をビン区切りで集計し、分布の形（歪み・尖り・多峰性）を把握するために用いられる。",
+        "reference": "https://www.ibm.com/docs/en/cognos-analytics/11.1.0?topic=types-histograms",
+        "reference_label": "IBM – ヒストグラムの概要"
+      }
+    },
+
+    {
+      "id": "comptia-data-22",
+      "question": "データガバナンスにおける“データオーナー（Data Owner）”の責任として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データベースサーバのパッチ適用作業を行う",
+          "explanation": {
+            "text": "パッチ適用はIT運用もしくはDBAの職務であり、ビジネス側のデータオーナーの責任ではない。",
+            "reference": "https://www.datamanagementuk.org/dama-dmbok",
+            "reference_label": "DAMA-DMBOK – データ管理の役割"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データアクセス権限方針を承認し責任を負う",
+          "explanation": {
+            "text": "データオーナーはデータの利用目的やアクセス権限ポリシーに最終責任を持つと定義されることが多い。",
+            "reference": "https://www.datamanagementuk.org/dama-dmbok",
+            "reference_label": "DAMA-DMBOK – Data Ownership"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ネットワークファイアウォールのルール設定を行う",
+          "explanation": {
+            "text": "ネットワーク制御はセキュリティ運用担当の役割であり、データオーナーの責任ではない。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final",
+            "reference_label": "NIST SP 800-53 – セキュリティ管理"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ダッシュボードのビジュアルデザインを作成する",
+          "explanation": {
+            "text": "ダッシュボードのデザインはアナリストやBI開発者の職務であることが多い。",
+            "reference": "https://www.comptia.org/certifications/data",
+            "reference_label": "CompTIA Data+ Exam Objectives – Job Roles"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "データオーナーは、そのデータに関するアクセス権限・利用方法・コンプライアンス遵守の責任主体として定義される。",
+        "reference": "https://www.datamanagementuk.org/dama-dmbok",
+        "reference_label": "DAMA-DMBOK – Data Governance Roles"
+      }
+    },
+
+    {
+      "id": "comptia-data-23",
+      "question": "A/Bテストを実施する主な目的として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "モデルの学習データ量を最大化する",
+          "explanation": {
+            "text": "A/Bテストは主に施策の効果比較が目的であり、学習データ量の最大化は直接の目的ではない。",
+            "reference": "https://www.optimizely.com/optimization-glossary/ab-testing/",
+            "reference_label": "Optimizely – What is A/B testing?"
+          }
+        },
+        {
+          "key": "B",
+          "text": "2つのバージョンのパフォーマンス差を統計的に検証する",
+          "explanation": {
+            "text": "A/Bテストは母集団をランダムに分け、どちらがより良い結果を出すかを統計的に評価する手法である。",
+            "reference": "https://www.optimizely.com/optimization-glossary/ab-testing/",
+            "reference_label": "Optimizely – A/Bテストの目的"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データをリアルタイムでストリーミング処理する",
+          "explanation": {
+            "text": "ストリーミング処理はデータ処理基盤の話であり、A/Bテストとは別領域である。",
+            "reference": "https://cloud.google.com/solutions/big-data",
+            "reference_label": "Google Cloud – Big Data 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "すべてのユーザーに同じ UI を提供する",
+          "explanation": {
+            "text": "A/Bテストではむしろ異なるUIを別グループに提示するため、この説明は逆である。",
+            "reference": "https://www.optimizely.com/optimization-glossary/ab-testing/",
+            "reference_label": "Optimizely – A/B Testing"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "A/Bテストは、バージョンAとBをランダムにユーザーへ割り当て、どちらがより高い指標（CTR、CVRなど）を出すかを統計的に比較するために行う。",
+        "reference": "https://www.optimizely.com/optimization-glossary/ab-testing/",
+        "reference_label": "Optimizely – What is A/B testing?"
+      }
+    },
+
+    {
+      "id": "comptia-data-24",
+      "question": "機械学習モデルの評価指標として、クラス不均衡が大きい分類問題で特に有用なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "単純な正解率（Accuracy）",
+          "explanation": {
+            "text": "クラス不均衡が大きい場合、Accuracyは多数派クラスのみで高く見えてしまうため不適切になりやすい。",
+            "reference": "https://scikit-learn.org/stable/modules/model_evaluation.html",
+            "reference_label": "scikit-learn – Model evaluation"
+          }
+        },
+        {
+          "key": "B",
+          "text": "平均二乗誤差（MSE）",
+          "explanation": {
+            "text": "MSEは回帰問題の指標であり、分類問題のクラス不均衡とは直接関係しない。",
+            "reference": "https://scikit-learn.org/stable/modules/model_evaluation.html",
+            "reference_label": "scikit-learn – Regression metrics"
+          }
+        },
+        {
+          "key": "C",
+          "text": "F1スコア",
+          "explanation": {
+            "text": "F1スコアは適合率と再現率の調和平均であり、不均衡データに対してよく用いられる。",
+            "reference": "https://scikit-learn.org/stable/modules/model_evaluation.html",
+            "reference_label": "scikit-learn – Classification metrics"
+          }
+        },
+        {
+          "key": "D",
+          "text": "決定係数（R²）",
+          "explanation": {
+            "text": "R²は回帰モデルの決定係数であり分類問題の評価指標ではない。",
+            "reference": "https://scikit-learn.org/stable/modules/model_evaluation.html",
+            "reference_label": "scikit-learn – Regression metrics"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "クラス不均衡問題では、多数派クラスだけを当ててもAccuracyが高くなるため、適合率と再現率をバランスよく評価するF1スコアがよく用いられる。",
+        "reference": "https://scikit-learn.org/stable/modules/model_evaluation.html",
+        "reference_label": "scikit-learn – Classification metrics (F1-score)"
+      }
+    },
+
+    {
+      "id": "comptia-data-25",
+      "question": "データマスキング（Data Masking）の主な目的として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データを圧縮しストレージコストを削減する",
+          "explanation": {
+            "text": "マスキングは値の置き換えであり、圧縮や容量削減が主目的ではない。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-188/final",
+            "reference_label": "NIST SP 800-188 – De-Identification"
+          }
+        },
+        {
+          "key": "B",
+          "text": "機密データを識別できない形式に変換しながらテストや分析を可能にする",
+          "explanation": {
+            "text": "データマスキングはPIIなどを秘匿しながら、データ構造や統計的特徴を保って利用可能にするために行われる。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-188/final",
+            "reference_label": "NIST – De-Identification Guidance"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データの完全削除を自動化する",
+          "explanation": {
+            "text": "削除はデータ消去であり、マスキングとは別の操作である。",
+            "reference": "https://www.iso.org/standard/82304.html",
+            "reference_label": "ISO/IEC 20889 – Privacy enhancing data de-identification"
+          }
+        },
+        {
+          "key": "D",
+          "text": "すべてのデータを暗号化して復号不能にする",
+          "explanation": {
+            "text": "暗号化は鍵があれば復号可能な保護手段であり、マスキングとは技術的に異なる。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-175b/final",
+            "reference_label": "NIST – Cryptographic Mechanisms"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "データマスキングは、本物に見えるダミー値へ置き換えることで、機密情報を保護しつつ開発・テスト・分析に利用できるようにする技術である。",
+        "reference": "https://csrc.nist.gov/publications/detail/sp/800-188/final",
+        "reference_label": "NIST – De-Identification Guidance"
+      }
+    },
+
+    {
+      "id": "comptia-data-26",
+      "question": "KPIとメトリクスの関係として最も適切な説明はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "KPIはメトリクスの一種であり、特にビジネス目標に直結する重要指標を指す",
+          "explanation": {
+            "text": "KPIは多数あるメトリクスの中からビジネスゴールとの関連性が高い“重要な指標”として選ばれたものである。",
+            "reference": "https://www.klipfolio.com/resources/articles/what-is-a-kpi",
+            "reference_label": "Klipfolio – What is a KPI?"
+          }
+        },
+        {
+          "key": "B",
+          "text": "メトリクスはKPIの一部であり、数値を含まないことが多い",
+          "explanation": {
+            "text": "メトリクスは通常数値指標であり、KPIの一部という関係ではない。",
+            "reference": "https://www.klipfolio.com/resources/articles/what-is-a-kpi",
+            "reference_label": "Klipfolio – KPI vs Metrics"
+          }
+        },
+        {
+          "key": "C",
+          "text": "KPIはIT部門のみが使用し、メトリクスはビジネス部門が使用する",
+          "explanation": {
+            "text": "KPIもメトリクスもビジネス側で広く用いられ、部門で厳密に分かれているわけではない。",
+            "reference": "https://www.klipfolio.com/resources/articles/what-is-a-kpi",
+            "reference_label": "Klipfolio – KPI Basics"
+          }
+        },
+        {
+          "key": "D",
+          "text": "KPIはグラフ化できないが、メトリクスはグラフ化できる",
+          "explanation": {
+            "text": "どちらも数値として可視化されることが一般的であり、この説明は誤りである。",
+            "reference": "https://www.klipfolio.com/resources/articles/what-is-a-kpi",
+            "reference_label": "Klipfolio – KPI vs Metric"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "メトリクスは一般的な指標全般を指し、その中でもビジネス目標に直結する重要指標をKPIと呼ぶ。",
+        "reference": "https://www.klipfolio.com/resources/articles/what-is-a-kpi",
+        "reference_label": "Klipfolio – What is a KPI?"
+      }
+    },
+
+    {
+      "id": "comptia-data-27",
+      "question": "時系列データの季節性（Seasonality）を確認する目的で最も基本的に行うべき可視化はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "箱ひげ図（Box Plot）を描画する",
+          "explanation": {
+            "text": "箱ひげ図は分布や外れ値の把握には有効だが、季節パターンの時間的変動を見るには不向きである。",
+            "reference": "https://otexts.com/fpp3/graphics.html",
+            "reference_label": "Forecasting: Principles and Practice – Graphics"
+          }
+        },
+        {
+          "key": "B",
+          "text": "折れ線グラフで時系列推移をプロットする",
+          "explanation": {
+            "text": "季節性は同じ周期で繰り返されるパターンのことであり、折れ線グラフが最も基本的な確認方法となる。",
+            "reference": "https://otexts.com/fpp3/components.html",
+            "reference_label": "Forecasting: Principles and Practice – Time series components"
+          }
+        },
+        {
+          "key": "C",
+          "text": "棒グラフでカテゴリごとの合計値を比較する",
+          "explanation": {
+            "text": "棒グラフはカテゴリ比較が主目的であり、時間的周期性の把握には向かない。",
+            "reference": "https://www.tableau.com/learn/articles/data-visualization-best-practices",
+            "reference_label": "Tableau – 時系列可視化"
+          }
+        },
+        {
+          "key": "D",
+          "text": "散布図で2変数間の相関を確認する",
+          "explanation": {
+            "text": "散布図は変数間の相関を見るものであり、単一時系列の季節性確認には直接用いない。",
+            "reference": "https://otexts.com/fpp3/graphics.html",
+            "reference_label": "Forecasting: Principles and Practice"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "時系列の季節性は、折れ線グラフで時間順に並べることで、周期的なパターン（曜日・月・四半期など）の有無を直感的に確認できる。",
+        "reference": "https://otexts.com/fpp3/components.html",
+        "reference_label": "Forecasting: Principles and Practice – Time series components"
+      }
+    },
+
+    {
+      "id": "comptia-data-28",
+      "question": "データベースでインデックスを作成する主な目的として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "テーブルの正規化レベルを自動的に高める",
+          "explanation": {
+            "text": "インデックスは検索性能向上の仕組みであり、正規化とは別の概念である。",
+            "reference": "https://dev.mysql.com/doc/refman/8.0/en/mysql-indexes.html",
+            "reference_label": "MySQL – How MySQL Uses Indexes"
+          }
+        },
+        {
+          "key": "B",
+          "text": "クエリの検索性能を向上させる",
+          "explanation": {
+            "text": "インデックスは特定の列の検索や結合の高速化を目的に作成される。",
+            "reference": "https://dev.mysql.com/doc/refman/8.0/en/mysql-indexes.html",
+            "reference_label": "MySQL – Index Usage"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データの暗号化を自動的に行う",
+          "explanation": {
+            "text": "暗号化は別機能であり、インデックスの役割ではない。",
+            "reference": "https://learn.microsoft.com/sql/relational-databases/security/encryption/encryption-hierarchy",
+            "reference_label": "Microsoft Docs – SQL Server Encryption"
+          }
+        },
+        {
+          "key": "D",
+          "text": "バックアップファイルのサイズを縮小する",
+          "explanation": {
+            "text": "インデックスはむしろ追加のストレージを要する場合が多い。",
+            "reference": "https://dev.mysql.com/doc/refman/8.0/en/mysql-indexes.html",
+            "reference_label": "MySQL – Index Storage"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "インデックスは検索対象列の値を効率的に探索するための構造であり、WHERE句やJOINに使用される列でクエリ性能を向上させる。",
+        "reference": "https://dev.mysql.com/doc/refman/8.0/en/mysql-indexes.html",
+        "reference_label": "MySQL – How MySQL Uses Indexes"
+      }
+    },
+
+    {
+      "id": "comptia-data-29",
+      "question": "データライフサイクルにおける“廃棄（Dispose）」フェーズで最も重視すべき点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ユーザーが再利用できるようにバックアップを必ず残す",
+          "explanation": {
+            "text": "廃棄フェーズではむしろ不要データの安全な削除が求められ、バックアップを残すことは目的に反する。",
+            "reference": "https://www.nist.gov/privacy-framework",
+            "reference_label": "NIST Privacy Framework – Data Processing ecosystem"
+          }
+        },
+        {
+          "key": "B",
+          "text": "法規制やポリシーに従って安全にデータを削除・破棄する",
+          "explanation": {
+            "text": "データ廃棄では、保持期間を過ぎたデータを適切に削除し、復元されないよう安全に破棄することが重要である。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-88/rev-1/final",
+            "reference_label": "NIST SP 800-88 – Media Sanitization"
+          }
+        },
+        {
+          "key": "C",
+          "text": "分析のために可能な限り長期間保存し続ける",
+          "explanation": {
+            "text": "不要な長期保存はプライバシーリスクやコンプライアンス違反につながるため好ましくない。",
+            "reference": "https://www.nist.gov/privacy-framework",
+            "reference_label": "NIST Privacy Framework"
+          }
+        },
+        {
+          "key": "D",
+          "text": "利用者へデータをメールで送信してから削除する",
+          "explanation": {
+            "text": "メール送信は不要なコピーを増やし、情報漏えいリスクを高める可能性がある。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-88/rev-1/final",
+            "reference_label": "NIST – Media Sanitization"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "廃棄フェーズでは、規制や社内ポリシーに基づき、不要となったデータを復元不能な形で適切に消去することが求められる。",
+        "reference": "https://csrc.nist.gov/publications/detail/sp/800-88/rev-1/final",
+        "reference_label": "NIST SP 800-88 – Guidelines for Media Sanitization"
+      }
+    },
+
+    {
+      "id": "comptia-data-30",
+      "question": "相関と因果の関係について最も適切な説明はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "相関があれば必ず因果関係が存在する",
+          "explanation": {
+            "text": "相関は2変数が一緒に変動することを示すだけで、必ずしも因果を意味しない。",
+            "reference": "https://www.tylervigen.com/spurious-correlations",
+            "reference_label": "Spurious Correlations – 相関と因果の誤解の例"
+          }
+        },
+        {
+          "key": "B",
+          "text": "因果関係があれば必ず相関が検出される",
+          "explanation": {
+            "text": "ノイズやサンプルサイズの不足により、因果があっても統計的に有意な相関が検出されない場合がある。",
+            "reference": "https://statistics.laerd.com/statistical-guides/pearson-correlation-coefficient-statistical-guide.php",
+            "reference_label": "Laerd Statistics – Pearson correlation"
+          }
+        },
+        {
+          "key": "C",
+          "text": "相関は因果の可能性を示すが、それ自体は因果を証明しない",
+          "explanation": {
+            "text": "相関は仮説生成には役立つが、因果推論には追加の実験・統制・ドメイン知識が必要とされる。",
+            "reference": "https://www.bmj.com/content/355/bmj.i4672",
+            "reference_label": "BMJ – Correlation and causation"
+          }
+        },
+        {
+          "key": "D",
+          "text": "相関と因果は統計学的には同義である",
+          "explanation": {
+            "text": "統計学およびデータ分析の基本として、相関と因果は別概念であり同義ではない。",
+            "reference": "https://www.bmj.com/content/355/bmj.i4672",
+            "reference_label": "BMJ – Correlation and causation"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "相関は因果関係の存在を“示唆する”ことはあるが、それだけでは第三の要因や偶然の可能性を排除できないため、因果の証明にはならない。",
+        "reference": "https://www.bmj.com/content/355/bmj.i4672",
+        "reference_label": "BMJ – Correlation and causation"
+      }
+    },
+    {
+      "id": "comptia-data-31",
+      "question": "サンプルと母集団の関係として最も適切な説明はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "母集団はサンプルの部分集合である",
+          "explanation": {
+            "text": "母集団が全体であり、サンプルはその一部であるため逆。",
+            "reference": "https://statistics.laerd.com/statistical-guides/populations-and-samples.php",
+            "reference_label": "Laerd Statistics – Populations and Samples"
+          }
+        },
+        {
+          "key": "B",
+          "text": "サンプルは母集団から抽出された代表的なデータである",
+          "explanation": {
+            "text": "サンプルは母集団の特徴を推測するために抽出する代表データ。",
+            "reference": "https://statistics.laerd.com/statistical-guides/populations-and-samples.php",
+            "reference_label": "Laerd Statistics"
+          }
+        },
+        {
+          "key": "C",
+          "text": "サンプルと母集団は統計学的に同義である",
+          "explanation": {
+            "text": "サンプルは部分集合であり同義ではない。",
+            "reference": "https://statistics.laerd.com/statistical-guides/populations-and-samples.php",
+            "reference_label": "Laerd Statistics"
+          }
+        },
+        {
+          "key": "D",
+          "text": "サンプルは常に母集団より大きい",
+          "explanation": {
+            "text": "サンプルが母集団より大きいことはありえない。",
+            "reference": "https://statistics.laerd.com/statistical-guides/populations-and-samples.php",
+            "reference_label": "Laerd Statistics"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "サンプルは母集団から抽出された一部であり、母集団の特徴を推測するために使用される。",
+        "reference": "https://statistics.laerd.com/statistical-guides/populations-and-samples.php",
+        "reference_label": "Laerd Statistics"
+      }
+    },
+
+    {
+      "id": "comptia-data-32",
+      "question": "データパイプラインの“オーケストレーション”の目的として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データの表形式を自動生成する",
+          "explanation": {
+            "text": "表形式自動生成はオーケストレーションの役割ではない。",
+            "reference": "https://cloud.google.com/dataflow/docs",
+            "reference_label": "Google Dataflow Docs"
+          }
+        },
+        {
+          "key": "B",
+          "text": "複数の処理ステップを順序・依存関係ごとに管理する",
+          "explanation": {
+            "text": "オーケストレーションは依存関係管理・スケジューリングが主目的である。",
+            "reference": "https://airflow.apache.org/docs/",
+            "reference_label": "Apache Airflow Docs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データ圧縮率を最適化する",
+          "explanation": {
+            "text": "圧縮はストレージ・データ形式の問題でオーケストレーションとは関係しない。",
+            "reference": "https://airflow.apache.org/docs/",
+            "reference_label": "Airflow Documentation"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データセットをランダムに暗号化する",
+          "explanation": {
+            "text": "暗号化は別のセキュリティ機能である。",
+            "reference": "https://www.nist.gov/privacy-framework",
+            "reference_label": "NIST Privacy Framework"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "オーケストレーションはタスクの順序・依存関係・スケジューリングを管理することでパイプライン全体を制御する機能である。",
+        "reference": "https://airflow.apache.org/docs/",
+        "reference_label": "Apache Airflow Docs"
+      }
+    },
+
+    {
+      "id": "comptia-data-33",
+      "question": "ヒートマップが最適となる可視化目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "連続値の分布形状を確認する",
+          "explanation": {
+            "text": "分布形状はヒストグラムが適している。",
+            "reference": "https://www.tableau.com/learn/articles/data-visualization-best-practices",
+            "reference_label": "Tableau Docs"
+          }
+        },
+        {
+          "key": "B",
+          "text": "2次元のカテゴリまたは数値組み合わせを強度で表現する",
+          "explanation": {
+            "text": "ヒートマップは2次元の値を色の強度で表すための典型的手法である。",
+            "reference": "https://www.tableau.com/learn/articles/data-visualization-best-practices",
+            "reference_label": "Tableau Docs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "時系列のトレンドを示す",
+          "explanation": {
+            "text": "折れ線グラフの方が適切である。",
+            "reference": "https://www.tableau.com/learn/articles/data-visualization-best-practices",
+            "reference_label": "Tableau Docs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "割合構成比を示す",
+          "explanation": {
+            "text": "割合は円グラフやツリーマップが使用される。",
+            "reference": "https://www.tableau.com/learn/articles/data-visualization-best-practices",
+            "reference_label": "Tableau Docs"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ヒートマップは値の大小を色の濃淡で示し、2軸の組み合わせを視覚的に比較できる手法である。",
+        "reference": "https://www.tableau.com/learn/articles/data-visualization-best-practices",
+        "reference_label": "Tableau Docs"
+      }
+    },
+
+    {
+      "id": "comptia-data-34",
+      "question": "ETL において Extract フェーズで一般的に行われる操作はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データのフィーチャエンジニアリング",
+          "explanation": {
+            "text": "フィーチャエンジニアリングは Transform フェーズである。",
+            "reference": "https://learn.microsoft.com/azure/data-factory/introduction",
+            "reference_label": "Azure Data Factory"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データソースからの取得と抽出",
+          "explanation": {
+            "text": "Extract は生データの収集フェーズである。",
+            "reference": "https://learn.microsoft.com/azure/data-factory/introduction",
+            "reference_label": "Azure Data Factory"
+          }
+        },
+        {
+          "key": "C",
+          "text": "BI ダッシュボードの作成",
+          "explanation": {
+            "text": "BI ダッシュボードは ETL とは別工程。",
+            "reference": "https://www.tableau.com/learn/articles/dashboard-best-practices",
+            "reference_label": "Tableau Dashboard Best Practices"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データアーカイブ",
+          "explanation": {
+            "text": "アーカイブはデータライフサイクル管理であり ETL 外。",
+            "reference": "https://www.nist.gov/privacy-framework",
+            "reference_label": "NIST Privacy Framework"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Extract はデータ取得フェーズであり、ETL の最初の工程としてデータソースからの抽出が行われる。",
+        "reference": "https://learn.microsoft.com/azure/data-factory/introduction",
+        "reference_label": "Azure Data Factory"
+      }
+    },
+
+    {
+      "id": "comptia-data-35",
+      "question": "データ品質指標「一貫性（Consistency）」が評価する内容はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データが最新であるか",
+          "explanation": {
+            "text": "最新性は Timeliness の指標。",
+            "reference": "https://www.iso.org/standard/81167.html",
+            "reference_label": "ISO 8000 – Data Quality"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データに矛盾がないか",
+          "explanation": {
+            "text": "一貫性は複数システム間の整合性やデータ同士の矛盾がないことを評価する。",
+            "reference": "https://www.iso.org/standard/81167.html",
+            "reference_label": "ISO 8000"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データの欠損がないか",
+          "explanation": {
+            "text": "欠損は Completeness の指標。",
+            "reference": "https://www.iso.org/standard/81167.html",
+            "reference_label": "ISO 8000"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データの真実性が高いか",
+          "explanation": {
+            "text": "真実性・正確性は Accuracy の範囲。",
+            "reference": "https://www.iso.org/standard/81167.html",
+            "reference_label": "ISO 8000"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Consistency は、データが矛盾していないかといった整合性を評価する指標である。",
+        "reference": "https://www.iso.org/standard/81167.html",
+        "reference_label": "ISO 8000"
+      }
+    },
+
+    {
+      "id": "comptia-data-36",
+      "question": "外れ値処理として“ウィンズライジング（Winsorizing）”が行う操作はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "外れ値を削除してデータセットから除外する",
+          "explanation": {
+            "text": "ウィンズライジングは削除ではなく値の置換。",
+            "reference": "https://statistics.laerd.com",
+            "reference_label": "Laerd Statistics"
+          }
+        },
+        {
+          "key": "B",
+          "text": "外れ値を上位・下位の閾値に置き換える",
+          "explanation": {
+            "text": "ウィンズライジングは極端値を閾値に置換する方法。",
+            "reference": "https://statistics.laerd.com",
+            "reference_label": "Laerd Statistics – Winsorization"
+          }
+        },
+        {
+          "key": "C",
+          "text": "外れ値を平均値に置き換える",
+          "explanation": {
+            "text": "平均値置換は別手法でありウィンズライジングではない。",
+            "reference": "https://statistics.laerd.com",
+            "reference_label": "Laerd Statistics"
+          }
+        },
+        {
+          "key": "D",
+          "text": "外れ値をランダムに変更する",
+          "explanation": {
+            "text": "ランダム変更は適切な統計的手法ではない。",
+            "reference": "https://statistics.laerd.com",
+            "reference_label": "Laerd Statistics"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ウィンズライジングは極端な外れ値を特定パーセンタイル値に置き換える外れ値処理の一種である。",
+        "reference": "https://statistics.laerd.com",
+        "reference_label": "Laerd Statistics – Winsorization"
+      }
+    },
+
+    {
+      "id": "comptia-data-37",
+      "question": "BI ツールにおける Drill-down 機能の目的として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "より高い抽象度のデータへ戻る",
+          "explanation": {
+            "text": "高い抽象度へ戻るのは Drill-up。",
+            "reference": "https://www.tableau.com/learn/articles/dashboard-best-practices",
+            "reference_label": "Tableau Docs"
+          }
+        },
+        {
+          "key": "B",
+          "text": "詳細レベルのデータを掘り下げて確認する",
+          "explanation": {
+            "text": "Drill-down は集計データから詳細データへ階層的に掘り下げる操作。",
+            "reference": "https://www.tableau.com/learn/articles/dashboard-best-practices",
+            "reference_label": "Tableau – Drill-down"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データをすべて非表示にする",
+          "explanation": {
+            "text": "非表示化はフィルタや権限管理の機能。",
+            "reference": "https://www.tableau.com/",
+            "reference_label": "Tableau"
+          }
+        },
+        {
+          "key": "D",
+          "text": "計算指標を自動生成する",
+          "explanation": {
+            "text": "計算フィールド生成は別機能である。",
+            "reference": "https://www.tableau.com/",
+            "reference_label": "Tableau Docs"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Drill-down は階層データ（年→月→日など）をより詳細に掘り下げて分析するための機能である。",
+        "reference": "https://www.tableau.com/learn/articles/dashboard-best-practices",
+        "reference_label": "Tableau Docs"
+      }
+    },
+
+    {
+      "id": "comptia-data-38",
+      "question": "データレイクの特徴として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "事前に厳密なスキーマ設計が必要である",
+          "explanation": {
+            "text": "スキーマオンライトはデータウェアハウスの特徴で、データレイクはスキーマオンリード。",
+            "reference": "https://aws.amazon.com/big-data/datalakes-and-analytics/what-is-a-data-lake/",
+            "reference_label": "AWS – What is a Data Lake?"
+          }
+        },
+        {
+          "key": "B",
+          "text": "構造化・半構造化・非構造化すべてのデータを保存できる",
+          "explanation": {
+            "text": "データレイクは柔軟なデータ保存が特長。",
+            "reference": "https://aws.amazon.com/big-data/datalakes-and-analytics/what-is-a-data-lake/",
+            "reference_label": "AWS – Data Lake"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データ投入前に必ず正規化が必要である",
+          "explanation": {
+            "text": "正規化は必須ではなく、むしろ生データをそのまま保存できる点が特徴。",
+            "reference": "https://aws.amazon.com/big-data/datalakes-and-analytics/what-is-a-data-lake/",
+            "reference_label": "AWS"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データは常に高速クエリ専用に最適化される",
+          "explanation": {
+            "text": "最適化は必要に応じて行われるが、データレイク自体の基本要件ではない。",
+            "reference": "https://aws.amazon.com/big-data/datalakes-and-analytics/what-is-a-data-lake/",
+            "reference_label": "AWS Docs"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "データレイクは構造化・非構造化を問わず大量の生データを保存でき、スキーマオンリードで柔軟に分析できる。",
+        "reference": "https://aws.amazon.com/big-data/datalakes-and-analytics/what-is-a-data-lake/",
+        "reference_label": "AWS – What is a Data Lake?"
+      }
+    },
+
+    {
+      "id": "comptia-data-39",
+      "question": "SQL の JOIN のうち、左側のテーブルをすべて保持しつつ一致した行のみ右側から取得するものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "INNER JOIN",
+          "explanation": {
+            "text": "INNER JOIN は一致した行のみ取得し、左側の全行は保持しない。",
+            "reference": "https://learn.microsoft.com/sql/t-sql/queries/select-joins",
+            "reference_label": "Microsoft Docs – JOIN"
+          }
+        },
+        {
+          "key": "B",
+          "text": "LEFT JOIN",
+          "explanation": {
+            "text": "LEFT JOIN（LEFT OUTER JOIN）は左側の全行を保持する。",
+            "reference": "https://learn.microsoft.com/sql/t-sql/queries/select-joins",
+            "reference_label": "Microsoft Docs – LEFT JOIN"
+          }
+        },
+        {
+          "key": "C",
+          "text": "RIGHT JOIN",
+          "explanation": {
+            "text": "RIGHT JOIN は右側のテーブルを基準に全行を保持する。",
+            "reference": "https://learn.microsoft.com/sql/t-sql/queries/select-joins",
+            "reference_label": "Microsoft Docs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CROSS JOIN",
+          "explanation": {
+            "text": "CROSS JOIN は直積を返し、一致条件は使用しない。",
+            "reference": "https://learn.microsoft.com/sql/t-sql/queries/select-joins",
+            "reference_label": "Microsoft Docs"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "LEFT JOIN は左側テーブルを基準にすべて保持し、一致した行のみ右側から取得する。",
+        "reference": "https://learn.microsoft.com/sql/t-sql/queries/select-joins",
+        "reference_label": "Microsoft Docs – LEFT JOIN"
+      }
+    },
+
+    {
+      "id": "comptia-data-40",
+      "question": "ダッシュボードで“過剰な色数を使わない”ことが推奨される主な理由はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データの行数が減少するため",
+          "explanation": {
+            "text": "色数とデータ行数は関係しない。",
+            "reference": "https://www.tableau.com/learn/articles/data-visualization-best-practices",
+            "reference_label": "Tableau – Visualization Best Practices"
+          }
+        },
+        {
+          "key": "B",
+          "text": "情報解釈が難しくなりユーザーが混乱するため",
+          "explanation": {
+            "text": "多色は視覚ノイズとなり理解しにくくなるため推奨されない。",
+            "reference": "https://www.tableau.com/learn/articles/data-visualization-best-practices",
+            "reference_label": "Tableau – Best Practices"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データが自動的に匿名化されてしまうため",
+          "explanation": {
+            "text": "色数と匿名化は無関係。",
+            "reference": "https://www.nist.gov/privacy-framework",
+            "reference_label": "NIST Privacy Framework"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データベース負荷が高まるため",
+          "explanation": {
+            "text": "色数はDB負荷とは関係しない。",
+            "reference": "https://www.tableau.com/learn/articles/data-visualization-best-practices",
+            "reference_label": "Tableau Docs"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "過剰な色数は可視化の認知負荷を高め、ユーザーが重要情報を理解しにくくなるため避けるべきである。",
+        "reference": "https://www.tableau.com/learn/articles/data-visualization-best-practices",
+        "reference_label": "Tableau Docs – Best Practices"
+      }
+    },
+    {
+      "id": "comptia-data-41",
+      "question": "ダッシュボードにスライサーやフィルターを配置する主な目的として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ダッシュボードの色数を増やすため",
+          "explanation": {
+            "text": "フィルターはインタラクティブな絞り込みのためであり、色数とは関係しない。",
+            "reference": "https://www.tableau.com/learn/articles/dashboard-best-practices",
+            "reference_label": "Tableau – ダッシュボードのベストプラクティス"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーが関心のある条件でデータを絞り込み、視点を変えて分析できるようにするため",
+          "explanation": {
+            "text": "インタラクティブなフィルタリングによりユーザーはセグメント別・期間別などで自律的に分析できる。",
+            "reference": "https://www.tableau.com/learn/articles/dashboard-best-practices",
+            "reference_label": "Tableau – フィルターと対話性"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データソースのスキーマを自動変更するため",
+          "explanation": {
+            "text": "フィルターは表示データの絞り込みであり、スキーマ変更は行わない。",
+            "reference": "https://www.tableau.com/learn/articles/dashboard-best-practices",
+            "reference_label": "Tableau Docs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データベースのバックアップ頻度を制御するため",
+          "explanation": {
+            "text": "バックアップはインフラ/DB管理の領域であり、ダッシュボードのフィルター機能とは無関係である。",
+            "reference": "https://learn.microsoft.com/power-bi/create-reports/power-bi-report-filter-types",
+            "reference_label": "Microsoft Power BI – レポートフィルター"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "フィルターやスライサーを配置することで、ユーザーは必要な条件でデータを絞り込み、自分の関心に応じた分析が行える。",
+        "reference": "https://learn.microsoft.com/power-bi/create-reports/power-bi-report-filter-types",
+        "reference_label": "Microsoft Power BI – フィルターの役割"
+      }
+    },
+
+    {
+      "id": "comptia-data-42",
+      "question": "データサンプリングにおける単純無作為抽出（Simple Random Sampling）の特徴として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "各要素が選ばれる確率は等しくないが、偏りが補正される",
+          "explanation": {
+            "text": "単純無作為抽出では母集団の各要素が同じ確率で選ばれることが前提である。",
+            "reference": "https://statistics.laerd.com/statistical-guides/simple-random-sampling-statistical-guide.php",
+            "reference_label": "Laerd Statistics – Simple Random Sampling"
+          }
+        },
+        {
+          "key": "B",
+          "text": "母集団の各要素が同一の確率で抽出される",
+          "explanation": {
+            "text": "単純無作為抽出は各要素に同一の選択確率を与える最も基本的な確率サンプリング手法である。",
+            "reference": "https://statistics.laerd.com/statistical-guides/simple-random-sampling-statistical-guide.php",
+            "reference_label": "Laerd Statistics – Simple Random Sampling"
+          }
+        },
+        {
+          "key": "C",
+          "text": "層（グループ）ごとに必ず同数のサンプルを取る",
+          "explanation": {
+            "text": "層別にサンプルを取るのは層化抽出（Stratified Sampling）の特徴である。",
+            "reference": "https://statistics.laerd.com/statistical-guides/types-of-sampling.php",
+            "reference_label": "Laerd Statistics – Stratified sampling"
+          }
+        },
+        {
+          "key": "D",
+          "text": "必ず連続したID範囲からまとめて抽出する",
+          "explanation": {
+            "text": "連続した塊を抽出するのはクラスターサンプリングなどであり、単純無作為抽出ではない。",
+            "reference": "https://statistics.laerd.com/statistical-guides/types-of-sampling.php",
+            "reference_label": "Laerd Statistics – Cluster sampling"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "単純無作為抽出では、母集団内の各要素が同一の確率で選択され、抽出の順序や位置による偏りを避ける。",
+        "reference": "https://statistics.laerd.com/statistical-guides/simple-random-sampling-statistical-guide.php",
+        "reference_label": "Laerd Statistics – Simple Random Sampling"
+      }
+    },
+
+    {
+      "id": "comptia-data-43",
+      "question": "データガバナンスにおいて「データ分類（Data Classification）」を行う主な目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "分析に不要なデータをすべて削除するため",
+          "explanation": {
+            "text": "分類は削除ではなく、保護レベルや取り扱い方針を決めるための前提である。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-60/vol-1-rev-1/final",
+            "reference_label": "NIST SP 800-60 – 情報分類"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データの機密性や重要度に応じて適切な保護・取り扱いルールを適用するため",
+          "explanation": {
+            "text": "分類により「機密」「社外秘」などのレベルを定義し、それに応じたアクセス制御や暗号化を適用できる。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-60/vol-1-rev-1/final",
+            "reference_label": "NIST SP 800-60 – Guide for Mapping Types of Information"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データベースのインデックス構造を決定するため",
+          "explanation": {
+            "text": "インデックス設計は性能チューニングの話であり、分類の主目的ではない。",
+            "reference": "https://dev.mysql.com/doc/refman/8.0/en/mysql-indexes.html",
+            "reference_label": "MySQL – Indexes"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データ形式（CSV, JSON など）を自動変換するため",
+          "explanation": {
+            "text": "分類は機密性・業務重要度の視点で行い、形式変換とは別の概念である。",
+            "reference": "https://www.iso.org/standard/82887.html",
+            "reference_label": "ISO/IEC 27002 – 情報分類"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "データ分類は、機密性や重要度に基づき適切な保護策（アクセス制御・暗号化・保持期間など）を適用するための基盤となる。",
+        "reference": "https://csrc.nist.gov/publications/detail/sp/800-60/vol-1-rev-1/final",
+        "reference_label": "NIST SP 800-60 – Information Categorization"
+      }
+    },
+
+    {
+      "id": "comptia-data-44",
+      "question": "Boxplot（箱ひげ図）を用いたときに、箱の中央に引かれた線が表す統計量はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "平均値（Mean）",
+          "explanation": {
+            "text": "箱ひげ図の中央線は通常中央値であり、平均値とは異なる。",
+            "reference": "https://statistics.laerd.com/statistical-guides/boxplots.php",
+            "reference_label": "Laerd Statistics – Boxplots"
+          }
+        },
+        {
+          "key": "B",
+          "text": "中央値（Median）",
+          "explanation": {
+            "text": "箱ひげ図では箱の中央線が中央値を表し、外れ値や分布の偏りを視覚的に把握できる。",
+            "reference": "https://statistics.laerd.com/statistical-guides/boxplots.php",
+            "reference_label": "Laerd Statistics – Boxplots"
+          }
+        },
+        {
+          "key": "C",
+          "text": "最頻値（Mode）",
+          "explanation": {
+            "text": "最頻値は箱ひげ図には明示的に表示されない。",
+            "reference": "https://statistics.laerd.com/statistical-guides/measures-central-tendency-mean-mode-median.php",
+            "reference_label": "Laerd Statistics – Central Tendency"
+          }
+        },
+        {
+          "key": "D",
+          "text": "分散（Variance）",
+          "explanation": {
+            "text": "分散は数値指標であり、線として直接は表現されない。",
+            "reference": "https://statistics.laerd.com/statistical-guides/boxplots.php",
+            "reference_label": "Laerd Statistics – Boxplots"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "箱ひげ図の箱の中央線は中央値（50パーセンタイル）を表し、データの中心を示す。",
+        "reference": "https://statistics.laerd.com/statistical-guides/boxplots.php",
+        "reference_label": "Laerd Statistics – Boxplots"
+      }
+    },
+
+    {
+      "id": "comptia-data-45",
+      "question": "データウェアハウスにおける「スター・スキーマ」の特徴として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "事実テーブルと複数のディメンションテーブルが中心から放射状に配置される",
+          "explanation": {
+            "text": "スター・スキーマは中央の事実テーブルと、それを取り囲むディメンションテーブルによって星形の構造になる。",
+            "reference": "https://learn.microsoft.com/sql/analysis-services/data-modeling/star-schema-design",
+            "reference_label": "Microsoft – Star schema design"
+          }
+        },
+        {
+          "key": "B",
+          "text": "すべてのテーブルが第三正規形まで正規化されることを要求する",
+          "explanation": {
+            "text": "スター・スキーマではクエリ性能を優先し、ディメンションをあえて非正規化することも多い。",
+            "reference": "https://learn.microsoft.com/sql/analysis-services/data-modeling/star-schema-design",
+            "reference_label": "Microsoft – Star vs Snowflake"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ディメンション間の多段階参照が多く、複雑なジョインが必須となる",
+          "explanation": {
+            "text": "多段階参照が増えるのはスノーフレーク・スキーマの特徴である。",
+            "reference": "https://learn.microsoft.com/sql/analysis-services/data-modeling/star-schema-design",
+            "reference_label": "Microsoft Docs – Snowflake schema"
+          }
+        },
+        {
+          "key": "D",
+          "text": "SQLでは使用できない特殊なNoSQL用のモデリングパターンである",
+          "explanation": {
+            "text": "スター・スキーマは主にリレーショナルDWHでよく使われる設計手法である。",
+            "reference": "https://learn.microsoft.com/sql/analysis-services/data-modeling/star-schema-design",
+            "reference_label": "Microsoft – Star schema"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "スター・スキーマでは、事実テーブルを中心にディメンションテーブルが星形に配置され、シンプルなジョイン構造で集計を容易にする。",
+        "reference": "https://learn.microsoft.com/sql/analysis-services/data-modeling/star-schema-design",
+        "reference_label": "Microsoft – Star schema design"
+      }
+    },
+
+    {
+      "id": "comptia-data-46",
+      "question": "p値（p-value）の解釈として最も適切なものはどれか。帰無仮説が「差はない」と定義されているとする。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "p値は帰無仮説が真である確率そのものを表す",
+          "explanation": {
+            "text": "p値は「帰無仮説が真である確率」ではなく、帰無仮説が真であると仮定したときに観測データ以上の結果が出る確率を意味する。",
+            "reference": "https://www150.statcan.gc.ca/n1/pub/12-001-x/2012001/article/11629-eng.htm",
+            "reference_label": "Statistics Canada – Misinterpretation of p-values"
+          }
+        },
+        {
+          "key": "B",
+          "text": "p値は観測された差が偶然により生じる確率の指標である",
+          "explanation": {
+            "text": "帰無仮説が真と仮定したときに、観測された差以上の差が偶然に生じる確率を表す、というのが一般的な説明である。",
+            "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4877414/",
+            "reference_label": "ASA Statement on p-Values"
+          }
+        },
+        {
+          "key": "C",
+          "text": "p値が大きいほど帰無仮説を棄却すべきであることを示す",
+          "explanation": {
+            "text": "一般にp値が小さいときに帰無仮説を棄却する方向に働く。",
+            "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4877414/",
+            "reference_label": "ASA – p-values statement"
+          }
+        },
+        {
+          "key": "D",
+          "text": "p値が0.05を下回ると、効果の大きさも必ず大きいことを意味する",
+          "explanation": {
+            "text": "p値は統計的有意性の指標であり、効果量の大きさそのものを示すものではない。",
+            "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4877414/",
+            "reference_label": "ASA – Misconceptions about p-values"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "p値は、帰無仮説が真であると仮定したときに、現在観測された結果以上の極端な結果が偶然に得られる確率を示す指標である。",
+        "reference": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4877414/",
+        "reference_label": "ASA Statement on Statistical Significance and p-values"
+      }
+    },
+
+    {
+      "id": "comptia-data-47",
+      "question": "データ分析プロジェクトの初期フェーズで「ステークホルダーマッピング」を行う主なメリットはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データの正規化ルールを自動生成できる",
+          "explanation": {
+            "text": "ステークホルダーマッピングは人・組織の把握であり、スキーマ設計を自動化するものではない。",
+            "reference": "https://www.comptia.org/certifications/data",
+            "reference_label": "CompTIA Data+ Exam Objectives – Stakeholders"
+          }
+        },
+        {
+          "key": "B",
+          "text": "誰がどのKPIに関心を持ち、どの意思決定に影響するかを明確化できる",
+          "explanation": {
+            "text": "ステークホルダーマッピングにより、要件の優先度や報告すべき指標を整理できる。",
+            "reference": "https://www.pmi.org/learning/library/stakeholder-analysis-techniques-identification-6091",
+            "reference_label": "PMI – Stakeholder analysis"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データ量を減らしてストレージコストを直接削減できる",
+          "explanation": {
+            "text": "ステークホルダーマッピングは組織的な分析であり、ストレージ削減は直接の効果ではない。",
+            "reference": "https://www.pmi.org/learning/library/stakeholder-analysis-techniques-identification-6091",
+            "reference_label": "PMI – Stakeholder mapping"
+          }
+        },
+        {
+          "key": "D",
+          "text": "SQLパフォーマンスチューニングの手順を決めることができる",
+          "explanation": {
+            "text": "SQLチューニングは技術タスクであり、ステークホルダー整理の範囲外である。",
+            "reference": "https://learn.microsoft.com/sql/relational-databases/performance/performance-tuning",
+            "reference_label": "Microsoft – Performance tuning overview"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ステークホルダーマッピングにより、誰がどの指標や成果を重視しているかが明確になり、分析の優先順位や報告の仕方を設計しやすくなる。",
+        "reference": "https://www.pmi.org/learning/library/stakeholder-analysis-techniques-identification-6091",
+        "reference_label": "PMI – Stakeholder Analysis Techniques"
+      }
+    },
+
+    {
+      "id": "comptia-data-48",
+      "question": "データ品質改善の一環として「データエントリ画面に入力制約（バリデーション）を設ける」ことの主な効果はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "すでに蓄積されたデータの欠損値を自動で補完できる",
+          "explanation": {
+            "text": "入力制約は新規入力時のエラー防止であり、既存データの補完ではない。",
+            "reference": "https://www.iso.org/standard/81167.html",
+            "reference_label": "ISO 8000 – Data quality"
+          }
+        },
+        {
+          "key": "B",
+          "text": "入力時点で形式不備や範囲外の値を防ぎ、エラー発生を減らす",
+          "explanation": {
+            "text": "バリデーションルールにより、形式や値域のエラーを事前に排除でき、後工程でのクレンジング負荷を軽減できる。",
+            "reference": "https://www.iso.org/standard/81167.html",
+            "reference_label": "ISO 8000 – Data quality management"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データの暗号化アルゴリズムを自動選択できる",
+          "explanation": {
+            "text": "暗号化はセキュリティの仕組みであり、入力バリデーションとは別である。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-175b/final",
+            "reference_label": "NIST – Cryptographic Mechanisms"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データの保存先を自動的にアーカイブストレージへ変更できる",
+          "explanation": {
+            "text": "入力制約は品質向上が目的であり、保存階層の自動変更ではない。",
+            "reference": "https://www.nist.gov/privacy-framework",
+            "reference_label": "NIST Privacy Framework"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "入力フォームで形式チェックや必須項目制御、値域チェックを行うことで、そもそも不正確なデータが入らないようにし、品質問題の発生を予防できる。",
+        "reference": "https://www.iso.org/standard/81167.html",
+        "reference_label": "ISO 8000 – Data quality management"
+      }
+    },
+
+    {
+      "id": "comptia-data-49",
+      "question": "相関係数が 0 に近い場合の解釈として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "変数間には完全な負の直線関係がある",
+          "explanation": {
+            "text": "完全な負の直線関係は相関係数 -1 のときである。",
+            "reference": "https://statistics.laerd.com/statistical-guides/pearson-correlation-coefficient-statistical-guide.php",
+            "reference_label": "Laerd Statistics – Pearson correlation"
+          }
+        },
+        {
+          "key": "B",
+          "text": "変数間には完全な正の直線関係がある",
+          "explanation": {
+            "text": "完全な正の直線関係は相関係数 +1 のときである。",
+            "reference": "https://statistics.laerd.com/statistical-guides/pearson-correlation-coefficient-statistical-guide.php",
+            "reference_label": "Laerd Statistics – Pearson correlation"
+          }
+        },
+        {
+          "key": "C",
+          "text": "線形な関係はほとんど見られないが、非線形な関係は存在する可能性がある",
+          "explanation": {
+            "text": "相関係数が0付近でも、U字型のような非線形関係が存在する場合があるため、散布図での確認が重要である。",
+            "reference": "https://statistics.laerd.com/statistical-guides/pearson-correlation-coefficient-statistical-guide.php",
+            "reference_label": "Laerd Statistics – Interpretation of r"
+          }
+        },
+        {
+          "key": "D",
+          "text": "必ず因果関係がないことを意味する",
+          "explanation": {
+            "text": "相関係数が0に近いことは線形関係の弱さを示すが、因果関係の有無を直接証明するものではない。",
+            "reference": "https://www.bmj.com/content/355/bmj.i4672",
+            "reference_label": "BMJ – Correlation and causation"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "相関係数が0に近い場合、線形の関係は弱いが、非線形なパターンが潜んでいる可能性もあるため、散布図などでの確認が重要となる。",
+        "reference": "https://statistics.laerd.com/statistical-guides/pearson-correlation-coefficient-statistical-guide.php",
+        "reference_label": "Laerd Statistics – Interpretation of correlation"
+      }
+    },
+
+    {
+      "id": "comptia-data-50",
+      "question": "ダッシュボードの設計において「1画面1ストーリー（one screen, one story）」という考え方を採用する主な理由はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "画面ごとに異なるデータベース製品を必ず使い分けるため",
+          "explanation": {
+            "text": "データベースの種類とは無関係であり、この考え方の主旨ではない。",
+            "reference": "https://www.tableau.com/learn/articles/dashboard-best-practices",
+            "reference_label": "Tableau – Dashboard Best Practices"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーがその画面から得るべきメッセージや意思決定ポイントを明確にするため",
+          "explanation": {
+            "text": "1画面に複数のメッセージを詰め込むと焦点がぼやけるため、重要なストーリーを1つに絞る設計が推奨される。",
+            "reference": "https://www.tableau.com/learn/articles/dashboard-best-practices",
+            "reference_label": "Tableau – One main story per dashboard"
+          }
+        },
+        {
+          "key": "C",
+          "text": "画面遷移をすべてなくし、スクロールだけで情報を見せるため",
+          "explanation": {
+            "text": "スクロールの有無は別問題であり、「1画面1ストーリー」とは直接関係しない。",
+            "reference": "https://www.tableau.com/learn/articles/dashboard-best-practices",
+            "reference_label": "Tableau Docs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "すべてのKPIを1つの画面に詰め込んで情報密度を最大化するため",
+          "explanation": {
+            "text": "過剰な情報は認知負荷を高めるため、むしろ必要最小限の指標に絞ることが推奨される。",
+            "reference": "https://www.tableau.com/learn/articles/dashboard-best-practices",
+            "reference_label": "Tableau – Less is more"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "「1画面1ストーリー」は、ユーザーがダッシュボードを見たときに、何を理解しどんな意思決定をすべきかを明確にするための設計指針である。",
+        "reference": "https://www.tableau.com/learn/articles/dashboard-best-practices",
+        "reference_label": "Tableau – Dashboard Best Practices"
+      }
+    }
+  ]
+}

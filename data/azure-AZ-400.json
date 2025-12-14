@@ -1,0 +1,2467 @@
+{
+  "exam": {
+    "id": "az-400",
+    "title": "DevOps Engineer Expert",
+    "description": "この資格は、Microsoft Azure 上で「人・プロセス・技術」を統合して継続的な価値提供を行う DevOps エンジニアとしての能力を証明するものです。具体的には、ワークフローの設計、チーム間コミュニケーション、ソース管理戦略の構築、ビルド／リリース パイプラインの自動化、セキュリティ・コンプライアンス計画の策定、モニタリング・フィードバック仕組みの実装などが主な出題範囲です。",
+    "version": "2024年7月",
+    "price": "165 USD",
+    "difficulty": "難しい",
+    "official-site": "https://learn.microsoft.com/credentials/certifications/devops-engineer/",
+    "category": {
+      "id": "azure",
+      "name": "Azure"
+    }
+  },
+  "questions": [
+    {
+      "id": "azure-AZ-400-q1",
+      "question": "Azure DevOps で YAML パイプラインを使用する主な利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "GUI でのみ編集できるため、バージョン管理が不要になる",
+          "explanation": {
+            "text": "誤り。YAML パイプラインはコードとして管理することでバージョン管理が可能。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/yaml-schema",
+            "reference_label": "Microsoft Docs - YAML pipelines"
+          }
+        },
+        {
+          "key": "B",
+          "text": "パイプラインをコードとしてリポジトリに保存できる",
+          "explanation": {
+            "text": "正解。YAML パイプラインはリポジトリに保存され、コードとして扱える。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/yaml-schema",
+            "reference_label": "Microsoft Docs - YAML pipelines"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Portal からのみ実行可能になる",
+          "explanation": {
+            "text": "誤り。YAML パイプラインは CLI や他のツールからも実行可能。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/get-started-yaml",
+            "reference_label": "Microsoft Docs - Get started with YAML pipelines"
+          }
+        },
+        {
+          "key": "D",
+          "text": "一度定義すると変更が不可能になる",
+          "explanation": {
+            "text": "誤り。YAML ファイルは常に編集・更新可能。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/yaml-schema",
+            "reference_label": "Microsoft Docs - YAML pipelines"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "YAML パイプラインを使用すると、CI/CD 定義をリポジトリに保存し、Infrastructure as Code の一環としてバージョン管理できる。",
+        "reference": "https://learn.microsoft.com/azure/devops/pipelines/yaml-schema",
+        "reference_label": "Microsoft Docs - YAML pipelines"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q2",
+      "question": "Azure Repos で Git のブランチ戦略を設計する際、リリース用の安定したバージョンを保持するために推奨される方法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "常に main ブランチに直接コミットする",
+          "explanation": {
+            "text": "誤り。直接コミットは品質低下の原因になる。",
+            "reference": "https://learn.microsoft.com/azure/devops/repos/git/git-branching-guidance",
+            "reference_label": "Microsoft Docs - Git branching guidance"
+          }
+        },
+        {
+          "key": "B",
+          "text": "リリース専用のブランチを作成する",
+          "explanation": {
+            "text": "正解。リリースブランチ戦略を使うことで安定したコードを維持できる。",
+            "reference": "https://learn.microsoft.com/azure/devops/repos/git/git-branching-guidance",
+            "reference_label": "Microsoft Docs - Git branching guidance"
+          }
+        },
+        {
+          "key": "C",
+          "text": "すべての変更を feature ブランチに保持し main にはマージしない",
+          "explanation": {
+            "text": "誤り。最終的には main または release ブランチに統合する必要がある。",
+            "reference": "https://learn.microsoft.com/azure/devops/repos/git/git-branching-guidance",
+            "reference_label": "Microsoft Docs - Git branching guidance"
+          }
+        },
+        {
+          "key": "D",
+          "text": "タグを使用せずブランチのみでバージョン管理する",
+          "explanation": {
+            "text": "部分的に正しいが、タグの利用も推奨されるため不十分。",
+            "reference": "https://learn.microsoft.com/azure/devops/repos/git/git-branching-guidance",
+            "reference_label": "Microsoft Docs - Git branching guidance"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "リリースブランチ戦略は、開発の継続と安定版の確保を両立させる一般的な手法。",
+        "reference": "https://learn.microsoft.com/azure/devops/repos/git/git-branching-guidance",
+        "reference_label": "Microsoft Docs - Git branching guidance"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q3",
+      "question": "Azure DevOps の Service Connection を利用する主な目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ユーザーアカウントを複数作成するため",
+          "explanation": {
+            "text": "誤り。Service Connection は認証と接続のために使用される。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/library/service-endpoints",
+            "reference_label": "Microsoft Docs - Service connections"
+          }
+        },
+        {
+          "key": "B",
+          "text": "外部サービスや Azure リソースに安全に接続するため",
+          "explanation": {
+            "text": "正解。Service Connection は Azure や外部クラウドへの認証を管理する。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/library/service-endpoints",
+            "reference_label": "Microsoft Docs - Service connections"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザーインターフェースを変更するため",
+          "explanation": {
+            "text": "誤り。UI 変更には使用されない。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/library/service-endpoints",
+            "reference_label": "Microsoft Docs - Service connections"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ソースコードをフォーマットするため",
+          "explanation": {
+            "text": "誤り。Service Connection はコードフォーマットと関係がない。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/library/service-endpoints",
+            "reference_label": "Microsoft Docs - Service connections"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Service Connection はパイプラインから外部リソースに安全に接続するための仕組み。",
+        "reference": "https://learn.microsoft.com/azure/devops/pipelines/library/service-endpoints",
+        "reference_label": "Microsoft Docs - Service connections"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q4",
+      "question": "Azure Monitor と連携してアプリケーションのパフォーマンスを可視化するために利用されるサービスはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Azure Application Insights",
+          "explanation": {
+            "text": "正解。Application Insights は Azure Monitor の一部でアプリの監視を提供する。",
+            "reference": "https://learn.microsoft.com/azure/azure-monitor/app/app-insights-overview",
+            "reference_label": "Microsoft Docs - Application Insights overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure Advisor",
+          "explanation": {
+            "text": "誤り。Advisor はベストプラクティスの推奨を行うが、アプリの可視化には使わない。",
+            "reference": "https://learn.microsoft.com/azure/advisor/advisor-overview",
+            "reference_label": "Microsoft Docs - Azure Advisor"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Policy",
+          "explanation": {
+            "text": "誤り。Policy はコンプライアンス管理に利用される。",
+            "reference": "https://learn.microsoft.com/azure/governance/policy/overview",
+            "reference_label": "Microsoft Docs - Azure Policy"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Resource Graph",
+          "explanation": {
+            "text": "誤り。Resource Graph はクエリでリソース探索を行う。",
+            "reference": "https://learn.microsoft.com/azure/governance/resource-graph/overview",
+            "reference_label": "Microsoft Docs - Resource Graph overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Application Insights は分散トレーシング、依存関係マップ、メトリック収集を通じてアプリのパフォーマンスを可視化する。",
+        "reference": "https://learn.microsoft.com/azure/azure-monitor/app/app-insights-overview",
+        "reference_label": "Microsoft Docs - Application Insights overview"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q5",
+      "question": "Azure Pipelines で並列ジョブを利用する利点はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "CI/CD の実行時間を短縮できる",
+          "explanation": {
+            "text": "正解。並列ジョブはビルドやテストを同時に実行できる。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/licensing/concurrent-jobs",
+            "reference_label": "Microsoft Docs - Parallel jobs"
+          }
+        },
+        {
+          "key": "B",
+          "text": "コードの自動修正が可能になる",
+          "explanation": {
+            "text": "誤り。並列ジョブはコード修正機能を持たない。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/licensing/concurrent-jobs",
+            "reference_label": "Microsoft Docs - Parallel jobs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Portal の UI が改善される",
+          "explanation": {
+            "text": "誤り。ポータルの改善とは関係がない。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/licensing/concurrent-jobs",
+            "reference_label": "Microsoft Docs - Parallel jobs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ライセンスコストが削減される",
+          "explanation": {
+            "text": "誤り。並列ジョブ数は課金体系に依存するため必ずしも削減されない。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/licensing/concurrent-jobs",
+            "reference_label": "Microsoft Docs - Parallel jobs"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "並列ジョブにより CI/CD 実行時間を短縮でき、リリースサイクルの高速化が可能。",
+        "reference": "https://learn.microsoft.com/azure/devops/pipelines/licensing/concurrent-jobs",
+        "reference_label": "Microsoft Docs - Parallel jobs"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q6",
+      "question": "Azure Boards を利用する主な目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ソースコードのバージョン管理",
+          "explanation": {
+            "text": "誤り。これは Azure Repos の役割。",
+            "reference": "https://learn.microsoft.com/azure/devops/boards/get-started/what-is-azure-boards",
+            "reference_label": "Microsoft Docs - Azure Boards overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "CI/CD パイプラインの管理",
+          "explanation": {
+            "text": "誤り。これは Azure Pipelines の役割。",
+            "reference": "https://learn.microsoft.com/azure/devops/boards/get-started/what-is-azure-boards",
+            "reference_label": "Microsoft Docs - Azure Boards overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アジャイルプロジェクト管理と作業追跡",
+          "explanation": {
+            "text": "正解。Azure Boards はカンバン、スクラム、バックログ管理を提供する。",
+            "reference": "https://learn.microsoft.com/azure/devops/boards/get-started/what-is-azure-boards",
+            "reference_label": "Microsoft Docs - Azure Boards overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "アプリケーション監視",
+          "explanation": {
+            "text": "誤り。これは Application Insights の役割。",
+            "reference": "https://learn.microsoft.com/azure/devops/boards/get-started/what-is-azure-boards",
+            "reference_label": "Microsoft Docs - Azure Boards overview"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "Azure Boards はチームの作業アイテムを追跡し、アジャイル開発を支援する。",
+        "reference": "https://learn.microsoft.com/azure/devops/boards/get-started/what-is-azure-boards",
+        "reference_label": "Microsoft Docs - Azure Boards overview"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q7",
+      "question": "Infrastructure as Code (IaC) を Azure で実装するために最も一般的に利用されるツールはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Azure Resource Manager (ARM) テンプレート",
+          "explanation": {
+            "text": "正解。ARM テンプレートは Azure リソースをコードで定義・デプロイできる。",
+            "reference": "https://learn.microsoft.com/azure/azure-resource-manager/templates/overview",
+            "reference_label": "Microsoft Docs - ARM templates overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure Policy",
+          "explanation": {
+            "text": "誤り。Policy はガバナンス管理の仕組み。",
+            "reference": "https://learn.microsoft.com/azure/governance/policy/overview",
+            "reference_label": "Microsoft Docs - Azure Policy"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Monitor",
+          "explanation": {
+            "text": "誤り。Monitor は監視の仕組み。",
+            "reference": "https://learn.microsoft.com/azure/azure-monitor/overview",
+            "reference_label": "Microsoft Docs - Azure Monitor overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Service Health",
+          "explanation": {
+            "text": "誤り。Service Health はサービスの稼働状況を提供する。",
+            "reference": "https://learn.microsoft.com/azure/service-health/overview",
+            "reference_label": "Microsoft Docs - Service Health overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ARM テンプレートは JSON 形式でインフラを定義でき、Azure 環境に IaC を実装する標準ツール。",
+        "reference": "https://learn.microsoft.com/azure/azure-resource-manager/templates/overview",
+        "reference_label": "Microsoft Docs - ARM templates overview"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q8",
+      "question": "Azure DevOps の環境（Environment）機能の主な利用目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "アプリケーションの依存関係をコードとして管理する",
+          "explanation": {
+            "text": "誤り。依存関係の管理は NuGet や npm などのパッケージ管理ツールで行う。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/environments",
+            "reference_label": "Microsoft Docs - Environments"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ステージごとにデプロイ先を定義し、承認やチェックを設定する",
+          "explanation": {
+            "text": "正解。環境はデプロイ対象を表し、手動承認やセキュリティを制御できる。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/environments",
+            "reference_label": "Microsoft Docs - Environments"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ソースコードをリポジトリに格納する",
+          "explanation": {
+            "text": "誤り。リポジトリ管理は Azure Repos の役割。",
+            "reference": "https://learn.microsoft.com/azure/devops/repos/git",
+            "reference_label": "Microsoft Docs - Azure Repos"
+          }
+        },
+        {
+          "key": "D",
+          "text": "アプリケーション監視を自動で設定する",
+          "explanation": {
+            "text": "誤り。監視は Application Insights や Azure Monitor が担当する。",
+            "reference": "https://learn.microsoft.com/azure/azure-monitor/app/app-insights-overview",
+            "reference_label": "Microsoft Docs - Application Insights overview"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Azure DevOps の Environment は、ステージングや本番環境などのデプロイ先を表し、承認プロセスやセキュリティ制御を統合できる。",
+        "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/environments",
+        "reference_label": "Microsoft Docs - Environments"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q9",
+      "question": "Azure Artifacts を利用する主な利点はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "パッケージを安全に保存・共有できる",
+          "explanation": {
+            "text": "正解。Azure Artifacts は NuGet、npm、Maven などのパッケージを管理できる。",
+            "reference": "https://learn.microsoft.com/azure/devops/artifacts/overview",
+            "reference_label": "Microsoft Docs - Azure Artifacts overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "アプリケーションの監視ダッシュボードを提供する",
+          "explanation": {
+            "text": "誤り。これは Application Insights の機能。",
+            "reference": "https://learn.microsoft.com/azure/azure-monitor/app/app-insights-overview",
+            "reference_label": "Microsoft Docs - Application Insights overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "仮想マシンをスケーリングする",
+          "explanation": {
+            "text": "誤り。これは Azure VM Scale Sets の役割。",
+            "reference": "https://learn.microsoft.com/azure/virtual-machine-scale-sets/overview",
+            "reference_label": "Microsoft Docs - VM Scale Sets"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ネットワークトラフィックを監視する",
+          "explanation": {
+            "text": "誤り。これは Network Watcher の役割。",
+            "reference": "https://learn.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview",
+            "reference_label": "Microsoft Docs - Network Watcher"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure Artifacts は依存パッケージを保存し、チーム内で安全に共有できる。",
+        "reference": "https://learn.microsoft.com/azure/devops/artifacts/overview",
+        "reference_label": "Microsoft Docs - Azure Artifacts overview"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q10",
+      "question": "GitHub Actions と Azure Pipelines の統合で可能になることはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "GitHub リポジトリのイベントをトリガーに Azure Pipelines を実行する",
+          "explanation": {
+            "text": "正解。統合により GitHub の push や pull request に応じて Pipelines を実行できる。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/repos/github",
+            "reference_label": "Microsoft Docs - GitHub integration"
+          }
+        },
+        {
+          "key": "B",
+          "text": "GitHub Actions が Azure Boards のバックログを直接編集する",
+          "explanation": {
+            "text": "誤り。Actions が直接 Boards を編集することはできない。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/repos/github",
+            "reference_label": "Microsoft Docs - GitHub integration"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Pipelines が GitHub Actions を自動生成する",
+          "explanation": {
+            "text": "誤り。自動生成の機能はない。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/repos/github",
+            "reference_label": "Microsoft Docs - GitHub integration"
+          }
+        },
+        {
+          "key": "D",
+          "text": "GitHub リポジトリのアクセス制御を Azure DevOps が完全に置き換える",
+          "explanation": {
+            "text": "誤り。GitHub のアクセス制御は GitHub 側で管理される。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/repos/github",
+            "reference_label": "Microsoft Docs - GitHub integration"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "統合により GitHub での開発イベントをトリガーに Azure Pipelines を実行できるため、CI/CD を効率化できる。",
+        "reference": "https://learn.microsoft.com/azure/devops/pipelines/repos/github",
+        "reference_label": "Microsoft Docs - GitHub integration"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q11",
+      "question": "Azure DevOps のゲート（Gate）をパイプラインに設定する主な目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ビルド結果を自動的に削除する",
+          "explanation": {
+            "text": "誤り。ゲートは削除には関係しない。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/release/approvals/gates",
+            "reference_label": "Microsoft Docs - Release gates"
+          }
+        },
+        {
+          "key": "B",
+          "text": "デプロイ前に追加の自動チェックを実行する",
+          "explanation": {
+            "text": "正解。ゲートは監視や REST API 呼び出しによるチェックを設定できる。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/release/approvals/gates",
+            "reference_label": "Microsoft Docs - Release gates"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザーごとのアクセス権限を設定する",
+          "explanation": {
+            "text": "誤り。アクセス権限は RBAC によって制御される。",
+            "reference": "https://learn.microsoft.com/azure/devops/organizations/security/about-security-roles",
+            "reference_label": "Microsoft Docs - Security roles"
+          }
+        },
+        {
+          "key": "D",
+          "text": "リポジトリを複製する",
+          "explanation": {
+            "text": "誤り。リポジトリの複製は Git コマンドで行う。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/release/approvals/gates",
+            "reference_label": "Microsoft Docs - Release gates"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "リリースゲートはデプロイ前に追加の安全性チェックを行うための仕組み。",
+        "reference": "https://learn.microsoft.com/azure/devops/pipelines/release/approvals/gates",
+        "reference_label": "Microsoft Docs - Release gates"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q12",
+      "question": "Azure DevOps のパイプラインでキャッシュ機能を利用する目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ビルドや依存関係の取得を高速化する",
+          "explanation": {
+            "text": "正解。キャッシュを利用することで不要な再ダウンロードを避けられる。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/caching/?view=azure-devops",
+            "reference_label": "Microsoft Docs - Pipeline caching"
+          }
+        },
+        {
+          "key": "B",
+          "text": "テストケースの数を自動で増加させる",
+          "explanation": {
+            "text": "誤り。キャッシュはテスト生成機能を持たない。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/caching/?view=azure-devops",
+            "reference_label": "Microsoft Docs - Pipeline caching"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Portal のレスポンス速度を向上させる",
+          "explanation": {
+            "text": "誤り。キャッシュはパイプラインのビルド時間に関わる。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/caching/?view=azure-devops",
+            "reference_label": "Microsoft Docs - Pipeline caching"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ソースコードのフォーマットを自動化する",
+          "explanation": {
+            "text": "誤り。キャッシュはコード整形とは無関係。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/caching/?view=azure-devops",
+            "reference_label": "Microsoft Docs - Pipeline caching"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "パイプラインのキャッシュ機能は、依存関係やビルド成果物を保存し、再利用することで時間を短縮する。",
+        "reference": "https://learn.microsoft.com/azure/devops/pipelines/caching/?view=azure-devops",
+        "reference_label": "Microsoft Docs - Pipeline caching"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q13",
+      "question": "Azure Key Vault を DevOps パイプラインで利用する理由はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "シークレットや証明書を安全に管理するため",
+          "explanation": {
+            "text": "正解。Key Vault はパスワードやキーを安全に保管できる。",
+            "reference": "https://learn.microsoft.com/azure/key-vault/general/overview",
+            "reference_label": "Microsoft Docs - Key Vault overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ビルド時間を短縮するため",
+          "explanation": {
+            "text": "誤り。Key Vault はビルド時間短縮には関係がない。",
+            "reference": "https://learn.microsoft.com/azure/key-vault/general/overview",
+            "reference_label": "Microsoft Docs - Key Vault overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アプリケーションのテレメトリを収集するため",
+          "explanation": {
+            "text": "誤り。テレメトリは Application Insights が担当する。",
+            "reference": "https://learn.microsoft.com/azure/key-vault/general/overview",
+            "reference_label": "Microsoft Docs - Key Vault overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "パッケージのバージョン管理を行うため",
+          "explanation": {
+            "text": "誤り。パッケージ管理は Azure Artifacts で行う。",
+            "reference": "https://learn.microsoft.com/azure/key-vault/general/overview",
+            "reference_label": "Microsoft Docs - Key Vault overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure Key Vault を利用することで、認証情報をコードに埋め込まずに安全に利用できる。",
+        "reference": "https://learn.microsoft.com/azure/key-vault/general/overview",
+        "reference_label": "Microsoft Docs - Key Vault overview"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q14",
+      "question": "Azure DevOps のロードテスト機能（クラシック機能）は廃止され、現在はどのサービスが推奨されているか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Azure Load Testing",
+          "explanation": {
+            "text": "正解。Azure Load Testing が推奨サービスとして提供されている。",
+            "reference": "https://learn.microsoft.com/azure/load-testing/overview",
+            "reference_label": "Microsoft Docs - Azure Load Testing overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure Traffic Manager",
+          "explanation": {
+            "text": "誤り。Traffic Manager は DNS ベースのルーティングサービス。",
+            "reference": "https://learn.microsoft.com/azure/traffic-manager/traffic-manager-overview",
+            "reference_label": "Microsoft Docs - Traffic Manager"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Front Door",
+          "explanation": {
+            "text": "誤り。Front Door はグローバルアプリケーション配信サービス。",
+            "reference": "https://learn.microsoft.com/azure/frontdoor/front-door-overview",
+            "reference_label": "Microsoft Docs - Front Door"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Application Gateway",
+          "explanation": {
+            "text": "誤り。Application Gateway は L7 ロードバランサー。",
+            "reference": "https://learn.microsoft.com/azure/application-gateway/overview",
+            "reference_label": "Microsoft Docs - Application Gateway"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure Load Testing は大規模なシナリオでのパフォーマンス検証をサポートし、Azure DevOps パイプラインと統合できる。",
+        "reference": "https://learn.microsoft.com/azure/load-testing/overview",
+        "reference_label": "Microsoft Docs - Azure Load Testing overview"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q15",
+      "question": "Azure DevOps のパイプラインで『ステージ（Stage）』を利用する主な目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "異なる環境にデプロイを分割するため",
+          "explanation": {
+            "text": "正解。ステージは開発・テスト・本番といった環境単位の実行を分割する。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/stages",
+            "reference_label": "Microsoft Docs - Stages"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーごとのアクセス権限を割り当てるため",
+          "explanation": {
+            "text": "誤り。権限の割り当ては RBAC で管理する。",
+            "reference": "https://learn.microsoft.com/azure/devops/organizations/security/about-security-roles",
+            "reference_label": "Microsoft Docs - Security roles"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ソースコードを保存するため",
+          "explanation": {
+            "text": "誤り。ソースコード保存は Azure Repos の役割。",
+            "reference": "https://learn.microsoft.com/azure/devops/repos/git",
+            "reference_label": "Microsoft Docs - Azure Repos"
+          }
+        },
+        {
+          "key": "D",
+          "text": "監視アラートを送信するため",
+          "explanation": {
+            "text": "誤り。アラートは Azure Monitor や Application Insights が担当する。",
+            "reference": "https://learn.microsoft.com/azure/azure-monitor/overview",
+            "reference_label": "Microsoft Docs - Azure Monitor"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "パイプラインのステージは、CI/CD の流れを環境ごとに区切り、デプロイや承認プロセスを分離できる。",
+        "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/stages",
+        "reference_label": "Microsoft Docs - Stages"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q16",
+      "question": "Azure Test Plans の主な用途はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "アプリケーション監視を行う",
+          "explanation": {
+            "text": "誤り。監視は Application Insights が担当する。",
+            "reference": "https://learn.microsoft.com/azure/devops/test/overview",
+            "reference_label": "Microsoft Docs - Test Plans overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "手動テストや探索的テストを管理する",
+          "explanation": {
+            "text": "正解。Test Plans は手動テストや計画されたテスト管理に利用される。",
+            "reference": "https://learn.microsoft.com/azure/devops/test/overview",
+            "reference_label": "Microsoft Docs - Test Plans overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ソースコードのバージョン管理を行う",
+          "explanation": {
+            "text": "誤り。これは Azure Repos の役割。",
+            "reference": "https://learn.microsoft.com/azure/devops/repos/git",
+            "reference_label": "Microsoft Docs - Azure Repos"
+          }
+        },
+        {
+          "key": "D",
+          "text": "依存パッケージを保存する",
+          "explanation": {
+            "text": "誤り。これは Azure Artifacts の役割。",
+            "reference": "https://learn.microsoft.com/azure/devops/artifacts/overview",
+            "reference_label": "Microsoft Docs - Azure Artifacts overview"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Azure Test Plans は手動テストや探索的テストを効率的に管理するためのサービス。",
+        "reference": "https://learn.microsoft.com/azure/devops/test/overview",
+        "reference_label": "Microsoft Docs - Test Plans overview"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q17",
+      "question": "Azure Pipelines におけるマルチステージ YAML パイプラインの特徴はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "CI と CD を1つの YAML ファイルで統合管理できる",
+          "explanation": {
+            "text": "正解。マルチステージ YAML は CI/CD を統合し、コードとして管理できる。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/stages",
+            "reference_label": "Microsoft Docs - Stages in pipelines"
+          }
+        },
+        {
+          "key": "B",
+          "text": "YAML ではなく GUI でのみ編集可能である",
+          "explanation": {
+            "text": "誤り。マルチステージ YAML はコードとして定義する。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/stages",
+            "reference_label": "Microsoft Docs - Stages in pipelines"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ビルドとリリースを完全に分離しなければならない",
+          "explanation": {
+            "text": "誤り。統合が可能な点が特徴。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/stages",
+            "reference_label": "Microsoft Docs - Stages in pipelines"
+          }
+        },
+        {
+          "key": "D",
+          "text": "環境ごとの承認を設定できない",
+          "explanation": {
+            "text": "誤り。承認はステージや環境単位で設定可能。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/stages",
+            "reference_label": "Microsoft Docs - Stages in pipelines"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "マルチステージ YAML パイプラインは CI/CD を一つの YAML ファイルで管理し、承認や環境ごとの分岐も設定できる。",
+        "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/stages",
+        "reference_label": "Microsoft Docs - Stages in pipelines"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q18",
+      "question": "Azure DevOps の『ゲート (Gates)』と『承認 (Approvals)』の違いはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ゲートは自動チェック、承認は人による確認",
+          "explanation": {
+            "text": "正解。ゲートは自動的に外部シグナルを確認し、承認は手動で実行する。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/release/approvals/gates",
+            "reference_label": "Microsoft Docs - Release gates"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ゲートはソースコード管理、承認はデプロイ管理",
+          "explanation": {
+            "text": "誤り。ゲートはソースコード管理には関与しない。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/release/approvals/gates",
+            "reference_label": "Microsoft Docs - Release gates"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ゲートは監視ツール専用、承認は CI 専用",
+          "explanation": {
+            "text": "誤り。ゲートは監視だけでなく API 呼び出しなども可能。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/release/approvals/gates",
+            "reference_label": "Microsoft Docs - Release gates"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ゲートはローカル実行専用、承認はクラウド実行専用",
+          "explanation": {
+            "text": "誤り。実行環境に依存せず設定できる。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/release/approvals/gates",
+            "reference_label": "Microsoft Docs - Release gates"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ゲートは自動チェック、承認は人間による確認という役割分担がある。",
+        "reference": "https://learn.microsoft.com/azure/devops/pipelines/release/approvals/gates",
+        "reference_label": "Microsoft Docs - Release gates"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q19",
+      "question": "Azure DevOps のエージェントプールを利用する利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "複数プロジェクトでビルドエージェントを共有できる",
+          "explanation": {
+            "text": "正解。エージェントプールはリソースを効率的に共有する。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/agents/pools-queues",
+            "reference_label": "Microsoft Docs - Agent pools"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ソースコードの自動修正を行う",
+          "explanation": {
+            "text": "誤り。エージェントプールはコード修正機能を持たない。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/agents/pools-queues",
+            "reference_label": "Microsoft Docs - Agent pools"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure ポータルの UI を改善する",
+          "explanation": {
+            "text": "誤り。エージェントプールは UI には関与しない。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/agents/pools-queues",
+            "reference_label": "Microsoft Docs - Agent pools"
+          }
+        },
+        {
+          "key": "D",
+          "text": "アプリケーション監視を自動的に設定する",
+          "explanation": {
+            "text": "誤り。監視設定は Application Insights などの役割。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/agents/pools-queues",
+            "reference_label": "Microsoft Docs - Agent pools"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "エージェントプールを利用すると、複数のプロジェクト間でビルドエージェントを効率的に共有できる。",
+        "reference": "https://learn.microsoft.com/azure/devops/pipelines/agents/pools-queues",
+        "reference_label": "Microsoft Docs - Agent pools"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q20",
+      "question": "Azure DevOps のブランチポリシーにより強制できることはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "コードレビューの必須化",
+          "explanation": {
+            "text": "正解。ブランチポリシーでプルリクエストの承認を必須にできる。",
+            "reference": "https://learn.microsoft.com/azure/devops/repos/git/branch-policies",
+            "reference_label": "Microsoft Docs - Branch policies"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure リソースの自動スケーリング",
+          "explanation": {
+            "text": "誤り。リソーススケーリングは Azure Autoscale の役割。",
+            "reference": "https://learn.microsoft.com/azure/azure-monitor/autoscale/autoscale-overview",
+            "reference_label": "Microsoft Docs - Autoscale overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アプリケーション監視の自動設定",
+          "explanation": {
+            "text": "誤り。監視は Application Insights で設定する。",
+            "reference": "https://learn.microsoft.com/azure/devops/repos/git/branch-policies",
+            "reference_label": "Microsoft Docs - Branch policies"
+          }
+        },
+        {
+          "key": "D",
+          "text": "パッケージの依存関係解決",
+          "explanation": {
+            "text": "誤り。依存関係管理は Azure Artifacts や NuGet が担当する。",
+            "reference": "https://learn.microsoft.com/azure/devops/repos/git/branch-policies",
+            "reference_label": "Microsoft Docs - Branch policies"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ブランチポリシーによりコードレビューやビルドの成功を必須化でき、品質を保証できる。",
+        "reference": "https://learn.microsoft.com/azure/devops/repos/git/branch-policies",
+        "reference_label": "Microsoft Docs - Branch policies"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q21",
+      "question": "Azure Monitor のアラートルールを Azure DevOps パイプラインに統合する利点はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "システム障害を自動検出し、パイプラインを停止できる",
+          "explanation": {
+            "text": "正解。アラートと統合することで問題発生時にデプロイを自動的に中止できる。",
+            "reference": "https://learn.microsoft.com/azure/azure-monitor/alerts/alerts-overview",
+            "reference_label": "Microsoft Docs - Alerts overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ソースコードを自動的に修正できる",
+          "explanation": {
+            "text": "誤り。アラートはコード修正は行わない。",
+            "reference": "https://learn.microsoft.com/azure/azure-monitor/alerts/alerts-overview",
+            "reference_label": "Microsoft Docs - Alerts overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アプリケーションの UI を改善する",
+          "explanation": {
+            "text": "誤り。UI 改善はアラートの役割ではない。",
+            "reference": "https://learn.microsoft.com/azure/azure-monitor/alerts/alerts-overview",
+            "reference_label": "Microsoft Docs - Alerts overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Repos のアクセス制御を自動で変更する",
+          "explanation": {
+            "text": "誤り。アクセス制御はアラート連携の対象外。",
+            "reference": "https://learn.microsoft.com/azure/azure-monitor/alerts/alerts-overview",
+            "reference_label": "Microsoft Docs - Alerts overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure Monitor のアラートを統合すると、問題発生時にパイプラインを停止し、障害拡大を防げる。",
+        "reference": "https://learn.microsoft.com/azure/azure-monitor/alerts/alerts-overview",
+        "reference_label": "Microsoft Docs - Alerts overview"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q22",
+      "question": "Azure DevOps のパイプラインで『テンプレート』を利用する利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "複数のパイプラインで共通の定義を再利用できる",
+          "explanation": {
+            "text": "正解。テンプレートを使うことでコードの重複を減らし、再利用性を高められる。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/templates",
+            "reference_label": "Microsoft Docs - Templates in pipelines"
+          }
+        },
+        {
+          "key": "B",
+          "text": "自動的にセキュリティポリシーを適用する",
+          "explanation": {
+            "text": "誤り。セキュリティポリシー適用はテンプレートの役割ではない。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/templates",
+            "reference_label": "Microsoft Docs - Templates in pipelines"
+          }
+        },
+        {
+          "key": "C",
+          "text": "リポジトリのバックアップを作成する",
+          "explanation": {
+            "text": "誤り。テンプレートはバックアップ機能を持たない。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/templates",
+            "reference_label": "Microsoft Docs - Templates in pipelines"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ビルドエージェントを自動的にスケーリングする",
+          "explanation": {
+            "text": "誤り。スケーリングは Azure VMSS や Microsoft-hosted agent の仕組みに依存する。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/templates",
+            "reference_label": "Microsoft Docs - Templates in pipelines"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "テンプレートを利用することで、共通処理を複数パイプラインで使い回しでき、管理の効率化が図れる。",
+        "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/templates",
+        "reference_label": "Microsoft Docs - Templates in pipelines"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q23",
+      "question": "Azure DevOps のゲートを利用して外部システムと統合する方法として適切なのはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "REST API 呼び出しを利用して外部チェックを実行する",
+          "explanation": {
+            "text": "正解。ゲートは REST API を通じて外部サービスと統合できる。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/release/approvals/gates",
+            "reference_label": "Microsoft Docs - Release gates"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure Monitor を必ず利用しなければならない",
+          "explanation": {
+            "text": "誤り。Monitor 以外にも REST API や ServiceNow など外部統合が可能。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/release/approvals/gates",
+            "reference_label": "Microsoft Docs - Release gates"
+          }
+        },
+        {
+          "key": "C",
+          "text": "YAML パイプラインでは利用できない",
+          "explanation": {
+            "text": "誤り。クラシックパイプラインだけでなく YAML でも対応可能。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/release/approvals/gates",
+            "reference_label": "Microsoft Docs - Release gates"
+          }
+        },
+        {
+          "key": "D",
+          "text": "リポジトリのブランチ戦略に依存する",
+          "explanation": {
+            "text": "誤り。ブランチ戦略とは無関係。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/release/approvals/gates",
+            "reference_label": "Microsoft Docs - Release gates"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ゲートは REST API 呼び出しを使って外部システムと連携できるため、柔軟な統合が可能。",
+        "reference": "https://learn.microsoft.com/azure/devops/pipelines/release/approvals/gates",
+        "reference_label": "Microsoft Docs - Release gates"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q24",
+      "question": "Azure DevOps の YAML パイプラインで変数グループを利用する主な利点はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "共通の変数を複数のパイプラインで再利用できる",
+          "explanation": {
+            "text": "正解。変数グループを使えば値を一元管理できる。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/library/variable-groups",
+            "reference_label": "Microsoft Docs - Variable groups"
+          }
+        },
+        {
+          "key": "B",
+          "text": "パイプラインを自動的に並列実行する",
+          "explanation": {
+            "text": "誤り。並列実行はジョブ設定で制御する。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/library/variable-groups",
+            "reference_label": "Microsoft Docs - Variable groups"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ソースコードの変更を監視する",
+          "explanation": {
+            "text": "誤り。監視はトリガーで制御する。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/library/variable-groups",
+            "reference_label": "Microsoft Docs - Variable groups"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ビルド成果物を保存する",
+          "explanation": {
+            "text": "誤り。成果物の保存は Artifacts で行う。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/library/variable-groups",
+            "reference_label": "Microsoft Docs - Variable groups"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "変数グループを利用すると、同じ値を複数のパイプラインで簡単に利用できる。",
+        "reference": "https://learn.microsoft.com/azure/devops/pipelines/library/variable-groups",
+        "reference_label": "Microsoft Docs - Variable groups"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q25",
+      "question": "Azure DevOps のパイプラインでセキュリティを強化するベストプラクティスはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "シークレットを直接 YAML ファイルに記述する",
+          "explanation": {
+            "text": "誤り。これはセキュリティリスクが高い。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/security/",
+            "reference_label": "Microsoft Docs - Security in pipelines"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure Key Vault を統合してシークレットを安全に管理する",
+          "explanation": {
+            "text": "正解。Key Vault と連携することで機密情報を安全に扱える。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/release/key-vault-integration",
+            "reference_label": "Microsoft Docs - Key Vault integration"
+          }
+        },
+        {
+          "key": "C",
+          "text": "エージェントマシンに平文でシークレットを保存する",
+          "explanation": {
+            "text": "誤り。ローカル保存はセキュリティリスクが高い。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/security/",
+            "reference_label": "Microsoft Docs - Security in pipelines"
+          }
+        },
+        {
+          "key": "D",
+          "text": "変数を常にログに出力する",
+          "explanation": {
+            "text": "誤り。シークレットはログに出力すべきではない。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/security/",
+            "reference_label": "Microsoft Docs - Security in pipelines"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Key Vault を統合することで YAML ファイルに秘密情報を記述せずに済み、安全な CI/CD を実現できる。",
+        "reference": "https://learn.microsoft.com/azure/devops/pipelines/release/key-vault-integration",
+        "reference_label": "Microsoft Docs - Key Vault integration"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q26",
+      "question": "Azure Pipelines のセルフホステッドエージェントを利用する主な理由はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "独自のビルド環境や依存関係を利用できる",
+          "explanation": {
+            "text": "正解。セルフホステッドエージェントはカスタムツールや依存関係を利用可能。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/agents/agents",
+            "reference_label": "Microsoft Docs - Agents"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure Portal の UI を自動変更できる",
+          "explanation": {
+            "text": "誤り。エージェントは UI 変更には関与しない。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/agents/agents",
+            "reference_label": "Microsoft Docs - Agents"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Monitor のメトリックを収集する",
+          "explanation": {
+            "text": "誤り。モニタリングは別サービスで行う。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/agents/agents",
+            "reference_label": "Microsoft Docs - Agents"
+          }
+        },
+        {
+          "key": "D",
+          "text": "GitHub リポジトリのアクセス制御を自動管理する",
+          "explanation": {
+            "text": "誤り。アクセス制御はリポジトリ側で管理される。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/agents/agents",
+            "reference_label": "Microsoft Docs - Agents"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "セルフホステッドエージェントはオンプレやクラウドに構築し、特定の依存関係や環境に合わせて利用できる。",
+        "reference": "https://learn.microsoft.com/azure/devops/pipelines/agents/agents",
+        "reference_label": "Microsoft Docs - Agents"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q27",
+      "question": "Azure Boards のバックログ機能を利用する利点はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "作業アイテムを優先度順に整理できる",
+          "explanation": {
+            "text": "正解。バックログはタスクやストーリーを優先度に従って管理する。",
+            "reference": "https://learn.microsoft.com/azure/devops/boards/backlogs/backlogs-overview",
+            "reference_label": "Microsoft Docs - Backlogs overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "CI/CD パイプラインを管理する",
+          "explanation": {
+            "text": "誤り。パイプライン管理は Azure Pipelines の役割。",
+            "reference": "https://learn.microsoft.com/azure/devops/boards/backlogs/backlogs-overview",
+            "reference_label": "Microsoft Docs - Backlogs overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アプリケーションのログを分析する",
+          "explanation": {
+            "text": "誤り。ログ分析は Azure Monitor で行う。",
+            "reference": "https://learn.microsoft.com/azure/devops/boards/backlogs/backlogs-overview",
+            "reference_label": "Microsoft Docs - Backlogs overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ネットワークトラフィックを制御する",
+          "explanation": {
+            "text": "誤り。ネットワーク制御は Azure Firewall などの役割。",
+            "reference": "https://learn.microsoft.com/azure/devops/boards/backlogs/backlogs-overview",
+            "reference_label": "Microsoft Docs - Backlogs overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "バックログ機能により、作業を整理してアジャイル開発の進行を効率化できる。",
+        "reference": "https://learn.microsoft.com/azure/devops/boards/backlogs/backlogs-overview",
+        "reference_label": "Microsoft Docs - Backlogs overview"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q28",
+      "question": "Azure Pipelines の『ステップ (Step)』に関する正しい説明はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ステップはジョブの中で実行される最小単位のタスクである",
+          "explanation": {
+            "text": "正解。ステップはスクリプトやタスクとして実行される基本要素。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/phases",
+            "reference_label": "Microsoft Docs - Jobs, steps, tasks"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ステップは必ず別のステージとして定義される",
+          "explanation": {
+            "text": "誤り。ステップはジョブ内に含まれる要素であり、ステージとは異なる。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/phases",
+            "reference_label": "Microsoft Docs - Jobs, steps, tasks"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ステップはビルドエージェントを定義する",
+          "explanation": {
+            "text": "誤り。エージェントはプールやジョブで指定する。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/phases",
+            "reference_label": "Microsoft Docs - Jobs, steps, tasks"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ステップは並列実行できない",
+          "explanation": {
+            "text": "誤り。条件設定やマトリックス戦略を利用して並列実行が可能。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/phases",
+            "reference_label": "Microsoft Docs - Jobs, steps, tasks"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ステップはタスクやスクリプトを実行する最小単位であり、ジョブの構成要素となる。",
+        "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/phases",
+        "reference_label": "Microsoft Docs - Jobs, steps, tasks"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q29",
+      "question": "Azure DevOps の『リリースパイプライン (Release pipeline)』の役割はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ビルドしたアプリケーションをさまざまな環境へデプロイする",
+          "explanation": {
+            "text": "正解。リリースパイプラインはテストや本番など複数環境へのデプロイを管理する。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process",
+            "reference_label": "Microsoft Docs - Release pipelines"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ソースコードの変更を監視する",
+          "explanation": {
+            "text": "誤り。ソースコード監視はビルドパイプラインで行う。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process",
+            "reference_label": "Microsoft Docs - Release pipelines"
+          }
+        },
+        {
+          "key": "C",
+          "text": "パッケージを保存して共有する",
+          "explanation": {
+            "text": "誤り。これは Azure Artifacts の役割。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process",
+            "reference_label": "Microsoft Docs - Release pipelines"
+          }
+        },
+        {
+          "key": "D",
+          "text": "アジャイルプロジェクト管理を提供する",
+          "explanation": {
+            "text": "誤り。これは Azure Boards の役割。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process",
+            "reference_label": "Microsoft Docs - Release pipelines"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "リリースパイプラインは、アプリケーションを複数環境へ安全にデプロイする仕組み。",
+        "reference": "https://learn.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process",
+        "reference_label": "Microsoft Docs - Release pipelines"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q30",
+      "question": "Azure DevOps の『アーティファクト (Artifacts)』をリリースパイプラインで利用する目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ビルドの成果物をデプロイ工程に渡す",
+          "explanation": {
+            "text": "正解。Artifacts はビルドで作成された成果物をリリースパイプラインに渡す役割を持つ。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/release/artifacts",
+            "reference_label": "Microsoft Docs - Artifacts in release pipelines"
+          }
+        },
+        {
+          "key": "B",
+          "text": "デプロイ環境のセキュリティを自動で強化する",
+          "explanation": {
+            "text": "誤り。Artifacts はセキュリティ制御を目的としない。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/release/artifacts",
+            "reference_label": "Microsoft Docs - Artifacts in release pipelines"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザーのアクセス権を管理する",
+          "explanation": {
+            "text": "誤り。アクセス管理は RBAC によって制御される。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/release/artifacts",
+            "reference_label": "Microsoft Docs - Artifacts in release pipelines"
+          }
+        },
+        {
+          "key": "D",
+          "text": "アプリケーションの監視メトリックを提供する",
+          "explanation": {
+            "text": "誤り。監視は Application Insights や Monitor が担当する。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/release/artifacts",
+            "reference_label": "Microsoft Docs - Artifacts in release pipelines"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Artifacts はビルドの成果物をリリースパイプラインに渡す仕組みであり、CI と CD をつなぐ役割を果たす。",
+        "reference": "https://learn.microsoft.com/azure/devops/pipelines/release/artifacts",
+        "reference_label": "Microsoft Docs - Artifacts in release pipelines"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q31",
+      "question": "Azure DevOps の『ステージ依存関係 (Stage dependencies)』を設定する目的はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "特定のステージが完了してから次のステージを実行する",
+          "explanation": {
+            "text": "正解。依存関係を設定することで、順序を制御できる。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/stages",
+            "reference_label": "Microsoft Docs - Stages in pipelines"
+          }
+        },
+        {
+          "key": "B",
+          "text": "リポジトリ間でソースコードを共有する",
+          "explanation": {
+            "text": "誤り。依存関係はソース共有ではなく実行順序の制御。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/stages",
+            "reference_label": "Microsoft Docs - Stages in pipelines"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Monitor と統合する",
+          "explanation": {
+            "text": "誤り。依存関係設定は監視統合とは無関係。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/stages",
+            "reference_label": "Microsoft Docs - Stages in pipelines"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ソースコードの自動修正を行う",
+          "explanation": {
+            "text": "誤り。依存関係はコード修正を行わない。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/stages",
+            "reference_label": "Microsoft Docs - Stages in pipelines"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ステージ依存関係を設定することで、前のステージの成功を条件に次のステージを実行する制御が可能となる。",
+        "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/stages",
+        "reference_label": "Microsoft Docs - Stages in pipelines"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q32",
+      "question": "Azure DevOps の『リリース承認 (Approvals)』の目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "デプロイ前に人間による確認を必須化する",
+          "explanation": {
+            "text": "正解。承認を設定することで手動レビューを挟める。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/release/approvals/",
+            "reference_label": "Microsoft Docs - Release approvals"
+          }
+        },
+        {
+          "key": "B",
+          "text": "外部システムとの統合を自動化する",
+          "explanation": {
+            "text": "誤り。外部統合はゲートの役割。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/release/approvals/",
+            "reference_label": "Microsoft Docs - Release approvals"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ソースコードの変更を監視する",
+          "explanation": {
+            "text": "誤り。監視はビルドトリガーで行う。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/release/approvals/",
+            "reference_label": "Microsoft Docs - Release approvals"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Monitor のアラートを作成する",
+          "explanation": {
+            "text": "誤り。アラートは Monitor 側で設定する。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/release/approvals/",
+            "reference_label": "Microsoft Docs - Release approvals"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "リリース承認を設定すると、人間による検証を挟んで安全性を高められる。",
+        "reference": "https://learn.microsoft.com/azure/devops/pipelines/release/approvals/",
+        "reference_label": "Microsoft Docs - Release approvals"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q33",
+      "question": "Azure DevOps の『ゲート (Gates)』を利用して ServiceNow と統合する利点はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "変更要求やインシデントの状態を確認してからデプロイできる",
+          "explanation": {
+            "text": "正解。ゲートで ServiceNow API を呼び出し、状態確認を自動化できる。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/release/approvals/gates",
+            "reference_label": "Microsoft Docs - Release gates"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ServiceNow のチケットを自動で解決する",
+          "explanation": {
+            "text": "誤り。ゲートは解決ではなく状態確認を行う。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/release/approvals/gates",
+            "reference_label": "Microsoft Docs - Release gates"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ServiceNow の UI を変更する",
+          "explanation": {
+            "text": "誤り。UI 操作は対象外。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/release/approvals/gates",
+            "reference_label": "Microsoft Docs - Release gates"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ServiceNow の代替として利用できる",
+          "explanation": {
+            "text": "誤り。Azure DevOps は ITSM の代替ではない。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/release/approvals/gates",
+            "reference_label": "Microsoft Docs - Release gates"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ServiceNow とゲートを統合することで、インシデントや変更要求が承認されているか自動的に確認できる。",
+        "reference": "https://learn.microsoft.com/azure/devops/pipelines/release/approvals/gates",
+        "reference_label": "Microsoft Docs - Release gates"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q34",
+      "question": "Azure Pipelines のマトリックス戦略 (Matrix strategy) を利用する主な利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "異なる構成で並列にビルドやテストを実行できる",
+          "explanation": {
+            "text": "正解。マトリックス戦略により OS やバージョンの組み合わせで並列実行できる。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/phases",
+            "reference_label": "Microsoft Docs - Jobs, steps, tasks"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ソースコードを自動的に最適化する",
+          "explanation": {
+            "text": "誤り。マトリックス戦略はコード最適化を行わない。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/phases",
+            "reference_label": "Microsoft Docs - Jobs, steps, tasks"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Key Vault と統合する",
+          "explanation": {
+            "text": "誤り。Key Vault 統合は変数やシークレット管理の仕組み。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/phases",
+            "reference_label": "Microsoft Docs - Jobs, steps, tasks"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Monitor のメトリックを自動収集する",
+          "explanation": {
+            "text": "誤り。モニタリングは別サービスで行う。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/phases",
+            "reference_label": "Microsoft Docs - Jobs, steps, tasks"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "マトリックス戦略を利用することで、異なる OS や依存関係の組み合わせを一度にテスト可能。",
+        "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/phases",
+        "reference_label": "Microsoft Docs - Jobs, steps, tasks"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q35",
+      "question": "Azure DevOps のビルドパイプラインで『継続的インテグレーション (CI)』を設定する利点はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ソースコードの変更を自動でビルドし、問題を早期に検出できる",
+          "explanation": {
+            "text": "正解。CI により開発段階でバグを早期に検出できる。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/get-started/key-pipelines-concepts",
+            "reference_label": "Microsoft Docs - Key pipeline concepts"
+          }
+        },
+        {
+          "key": "B",
+          "text": "アプリケーション監視のダッシュボードを作成する",
+          "explanation": {
+            "text": "誤り。監視は Application Insights が担当する。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/get-started/key-pipelines-concepts",
+            "reference_label": "Microsoft Docs - Key pipeline concepts"
+          }
+        },
+        {
+          "key": "C",
+          "text": "リリースの手動承認を不要にする",
+          "explanation": {
+            "text": "誤り。CI は承認を制御しない。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/get-started/key-pipelines-concepts",
+            "reference_label": "Microsoft Docs - Key pipeline concepts"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure リソースを自動スケーリングする",
+          "explanation": {
+            "text": "誤り。自動スケーリングは Azure Autoscale の機能。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/get-started/key-pipelines-concepts",
+            "reference_label": "Microsoft Docs - Key pipeline concepts"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "CI によりソースコードの変更を継続的にビルドし、問題を早期に発見・修正できる。",
+        "reference": "https://learn.microsoft.com/azure/devops/pipelines/get-started/key-pipelines-concepts",
+        "reference_label": "Microsoft Docs - Key pipeline concepts"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q36",
+      "question": "Azure DevOps で『条件付き実行 (Condition)』をステップに設定する目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "特定の条件を満たす場合のみステップを実行する",
+          "explanation": {
+            "text": "正解。条件を設定することで柔軟なパイプライン制御が可能。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/conditions",
+            "reference_label": "Microsoft Docs - Conditions"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ソースコードを自動的に修正する",
+          "explanation": {
+            "text": "誤り。条件付き実行はコード修正を行わない。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/conditions",
+            "reference_label": "Microsoft Docs - Conditions"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Key Vault を自動作成する",
+          "explanation": {
+            "text": "誤り。条件付き実行はリソース作成を目的としない。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/conditions",
+            "reference_label": "Microsoft Docs - Conditions"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Monitor のアラートを生成する",
+          "explanation": {
+            "text": "誤り。アラート生成は Monitor 側で行う。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/conditions",
+            "reference_label": "Microsoft Docs - Conditions"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "条件を利用すると、ブランチやビルド結果などの状態に応じてステップを実行するかどうかを制御できる。",
+        "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/conditions",
+        "reference_label": "Microsoft Docs - Conditions"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q37",
+      "question": "Azure Repos のプルリクエストで『ポリシー』を設定する目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "品質を保証するためにコードレビューやビルド成功を必須化する",
+          "explanation": {
+            "text": "正解。プルリクエストポリシーで承認やビルド成功を強制できる。",
+            "reference": "https://learn.microsoft.com/azure/devops/repos/git/branch-policies",
+            "reference_label": "Microsoft Docs - Branch policies"
+          }
+        },
+        {
+          "key": "B",
+          "text": "アプリケーションのパフォーマンス監視を自動化する",
+          "explanation": {
+            "text": "誤り。パフォーマンス監視は Application Insights が担当する。",
+            "reference": "https://learn.microsoft.com/azure/devops/repos/git/branch-policies",
+            "reference_label": "Microsoft Docs - Branch policies"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Key Vault を統合する",
+          "explanation": {
+            "text": "誤り。Key Vault 連携はパイプラインで行う。",
+            "reference": "https://learn.microsoft.com/azure/devops/repos/git/branch-policies",
+            "reference_label": "Microsoft Docs - Branch policies"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ネットワークトラフィックを制御する",
+          "explanation": {
+            "text": "誤り。トラフィック制御は Azure Firewall などが担当する。",
+            "reference": "https://learn.microsoft.com/azure/devops/repos/git/branch-policies",
+            "reference_label": "Microsoft Docs - Branch policies"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "プルリクエストポリシーを使うと、レビューやビルドチェックを必須化して品質を確保できる。",
+        "reference": "https://learn.microsoft.com/azure/devops/repos/git/branch-policies",
+        "reference_label": "Microsoft Docs - Branch policies"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q38",
+      "question": "Azure DevOps の『パイプラインキャッシュ』を利用する利点はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "依存パッケージの再ダウンロードを避けてビルド時間を短縮できる",
+          "explanation": {
+            "text": "正解。キャッシュを利用すると効率的に依存関係を再利用できる。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/caching/?view=azure-devops",
+            "reference_label": "Microsoft Docs - Pipeline caching"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ソースコードの変更を自動的に修正する",
+          "explanation": {
+            "text": "誤り。キャッシュはソースコード修正を行わない。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/caching/?view=azure-devops",
+            "reference_label": "Microsoft Docs - Pipeline caching"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Monitor のアラートを作成する",
+          "explanation": {
+            "text": "誤り。キャッシュはアラート機能を持たない。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/caching/?view=azure-devops",
+            "reference_label": "Microsoft Docs - Pipeline caching"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ネットワークトラフィックを制御する",
+          "explanation": {
+            "text": "誤り。ネットワーク制御はキャッシュの機能ではない。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/caching/?view=azure-devops",
+            "reference_label": "Microsoft Docs - Pipeline caching"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "パイプラインキャッシュを利用すると、依存関係やビルド成果物を再利用して時間を短縮できる。",
+        "reference": "https://learn.microsoft.com/azure/devops/pipelines/caching/?view=azure-devops",
+        "reference_label": "Microsoft Docs - Pipeline caching"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q39",
+      "question": "Azure Boards の『カンバンボード』を利用する目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "作業アイテムの進行状況を可視化して管理する",
+          "explanation": {
+            "text": "正解。カンバンボードはタスクを列で管理し、進捗を見える化する。",
+            "reference": "https://learn.microsoft.com/azure/devops/boards/boards/kanban-overview",
+            "reference_label": "Microsoft Docs - Kanban boards"
+          }
+        },
+        {
+          "key": "B",
+          "text": "アプリケーションの監視を自動化する",
+          "explanation": {
+            "text": "誤り。監視は Application Insights が担当する。",
+            "reference": "https://learn.microsoft.com/azure/devops/boards/boards/kanban-overview",
+            "reference_label": "Microsoft Docs - Kanban boards"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ソースコードをバージョン管理する",
+          "explanation": {
+            "text": "誤り。バージョン管理は Azure Repos が担当する。",
+            "reference": "https://learn.microsoft.com/azure/devops/boards/boards/kanban-overview",
+            "reference_label": "Microsoft Docs - Kanban boards"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Key Vault を管理する",
+          "explanation": {
+            "text": "誤り。Key Vault はシークレット管理を行うサービス。",
+            "reference": "https://learn.microsoft.com/azure/devops/boards/boards/kanban-overview",
+            "reference_label": "Microsoft Docs - Kanban boards"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "カンバンボードを利用すると、作業の流れを可視化し、チームの進捗を効率的に追跡できる。",
+        "reference": "https://learn.microsoft.com/azure/devops/boards/boards/kanban-overview",
+        "reference_label": "Microsoft Docs - Kanban boards"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q40",
+      "question": "Azure Pipelines の『条件付きデプロイ』を設定することで可能になることはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "特定のブランチやタグのときだけ本番環境にデプロイする",
+          "explanation": {
+            "text": "正解。条件付きデプロイでブランチやタグを条件にできる。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/conditions",
+            "reference_label": "Microsoft Docs - Conditions"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ソースコードを自動で修正する",
+          "explanation": {
+            "text": "誤り。条件付きデプロイはコード修正を行わない。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/conditions",
+            "reference_label": "Microsoft Docs - Conditions"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Monitor のメトリックを収集する",
+          "explanation": {
+            "text": "誤り。メトリック収集は Monitor の機能。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/conditions",
+            "reference_label": "Microsoft Docs - Conditions"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザーごとのアクセス制御を設定する",
+          "explanation": {
+            "text": "誤り。アクセス制御は RBAC によって行う。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/conditions",
+            "reference_label": "Microsoft Docs - Conditions"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "条件付きデプロイにより、ブランチやタグ、変数の状態によってデプロイを制御できる。",
+        "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/conditions",
+        "reference_label": "Microsoft Docs - Conditions"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q41",
+      "question": "Azure DevOps の『パイプライン並列実行』を利用する利点はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "複数のジョブを同時に実行してビルド時間を短縮できる",
+          "explanation": {
+            "text": "正解。並列実行は効率的にパイプラインを進めるための仕組み。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/licensing/concurrent-jobs",
+            "reference_label": "Microsoft Docs - Parallel jobs"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ソースコードのバグを自動修正する",
+          "explanation": {
+            "text": "誤り。並列実行はコード修正を行わない。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/licensing/concurrent-jobs",
+            "reference_label": "Microsoft Docs - Parallel jobs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Monitor のアラートを生成する",
+          "explanation": {
+            "text": "誤り。アラート生成は Monitor が担当する。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/licensing/concurrent-jobs",
+            "reference_label": "Microsoft Docs - Parallel jobs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "リポジトリを自動的に複製する",
+          "explanation": {
+            "text": "誤り。リポジトリ複製は Git の機能。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/licensing/concurrent-jobs",
+            "reference_label": "Microsoft Docs - Parallel jobs"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "パイプライン並列実行は、ジョブを同時に動かすことで時間を短縮し、開発効率を高める。",
+        "reference": "https://learn.microsoft.com/azure/devops/pipelines/licensing/concurrent-jobs",
+        "reference_label": "Microsoft Docs - Parallel jobs"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q42",
+      "question": "Azure DevOps の『サービスフック (Service Hooks)』の役割はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "外部サービスと統合し、イベント発生時に通知やアクションを実行する",
+          "explanation": {
+            "text": "正解。Service Hooks は Slack、Teams、Jira などと統合できる。",
+            "reference": "https://learn.microsoft.com/azure/devops/service-hooks/overview",
+            "reference_label": "Microsoft Docs - Service hooks"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ソースコードを自動で修正する",
+          "explanation": {
+            "text": "誤り。Service Hooks はコード修正を行わない。",
+            "reference": "https://learn.microsoft.com/azure/devops/service-hooks/overview",
+            "reference_label": "Microsoft Docs - Service hooks"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Key Vault を自動作成する",
+          "explanation": {
+            "text": "誤り。Key Vault 作成は Service Hooks の機能ではない。",
+            "reference": "https://learn.microsoft.com/azure/devops/service-hooks/overview",
+            "reference_label": "Microsoft Docs - Service hooks"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ネットワークトラフィックを制御する",
+          "explanation": {
+            "text": "誤り。Service Hooks はトラフィック制御を行わない。",
+            "reference": "https://learn.microsoft.com/azure/devops/service-hooks/overview",
+            "reference_label": "Microsoft Docs - Service hooks"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Service Hooks を利用すると、外部サービスと統合してイベント駆動の通知や自動アクションを実行できる。",
+        "reference": "https://learn.microsoft.com/azure/devops/service-hooks/overview",
+        "reference_label": "Microsoft Docs - Service hooks"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q43",
+      "question": "Azure DevOps の『ビルドトリガー (Build trigger)』を利用する目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ソースコードの変更を検知して自動的にビルドを実行する",
+          "explanation": {
+            "text": "正解。ビルドトリガーはコミットやプルリクエストを検知して自動ビルドを行う。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/build/triggers",
+            "reference_label": "Microsoft Docs - Build triggers"
+          }
+        },
+        {
+          "key": "B",
+          "text": "アプリケーションの監視を自動化する",
+          "explanation": {
+            "text": "誤り。監視は Application Insights が担当する。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/build/triggers",
+            "reference_label": "Microsoft Docs - Build triggers"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Key Vault を作成する",
+          "explanation": {
+            "text": "誤り。Key Vault 作成はビルドトリガーの機能ではない。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/build/triggers",
+            "reference_label": "Microsoft Docs - Build triggers"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザーごとのアクセス権を管理する",
+          "explanation": {
+            "text": "誤り。アクセス管理は RBAC が担当する。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/build/triggers",
+            "reference_label": "Microsoft Docs - Build triggers"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ビルドトリガーはリポジトリの変更を検知して自動的にビルドを実行する仕組み。",
+        "reference": "https://learn.microsoft.com/azure/devops/pipelines/build/triggers",
+        "reference_label": "Microsoft Docs - Build triggers"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q44",
+      "question": "Azure DevOps の『ロードテスト (Load testing)』の代替として推奨されているサービスはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Azure Load Testing",
+          "explanation": {
+            "text": "正解。従来のロードテスト機能は廃止され、Azure Load Testing が推奨される。",
+            "reference": "https://learn.microsoft.com/azure/load-testing/overview",
+            "reference_label": "Microsoft Docs - Azure Load Testing overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure Traffic Manager",
+          "explanation": {
+            "text": "誤り。Traffic Manager は DNS ベースのルーティングサービス。",
+            "reference": "https://learn.microsoft.com/azure/traffic-manager/traffic-manager-overview",
+            "reference_label": "Microsoft Docs - Traffic Manager"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Front Door",
+          "explanation": {
+            "text": "誤り。Front Door はグローバル配信を行うサービス。",
+            "reference": "https://learn.microsoft.com/azure/frontdoor/front-door-overview",
+            "reference_label": "Microsoft Docs - Front Door"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Application Gateway",
+          "explanation": {
+            "text": "誤り。Application Gateway は L7 ロードバランサー。",
+            "reference": "https://learn.microsoft.com/azure/application-gateway/overview",
+            "reference_label": "Microsoft Docs - Application Gateway"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure Load Testing は負荷テストをクラウド規模で実行でき、Azure DevOps と統合可能。",
+        "reference": "https://learn.microsoft.com/azure/load-testing/overview",
+        "reference_label": "Microsoft Docs - Azure Load Testing overview"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q45",
+      "question": "Azure DevOps の『マルチステージ YAML パイプライン』を利用する利点はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "CI と CD を単一の YAML 定義で管理できる",
+          "explanation": {
+            "text": "正解。マルチステージ YAML は CI/CD を統合して管理できる。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/stages",
+            "reference_label": "Microsoft Docs - Stages"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure Repos を自動で作成する",
+          "explanation": {
+            "text": "誤り。Repos 作成はパイプラインの機能ではない。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/stages",
+            "reference_label": "Microsoft Docs - Stages"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Azure Key Vault の内容を強制的に更新する",
+          "explanation": {
+            "text": "誤り。Key Vault の更新は別途 API や管理機能で行う。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/stages",
+            "reference_label": "Microsoft Docs - Stages"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Monitor のメトリックを収集する",
+          "explanation": {
+            "text": "誤り。モニタリングは Monitor サービスの役割。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/stages",
+            "reference_label": "Microsoft Docs - Stages"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "マルチステージ YAML を使うことで、ビルドからデプロイまでを一つの YAML ファイルで定義できる。",
+        "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/stages",
+        "reference_label": "Microsoft Docs - Stages"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q46",
+      "question": "Azure DevOps の『並列ジョブ (Parallel jobs)』に関する正しい説明はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "複数のビルドやテストを同時に実行できる",
+          "explanation": {
+            "text": "正解。並列ジョブは時間短縮のために利用される。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/licensing/concurrent-jobs",
+            "reference_label": "Microsoft Docs - Parallel jobs"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure Monitor のログを収集する",
+          "explanation": {
+            "text": "誤り。ログ収集は Monitor が担当する。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/licensing/concurrent-jobs",
+            "reference_label": "Microsoft Docs - Parallel jobs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ソースコードを自動修正する",
+          "explanation": {
+            "text": "誤り。並列ジョブはコード修正を行わない。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/licensing/concurrent-jobs",
+            "reference_label": "Microsoft Docs - Parallel jobs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Key Vault を自動作成する",
+          "explanation": {
+            "text": "誤り。Key Vault 作成は別機能。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/licensing/concurrent-jobs",
+            "reference_label": "Microsoft Docs - Parallel jobs"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "並列ジョブを利用すると、複数のビルドやテストを同時に実行でき、パイプライン全体の時間を短縮できる。",
+        "reference": "https://learn.microsoft.com/azure/devops/pipelines/licensing/concurrent-jobs",
+        "reference_label": "Microsoft Docs - Parallel jobs"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q47",
+      "question": "Azure DevOps の『環境 (Environment)』で設定できる機能はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "デプロイ先リソースの可視化と承認プロセス",
+          "explanation": {
+            "text": "正解。Environment はリソースの表示や承認を管理できる。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/environments",
+            "reference_label": "Microsoft Docs - Environments"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ソースコードの変更履歴を管理する",
+          "explanation": {
+            "text": "誤り。変更履歴は Repos が担当する。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/environments",
+            "reference_label": "Microsoft Docs - Environments"
+          }
+        },
+        {
+          "key": "C",
+          "text": "依存パッケージを保存する",
+          "explanation": {
+            "text": "誤り。パッケージ保存は Artifacts が担当する。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/environments",
+            "reference_label": "Microsoft Docs - Environments"
+          }
+        },
+        {
+          "key": "D",
+          "text": "アプリケーション監視を自動的に有効化する",
+          "explanation": {
+            "text": "誤り。監視は Application Insights が担当する。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/environments",
+            "reference_label": "Microsoft Docs - Environments"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Azure DevOps の Environment 機能では、デプロイ対象の可視化と承認フローを組み込むことができる。",
+        "reference": "https://learn.microsoft.com/azure/devops/pipelines/process/environments",
+        "reference_label": "Microsoft Docs - Environments"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q48",
+      "question": "Azure DevOps の『パッケージフィード (Feeds)』を利用する目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "チーム内でパッケージを安全に保存・共有する",
+          "explanation": {
+            "text": "正解。Feeds は npm や NuGet などのパッケージを管理する。",
+            "reference": "https://learn.microsoft.com/azure/devops/artifacts/feeds",
+            "reference_label": "Microsoft Docs - Feeds"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Azure Monitor のアラートを設定する",
+          "explanation": {
+            "text": "誤り。アラートは Monitor が担当する。",
+            "reference": "https://learn.microsoft.com/azure/devops/artifacts/feeds",
+            "reference_label": "Microsoft Docs - Feeds"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ソースコードをバージョン管理する",
+          "explanation": {
+            "text": "誤り。バージョン管理は Repos が担当する。",
+            "reference": "https://learn.microsoft.com/azure/devops/artifacts/feeds",
+            "reference_label": "Microsoft Docs - Feeds"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザーごとのアクセス権を管理する",
+          "explanation": {
+            "text": "誤り。アクセス管理は RBAC が担当する。",
+            "reference": "https://learn.microsoft.com/azure/devops/artifacts/feeds",
+            "reference_label": "Microsoft Docs - Feeds"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Feeds を利用することで、依存パッケージを安全に保存し、チームで共有できる。",
+        "reference": "https://learn.microsoft.com/azure/devops/artifacts/feeds",
+        "reference_label": "Microsoft Docs - Feeds"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q49",
+      "question": "Azure DevOps の『Test Plans』を利用する主な利点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "手動テストや探索的テストを体系的に管理できる",
+          "explanation": {
+            "text": "正解。Test Plans は手動テストを効率的に管理できる。",
+            "reference": "https://learn.microsoft.com/azure/devops/test/overview",
+            "reference_label": "Microsoft Docs - Test Plans overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ソースコードをバージョン管理する",
+          "explanation": {
+            "text": "誤り。バージョン管理は Repos が担当する。",
+            "reference": "https://learn.microsoft.com/azure/devops/test/overview",
+            "reference_label": "Microsoft Docs - Test Plans overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "依存パッケージを保存する",
+          "explanation": {
+            "text": "誤り。パッケージ管理は Artifacts が担当する。",
+            "reference": "https://learn.microsoft.com/azure/devops/test/overview",
+            "reference_label": "Microsoft Docs - Test Plans overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Azure Monitor のメトリックを収集する",
+          "explanation": {
+            "text": "誤り。メトリック収集は Monitor が担当する。",
+            "reference": "https://learn.microsoft.com/azure/devops/test/overview",
+            "reference_label": "Microsoft Docs - Test Plans overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Test Plans を利用すると、手動テストを管理し、探索的テストを効率的に進められる。",
+        "reference": "https://learn.microsoft.com/azure/devops/test/overview",
+        "reference_label": "Microsoft Docs - Test Plans overview"
+      }
+    },
+    {
+      "id": "azure-AZ-400-q50",
+      "question": "Azure DevOps の『サービスコネクション (Service connection)』を利用する主な目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "外部サービスや Azure リソースに対する認証と接続を安全に管理する",
+          "explanation": {
+            "text": "正解。Service connection はパイプラインから Azure や GitHub、Docker Hub などへ安全に接続するために利用される。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/library/service-endpoints",
+            "reference_label": "Microsoft Docs - Service connections"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ソースコードをバージョン管理する",
+          "explanation": {
+            "text": "誤り。バージョン管理は Azure Repos が担当する。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/library/service-endpoints",
+            "reference_label": "Microsoft Docs - Service connections"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アプリケーションの監視を自動で有効化する",
+          "explanation": {
+            "text": "誤り。監視は Azure Monitor や Application Insights が担当する。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/library/service-endpoints",
+            "reference_label": "Microsoft Docs - Service connections"
+          }
+        },
+        {
+          "key": "D",
+          "text": "手動テストを効率化する",
+          "explanation": {
+            "text": "誤り。手動テストは Azure Test Plans が担当する。",
+            "reference": "https://learn.microsoft.com/azure/devops/pipelines/library/service-endpoints",
+            "reference_label": "Microsoft Docs - Service connections"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Service connection はパイプラインから外部リソースへ接続するための認証情報を安全に管理する仕組み。",
+        "reference": "https://learn.microsoft.com/azure/devops/pipelines/library/service-endpoints",
+        "reference_label": "Microsoft Docs - Service connections"
+      }
+    }
+  ]
+}

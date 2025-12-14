@@ -1,0 +1,2467 @@
+{
+    "exam": {
+        "id": "dp-203",
+        "title": "Azure Data Engineer Associate",
+        "description": "この資格は、クラウド環境の Microsoft Azure において、構造化データ・非構造化データ・ストリーミングデータを統合・変換し、分析に適したスキーマへと整備・格納できるデータエンジニアのスキルを証明するものです。データ・パイプラインの設計・構築・運用・最適化を通じて、効率的かつ信頼性の高いデータ基盤を構築できることを問います。データ処理言語（SQL・Python・Scala等）および Azure の各種データ関連サービス（例： Azure Synapse Analytics、 Azure Data Factory、 Azure Databricks 等）も対象となります。",
+        "version": "廃止",
+        "price": "165 USD",
+        "difficulty": "難しい",
+        "official-site": "https://learn.microsoft.com/ja-jp/credentials/certifications/azure-data-engineer/",
+        "category": {
+            "id": "azure",
+            "name": "Azure"
+        }
+    },
+    "questions": [
+        {
+            "id": "azure-DP-203-q1",
+            "question": "Azure Data Lake Storage Gen2に格納された大量のCSVファイルを効率的にクエリするために推奨される形式はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "JSON形式",
+                    "explanation": {
+                        "text": "JSONは柔軟性が高いが、大量データの分析には列指向形式より非効率。",
+                        "reference": "https://learn.microsoft.com/azure/data-lake-store/data-lake-store-overview",
+                        "reference_label": "Azure Data Lake Storage overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Parquet形式",
+                    "explanation": {
+                        "text": "Parquetは列指向フォーマットで、大規模データのクエリ効率が高い。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/query-parquet-files",
+                        "reference_label": "Query Parquet files"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "XML形式",
+                    "explanation": {
+                        "text": "XMLは階層型データに適するが、分析処理には非効率。",
+                        "reference": "https://learn.microsoft.com/azure/data-lake-store/data-lake-store-overview",
+                        "reference_label": "Azure Data Lake Storage overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "TXT形式",
+                    "explanation": {
+                        "text": "単純なテキストは軽量だが、分析用の圧縮・列指向最適化がない。",
+                        "reference": "https://learn.microsoft.com/azure/data-lake-store/data-lake-store-overview",
+                        "reference_label": "Azure Data Lake Storage overview"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "Parquet形式は列指向フォーマットで、大量データを効率的に圧縮・読み取りできるため、Azure Data Lake Storage Gen2での分析に最適。",
+                "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/query-parquet-files",
+                "reference_label": "Query Parquet files"
+            }
+        },
+        {
+            "id": "azure-DP-203-q2",
+            "question": "Azure Synapse AnalyticsにおけるサーバーレスSQLプールの特徴はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "事前にデータをロードする必要がある",
+                    "explanation": {
+                        "text": "サーバーレスSQLプールは外部データに直接クエリできるため、ロードは不要。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview",
+                        "reference_label": "Serverless SQL pool overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "クエリ実行時のみ課金される",
+                    "explanation": {
+                        "text": "サーバーレスSQLプールは従量課金制で、実行クエリに対してのみ料金が発生する。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview",
+                        "reference_label": "Serverless SQL pool overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "データは常にインメモリで処理される",
+                    "explanation": {
+                        "text": "サーバーレスSQLは分散処理基盤を用い、必ずしもインメモリ処理ではない。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview",
+                        "reference_label": "Serverless SQL pool overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "必ず専用SQLプールと組み合わせて利用する必要がある",
+                    "explanation": {
+                        "text": "サーバーレスSQLは独立して利用可能。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview",
+                        "reference_label": "Serverless SQL pool overview"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "サーバーレスSQLプールは従量課金制で、クエリ実行時にのみ料金が発生するためコスト効率が高い。",
+                "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview",
+                "reference_label": "Serverless SQL pool overview"
+            }
+        },
+        {
+            "id": "azure-DP-203-q3",
+            "question": "Azure Data Factoryでデータの移動を制御するために使用される主要なコンポーネントはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Pipeline",
+                    "explanation": {
+                        "text": "Pipelineはデータ移動や変換をオーケストレーションする基本単位。",
+                        "reference": "https://learn.microsoft.com/azure/data-factory/concepts-pipelines-activities",
+                        "reference_label": "Data Factory Pipelines and Activities"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Notebook",
+                    "explanation": {
+                        "text": "NotebookはSynapseやDatabricksでデータ分析用に使われるが、ADFのオーケストレーション単位ではない。",
+                        "reference": "https://learn.microsoft.com/azure/data-factory/concepts-pipelines-activities",
+                        "reference_label": "Data Factory Pipelines and Activities"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Model",
+                    "explanation": {
+                        "text": "Modelは機械学習の概念であり、ADFのデータ移動制御には関与しない。",
+                        "reference": "https://learn.microsoft.com/azure/data-factory/concepts-pipelines-activities",
+                        "reference_label": "Data Factory Pipelines and Activities"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "View",
+                    "explanation": {
+                        "text": "Viewはデータベースオブジェクトであり、ADFのコンポーネントではない。",
+                        "reference": "https://learn.microsoft.com/azure/data-factory/concepts-pipelines-activities",
+                        "reference_label": "Data Factory Pipelines and Activities"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Azure Data FactoryにおけるPipelineはデータ移動や変換の処理フローを制御するコンポーネント。",
+                "reference": "https://learn.microsoft.com/azure/data-factory/concepts-pipelines-activities",
+                "reference_label": "Data Factory Pipelines and Activities"
+            }
+        },
+        {
+            "id": "azure-DP-203-q4",
+            "question": "Azure Stream Analyticsで遅延到着データを処理するために使用される機能はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Late arrival tolerance",
+                    "explanation": {
+                        "text": "イベントの遅延到着を許容する設定で、指定時間内に到着したデータを正しく処理できる。",
+                        "reference": "https://learn.microsoft.com/azure/stream-analytics/stream-analytics-time-handling",
+                        "reference_label": "Stream Analytics time handling"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Event Hub Capture",
+                    "explanation": {
+                        "text": "Event Hub Captureはデータをストレージに保存する機能であり、遅延処理とは異なる。",
+                        "reference": "https://learn.microsoft.com/azure/event-hubs/event-hubs-capture-overview",
+                        "reference_label": "Event Hubs Capture overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Watermarking",
+                    "explanation": {
+                        "text": "Watermarkingはイベント順序を制御するが、直接的に遅延到着を許容する設定ではない。",
+                        "reference": "https://learn.microsoft.com/azure/stream-analytics/stream-analytics-time-handling",
+                        "reference_label": "Stream Analytics time handling"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Windowing",
+                    "explanation": {
+                        "text": "Windowingは集計単位を定義するが、遅延データ処理の許容には使われない。",
+                        "reference": "https://learn.microsoft.com/azure/stream-analytics/stream-analytics-window-functions",
+                        "reference_label": "Stream Analytics window functions"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Stream AnalyticsのLate arrival toleranceを設定することで、一定の遅延を許容して正しくイベントを処理できる。",
+                "reference": "https://learn.microsoft.com/azure/stream-analytics/stream-analytics-time-handling",
+                "reference_label": "Stream Analytics time handling"
+            }
+        },
+        {
+            "id": "azure-DP-203-q5",
+            "question": "Azure DatabricksでDelta Lakeを利用する主な利点はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "スキーマエボリューションとACIDトランザクションのサポート",
+                    "explanation": {
+                        "text": "Delta Lakeはスキーマ変更に対応し、ACIDトランザクションを提供する。",
+                        "reference": "https://learn.microsoft.com/azure/databricks/delta/delta-intro",
+                        "reference_label": "Delta Lake overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "機械学習モデルの自動トレーニング",
+                    "explanation": {
+                        "text": "これはAzure Machine Learningの機能であり、Delta Lake固有の利点ではない。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+                        "reference_label": "Automated ML overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "コストの完全無料化",
+                    "explanation": {
+                        "text": "Delta Lakeはオープンソースだが、Azure Databricksの利用には課金が発生する。",
+                        "reference": "https://learn.microsoft.com/azure/databricks/delta/delta-intro",
+                        "reference_label": "Delta Lake overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "常にリアルタイムでストリーミングデータ処理が保証される",
+                    "explanation": {
+                        "text": "Delta Lakeはバッチとストリーミングの統合を可能にするが、常にリアルタイム処理が保証されるわけではない。",
+                        "reference": "https://learn.microsoft.com/azure/databricks/delta/delta-streaming",
+                        "reference_label": "Delta Lake streaming"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Delta LakeはACIDトランザクションとスキーマエボリューションを提供し、信頼性の高いデータレイク運用を可能にする。",
+                "reference": "https://learn.microsoft.com/azure/databricks/delta/delta-intro",
+                "reference_label": "Delta Lake overview"
+            }
+        },
+        {
+            "id": "azure-DP-203-q6",
+            "question": "Azure Cosmos DBのパーティション戦略で推奨されるキーの特性はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "高いカーディナリティと均等な分布",
+                    "explanation": {
+                        "text": "パーティションキーは多様で均等に分布する値を選ぶのが望ましい。",
+                        "reference": "https://learn.microsoft.com/azure/cosmos-db/partitioning-overview",
+                        "reference_label": "Partitioning overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "単一値を繰り返すキー",
+                    "explanation": {
+                        "text": "単一値だとホットパーティションが発生し、スケーラビリティが低下する。",
+                        "reference": "https://learn.microsoft.com/azure/cosmos-db/partitioning-overview",
+                        "reference_label": "Partitioning overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ユーザーIDなど一意な値のみ",
+                    "explanation": {
+                        "text": "一意すぎる値は分散には有効だが、クエリ効率が下がる場合もある。",
+                        "reference": "https://learn.microsoft.com/azure/cosmos-db/partitioning-overview",
+                        "reference_label": "Partitioning overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "更新頻度の低い属性",
+                    "explanation": {
+                        "text": "更新頻度は直接の問題ではなく、分布の均等性が重要。",
+                        "reference": "https://learn.microsoft.com/azure/cosmos-db/partitioning-overview",
+                        "reference_label": "Partitioning overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Cosmos DBの最適なパーティションキーは、高いカーディナリティを持ち、データが均等に分散されるもの。",
+                "reference": "https://learn.microsoft.com/azure/cosmos-db/partitioning-overview",
+                "reference_label": "Partitioning overview"
+            }
+        },
+        {
+            "id": "azure-DP-203-q7",
+            "question": "Azure Synapse Analytics専用SQLプールでデータを高速に読み込むために推奨される方法はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "COPY文を使用して外部ストレージから直接ロードする",
+                    "explanation": {
+                        "text": "COPY文は高速かつスケーラブルにデータをロードできる推奨方法。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql-data-loading-best-practices",
+                        "reference_label": "Best practices for loading data"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "INSERT文で1行ずつ追加する",
+                    "explanation": {
+                        "text": "1行ずつのINSERTは非効率で、大量データロードには適さない。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql-data-loading-best-practices",
+                        "reference_label": "Best practices for loading data"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Excelファイルを直接アップロードする",
+                    "explanation": {
+                        "text": "ExcelはSynapse専用SQLプールへの公式なロード手段ではない。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql-data-loading-best-practices",
+                        "reference_label": "Best practices for loading data"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "PolyBaseを使わずにBACPACを展開する",
+                    "explanation": {
+                        "text": "BACPACは主にデータベース移行用であり、高速ロード向けではない。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql-data-loading-best-practices",
+                        "reference_label": "Best practices for loading data"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "専用SQLプールでのデータロードにはCOPY文の使用が推奨されており、外部ストレージから効率的に取り込める。",
+                "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql-data-loading-best-practices",
+                "reference_label": "Best practices for loading data"
+            }
+        },
+        {
+            "id": "azure-DP-203-q8",
+            "question": "Azure Data Factoryでトリガーの役割として正しいものはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "パイプラインの実行タイミングを制御する",
+                    "explanation": {
+                        "text": "トリガーはスケジュールやイベントに基づいてパイプラインの実行を開始する。",
+                        "reference": "https://learn.microsoft.com/azure/data-factory/concepts-pipeline-execution-triggers",
+                        "reference_label": "Pipeline execution and triggers"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "データセットのスキーマを定義する",
+                    "explanation": {
+                        "text": "スキーマはデータセット側で定義され、トリガーではない。",
+                        "reference": "https://learn.microsoft.com/azure/data-factory/concepts-datasets-linked-services",
+                        "reference_label": "Datasets and linked services"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "データ移動アクティビティを作成する",
+                    "explanation": {
+                        "text": "アクティビティはパイプラインで作成するもので、トリガーの役割ではない。",
+                        "reference": "https://learn.microsoft.com/azure/data-factory/concepts-pipelines-activities",
+                        "reference_label": "Pipelines and activities"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "アクセス制御を設定する",
+                    "explanation": {
+                        "text": "アクセス制御はAzure RBACで行われ、トリガーの役割ではない。",
+                        "reference": "https://learn.microsoft.com/azure/role-based-access-control/overview",
+                        "reference_label": "Azure RBAC overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "ADFのトリガーは、スケジュールやイベントベースでパイプラインを実行するための仕組み。",
+                "reference": "https://learn.microsoft.com/azure/data-factory/concepts-pipeline-execution-triggers",
+                "reference_label": "Pipeline execution and triggers"
+            }
+        },
+        {
+            "id": "azure-DP-203-q9",
+            "question": "Azure Synapse Analyticsでマテリアライズドビューを使用する主な利点はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "クエリ結果を事前に計算・保存し、パフォーマンスを向上できる",
+                    "explanation": {
+                        "text": "マテリアライズドビューは事前計算済みの結果を保存し、繰り返し利用することで高速化できる。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql-data-warehouse/materialized-views-overview",
+                        "reference_label": "Materialized views overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "クエリの自動最適化を完全に保証する",
+                    "explanation": {
+                        "text": "最適化を保証するわけではなく、状況によっては通常のビューやインデックスが適切な場合もある。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql-data-warehouse/materialized-views-overview",
+                        "reference_label": "Materialized views overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "データのリアルタイム更新を保証する",
+                    "explanation": {
+                        "text": "マテリアライズドビューは更新が必要であり、常にリアルタイム更新されるわけではない。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql-data-warehouse/materialized-views-overview",
+                        "reference_label": "Materialized views overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "データ圧縮を自動的に行う",
+                    "explanation": {
+                        "text": "データ圧縮はストレージエンジンの機能であり、マテリアライズドビューの役割ではない。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql-data-warehouse/materialized-views-overview",
+                        "reference_label": "Materialized views overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "マテリアライズドビューは事前計算によりクエリの高速化を可能にする。",
+                "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql-data-warehouse/materialized-views-overview",
+                "reference_label": "Materialized views overview"
+            }
+        },
+        {
+            "id": "azure-DP-203-q10",
+            "question": "Azure Event Hubsでスループットを向上させる方法として正しいものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "パーティション数を増やす",
+                    "explanation": {
+                        "text": "Event Hubsではパーティションを増やすことで同時処理可能なスループットを高められる。",
+                        "reference": "https://learn.microsoft.com/azure/event-hubs/event-hubs-scalability",
+                        "reference_label": "Event Hubs scalability"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "イベントサイズを大きくする",
+                    "explanation": {
+                        "text": "イベントサイズを大きくすると逆に効率が下がる場合がある。",
+                        "reference": "https://learn.microsoft.com/azure/event-hubs/event-hubs-quotas",
+                        "reference_label": "Event Hubs quotas"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "消費者グループを減らす",
+                    "explanation": {
+                        "text": "消費者グループは処理の分離を提供するが、スループット向上には直接関係しない。",
+                        "reference": "https://learn.microsoft.com/azure/event-hubs/event-hubs-features",
+                        "reference_label": "Event Hubs features"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "イベントハブを1つに統合する",
+                    "explanation": {
+                        "text": "統合は逆にボトルネックを引き起こす可能性がある。",
+                        "reference": "https://learn.microsoft.com/azure/event-hubs/event-hubs-scalability",
+                        "reference_label": "Event Hubs scalability"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Event Hubsのスループットを高めるにはパーティション数を増やすのが有効。",
+                "reference": "https://learn.microsoft.com/azure/event-hubs/event-hubs-scalability",
+                "reference_label": "Event Hubs scalability"
+            }
+        },
+        {
+            "id": "azure-DP-203-q11",
+            "question": "Azure Synapse Link for Cosmos DBの利点はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "運用データベースに影響を与えずに分析ワークロードを実行できる",
+                    "explanation": {
+                        "text": "Synapse LinkはHTAPを可能にし、トランザクションワークロードに影響を与えずに分析できる。",
+                        "reference": "https://learn.microsoft.com/azure/cosmos-db/synapse-link",
+                        "reference_label": "Azure Synapse Link for Cosmos DB"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "自動でCosmos DBのスループットを増加させる",
+                    "explanation": {
+                        "text": "スループット増加は手動設定であり、自動ではない。",
+                        "reference": "https://learn.microsoft.com/azure/cosmos-db/synapse-link",
+                        "reference_label": "Azure Synapse Link for Cosmos DB"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Cosmos DBのデータを常にリアルタイムで同期する",
+                    "explanation": {
+                        "text": "近リアルタイムで利用できるが、完全なリアルタイムではない。",
+                        "reference": "https://learn.microsoft.com/azure/cosmos-db/synapse-link",
+                        "reference_label": "Azure Synapse Link for Cosmos DB"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ETLプロセスを必ず必要とする",
+                    "explanation": {
+                        "text": "Synapse LinkではETL不要で直接分析できるのが特徴。",
+                        "reference": "https://learn.microsoft.com/azure/cosmos-db/synapse-link",
+                        "reference_label": "Azure Synapse Link for Cosmos DB"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Synapse Linkを使うことで運用データに影響を与えずに分析処理を行える。",
+                "reference": "https://learn.microsoft.com/azure/cosmos-db/synapse-link",
+                "reference_label": "Azure Synapse Link for Cosmos DB"
+            }
+        },
+        {
+            "id": "azure-DP-203-q12",
+            "question": "Azure Data FactoryのMapping Data Flowでサポートされる機能はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "コード不要のデータ変換",
+                    "explanation": {
+                        "text": "Mapping Data FlowはGUIベースでデータ変換を実装できる。",
+                        "reference": "https://learn.microsoft.com/azure/data-factory/concepts-data-flow-overview",
+                        "reference_label": "Mapping Data Flow overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Power BIダッシュボードの作成",
+                    "explanation": {
+                        "text": "Power BIはBIツールであり、ADFの機能ではない。",
+                        "reference": "https://learn.microsoft.com/power-bi/fundamentals/power-bi-overview",
+                        "reference_label": "Power BI overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "機械学習モデルのデプロイ",
+                    "explanation": {
+                        "text": "これはAzure Machine Learningの機能であり、ADFのMapping Data Flowの役割ではない。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/overview-what-is-azure-machine-learning",
+                        "reference_label": "Azure Machine Learning overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Azure Functionsの自動作成",
+                    "explanation": {
+                        "text": "ADFからAzure Functionsを呼び出すことはできるが、自動生成はできない。",
+                        "reference": "https://learn.microsoft.com/azure/data-factory/transform-data-using-azure-function",
+                        "reference_label": "Transform data using Azure Function"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Mapping Data Flowはノーコードでデータ変換を設計・実行できるADFの機能。",
+                "reference": "https://learn.microsoft.com/azure/data-factory/concepts-data-flow-overview",
+                "reference_label": "Mapping Data Flow overview"
+            }
+        },
+        {
+            "id": "azure-DP-203-q13",
+            "question": "Azure Data Lake Storage Gen2でアクセス制御を細かく行う方法として適切なのはどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "POSIX互換のACLを使用する",
+                    "explanation": {
+                        "text": "ADLS Gen2はPOSIX準拠のACLを提供し、フォルダー・ファイル単位の制御が可能。",
+                        "reference": "https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-access-control",
+                        "reference_label": "Access control in ADLS Gen2"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "常にストレージアカウントキーで認証する",
+                    "explanation": {
+                        "text": "アカウントキーは広範なアクセス権を与えすぎるため、推奨されない。",
+                        "reference": "https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-access-control",
+                        "reference_label": "Access control in ADLS Gen2"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "専用SQLプールの認証機能を利用する",
+                    "explanation": {
+                        "text": "専用SQLプールは別サービスであり、ADLS Gen2のアクセス制御機能ではない。",
+                        "reference": "https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-access-control",
+                        "reference_label": "Access control in ADLS Gen2"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "イベントグリッドでアクセスを制御する",
+                    "explanation": {
+                        "text": "イベントグリッドはイベント通知サービスであり、アクセス制御には使用されない。",
+                        "reference": "https://learn.microsoft.com/azure/event-grid/overview",
+                        "reference_label": "Azure Event Grid overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "ADLS Gen2はPOSIX準拠のACLを用いたきめ細かいアクセス制御を提供する。",
+                "reference": "https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-access-control",
+                "reference_label": "Access control in ADLS Gen2"
+            }
+        },
+        {
+            "id": "azure-DP-203-q14",
+            "question": "Azure Monitorでログクエリを作成・実行するために使用する言語はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Kusto Query Language (KQL)",
+                    "explanation": {
+                        "text": "Azure MonitorやLog AnalyticsではKQLを使用してログクエリを記述する。",
+                        "reference": "https://learn.microsoft.com/azure/data-explorer/kusto/query/",
+                        "reference_label": "Kusto Query Language overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "T-SQL",
+                    "explanation": {
+                        "text": "T-SQLはSQL ServerやSynapse SQLで使用されるが、Azure Monitorの標準言語ではない。",
+                        "reference": "https://learn.microsoft.com/sql/t-sql/language-reference",
+                        "reference_label": "T-SQL language reference"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Python",
+                    "explanation": {
+                        "text": "Pythonはデータ分析でよく使われるが、Azure Monitorのクエリ言語ではない。",
+                        "reference": "https://learn.microsoft.com/azure/data-explorer/kusto/query/",
+                        "reference_label": "Kusto Query Language overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Scala",
+                    "explanation": {
+                        "text": "ScalaはSpark環境で利用されるが、Azure Monitorのクエリには使わない。",
+                        "reference": "https://learn.microsoft.com/azure/data-explorer/kusto/query/",
+                        "reference_label": "Kusto Query Language overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Azure MonitorやLog AnalyticsではKQLを用いて効率的なログクエリを実行できる。",
+                "reference": "https://learn.microsoft.com/azure/data-explorer/kusto/query/",
+                "reference_label": "Kusto Query Language overview"
+            }
+        },
+        {
+            "id": "azure-DP-203-q15",
+            "question": "Azure Synapse Analyticsの専用SQLプールでデータ分散方式として存在するものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "ハッシュ分散",
+                    "explanation": {
+                        "text": "ハッシュ分散は指定されたキーに基づきデータを分散し、大規模データ処理に適する。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/develop-tables-distribute",
+                        "reference_label": "Table distribution methods"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "ラウンドロビン分散",
+                    "explanation": {
+                        "text": "ラウンドロビン分散は行を均等に分配するシンプルな方式。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/develop-tables-distribute",
+                        "reference_label": "Table distribution methods"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "レプリケーション分散",
+                    "explanation": {
+                        "text": "小規模テーブルをすべてのノードに複製することで結合パフォーマンスを向上させる。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/develop-tables-distribute",
+                        "reference_label": "Table distribution methods"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "シャーディング分散",
+                    "explanation": {
+                        "text": "シャーディングは一般的な分散方式の概念であるが、Synapseでは直接的な設定名称としては存在しない。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/develop-tables-distribute",
+                        "reference_label": "Table distribution methods"
+                    }
+                }
+            ],
+            "answer": "A,B,C",
+            "explanation": {
+                "text": "Synapse専用SQLプールでは「ハッシュ分散」「ラウンドロビン分散」「レプリケーション分散」の3種類が提供されている。",
+                "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/develop-tables-distribute",
+                "reference_label": "Table distribution methods"
+            }
+        },
+        {
+            "id": "azure-DP-203-q16",
+            "question": "Azure Data FactoryのIntegration Runtime (IR) の種類に含まれるものはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Azure Integration Runtime",
+                    "explanation": {
+                        "text": "Azure IRはクラウドベースでデータ移動や変換を処理する。",
+                        "reference": "https://learn.microsoft.com/azure/data-factory/concepts-integration-runtime",
+                        "reference_label": "Integration runtime overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Self-hosted Integration Runtime",
+                    "explanation": {
+                        "text": "オンプレミスや仮想ネットワーク内でデータを処理するために使用される。",
+                        "reference": "https://learn.microsoft.com/azure/data-factory/concepts-integration-runtime",
+                        "reference_label": "Integration runtime overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "SQL Server Integration Runtime",
+                    "explanation": {
+                        "text": "これは存在せず、ADFのIRには含まれない。",
+                        "reference": "https://learn.microsoft.com/azure/data-factory/concepts-integration-runtime",
+                        "reference_label": "Integration runtime overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Azure-SSIS Integration Runtime",
+                    "explanation": {
+                        "text": "Azure上でSSISパッケージを実行するためのIR。",
+                        "reference": "https://learn.microsoft.com/azure/data-factory/concepts-integration-runtime",
+                        "reference_label": "Integration runtime overview"
+                    }
+                }
+            ],
+            "answer": "A,B,D",
+            "explanation": {
+                "text": "ADFのIRには「Azure IR」「Self-hosted IR」「Azure-SSIS IR」の3種類がある。",
+                "reference": "https://learn.microsoft.com/azure/data-factory/concepts-integration-runtime",
+                "reference_label": "Integration runtime overview"
+            }
+        },
+        {
+            "id": "azure-DP-203-q17",
+            "question": "Azure Cosmos DBの一貫性レベルで最も強いものはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Strong",
+                    "explanation": {
+                        "text": "Strongは全てのクライアントに対して直近の書き込みを保証する。",
+                        "reference": "https://learn.microsoft.com/azure/cosmos-db/consistency-levels",
+                        "reference_label": "Consistency levels"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Bounded staleness",
+                    "explanation": {
+                        "text": "一定の遅延を許容し、強い整合性より弱いが可用性が高い。",
+                        "reference": "https://learn.microsoft.com/azure/cosmos-db/consistency-levels",
+                        "reference_label": "Consistency levels"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Session",
+                    "explanation": {
+                        "text": "セッション単位で整合性を保証するが、Strongより弱い。",
+                        "reference": "https://learn.microsoft.com/azure/cosmos-db/consistency-levels",
+                        "reference_label": "Consistency levels"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Eventual",
+                    "explanation": {
+                        "text": "最も緩い整合性レベルであり、即時整合性を保証しない。",
+                        "reference": "https://learn.microsoft.com/azure/cosmos-db/consistency-levels",
+                        "reference_label": "Consistency levels"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Cosmos DBの整合性レベルの中で最も強いのは「Strong」で、即時整合性を保証する。",
+                "reference": "https://learn.microsoft.com/azure/cosmos-db/consistency-levels",
+                "reference_label": "Consistency levels"
+            }
+        },
+        {
+            "id": "azure-DP-203-q18",
+            "question": "Azure Data Factoryで外部のREST APIからデータを取得するために必要なコンポーネントはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Linked Service",
+                    "explanation": {
+                        "text": "Linked Serviceは外部データソースへの接続情報を定義する。",
+                        "reference": "https://learn.microsoft.com/azure/data-factory/concepts-datasets-linked-services",
+                        "reference_label": "Datasets and linked services"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Pipeline",
+                    "explanation": {
+                        "text": "Pipelineはアクティビティをまとめた処理フローを定義するが、接続情報自体ではない。",
+                        "reference": "https://learn.microsoft.com/azure/data-factory/concepts-pipelines-activities",
+                        "reference_label": "Pipelines and activities"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Trigger",
+                    "explanation": {
+                        "text": "Triggerはパイプラインの実行を制御する仕組みであり、外部API接続には関与しない。",
+                        "reference": "https://learn.microsoft.com/azure/data-factory/concepts-pipeline-execution-triggers",
+                        "reference_label": "Pipeline execution and triggers"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Integration Runtime",
+                    "explanation": {
+                        "text": "Integration Runtimeはデータ移動・変換の実行環境であり、接続定義そのものではない。",
+                        "reference": "https://learn.microsoft.com/azure/data-factory/concepts-integration-runtime",
+                        "reference_label": "Integration runtime overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "REST APIなど外部データソースに接続するためには、Linked Serviceを定義する必要がある。",
+                "reference": "https://learn.microsoft.com/azure/data-factory/concepts-datasets-linked-services",
+                "reference_label": "Datasets and linked services"
+            }
+        },
+        {
+            "id": "azure-DP-203-q19",
+            "question": "Azure Event HubsとAzure IoT Hubの主な違いとして正しいものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "IoT Hubはデバイス管理機能を提供するが、Event Hubsは提供しない",
+                    "explanation": {
+                        "text": "IoT Hubは双方向通信やデバイス管理を提供する点でEvent Hubsと異なる。",
+                        "reference": "https://learn.microsoft.com/azure/iot-hub/iot-hub-compare-event-hubs",
+                        "reference_label": "Compare Event Hubs and IoT Hub"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Event Hubsはリアルタイム処理を行えない",
+                    "explanation": {
+                        "text": "Event Hubsは大規模なリアルタイムイベント処理を目的としている。",
+                        "reference": "https://learn.microsoft.com/azure/event-hubs/event-hubs-about",
+                        "reference_label": "About Event Hubs"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "IoT Hubはイベントストリーミングをサポートしない",
+                    "explanation": {
+                        "text": "IoT Hubもイベントストリーミングをサポートしている。",
+                        "reference": "https://learn.microsoft.com/azure/iot-hub/iot-hub-compare-event-hubs",
+                        "reference_label": "Compare Event Hubs and IoT Hub"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Event Hubsは常に無料で利用できる",
+                    "explanation": {
+                        "text": "Event Hubsは無料ではなく、スループットユニットに応じて課金される。",
+                        "reference": "https://learn.microsoft.com/azure/event-hubs/event-hubs-pricing",
+                        "reference_label": "Event Hubs pricing"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "IoT Hubはデバイス管理や双方向通信をサポートする点でEvent Hubsと異なる。",
+                "reference": "https://learn.microsoft.com/azure/iot-hub/iot-hub-compare-event-hubs",
+                "reference_label": "Compare Event Hubs and IoT Hub"
+            }
+        },
+        {
+            "id": "azure-DP-203-q20",
+            "question": "Azure Data Lake Storage Gen2で推奨されるセキュリティベストプラクティスはどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Azure ADベースの認証を利用する",
+                    "explanation": {
+                        "text": "アカウントキーではなくAzure AD認証を用いることでセキュリティが向上する。",
+                        "reference": "https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-security",
+                        "reference_label": "Security in ADLS Gen2"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "匿名アクセスを許可する",
+                    "explanation": {
+                        "text": "匿名アクセスは推奨されない。",
+                        "reference": "https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-security",
+                        "reference_label": "Security in ADLS Gen2"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ストレージアカウントキーを共有する",
+                    "explanation": {
+                        "text": "アカウントキーの共有はセキュリティリスクが高く、避けるべき。",
+                        "reference": "https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-security",
+                        "reference_label": "Security in ADLS Gen2"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "常にパブリックネットワークからアクセスする",
+                    "explanation": {
+                        "text": "プライベートエンドポイントの利用が推奨される。",
+                        "reference": "https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-security",
+                        "reference_label": "Security in ADLS Gen2"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "ADLS Gen2のセキュリティベストプラクティスはAzure AD認証を用いること。",
+                "reference": "https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-security",
+                "reference_label": "Security in ADLS Gen2"
+            }
+        },
+        {
+            "id": "azure-DP-203-q21",
+            "question": "Azure DatabricksでSpark Structured Streamingを利用する利点はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "バッチ処理と同じコードでストリーミング処理を実行できる",
+                    "explanation": {
+                        "text": "Structured Streamingはバッチとストリーミングの統合APIを提供する。",
+                        "reference": "https://learn.microsoft.com/azure/databricks/structured-streaming/",
+                        "reference_label": "Structured Streaming overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "常にミリ秒単位のリアルタイム処理が保証される",
+                    "explanation": {
+                        "text": "Structured Streamingは低レイテンシ処理を提供するが、必ずしもミリ秒単位ではない。",
+                        "reference": "https://learn.microsoft.com/azure/databricks/structured-streaming/",
+                        "reference_label": "Structured Streaming overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "クエリの最適化が不要になる",
+                    "explanation": {
+                        "text": "最適化は引き続き必要であり、完全に自動ではない。",
+                        "reference": "https://learn.microsoft.com/azure/databricks/structured-streaming/",
+                        "reference_label": "Structured Streaming overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "データベース管理者が不要になる",
+                    "explanation": {
+                        "text": "DBAの必要性はユースケースによるが、Structured Streamingの特徴ではない。",
+                        "reference": "https://learn.microsoft.com/azure/databricks/structured-streaming/",
+                        "reference_label": "Structured Streaming overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Structured Streamingはバッチと同じAPIでストリーミングを記述できるため、開発効率が高い。",
+                "reference": "https://learn.microsoft.com/azure/databricks/structured-streaming/",
+                "reference_label": "Structured Streaming overview"
+            }
+        },
+        {
+            "id": "azure-DP-203-q22",
+            "question": "Azure Synapse Analyticsの専用SQLプールにおいて、テーブルのパフォーマンスを最適化するための推奨されるインデックスの種類はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Clustered Columnstore Index",
+                    "explanation": {
+                        "text": "Clustered Columnstore Indexは大規模データを効率的に圧縮・クエリできるため、既定で推奨される。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/best-practices-dedicated-sql-pool",
+                        "reference_label": "Best practices for dedicated SQL pool"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Heap",
+                    "explanation": {
+                        "text": "Heapはインデックスを持たない構造で、大規模分析には非効率。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/best-practices-dedicated-sql-pool",
+                        "reference_label": "Best practices for dedicated SQL pool"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Clustered B-tree Index",
+                    "explanation": {
+                        "text": "行ごとのクエリには有効だが、大規模な分析処理には不向き。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/best-practices-dedicated-sql-pool",
+                        "reference_label": "Best practices for dedicated SQL pool"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Non-clustered Index",
+                    "explanation": {
+                        "text": "補助的に利用できるが、主要な推奨はClustered Columnstore Index。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/best-practices-dedicated-sql-pool",
+                        "reference_label": "Best practices for dedicated SQL pool"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "専用SQLプールではClustered Columnstore Indexが大規模分析に最も適している。",
+                "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/best-practices-dedicated-sql-pool",
+                "reference_label": "Best practices for dedicated SQL pool"
+            }
+        },
+        {
+            "id": "azure-DP-203-q23",
+            "question": "Azure Data FactoryでデータをオンプレミスSQL Serverからクラウドに移動する際に必要なコンポーネントはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Self-hosted Integration Runtime",
+                    "explanation": {
+                        "text": "オンプレミス環境とクラウドを接続するためにSelf-hosted IRが必要となる。",
+                        "reference": "https://learn.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime",
+                        "reference_label": "Self-hosted IR overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Azure Functions",
+                    "explanation": {
+                        "text": "Azure Functionsは処理ロジックを記述するものであり、データ移動の必須要素ではない。",
+                        "reference": "https://learn.microsoft.com/azure/azure-functions/functions-overview",
+                        "reference_label": "Azure Functions overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Event Grid",
+                    "explanation": {
+                        "text": "Event Gridはイベント通知基盤であり、直接的なデータ移動には利用されない。",
+                        "reference": "https://learn.microsoft.com/azure/event-grid/overview",
+                        "reference_label": "Azure Event Grid overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Logic Apps",
+                    "explanation": {
+                        "text": "Logic AppsもETL処理には利用可能だが、ADFにおける標準的な接続方法はSelf-hosted IR。",
+                        "reference": "https://learn.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime",
+                        "reference_label": "Self-hosted IR overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "オンプレミス環境とAzureを接続する際にはSelf-hosted Integration Runtimeを利用する。",
+                "reference": "https://learn.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime",
+                "reference_label": "Self-hosted IR overview"
+            }
+        },
+        {
+            "id": "azure-DP-203-q24",
+            "question": "Azure DatabricksでDelta Lakeを利用する場合の特徴として正しいものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "ACIDトランザクションをサポートする",
+                    "explanation": {
+                        "text": "Delta LakeはデータレイクにおいてACIDトランザクションを可能にする。",
+                        "reference": "https://learn.microsoft.com/azure/databricks/delta/delta-intro",
+                        "reference_label": "Delta Lake overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "機械学習モデルの自動トレーニング機能を持つ",
+                    "explanation": {
+                        "text": "これはAzure Machine Learningの機能であり、Delta Lake固有の特徴ではない。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/concept-automated-ml",
+                        "reference_label": "Automated ML overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ストレージコストが常に無料になる",
+                    "explanation": {
+                        "text": "ストレージ利用には課金が発生する。Delta Lake自体はオープンソースだがコストは発生する。",
+                        "reference": "https://learn.microsoft.com/azure/databricks/delta/delta-intro",
+                        "reference_label": "Delta Lake overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "リアルタイム処理しかサポートしない",
+                    "explanation": {
+                        "text": "Delta Lakeはバッチ処理とストリーミング処理の両方をサポートする。",
+                        "reference": "https://learn.microsoft.com/azure/databricks/delta/delta-streaming",
+                        "reference_label": "Delta Lake streaming"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Delta LakeはデータレイクにACIDトランザクションをもたらし、信頼性の高いデータ処理を実現する。",
+                "reference": "https://learn.microsoft.com/azure/databricks/delta/delta-intro",
+                "reference_label": "Delta Lake overview"
+            }
+        },
+        {
+            "id": "azure-DP-203-q25",
+            "question": "Azure Event Hubsで保持できるイベントの最大保持期間はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "1日",
+                    "explanation": {
+                        "text": "デフォルトは1日だが、最大ではない。",
+                        "reference": "https://learn.microsoft.com/azure/event-hubs/event-hubs-features",
+                        "reference_label": "Event Hubs features"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "7日",
+                    "explanation": {
+                        "text": "多くの利用ケースで標準的に利用されるが最大ではない。",
+                        "reference": "https://learn.microsoft.com/azure/event-hubs/event-hubs-features",
+                        "reference_label": "Event Hubs features"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "90日",
+                    "explanation": {
+                        "text": "Event Hubs Premium/SKUでは最大90日間の保持が可能。",
+                        "reference": "https://learn.microsoft.com/azure/event-hubs/event-hubs-features",
+                        "reference_label": "Event Hubs features"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "無制限",
+                    "explanation": {
+                        "text": "保持期間は最大90日までであり、無制限ではない。",
+                        "reference": "https://learn.microsoft.com/azure/event-hubs/event-hubs-features",
+                        "reference_label": "Event Hubs features"
+                    }
+                }
+            ],
+            "answer": "C",
+            "explanation": {
+                "text": "Event Hubsでは最大90日間イベントを保持できる（Premium SKU）。",
+                "reference": "https://learn.microsoft.com/azure/event-hubs/event-hubs-features",
+                "reference_label": "Event Hubs features"
+            }
+        },
+        {
+            "id": "azure-DP-203-q26",
+            "question": "Azure Synapse AnalyticsでPolyBaseを利用する利点はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "外部データを直接クエリできる",
+                    "explanation": {
+                        "text": "PolyBaseは外部テーブルを利用してADLSやBlobのデータを直接クエリ可能にする。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql-data-loading-best-practices",
+                        "reference_label": "PolyBase overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "すべてのクエリが無料になる",
+                    "explanation": {
+                        "text": "PolyBaseの利用は無料ではなく、通常のクエリコストが発生する。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql-data-loading-best-practices",
+                        "reference_label": "PolyBase overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "自動的にマテリアライズドビューを作成する",
+                    "explanation": {
+                        "text": "PolyBaseはビューを作成する機能を持たず、ユーザーが定義する必要がある。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql-data-loading-best-practices",
+                        "reference_label": "PolyBase overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "機械学習モデルを直接デプロイできる",
+                    "explanation": {
+                        "text": "PolyBaseはデータアクセス技術であり、機械学習とは無関係。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql-data-loading-best-practices",
+                        "reference_label": "PolyBase overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "PolyBaseを利用することで、外部ストレージ上のデータを直接クエリできる。",
+                "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql-data-loading-best-practices",
+                "reference_label": "PolyBase overview"
+            }
+        },
+        {
+            "id": "azure-DP-203-q27",
+            "question": "Azure Data Lake Storage Gen2で大規模データ処理を行う際に推奨されるファイルサイズはどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "数KB",
+                    "explanation": {
+                        "text": "小さすぎるファイルは処理のオーバーヘッドが大きくなるため非効率。",
+                        "reference": "https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-performance-tuning",
+                        "reference_label": "Performance tuning for ADLS Gen2"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "数MB",
+                    "explanation": {
+                        "text": "数MB単位も可能だが、大規模処理には不向き。",
+                        "reference": "https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-performance-tuning",
+                        "reference_label": "Performance tuning for ADLS Gen2"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "100MB〜1GB程度",
+                    "explanation": {
+                        "text": "ADLS Gen2では100MB〜1GB程度のファイルサイズが最も効率的とされる。",
+                        "reference": "https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-performance-tuning",
+                        "reference_label": "Performance tuning for ADLS Gen2"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "10GB以上",
+                    "explanation": {
+                        "text": "大きすぎるファイルは分散処理効率が低下する。",
+                        "reference": "https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-performance-tuning",
+                        "reference_label": "Performance tuning for ADLS Gen2"
+                    }
+                }
+            ],
+            "answer": "C",
+            "explanation": {
+                "text": "ADLS Gen2では100MB〜1GB程度のファイルサイズが最適とされる。",
+                "reference": "https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-performance-tuning",
+                "reference_label": "Performance tuning for ADLS Gen2"
+            }
+        },
+        {
+            "id": "azure-DP-203-q28",
+            "question": "Azure Monitorでアラートルールを作成する際に使用できるシグナルの種類はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "メトリック",
+                    "explanation": {
+                        "text": "メトリックベースで閾値を設定し、アラートを生成できる。",
+                        "reference": "https://learn.microsoft.com/azure/azure-monitor/alerts/alerts-overview",
+                        "reference_label": "Alerts overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "ログ",
+                    "explanation": {
+                        "text": "Log Analyticsのクエリ結果をシグナルとして利用できる。",
+                        "reference": "https://learn.microsoft.com/azure/azure-monitor/alerts/alerts-overview",
+                        "reference_label": "Alerts overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "アクティビティログ",
+                    "explanation": {
+                        "text": "Azureリソースの操作イベントをトリガーにできる。",
+                        "reference": "https://learn.microsoft.com/azure/azure-monitor/alerts/alerts-overview",
+                        "reference_label": "Alerts overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "メール通知",
+                    "explanation": {
+                        "text": "メール通知はアクションの一つであり、シグナルではない。",
+                        "reference": "https://learn.microsoft.com/azure/azure-monitor/alerts/alerts-overview",
+                        "reference_label": "Alerts overview"
+                    }
+                }
+            ],
+            "answer": "A,B,C",
+            "explanation": {
+                "text": "Azure Monitorのアラートシグナルにはメトリック、ログ、アクティビティログが含まれる。",
+                "reference": "https://learn.microsoft.com/azure/azure-monitor/alerts/alerts-overview",
+                "reference_label": "Alerts overview"
+            }
+        },
+        {
+            "id": "azure-DP-203-q29",
+            "question": "Azure Synapse Analyticsで外部テーブルを利用する目的はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "外部ストレージ上のデータを直接クエリする",
+                    "explanation": {
+                        "text": "外部テーブルを定義することで、ADLSやBlobに保存されたデータに直接アクセスできる。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/develop-tables-external-tables",
+                        "reference_label": "External tables"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "データベースのスキーマを自動生成する",
+                    "explanation": {
+                        "text": "外部テーブルはスキーマを自動生成するわけではなく、明示的に定義する必要がある。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/develop-tables-external-tables",
+                        "reference_label": "External tables"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "データを自動で専用SQLプールにロードする",
+                    "explanation": {
+                        "text": "外部テーブルはデータをロードせず、外部のままクエリを可能にする。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/develop-tables-external-tables",
+                        "reference_label": "External tables"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ETL処理を不要にする",
+                    "explanation": {
+                        "text": "外部テーブルはETLを置き換えるものではなく、データ統合の方法の一つに過ぎない。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/develop-tables-external-tables",
+                        "reference_label": "External tables"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "外部テーブルを利用すると、ADLSやBlobに保存されたデータを直接クエリできる。",
+                "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/develop-tables-external-tables",
+                "reference_label": "External tables"
+            }
+        },
+        {
+            "id": "azure-DP-203-q30",
+            "question": "Azure Data Factoryでパイプライン内の複数アクティビティの実行順序を制御する方法はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "依存関係 (Dependency) を設定する",
+                    "explanation": {
+                        "text": "アクティビティ間に依存関係を設定することで実行順序を制御できる。",
+                        "reference": "https://learn.microsoft.com/azure/data-factory/control-flow-activities",
+                        "reference_label": "Control flow activities"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "トリガーを追加する",
+                    "explanation": {
+                        "text": "トリガーはパイプライン実行の開始を制御するが、アクティビティ間の順序制御ではない。",
+                        "reference": "https://learn.microsoft.com/azure/data-factory/control-flow-activities",
+                        "reference_label": "Control flow activities"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "統合ランタイムを切り替える",
+                    "explanation": {
+                        "text": "IRは実行環境であり、アクティビティの順序制御には関与しない。",
+                        "reference": "https://learn.microsoft.com/azure/data-factory/control-flow-activities",
+                        "reference_label": "Control flow activities"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "データセットのリンクサービスを変更する",
+                    "explanation": {
+                        "text": "リンクサービスは接続情報であり、順序制御とは無関係。",
+                        "reference": "https://learn.microsoft.com/azure/data-factory/control-flow-activities",
+                        "reference_label": "Control flow activities"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "アクティビティ間に依存関係を設定することで、パイプライン内の実行順序を制御できる。",
+                "reference": "https://learn.microsoft.com/azure/data-factory/control-flow-activities",
+                "reference_label": "Control flow activities"
+            }
+        },
+        {
+            "id": "azure-DP-203-q31",
+            "question": "Azure Cosmos DBのスループット課金モデルにおける「RU/s」の意味はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Request Units per second",
+                    "explanation": {
+                        "text": "RU/sはCosmos DBでのスループットを表す単位で、1秒あたりのリクエストユニット数。",
+                        "reference": "https://learn.microsoft.com/azure/cosmos-db/request-units",
+                        "reference_label": "Request Units overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Resource Usage per session",
+                    "explanation": {
+                        "text": "RU/sはセッション単位ではなく、秒単位のリソース消費量を表す。",
+                        "reference": "https://learn.microsoft.com/azure/cosmos-db/request-units",
+                        "reference_label": "Request Units overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Replication Units per second",
+                    "explanation": {
+                        "text": "RU/sはレプリケーションとは無関係。",
+                        "reference": "https://learn.microsoft.com/azure/cosmos-db/request-units",
+                        "reference_label": "Request Units overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Resource Units for storage",
+                    "explanation": {
+                        "text": "RU/sはストレージではなく、処理スループットの単位。",
+                        "reference": "https://learn.microsoft.com/azure/cosmos-db/request-units",
+                        "reference_label": "Request Units overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "RU/sとはRequest Units per secondであり、Cosmos DBでのスループットを測る指標。",
+                "reference": "https://learn.microsoft.com/azure/cosmos-db/request-units",
+                "reference_label": "Request Units overview"
+            }
+        },
+        {
+            "id": "azure-DP-203-q32",
+            "question": "Azure Stream Analyticsでウィンドウ集計を行う際にサポートされる関数はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Tumbling Window",
+                    "explanation": {
+                        "text": "一定間隔ごとにデータを区切って集計するウィンドウ。",
+                        "reference": "https://learn.microsoft.com/azure/stream-analytics/stream-analytics-window-functions",
+                        "reference_label": "Window functions"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Hopping Window",
+                    "explanation": {
+                        "text": "重複するウィンドウを使ってデータを集計できる。",
+                        "reference": "https://learn.microsoft.com/azure/stream-analytics/stream-analytics-window-functions",
+                        "reference_label": "Window functions"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Sliding Window",
+                    "explanation": {
+                        "text": "新しいイベントの到着ごとに動的に集計するウィンドウ。",
+                        "reference": "https://learn.microsoft.com/azure/stream-analytics/stream-analytics-window-functions",
+                        "reference_label": "Window functions"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Partitioned Window",
+                    "explanation": {
+                        "text": "存在しない用語であり、ASAには提供されていない。",
+                        "reference": "https://learn.microsoft.com/azure/stream-analytics/stream-analytics-window-functions",
+                        "reference_label": "Window functions"
+                    }
+                }
+            ],
+            "answer": "A,B,C",
+            "explanation": {
+                "text": "ASAはTumbling、Hopping、Slidingの各ウィンドウ関数をサポートする。",
+                "reference": "https://learn.microsoft.com/azure/stream-analytics/stream-analytics-window-functions",
+                "reference_label": "Window functions"
+            }
+        },
+        {
+            "id": "azure-DP-203-q33",
+            "question": "Azure Synapse PipelinesとAzure Data Factoryの関係として正しいものはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Synapse PipelinesはADFの機能をベースにしている",
+                    "explanation": {
+                        "text": "Synapse PipelinesはADFと同じコードベースを使用しており、統合されたオーケストレーション機能を提供する。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/data-integration/concepts-data-factory-differences",
+                        "reference_label": "Synapse Pipelines vs Data Factory"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "ADFはSynapse Pipelinesのサブセットである",
+                    "explanation": {
+                        "text": "ADFは独立したサービスであり、Synapse Pipelinesのサブセットではない。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/data-integration/concepts-data-factory-differences",
+                        "reference_label": "Synapse Pipelines vs Data Factory"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "両者は全く異なる技術スタックを持つ",
+                    "explanation": {
+                        "text": "技術基盤は同一であり、異なるわけではない。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/data-integration/concepts-data-factory-differences",
+                        "reference_label": "Synapse Pipelines vs Data Factory"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "両者は互換性がない",
+                    "explanation": {
+                        "text": "互換性は高く、同じ仕組みで動作する。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/data-integration/concepts-data-factory-differences",
+                        "reference_label": "Synapse Pipelines vs Data Factory"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Synapse PipelinesはADFと同じエンジンを利用しており、同様の機能をSynapse環境で提供する。",
+                "reference": "https://learn.microsoft.com/azure/synapse-analytics/data-integration/concepts-data-factory-differences",
+                "reference_label": "Synapse Pipelines vs Data Factory"
+            }
+        },
+        {
+            "id": "azure-DP-203-q34",
+            "question": "Azure Data Lake Storage Gen2でファイルアクセスの監査を行うために利用できるサービスはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Azure Monitor Diagnostic Settings",
+                    "explanation": {
+                        "text": "ADLS Gen2の診断設定でアクセスログを収集し、監査に利用できる。",
+                        "reference": "https://learn.microsoft.com/azure/storage/blobs/monitor-blob-storage",
+                        "reference_label": "Monitor Azure Storage"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Event Hubs",
+                    "explanation": {
+                        "text": "Event Hubsはイベントストリーミング基盤であり、監査そのものには利用されない。",
+                        "reference": "https://learn.microsoft.com/azure/event-hubs/event-hubs-about",
+                        "reference_label": "Event Hubs overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Power BI",
+                    "explanation": {
+                        "text": "Power BIは可視化ツールであり、監査ログ収集は行わない。",
+                        "reference": "https://learn.microsoft.com/power-bi/fundamentals/power-bi-overview",
+                        "reference_label": "Power BI overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Azure Functions",
+                    "explanation": {
+                        "text": "Functionsはイベント駆動で処理を追加できるが、ログ監査そのものは行わない。",
+                        "reference": "https://learn.microsoft.com/azure/azure-functions/functions-overview",
+                        "reference_label": "Azure Functions overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "ADLS Gen2ではAzure Monitorの診断設定を利用してアクセスログを監査できる。",
+                "reference": "https://learn.microsoft.com/azure/storage/blobs/monitor-blob-storage",
+                "reference_label": "Monitor Azure Storage"
+            }
+        },
+        {
+            "id": "azure-DP-203-q35",
+            "question": "Azure Synapse Analytics専用SQLプールでスキーマを設計する際に考慮すべきベストプラクティスはどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "大規模テーブルにはClustered Columnstore Indexを使用する",
+                    "explanation": {
+                        "text": "Clustered Columnstore Indexは大規模データのクエリに最適。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/best-practices-dedicated-sql-pool",
+                        "reference_label": "Best practices for dedicated SQL pool"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "小規模ルックアップテーブルはレプリケーション分散を使用する",
+                    "explanation": {
+                        "text": "レプリケーション分散により結合効率が向上する。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/develop-tables-distribute",
+                        "reference_label": "Table distribution methods"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "頻繁にクエリされる列には統計情報を更新する",
+                    "explanation": {
+                        "text": "統計情報を最新に保つことでクエリ最適化が正しく行われる。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/best-practices-dedicated-sql-pool",
+                        "reference_label": "Best practices for dedicated SQL pool"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "全てのテーブルにHeapを利用する",
+                    "explanation": {
+                        "text": "Heapは推奨されず、特定の一時的用途に限るべき。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/best-practices-dedicated-sql-pool",
+                        "reference_label": "Best practices for dedicated SQL pool"
+                    }
+                }
+            ],
+            "answer": "A,B,C",
+            "explanation": {
+                "text": "専用SQLプールの設計ではClustered Columnstore Index、レプリケーション分散、小規模テーブルの統計更新などが推奨される。",
+                "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/best-practices-dedicated-sql-pool",
+                "reference_label": "Best practices for dedicated SQL pool"
+            }
+        },
+        {
+            "id": "azure-DP-203-q36",
+            "question": "Azure Synapse Analyticsの専用SQLプールでデータのスキュー（偏り）を防ぐために推奨される方法はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "適切なパーティションキーを選択する",
+                    "explanation": {
+                        "text": "ハッシュ分散テーブルで適切なキーを選択することでデータの均等分布が可能になる。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/best-practices-dedicated-sql-pool",
+                        "reference_label": "Dedicated SQL pool best practices"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "常にラウンドロビン分散を使用する",
+                    "explanation": {
+                        "text": "ラウンドロビンは均等に分散するが、結合時にデータ移動が多発する可能性がある。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/develop-tables-distribute",
+                        "reference_label": "Table distribution methods"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Heapテーブルを利用する",
+                    "explanation": {
+                        "text": "Heapは分散戦略と関係がなく、データスキューの解決にはならない。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/develop-tables-overview",
+                        "reference_label": "Table design overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "常に1つのパーティションに集約する",
+                    "explanation": {
+                        "text": "1パーティションに集中させるとスキューが悪化する。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/develop-tables-distribute",
+                        "reference_label": "Table distribution methods"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "データスキューを避けるには、カーディナリティが高く均等に分布するパーティションキーを選択することが推奨される。",
+                "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/best-practices-dedicated-sql-pool",
+                "reference_label": "Dedicated SQL pool best practices"
+            }
+        },
+        {
+            "id": "azure-DP-203-q37",
+            "question": "Azure Event Hubsでスループットユニット (Throughput Units, TU) が制御するものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "1秒あたりのイベント受信数と送信数",
+                    "explanation": {
+                        "text": "TUは受信/送信スループットを決定し、1 TUで最大1 MB/秒または1000イベント/秒を処理可能。",
+                        "reference": "https://learn.microsoft.com/azure/event-hubs/event-hubs-scalability",
+                        "reference_label": "Event Hubs scalability"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "イベント保持期間",
+                    "explanation": {
+                        "text": "保持期間はSKU設定によって決まり、TUとは無関係。",
+                        "reference": "https://learn.microsoft.com/azure/event-hubs/event-hubs-features",
+                        "reference_label": "Event Hubs features"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "利用できるコンシューマーグループ数",
+                    "explanation": {
+                        "text": "コンシューマーグループの数は別の制約であり、TUとは関係しない。",
+                        "reference": "https://learn.microsoft.com/azure/event-hubs/event-hubs-features",
+                        "reference_label": "Event Hubs features"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "イベントサイズの最大値",
+                    "explanation": {
+                        "text": "イベントサイズ上限は固定（256KB〜1MB SKU依存）であり、TUとは関係しない。",
+                        "reference": "https://learn.microsoft.com/azure/event-hubs/event-hubs-quotas",
+                        "reference_label": "Event Hubs quotas"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "TUはEvent Hubsの受信・送信スループットを制御し、スケーラビリティの基本単位となる。",
+                "reference": "https://learn.microsoft.com/azure/event-hubs/event-hubs-scalability",
+                "reference_label": "Event Hubs scalability"
+            }
+        },
+        {
+            "id": "azure-DP-203-q38",
+            "question": "Azure Data Factoryで動的に接続先を変更したい場合に利用する仕組みはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "パラメーター化",
+                    "explanation": {
+                        "text": "パイプラインやデータセットにパラメーターを設定することで接続先を動的に切り替えられる。",
+                        "reference": "https://learn.microsoft.com/azure/data-factory/parameters",
+                        "reference_label": "Parameters in Azure Data Factory"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "データフローキャッシュ",
+                    "explanation": {
+                        "text": "キャッシュはデータ処理の効率化の仕組みであり、接続先変更には関与しない。",
+                        "reference": "https://learn.microsoft.com/azure/data-factory/concepts-data-flow-overview",
+                        "reference_label": "Mapping Data Flow overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "統合ランタイム切り替え",
+                    "explanation": {
+                        "text": "IRは実行環境の選択であり、接続先の動的切り替えではない。",
+                        "reference": "https://learn.microsoft.com/azure/data-factory/concepts-integration-runtime",
+                        "reference_label": "Integration runtime overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Azure Monitor アラート",
+                    "explanation": {
+                        "text": "アラートは監視の仕組みであり、接続先の変更には利用できない。",
+                        "reference": "https://learn.microsoft.com/azure/azure-monitor/alerts/alerts-overview",
+                        "reference_label": "Azure Monitor alerts"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "ADFのパラメーター化を用いると、同じパイプラインを異なる接続先で再利用できる。",
+                "reference": "https://learn.microsoft.com/azure/data-factory/parameters",
+                "reference_label": "Parameters in Azure Data Factory"
+            }
+        },
+        {
+            "id": "azure-DP-203-q39",
+            "question": "Azure Synapse AnalyticsのサーバーレスSQLプールでサポートされるファイル形式はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Parquet",
+                    "explanation": {
+                        "text": "サーバーレスSQLプールはParquetをサポートしており、効率的にクエリできる。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/query-parquet-files",
+                        "reference_label": "Query Parquet files"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "CSV",
+                    "explanation": {
+                        "text": "CSVもサポートされ、外部テーブルやOPENROWSETでクエリできる。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/query-single-csv-file",
+                        "reference_label": "Query CSV files"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "JSON",
+                    "explanation": {
+                        "text": "JSONもOPENROWSETを使ってクエリ可能。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/query-json-files",
+                        "reference_label": "Query JSON files"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Avro",
+                    "explanation": {
+                        "text": "サーバーレスSQLプールはAvroもサポートする。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/query-avro-files",
+                        "reference_label": "Query Avro files"
+                    }
+                }
+            ],
+            "answer": "A,B,C,D",
+            "explanation": {
+                "text": "サーバーレスSQLプールはParquet, CSV, JSON, Avroなどの形式をサポートしている。",
+                "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview",
+                "reference_label": "Serverless SQL pool overview"
+            }
+        },
+        {
+            "id": "azure-DP-203-q40",
+            "question": "Azure Databricksでジョブのスケジューリングを行う場合に利用できる機能はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Databricks Jobs",
+                    "explanation": {
+                        "text": "Databricks JobsはNotebookやJARを定期的に実行するスケジューリング機能を提供する。",
+                        "reference": "https://learn.microsoft.com/azure/databricks/jobs",
+                        "reference_label": "Databricks Jobs overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Power Automate",
+                    "explanation": {
+                        "text": "Power Automateはワークフロー自動化サービスであり、Databricksの標準機能ではない。",
+                        "reference": "https://learn.microsoft.com/power-automate/overview",
+                        "reference_label": "Power Automate overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Synapse Pipelines",
+                    "explanation": {
+                        "text": "Synapse PipelinesからもDatabricks Notebookを呼び出せるが、Databricksのジョブスケジューリング機能自体ではない。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/data-integration/concepts-data-factory-differences",
+                        "reference_label": "Synapse Pipelines overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Azure Functions",
+                    "explanation": {
+                        "text": "Functionsはイベント駆動型のサービスであり、Databricks専用のジョブ管理機能ではない。",
+                        "reference": "https://learn.microsoft.com/azure/azure-functions/functions-overview",
+                        "reference_label": "Azure Functions overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Databricks Jobsを利用するとNotebookやJARをスケジュール実行できる。",
+                "reference": "https://learn.microsoft.com/azure/databricks/jobs",
+                "reference_label": "Databricks Jobs overview"
+            }
+        },
+        {
+            "id": "azure-DP-203-q41",
+            "question": "Azure Data Lake Storage Gen2でアクセス制御を設計する際の推奨事項はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Azure ADとRBACを利用してストレージアカウントレベルのアクセス制御を行う",
+                    "explanation": {
+                        "text": "Azure RBACでアカウントレベルのアクセス制御を行い、ACLと組み合わせるのが推奨される。",
+                        "reference": "https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-access-control",
+                        "reference_label": "Access control in ADLS Gen2"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "アカウントキーを全員で共有する",
+                    "explanation": {
+                        "text": "アカウントキー共有はセキュリティリスクが高いため非推奨。",
+                        "reference": "https://learn.microsoft.com/azure/storage/blobs/security-recommendations",
+                        "reference_label": "Storage security recommendations"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ACLを利用してファイル・フォルダー単位で制御する",
+                    "explanation": {
+                        "text": "ACLを利用することで細かい制御が可能。",
+                        "reference": "https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-access-control",
+                        "reference_label": "Access control in ADLS Gen2"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "匿名アクセスを許可する",
+                    "explanation": {
+                        "text": "匿名アクセスは強く非推奨。",
+                        "reference": "https://learn.microsoft.com/azure/storage/blobs/security-recommendations",
+                        "reference_label": "Storage security recommendations"
+                    }
+                }
+            ],
+            "answer": "A,C",
+            "explanation": {
+                "text": "ADLS Gen2ではAzure RBACとACLを組み合わせてセキュリティを確保するのが推奨される。",
+                "reference": "https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-access-control",
+                "reference_label": "Access control in ADLS Gen2"
+            }
+        },
+        {
+            "id": "azure-DP-203-q42",
+            "question": "Azure Synapse Analyticsの専用SQLプールで統計情報を管理する目的はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "クエリオプティマイザーに正確な情報を提供する",
+                    "explanation": {
+                        "text": "統計情報はクエリ最適化に利用され、効率的な実行計画を生成する。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/best-practices-dedicated-sql-pool",
+                        "reference_label": "Dedicated SQL pool best practices"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "データのセキュリティを強化する",
+                    "explanation": {
+                        "text": "統計情報はセキュリティには直接関与しない。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/best-practices-dedicated-sql-pool",
+                        "reference_label": "Dedicated SQL pool best practices"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ストレージコストを削減する",
+                    "explanation": {
+                        "text": "統計情報はストレージコスト削減ではなくクエリ効率改善に役立つ。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/best-practices-dedicated-sql-pool",
+                        "reference_label": "Dedicated SQL pool best practices"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "常にHeapテーブルの代わりとなる",
+                    "explanation": {
+                        "text": "統計情報はインデックスやHeapの代替ではない。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/best-practices-dedicated-sql-pool",
+                        "reference_label": "Dedicated SQL pool best practices"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "統計情報はクエリオプティマイザーにとって重要で、最適な実行計画を選択するために利用される。",
+                "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/best-practices-dedicated-sql-pool",
+                "reference_label": "Dedicated SQL pool best practices"
+            }
+        },
+        {
+            "id": "azure-DP-203-q43",
+            "question": "Azure Data Factoryで制御フローを実現するために利用できるアクティビティはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "If Condition",
+                    "explanation": {
+                        "text": "If Conditionアクティビティを使うと条件分岐処理を実装できる。",
+                        "reference": "https://learn.microsoft.com/azure/data-factory/control-flow-activities",
+                        "reference_label": "Control flow activities"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "ForEach",
+                    "explanation": {
+                        "text": "ForEachアクティビティは配列やコレクションをループ処理できる。",
+                        "reference": "https://learn.microsoft.com/azure/data-factory/control-flow-activities",
+                        "reference_label": "Control flow activities"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Switch",
+                    "explanation": {
+                        "text": "Switchアクティビティは複数条件分岐を実現できる。",
+                        "reference": "https://learn.microsoft.com/azure/data-factory/control-flow-activities",
+                        "reference_label": "Control flow activities"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Notebook",
+                    "explanation": {
+                        "text": "NotebookはDatabricksで利用されるもので、ADFの制御フローアクティビティではない。",
+                        "reference": "https://learn.microsoft.com/azure/data-factory/control-flow-activities",
+                        "reference_label": "Control flow activities"
+                    }
+                }
+            ],
+            "answer": "A,B,C",
+            "explanation": {
+                "text": "ADFの制御フローアクティビティにはIf Condition、ForEach、Switchなどが含まれる。",
+                "reference": "https://learn.microsoft.com/azure/data-factory/control-flow-activities",
+                "reference_label": "Control flow activities"
+            }
+        },
+        {
+            "id": "azure-DP-203-q44",
+            "question": "Azure Synapse Analyticsの専用SQLプールでテーブル設計時に推奨される分散方式はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "大規模ファクトテーブルにはハッシュ分散",
+                    "explanation": {
+                        "text": "ハッシュ分散は結合処理に有効であり、大規模データに最適。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/develop-tables-distribute",
+                        "reference_label": "Table distribution methods"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "小規模ルックアップテーブルにはレプリケーション分散",
+                    "explanation": {
+                        "text": "レプリケーション分散により全ノードにコピーされ、結合が効率化される。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/develop-tables-distribute",
+                        "reference_label": "Table distribution methods"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "不特定のクエリが多い場合はラウンドロビン分散",
+                    "explanation": {
+                        "text": "ラウンドロビンは均等に分散でき、クエリパターンが不明確な場合に適している。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/develop-tables-distribute",
+                        "reference_label": "Table distribution methods"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "全てのテーブルにHeapを利用",
+                    "explanation": {
+                        "text": "Heapは最適化されておらず、推奨されない。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/develop-tables-overview",
+                        "reference_label": "Table design overview"
+                    }
+                }
+            ],
+            "answer": "A,B,C",
+            "explanation": {
+                "text": "専用SQLプールではファクトテーブルはハッシュ分散、ルックアップはレプリケーション、小規模または不明確なクエリはラウンドロビンが推奨される。",
+                "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/develop-tables-distribute",
+                "reference_label": "Table distribution methods"
+            }
+        },
+        {
+            "id": "azure-DP-203-q45",
+            "question": "Azure Cosmos DBのマルチリージョン書き込みを有効にした場合の特徴はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "すべてのリージョンで書き込みが可能になる",
+                    "explanation": {
+                        "text": "マルチマスター構成となり、全リージョンで書き込みを受け付ける。",
+                        "reference": "https://learn.microsoft.com/azure/cosmos-db/multi-region-writers",
+                        "reference_label": "Multi-region writes"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "整合性レベルは自動的にEventualに固定される",
+                    "explanation": {
+                        "text": "整合性レベルは変更可能であり、Eventualに固定されるわけではない。",
+                        "reference": "https://learn.microsoft.com/azure/cosmos-db/consistency-levels",
+                        "reference_label": "Consistency levels"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "競合は自動的に解決される",
+                    "explanation": {
+                        "text": "競合解決ポリシーを定義できるが、自動ですべて解決されるわけではない。",
+                        "reference": "https://learn.microsoft.com/azure/cosmos-db/multi-region-writers",
+                        "reference_label": "Multi-region writes"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "スループットはリージョンごとに課金される",
+                    "explanation": {
+                        "text": "マルチリージョン構成では、各リージョンに対してスループット課金が発生する。",
+                        "reference": "https://learn.microsoft.com/azure/cosmos-db/multi-region-writers",
+                        "reference_label": "Multi-region writes"
+                    }
+                }
+            ],
+            "answer": "A,D",
+            "explanation": {
+                "text": "マルチリージョン書き込みでは全リージョンで書き込み可能になり、スループットは各リージョンで課金される。",
+                "reference": "https://learn.microsoft.com/azure/cosmos-db/multi-region-writers",
+                "reference_label": "Multi-region writes"
+            }
+        },
+        {
+            "id": "azure-DP-203-q46",
+            "question": "Azure DatabricksでDelta Lakeを使用する場合の利点として正しいものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "スキーマエンフォースメントとスキーマエボリューションをサポートする",
+                    "explanation": {
+                        "text": "Delta Lakeはスキーマの一貫性を強制しつつ、変更も許容できる。",
+                        "reference": "https://learn.microsoft.com/azure/databricks/delta/delta-intro",
+                        "reference_label": "Delta Lake overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "自動で機械学習モデルを構築する",
+                    "explanation": {
+                        "text": "これはAzure Machine Learningの機能であり、Delta Lakeの特徴ではない。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/overview-what-is-azure-machine-learning",
+                        "reference_label": "Azure Machine Learning overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "トランザクションログを保持し、データの信頼性を高める",
+                    "explanation": {
+                        "text": "Delta Lakeはトランザクションログを活用してACID特性を保証する。",
+                        "reference": "https://learn.microsoft.com/azure/databricks/delta/delta-intro",
+                        "reference_label": "Delta Lake overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "データ圧縮を常に自動化する",
+                    "explanation": {
+                        "text": "圧縮はストレージ層の機能であり、Delta Lake固有の特徴ではない。",
+                        "reference": "https://learn.microsoft.com/azure/databricks/delta/delta-intro",
+                        "reference_label": "Delta Lake overview"
+                    }
+                }
+            ],
+            "answer": "A,C",
+            "explanation": {
+                "text": "Delta LakeはACIDトランザクションを提供し、スキーマの進化や一貫性を保証する。",
+                "reference": "https://learn.microsoft.com/azure/databricks/delta/delta-intro",
+                "reference_label": "Delta Lake overview"
+            }
+        },
+        {
+            "id": "azure-DP-203-q47",
+            "question": "Azure MonitorでLog Analyticsワークスペースを利用する目的はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "ログデータを収集・保存・分析する",
+                    "explanation": {
+                        "text": "Log AnalyticsワークスペースはAzure Monitorの中心であり、ログを収集して分析できる。",
+                        "reference": "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-overview",
+                        "reference_label": "Log Analytics overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "アプリケーションコードを自動的に最適化する",
+                    "explanation": {
+                        "text": "コード最適化はLog Analyticsの機能ではない。",
+                        "reference": "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-overview",
+                        "reference_label": "Log Analytics overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Azure Functionsをスケジューリングする",
+                    "explanation": {
+                        "text": "FunctionsのスケジューリングはLogic AppsやTimer Triggerを利用する。",
+                        "reference": "https://learn.microsoft.com/azure/azure-functions/functions-overview",
+                        "reference_label": "Azure Functions overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ネットワーク帯域を増加させる",
+                    "explanation": {
+                        "text": "ネットワーク帯域の制御はLog Analyticsの機能ではない。",
+                        "reference": "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-overview",
+                        "reference_label": "Log Analytics overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Log AnalyticsワークスペースはAzure Monitorでログを収集・保存・分析するために利用される。",
+                "reference": "https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-overview",
+                "reference_label": "Log Analytics overview"
+            }
+        },
+        {
+            "id": "azure-DP-203-q48",
+            "question": "Azure Synapse AnalyticsのサーバーレスSQLプールを利用する典型的なシナリオはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "データレイクにあるファイルに対するアドホッククエリ",
+                    "explanation": {
+                        "text": "サーバーレスSQLプールはデータレイク上のデータに対して従量課金でアドホック分析を行うのに適している。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview",
+                        "reference_label": "Serverless SQL pool overview"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "常時稼働する大規模データウェアハウス",
+                    "explanation": {
+                        "text": "これは専用SQLプールの利用が推奨される。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/data-warehousing-overview",
+                        "reference_label": "Dedicated SQL pool overview"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ETLの複雑なオーケストレーション",
+                    "explanation": {
+                        "text": "これはADFやSynapse Pipelinesの役割。",
+                        "reference": "https://learn.microsoft.com/azure/synapse-analytics/data-integration/concepts-data-factory-differences",
+                        "reference_label": "Synapse Pipelines overview"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "機械学習モデルのデプロイ",
+                    "explanation": {
+                        "text": "機械学習のデプロイはAzure MLの役割であり、サーバーレスSQLプールではない。",
+                        "reference": "https://learn.microsoft.com/azure/machine-learning/overview-what-is-azure-machine-learning",
+                        "reference_label": "Azure Machine Learning overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "サーバーレスSQLプールは、データレイクにあるファイルに対してアドホッククエリを実行するのに適している。",
+                "reference": "https://learn.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview",
+                "reference_label": "Serverless SQL pool overview"
+            }
+        },
+        {
+            "id": "azure-DP-203-q49",
+            "question": "Azure Data Lake Storage Gen2の冗長化オプションとして正しいものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "LRS (Locally Redundant Storage)",
+                    "explanation": {
+                        "text": "同一リージョン内でデータを3重化する。",
+                        "reference": "https://learn.microsoft.com/azure/storage/common/storage-redundancy",
+                        "reference_label": "Azure Storage redundancy"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "ZRS (Zone-Redundant Storage)",
+                    "explanation": {
+                        "text": "同一リージョン内の複数の可用性ゾーンにデータを保存する。",
+                        "reference": "https://learn.microsoft.com/azure/storage/common/storage-redundancy",
+                        "reference_label": "Azure Storage redundancy"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "GRS (Geo-Redundant Storage)",
+                    "explanation": {
+                        "text": "セカンダリリージョンに非同期でデータを複製する。",
+                        "reference": "https://learn.microsoft.com/azure/storage/common/storage-redundancy",
+                        "reference_label": "Azure Storage redundancy"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "RAGRS (Read-Access Geo-Redundant Storage)",
+                    "explanation": {
+                        "text": "GRSに加え、セカンダリリージョンから読み取りアクセスが可能。",
+                        "reference": "https://learn.microsoft.com/azure/storage/common/storage-redundancy",
+                        "reference_label": "Azure Storage redundancy"
+                    }
+                }
+            ],
+            "answer": "A,B,C,D",
+            "explanation": {
+                "text": "ADLS Gen2はLRS, ZRS, GRS, RAGRSの冗長化オプションをサポートしている。",
+                "reference": "https://learn.microsoft.com/azure/storage/common/storage-redundancy",
+                "reference_label": "Azure Storage redundancy"
+            }
+        },
+        {
+            "id": "azure-DP-203-q50",
+            "question": "Azure Data FactoryでKey Vaultを利用する主な利点はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "接続文字列や資格情報を安全に管理できる",
+                    "explanation": {
+                        "text": "Key Vaultを利用することで認証情報を安全に格納し、ADFから参照可能になる。",
+                        "reference": "https://learn.microsoft.com/azure/data-factory/store-credentials-in-key-vault",
+                        "reference_label": "Store credentials in Azure Key Vault"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "データ移動の速度を向上させる",
+                    "explanation": {
+                        "text": "Key Vaultはセキュリティサービスであり、データ転送速度には影響しない。",
+                        "reference": "https://learn.microsoft.com/azure/data-factory/store-credentials-in-key-vault",
+                        "reference_label": "Store credentials in Azure Key Vault"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "データセットのスキーマを自動生成する",
+                    "explanation": {
+                        "text": "スキーマ定義はKey Vaultの機能ではない。",
+                        "reference": "https://learn.microsoft.com/azure/data-factory/store-credentials-in-key-vault",
+                        "reference_label": "Store credentials in Azure Key Vault"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Integration Runtimeを作成する",
+                    "explanation": {
+                        "text": "IRの作成はADFの機能であり、Key Vaultとは無関係。",
+                        "reference": "https://learn.microsoft.com/azure/data-factory/concepts-integration-runtime",
+                        "reference_label": "Integration runtime overview"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "ADFでKey Vaultを利用すると、接続文字列や資格情報を安全に管理・参照でき、セキュリティを強化できる。",
+                "reference": "https://learn.microsoft.com/azure/data-factory/store-credentials-in-key-vault",
+                "reference_label": "Store credentials in Azure Key Vault"
+            }
+        }
+    ]
+}

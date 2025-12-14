@@ -1,0 +1,2467 @@
+{
+  "exam": {
+    "id": "AIF-C01",
+    "title": "AWS Certified AI Practitioner",
+    "description": "「AWS Certified AI Practitioner」は、AI (人工知能)、機械学習 (ML)、生成AI の概念とユースケースに関する需要の高い知識を検証するファウンデーショナルレベルの認定試験です。 本試験は、必ずしも AI/ML ソリューションを構築する技術者ではない、ビジネスアナリスト・マーケティング・プロジェクトマネージャー等の職種の方を対象に、AWS における AI/ML テクノロジーを理解し、適用できる能力を証明します。 試験時間は90分、出題数65問。 また、出題範囲には「AI／MLの基礎」「生成AIの基礎」「基盤モデルの応用」「責任あるAIのガイドライン」「AIソリューションのセキュリティ・ガバナンス」などが含まれています。",
+    "version": "Version 1.4",
+    "price": "100 USD",
+    "difficulty": "普通",
+    "official-site": "https://aws.amazon.com/certification/certified-ai-practitioner/",
+    "category": {
+      "id": "aws",
+      "name": "AWS"
+    }
+  },
+  "questions": [
+    {
+      "id": "aws-aif-c01-q01",
+      "question": "Amazon Bedrockに送信したプロンプトや生成結果の扱いとして、正しい記述はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AWSおよびサードパーティーモデル提供者は、入力や出力をモデル再学習に使用しない。",
+          "explanation": {
+            "text": "BedrockのFAQに明記されており、入力/出力はAmazon Nova/Titanや第三者モデルの学習に使用されない。",
+            "reference": "https://aws.amazon.com/bedrock/faqs/",
+            "reference_label": "Amazon Bedrock FAQs（データ利用）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "出力のみは将来のモデル改善のため自動的に学習に利用される。",
+          "explanation": {
+            "text": "出力のみを学習に使うという扱いはFAQに反している。",
+            "reference": "https://aws.amazon.com/bedrock/faqs/",
+            "reference_label": "Amazon Bedrock FAQs（データ利用）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "入力は保存され第三者モデル提供者と共有されることがある。",
+          "explanation": {
+            "text": "入力を共有するという記述はFAQに反している。",
+            "reference": "https://aws.amazon.com/bedrock/faqs/",
+            "reference_label": "Amazon Bedrock FAQs（データ利用）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "顧客はオプトアウト手続きが必要になるまで学習に使われる。",
+          "explanation": {
+            "text": "デフォルトで学習利用されるわけではない。",
+            "reference": "https://aws.amazon.com/bedrock/faqs/",
+            "reference_label": "Amazon Bedrock FAQs（データ利用）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Bedrockの公式FAQは、入力や出力がAmazonや第三者のFMの学習に使われないと明示している。",
+        "reference": "https://aws.amazon.com/bedrock/faqs/",
+        "reference_label": "Amazon Bedrock FAQs（データ利用）"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q02",
+      "question": "Amazon Bedrock Knowledge Basesの主目的として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "自社データを検索してRAGにより回答の関連性と正確性を高める。",
+          "explanation": {
+            "text": "Knowledge BasesはRAG（検索拡張生成）でデータソースから関連情報を取り込み回答を改善する。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base.html",
+            "reference_label": "Amazon Bedrock ユーザーガイド：Knowledge Bases"
+          }
+        },
+        {
+          "key": "B",
+          "text": "大規模言語モデルの事前学習コーパスを自動生成する。",
+          "explanation": {
+            "text": "事前学習用コーパス生成機能は提供されていない。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base.html",
+            "reference_label": "Amazon Bedrock ユーザーガイド：Knowledge Bases"
+          }
+        },
+        {
+          "key": "C",
+          "text": "モデルのハイパーパラメータ最適化を行う。",
+          "explanation": {
+            "text": "ハイパーパラメータ最適化はKnowledge Basesの機能ではない。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base.html",
+            "reference_label": "Amazon Bedrock ユーザーガイド：Knowledge Bases"
+          }
+        },
+        {
+          "key": "D",
+          "text": "モデルの推論スループットを自動でスケールする。",
+          "explanation": {
+            "text": "スループット制御はProvisioned Throughput等の領域であり、Knowledge Basesの機能ではない。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html",
+            "reference_label": "Amazon Bedrock：Provisioned Throughput"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Knowledge BasesはRAGで外部データを検索し回答生成を補強するマネージド機能である。",
+        "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base.html",
+        "reference_label": "Amazon Bedrock ユーザーガイド：Knowledge Bases"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q03",
+      "question": "Amazon Bedrock Guardrailsの説明として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "複数のFMに横断適用でき、プロンプトとレスポンスの両方に有害コンテンツ対策を施せる。",
+          "explanation": {
+            "text": "Guardrailsは複数モデルで一貫した安全・プライバシー制御を適用できる。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html",
+            "reference_label": "Amazon Bedrock：Guardrails"
+          }
+        },
+        {
+            "key": "B",
+            "text": "適用はレスポンスのみで、プロンプトには使えない。",
+            "explanation": {
+              "text": "プロンプトとレスポンスの双方を対象にできる。",
+              "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html",
+              "reference_label": "Amazon Bedrock：Guardrails"
+            }
+        },
+        {
+          "key": "C",
+          "text": "1つのエージェントに対してはGuardrailを関連付けられない。",
+          "explanation": {
+            "text": "エージェント作成時/更新時にGuardrailを関連付け可能。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/agents-guardrail.html",
+            "reference_label": "Agents for Bedrock：Guardrailの関連付け"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CloudFormationでGuardrailを作成する方法はない。",
+          "explanation": {
+            "text": "CloudFormationにAWS::Bedrock::Guardrailリソースがある。",
+            "reference": "https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-bedrock-guardrail.html",
+            "reference_label": "AWS CloudFormation リファレンス：AWS::Bedrock::Guardrail"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Guardrailsは用途別に作成し、複数FMに横断適用しプロンプト/応答の双方で安全対策を提供する。",
+        "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html",
+        "reference_label": "Amazon Bedrock：Guardrails"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q04",
+      "question": "Amazon Bedrockでカスタマイズ済みモデル（ファインチューニング等）を推論に利用するための前提として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Provisioned Throughputの購入が必要になる。",
+          "explanation": {
+            "text": "カスタマイズモデルの利用にはProvisioned Throughputが必要とされる。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html",
+            "reference_label": "Amazon Bedrock：Provisioned Throughput"
+          }
+        },
+        {
+          "key": "B",
+          "text": "オンデマンド課金のみで常に利用できる。",
+          "explanation": {
+            "text": "カスタムモデルはProvisioned Throughputが前提。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html",
+            "reference_label": "Amazon Bedrock：Provisioned Throughput"
+          }
+        },
+        {
+          "key": "C",
+          "text": "SageMakerエンドポイントを必ず経由する必要がある。",
+          "explanation": {
+            "text": "Bedrockのカスタムモデル利用にSageMakerエンドポイントは不要。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/APIReference/API_CreateProvisionedModelThroughput.html",
+            "reference_label": "Bedrock API: CreateProvisionedModelThroughput"
+          }
+        },
+        {
+          "key": "D",
+          "text": "KMSの設定は利用できない。",
+          "explanation": {
+            "text": "データ保護・暗号化はBedrockでも推奨される。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/data-protection.html",
+            "reference_label": "Amazon Bedrock：データ保護"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Bedrockの公式ドキュメントは、カスタムモデルの利用にはProvisioned Throughputが必要と明記している。",
+        "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html",
+        "reference_label": "Amazon Bedrock：Provisioned Throughput"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q05",
+      "question": "Amazon Bedrockのモデル評価（Evaluations）に関する説明として正しいものの組合せはどれか。（複数選択）",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "自動評価と人手（human）評価の両方に対応する。",
+          "explanation": {
+            "text": "両方の評価モードが提供される。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/evaluation.html",
+            "reference_label": "Amazon Bedrock：Evaluations概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "別のLLMをジャッジとして用いる評価に対応する。",
+          "explanation": {
+            "text": "LLM-as-a-judgeの手法もサポートされる。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/evaluation.html",
+            "reference_label": "Amazon Bedrock：Evaluations（LLMジャッジ）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "RAGソースの評価は対象外である。",
+          "explanation": {
+            "text": "RAGソースの評価もサポート対象。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/evaluation.html",
+            "reference_label": "Amazon Bedrock：Evaluations（RAG評価）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "タスクタイプごとの指標が整理されている。",
+          "explanation": {
+            "text": "モデル評価のタスクタイプと指標が一覧化されている。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-evaluation-tasks.html",
+            "reference_label": "Amazon Bedrock：Model evaluation task types"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "Evaluationsは自動/人手の両評価を提供し、LLMジャッジも利用可能。RAG評価も対象で、タスク種別ごとの指標が整理される。",
+        "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/evaluation.html",
+        "reference_label": "Amazon Bedrock：Evaluations"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q06",
+      "question": "Amazon Q Businessの特徴として最も適切な説明はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "エンタープライズデータに接続し、業務内での検索・支援・アクションを行う生成AIアシスタント。",
+          "explanation": {
+            "text": "Q Businessは業務データに接続し、情報取得やタスク支援を提供する。",
+            "reference": "https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/what-is.html",
+            "reference_label": "Amazon Q Business ユーザーガイド：概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AWS外のSaaSには接続できない。",
+          "explanation": {
+            "text": "複数のデータソースやプラグイン連携に対応する。",
+            "reference": "https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/how-it-works.html",
+            "reference_label": "Amazon Q Business：How it works"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Amazon Bedrockの利用は前提ではなく完全に独立したLLM基盤である。",
+          "explanation": {
+            "text": "Q Businessは生成AIを活用し、Bedrock等と連携して動作する設計。",
+            "reference": "https://aws.amazon.com/q/business/",
+            "reference_label": "製品ページ：Amazon Q Business"
+          }
+        },
+        {
+          "key": "D",
+          "text": "SlackやMicrosoft Teamsへの統合は提供されない。",
+          "explanation": {
+            "text": "主要な業務アプリ（Slack/Teamsなど）への統合が案内されている。",
+            "reference": "https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/what-is.html",
+            "reference_label": "Amazon Q Business：統合"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Q Businessは企業データに接続して情報検索・支援・アクションを提供する業務向け生成AIアシスタントである。",
+        "reference": "https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/what-is.html",
+        "reference_label": "Amazon Q Business ユーザーガイド：概要"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q07",
+      "question": "Amazon ComprehendのPII検出に関する説明として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "英語とスペイン語のテキストでPII検出に対応する。",
+          "explanation": {
+            "text": "ドキュメントに英語・スペイン語対応が明記されている。",
+            "reference": "https://docs.aws.amazon.com/comprehend/latest/dg/how-pii.html",
+            "reference_label": "Amazon Comprehend：Detecting PII entities"
+          }
+        },
+        {
+          "key": "B",
+          "text": "画像内のPIIを直接検出するAPIを提供する。",
+          "explanation": {
+            "text": "Comprehendはテキスト分析サービスであり画像PII検出は対象外。",
+            "reference": "https://docs.aws.amazon.com/comprehend/latest/dg/how-pii.html",
+            "reference_label": "Amazon Comprehend：Detecting PII entities"
+          }
+        },
+        {
+          "key": "C",
+          "text": "PIIを検出後、自動でKMSキーをローテーションする。",
+          "explanation": {
+            "text": "KMSキー管理はComprehendの機能範囲ではない。",
+            "reference": "https://docs.aws.amazon.com/comprehend/latest/dg/how-pii.html",
+            "reference_label": "Amazon Comprehend：Detecting PII entities"
+          }
+        },
+        {
+          "key": "D",
+          "text": "検出だけで置換（マスキング）はサポートしない。",
+          "explanation": {
+            "text": "PIIの特定（locate）と編集（redact）に対応する。",
+            "reference": "https://docs.aws.amazon.com/comprehend/latest/dg/how-pii.html",
+            "reference_label": "Amazon Comprehend：Detecting PII entities"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ComprehendはテキストのPII検出/編集に対応し、英語・スペイン語をサポートする。",
+        "reference": "https://docs.aws.amazon.com/comprehend/latest/dg/how-pii.html",
+        "reference_label": "Amazon Comprehend：Detecting PII entities"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q08",
+      "question": "ユーザー投稿画像の不適切コンテンツ検出を実装したい。最も適切なAWSサービスとAPIの組合せはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Amazon RekognitionのDetectModerationLabels（画像）",
+          "explanation": {
+            "text": "画像の不適切コンテンツ検出に利用できる同期API。",
+            "reference": "https://docs.aws.amazon.com/rekognition/latest/dg/moderation-api.html",
+            "reference_label": "Rekognition：Moderation APIs"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Amazon ComprehendのDetectSentiment",
+          "explanation": {
+            "text": "テキスト感情分析であり画像のモデレーションではない。",
+            "reference": "https://docs.aws.amazon.com/rekognition/latest/dg/moderation.html",
+            "reference_label": "Rekognition：モデレーション概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Amazon TextractのAnalyzeExpense",
+          "explanation": {
+            "text": "領収書・請求書の解析向けでモデレーション用途ではない。",
+            "reference": "https://docs.aws.amazon.com/rekognition/latest/dg/moderation.html",
+            "reference_label": "Rekognition：モデレーション概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Amazon KendraのQuery API",
+          "explanation": {
+            "text": "エンタープライズ検索であり画像モデレーション機能ではない。",
+            "reference": "https://docs.aws.amazon.com/rekognition/latest/dg/moderation.html",
+            "reference_label": "Rekognition：モデレーション概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "RekognitionのモデレーションAPIは画像・動画の不適切コンテンツ検出を提供する。",
+        "reference": "https://docs.aws.amazon.com/rekognition/latest/dg/moderation-api.html",
+        "reference_label": "Rekognition：Moderation APIs"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q09",
+      "question": "Amazon SageMakerの学習と推論に関する説明として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "SageMaker Training/Inferenceツールキットでコンテナを学習・推論用に適合させられる。",
+          "explanation": {
+            "text": "公式ツールキットはスクリプト実行や推論サーバの実装などを支援する。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/amazon-sagemaker-toolkits.html",
+            "reference_label": "SageMaker：Training/Inference Toolkits"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SageMakerは学習のみ可能で推論エンドポイントは提供しない。",
+          "explanation": {
+            "text": "推論（デプロイ）もSageMakerで提供される。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works-training.html",
+            "reference_label": "SageMaker：学習の仕組み（関連）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "SageMakerは生成AIの利用に必須であり、Bedrockのみでは推論できない。",
+          "explanation": {
+            "text": "Bedrock単体で推論が可能で、必ずしもSageMakerは不要。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html",
+            "reference_label": "Bedrock：サービス概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "推論を行うには常にオンプレミスGPUが必要である。",
+          "explanation": {
+            "text": "マネージドなクラウド推論を提供するためオンプレ要件はない。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/amazon-sagemaker-toolkits.html",
+            "reference_label": "SageMaker：Training/Inference Toolkits"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "SageMakerのTraining/Inferenceツールキットは学習/推論用コンテナの標準化を支援する。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/amazon-sagemaker-toolkits.html",
+        "reference_label": "SageMaker：Training/Inference Toolkits"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q10",
+      "question": "Agents for Amazon Bedrockの説明として正しいものはどれか。（複数選択）",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ユーザーの依頼を分解し、API呼び出しやデータ連携をオーケストレーションできる。",
+          "explanation": {
+            "text": "エージェントはFMの推論とツール連携でマルチステップのタスクを遂行する。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/agents.html",
+            "reference_label": "Agents for Amazon Bedrock：概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Knowledge Basesを呼び出して情報補強ができる。",
+          "explanation": {
+            "text": "エージェントは必要に応じてKnowledge Basesを活用する。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/agents.html",
+            "reference_label": "Agents for Amazon Bedrock：概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Guardrailsを関連付けることはできない。",
+          "explanation": {
+            "text": "作成/更新時にGuardrailを関連付け可能。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/agents-guardrail.html",
+            "reference_label": "Agents：Guardrailの関連付け"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ビルド時APIと実行時APIの2系統のAPIで構成される。",
+          "explanation": {
+            "text": "セットアップ/実行でAPI群が分かれる。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/agents-how.html",
+            "reference_label": "Agents：仕組み"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "Agentsはタスク分解とツール/データ連携を行い、Knowledge Basesも呼び出せる。Guardrailsの関連付けも可能で、ビルド時と実行時のAPIが用意される。",
+        "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/agents.html",
+        "reference_label": "Agents for Amazon Bedrock：概要"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q11",
+      "question": "Amazon Bedrockの課金・キャパシティに関する説明として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "高ボリューム・予測可能なワークロードには割引付きのProvisioned Throughputが選択肢になる。",
+          "explanation": {
+            "text": "Bedrockはオンデマンド、バッチ、Provisioned Throughputなどの選択肢を提供する。",
+            "reference": "https://aws.amazon.com/bedrock/pricing/",
+            "reference_label": "Amazon Bedrock：料金ページ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Provisioned Throughputは推論レイテンシを保証するが課金は固定ではない（完全従量）。",
+          "explanation": {
+            "text": "Provisionedは専有キャパシティを時間単位で購入する固定コストモデル。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html",
+            "reference_label": "Amazon Bedrock：Provisioned Throughput"
+          }
+        },
+        {
+          "key": "C",
+          "text": "カスタムモデルではProvisioned Throughputを購入できない。",
+          "explanation": {
+            "text": "カスタムモデルではProvisioned Throughput購入が必要。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html",
+            "reference_label": "Amazon Bedrock：Provisioned Throughput"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Bedrockではバッチ推論は提供されない。",
+          "explanation": {
+            "text": "バッチモードも料金ページで案内されている。",
+            "reference": "https://aws.amazon.com/bedrock/pricing/",
+            "reference_label": "Amazon Bedrock：料金ページ"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "予測可能・高ボリュームにはProvisioned Throughputがコストと安定性の面で適する。",
+        "reference": "https://aws.amazon.com/bedrock/pricing/",
+        "reference_label": "Amazon Bedrock：料金ページ"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q12",
+      "question": "Amazon Bedrock Knowledge Basesで扱うデータ形式に関する説明として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "画像や複雑レイアウト文書などのマルチモーダルな非構造データに対しても解析・パースを構成できる。",
+          "explanation": {
+            "text": "Knowledge Basesは画像や表・図のある文書の解析に対応できる構成が案内されている。",
+            "reference": "https://aws.amazon.com/bedrock/knowledge-bases/",
+            "reference_label": "製品ページ：Bedrock Knowledge Bases"
+          }
+        },
+        {
+          "key": "B",
+          "text": "プレーンテキストのみ対象でPDFは不可。",
+          "explanation": {
+            "text": "複雑レイアウト文書（PDF等）に関する記述があるため誤り。",
+            "reference": "https://aws.amazon.com/bedrock/knowledge-bases/",
+            "reference_label": "製品ページ：Bedrock Knowledge Bases"
+          }
+        },
+        {
+          "key": "C",
+          "text": "解析エンジンは固定で変更できない。",
+          "explanation": {
+            "text": "Bedrock Data AutomationやFMをパーサとして選択可能な柔軟性が案内されている。",
+            "reference": "https://aws.amazon.com/bedrock/knowledge-bases/",
+            "reference_label": "製品ページ：Bedrock Knowledge Bases"
+          }
+        },
+        {
+          "key": "D",
+          "text": "外部データソースに接続できない。",
+          "explanation": {
+            "text": "データソース接続を前提としてRAGを構成する。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-create.html",
+            "reference_label": "Knowledge Bases：データソース接続"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Knowledge Basesはマルチモーダルな非構造データの解析設定にも対応し、RAGに利用できる。",
+        "reference": "https://aws.amazon.com/bedrock/knowledge-bases/",
+        "reference_label": "製品ページ：Bedrock Knowledge Bases"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q13",
+      "question": "Amazon Bedrock の Data Protection 機能で正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "通信経路の暗号化には TLS 1.2 が最低限必要で、TLS 1.3 を推奨する。",
+          "explanation": {
+            "text": "公式ドキュメントに、TLS 1.2 を要求し、TLS 1.3 を推奨している旨が記されている。:contentReference[oaicite:0]{index=0}",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/data-protection.html",
+            "reference_label": "Bedrock Data Protection"
+          }
+        },
+        {
+          "key": "B",
+          "text": "デフォルトですべてのデータが顧客管理の KMS キーで暗号化される。",
+          "explanation": {
+            "text": "デフォルトでは AWS 所有の KMS キーが使われるが、顧客管理キー（Customer Managed Key, CMK）を指定可能。:contentReference[oaicite:1]{index=1}",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/evaluation-data-management.html",
+            "reference_label": "Bedrock 評価ジョブデータ管理と暗号化"
+          }
+        },
+        {
+          "key": "C",
+          "text": "タグ（Name フィールドなど）に機密情報を含めてもよい。",
+          "explanation": {
+            "text": "タグやフリーフォームのテキストフィールドには機密情報を入れないよう strongly recommend としている。:contentReference[oaicite:2]{index=2}",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/data-protection.html",
+            "reference_label": "Bedrock Data Protection"
+          }
+        },
+        {
+          "key": "D",
+          "text": "API ログやメタデータは CloudWatch や S3 に出力可能で、監査用途に使える。",
+          "explanation": {
+            "text": "CloudTrail や CloudWatch Logs、S3 を使ってリクエスト/レスポンス等のメタデータを保存できる旨が記載されている。:contentReference[oaicite:3]{index=3}",
+            "reference": "https://aws.amazon.com/bedrock/security-compliance/",
+            "reference_label": "Bedrock Security & Compliance"
+          }
+        }
+      ],
+      "answer": "A,C,D",
+      "explanation": {
+        "text": "TLS1.2 mandated, TLS1.3推奨。タグ等に機密情報を入れるのは非推奨。ログ／メタデータの監査用保存が可能。CMK はオプションでありデフォルトでは AWS 所有キー。:contentReference[oaicite:4]{index=4}",
+        "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/data-protection.html",
+        "reference_label": "Bedrock Data Protection"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q14",
+      "question": "Amazon Bedrock の評価ジョブで、ユーザーデータの取り扱いに関して正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "評価が終わると、一時的に保存されたデータは削除される。",
+          "explanation": {
+            "text": "モデル評価ジョブでは、評価が終わると一時コピーが削除される。:contentReference[oaicite:5]{index=5}",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/evaluation-data-management.html",
+            "reference_label": "Evaluation data management"
+          }
+        },
+        {
+          "key": "B",
+          "text": "一時コピーは常にユーザー管理の KMS キーで暗号化される。",
+            "explanation": {
+              "text": "ユーザー管理キーを指定できるが、指定しない場合は AWS 所有キーが使われる。:contentReference[oaicite:6]{index=6}",
+              "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/evaluation-data-management.html",
+              "reference_label": "Evaluation data management"
+            }
+        },
+        {
+          "key": "C",
+          "text": "評価ジョブ中の全てのデータは Knowledge Bases に保存される。",
+            "explanation": {
+              "text": "Knowledge Bases とは関係がない。評価ジョブ用のデータは S3 バケットなどに一時保存される。:contentReference[oaicite:7]{index=7}",
+              "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/evaluation-data-management.html",
+              "reference_label": "Evaluation data management"
+            }
+        },
+        {
+          "key": "D",
+          "text": "モデル評価ジョブのデータ暗号化において、KMS キーのポリシーを IAM ロールに追加する必要がある。",
+          "explanation": {
+              "text": "顧客管理キー (CMK) を使う場合には、IAM ロールポリシーおよびキー ポリシーの設定が必要。:contentReference[oaicite:8]{index=8}",
+              "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/evaluation-data-management.html",
+              "reference_label": "Evaluation data management"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "一時データは評価終了後削除される；暗号化は AWS 所有キーかユーザー指定キー；CMK 利用時には IAM ロールおよびキー ポリシーで権限設定が必要。:contentReference[oaicite:9]{index=9}",
+        "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/evaluation-data-management.html",
+        "reference_label": "Evaluation data management"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q15",
+      "question": "Amazon Bedrock を使って生成AIアプリケーションを構築するとき、ガバナンス & コンプライアンスを確保するための機能として誤っているものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AWS PrivateLink を使って VPC から Bedrock にプライベートな通信を確立できる。",
+          "explanation": {
+            "text": "Bedrock は PrivateLink をサポートしており、VPC と安全な通信経路を構築できる。:contentReference[oaicite:10]{index=10}",
+            "reference": "https://aws.amazon.com/bedrock/security-compliance/",
+            "reference_label": "Bedrock Security Compliance private connectivity"
+          }
+        },
+        {
+            "key": "B",
+            "text": "プロンプト注入（Prompt Injection）防止のための Guardrails やセキュリティ設定が公式に提供されていない。",
+            "explanation": {
+              "text": "Bedrock のドキュメントには prompt injection を含むセキュリティ分野が記述されており、Guardrails などの制御が可能。:contentReference[oaicite:11]{index=11}",
+              "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/security.html",
+              "reference_label": "Bedrock Security doc"
+            }
+        },
+        {
+                  "key": "C",
+                  "text": "すべての出力と入力はどのモデルでもモデルプロバイダーと共有される。",
+                  "explanation": {
+                      "text": "出力／入力がモデルプロバイダーと共有されないと明言されている（data protection and privacy）。:contentReference[oaicite:12]{index=12}",
+                      "reference": "https://aws.amazon.com/bedrock/documentation-overview/bedrock/",
+                      "reference_label": "Bedrock documentation overview"
+                  }
+        },
+        {
+            "key": "D",
+            "text": "ISO, SOC, HIPAA などの認証・適格性を持っている。",
+            "explanation": {
+                "text": "これらのコンプライアンス標準はいくつか Bedrock の「in scope」に含まれており、HIPAA eligible など。:contentReference[oaicite:13]{index=13}",
+                "reference": "https://aws.amazon.com/bedrock/security-compliance/",
+                    "reference_label": "Bedrock compliance"
+            }
+        }
+      ],
+      "answer": "B,C",
+      "explanation": {
+        "text": "プロンプト注入対策は公式ドキュメントで扱われており、Guardrails 等提供されている。入力・出力がモデルプロバイダーと共有される、というのも誤り（共有されない）。",
+        "reference": "https://aws.amazon.com/bedrock/security-compliance/",
+        "reference_label": "Bedrock Security Compliance"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q16",
+      "question": "Amazon Q Business の Index 課金に関して、正しい記述はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Enterprise Index は 3 つのアベイラビリティゾーン (AZ) にデプロイされ、生産用途に適している。",
+          "explanation": {
+            "text": "Enterprise Index は 3AZ 配置でプロダクション用途が想定されている。:contentReference[oaicite:14]{index=14}",
+            "reference": "https://aws.amazon.com/q/business/pricing/",
+            "reference_label": "Q Business Pricing"
+          }
+        },
+        {
+            "key": "B",
+            "text": "Starter Index は毎月固定料金のみで、ドキュメント数やテキスト容量にかかわらず料金は変わらない。",
+            "explanation": {
+                "text": "Starter Index にはドキュメント数／テキスト容量の制限があり、超えると追加コストやユースケース制約が発生する。:contentReference[oaicite:15]{index=15}",
+                "reference": "https://aws.amazon.com/q/business/pricing/",
+                "reference_label": "Q Business Pricing"
+            }
+        },
+        {
+            "key": "C",
+            "text": "画像処理と動画処理は Index 単位の課金とは別途時間／分で計測される料金がかかる。",
+            "explanation": {
+                "text": "画像・音声・動画はそれぞれ単位分、単位画像で課金される。:contentReference[oaicite:16]{index=16}",
+                "reference": "https://aws.amazon.com/q/business/pricing/",
+                "reference_label": "Q Business Pricing"
+            }
+        },
+        {
+            "key": "D",
+            "text": "Enterprise Index は単一 AZ に配置されコストを抑えている。",
+            "explanation": {
+                "text": "Enterprise は 3 AZ 配置で、コストは Starter に比べて高くなる。:contentReference[oaicite:17]{index=17}",
+                "reference": "https://aws.amazon.com/q/business/pricing/",
+                "reference_label": "Q Business Pricing"
+            }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "Enterprise Index は 3AZ 配置、生産用途向き。画像／音声／動画は別途時間／分や画像単位で課金される。Starter は制限付き。:contentReference[oaicite:18]{index=18}",
+        "reference": "https://aws.amazon.com/q/business/pricing/",
+        "reference_label": "Q Business Pricing"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q17",
+      "question": "Amazon Q Developer Pro プランに関する記述で誤っているものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+            "key": "A",
+            "text": "Pro プランでは、1 ユーザーあたり月額 $19 の料金が発生する。",
+            "explanation": {
+                "text": "公式サイトに Pro プランは $19/user/月であると掲載。:contentReference[oaicite:19]{index=19}",
+                "reference": "https://docs.aws.amazon.com/q/developer/pricing/",
+                "reference_label": "Q Developer Pricing Pro"
+            }
+        },
+        {
+            "key": "B",
+            "text": "無制限 Lines of Code (LOC) の変換（agentic transformation）が含まれる。",
+            "explanation": {
+                "text": "Pro プランには 1 ユーザーあたり月 4,000 LOC のエージェント変換が含まれ、それを超える部分は従量課金。:contentReference[oaicite:20]{index=20}",
+                "reference": "https://docs aws.amazon.com/q/developer/pricing/",
+                "reference_label": "Q Developer Pricing Pro Limits"
+            }
+        },
+        {
+            "key": "C",
+            "text": "Free Tier のユーザーでも、全ての Pro 機能を試用可能である。",
+            "explanation": {
+                "text": "Free Tier は機能・使用量に制限があり、Pro の全機能を無制限に提供するわけではない。:contentReference[oaicite:21]{index=21}",
+                "reference": "https://docs.aws.amazon.com/q/developer/pricing/",
+                "reference_label": "Q Developer Pricing Free vs Pro"
+            }
+        },
+        {
+            "key": "D",
+            "text": "Pro プラン登録後、毎月の課金はそのユーザーが Pro 機能を使ったかどうかに関わらず発生する。",
+            "explanation": {
+                "text": "Pro プランは月額固定だが、アクティベーションされない Pro 機能を使わなければ課金されないわけではない。Pro に登録したらユーザーはその月の Pro 月額が発生する。:contentReference[oaicite:22]{index=22}",
+                "reference": "https://docs.aws.amazon.com/q/developer/pricing/",
+                "reference_label": "Q Developer Pricing Terms"
+            }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "Free Tier では Pro の全機能を提供しない。Pro の機能の一部・制限付き。:contentReference[oaicite:23]{index=23}",
+        "reference": "https://docs.aws.amazon.com/q/developer/pricing/",
+        "reference_label": "Q Developer Pricing"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q18",
+      "question": "SageMaker AI のエンドポイントセキュリティで推奨されているベストプラクティスとして正しいものはどれか。（複数選択）",
+      "difficulty": "hard",
+      "choices": [
+        {
+            "key": "A",
+            "text": "エンドポイントのモデル定義(Model Definition)や IAM Role をエンドポイントが使っている間は削除しない。",
+            "explanation": {
+                "text": "これらのリソースが存在しないとエンドポイントがヘルスチェックする際に問題が起きる。公式が削除禁止を推奨している。:contentReference[oaicite:24]{index=24}",
+                "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/best-practice-endpoint-security.html",
+                "reference_label": "SageMaker Endpoint Security Best Practice"
+            }
+        },
+        {
+            "key": "B",
+            "text": "エンドポイントのセキュリティグループおよびサブネット設定を適切に構成する。",
+            "explanation": {
+                "text": "VPC設定を含むサブネット・セキュリティグループを正しく設定することが推奨されている。:contentReference[oaicite:25]{index=25}",
+                "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/best-practice-endpoint-security.html",
+                "reference_label": "SageMaker Endpoint Security Best Practice"
+            }
+        },
+        {
+            "key": "C",
+            "text": "推論イメージ (inference image) を使っている場合、プライベートレジストリからのイメージを参照できないようにしておく。",
+            "explanation": {
+                "text": "逆に、プライベートレジストリを使う場合はエンドポイントがアクセスできるようにする必要がある。アクセスできないならエラーになる。:contentReference[oaicite:26]{index=26}",
+                "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/best-practice-endpoint-security.html",
+                "reference_label": "SageMaker Endpoint Security Best Practice"
+            }
+        },
+        {
+            "key": "D",
+            "text": "推論用のモデルアーティファクト (ModelDataUrl) や IAM Role を使用中のエンドポイントで削除しない。",
+            "explanation": {
+                "text": "これらリソースを削除すると endpoint の安定性やセキュリティに影響。公式で削除回避を推奨。:contentReference[oaicite:27]{index=27}",
+                "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/best-practice-endpoint-security.html",
+                "reference_label": "SageMaker Endpoint Security Best Practice"
+            }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "推論モデル定義、IAM role、ModelDataUrl、VPC‐セキュリティグループなど重要なリソースはエンドポイント使用中に削除してはならない。プライベートレジストリを使うならアクセス可能に設定する必要があるため選択肢 C は誤り。:contentReference[oaicite:28]{index=28}",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/best-practice-endpoint-security.html",
+        "reference_label": "SageMaker Endpoint Security Best Practice"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q19",
+      "question": "Amazon Bedrock のログ・監査機能に含まれるものとして正しいものはどれか。（複数選択）",
+      "difficulty": "normal",
+      "choices": [
+        {
+            "key": "A",
+            "text": "API呼び出し履歴やユーザーアクティビティを CloudTrail で追跡可能である。",
+            "explanation": {
+                "text": "Bedrock のセキュリティ／コンプライアンス情報に API アクティビティが CloudTrail で監視可能である旨が記載。:contentReference[oaicite:29]{index=29}",
+                "reference": "https://docs.aws.amazon.com/bedrock/security-compliance/",
+                "reference_label": "Bedrock Security & Compliance"
+            }
+        },
+        {
+            "key": "B",
+            "text": "リクエスト／レスポンスの内容（入力と出力）をメタデータとして保存でき、S3 に格納できる。",
+            "explanation": {
+                "text": "メタデータや入出力内容を保存し S3 に格納可能とある。:contentReference[oaicite:30]{index=30}",
+                "reference": "https://docs.aws.amazon.com/bedrock/security-compliance/",
+                "reference_label": "Bedrock documentation overview"
+            }
+        },
+        {
+            "key": "C",
+            "text": "CloudWatch を使って使用量メトリクスを可視化できる。",
+            "explanation": {
+                "text": "使用量（usage metrics）を CloudWatch で追跡可能。:contentReference[oaicite:31]{index=31}",
+                "reference": "https://aws.amazon.com/bedrock/security-compliance/",
+                "reference_label": "Bedrock security compliance"
+            }
+        },
+        {
+            "key": "D",
+            "text": "すべてのエラー情報を自動で外部監査機関に報告する義務がある。",
+            "explanation": {
+                "text": "公式にはそのような自動報告義務は記載されていない。:contentReference[oaicite:32]{index=32}",
+                "reference": "https://aws.amazon.com/bedrock/security-compliance/",
+                "reference_label": "Bedrock security compliance"
+            }
+        }
+      ],
+      "answer": "A,B,C",
+      "explanation": {
+        "text": "CloudTrail で API 呼び出し追跡、メタデータ・入出力保存可能、CloudWatch による使用量メトリクス可視化は正しい。外部監査機関への報告義務は公式にはそのように記載なし。:contentReference[oaicite:33]{index=33}",
+        "reference": "https://aws.amazon.com/bedrock/security-compliance/",
+        "reference_label": "Bedrock Security & Compliance"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q20",
+      "question": "Amazon Bedrock のセキュリティとプライバシーに関する記述で誤っているものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+            "key": "A",
+            "text": "顧客の入力と出力はモデルプロバイダーと共有されず、モデル訓練にも使われない。",
+            "explanation": {
+                "text": "公式ドキュメントでこのように述べられており、ユーザーデータは base model の訓練には使用されないと明記されている。:contentReference[oaicite:34]{index=34}",
+                "reference": "https://aws.amazon.com/bedrock/documentation-overview/bedrock/",
+                "reference_label": "Bedrock documentation overview"
+            }
+        },
+        {
+            "key": "B",
+            "text": "Bedrock は GDPR や ISO 等の国際標準コンプライアンスに準拠している。",
+            "explanation": {
+                "text": "ISO, SOC, HIPAA eligibility などを含め、多くの国際標準に適合可能である旨が明記。:contentReference[oaicite:35]{index=35}",
+                "reference": "https://aws.amazon.com/bedrock/security-compliance/",
+                "reference_label": "Bedrock Security & Compliance"
+            }
+        },
+        {
+            "key": "C",
+            "text": "PrivateLink を使った VPC 接続を設定すると、トラフィックがインターネットを経由する可能性がなくなる。",
+            "explanation": {
+                "text": "PrivateLink を使えば VPC と Bedrock の間でプライベート通信が可能で、インターネットを経由しなくなる。:contentReference[oaicite:36]{index=36}",
+                "reference": "https://aws.amazon.com/bedrock/security-compliance/",
+                "reference_label": "Bedrock Security & Compliance"
+            }
+        },
+        {
+            "key": "D",
+            "text": "Bedrock の出力はすべてのモデルで必ず顧客管理の KMS キーで暗号化される。",
+            "explanation": {
+                "text": "暗号化キーは AWS 所有キーか顧客管理キーを選択できるが、必ず CMK が使われるわけではない。:contentReference[oaicite:37]{index=37}",
+                "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/evaluation-data-management.html",
+                "reference_label": "Evaluation data management"
+            }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "「すべての出力が顧客管理キーで暗号化される」は誤り。AWS キーあるいは顧客管理キーを選択可能。:contentReference[oaicite:38]{index=38}",
+        "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/evaluation-data-management.html",
+        "reference_label": "Evaluation data management"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q21",
+      "question": "Amazon Rekognition の顔認識機能に関する説明として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "人物の顔を検出し、顔コレクションに追加して後の照合に利用できる。",
+          "explanation": {
+            "text": "Rekognition では顔検出・コレクション作成・照合が可能。セキュリティや本人確認用途に使える。",
+            "reference": "https://docs.aws.amazon.com/rekognition/latest/dg/collections.html",
+            "reference_label": "Amazon Rekognition: Collections"
+          }
+        },
+        {
+          "key": "B",
+          "text": "顔認識は動画では使えず、静止画像のみに対応している。",
+          "explanation": {
+            "text": "Rekognition Video を利用すれば動画ストリームでも顔検出・追跡が可能。",
+            "reference": "https://docs.aws.amazon.com/rekognition/latest/dg/face-detection-video.html",
+            "reference_label": "Amazon Rekognition Video: Face detection"
+          }
+        },
+        {
+          "key": "C",
+          "text": "顔検出結果は必ずユーザーデータベースに保存される。",
+          "explanation": {
+            "text": "保存は必須ではなく、必要に応じて顔コレクションに登録できる。",
+            "reference": "https://docs.aws.amazon.com/rekognition/latest/dg/collections.html",
+            "reference_label": "Amazon Rekognition: Collections"
+          }
+        },
+        {
+          "key": "D",
+          "text": "PII 検出と同じ API を利用して顔認識が行われる。",
+          "explanation": {
+            "text": "PII 検出は Comprehend のテキスト機能であり、Rekognition とは別。",
+            "reference": "https://docs.aws.amazon.com/comprehend/latest/dg/how-pii.html",
+            "reference_label": "Amazon Comprehend: Detecting PII entities"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Rekognition では顔検出後、顔コレクションに登録し後の照合に使える。動画や保存は必須ではない。",
+        "reference": "https://docs.aws.amazon.com/rekognition/latest/dg/collections.html",
+        "reference_label": "Amazon Rekognition: Collections"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q22",
+      "question": "Amazon Translate のカスタム用語集 (Custom Terminology) の特徴として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "特定の用語を翻訳結果で必ず指定通りに置換できる。",
+          "explanation": {
+            "text": "Custom Terminology により、固有名詞やブランド名の翻訳統一を保証できる。",
+            "reference": "https://docs.aws.amazon.com/translate/latest/dg/custom-terminology.html",
+            "reference_label": "Amazon Translate: Custom Terminology"
+          }
+        },
+        {
+          "key": "B",
+          "text": "翻訳の精度向上のためにニューラル機械翻訳モデルの再学習が行われる。",
+          "explanation": {
+            "text": "モデル再学習は行わず、翻訳結果に置換処理を適用する方式。",
+            "reference": "https://docs.aws.amazon.com/translate/latest/dg/custom-terminology.html",
+            "reference_label": "Amazon Translate: Custom Terminology"
+          }
+        },
+        {
+          "key": "C",
+          "text": "カスタム用語集は 1 度作成すると更新できない。",
+          "explanation": {
+            "text": "用語集は後から更新や差し替えが可能。",
+            "reference": "https://docs.aws.amazon.com/translate/latest/dg/custom-terminology.html",
+            "reference_label": "Amazon Translate: Custom Terminology"
+          }
+        },
+        {
+          "key": "D",
+          "text": "翻訳時に必ずすべての用語が置換されるわけではない。",
+          "explanation": {
+            "text": "Custom Terminology は必ず指定通り適用される。",
+            "reference": "https://docs.aws.amazon.com/translate/latest/dg/custom-terminology.html",
+            "reference_label": "Amazon Translate: Custom Terminology"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Custom Terminology により、特定の用語が必ず翻訳に反映される。",
+        "reference": "https://docs.aws.amazon.com/translate/latest/dg/custom-terminology.html",
+        "reference_label": "Amazon Translate: Custom Terminology"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q23",
+      "question": "Amazon Polly の機能として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "テキストを自然な音声に変換できる TTS (Text-to-Speech) サービスである。",
+          "explanation": {
+            "text": "Polly は TTS サービスで、複数言語・声種に対応している。",
+            "reference": "https://docs.aws.amazon.com/polly/latest/dg/what-is.html",
+            "reference_label": "Amazon Polly: Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "音声をテキストに変換する STT (Speech-to-Text) 機能を提供する。",
+          "explanation": {
+            "text": "音声→テキストは Amazon Transcribe の機能であり、Polly は TTS 専用。",
+            "reference": "https://docs.aws.amazon.com/transcribe/latest/dg/what-is-transcribe.html",
+            "reference_label": "Amazon Transcribe: Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "カスタム音声をアップロードして学習させることができる。",
+          "explanation": {
+            "text": "Polly は提供する音声合成モデルを利用するのみで、カスタム音声アップロードはできない。",
+            "reference": "https://docs.aws.amazon.com/polly/latest/dg/what-is.html",
+            "reference_label": "Amazon Polly: Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "翻訳機能を内蔵しており、入力テキストを自動翻訳してから音声化する。",
+          "explanation": {
+            "text": "翻訳は Amazon Translate の機能であり、Polly は翻訳を行わない。",
+            "reference": "https://docs.aws.amazon.com/translate/latest/dg/what-is.html",
+            "reference_label": "Amazon Translate: Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Polly は TTS サービスで、テキストを音声に変換する。",
+        "reference": "https://docs.aws.amazon.com/polly/latest/dg/what-is.html",
+        "reference_label": "Amazon Polly: Overview"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q24",
+      "question": "Amazon Transcribe のリアルタイム文字起こしの特徴として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "WebSocket または gRPC 経由でストリーミング音声を送信できる。",
+          "explanation": {
+            "text": "リアルタイム Transcribe は WebSocket または gRPC で音声を送信して利用する。",
+            "reference": "https://docs.aws.amazon.com/transcribe/latest/dg/streaming.html",
+            "reference_label": "Amazon Transcribe: Streaming"
+          }
+        },
+        {
+          "key": "B",
+          "text": "リアルタイム処理は英語のみ対応である。",
+          "explanation": {
+            "text": "複数言語に対応しており、英語専用ではない。",
+            "reference": "https://docs.aws.amazon.com/transcribe/latest/dg/what-is-transcribe.html",
+            "reference_label": "Amazon Transcribe: Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "リアルタイム利用ではカスタム語彙を指定できない。",
+          "explanation": {
+            "text": "リアルタイムでもカスタム語彙を利用可能。",
+            "reference": "https://docs.aws.amazon.com/transcribe/latest/dg/custom-vocabulary.html",
+            "reference_label": "Amazon Transcribe: Custom Vocabulary"
+          }
+        },
+        {
+          "key": "D",
+          "text": "出力は常に JSON 形式のみで返される。",
+          "explanation": {
+            "text": "複数の出力形式が選択可能。",
+            "reference": "https://docs.aws.amazon.com/transcribe/latest/dg/streaming.html",
+            "reference_label": "Amazon Transcribe: Streaming"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Transcribe のストリーミングは WebSocket または gRPC を利用し、カスタム語彙や複数言語も利用可能。",
+        "reference": "https://docs.aws.amazon.com/transcribe/latest/dg/streaming.html",
+        "reference_label": "Amazon Transcribe: Streaming"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q25",
+      "question": "Amazon Kendra の検索精度を向上させるために利用できる機能はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "クエリ拡張 (Query Expansion) による同義語検索。",
+          "explanation": {
+            "text": "Kendra ではクエリ拡張により同義語や関連語も検索できる。",
+            "reference": "https://docs.aws.amazon.com/kendra/latest/dg/query.html",
+            "reference_label": "Amazon Kendra: Query"
+          }
+        },
+        {
+          "key": "B",
+          "text": "画像検索に特化した機能が提供されている。",
+          "explanation": {
+            "text": "Kendra はテキスト検索に特化しており、画像検索は提供しない。",
+            "reference": "https://docs.aws.amazon.com/kendra/latest/dg/what-is.html",
+            "reference_label": "Amazon Kendra: Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "翻訳機能でクエリを自動的に英語化してから検索する。",
+          "explanation": {
+            "text": "Kendra は翻訳機能を持たず、入力クエリそのままを処理する。",
+            "reference": "https://docs.aws.amazon.com/kendra/latest/dg/what-is.html",
+            "reference_label": "Amazon Kendra: Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "すべての結果は必ず信頼度スコア 1.0 で返される。",
+          "explanation": {
+            "text": "検索結果には信頼度スコアが付与されるが必ず 1.0 ではない。",
+            "reference": "https://docs.aws.amazon.com/kendra/latest/dg/query.html",
+            "reference_label": "Amazon Kendra: Query"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Kendra はクエリ拡張や同義語機能で検索精度を向上できる。",
+        "reference": "https://docs.aws.amazon.com/kendra/latest/dg/query.html",
+        "reference_label": "Amazon Kendra: Query"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q26",
+      "question": "AWS AI サービスで「ドキュメントからのテキスト抽出」に最も適しているものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Amazon Textract",
+          "explanation": {
+            "text": "Textract はスキャン文書からのテキスト・構造化データ抽出を行うサービス。",
+            "reference": "https://docs.aws.amazon.com/textract/latest/dg/what-is.html",
+            "reference_label": "Amazon Textract: Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Amazon Rekognition",
+          "explanation": {
+            "text": "Rekognition は画像・動画分析が中心で、テキスト抽出は主用途ではない。",
+            "reference": "https://docs.aws.amazon.com/rekognition/latest/dg/what-is.html",
+            "reference_label": "Amazon Rekognition: Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Amazon Translate",
+          "explanation": {
+            "text": "Translate は翻訳サービスであり、OCR は行わない。",
+            "reference": "https://docs.aws.amazon.com/translate/latest/dg/what-is.html",
+            "reference_label": "Amazon Translate: Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Amazon Polly",
+          "explanation": {
+            "text": "Polly は TTS サービスであり、テキスト抽出は行わない。",
+            "reference": "https://docs.aws.amazon.com/polly/latest/dg/what-is.html",
+            "reference_label": "Amazon Polly: Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Textract はスキャン文書からテキストやテーブルを抽出するサービス。",
+        "reference": "https://docs.aws.amazon.com/textract/latest/dg/what-is.html",
+        "reference_label": "Amazon Textract: Overview"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q27",
+      "question": "Amazon Bedrock の Guardrails 機能で設定できる制御に含まれるものはどれか。（複数選択）",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "有害コンテンツの検出とブロック",
+          "explanation": {
+            "text": "Guardrails は有害コンテンツを検出しブロックする。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html",
+            "reference_label": "Amazon Bedrock: Guardrails"
+          }
+        },
+        {
+          "key": "B",
+          "text": "特定のキーワードやトピックのフィルタリング",
+          "explanation": {
+            "text": "Guardrails では NG ワードやトピック制御を設定可能。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html",
+            "reference_label": "Amazon Bedrock: Guardrails"
+          }
+        },
+        {
+          "key": "C",
+          "text": "応答の最大トークン数制限",
+          "explanation": {
+            "text": "応答長はモデルパラメータで制御できるが Guardrails の機能ではない。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.html",
+            "reference_label": "Amazon Bedrock: Model Parameters"
+          }
+        },
+        {
+          "key": "D",
+          "text": "個人情報 (PII) の検出とマスキング",
+          "explanation": {
+            "text": "PII 検出・マスキングも Guardrails に含まれる。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html",
+            "reference_label": "Amazon Bedrock: Guardrails"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "Guardrails は有害コンテンツ対策、NG ワード/トピック制御、PII 検出/マスキングを提供する。トークン制限は別の機能。",
+        "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html",
+        "reference_label": "Amazon Bedrock: Guardrails"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q28",
+      "question": "Retrieval-Augmented Generation (RAG) を Amazon Bedrock 上で実装する主な利点として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "外部データソースから関連情報を取り込み、生成結果の正確性や最新性を高められる。",
+          "explanation": {
+            "text": "Knowledge Bases を使うと、S3 などのデータから埋め込み生成・検索を行い、回答を補強できる。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base.html",
+            "reference_label": "Amazon Bedrock ユーザーガイド：Knowledge Bases"
+          }
+        },
+        {
+          "key": "B",
+          "text": "基盤モデルの事前学習データセットを自動で再構築できる。",
+          "explanation": {
+            "text": "RAG は推論時の検索拡張であり、事前学習を自動再構築する機能ではない。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base.html",
+            "reference_label": "Amazon Bedrock ユーザーガイド：Knowledge Bases"
+          }
+        },
+        {
+          "key": "C",
+          "text": "推論コストを常にオンデマンドより低減できる。",
+          "explanation": {
+            "text": "コストはユースケース次第で、RAG 自体が必ずしも低コスト化を保証するわけではない。",
+            "reference": "https://aws.amazon.com/bedrock/pricing/",
+            "reference_label": "Amazon Bedrock：料金"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Guardrails の設定が不要になる。",
+          "explanation": {
+            "text": "RAG は安全対策の代替ではなく、Guardrails 等の制御は依然として推奨される。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html",
+            "reference_label": "Amazon Bedrock：Guardrails"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "RAG は外部データ検索によって回答の関連性・正確性を高める手法で、Bedrock の Knowledge Bases がマネージドに支援する。",
+        "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base.html",
+        "reference_label": "Amazon Bedrock ユーザーガイド：Knowledge Bases"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q29",
+      "question": "Amazon Bedrock Converse API（/converse）の利点として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "プロバイダーやモデルごとの細かな差異を吸収し、会話・ツール呼び出し・マルチモーダル入出力を共通化できる。",
+          "explanation": {
+            "text": "Converse API は会話・画像等のマルチモーダル、ツール呼び出し等をシンプルに統合する。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/conversation-inference.html",
+            "reference_label": "Amazon Bedrock：Converse API 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Converse API を使うと Guardrails は利用できない。",
+          "explanation": {
+            "text": "Converse API と Guardrails は併用できる（エージェント経由や推論設定での組み合わせなど）。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html",
+            "reference_label": "Amazon Bedrock：Guardrails"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Converse API はテキストのみ対応し、画像は扱えない。",
+          "explanation": {
+            "text": "Converse はマルチモーダル入出力に対応するモデルも扱える。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/conversation-inference.html",
+            "reference_label": "Amazon Bedrock：Converse API 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Provisioned Throughput 専用 API でありオンデマンドでは使えない。",
+          "explanation": {
+            "text": "Converse はオンデマンドでも利用可能で、料金/キャパシティは選択したモデルとプランに依存する。",
+            "reference": "https://aws.amazon.com/bedrock/pricing/",
+            "reference_label": "Amazon Bedrock：料金"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Converse API は会話アプリ実装の共通化を目的に設計され、モデル間差異を吸収しやすい。",
+        "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/conversation-inference.html",
+        "reference_label": "Amazon Bedrock：Converse API 概要"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q30",
+      "question": "Agents for Amazon Bedrock で外部システムと安全に統合するための推奨事項として適切なものはどれか。（複数選択）",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "エージェントが実行するツール（Lambda 等）の IAM 権限を最小権限で設計する。",
+          "explanation": {
+            "text": "外部呼び出しの実行ロールは最小権限が原則。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/agents.html",
+            "reference_label": "Agents for Amazon Bedrock：概要とベストプラクティス"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Guardrails を関連付け、プロンプト注入や機密情報の漏えいリスクに対処する。",
+          "explanation": {
+            "text": "エージェントと Guardrails の関連付けが可能で、安全性を高められる。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/agents-guardrail.html",
+            "reference_label": "Agents：Guardrail の関連付け"
+          }
+        },
+        {
+          "key": "C",
+          "text": "外部 API 資格情報はプロンプトに直接埋め込み、会話の流れで渡す。",
+          "explanation": {
+            "text": "秘匿情報をプロンプトに埋め込むのは非推奨。IAM、Secrets Manager を用いた管理が推奨される。",
+            "reference": "https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html",
+            "reference_label": "AWS Secrets Manager：概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ツール実行の入力検証（スキーマ検証やサニタイズ）を導入する。",
+          "explanation": {
+            "text": "ツール呼び出しは入力検証を行い、意図しない操作を防ぐのが望ましい。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/agents.html",
+            "reference_label": "Agents for Amazon Bedrock：ベストプラクティス"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "最小権限/IAM、Guardrails の適用、ツール入出力の検証は安全な統合の基本。資格情報をプロンプトに埋め込むのは避ける。",
+        "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/agents.html",
+        "reference_label": "Agents for Amazon Bedrock：ベストプラクティス"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q31",
+      "question": "Amazon Titan 画像生成（Bedrock 経由）のユースケースとして適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "マーケティング素材のバリエーション生成や背景差し替えなどの画像合成。",
+          "explanation": {
+            "text": "Titan Image などは背景差し替え・拡張等の生成に対応する。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/titan-models.html",
+            "reference_label": "Amazon Bedrock：Titan モデル概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "PDF からテーブルを抽出して CSV にする。",
+          "explanation": {
+            "text": "これは Textract の領域であり、画像生成モデルの用途ではない。",
+            "reference": "https://docs.aws.amazon.com/textract/latest/dg/what-is.html",
+            "reference_label": "Amazon Textract：概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "音声認識でリアルタイム文字起こしを行う。",
+          "explanation": {
+            "text": "音声→テキストは Amazon Transcribe の役割。",
+            "reference": "https://docs.aws.amazon.com/transcribe/latest/dg/what-is-transcribe.html",
+            "reference_label": "Amazon Transcribe：概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "動画内の人物追跡を行う。",
+          "explanation": {
+            "text": "動画分析は Rekognition Video の機能。",
+            "reference": "https://docs.aws.amazon.com/rekognition/latest/dg/video.html",
+            "reference_label": "Amazon Rekognition Video：概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Titan の画像生成/編集はマーケティング画像の生成等に適する。",
+        "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/titan-models.html",
+        "reference_label": "Amazon Bedrock：Titan モデル概要"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q32",
+      "question": "Amazon Comprehend カスタム分類（Custom Classification）の前提として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "学習用データセット（ラベル付きテキスト）を S3 に配置する必要がある。",
+          "explanation": {
+            "text": "Comprehend は S3 上のラベル付きデータからカスタム分類モデルを作成する。",
+            "reference": "https://docs.aws.amazon.com/comprehend/latest/dg/custom-classification.html",
+            "reference_label": "Amazon Comprehend：Custom Classification"
+          }
+        },
+        {
+          "key": "B",
+          "text": "トレーニングは必ず GPU インスタンスを自前で管理して実行する。",
+          "explanation": {
+            "text": "Comprehend はフルマネージドであり、自前のインフラ管理は不要。",
+            "reference": "https://docs.aws.amazon.com/comprehend/latest/dg/custom-classification.html",
+            "reference_label": "Amazon Comprehend：Custom Classification"
+          }
+        },
+        {
+          "key": "C",
+          "text": "モデルの推論は SageMaker エンドポイント経由でしかできない。",
+          "explanation": {
+            "text": "Comprehend のエンドポイント API で推論可能で、SageMaker は必須ではない。",
+            "reference": "https://docs.aws.amazon.com/comprehend/latest/dg/API_runtime_Operations.html",
+            "reference_label": "Comprehend Runtime API"
+          }
+        },
+        {
+          "key": "D",
+          "text": "学習後はモデルの更新や再学習ができない。",
+          "explanation": {
+            "text": "データを更新して再学習・新モデル作成が可能。",
+            "reference": "https://docs.aws.amazon.com/comprehend/latest/dg/custom-classification.html",
+            "reference_label": "Amazon Comprehend：Custom Classification"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "カスタム分類は S3 上のラベル付きデータを用意するのが前提で、推論は Comprehend のランタイムで実施できる。",
+        "reference": "https://docs.aws.amazon.com/comprehend/latest/dg/custom-classification.html",
+        "reference_label": "Amazon Comprehend：Custom Classification"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q33",
+      "question": "Amazon Transcribe Call Analytics を使う主な目的として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "通話の文字起こしに加え、感情・話者交代・キーフレーズ抽出等の分析を行う。",
+          "explanation": {
+            "text": "コンタクトセンター向けの通話解析に特化した分析機能を提供する。",
+            "reference": "https://docs.aws.amazon.com/transcribe/latest/dg/call-analytics.html",
+            "reference_label": "Amazon Transcribe：Call Analytics"
+          }
+        },
+        {
+          "key": "B",
+          "text": "画像から領収書の金額を抽出する。",
+          "explanation": {
+            "text": "これは Textract AnalyzeExpense の領域。",
+            "reference": "https://docs.aws.amazon.com/textract/latest/dg/analyzing-expense.html",
+            "reference_label": "Amazon Textract：AnalyzeExpense"
+          }
+        },
+        {
+          "key": "C",
+          "text": "画像の不適切コンテンツ検出を行う。",
+          "explanation": {
+            "text": "画像モデレーションは Rekognition の機能。",
+            "reference": "https://docs.aws.amazon.com/rekognition/latest/dg/moderation.html",
+            "reference_label": "Amazon Rekognition：モデレーション"
+          }
+        },
+        {
+          "key": "D",
+          "text": "テーブル検出と構造化データへの変換を行う。",
+          "explanation": {
+            "text": "テーブル抽出は Textract の機能。",
+            "reference": "https://docs.aws.amazon.com/textract/latest/dg/how-it-works.html",
+            "reference_label": "Amazon Textract：仕組み"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Call Analytics は通話の高度な解析（感情、キーフレーズ等）を提供する。",
+        "reference": "https://docs.aws.amazon.com/transcribe/latest/dg/call-analytics.html",
+        "reference_label": "Amazon Transcribe：Call Analytics"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q34",
+      "question": "Amazon Rekognition Custom Labels の正しい説明はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "独自の画像分類や物体検出モデルを、ラベル付き画像データからフルマネージドで学習できる。",
+          "explanation": {
+            "text": "ユーザーのデータから専用モデルを学習し、推論用のエンドポイントを提供する。",
+            "reference": "https://docs.aws.amazon.com/rekognition/latest/customlabels-dg/what-is.html",
+            "reference_label": "Rekognition Custom Labels：概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "学習には常に SageMaker Studio のノートブックを手動で構築する必要がある。",
+          "explanation": {
+            "text": "Custom Labels はノーコード/ローコードで学習からデプロイまで提供される。",
+            "reference": "https://docs.aws.amazon.com/rekognition/latest/customlabels-dg/what-is.html",
+            "reference_label": "Rekognition Custom Labels：概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "動画の人物追跡に特化した固定モデルのみを提供する。",
+          "explanation": {
+            "text": "Custom Labels は任意の画像分類/検出を学習可能で特化モデル限定ではない。",
+            "reference": "https://docs.aws.amazon.com/rekognition/latest/customlabels-dg/what-is.html",
+            "reference_label": "Rekognition Custom Labels：概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "学習には常に 10 万枚以上の画像が必要である。",
+          "explanation": {
+            "text": "少量データでも学習可能で、10 万枚の要件はない。",
+            "reference": "https://docs.aws.amazon.com/rekognition/latest/customlabels-dg/requirements.html",
+            "reference_label": "Custom Labels：データ要件"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Rekognition Custom Labels は自社データでカスタム画像モデルをフルマネージドに学習・デプロイできる。",
+        "reference": "https://docs.aws.amazon.com/rekognition/latest/customlabels-dg/what-is.html",
+        "reference_label": "Rekognition Custom Labels：概要"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q35",
+      "question": "Amazon Kendra と Amazon Q Business の関係の説明として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Q Business は業務アシスタントであり、エンタープライズ検索の基盤として Kendra を統合して利用できる。",
+          "explanation": {
+            "text": "Q Business はデータ接続/検索/支援を提供し、Kendra 等の検索基盤と連携できるアーキテクチャが案内されている。",
+            "reference": "https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/what-is.html",
+            "reference_label": "Amazon Q Business：概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Kendra は Q Business の前提条件であり、Kendra なしでは Q Business は使えない。",
+          "explanation": {
+            "text": "Q Business は複数のデータソース/コネクタを扱えるが、Kendra を必須とはしていない。",
+            "reference": "https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/how-it-works.html",
+            "reference_label": "Amazon Q Business：How it works"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Q Business は画像・動画のコンピュータビジョン API を Kendra 経由で提供する。",
+          "explanation": {
+            "text": "CV API は Rekognition の領域であり、Kendra はテキスト中心の検索サービス。",
+            "reference": "https://docs.aws.amazon.com/kendra/latest/dg/what-is.html",
+            "reference_label": "Amazon Kendra：概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Kendra は生成 AI モデルのファインチューニング専用サービスである。",
+          "explanation": {
+            "text": "Kendra は検索サービスであり、学習/ファインチューニング専用ではない。",
+            "reference": "https://docs.aws.amazon.com/kendra/latest/dg/what-is.html",
+            "reference_label": "Amazon Kendra：概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Q Business は業務支援アシスタントで、検索・接続の基盤として Kendra 等と連携できるが、必須ではない。",
+        "reference": "https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/what-is.html",
+        "reference_label": "Amazon Q Business：概要"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q36",
+      "question": "SageMaker Clarify の主な機能として正しいものはどれか。（複数選択）",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データやモデルに関するバイアス検出",
+          "explanation": {
+            "text": "Clarify はトレーニング前後でバイアスを測定できる。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-processing-job.html",
+            "reference_label": "SageMaker Clarify：バイアス検出"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデル予測の説明可能性（SHAP 等）",
+          "explanation": {
+            "text": "Clarify は SHAP などを用いて特徴量寄与を算出する。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-feature-attribute-shap.html",
+            "reference_label": "SageMaker Clarify：SHAP"
+          }
+        },
+        {
+          "key": "C",
+          "text": "AI 画像生成の高解像度超解像（Super Resolution）",
+          "explanation": {
+            "text": "超解像は Clarify の機能ではない。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-processing-job.html",
+            "reference_label": "SageMaker Clarify：概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "モデルトレーニングの自動分散学習",
+          "explanation": {
+            "text": "分散学習は Clarify の機能ではなく、SageMaker Training の領域。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works-training.html",
+            "reference_label": "SageMaker：学習"
+          }
+        }
+      ],
+      "answer": "A,B",
+      "explanation": {
+        "text": "Clarify はバイアス検出と説明可能性を提供する。超解像や分散学習は対象外。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-processing-job.html",
+        "reference_label": "SageMaker Clarify：概要"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q37",
+      "question": "Amazon Bedrock のレスポンスストリーミングに関する説明として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "長文応答をチャンクで逐次受信でき、体感レイテンシを低減できる。",
+          "explanation": {
+            "text": "ストリーミングはトークンやチャンク単位で出力を逐次受け取れるため、UX を向上できる。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/conversation-inference.html",
+            "reference_label": "Bedrock：Converse/推論（ストリーミング）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ストリーミング時は Guardrails を利用できない。",
+          "explanation": {
+            "text": "Guardrails の適用有無はモデル/経路の設定次第であり、ストリーミングだから無効というわけではない。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html",
+            "reference_label": "Bedrock：Guardrails"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ストリーミング利用時、課金は固定料金となりトークン課金は発生しない。",
+          "explanation": {
+            "text": "課金は選択モデルの料金体系に準じ、ストリーミングで固定化されるわけではない。",
+            "reference": "https://aws.amazon.com/bedrock/pricing/",
+            "reference_label": "Bedrock：料金"
+          }
+        },
+        {
+          "key": "D",
+          "text": "画像生成モデルではストリーミングは常に必須である。",
+          "explanation": {
+            "text": "画像生成でストリーミングが必須という要件はない。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html",
+            "reference_label": "Bedrock：概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ストリーミングは応答を逐次取得して体感レイテンシを改善できる。料金/安全制御は別の設定に依存する。",
+        "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/conversation-inference.html",
+        "reference_label": "Bedrock：Converse/推論（ストリーミング）"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q38",
+      "question": "Amazon Bedrock Knowledge Bases のベクターストア選択に関する説明として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "OpenSearch Serverless、Aurora PostgreSQL（pgvector）、Neptune Analytics、Pinecone、Redis Enterprise Cloud などを選べる。",
+          "explanation": {
+            "text": "Prescriptive Guidance に Knowledge Bases の複数ストア選択肢として上記が記載される。",
+            "reference": "https://docs.aws.amazon.com/prescriptive-guidance/latest/choosing-an-aws-vector-database-for-rag-use-cases/vector-db-comparison.html",
+            "reference_label": "AWS Prescriptive Guidance：Vector DB comparison（KBのストア）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Knowledge Bases は必ず Amazon Kendra をベクターストアとして使用する。",
+          "explanation": {
+            "text": "Kendra は検索サービスであり、Knowledge Bases のベクターストアとして必須ではない。",
+            "reference": "https://docs.aws.amazon.com/prescriptive-guidance/latest/choosing-an-aws-vector-database-for-rag-use-cases/vector-db-comparison.html",
+            "reference_label": "Vector DB comparison"
+          }
+        },
+        {
+          "key": "C",
+          "text": "OpenSearch Service のマネージドクラスターは Knowledge Bases のストアとして利用できない。",
+          "explanation": {
+            "text": "2025年に OpenSearch Service マネージドクラスター対応が発表されている。",
+            "reference": "https://aws.amazon.com/blogs/machine-learning/amazon-bedrock-knowledge-bases-now-supports-amazon-opensearch-service-managed-cluster-as-vector-store/",
+            "reference_label": "ML Blog：OpenSearch Service マネージド対応（KB）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Knowledge Bases は単一リージョン専用でストアを跨いだ構成は不可である。",
+          "explanation": {
+            "text": "ストア選択はユースケースに応じ柔軟。単一ストア強制ではない。",
+            "reference": "https://aws.amazon.com/bedrock/knowledge-bases/",
+            "reference_label": "製品ページ：Knowledge Bases"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Knowledge Bases は複数のベクターストアを選択でき、OpenSearch Serverless や Aurora PostgreSQL（pgvector）などから要件に応じて選べる。OpenSearch Service マネージドもサポートが追加されている。",
+        "reference": "https://docs.aws.amazon.com/prescriptive-guidance/latest/choosing-an-aws-vector-database-for-rag-use-cases/vector-db-comparison.html",
+        "reference_label": "Vector DB comparison（KBの選択肢）"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q39",
+      "question": "Amazon Bedrock Guardrails の PII 対応機能として正しいものはどれか。（複数選択）",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "標準の PII 検出に加え、正規表現でカスタムの機微情報タイプを定義できる。",
+          "explanation": {
+            "text": "標準PIIに加え正規表現ベースのカスタムタイプ定義に対応。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-sensitive-filters.html",
+            "reference_label": "Guardrails：Sensitive information filters"
+          }
+        },
+        {
+          "key": "B",
+          "text": "プロンプトまたは応答に含まれる PII を検出してリダクション（マスキング）できる。",
+          "explanation": {
+            "text": "入力・出力の双方を対象に検出し、必要に応じて編集（redact）可能。",
+            "reference": "https://aws.amazon.com/bedrock/guardrails/",
+            "reference_label": "製品ページ：Guardrails"
+          }
+        },
+        {
+          "key": "C",
+          "text": "PII を検出しても拒否やマスキングなどの動作は設定できない。",
+          "explanation": {
+            "text": "検出後のハンドリング（拒否/マスク等）を構成できるため誤り。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-sensitive-filters.html",
+            "reference_label": "Guardrails：Sensitive information filters"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Guardrails は一度作成したら複数の FM に横断して適用できない。",
+          "explanation": {
+            "text": "Guardrails は複数モデルへ横断適用可能。",
+            "reference": "https://aws.amazon.com/bedrock/guardrails/",
+            "reference_label": "製品ページ：Guardrails"
+          }
+        }
+      ],
+      "answer": "A,B",
+      "explanation": {
+        "text": "Guardrails は標準PIIとカスタム定義（正規表現）で検出可能で、入力・出力の双方に対してマスキング等の動作を設定できる。",
+        "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-sensitive-filters.html",
+        "reference_label": "Guardrails：Sensitive information filters"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q40",
+      "question": "Agents for Amazon Bedrock のアクショングループ設定に関する正しい説明はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "外部 API 呼び出しのために OpenAPI スキーマ（JSON/YAML）を定義し、S3 から参照またはコンソールのエディタで登録できる。",
+          "explanation": {
+            "text": "アクショングループは OpenAPI スキーマ定義が前提。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/agents-api-schema.html",
+            "reference_label": "Agents：API スキーマ（OpenAPI）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "アクショングループは Lambda のみを呼び出せ、HTTP API 連携はできない。",
+          "explanation": {
+            "text": "OpenAPI で定義した外部APIも呼び出せるため誤り。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/agents-action-add.html",
+            "reference_label": "Agents：アクショングループの追加"
+          }
+        },
+        {
+          "key": "C",
+          "text": "OpenAPI スキーマは TOML 形式でのみ受け付けられる。",
+          "explanation": {
+            "text": "対応は JSON/YAML。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/agents-api-schema.html",
+            "reference_label": "Agents：API スキーマ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "アクショングループの登録は API では行えず、コンソール限定である。",
+          "explanation": {
+            "text": "API/SDK からも作成可能。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/agents-how.html",
+            "reference_label": "Agents：How it works（API セット）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Agents はアクショングループに OpenAPI スキーマを定義し、S3 参照またはエディタで登録する。",
+        "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/agents-api-schema.html",
+        "reference_label": "Agents：API スキーマ（OpenAPI）"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q41",
+      "question": "Amazon Bedrock の監査・モニタリングに関する説明として正しいものはどれか。（複数選択）",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "API 呼び出し履歴は AWS CloudTrail で記録される。",
+          "explanation": {
+            "text": "Bedrock は CloudTrail 連携により API イベントが記録される。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/logging-using-cloudtrail.html",
+            "reference_label": "Bedrock：CloudTrail 連携"
+          }
+        },
+        {
+          "key": "B",
+          "text": "モデル呼び出し内容（プロンプト/出力）のロギングは別途有効化し、出力先を S3 または CloudWatch Logs で設定する。",
+          "explanation": {
+            "text": "Invocation logging を有効化し、出力先を設定する必要がある。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-invocation-logging.html",
+            "reference_label": "Bedrock：Model invocation logging"
+          }
+        },
+        {
+          "key": "C",
+          "text": "モデル呼び出しログは常に自動で全アカウントへ配信される。",
+          "explanation": {
+            "text": "自動配信ではなく明示的な有効化と出力先設定が必要。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-invocation-logging.html",
+            "reference_label": "Invocation logging の前提"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CloudTrail と Invocation logging は重複機能のため併用不可である。",
+          "explanation": {
+            "text": "CloudTrail はAPIメタデータ、Invocation logging はペイロード内容と役割が異なるため併用可。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/logging-using-cloudtrail.html",
+            "reference_label": "CloudTrail とログの棲み分け"
+          }
+        }
+      ],
+      "answer": "A,B",
+      "explanation": {
+        "text": "CloudTrail は API イベントを、Invocation logging は入出力ペイロードを記録する。Invocation logging は明示的な有効化が必要。",
+        "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-invocation-logging.html",
+        "reference_label": "Bedrock：Invocation logging"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q42",
+      "question": "Amazon Q Apps（Amazon Q Business）の共有機能に関する説明として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "アプリ作成者は同一の Q Business 環境内で特定ユーザーに対してプライベート共有ができる。",
+          "explanation": {
+            "text": "Q Apps は組織内の特定ユーザーへプライベート共有可能。",
+            "reference": "https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/qapps-private-sharing.html",
+            "reference_label": "Q Apps：Private sharing"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Q Apps は常に全社公開のみで、ユーザー単位の共有は不可である。",
+          "explanation": {
+            "text": "プライベート共有が用意されているため誤り。",
+            "reference": "https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/qapps-private-sharing.html",
+            "reference_label": "Q Apps：Private sharing"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Q Apps は Q Business とは無関係の独立製品であり、同一環境での共有はできない。",
+          "explanation": {
+            "text": "Q Apps は Q Business 環境内で作成・共有される。",
+            "reference": "https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/purpose-built-qapps.html",
+            "reference_label": "Q Apps：Purpose-built apps"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Q Apps は個人のローカルPC上にだけ保存される。",
+          "explanation": {
+            "text": "組織の Q Business 環境内で管理される。",
+            "reference": "https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/purpose-built-qapps.html",
+            "reference_label": "Q Apps：概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Q Apps は Q Business 環境内で作成し、特定ユーザーへのプライベート共有に対応する。",
+        "reference": "https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/qapps-private-sharing.html",
+        "reference_label": "Q Apps：Private sharing"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q43",
+      "question": "Amazon SageMaker Serverless Inference の特徴として適切なものはどれか。（複数選択）",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "アイドル時間が多いワークロードに適し、必要時に自動で起動・スケールする。",
+          "explanation": {
+            "text": "サーバーレス推論はスパイク型/間欠トラフィック向けに設計。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/serverless-endpoints.html",
+            "reference_label": "SageMaker：Serverless Inference"
+          }
+        },
+        {
+          "key": "B",
+          "text": "インスタンスタイプやスケーリングポリシーを手動で選択する必要がある。",
+          "explanation": {
+            "text": "サーバーレスはインスタンス管理不要。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/serverless-endpoints.html",
+            "reference_label": "Serverless Inference"
+          }
+        },
+        {
+          "key": "C",
+          "text": "コールドスタートの可能性があり、超低レイテンシが常に必要な用途には不向きな場合がある。",
+          "explanation": {
+            "text": "公式もコールドスタートのトレードオフを明記。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/serverless-endpoints.html",
+            "reference_label": "Serverless Inference（特性）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "常時起動でミリ秒レイテンシが必要な場合は Real-Time Endpoints が向く。",
+          "explanation": {
+            "text": "常時低レイテンシにはリアルタイム推論が適する。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/serverless-endpoints.html",
+            "reference_label": "Serverless vs Real-Time"
+          }
+        }
+      ],
+      "answer": "A,C,D",
+      "explanation": {
+        "text": "Serverless は間欠アクセス向けで、インスタンス管理不要だがコールドスタートがある。常時低レイテンシには Real-Time Endpoints が適する。",
+        "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/serverless-endpoints.html",
+        "reference_label": "SageMaker：Serverless Inference"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q44",
+      "question": "AWS HealthScribe の説明として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "医療現場の音声会話から予備的な診療メモ等を自動生成する HIPAA 対応のサービスで、医療アプリに組み込んで利用する。",
+          "explanation": {
+            "text": "HealthScribe は会話の文字起こしと要約を行い、ベンダーがアプリに組み込む形で提供される。",
+            "reference": "https://aws.amazon.com/healthscribe/",
+            "reference_label": "AWS HealthScribe 製品ページ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "コンシューマ向けの単体アプリとして配布され、直接医師がダウンロードして使う前提である。",
+          "explanation": {
+            "text": "開発者/ベンダー向けの組み込みサービスであり単体アプリではない。",
+            "reference": "https://aws.amazon.com/healthscribe/",
+            "reference_label": "HealthScribe：概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "画像検出のためのコンピュータビジョン API が主機能である。",
+          "explanation": {
+            "text": "主機能は会話の文字起こし/要約などの臨床文書生成である。",
+            "reference": "https://aws.amazon.com/healthscribe/",
+            "reference_label": "HealthScribe：概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "医療データは常に AWS のモデル学習に利用される。",
+          "explanation": {
+            "text": "入力/出力をモデル再学習に用いない旨が示される。",
+            "reference": "https://aws.amazon.com/healthscribe/",
+            "reference_label": "HealthScribe：データ取り扱い"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "HealthScribe は HIPAA 対応の組み込みサービスで、会話の要約・臨床メモ生成を支援する。",
+        "reference": "https://aws.amazon.com/healthscribe/",
+        "reference_label": "AWS HealthScribe"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q45",
+      "question": "Amazon Q Business のコネクタに関する説明として正しいものはどれか。（複数選択）",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Slack や Microsoft Teams、Jira などのコネクタが公式ドキュメントに掲載されている。",
+          "explanation": {
+            "text": "サポートコネクタ一覧に Slack/Teams/Jira 等がある。",
+            "reference": "https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/connectors-list.html",
+            "reference_label": "Q Business：Supported connectors"
+          }
+        },
+        {
+          "key": "B",
+          "text": "各コネクタは認証方式や権限の設定が必要で、製品ごとに要件が異なる。",
+          "explanation": {
+            "text": "例：Slack はトークン方式、Teams は OAuth2 クライアント資格など。",
+            "reference": "https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/slack-overview.html",
+            "reference_label": "Slack connector overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Jira コネクタは常に匿名アクセスでデータを同期する。",
+          "explanation": {
+            "text": "Jira は Basic/OAuth2 などの認証が必要で匿名ではない。",
+            "reference": "https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/jira-overview.html",
+            "reference_label": "Jira connector overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "コネクタは Q Business ではなく Kendra 専用であり、Q Business からは利用できない。",
+          "explanation": {
+            "text": "Q Business 自体のコネクタ体系が提供されているため誤り。",
+            "reference": "https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/connectors-list.html",
+            "reference_label": "Q Business：connectors"
+          }
+        }
+      ],
+      "answer": "A,B",
+      "explanation": {
+        "text": "Q Business は複数の業務アプリ向けコネクタを提供し、認証・権限設定はコネクタ毎に仕様が異なる。",
+        "reference": "https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/connectors-list.html",
+        "reference_label": "Q Business：Supported connectors"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q46",
+      "question": "Amazon Bedrock へのプライベート接続（AWS PrivateLink）に関する説明として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Interface VPC Endpoint を作成して PrivateLink で Bedrock に接続すると、インターネットを経由せずにアクセスできる。",
+          "explanation": {
+            "text": "PrivateLink によりVPC内からプライベートに Bedrock へアクセス可能。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/vpc-interface-endpoints.html",
+            "reference_label": "Bedrock：Interface VPC Endpoint（PrivateLink）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "PrivateLink を使ってもパブリック IP が必須である。",
+          "explanation": {
+            "text": "PrivateLink 利用時はインターネットGWやパブリックIP不要。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/vpc-interface-endpoints.html",
+            "reference_label": "Bedrock：PrivateLink"
+          }
+        },
+        {
+          "key": "C",
+          "text": "AgentCore に対しても PrivateLink のエンドポイントが用意される。",
+          "explanation": {
+            "text": "AgentCore 向けの Interface VPC Endpoint ドキュメントがある。",
+            "reference": "https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/vpc-interface-endpoints.html",
+            "reference_label": "AgentCore：PrivateLink"
+          }
+        },
+        {
+          "key": "D",
+          "text": "PrivateLink は S3 にしか適用できず、Bedrock などのAPI型サービスには使えない。",
+          "explanation": {
+            "text": "多くのAWSサービスが PrivateLink 対応。Bedrock も対象。",
+            "reference": "https://docs.aws.amazon.com/vpc/latest/privatelink/aws-services-privatelink-support.html",
+            "reference_label": "PrivateLink 対応サービス一覧"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "Interface VPC Endpoint（PrivateLink）で Bedrock/AgentCore へプライベート接続でき、インターネット経由やパブリックIPは不要。",
+        "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/vpc-interface-endpoints.html",
+        "reference_label": "Bedrock：PrivateLink"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q47",
+      "question": "Amazon Bedrock のバッチ推論（Batch mode）に関する説明として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "一括処理用に入力プロンプトをファイルで渡し、結果が S3 に出力される。対象モデルではオンデマンドより割安になる。",
+          "explanation": {
+            "text": "料金ページに Batch モードの説明とコストメリットが記載されている。",
+            "reference": "https://aws.amazon.com/bedrock/pricing/",
+            "reference_label": "Amazon Bedrock：料金（Batch mode）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Batch は常にリアルタイム推論より高価である。",
+          "explanation": {
+            "text": "対象モデルではオンデマンドの約50%で提供と明記されるため誤り。",
+            "reference": "https://aws.amazon.com/bedrock/pricing/",
+            "reference_label": "料金：Batch 割引"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Batch 実行では出力はクライアントにストリーミングで即時返却される。",
+          "explanation": {
+            "text": "バッチは非同期で、S3 に出力ファイルとして保存される。",
+            "reference": "https://aws.amazon.com/bedrock/pricing/",
+            "reference_label": "料金ページ（Batch の出力）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Batch は画像生成のみ対象でテキスト生成は不可である。",
+          "explanation": {
+            "text": "複数のFMでバッチ推論が提供され、テキストも対象モデルで利用できる。",
+            "reference": "https://aws.amazon.com/bedrock/pricing/",
+            "reference_label": "料金ページ（対象モデル）"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Batch は入力ファイル→S3出力の非同期処理で、対象モデルではオンデマンドより割安になる。",
+        "reference": "https://aws.amazon.com/bedrock/pricing/",
+        "reference_label": "Amazon Bedrock：料金（Batch）"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q48",
+      "question": "Amazon Bedrock の Provisioned Throughput の特徴として正しいものはどれか。（複数選択）",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "特定の基盤モデルに対してスループットを予約し、安定したレイテンシと性能を確保できる。",
+          "explanation": {
+            "text": "Provisioned Throughput によりモデルへのキャパシティを予約し、一貫した性能を提供できる。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/provisioned-throughput.html",
+            "reference_label": "Amazon Bedrock：Provisioned Throughput"
+          }
+        },
+        {
+          "key": "B",
+          "text": "オンデマンドと比較して価格は固定であり、使用量にかかわらず月額で課金される。",
+          "explanation": {
+            "text": "利用量ではなく予約単位で固定課金が発生する。",
+            "reference": "https://aws.amazon.com/bedrock/pricing/",
+            "reference_label": "Amazon Bedrock：料金"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Provisioned Throughput は Bedrock でのみ利用でき、SageMaker や他の ML サービスでは同様の機能は存在しない。",
+          "explanation": {
+            "text": "SageMaker にはエンドポイントの自動スケーリングやインスタンス予約があり、同様の仕組みは存在する。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/realtime-endpoints.html",
+            "reference_label": "SageMaker：リアルタイム推論"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Provisioned Throughput は常に全リージョンで利用可能である。",
+          "explanation": {
+            "text": "対応リージョンは限られており、全リージョンで必ず利用できるわけではない。",
+            "reference": "https://aws.amazon.com/bedrock/pricing/",
+            "reference_label": "Amazon Bedrock：料金とリージョン対応"
+          }
+        }
+      ],
+      "answer": "A,B",
+      "explanation": {
+        "text": "Provisioned Throughput は安定した性能確保のためキャパシティを予約する仕組みで、課金は使用量ではなく予約ベースの固定月額。リージョン制約がある。",
+        "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/provisioned-throughput.html",
+        "reference_label": "Amazon Bedrock：Provisioned Throughput"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q49",
+      "question": "Amazon Bedrock モデルのセキュリティに関する説明で正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "顧客の入力・出力データはモデルプロバイダーと共有されず、基盤モデルの再学習に利用されない。",
+          "explanation": {
+            "text": "AWS のデータ保護ポリシーにより、入力/出力はプロバイダーと共有されず訓練にも使われない。",
+            "reference": "https://aws.amazon.com/bedrock/data-privacy/",
+            "reference_label": "Amazon Bedrock：Data Privacy"
+          }
+        },
+        {
+          "key": "B",
+          "text": "すべてのログデータはデフォルトで外部監査機関に転送される。",
+          "explanation": {
+            "text": "外部監査への自動転送は行われない。必要に応じ顧客がログを保存・提供する。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-invocation-logging.html",
+            "reference_label": "Bedrock：Invocation Logging"
+          }
+        },
+        {
+          "key": "C",
+          "text": "すべての暗号化キーは必ず顧客管理の KMS キーでなければならない。",
+          "explanation": {
+            "text": "デフォルトは AWS 所有キーで暗号化され、顧客はオプションで CMK を指定できる。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/evaluation-data-management.html",
+            "reference_label": "Bedrock：Evaluation Data Management"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データは TLS を使って転送され、TLS 1.2 以上が必須で TLS 1.3 が推奨される。",
+          "explanation": {
+            "text": "TLS1.2必須、TLS1.3推奨と記載されている。",
+            "reference": "https://docs.aws.amazon.com/bedrock/latest/userguide/data-protection.html",
+            "reference_label": "Bedrock：Data Protection"
+          }
+        }
+      ],
+      "answer": "A,D",
+      "explanation": {
+        "text": "Bedrock は入力/出力データをモデルプロバイダーと共有せず再学習に使わない。また転送はTLS1.2以上が必須。",
+        "reference": "https://aws.amazon.com/bedrock/data-privacy/",
+        "reference_label": "Amazon Bedrock：Data Privacy"
+      }
+    },
+    {
+      "id": "aws-aif-c01-q50",
+      "question": "AWS Inferentia および Trainium に関する説明として正しいものはどれか。（複数選択）",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AWS Inferentia は推論処理に特化したカスタムチップである。",
+          "explanation": {
+            "text": "Inferentia は低レイテンシかつ高スループット推論を目的に設計されている。",
+            "reference": "https://aws.amazon.com/machine-learning/inferentia/",
+            "reference_label": "AWS Inferentia：概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AWS Trainium は学習処理に特化したカスタムチップである。",
+          "explanation": {
+            "text": "Trainium は深層学習モデルのトレーニングを高速化する専用チップ。",
+            "reference": "https://aws.amazon.com/machine-learning/trainium/",
+            "reference_label": "AWS Trainium：概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "両チップは EC2 インスタンスで利用でき、SageMaker からも利用可能である。",
+          "explanation": {
+            "text": "Inf1/Inf2 インスタンス（Inferentia）や Trn1 インスタンス（Trainium）として提供され、SageMaker 統合もある。",
+            "reference": "https://docs.aws.amazon.com/sagemaker/latest/dg/train-using-trn1.html",
+            "reference_label": "SageMaker：Trainium 利用"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Inferentia は常に学習専用、Trainium は常に推論専用である。",
+          "explanation": {
+            "text": "逆であり、Inferentia＝推論、Trainium＝学習に特化している。",
+            "reference": "https://aws.amazon.com/machine-learning/trainium/",
+            "reference_label": "AWS Trainium/Inferentia"
+          }
+        }
+      ],
+      "answer": "A,B,C",
+      "explanation": {
+        "text": "Inferentia は推論専用、Trainium は学習専用で、EC2 および SageMaker から利用可能。逆の説明は誤り。",
+        "reference": "https://aws.amazon.com/machine-learning/trainium/",
+        "reference_label": "AWS Trainium & Inferentia"
+      }
+    }
+  ]
+}

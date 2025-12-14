@@ -1,0 +1,2467 @@
+{
+    "exam": {
+        "id": "PDE-P",
+        "title": "Google Professional Data Engineer",
+        "description": "この試験は、Google Cloud Platform（GCP）上で大規模なデータ処理・分析基盤を設計、構築、運用できるデータエンジニアとしてのスキルを検証するものです。データの収集・変換・保存から分析、そしてセキュリティ・ガバナンスまでを網羅。典型的には、”データを価値あるものに変える”というミッションのもと、データ処理システムの設計・構築・監視・運用・保守を行う人材を対象としています。試験では、バッチ処理／ストリーミング処理、データウェアハウス／レイク、機械学習パイプライン、アクセス制御・コンプライアンスなどの領域が問われます。最新のクラウド時代のデータエンジニア像に即した認定試験です。",
+        "version": "2023",
+        "price": "200 USD", 
+        "difficulty": "難しい",
+        "official-site": "https://cloud.google.com/learn/certification/data-engineer",
+        "category": {
+            "id": "gcp",
+            "name": "Google Cloud"
+        }
+    },
+    "questions": [
+        {
+            "id": "gcp-PDE-P-q1",
+            "question": "BigQueryにおいて、パーティション分割テーブルを利用する主な利点はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "クエリコストを削減できる",
+                    "explanation": {
+                        "text": "パーティションを利用することで不要なデータスキャンを避け、コスト削減が可能です。",
+                        "reference": "https://cloud.google.com/bigquery/docs/partitioned-tables",
+                        "reference_label": "BigQuery パーティション分割テーブル"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "データを暗号化できる",
+                    "explanation": {
+                        "text": "暗号化はパーティション分割の機能ではなく、BigQueryの標準機能として提供されます。",
+                        "reference": "https://cloud.google.com/bigquery/docs/encryption-at-rest",
+                        "reference_label": "BigQuery データ暗号化"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "スキーマを自動変更できる",
+                    "explanation": {
+                        "text": "スキーマの自動変更はパーティション分割の機能ではありません。",
+                        "reference": "https://cloud.google.com/bigquery/docs",
+                        "reference_label": "BigQuery ドキュメント"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "データの重複を自動的に削除できる",
+                    "explanation": {
+                        "text": "重複削除はパーティション分割の目的ではありません。",
+                        "reference": "https://cloud.google.com/bigquery/docs/partitioned-tables",
+                        "reference_label": "BigQuery パーティション分割テーブル"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "パーティション分割によりクエリが特定の範囲に限定され、不要なデータスキャンを防ぐことでコストを削減できます。",
+                "reference": "https://cloud.google.com/bigquery/docs/partitioned-tables",
+                "reference_label": "BigQuery パーティション分割テーブル"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q2",
+            "question": "Cloud Dataflowを選択すべきユースケースはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "バッチ処理とストリーム処理を同じコードで実装したい場合",
+                    "explanation": {
+                        "text": "DataflowはApache Beamをベースにしており、同一のコードでバッチ・ストリーム両方に対応できます。",
+                        "reference": "https://cloud.google.com/dataflow/docs/concepts/streaming-with-batch",
+                        "reference_label": "Dataflow バッチとストリーム処理"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "数百万のIoTデバイスからメッセージを受信する場合",
+                    "explanation": {
+                        "text": "これはCloud Pub/Subのユースケースです。",
+                        "reference": "https://cloud.google.com/pubsub/docs/overview",
+                        "reference_label": "Cloud Pub/Sub 概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "SQLクエリでデータ分析を行う場合",
+                    "explanation": {
+                        "text": "これはBigQueryのユースケースです。",
+                        "reference": "https://cloud.google.com/bigquery/docs/introduction",
+                        "reference_label": "BigQuery 概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "機械学習モデルをデプロイする場合",
+                    "explanation": {
+                        "text": "これはVertex AIやAI Platformのユースケースです。",
+                        "reference": "https://cloud.google.com/vertex-ai/docs",
+                        "reference_label": "Vertex AI ドキュメント"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Dataflowはバッチ処理とストリーム処理をApache Beamに基づいて統一的に実行できる点が最大の強みです。",
+                "reference": "https://cloud.google.com/dataflow/docs/concepts/streaming-with-batch",
+                "reference_label": "Dataflow バッチとストリーム処理"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q3",
+            "question": "Cloud Pub/Subを利用する際のベストプラクティスはどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "サブスクライバーはメッセージを必ず即時ACKする",
+                    "explanation": {
+                        "text": "即時ACKは未処理のメッセージを失う可能性があるため推奨されません。",
+                        "reference": "https://cloud.google.com/pubsub/docs/subscriber",
+                        "reference_label": "Pub/Sub Subscriber"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "メッセージ処理後にACKを返す",
+                    "explanation": {
+                        "text": "正しいベストプラクティスであり、処理完了後にACKを返すことで少なくとも一度の処理保証が成立します。",
+                        "reference": "https://cloud.google.com/pubsub/docs/subscriber",
+                        "reference_label": "Pub/Sub Subscriber"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ACKを返さずに一定時間経過後の再配信に依存する",
+                    "explanation": {
+                        "text": "これは効率が悪く、推奨されません。",
+                        "reference": "https://cloud.google.com/pubsub/docs/subscriber",
+                        "reference_label": "Pub/Sub Subscriber"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Pullではなく必ずPush方式を使う",
+                    "explanation": {
+                        "text": "PushとPullの選択はユースケースに依存し、一律にPushを推奨することはありません。",
+                        "reference": "https://cloud.google.com/pubsub/docs/push",
+                        "reference_label": "Pub/Sub Push 方式"
+                    }
+                }
+            ],
+            "answer": "B",
+            "explanation": {
+                "text": "Pub/Subではメッセージを処理した後にACKを返すことが推奨され、これにより重複やデータ損失を避けられます。",
+                "reference": "https://cloud.google.com/pubsub/docs/subscriber",
+                "reference_label": "Pub/Sub Subscriber"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q4",
+            "question": "Cloud Storageに大量のデータを保存する場合、アーカイブ用途で最もコスト効率が高いストレージクラスはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Standard",
+                    "explanation": {
+                        "text": "Standardは頻繁にアクセスするデータに適していますが、アーカイブ用途ではコストが高くなります。",
+                        "reference": "https://cloud.google.com/storage/docs/storage-classes",
+                        "reference_label": "Cloud Storage ストレージクラス"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Nearline",
+                    "explanation": {
+                        "text": "Nearlineは月1回程度のアクセスに適していますが、さらに長期保存ではArchiveの方が安価です。",
+                        "reference": "https://cloud.google.com/storage/docs/storage-classes",
+                        "reference_label": "Cloud Storage ストレージクラス"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Coldline",
+                    "explanation": {
+                        "text": "Coldlineは年数回アクセスのデータに適していますが、最も低コストではありません。",
+                        "reference": "https://cloud.google.com/storage/docs/storage-classes",
+                        "reference_label": "Cloud Storage ストレージクラス"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Archive",
+                    "explanation": {
+                        "text": "Archiveは年1回以下のアクセスを想定したクラスで、最も低コストです。",
+                        "reference": "https://cloud.google.com/storage/docs/storage-classes",
+                        "reference_label": "Cloud Storage ストレージクラス"
+                    }
+                }
+            ],
+            "answer": "D",
+            "explanation": {
+                "text": "アーカイブ用途ではArchiveストレージクラスを利用することで最も低コストで保存できます。",
+                "reference": "https://cloud.google.com/storage/docs/storage-classes",
+                "reference_label": "Cloud Storage ストレージクラス"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q5",
+            "question": "Dataprocを利用する利点として正しいものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "オンプレミスのHadoopクラスターを置き換え、クラウドで柔軟にスケーリングできる",
+                    "explanation": {
+                        "text": "DataprocはマネージドHadoop/Sparkクラスターを提供し、柔軟にスケーリング可能です。",
+                        "reference": "https://cloud.google.com/dataproc/docs/overview",
+                        "reference_label": "Dataproc 概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "SQLベースで大規模データを直接クエリできる",
+                    "explanation": {
+                        "text": "これはBigQueryの特徴であり、Dataprocの主目的ではありません。",
+                        "reference": "https://cloud.google.com/bigquery/docs/introduction",
+                        "reference_label": "BigQuery 概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "サーバーレスでストリーミング処理が可能",
+                    "explanation": {
+                        "text": "これはCloud Dataflowの特徴です。",
+                        "reference": "https://cloud.google.com/dataflow/docs",
+                        "reference_label": "Dataflow ドキュメント"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "NoSQLデータベースとして低レイテンシの読み書きを提供する",
+                    "explanation": {
+                        "text": "これはCloud Bigtableの特徴です。",
+                        "reference": "https://cloud.google.com/bigtable/docs/overview",
+                        "reference_label": "Bigtable 概要"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Dataprocはクラウド上のマネージドHadoop/Sparkクラスターであり、スケーラブルかつ運用負荷を軽減できます。",
+                "reference": "https://cloud.google.com/dataproc/docs/overview",
+                "reference_label": "Dataproc 概要"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q6",
+            "question": "BigQueryにおいて、ストリーミング挿入を利用する場合の特徴はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "リアルタイムでデータが利用可能になる",
+                    "explanation": {
+                        "text": "ストリーミング挿入により、数秒以内にクエリ可能になります。",
+                        "reference": "https://cloud.google.com/bigquery/streaming-data-into-bigquery",
+                        "reference_label": "BigQuery ストリーミング挿入"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "ロードジョブと同様に無料で利用できる",
+                    "explanation": {
+                        "text": "ストリーミング挿入には追加コストが発生します。",
+                        "reference": "https://cloud.google.com/bigquery/pricing#streaming-pricing",
+                        "reference_label": "BigQuery ストリーミング料金"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "1リクエストで最大1TBのデータを挿入できる",
+                    "explanation": {
+                        "text": "1リクエストあたりの上限は大幅に小さく、1TBではありません。",
+                        "reference": "https://cloud.google.com/bigquery/quotas#streaming_inserts",
+                        "reference_label": "BigQuery クォータ"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "トランザクション整合性が保証される",
+                    "explanation": {
+                        "text": "ストリーミング挿入では厳密なトランザクション整合性は保証されません。",
+                        "reference": "https://cloud.google.com/bigquery/streaming-data-into-bigquery",
+                        "reference_label": "BigQuery ストリーミング挿入"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "ストリーミング挿入は数秒以内にデータを利用可能にする一方で、追加コストがかかる点に注意が必要です。",
+                "reference": "https://cloud.google.com/bigquery/streaming-data-into-bigquery",
+                "reference_label": "BigQuery ストリーミング挿入"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q7",
+            "question": "Cloud Bigtableのユースケースとして最も適しているのはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "大規模な時系列データの保存とリアルタイム分析",
+                    "explanation": {
+                        "text": "Bigtableは時系列データやIoTデータなどの大規模な低レイテンシ読み書きに適しています。",
+                        "reference": "https://cloud.google.com/bigtable/docs/overview",
+                        "reference_label": "Bigtable 概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "OLAP分析クエリの実行",
+                    "explanation": {
+                        "text": "これはBigQueryが適しています。",
+                        "reference": "https://cloud.google.com/bigquery/docs/introduction",
+                        "reference_label": "BigQuery 概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "バッチETL処理のオーケストレーション",
+                    "explanation": {
+                        "text": "これはCloud Composerのユースケースです。",
+                        "reference": "https://cloud.google.com/composer/docs/overview",
+                        "reference_label": "Cloud Composer 概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "リレーショナルデータベースのトランザクション処理",
+                    "explanation": {
+                        "text": "これはCloud SQLやSpannerのユースケースです。",
+                        "reference": "https://cloud.google.com/sql/docs/introduction",
+                        "reference_label": "Cloud SQL 概要"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Bigtableは時系列データやログデータなどを低レイテンシで処理できるNoSQLデータベースです。",
+                "reference": "https://cloud.google.com/bigtable/docs/overview",
+                "reference_label": "Bigtable 概要"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q8",
+            "question": "Cloud Spannerを利用する最大の利点はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "グローバル分散と強整合性を同時に提供する",
+                    "explanation": {
+                        "text": "Cloud SpannerはGoogle独自の分散技術により、グローバルに分散しながら強整合性を保証します。",
+                        "reference": "https://cloud.google.com/spanner/docs/overview",
+                        "reference_label": "Cloud Spanner 概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "NoSQLベースでスキーマレスに利用できる",
+                    "explanation": {
+                        "text": "Cloud Spannerはリレーショナルデータベースであり、スキーマレスではありません。",
+                        "reference": "https://cloud.google.com/spanner/docs/schema-and-data-model",
+                        "reference_label": "Cloud Spanner スキーマ"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "完全にサーバーレスでSQL分析を行える",
+                    "explanation": {
+                        "text": "これはBigQueryの特徴です。",
+                        "reference": "https://cloud.google.com/bigquery/docs/introduction",
+                        "reference_label": "BigQuery 概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ドキュメント型データベースとして柔軟に利用できる",
+                    "explanation": {
+                        "text": "これはFirestoreの特徴です。",
+                        "reference": "https://cloud.google.com/firestore/docs/overview",
+                        "reference_label": "Firestore 概要"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Cloud Spannerは分散RDBMSとして、水平スケーリングと強整合性を両立させた点が最大の特徴です。",
+                "reference": "https://cloud.google.com/spanner/docs/overview",
+                "reference_label": "Cloud Spanner 概要"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q9",
+            "question": "Cloud Composerの利用目的として最も適切なのはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "データパイプラインのオーケストレーション",
+                    "explanation": {
+                        "text": "Cloud ComposerはApache Airflowベースで、ETLやMLワークフローのオーケストレーションに利用されます。",
+                        "reference": "https://cloud.google.com/composer/docs/overview",
+                        "reference_label": "Cloud Composer 概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "低レイテンシのNoSQLデータベース提供",
+                    "explanation": {
+                        "text": "これはBigtableのユースケースです。",
+                        "reference": "https://cloud.google.com/bigtable/docs/overview",
+                        "reference_label": "Bigtable 概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ストリーミングデータをリアルタイムに処理",
+                    "explanation": {
+                        "text": "これはDataflowのユースケースです。",
+                        "reference": "https://cloud.google.com/dataflow/docs/overview",
+                        "reference_label": "Dataflow 概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "大規模SQL分析を実行",
+                    "explanation": {
+                        "text": "これはBigQueryのユースケースです。",
+                        "reference": "https://cloud.google.com/bigquery/docs/introduction",
+                        "reference_label": "BigQuery 概要"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Cloud ComposerはApache Airflowを基盤とするマネージドワークフローオーケストレーションサービスです。",
+                "reference": "https://cloud.google.com/composer/docs/overview",
+                "reference_label": "Cloud Composer 概要"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q10",
+            "question": "BigQueryにおけるクラスタリングの利点はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "特定の列を基準にデータをソートし、クエリ性能を改善する",
+                    "explanation": {
+                        "text": "クラスタリングは指定した列に基づきデータをソートし、フィルタリングや集計の効率を向上させます。",
+                        "reference": "https://cloud.google.com/bigquery/docs/clustered-tables",
+                        "reference_label": "BigQuery クラスタリング"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "スキーマを自動的に変更する",
+                    "explanation": {
+                        "text": "クラスタリングはスキーマ変更機能を持ちません。",
+                        "reference": "https://cloud.google.com/bigquery/docs/clustered-tables",
+                        "reference_label": "BigQuery クラスタリング"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "データを圧縮しストレージコストを削減する",
+                    "explanation": {
+                        "text": "クラスタリングはデータ圧縮のための機能ではありません。",
+                        "reference": "https://cloud.google.com/bigquery/docs/clustered-tables",
+                        "reference_label": "BigQuery クラスタリング"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "テーブルサイズを自動で分割する",
+                    "explanation": {
+                        "text": "テーブル分割はパーティション機能であり、クラスタリングではありません。",
+                        "reference": "https://cloud.google.com/bigquery/docs/partitioned-tables",
+                        "reference_label": "BigQuery パーティション分割"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "クラスタリングを利用すると、特定の列を基準に並べ替えが行われ、フィルタ条件のあるクエリ性能が向上します。",
+                "reference": "https://cloud.google.com/bigquery/docs/clustered-tables",
+                "reference_label": "BigQuery クラスタリング"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q11",
+            "question": "Cloud Dataprepの主な用途はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "GUIベースでデータをクレンジング・変換する",
+                    "explanation": {
+                        "text": "Cloud Dataprepはデータ準備のためのビジュアルインターフェースを提供します。",
+                        "reference": "https://cloud.google.com/dataprep/docs/overview",
+                        "reference_label": "Cloud Dataprep 概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "大規模SQL分析を行う",
+                    "explanation": {
+                        "text": "これはBigQueryのユースケースです。",
+                        "reference": "https://cloud.google.com/bigquery/docs/introduction",
+                        "reference_label": "BigQuery 概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "データストリーミングを処理する",
+                    "explanation": {
+                        "text": "これはDataflowのユースケースです。",
+                        "reference": "https://cloud.google.com/dataflow/docs/overview",
+                        "reference_label": "Dataflow 概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "メッセージキューを実装する",
+                    "explanation": {
+                        "text": "これはCloud Pub/Subのユースケースです。",
+                        "reference": "https://cloud.google.com/pubsub/docs/overview",
+                        "reference_label": "Cloud Pub/Sub 概要"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Cloud Dataprepはコード不要でデータを探索、クレンジング、変換できるツールです。",
+                "reference": "https://cloud.google.com/dataprep/docs/overview",
+                "reference_label": "Cloud Dataprep 概要"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q12",
+            "question": "Dataflowでウィンドウ処理を行う主な目的はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "ストリーミングデータを時間単位などのまとまりに分割して処理する",
+                    "explanation": {
+                        "text": "ウィンドウ処理は連続的なストリームを時間やカウントに基づき分割するために利用されます。",
+                        "reference": "https://cloud.google.com/dataflow/docs/concepts/streaming-with-windows",
+                        "reference_label": "Dataflow ウィンドウ処理"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "ストリーミングデータを自動的に暗号化する",
+                    "explanation": {
+                        "text": "暗号化は別の機能であり、ウィンドウ処理の目的ではありません。",
+                        "reference": "https://cloud.google.com/dataflow/docs/concepts/streaming-with-windows",
+                        "reference_label": "Dataflow ウィンドウ処理"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "スキーマを自動的に変換する",
+                    "explanation": {
+                        "text": "スキーマ変換はETLプロセスの一部ですが、ウィンドウ処理の目的ではありません。",
+                        "reference": "https://cloud.google.com/dataflow/docs/concepts/streaming-with-windows",
+                        "reference_label": "Dataflow ウィンドウ処理"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "データをクラスタリングして効率化する",
+                    "explanation": {
+                        "text": "クラスタリングはBigQueryの機能であり、Dataflowのウィンドウ処理の目的ではありません。",
+                        "reference": "https://cloud.google.com/bigquery/docs/clustered-tables",
+                        "reference_label": "BigQuery クラスタリング"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "ウィンドウ処理はストリーミングデータを時間やイベント単位で区切り、処理可能にするための重要な概念です。",
+                "reference": "https://cloud.google.com/dataflow/docs/concepts/streaming-with-windows",
+                "reference_label": "Dataflow ウィンドウ処理"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q13",
+            "question": "Cloud SQLとCloud Spannerの主な違いはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Cloud SQLは単一リージョン向けで、Cloud Spannerはグローバル分散可能",
+                    "explanation": {
+                        "text": "Cloud SQLはリージョン単位で提供され、Spannerはグローバルに分散できます。",
+                        "reference": "https://cloud.google.com/sql/docs/introduction",
+                        "reference_label": "Cloud SQL 概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Cloud SQLはNoSQL、Cloud SpannerはRDBMS",
+                    "explanation": {
+                        "text": "両方ともリレーショナルデータベースであり、この説明は誤りです。",
+                        "reference": "https://cloud.google.com/sql/docs/introduction",
+                        "reference_label": "Cloud SQL 概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Cloud SQLは強整合性を提供しない",
+                    "explanation": {
+                        "text": "Cloud SQLも強整合性を提供します。",
+                        "reference": "https://cloud.google.com/sql/docs/introduction",
+                        "reference_label": "Cloud SQL 概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Cloud Spannerは小規模用途に最適化されている",
+                    "explanation": {
+                        "text": "Cloud Spannerは大規模用途に最適化されており、小規模用途には適しません。",
+                        "reference": "https://cloud.google.com/spanner/docs/overview",
+                        "reference_label": "Cloud Spanner 概要"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Cloud SQLは単一リージョンのマネージドRDBMSで、Spannerは水平スケーリング可能な分散RDBMSです。",
+                "reference": "https://cloud.google.com/sql/docs/introduction",
+                "reference_label": "Cloud SQL 概要"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q14",
+            "question": "BigQueryでマテリアライズドビューを利用する利点はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "クエリ結果を事前計算し、繰り返し利用することでコストとレイテンシを削減できる",
+                    "explanation": {
+                        "text": "マテリアライズドビューは結果を保存し、クエリごとに再計算する必要をなくします。",
+                        "reference": "https://cloud.google.com/bigquery/docs/materialized-views-intro",
+                        "reference_label": "BigQuery マテリアライズドビュー"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "スキーマを自動的に変更できる",
+                    "explanation": {
+                        "text": "マテリアライズドビューはスキーマ変更機能を持ちません。",
+                        "reference": "https://cloud.google.com/bigquery/docs/materialized-views-intro",
+                        "reference_label": "BigQuery マテリアライズドビュー"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "全てのテーブルを自動的にパーティション分割する",
+                    "explanation": {
+                        "text": "パーティション分割は別機能であり、マテリアライズドビューの機能ではありません。",
+                        "reference": "https://cloud.google.com/bigquery/docs/partitioned-tables",
+                        "reference_label": "BigQuery パーティション分割"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "クエリを完全に無料で実行できる",
+                    "explanation": {
+                        "text": "無料ではなく、マテリアライズドビューにも利用コストが発生します。",
+                        "reference": "https://cloud.google.com/bigquery/docs/materialized-views-intro",
+                        "reference_label": "BigQuery マテリアライズドビュー"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "マテリアライズドビューは事前計算された結果を保存し、コスト削減とクエリ性能向上を実現します。",
+                "reference": "https://cloud.google.com/bigquery/docs/materialized-views-intro",
+                "reference_label": "BigQuery マテリアライズドビュー"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q15",
+            "question": "Cloud Pub/Subでメッセージ順序を保証するにはどうすべきか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "ordering key を利用する",
+                    "explanation": {
+                        "text": "Pub/Subではordering keyを使うことで、同一キーに対して順序保証が可能です。",
+                        "reference": "https://cloud.google.com/pubsub/docs/ordering",
+                        "reference_label": "Cloud Pub/Sub メッセージ順序"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "必ずPush配信を選択する",
+                    "explanation": {
+                        "text": "Push配信は順序保証を提供しません。",
+                        "reference": "https://cloud.google.com/pubsub/docs/ordering",
+                        "reference_label": "Cloud Pub/Sub メッセージ順序"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "メッセージサイズを小さくする",
+                    "explanation": {
+                        "text": "サイズは順序保証とは関係ありません。",
+                        "reference": "https://cloud.google.com/pubsub/docs/ordering",
+                        "reference_label": "Cloud Pub/Sub メッセージ順序"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "複数トピックを使う",
+                    "explanation": {
+                        "text": "複数トピックを使っても順序保証はされません。",
+                        "reference": "https://cloud.google.com/pubsub/docs/ordering",
+                        "reference_label": "Cloud Pub/Sub メッセージ順序"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "ordering keyを利用することで、同じキーのメッセージに順序保証が提供されます。",
+                "reference": "https://cloud.google.com/pubsub/docs/ordering",
+                "reference_label": "Cloud Pub/Sub メッセージ順序"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q16",
+            "question": "BigQuery BI Engineの利点はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "メモリ内キャッシュによりインタラクティブな分析を高速化する",
+                    "explanation": {
+                        "text": "BI Engineはメモリ内処理を用いてダッシュボードなどの分析を高速化します。",
+                        "reference": "https://cloud.google.com/bi-engine/docs/overview",
+                        "reference_label": "BigQuery BI Engine 概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "自動でSQLクエリを最適化する",
+                    "explanation": {
+                        "text": "SQL最適化はBI Engineの機能ではありません。",
+                        "reference": "https://cloud.google.com/bi-engine/docs/overview",
+                        "reference_label": "BigQuery BI Engine 概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "全てのクエリが無料になる",
+                    "explanation": {
+                        "text": "BI Engineは無料ではなく利用コストが発生します。",
+                        "reference": "https://cloud.google.com/bi-engine/docs/overview",
+                        "reference_label": "BigQuery BI Engine 概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "自動でマテリアライズドビューを作成する",
+                    "explanation": {
+                        "text": "マテリアライズドビューは別の機能です。",
+                        "reference": "https://cloud.google.com/bigquery/docs/materialized-views-intro",
+                        "reference_label": "BigQuery マテリアライズドビュー"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "BI Engineはインメモリキャッシュを用いてインタラクティブな分析を低レイテンシで実行できます。",
+                "reference": "https://cloud.google.com/bi-engine/docs/overview",
+                "reference_label": "BigQuery BI Engine 概要"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q17",
+            "question": "Cloud Dataflowのスケーリング特性として正しいものはどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "ワークロードに応じて自動でスケーリングする",
+                    "explanation": {
+                        "text": "Dataflowはオートスケーリングをサポートし、リソースを自動調整します。",
+                        "reference": "https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline",
+                        "reference_label": "Dataflow オートスケーリング"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "常に固定数のワーカーを利用する必要がある",
+                    "explanation": {
+                        "text": "Dataflowはワーカー数を自動調整できるため固定ではありません。",
+                        "reference": "https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline",
+                        "reference_label": "Dataflow オートスケーリング"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "スケーリングは手動でしか行えない",
+                    "explanation": {
+                        "text": "Dataflowは手動スケーリングも可能ですが、基本的に自動スケーリングが特徴です。",
+                        "reference": "https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline",
+                        "reference_label": "Dataflow オートスケーリング"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "スケーリングは1日に1回のみ可能",
+                    "explanation": {
+                        "text": "制限はなく、リアルタイムでスケーリング可能です。",
+                        "reference": "https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline",
+                        "reference_label": "Dataflow オートスケーリング"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Dataflowは自動スケーリング機能を持ち、ジョブの負荷に応じてリソースを調整します。",
+                "reference": "https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline",
+                "reference_label": "Dataflow オートスケーリング"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q18",
+            "question": "Firestoreを利用する典型的なユースケースはどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "モバイルアプリのリアルタイムデータ同期",
+                    "explanation": {
+                        "text": "FirestoreはモバイルやWebアプリ向けにリアルタイム同期を提供します。",
+                        "reference": "https://cloud.google.com/firestore/docs/overview",
+                        "reference_label": "Firestore 概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "大規模バッチ処理",
+                    "explanation": {
+                        "text": "これはDataprocやDataflowのユースケースです。",
+                        "reference": "https://cloud.google.com/dataproc/docs/overview",
+                        "reference_label": "Dataproc 概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "OLAP分析",
+                    "explanation": {
+                        "text": "これはBigQueryのユースケースです。",
+                        "reference": "https://cloud.google.com/bigquery/docs/introduction",
+                        "reference_label": "BigQuery 概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "強整合性を持つグローバル分散データベース",
+                    "explanation": {
+                        "text": "これはCloud Spannerのユースケースです。",
+                        "reference": "https://cloud.google.com/spanner/docs/overview",
+                        "reference_label": "Cloud Spanner 概要"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "FirestoreはモバイルやWebアプリに適したNoSQLデータベースで、リアルタイム同期を強みとしています。",
+                "reference": "https://cloud.google.com/firestore/docs/overview",
+                "reference_label": "Firestore 概要"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q19",
+            "question": "Bigtableのスキーマ設計で考慮すべき重要な点はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "アクセスパターンに基づいたrow keyの設計",
+                    "explanation": {
+                        "text": "Bigtableはrow keyでデータを分散配置するため、アクセスパターンを意識した設計が不可欠です。",
+                        "reference": "https://cloud.google.com/bigtable/docs/schema-design",
+                        "reference_label": "Bigtable スキーマ設計"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "正規化によるスキーマ設計",
+                    "explanation": {
+                        "text": "BigtableはNoSQLのため正規化は主要な設計要素ではありません。",
+                        "reference": "https://cloud.google.com/bigtable/docs/schema-design",
+                        "reference_label": "Bigtable スキーマ設計"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "複雑なJOINを想定したテーブル設計",
+                    "explanation": {
+                        "text": "JOINはBigtableではサポートされていません。",
+                        "reference": "https://cloud.google.com/bigtable/docs/schema-design",
+                        "reference_label": "Bigtable スキーマ設計"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "外部キー制約を利用した整合性維持",
+                    "explanation": {
+                        "text": "外部キー制約はBigtableには存在しません。",
+                        "reference": "https://cloud.google.com/bigtable/docs/schema-design",
+                        "reference_label": "Bigtable スキーマ設計"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Bigtableではアクセスパターンを踏まえたrow key設計が性能に直結します。",
+                "reference": "https://cloud.google.com/bigtable/docs/schema-design",
+                "reference_label": "Bigtable スキーマ設計"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q20",
+            "question": "BigQueryで外部テーブルを利用する際の特徴はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Cloud Storageなどの外部データを直接クエリできる",
+                    "explanation": {
+                        "text": "外部テーブルを使うと、Cloud StorageやDriveのデータを直接クエリ可能です。",
+                        "reference": "https://cloud.google.com/bigquery/docs/external-data-sources",
+                        "reference_label": "BigQuery 外部データソース"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "外部テーブルは必ずストリーミング挿入で更新される",
+                    "explanation": {
+                        "text": "外部テーブルはストリーミング挿入を伴いません。",
+                        "reference": "https://cloud.google.com/bigquery/docs/external-data-sources",
+                        "reference_label": "BigQuery 外部データソース"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "外部テーブルは常に無料でクエリできる",
+                    "explanation": {
+                        "text": "外部テーブルも通常のクエリ料金が発生します。",
+                        "reference": "https://cloud.google.com/bigquery/docs/external-data-sources",
+                        "reference_label": "BigQuery 外部データソース"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "外部テーブルは常にキャッシュされる",
+                    "explanation": {
+                        "text": "外部データはキャッシュされず、直接参照されます。",
+                        "reference": "https://cloud.google.com/bigquery/docs/external-data-sources",
+                        "reference_label": "BigQuery 外部データソース"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "外部テーブルを利用するとCloud StorageやDriveのデータをロードせず直接クエリできます。",
+                "reference": "https://cloud.google.com/bigquery/docs/external-data-sources",
+                "reference_label": "BigQuery 外部データソース"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q21",
+            "question": "Cloud Data Fusionの特徴として正しいものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "GUIでデータパイプラインを設計し、コード不要で実装可能",
+                    "explanation": {
+                        "text": "Data FusionはコードレスでETLパイプラインを設計可能なマネージドサービスです。",
+                        "reference": "https://cloud.google.com/data-fusion/docs/overview",
+                        "reference_label": "Cloud Data Fusion 概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "データ分析のためのサーバーレスSQLサービス",
+                    "explanation": {
+                        "text": "これはBigQueryの特徴です。",
+                        "reference": "https://cloud.google.com/bigquery/docs/introduction",
+                        "reference_label": "BigQuery 概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "リアルタイムのメッセージングサービス",
+                    "explanation": {
+                        "text": "これはPub/Subのユースケースです。",
+                        "reference": "https://cloud.google.com/pubsub/docs/overview",
+                        "reference_label": "Pub/Sub 概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "低レイテンシのNoSQLデータベース",
+                    "explanation": {
+                        "text": "これはBigtableの特徴です。",
+                        "reference": "https://cloud.google.com/bigtable/docs/overview",
+                        "reference_label": "Bigtable 概要"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Cloud Data FusionはGUIベースでETLパイプラインを設計できるサービスです。",
+                "reference": "https://cloud.google.com/data-fusion/docs/overview",
+                "reference_label": "Cloud Data Fusion 概要"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q22",
+            "question": "Cloud Pub/SubとCloud Dataflowを組み合わせる主なユースケースはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "ストリーミングデータの取り込みとリアルタイム処理",
+                    "explanation": {
+                        "text": "Pub/Subは取り込み、Dataflowは処理を担当するため、リアルタイムストリーミングの典型的ユースケースです。",
+                        "reference": "https://cloud.google.com/architecture/real-time-streaming-dataflow-pubsub",
+                        "reference_label": "リアルタイムストリーミング: Pub/Sub + Dataflow"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "データをクラウドストレージにアーカイブする",
+                    "explanation": {
+                        "text": "アーカイブ用途にはCloud Storageを直接利用します。",
+                        "reference": "https://cloud.google.com/storage/docs/overview",
+                        "reference_label": "Cloud Storage 概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "データをOLAP分析に最適化する",
+                    "explanation": {
+                        "text": "OLAP分析にはBigQueryが適しています。",
+                        "reference": "https://cloud.google.com/bigquery/docs/introduction",
+                        "reference_label": "BigQuery 概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "トランザクション処理を実装する",
+                    "explanation": {
+                        "text": "トランザクション処理はSpannerやCloud SQLのユースケースです。",
+                        "reference": "https://cloud.google.com/spanner/docs/overview",
+                        "reference_label": "Cloud Spanner 概要"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Pub/SubとDataflowの組み合わせは、リアルタイムデータ取り込みとストリーム処理の標準的なアーキテクチャです。",
+                "reference": "https://cloud.google.com/architecture/real-time-streaming-dataflow-pubsub",
+                "reference_label": "リアルタイムストリーミング: Pub/Sub + Dataflow"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q23",
+            "question": "BigQueryの予約（Reservations）機能の目的はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "クエリの実行に必要なスロットを事前に確保する",
+                    "explanation": {
+                        "text": "Reservationsを使うと、特定のプロジェクトや部門向けにスロットを割り当てられます。",
+                        "reference": "https://cloud.google.com/bigquery/docs/reservations-intro",
+                        "reference_label": "BigQuery Reservations"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "テーブルサイズを制限する",
+                    "explanation": {
+                        "text": "Reservationsはテーブルサイズ制御の機能ではありません。",
+                        "reference": "https://cloud.google.com/bigquery/docs/reservations-intro",
+                        "reference_label": "BigQuery Reservations"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ストレージコストを削減する",
+                    "explanation": {
+                        "text": "Reservationsはクエリ処理リソースの管理であり、ストレージコストには関与しません。",
+                        "reference": "https://cloud.google.com/bigquery/docs/reservations-intro",
+                        "reference_label": "BigQuery Reservations"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "自動でクエリを書き換えて最適化する",
+                    "explanation": {
+                        "text": "ReservationsはSQL最適化機能を提供しません。",
+                        "reference": "https://cloud.google.com/bigquery/docs/reservations-intro",
+                        "reference_label": "BigQuery Reservations"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "BigQuery Reservationsは、特定のワークロードに対してスロットを事前に確保することで安定した性能を提供します。",
+                "reference": "https://cloud.google.com/bigquery/docs/reservations-intro",
+                "reference_label": "BigQuery Reservations"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q24",
+            "question": "Cloud Data Loss Prevention (DLP) API の主な用途はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "機密データの検出とマスキング",
+                    "explanation": {
+                        "text": "DLP APIは個人情報やクレジットカード番号などを検出し、マスキングやトークン化が可能です。",
+                        "reference": "https://cloud.google.com/dlp/docs/overview",
+                        "reference_label": "Cloud DLP 概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "データストリーミングの処理",
+                    "explanation": {
+                        "text": "これはDataflowのユースケースです。",
+                        "reference": "https://cloud.google.com/dataflow/docs/overview",
+                        "reference_label": "Dataflow 概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "クエリ最適化",
+                    "explanation": {
+                        "text": "クエリ最適化はDLP APIの機能ではありません。",
+                        "reference": "https://cloud.google.com/dlp/docs/overview",
+                        "reference_label": "Cloud DLP 概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "NoSQLデータのリアルタイム書き込み",
+                    "explanation": {
+                        "text": "これはBigtableやFirestoreのユースケースです。",
+                        "reference": "https://cloud.google.com/firestore/docs/overview",
+                        "reference_label": "Firestore 概要"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Cloud DLP APIは機密データを検出してマスキングするためのサービスです。",
+                "reference": "https://cloud.google.com/dlp/docs/overview",
+                "reference_label": "Cloud DLP 概要"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q25",
+            "question": "Cloud BigtableとCloud Spannerの大きな違いはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "BigtableはNoSQLであり、Spannerはリレーショナルデータベース",
+                    "explanation": {
+                        "text": "BigtableはNoSQLのカラム指向データベースで、SpannerはSQL対応のRDBMSです。",
+                        "reference": "https://cloud.google.com/bigtable/docs/overview",
+                        "reference_label": "Bigtable 概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "Bigtableは強整合性を提供し、Spannerは最終的整合性を提供する",
+                    "explanation": {
+                        "text": "Spannerは強整合性を提供し、Bigtableは最終的整合性に近いモデルを採用します。",
+                        "reference": "https://cloud.google.com/spanner/docs/overview",
+                        "reference_label": "Cloud Spanner 概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "両方ともJOINや外部キー制約をサポートする",
+                    "explanation": {
+                        "text": "BigtableはJOINや外部キーをサポートしていません。",
+                        "reference": "https://cloud.google.com/bigtable/docs/overview",
+                        "reference_label": "Bigtable 概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "両方ともスキーマレスで利用可能",
+                    "explanation": {
+                        "text": "Spannerはスキーマを持つRDBMSです。",
+                        "reference": "https://cloud.google.com/spanner/docs/schema-and-data-model",
+                        "reference_label": "Spanner スキーマ"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "BigtableはNoSQLのワイドカラムDBであり、SpannerはSQLをサポートするRDBMSです。",
+                "reference": "https://cloud.google.com/bigtable/docs/overview",
+                "reference_label": "Bigtable 概要"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q26",
+            "question": "BigQueryのクエリ料金を最小化するための方法はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "必要な列だけをSELECTする",
+                    "explanation": {
+                        "text": "BigQueryは列指向ストレージのため、不要な列を省略するとスキャンコストを削減できます。",
+                        "reference": "https://cloud.google.com/bigquery/docs/best-practices-costs",
+                        "reference_label": "BigQuery コスト最適化"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "ORDER BYを常に利用する",
+                    "explanation": {
+                        "text": "ORDER BYはクエリコスト削減には寄与しません。",
+                        "reference": "https://cloud.google.com/bigquery/docs/best-practices-costs",
+                        "reference_label": "BigQuery コスト最適化"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "全テーブルをクエリする",
+                    "explanation": {
+                        "text": "不要なテーブルを含めるとコストが増大します。",
+                        "reference": "https://cloud.google.com/bigquery/docs/best-practices-costs",
+                        "reference_label": "BigQuery コスト最適化"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "常にJOINを使ってデータを結合する",
+                    "explanation": {
+                        "text": "不要なJOINはコストを増加させます。",
+                        "reference": "https://cloud.google.com/bigquery/docs/best-practices-costs",
+                        "reference_label": "BigQuery コスト最適化"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "必要な列だけをSELECTするのが最も基本的かつ効果的なコスト削減方法です。",
+                "reference": "https://cloud.google.com/bigquery/docs/best-practices-costs",
+                "reference_label": "BigQuery コスト最適化"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q27",
+            "question": "Dataprocのクラスタを自動で停止させる利点はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "コストを削減できる",
+                    "explanation": {
+                        "text": "不要なクラスタを自動停止することで料金を削減できます。",
+                        "reference": "https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-delete",
+                        "reference_label": "Dataproc Auto-delete"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "クエリを自動最適化できる",
+                    "explanation": {
+                        "text": "自動最適化はDataprocの停止機能の目的ではありません。",
+                        "reference": "https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-delete",
+                        "reference_label": "Dataproc Auto-delete"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "クラスタを暗号化できる",
+                    "explanation": {
+                        "text": "暗号化は別の機能であり、自動停止機能とは関係ありません。",
+                        "reference": "https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-delete",
+                        "reference_label": "Dataproc Auto-delete"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "外部キー制約をサポートできる",
+                    "explanation": {
+                        "text": "外部キーはRDBMSの機能であり、Dataprocとは関係ありません。",
+                        "reference": "https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-delete",
+                        "reference_label": "Dataproc Auto-delete"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Dataprocの自動停止機能を使うと不要なコストを抑えることができます。",
+                "reference": "https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-delete",
+                "reference_label": "Dataproc Auto-delete"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q28",
+            "question": "Cloud StorageでSigned URLを利用する目的はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "一時的なアクセス権を付与する",
+                    "explanation": {
+                        "text": "Signed URLを使うと、有効期限付きの一時的アクセス権を発行できます。",
+                        "reference": "https://cloud.google.com/storage/docs/access-control/signed-urls",
+                        "reference_label": "Cloud Storage Signed URLs"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "データを暗号化する",
+                    "explanation": {
+                        "text": "暗号化はStorage自体の機能であり、Signed URLの目的ではありません。",
+                        "reference": "https://cloud.google.com/storage/docs/access-control/signed-urls",
+                        "reference_label": "Cloud Storage Signed URLs"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ストレージクラスを変更する",
+                    "explanation": {
+                        "text": "ストレージクラス変更はSigned URLの機能ではありません。",
+                        "reference": "https://cloud.google.com/storage/docs/access-control/signed-urls",
+                        "reference_label": "Cloud Storage Signed URLs"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "常時無料でアクセスを提供する",
+                    "explanation": {
+                        "text": "Signed URLは無料で常時利用できるアクセスではなく、有効期限付きの仕組みです。",
+                        "reference": "https://cloud.google.com/storage/docs/access-control/signed-urls",
+                        "reference_label": "Cloud Storage Signed URLs"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Signed URLは期限付きの一時アクセスを提供するための仕組みです。",
+                "reference": "https://cloud.google.com/storage/docs/access-control/signed-urls",
+                "reference_label": "Cloud Storage Signed URLs"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q29",
+            "question": "BigQueryのキャッシュ機能を利用する利点はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "同じクエリを再実行するときにコストが発生しない",
+                    "explanation": {
+                        "text": "クエリ結果がキャッシュされていれば、再実行時に料金が発生しません。",
+                        "reference": "https://cloud.google.com/bigquery/docs/query-results-cache",
+                        "reference_label": "BigQuery クエリ結果キャッシュ"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "データを暗号化できる",
+                    "explanation": {
+                        "text": "暗号化はBigQueryの標準機能ですが、キャッシュの機能ではありません。",
+                        "reference": "https://cloud.google.com/bigquery/docs/security",
+                        "reference_label": "BigQuery セキュリティ"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "スキーマ変更を自動適用できる",
+                    "explanation": {
+                        "text": "キャッシュ機能はスキーマ変更には関与しません。",
+                        "reference": "https://cloud.google.com/bigquery/docs/query-results-cache",
+                        "reference_label": "BigQuery クエリ結果キャッシュ"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "クエリを並列実行できる",
+                    "explanation": {
+                        "text": "並列実行はBigQueryエンジンの特徴ですが、キャッシュ機能の役割ではありません。",
+                        "reference": "https://cloud.google.com/bigquery/docs/introduction",
+                        "reference_label": "BigQuery 概要"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "BigQueryは過去24時間以内に実行した同じクエリの結果をキャッシュし、再実行は無料になります。",
+                "reference": "https://cloud.google.com/bigquery/docs/query-results-cache",
+                "reference_label": "BigQuery クエリ結果キャッシュ"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q30",
+            "question": "Cloud Storageのオブジェクトライフサイクル管理のユースケースとして最も適切なのはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "一定期間後にオブジェクトを自動的に削除する",
+                    "explanation": {
+                        "text": "ライフサイクルポリシーを設定すると、条件に基づきオブジェクトを削除できます。",
+                        "reference": "https://cloud.google.com/storage/docs/lifecycle",
+                        "reference_label": "Cloud Storage ライフサイクル管理"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "SQLクエリを直接実行する",
+                    "explanation": {
+                        "text": "SQL実行はBigQueryの機能です。",
+                        "reference": "https://cloud.google.com/bigquery/docs/introduction",
+                        "reference_label": "BigQuery 概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "オブジェクトをトランザクション処理する",
+                    "explanation": {
+                        "text": "Cloud Storageはオブジェクトストレージであり、トランザクション処理は提供しません。",
+                        "reference": "https://cloud.google.com/storage/docs/overview",
+                        "reference_label": "Cloud Storage 概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "低レイテンシでNoSQLクエリを提供する",
+                    "explanation": {
+                        "text": "これはBigtableの特徴です。",
+                        "reference": "https://cloud.google.com/bigtable/docs/overview",
+                        "reference_label": "Bigtable 概要"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "ライフサイクルポリシーを使うことで、保存期間に応じた自動削除やストレージクラス移行を設定できます。",
+                "reference": "https://cloud.google.com/storage/docs/lifecycle",
+                "reference_label": "Cloud Storage ライフサイクル管理"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q31",
+            "question": "Cloud ComposerでDAG（有向非巡回グラフ）を使う目的はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "ワークフロー内のタスク依存関係を定義する",
+                    "explanation": {
+                        "text": "DAGはタスクの実行順序と依存関係を表すために利用されます。",
+                        "reference": "https://cloud.google.com/composer/docs/how-to/using/using-dags",
+                        "reference_label": "Cloud Composer DAG"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "データをNoSQL形式で保存する",
+                    "explanation": {
+                        "text": "これはFirestoreやBigtableの役割です。",
+                        "reference": "https://cloud.google.com/firestore/docs/overview",
+                        "reference_label": "Firestore 概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "SQLクエリを並列実行する",
+                    "explanation": {
+                        "text": "SQL実行はBigQueryの機能です。",
+                        "reference": "https://cloud.google.com/bigquery/docs/introduction",
+                        "reference_label": "BigQuery 概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "データをストリーミング挿入する",
+                    "explanation": {
+                        "text": "ストリーミング挿入はBigQueryの機能です。",
+                        "reference": "https://cloud.google.com/bigquery/streaming-data-into-bigquery",
+                        "reference_label": "BigQuery ストリーミング挿入"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Cloud ComposerはApache Airflowベースで、DAGを使ってワークフローの依存関係を定義します。",
+                "reference": "https://cloud.google.com/composer/docs/how-to/using/using-dags",
+                "reference_label": "Cloud Composer DAG"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q32",
+            "question": "Cloud Spannerで水平スケーリングを実現する方法はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "ノード数を増やす",
+                    "explanation": {
+                        "text": "Spannerはノードを追加することで水平スケーリングできます。",
+                        "reference": "https://cloud.google.com/spanner/docs/compute-capacity",
+                        "reference_label": "Cloud Spanner ノードスケーリング"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "ストレージクラスを変更する",
+                    "explanation": {
+                        "text": "ストレージクラス変更は水平スケーリングではありません。",
+                        "reference": "https://cloud.google.com/spanner/docs/compute-capacity",
+                        "reference_label": "Cloud Spanner ノードスケーリング"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "キャッシュサイズを増やす",
+                    "explanation": {
+                        "text": "キャッシュ調整はスケーリングとは直接関係しません。",
+                        "reference": "https://cloud.google.com/spanner/docs/compute-capacity",
+                        "reference_label": "Cloud Spanner ノードスケーリング"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "外部キー制約を追加する",
+                    "explanation": {
+                        "text": "外部キー制約はデータモデリングの要素であり、スケーリングには関与しません。",
+                        "reference": "https://cloud.google.com/spanner/docs/compute-capacity",
+                        "reference_label": "Cloud Spanner ノードスケーリング"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Cloud Spannerではノードを増加させることで水平スケーリングを実現します。",
+                "reference": "https://cloud.google.com/spanner/docs/compute-capacity",
+                "reference_label": "Cloud Spanner ノードスケーリング"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q33",
+            "question": "Cloud Data FusionとCloud Dataprepの違いとして正しいものはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Data FusionはETLパイプライン構築用、Dataprepはデータクレンジング用",
+                    "explanation": {
+                        "text": "Data FusionはETLパイプラインの設計に使い、Dataprepはデータ準備に特化します。",
+                        "reference": "https://cloud.google.com/data-fusion/docs/overview",
+                        "reference_label": "Cloud Data Fusion 概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "両方ともSQL分析エンジンである",
+                    "explanation": {
+                        "text": "SQL分析はBigQueryの機能であり、Data FusionやDataprepの機能ではありません。",
+                        "reference": "https://cloud.google.com/bigquery/docs/introduction",
+                        "reference_label": "BigQuery 概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "両方ともNoSQLデータベースである",
+                    "explanation": {
+                        "text": "両者ともデータベースではなくETL/データ準備ツールです。",
+                        "reference": "https://cloud.google.com/data-fusion/docs/overview",
+                        "reference_label": "Cloud Data Fusion 概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Data FusionはRDBMS、DataprepはNoSQLである",
+                    "explanation": {
+                        "text": "どちらもデータベースではなくETLやデータ変換サービスです。",
+                        "reference": "https://cloud.google.com/dataprep/docs/overview",
+                        "reference_label": "Cloud Dataprep 概要"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Data FusionはGUIベースでETLを構築し、Dataprepはデータクレンジングや変換に利用されます。",
+                "reference": "https://cloud.google.com/data-fusion/docs/overview",
+                "reference_label": "Cloud Data Fusion 概要"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q34",
+            "question": "BigQueryでフェデレーションクエリを使う利点はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Cloud StorageやCloud SQLのデータを直接クエリできる",
+                    "explanation": {
+                        "text": "フェデレーションクエリを利用すると外部データソースを直接クエリ可能です。",
+                        "reference": "https://cloud.google.com/bigquery/docs/federated-queries",
+                        "reference_label": "BigQuery フェデレーションクエリ"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "外部データを自動でBigQueryにコピーする",
+                    "explanation": {
+                        "text": "フェデレーションはコピーせずに外部データを参照します。",
+                        "reference": "https://cloud.google.com/bigquery/docs/federated-queries",
+                        "reference_label": "BigQuery フェデレーションクエリ"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "クエリを無料で実行できる",
+                    "explanation": {
+                        "text": "フェデレーションクエリも通常の料金が発生します。",
+                        "reference": "https://cloud.google.com/bigquery/docs/federated-queries",
+                        "reference_label": "BigQuery フェデレーションクエリ"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "スキーマを自動的に生成する",
+                    "explanation": {
+                        "text": "スキーマ生成はフェデレーションクエリの機能ではありません。",
+                        "reference": "https://cloud.google.com/bigquery/docs/federated-queries",
+                        "reference_label": "BigQuery フェデレーションクエリ"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "フェデレーションクエリを利用すると、Cloud StorageやCloud SQLなどの外部データを直接参照できます。",
+                "reference": "https://cloud.google.com/bigquery/docs/federated-queries",
+                "reference_label": "BigQuery フェデレーションクエリ"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q35",
+            "question": "DataprocとDataflowの大きな違いはどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "DataprocはHadoop/Sparkベース、DataflowはApache Beamベース",
+                    "explanation": {
+                        "text": "DataprocはHadoopやSparkをマネージド提供し、DataflowはApache Beamを基盤とします。",
+                        "reference": "https://cloud.google.com/dataproc/docs/overview",
+                        "reference_label": "Dataproc 概要"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "両方ともSQL専用サービスである",
+                    "explanation": {
+                        "text": "SQL専用はBigQueryであり、DataprocやDataflowではありません。",
+                        "reference": "https://cloud.google.com/bigquery/docs/introduction",
+                        "reference_label": "BigQuery 概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "両方ともNoSQLデータベースである",
+                    "explanation": {
+                        "text": "DataprocとDataflowはデータ処理基盤であり、データベースではありません。",
+                        "reference": "https://cloud.google.com/dataproc/docs/overview",
+                        "reference_label": "Dataproc 概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "両方とも機械学習モデルをデプロイするサービスである",
+                    "explanation": {
+                        "text": "機械学習モデルのデプロイはVertex AIの機能です。",
+                        "reference": "https://cloud.google.com/vertex-ai/docs",
+                        "reference_label": "Vertex AI 概要"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Dataprocは従来型のHadoop/Sparkをクラウドに移行する用途に適しており、DataflowはApache Beamベースのストリーム・バッチ処理を統合的に実現します。",
+                "reference": "https://cloud.google.com/dataproc/docs/overview",
+                "reference_label": "Dataproc 概要"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q36",
+            "question": "BigQueryのパーティション分割テーブルでデータを効率的に管理する最も一般的な方法はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "日付やタイムスタンプ列を基準に分割する",
+                    "explanation": {
+                        "text": "日付やタイムスタンプ列を基準にすると、時間に基づくクエリの効率が向上します。",
+                        "reference": "https://cloud.google.com/bigquery/docs/partitioned-tables",
+                        "reference_label": "BigQuery パーティション分割"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "SQLのWHERE句に含まれる全ての列を分割キーにする",
+                    "explanation": {
+                        "text": "分割キーは1列のみ指定可能で、全ての列を分割キーにすることはできません。",
+                        "reference": "https://cloud.google.com/bigquery/docs/partitioned-tables",
+                        "reference_label": "BigQuery パーティション分割"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "スキーマを自動的に変更する",
+                    "explanation": {
+                        "text": "パーティション分割はスキーマ変更を伴いません。",
+                        "reference": "https://cloud.google.com/bigquery/docs/partitioned-tables",
+                        "reference_label": "BigQuery パーティション分割"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "すべての列を自動的に圧縮する",
+                    "explanation": {
+                        "text": "データ圧縮はストレージ機能であり、パーティション分割の目的ではありません。",
+                        "reference": "https://cloud.google.com/bigquery/docs/partitioned-tables",
+                        "reference_label": "BigQuery パーティション分割"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "BigQueryのパーティションは日付・タイムスタンプ列で分割するのが最も一般的で、効率的にデータを管理できます。",
+                "reference": "https://cloud.google.com/bigquery/docs/partitioned-tables",
+                "reference_label": "BigQuery パーティション分割"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q37",
+            "question": "Cloud SQLで自動バックアップを有効にする主な理由はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "障害発生時にポイントインタイムリカバリを実行できる",
+                    "explanation": {
+                        "text": "自動バックアップにより特定の時点にデータベースを復元可能です。",
+                        "reference": "https://cloud.google.com/sql/docs/mysql/backup-recovery/backups",
+                        "reference_label": "Cloud SQL バックアップ"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "クエリの実行速度を向上させる",
+                    "explanation": {
+                        "text": "バックアップはパフォーマンス改善の仕組みではありません。",
+                        "reference": "https://cloud.google.com/sql/docs/mysql/backup-recovery/backups",
+                        "reference_label": "Cloud SQL バックアップ"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "SQL構文エラーを自動的に修正する",
+                    "explanation": {
+                        "text": "バックアップは構文エラーの修正機能を提供しません。",
+                        "reference": "https://cloud.google.com/sql/docs/mysql/backup-recovery/backups",
+                        "reference_label": "Cloud SQL バックアップ"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "スキーマを自動的に最適化する",
+                    "explanation": {
+                        "text": "スキーマ最適化はバックアップ機能の目的ではありません。",
+                        "reference": "https://cloud.google.com/sql/docs/mysql/backup-recovery/backups",
+                        "reference_label": "Cloud SQL バックアップ"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Cloud SQLの自動バックアップは、障害発生時の復旧を容易にするための重要な機能です。",
+                "reference": "https://cloud.google.com/sql/docs/mysql/backup-recovery/backups",
+                "reference_label": "Cloud SQL バックアップ"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q38",
+            "question": "Cloud Dataprocを利用する際に初期化アクション（Initialization Action）の主な用途はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "クラスタ起動時に追加のソフトウェアをインストールする",
+                    "explanation": {
+                        "text": "初期化アクションを利用して、クラスタ起動時にカスタムソフトウェアを導入できます。",
+                        "reference": "https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/init-actions",
+                        "reference_label": "Dataproc 初期化アクション"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "クラスタを自動的に停止する",
+                    "explanation": {
+                        "text": "クラスタ自動停止は別の機能であり、初期化アクションの目的ではありません。",
+                        "reference": "https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/init-actions",
+                        "reference_label": "Dataproc 初期化アクション"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "SQLクエリを最適化する",
+                    "explanation": {
+                        "text": "初期化アクションはSQL最適化には関与しません。",
+                        "reference": "https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/init-actions",
+                        "reference_label": "Dataproc 初期化アクション"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ストレージクラスを変更する",
+                    "explanation": {
+                        "text": "ストレージクラス変更はCloud Storageの機能です。",
+                        "reference": "https://cloud.google.com/storage/docs/storage-classes",
+                        "reference_label": "Cloud Storage ストレージクラス"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "初期化アクションを使うことで、Dataprocクラスタ起動時に追加のソフトウェアを導入可能です。",
+                "reference": "https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/init-actions",
+                "reference_label": "Dataproc 初期化アクション"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q39",
+            "question": "BigQueryでAuthorized Viewを利用する主な目的はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "特定のユーザーに制御されたデータアクセスを提供する",
+                    "explanation": {
+                        "text": "Authorized Viewを使うと、基盤テーブルのアクセス権限を持たないユーザーに対してビューを介してデータを提供できます。",
+                        "reference": "https://cloud.google.com/bigquery/docs/authorized-views",
+                        "reference_label": "BigQuery Authorized Views"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "クエリを自動的に最適化する",
+                    "explanation": {
+                        "text": "Authorized Viewはクエリ最適化の仕組みではありません。",
+                        "reference": "https://cloud.google.com/bigquery/docs/authorized-views",
+                        "reference_label": "BigQuery Authorized Views"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ストレージコストを削減する",
+                    "explanation": {
+                        "text": "Authorized Viewはストレージ削減には直接関与しません。",
+                        "reference": "https://cloud.google.com/bigquery/docs/authorized-views",
+                        "reference_label": "BigQuery Authorized Views"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "外部データソースをクエリする",
+                    "explanation": {
+                        "text": "外部データソースのクエリはフェデレーションクエリの機能です。",
+                        "reference": "https://cloud.google.com/bigquery/docs/federated-queries",
+                        "reference_label": "BigQuery フェデレーションクエリ"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Authorized Viewにより、基盤テーブルの直接アクセス権を持たないユーザーにも制御されたデータアクセスを提供できます。",
+                "reference": "https://cloud.google.com/bigquery/docs/authorized-views",
+                "reference_label": "BigQuery Authorized Views"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q40",
+            "question": "Cloud Firestoreでトランザクションを利用する主な利点はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "複数の読み取り・書き込み操作を原子的に実行できる",
+                    "explanation": {
+                        "text": "Firestoreトランザクションは複数操作を原子的に処理でき、部分的な失敗が発生しません。",
+                        "reference": "https://cloud.google.com/firestore/docs/transactions",
+                        "reference_label": "Firestore トランザクション"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "SQLクエリを最適化できる",
+                    "explanation": {
+                        "text": "FirestoreはSQLをサポートしていません。",
+                        "reference": "https://cloud.google.com/firestore/docs/transactions",
+                        "reference_label": "Firestore トランザクション"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "外部キー制約をサポートする",
+                    "explanation": {
+                        "text": "Firestoreは外部キー制約を持ちません。",
+                        "reference": "https://cloud.google.com/firestore/docs/transactions",
+                        "reference_label": "Firestore トランザクション"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "データを自動でアーカイブする",
+                    "explanation": {
+                        "text": "アーカイブはトランザクションの機能ではありません。",
+                        "reference": "https://cloud.google.com/firestore/docs/transactions",
+                        "reference_label": "Firestore トランザクション"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Firestoreのトランザクションを利用すると複数の読み書きを一貫性を持って実行可能です。",
+                "reference": "https://cloud.google.com/firestore/docs/transactions",
+                "reference_label": "Firestore トランザクション"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q41",
+            "question": "DataflowでWatermarkを利用する目的はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "遅延到着データの処理を制御する",
+                    "explanation": {
+                        "text": "Watermarkはストリーミング処理で遅延データをどの時点まで許容するかを制御します。",
+                        "reference": "https://cloud.google.com/dataflow/docs/guides/watermarks",
+                        "reference_label": "Dataflow Watermarks"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "SQLクエリを自動生成する",
+                    "explanation": {
+                        "text": "WatermarkはSQL生成には関与しません。",
+                        "reference": "https://cloud.google.com/dataflow/docs/guides/watermarks",
+                        "reference_label": "Dataflow Watermarks"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "データを暗号化する",
+                    "explanation": {
+                        "text": "Watermarkは暗号化とは関係ありません。",
+                        "reference": "https://cloud.google.com/dataflow/docs/guides/watermarks",
+                        "reference_label": "Dataflow Watermarks"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "外部データベースをバックアップする",
+                    "explanation": {
+                        "text": "バックアップ機能はWatermarkの役割ではありません。",
+                        "reference": "https://cloud.google.com/dataflow/docs/guides/watermarks",
+                        "reference_label": "Dataflow Watermarks"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Watermarkはストリーミングジョブにおいて遅延データを処理するための制御指標として使われます。",
+                "reference": "https://cloud.google.com/dataflow/docs/guides/watermarks",
+                "reference_label": "Dataflow Watermarks"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q42",
+            "question": "Cloud Storageでバケットのリージョンを選択する際に考慮すべき要素はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "データ利用者に近い場所を選ぶことでレイテンシを低減できる",
+                    "explanation": {
+                        "text": "ユーザーに近いリージョンを選ぶとアクセスのレイテンシを削減できます。",
+                        "reference": "https://cloud.google.com/storage/docs/locations",
+                        "reference_label": "Cloud Storage リージョン"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "リージョンは後から自由に変更可能である",
+                    "explanation": {
+                        "text": "一度作成したバケットのリージョンは変更できません。",
+                        "reference": "https://cloud.google.com/storage/docs/locations",
+                        "reference_label": "Cloud Storage リージョン"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "リージョン選択はコストに影響しない",
+                    "explanation": {
+                        "text": "リージョンによってネットワーク料金などのコストが異なります。",
+                        "reference": "https://cloud.google.com/storage/docs/locations",
+                        "reference_label": "Cloud Storage リージョン"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "すべてのデータは自動的にグローバルに複製される",
+                    "explanation": {
+                        "text": "複製はマルチリージョンを選択した場合に限られます。",
+                        "reference": "https://cloud.google.com/storage/docs/locations",
+                        "reference_label": "Cloud Storage リージョン"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Cloud Storageのリージョン選択はレイテンシやコストに大きな影響を与えるため、利用者の近くを選択するのが一般的です。",
+                "reference": "https://cloud.google.com/storage/docs/locations",
+                "reference_label": "Cloud Storage リージョン"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q43",
+            "question": "BigQueryでクエリのパフォーマンスを調査するために利用できる機能はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "クエリ実行計画（EXPLAIN）",
+                    "explanation": {
+                        "text": "BigQueryではEXPLAIN文を使ってクエリの実行計画を確認できます。",
+                        "reference": "https://cloud.google.com/bigquery/docs/explain-plans",
+                        "reference_label": "BigQuery EXPLAIN プラン"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "スキーマ自動検出",
+                    "explanation": {
+                        "text": "スキーマ自動検出はロード時の機能で、パフォーマンス調査には使いません。",
+                        "reference": "https://cloud.google.com/bigquery/docs/schema-detect",
+                        "reference_label": "BigQuery スキーマ検出"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "フェデレーションクエリ",
+                    "explanation": {
+                        "text": "フェデレーションクエリは外部データを直接参照する機能であり、性能調査には使いません。",
+                        "reference": "https://cloud.google.com/bigquery/docs/federated-queries",
+                        "reference_label": "BigQuery フェデレーションクエリ"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "キャッシュ機能",
+                    "explanation": {
+                        "text": "キャッシュはコスト削減には役立ちますが、クエリプランの調査には利用しません。",
+                        "reference": "https://cloud.google.com/bigquery/docs/query-results-cache",
+                        "reference_label": "BigQuery クエリキャッシュ"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "EXPLAINを使えばBigQueryのクエリ実行計画を可視化し、パフォーマンス調査が可能です。",
+                "reference": "https://cloud.google.com/bigquery/docs/explain-plans",
+                "reference_label": "BigQuery EXPLAIN プラン"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q44",
+            "question": "Cloud Spannerで高スループットを確保するために設計上重要な考慮点はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "ホットスポットを避けるように主キーを設計する",
+                    "explanation": {
+                        "text": "Spannerは主キー順にデータを格納するため、連番キーはホットスポットを生みやすくなります。",
+                        "reference": "https://cloud.google.com/spanner/docs/schema-design",
+                        "reference_label": "Cloud Spanner スキーマ設計"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "必ず単一リージョンで利用する",
+                    "explanation": {
+                        "text": "グローバル分散がSpannerの特徴であり、単一リージョンが必須ではありません。",
+                        "reference": "https://cloud.google.com/spanner/docs/instances",
+                        "reference_label": "Cloud Spanner インスタンス"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "SQLを使わないようにする",
+                    "explanation": {
+                        "text": "SpannerはSQLをサポートしており、利用を避ける必要はありません。",
+                        "reference": "https://cloud.google.com/spanner/docs/overview",
+                        "reference_label": "Cloud Spanner 概要"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "必ずJOINを多用する",
+                    "explanation": {
+                        "text": "不要なJOINはパフォーマンス低下を招きます。",
+                        "reference": "https://cloud.google.com/spanner/docs/query-execution",
+                        "reference_label": "Cloud Spanner クエリ実行"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Cloud Spannerではホットスポットを避けるキー設計が高スループット確保に不可欠です。",
+                "reference": "https://cloud.google.com/spanner/docs/schema-design",
+                "reference_label": "Cloud Spanner スキーマ設計"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q45",
+            "question": "Cloud DataflowでStateful Processingを利用する利点はどれか。",
+            "difficulty": "hard",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "過去のイベント情報を保持しながら処理できる",
+                    "explanation": {
+                        "text": "Stateful Processingを使うと、同じキーに属するイベントに対して状態を保持して処理できます。",
+                        "reference": "https://cloud.google.com/dataflow/docs/stateful-processing",
+                        "reference_label": "Dataflow Stateful Processing"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "SQLクエリを自動生成できる",
+                    "explanation": {
+                        "text": "Stateful ProcessingはSQL生成機能ではありません。",
+                        "reference": "https://cloud.google.com/dataflow/docs/stateful-processing",
+                        "reference_label": "Dataflow Stateful Processing"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "ストレージコストを削減する",
+                    "explanation": {
+                        "text": "Stateful Processingは処理の仕組みであり、ストレージコスト削減には直接関与しません。",
+                        "reference": "https://cloud.google.com/dataflow/docs/stateful-processing",
+                        "reference_label": "Dataflow Stateful Processing"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "外部データベースを自動で複製する",
+                    "explanation": {
+                        "text": "Stateful Processingは外部DB複製機能を提供しません。",
+                        "reference": "https://cloud.google.com/dataflow/docs/stateful-processing",
+                        "reference_label": "Dataflow Stateful Processing"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Stateful Processingはキー単位で状態を保持する仕組みであり、遅延イベント処理や集計に有効です。",
+                "reference": "https://cloud.google.com/dataflow/docs/stateful-processing",
+                "reference_label": "Dataflow Stateful Processing"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q46",
+            "question": "Cloud Dataprepのスケジューリング機能の利点はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "定期的にデータクレンジングや変換処理を自動実行できる",
+                    "explanation": {
+                        "text": "スケジューリングを設定することで、データ準備を自動化できます。",
+                        "reference": "https://cloud.google.com/dataprep/docs/concepts/scheduling",
+                        "reference_label": "Cloud Dataprep スケジューリング"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "SQLクエリを最適化できる",
+                    "explanation": {
+                        "text": "DataprepはSQL最適化機能を持ちません。",
+                        "reference": "https://cloud.google.com/dataprep/docs/concepts/scheduling",
+                        "reference_label": "Cloud Dataprep スケジューリング"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "外部キー制約をサポートできる",
+                    "explanation": {
+                        "text": "外部キー制約はRDBMSの機能であり、Dataprepには存在しません。",
+                        "reference": "https://cloud.google.com/dataprep/docs/concepts/scheduling",
+                        "reference_label": "Cloud Dataprep スケジューリング"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "データをNoSQL形式で保存できる",
+                    "explanation": {
+                        "text": "Dataprepはデータベースではありません。",
+                        "reference": "https://cloud.google.com/dataprep/docs/overview",
+                        "reference_label": "Cloud Dataprep 概要"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Dataprepのスケジューリング機能により、定期的なデータ準備タスクを自動化できます。",
+                "reference": "https://cloud.google.com/dataprep/docs/concepts/scheduling",
+                "reference_label": "Cloud Dataprep スケジューリング"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q47",
+            "question": "BigQueryでクエリの実行コストを事前に見積もるために利用する機能はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "Dry Run",
+                    "explanation": {
+                        "text": "Dry Runを使うとクエリの実行コストを事前に確認できます。",
+                        "reference": "https://cloud.google.com/bigquery/docs/dry-run-queries",
+                        "reference_label": "BigQuery Dry Run"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "EXPLAIN プラン",
+                    "explanation": {
+                        "text": "EXPLAINはクエリプランを表示するもので、コスト見積もりはDry Runが担当します。",
+                        "reference": "https://cloud.google.com/bigquery/docs/dry-run-queries",
+                        "reference_label": "BigQuery Dry Run"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "フェデレーションクエリ",
+                    "explanation": {
+                        "text": "フェデレーションは外部データを参照する機能です。",
+                        "reference": "https://cloud.google.com/bigquery/docs/federated-queries",
+                        "reference_label": "BigQuery フェデレーションクエリ"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "キャッシュ",
+                    "explanation": {
+                        "text": "キャッシュはコストを削減する機能ですが、見積もりには使いません。",
+                        "reference": "https://cloud.google.com/bigquery/docs/query-results-cache",
+                        "reference_label": "BigQuery キャッシュ"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Dry Runにより、実際にクエリを実行せずにスキャンされるデータ量を確認できます。",
+                "reference": "https://cloud.google.com/bigquery/docs/dry-run-queries",
+                "reference_label": "BigQuery Dry Run"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q48",
+            "question": "Cloud Storageのバージョニングを有効にすると得られる利点はどれか。",
+            "difficulty": "normal",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "削除や上書きされたオブジェクトの以前のバージョンを保持できる",
+                    "explanation": {
+                        "text": "バージョニングを有効にすると、古いオブジェクトを保持し復元できます。",
+                        "reference": "https://cloud.google.com/storage/docs/object-versioning",
+                        "reference_label": "Cloud Storage オブジェクトバージョニング"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "自動でSQL分析を行える",
+                    "explanation": {
+                        "text": "SQL分析はBigQueryの機能です。",
+                        "reference": "https://cloud.google.com/bigquery/docs/introduction",
+                        "reference_label": "BigQuery 概要"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "外部キー制約を追加できる",
+                    "explanation": {
+                        "text": "外部キーはRDBMSの機能です。",
+                        "reference": "https://cloud.google.com/storage/docs/object-versioning",
+                        "reference_label": "Cloud Storage オブジェクトバージョニング"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "ネットワークレイテンシを削減できる",
+                    "explanation": {
+                        "text": "バージョニングはネットワークレイテンシには影響しません。",
+                        "reference": "https://cloud.google.com/storage/docs/object-versioning",
+                        "reference_label": "Cloud Storage オブジェクトバージョニング"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Cloud Storageのバージョニングはオブジェクトの古いバージョンを保持し、データ損失を防ぎます。",
+                "reference": "https://cloud.google.com/storage/docs/object-versioning",
+                "reference_label": "Cloud Storage オブジェクトバージョニング"
+            }
+        },
+        {
+            "id": "gcp-PDE-P-q49",
+            "question": "Cloud Composerでワークフローの実行履歴を確認する方法はどれか。",
+            "difficulty": "easy",
+            "choices": [
+                {
+                    "key": "A",
+                    "text": "AirflowのWeb UIを利用する",
+                    "explanation": {
+                        "text": "Cloud ComposerはAirflowベースであり、Web UIから実行履歴を確認できます。",
+                        "reference": "https://cloud.google.com/composer/docs/how-to/using/using-airflow-console",
+                        "reference_label": "Cloud Composer Airflow コンソール"
+                    }
+                },
+                {
+                    "key": "B",
+                    "text": "BigQueryに自動的に保存される",
+                    "explanation": {
+                        "text": "ワークフロー履歴はBigQueryには保存されません。",
+                        "reference": "https://cloud.google.com/composer/docs/how-to/using/using-airflow-console",
+                        "reference_label": "Cloud Composer Airflow コンソール"
+                    }
+                },
+                {
+                    "key": "C",
+                    "text": "Firestoreに自動的に保存される",
+                    "explanation": {
+                        "text": "履歴はFirestoreには保存されません。",
+                        "reference": "https://cloud.google.com/composer/docs/how-to/using/using-airflow-console",
+                        "reference_label": "Cloud Composer Airflow コンソール"
+                    }
+                },
+                {
+                    "key": "D",
+                    "text": "Cloud Storageに必ず保存される",
+                    "explanation": {
+                        "text": "履歴はCloud Storageに自動保存されません。",
+                        "reference": "https://cloud.google.com/composer/docs/how-to/using/using-airflow-console",
+                        "reference_label": "Cloud Composer Airflow コンソール"
+                    }
+                }
+            ],
+            "answer": "A",
+            "explanation": {
+                "text": "Cloud Composerの実行履歴はAirflowのWeb UIから確認できます。",
+                "reference": "https://cloud.google.com/composer/docs/how-to/using/using-airflow-console",
+                "reference_label": "Cloud Composer Airflow コンソール"
+            }
+        },
+    {
+      "id": "gcp-PDE-P-q50",
+      "question": "BigQueryのセキュリティ機能としてカラムレベルセキュリティを利用する目的はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "特定のユーザーに特定のカラムへのアクセスを制御する",
+          "explanation": {
+            "text": "BigQueryではData Catalogのポリシータグ（分類タグ）をカラムに付与し、ユーザーやグループに付与したロールに応じて列単位で参照可否を制御できます。動的データマスキングと組み合わせることで、同じ列でも“生値/マスク/非表示”など段階的に制御可能です。",
+            "reference": "https://cloud.google.com/bigquery/docs/column-level-security-intro",
+            "reference_label": "BigQuery: Column-level access control 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "外部キー制約を追加する",
+          "explanation": {
+            "text": "外部キーはテーブル制約の一種であり、列アクセス制御とは目的が異なります。BigQueryでは外部キーは“宣言可能だが非強制（unenforced）”で、アクセス制御機能ではありません。",
+            "reference": "https://cloud.google.com/bigquery/docs/primary-foreign-keys",
+            "reference_label": "BigQuery: Primary/Foreign Keys（非強制）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "クエリの実行速度を最適化する",
+          "explanation": {
+            "text": "カラムレベルセキュリティはセキュリティ境界を細分化する仕組みであり、性能最適化を目的とした機能ではありません。性能最適化はスロットやクエリ最適化、マテビュー等で検討します。",
+            "reference": "https://cloud.google.com/bigquery/docs/column-level-security",
+            "reference_label": "BigQuery: Restrict access with column-level access control"
+          }
+        },
+        {
+          "key": "D",
+          "text": "クエリコストを無料にする",
+          "explanation": {
+            "text": "カラムレベルセキュリティは料金を免除する機能ではありません。アクセス可否やマスキングの有無に関わらず、通常の課金モデルが適用されます。",
+            "reference": "https://cloud.google.com/bigquery/docs/column-level-security-intro",
+            "reference_label": "BigQuery: Column-level access control 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "カラムレベルセキュリティは“必要最小限の権限”を列単位まで落とし込むための機能です。Data Catalogのポリシータグをカラムに付与し、そのタグに対するFine-Grained Reader等の権限を付与することで、特定ユーザーだけが機密列（PIIなど）を閲覧できるように制御します。さらに動的データマスキングを併用すれば、同じ列でもロールに応じて生値やマスク値を返す柔軟な制御が可能です。",
+        "reference": "https://cloud.google.com/bigquery/docs/column-level-security-intro",
+        "reference_label": "BigQuery: Column-level access control 概要"
+      }
+    }
+  ]
+}

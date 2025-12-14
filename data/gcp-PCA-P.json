@@ -1,0 +1,2467 @@
+{
+  "exam": {
+    "id": "PCA-P",
+    "title": "Google Professional Cloud Architect",
+    "description": "この試験は、Google Cloudのクラウド技術を用いて、堅牢・安全・スケーラブル・コスト最適化されたソリューションを設計、開発、管理できるクラウドアーキテクトとしての能力を検証します。受験者には、ビジネス要求に基づいたクラウドアーキテクチャの設計、インフラのプロビジョニング、セキュリティおよびコンプライアンスの設計、技術・業務プロセスの最適化、実装管理、運用信頼性の確保といった能力が求められます。試験合格により、Google Cloud Platform（GCP）環境における高付加価値なソリューション構築スキルを公式に証明できます。",
+    "version": "2025",
+    "price": "200 USD", 
+    "difficulty": "難しい",
+    "official-site": "https://cloud.google.com/learn/certification/cloud-architect",
+    "category": {
+      "id": "gcp",
+      "name": "Google Cloud"
+    }
+  },
+  "questions": [
+    {
+      "id": "gcp-PCA-P-q1",
+      "question": "ある企業がオンプレミスから Google Cloud Platform (GCP) にワークロードを移行する計画を立てています。移行を成功させるために設計段階で重視すべき項目として最も適切でないものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "移行対象のアプリケーションの依存関係（他サービスやデータへの依存など）の把握",
+          "explanation": {
+            "text": "アプリケーション間の依存関係を無視すると、移行後にサービス間の通信障害や起動順序の問題が発生する可能性があるため、設計段階での把握は非常に重要。",
+            "reference": "https://cloud.google.com/learn/certification/cloud-architect",
+            "reference_label": "Professional Cloud Architect Exam Guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ネットワーク帯域（帯域幅やレイテンシ）の見積もり",
+          "explanation": {
+            "text": "オンプレミスとクラウド間の通信が発生する場合、ネットワーク性能が業務に与える影響を事前に評価することが重要。",
+            "reference": "https://cloud.google.com/learn/certification/cloud-architect",
+            "reference_label": "Exam domains for PCA"
+          }
+        },
+        {
+          "key": "C",
+          "text": "クラウド移行後の電力消費および冷却のオペレーションコスト",
+          "explanation": {
+            "text": "GCP ではデータセンターは Google が運用するので、ユーザーは電力消費や冷却設備そのものの運用コストを直接管理しない。設計段階で重視するとはいえ“電力消費・冷却設備の現地オペレーション”はオンプレミス側の項目であり、クラウド移行の設計で重点を置く対象ではないことが多い。",
+            "reference": "https://cloud.google.com/learn/certification/cloud-architect",
+            "reference_label": "Responsibilities of Cloud Architect"
+          }
+        },
+        {
+          "key": "D",
+          "text": "クラウド側でのアイデンティティとアクセス管理 (IAM) ポリシーの設計",
+          "explanation": {
+            "text": "セキュリティとコンプライアンスの観点から、クラウド移行において IAM ポリシーは非常に重大な要素である。",
+            "reference": "https://cloud.google.com/learn/certification/cloud-architect",
+            "reference_label": "Designing for security and compliance"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "“電力消費および冷却のオペレーションコスト”はオンプレミス運用の直接的管理対象であり、GCP のようなクラウドではそれらは Google が管理するインフラの部分であるため、設計段階での焦点としては通常優先度が低い。他の選択肢は移行設計に不可欠な要素。",
+        "reference": "https://cloud.google.com/learn/certification/cloud-architect",
+        "reference_label": "Professional Cloud Architect Exam Guide"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q2",
+      "question": "GCP における Virtual Private Cloud (VPC) ネットワークの設定で、“リージョナル・リージョン間負荷分散 (Regional/Global Load Balancing)” を設計する際、考慮すべきものとして **複数選択** 問題。以下の中から正しいものを全て選べ。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "HTTP(S) ロードバランサはグローバルロードバランサとして動作可能であり、複数リージョンをまたぐトラフィックを分散できる。",
+          "explanation": {
+            "text": "HTTP(S) ロードバランサはグローバルであり、複数リージョンにまたがるバックエンドにトラフィックをルーティング可能であるため、DR（災害復旧）や地理的冗長性の確保に有効である。",
+            "reference": "https://cloud.google.com/compute/docs/load-balancing/http/overview",
+            "reference_label": "HTTP(S) Load Balancing Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Internal TCP/UDP Load Balancer はグローバルに負荷分散を行うので、すべてのリージョン間において同じ IP アドレスを使用できる。",
+            "explanation": {
+              "text": "Internal TCP/UDP Load Balancer はリージョン内（もしくは VPC 内限定）での負荷分散を提供する。グローバル IP を持たず、リージョンをまたがるものではない。",
+              "reference": "https://cloud.google.com/load-balancing/docs/internal/tcp-overview",
+              "reference_label": "Internal TCP/UDP Load Balancing"
+            }
+        },
+        {
+          "key": "C",
+          "text": "バックエンドの VM インスタンスはマネージド インスタンス グループ (MIG) を用いることで自動スケーリングとヘルスチェックが可能である。",
+          "explanation": {
+            "text": "MIG を使えばスケールアウト・スケールインが自動化でき、またヘルスチェックを設定すれば異常な VM をトラフィック対象から外せる。これは高可用性を確保するために重要。",
+            "reference": "https://cloud.google.com/compute/docs/autoscaler/",
+            "reference_label": "Instance group autoscaling"
+          }
+        },
+        {
+          "key": "D",
+          "text": "グローバルロードバランサではバックエンド サービスに対してリージョンを指定せずに自動で最寄りリージョンを選んでくれるので、リージョン設定は不要である。",
+          "explanation": {
+            "text": "グローバルロードバランサでもバックエンドにはリージョン指定が必要。すべてのリージョンを対象とする設定が “自動” に行われるわけではないし、どのリージョンに配置するかは設計者が選ぶ。したがって「不要」というのは誤り。",
+            "reference": "https://cloud.google.com/load-balancing/docs/backend-service",
+            "reference_label": "Backend service for load balancing"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "HTTP(S) ロードバランサはグローバルに複数リージョンを跨ぐトラフィックを分散可能 (A 正)。マネージド インスタンス グループを使うことで自動スケーリングとヘルスチェックが使える (C 正)。「Internal TCP/UDP Load Balancer はグローバルに振る舞う」は誤り (B 誤)。「リージョン指定が不要」は誤り (D 誤)。",
+        "reference": "https://cloud.google.com/compute/docs/load-balancing",
+        "reference_label": "GCP Load Balancing documentation"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q3",
+      "question": "セキュリティとコンプライアンス設計において、組織 (Organization)、フォルダ (Folders)、プロジェクト (Projects) の階層構造 (Resource Hierarchy) は非常に重要です。以下の記述のうち、**正しい**ものを選べ。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "組織レベルで設定した IAM ロールは、すべてのプロジェクトに遡及的に適用される。",
+          "explanation": {
+            "text": "組織レベルで付与されたロールは、その組織配下のすべてのフォルダ・プロジェクトに継承される。よって、遡及的に影響を与える。",
+            "reference": "https://cloud.google.com/iam/docs/overview",
+            "reference_label": "IAM inheritance"
+          }
+        },
+        {
+          "key": "B",
+          "text": "プロジェクトレベルで Service Account キーを無制限に作成しても、組織ポリシー (Organization Policy) で制限できない。",
+          "explanation": {
+            "text": "組織ポリシーを使って Service Account キーの作成を制限することができる。無制限に作成できるという記述は誤り。",
+            "reference": "https://cloud.google.com/iam/docs/service-accounts#service-account-keys",
+            "reference_label": "Service account keys management"
+          }
+        },
+        {
+          "key": "C",
+          "text": "フォルダレベルでポリシーを設定すれば、そのフォルダ下の全プロジェクトに対してポリシーが適用される。",
+          "explanation": {
+            "text": "フォルダレベルは組織階層の中間であり、該当フォルダ以下の全プロジェクトおよびフォルダに設定が継承されるため正しい。",
+            "reference": "https://cloud.google.com/resource-manager/docs/resource-hierarchy",
+            "reference_label": "Resource hierarchy inheritance"
+          }
+        },
+        {
+          "key": "D",
+          "text": "組織レベルでの IAM ポリシーは具体的なリージョンベースの制限を設定できない。",
+            "explanation": {
+              "text": "組織ポリシーではリージョンの使用制限（e.g. リージョンの許可／禁止）などを設定できる例があるため、この記述は誤り。",
+              "reference": "https://cloud.google.com/resource-manager/docs/organization-policy/using-org-policy",
+              "reference_label": "Organization policy constraints on regions"
+            }
+          }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "A と C が正しい。組織（Organization）で付与したロールは、その組織配下のフォルダ／プロジェクトに継承される（遡及的適用）。フォルダに設定したポリシーはその配下を包括する。B・D はそれぞれ、誤りが含まれている。",
+        "reference": "https://cloud.google.com/resource-manager/docs/resource-hierarchy",
+        "reference_label": "Resource Manager docs"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q4",
+      "question": "GCP の監視・ロギング（Monitoring & Logging）機能を使って、信頼性 (reliability) を向上させようとしています。次のうち、サービスレベル目標 (SLO)、サービスレベル指標 (SLI)、およびサービスレベル契約 (SLA) の関係として **正しい組み合わせ** はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "SLI はシステムの可用性や遅延など、測定可能な指標。SLO はその SLI に基づいて設定された目標値。SLA はサービス提供者と利用者間の契約で、SLO を含むことが多い。",
+          "explanation": {
+            "text": "SLI は “Service Level Indicator”＝指標、SLO はその指標に対する目標、SLA は契約上の合意。これが正しい定義と関係。",
+            "reference": "https://cloud.google.com/architecture/sre/service-level-objectives",
+            "reference_label": "SRE: SLOs and SLIs definitions"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SLO は SLA より緩やかな基準であり、SLA は内部目標としてのみ使われる。",
+          "explanation": {
+            "text": "SLO は内部目標として設定することが多いが、SLA は顧客との契約であり必ずしも内部利用だけではないため、“SLA は内部目標のみ”という記述は誤り。",
+            "reference": "https://cloud.google.com/architecture/sre/service-level-objectives",
+            "reference_label": "SLOs vs SLIs vs SLAs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "SLA を達成できなかった場合、利用者は通常技術的な保証を失うだけで、金銭的補償などは発生しない。",
+          "explanation": {
+            "text": "多くの SLA 契約では補償（クレジットなど）が含まれることがあるので、一律に“補償は発生しない”とは言えない。従ってこの記述は不正確。",
+            "reference": "https://cloud.google.com/architecture/sre/service-level-objectives",
+            "reference_label": "SRE documentation"
+          }
+        },
+        {
+          "key": "D",
+          "text": "SLI が達成されなければ、SLA は自動的に違反と見なされ、補償が行われるが、SLO は何も影響を受けない。",
+          "explanation": {
+            "text": "SLA 違反のトリガーになるのは SLO を含む指標が未達成のときだが、SLO 自体が契約か内部目標かによる。補償については SLA に明記されていなければ発生しない。したがって“自動的に補償が行われる”という記述は必ずしも正しい。誤り。",
+            "reference": "https://cloud.google.com/architecture/sre/service-level-objectives",
+            "reference_label": "SRE service level documentation"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "SLI → 測定可能な指標、SLO → 指標に対する目標値、SLA → 契約。この関係を正確に表しているのは選択肢 A。他は部分的に誤記や過度な一般化を含む。",
+        "reference": "https://cloud.google.com/architecture/sre/service-level-objectives",
+        "reference_label": "SRE: definitions of SLI/SLO/SLA"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q5",
+      "question": "コスト最適化の観点から GCP で設計を行うとき、有効なアプローチとして **複数選択** 問題。以下の中から正しいものをすべて選べ。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "プリエンプティブル（Preemptible）VM を利用して、非本番バッチ処理のコストを削減する。",
+          "explanation": {
+            "text": "プリエンプティブル VM は一般の VM より安価だが、停止される可能性があるため、可用性要件を満たす非本番やバッチ処理に適している。",
+            "reference": "https://cloud.google.com/compute/docs/instances/preemptible",
+            "reference_label": "GCP Preemptible VMs"
+          }
+        },
+        {
+          "key": "B",
+          "text": "使用率の低い VM は常に停止したままにしておき、必要時に手動で起動する運用をすること。",
+          "explanation": {
+            "text": "使用率の低い VM を全て手動で停止／起動するのは運用負荷が高く、オートスケーリングやサーバーレス利用など、より自動化された手法のほうが良い。単純に手動運用することはコスト最適化とは言い難い。",
+            "reference": "https://cloud.google.com/compute/docs/instances/instance-scheduling",
+            "reference_label": "Instance scheduling"
+          }
+        },
+        {
+          "key": "C",
+          "text": "サーバーレス サービス（Cloud Functions、Cloud Run など）を使用して、リソースのアイドル時間を最小化する。",
+          "explanation": {
+            "text": "サーバーレスはリクエストに応じてリソースを割り当てるため、アイドル時のリソースコストを抑えやすい。これはコスト効率の良い設計の一つ。",
+            "reference": "https://cloud.google.com/run/docs",
+            "reference_label": "Cloud Run pricing & serverless"
+          }
+        },
+        {
+          "key": "D",
+          "text": "すべてのストレージを極力高性能かつ最新世代のディスクにすることでレイテンシを低く保つこと。",
+          "explanation": {
+            "text": "高性能ディスクはコストも高いため、すべてに適用するとコスト過多になる。ワークロードによっては標準ディスクや低コストオプションの使用が適切なこともある。したがってこの選択肢は誤り。部分的には適用可能だが“すべて”という語が過度である。",
+            "reference": "https://cloud.google.com/compute/docs/disks",
+            "reference_label": "Persistent Disk types & pricing"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "プリエンプティブル VM の活用 (A) とサーバーレス利用 (C) はコスト最適化の代表的アプローチ。B は手動操作の運用コストと人的ミスが増えるため一般的には不適切。D は “すべて” にすることでコストと性能のトレードオフを無視しており不成立。",
+        "reference": "https://cloud.google.com/compute/docs/instances/preemptible",
+        "reference_label": "Preemptible VM docs; plus serverless pricing docs"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q6",
+      "question": "ある Web アプリケーションを GKE（Google Kubernetes Engine）にデプロイする際、運用信頼性 (operations reliability) を高めるための設計として正しいものを選べ。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Pod の Readiness Probe と Liveness Probe を適切に設定し、異常なコンテナを自動で切り離す。",
+          "explanation": {
+            "text": "Readiness Probe でトラフィックの受け入れ可否を判定し、Liveness Probe でクラッシュしたコンテナを再起動できるため、運用が安定する。",
+            "reference": "https://cloud.google.com/kubernetes-engine/docs/how-to/liveness-readiness-probes",
+            "reference_label": "Kubernetes Engine probes"
+          }
+        },
+        {
+          "key": "B",
+          "text": "すべてのノードプールを同じゾーンに配置して、ゾーン間のネットワーク遅延を最小にする。",
+          "explanation": {
+            "text": "ゾーンを異なるものに分けることで可用性を高める。ひとつのゾーンに集中させると、そのゾーンに障害が起きたとき全体が落ちる可能性が高くなるため、この設計は信頼性向上の観点から誤り。",
+            "reference": "https://cloud.google.com/kubernetes-engine/docs/concepts/high-availability-overview",
+            "reference_label": "High availability in GKE"
+          }
+        },
+        {
+          "key": "C",
+          "text": "PodDisruptionBudget（PDB）を設定し、計画停止時にも一定数以上の Pod を維持する。",
+          "explanation": {
+            "text": "PDB を使うことでノードメンテナンスやローリングアップデート時など、Pod の最低数を確保できるため可用性が維持される。",
+            "reference": "https://cloud.google.com/kubernetes-engine/docs/how-to/pdb",
+            "reference_label": "PodDisruptionBudget docs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "すべてのログをローカルノード内に保存し、外部ストレージへの転送は行わないようにする設計。",
+          "explanation": {
+            "text": "ローカルノードにだけログを保存すると、そのノードが故障したときログが失われる。外部集約・永続化の方が望ましい。よってこの設計は信頼性の観点では不適切。",
+            "reference": "https://cloud.google.com/logging/docs/agent/logging/overview",
+            "reference_label": "Logging best practices"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "A と C は GKE 運用でのベストプラクティスで信頼性を高める。B はゾーン冗長性を利用しないため可用性が低くなりうる。D はログ損失のリスクが高いため避けるべき。",
+        "reference": "https://cloud.google.com/kubernetes-engine/docs/how-to/liveness-readiness-probes",
+        "reference_label": "GKE probes; plus PDB docs"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q7",
+      "question": "GCP で「分析およびビジネスプロセスの最適化 (Analyzing & Optimizing Technical and Business Processes)」を行う際、次の中で**誤っている**設計または運用上の判断はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "BigQuery によるログの集中保存と、定期的なクエリによるコストと運用パフォーマンスの監視。",
+          "explanation": {
+            "text": "BigQuery はログなどの大量データの分析に適しており、運用モニタリングや傾向分析に使えるため有効なアプローチ。",
+            "reference": "https://cloud.google.com/bigquery/docs/overview",
+            "reference_label": "BigQuery Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "定期的なキャパシティプランニングを無視し、システムの利用状況に応じてスケールは手動で行う。",
+            "explanation": {
+              "text": "キャパシティプランニングを無視することは、ピーク時の応答遅延または余剰リソースによるコスト増を招くため誤った設計判断。",
+              "reference": "https://cloud.google.com/learn/certification/cloud-architect",
+              "reference_label": "Exam guide domains"
+            }
+          },
+        {
+          "key": "C",
+          "text": "デプロイメントのパイプラインを構成し、CI/CD を使って本番環境へのデプロイを自動化する。",
+          "explanation": {
+            "text": "CI/CD 自動化はヒューマンエラーを減らし、デプロイの信頼性と効率を上げるため、最適化の観点から望ましい。",
+            "reference": "https://cloud.google.com/cloud-build/docs/overview",
+            "reference_label": "Cloud Build Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "モニタリングやロギングは障害発生時の調査だけに限定し、通常運用時には無効化してコストを削減する運用。",
+          "explanation": {
+            "text": "標準運用時のモニタリング／ロギングを制限することは、異常の早期発見やパフォーマンス低下の兆候の把握を妨げるため誤りである。",
+            "reference": "https://cloud.google.com/learn/certification/cloud-architect",
+            "reference_label": "Exam domain reliability"
+          }
+        }
+      ],
+      "answer": "B,D",
+      "explanation": {
+        "text": "B はキャパシティプランニングを無視するのはピーク時対応やコスト制御でリスクが大きい。D はモニタリング／ロギングを障害調査のみで使うのは運用上の悪手。A や C は最適化・分析の良い方法。",
+        "reference": "https://cloud.google.com/learn/certification/cloud-architect",
+        "reference_label": "Exam Guide PCA domains"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q8",
+      "question": "ある企業はクラウド移行後、レガシーアプリを Compute Engine 上で稼働させる計画を立てています。可用性を最大化するための設計として **最も適切** な選択肢はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "単一ゾーンに大規模な VM を構築し、障害に備える。",
+          "explanation": {
+            "text": "単一ゾーンに依存するとゾーン障害でアプリが停止する可能性があるため、可用性を最大化する手段としては不適切。",
+            "reference": "https://cloud.google.com/compute/docs/regions-zones",
+            "reference_label": "Regions and zones"
+          }
+        },
+        {
+          "key": "B",
+          "text": "複数ゾーンにマネージド インスタンス グループ (MIG) を展開し、自動スケーリングとヘルスチェックを設定する。",
+          "explanation": {
+            "text": "MIG をマルチゾーンに展開すればゾーン障害に耐えられ、ヘルスチェックで異常な VM を自動的に除外できる。最も適切な選択肢。",
+            "reference": "https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups",
+            "reference_label": "Regional managed instance groups"
+          }
+        },
+        {
+          "key": "C",
+          "text": "バックアップを毎日手動で作成し、障害時にリストアする。",
+          "explanation": {
+            "text": "バックアップは重要だが、リアルタイムの可用性確保策ではない。障害発生時に復旧までダウンタイムが長くなる。",
+            "reference": "https://cloud.google.com/compute/docs/disks/backup-disks",
+            "reference_label": "Persistent Disk backups"
+          }
+        },
+        {
+          "key": "D",
+          "text": "高性能 VM を使用し、CPU とメモリを余裕を持って確保する。",
+          "explanation": {
+            "text": "リソースを増やしてもゾーン障害には対応できず、可用性向上とは直接関係しない。",
+            "reference": "https://cloud.google.com/compute/docs/machine-types",
+            "reference_label": "Machine types"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "可用性を最大化するにはマルチゾーンのマネージド インスタンス グループを用い、自動スケーリングやヘルスチェックで冗長性を確保する設計が最適。",
+        "reference": "https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups",
+        "reference_label": "Regional MIG"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q9",
+      "question": "Cloud Storage のストレージクラスに関する説明で **正しい** ものを選べ。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Standard クラスは低レイテンシで頻繁にアクセスするデータに最適化されている。",
+          "explanation": {
+            "text": "Standard はホットデータ向けで、低レイテンシかつ高可用性が保証される。正しい。",
+            "reference": "https://cloud.google.com/storage/docs/storage-classes",
+            "reference_label": "Storage classes"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Nearline クラスは 1 日に数百回アクセスするデータに適している。",
+          "explanation": {
+            "text": "Nearline は月 1 回程度のアクセスを想定した低コストストレージ。頻繁アクセスには適さない。",
+            "reference": "https://cloud.google.com/storage/docs/storage-classes",
+            "reference_label": "Storage classes"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Coldline クラスは高頻度アクセス向けで、Standard よりも低レイテンシを提供する。",
+          "explanation": {
+            "text": "Coldline は長期保管・低頻度アクセス向けであり、低レイテンシ提供は Standard に劣る。誤り。",
+            "reference": "https://cloud.google.com/storage/docs/storage-classes",
+            "reference_label": "Storage classes"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Archive クラスは最も低コストで、年 1 回程度しかアクセスしないデータに適している。",
+          "explanation": {
+            "text": "Archive は長期保管用の最も安価なクラスであり、まさに年に数回以下のアクセスを想定している。",
+            "reference": "https://cloud.google.com/storage/docs/storage-classes",
+            "reference_label": "Storage classes"
+          }
+        }
+      ],
+      "answer": "A,D",
+      "explanation": {
+        "text": "Standard は頻繁アクセス用、Archive は長期保管用。Nearline と Coldline の説明は誤り。",
+        "reference": "https://cloud.google.com/storage/docs/storage-classes",
+        "reference_label": "Storage classes"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q10",
+      "question": "BigQuery を利用する際、コストを最適化するためのベストプラクティスとして正しいものを選べ。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "テーブルをパーティション化し、必要なデータ範囲だけをスキャンするようにする。",
+          "explanation": {
+            "text": "パーティション化によって不要なデータスキャンを避け、コスト削減が可能になる。正しい。",
+            "reference": "https://cloud.google.com/bigquery/docs/partitioned-tables",
+            "reference_label": "Partitioned tables"
+          }
+        },
+        {
+          "key": "B",
+          "text": "クエリに * を使って常に全カラムを取得し、データを取りこぼさないようにする。",
+          "explanation": {
+            "text": "全カラムを取得するとスキャン量が増え、コストが高くなる。必要なカラムだけを選択すべき。誤り。",
+            "reference": "https://cloud.google.com/bigquery/docs/best-practices-costs",
+            "reference_label": "Cost optimization best practices"
+          }
+        },
+        {
+          "key": "C",
+          "text": "長期保存データもすべて Standard ストレージで保持する。",
+          "explanation": {
+            "text": "長期未アクセスデータには Long-term ストレージが適切で、コスト削減できる。Standard のまま保持するのは非効率。",
+            "reference": "https://cloud.google.com/bigquery/docs/table-storage-overview",
+            "reference_label": "Table storage overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Materialized View を利用し、頻繁に実行するクエリをキャッシュする。",
+          "explanation": {
+            "text": "Materialized View を使うと事前計算結果をキャッシュでき、クエリコストを削減できる。正しい。",
+            "reference": "https://cloud.google.com/bigquery/docs/materialized-views-intro",
+            "reference_label": "Materialized views"
+          }
+        }
+      ],
+      "answer": "A,D",
+      "explanation": {
+        "text": "パーティション化 (A) と Materialized View (D) は代表的なコスト削減手法。B・C は非効率で誤り。",
+        "reference": "https://cloud.google.com/bigquery/docs/best-practices-costs",
+        "reference_label": "BigQuery cost optimization"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q11",
+      "question": "GCP の Identity and Access Management (IAM) 設計に関する正しい考え方を選べ。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ユーザーに必要最小限の権限を与える “最小権限の原則 (Principle of Least Privilege)” を徹底する。",
+          "explanation": {
+            "text": "セキュリティの基本原則であり、IAM 設計の中心となる。正しい。",
+            "reference": "https://cloud.google.com/iam/docs/overview",
+            "reference_label": "IAM Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "すべてのユーザーに Owner ロールを付与し、柔軟性を確保する。",
+          "explanation": {
+            "text": "Owner ロールは過剰権限であり、セキュリティリスクが大きい。誤り。",
+            "reference": "https://cloud.google.com/iam/docs/roles-overview",
+            "reference_label": "Roles overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "カスタムロールを使って特定のユースケースに合わせた権限設定を行うことができる。",
+          "explanation": {
+            "text": "カスタムロールにより業務要件に応じた柔軟な権限設定が可能。正しい。",
+            "reference": "https://cloud.google.com/iam/docs/creating-custom-roles",
+            "reference_label": "Creating custom roles"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IAM 設定は一度行えば更新不要であり、運用中の見直しは推奨されない。",
+          "explanation": {
+            "text": "運用に合わせて IAM 設定を定期的に見直すのがベストプラクティス。更新不要という考え方は誤り。",
+            "reference": "https://cloud.google.com/iam/docs/best-practices-for-managing-iam",
+            "reference_label": "IAM best practices"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "IAM 設計では最小権限の原則 (A) とカスタムロールの活用 (C) が重要。B・D は誤り。",
+        "reference": "https://cloud.google.com/iam/docs/best-practices-for-managing-iam",
+        "reference_label": "IAM best practices"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q12",
+      "question": "Cloud Spanner を採用するユースケースとして **最も適切** なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "グローバル分散型アプリケーションで、強整合性を維持しつつ水平スケーリングが必要な場合。",
+          "explanation": {
+            "text": "Cloud Spanner はグローバル分散と強整合性を両立させるユニークなデータベース。最も適切。",
+            "reference": "https://cloud.google.com/spanner/docs/overview",
+            "reference_label": "Spanner overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "低頻度アクセスの長期アーカイブ用データを保存する場合。",
+          "explanation": {
+            "text": "長期アーカイブは Cloud Storage の Archive クラスが適切。Spanner はトランザクション DB でありアーカイブ用途には不向き。",
+            "reference": "https://cloud.google.com/storage/docs/storage-classes",
+            "reference_label": "Storage classes"
+          }
+        },
+        {
+          "key": "C",
+          "text": "数百 GB 程度の軽量なアプリケーションデータをシンプルに扱いたい場合。",
+          "explanation": {
+            "text": "軽量データなら Cloud SQL や Firestore がより適切。Spanner は大規模ユースケース向け。",
+            "reference": "https://cloud.google.com/sql/docs/introduction",
+            "reference_label": "Cloud SQL overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "バッチ処理専用のデータウェアハウス用途。",
+          "explanation": {
+            "text": "データウェアハウスには BigQuery が適切。Spanner は OLTP に特化している。",
+            "reference": "https://cloud.google.com/bigquery/docs/overview",
+            "reference_label": "BigQuery overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Spanner は強整合性とグローバル分散を両立できるリレーショナル DB であり、グローバル規模のアプリケーションに最適。",
+        "reference": "https://cloud.google.com/spanner/docs/overview",
+        "reference_label": "Spanner overview"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q13",
+      "question": "Cloud Pub/Sub を利用する際の設計として **正しい** ものを選べ。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Push 配信では、サブスクライバーが HTTPS エンドポイントを公開する必要がある。",
+          "explanation": {
+            "text": "Push 方式では Pub/Sub がサブスクライバーにリクエストを送るため、HTTPS エンドポイントが必要。正しい。",
+            "reference": "https://cloud.google.com/pubsub/docs/push",
+            "reference_label": "Pub/Sub push subscriptions"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Pull 配信では、Pub/Sub が定期的にサブスクライバーからメッセージを取得する。",
+          "explanation": {
+            "text": "Pull 方式は逆で、サブスクライバーが Pub/Sub から明示的にメッセージを取得する。記述は誤り。",
+            "reference": "https://cloud.google.com/pubsub/docs/pull",
+            "reference_label": "Pub/Sub pull subscriptions"
+          }
+        },
+        {
+          "key": "C",
+          "text": "デッドレタートピックを設定することで処理失敗メッセージを別途保存できる。",
+          "explanation": {
+            "text": "デッドレタートピックを使えば処理失敗メッセージを分離保存でき、再処理や分析が可能。正しい。",
+            "reference": "https://cloud.google.com/pubsub/docs/dead-letter-topics",
+            "reference_label": "Dead-letter topics"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Pub/Sub のメッセージはデフォルトで無期限に保存される。",
+          "explanation": {
+            "text": "デフォルト保存期間は 7 日であり、無期限ではない。誤り。",
+            "reference": "https://cloud.google.com/pubsub/docs/replay-overview",
+            "reference_label": "Pub/Sub message retention"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "Push 方式では HTTPS エンドポイントが必要 (A)、デッドレタートピックで失敗メッセージを保存できる (C)。B と D は誤り。",
+        "reference": "https://cloud.google.com/pubsub/docs/overview",
+        "reference_label": "Pub/Sub overview"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q14",
+      "question": "Cloud Run の特徴として **誤っている** 記述はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "リクエスト駆動型であり、アイドル状態のときは課金されない（最小インスタンスを除く）。",
+          "explanation": {
+            "text": "Cloud Run はリクエスト処理時に課金され、最小インスタンスを設定しない限りアイドル時間は課金対象外。",
+            "reference": "https://cloud.google.com/run/pricing",
+            "reference_label": "Cloud Run Pricing"
+          }
+        },
+        {
+          "key": "B",
+          "text": "OCI 準拠の任意のコンテナイメージをデプロイできる。",
+          "explanation": {
+            "text": "Cloud Run はコンテナイメージをそのままデプロイできるマネージド実行基盤。",
+            "reference": "https://cloud.google.com/run/docs/quickstarts/deploy-container",
+            "reference_label": "Quickstart: Deploy to Cloud Run"
+          }
+        },
+        {
+          "key": "C",
+          "text": "VPC コネクタを構成しなくても、デフォルトでプライベート VPC 内の内部 IP リソースへ直接アクセスできる。",
+          "explanation": {
+            "text": "誤り。VPC 上の内部 IP へ到達するには Serverless VPC Access の VPC コネクタを構成して紐付ける必要がある。",
+            "reference": "https://cloud.google.com/run/docs/configuring/vpc-connectors",
+            "reference_label": "VPC with connectors (Serverless VPC Access)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "同時実行数や最小インスタンス、リクエストタイムアウトを調整して、スループットやコールドスタートをチューニングできる。",
+          "explanation": {
+            "text": "同時実行数（既定 80、最大 1000）や最小インスタンス、タイムアウト（既定 5 分、最長 60 分）などを設定可能。",
+            "reference": "https://cloud.google.com/run/docs/about-concurrency",
+            "reference_label": "Maximum concurrent requests per instance"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "Cloud Run はリクエスト課金のサーバレスで、任意コンテナの実行や同時実行数/最小インスタンス/タイムアウトの調整が可能。一方、VPC 内の内部 IP への到達には VPC コネクタの構成が必須であり、これを要しないという記述（C）は誤りである。",
+        "reference": "https://cloud.google.com/run/docs/configuring/vpc-connectors",
+        "reference_label": "VPC with connectors (Serverless VPC Access)"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q15",
+      "question": "データ持ち出し対策（data exfiltration）として Google Cloud で有効な設計について、**正しいものをすべて**選べ。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "VPC Service Controls を使い、BigQuery や Cloud Storage などの管理対象サービス境界からのデータ流出リスクを低減する。",
+          "explanation": {
+            "text": "VPC Service Controls は指定したサービスをサービス境界で囲い、許可されていないネットワークやプリンシパルからのアクセス経路を制限できる。",
+            "reference": "https://cloud.google.com/vpc-service-controls/docs/overview",
+            "reference_label": "VPC Service Controls 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "IAM のみを厳格化すればネットワーク経路によるデータ流出は完全に防げるため、VPC Service Controls は不要である。",
+          "explanation": {
+            "text": "IAM は認可制御だが、承認済みの認証情報が流出したケースなど“経路”に起因するリスクは残る。VPC Service Controls は経路の制約に有効で、併用が推奨される。",
+            "reference": "https://cloud.google.com/vpc-service-controls/docs/overview#benefits",
+            "reference_label": "VPC SC の目的と利点"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Cloud Storage へのアクセス経路を Private Google Access（プライベート Google アクセス）や Private Service Connect 経由に限定する。",
+          "explanation": {
+            "text": "プライベート経路を強制することでインターネット経由の誤用を抑止できる。VPC SC と合わせて有効。",
+            "reference": "https://cloud.google.com/vpc/docs/private-google-access",
+            "reference_label": "Private Google Access"
+          }
+        },
+        {
+          "key": "D",
+          "text": "組織ポリシーで VM の外部 IP 付与を禁止し、外部経路を抑制する。",
+          "explanation": {
+            "text": "constraints/compute.vmExternalIpAccess などの組織ポリシーで外部 IP を制限できる。",
+            "reference": "https://cloud.google.com/resource-manager/docs/organization-policy/org-policy-constraints#computeconstraints",
+            "reference_label": "Org Policy: Compute 制約"
+          }
+        }
+      ],
+      "answer": "A,C,D",
+      "explanation": {
+        "text": "データ持ち出し対策は多層防御が基本。VPC Service Controls によるサービス境界 (A)、プライベート経路の強制 (C)、外部 IP 禁止 (D) は有効。IAM だけで完全に代替できる (B) は誤り。",
+        "reference": "https://cloud.google.com/vpc-service-controls/docs/overview",
+        "reference_label": "VPC Service Controls 概要"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q16",
+      "question": "Cloud SQL（PostgreSQL/MySQL）の高可用性設計として**正しい**ものを選べ。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "高可用性（HA）構成ではリージョン内の異なるゾーンにプライマリとスタンバイが配置され、自動フェイルオーバーが行われる。",
+          "explanation": {
+            "text": "Cloud SQL HA は Regional Persistent Disk を用い、ゾーン障害に耐える自動フェイルオーバーを提供する。",
+            "reference": "https://cloud.google.com/sql/docs/mysql/high-availability",
+            "reference_label": "Cloud SQL 高可用性"
+          }
+        },
+        {
+          "key": "B",
+          "text": "HA を有効化してもメンテナンスやフェイルオーバー時に短時間の切替は発生し得るため、接続の再試行ロジックが推奨される。",
+          "explanation": {
+            "text": "クライアント側には再接続やリトライの実装がベストプラクティス。",
+            "reference": "https://cloud.google.com/sql/docs/mysql/high-availability#failover",
+            "reference_label": "フェイルオーバーの挙動"
+          }
+        },
+        {
+          "key": "C",
+          "text": "HA を構成すると自動的に読み取りレプリカが複数リージョンに作成される。",
+          "explanation": {
+            "text": "読み取りレプリカは別機能で手動作成が必要。HA はゾーン冗長性であり、マルチリージョンの自動展開は行わない。",
+            "reference": "https://cloud.google.com/sql/docs/mysql/replication",
+            "reference_label": "Cloud SQL レプリケーション"
+          }
+        },
+        {
+          "key": "D",
+          "text": "HA 構成ではメンテナンスは完全無停止になる。",
+          "explanation": {
+            "text": "無停止を保証するものではない。短い切替時間はあり得る。",
+            "reference": "https://cloud.google.com/sql/docs/mysql/high-availability#maintenance",
+            "reference_label": "メンテナンス時の動作"
+          }
+        }
+      ],
+      "answer": "A,B",
+      "explanation": {
+        "text": "HA はゾーン冗長＋自動フェイルオーバー (A) で、切替に備えたクライアントのリトライ設計 (B) が推奨。C と D は誤り。",
+        "reference": "https://cloud.google.com/sql/docs/mysql/high-availability",
+        "reference_label": "Cloud SQL 高可用性"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q17",
+      "question": "Cloud Armor と VPC ファイアウォールルールの違いとして**正しい**ものを選べ。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Cloud Armor は L7（HTTP(S)）に対する DDoS 緩和や WAF 機能を提供し、外部アプリケーションロードバランサと連携する。",
+          "explanation": {
+            "text": "Cloud Armor はアプリ層のセキュリティポリシーやレート制限、WAF ルールを提供する。",
+            "reference": "https://cloud.google.com/armor/docs/overview",
+            "reference_label": "Cloud Armor 概要"
+          }
+        },
+        {
+            "key": "B",
+            "text": "VPC ファイアウォールルールはインスタンス NIC に適用され、L3/L4 の許可・拒否を制御する。",
+            "explanation": {
+              "text": "サブネットやタグ／サービスアカウント単位で L3/L4 の到達制御を行う。",
+              "reference": "https://cloud.google.com/vpc/docs/firewalls",
+              "reference_label": "VPC Firewalls"
+            }
+        },
+        {
+          "key": "C",
+          "text": "Cloud Armor は内部（Internal）ロードバランサの L4 トラフィックにのみ適用できる。",
+          "explanation": {
+            "text": "Cloud Armor は主に外部アプリケーション LB（HTTP(S) など）向け。C の記述は誤り。",
+            "reference": "https://cloud.google.com/armor/docs/security-policy-overview",
+            "reference_label": "Armor と LB の連携"
+          }
+        },
+        {
+          "key": "D",
+          "text": "VPC ファイアウォールルールは L7 のヘッダ内容（User-Agent など）に基づくフィルタリングを提供する。",
+          "explanation": {
+            "text": "VPC ファイアウォールは L3/L4 レベルの制御であり、L7 のヘッダ検査は行わない。",
+            "reference": "https://cloud.google.com/vpc/docs/firewalls#definitions",
+            "reference_label": "Firewall の機能範囲"
+          }
+        }
+      ],
+      "answer": "A,B",
+      "explanation": {
+        "text": "Cloud Armor は L7 セキュリティ（WAF/DDoS 緩和）を外部アプリ LB と連携して提供 (A)。VPC ファイアウォールは L3/L4 制御 (B)。C と D は誤り。",
+        "reference": "https://cloud.google.com/armor/docs/overview",
+        "reference_label": "Cloud Armor と VPC Firewall の役割"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q18",
+      "question": "オンプレミスから Google API（例: Cloud Storage、BigQuery）へプライベート経路のみでアクセスしたい。**最も適切**な設計はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Private Service Connect の“Google API に対するエンドポイント”を VPC に作成し、Cloud VPN または Interconnect 経由でオンプレミスから到達させる。",
+          "explanation": {
+            "text": "PSC の Google API エンドポイントを使うと、プライベート RFC1918 アドレスで Google API に到達できる。",
+            "reference": "https://cloud.google.com/vpc/docs/private-service-connect#google-apis-psc",
+            "reference_label": "Private Service Connect for Google APIs"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Cloud NAT を有効化すれば、オンプレミスからのすべてのトラフィックが自動的に Google API へプライベートでルーティングされる。",
+          "explanation": {
+            "text": "Cloud NAT は GCP 発のアウトバウンド用機能で、オンプレ→Google API のプライベート経路を提供するものではない。",
+            "reference": "https://cloud.google.com/nat/docs/overview",
+            "reference_label": "Cloud NAT 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "VPC ピアリングを使えば、Google 管理の Google API ネットワークに直接ピアリングできる。",
+          "explanation": {
+            "text": "Google API は VPC ピアリングで直接接続しない。PSC か Private Google Access を使う。",
+            "reference": "https://cloud.google.com/vpc/docs/configure-private-google-access-hybrid",
+            "reference_label": "ハイブリッド環境でのプライベート Google アクセス"
+          }
+        },
+        {
+          "key": "D",
+          "text": "External HTTP(S) Load Balancer を経由させれば、結果的にプライベート接続と同等になる。",
+          "explanation": {
+            "text": "外部 LB はインターネット経路を前提にするため要件に合致しない。",
+            "reference": "https://cloud.google.com/load-balancing/docs/load-balancing-overview",
+            "reference_label": "Cloud Load Balancing 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "オンプレから Google API へのプライベート経路は PSC（Google API エンドポイント）＋ Cloud VPN/Interconnect の組合せが適切。",
+        "reference": "https://cloud.google.com/vpc/docs/private-service-connect#google-apis-psc",
+        "reference_label": "Private Service Connect for Google APIs"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q19",
+      "question": "暗号化の要件が厳しい規制業界で、顧客管理鍵（CMEK）を使いたい。**正しい**説明をすべて選べ。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "CMEK は Cloud KMS または Cloud HSM で管理する鍵を用いて、対応サービスのデータ暗号化に使用できる。",
+          "explanation": {
+            "text": "CMEK 対応サービスではユーザー管理鍵を指定でき、鍵の回転・無効化ポリシーを組織標準に合わせられる。",
+            "reference": "https://cloud.google.com/security/encryption-at-rest/default-encryption",
+            "reference_label": "保存データの暗号化（CMEK 概要への導線）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "CMEK を無効化（キーの無効化/破棄）すると、サービス側の復号に失敗しデータにアクセスできなくなる可能性がある。",
+          "explanation": {
+            "text": "鍵状態は可用性に直結するため、無効化や破棄にはリスクがある。",
+            "reference": "https://cloud.google.com/kms/docs/key-states",
+            "reference_label": "Cloud KMS: Key states"
+          }
+        },
+        {
+          "key": "C",
+          "text": "CMEK を使えば、Google によるデフォルト暗号化は無効化される。",
+          "explanation": {
+            "text": "デフォルト暗号化は常に有効で、CMEK はそれを上書きする“追加の鍵管理”手段。デフォルトが無効化されるわけではない。",
+            "reference": "https://cloud.google.com/security/encryption-at-rest",
+            "reference_label": "Encryption at rest"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CMEK 対応状況はサービスごとに異なるため、導入前に対象サービスのドキュメントでサポート可否を確認する必要がある。",
+          "explanation": {
+            "text": "すべてのサービスが CMEK に対応しているわけではない。事前確認が必須。",
+            "reference": "https://cloud.google.com/kms/docs/cmek",
+            "reference_label": "CMEK 対応サービス"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "CMEK はユーザー管理鍵を用いる (A)。鍵無効化はアクセス不能を招き得る (B)。対応はサービス依存のため要確認 (D)。C は誤り。",
+        "reference": "https://cloud.google.com/kms/docs/cmek",
+        "reference_label": "CMEK の設計ポイント"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q20",
+      "question": "単桁ミリ秒レイテンシでペタバイト級に水平スケールし、ワイドカラム型のアクセスパターンに適したデータベースを選ぶ必要がある。**最も適切**なのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Cloud Bigtable",
+          "explanation": {
+            "text": "大規模ワイドカラム、超低レイテンシ、高スループットに最適。",
+            "reference": "https://cloud.google.com/bigtable/docs/overview",
+            "reference_label": "Cloud Bigtable 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Cloud SQL",
+          "explanation": {
+            "text": "フルマネージド RDBMS だが、超大規模スループットやワイドカラムには非最適。",
+            "reference": "https://cloud.google.com/sql/docs/introduction",
+            "reference_label": "Cloud SQL 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Firestore",
+          "explanation": {
+            "text": "ドキュメント指向でスケールするが、要件の“ワイドカラム + ペタバイト級超低レイテンシ”には Bigtable が適合。",
+            "reference": "https://cloud.google.com/firestore/docs/overview",
+            "reference_label": "Firestore 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "BigQuery",
+          "explanation": {
+            "text": "分析 DWH でスキャン中心。トランザクション低レイテンシ用途には不向き。",
+            "reference": "https://cloud.google.com/bigquery/docs/overview",
+            "reference_label": "BigQuery 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "要件（単桁 ms、高スループット、ワイドカラム、ペタバイト級）に一致するのは Cloud Bigtable。",
+        "reference": "https://cloud.google.com/bigtable/docs/overview",
+        "reference_label": "Cloud Bigtable 概要"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q21",
+      "question": "ハイブリッド接続設計について、**正しい**ものをすべて選べ。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "HA VPN は 99.99% の SLA を提供し、同一リージョン内に 2 つのトンネル（デュアル）を構成することで高可用性を実現する。",
+          "explanation": {
+            "text": "HA VPN は各サイドに 2 つのトンネルを張って高可用性を図る。SLA は 99.99%。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/vpn/concepts/overview",
+            "reference_label": "HA VPN 概要と SLA"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Dedicated Interconnect はオンプレのネットワークと Google のエッジ間を専用回線で接続し、SLA は 99.99%/99.9%（構成に依存）を提供する。",
+          "explanation": {
+            "text": "Dedicated Interconnect は高帯域・低遅延かつ SLA を提供。冗長構成の有無で SLA が異なる。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/interconnect/concepts/sla",
+            "reference_label": "Interconnect の SLA"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Partner Interconnect はサービスプロバイダ経由で Google Cloud に接続するモデルで、帯域や場所の柔軟性が高い。",
+          "explanation": {
+            "text": "接続事業者の PoP を利用して Google へ接続できる。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/interconnect/concepts/partner-overview",
+            "reference_label": "Partner Interconnect 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud VPN（Classic）は自動的に HA 構成となり、トンネルは 4 本まで Google が自動生成するため設計不要である。",
+          "explanation": {
+            "text": "Classic VPN は HA 自動化ではない。高可用性には HA VPN を使用する。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/vpn/concepts/choosing-net-to-net",
+            "reference_label": "Classic VPN と HA VPN の比較"
+          }
+        }
+      ],
+      "answer": "A,B,C",
+      "explanation": {
+        "text": "HA VPN の 99.99% SLA と二重トンネル (A)、Dedicated Interconnect の専用回線と SLA (B)、Partner Interconnect の事業者経由接続 (C) は正しい。D は Classic VPN の誤解。",
+        "reference": "https://cloud.google.com/network-connectivity/docs/vpn/concepts/choosing-net-to-net",
+        "reference_label": "ハイブリッド接続の選択指針"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q22",
+      "question": "GKE の運用モデルに関する説明として **正しいものをすべて**選べ。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Autopilot はノードのライフサイクル管理を Google が担い、Pod 単位のリソース指定に基づき自動的に基盤がプロビジョニングされる。",
+          "explanation": {
+            "text": "Autopilot は運用負荷を低減し、Pod のリクエスト/リミットに基づきインフラが最適化される運用モデル。",
+            "reference": "https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview",
+            "reference_label": "Autopilot クラスタの概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Standard クラスタはノードプールやマシンタイプ、スケーリングの管理をユーザーが制御できる。",
+          "explanation": {
+            "text": "Standard は柔軟だが運用責任が増える。ノード構成を細かく制御可能。",
+            "reference": "https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture",
+            "reference_label": "GKE クラスタ アーキテクチャ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Autopilot では DaemonSet は常に利用でき、ノードごとのエージェントを自由に常駐させられる。",
+          "explanation": {
+            "text": "Autopilot ではノードへの直接アクセスや一部コントロールが制限され、DaemonSet の利用は制約がある。",
+            "reference": "https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#differences",
+            "reference_label": "Autopilot と Standard の違い"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Autopilot は Pod ごとの最小課金やアイドル時のコスト最小化に有利だが、特権コンテナなど一部ワークロードは制限される場合がある。",
+          "explanation": {
+            "text": "Autopilot のセキュリティ/運用ポリシーにより特権コンテナやホストネットワーク等は制限。",
+            "reference": "https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#workload-restrictions",
+            "reference_label": "Autopilot ワークロード制限"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "Autopilot は基盤運用を Google が担い (A)、Standard はユーザーがノードを制御 (B)。Autopilot は一部ワークロードに制限がある (D)。DaemonSet 自由利用を前提とする (C) は誤り。",
+        "reference": "https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview",
+        "reference_label": "Autopilot の概要と制約"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q23",
+      "question": "Cloud Logging と Cloud Monitoring を用いた SRE 設計。**適切な組み合わせ**をすべて選べ。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ログベース指標（Log-based Metrics）を作成し、エラーレートを SLI としてアラートポリシーに接続する。",
+          "explanation": {
+            "text": "ログクエリから指標を生成して Monitoring で可視化・通知できる。",
+            "reference": "https://cloud.google.com/logging/docs/log-based-metrics",
+            "reference_label": "ログベース指標"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Uptime checks を使って外形監視を行い、SLO 違反の早期検知に役立てる。",
+          "explanation": {
+            "text": "外形監視は可用性の SLI/SLO に直結する。",
+            "reference": "https://cloud.google.com/monitoring/uptime-checks",
+            "reference_label": "Uptime checks"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アラートはすべてメールに限定し、Incident 連携や ChatOps 連携は避ける。",
+          "explanation": {
+            "text": "通知チャネルは複数を使い、Incident/ChatOps 連携が推奨。メール限定はベストプラクティスではない。",
+            "reference": "https://cloud.google.com/monitoring/support/notification-options",
+            "reference_label": "通知チャネルのオプション"
+          }
+        },
+        {
+          "key": "D",
+          "text": "SLO を Monitoring の SLO 機能で定義し、エラーバジェットポリシーで運用ガードレールを設定する。",
+          "explanation": {
+            "text": "SLO/エラーバジェットをプロダクトに組み込むのが SRE の基本。",
+            "reference": "https://cloud.google.com/stackdriver/docs/solutions/sre/slo",
+            "reference_label": "Monitoring の SLO 管理"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "ログベース指標の活用 (A)、外形監視 (B)、SLO/エラーバジェットの定義 (D) は有効。通知をメール限定 (C) は非推奨。",
+        "reference": "https://cloud.google.com/stackdriver/docs/solutions/sre",
+        "reference_label": "SRE と Cloud Operations"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q24",
+      "question": "データ処理基盤の選定。**最も適切**な選択を 1 つ選べ。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Apache Beam モデルでストリーミング ETL を行いたい。マネージドでオートスケールするランタイムが必要 → Dataflow。",
+          "explanation": {
+            "text": "Dataflow は Beam ベースでストリーミング/バッチに対応し、オートスケールや運用自動化を提供。",
+            "reference": "https://cloud.google.com/dataflow/docs/concepts/overview",
+            "reference_label": "Dataflow の概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Hadoop/Spark の既存ジョブをそのままリフトしてジョブ単位で柔軟にクラスタサイズを変えたい → Cloud Dataprep。",
+          "explanation": {
+            "text": "Dataprep はデータ整形 UI ツールで、Hadoop/Spark 実行基盤ではない。誤り。",
+            "reference": "https://cloud.google.com/dataprep",
+            "reference_label": "Dataprep の概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Hadoop/Spark など OSS スタックをフルコントロールしつつバッチ処理を行いたい → Dataproc。",
+          "explanation": {
+            "text": "Dataproc はマネージド Hadoop/Spark で、クラスタ起動/停止やスケーリングが可能。",
+            "reference": "https://cloud.google.com/dataproc/docs/concepts/overview",
+            "reference_label": "Dataproc の概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "大規模 SQL 分析 DWH でサーバレスかつスキャン課金で利用したい → Firestore。",
+          "explanation": {
+            "text": "DWH には BigQuery が適切。Firestore はドキュメント DB。",
+            "reference": "https://cloud.google.com/bigquery/docs/overview",
+            "reference_label": "BigQuery の概要"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "Beam/ストリーミングは Dataflow (A)、OSS Hadoop/Spark は Dataproc (C) が適切。B と D は用途が不一致。",
+        "reference": "https://cloud.google.com/solutions/data-lakes",
+        "reference_label": "データ処理基盤の選択指針"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q25",
+      "question": "Cloud HTTP(S) Load Balancing と Cloud CDN を組み合わせる際のベストプラクティス。**正しいものをすべて**選べ。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "キャッシュ可能性は Cache-Control/Expires/Surrogate-Control などのヘッダで明示し、動的コンテンツは適切にバイパスする。",
+          "explanation": {
+            "text": "適切なヘッダ設定がキャッシュヒット率と正確性に直結する。",
+            "reference": "https://cloud.google.com/cdn/docs/caching",
+            "reference_label": "Cloud CDN のキャッシュ制御"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Signed URL/Cookie を用いることで限定配布を CDN と両立できる。",
+          "explanation": {
+            "text": "署名付き URL/Cookie により配布制限とキャッシュを両立。",
+            "reference": "https://cloud.google.com/cdn/docs/using-signed-urls",
+            "reference_label": "署名付き URL と Cookie"
+          }
+        },
+        {
+          "key": "C",
+          "text": "バックエンドのヘルスチェックは不要。CDN が常にエッジで応答するため、オリジンの健全性は関係ない。",
+          "explanation": {
+            "text": "キャッシュミスや失効時はオリジンへフォールバックするため、ヘルスチェックは重要。",
+            "reference": "https://cloud.google.com/load-balancing/docs/https/",
+            "reference_label": "HTTPS 負荷分散の概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "キャッシュキーの構成（ホスト、パス、クエリ、ヘッダ）を調整して、不要なキャッシュ分割を避ける。",
+          "explanation": {
+            "text": "キャッシュキー最適化はヒット率向上に有効。",
+            "reference": "https://cloud.google.com/cdn/docs/cache-keys",
+            "reference_label": "キャッシュキーの設定"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "ヘッダでのキャッシュ制御 (A)、署名付き配布 (B)、キャッシュキー最適化 (D) が有効。CDN でもオリジン健全性は必要 (C は誤り)。",
+        "reference": "https://cloud.google.com/cdn/docs/overview",
+        "reference_label": "Cloud CDN 概要"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q26",
+      "question": "コンテナイメージの供給チェーン強化。**最も適切**な設計を選べ。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Artifact Registry にイメージを保存し、Binary Authorization でデプロイ前に署名/ポリシー検証を強制する。",
+          "explanation": {
+            "text": "サプライチェーンの信頼を高め、未検証イメージの実行を防ぐ。",
+            "reference": "https://cloud.google.com/binary-authorization/docs/overview",
+            "reference_label": "Binary Authorization 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Container Registry は非推奨化の方向なので、可能な限り Artifact Registry へ移行する。",
+          "explanation": {
+            "text": "新規は Artifact Registry が推奨。Container Registry からの移行ガイダンスが提供されている。",
+            "reference": "https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr",
+            "reference_label": "GCR から Artifact Registry への移行"
+          }
+        },
+        {
+          "key": "C",
+          "text": "開発環境では署名検証を無効にし、本番のみ有効化すればサプライチェーンの整合性は十分である。",
+          "explanation": {
+            "text": "パイプライン全体での一貫した検証が推奨。環境ごとの抜け道はリスク。",
+            "reference": "https://cloud.google.com/software-supply-chain-security/docs/slsa",
+            "reference_label": "Supply chain security（SLSA）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ビルドアーティファクトの脆弱性スキャンは不要。実行時保護があれば十分である。",
+          "explanation": {
+            "text": "Registry スキャンや SBOM 管理などシフトレフトが重要。実行時対策のみでは不十分。",
+            "reference": "https://cloud.google.com/artifact-analysis/docs/overview",
+            "reference_label": "Artifact Analysis（脆弱性スキャン）"
+          }
+        }
+      ],
+      "answer": "A,B",
+      "explanation": {
+        "text": "Artifact Registry + Binary Authorization の組み合わせ (A) が有効。GCR からの移行 (B) も推奨。C と D はセキュリティ上の悪手。",
+        "reference": "https://cloud.google.com/security/software-supply-chain-security",
+        "reference_label": "ソフトウェア供給チェーンのベストプラクティス"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q27",
+      "question": "機密情報の管理と短期資格情報の発行に関する設計。**正しいものをすべて**選べ。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Secret Manager を用いてアプリの秘密を管理し、バージョニングとローテーションを実施する。",
+          "explanation": {
+            "text": "Secret のバージョン管理、アクセス制御、監査が可能。",
+            "reference": "https://cloud.google.com/secret-manager/docs/overview",
+            "reference_label": "Secret Manager 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Workload Identity Federation を使用して、オンプレ・他クラウドのワークロードに対しサービスアカウントキーなしで短期トークンを発行する。",
+          "explanation": {
+            "text": "OIDC/SAML 信頼で鍵レス運用が可能。",
+            "reference": "https://cloud.google.com/iam/docs/workload-identity-federation",
+            "reference_label": "Workload Identity Federation"
+          }
+        },
+        {
+          "key": "C",
+          "text": "サービスアカウント鍵（JSON）は Git リポジトリで暗号化せずに保管し、必要なときに参照できるようにする。",
+          "explanation": {
+            "text": "鍵の平文保管は重大なリスク。厳禁。",
+            "reference": "https://cloud.google.com/iam/docs/best-practices-for-managing-service-account-keys",
+            "reference_label": "サービスアカウント鍵のベストプラクティス"
+          }
+        },
+        {
+          "key": "D",
+          "text": "GKE では Workload Identity を使い、Pod がサービスアカウント鍵なしで Google API にアクセスできるようにする。",
+          "explanation": {
+            "text": "KSA と GSA を紐付けることで鍵レスかつきめ細かい権限付与が可能。",
+            "reference": "https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity",
+            "reference_label": "GKE Workload Identity"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "Secret Manager (A)、WIF (B)、GKE Workload Identity (D) は鍵レス・安全な資格情報管理を実現。C は重大なアンチパターン。",
+        "reference": "https://cloud.google.com/iam/docs/best-practices-for-managing-iam",
+        "reference_label": "IAM/資格情報のベストプラクティス"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q28",
+      "question": "Cloud Run のスケーリング/パフォーマンス設計について **誤っている**ものを選べ。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "同時実行数（concurrency）を調整して 1 インスタンスあたりのリクエスト処理数を最適化できる。",
+          "explanation": {
+            "text": "デフォルト 80。ワークロード特性に応じて変更可能。",
+            "reference": "https://cloud.google.com/run/docs/about-concurrency",
+            "reference_label": "Cloud Run の同時実行"
+          }
+        },
+        {
+          "key": "B",
+          "text": "最小インスタンス（min-instances）を設定してコールドスタートを緩和できる。",
+          "explanation": {
+            "text": "最小インスタンスを維持して待機させることで初回遅延を軽減。",
+            "reference": "https://cloud.google.com/run/docs/configuring/min-instances",
+            "reference_label": "最小インスタンス設定"
+          }
+        },
+        {
+          "key": "C",
+          "text": "リクエストタイムアウトは固定で変更できないため、長時間処理は必ず失敗する。",
+          "explanation": {
+            "text": "タイムアウトはサービス設定で調整可能（上限あり）。固定ではない。",
+            "reference": "https://cloud.google.com/run/docs/configuring/request-timeout",
+            "reference_label": "リクエスト タイムアウト"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CPU の割り当てはアイドル時の有効化/無効化を選べ、バックグラウンド処理要件に合わせて調整できる。",
+          "explanation": {
+            "text": "アイドル時にも CPU を割り当てる設定が可能で、バックグラウンド作業に有効。",
+            "reference": "https://cloud.google.com/run/docs/configuring/cpu",
+            "reference_label": "CPU 割り当ての構成"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "A/B/D は Cloud Run の正しい機能。C はタイムアウトが“固定”という誤り。",
+        "reference": "https://cloud.google.com/run/docs",
+        "reference_label": "Cloud Run ドキュメント"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q29",
+      "question": "BigQuery のセキュリティ設計について **正しいものをすべて**選べ。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "列レベルセキュリティを利用して、特定ユーザーには一部カラムだけ閲覧可能にできる。",
+          "explanation": {
+            "text": "BigQuery は列レベルアクセス制御をサポートし、データ保護を強化できる。",
+            "reference": "https://cloud.google.com/bigquery/docs/column-level-security-intro",
+            "reference_label": "列レベル セキュリティ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "承認付きビュー（Authorized Views）を利用することで、直接テーブルへのアクセス権を持たないユーザーに間接的にデータを提供できる。",
+          "explanation": {
+            "text": "ビュー経由で必要最小限のデータ公開が可能。",
+            "reference": "https://cloud.google.com/bigquery/docs/share-access-views",
+            "reference_label": "Authorized Views"
+          }
+        },
+        {
+          "key": "C",
+          "text": "IAM 権限を利用しなくても、SQL クエリにアクセス制御を直接書き込めば十分である。",
+          "explanation": {
+            "text": "アクセス制御は IAM またはセキュリティ機能で管理する必要があり、SQL 内制御は不十分。",
+            "reference": "https://cloud.google.com/bigquery/docs/access-control",
+            "reference_label": "アクセス制御の概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データマスキングポリシーを利用すれば、個人情報を含むカラムを条件付きでマスクできる。",
+          "explanation": {
+            "text": "データマスキングにより機微情報を動的に隠蔽可能。",
+            "reference": "https://cloud.google.com/bigquery/docs/column-data-masking-intro",
+            "reference_label": "データマスキング"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "列レベルセキュリティ (A)、承認付きビュー (B)、データマスキング (D) は有効な手段。SQL 内での制御 (C) は誤り。",
+        "reference": "https://cloud.google.com/bigquery/docs/access-control",
+        "reference_label": "BigQuery セキュリティ設計"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q30",
+      "question": "Anthos のユースケースとして **最も適切** なものを選べ。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "マルチクラウドおよびオンプレ環境で Kubernetes を統合管理し、ポリシーを一元化する。",
+          "explanation": {
+            "text": "Anthos はハイブリッド/マルチクラウドの Kubernetes 管理基盤。",
+            "reference": "https://cloud.google.com/anthos/docs/concepts/overview",
+            "reference_label": "Anthos 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "クラウドに依存せず、VM のみを対象にする専用サービス。",
+          "explanation": {
+            "text": "Anthos はコンテナ/Kubernetes 中心であり、VM 専用ではない。",
+            "reference": "https://cloud.google.com/anthos",
+            "reference_label": "Anthos 公式"
+          }
+        },
+        {
+          "key": "C",
+          "text": "機械学習モデルのトレーニングを最適化するための専用フレームワーク。",
+          "explanation": {
+            "text": "Anthos は ML フレームワークではない。誤り。",
+            "reference": "https://cloud.google.com/anthos/docs/concepts/overview",
+            "reference_label": "Anthos 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データウェアハウスを最適化するためのサーバレス SQL エンジン。",
+          "explanation": {
+            "text": "これは BigQuery の説明。Anthos ではない。",
+            "reference": "https://cloud.google.com/bigquery/docs/overview",
+            "reference_label": "BigQuery 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Anthos はハイブリッド/マルチクラウド環境での Kubernetes 管理基盤。A が正解。",
+        "reference": "https://cloud.google.com/anthos/docs/concepts/overview",
+        "reference_label": "Anthos 概要"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q31",
+      "question": "Cloud Interconnect の設計において、**誤っている**ものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Dedicated Interconnect はオンプレと Google のネットワークを直接接続する専用回線。",
+          "explanation": {
+            "text": "正しい説明。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/interconnect/concepts/dedicated-overview",
+            "reference_label": "Dedicated Interconnect 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Partner Interconnect はサービスプロバイダを通して Google ネットワークに接続する方式。",
+          "explanation": {
+            "text": "正しい説明。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/interconnect/concepts/partner-overview",
+            "reference_label": "Partner Interconnect 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Interconnect の利用には Cloud Router が必須である。",
+          "explanation": {
+            "text": "Cloud Router により動的ルーティングが可能で、Interconnect には必須。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/router/concepts/overview",
+            "reference_label": "Cloud Router 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Interconnect はインターネット経由の IPSec VPN を利用する。",
+          "explanation": {
+            "text": "Interconnect は物理専用線やパートナー経由接続であり、VPN ではない。誤り。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/interconnect",
+            "reference_label": "Interconnect ドキュメント"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "Interconnect は物理専用線またはパートナー接続であり、VPN ではない。D が誤り。",
+        "reference": "https://cloud.google.com/network-connectivity/docs/interconnect",
+        "reference_label": "Interconnect 概要"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q32",
+      "question": "Cloud Functions の特徴として **正しい**ものを選べ。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "イベントドリブン型であり、Pub/Sub、Storage、HTTP リクエストなどでトリガーできる。",
+          "explanation": {
+            "text": "Cloud Functions はイベント駆動で様々な GCP サービスに連携できる。",
+            "reference": "https://cloud.google.com/functions/docs/concepts/overview",
+            "reference_label": "Cloud Functions 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "長時間のジョブを無制限に実行できる。",
+          "explanation": {
+            "text": "実行時間に上限があり、長時間処理は不適切。誤り。",
+            "reference": "https://cloud.google.com/functions/docs/concepts/exec",
+            "reference_label": "実行制限"
+          }
+        },
+        {
+          "key": "C",
+          "text": "サーバレスで自動スケーリングする。",
+          "explanation": {
+            "text": "リクエストに応じてスケーリングする。正しい。",
+            "reference": "https://cloud.google.com/functions/docs/concepts/overview",
+            "reference_label": "Cloud Functions 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "常に最低 1 インスタンスを維持する必要がある。",
+          "explanation": {
+            "text": "Cloud Functions は完全サーバレスで、アイドル時はインスタンスゼロにスケールできる。",
+            "reference": "https://cloud.google.com/functions/docs/concepts/exec",
+            "reference_label": "実行モデル"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "Cloud Functions はイベントドリブン (A) でサーバレススケーリング (C)。B と D は誤り。",
+        "reference": "https://cloud.google.com/functions/docs/concepts/overview",
+        "reference_label": "Cloud Functions 概要"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q33",
+      "question": "Cloud Identity の利用シナリオとして **最も適切**なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Google アカウントを持たない従業員に、Google Workspace なしで ID 管理と SSO を提供する。",
+          "explanation": {
+            "text": "Cloud Identity は独立して ID/SSO を提供できる。正しい。",
+            "reference": "https://cloud.google.com/identity/docs/overview",
+            "reference_label": "Cloud Identity 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "オンプレの AD/LDAP と連携できない。",
+          "explanation": {
+            "text": "Cloud Identity は AD/LDAP と連携可能。誤り。",
+            "reference": "https://cloud.google.com/identity/docs/integrate-active-directory",
+            "reference_label": "AD 連携"
+          }
+        },
+        {
+          "key": "C",
+          "text": "IAM とは独立しており、Google Cloud リソースへのアクセス管理には利用できない。",
+          "explanation": {
+            "text": "Cloud Identity のアカウントは IAM のプリンシパルとして利用可能。誤り。",
+            "reference": "https://cloud.google.com/iam/docs/overview",
+            "reference_label": "IAM 概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud Identity は認証のみを提供し、MFA やデバイス管理機能は持たない。",
+          "explanation": {
+            "text": "Cloud Identity には MFA やデバイス管理も含まれる。誤り。",
+            "reference": "https://cloud.google.com/identity/docs/overview",
+            "reference_label": "Cloud Identity 概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Identity は Google Workspace を持たない組織にも ID 管理と SSO を提供できる。A が正解。",
+        "reference": "https://cloud.google.com/identity/docs/overview",
+        "reference_label": "Cloud Identity 概要"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q34",
+      "question": "Cloud Storage のセキュリティベストプラクティスとして **誤っている**ものを選べ。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "バケットに対するパブリックアクセスを制限し、組織ポリシーでブロックを有効化する。",
+          "explanation": {
+            "text": "パブリックアクセスブロックはセキュリティの推奨事項。",
+            "reference": "https://cloud.google.com/storage/docs/public-access-prevention",
+            "reference_label": "Public Access Prevention"
+          }
+        },
+        {
+          "key": "B",
+          "text": "IAM 条件付きポリシーで特定の IP 範囲からのみアクセスを許可する。",
+          "explanation": {
+            "text": "条件付きポリシーで IP 制限を設定可能。正しい。",
+            "reference": "https://cloud.google.com/iam/docs/conditions-overview",
+            "reference_label": "IAM 条件付きポリシー"
+          }
+        },
+        {
+          "key": "C",
+          "text": "署名付き URL を使い、期限付きの限定的なアクセスを付与する。",
+          "explanation": {
+            "text": "署名付き URL は一時的な安全アクセスを実現。正しい。",
+            "reference": "https://cloud.google.com/storage/docs/access-control/signed-urls",
+            "reference_label": "Signed URLs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "監査ログはデフォルトで無効化されているので、通常は有効化しない。",
+          "explanation": {
+            "text": "Cloud Audit Logs はデフォルトで一部有効化されており、監査を無効化するのはセキュリティリスク。",
+            "reference": "https://cloud.google.com/logging/docs/audit",
+            "reference_label": "Cloud Audit Logs"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "監査ログはセキュリティベストプラクティスとして有効活用すべき。D が誤り。",
+        "reference": "https://cloud.google.com/logging/docs/audit",
+        "reference_label": "Cloud Audit Logs"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q35",
+      "question": "Cloud Run と Cloud Functions の違いとして **正しい**ものを選べ。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Cloud Functions はイベントドリブン関数実行で、Cloud Run は任意のコンテナを実行できる。",
+          "explanation": {
+            "text": "Functions はイベント駆動関数、Run はコンテナ実行基盤。正しい。",
+            "reference": "https://cloud.google.com/serverless-options",
+            "reference_label": "サーバレス比較"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Cloud Functions は長時間処理に最適化され、Cloud Run は短時間処理に限定される。",
+          "explanation": {
+            "text": "Functions は短時間処理に適し、長時間には制約がある。Run は長時間処理にも柔軟。逆の説明。",
+            "reference": "https://cloud.google.com/functions/docs/concepts/exec",
+            "reference_label": "Functions 実行制限"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Cloud Run は HTTP リクエスト以外の Pub/Sub や Storage イベントも直接サポートする。",
+          "explanation": {
+            "text": "Cloud Run は基本 HTTP リクエスト駆動。Pub/Sub/Storage イベントは Eventarc 経由で受ける。直接ではない。",
+            "reference": "https://cloud.google.com/run/docs/triggering",
+            "reference_label": "Cloud Run トリガー"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud Functions は Dockerfile ベースのデプロイが前提である。",
+          "explanation": {
+            "text": "Functions はソースコードベース。Dockerfile 前提は Run。",
+            "reference": "https://cloud.google.com/functions/docs",
+            "reference_label": "Functions ドキュメント"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud Functions はイベント駆動関数、Cloud Run は任意コンテナ。A が正しい。",
+        "reference": "https://cloud.google.com/serverless-options",
+        "reference_label": "Serverless options"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q36",
+      "question": "Cloud Spanner の強整合性と可用性について **正しい説明**を選べ。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Spanner はグローバル分散 DB であり、複数リージョン間で強整合性を保証できる。",
+          "explanation": {
+            "text": "TrueTime API を用いたクロック同期で、グローバルに強整合性を実現している。",
+            "reference": "https://cloud.google.com/spanner/docs/overview",
+            "reference_label": "Spanner Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Spanner は最終的整合性のみを保証し、強整合性は提供しない。",
+          "explanation": {
+            "text": "これは DynamoDB のような一部 NoSQL DB の特徴。Spanner は強整合性を提供するため誤り。",
+            "reference": "https://cloud.google.com/spanner/docs/overview",
+            "reference_label": "Spanner Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Spanner の高可用性構成には複数リージョンを跨ぐ配置が必須である。",
+          "explanation": {
+            "text": "単一リージョン構成も可能。高可用性向けにリージョン内複数ゾーン冗長を利用できる。必須ではない。",
+            "reference": "https://cloud.google.com/spanner/docs/instances",
+            "reference_label": "Spanner Instance Configuration"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Spanner は RDBMS だが、SQL をサポートしていない。",
+          "explanation": {
+            "text": "Spanner は ANSI SQL をサポート。誤り。",
+            "reference": "https://cloud.google.com/spanner/docs/overview",
+            "reference_label": "Spanner Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Spanner は TrueTime API を活用して、グローバルに強整合性を保証する分散 RDBMS。A が正しい。",
+        "reference": "https://cloud.google.com/spanner/docs/overview",
+        "reference_label": "Spanner Overview"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q37",
+      "question": "Cloud Bigtable の設計ベストプラクティスとして **誤っている**ものを選べ。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "行キーをランダム化してホットスポットを避ける。",
+          "explanation": {
+            "text": "連番キーはホットスポットを生むためランダム化が推奨される。",
+            "reference": "https://cloud.google.com/bigtable/docs/schema-design",
+            "reference_label": "Bigtable Schema Design"
+          }
+        },
+        {
+          "key": "B",
+          "text": "テーブル設計ではアクセスパターンを事前に想定する。",
+          "explanation": {
+            "text": "Bigtable はスキーマレスではあるが、設計はアクセスパターンに依存する。正しい。",
+            "reference": "https://cloud.google.com/bigtable/docs/schema-design",
+            "reference_label": "Bigtable Schema Design"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Bigtable はトランザクション分散を保証するため、複数行にわたる ACID トランザクションを提供する。",
+          "explanation": {
+            "text": "Bigtable は単一行の原子操作のみ保証。複数行 ACID トランザクションは提供しない。誤り。",
+            "reference": "https://cloud.google.com/bigtable/docs/overview",
+            "reference_label": "Bigtable Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ノード数をスケールアウトしてスループットを向上できる。",
+          "explanation": {
+            "text": "Bigtable はノード追加でスループットを拡張できる。正しい。",
+            "reference": "https://cloud.google.com/bigtable/docs/scaling",
+            "reference_label": "Bigtable Scaling"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "Bigtable は単一行の原子操作を保証するが、複数行 ACID トランザクションは提供しないため C が誤り。",
+        "reference": "https://cloud.google.com/bigtable/docs/overview",
+        "reference_label": "Bigtable Overview"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q38",
+      "question": "Cloud Armor のユースケースとして **正しい**ものをすべて選べ。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "DDoS 攻撃からの保護。",
+          "explanation": {
+            "text": "Cloud Armor は Google のエッジネットワークで DDoS 緩和を提供する。",
+            "reference": "https://cloud.google.com/armor/docs/overview",
+            "reference_label": "Cloud Armor Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "アプリケーションレベルのアクセス制御（WAF ルール）。",
+          "explanation": {
+            "text": "WAF ルールを設定し、SQL インジェクション等を防げる。",
+            "reference": "https://cloud.google.com/armor/docs/rules-language",
+            "reference_label": "Cloud Armor Rules"
+          }
+        },
+        {
+          "key": "C",
+          "text": "内部 VPC トラフィックの L3 制御。",
+          "explanation": {
+            "text": "これは VPC Firewall の役割。Cloud Armor ではない。",
+            "reference": "https://cloud.google.com/vpc/docs/firewalls",
+            "reference_label": "VPC Firewall Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "地理的フィルタリング（特定国からのアクセス制御）。",
+          "explanation": {
+            "text": "Cloud Armor では Geo-based アクセス制御が可能。",
+            "reference": "https://cloud.google.com/armor/docs/configure-security-policies",
+            "reference_label": "Geo Filtering"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "Cloud Armor は DDoS 緩和 (A)、WAF ルール (B)、Geo フィルタリング (D) を提供。内部 L3 制御 (C) は Firewall の役割。",
+        "reference": "https://cloud.google.com/armor/docs/overview",
+        "reference_label": "Cloud Armor Overview"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q39",
+      "question": "Cloud SQL と Firestore の違いに関する説明で **正しい**ものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Cloud SQL はリレーショナル DB、Firestore はドキュメント指向 DB。",
+          "explanation": {
+            "text": "Cloud SQL は MySQL/Postgres/SQL Server、Firestore は NoSQL ドキュメント DB。正しい。",
+            "reference": "https://cloud.google.com/sql/docs/introduction",
+            "reference_label": "Cloud SQL Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Cloud SQL はスキーマレス、Firestore は固定スキーマを持つ。",
+          "explanation": {
+            "text": "逆。Cloud SQL はスキーマベース、Firestore はスキーマレス。",
+            "reference": "https://cloud.google.com/firestore/docs/overview",
+            "reference_label": "Firestore Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Firestore はトランザクションを全くサポートしない。",
+          "explanation": {
+            "text": "Firestore もドキュメント単位や複数ドキュメントの ACID トランザクションを提供。誤り。",
+            "reference": "https://cloud.google.com/firestore/docs/transactions",
+            "reference_label": "Firestore Transactions"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud SQL は水平スケーリングを自動で提供する。",
+          "explanation": {
+            "text": "Cloud SQL は垂直スケーリング中心。水平スケーリングは Spanner などで実現。",
+            "reference": "https://cloud.google.com/sql/docs/introduction",
+            "reference_label": "Cloud SQL Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Cloud SQL は RDB、Firestore はドキュメント型 DB。A が正しい。",
+        "reference": "https://cloud.google.com/sql/docs/introduction",
+        "reference_label": "Cloud SQL Overview"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q40",
+      "question": "サービスアカウント鍵の管理に関するベストプラクティスで **誤っている**ものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "鍵の発行を最小化し、可能であれば Workload Identity を利用する。",
+          "explanation": {
+            "text": "鍵レス運用が推奨される。正しい。",
+            "reference": "https://cloud.google.com/iam/docs/best-practices-for-managing-service-account-keys",
+            "reference_label": "Service Account Keys Best Practices"
+          }
+        },
+        {
+          "key": "B",
+          "text": "鍵のローテーションを定期的に行う。",
+          "explanation": {
+            "text": "定期ローテーションは必須。正しい。",
+            "reference": "https://cloud.google.com/iam/docs/best-practices-for-managing-service-account-keys",
+            "reference_label": "Best Practices"
+          }
+        },
+        {
+          "key": "C",
+          "text": "鍵は GitHub などのリポジトリに保管しても、アクセス制御をかければ問題ない。",
+          "explanation": {
+            "text": "公開リポジトリに鍵を保存するのは厳禁。アクセス制御があってもリスクが高い。",
+            "reference": "https://cloud.google.com/iam/docs/best-practices-for-managing-service-account-keys",
+            "reference_label": "Best Practices"
+          }
+        },
+        {
+          "key": "D",
+          "text": "鍵の利用は監査ログで追跡可能にする。",
+          "explanation": {
+            "text": "監査ログで使用状況を確認するのはベストプラクティス。正しい。",
+            "reference": "https://cloud.google.com/logging/docs/audit",
+            "reference_label": "Audit Logs"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "鍵をリポジトリに保存するのは誤り。C が不適切。",
+        "reference": "https://cloud.google.com/iam/docs/best-practices-for-managing-service-account-keys",
+        "reference_label": "Service Account Key Best Practices"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q41",
+      "question": "Cloud Storage の署名付き URL (Signed URL) と署名付き Cookie (Signed Cookie) の違いとして **正しい**ものを選べ。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "署名付き URL は単一オブジェクトへのアクセスを制御するのに適し、署名付き Cookie は複数オブジェクトやディレクトリ全体に適用できる。",
+          "explanation": {
+            "text": "URL は 1 オブジェクト単位、Cookie は複数リソース対象。正しい。",
+            "reference": "https://cloud.google.com/cdn/docs/using-signed-urls",
+            "reference_label": "Signed URL vs Cookie"
+          }
+        },
+        {
+          "key": "B",
+          "text": "署名付き URL はブラウザで利用できないが、署名付き Cookie は利用できる。",
+          "explanation": {
+            "text": "どちらもブラウザで利用可能。B は誤り。",
+            "reference": "https://cloud.google.com/cdn/docs/using-signed-urls",
+            "reference_label": "Signed URL and Cookie"
+          }
+        },
+        {
+          "key": "C",
+          "text": "署名付き Cookie は HTTPS に非対応である。",
+          "explanation": {
+            "text": "どちらも HTTPS に対応する。誤り。",
+            "reference": "https://cloud.google.com/cdn/docs/using-signed-urls",
+            "reference_label": "Signed Cookie"
+          }
+        },
+        {
+          "key": "D",
+          "text": "署名付き URL は有効期限を設定できないが、署名付き Cookie は有効期限を持てる。",
+          "explanation": {
+            "text": "両方とも有効期限を設定可能。D は誤り。",
+            "reference": "https://cloud.google.com/cdn/docs/using-signed-urls",
+            "reference_label": "Signed URL Expiration"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "URL は単一オブジェクト、Cookie は複数オブジェクトに適用できる。A が正しい。",
+        "reference": "https://cloud.google.com/cdn/docs/using-signed-urls",
+        "reference_label": "Signed URL vs Signed Cookie"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q42",
+      "question": "Cloud Build を用いた CI/CD 設計で **正しい**ものをすべて選べ。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Cloud Build トリガーで GitHub への push イベントを契機にビルドを開始できる。",
+          "explanation": {
+            "text": "リポジトリ連携により push ごとに自動ビルド可能。",
+            "reference": "https://cloud.google.com/build/docs/automating-builds/create-github-app-triggers",
+            "reference_label": "GitHub トリガー"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Cloud Build は Artifact Registry と統合し、ビルド済みコンテナを登録できる。",
+          "explanation": {
+            "text": "ビルド成果物を Artifact Registry に直接プッシュ可能。",
+            "reference": "https://cloud.google.com/build/docs/deploying-builds/artifact-registry",
+            "reference_label": "Artifact Registry 連携"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Cloud Build のビルドステップは YAML または JSON で定義できる。",
+          "explanation": {
+            "text": "cloudbuild.yaml/json でステップを定義する。正しい。",
+            "reference": "https://cloud.google.com/build/docs/build-config-file-schema",
+            "reference_label": "Cloud Build Config"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cloud Build ではキャッシュが利用できず、すべてのビルドは完全にゼロから再実行される。",
+          "explanation": {
+            "text": "キャッシュ利用可能。誤り。",
+            "reference": "https://cloud.google.com/build/docs/building/caching-builds",
+            "reference_label": "Build Caching"
+          }
+        }
+      ],
+      "answer": "A,B,C",
+      "explanation": {
+        "text": "Cloud Build は GitHub トリガー (A)、Artifact Registry 連携 (B)、YAML/JSON 設定 (C) が正しい。D は誤り。",
+        "reference": "https://cloud.google.com/build/docs",
+        "reference_label": "Cloud Build Overview"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q43",
+      "question": "BigQuery のパーティションテーブル設計について **正しい**ものを選べ。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "日付/タイムスタンプ列に基づくパーティションを作成し、スキャン対象を制限できる。",
+          "explanation": {
+            "text": "DATE/TIMESTAMP 列をパーティションキーにすると効率的にクエリ可能。",
+            "reference": "https://cloud.google.com/bigquery/docs/partitioned-tables",
+            "reference_label": "Partitioned tables"
+          }
+        },
+        {
+          "key": "B",
+          "text": "パーティションを使用するとストレージコストが必ず増加する。",
+          "explanation": {
+            "text": "ストレージコストは同じ。クエリコスト削減が主効果。B は誤り。",
+            "reference": "https://cloud.google.com/bigquery/docs/partitioned-tables",
+            "reference_label": "Partitioned tables"
+          }
+        },
+        {
+          "key": "C",
+          "text": "INTEGER 列でもパーティションを設定できる。",
+          "explanation": {
+            "text": "整数範囲分割もサポートしている。",
+            "reference": "https://cloud.google.com/bigquery/docs/partitioned-tables",
+            "reference_label": "Partitioned tables"
+          }
+        },
+        {
+          "key": "D",
+          "text": "すべてのテーブルは自動的にパーティション化される。",
+          "explanation": {
+            "text": "手動で定義しなければ通常テーブルはパーティション化されない。",
+            "reference": "https://cloud.google.com/bigquery/docs/partitioned-tables",
+            "reference_label": "Partitioned tables"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "パーティションは日付/整数列に基づき定義でき、スキャンコスト削減が可能。B と D は誤り。",
+        "reference": "https://cloud.google.com/bigquery/docs/partitioned-tables",
+        "reference_label": "Partitioned tables"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q44",
+      "question": "Cloud CDN と Signed URL を利用する際の注意点として **正しい**ものを選べ。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "署名の検証はエッジロケーションで行われるため、オリジンの負荷を軽減できる。",
+          "explanation": {
+            "text": "Signed URL はエッジで検証され、オリジンへの不要リクエストを防げる。",
+            "reference": "https://cloud.google.com/cdn/docs/using-signed-urls",
+            "reference_label": "Signed URL with Cloud CDN"
+          }
+        },
+        {
+          "key": "B",
+          "text": "署名付き URL は有効期限を持てず、無期限のアクセスとなる。",
+          "explanation": {
+            "text": "有効期限を設定可能。B は誤り。",
+            "reference": "https://cloud.google.com/cdn/docs/using-signed-urls",
+            "reference_label": "Signed URL Expiration"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Cloud CDN 利用時でも、オリジンがパブリックに公開されていなければならない。",
+          "explanation": {
+            "text": "バックエンドは Internal HTTPS LB 経由でプライベート構成可能。必ずしもパブリック不要。",
+            "reference": "https://cloud.google.com/cdn/docs/overview",
+            "reference_label": "Cloud CDN Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "署名は URL ごとに異なるキーを必ず利用する必要がある。",
+          "explanation": {
+            "text": "共通鍵で複数 URL を署名可能。D は誤り。",
+            "reference": "https://cloud.google.com/cdn/docs/using-signed-urls",
+            "reference_label": "Signed URL Key"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "署名はエッジで検証され、オリジン負荷軽減に役立つ。B, C, D は誤り。",
+        "reference": "https://cloud.google.com/cdn/docs/using-signed-urls",
+        "reference_label": "Signed URL with Cloud CDN"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q45",
+      "question": "Cloud Run Jobs の特徴として **正しい**ものをすべて選べ。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "バッチ処理や一度限りのジョブを実行する用途に適している。",
+          "explanation": {
+            "text": "Cloud Run Jobs はリクエスト駆動型ではなく、ジョブ駆動で適用される。",
+            "reference": "https://cloud.google.com/run/docs/jobs",
+            "reference_label": "Cloud Run Jobs"
+          }
+        },
+        {
+          "key": "B",
+          "text": "HTTP リクエストを受ける常駐サービスに最適である。",
+          "explanation": {
+            "text": "HTTP リクエスト駆動は Cloud Run サービス。Jobs は異なる。",
+            "reference": "https://cloud.google.com/run/docs/jobs",
+            "reference_label": "Cloud Run Jobs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ジョブは複数タスクに分割でき、並列実行が可能。",
+          "explanation": {
+            "text": "タスク並列実行がサポートされる。",
+            "reference": "https://cloud.google.com/run/docs/jobs",
+            "reference_label": "Cloud Run Jobs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ジョブは失敗時に再試行ポリシーを設定できない。",
+          "explanation": {
+            "text": "再試行ポリシーを設定可能。D は誤り。",
+            "reference": "https://cloud.google.com/run/docs/jobs",
+            "reference_label": "Cloud Run Jobs"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "Jobs はバッチ処理向け (A)、タスク並列実行に対応 (C)。B と D は誤り。",
+        "reference": "https://cloud.google.com/run/docs/jobs",
+        "reference_label": "Cloud Run Jobs"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q46",
+      "question": "Cloud VPN (HA VPN) の特徴として **正しい**ものを選べ。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "各リージョンに 2 つのトンネルを確立し、99.99% の SLA を提供する。",
+          "explanation": {
+            "text": "冗長構成により高可用性 SLA を実現。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/vpn/concepts/overview",
+            "reference_label": "HA VPN Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Classic VPN と異なり、BGP による動的ルーティングをサポートする。",
+          "explanation": {
+            "text": "HA VPN は Cloud Router と連携し、動的ルーティングを提供。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/vpn/concepts/choosing-net-to-net",
+            "reference_label": "VPN Options"
+          }
+        },
+        {
+          "key": "C",
+          "text": "単一トンネル構成でも 99.99% SLA が保証される。",
+          "explanation": {
+            "text": "単一トンネルでは SLA 対象外。冗長が必須。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/vpn/concepts/overview",
+            "reference_label": "HA VPN Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IPSec ではなく TLS ベースの暗号化を利用する。",
+          "explanation": {
+            "text": "VPN は IPSec ベース。D は誤り。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/vpn/concepts/overview",
+            "reference_label": "HA VPN Overview"
+          }
+        }
+      ],
+      "answer": "A,B",
+      "explanation": {
+        "text": "HA VPN は冗長 2 トンネルで SLA 提供 (A)、BGP による動的ルーティング (B)。C, D は誤り。",
+        "reference": "https://cloud.google.com/network-connectivity/docs/vpn/concepts/overview",
+        "reference_label": "HA VPN Overview"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q47",
+      "question": "Cloud Monitoring における SLO 管理で **正しい**ものを選べ。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "SLO を定義し、エラーバジェットポリシーを適用できる。",
+          "explanation": {
+            "text": "SLO とエラーバジェットは運用ガードレールとなる。正しい。",
+            "reference": "https://cloud.google.com/stackdriver/docs/solutions/sre/slo",
+            "reference_label": "SLO Monitoring"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SLO は必ず 99.99% 以上に設定する必要がある。",
+          "explanation": {
+            "text": "SLO 値はサービス特性に応じて柔軟に設定。固定ではない。誤り。",
+            "reference": "https://cloud.google.com/stackdriver/docs/solutions/sre/slo",
+            "reference_label": "SLO Design"
+          }
+        },
+        {
+          "key": "C",
+          "text": "SLO に基づくアラートを定義できる。",
+          "explanation": {
+            "text": "SLO 違反に基づいたアラートを設定可能。",
+            "reference": "https://cloud.google.com/stackdriver/docs/solutions/sre/slo-monitoring",
+            "reference_label": "SLO Monitoring"
+          }
+        },
+        {
+          "key": "D",
+          "text": "SLO 機能は BigQuery 専用であり、他のサービスには適用できない。",
+          "explanation": {
+            "text": "SLO 機能は多くのサービスに適用可能。誤り。",
+            "reference": "https://cloud.google.com/stackdriver/docs/solutions/sre/slo",
+            "reference_label": "SLO Monitoring"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "SLO は定義可能 (A) で、アラートも設定できる (C)。B, D は誤り。",
+        "reference": "https://cloud.google.com/stackdriver/docs/solutions/sre/slo",
+        "reference_label": "SLO Monitoring"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q48",
+      "question": "Cloud Interconnect の冗長設計に関する説明で **正しい**ものを選べ。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "SLA を満たすためには冗長構成が必須である。",
+          "explanation": {
+            "text": "冗長性が SLA 条件となる。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/interconnect/concepts/sla",
+            "reference_label": "Interconnect SLA"
+          }
+        },
+        {
+          "key": "B",
+          "text": "単一接続でも SLA は保証される。",
+          "explanation": {
+            "text": "単一では SLA 対象外。誤り。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/interconnect/concepts/sla",
+            "reference_label": "Interconnect SLA"
+          }
+        },
+        {
+          "key": "C",
+          "text": "冗長構成は 2 つの Interconnect 回線を異なるロケーションに配置して行う。",
+          "explanation": {
+            "text": "物理的冗長性を確保する必要がある。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/interconnect/concepts/sla",
+            "reference_label": "Interconnect SLA"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Interconnect は自動的に冗長化されるので設計不要。",
+          "explanation": {
+            "text": "冗長化は設計者が構成する必要がある。D は誤り。",
+            "reference": "https://cloud.google.com/network-connectivity/docs/interconnect/concepts/overview",
+            "reference_label": "Interconnect Overview"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "SLA のためには冗長性が必須 (A)、回線は異なるロケーションに配置 (C)。B, D は誤り。",
+        "reference": "https://cloud.google.com/network-connectivity/docs/interconnect/concepts/sla",
+        "reference_label": "Interconnect SLA"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q49",
+      "question": "Cloud IAM 条件付きポリシー (IAM Conditions) の利用ケースとして **正しい**ものをすべて選べ。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "アクセスを特定の時間帯に限定する。",
+          "explanation": {
+            "text": "IAM Conditions で request.time に基づいた制御が可能。",
+            "reference": "https://cloud.google.com/iam/docs/conditions-overview",
+            "reference_label": "IAM Conditions"
+          }
+        },
+        {
+          "key": "B",
+          "text": "アクセスを特定の IP アドレス範囲に制限する。",
+          "explanation": {
+            "text": "request.client_ip に基づいた制御が可能。",
+            "reference": "https://cloud.google.com/iam/docs/conditions-overview",
+            "reference_label": "IAM Conditions"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アクセスを VM インスタンスのタグやサービスアカウントに基づき制御する。",
+          "explanation": {
+            "text": "IAM Conditions はリソース属性や SA 属性にも対応する。",
+            "reference": "https://cloud.google.com/iam/docs/conditions-overview",
+            "reference_label": "IAM Conditions"
+          }
+        },
+        {
+          "key": "D",
+          "text": "条件付きポリシーは Cloud Storage にのみ適用できる。",
+          "explanation": {
+            "text": "条件付き IAM は多くのサービスに適用可能。誤り。",
+            "reference": "https://cloud.google.com/iam/docs/conditions-overview",
+            "reference_label": "IAM Conditions"
+          }
+        }
+      ],
+      "answer": "A,B,C",
+      "explanation": {
+        "text": "IAM 条件付きポリシーは時間 (A)、IP 範囲 (B)、リソース属性 (C) で制御可能。D は誤り。",
+        "reference": "https://cloud.google.com/iam/docs/conditions-overview",
+        "reference_label": "IAM Conditions"
+      }
+    },
+    {
+      "id": "gcp-PCA-P-q50",
+      "question": "Cloud Storage のライフサイクル管理に関する説明で **正しい**ものを選べ。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "一定期間未使用のオブジェクトを自動的に削除できる。",
+          "explanation": {
+            "text": "ライフサイクルルールで削除ポリシーを設定可能。",
+            "reference": "https://cloud.google.com/storage/docs/lifecycle",
+            "reference_label": "Lifecycle Management"
+          }
+        },
+        {
+          "key": "B",
+          "text": "オブジェクトを一定期間後に自動で異なるストレージクラスへ移行できる。",
+          "explanation": {
+            "text": "ライフサイクルルールでストレージクラスの自動移行が可能。",
+            "reference": "https://cloud.google.com/storage/docs/lifecycle",
+            "reference_label": "Lifecycle Management"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ライフサイクルルールはバケット単位で設定する。",
+          "explanation": {
+            "text": "バケット単位で定義し、全オブジェクトまたは条件に一致するオブジェクトへ適用される。",
+            "reference": "https://cloud.google.com/storage/docs/lifecycle",
+            "reference_label": "Lifecycle Management"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ライフサイクルルールは一度作成すると変更できない。",
+          "explanation": {
+            "text": "ライフサイクルルールは追加・更新・削除が可能。D は誤り。",
+            "reference": "https://cloud.google.com/storage/docs/lifecycle",
+            "reference_label": "Lifecycle Management"
+          }
+        }
+      ],
+      "answer": "A,B,C",
+      "explanation": {
+        "text": "ライフサイクルでは削除 (A)、クラス移行 (B)、バケット単位での適用 (C) が可能。D は誤り。",
+        "reference": "https://cloud.google.com/storage/docs/lifecycle",
+        "reference_label": "Lifecycle Management"
+      }
+    }
+  ]
+}

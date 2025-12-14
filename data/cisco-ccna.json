@@ -1,0 +1,2485 @@
+{
+  "exam": {
+    "id": "ccna",
+    "title": "Cisco Certified Network Associate (CCNA)",
+    "description": "Cisco Certified Network Associate（CCNA）は、ネットワークの基礎からアクセス、IP 接続、IPサービス、セキュリティ基礎、自動化・プログラマビリティまで幅広く扱う、IT／ネットワーク分野におけるエントリーレベルの資格です。所属する機器や環境に限定されず、ネットワークを設計・構築・運用・管理できる知識とスキルを証明することで、企業のネットワーク運用担当者やネットワークエンジニアとしてのキャリアの入り口として活用されます。最新の試験ではクラウド管理やプログラム制御なども含まれていおり、現在のネットワーク運用に即した内容です。",
+    "version": "v1.1",
+    "price": "300 USD",
+    "difficulty": "普通",
+    "official-site": "https://www.cisco.com/site/us/en/learn/training-certifications/exams/ccna.html",
+    "category": {
+      "id": "cisco",
+      "name": "Cisco"
+    }
+  },
+  "questions": [
+    {
+      "id": "ccna-1",
+      "question": "CCNA（試験番号 200-301）で問われる分野の組み合わせとして最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ネットワークの基礎 / ネットワークアクセス / IPコネクティビティ / IPサービス / セキュリティの基礎 / 自動化とプログラマビリティ",
+          "explanation": {
+            "text": "Cisco 公式の試験概要では、この6分野が CCNA の出題範囲として明示されている。",
+            "reference": "https://www.cisco.com/c/ja_jp/training-events/training-certifications/exams/current-list/ccna-200-301.html",
+            "reference_label": "Cisco 公式: CCNA 200-301 試験概要・出題分野"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ルーティング / スイッチング / 無線LAN / データセンター / コラボレーション / セキュリティ",
+          "explanation": {
+            "text": "これは旧来の分野構成イメージであり、現在の単一 CCNA 試験の公式な分野分類とは異なる。",
+            "reference": "https://learningnetwork.cisco.com/s/article/200-301-ccna-exam-topics",
+            "reference_label": "Cisco Learning Network: 200-301 CCNA Exam Topics"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データベース / アルゴリズム / プログラミング言語 / オペレーティングシステム",
+          "explanation": {
+            "text": "これらは一般的なコンピュータサイエンス分野であり、CCNA の公式な出題分野ではない。",
+            "reference": "https://www.cisco.com/site/us/en/learn/training-certifications/certifications/enterprise/ccna/exams-and-training.html",
+            "reference_label": "Cisco 公式: CCNA Exam and Training ページ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "クラウドインフラ / AI / 大規模データ解析 / ブロックチェーン",
+          "explanation": {
+            "text": "これらは CCNA ではなく、他の認定やトレーニングで扱われるトピックである。",
+            "reference": "https://www.cisco.com/site/us/en/learn/training-certifications/certifications/index.html",
+            "reference_label": "Cisco 公式: 認定ポートフォリオ一覧"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "CCNA 200-301 の公式試験概要では、ネットワークの基礎、ネットワークアクセス、IPコネクティビティ、IPサービス、セキュリティの基礎、自動化とプログラマビリティの6分野が明示されている。",
+        "reference": "https://www.cisco.com/c/ja_jp/training-events/training-certifications/exams/current-list/ccna-200-301.html",
+        "reference_label": "Cisco 公式: CCNA 200-301 試験概要・出題分野"
+      }
+    },
+    {
+      "id": "ccna-2",
+      "question": "OSI 参照モデルにおいて、IP アドレスによる論理アドレッシングとルーティングを担当するレイヤはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "第1層 物理層 (Physical)",
+          "explanation": {
+            "text": "物理層はビット列の電気・光信号としての送受信を扱い、IP アドレスやルーティングは扱わない。",
+            "reference": "https://learningnetwork.cisco.com/s/article/osi-model-reference-chart",
+            "reference_label": "Cisco Learning Network: OSI Model Reference Chart"
+          }
+        },
+        {
+          "key": "B",
+          "text": "第2層 データリンク層 (Data Link)",
+          "explanation": {
+            "text": "データリンク層はフレームと MAC アドレスを扱い、論理アドレス(IP)ではなく物理アドレスに基づく転送を行う。",
+            "reference": "https://learningnetwork.cisco.com/s/article/osi-model-reference-chart",
+            "reference_label": "Cisco Learning Network: OSI Model Reference Chart"
+          }
+        },
+        {
+          "key": "C",
+          "text": "第3層 ネットワーク層 (Network)",
+          "explanation": {
+            "text": "ネットワーク層が IP アドレスによる論理アドレッシングとルーティングを担当する。",
+            "reference": "https://learningnetwork.cisco.com/s/article/osi-model-reference-chart",
+            "reference_label": "Cisco Learning Network: OSI Model Reference Chart"
+          }
+        },
+        {
+          "key": "D",
+          "text": "第4層 トランスポート層 (Transport)",
+          "explanation": {
+            "text": "トランスポート層はエンドツーエンドの通信制御(TCP/UDPなど)を扱い、IP アドレスの割り当てやルーティングは行わない。",
+            "reference": "https://learningnetwork.cisco.com/s/article/osi-model-reference-chart",
+            "reference_label": "Cisco Learning Network: OSI Model Reference Chart"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "OSI モデルの第3層であるネットワーク層が IP アドレスなどの論理アドレスを扱い、ルータによる経路選択・転送の基盤となる。",
+        "reference": "https://learningnetwork.cisco.com/s/article/osi-model-reference-chart",
+        "reference_label": "Cisco Learning Network: OSI Model Reference Chart"
+      }
+    },
+    {
+      "id": "ccna-3",
+      "question": "次の IPv4 アドレス範囲のうち、RFC1918 で定義されるプライベートアドレス空間に含まれないものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "10.0.0.0/8",
+          "explanation": {
+            "text": "10.0.0.0/8 は RFC1918 で定義されたプライベートアドレス空間の1つである。",
+            "reference": "https://datatracker.ietf.org/doc/html/rfc1918",
+            "reference_label": "IETF RFC1918: Address Allocation for Private Internets"
+          }
+        },
+        {
+          "key": "B",
+          "text": "172.16.0.0/12",
+          "explanation": {
+            "text": "172.16.0.0/12 も RFC1918 で定義されたプライベートアドレス空間である。",
+            "reference": "https://datatracker.ietf.org/doc/html/rfc1918",
+            "reference_label": "IETF RFC1918: Address Allocation for Private Internets"
+          }
+        },
+        {
+          "key": "C",
+          "text": "192.168.0.0/16",
+          "explanation": {
+            "text": "192.168.0.0/16 は家庭用ルータなどでよく使われるプライベートアドレス空間である。",
+            "reference": "https://datatracker.ietf.org/doc/html/rfc1918",
+            "reference_label": "IETF RFC1918: Address Allocation for Private Internets"
+          }
+        },
+        {
+          "key": "D",
+          "text": "100.64.0.0/10",
+          "explanation": {
+            "text": "100.64.0.0/10 はキャリアグレード NAT 向けの共有アドレス空間であり、RFC1918 のプライベートアドレスではない。",
+            "reference": "https://datatracker.ietf.org/doc/html/rfc6598",
+            "reference_label": "IETF RFC6598: Shared Address Space for Carrier-Grade NAT"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "RFC1918 でプライベートと定義されるのは 10/8, 172.16/12, 192.168/16 の3範囲であり、100.64.0.0/10 は別の用途(共有アドレス空間)として RFC6598 で定義される。",
+        "reference": "https://datatracker.ietf.org/doc/html/rfc1918",
+        "reference_label": "IETF RFC1918: Address Allocation for Private Internets"
+      }
+    },
+    {
+      "id": "ccna-4",
+      "question": "IPv6 のリンクローカルアドレス (link-local address) に使用されるプレフィックスとして正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "FE80::/10",
+          "explanation": {
+            "text": "Cisco の解説では、リンクローカルアドレスは FE80::/10 のプレフィックスを用いると説明されている。",
+            "reference": "https://www.cisco.com/c/ja_jp/support/docs/ip/ip-version-6-ipv6/113328-ipv6-lla.html",
+            "reference_label": "Cisco 公式: IPv6 リンクローカルアドレスについて"
+          }
+        },
+        {
+          "key": "B",
+          "text": "FD00::/8",
+          "explanation": {
+            "text": "FD00::/8 はユニークローカルアドレス(ULA)用のプレフィックスであり、リンクローカルではない。",
+            "reference": "https://datatracker.ietf.org/doc/html/rfc4193",
+            "reference_label": "IETF RFC4193: Unique Local IPv6 Unicast Addresses"
+          }
+        },
+        {
+          "key": "C",
+          "text": "2001:db8::/32",
+          "explanation": {
+            "text": "2001:db8::/32 は文書用のサンプルアドレス空間であり、リンクローカルアドレスではない。",
+            "reference": "https://datatracker.ietf.org/doc/html/rfc3849",
+            "reference_label": "IETF RFC3849: IPv6 Documentation Address Prefix"
+          }
+        },
+        {
+          "key": "D",
+          "text": "FF00::/8",
+          "explanation": {
+            "text": "FF00::/8 は IPv6 マルチキャストアドレスのプレフィックスである。",
+            "reference": "https://datatracker.ietf.org/doc/html/rfc4291",
+            "reference_label": "IETF RFC4291: IP Version 6 Addressing Architecture"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "IPv6 のリンクローカルアドレスは FE80::/10 の範囲に割り当てられ、各インターフェイスで自動生成される。",
+        "reference": "https://www.cisco.com/c/ja_jp/support/docs/ip/ip-version-6-ipv6/113328-ipv6-lla.html",
+        "reference_label": "Cisco 公式: IPv6 リンクローカルアドレスについて"
+      }
+    },
+    {
+      "id": "ccna-5",
+      "question": "Cisco IOS ルータで show ip interface brief コマンドを実行した際に、主に確認できる情報として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "各インターフェイスの IP アドレスと Line/Protocol の状態",
+          "explanation": {
+            "text": "Cisco のコマンドリファレンスでは、show ip interface brief はインターフェイスの IP アドレスと状態を簡易表示するコマンドと説明されている。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9400/software/release/17-17/command_reference/b_1717_9400_cr/interface_and_hardware_commands.html",
+            "reference_label": "Cisco IOS XE コマンド リファレンス: show ip interface brief"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ルーティングテーブル内の全経路とメトリック",
+          "explanation": {
+            "text": "ルーティング情報の確認には show ip route を使用する。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/routing-information-protocol-rip/13769-3.html",
+            "reference_label": "Cisco 公式: show ip route の使用例"
+          }
+        },
+        {
+          "key": "C",
+          "text": "NAT 変換テーブルのエントリ一覧",
+          "explanation": {
+            "text": "NAT 変換の確認には show ip nat translations など別コマンドを用いる。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/network-address-translation-nat/6209-5.html",
+            "reference_label": "Cisco 公式: NAT の監視コマンド"
+          }
+        },
+        {
+          "key": "D",
+          "text": "スイッチに設定されている VLAN と各ポートの VLAN 割り当て",
+          "explanation": {
+            "text": "VLAN 情報は show vlan brief などで確認するのが一般的であり、show ip interface brief の主目的ではない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/vlan/10023-3.html",
+            "reference_label": "Cisco 公式: Catalyst スイッチ VLAN の確認"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "show ip interface brief は、全インターフェイスの IP アドレスと管理/プロトコル状態を一覧表示し、疎通トラブル時の一次切り分けに用いられる。",
+        "reference": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9400/software/release/17-17/command_reference/b_1717_9400_cr/interface_and_hardware_commands.html",
+        "reference_label": "Cisco IOS XE コマンド リファレンス: show ip interface brief"
+      }
+    },
+    {
+      "id": "ccna-6",
+      "question": "DHCP における DORA プロセスのメッセージ順として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Discover → Offer → Request → Acknowledge",
+          "explanation": {
+            "text": "DORA は Discover, Offer, Request, Acknowledge の頭文字であり、この順にメッセージがやり取りされる。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/dcn/nx-os/nexus9000/104x/configuration/vxlan/cisco-nexus-9000-series-nx-os-vxlan-configuration-guide-release-104x/m-dhcp-snooping-in-vxlan-bgp-evpn.pdf",
+            "reference_label": "Cisco 公式: DHCP スヌーピング解説 (DORA 交換メッセージ)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Discover → Request → Offer → Acknowledge",
+          "explanation": {
+            "text": "Request はサーバからの Offer を受けてクライアントが送信するため、Offer より先には来ない。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/dcn/nx-os/nexus9000/104x/configuration/vxlan/cisco-nexus-9000-series-nx-os-vxlan-configuration-guide-release-104x/m-dhcp-snooping-in-vxlan-bgp-evpn.pdf",
+            "reference_label": "Cisco 公式: DHCP スヌーピング解説 (DORA 交換メッセージ)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Offer → Discover → Request → Acknowledge",
+          "explanation": {
+            "text": "最初のメッセージはクライアントからの Discover であり、Offer が先に来ることはない。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/dcn/nx-os/nexus9000/104x/configuration/vxlan/cisco-nexus-9000-series-nx-os-vxlan-configuration-guide-release-104x/m-dhcp-snooping-in-vxlan-bgp-evpn.pdf",
+            "reference_label": "Cisco 公式: DHCP スヌーピング解説 (DORA 交換メッセージ)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Discover → Offer → Acknowledge → Request",
+          "explanation": {
+            "text": "アドレスの割り当て確定(Ack)は、クライアントが Request を送信した後に行われる。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/dcn/nx-os/nexus9000/104x/configuration/vxlan/cisco-nexus-9000-series-nx-os-vxlan-configuration-guide-release-104x/m-dhcp-snooping-in-vxlan-bgp-evpn.pdf",
+            "reference_label": "Cisco 公式: DHCP スヌーピング解説 (DORA 交換メッセージ)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "DHCP クライアントとサーバは、Discover → Offer → Request → Acknowledge の順にメッセージを交換するため、DORA という名称になっている。",
+        "reference": "https://www.cisco.com/c/en/us/td/docs/dcn/nx-os/nexus9000/104x/configuration/vxlan/cisco-nexus-9000-series-nx-os-vxlan-configuration-guide-release-104x/m-dhcp-snooping-in-vxlan-bgp-evpn.pdf",
+        "reference_label": "Cisco 公式: DHCP スヌーピング解説 (DORA 交換メッセージ)"
+      }
+    },
+    {
+      "id": "ccna-7",
+      "question": "802.1Q トランクリンク上でのネイティブ VLAN の動作に関する説明として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ネイティブ VLAN に属するフレームは、通常 VLAN タグ無しでトランクを通過する。",
+          "explanation": {
+            "text": "Cisco の解説では、デフォルトではネイティブ VLAN フレームはタグ無しで送信されるとされる。",
+            "reference": "https://networklessons.com/switching/802-1q-native-vlan-cisco-ios-switch",
+            "reference_label": "NetworkLessons: 802.1Q Native VLAN (Cisco IOS Switch) 解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ネイティブ VLAN は常に VLAN1 に固定され、変更することはできない。",
+          "explanation": {
+            "text": "デフォルトは VLAN1 だが、コマンドで任意の VLAN に変更可能である。",
+            "reference": "https://networklessons.com/switching/802-1q-native-vlan-cisco-ios-switch",
+            "reference_label": "NetworkLessons: 802.1Q Native VLAN (Cisco IOS Switch) 解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ネイティブ VLAN のフレームは必ず優先度付きで送信され、優先制御(QoS)に使われる。",
+          "explanation": {
+            "text": "ネイティブ VLAN はタグ有無の動作に関わる設定であり、QoS の優先度制御そのものではない。",
+            "reference": "https://documentation.meraki.com/Platform_Management/Dashboard_Administration/Troubleshooting_and_Support/Troubleshooting/Fundamentals_of_802.1Q_VLAN_Tagging",
+            "reference_label": "Cisco Meraki: Fundamentals of 802.1Q VLAN Tagging"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ネイティブ VLAN は管理トラフィック専用であり、ユーザデータを流すことはできない。",
+          "explanation": {
+            "text": "ネイティブ VLAN を管理に使うかどうかは設計次第であり、ユーザデータを流せないという制約はない。",
+            "reference": "https://documentation.meraki.com/Platform_Management/Dashboard_Administration/Troubleshooting_and_Support/Troubleshooting/Fundamentals_of_802.1Q_VLAN_Tagging",
+            "reference_label": "Cisco Meraki: Fundamentals of 802.1Q VLAN Tagging"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "802.1Q ではネイティブ VLAN のフレームはタグ無しで送信されるのが標準動作であり、そのため両端で同じネイティブ VLAN を設定することが重要となる。",
+        "reference": "https://documentation.meraki.com/Platform_Management/Dashboard_Administration/Troubleshooting_and_Support/Troubleshooting/Fundamentals_of_802.1Q_VLAN_Tagging",
+        "reference_label": "Cisco Meraki: Fundamentals of 802.1Q VLAN Tagging"
+      }
+    },
+    {
+      "id": "ccna-8",
+      "question": "スパニングツリープロトコル(STP)において、ルートブリッジがどのように選出されるかを最も正しく説明しているものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "最もポート数が多いスイッチがルートブリッジに選ばれる。",
+          "explanation": {
+            "text": "ポート数は STP のルート選出条件ではなく、Bridge ID の比較で決まる。",
+            "reference": "https://documentation.meraki.com/Switching/MS_-_Switches/Design_and_Configure/Configuration_Guides/Port_and_VLAN_Configuration/Spanning_Tree_Protocol_%28STP%29_Overview",
+            "reference_label": "Cisco Meraki: Spanning Tree Protocol (STP) Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Bridge ID（プライオリティ + MACアドレス）が最も小さいスイッチがルートブリッジになる。",
+          "explanation": {
+            "text": "STP では各スイッチの Bridge ID を比較し、最小の BID を持つスイッチがルートブリッジとなる。",
+            "reference": "https://documentation.meraki.com/Switching/MS_-_Switches/Design_and_Configure/Configuration_Guides/Port_and_VLAN_Configuration/Spanning_Tree_Protocol_%28STP%29_Overview",
+            "reference_label": "Cisco Meraki: Spanning Tree Protocol (STP) Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "最も高い MAC アドレスを持つスイッチがルートブリッジになる。",
+          "explanation": {
+            "text": "MAC アドレスは BID の一部だが、値が小さい方が優先される。",
+            "reference": "https://www.firewall.cx/networking/network-protocols/spanning-tree-protocol/spanning-tree-protocol-root-bridge-election.html",
+            "reference_label": "Firewall.cx: STP Root Bridge Election 解説"
+          }
+        },
+        {
+          "key": "D",
+          "text": "管理者が明示的に指定したスイッチのみがルートブリッジ候補になれる。",
+          "explanation": {
+            "text": "管理者がプライオリティを調整して事実上ルートを決めることはできるが、STP の仕様としては全スイッチが選出対象である。",
+            "reference": "https://documentation.meraki.com/Switching/MS_-_Switches/Design_and_Configure/Configuration_Guides/Port_and_VLAN_Configuration/Spanning_Tree_Protocol_%28STP%29_Overview",
+            "reference_label": "Cisco Meraki: Spanning Tree Protocol (STP) Overview"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "STP のルートブリッジは、プライオリティと MAC アドレスから構成される Bridge ID が最も小さいスイッチとして決定される。",
+        "reference": "https://documentation.meraki.com/Switching/MS_-_Switches/Design_and_Configure/Configuration_Guides/Port_and_VLAN_Configuration/Spanning_Tree_Protocol_%28STP%29_Overview",
+        "reference_label": "Cisco Meraki: Spanning Tree Protocol (STP) Overview"
+      }
+    },
+    {
+      "id": "ccna-9",
+      "question": "標準 ACL (Standard ACL) と拡張 ACL (Extended ACL) の使い分けに関する説明として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "標準 ACL は送信元 IP のみでフィルタし、拡張 ACL は送信元・宛先 IP やポート番号など複数条件でフィルタできる。",
+          "explanation": {
+            "text": "Cisco 公式ドキュメントでも、標準 ACL は送信元 IP のみ、拡張 ACL は L3/L4 情報を詳細に指定可能とされる。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/security-vpn/access-lists/13-7.html",
+            "reference_label": "Cisco 公式: IP ACL の概要と種類"
+          }
+        },
+        {
+          "key": "B",
+          "text": "標準 ACL は TCP/UDP ポート番号でのみフィルタし、拡張 ACL は IP アドレスでのみフィルタする。",
+          "explanation": {
+            "text": "ポート番号のみでフィルタする ACL という分類は存在せず、誤った説明である。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/security-vpn/access-lists/13-7.html",
+            "reference_label": "Cisco 公式: IP ACL の概要と種類"
+          }
+        },
+        {
+          "key": "C",
+          "text": "標準 ACL は VLAN 間ルーティングでは使用できず、拡張 ACL のみ使用できる。",
+          "explanation": {
+            "text": "標準 ACL も拡張 ACL も Layer3 インターフェイスに適用でき、VLAN 間ルーティングでも利用できる。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/security-vpn/access-lists/13-7.html",
+            "reference_label": "Cisco 公式: IP ACL の概要と種類"
+          }
+        },
+        {
+          "key": "D",
+          "text": "拡張 ACL は常にインターフェイスの outbound にのみ適用しなければならない。",
+          "explanation": {
+            "text": "ACL は in/out どちらの方向にも適用可能であり、拡張 ACL に特有の制約ではない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/security-vpn/access-lists/13-7.html",
+            "reference_label": "Cisco 公式: IP ACL の概要と種類"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "標準 ACL は送信元 IP アドレスのみでのフィルタに用いられ、拡張 ACL は送信元・宛先 IP アドレスや L4 ポート番号など複数条件を組み合わせてより細かい制御が可能である。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/security-vpn/access-lists/13-7.html",
+        "reference_label": "Cisco 公式: IP ACL の概要と種類"
+      }
+    },
+    {
+      "id": "ccna-10",
+      "question": "SNMPv3 が SNMPv1/v2c と比較して提供するセキュリティ機能として、正しいものをすべて選べ。（複数選択）",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ユーザベースの認証によるメッセージ認証 (auth)",
+          "explanation": {
+            "text": "SNMPv3 ではユーザベースのセキュリティモデルにより、MD5 や SHA を用いたメッセージ認証を提供できる。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/snmp/configuration/xe-3se/3850/snmp-xe-3se-3850-book/nm-snmp-snmpv3.pdf",
+            "reference_label": "Cisco 公式: SNMP Version 3 Configuration Guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AES などによる SNMP メッセージの暗号化 (priv)",
+          "explanation": {
+            "text": "SNMPv3 の priv オプションでは、AES などを用いたメッセージ暗号化に対応している。",
+            "reference": "https://www.cisco.com/c/dam/en/us/td/docs/unified_computing/Intersight/IMM_SNMP_Monitoring/b_imm_snmp_monitoring_guide/m_snmp_security.pdf",
+            "reference_label": "Cisco Intersight: SNMPv3 Security Levels and Privileges"
+          }
+        },
+        {
+          "key": "C",
+          "text": "コミュニティ文字列を平文送信する簡易モード",
+          "explanation": {
+            "text": "コミュニティ文字列のみの平文認証は SNMPv1/v2c の特徴であり、SNMPv3 の強化点ではない。",
+            "reference": "https://networklessons.com/cisco/ccnp-encor-350-401/how-to-configure-snmpv3-on-cisco-ios-router",
+            "reference_label": "NetworkLessons: How to Configure SNMPv3 on Cisco IOS Router"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザごとに異なるアクセス権限ビューを定義できる仕組み",
+          "explanation": {
+            "text": "SNMPv3 ではビューやグループを用いて、ユーザごとにアクセス可能な MIB ツリーを制御できる。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/snmp/configuration/xe-3se/3850/snmp-xe-3se-3850-book/nm-snmp-snmpv3.pdf",
+            "reference_label": "Cisco 公式: SNMP Version 3 Configuration Guide"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "SNMPv3 はユーザベースの認証(auth)、メッセージ暗号化(priv)、ビュー/グループによるアクセス制御などのセキュリティ機能を提供し、SNMPv1/v2c の平文コミュニティ方式より安全に管理が行える。",
+        "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/snmp/configuration/xe-3se/3850/snmp-xe-3se-3850-book/nm-snmp-snmpv3.pdf",
+        "reference_label": "Cisco 公式: SNMP Version 3 Configuration Guide"
+      }
+    },
+    {
+      "id": "ccna-11",
+      "question": "Cisco スイッチで Spanning Tree PortFast を有効化した際の正しい挙動はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ポートが即座に forwarding 状態へ遷移する。",
+          "explanation": {
+            "text": "PortFast はホスト接続ポートで使用され、STP の通常のリスニング・ラーニングをスキップし即 forwarding へ遷移する。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/12013-17.html",
+            "reference_label": "Cisco 公式: Understanding and Configuring PortFast"
+          }
+        },
+        {
+          "key": "B",
+          "text": "BPDU を自動的に破棄し、受信しない動作になる。",
+          "explanation": {
+            "text": "PortFast でも BPDU は受信可能であり、BPDU Guard と組み合わせることで保護される。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/12013-17.html",
+            "reference_label": "Cisco 公式: PortFast と BPDU Guard"
+          }
+        },
+        {
+          "key": "C",
+          "text": "STP が完全に無効化される。",
+          "explanation": {
+            "text": "PortFast は STP を無効化しない。動作を高速化するだけである。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/12013-17.html",
+            "reference_label": "Cisco 公式: PortFast"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ポートが自動的にトランクモードに変わる。",
+          "explanation": {
+            "text": "PortFast はアクセスポートで使用する推奨設定であり、トランクとは無関係である。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/12013-17.html",
+            "reference_label": "Cisco 公式: PortFast"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "PortFast はホスト接続の高速化機能で、ポートを即 forwarding へ遷移させる。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/12013-17.html",
+        "reference_label": "Cisco 公式: Understanding and Configuring PortFast"
+      }
+    },
+
+    {
+      "id": "ccna-12",
+      "question": "OSPF の DR（指定ルーター）が選出されるネットワークタイプとして正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Broadcast ネットワーク",
+          "explanation": {
+            "text": "OSPF は Broadcast と NBMA ネットワークで DR/BDR を選出する。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/open-shortest-path-first-ospf/7039-1.html",
+            "reference_label": "Cisco 公式: OSPF DR/BDR 選出"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Point-to-Point ネットワーク",
+          "explanation": {
+            "text": "P2P では DR/BDR は選出されない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/open-shortest-path-first-ospf/7039-1.html",
+            "reference_label": "Cisco 公式: OSPF Network Types"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Point-to-Multipoint ネットワーク",
+          "explanation": {
+            "text": "P2MP も DR/BDR は使用しない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/open-shortest-path-first-ospf/7039-1.html",
+            "reference_label": "Cisco 公式: OSPF Network Types"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Loopback インターフェイス",
+          "explanation": {
+            "text": "Loopback は常に /32 として扱われ、DR 選出は行われない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/open-shortest-path-first-ospf/7039-1.html",
+            "reference_label": "Cisco 公式: OSPF 基礎"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "OSPF は Broadcast および NBMA ネットワークで DR/BDR を選出する。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/ip/open-shortest-path-first-ospf/7039-1.html",
+        "reference_label": "Cisco 公式: OSPF DR/BDR 選出"
+      }
+    },
+
+    {
+      "id": "ccna-13",
+      "question": "EtherChannel を構成する際、PAgP（Cisco 独自）を用いる場合の有効なポートモード組み合わせはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "auto と desirable",
+          "explanation": {
+            "text": "PAgP は auto-desirable または desirable-desirable が成立する。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6500-series-switches/10557-41.html",
+            "reference_label": "Cisco 公式: EtherChannel and PAgP"
+          }
+        },
+        {
+          "key": "B",
+          "text": "active と passive",
+          "explanation": {
+            "text": "active/passive は LACP（IEEE 802.3ad）のモード。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6500-series-switches/10557-41.html",
+            "reference_label": "Cisco 公式: EtherChannel Basics"
+          }
+        },
+        {
+          "key": "C",
+          "text": "on と passive",
+          "explanation": {
+            "text": "on は静的 EtherChannel で PAgP/LACP のネゴシエーションを行わない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6500-series-switches/10557-41.html",
+            "reference_label": "Cisco 公式: EtherChannel"
+          }
+        },
+        {
+          "key": "D",
+          "text": "auto と auto",
+          "explanation": {
+            "text": "auto-auto は双方待ち状態のため成立しない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6500-series-switches/10557-41.html",
+            "reference_label": "Cisco 公式: EtherChannel"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "PAgP は auto-desirable または desirable-desirable の組み合わせで成立する。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6500-series-switches/10557-41.html",
+        "reference_label": "Cisco 公式: EtherChannel and PAgP"
+      }
+    },
+
+    {
+      "id": "ccna-14",
+      "question": "HSRP における preempt（プリエンプト）機能の役割として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "優先度が高いルーターが復帰した際にアクティブルーターに自動的に戻る。",
+          "explanation": {
+            "text": "preempt により高優先度ルーターへ役割が戻される。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/hot-standby-router-protocol-hsrp/9234-hsrp.html",
+            "reference_label": "Cisco 公式: HSRP 設計ガイド"
+          }
+        },
+        {
+          "key": "B",
+          "text": "HSRP グループ番号を動的に変更する。",
+          "explanation": {
+            "text": "グループ番号変更機能は存在しない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/hot-standby-router-protocol-hsrp/9234-hsrp.html",
+            "reference_label": "Cisco 公式: HSRP"
+          }
+        },
+        {
+          "key": "C",
+          "text": "仮想 MAC アドレスの生成方式を切り替える。",
+          "explanation": {
+            "text": "MAC 生成方式は preempt と関係ない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/hot-standby-router-protocol-hsrp/9234-hsrp.html",
+            "reference_label": "Cisco 公式: HSRP"
+          }
+        },
+        {
+          "key": "D",
+          "text": "アクティブルーターを手動で変更できる機能。",
+          "explanation": {
+            "text": "preempt は手動変更ではなく自動復帰の機能である。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/hot-standby-router-protocol-hsrp/9234-hsrp.html",
+            "reference_label": "Cisco 公式: HSRP"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "preempt はより高い優先度を持つルーターが復帰したときにアクティブに戻るための機能である。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/ip/hot-standby-router-protocol-hsrp/9234-hsrp.html",
+        "reference_label": "Cisco 公式: HSRP 設計ガイド"
+      }
+    },
+
+    {
+      "id": "ccna-15",
+      "question": "DNS の A レコードが持つ情報として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ホスト名と IPv4 アドレスの対応関係",
+          "explanation": {
+            "text": "A レコードはホスト名を IPv4 アドレスへ解決する。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/dynamic-host-configuration-protocol-dhcp/12485-dns.html",
+            "reference_label": "Cisco 公式: DNS Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "IPv6 アドレスの情報",
+          "explanation": {
+            "text": "IPv6 は AAAA レコードに格納される。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/dns/118620-technote-dns-00.html",
+            "reference_label": "Cisco 公式: DNS Resource Records"
+          }
+        },
+        {
+          "key": "C",
+          "text": "メール配信に使用する Mail Exchanger の情報",
+          "explanation": {
+            "text": "これは MX レコードで管理される。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/dns/118620-technote-dns-00.html",
+            "reference_label": "Cisco 公式: DNS Resource Records"
+          }
+        },
+        {
+          "key": "D",
+          "text": "DNS サーバの委任設定情報",
+          "explanation": {
+            "text": "委任は NS レコードが持つ。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/dns/118620-technote-dns-00.html",
+            "reference_label": "Cisco 公式: DNS Resource Records"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "A レコードはホスト名を IPv4 アドレスに紐づける役割を持つ。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/ip/dns/118620-technote-dns-00.html",
+        "reference_label": "Cisco 公式: DNS Resource Records"
+      }
+    },
+
+    {
+      "id": "ccna-16",
+      "question": "ネットワークアドレス変換 (NAT) のうち、複数の内部ホストが 1つのグローバル IP を共有する方式として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "PAT (Port Address Translation)",
+          "explanation": {
+            "text": "PAT は複数ホストが 1つのグローバル IP をポート番号で区別して共有する方式。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/network-address-translation-nat/6209-5.html",
+            "reference_label": "Cisco 公式: NAT/PAT 技術解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Static NAT",
+          "explanation": {
+            "text": "Static NAT は 1:1 の静的変換。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/network-address-translation-nat/6209-5.html",
+            "reference_label": "Cisco 公式: NAT"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Dynamic NAT",
+          "explanation": {
+            "text": "Dynamic NAT はプールから 1:1 割り当てであり、共有はしない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/network-address-translation-nat/6209-5.html",
+            "reference_label": "Cisco 公式: NAT"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Outside NAT",
+          "explanation": {
+            "text": "Outside NAT は外部アドレスを変換する仕組みで、共有とは関係ない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/network-address-translation-nat/6209-5.html",
+            "reference_label": "Cisco 公式: NAT Outside Translation"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "PAT は多数の内部ホストが 1つのグローバル IP を共有するために最も一般的に使用される方式である。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/ip/network-address-translation-nat/6209-5.html",
+        "reference_label": "Cisco 公式: NAT/PAT 技術解説"
+      }
+    },
+
+    {
+      "id": "ccna-17",
+      "question": "Syslog の Severity レベルで、数値 0 に対応するレベルとして正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Emergency",
+          "explanation": {
+            "text": "Severity 0 は Emergency（重大障害）。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/security-vpn/syslog/20052-logging.html",
+            "reference_label": "Cisco 公式: Syslog のログレベル"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Alert",
+          "explanation": {
+            "text": "Alert はレベル 1。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/security-vpn/syslog/20052-logging.html",
+            "reference_label": "Cisco 公式: Syslog"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Critical",
+          "explanation": {
+            "text": "Critical はレベル 2。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/security-vpn/syslog/20052-logging.html",
+            "reference_label": "Cisco 公式: Syslog"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Error",
+          "explanation": {
+            "text": "Error はレベル 3。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/security-vpn/syslog/20052-logging.html",
+            "reference_label": "Cisco 公式: Syslog"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Syslog の Severity 0 は Emergency であり、最も重大な障害を示す。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/security-vpn/syslog/20052-logging.html",
+        "reference_label": "Cisco 公式: Syslog のログレベル"
+      }
+    },
+
+    {
+      "id": "ccna-18",
+      "question": "IPv6 において、Neighbor Discovery Protocol (NDP) が提供する機能として正しいものはどれか。（複数選択）",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "MAC アドレスの解決",
+          "explanation": {
+            "text": "IPv6 では ARP が存在せず、NDP が MAC 解決（NS/NA メッセージ）を行う。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4861",
+            "reference_label": "RFC 4861: Neighbor Discovery for IPv6"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ルーターの検出",
+          "explanation": {
+            "text": "RA/RS を用いてルータ情報を学習する。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4861",
+            "reference_label": "RFC 4861: Router Advertisement"
+          }
+        },
+        {
+          "key": "C",
+          "text": "重複アドレス検出 (DAD)",
+          "explanation": {
+            "text": "NDP はアドレスの重複検出も提供する。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4862",
+            "reference_label": "RFC 4862: IPv6 Stateless Address Autoconfiguration"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ルーティング情報の経路選択",
+          "explanation": {
+            "text": "経路選択はルーティングプロトコルの役割であり NDP の機能ではない。",
+            "reference": "https://www.cisco.com",
+            "reference_label": "Cisco IPv6 ルーティング概要"
+          }
+        }
+      ],
+      "answer": "A,B,C",
+      "explanation": {
+        "text": "NDP は MAC 解決、ルータ検出、重複アドレス検出など IPv6 の基本機能を提供する。",
+        "reference": "https://www.rfc-editor.org/rfc/rfc4861",
+        "reference_label": "RFC 4861: Neighbor Discovery for IPv6"
+      }
+    },
+
+    {
+      "id": "ccna-19",
+      "question": "AAA の Accounting（アカウンティング）の役割として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ユーザーの操作履歴やログイン履歴を記録する。",
+          "explanation": {
+            "text": "Accounting は利用履歴の記録が目的。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/security-vpn/remote-authentication-dial-user-service-radius/13838-10.html",
+            "reference_label": "Cisco 公式: AAA Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザーの権限を決定する。",
+          "explanation": {
+            "text": "権限管理は Authorization の役割。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/security-vpn/remote-authentication-dial-user-service-radius/13838-10.html",
+            "reference_label": "Cisco 公式: AAA"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザーの身元を確認する。",
+          "explanation": {
+            "text": "身元確認は Authentication（認証）。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/security-vpn/remote-authentication-dial-user-service-radius/13838-10.html",
+            "reference_label": "Cisco 公式: AAA"
+          }
+        },
+        {
+          "key": "D",
+          "text": "パケットを暗号化しセキュアに通信する。",
+          "explanation": {
+            "text": "暗号化は AAA の範囲ではない。",
+            "reference": "https://www.cisco.com",
+            "reference_label": "Cisco Security Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Accounting はユーザ行動ログや接続履歴の記録を行う AAA の構成要素である。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/security-vpn/remote-authentication-dial-user-service-radius/13838-10.html",
+        "reference_label": "Cisco 公式: AAA Overview"
+      }
+    },
+
+    {
+      "id": "ccna-20",
+      "question": "Cisco の SDN アーキテクチャにおいて、Southbound API が担う役割として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "SDN コントローラがネットワーク機器を制御するための API",
+          "explanation": {
+            "text": "Southbound API はコントローラが下部のネットワーク機器を制御する方向の API。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/software-defined-networking/overview.html",
+            "reference_label": "Cisco 公式: SDN Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "アプリケーションが SDN コントローラへ要求を送るための API",
+          "explanation": {
+            "text": "これは Northbound API の説明。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/software-defined-networking/overview.html",
+            "reference_label": "Cisco 公式: SDN"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ネットワーク機器間のルーティング情報交換を行う API",
+          "explanation": {
+            "text": "機器間の経路交換はルーティングプロトコルの役割で、Southbound API ではない。",
+            "reference": "https://www.cisco.com",
+            "reference_label": "Cisco Routing Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザーがネットワークポリシーを GUI で設定する際の API",
+          "explanation": {
+            "text": "GUI 設定は Northbound 側で扱われることが多い。",
+            "reference": "https://www.cisco.com",
+            "reference_label": "Cisco SDN"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Southbound API は SDN コントローラがスイッチ・ルータなどのデバイスを制御するために使用される。",
+        "reference": "https://www.cisco.com/c/en/us/solutions/software-defined-networking/overview.html",
+        "reference_label": "Cisco 公式: SDN Overview"
+      }
+    },
+    {
+      "id": "ccna-21",
+      "question": "Cisco ルータで EIGRP を IPv4 で有効化する際に、ネットワークに参加させるインターフェイスを指定するコマンドとして最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "router eigrp 100 / network 192.168.1.0 0.0.0.255",
+          "explanation": {
+            "text": "EIGRP では AS 番号とワイルドカードマスク付きの network コマンドで参加インターフェイスを指定する。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/enhanced-interior-gateway-routing-protocol-eigrp/13669-1.html",
+            "reference_label": "Cisco 公式: EIGRP Configuration Example"
+          }
+        },
+        {
+          "key": "B",
+          "text": "router eigrp 100 / ip route 192.168.1.0 255.255.255.0",
+          "explanation": {
+            "text": "ip route はスタティックルート設定であり、EIGRP 有効化には用いられない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/routing-information-protocol-rip/13769-3.html",
+            "reference_label": "Cisco 公式: Static Routing 解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "router eigrp 100 / network 192.168.1.0 255.255.255.0",
+          "explanation": {
+            "text": "EIGRP の network 文ではワイルドカードマスクを用いるため、サブネットマスクをそのまま指定するのは誤りである。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/enhanced-interior-gateway-routing-protocol-eigrp/15111-eigrp-toc.html",
+            "reference_label": "Cisco 公式: EIGRP コマンド概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "router eigrp 100 / passive-interface 192.168.1.1",
+          "explanation": {
+            "text": "passive-interface は Hello の送信停止に用いる設定であり、インターフェイス参加の指定ではない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/exterior-gateway-protocol-bgp/5212-46.html",
+            "reference_label": "Cisco 公式: passive-interface の概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "EIGRP では router eigrp <AS> 配下で network <ネットワーク> <ワイルドカードマスク> を指定して、そのプレフィックスにマッチするインターフェイスで EIGRP を有効化する。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/ip/enhanced-interior-gateway-routing-protocol-eigrp/13669-1.html",
+        "reference_label": "Cisco 公式: EIGRP Configuration Example"
+      }
+    },
+    {
+      "id": "ccna-22",
+      "question": "Cisco スイッチにおけるポートセキュリティ機能で、違反発生時にフレームを破棄しつつログを生成するが、ポートを shutdown しないモードはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "protect",
+          "explanation": {
+            "text": "protect は違反フレームを破棄するがログや SNMP トラップは生成しない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/port-security/12084-4.html",
+            "reference_label": "Cisco 公式: Configuring Port Security"
+          }
+        },
+        {
+          "key": "B",
+          "text": "restrict",
+          "explanation": {
+            "text": "restrict は違反フレームを破棄し、ログと SNMP トラップを生成するがポートは shutdown しない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/port-security/12084-4.html",
+            "reference_label": "Cisco 公式: Port Security Violation Modes"
+          }
+        },
+        {
+          "key": "C",
+          "text": "shutdown",
+          "explanation": {
+            "text": "shutdown は違反時にポートをエラーディセーブル状態にし、トラフィック自体を停止させる。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/port-security/12084-4.html",
+            "reference_label": "Cisco 公式: Port Security Violation Modes"
+          }
+        },
+        {
+          "key": "D",
+          "text": "errdisable",
+          "explanation": {
+            "text": "errdisable はエラー状態の結果を示すステータスであり、ポートセキュリティの violation モード名ではない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6500-series-switches/12023-errdisable.html",
+            "reference_label": "Cisco 公式: Errdisable Recovery 解説"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "port-security の violation restrict は、違反フレームを破棄しつつログや SNMP トラップを生成し、ポート自体は shutdown しない挙動をとる。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/port-security/12084-4.html",
+        "reference_label": "Cisco 公式: Port Security Violation Modes"
+      }
+    },
+    {
+      "id": "ccna-23",
+      "question": "IEEE 802.11 無線 LAN において、WPA2-Personal (WPA2-PSK) の特徴として正しい説明を2つ選べ。（複数選択）",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "事前共有キー (PSK) を用いて端末を認証する。",
+          "explanation": {
+            "text": "WPA2-Personal は PSK ベースの認証方式であり、共通パスフレーズを利用する。",
+            "reference": "https://www.cisco.com/c/en/us/products/collateral/wireless/aironet-1810-series-officeextend-access-points/guide-c07-734189.html",
+            "reference_label": "Cisco 公式: WLAN Security Overview (WPA2-PSK)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AES ベースの CCMP で暗号化を行うことができる。",
+          "explanation": {
+            "text": "WPA2 では AES-CCMP による暗号化が標準であり、PSK/EAP を問わず利用される。",
+            "reference": "https://www.cisco.com/c/en/us/products/collateral/wireless/aironet-1810-series-officeextend-access-points/guide-c07-734189.html",
+            "reference_label": "Cisco 公式: WPA2 Encryption and Authentication"
+          }
+        },
+        {
+          "key": "C",
+          "text": "RADIUS サーバとの 802.1X/EAP 認証を必須とする。",
+          "explanation": {
+            "text": "RADIUS/802.1X を使うのは WPA2-Enterprise であり、WPA2-Personal では不要。",
+            "reference": "https://www.cisco.com/c/en/us/products/collateral/wireless/aironet-1810-series-officeextend-access-points/guide-c07-734189.html",
+            "reference_label": "Cisco 公式: WPA2 Enterprise vs Personal"
+          }
+        },
+        {
+          "key": "D",
+          "text": "暗号化方式として WEP のみをサポートする。",
+          "explanation": {
+            "text": "WEP は古い方式であり、WPA2 の暗号化方式ではない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/wireless-mobility/wireless-lan-wlan/68472-wlan-security-overview.html",
+            "reference_label": "Cisco 公式: WLAN Security Overview"
+          }
+        }
+      ],
+      "answer": "A,B",
+      "explanation": {
+        "text": "WPA2-Personal は PSK による認証と AES-CCMP 暗号化を組み合わせた方式であり、RADIUS サーバを使う Enterprise モードとは異なる。",
+        "reference": "https://www.cisco.com/c/en/us/products/collateral/wireless/aironet-1810-series-officeextend-access-points/guide-c07-734189.html",
+        "reference_label": "Cisco 公式: WPA2 Personal と Enterprise の比較"
+      }
+    },
+    {
+      "id": "ccna-24",
+      "question": "Cisco ルータにおいて、NTP クライアントとして上位 NTP サーバと同期させるための基本的な設定コマンドとして正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ntp server 192.0.2.10",
+          "explanation": {
+            "text": "NTP クライアントは ntp server <アドレス> コマンドで上位 NTP サーバを指定する。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/availability/high-availability/19643-ntpm.html",
+            "reference_label": "Cisco 公式: NTP Configuration Examples"
+          }
+        },
+        {
+          "key": "B",
+          "text": "clock timezone 192.0.2.10",
+          "explanation": {
+            "text": "clock timezone はタイムゾーン設定であり、NTP サーバ指定ではない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/availability/high-availability/19643-ntpm.html",
+            "reference_label": "Cisco 公式: NTP と clock 設定"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ntp master 192.0.2.10",
+          "explanation": {
+            "text": "ntp master は自身を NTP サーバとして動作させる際に使用する。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/availability/high-availability/19643-ntpm.html",
+            "reference_label": "Cisco 公式: NTP master コマンド"
+          }
+        },
+        {
+          "key": "D",
+          "text": "service timestamps log datetime 192.0.2.10",
+          "explanation": {
+            "text": "service timestamps はログタイムスタンプ形式の設定であり、NTP サーバとは関係がない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/availability/high-availability/19643-ntpm.html",
+            "reference_label": "Cisco 公式: NTP とログ時刻"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "NTP クライアントとして上位サーバと同期する場合、ntp server <サーバIP> コマンドで同期先を指定する。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/availability/high-availability/19643-ntpm.html",
+        "reference_label": "Cisco 公式: NTP Configuration Examples"
+      }
+    },
+    {
+      "id": "ccna-25",
+      "question": "ルータで IPv4 静的ルートを設定する際に、次ホップアドレスではなく出口インターフェイスだけを指定した場合の挙動として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "マルチアクセスネットワーク上では ARP ブロードキャスト回数が増えうる。",
+          "explanation": {
+            "text": "出口インターフェイスのみを指定した静的ルートは、マルチアクセスセグメント上で宛先ごとに ARP を発行する必要があり、ARP 負荷が増加し得る。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/routing-information-protocol-rip/13769-3.html",
+            "reference_label": "Cisco 公式: Static Routes and Next-Hop Resolution"
+          }
+        },
+        {
+          "key": "B",
+          "text": "必ずルーティングループが発生する。",
+          "explanation": {
+            "text": "出口インターフェイス指定が即ループを意味するわけではない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/routing-information-protocol-rip/13769-3.html",
+            "reference_label": "Cisco 公式: Static Route Behavior"
+          }
+        },
+        {
+          "key": "C",
+          "text": "パケットは常に破棄され、転送されない。",
+          "explanation": {
+            "text": "出口インターフェイスが正しければパケットは転送される。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/routing-information-protocol-rip/13769-3.html",
+            "reference_label": "Cisco 公式: Static Route Behavior"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CPU 負荷を軽減するため Cisco が推奨する設定方法である。",
+          "explanation": {
+            "text": "Cisco はマルチアクセスネットワークでは出口インターフェイスのみの指定ではなく次ホップアドレスの指定を推奨している。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/routing-information-protocol-rip/13769-3.html",
+            "reference_label": "Cisco 公式: Static Routes Best Practices"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "マルチアクセスセグメントで出口インターフェイスのみを指定すると、個々の宛先に対して ARP が行われるため、ARP トラフィックが増加する可能性があり、Cisco では次ホップ指定を推奨している。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/ip/routing-information-protocol-rip/13769-3.html",
+        "reference_label": "Cisco 公式: Static Route Behavior and Best Practices"
+      }
+    },
+    {
+      "id": "ccna-26",
+      "question": "QoS のキューイング手法の一つである WFQ (Weighted Fair Queuing) の特徴として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "フローごとに帯域を公平に分配し、小さなフローの遅延を抑える。",
+          "explanation": {
+            "text": "WFQ はフローごとに重み付けされた公平なキューイングを行い、小さいフローのレスポンスを改善する。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/quality-of-service-qos/qos-general/10103-qos-tb.html",
+            "reference_label": "Cisco 公式: QoS Overview (WFQ)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "最も遅延が大きいフローのみを優先的に破棄するアルゴリズムである。",
+          "explanation": {
+            "text": "これは WFQ ではなく、キューのドロップ戦略に関する説明に近い。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/quality-of-service-qos/qos-general/10103-qos-tb.html",
+            "reference_label": "Cisco 公式: QoS 基礎"
+          }
+        },
+        {
+          "key": "C",
+          "text": "1 つのキューしか持たず、到着順に送信する単純な FIFO 方式である。",
+          "explanation": {
+            "text": "WFQ は複数キューを扱う公平キューイングであり FIFO とは異なる。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/quality-of-service-qos/qos-general/10103-qos-tb.html",
+            "reference_label": "Cisco 公式: WFQ vs FIFO"
+          }
+        },
+        {
+          "key": "D",
+          "text": "常に音声トラフィックのみを優先して送信する方式である。",
+          "explanation": {
+            "text": "音声優先は LLQ などの仕組みで実現されることが多く、WFQ 単独の特徴ではない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/quality-of-service-qos/qos-general/5125-lldp.html",
+            "reference_label": "Cisco 公式: LLQ と音声 QoS"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "WFQ はフローごとに重み付けされた公平な帯域配分を行うことで、小さなフローが大容量フローに圧迫されるのを防ぐ。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/quality-of-service-qos/qos-general/10103-qos-tb.html",
+        "reference_label": "Cisco 公式: QoS Overview (WFQ)"
+      }
+    },
+    {
+      "id": "ccna-27",
+      "question": "RESTful API を用いたネットワーク自動化において、HTTP メソッドと典型的な操作の組み合わせとして最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "GET - リソースの取得",
+          "explanation": {
+            "text": "GET はリソースを取得する読み取り専用の操作として使用される。",
+            "reference": "https://developer.cisco.com/site/devnet/learning/track/network-programmability/",
+            "reference_label": "Cisco DevNet: REST API Basics"
+          }
+        },
+        {
+          "key": "B",
+          "text": "POST - 既存リソースの削除",
+          "explanation": {
+            "text": "削除は DELETE メソッドが一般的であり、POST の用途ではない。",
+            "reference": "https://developer.cisco.com/site/devnet/learning/track/network-programmability/",
+            "reference_label": "Cisco DevNet: REST Methods"
+          }
+        },
+        {
+          "key": "C",
+          "text": "PUT - リソースの部分更新のみを行う",
+          "explanation": {
+            "text": "PUT はリソース全体の置き換えに使われることが多く、部分更新は PATCH が用いられる。",
+            "reference": "https://developer.cisco.com/site/devnet/learning/track/network-programmability/",
+            "reference_label": "Cisco DevNet: HTTP PUT vs PATCH"
+          }
+        },
+        {
+          "key": "D",
+          "text": "DELETE - 新規リソースの作成",
+          "explanation": {
+            "text": "新規作成は POST の代表的な用途であり、DELETE は削除を表す。",
+            "reference": "https://developer.cisco.com/site/devnet/learning/track/network-programmability/",
+            "reference_label": "Cisco DevNet: REST Methods"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "REST API では GET=取得、POST=作成、PUT/PATCH=更新、DELETE=削除という CRUD 操作の対応が一般的である。",
+        "reference": "https://developer.cisco.com/site/devnet/learning/track/network-programmability/",
+        "reference_label": "Cisco DevNet: REST API Basics"
+      }
+    },
+    {
+      "id": "ccna-28",
+      "question": "Cisco の NetFlow (Flexible NetFlow を含む) の主な用途として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "トラフィックフローごとの統計情報を収集し、可視化・分析に利用する。",
+          "explanation": {
+            "text": "NetFlow はフロー単位でバイト数やパケット数などの統計を収集し、トラフィック分析や課金、セキュリティ監視に利用される。",
+            "reference": "https://www.cisco.com/c/en/us/products/ios-nx-os-software/ios-netflow/index.html",
+            "reference_label": "Cisco 公式: NetFlow Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "リアルタイムでパケットペイロードを全てキャプチャし保存する。",
+          "explanation": {
+            "text": "パケットキャプチャは SPAN や外部ツールの役割であり、NetFlow はヘッダ情報の集計が中心である。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ios-nx-os-software/ios-netflow/72216-netflow.html",
+            "reference_label": "Cisco 公式: Configuring NetFlow"
+          }
+        },
+        {
+          "key": "C",
+          "text": "暗号化トンネル (IPsec) を構成する。",
+          "explanation": {
+            "text": "IPsec VPN の構成は Crypto 機能の範囲であり、NetFlow とは別機能である。",
+            "reference": "https://www.cisco.com",
+            "reference_label": "Cisco IPsec VPN Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "STP のルートブリッジを動的に選出する。",
+          "explanation": {
+            "text": "STP は L2 ループ防止機能であり、NetFlow とは無関係である。",
+            "reference": "https://www.cisco.com",
+            "reference_label": "Cisco STP Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "NetFlow はトラフィックフローの統計情報収集・可視化・分析に用いられる機能であり、パケットペイロードの完全キャプチャや暗号化構成とは目的が異なる。",
+        "reference": "https://www.cisco.com/c/en/us/products/ios-nx-os-software/ios-netflow/index.html",
+        "reference_label": "Cisco 公式: NetFlow Overview"
+      }
+    },
+    {
+      "id": "ccna-29",
+      "question": "Cisco デバイスにおけるロールベース CLI アクセス制御 (Role-Based CLI Access) の目的として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ユーザの役割に応じて使用できるコマンドを制限する。",
+          "explanation": {
+            "text": "Role-Based CLI Access では、ユーザ/ロールごとに許可されるコマンドセットを定義できる。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6500-series-switches/44922-role-based-access.html",
+            "reference_label": "Cisco 公式: Role-Based CLI Access Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "CPU 使用率に応じて自動的に QoS ポリシーを調整する。",
+          "explanation": {
+            "text": "これは QoS やパフォーマンス管理の機能であり、ロールベースアクセス制御とは無関係。",
+            "reference": "https://www.cisco.com",
+            "reference_label": "Cisco QoS Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ルーティングプロトコル間の再配布を自動的に最適化する。",
+          "explanation": {
+            "text": "ルート再配布はルーティング設定であり、RBAC の機能ではない。",
+            "reference": "https://www.cisco.com",
+            "reference_label": "Cisco Routing Configuration Guide"
+          }
+        },
+        {
+          "key": "D",
+          "text": "SNMPv3 のユーザ認証方式を選択する。",
+          "explanation": {
+            "text": "SNMPv3 認証は SNMP 設定であり、CLI ロール制御とは別の機能である。",
+            "reference": "https://www.cisco.com",
+            "reference_label": "Cisco SNMPv3 Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ロールベース CLI アクセス制御は、運用者の役割に応じて許可コマンドを細かく制御し、誤操作や権限過多を防ぐための仕組みである。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6500-series-switches/44922-role-based-access.html",
+        "reference_label": "Cisco 公式: Role-Based CLI Access Overview"
+      }
+    },
+    {
+      "id": "ccna-30",
+      "question": "クラウドベースのネットワーク管理プラットフォーム（例: Cisco Meraki Dashboard）の特徴として、オンプレミス管理と比較した利点として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "インターネット経由で複数拠点のネットワーク機器を一元管理できる。",
+          "explanation": {
+            "text": "Meraki ダッシュボードはクラウドから複数拠点のデバイス設定・監視を一元管理できる点が特徴である。",
+            "reference": "https://documentation.meraki.com/General_Administration/Other_Topics/What_is_Meraki%3F",
+            "reference_label": "Cisco Meraki: What is Meraki?"
+          }
+        },
+        {
+          "key": "B",
+          "text": "各ネットワーク機器に必ずコンソールケーブルで接続する必要がある。",
+          "explanation": {
+            "text": "クラウド管理では、基本的にローカルコンソール接続を日常的に行う必要はない。",
+            "reference": "https://documentation.meraki.com/General_Administration/Other_Topics/What_is_Meraki%3F",
+            "reference_label": "Cisco Meraki: Management Model Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "デバイスはインターネットに接続されていないときでも常にクラウドからフル管理できる。",
+          "explanation": {
+            "text": "クラウド管理にはデバイスとクラウド間の通信が必要であり、完全オフラインでは管理できない。",
+            "reference": "https://documentation.meraki.com/General_Administration/Other_Topics/What_is_Meraki%3F",
+            "reference_label": "Cisco Meraki: Cloud Connectivity Requirements"
+          }
+        },
+        {
+          "key": "D",
+          "text": "オンプレミスの管理サーバよりも必ずレイテンシが低くなる。",
+          "explanation": {
+            "text": "レイテンシはネットワークトポロジに依存し、クラウドであること自体が低レイテンシを保証するわけではない。",
+            "reference": "https://documentation.meraki.com",
+            "reference_label": "Cisco Meraki: Design Considerations"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Meraki のようなクラウド管理型ネットワークでは、インターネット接続を通じて拠点をまたいだ一元管理・ゼロタッチプロビジョニングが可能になる点が大きな利点である。",
+        "reference": "https://documentation.meraki.com/General_Administration/Other_Topics/What_is_Meraki%3F",
+        "reference_label": "Cisco Meraki: What is Meraki?"
+      }
+    },
+    {
+      "id": "ccna-31",
+      "question": "Cisco スイッチにおいて、VTP（VLAN Trunking Protocol）クライアントモードの動作として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "VLAN 作成・削除が可能で、他スイッチへ VLAN 情報を配布できる。",
+          "explanation": {
+            "text": "これは VTP サーバモードの動作である。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/vtp/10558-21.html",
+            "reference_label": "Cisco 公式: VTP Modes"
+          }
+        },
+        {
+          "key": "B",
+          "text": "自身では VLAN 変更ができないが、サーバからの VLAN 情報を受信・反映する。",
+          "explanation": {
+            "text": "クライアントは VLAN 情報を受け取り反映するが作成・削除はできない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/vtp/10558-21.html",
+            "reference_label": "Cisco 公式: VTP Client Mode"
+          }
+        },
+        {
+          "key": "C",
+          "text": "VLAN 情報を保持しないため電源再投入で必ず VLAN が消える。",
+          "explanation": {
+            "text": "クライアントでも VLAN データベースは保持される。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/vtp/10558-21.html",
+            "reference_label": "Cisco 公式: VTP データベース"
+          }
+        },
+        {
+          "key": "D",
+          "text": "VTP ドメインに参加せず、独立した VLAN 管理を行う。",
+          "explanation": {
+            "text": "VTP ドメインに参加しないのは Transparent モードの動作である。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/vtp/10558-21.html",
+            "reference_label": "Cisco 公式: VTP Transparent Mode"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "VTP クライアントモードは VLAN 設定変更ができず、サーバから送られる VLAN データベースを受信・反映する。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/vtp/10558-21.html",
+        "reference_label": "Cisco 公式: VTP Client Mode"
+      }
+    },
+
+    {
+      "id": "ccna-32",
+      "question": "OSPF の Hello パケットに含まれる項目として正しいものはどれか。（複数選択）",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Router ID",
+          "explanation": {
+            "text": "Hello パケットには送信元 Router ID が含まれる。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/open-shortest-path-first-ospf/7039-1.html",
+            "reference_label": "Cisco 公式: OSPF Hello パケット"
+          }
+        },
+        {
+          "key": "B",
+          "text": "DR / BDR 情報",
+          "explanation": {
+            "text": "Hello パケットには DR/BDR の IP 情報が含まれる。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/open-shortest-path-first-ospf/7039-1.html",
+            "reference_label": "Cisco 公式: OSPF DR/BDR 情報"
+          }
+        },
+        {
+          "key": "C",
+          "text": "LSA データベース全体の内容",
+          "explanation": {
+            "text": "LSA の詳細は LSU/LSR パケットでやり取りされるため Hello には含まれない。",
+            "reference": "https://www.cisco.com",
+            "reference_label": "Cisco OSPF パケットタイプ概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Hello / Dead タイマー",
+          "explanation": {
+            "text": "隣接関係を確立するために Hello/Dead タイマーを含む。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/open-shortest-path-first-ospf/7039-1.html",
+            "reference_label": "Cisco 公式: OSPF Hello Timer"
+          }
+        }
+      ],
+      "answer": "A,B,D",
+      "explanation": {
+        "text": "OSPF Hello パケットには Router ID、DR/BDR 情報、Hello/Dead タイマーなど隣接関係確立に必要な情報が含まれる。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/ip/open-shortest-path-first-ospf/7039-1.html",
+        "reference_label": "Cisco 公式: OSPF Hello Packet"
+      }
+    },
+
+    {
+      "id": "ccna-33",
+      "question": "IPv6 における SLAAC (Stateless Address Autoconfiguration) の動作として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "DHCPv6 サーバから IPv6 アドレスを必ず取得する。",
+          "explanation": {
+            "text": "SLAAC は DHCPv6 サーバを必須としない。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4862",
+            "reference_label": "RFC4862: SLAAC 概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "RA メッセージを受け取り、プレフィックスから自動でアドレスを生成する。",
+          "explanation": {
+            "text": "RA の情報を基に EUI-64 などでアドレスを生成するのが SLAAC の基本動作。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4862",
+            "reference_label": "RFC4862: SLAAC"
+          }
+        },
+        {
+          "key": "C",
+          "text": "常にステートフル管理を行い、アドレス重複検出を行わない。",
+          "explanation": {
+            "text": "SLAAC でも DAD（重複アドレス検出）は実施される。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4862",
+            "reference_label": "RFC4862: DAD 動作"
+          }
+        },
+        {
+          "key": "D",
+          "text": "デフォルトゲートウェイは DHCPv6 により提供される。",
+          "explanation": {
+            "text": "IPv6 ではデフォルトゲートウェイは RA により提供される。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4861",
+            "reference_label": "RFC4861: Router Advertisement"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "SLAAC ではルータ広告（RA）から得たプレフィックスで自動的に IPv6 アドレスを構成する。",
+        "reference": "https://www.rfc-editor.org/rfc/rfc4862",
+        "reference_label": "RFC4862: SLAAC 概要"
+      }
+    },
+
+    {
+      "id": "ccna-34",
+      "question": "EIGRP のメトリック計算で利用されるパラメータとして正しいものはどれか。（複数選択）",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "帯域（Bandwidth）",
+          "explanation": {
+            "text": "EIGRP の基本メトリックとして bandwidth は必須。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/enhanced-interior-gateway-routing-protocol-eigrp/15111-eigrp-toc.html",
+            "reference_label": "Cisco 公式: EIGRP Metrics"
+          }
+        },
+        {
+          "key": "B",
+          "text": "遅延（Delay）",
+          "explanation": {
+            "text": "Delay も EIGRP メトリックの主要パラメータ。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/enhanced-interior-gateway-routing-protocol-eigrp/15111-eigrp-toc.html",
+            "reference_label": "Cisco 公式: EIGRP Metrics"
+          }
+        },
+        {
+          "key": "C",
+          "text": "信頼性（Reliability）",
+          "explanation": {
+            "text": "Reliability は通常デフォルト係数では無効だが計算項目自体は存在する。",
+            "reference": "https://www.cisco.com",
+            "reference_label": "Cisco EIGRP Metric Formula"
+          }
+        },
+        {
+          "key": "D",
+          "text": "パケット TTL",
+          "explanation": {
+            "text": "TTL は EIGRP メトリックには関係しない。",
+            "reference": "https://www.cisco.com",
+            "reference_label": "Cisco EIGRP Overview"
+          }
+        }
+      ],
+      "answer": "A,B,C",
+      "explanation": {
+        "text": "EIGRP のメトリックには Bandwidth、Delay、Load、Reliability が使用可能であり、TTL は関係しない。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/ip/enhanced-interior-gateway-routing-protocol-eigrp/15111-eigrp-toc.html",
+        "reference_label": "Cisco 公式: EIGRP Metrics"
+      }
+    },
+
+    {
+      "id": "ccna-35",
+      "question": "Cisco スイッチの RSTP（Rapid Spanning Tree Protocol）において、Alternate ポートの役割として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ルートブリッジになるための優先ポートである。",
+          "explanation": {
+            "text": "ルートブリッジは Bridge ID により決定され、Alternate ポートと無関係。",
+            "reference": "https://www.cisco.com",
+            "reference_label": "Cisco RSTP Basics"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ルートポートのバックアップとして機能し、リンク障害時に迅速に切り替わる。",
+          "explanation": {
+            "text": "Alternate ポートはルートポートに対するバックアップ経路として RSTP で定義される。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/24062-146.html",
+            "reference_label": "Cisco 公式: RSTP Port Roles"
+          }
+        },
+        {
+          "key": "C",
+          "text": "常に forwarding 状態であり、VLAN 間ルーティングに使用される。",
+          "explanation": {
+            "text": "Alternate ポートは通常 blocking/discarding 状態にある。",
+            "reference": "https://www.cisco.com",
+            "reference_label": "Cisco Spanning Tree Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "BPDU Guard の保護専用として動作するポートである。",
+          "explanation": {
+            "text": "BPDU Guard はセキュリティ機能であり、ポートロールではない。",
+            "reference": "https://www.cisco.com",
+            "reference_label": "Cisco BPDU Guard Overview"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "RSTP の Alternate ポートはルートポートの代替経路として機能し、障害時に迅速に forwarding に切り替わる。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/24062-146.html",
+        "reference_label": "Cisco 公式: RSTP Port Roles"
+      }
+    },
+
+    {
+      "id": "ccna-36",
+      "question": "Cisco IOS における DHCP Snooping の目的として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "DHCP サーバを自動的にネットワーク内に構築する。",
+          "explanation": {
+            "text": "DHCP Snooping はセキュリティ機能であり、サーバ構築機能ではない。",
+            "reference": "https://www.cisco.com",
+            "reference_label": "Cisco DHCP Snooping Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "不正な DHCP サーバからの Offer/ACK を遮断し、信頼できるポートのみ許可する。",
+          "explanation": {
+            "text": "DHCP Snooping は不正 DHCP サーバの排除のために使用される。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/116381-technote-dhcp-00.html",
+            "reference_label": "Cisco 公式: DHCP Snooping"
+          }
+        },
+        {
+          "key": "C",
+          "text": "クライアントの IPv6 アドレス割り当てを管理する。",
+          "explanation": {
+            "text": "DHCP Snooping は IPv4 DHCP に適用される機能である。",
+            "reference": "https://www.cisco.com",
+            "reference_label": "Cisco DHCP Security"
+          }
+        },
+        {
+          "key": "D",
+          "text": "VTP の VLAN 更新を保護する。",
+          "explanation": {
+            "text": "VLAN 設定とは関連しない。",
+            "reference": "https://www.cisco.com",
+            "reference_label": "Cisco VTP Overview"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "DHCP Snooping は不正な DHCP サーバを防ぎ、信頼できるポートのみ DHCP メッセージを通すことでセキュリティを確保する。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/116381-technote-dhcp-00.html",
+        "reference_label": "Cisco 公式: DHCP Snooping"
+      }
+    },
+
+    {
+      "id": "ccna-37",
+      "question": "NAT64 の役割として正しい説明はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "IPv4 → IPv4 間のネットワーク変換を行う。",
+          "explanation": {
+            "text": "これは通常の NAT4/NAT44 の機能である。",
+            "reference": "https://www.cisco.com",
+            "reference_label": "Cisco NAT44 Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "IPv6 クライアントと IPv4 サーバ間の通信を仲介する。",
+          "explanation": {
+            "text": "NAT64 は IPv6-only クライアントと IPv4-only サーバを接続するための技術である。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/ip-version-6-ipv6/113274-cisco-nat64.html",
+            "reference_label": "Cisco 公式: NAT64 Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "IPv6 ネットワーク内のマルチキャストを IPv4 に変換する。",
+          "explanation": {
+            "text": "マルチキャスト変換は別技術であり NAT64 の役割ではない。",
+            "reference": "https://www.cisco.com",
+            "reference_label": "Cisco IPv6 Multicast Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IPv4 アドレスの自動割り当てを行う。",
+          "explanation": {
+            "text": "アドレス割り当ては DHCP の役割。",
+            "reference": "https://www.cisco.com",
+            "reference_label": "Cisco DHCP Overview"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "NAT64 は IPv6-only クライアントが IPv4-only サーバへアクセスできるように変換を行う技術である。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/ip/ip-version-6-ipv6/113274-cisco-nat64.html",
+        "reference_label": "Cisco 公式: NAT64 Overview"
+      }
+    },
+
+    {
+      "id": "ccna-38",
+      "question": "Cisco の NetConf において通信のトランスポートとして標準で利用されるプロトコルはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "HTTP",
+          "explanation": {
+            "text": "NetConf では通常 HTTP は使用しない。",
+            "reference": "https://www.cisco.com",
+            "reference_label": "Cisco NetConf Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SSH",
+          "explanation": {
+            "text": "NetConf は SSH を標準トランスポートとして利用する。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc6242",
+            "reference_label": "RFC6242: NETCONF over SSH"
+          }
+        },
+        {
+          "key": "C",
+          "text": "TFTP",
+          "explanation": {
+            "text": "TFTP はファイル転送用で NetConf トランスポートには用いない。",
+            "reference": "https://www.cisco.com",
+            "reference_label": "Cisco File Transfer Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "RADIUS",
+          "explanation": {
+            "text": "RADIUS は認証プロトコルであり NetConf トランスポートとは関係ない。",
+            "reference": "https://www.cisco.com",
+            "reference_label": "Cisco RADIUS Overview"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "NetConf はリモート管理のための構造化プロトコルで、標準では SSH をトランスポートとして使用する。",
+        "reference": "https://www.rfc-editor.org/rfc/rfc6242",
+        "reference_label": "RFC6242: NETCONF over SSH"
+      }
+    },
+
+    {
+      "id": "ccna-39",
+      "question": "ログ管理において、SNMP Trap と Syslog の違いを最も正しく説明しているものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Syslog はプッシュ型、SNMP Trap はプル型である。",
+          "explanation": {
+            "text": "実際は逆で、SNMP Trap がプッシュ型、Syslog はイベント送信だがより汎用ログ形式。",
+            "reference": "https://www.cisco.com",
+            "reference_label": "Cisco Logging Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SNMP Trap はイベントを即時通知するが、Syslog は詳細なテキストログを送信する。",
+          "explanation": {
+            "text": "Trap は即時アラート、Syslog はテキストベースの詳細ログという違いがある。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/security-vpn/syslog/20052-logging.html",
+            "reference_label": "Cisco 公式: Syslog Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "SNMP Trap は認証が必須だが、Syslog は認証されない。",
+          "explanation": {
+            "text": "SNMPv1/2c は認証弱く、Trap に必須ではない。Syslog も通常認証しない。",
+            "reference": "https://www.cisco.com",
+            "reference_label": "Cisco SNMP Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Syslog はネットワーク状態を自動修復する機能を提供する。",
+          "explanation": {
+            "text": "Syslog は通知のみで自動修復機能はない。",
+            "reference": "https://www.cisco.com",
+            "reference_label": "Cisco Syslog Overview"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "SNMP Trap は即時イベント通知、Syslog は詳細なテキストログの送信という目的の違いがある。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/security-vpn/syslog/20052-logging.html",
+        "reference_label": "Cisco 公式: Syslog Overview"
+      }
+    },
+
+    {
+      "id": "ccna-40",
+      "question": "VXLAN において、VTEP（VXLAN Tunnel Endpoint）の役割として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Ethernet フレームをカプセル化し、UDP パケットとして伝送する。",
+          "explanation": {
+            "text": "VXLAN は VTEP により L2 フレームを UDP にカプセル化して転送する。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/vxlan-virtual-extensible-lan/index.html",
+            "reference_label": "Cisco 公式: VXLAN Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "L2 スイッチングを行わず、L3 ルーティング機能のみ提供する。",
+          "explanation": {
+            "text": "VTEP は VXLAN セグメントのブリッジ機能も実施する。",
+            "reference": "https://www.cisco.com",
+            "reference_label": "Cisco VXLAN Basics"
+          }
+        },
+        {
+          "key": "C",
+          "text": "VXLAN ID を DHCP から動的に取得する機能である。",
+          "explanation": {
+            "text": "VXLAN ID は手動設定または SDN コントローラ管理であり DHCP とは関係しない。",
+            "reference": "https://www.cisco.com",
+            "reference_label": "Cisco VXLAN Configuration Guide"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IPsec トンネルを自動生成し、セキュアな L3 VPN を構築する。",
+          "explanation": {
+            "text": "VXLAN は IPsec VPN 機能ではない。",
+            "reference": "https://www.cisco.com",
+            "reference_label": "Cisco VPN Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "VTEP は VXLAN の要素として、L2 フレームを UDP カプセル化しオーバーレイネットワークへ転送する役割を担う。",
+        "reference": "https://www.cisco.com/c/en/us/solutions/data-center-virtualization/vxlan-virtual-extensible-lan/index.html",
+        "reference_label": "Cisco 公式: VXLAN Overview"
+      }
+    },
+    {
+      "id": "ccna-41",
+      "question": "IPv4 アドレス 192.168.10.0/26 のサブネットに関する説明として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "1 つのサブネットで 126 個のホストアドレスが利用できる。",
+          "explanation": {
+            "text": "/26 は 64 アドレス（62 ホスト）のサブネットであり、126 ホストではない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/routing-information-protocol-rip/13788-3.html",
+            "reference_label": "Cisco 公式: IP アドレッシングとサブネットの基本"
+          }
+        },
+        {
+          "key": "B",
+          "text": "サブネットのブロードキャストアドレスは 192.168.10.255 である。",
+          "explanation": {
+            "text": "192.168.10.0/26 のブロードキャストは 192.168.10.63 であり、/24 全体の 255 ではない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/routing-information-protocol-rip/13788-3.html",
+            "reference_label": "Cisco 公式: サブネット計算の例"
+          }
+        },
+        {
+          "key": "C",
+          "text": "サブネット 192.168.10.0/26 のホストとして有効な最初のアドレスは 192.168.10.1、最後のアドレスは 192.168.10.62 である。",
+          "explanation": {
+            "text": "ネットワークアドレスは .0、ブロードキャストは .63 のため、.1〜.62 が有効ホストとなる。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/routing-information-protocol-rip/13788-3.html",
+            "reference_label": "Cisco 公式: IP サブネットの範囲"
+          }
+        },
+        {
+          "key": "D",
+          "text": "サブネットマスクは 255.255.255.128 ではなく 255.255.255.192 となる。",
+          "explanation": {
+            "text": "/26 は 255.255.255.192 に対応し、255.255.255.128 は /25 である。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/routing-information-protocol-rip/13788-3.html",
+            "reference_label": "Cisco 公式: プレフィックス長とサブネットマスク"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "192.168.10.0/26 は 64 アドレスのサブネットで、.0 がネットワーク、.63 がブロードキャストとなるため、.1〜.62 がホストとして利用できる。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/ip/routing-information-protocol-rip/13788-3.html",
+        "reference_label": "Cisco 公式: IP アドレッシングとサブネットの基本"
+      }
+    },
+    {
+      "id": "ccna-42",
+      "question": "2.4GHz 帯 IEEE 802.11b/g/n において、互いに干渉しない（非重複）チャネルの組み合わせとして一般的に推奨されるものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "チャネル 1, 3, 5",
+          "explanation": {
+            "text": "1/3/5 はチャネル帯域が重なり干渉が生じやすい組み合わせである。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/wireless-mobility/wireless-lan-wlan/21441-1.html",
+            "reference_label": "Cisco 公式: 2.4GHz チャネルデザインの推奨"
+          }
+        },
+        {
+          "key": "B",
+          "text": "チャネル 2, 6, 10",
+          "explanation": {
+            "text": "2 と 6、6 と 10 で帯域が重なり、非重複とは言えない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/wireless-mobility/wireless-lan-wlan/21441-1.html",
+            "reference_label": "Cisco 公式: 2.4GHz チャネルオーバーラップ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "チャネル 4, 8, 12",
+          "explanation": {
+            "text": "4/8/12 も帯域が大きく重なり干渉が発生する。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/wireless-mobility/wireless-lan-wlan/21441-1.html",
+            "reference_label": "Cisco 公式: 2.4GHz チャネルプランニング"
+          }
+        },
+        {
+          "key": "D",
+          "text": "チャネル 1, 6, 11",
+          "explanation": {
+            "text": "1/6/11 は 2.4GHz 帯で一般的に推奨される非重複チャネルの組み合わせである。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/wireless-mobility/wireless-lan-wlan/21441-1.html",
+            "reference_label": "Cisco 公式: 推奨 1/6/11 チャネルプラン"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "2.4GHz 帯の 20MHz チャネルでは、1/6/11 の組み合わせが互いの帯域が重ならない非重複チャネルとして広く使われている。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/wireless-mobility/wireless-lan-wlan/21441-1.html",
+        "reference_label": "Cisco 公式: 2.4GHz チャネルデザインの推奨"
+      }
+    },
+    {
+      "id": "ccna-43",
+      "question": "標準 ACL（Standard ACL）の推奨配置場所として最も適切な説明はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "トラフィックの宛先ネットワークにできるだけ近い場所に配置する。",
+          "explanation": {
+            "text": "標準 ACL は送信元 IP のみを評価するため、宛先に近い場所に置くことで不要なトラフィック遮断を避けられると説明される。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/security-vpn/access-lists/13-2.html",
+            "reference_label": "Cisco 公式: ACL のベストプラクティス"
+          }
+        },
+        {
+          "key": "B",
+          "text": "トラフィックの送信元ネットワークにできるだけ近い場所に配置する。",
+          "explanation": {
+            "text": "これは拡張 ACL の一般的な推奨である。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/security-vpn/access-lists/13-2.html",
+            "reference_label": "Cisco 公式: Standard vs Extended ACL"
+          }
+        },
+        {
+          "key": "C",
+          "text": "必ずルータのループバックインターフェイスにのみ適用する。",
+          "explanation": {
+            "text": "ループバック専用という制約はない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/security-vpn/access-lists/13-2.html",
+            "reference_label": "Cisco 公式: ACL 適用インターフェイス"
+          }
+        },
+        {
+          "key": "D",
+          "text": "スイッチのトランクポートにのみ適用する。",
+          "explanation": {
+            "text": "ACL は Layer3 インターフェイスで利用するのが一般的で、トランク専用ではない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/security-vpn/access-lists/13-2.html",
+            "reference_label": "Cisco 公式: ACL の概要"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "標準 ACL は送信元 IP のみを評価するため、宛先に近い場所に配置することで過度なトラフィック遮断を避ける設計が推奨される。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/security-vpn/access-lists/13-2.html",
+        "reference_label": "Cisco 公式: Standard/Extended ACL の設計指針"
+      }
+    },
+    {
+      "id": "ccna-44",
+      "question": "WAN 接続方式としての PPPoE (Point-to-Point Protocol over Ethernet) の特徴として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "レイヤ2で MPLS ラベルを運ぶためのプロトコルである。",
+          "explanation": {
+            "text": "MPLS は別の技術であり PPPoE の機能ではない。",
+            "reference": "https://www.cisco.com",
+            "reference_label": "Cisco MPLS Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Ethernet 上で PPP セッションを確立し、認証やIPアドレス割り当てを行う。",
+          "explanation": {
+            "text": "PPPoE は PPP フレームを Ethernet にカプセル化し、PPP の認証やネゴシエーションを利用できる。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/wan/pppoe/44840-pppoe-config.html",
+            "reference_label": "Cisco 公式: PPPoE Configuration Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "無線LANの SSID を自動的に切り替えるローミングプロトコルである。",
+          "explanation": {
+            "text": "ローミングは 802.11 関連の機能であり PPPoE とは無関係。",
+            "reference": "https://www.cisco.com",
+            "reference_label": "Cisco Wireless Roaming Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IPsec を必須とする暗号化 VPN トンネル仕様である。",
+          "explanation": {
+            "text": "IPsec は VPN に使われる別技術であり PPPoE 自体に暗号化機能はない。",
+            "reference": "https://www.cisco.com",
+            "reference_label": "Cisco IPsec VPN Overview"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "PPPoE は Ethernet 上で PPP セッションを張ることで、ユーザ認証やアドレス割り当てなど PPP の機能をブロードバンド回線で利用できるようにする。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/wan/pppoe/44840-pppoe-config.html",
+        "reference_label": "Cisco 公式: PPPoE Configuration Overview"
+      }
+    },
+    {
+      "id": "ccna-45",
+      "question": "IPv6 アドレスの種類とプレフィックスの対応として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "リンクローカルアドレス - 2001:db8::/32",
+          "explanation": {
+            "text": "2001:db8::/32 は文書用プレフィックスでありリンクローカルではない。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc3849",
+            "reference_label": "RFC3849: IPv6 Documentation Prefix"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユニークローカルアドレス (ULA) - FE80::/10",
+          "explanation": {
+            "text": "FE80::/10 はリンクローカルアドレスであり ULA ではない。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4291",
+            "reference_label": "RFC4291: IPv6 Addressing Architecture"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユニークローカルアドレス (ULA) - FC00::/7",
+          "explanation": {
+            "text": "ULA は FC00::/7（実際の利用は FD00::/8）が割り当てられる。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4193",
+            "reference_label": "RFC4193: Unique Local IPv6 Unicast Addresses"
+          }
+        },
+        {
+          "key": "D",
+          "text": "マルチキャストアドレス - 2000::/3",
+          "explanation": {
+            "text": "2000::/3 はグローバルユニキャストの範囲であり、マルチキャストは FF00::/8 である。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4291",
+            "reference_label": "RFC4291: Multicast Address Prefix"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "IPv6 のユニークローカルアドレスは FC00::/7 に属し、実際には FD00::/8 が一般的に利用される。",
+        "reference": "https://www.rfc-editor.org/rfc/rfc4193",
+        "reference_label": "RFC4193: Unique Local IPv6 Unicast Addresses"
+      }
+    },
+    {
+      "id": "ccna-46",
+      "question": "IEEE 802.1X ポートベース認証によって実現できるネットワークセキュリティ機能として、正しいものをすべて選べ。（複数選択）",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "接続端末ごとにユーザ認証を行い、認証失敗時にはポートを閉塞する。",
+          "explanation": {
+            "text": "802.1X はサプリカント／オーセンティケータ／認証サーバの組み合わせでポートレベルのアクセス制御を行う。",
+            "reference": "https://www.cisco.com/c/en/us/products/security/identity-services-engine/index.html",
+            "reference_label": "Cisco 公式: 802.1X ベースアクセス制御概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "スイッチ間の STP BPDU を暗号化する。",
+          "explanation": {
+            "text": "BPDU の暗号化は 802.1X の範囲ではなく、別のレイヤの話である。",
+            "reference": "https://www.cisco.com",
+            "reference_label": "Cisco STP Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "WAN 回線の帯域を自動的に増速する。",
+          "explanation": {
+            "text": "帯域制御や増速は 802.1X の機能ではない。",
+            "reference": "https://www.cisco.com",
+            "reference_label": "Cisco WAN QoS Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "認証結果に応じて VLAN を動的に割り当てる。",
+          "explanation": {
+            "text": "802.1X と RADIUS の連携により、ユーザや端末属性に応じた VLAN 割当が可能となる。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/200962-ISE-802-1X-Config-Example.html",
+            "reference_label": "Cisco 公式: 802.1X 認証と VLAN 割り当て例"
+          }
+        }
+      ],
+      "answer": "A,D",
+      "explanation": {
+        "text": "802.1X ポートベース認証では、端末ごとに認証を行い、不正端末を遮断したり、認証結果に応じて VLAN を動的に割り当てるといった制御が可能になる。",
+        "reference": "https://www.cisco.com/c/en/us/products/security/identity-services-engine/index.html",
+        "reference_label": "Cisco 公式: 802.1X ベースネットワークアクセス制御"
+      }
+    },
+    {
+      "id": "ccna-47",
+      "question": "Cisco Discovery Protocol (CDP) と Link Layer Discovery Protocol (LLDP) の違いとして正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "CDP は標準プロトコル、LLDP は Cisco 独自プロトコルである。",
+          "explanation": {
+            "text": "逆であり、LLDP が IEEE 標準、CDP は Cisco 独自である。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/switches/nexus-7000-series-switches/116137-technote-cdp-lldp-00.html",
+            "reference_label": "Cisco 公式: CDP と LLDP 比較"
+          }
+        },
+        {
+          "key": "B",
+          "text": "CDP は Cisco 独自、LLDP はベンダーニュートラルな IEEE 標準である。",
+          "explanation": {
+            "text": "CDP は Cisco 固有の隣接発見プロトコルであり、LLDP は IEEE 802.1AB として標準化されている。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/switches/nexus-7000-series-switches/116137-technote-cdp-lldp-00.html",
+            "reference_label": "Cisco 公式: CDP/LLDP 概要"
+          }
+        },
+        {
+          "key": "C",
+          "text": "どちらもレイヤ3プロトコルであり IP を用いて隣接を検出する。",
+          "explanation": {
+            "text": "CDP/LLDP はレイヤ2で動作する隣接発見プロトコルで、IP に依存しない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/switches/nexus-7000-series-switches/116137-technote-cdp-lldp-00.html",
+            "reference_label": "Cisco 公式: CDP/LLDP 動作レイヤ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CDP は IPv6 のみをサポートし、LLDP は IPv4 のみをサポートする。",
+          "explanation": {
+            "text": "いずれも L2 フレーム内で情報を運び、IPv4/IPv6 に依存しない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/switches/nexus-7000-series-switches/116137-technote-cdp-lldp-00.html",
+            "reference_label": "Cisco 公式: CDP/LLDP Overview"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "CDP は Cisco 独自プロトコル、LLDP は IEEE 標準のベンダーニュートラルな隣接発見プロトコルであり、マルチベンダー環境では LLDP が利用される。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/switches/nexus-7000-series-switches/116137-technote-cdp-lldp-00.html",
+        "reference_label": "Cisco 公式: CDP と LLDP 比較"
+      }
+    },
+    {
+      "id": "ccna-48",
+      "question": "クラウドサービスモデルにおいて、IaaS (Infrastructure as a Service) の説明として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "アプリケーションのみを提供し、OS やミドルウェアはクラウドプロバイダが完全に管理する。",
+          "explanation": {
+            "text": "これは一般に SaaS の説明に近い。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/cloud.html",
+            "reference_label": "Cisco 公式: クラウドサービスモデル概要"
+          }
+        },
+        {
+          "key": "B",
+          "text": "アプリケーション実行環境（OS・ミドルウェア）までを提供し、アプリケーション自体は利用者が開発・配置する。",
+          "explanation": {
+            "text": "これは主に PaaS の説明である。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/cloud.html",
+            "reference_label": "Cisco 公式: PaaS の説明"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ネットワークのみを提供し、サーバやストレージは利用者がオンプレミスで用意する。",
+          "explanation": {
+            "text": "IaaS ではコンピュート／ストレージ／ネットワークをまとめて提供するのが一般的である。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/cloud.html",
+            "reference_label": "Cisco 公式: IaaS の概要"
+          }
+        },
+        {
+          "key": "D",
+          "text": "仮想マシンやストレージなどインフラ基盤をサービスとして提供し、OS 以上は利用者が管理する。",
+          "explanation": {
+            "text": "IaaS はハイパーバイザ以下のインフラをクラウドが提供し、OS やアプリケーションは利用者が管理するモデルである。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/cloud.html",
+            "reference_label": "Cisco 公式: IaaS の説明"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "IaaS ではコンピュート・ストレージ・ネットワークといったインフラをクラウドが提供し、その上の OS・ミドルウェア・アプリケーションは利用者が構築・管理する。",
+        "reference": "https://www.cisco.com/c/en/us/solutions/cloud.html",
+        "reference_label": "Cisco 公式: クラウドサービスモデル概要"
+      }
+    },
+    {
+      "id": "ccna-49",
+      "question": "ネットワーク自動化において、構成管理ツール（Ansible など）を用いる利点として正しいものをすべて選べ。（複数選択）",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "同じ Playbook やテンプレートを再実行しても、最終的な構成状態が一定になる（冪等性）。",
+          "explanation": {
+            "text": "構成管理ツールは冪等性を意識した設計で、再実行しても意図しない二重設定になりにくい。",
+            "reference": "https://developer.cisco.com/docs/network-programmability/#!ansible-network-automation",
+            "reference_label": "Cisco DevNet: Ansible によるネットワーク自動化"
+          }
+        },
+        {
+          "key": "B",
+          "text": "機器ごとに手動ログインして CLI コマンドを打つ必要があるため、作業の個人スキル依存が大きくなる。",
+          "explanation": {
+            "text": "自動化の目的は手動操作を減らし、スクリプト・テンプレートで標準化することにある。",
+            "reference": "https://developer.cisco.com",
+            "reference_label": "Cisco DevNet: 自動化のメリット"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Git などと組み合わせることで、設定の変更履歴をバージョン管理しやすくなる。",
+          "explanation": {
+            "text": "Infrastructure as Code として構成ファイルを Git 管理することで、差分管理やロールバックが容易になる。",
+            "reference": "https://developer.cisco.com",
+            "reference_label": "Cisco DevNet: ネットワークをコードとして管理する考え方"
+          }
+        },
+        {
+          "key": "D",
+          "text": "常にベンダー固有の GUI を通してしか操作できないため、自動化との相性は悪い。",
+          "explanation": {
+            "text": "自動化ツールは API や SSH を介して機器を制御でき、GUI 依存からの脱却を支援する。",
+            "reference": "https://developer.cisco.com",
+            "reference_label": "Cisco DevNet: API / 自動化の概要"
+          }
+        }
+      ],
+      "answer": "A,C",
+      "explanation": {
+        "text": "構成管理ツールによるネットワーク自動化では、冪等性とコードとしてのバージョン管理が大きな利点であり、手作業や GUI 依存を減らせる。",
+        "reference": "https://developer.cisco.com/docs/network-programmability/",
+        "reference_label": "Cisco DevNet: Network Programmability Overview"
+      }
+    },
+    {
+      "id": "ccna-50",
+      "question": "スイッチポートセキュリティにおける Sticky MAC アドレス機能の説明として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "常に全ての MAC アドレスを学習し、テーブルがあふれると自動的にポートを shutdown する。",
+          "explanation": {
+            "text": "Sticky は学習した MAC を設定として書き込む機能であり、テーブルあふれとは関係しない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/port-security/12084-4.html",
+            "reference_label": "Cisco 公式: Port Security Sticky MAC"
+          }
+        },
+        {
+          "key": "B",
+          "text": "MAC アドレスを動的に学習しないようにし、必ず全ての MAC を手動で設定させる機能である。",
+          "explanation": {
+            "text": "Sticky はむしろ動的に学習した MAC を設定に変換する機能である。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/port-security/12084-4.html",
+            "reference_label": "Cisco 公式: Sticky MAC の動作"
+          }
+        },
+        {
+          "key": "C",
+          "text": "動的に学習した MAC アドレスを running-config 上に記録し、再起動後も同じ MAC を許可できるようにする。",
+          "explanation": {
+            "text": "Sticky 学習した MAC は running-config に書き込まれ、保存すれば再起動後も有効となる。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/port-security/12084-4.html",
+            "reference_label": "Cisco 公式: Port Security with Sticky Options"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ポートに接続される全端末の暗号鍵を自動生成する機能である。",
+          "explanation": {
+            "text": "暗号鍵の生成は Sticky MAC の機能ではない。",
+            "reference": "https://www.cisco.com",
+            "reference_label": "Cisco Port Security Overview"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "Sticky MAC アドレス機能は、動的に学習した MAC を設定に反映することで、再起動後も同じ端末のみが接続可能な状態を維持しやすくするための仕組みである。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/port-security/12084-4.html",
+        "reference_label": "Cisco 公式: Port Security Sticky MAC"
+      }
+    }
+  ]
+}

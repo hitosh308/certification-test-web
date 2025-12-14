@@ -1,0 +1,2467 @@
+{
+  "exam": {
+    "id": "ccnp_enterprise",
+    "title": "Cisco Certified Network Professional（CCNP）",
+    "description": "CCNP は、企業ネットワークの設計・構築・運用・保守・セキュリティ・自動化など幅広いネットワーク技術をカバーする、ネットワークエンジニア向けのプロフェッショナル認定資格です。特に大規模ネットワークの構築・運用能力を証明でき、実務レベルのスキルを持つことを世界的に認めてもらえる点が特徴です。また、複数の専門分野（エンタープライズ／セキュリティ／データセンターなど）から自分のキャリアに合ったものを選べる柔軟性もあります。",
+    "version": "2020",
+    "price": "700 USD",
+    "difficulty": "難しい",
+    "official-site": "https://www.cisco.com/c/ja_jp/training-events/training-certifications/certifications/professional/ccnp-enterprise.html",
+    "category": {
+      "id": "cisco",
+      "name": "Cisco"
+    }
+  },
+  "questions": [
+    {
+      "id": "ccnp-1",
+      "question": "Cisco SD-WANでvSmart Controllerが主に担う役割はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データプレーンのパケット転送処理を行う",
+          "explanation": {
+            "text": "データプレーン処理はWAN Edgeデバイスが担当し、vSmartではない。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/vmanage/software-release/sd-wan/overview.html",
+            "reference_label": "Cisco SD-WAN Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ポリシー制御およびオーケストレーションを提供する",
+          "explanation": {
+            "text": "vSmartはSD-WANのコントロールプレーンとして、ポリシー配布やルーティング制御を司る。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/vmanage/software-release/sd-wan/policy.html",
+            "reference_label": "Cisco SD-WAN Policy Guide"
+          }
+        },
+        {
+          "key": "C",
+          "text": "SD-WANデバイスのゼロタッチプロビジョニングを直接実行する",
+          "explanation": {
+            "text": "ZTPは主にvBond Orchestratorが担当し、vSmartではない。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/vbond.html",
+            "reference_label": "Cisco SD-WAN vBond Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "オンプレミスのAAAサーバとして機能する",
+          "explanation": {
+            "text": "vSmartはAAA機能を持たない。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/sdwan/",
+            "reference_label": "Cisco SD-WAN Documentation"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "vSmartはSD-WANにおけるコントロールプレーンの中心であり、ポリシー配布やトラフィック制御を行う。",
+        "reference": "https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/vmanage/software-release/sd-wan/policy.html",
+        "reference_label": "Cisco SD-WAN Policy Guide"
+      }
+    },
+    {
+      "id": "ccnp-2",
+      "question": "EIGRPのルート計算においてFeasible Successorとなるための条件はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Reported Distance が現在の Successor の Feasible Distance 以下であること",
+          "explanation": {
+            "text": "EIGRPのFS条件そのものであり正しい。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/enhanced-interior-gateway-routing-protocol-eigrp/13669-14.html",
+            "reference_label": "Understanding EIGRP Feasible Successors"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Metric が常に Successor よりも小さいこと",
+          "explanation": {
+            "text": "MetricそのものではなくRDとFDの関係が評価される。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/eigrp/13669-14.html",
+            "reference_label": "Cisco EIGRP Guide"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アドバタイズ元のルータIDがSuccessorのより小さいこと",
+          "explanation": {
+            "text": "ルータIDは評価基準ではない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/eigrp/13669-14.html",
+            "reference_label": "Cisco EIGRP Guide"
+          }
+        },
+        {
+          "key": "D",
+          "text": "帯域幅と遅延の積が現在のSuccessorより大きいこと",
+          "explanation": {
+            "text": "Metric構成要素の話でありFS条件とは無関係。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/eigrp/13669-14.html",
+            "reference_label": "Cisco EIGRP Guide"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Feasible SuccessorはRD ≤ FDであることが唯一の条件である。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/ip/enhanced-interior-gateway-routing-protocol-eigrp/13669-14.html",
+        "reference_label": "Understanding EIGRP Feasible Successors"
+      }
+    },
+    {
+      "id": "ccnp-3",
+      "question": "OSPFでLSA Type 3を生成するデバイスはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ABR（Area Border Router）",
+          "explanation": {
+            "text": "Type 3はABRが他エリアへ要約情報を広報する際に使用される。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/open-shortest-path-first-ospf/7039-1.html",
+            "reference_label": "OSPF LSA Types"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ASBR",
+          "explanation": {
+            "text": "ASBRが生成するのはType 5またはType 4関連である。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/ospf/7039-1.html",
+            "reference_label": "OSPF LSA Types"
+          }
+        },
+        {
+          "key": "C",
+          "text": "DR",
+          "explanation": {
+            "text": "DRが生成するのはType 2。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/ospf/7039-1.html",
+            "reference_label": "OSPF LSA Types"
+          }
+        },
+        {
+          "key": "D",
+          "text": "バックボーンエリア以外の通常ルータ",
+          "explanation": {
+            "text": "通常ルータはType 1のみを生成。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/ospf/7039-1.html",
+            "reference_label": "OSPF LSA Types"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ABRが異なるエリアへルート要約情報を伝えるためにType 3 LSAを生成する。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/ip/open-shortest-path-first-ospf/7039-1.html",
+        "reference_label": "OSPF LSA Types"
+      }
+    },
+    {
+      "id": "ccnp-4",
+      "question": "BGPにおいて、MEDの比較が行われる条件として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "同一ASから学習したルート間で比較される",
+          "explanation": {
+            "text": "MEDは同一ASから来たルート間でのみ比較される。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/border-gateway-protocol-bgp/13753-25.html",
+            "reference_label": "Cisco BGP Best Path Selection"
+          }
+        },
+        {
+          "key": "B",
+          "text": "異なるAS間で常に比較される",
+          "explanation": {
+            "text": "異なるASから来たルート間ではデフォルトで比較されない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/bgp/13753-25.html",
+            "reference_label": "Cisco BGP Best Path Selection"
+          }
+        },
+        {
+          "key": "C",
+          "text": "MEDは常に無視される",
+          "explanation": {
+            "text": "誤り。MEDは評価要素の一つ。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/bgp/13753-25.html",
+            "reference_label": "Cisco BGP Best Path Selection"
+          }
+        },
+        {
+          "key": "D",
+          "text": "MEDが0のルートのみ比較対象になる",
+          "explanation": {
+            "text": "そのような仕様は存在しない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/bgp/13753-25.html",
+            "reference_label": "Cisco BGP Best Path Selection"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "BGP MEDはデフォルトでは『同一ASから学習したルート』間で比較される。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/ip/bgp/13753-25.html",
+        "reference_label": "Cisco BGP Best Path Selection"
+      }
+    },
+    {
+      "id": "ccnp-5",
+      "question": "HSRPのActiveルータ選出時に最優先で比較される項目はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "優先値（Priority）",
+          "explanation": {
+            "text": "HSRPのActive選出はPriorityが最優先。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/hot-standby-router-protocol-hsrp/9232-hsrp.html",
+            "reference_label": "HSRP Operation Guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "IPアドレスの大きさ",
+          "explanation": {
+            "text": "Priorityが同じ場合のタイブレークとして使用される。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/hot-standby-router-protocol-hsrp/9232-hsrp.html",
+            "reference_label": "HSRP Operation Guide"
+          }
+        },
+        {
+          "key": "C",
+          "text": "MACアドレス",
+          "explanation": {
+            "text": "MACは選出プロセスに関係しない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/hsrp/",
+            "reference_label": "HSRP Guide"
+          }
+        },
+        {
+          "key": "D",
+          "text": "インターフェイス帯域幅",
+          "explanation": {
+            "text": "HSRPは帯域幅を考慮しない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/hot-standby-router-protocol-hsrp/9232-hsrp.html",
+            "reference_label": "HSRP Operation Guide"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "HSRPのActiveルータはPriorityを最優先に比較して決定される。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/ip/hot-standby-router-protocol-hsrp/9232-hsrp.html",
+        "reference_label": "HSRP Operation Guide"
+      }
+    },
+    {
+      "id": "ccnp-6",
+      "question": "OSPFv3の認証方式として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "OSPFv3パケットにMD5認証フィールドが含まれる",
+          "explanation": {
+            "text": "OSPFv3はパケット自体に認証フィールドを持たず、IPsecを利用する。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/ospfv3/113267-ospfv3-auth-ipsec-00.html",
+            "reference_label": "OSPFv3 Authentication Using IPsec"
+          }
+        },
+        {
+          "key": "B",
+          "text": "OSPFv3はIPsecによる認証を利用する",
+          "explanation": {
+            "text": "OSPFv3はAH/ESPによる認証・暗号化を利用するのが標準。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/ospfv3/113267-ospfv3-auth-ipsec-00.html",
+            "reference_label": "OSPFv3 Authentication Using IPsec"
+          }
+        },
+        {
+          "key": "C",
+          "text": "OSPFv3は認証機能を持たない",
+          "explanation": {
+            "text": "認証はIPsecにより可能。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/ospfv3/113267-ospfv3-auth-ipsec-00.html",
+            "reference_label": "OSPFv3 Authentication Using IPsec"
+          }
+        },
+        {
+          "key": "D",
+          "text": "OSPFv3はEAPベースの認証を利用する",
+          "explanation": {
+            "text": "EAPベース認証はOSPFでは使用されない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/ospfv3/113267-ospfv3-auth-ipsec-00.html",
+            "reference_label": "OSPFv3 Authentication Using IPsec"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "OSPFv3はパケットに認証フィールドを含まず、IPsecを使用することが標準仕様である。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/ip/ospfv3/113267-ospfv3-auth-ipsec-00.html",
+        "reference_label": "OSPFv3 Authentication Using IPsec"
+      }
+    },
+    {
+      "id": "ccnp-7",
+      "question": "Cisco Wireless LAN Controller（WLC）でFlexConnectモードの特徴として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "必ず中央スイッチングを行う必要がある",
+          "explanation": {
+            "text": "FlexConnectではローカルスイッチングが可能。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/wireless-mobility/wireless-lan-wlan/200527-FlexConnect-Deployment-Guide.html",
+            "reference_label": "FlexConnect Deployment Guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "分散拠点にあるAPがWLCと切断されてもローカル認証が可能",
+          "explanation": {
+            "text": "FlexConnectの重要な特徴で、WAN断でもサービス継続可能。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/wireless-mobility/wireless-lan-wlan/200527-FlexConnect-Deployment-Guide.html",
+            "reference_label": "FlexConnect Deployment Guide"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Layer 3 roamingが利用できない",
+          "explanation": {
+            "text": "FlexConnectは条件を満たせばL3ローミング可能。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/wireless/200527.html",
+            "reference_label": "FlexConnect Guide"
+          }
+        },
+        {
+          "key": "D",
+          "text": "CAPWAPトンネルを使用しない",
+          "explanation": {
+            "text": "FlexConnectでもCAPWAPを使用する。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/wireless/200527.html",
+            "reference_label": "FlexConnect Guide"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "FlexConnectはWAN切断時もローカル認証・ローカルスイッチングによりサービス提供が可能である。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/wireless-mobility/wireless-lan-wlan/200527-FlexConnect-Deployment-Guide.html",
+        "reference_label": "FlexConnect Deployment Guide"
+      }
+    },
+    {
+      "id": "ccnp-8",
+      "question": "Cisco TrustSecで使用されるSGT（Security Group Tag）の主な役割として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "L2スイッチングの高速化を行うタグ",
+          "explanation": {
+            "text": "SGTはセキュリティポリシーの適用が目的であり、スイッチング高速化ではない。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/enterprise-networks/trustsec/index.html",
+            "reference_label": "Cisco TrustSec Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "トラフィックのセキュリティグループ分類を行う",
+          "explanation": {
+            "text": "SGTはユーザやデバイスをセキュリティグループに分類するためのタグ。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/enterprise-networks/trustsec/index.html",
+            "reference_label": "Cisco TrustSec Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "暗号化方式を切り替えるタグ",
+          "explanation": {
+            "text": "暗号化方式とは無関係。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/enterprise-networks/trustsec/index.html",
+            "reference_label": "Cisco TrustSec Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "QoS優先度を示すタグ",
+          "explanation": {
+            "text": "SGTはQoSとは別物。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/enterprise-networks/trustsec/index.html",
+            "reference_label": "Cisco TrustSec Overview"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "SGTはセキュリティポリシーをトラフィックごとに適用するため、エンティティをグループ化する識別子である。",
+        "reference": "https://www.cisco.com/c/en/us/solutions/enterprise-networks/trustsec/index.html",
+        "reference_label": "Cisco TrustSec Overview"
+      }
+    },
+    {
+      "id": "ccnp-9",
+      "question": "Spanning Tree Protocolにおいて、PortFastが有効化されているポートの特徴はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ループ発生を検知して自動的にブロッキングに遷移する",
+          "explanation": {
+            "text": "PortFastポートはBPDUを受信するとerr-disableとなるが、STPの通常状態遷移は行わない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/10558-16.html",
+            "reference_label": "Cisco STP PortFast Guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "接続デバイスがホストであることを前提に即座にForwarding状態になる",
+          "explanation": {
+            "text": "PortFastはホスト向けにSTP遅延を省略するためForwardingへ即遷移する。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/10558-16.html",
+            "reference_label": "Cisco STP PortFast Guide"
+          }
+        },
+        {
+          "key": "C",
+          "text": "BPDUを送信しない",
+          "explanation": {
+            "text": "PortFast有効でもBPDUは送信される。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/10558-16.html",
+            "reference_label": "Cisco STP PortFast Guide"
+          }
+        },
+        {
+          "key": "D",
+          "text": "STPの計算に参加しない",
+          "explanation": {
+            "text": "PortFastでもSTPドメインの一部である。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/10558-16.html",
+            "reference_label": "Cisco STP PortFast Guide"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "PortFastはPCなどホスト接続向けにSTP遷移をスキップして即Forwardingとなる。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/10558-16.html",
+        "reference_label": "Cisco STP PortFast Guide"
+      }
+    },
+    {
+      "id": "ccnp-10",
+      "question": "VXLANでVNI（VXLAN Network Identifier）の特徴として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "12ビットで表されるため4096セグメントまでサポートする",
+          "explanation": {
+            "text": "これはVLAN IDの仕様。VNIは24ビット。",
+            "reference": "https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/guide-c07-733228.html",
+            "reference_label": "Cisco VXLAN Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "VXLANでL2セグメントを拡張するための24ビット識別子である",
+          "explanation": {
+            "text": "VNIは24ビットで16M以上の論理ネットワークをサポートする。",
+            "reference": "https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/guide-c07-733228.html",
+            "reference_label": "Cisco VXLAN Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "VNIはルータIDと同じ値である必要がある",
+          "explanation": {
+            "text": "VNIとルータIDは無関係。",
+            "reference": "https://www.cisco.com/c/en/us/products/switches/",
+            "reference_label": "Cisco VXLAN Docs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "VNIはマルチキャストグループ数と常に一致する",
+          "explanation": {
+            "text": "一致させる必要はなく1:Nの関係も可能。",
+            "reference": "https://www.cisco.com/c/en/us/products/switches/",
+            "reference_label": "Cisco VXLAN Docs"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "VNIは24ビットの識別子としてVXLANセグメントを拡張するために用いられる。",
+        "reference": "https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/guide-c07-733228.html",
+        "reference_label": "Cisco VXLAN Overview"
+      }
+    },
+    {
+      "id": "ccnp-11",
+      "question": "BGPルート反射（Route Reflector）の特徴として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "iBGP間ではルート反射無しでも常に完全メッシュが不要",
+          "explanation": {
+            "text": "iBGPは原則フルメッシュが必要で、RRがその代替となる。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/bgp/1966-24.html",
+            "reference_label": "Cisco BGP Route Reflector"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Route ReflectorはiBGPルートをクライアントに再広告できる",
+          "explanation": {
+            "text": "RRの主機能はiBGPルートの反射である。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/bgp/1966-24.html",
+            "reference_label": "Cisco BGP Route Reflector"
+          }
+        },
+        {
+          "key": "C",
+          "text": "RRクライアント同士の通信は必ず直接セッションが必要",
+          "explanation": {
+            "text": "RRにより直接セッションを不要にできる。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/bgp/1966-24.html",
+            "reference_label": "Cisco BGP Route Reflector"
+          }
+        },
+        {
+          "key": "D",
+          "text": "RRはAS間のeBGPルートのみを扱う",
+          "explanation": {
+            "text": "RRはiBGPルート反射が主用途。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/bgp/1966-24.html",
+            "reference_label": "Cisco BGP Route Reflector"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "RRはiBGPルートをクライアントへ反射し、iBGPフルメッシュの要件を解消するために使用される。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/ip/bgp/1966-24.html",
+        "reference_label": "Cisco BGP Route Reflector"
+      }
+    },
+    {
+      "id": "ccnp-12",
+      "question": "NetFlowでフローを識別する際に使用される一般的な5-tupleに含まれないものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "送信元IPアドレス",
+          "explanation": {
+            "text": "5-tupleの一部。",
+            "reference": "https://www.cisco.com/c/en/us/products/ios-nx-os-software/ios-netflow/",
+            "reference_label": "Cisco NetFlow Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "送信元MACアドレス",
+          "explanation": {
+            "text": "MACアドレスはNetFlow 5-tupleの要素ではない。",
+            "reference": "https://www.cisco.com/c/en/us/products/ios-nx-os-software/ios-netflow/",
+            "reference_label": "Cisco NetFlow Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "宛先IPアドレス",
+          "explanation": {
+            "text": "5-tupleの一部。",
+            "reference": "https://www.cisco.com/c/en/us/products/ios-nx-os-software/ios-netflow/",
+            "reference_label": "Cisco NetFlow Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "プロトコル番号",
+          "explanation": {
+            "text": "5-tupleの一部。",
+            "reference": "https://www.cisco.com/c/en/us/products/ios-nx-os-software/ios-netflow/",
+            "reference_label": "Cisco NetFlow Overview"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "NetFlowの標準5-tupleはIP/Port/Protocolを基にしており、MACアドレスは含まれない。",
+        "reference": "https://www.cisco.com/c/en/us/products/ios-nx-os-software/ios-netflow/",
+        "reference_label": "Cisco NetFlow Overview"
+      }
+    },
+    {
+      "id": "ccnp-13",
+      "question": "HSPRとVRRPの標準動作の違いとして正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "VRRPでは仮想ルータマスターは常に物理ルータのIPを使用する",
+          "explanation": {
+            "text": "VRRPはVirtual IPとは別の仮想MACを使用する。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/vrrp/19982-1.html",
+            "reference_label": "Cisco VRRP Guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "HSRPはCisco独自、VRRPは標準プロトコルである",
+          "explanation": {
+            "text": "これは両者の根本的な違いとして正しい。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/vrrp/19982-1.html",
+            "reference_label": "Cisco VRRP Guide"
+          }
+        },
+        {
+          "key": "C",
+          "text": "HSRPは必ずプリエンプションを有効化して動作する",
+          "explanation": {
+            "text": "HSRPはプリエンプションはデフォルト無効。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/hsrp/9232-hsrp.html",
+            "reference_label": "Cisco HSRP Guide"
+          }
+        },
+        {
+          "key": "D",
+          "text": "VRRPはバックアップルータからハートビートを送信する",
+          "explanation": {
+            "text": "ハートビートを送るのはマスター側。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/vrrp/19982-1.html",
+            "reference_label": "Cisco VRRP Guide"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "HSRPはCisco独自実装、VRRPはRFC準拠の標準プロトコルである。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/ip/vrrp/19982-1.html",
+        "reference_label": "Cisco VRRP Guide"
+      }
+    },
+    {
+      "id": "ccnp-14",
+      "question": "Cisco DNA CenterのAssurance機能で提供される主な機能はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "スイッチのハードウェア温度を変更できる",
+          "explanation": {
+            "text": "Assuranceは監視・分析機能であり設定変更ではない。",
+            "reference": "https://www.cisco.com/c/en/us/products/cloud-systems-management/dna-center/index.html",
+            "reference_label": "Cisco DNA Center Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ネットワークのテレメトリ分析と問題の根本原因分析",
+          "explanation": {
+            "text": "Assuranceの主要機能はネットワークの可視化・テレメトリ分析である。",
+            "reference": "https://www.cisco.com/c/en/us/products/cloud-systems-management/dna-center/index.html",
+            "reference_label": "Cisco DNA Center Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ルーティングプロトコルの自動生成",
+          "explanation": {
+            "text": "Assuranceには含まれない。",
+            "reference": "https://www.cisco.com/c/en/us/products/cloud-systems-management/dna-center/index.html",
+            "reference_label": "Cisco DNA Center Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "物理配線図の自動作成",
+          "explanation": {
+            "text": "Assuranceはトラブル検知が中心で、配線図生成機能は無い。",
+            "reference": "https://www.cisco.com/c/en/us/products/cloud-systems-management/dna-center/",
+            "reference_label": "Cisco DNA Center Overview"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "DNA Center Assuranceはテレメトリデータを分析し、ネットワーク状態や問題の根本原因を特定する機能。",
+        "reference": "https://www.cisco.com/c/en/us/products/cloud-systems-management/dna-center/index.html",
+        "reference_label": "Cisco DNA Center Overview"
+      }
+    },
+    {
+      "id": "ccnp-15",
+      "question": "Cisco ASAにおいて状態検査ファイアウォールの特徴として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "TCPフラグを一切参照しない",
+          "explanation": {
+            "text": "ASAはTCPフラグを含むセッション情報を追跡する。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/security/asa-5500-x-series-next-generation-firewalls/9862-stateful-firewalls.html",
+            "reference_label": "Cisco Stateful Firewall Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "セッションテーブルに基づき戻りトラフィックを許可する",
+          "explanation": {
+            "text": "状態検査ファイアウォールの基本機能である。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/security/asa-5500-x-series-next-generation-firewalls/9862-stateful-firewalls.html",
+            "reference_label": "Cisco Stateful Firewall Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "常に全トラフィックに対し静的ACLのみで制御する",
+          "explanation": {
+            "text": "ASAは状態テーブルを使用するためACLだけではない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/security/asa-5500-x-series-next-generation-firewalls/9862-stateful-firewalls.html",
+            "reference_label": "Cisco Stateful Firewall Overview"
+          }
+        },
+        {
+          "key": "D",
+          "text": "UDPセッションの追跡は行わず常に無制限",
+          "explanation": {
+            "text": "ASAはUDPの擬似セッションも追跡する。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/security/asa-5500-x-series-next-generation-firewalls/9862-stateful-firewalls.html",
+            "reference_label": "Cisco Stateful Firewall Overview"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "状態検査FWであるASAはセッションテーブルを維持し、戻りトラフィックを自動的に許可する。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/security/asa-5500-x-series-next-generation-firewalls/9862-stateful-firewalls.html",
+        "reference_label": "Cisco Stateful Firewall Overview"
+      }
+    },
+    {
+      "id": "ccnp-16",
+      "question": "Cisco SD-Accessのファブリック内でLISPが担う役割として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "エンドポイントIDとロケータのマッピング管理",
+          "explanation": {
+            "text": "LISPはEIDとRLOCのマッピングを管理し、SD-Accessの仮想オーバーレイを支える。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/enterprise-networks/sd-access/index.html",
+            "reference_label": "Cisco SD-Access Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ファブリック内のデータプレーン暗号化",
+          "explanation": {
+            "text": "暗号化はLISPではなく、通常はIPsecまたはMACsecが利用される。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/",
+            "reference_label": "Cisco SD-Access Documentation"
+          }
+        },
+        {
+          "key": "C",
+          "text": "デフォルトゲートウェイの冗長化",
+          "explanation": {
+            "text": "冗長化はSVIまたはAnycast GWで行われる。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/",
+            "reference_label": "Cisco SD-Access Documentation"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Fabric Edgeノードのブートストラップ",
+          "explanation": {
+            "text": "ブートストラップはLISPの役割ではない。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/",
+            "reference_label": "Cisco SD-Access Documentation"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "SD-AccessではLISPがEID/RLOCマッピングを管理し、仮想オーバーレイの動作を支える役割を担う。",
+        "reference": "https://www.cisco.com/c/en/us/solutions/enterprise-networks/sd-access/index.html",
+        "reference_label": "Cisco SD-Access Overview"
+      }
+    },
+    {
+      "id": "ccnp-17",
+      "question": "EIGRP Stub設定の効果として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Stubルータはルーティング情報を最小限に抑え、クエリ範囲を制限する",
+          "explanation": {
+            "text": "Stubはクエリ拡散を防ぎ、大規模ネットワークでの安定性向上に寄与する。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/enhanced-interior-gateway-routing-protocol-eigrp/13680-12.html",
+            "reference_label": "Cisco EIGRP Stub Guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Stubルータは必ずルートリフレクタとして動作する",
+          "explanation": {
+            "text": "RRはBGPの機能であり、EIGRPには存在しない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/eigrp/",
+            "reference_label": "Cisco EIGRP Documentation"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Stubルータは常に全ルートをアドバタイズする",
+          "explanation": {
+            "text": "Stubは広告を限定する動作を行う。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/eigrp/",
+            "reference_label": "Cisco EIGRP Documentation"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Stub設定によりマルチキャスト更新が禁止される",
+          "explanation": {
+            "text": "マルチキャスト更新は禁止されない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/eigrp/",
+            "reference_label": "Cisco EIGRP Documentation"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "EIGRP Stubはネットワーク安定化に有効で、クエリ範囲を制限するために使用される。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/ip/enhanced-interior-gateway-routing-protocol-eigrp/13680-12.html",
+        "reference_label": "Cisco EIGRP Stub Guide"
+      }
+    },
+    {
+      "id": "ccnp-18",
+      "question": "HSRPでプリエンプション機能を有効化すると発生する動作として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "優先値の高いルータが復帰した場合にActiveへ奪取する",
+          "explanation": {
+            "text": "preempt設定により高優先ルータが復帰時にActiveに戻る動作が有効化される。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/hsrp/9232-hsrp.html",
+            "reference_label": "Cisco HSRP Guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Activeルータが常に固定されどのルータも奪取できない",
+          "explanation": {
+            "text": "preemptは奪取を許可する設定であり逆の動作。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/hsrp/9232-hsrp.html",
+            "reference_label": "Cisco HSRP Guide"
+          }
+        },
+        {
+          "key": "C",
+          "text": "優先値が無効化されMACアドレスで決定される",
+          "explanation": {
+            "text": "MACアドレスはHSRPの選出要素ではない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/hsrp/9232-hsrp.html",
+            "reference_label": "Cisco HSRP Guide"
+          }
+        },
+        {
+          "key": "D",
+          "text": "プリエンプション有効化によりグループ全体が再起動する",
+          "explanation": {
+            "text": "そのような挙動は発生しない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/hsrp/9232-hsrp.html",
+            "reference_label": "Cisco HSRP Guide"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "preemptを有効にすると優先値の高いルータがActiveへ復帰できる。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/ip/hsrp/9232-hsrp.html",
+        "reference_label": "Cisco HSRP Guide"
+      }
+    },
+    {
+      "id": "ccnp-19",
+      "question": "OSPFにおいてType 5 LSAが広報されないエリアはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Stubエリア",
+          "explanation": {
+            "text": "StubではType5 LSAが禁止されている。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/ospf/7039-1.html",
+            "reference_label": "OSPF LSA Types"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Backboneエリア",
+          "explanation": {
+            "text": "BackboneではType5は許可される。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/ospf/7039-1.html",
+            "reference_label": "OSPF LSA Types"
+          }
+        },
+        {
+          "key": "C",
+          "text": "通常エリア",
+          "explanation": {
+            "text": "通常エリアではType5が伝播する。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/ospf/7039-1.html",
+            "reference_label": "OSPF LSA Types"
+          }
+        },
+        {
+          "key": "D",
+          "text": "NSSAエリア（Not-So-Stubby Area）",
+          "explanation": {
+            "text": "NSSAはType7を使用するが、ASBRによってType5へ変換される場合がある。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/ospf/7039-1.html",
+            "reference_label": "OSPF LSA Types"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "StubエリアではType5 LSAが遮断され外部ルートはType3要約ルートのみに制限される。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/ip/ospf/7039-1.html",
+        "reference_label": "OSPF LSA Types"
+      }
+    },
+    {
+      "id": "ccnp-20",
+      "question": "BGP Add-Path機能の利点として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "複数のパスを同時に広告でき、パスの切り替え時にブラックホールを防ぐ",
+          "explanation": {
+            "text": "Add-Pathは複数パスを広告し、ルート収束の安定性を高める。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/bgp/116146-add-paths.html",
+            "reference_label": "Cisco BGP Add-Path Guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "AS番号を動的に割り当てる拡張機能である",
+          "explanation": {
+            "text": "Add-PathはAS番号とは無関係。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/bgp/",
+            "reference_label": "Cisco BGP Documentation"
+          }
+        },
+        {
+          "key": "C",
+          "text": "BGP Keepaliveを排除できる",
+          "explanation": {
+            "text": "Add-PathはKeepaliveには影響しない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/bgp/",
+            "reference_label": "Cisco BGP Documentation"
+          }
+        },
+        {
+          "key": "D",
+          "text": "eBGPでルート反射を可能にする",
+          "explanation": {
+            "text": "ルート反射はiBGPの機能でありAdd-Pathとは異なる。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/bgp/",
+            "reference_label": "Cisco BGP Documentation"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Add-Pathは複数のパス広告により収束時のブラックホール発生を抑止する。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/ip/bgp/116146-add-paths.html",
+        "reference_label": "Cisco BGP Add-Path Guide"
+      }
+    },
+    {
+      "id": "ccnp-21",
+      "question": "Cisco ISEにおける802.1X認証で使用できる認証方式として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "EAP-TLS",
+          "explanation": {
+            "text": "ISEはEAP-TLSを標準的にサポートする。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/enterprise-networks/identity-services-engine/index.html",
+            "reference_label": "Cisco ISE Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "WPA-PSK",
+          "explanation": {
+            "text": "WPA-PSKはISEでの802.1X認証方式ではない。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/",
+            "reference_label": "Cisco ISE Docs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "EAP-Free",
+          "explanation": {
+            "text": "そのような方式は存在しない。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/",
+            "reference_label": "Cisco ISE Docs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "MACsec-Only認証",
+          "explanation": {
+            "text": "MACsecは暗号化方式で認証方式ではない。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/",
+            "reference_label": "Cisco ISE Docs"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ISEは802.1XでEAP-TLSなどの証明書ベース認証をサポートする。",
+        "reference": "https://www.cisco.com/c/en/us/solutions/enterprise-networks/identity-services-engine/index.html",
+        "reference_label": "Cisco ISE Overview"
+      }
+    },
+    {
+      "id": "ccnp-22",
+      "question": "NetFlowでフローエクスポートを行う際に使用される一般的なポートはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "UDP 2055",
+          "explanation": {
+            "text": "NetFlowの代表的なエクスポート先ポート。",
+            "reference": "https://www.cisco.com/c/en/us/products/ios-nx-os-software/ios-netflow/",
+            "reference_label": "Cisco NetFlow Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "TCP 80",
+          "explanation": {
+            "text": "HTTPでありNetFlowとは無関係。",
+            "reference": "https://www.cisco.com/c/en/us/products/",
+            "reference_label": "Cisco Docs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "UDP 53",
+          "explanation": {
+            "text": "DNSでありNetFlowとは無関係。",
+            "reference": "https://www.cisco.com/c/en/us/products/",
+            "reference_label": "Cisco Docs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "TCP 179",
+          "explanation": {
+            "text": "BGPセッションのポートでNetFlowではない。",
+            "reference": "https://www.cisco.com/c/en/us/products/",
+            "reference_label": "Cisco Docs"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "NetFlowのエクスポートで最も一般的に使用されるポートはUDP 2055である。",
+        "reference": "https://www.cisco.com/c/en/us/products/ios-nx-os-software/ios-netflow/",
+        "reference_label": "Cisco NetFlow Overview"
+      }
+    },
+    {
+      "id": "ccnp-23",
+      "question": "Cisco FirepowerのAccess Control Policyにおいて、アプリケーション識別に使用されるエンジンはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Snortエンジン",
+          "explanation": {
+            "text": "Snortは侵入検知/防御エンジンであり、アプリ識別にはApp-IDエンジンが使われる。",
+            "reference": "https://www.cisco.com/c/en/us/products/security/firepower-1000-series/index.html",
+            "reference_label": "Cisco Firepower Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "App-IDエンジン",
+          "explanation": {
+            "text": "App-IDによってトラフィックのアプリケーションを識別する。",
+            "reference": "https://www.cisco.com/c/en/us/products/security/firepower-management-center/index.html",
+            "reference_label": "Firepower Management Center Guide"
+          }
+        },
+        {
+          "key": "C",
+          "text": "QoS識別エンジン",
+          "explanation": {
+            "text": "QoSはアプリ識別ではない。",
+            "reference": "https://www.cisco.com/c/en/us/products/security/",
+            "reference_label": "Cisco Security Docs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "URLフィルタリング専用エンジン",
+          "explanation": {
+            "text": "URL分類とは別の機能。",
+            "reference": "https://www.cisco.com/c/en/us/products/security/",
+            "reference_label": "Cisco Security Docs"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "FirepowerではApp-IDエンジンによってアプリケーション識別を行い、ポリシー適用に用いる。",
+        "reference": "https://www.cisco.com/c/en/us/products/security/firepower-management-center/index.html",
+        "reference_label": "Firepower Management Center Guide"
+      }
+    },
+    {
+      "id": "ccnp-24",
+      "question": "Cisco WAN環境で利用されるDMVPN Phase 3の特徴として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "スパークルートによりスポーク間の直接トンネル形成が可能",
+          "explanation": {
+            "text": "Phase3はNHRP redirect/shortcutによりスポーク間の動的トンネルが可能。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/security-vpn/dynamic-multipoint-vpn-dmvpn/118978-config-dmvpn-phase3.html",
+            "reference_label": "Cisco DMVPN Phase 3 Guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "常にハブを経由する固定トンネルのみ使用する",
+          "explanation": {
+            "text": "Phase1の動作でありPhase3では異なる。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/security-vpn/dmvpn/",
+            "reference_label": "Cisco DMVPN Docs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "OSPFがDMVPN上で動作しない",
+          "explanation": {
+            "text": "OSPFはDMVPNで使用可能。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/security-vpn/dmvpn/",
+            "reference_label": "Cisco DMVPN Docs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "GREを使用しない",
+          "explanation": {
+            "text": "DMVPNはGRE/NHRPを使用する技術であり誤り。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/security-vpn/dmvpn/",
+            "reference_label": "Cisco DMVPN Docs"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Phase 3ではNHRP redirect/shortcutによりスポーク間ダイレクトトンネル形成が可能となる。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/security-vpn/dynamic-multipoint-vpn-dmvpn/118978-config-dmvpn-phase3.html",
+        "reference_label": "Cisco DMVPN Phase 3 Guide"
+      }
+    },
+    {
+      "id": "ccnp-25",
+      "question": "Cisco CatalystスイッチでUDLD（UniDirectional Link Detection）の主な目的として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "片方向リンク障害の検出",
+          "explanation": {
+            "text": "UDLDはL1では検出できない片方向リンク障害を検出する。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6500-series-switches/10558-48.html",
+            "reference_label": "Cisco UDLD Guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "PoE給電量の監視",
+          "explanation": {
+            "text": "PoEはUDLDとは無関係。",
+            "reference": "https://www.cisco.com/c/en/us/products/",
+            "reference_label": "Cisco PoE Docs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "CPUスパイクを検出してリセットする",
+          "explanation": {
+            "text": "UDLDはリンク障害検出の機能である。",
+            "reference": "https://www.cisco.com/c/en/us/products/",
+            "reference_label": "Cisco Docs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "BPDUをフィルタリングする",
+          "explanation": {
+            "text": "BPDUフィルタは別機能でUDLDとは異なる。",
+            "reference": "https://www.cisco.com/c/en/us/products/",
+            "reference_label": "Cisco Docs"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "UDLDは片方向リンク障害を検出し、STPループの発生を防ぐ重要機能である。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6500-series-switches/10558-48.html",
+        "reference_label": "Cisco UDLD Guide"
+      }
+    },
+    {
+      "id": "ccnp-26",
+      "question": "QoS設計において、エンタープライズキャンパスでのQoSの主な目的として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "常にすべてのトラフィックを均一に帯域保証すること",
+          "explanation": {
+            "text": "QoSはすべてを均一に扱うのではなく、重要トラフィックを優先・保護するために用いる。",
+            "reference": "https://community.cisco.com/kxiwq67737/attachments/kxiwq67737/5931-discussions-network-management/112933/1/enterprise_campus_qos_0.pdf",
+            "reference_label": "Enterprise Campus QoS Design—Simplified"
+          }
+        },
+        {
+          "key": "B",
+          "text": "キャンパス内でのパケット損失を管理し、重要アプリケーションを優先すること",
+          "explanation": {
+            "text": "CiscoはキャンパスQoSの主な役割を『パケット損失の管理と重要トラフィックの保護』と定義している。",
+            "reference": "https://community.cisco.com/kxiwq67737/attachments/kxiwq67737/5931-discussions-network-management/112933/1/enterprise_campus_qos_0.pdf",
+            "reference_label": "Enterprise Campus QoS Design—Simplified"
+          }
+        },
+        {
+          "key": "C",
+          "text": "レイヤ3ルーティングプロトコルの収束時間を短縮すること",
+          "explanation": {
+            "text": "収束時間短縮は設計やプロトコルチューニングの話であり、QoSの主目的ではない。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/solutions/Enterprise/Campus/Borderless_Campus_Network_1-0/Borderless_Campus_1-0_Design_Guide/BN_Campus_QoS.html",
+            "reference_label": "Borderless Campus QoS Design Guide"
+          }
+        },
+        {
+          "key": "D",
+          "text": "暗号化トラフィックのみを優先制御すること",
+          "explanation": {
+            "text": "QoS対象は音声・映像・制御など多岐にわたり、暗号化トラフィックに限定されない。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/solutions/Enterprise/Campus/Borderless_Campus_Network_1-0/Borderless_Campus_1-0_Design_Guide/BN_Campus_QoS.html",
+            "reference_label": "Borderless Campus QoS Design Guide"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "キャンパスQoSの主な目的は『短時間の輻輳で発生するパケット損失を管理し、音声・映像など重要アプリケーションを優先的に保護すること』である。",
+        "reference": "https://community.cisco.com/kxiwq67737/attachments/kxiwq67737/5931-discussions-network-management/112933/1/enterprise_campus_qos_0.pdf",
+        "reference_label": "Enterprise Campus QoS Design—Simplified"
+      }
+    },
+    {
+      "id": "ccnp-27",
+      "question": "CatalystスイッチでEtherChannelを構成する際の正しい要件はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "片側をPAgP、もう片側をLACPに設定しても動作する",
+          "explanation": {
+            "text": "一つのEtherChannelで両端は同じプロトコルにする必要があり、PAgPとLACPを混在させることはできない。",
+            "reference": "https://www.cisco.com/c/ja_jp/td/docs/sw/campuslanswt-compact/cat2960-cxswt/cg/001/b_1523e_consolidated_2960cx_3560cx_cg/Configuring___EtherChannels.html",
+            "reference_label": "EtherChannel コンフィギュレーション ガイド"
+          }
+        },
+        {
+          "key": "B",
+          "text": "メンバーインターフェイスごとに異なるネイティブVLANを設定する必要がある",
+          "explanation": {
+            "text": "EtherChannelのメンバーは同じスイッチポート設定（VLANなど）である必要がある。",
+            "reference": "https://www.cisco.com/c/ja_jp/td/docs/sw/campuslanswt-compact/cat2960-cxswt/cg/001/b_1523e_consolidated_2960cx_3560cx_cg/Configuring___EtherChannels.html",
+            "reference_label": "EtherChannel コンフィギュレーション ガイド"
+          }
+        },
+        {
+          "key": "C",
+          "text": "同一EtherChannel内のすべてのポートは同一速度・同一デュプレックスである必要がある",
+          "explanation": {
+            "text": "EtherChannelを正常動作させるには速度・デュプレックスなどの設定を一致させる必要がある。",
+            "reference": "https://www.cisco.com/c/ja_jp/td/docs/sw/campuslanswt-compact/cat2960-cxswt/cg/001/b_1523e_consolidated_2960cx_3560cx_cg/Configuring___EtherChannels.html",
+            "reference_label": "EtherChannel コンフィギュレーション ガイド"
+          }
+        },
+        {
+          "key": "D",
+          "text": "EtherChannelメンバーインターフェイスではSTPが完全に無効になる",
+          "explanation": {
+            "text": "STPはポートチャネル単位で動作し、無効にはならない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/10558-4.html",
+            "reference_label": "Understanding EtherChannel and STP"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "EtherChannelのメンバーインターフェースは速度・デュプレックス・VLANなどの設定を一致させる必要がある。これが不一致だとチャネル不参加や不安定の原因となる。",
+        "reference": "https://www.cisco.com/c/ja_jp/td/docs/sw/campuslanswt-compact/cat2960-cxswt/cg/001/b_1523e_consolidated_2960cx_3560cx_cg/Configuring___EtherChannels.html",
+        "reference_label": "EtherChannel コンフィギュレーション ガイド"
+      }
+    },
+    {
+      "id": "ccnp-28",
+      "question": "MPLS L3 VPNで各顧客の経路を分離するためにPEルータ上で使用される仕組みはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "VRRPインスタンス",
+          "explanation": {
+            "text": "VRRPはデフォルトゲートウェイ冗長化のためのL3プロトコルであり、VPN分離用途ではない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/vrrp/19982-1.html",
+            "reference_label": "Cisco VRRP Guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "802.1QタグVLAN",
+          "explanation": {
+            "text": "VLANはL2分離手段であり、MPLS L3VPNの論理的なVRF分離とは異なる。",
+            "reference": "https://www.cisco.com/site/us/en/learn/topics/networking/what-is-multiprotocol-label-switching-mpls.html",
+            "reference_label": "What is MPLS - Cisco"
+          }
+        },
+        {
+          "key": "C",
+          "text": "VRF（VPN Routing and Forwarding）インスタンス",
+          "explanation": {
+            "text": "VRFは各VPNごとに独立したルーティングテーブルを持たせることでトラフィック分離を実現する。",
+            "reference": "https://www.cisco.com/c/ja_jp/support/docs/multiprotocol-label-switching-mpls/mpls/13733-mpls-vpn-basic.html",
+            "reference_label": "基本的な MPLS VPN ネットワークの設定"
+          }
+        },
+        {
+          "key": "D",
+          "text": "GREトンネルインターフェイスのみ",
+          "explanation": {
+            "text": "GREはトンネル技術であり、MPLS L3VPNの基盤では通常VRF＋ラベルで分離する。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/multiprotocol-label-switching-mpls/mpls/13733-mpls-vpn-basic.html",
+            "reference_label": "基本的な MPLS VPN ネットワークの設定"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "MPLS L3 VPNでは、各顧客ごとにVRFを定義し、PEルータ上のルーティングテーブルを論理的に分離してVPN境界を実現する。",
+        "reference": "https://www.cisco.com/c/ja_jp/support/docs/multiprotocol-label-switching-mpls/mpls/13733-mpls-vpn-basic.html",
+        "reference_label": "基本的な MPLS VPN ネットワークの設定"
+      }
+    },
+    {
+      "id": "ccnp-29",
+      "question": "IEEE 802.11r Fast Transition(FT)の目的として最も適切な説明はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "無線LANクライアントの電波出力を自動調整する",
+          "explanation": {
+            "text": "出力調整はRRMなどの機能であり、802.11rの目的ではない。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/enterprise-networks/index.html",
+            "reference_label": "Enterprise Wireless Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "APのチャネル幅を動的に変更する",
+          "explanation": {
+            "text": "チャネル幅やチャネル選択はRRM/DFS等で処理される。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/enterprise-networks/index.html",
+            "reference_label": "Enterprise Wireless Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ローミング時に事前ハンドシェイクを行い、再認証なしで高速にBSSを切り替える",
+          "explanation": {
+            "text": "802.11rはFast Transitionを定義し、事前にPTKを計算することでAP間ローミングを高速化する。",
+            "reference": "https://www.cisco.com/c/ja_jp/td/docs/wireless/controller/9800/17-15/config-guide/b_wl_17_15_cg/m_fast_transition_ewlc.html",
+            "reference_label": "802.11r Fast Transition コンフィグガイド"
+          }
+        },
+        {
+          "key": "D",
+          "text": "SSIDを複数のAPで自動生成する",
+          "explanation": {
+            "text": "SSID生成はコントローラの設定であり、802.11r標準の機能ではない。",
+            "reference": "https://www.cisco.com/c/ja_jp/td/docs/wireless/controller/9800/17-15/config-guide/b_wl_17_15_cg/m_fast_transition_ewlc.html",
+            "reference_label": "802.11r Fast Transition コンフィグガイド"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "802.11rはFast BSS Transitionを目的とした標準であり、ローミング先APとの事前ハンドシェイクにより再認証を不要にして遅延を減らす。",
+        "reference": "https://www.cisco.com/c/ja_jp/td/docs/wireless/controller/9800/17-15/config-guide/b_wl_17_15_cg/m_fast_transition_ewlc.html",
+        "reference_label": "802.11r Fast Transition コンフィグガイド"
+      }
+    },
+    {
+      "id": "ccnp-30",
+      "question": "RSTP(802.1w)が従来のSTP(802.1D)に比べて収束時間を短縮できる主な理由はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "BPDUを送信しなくなるため",
+          "explanation": {
+            "text": "RSTPもBPDUを用いる。むしろ独自BPDUを頻繁に送信して状態把握を高速化する。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/24062-146.html",
+            "reference_label": "Understanding Rapid Spanning Tree Protocol"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ルートブリッジの概念を廃止したため",
+          "explanation": {
+            "text": "RSTPでもルートブリッジの概念は存続している。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/24062-146.html",
+            "reference_label": "Understanding Rapid Spanning Tree Protocol"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ポートロールおよびポート状態の簡素化と、シグナリングによる即時遷移を導入したため",
+          "explanation": {
+            "text": "RSTPはポートロール/状態を再定義し、Proposal/AgreementメカニズムによりForwardingへの即時遷移を可能にしている。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/24062-146.html",
+            "reference_label": "Understanding Rapid Spanning Tree Protocol"
+          }
+        },
+        {
+          "key": "D",
+          "text": "STPタイマーをすべて無効化したため",
+          "explanation": {
+            "text": "タイマーは依然として存在するが、より少なく依存するよう設計されているだけである。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/24062-146.html",
+            "reference_label": "Understanding Rapid Spanning Tree Protocol"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "RSTPはポートロール/状態を簡素化し、Proposal/Agreementなどのシグナリングによりポートを即Forwardingに移行できるため高速収束を実現している。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/24062-146.html",
+        "reference_label": "Understanding Rapid Spanning Tree Protocol"
+      }
+    },
+    {
+      "id": "ccnp-31",
+      "question": "CiscoルータでClass-Based Weighted Fair Queuing(CBWFQ)を使用する主な目的として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "リンク速度を動的に上げるため",
+          "explanation": {
+            "text": "物理リンク速度はQoSでは変更できない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/quality-of-service-qos/qos-packet-marking/10103-cbwfq.html",
+            "reference_label": "Cisco CBWFQ Configuration Guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "トラフィックを暗号化するため",
+          "explanation": {
+            "text": "暗号化はIPsecなどの機能であり、CBWFQの機能ではない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/quality-of-service-qos/qos-packet-marking/10103-cbwfq.html",
+            "reference_label": "Cisco CBWFQ Configuration Guide"
+          }
+        },
+        {
+          "key": "C",
+          "text": "クラスごとに帯域を保証し、混雑時でも重要トラフィックを優先処理するため",
+          "explanation": {
+            "text": "CBWFQはトラフィッククラスごとに保証帯域を定義し、公平かつ優先度に応じたキューイングを行うための仕組みである。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/quality-of-service-qos/qos-packet-marking/10103-cbwfq.html",
+            "reference_label": "Cisco CBWFQ Configuration Guide"
+          }
+        },
+        {
+          "key": "D",
+          "text": "L2スイッチングテーブルのサイズを拡大するため",
+          "explanation": {
+            "text": "CBWFQはL3 QoS機能でありスイッチングテーブルサイズとは関係しない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/quality-of-service-qos/qos-packet-marking/10103-cbwfq.html",
+            "reference_label": "Cisco CBWFQ Configuration Guide"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "CBWFQはクラスベースのキュー制御により、各クラスへの帯域保証や優先処理を実現し、輻輳時に重要トラフィックを保護するために用いられる。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/quality-of-service-qos/qos-packet-marking/10103-cbwfq.html",
+        "reference_label": "Cisco CBWFQ Configuration Guide"
+      }
+    },
+    {
+      "id": "ccnp-32",
+      "question": "IPv6アドレスのうち、ユニークローカルアドレス(ULA)として定義されるプレフィックスはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "2001:db8::/32",
+          "explanation": {
+            "text": "これはドキュメント用プレフィックスであり、ULAではない。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc3849",
+            "reference_label": "RFC 3849 Documentation Prefix"
+          }
+        },
+        {
+          "key": "B",
+          "text": "fe80::/10",
+          "explanation": {
+            "text": "fe80::/10はリンクローカルアドレスであり、ULAとは用途が異なる。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4291",
+            "reference_label": "RFC 4291 IPv6 Addressing Architecture"
+          }
+        },
+        {
+          "key": "C",
+          "text": "fc00::/7",
+          "explanation": {
+            "text": "fc00::/7がIPv6ユニークローカルアドレスのアドレス空間として定義されている。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4193",
+            "reference_label": "RFC 4193 Unique Local IPv6 Unicast Addresses"
+          }
+        },
+        {
+          "key": "D",
+          "text": "::1/128",
+          "explanation": {
+            "text": "これはループバックアドレスであり、ULAではない。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4291",
+            "reference_label": "RFC 4291 IPv6 Addressing Architecture"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "IPv6ユニークローカルアドレスはfc00::/7プレフィックスで定義されており、組織内でのローカルなユニーク性とルーティングを提供する。",
+        "reference": "https://www.rfc-editor.org/rfc/rfc4193",
+        "reference_label": "RFC 4193 Unique Local IPv6 Unicast Addresses"
+      }
+    },
+    {
+      "id": "ccnp-33",
+      "question": "CiscoルータでOSPFv2とOSPFv3を同一インターフェイス上で動作させる際の正しい認識はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "OSPFv2とOSPFv3は同一プロセス番号を共有しなければならない",
+          "explanation": {
+            "text": "OSPFv2とv3は別プロセスとして動作し、プロセス番号の一致は必須ではない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/open-shortest-path-first-ospf/113267-ospfv3-auth-ipsec-00.html",
+            "reference_label": "OSPFv3 Overview and Authentication"
+          }
+        },
+        {
+          "key": "B",
+          "text": "OSPFv3はIPv4とIPv6の両方のルートをネイティブに扱うためOSPFv2は不要である",
+          "explanation": {
+            "text": "OSPFv3は拡張でIPv4ルートも扱えるが、実装や設計によってはOSPFv2を併用するケースもある。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/ipv6/113267-ospfv3-auth-ipsec-00.html",
+            "reference_label": "OSPFv3 Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "OSPFv2とOSPFv3はそれぞれ独立したプロトコルとして、同一インターフェイス上で並行動作できる",
+          "explanation": {
+            "text": "Cisco IOSではOSPFv2(IPv4)とOSPFv3(主にIPv6)は別プロセスとして同一インターフェイス上に共存可能。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/ospf/7039-1.html",
+            "reference_label": "OSPF Design Guide"
+          }
+        },
+        {
+          "key": "D",
+          "text": "OSPFv3を有効化すると自動的にOSPFv2は停止する",
+          "explanation": {
+            "text": "両者は独立しており、自動的に停止することはない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/ospf/7039-1.html",
+            "reference_label": "OSPF Design Guide"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "OSPFv2とv3は別プロトコルとして実装されており、同じ物理インターフェイス上で並行動作させてIPv4/IPv6をそれぞれ扱う設計が可能である。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/ip/ospf/7039-1.html",
+        "reference_label": "OSPF Design Guide"
+      }
+    },
+    {
+      "id": "ccnp-34",
+      "question": "CiscoルータでBGPコミュニティを利用する主な目的として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AS番号を拡張形式で表現するため",
+          "explanation": {
+            "text": "拡張AS番号は4バイトASであり、BGPコミュニティとは別の仕組み。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/border-gateway-protocol-bgp/116146-extend-community.html",
+            "reference_label": "BGP Extended Communities Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "BGPセッションのKeepalive間隔を制御するため",
+          "explanation": {
+            "text": "Keepalive間隔はタイマー設定で制御され、コミュニティ属性は関与しない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/bgp/13753-25.html",
+            "reference_label": "BGP Best Path Selection"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ルートにポリシー的な属性タグを付与し、受信側でルートマップ等を使って一括制御するため",
+          "explanation": {
+            "text": "BGPコミュニティはルートに意味的なタグを付与し、受信AS側でLocalPref変更やフィルタリングなどポリシー制御に利用する。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/bgp/28784-bgp-community.html",
+            "reference_label": "Using BGP Community Values"
+          }
+        },
+        {
+          "key": "D",
+          "text": "BGPのアドレスファミリを追加するため",
+          "explanation": {
+            "text": "アドレスファミリ追加はAFI/SAFIの設定であり、コミュニティとは無関係。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/bgp/116146-extend-community.html",
+            "reference_label": "BGP Extended Communities Overview"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "BGPコミュニティはルートにラベル的なタグを付けることで、受信側でのルーティングポリシー（LocalPref変更や広告制御など）を柔軟かつ一元的に適用するために利用される。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/ip/bgp/28784-bgp-community.html",
+        "reference_label": "Using BGP Community Values"
+      }
+    },
+    {
+      "id": "ccnp-35",
+      "question": "Cisco SD-WANでTLOC（Transport Locator）が表す情報として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "vSmartコントローラのルータID情報",
+          "explanation": {
+            "text": "TLOCはWAN Edgeのトランスポート終端を識別するものであり、コントローラIDではない。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/",
+            "reference_label": "Cisco SD-WAN Configuration Guides"
+          }
+        },
+        {
+          "key": "B",
+          "text": "各サイトのLAN内で使用されるVLAN番号",
+          "explanation": {
+            "text": "TLOCはトランスポート識別子であり、LAN側のVLANとは無関係。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/",
+            "reference_label": "Cisco SD-WAN Configuration Guides"
+          }
+        },
+        {
+          "key": "C",
+          "text": "トランスポートネットワーク上のWAN Edgeを識別する色(color)・トンネルインターフェイス・システムIPの組み合わせ",
+          "explanation": {
+            "text": "Cisco SD-WANでは、TLOCはsystem-ip・color・トランスポートインターフェイスの3要素で一意に識別される。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/sdwan-overlay/transport-tlocs.html",
+            "reference_label": "Cisco SD-WAN Transport and TLOCs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "アプリケーション識別情報（L7シグネチャ）",
+          "explanation": {
+            "text": "アプリ識別はアプリケーション認識エンジンの機能であり、TLOC属性ではない。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/",
+            "reference_label": "Cisco SD-WAN Configuration Guides"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "TLOCはSD-WANトランスポート上のエンドポイントを表す識別子で、system-ip・color・トランスポートインターフェイスの組で一意に定義される。",
+        "reference": "https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/sdwan-overlay/transport-tlocs.html",
+        "reference_label": "Cisco SD-WAN Transport and TLOCs"
+      }
+    },
+    {
+      "id": "ccnp-36",
+      "question": "Cisco SD-WANでアプリケーション認識を提供する主要コンポーネントはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "vEdgeのDPIエンジン",
+          "explanation": {
+            "text": "SD-WANではDPIエンジンによってアプリ識別を行う。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/enterprise-networks/sd-wan/index.html",
+            "reference_label": "Cisco SD-WAN Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "vBond Orchestrator",
+          "explanation": {
+            "text": "vBondは制御プレーン初期接続管理が役割でアプリ識別は行わない。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/sdwan/",
+            "reference_label": "Cisco SD-WAN Components"
+          }
+        },
+        {
+          "key": "C",
+          "text": "vSmartポリシーコントローラ",
+          "explanation": {
+            "text": "vSmartはポリシー配布でありアプリ識別ではない。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/sdwan/",
+            "reference_label": "Cisco SD-WAN Components"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Cisco Umbrella SIG",
+          "explanation": {
+            "text": "UmbrellaはクラウドセキュリティでありSD-WANアプリ識別とは別。",
+            "reference": "https://www.cisco.com/c/en/us/products/security/umbrella/",
+            "reference_label": "Cisco Umbrella Overview"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "SD-WANのアプリ識別はDPIエンジンにより実施される。",
+        "reference": "https://www.cisco.com/c/en/us/solutions/enterprise-networks/sd-wan/index.html",
+        "reference_label": "Cisco SD-WAN Overview"
+      }
+    },
+    {
+      "id": "ccnp-37",
+      "question": "Cisco ISEにおけるPosture機能の役割として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "クライアントデバイスのセキュリティ状態をチェックし、準拠状況に応じたアクセス制御を行う",
+          "explanation": {
+            "text": "ISE Postureはエンドポイントの準拠状態を評価しアクセス許可を制御する。",
+            "reference": "https://www.cisco.com/c/en/us/products/security/identity-services-engine/index.html",
+            "reference_label": "Cisco ISE Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "無線LANの電波調整を行う",
+          "explanation": {
+            "text": "電波調整はRRMの役割でISEではない。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/",
+            "reference_label": "Cisco Wireless Overview"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ACLを自動生成してWANルータに配布する",
+          "explanation": {
+            "text": "ACL配布はSD-WANポリシーの領域でありISE Postureではない。",
+            "reference": "https://www.cisco.com/c/en/us/products/security/",
+            "reference_label": "Cisco ISE Docs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "MACsecキー生成を行う",
+          "explanation": {
+            "text": "MACsecキー管理は別仕組みでありPostureの機能ではない。",
+            "reference": "https://www.cisco.com/c/en/us/products/security/",
+            "reference_label": "Cisco ISE Docs"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ISE Postureはエンドポイントの健康状態（パッチ・AVなど）を検査し、ネットワークアクセス条件を制御する。",
+        "reference": "https://www.cisco.com/c/en/us/products/security/identity-services-engine/index.html",
+        "reference_label": "Cisco ISE Overview"
+      }
+    },
+    {
+      "id": "ccnp-38",
+      "question": "Cisco WLCでRRM（Radio Resource Management）が実施する主要機能はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "APチャネルおよび送信出力の自動最適化",
+          "explanation": {
+            "text": "RRMは自動チャネル割当と出力調整の機能を提供する。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/wireless/80211/200527-RRM.html",
+            "reference_label": "Cisco RRM Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "APのPoE電力量を自動管理する",
+          "explanation": {
+            "text": "PoE制御はスイッチ側の機能でRRMではない。",
+            "reference": "https://www.cisco.com/c/en/us/support/",
+            "reference_label": "Cisco Wireless Docs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "SSIDを自動生成する",
+          "explanation": {
+            "text": "SSID生成はWLC設定の役割。",
+            "reference": "https://www.cisco.com/c/en/us/support/",
+            "reference_label": "Cisco Wireless Docs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザー認証方式の自動切替",
+          "explanation": {
+            "text": "認証方式はAAA設定でありRRMとは無関係。",
+            "reference": "https://www.cisco.com/c/en/us/support/",
+            "reference_label": "Cisco Wireless Docs"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "RRMはチャネルと送信出力の自動調整を提供し、干渉の最小化を目的とする。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/wireless/80211/200527-RRM.html",
+        "reference_label": "Cisco RRM Overview"
+      }
+    },
+    {
+      "id": "ccnp-39",
+      "question": "Cisco Catalystスイッチにおいて、SPANTREE PortFastを有効化すべきポートとして正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "エンドホストが接続されるアクセスポート",
+          "explanation": {
+            "text": "PortFastはループリスクのないホスト接続向けポートで有効化する。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/10558-4.html",
+            "reference_label": "STP PortFast Guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "スイッチ間のトランクポート",
+          "explanation": {
+            "text": "トランクにPortFastを有効化するとループの危険がある。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/",
+            "reference_label": "STP Docs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "サーバ接続でLACP EtherChannel構成されているポートチャネル",
+          "explanation": {
+            "text": "PortFast Trunkは可能だが慎重な設計が必要。安全な基本回答はA。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/",
+            "reference_label": "PortFast Trunk Design"
+          }
+        },
+        {
+          "key": "D",
+          "text": "BPDU Guardが無効化されたすべてのポート",
+          "explanation": {
+            "text": "PortFast有効化条件とは直接関係しない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/",
+            "reference_label": "STP Docs"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "PortFastはエンドホスト接続ポートに使用しSTP遷移を高速化する。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/10558-4.html",
+        "reference_label": "STP PortFast Guide"
+      }
+    },
+    {
+      "id": "ccnp-40",
+      "question": "BGPでNext-Hop-Selfを設定する主な目的として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "iBGPピアへ広告する際に、自身をNext-Hopとして設定し到達性問題を防ぐため",
+          "explanation": {
+            "text": "iBGP内ではNext-Hopが変更されないため、Next-Hop-Selfで自ルータを設定する必要がある。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/bgp/13753-25.html",
+            "reference_label": "BGP Best Path Selection"
+          }
+        },
+        {
+          "key": "B",
+          "text": "BGPメトリック計算を高速化するため",
+          "explanation": {
+            "text": "Next-Hop-Selfはメトリック計算とは関係ない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/",
+            "reference_label": "BGP Docs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "eBGPをiBGPに変換するため",
+          "explanation": {
+            "text": "Next-Hop-Selfは変換機能ではない。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/",
+            "reference_label": "BGP Docs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AS番号を自動書き換えするため",
+          "explanation": {
+            "text": "AS書き換えはAS-Path Prependとは別の考え。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/",
+            "reference_label": "BGP Docs"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "iBGP間ではNext-Hopが変わらないため、内部ルータの到達性を確保するため自ルータをNext-Hopへセットすることが一般的。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/ip/bgp/13753-25.html",
+        "reference_label": "BGP Best Path Selection"
+      }
+    },
+    {
+      "id": "ccnp-41",
+      "question": "Cisco SD-WANにおけるアプリケーション優先ポリシーの設定目的として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "アプリケーションごとに最適なトランスポート経路（例：インターネット・MPLS）を選択する",
+          "explanation": {
+            "text": "アプリ優先ポリシーはアプリの要件に応じて最適パスを選択する。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/enterprise-networks/sd-wan/index.html",
+            "reference_label": "Cisco SD-WAN Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "アプリケーションの自動暗号化を無効化する",
+          "explanation": {
+            "text": "暗号化制御は別設定。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/",
+            "reference_label": "Cisco SD-WAN Docs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アプリのL7シグネチャを変更する",
+          "explanation": {
+            "text": "L7シグネチャは変更ではなく識別対象。",
+            "reference": "https://www.cisco.com/c/en/us/products/",
+            "reference_label": "Cisco SD-WAN Docs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "WAN Edgeのブートストラップ設定を自動化する",
+          "explanation": {
+            "text": "ブートストラップはZTP領域。",
+            "reference": "https://www.cisco.com/c/en/us/products/",
+            "reference_label": "Cisco SD-WAN Docs"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "アプリケーション優先ポリシーは各アプリが求める遅延・帯域・損失に応じて最適なWAN経路を選択するための機能である。",
+        "reference": "https://www.cisco.com/c/en/us/solutions/enterprise-networks/sd-wan/index.html",
+        "reference_label": "Cisco SD-WAN Overview"
+      }
+    },
+    {
+      "id": "ccnp-42",
+      "question": "Cisco AnyConnectで常時VPN（Always-On VPN）を有効化する主な目的として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "クライアントが必ずVPN経由で企業ネットワークへ接続されるよう強制する",
+          "explanation": {
+            "text": "Always-Onは強制的にVPN接続を維持する仕組み。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/security/anyconnect-secure-mobility-client/index.html",
+            "reference_label": "Cisco AnyConnect Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "有線LANのみを使用するように制限する",
+          "explanation": {
+            "text": "LAN方式とは関係ない。",
+            "reference": "https://www.cisco.com/c/en/us/support/",
+            "reference_label": "AnyConnect Docs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "暗号化を完全に無効化する",
+          "explanation": {
+            "text": "VPNで暗号化は必須であり無効化しない。",
+            "reference": "https://www.cisco.com/c/en/us/support/",
+            "reference_label": "AnyConnect Docs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AAAサーバなしで認証させる",
+          "explanation": {
+            "text": "認証はAAAの役割でありAlways-Onとは無関係。",
+            "reference": "https://www.cisco.com/c/en/us/support/",
+            "reference_label": "AnyConnect Docs"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Always-On VPNはクライアントが企業ポリシーに基づき常にVPNへ接続されるよう強制する機能。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/security/anyconnect-secure-mobility-client/index.html",
+        "reference_label": "Cisco AnyConnect Overview"
+      }
+    },
+    {
+      "id": "ccnp-43",
+      "question": "Cisco CatalystでDynamic ARP Inspection(DAI)を利用するために必要な前提条件はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "DHCP Snoopingバインディングデータベース",
+          "explanation": {
+            "text": "DAIは検証のためDHCP Snooping DBを利用する。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/security/dynamic-arp-inspection/12042-arp-guard.html",
+            "reference_label": "Dynamic ARP Inspection Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "STP PortFastの設定",
+          "explanation": {
+            "text": "DAIとは関係ない。",
+            "reference": "https://www.cisco.com/c/en/us/support/",
+            "reference_label": "STP Docs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "BGPピアの確立",
+          "explanation": {
+            "text": "ARPとは無関係。",
+            "reference": "https://www.cisco.com/c/en/us/support/",
+            "reference_label": "BGP Docs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "NTP同期",
+          "explanation": {
+            "text": "必要ない。",
+            "reference": "https://www.cisco.com/c/en/us/support/",
+            "reference_label": "DAI Docs"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "DAIはARP検証のためにDHCP Snoopingテーブルを参照して正当なIP-MAC情報を識別する。",
+        "reference": "https://www.cisco.com/c/en/us/support/docs/security/dynamic-arp-inspection/12042-arp-guard.html",
+        "reference_label": "Dynamic ARP Inspection Overview"
+      }
+    },
+    {
+      "id": "ccnp-44",
+      "question": "Cisco FirepowerでのIPSエンジン（Snort）の役割として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "侵入検知および侵入防御を行う",
+          "explanation": {
+            "text": "SnortはシグネチャベースのIDS/IPSエンジンとして動作する。",
+            "reference": "https://www.cisco.com/c/en/us/products/security/firepower-1000-series/index.html",
+            "reference_label": "Cisco Firepower Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ファイアウォールのゾーン設定を自動生成する",
+          "explanation": {
+            "text": "ゾーン設定はポリシーでありSnortの役割ではない。",
+            "reference": "https://www.cisco.com/c/en/us/products/security/",
+            "reference_label": "Cisco Firepower Docs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アプリケーション識別のみを実施する",
+          "explanation": {
+            "text": "アプリ識別はApp-ID機能の領域でSnort単体の機能ではない。",
+            "reference": "https://www.cisco.com/c/en/us/products/security/",
+            "reference_label": "Cisco Firepower Docs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザ認証のプロキシを担う",
+          "explanation": {
+            "text": "IPSと認証プロキシは別領域。",
+            "reference": "https://www.cisco.com/c/en/us/products/security/",
+            "reference_label": "Cisco Firepower Docs"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "SnortはFirepowerのIPSエンジンとして脅威検知および阻止を行う。",
+        "reference": "https://www.cisco.com/c/en/us/products/security/firepower-1000-series/index.html",
+        "reference_label": "Cisco Firepower Overview"
+      }
+    },
+    {
+      "id": "ccnp-45",
+      "question": "Cisco SD-Accessで使用されるSGACL(Security Group ACL)の主な役割はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "SGT間の通信をポリシーベースで制御する",
+          "explanation": {
+            "text": "SGACLはSGT間通信制御のために使用され、TrustSec/SD-Accessの要となる。",
+            "reference": "https://www.cisco.com/c/en/us/solutions/enterprise-networks/trustsec/index.html",
+            "reference_label": "Cisco TrustSec Overview"
+          }
+        },
+        {
+          "key": "B",
+          "text": "OSPFエリア境界を識別する",
+          "explanation": {
+            "text": "OSPFの概念でSGACLとは無関係。",
+            "reference": "https://www.cisco.com/c/en/us/support/",
+            "reference_label": "OSPF Docs"
+          }
+        },
+        {
+          "key": "C",
+          "text": "VXLANトンネルの暗号化を行う",
+          "explanation": {
+            "text": "暗号化はMACsecやIPsec等で行う。",
+            "reference": "https://www.cisco.com/c/en/us/support/",
+            "reference_label": "SD-Access Docs"
+          }
+        },
+        {
+          "key": "D",
+          "text": "L2ブロードキャストの抑制",
+          "explanation": {
+            "text": "SGACLはL3/L4ベースのポリシー制御でL2制御ではない。",
+            "reference": "https://www.cisco.com/c/en/us/support/",
+            "reference_label": "TrustSec Docs"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "SGACLはSGT間通信のポリシー制御を提供し、ユーザ/デバイスグループごとに柔軟なネットワーク境界を実現する。",
+        "reference": "https://www.cisco.com/c/en/us/solutions/enterprise-networks/trustsec/index.html",
+        "reference_label": "Cisco TrustSec Overview"
+      }
+    },
+    {
+      "id": "ccnp-46",
+      "question": "IPマルチキャストにおいて、PIM Sparse Mode(PIM-SM)のRendezvous Point(RP)が果たす主な役割はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "マルチキャストグループごとのDR(Designated Router)を選出する",
+          "explanation": {
+            "text": "DRはマルチキャスト送信ホストのあるセグメントで選出されるルータであり、RPとは別の役割である。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipmulti_pim/configuration/xe-16/imc-pim-xe-16-book/imc-basic-cfg.html",
+            "reference_label": "IP Multicast: PIM Configuration Guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "受信者からのJoinを集約し、送信元との共有ツリーの起点となる",
+          "explanation": {
+            "text": "PIM-SMでは、RPがマルチキャストグループの共有ツリー(*,G)のルートとなり、受信側からのJoinを集約して送信元へ到達させる中心役を担う。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipmulti_pim/configuration/xe-16/imc-pim-xe-16-book/imc-basic-cfg.html",
+            "reference_label": "IP Multicast: PIM Configuration Guide"
+          }
+        },
+        {
+          "key": "C",
+          "text": "マルチキャストルーティングテーブルをユニキャストRIBへ自動変換する",
+          "explanation": {
+            "text": "RIB変換のような機能はRPの役割には含まれない。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc2362",
+            "reference_label": "RFC 2362 Protocol Independent Multicast-Sparse Mode"
+          }
+        },
+        {
+          "key": "D",
+          "text": "PIMドメイン内のBootstrap Router(BSR)を選出する",
+          "explanation": {
+            "text": "BSRはRP情報の配布に関わる別の役割であり、RPそのものではない。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc2362",
+            "reference_label": "RFC 2362 Protocol Independent Multicast-Sparse Mode"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "PIM-SMにおけるRPは、マルチキャストグループの共有ツリーの起点となり、受信者からのJoinを集約する中核的役割を担う。各ルータは静的RPやAuto-RP/BSRなどの仕組みでRPを認識し、RPを経由して送信元とのツリーを構築する。",
+        "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipmulti_pim/configuration/xe-16/imc-pim-xe-16-book/imc-basic-cfg.html",
+        "reference_label": "IP Multicast: PIM Configuration Guide"
+      }
+    },
+    {
+      "id": "ccnp-47",
+      "question": "SNMPv3のセキュリティレベルauthPrivの説明として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "認証あり・暗号化なしで通信を保護する",
+          "explanation": {
+            "text": "これはauthNoPrivレベルの説明であり、暗号化は行われない。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/snmp/configuration/xe-3se/3650/snmp-xe-3se-3650-book/nm-snmp-snmpv3.pdf",
+            "reference_label": "SNMP Version 3 - Cisco IOS XE SNMP Configuration Guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "認証なし・暗号化ありで通信を保護する",
+          "explanation": {
+            "text": "SNMPv3にはauthなしで暗号化のみを提供するセキュリティレベルは定義されていない。（noAuthNoPriv / authNoPriv / authPriv の3段階）",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/unified_computing/ucs/ucs-manager/GUI-User-Guides/System-Monitoring/3-1/b_UCSM_GUI_System_Monitoring_Guide_3_1/b_UCSM_GUI_System_Monitoring_Guide_3_1_chapter_0101.pdf",
+            "reference_label": "SNMP Configuration - SNMPv3 Security Features"
+          }
+        },
+        {
+          "key": "C",
+          "text": "認証と暗号化の両方を行い、メッセージの完全性と機密性を提供する",
+          "explanation": {
+            "text": "authPrivはSNMPv3で最も強いセキュリティレベルであり、MD5/SHAによる認証と、DESまたはAESによる暗号化により完全性と機密性の両方を提供する。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/unified_computing/Intersight/IMM_SNMP_Monitoring/b_imm_snmp_monitoring_guide/m_snmp_security.pdf",
+            "reference_label": "SNMPv3 Security Levels and Privileges"
+          }
+        },
+        {
+          "key": "D",
+          "text": "SNMPv1/v2cと同等で、コミュニティストリングのみで保護する",
+          "explanation": {
+            "text": "SNMPv1/v2cはコミュニティベースで暗号化や強い認証を持たず、SNMPv3のauthPrivとは全く異なる。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/snmp/configuration/xe-3se/3650/snmp-xe-3se-3650-book/nm-snmp-snmpv3.pdf",
+            "reference_label": "SNMP Version 3 - Cisco IOS XE SNMP Configuration Guide"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "SNMPv3のauthPrivセキュリティレベルは、ユーザ認証（MD5/SHAなど）と暗号化（DES/AESなど）を組み合わせることで、メッセージの完全性と機密性を両立させる最も強い保護レベルである。",
+        "reference": "https://www.cisco.com/c/en/us/td/docs/unified_computing/Intersight/IMM_SNMP_Monitoring/b_imm_snmp_monitoring_guide/m_snmp_security.pdf",
+        "reference_label": "SNMPv3 Security Levels and Privileges"
+      }
+    },
+    {
+      "id": "ccnp-48",
+      "question": "CiscoスイッチにおけるIPv6 RA Guard機能の主な目的として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "DHCPv6サーバからのすべての広告をブロックする",
+          "explanation": {
+            "text": "RA GuardはRouter Advertisement(ICMPv6)に対する機能であり、DHCPv6メッセージそのものをブロックする仕組みではない。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipv6_fhsec/configuration/xe-16-10/ip6f-xe-16-10-book/ip6-ra-guard.html",
+            "reference_label": "IPv6 RA Guard Configuration Guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "IPv6ルータのルーティングテーブルを自動的に最適化する",
+          "explanation": {
+            "text": "RA GuardはL2スイッチでRAをフィルタするFirst-Hop Security機能であり、ルータのルーティングテーブル最適化とは無関係。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipv6_fhsec/configuration/15-1sg/ip6f-15-1sg-book.pdf",
+            "reference_label": "IPv6 First-Hop Security Configuration Guide"
+          }
+        },
+        {
+          "key": "C",
+          "text": "IPsecトンネルのためにRAメッセージを暗号化する",
+          "explanation": {
+            "text": "RA GuardはRAを検査・破棄する機能であり、暗号化を行う機能ではない。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/sec-vpn/b-security-vpn/m_ip6-ra-guard.html",
+            "reference_label": "Cisco IOS XE Security and VPN Guide - IPv6 RA Guard"
+          }
+        },
+        {
+          "key": "D",
+          "text": "不正なRouter Advertisementをフィルタし、ローカルリンク上の誤ったデフォルトゲートウェイ設定を防ぐ",
+          "explanation": {
+            "text": "RA Guardは、L2スイッチで受信するRAを検査し、承認されていないルータからのRAを破棄することで、ホストが誤ったデフォルトゲートウェイへ誘導されるのを防ぐFirst-Hop Security機能である。",
+            "reference": "https://www.cisco.com/c/ja_jp/td/docs/routers/ios/config/17-x/sec-vpn/b-security-vpn/m_ip6-ra-guard.html",
+            "reference_label": "Cisco IOS XE セキュリティおよび VPN 設定ガイド - IPv6 RA ガード"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "IPv6 RA Guardは、L2スイッチ側でRAを検査し、許可されていないルータからのRAを破棄することで、ホストが攻撃者のルータをデフォルトゲートウェイとして学習することを防ぐためのFirst-Hop Security機能である。",
+        "reference": "https://www.cisco.com/c/ja_jp/td/docs/routers/ios/config/17-x/sec-vpn/b-security-vpn/m_ip6-ra-guard.html",
+        "reference_label": "Cisco IOS XE セキュリティおよび VPN 設定ガイド - IPv6 RA ガード"
+      }
+    },
+    {
+      "id": "ccnp-49",
+      "question": "Cisco IOSでOSPFのdistribute-listをroute-mapと組み合わせて使用する場合の挙動として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "OSPFがルーティングテーブルへインストールするルートをフィルタリングするが、LSAのフラッディングには影響しない",
+          "explanation": {
+            "text": "distribute-list in/route-mapを用いたOSPFフィルタリングは、OSPFが受信したLSAから生成したルートをRIBへインストールする段階で制御する機能であり、LSAのフラッディングスコープには影響しない。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_ospf/configuration/xe-16/iro-xe-16-book/OSPFv3-Route-Filter-Using-Dist-List.pdf",
+            "reference_label": "OSPFv3 Route Filtering Using Distribute-List"
+          }
+        },
+        {
+          "key": "B",
+          "text": "OSPFエリア内でLSA Type 1とType 2のフラッディング自体を止める",
+          "explanation": {
+            "text": "distribute-listはルートのインストール段階を制御する機能であり、LSAフラッディング自体を阻止するにはエリア設計やstub設定など別の仕組みが必要。",
+            "reference": "https://www.cisco.com/c/ja_jp/td/docs/wl/otherwlproducts/wt2700wlsuite/ig/002/iro-15-1s/iro-inbound.pdf",
+            "reference_label": "配布リスト付きのルート マップによる OSPF インバウンド フィルタリング"
+          }
+        },
+        {
+          "key": "C",
+          "text": "LSA Type 5を生成するかどうかをASBRで制御する",
+          "explanation": {
+            "text": "Type 5 LSA生成制御はredistribute設定やarea設定によるもので、distribute-listとは直接関係しない。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/switches/lan/c9000/lyr3-fwd/ospf/ospf-configuration-guide/ospf-inbound-filtering-using-route-maps-with-a-distribute-list.html",
+            "reference_label": "OSPF Inbound Filtering Using Route Maps with a Distribute List"
+          }
+        },
+        {
+          "key": "D",
+          "text": "OSPF Helloパケットに対する認証方式を切り替える",
+          "explanation": {
+            "text": "認証はarea authenticationやip ospf authenticationコマンドで制御し、distribute-listとは無関係である。",
+            "reference": "https://www.cisco.com/c/en/us/support/docs/ip/ospf/7039-1.html",
+            "reference_label": "OSPF Design Guide"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "OSPFのdistribute-list in/route-mapは、受信したLSAから生成されたルートがルーティングテーブルへインストールされる際にフィルタリングを行う機能であり、OSPFドメイン内でのLSAフラッディングには影響を与えない点が重要である。",
+        "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_ospf/configuration/xe-16/iro-xe-16-book/OSPFv3-Route-Filter-Using-Dist-List.pdf",
+        "reference_label": "OSPFv3 Route Filtering Using Distribute-List"
+      }
+    },
+    {
+      "id": "ccnp-50",
+      "question": "SNMPv3がSNMPv1/v2cと比較して提供する主な利点として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "管理ポートがUDPではなくTCP 161に変更される",
+          "explanation": {
+            "text": "SNMPv3でも標準のトランスポートはUDP/161であり、v1/v2cと同じである。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc3411",
+            "reference_label": "RFC 3411 An Architecture for Describing SNMP Management Frameworks"
+          }
+        },
+        {
+          "key": "B",
+          "text": "MIB構造が完全に変更され、従来のMIBを利用できなくなる",
+          "explanation": {
+            "text": "SNMPv3はセキュリティフレームワークの追加が中心であり、MIB構造は従来と互換性がある。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc3410",
+            "reference_label": "RFC 3410 Introduction and Applicability Statements for SNMP"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザベースセキュリティモデル(USM)により認証・暗号化をサポートし、安全な管理通信が可能になる",
+          "explanation": {
+            "text": "SNMPv3はUSMを導入し、MD5/SHAによる認証およびDES/AESなどによる暗号化により、メッセージの完全性・機密性・認証を提供する。",
+            "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/snmp/configuration/xe-3se/3650/snmp-xe-3se-3650-book/nm-snmp-snmpv3.pdf",
+            "reference_label": "SNMP Version 3 - Cisco IOS XE SNMP Configuration Guide"
+          }
+        },
+        {
+          "key": "D",
+          "text": "SNMPマネージャが不要となり、すべての機器がフルメッシュで情報を交換する",
+          "explanation": {
+            "text": "SNMPの基本的なアーキテクチャ（マネージャ/エージェント）はSNMPv3でも変わらない。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc3410",
+            "reference_label": "RFC 3410 Introduction and Applicability Statements for SNMP"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "SNMPv3はUser-based Security Model(USM)を導入することで、認証と暗号化を組み合わせた安全な管理通信を提供し、従来のコミュニティベースで平文送信だったSNMPv1/v2cに比べて大幅にセキュリティが向上している。",
+        "reference": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/snmp/configuration/xe-3se/3650/snmp-xe-3se-3650-book/nm-snmp-snmpv3.pdf",
+        "reference_label": "SNMP Version 3 - Cisco IOS XE SNMP Configuration Guide"
+      }
+    }
+  ]
+}

@@ -1,0 +1,2493 @@
+{
+  "exam": {
+    "id": "system_architect",
+    "title": "システムアーキテクト試験",
+    "description": "この試験は、情報システムまたは組込みシステムの上流工程（要件定義・方式設計・構造設計など）を担う高度なIT技術者を対象とした国家試験で、午前Ⅰ・午前Ⅱ（多肢選択式）、午後Ⅰ（記述式）・午後Ⅱ（論述式）という構成をとります。試験範囲には技術・マネジメント・ストラテジ系が含まれ、単に技術知識だけでなく、業務分析・設計・提案力・論理的思考力が問われます。",
+    "version": "v5.4",
+    "price": "7,500円",
+    "difficulty": "難しい",
+    "official-site": "https://www.ipa.go.jp/shiken/kubun/sa.html",
+    "category": {
+      "id": "it",
+      "name": "情報処理技術者"
+    }
+  },
+  "questions": [
+    {
+      "id": "it-arc-1",
+      "question": "要件定義において非機能要件として分類されるものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "システムが提供する帳票レイアウト仕様",
+          "explanation": {
+            "text": "帳票レイアウトは機能要件に分類される。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus.html",
+            "reference_label": "IPA 非機能要求ガイドライン"
+          }
+        },
+        {
+          "key": "B",
+          "text": "システムの平均応答時間を2秒以内にすること",
+          "explanation": {
+            "text": "応答時間はパフォーマンスに関する非機能要件である。",
+            "reference": "https://www.ipa.go.jp/files/000005128.pdf",
+            "reference_label": "非機能要求グレード"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザが操作する画面数",
+          "explanation": {
+            "text": "画面数は業務機能としての機能要件に分類される。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus.html",
+            "reference_label": "IPA 非機能要求ガイドライン"
+          }
+        },
+        {
+          "key": "D",
+          "text": "入力項目の文言定義",
+          "explanation": {
+            "text": "文言定義は機能要件である。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus.html",
+            "reference_label": "IPA 非機能要求ガイドライン"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "非機能要件は性能（応答時間など）、可用性、セキュリティなどの品質に関する要求である。Bは非機能要件に該当する。",
+        "reference": "https://www.ipa.go.jp/files/000005128.pdf",
+        "reference_label": "非機能要求グレード"
+      }
+    },
+    {
+      "id": "it-arc-2",
+      "question": "システム全体のアーキテクチャ選定において、可用性向上のための設計として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "シングルサーバ構成で性能の高いCPUを採用する",
+          "explanation": {
+            "text": "可用性ではなく性能向上策である。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus.html",
+            "reference_label": "IPA 可用性指針"
+          }
+        },
+        {
+          "key": "B",
+          "text": "クラスタリングによる冗長構成を採用する",
+          "explanation": {
+            "text": "冗長化は可用性向上の基本手法である。",
+            "reference": "https://www.ipa.go.jp/security/",
+            "reference_label": "IPA セキュリティセンター ガイドライン"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アプリケーションログの出力頻度を増やす",
+          "explanation": {
+            "text": "ログ出力は保守性向上であり、可用性とは直接関係しない。",
+            "reference": "https://www.ipa.go.jp/security/",
+            "reference_label": "IPA ログ管理ガイドライン"
+          }
+        },
+        {
+          "key": "D",
+          "text": "画面応答速度を1秒以内にする",
+          "explanation": {
+            "text": "これは性能要件であり可用性ではない。",
+            "reference": "https://www.ipa.go.jp/files/000005128.pdf",
+            "reference_label": "非機能要求グレード"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "可用性向上の基本は冗長化であり、クラスタリングは代表的な手法である。",
+        "reference": "https://www.ipa.go.jp/security/",
+        "reference_label": "IPA セキュリティセンター"
+      }
+    },
+
+    {
+      "id": "it-arc-3",
+      "question": "システムの要求分析においてユースケース記述を用いる目的として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "開発コストの見積を自動化するため",
+          "explanation": {
+            "text": "ユースケースはコスト見積の自動化を目的としたものではない。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA 要求分析ガイド"
+          }
+        },
+        {
+          "key": "B",
+          "text": "利用者視点での業務フローとシステムの振る舞いを明確化するため",
+          "explanation": {
+            "text": "ユースケースは利用者の視点から振る舞いを記述する手法である。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA 要求分析ガイド"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データベースの正規化構造を確定するため",
+          "explanation": {
+            "text": "正規化はデータモデリングの領域でありユースケースとは別である。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA データベースガイド"
+          }
+        },
+        {
+          "key": "D",
+          "text": "システム構成図を自動生成するため",
+          "explanation": {
+            "text": "ユースケースはアプリケーションの振る舞い記述であり構成図とは関係ない。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA システム設計ガイド"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ユースケースは、利用者目線でシステムの振る舞いを定義し、要求の漏れを防ぐことが目的である。",
+        "reference": "https://www.ipa.go.jp/",
+        "reference_label": "IPA 要求分析ガイド"
+      }
+    },
+
+    {
+      "id": "it-arc-4",
+      "question": "業務プロセスモデルにおけるBPMNの特徴として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データ構造とエンティティ間の関係を表現するための記法である",
+          "explanation": {
+            "text": "これはER図の説明である。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA データモデリング"
+          }
+        },
+        {
+          "key": "B",
+          "text": "業務フローを標準化された図法で表現するための記法である",
+          "explanation": {
+            "text": "BPMNはワークフロー／業務プロセスを視覚化するための標準記法である。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA BPMN解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ソフトウェアのクラス構造を表現するための記法である",
+          "explanation": {
+            "text": "これはUMLクラス図の説明。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA UMLガイド"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ネットワーク構成を表現するための記法である",
+          "explanation": {
+            "text": "ネットワーク構成図はBPMNとは無関係。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA ネットワーク設計ガイド"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "BPMNは業務プロセスを標準記法で表現するためのモデルである。",
+        "reference": "https://www.ipa.go.jp/",
+        "reference_label": "IPA BPMN解説"
+      }
+    },
+
+    {
+      "id": "it-arc-5",
+      "question": "システム方式設計で考慮すべき項目として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ユーザー企業の財務会計基準",
+          "explanation": {
+            "text": "財務会計基準は方式設計の対象外である。",
+            "reference": "https://www.ipa.go.jp/shiken/",
+            "reference_label": "IPA システム方式設計"
+          }
+        },
+        {
+          "key": "B",
+          "text": "処理方式・入出力方式・バックアップ方式などの選定",
+          "explanation": {
+            "text": "方式設計では処理方式・運用方式などを具体化する。",
+            "reference": "https://www.ipa.go.jp/shiken/",
+            "reference_label": "IPA システム方式設計"
+          }
+        },
+        {
+          "key": "C",
+          "text": "企業の中期経営計画策定",
+          "explanation": {
+            "text": "これは経営レベルであり方式設計とは異なる。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA IT戦略"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザーインタビューの実施",
+          "explanation": {
+            "text": "これは要件定義工程の活動である。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA 要件定義ガイド"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "方式設計では処理方式、バックアップ方式、入出力方式などを定義する。",
+        "reference": "https://www.ipa.go.jp/shiken/",
+        "reference_label": "IPA システム方式設計"
+      }
+    },
+
+    {
+      "id": "it-arc-6",
+      "question": "システム開発プロジェクトにおけるWBSの主な目的はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "組織の権限階層を明確にする",
+          "explanation": {
+            "text": "権限階層は組織図の目的である。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA PMBOK解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "作業を階層化し必要なタスクを網羅的に整理する",
+          "explanation": {
+            "text": "WBSは作業を分解して整理し漏れを防ぐ。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA プロジェクト管理"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ソフトウェア品質を自動評価する",
+          "explanation": {
+            "text": "WBSは品質評価のためのものではない。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA 品質管理"
+          }
+        },
+        {
+          "key": "D",
+          "text": "セキュリティポリシー遵守を保証する",
+          "explanation": {
+            "text": "セキュリティポリシーは別工程で扱う。",
+            "reference": "https://www.ipa.go.jp/security/",
+            "reference_label": "IPA セキュリティガイド"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "WBSは作業分解図であり、作業を階層化し漏れなく把握するために用いる。",
+        "reference": "https://www.ipa.go.jp/",
+        "reference_label": "IPA プロジェクト管理"
+      }
+    },
+
+    {
+      "id": "it-arc-7",
+      "question": "リスク対応戦略として、システム停止リスクに対して冗長化構成を採用することはどの戦略に該当するか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "リスク回避",
+          "explanation": {
+            "text": "回避はリスク源を完全に排除することを指す。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA リスク管理"
+          }
+        },
+        {
+          "key": "B",
+          "text": "リスク受容",
+          "explanation": {
+            "text": "受容は対策を行わず受け入れること。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA リスク管理"
+          }
+        },
+        {
+          "key": "C",
+          "text": "リスク低減",
+          "explanation": {
+            "text": "冗長化などにより発生確率や影響を下げる戦略である。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA リスク管理"
+          }
+        },
+        {
+          "key": "D",
+          "text": "リスク移転",
+          "explanation": {
+            "text": "移転は保険などで第三者にリスクを移すこと。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA リスク管理"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "冗長化はリスク低減策に分類される。",
+        "reference": "https://www.ipa.go.jp/",
+        "reference_label": "IPA リスク管理"
+      }
+    },
+
+    {
+      "id": "it-arc-8",
+      "question": "サービス提供時間帯を24時間365日に拡大する場合、主に追加で検討すべき非機能要件はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "レスポンシブWebデザイン対応",
+          "explanation": {
+            "text": "画面仕様の要件であり24時間化とは関連しない。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA 非機能要求グレード"
+          }
+        },
+        {
+          "key": "B",
+          "text": "システムの可用性および保守方式",
+          "explanation": {
+            "text": "24時間稼働には高可用性構成や保守手段の見直しが必要。",
+            "reference": "https://www.ipa.go.jp/files/000005128.pdf",
+            "reference_label": "非機能要求グレード"
+          }
+        },
+        {
+          "key": "C",
+          "text": "帳票のフォーマット",
+          "explanation": {
+            "text": "帳票フォーマットは24時間稼働とは無関係。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA 非機能要求ガイド"
+          }
+        },
+        {
+          "key": "D",
+          "text": "画面のUI配色",
+          "explanation": {
+            "text": "UIデザインではなく可用性の問題である。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA 要件定義ガイド"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "24時間365日稼働では可用性や保守性が大きな非機能要件となる。",
+        "reference": "https://www.ipa.go.jp/files/000005128.pdf",
+        "reference_label": "非機能要求グレード"
+      }
+    },
+
+    {
+      "id": "it-arc-9",
+      "question": "システム開発におけるプロトタイピングモデルの特徴として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "要求が完全に確定しているときに適するモデルである",
+          "explanation": {
+            "text": "要求が曖昧な場合に有効であり、確定している場合はウォーターフォールが適する。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA 開発プロセス"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ユーザと試作機を通じて要求を明確化することができる",
+          "explanation": {
+            "text": "プロトタイプを使ってユーザ要求を具体化する点が特徴。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA 開発プロセス"
+          }
+        },
+        {
+          "key": "C",
+          "text": "運用保守工程を含まないモデルである",
+          "explanation": {
+            "text": "開発モデルは運用保守を除外しない。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA ソフトウェアライフサイクル"
+          }
+        },
+        {
+          "key": "D",
+          "text": "反復を行わないことが特徴である",
+          "explanation": {
+            "text": "プロトタイピングは反復的に要求を改善する。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA 開発プロセス"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "プロトタイピングは試作品を用いて要求を明確化する開発モデルである。",
+        "reference": "https://www.ipa.go.jp/",
+        "reference_label": "IPA 開発プロセス"
+      }
+    },
+
+    {
+      "id": "it-arc-10",
+      "question": "信頼性設計においてMTBF（平均故障間隔）が示すものとして正しいのはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "システムが修復されるまでの平均時間",
+          "explanation": {
+            "text": "これはMTTR（平均修復時間）の説明である。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA 信頼性ガイド"
+          }
+        },
+        {
+          "key": "B",
+          "text": "稼働時間のうち修復を行っている時間の割合",
+          "explanation": {
+            "text": "これは稼働率と関連しMTBFではない。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA 信頼性"
+          }
+        },
+        {
+          "key": "C",
+          "text": "故障と故障の間の平均稼働時間",
+          "explanation": {
+            "text": "MTBFは故障間の平均稼働時間を表す。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA 信頼性ガイド"
+          }
+        },
+        {
+          "key": "D",
+          "text": "システムの最長連続運転時間",
+          "explanation": {
+            "text": "最長時間ではなく平均値を示すのがMTBFである。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA 信頼性ガイド"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "MTBFは故障と故障の間の平均稼働時間であり、信頼性指標として用いられる。",
+        "reference": "https://www.ipa.go.jp/",
+        "reference_label": "IPA 信頼性ガイド"
+      }
+    },
+    {
+      "id": "it-arc-11",
+      "question": "RTO（Recovery Time Objective）の説明として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データ損失を許容できる最大時間のこと",
+          "explanation": {
+            "text": "これはRPO（Recovery Point Objective）の説明である。",
+            "reference": "https://www.ipa.go.jp/security/",
+            "reference_label": "IPA 事業継続ガイドライン"
+          }
+        },
+        {
+          "key": "B",
+          "text": "システムを復旧させるまでに許容される最大停止時間のこと",
+          "explanation": {
+            "text": "RTOは業務継続のために許容される停止時間を指す。",
+            "reference": "https://www.ipa.go.jp/security/",
+            "reference_label": "IPA 事業継続ガイドライン"
+          }
+        },
+        {
+          "key": "C",
+          "text": "バックアップ世代数の上限値",
+          "explanation": {
+            "text": "世代数はRTOとは無関係である。",
+            "reference": "https://www.ipa.go.jp/security/",
+            "reference_label": "IPA バックアップ手法"
+          }
+        },
+        {
+          "key": "D",
+          "text": "障害が発生する確率を表す指標",
+          "explanation": {
+            "text": "これは信頼性指標でありRTOとは異なる。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA 信頼性指標"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "RTOは許容される最大停止時間を表し、事業継続計画の重要指標である。",
+        "reference": "https://www.ipa.go.jp/security/",
+        "reference_label": "IPA 事業継続ガイドライン"
+      }
+    },
+
+    {
+      "id": "it-arc-12",
+      "question": "システムアーキテクチャにおけるマイクロサービスの特徴として適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "単一のデータベースを中心に処理を集約する構造である",
+          "explanation": {
+            "text": "マイクロサービスはサービスごとに独立したデータ管理を行うことが多い。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA システムアーキテクチャガイド"
+          }
+        },
+        {
+          "key": "B",
+          "text": "各サービスが独立してデプロイ可能であり疎結合である",
+          "explanation": {
+            "text": "マイクロサービスの代表的特徴である。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA アーキテクチャ解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "開発組織を1つの大規模チームに統合することが前提となる",
+          "explanation": {
+            "text": "むしろ小規模で独立したチームが担当する構造に適する。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA アジャイルガイド"
+          }
+        },
+        {
+          "key": "D",
+          "text": "モノリシックよりも変更影響範囲が広がる",
+          "explanation": {
+            "text": "独立性が高いため変更影響範囲はむしろ小さくなる。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA アーキテクチャガイド"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "マイクロサービスは疎結合で独立デプロイ可能な小さなサービス単位で構成される。",
+        "reference": "https://www.ipa.go.jp/",
+        "reference_label": "IPA アーキテクチャ解説"
+      }
+    },
+
+    {
+      "id": "it-arc-13",
+      "question": "DFD（データフローダイアグラム）の特徴として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "物理構成を中心に記述するモデルである",
+          "explanation": {
+            "text": "DFDは論理モデルであり物理構成は扱わない。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA 要求分析ガイド"
+          }
+        },
+        {
+          "key": "B",
+          "text": "データの流れと処理を表現するためのモデルである",
+          "explanation": {
+            "text": "DFDはプロセス・データストア・データフローを表現する。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA 要求分析ガイド"
+          }
+        },
+        {
+          "key": "C",
+          "text": "業務の責任分担を示す役割図である",
+          "explanation": {
+            "text": "これはRACIなどの責任分担表の説明。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA プロジェクト管理"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ネットワーク間の通信経路を可視化する図である",
+          "explanation": {
+            "text": "ネットワーク構成図の説明である。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA ネットワーク設計ガイド"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "DFDはデータの流れと処理（プロセス）を図式化する要求分析手法である。",
+        "reference": "https://www.ipa.go.jp/",
+        "reference_label": "IPA 要求分析ガイド"
+      }
+    },
+
+    {
+      "id": "it-arc-14",
+      "question": "システムのスケーラビリティ向上のための設計として適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "単一サーバのCPUをより高性能なものに変更する",
+          "explanation": {
+            "text": "これはスケールアップであり限界がある。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA 非機能要求ガイド"
+          }
+        },
+        {
+          "key": "B",
+          "text": "負荷分散構成により複数サーバで処理を分散する",
+          "explanation": {
+            "text": "スケールアウトにより高いスケーラビリティを実現できる。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA 非機能要求ガイド"
+          }
+        },
+        {
+          "key": "C",
+          "text": "画面レイアウトを簡素化する",
+          "explanation": {
+            "text": "画面レイアウトはスケーラビリティと無関係である。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA UIガイド"
+          }
+        },
+        {
+          "key": "D",
+          "text": "DBのバックアップ頻度を下げる",
+          "explanation": {
+            "text": "バックアップ頻度は可用性・保守性の問題である。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA DBガイド"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "スケーラビリティ向上には水平分散（スケールアウト）が有効である。",
+        "reference": "https://www.ipa.go.jp/",
+        "reference_label": "IPA 非機能要求ガイド"
+      }
+    },
+
+    {
+      "id": "it-arc-15",
+      "question": "セッション管理方式として、ステートレス性を保つ構成はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "アプリケーションサーバ内にセッション情報を保持する",
+          "explanation": {
+            "text": "サーバ内保持はステートフルである。",
+            "reference": "https://www.ipa.go.jp/security/",
+            "reference_label": "IPA Webセキュリティ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "セッション情報をクッキーに全て格納し、サーバ側では保持しない",
+          "explanation": {
+            "text": "ステートレスを実現する方法の一つである。",
+            "reference": "https://www.ipa.go.jp/security/",
+            "reference_label": "IPA Webセキュリティ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "セッションレプリケーションを用いて複数サーバでセッションを共有する",
+          "explanation": {
+            "text": "これはステートフル構成を分散するための仕組みである。",
+            "reference": "https://www.ipa.go.jp/security/",
+            "reference_label": "IPA Webセキュリティ"
+          }
+        },
+        {
+          "key": "D",
+          "text": "セッション情報をメモリキャッシュに集約する",
+          "explanation": {
+            "text": "キャッシュ共有はステートフル構成の一種である。",
+            "reference": "https://www.ipa.go.jp/security/",
+            "reference_label": "IPA Webセキュリティ"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ステートレスを保つにはサーバ側に状態を持たない設計が必要である。",
+        "reference": "https://www.ipa.go.jp/security/",
+        "reference_label": "IPA Webセキュリティ"
+      }
+    },
+
+    {
+      "id": "it-arc-16",
+      "question": "テスト工程におけるブラックボックステストの説明として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "内部構造を考慮して分岐網羅を行うテスト",
+          "explanation": {
+            "text": "これはホワイトボックステストの説明である。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA テスト技法"
+          }
+        },
+        {
+          "key": "B",
+          "text": "外部仕様に基づき入力と出力を確認するテスト",
+          "explanation": {
+            "text": "ブラックボックステストは内部構造を意識しない。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA テスト技法"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ソースコードを解析してデグレードを検出するテスト",
+          "explanation": {
+            "text": "これは静的解析に近い内容である。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA テスト技法"
+          }
+        },
+        {
+          "key": "D",
+          "text": "モジュール間の結合経路を網羅するテスト",
+          "explanation": {
+            "text": "これは結合テストの説明。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA テスト工程"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ブラックボックステストは仕様ベースで入力と出力を検証する。",
+        "reference": "https://www.ipa.go.jp/",
+        "reference_label": "IPA テスト技法"
+      }
+    },
+
+    {
+      "id": "it-arc-17",
+      "question": "アーキテクチャ選択時にトレードオフ分析が必要となる例として適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "画面の色テーマを選ぶ際",
+          "explanation": {
+            "text": "UIデザインでありアーキテクチャのトレードオフではない。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA UXガイド"
+          }
+        },
+        {
+          "key": "B",
+          "text": "可用性を高めるために冗長化するとコストが増加する場合",
+          "explanation": {
+            "text": "品質特性間（可用性とコスト）のトレードオフ分析の典型。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA 非機能要求ガイド"
+          }
+        },
+        {
+          "key": "C",
+          "text": "文字コードをUTF-8に統一する場合",
+          "explanation": {
+            "text": "文字コード統一はトレードオフが小さい。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA システム設計ガイド"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ディレクトリ名の命名規則を決める場合",
+          "explanation": {
+            "text": "運用ルールでありトレードオフではない。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA 運用ガイド"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "アーキテクチャでは性能・コスト・可用性のように利害が対立する品質特性間の調整が必要となる。",
+        "reference": "https://www.ipa.go.jp/",
+        "reference_label": "IPA 非機能要求ガイド"
+      }
+    },
+
+    {
+      "id": "it-arc-18",
+      "question": "DevOpsにおけるCI（Continuous Integration）の目的として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "障害発生時の復旧時間を短縮する",
+          "explanation": {
+            "text": "復旧時間短縮はDRや運用設計の目的である。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA DevOpsガイド"
+          }
+        },
+        {
+          "key": "B",
+          "text": "コード変更を頻繁に統合し品質を保つ",
+          "explanation": {
+            "text": "CIは継続的統合により変更の衝突や品質低下を防ぐ。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA DevOpsガイド"
+          }
+        },
+        {
+          "key": "C",
+          "text": "本番環境の構成管理を自動化する",
+          "explanation": {
+            "text": "これはIaCや運用自動化の領域。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA 運用自動化"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザビリティを改善する",
+          "explanation": {
+            "text": "UI改善はCIの目的ではない。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA UXガイド"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "CIは継続的統合により品質維持と迅速な開発サイクルを実現する。",
+        "reference": "https://www.ipa.go.jp/",
+        "reference_label": "IPA DevOpsガイド"
+      }
+    },
+
+    {
+      "id": "it-arc-19",
+      "question": "データベースの排他制御において「悲観的ロック」の特徴として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "更新競合が発生しないと楽観的に考える方式",
+          "explanation": {
+            "text": "これは楽観的ロックの説明である。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA DBガイド"
+          }
+        },
+        {
+          "key": "B",
+          "text": "更新前にロックを取得し競合を防ぐ方式",
+          "explanation": {
+            "text": "悲観的ロックは競合を予期し先にロックする。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA DBガイド"
+          }
+        },
+        {
+          "key": "C",
+          "text": "複数ユーザが同時に更新しても整合性が維持される方式",
+          "explanation": {
+            "text": "悲観的ロックでは同時更新は基本的に排除する。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA DBガイド"
+          }
+        },
+        {
+          "key": "D",
+          "text": "トランザクションを使用しないため性能が高い",
+          "explanation": {
+            "text": "悲観的ロックはトランザクションで管理され性能は低下しやすい。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA DBガイド"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "悲観的ロックは更新前にロックを取得することで競合を防ぐ方式である。",
+        "reference": "https://www.ipa.go.jp/",
+        "reference_label": "IPA DBガイド"
+      }
+    },
+
+    {
+      "id": "it-arc-20",
+      "question": "情報システムの可観測性（Observability）を高めるために必要な仕組みとして適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "定期的にOSアップデートを適用すること",
+          "explanation": {
+            "text": "可観測性ではなくセキュリティ対策である。",
+            "reference": "https://www.ipa.go.jp/security/",
+            "reference_label": "IPA セキュリティ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ログ・メトリクス・トレースを収集し相関分析できる基盤",
+          "explanation": {
+            "text": "可観測性はシステムの内部状態を外部から把握できるようにすることを指す。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA 運用監視ガイド"
+          }
+        },
+        {
+          "key": "C",
+          "text": "画面UIをシンプルに保つこと",
+          "explanation": {
+            "text": "UI設計は可観測性とは無関係。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA UXガイド"
+          }
+        },
+        {
+          "key": "D",
+          "text": "バックアップの世代数を増やすこと",
+          "explanation": {
+            "text": "バックアップは可用性・保守性の対策である。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA バックアップガイド"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Observabilityではログ・メトリクス・トレースの統合分析基盤が重要となる。",
+        "reference": "https://www.ipa.go.jp/",
+        "reference_label": "IPA 運用監視ガイド"
+      }
+    },
+    {
+      "id": "it-arc-21",
+      "question": "業務委託先との間でSLA（Service Level Agreement）を締結する主な目的として、最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "障害発生時の責任の所在をすべて委託先に移転するため",
+          "explanation": {
+            "text": "SLAはサービス水準を合意するものであり、責任を一方に全面的に移転する契約ではない。",
+            "reference": "https://www.ipa.go.jp/archive/files/000004598.pdf",
+            "reference_label": "IPA 情報システムの信頼性向上に関するガイドライン"
+          }
+        },
+        {
+          "key": "B",
+          "text": "サービス品質や可用性などの目標値と測定方法を明確にするため",
+          "explanation": {
+            "text": "SLAは可用性・性能・応答時間などのサービス水準と測定方法を明確にし、合意するための文書である。",
+            "reference": "https://www.ipa.go.jp/archive/files/000004598.pdf",
+            "reference_label": "IPA 情報システムの信頼性向上に関するガイドライン"
+          }
+        },
+        {
+          "key": "C",
+          "text": "委託先の開発プロセスを詳細に規定するため",
+          "explanation": {
+            "text": "開発プロセスは開発契約や品質保証契約で規定する事項であり、SLAの中心ではない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "IPA 試験シラバス（システムアーキテクト試験）"
+          }
+        },
+        {
+          "key": "D",
+          "text": "委託先の人員配置や勤務形態を制御するため",
+          "explanation": {
+            "text": "人員配置や勤務形態は委託先の運営事項であり、通常SLAの対象ではない。",
+            "reference": "https://www.ipa.go.jp/digital/kaihatsu/system-youkyu.html",
+            "reference_label": "IPA 重要情報を扱うシステムの要求策定ガイド"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "SLAはサービス品質・可用性・応答時間などの目標値と測定方法を明確にし、利用者と提供者の期待値ギャップを防ぐために締結される。",
+        "reference": "https://www.ipa.go.jp/archive/files/000004598.pdf",
+        "reference_label": "IPA 情報システムの信頼性向上に関するガイドライン"
+      }
+    },
+    {
+      "id": "it-arc-22",
+      "question": "将来のトランザクション増加を見越したキャパシティプランニングを行う際の観点として、最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "現在のCPU使用率だけを基準にサーバを増設する",
+          "explanation": {
+            "text": "単一指標だけではボトルネックを誤認する可能性があり、適切なキャパシティプランニングとはいえない。",
+            "reference": "https://www.ipa.go.jp/archive/files/000004598.pdf",
+            "reference_label": "IPA 情報システムの信頼性向上に関するガイドライン"
+          }
+        },
+        {
+          "key": "B",
+          "text": "処理件数・レスポンスタイム・リソース利用率などの実績データを収集し、傾向から将来負荷を予測する",
+          "explanation": {
+            "text": "キャパシティプランニングでは複数の性能指標の実績データを用いて、将来の負荷と必要資源を予測することが重要である。",
+            "reference": "https://www.ipa.go.jp/archive/files/000004598.pdf",
+            "reference_label": "IPA 情報システムの信頼性向上に関するガイドライン"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザ部門のヒアリングだけで将来の性能要件を決める",
+          "explanation": {
+            "text": "ヒアリングは重要だが、客観的な実績データに基づかない推定は精度が低く、十分とはいえない。",
+            "reference": "https://www.ipa.go.jp/archive/files/000072716.pdf",
+            "reference_label": "IPA 改訂版「非機能要求グレード2018」の紹介"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ディスク容量だけを余裕を持って確保すれば良い",
+          "explanation": {
+            "text": "CPU・メモリ・ネットワークなども含めたエンドツーエンドの性能が重要であり、ディスクだけに着目するのは不十分である。",
+            "reference": "https://www.ipa.go.jp/archive/files/000072716.pdf",
+            "reference_label": "IPA 改訂版「非機能要求グレード2018」の紹介"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "キャパシティプランニングでは処理件数やレスポンスタイム、各種リソース使用状況の実績データを収集・分析し、将来の負荷と必要なリソース量を予測することが重要である。",
+        "reference": "https://www.ipa.go.jp/archive/files/000004598.pdf",
+        "reference_label": "IPA 情報システムの信頼性向上に関するガイドライン"
+      }
+    },
+    {
+      "id": "it-arc-23",
+      "question": "クラウドサービスの活用を前提としたシステム方式設計において、IaaSを選択した場合の特徴として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "OSやミドルウェアの保守をクラウド事業者に全面的に委ねることができる",
+          "explanation": {
+            "text": "IaaSでは仮想サーバなどのインフラ部分を提供し、OSやミドルウェアの管理は利用者側の責任となることが多い。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "IPA 試験シラバス（システムアーキテクト試験）"
+          }
+        },
+        {
+          "key": "B",
+          "text": "OSやミドルウェアの構成を含めて柔軟に設計できる反面、運用管理の負荷は高くなりやすい",
+          "explanation": {
+            "text": "IaaSは自由度が高い一方で、パッチ適用やミドルウェア設定など運用管理工数が増えやすい。",
+            "reference": "https://www.ipa.go.jp/digital/kaihatsu/system-youkyu.html",
+            "reference_label": "IPA 重要情報を扱うシステムの要求策定ガイド"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アプリケーションコードだけを管理すればよく、DBのスケーリングは事業者が自動的に行う",
+          "explanation": {
+            "text": "これは一般にPaaSやマネージドDBサービスの特徴であり、IaaS単体の特徴ではない。",
+            "reference": "https://www.ipa.go.jp/publish/wp-dx/gmcbt8000000botk-att/000108047.pdf",
+            "reference_label": "IPA DX白書2023 第5部 ITシステム開発手法と技術"
+          }
+        },
+        {
+          "key": "D",
+          "text": "業務機能一式が提供され、設定だけで利用を開始できる",
+          "explanation": {
+            "text": "これはSaaSの特徴であり、IaaSの特徴ではない。",
+            "reference": "https://www.ipa.go.jp/publish/wp-dx/qv6pgp0000000txx-att/000093702.pdf",
+            "reference_label": "IPA DX白書2021 第4部 DXを支える手法と技術"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "IaaSでは仮想サーバやストレージなどインフラが提供され、OS・ミドルウェア構成は自由度が高い一方で、運用管理は利用者側に残るため負荷が高くなりやすい。",
+        "reference": "https://www.ipa.go.jp/publish/wp-dx/qv6pgp0000000txx-att/000093702.pdf",
+        "reference_label": "IPA DX白書2021 第4部 DXを支える手法と技術"
+      }
+    },
+    {
+      "id": "it-arc-24",
+      "question": "システム監査の定義として、システムアーキテクト試験シラバスの考え方に最も合致するものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "システム開発ベンダの品質保証部門が行うテスト作業の総称",
+          "explanation": {
+            "text": "テストは品質保証活動の一部であり、システム監査とは区別される。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/ps6vr7000000i99m-att/syllabus_sa_ver5_0.pdf",
+            "reference_label": "IPA システムアーキテクト試験 シラバス Ver.5.0"
+          }
+        },
+        {
+          "key": "B",
+          "text": "権限を与えられた第三者が独立した立場で、成果物が要求事項や契約に適合しているかを評価すること",
+          "explanation": {
+            "text": "シラバスでは、第三者が独立した立場で要求事項や契約への適合性を評価する行為として監査を説明している。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/ps6vr7000000i99m-att/syllabus_sa_ver5_0.pdf",
+            "reference_label": "IPA システムアーキテクト試験 シラバス Ver.5.0"
+          }
+        },
+        {
+          "key": "C",
+          "text": "開発プロジェクトの進捗をプロジェクトマネージャ自身が点検する活動",
+          "explanation": {
+            "text": "自己チェックは管理活動であり、独立した立場による監査とは異なる。",
+            "reference": "https://www.ipa.go.jp/archive/publish/qv6pgp00000010m3-att/000053554.pdf",
+            "reference_label": "IPA プロジェクトマネジメントガイド"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザ部門が運用部門に対して行う問い合わせ対応のこと",
+          "explanation": {
+            "text": "問い合わせ対応はヘルプデスク業務であり、監査とは無関係である。",
+            "reference": "https://www.ipa.go.jp/archive/files/000051041.pdf",
+            "reference_label": "IPA 情報処理システム高信頼化教訓活用ガイドブック(ITサービス編)"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "システム監査は、権限を与えられた第三者が独立した立場から成果物が要求事項や契約に適合しているかを評価する活動と定義される。",
+        "reference": "https://www.ipa.go.jp/shiken/syllabus/ps6vr7000000i99m-att/syllabus_sa_ver5_0.pdf",
+        "reference_label": "IPA システムアーキテクト試験 シラバス Ver.5.0"
+      }
+    },
+    {
+      "id": "it-arc-25",
+      "question": "高可用性構成としてのフェイルオーバ方式の説明として、最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "複数のサーバに対して常に負荷を均等に分散して処理する方式",
+          "explanation": {
+            "text": "これはロードバランシングの説明であり、フェイルオーバそのものの説明ではない。",
+            "reference": "https://www.ipa.go.jp/archive/files/000072716.pdf",
+            "reference_label": "IPA 改訂版「非機能要求グレード2018」の紹介"
+          }
+        },
+        {
+          "key": "B",
+          "text": "待機系サーバを用意し、主系サーバ障害時に待機系に処理を切り替える方式",
+          "explanation": {
+            "text": "フェイルオーバは主系障害時に待機系へ自動・半自動で切り替える構成を指す。",
+            "reference": "https://www.ipa.go.jp/archive/files/000004598.pdf",
+            "reference_label": "IPA 情報システムの信頼性向上に関するガイドライン"
+          }
+        },
+        {
+          "key": "C",
+          "text": "サーバの性能不足時に自動的にCPUクロックを上げる方式",
+          "explanation": {
+            "text": "これはハードウェアの性能制御であり、フェイルオーバ構成とは関係がない。",
+            "reference": "https://www.ipa.go.jp/archive/files/000051041.pdf",
+            "reference_label": "IPA 情報処理システム高信頼化教訓活用ガイドブック(ITサービス編)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "障害発生後に手作業でサーバを再起動する方式",
+          "explanation": {
+            "text": "手動再起動のみでは高可用性構成とは言い難く、フェイルオーバとは呼ばれない。",
+            "reference": "https://www.ipa.go.jp/archive/files/000004598.pdf",
+            "reference_label": "IPA 情報システムの信頼性向上に関するガイドライン"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "フェイルオーバは主系障害時に待機系へ処理を切り替えることでサービス継続を図る方式であり、高可用性実現の代表的な手段である。",
+        "reference": "https://www.ipa.go.jp/archive/files/000004598.pdf",
+        "reference_label": "IPA 情報システムの信頼性向上に関するガイドライン"
+      }
+    },
+    {
+      "id": "it-arc-26",
+      "question": "重要情報を扱うシステムにおける運用ログ設計の観点として、最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "保存容量を抑えるため、成功した操作ログは記録しない",
+          "explanation": {
+            "text": "不正アクセスは成功操作として記録される場合もあり、成功・失敗を問わず監査証跡を残すことが重要である。",
+            "reference": "https://www.ipa.go.jp/digital/kaihatsu/t6hhco0000006s3t-att/system-youkyu-guide.pdf",
+            "reference_label": "IPA 重要情報を扱うシステムの要求策定ガイド Ver.1.0"
+          }
+        },
+        {
+          "key": "B",
+          "text": "誰が・いつ・どの機能やデータに対して・どの端末から操作したかを追跡できるようにする",
+          "explanation": {
+            "text": "要求策定ガイドでは、重要情報を扱うシステムにおいて運用操作を監視・追跡できることが求められている。",
+            "reference": "https://www.ipa.go.jp/digital/kaihatsu/t6hhco0000006s3t-att/system-youkyu-guide.pdf",
+            "reference_label": "IPA 重要情報を扱うシステムの要求策定ガイド Ver.1.0"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ログファイルは運用者が必要に応じて編集・削除できるようにする",
+          "explanation": {
+            "text": "運用者が自由に編集・削除できると監査証跡としての信頼性が損なわれるため、改ざん防止が求められる。",
+            "reference": "https://www.ipa.go.jp/digital/kaihatsu/t6hhco0000006s3t-att/system-youkyu-guide.pdf",
+            "reference_label": "IPA 重要情報を扱うシステムの要求策定ガイド Ver.1.0"
+          }
+        },
+        {
+          "key": "D",
+          "text": "障害対応のため、ログ出力は業務時間帯のみ行う",
+          "explanation": {
+            "text": "24時間稼働や夜間バッチなども想定し、通期でログを取得することが望ましい。",
+            "reference": "https://www.ipa.go.jp/archive/files/000051041.pdf",
+            "reference_label": "IPA 情報処理システム高信頼化教訓活用ガイドブック(ITサービス編)"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "重要情報を扱うシステムでは、誰が・いつ・どのような操作を行ったかを追跡できるログが求められ、改ざん防止と合わせて監査証跡として活用する。",
+        "reference": "https://www.ipa.go.jp/digital/kaihatsu/t6hhco0000006s3t-att/system-youkyu-guide.pdf",
+        "reference_label": "IPA 重要情報を扱うシステムの要求策定ガイド Ver.1.0"
+      }
+    },
+    {
+      "id": "it-arc-27",
+      "question": "ゼロトラストの考え方をシステムアーキテクチャに適用する際の基本方針として、最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "内部ネットワークは信頼できる前提で、境界防御だけを強化する",
+          "explanation": {
+            "text": "ゼロトラストは境界の内外を問わず「信頼しない」を前提とし、境界防御だけに依存しない。",
+            "reference": "https://www.ipa.go.jp/security/guide/index.html",
+            "reference_label": "IPA 情報セキュリティ関連ガイド"
+          }
+        },
+        {
+          "key": "B",
+          "text": "すべてのアクセスについて、利用者・端末・コンテキストを都度検証し、最小権限で許可する",
+          "explanation": {
+            "text": "ゼロトラストでは全アクセス要求を検証し、最小権限付与と継続的な監視を行うことが基本となる。",
+            "reference": "https://www.ipa.go.jp/security/guide/index.html",
+            "reference_label": "IPA 情報セキュリティ関連ガイド"
+          }
+        },
+        {
+          "key": "C",
+          "text": "認証さえ強固であれば、その後のアクセス制御は簡略化してよい",
+          "explanation": {
+            "text": "単一の強固な認証に依存するのではなく、アクセスごとに検証し継続的に監視するのがゼロトラストの考え方である。",
+            "reference": "https://www.ipa.go.jp/jinzai/ics/core_human_resource/final_project/2022/ngi93u0000002kef-att/000100451.pdf",
+            "reference_label": "IPA セキュリティ・バイ・デザイン導入指南書"
+          }
+        },
+        {
+          "key": "D",
+          "text": "システムの利便性を優先し、リスク評価は導入後にまとめて行う",
+          "explanation": {
+            "text": "セキュリティ・バイ・デザインでは設計初期からリスク評価と対策検討を行うことが求められる。",
+            "reference": "https://www.ipa.go.jp/jinzai/ics/core_human_resource/final_project/2022/ngi93u0000002kef-att/000100451.pdf",
+            "reference_label": "IPA セキュリティ・バイ・デザイン導入指南書"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ゼロトラストの基本はネットワーク内外を問わず一律に信頼せず、ユーザ・端末・コンテキストを都度検証しつつ最小権限でアクセスを許可することにある。",
+        "reference": "https://www.ipa.go.jp/security/guide/index.html",
+        "reference_label": "IPA 情報セキュリティ関連ガイド"
+      }
+    },
+    {
+      "id": "it-arc-28",
+      "question": "要求定義と設計成果物のトレーサビリティを確保する主な目的として、最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "プロジェクトメンバの評価を行うためのエビデンスとする",
+          "explanation": {
+            "text": "トレーサビリティは主として要求と設計・テストの対応関係管理のためのものであり、人事評価が主目的ではない。",
+            "reference": "https://www.ipa.go.jp/archive/publish/qv6pgp00000010m3-att/000053554.pdf",
+            "reference_label": "IPA プロジェクトマネジメントガイド"
+          }
+        },
+        {
+          "key": "B",
+          "text": "要求がどの設計要素やテスト項目で満たされているかを追跡し、漏れや過剰実装を防ぐ",
+          "explanation": {
+            "text": "要求と設計・テストを紐付けることで、要求の漏れ・未テストや不要な機能追加を防ぐことができる。",
+            "reference": "https://www.ipa.go.jp/digital/kaihatsu/system-youkyu.html",
+            "reference_label": "IPA 重要情報を扱うシステムの要求策定ガイド"
+          }
+        },
+        {
+          "key": "C",
+          "text": "設計工程でのレビュー回数を減らすため",
+          "explanation": {
+            "text": "トレーサビリティの有無はレビュー回数と直接は結び付かない。",
+            "reference": "https://www.ipa.go.jp/archive/files/000051041.pdf",
+            "reference_label": "IPA 情報処理システム高信頼化教訓活用ガイドブック(ITサービス編)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "システム構成管理の対象をソースコードのみに限定するため",
+          "explanation": {
+            "text": "構成管理の対象は要求・設計・テスト仕様など多岐にわたり、ソースコードに限定するという考え方とは逆である。",
+            "reference": "https://www.ipa.go.jp/archive/publish/qv6pgp0000000zpc-att/000005116.pdf",
+            "reference_label": "IPA 組込みソフトウェア向けプロジェクトマネジメントガイド［計画書編］"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "トレーサビリティは要求と設計・テストの対応関係を追跡可能にすることで、要求の漏れ・未テストや過剰な機能追加を防ぐことを主な目的としている。",
+        "reference": "https://www.ipa.go.jp/digital/kaihatsu/system-youkyu.html",
+        "reference_label": "IPA 重要情報を扱うシステムの要求策定ガイド"
+      }
+    },
+    {
+      "id": "it-arc-29",
+      "question": "大量データを扱う業務で、オンライン処理とバッチ処理の方式を比較検討する際の観点として、最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "オンライン処理は必ずしもユーザ操作を伴わないため、即時性の観点は考慮不要である",
+          "explanation": {
+            "text": "オンライン処理は即時性が求められることが多く、レスポンスタイムなどの性能要件は重要な検討観点である。",
+            "reference": "https://www.ipa.go.jp/archive/files/000072716.pdf",
+            "reference_label": "IPA 改訂版「非機能要求グレード2018」の紹介"
+          }
+        },
+        {
+          "key": "B",
+          "text": "即時性・処理量・システム負荷の時間的偏りを踏まえ、オンラインとバッチの分担を設計する",
+          "explanation": {
+            "text": "即時応答が必要な処理と集計・一括更新処理を分担し、ピーク負荷の平準化を図ることが方式設計上重要である。",
+            "reference": "https://www.ipa.go.jp/archive/files/000004598.pdf",
+            "reference_label": "IPA 情報システムの信頼性向上に関するガイドライン"
+          }
+        },
+        {
+          "key": "C",
+          "text": "バッチ処理は夜間だけに実行されるため、障害対策は不要である",
+          "explanation": {
+            "text": "夜間実行であっても障害発生時のリカバリ手順や再実行手順の設計が必要である。",
+            "reference": "https://www.ipa.go.jp/archive/files/000051041.pdf",
+            "reference_label": "IPA 情報処理システム高信頼化教訓活用ガイドブック(ITサービス編)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "オンライン処理を採用する場合は、必ずRTOをゼロに設定する必要がある",
+          "explanation": {
+            "text": "RTOは業務影響とコストのバランスで決定するものであり、ゼロに設定することを必須とする考え方は現実的でない。",
+            "reference": "https://www.ipa.go.jp/archive/files/000072716.pdf",
+            "reference_label": "IPA 改訂版「非機能要求グレード2018」の紹介"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "オンライン処理とバッチ処理の分担は、即時性・処理量・負荷ピークなどを考慮して決定し、ピーク負荷の平準化と業務要件を両立させることが重要である。",
+        "reference": "https://www.ipa.go.jp/archive/files/000004598.pdf",
+        "reference_label": "IPA 情報システムの信頼性向上に関するガイドライン"
+      }
+    },
+    {
+      "id": "it-arc-30",
+      "question": "システム要件定義において、セキュリティ要件をどのように位置付けることが望ましいか。最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "開発終盤のテスト工程で脆弱性診断結果を見てから、必要に応じて追加する要件とする",
+          "explanation": {
+            "text": "セキュリティ・バイ・デザインの観点から、セキュリティ要件は設計初期から明確化し、後付けではなく事前に組み込むことが求められる。",
+            "reference": "https://www.ipa.go.jp/jinzai/ics/core_human_resource/final_project/2022/ngi93u0000002kef-att/000100451.pdf",
+            "reference_label": "IPA セキュリティ・バイ・デザイン導入指南書"
+          }
+        },
+        {
+          "key": "B",
+          "text": "機能要件と並んで必須の非機能要件として位置付け、リスクと業務影響を踏まえて具体的に定義する",
+          "explanation": {
+            "text": "セキュリティ要件は非機能要件の一部として、想定脅威や業務影響を踏まえ具体化することが重要である。",
+            "reference": "https://www.ipa.go.jp/digital/kaihatsu/t6hhco0000006s3t-att/system-youkyu-guide.pdf",
+            "reference_label": "IPA 重要情報を扱うシステムの要求策定ガイド Ver.1.0"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ネットワーク担当部門の標準ポリシーに完全依存し、業務システム側では特に検討しない",
+          "explanation": {
+            "text": "共通ポリシーに準拠することは重要だが、システム固有のリスクに応じた要件定義も必要である。",
+            "reference": "https://www.ipa.go.jp/security/guide/index.html",
+            "reference_label": "IPA 情報セキュリティ関連ガイド"
+          }
+        },
+        {
+          "key": "D",
+          "text": "性能要件とトレードオフになるため、原則として要件定義の対象外とする",
+          "explanation": {
+            "text": "セキュリティと性能のトレードオフは調整対象であり、セキュリティ要件を無視する理由にはならない。",
+            "reference": "https://www.ipa.go.jp/archive/files/000072716.pdf",
+            "reference_label": "IPA 改訂版「非機能要求グレード2018」の紹介"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "セキュリティ要件は非機能要件の一部として、脅威・リスク・業務影響を踏まえて設計初期から具体的に定義し、アーキテクチャに組み込むことが望ましい。",
+        "reference": "https://www.ipa.go.jp/digital/kaihatsu/t6hhco0000006s3t-att/system-youkyu-guide.pdf",
+        "reference_label": "IPA 重要情報を扱うシステムの要求策定ガイド Ver.1.0"
+      }
+    },
+    {
+      "id": "it-arc-31",
+      "question": "分散システムにおけるCAP定理の説明として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "整合性・可用性・ネットワーク性能の3つを同時に最大化できるという定理",
+          "explanation": {
+            "text": "CAP定理は3つすべてを同時に満たすことはできないとする定理であり、最大化できるという説明は誤りである。",
+            "reference": "https://www.ipa.go.jp/publish/wp-dx/000108047.pdf",
+            "reference_label": "IPA DX白書2023 分散システム解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "分散システムでは一度に整合性・可用性・分断耐性のうち2つまでしか達成できないという定理",
+          "explanation": {
+            "text": "CAP定理の正しい説明。ネットワーク分断発生時に3要素のうち2つしか両立できない。",
+            "reference": "https://www.ipa.go.jp/publish/wp-dx/000108047.pdf",
+            "reference_label": "IPA DX白書2023 分散システム解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "分散処理では可用性と整合性は常に両立するという定理",
+          "explanation": {
+            "text": "CAP定理は整合性と可用性のトレードオフを示すもので、常に両立するとは言えない。",
+            "reference": "https://www.ipa.go.jp/security/guide/",
+            "reference_label": "IPA セキュリティ関連ガイド"
+          }
+        },
+        {
+          "key": "D",
+          "text": "分断耐性を低下させれば整合性と可用性を両立できるという定理",
+          "explanation": {
+            "text": "ネットワーク分断は制御困難であり、耐性を低下させる前提は適切ではない。",
+            "reference": "https://www.ipa.go.jp/publish/wp-dx/000108047.pdf",
+            "reference_label": "IPA DX白書2023"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "CAP定理は分散システムにおいて整合性（C）、可用性（A）、分断耐性（P）の3つを同時に満たすことはできず、2つの優先を選択する必要があると説明している。",
+        "reference": "https://www.ipa.go.jp/publish/wp-dx/000108047.pdf",
+        "reference_label": "IPA DX白書2023"
+      }
+    },
+
+    {
+      "id": "it-arc-32",
+      "question": "イベント駆動アーキテクチャ（EDA）の利点として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "同期的に処理するため即時の応答が保証される",
+          "explanation": {
+            "text": "EDAは非同期処理を基本とするため、即時応答を保証する設計ではない。",
+            "reference": "https://www.ipa.go.jp/publish/wp-dx/000108047.pdf",
+            "reference_label": "IPA DX白書2023"
+          }
+        },
+        {
+          "key": "B",
+          "text": "疎結合な構成が実現しやすく、機能追加・変更に強い",
+          "explanation": {
+            "text": "EDAはイベントという中継点を用いるため疎結合性が高く、拡張性の高いアーキテクチャとなる。",
+            "reference": "https://www.ipa.go.jp/publish/wp-dx/000108047.pdf",
+            "reference_label": "IPA DX白書2023"
+          }
+        },
+        {
+          "key": "C",
+          "text": "トランザクション一貫性を必ず維持できる",
+          "explanation": {
+            "text": "EDAは非同期処理のため、一貫性維持には別途仕組みが必要となる。",
+            "reference": "https://www.ipa.go.jp/digital/kaihatsu/system-youkyu.html",
+            "reference_label": "IPA 要求策定ガイド"
+          }
+        },
+        {
+          "key": "D",
+          "text": "プロセス単位の逐次実行となりパラレル処理には向かない",
+          "explanation": {
+            "text": "EDAはイベント単位で非同期処理できるため、並列処理に向いている。",
+            "reference": "https://www.ipa.go.jp/publish/wp-dx/000108047.pdf",
+            "reference_label": "IPA DX白書2023"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "EDAはイベントを中心に疎結合な構成となり、機能追加や変更に強いアーキテクチャを実現できる。",
+        "reference": "https://www.ipa.go.jp/publish/wp-dx/000108047.pdf",
+        "reference_label": "IPA DX白書2023"
+      }
+    },
+
+    {
+      "id": "it-arc-33",
+      "question": "DevOpsにおける継続的デリバリ（CD: Continuous Delivery）の特徴として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "本番環境へのデプロイを自動化し、常に自動反映される",
+          "explanation": {
+            "text": "これは継続的デプロイ（Continuous Deployment）の説明であり、CDでは最終デプロイは手動の場合が多い。",
+            "reference": "https://www.ipa.go.jp/digital/kaihatsu/devops.html",
+            "reference_label": "IPA DevOpsガイド"
+          }
+        },
+        {
+          "key": "B",
+          "text": "本番環境にデプロイ可能な状態を継続的に維持し、リリース判断は任意で行える",
+          "explanation": {
+            "text": "継続的デリバリは「いつでも本番リリース可能な状態」に保つことが目的である。",
+            "reference": "https://www.ipa.go.jp/digital/kaihatsu/devops.html",
+            "reference_label": "IPA DevOpsガイド"
+          }
+        },
+        {
+          "key": "C",
+          "text": "テスト工程を省略して開発速度を高める手法である",
+          "explanation": {
+            "text": "テストの自動化が前提であり、省略することはない。",
+            "reference": "https://www.ipa.go.jp/security/guide/",
+            "reference_label": "IPA セキュリティガイド"
+          }
+        },
+        {
+          "key": "D",
+          "text": "本番環境用のコードは開発ブランチとは完全に独立して管理する",
+          "explanation": {
+            "text": "CDではブランチ戦略よりも自動ビルド・自動テストの継続性が重要である。",
+            "reference": "https://www.ipa.go.jp/digital/kaihatsu/devops.html",
+            "reference_label": "IPA DevOpsガイド"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "継続的デリバリは本番にいつでもリリースできる状態に保つことが目的であり、最終リリース判断は人が行うことが一般的である。",
+        "reference": "https://www.ipa.go.jp/digital/kaihatsu/devops.html",
+        "reference_label": "IPA DevOpsガイド"
+      }
+    },
+
+    {
+      "id": "it-arc-34",
+      "question": "システム開発におけるテスト自動化戦略の観点として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "すべてのテストは自動化すべきであり、手動テストは不要である",
+          "explanation": {
+            "text": "探索的テストなど自動化に不向きな領域もあり、手動テストも重要である。",
+            "reference": "https://www.ipa.go.jp/security/guide/",
+            "reference_label": "IPA テストガイド"
+          }
+        },
+        {
+          "key": "B",
+          "text": "回帰テストや頻出パターンのテストを優先して自動化し、変更の影響を早期検出する",
+          "explanation": {
+            "text": "テスト自動化は回帰テスト領域が最も効果が高いとされている。",
+            "reference": "https://www.ipa.go.jp/digital/kaihatsu/devops.html",
+            "reference_label": "IPA DevOpsガイド"
+          }
+        },
+        {
+          "key": "C",
+          "text": "負荷テストのみを自動化し、機能テストは手動で実施する",
+          "explanation": {
+            "text": "負荷テストだけでなく機能テストも自動化の対象とされる。",
+            "reference": "https://www.ipa.go.jp/security/guide/",
+            "reference_label": "IPA テストガイド"
+          }
+        },
+        {
+          "key": "D",
+          "text": "テスト自動化は開発終盤でまとめて構築するのが効率的である",
+          "explanation": {
+            "text": "自動化は早期から継続的に導入することで効果を発揮する。",
+            "reference": "https://www.ipa.go.jp/digital/kaihatsu/devops.html",
+            "reference_label": "IPA DevOpsガイド"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "特に回帰テストや繰り返し実施されるテストを自動化することで、変更影響を早期に検出できる。",
+        "reference": "https://www.ipa.go.jp/digital/kaihatsu/devops.html",
+        "reference_label": "IPA DevOpsガイド"
+      }
+    },
+
+    {
+      "id": "it-arc-35",
+      "question": "システムのセキュア設計において、入力値検証（Input Validation）の主な目的として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ユーザビリティ向上のため入力補完を行う",
+          "explanation": {
+            "text": "入力補完はユーザビリティの領域であり、セキュリティ目的とは異なる。",
+            "reference": "https://www.ipa.go.jp/security/guide/",
+            "reference_label": "IPA 安全なWebサイトの作り方"
+          }
+        },
+        {
+          "key": "B",
+          "text": "想定外のデータがシステム内部に侵入することを防ぐ",
+          "explanation": {
+            "text": "入力値検証は、SQLインジェクションやXSSなどの攻撃を防ぐ基本的な仕組みである。",
+            "reference": "https://www.ipa.go.jp/security/guide/",
+            "reference_label": "IPA 安全なWebサイトの作り方"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザの入力画面操作を記録する",
+          "explanation": {
+            "text": "これは操作ログの領域であり、入力値検証とは無関係である。",
+            "reference": "https://www.ipa.go.jp/security/guide/",
+            "reference_label": "IPA ログ管理ガイド"
+          }
+        },
+        {
+          "key": "D",
+          "text": "入力データの保存性能を向上させる",
+          "explanation": {
+            "text": "性能ではなくセキュリティ対策である。",
+            "reference": "https://www.ipa.go.jp/security/guide/",
+            "reference_label": "IPA Webセキュリティ"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "入力値検証は攻撃者の不正データが内部処理に到達することを防ぐ重要なセキュリティ対策である。",
+        "reference": "https://www.ipa.go.jp/security/guide/",
+        "reference_label": "IPA 安全なWebサイトの作り方"
+      }
+    },
+
+    {
+      "id": "it-arc-36",
+      "question": "マイクロサービスアーキテクチャにおけるAPIゲートウェイの役割として適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "各サービスの実装言語を統一する",
+          "explanation": {
+            "text": "言語統一はAPIゲートウェイの役割ではない。",
+            "reference": "https://www.ipa.go.jp/publish/wp-dx/000108047.pdf",
+            "reference_label": "IPA DX白書2023"
+          }
+        },
+        {
+          "key": "B",
+          "text": "認証・認可、ルーティング、レート制限などの共通機能を集約する",
+          "explanation": {
+            "text": "APIゲートウェイは共通制御機能を集約し、サービスへの統一的アクセスを提供する役割を担う。",
+            "reference": "https://www.ipa.go.jp/publish/wp-dx/000108047.pdf",
+            "reference_label": "IPA DX白書2023"
+          }
+        },
+        {
+          "key": "C",
+          "text": "サービス間の処理を同期通信に限定する",
+          "explanation": {
+            "text": "同期・非同期の方式はアーキテクチャ設計の問題であり、ゲートウェイの役割ではない。",
+            "reference": "https://www.ipa.go.jp/security/guide/",
+            "reference_label": "IPA セキュリティガイド"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データベーススキーマを統一し整合性を担保する",
+          "explanation": {
+            "text": "スキーマ統一はDB設計であり、ゲートウェイの役割には含まれない。",
+            "reference": "https://www.ipa.go.jp/publish/wp-dx/000108047.pdf",
+            "reference_label": "IPA DX白書2023"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "APIゲートウェイは、認証・認可、ルーティング、レート制限など複数サービスを横断する共通機能を集約し、クライアントの複雑性を低減する役割を持つ。",
+        "reference": "https://www.ipa.go.jp/publish/wp-dx/000108047.pdf",
+        "reference_label": "IPA DX白書2023"
+      }
+    },
+
+    {
+      "id": "it-arc-37",
+      "question": "バックプレッシャー（Backpressure）の説明として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データ処理の高速化のため、常にキューを無制限に拡張する仕組み",
+          "explanation": {
+            "text": "無制限キューはメモリ枯渇の危険があり、バックプレッシャーとは逆の概念である。",
+            "reference": "https://www.ipa.go.jp/publish/wp-dx/000108047.pdf",
+            "reference_label": "IPA DX白書2023"
+          }
+        },
+        {
+          "key": "B",
+          "text": "下流の処理能力に応じて上流の処理量を制御し、サービス全体の過負荷を防ぐ仕組み",
+          "explanation": {
+            "text": "バックプレッシャーは処理能力に応じた流量制御によりオーバーロードを防ぐ手法である。",
+            "reference": "https://www.ipa.go.jp/publish/wp-dx/000108047.pdf",
+            "reference_label": "IPA DX白書2023"
+          }
+        },
+        {
+          "key": "C",
+          "text": "サービス利用者数が減ったときに自動的にサーバ数を減らす機能",
+          "explanation": {
+            "text": "これはオートスケーリングの説明であり、バックプレッシャーではない。",
+            "reference": "https://www.ipa.go.jp/security/guide/",
+            "reference_label": "IPA 運用ガイド"
+          }
+        },
+        {
+          "key": "D",
+          "text": "電源障害時にシステムを緊急停止させる仕組み",
+          "explanation": {
+            "text": "これはハードウェア保護の話であり、バックプレッシャーとは関係ない。",
+            "reference": "https://www.ipa.go.jp/security/guide/",
+            "reference_label": "IPA 運用ガイド"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "バックプレッシャーは処理能力の差による過負荷を防ぐため、下流処理能力に応じて上流処理を制御する流量制御の概念である。",
+        "reference": "https://www.ipa.go.jp/publish/wp-dx/000108047.pdf",
+        "reference_label": "IPA DX白書2023"
+      }
+    },
+
+    {
+      "id": "it-arc-38",
+      "question": "ソフトウェアアーキテクチャにおけるレイヤ化（Layered Architecture）の利点として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "すべてのレイヤが互いに自由に依存できるため柔軟性が増す",
+          "explanation": {
+            "text": "レイヤ化の基本は依存方向の制約であり、自由依存は利点ではない。",
+            "reference": "https://www.ipa.go.jp/publish/wp-dx/000108047.pdf",
+            "reference_label": "IPA DX白書2023"
+          }
+        },
+        {
+          "key": "B",
+          "text": "責務が分離されることで変更の影響範囲を局所化できる",
+          "explanation": {
+            "text": "レイヤ化は責務分離により保守性と変更容易性を高める。",
+            "reference": "https://www.ipa.go.jp/digital/kaihatsu/system-youkyu.html",
+            "reference_label": "IPA 要求策定ガイド"
+          }
+        },
+        {
+          "key": "C",
+          "text": "パフォーマンスが最大化されるため高性能アプリケーションに向く",
+          "explanation": {
+            "text": "レイヤ化は性能より保守性を重視するため、必ずしも高性能向けではない。",
+            "reference": "https://www.ipa.go.jp/publish/wp-dx/000108047.pdf",
+            "reference_label": "IPA DX白書2023"
+          }
+        },
+        {
+          "key": "D",
+          "text": "すべてのレイヤを一つのクラスに統合することで開発効率が向上する",
+          "explanation": {
+            "text": "統合はレイヤ化の目的に反している。",
+            "reference": "https://www.ipa.go.jp/digital/kaihatsu/system-youkyu.html",
+            "reference_label": "IPA 要求策定ガイド"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "レイヤ化は責務を分離し、変更の影響範囲を限定することで保守性を高めるアーキテクチャ手法である。",
+        "reference": "https://www.ipa.go.jp/publish/wp-dx/000108047.pdf",
+        "reference_label": "IPA DX白書2023"
+      }
+    },
+
+    {
+      "id": "it-arc-39",
+      "question": "コンウェイの法則（Conway's Law）に関する説明として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "システム開発において、最適なアーキテクチャは組織構造に依存せず独立して決定できる",
+          "explanation": {
+            "text": "コンウェイの法則は「組織構造がシステム構造に反映される」とするため、この説明は誤りである。",
+            "reference": "https://www.ipa.go.jp/publish/wp-dx/000108047.pdf",
+            "reference_label": "IPA DX白書2023"
+          }
+        },
+        {
+          "key": "B",
+          "text": "システム構造は開発組織のコミュニケーション構造を反映する傾向がある",
+          "explanation": {
+            "text": "コンウェイの法則の核心は、組織のコミュニケーション構造がシステム構造にそのまま現れるという点である。",
+            "reference": "https://www.ipa.go.jp/publish/wp-dx/000108047.pdf",
+            "reference_label": "IPA DX白書2023"
+          }
+        },
+        {
+          "key": "C",
+          "text": "開発人数が多いほど高品質なシステムができるという経験則である",
+          "explanation": {
+            "text": "人数による品質の話ではなく、コミュニケーション構造とアーキテクチャの関係性に関する法則である。",
+            "reference": "https://www.ipa.go.jp/digital/kaihatsu/system-youkyu.html",
+            "reference_label": "IPA 要求策定ガイド"
+          }
+        },
+        {
+          "key": "D",
+          "text": "アーキテクチャは技術選定のみによって決まり、組織要因は影響しない",
+          "explanation": {
+            "text": "コンウェイの法則は組織要因が大きな影響をもつことを示しているため誤り。",
+            "reference": "https://www.ipa.go.jp/publish/wp-dx/000108047.pdf",
+            "reference_label": "IPA DX白書2023"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "コンウェイの法則では、組織のコミュニケーション構造がシステムアーキテクチャに反映されるとされている。",
+        "reference": "https://www.ipa.go.jp/publish/wp-dx/000108047.pdf",
+        "reference_label": "IPA DX白書2023"
+      }
+    },
+
+    {
+      "id": "it-arc-40",
+      "question": "データレイクの特徴として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "保存前に必ずスキーマを定義し、構造化データのみを格納する",
+          "explanation": {
+            "text": "スキーマ事前定義はデータウェアハウス（DWH）の特徴であり、データレイクはスキーマレスで扱える。",
+            "reference": "https://www.ipa.go.jp/publish/wp-dx/000108047.pdf",
+            "reference_label": "IPA DX白書2023 データ活用基盤"
+          }
+        },
+        {
+          "key": "B",
+          "text": "構造化・半構造化・非構造化データをそのまま格納し、用途に応じて後からスキーマを適用できる",
+          "explanation": {
+            "text": "データレイクはスキーマオンリード方式を採用し、多様なデータを生のまま保存できる点が特徴である。",
+            "reference": "https://www.ipa.go.jp/publish/wp-dx/000108047.pdf",
+            "reference_label": "IPA DX白書2023 データ活用基盤"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ETL処理を行わず、分析用途に変換せずにデータを破棄する",
+          "explanation": {
+            "text": "データは破棄せず分析用途に応じて加工できることが利点である。",
+            "reference": "https://www.ipa.go.jp/publish/wp-dx/000108047.pdf",
+            "reference_label": "IPA DX白書2023"
+          }
+        },
+        {
+          "key": "D",
+          "text": "データの保存形式を1種類に統一する必要がある",
+          "explanation": {
+            "text": "データレイクは多様な形式を扱えるため、統一は不要である。",
+            "reference": "https://www.ipa.go.jp/publish/wp-dx/000108047.pdf",
+            "reference_label": "IPA DX白書2023"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "データレイクはスキーマオンリード方式を採用し、生データをそのまま保存して後から柔軟に処理できる点が特徴である。",
+        "reference": "https://www.ipa.go.jp/publish/wp-dx/000108047.pdf",
+        "reference_label": "IPA DX白書2023"
+      }
+    },
+    {
+      "id": "it-arc-41",
+      "question": "システムのレスポンス性能要件を定義する際の指標として、最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "CPUのクロック周波数（GHz）",
+          "explanation": {
+            "text": "CPUクロックはハードウェア性能の一指標に過ぎず、ユーザ体感のレスポンス指標には直接ならない。",
+            "reference": "https://www.ipa.go.jp/archive/files/000072716.pdf",
+            "reference_label": "IPA 改訂版「非機能要求グレード2018」の紹介"
+          }
+        },
+        {
+          "key": "B",
+          "text": "1トランザクションあたりの応答時間と、その達成割合（例：95％タイル）",
+          "explanation": {
+            "text": "非機能要求グレードでは、応答時間と達成割合などユーザ視点の指標で性能要件を定義することが推奨されている。",
+            "reference": "https://www.ipa.go.jp/archive/files/000072716.pdf",
+            "reference_label": "IPA 改訂版「非機能要求グレード2018」の紹介"
+          }
+        },
+        {
+          "key": "C",
+          "text": "開発メンバ数",
+          "explanation": {
+            "text": "メンバ数は開発体制の指標であり、性能要件とは関係しない。",
+            "reference": "https://www.ipa.go.jp/archive/publish/qv6pgp00000010m3-att/000053554.pdf",
+            "reference_label": "IPA プロジェクトマネジメントガイド"
+          }
+        },
+        {
+          "key": "D",
+          "text": "プログラミング言語の種類",
+          "explanation": {
+            "text": "言語選定は性能に影響しうるが、性能要件を表す指標そのものではない。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "IPA シラバス（共通フレーム・非機能要求）"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "性能要件はユーザの業務観点から「応答時間」「処理件数」などの指標と達成割合を用いて定義するのが適切である。",
+        "reference": "https://www.ipa.go.jp/archive/files/000072716.pdf",
+        "reference_label": "IPA 改訂版「非機能要求グレード2018」の紹介"
+      }
+    },
+    {
+      "id": "it-arc-42",
+      "question": "SOA（Service Oriented Architecture）の特徴として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "アプリケーションを単一の巨大なプログラムとして構成し、内部で機能を分割する考え方",
+          "explanation": {
+            "text": "これはモノリシックなアーキテクチャの説明であり、SOAではない。",
+            "reference": "https://www.ipa.go.jp/publish/wp-dx/000108047.pdf",
+            "reference_label": "IPA DX白書2023 アーキテクチャ解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "業務機能をサービスとして疎結合に分割し、標準化されたインターフェースで連携させる考え方",
+          "explanation": {
+            "text": "SOAは業務機能をサービス単位に分割し、標準インターフェースで連携することで再利用性と柔軟性を高めるアーキテクチャである。",
+            "reference": "https://www.ipa.go.jp/publish/wp-dx/000108047.pdf",
+            "reference_label": "IPA DX白書2023 アーキテクチャ解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データベーススキーマを一元化し、すべてのアプリケーションが同じテーブルを参照する考え方",
+          "explanation": {
+            "text": "DB一元化はSOA固有の特徴ではなく、疎結合性を損なう場合もある。",
+            "reference": "https://www.ipa.go.jp/digital/kaihatsu/system-youkyu.html",
+            "reference_label": "IPA システム要求策定ガイド"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザインタフェース層だけをサービスとして切り出して再利用する考え方",
+          "explanation": {
+            "text": "SOAは業務ロジックを中心としたサービス分割であり、UI層に限定されない。",
+            "reference": "https://www.ipa.go.jp/publish/wp-dx/000108047.pdf",
+            "reference_label": "IPA DX白書2023 アーキテクチャ解説"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "SOAでは、業務機能をサービスとして疎結合に構成し、標準インターフェースを介して連携させることで柔軟なシステム連携を実現する。",
+        "reference": "https://www.ipa.go.jp/publish/wp-dx/000108047.pdf",
+        "reference_label": "IPA DX白書2023 アーキテクチャ解説"
+      }
+    },
+    {
+      "id": "it-arc-43",
+      "question": "APIのバージョン管理方針として、クライアントへの影響を最小化する考え方として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "既存APIのパラメータ削除や意味変更をそのまま行い、ドキュメントで告知だけを行う",
+          "explanation": {
+            "text": "後方互換性を損なう変更は既存クライアントを破壊する可能性が高く、推奨されない。",
+            "reference": "https://www.ipa.go.jp/security/guide/",
+            "reference_label": "IPA Web API設計に関する解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "後方互換性のない変更は新しいバージョンのエンドポイントとして公開し、旧版との共存期間を設ける",
+          "explanation": {
+            "text": "後方互換性のない変更は /v1, /v2 などのバージョン分離やヘッダによるバージョン指定で共存させるのが一般的である。",
+            "reference": "https://www.ipa.go.jp/security/guide/",
+            "reference_label": "IPA Web API設計に関する解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "APIの変更は常に上書きし、サーバ側の修正のみで吸収する",
+          "explanation": {
+            "text": "サーバのみでの吸収には限界があり、仕様変更を透明化できない場合がある。",
+            "reference": "https://www.ipa.go.jp/digital/kaihatsu/system-youkyu.html",
+            "reference_label": "IPA システム要求策定ガイド"
+          }
+        },
+        {
+          "key": "D",
+          "text": "バージョン番号はログ出力のみに使用し、エンドポイントURLやインターフェースには反映しない",
+          "explanation": {
+            "text": "クライアントが利用するインターフェース上にバージョンを示さないと、互換性管理が困難になる。",
+            "reference": "https://www.ipa.go.jp/security/guide/",
+            "reference_label": "IPA Web API設計に関する解説"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "後方互換性を壊す変更は、新しいバージョンのAPIとして提供し、旧版との共存期間を設けることで、クライアントの移行影響を抑えることができる。",
+        "reference": "https://www.ipa.go.jp/security/guide/",
+        "reference_label": "IPA Web API設計に関する解説"
+      }
+    },
+    {
+      "id": "it-arc-44",
+      "question": "キャッシュ設計における「キャッシュの整合性」を確保するためのアプローチとして、最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "キャッシュしたデータは有効期限を無期限にし、更新があっても破棄しない",
+          "explanation": {
+            "text": "無期限キャッシュはデータ不整合を引き起こすため、整合性確保の観点から不適切である。",
+            "reference": "https://www.ipa.go.jp/archive/files/000004598.pdf",
+            "reference_label": "IPA 情報システムの信頼性向上に関するガイドライン"
+          }
+        },
+        {
+          "key": "B",
+          "text": "更新時にキャッシュを明示的に削除・更新する仕組みや適切なTTLを設計する",
+          "explanation": {
+            "text": "キャッシュの整合性には、更新トリガによる無効化・更新、期限管理（TTL）などの設計が重要である。",
+            "reference": "https://www.ipa.go.jp/archive/files/000004598.pdf",
+            "reference_label": "IPA 情報システムの信頼性向上に関するガイドライン"
+          }
+        },
+        {
+          "key": "C",
+          "text": "キャッシュに保存するデータを画面表示にのみ限定する",
+          "explanation": {
+            "text": "用途の限定だけでは整合性が保証されない。",
+            "reference": "https://www.ipa.go.jp/archive/files/000072716.pdf",
+            "reference_label": "IPA 改訂版「非機能要求グレード2018」の紹介"
+          }
+        },
+        {
+          "key": "D",
+          "text": "キャッシュがある場合は必ずキャッシュを優先し、DBは参照しない",
+          "explanation": {
+            "text": "常にキャッシュ優先とすると、更新の反映遅延による不整合が発生しやすい。",
+            "reference": "https://www.ipa.go.jp/archive/files/000072716.pdf",
+            "reference_label": "IPA 改訂版「非機能要求グレード2018」の紹介"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "キャッシュの整合性を保つには、更新トリガによるキャッシュ無効化や適切なTTL設計など、ライフサイクルを明確にした仕組みづくりが重要である。",
+        "reference": "https://www.ipa.go.jp/archive/files/000004598.pdf",
+        "reference_label": "IPA 情報システムの信頼性向上に関するガイドライン"
+      }
+    },
+    {
+      "id": "it-arc-45",
+      "question": "メッセージキュー（MQ）を用いた非同期連携方式の利点として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "送信元システムの処理完了まで受信側システムを待たせることができる",
+          "explanation": {
+            "text": "非同期連携では送信・受信が独立しており、待ち合わせを前提としない。",
+            "reference": "https://www.ipa.go.jp/publish/wp-dx/000108047.pdf",
+            "reference_label": "IPA DX白書2023 分散システム解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ピーク時の負荷をキューで平準化でき、連携先システムの一時的な停止にも耐性がある",
+          "explanation": {
+            "text": "MQによる非同期連携はバッファリングによる負荷平準化と、一時停止時のメッセージ蓄積による耐性向上が利点である。",
+            "reference": "https://www.ipa.go.jp/publish/wp-dx/000108047.pdf",
+            "reference_label": "IPA DX白書2023 分散システム解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "メッセージを利用すると必ずトランザクション一貫性が保証される",
+          "explanation": {
+            "text": "分散トランザクションの一貫性は別途設計が必要であり、MQ利用だけで保証されるわけではない。",
+            "reference": "https://www.ipa.go.jp/digital/kaihatsu/system-youkyu.html",
+            "reference_label": "IPA システム要求策定ガイド"
+          }
+        },
+        {
+          "key": "D",
+          "text": "同期連携に比べてレスポンス時間が常に短くなる",
+          "explanation": {
+            "text": "非同期連携は応答待ちを分離するが、必ずしも処理完了までの時間が短くなるとは限らない。",
+            "reference": "https://www.ipa.go.jp/archive/files/000004598.pdf",
+            "reference_label": "IPA 情報システムの信頼性向上に関するガイドライン"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "メッセージキューを用いた非同期連携は、ピーク時の負荷平準化と連携先システム障害時の一時的なバッファとして機能する点が大きな利点である。",
+        "reference": "https://www.ipa.go.jp/publish/wp-dx/000108047.pdf",
+        "reference_label": "IPA DX白書2023 分散システム解説"
+      }
+    },
+    {
+      "id": "it-arc-46",
+      "question": "RPO（Recovery Point Objective）の説明として、最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "システムを復旧させるまでに許容される最大停止時間",
+          "explanation": {
+            "text": "これはRTO（Recovery Time Objective）の説明であり、RPOとは異なる。",
+            "reference": "https://www.ipa.go.jp/security/",
+            "reference_label": "IPA 事業継続・災害対策関連ガイド"
+          }
+        },
+        {
+          "key": "B",
+          "text": "障害発生時に許容できるデータ損失の最大量を時間で表したもの",
+          "explanation": {
+            "text": "RPOはバックアップ間隔などに基づき、どこまでの時点のデータを復旧対象とするかを表す指標である。",
+            "reference": "https://www.ipa.go.jp/security/",
+            "reference_label": "IPA 事業継続・災害対策関連ガイド"
+          }
+        },
+        {
+          "key": "C",
+          "text": "1日に実行するバックアップ回数",
+          "explanation": {
+            "text": "バックアップ回数はRPOを実現するための手段であり、指標そのものではない。",
+            "reference": "https://www.ipa.go.jp/security/",
+            "reference_label": "IPA バックアップガイド"
+          }
+        },
+        {
+          "key": "D",
+          "text": "システムの平均故障間隔を表す指標",
+          "explanation": {
+            "text": "これはMTBFの説明であり、RPOとは異なる。",
+            "reference": "https://www.ipa.go.jp/",
+            "reference_label": "IPA 信頼性ガイド"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "RPOは障害発生時にどこまで遡った時点のデータを復旧対象とするかを示す指標であり、許容可能なデータ損失時間を表す。",
+        "reference": "https://www.ipa.go.jp/security/",
+        "reference_label": "IPA 事業継続・災害対策関連ガイド"
+      }
+    },
+    {
+      "id": "it-arc-47",
+      "question": "個人情報を分析目的で二次利用するために、匿名加工情報を用いる場合の設計上の考慮として、最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "匿名加工情報であれば、元データとの対応関係を保持していても問題ない",
+          "explanation": {
+            "text": "匿名加工情報は特定の個人を識別できないようにする必要があり、元データとの対応関係を保持して再識別できる状態は不適切である。",
+            "reference": "https://www.ipa.go.jp/security/keihatsu/privacy.html",
+            "reference_label": "IPA 個人情報保護関連解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "再識別できないように加工し、復元に用いる鍵や対応表は保持しない、または厳格に管理する",
+          "explanation": {
+            "text": "匿名加工情報では再識別防止と安全管理措置が重要であり、対応表や鍵の管理を厳格に行う必要がある。",
+            "reference": "https://www.ipa.go.jp/security/keihatsu/privacy.html",
+            "reference_label": "IPA 個人情報保護関連解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "IPアドレスや端末情報だけを削除すれば匿名加工情報として扱える",
+          "explanation": {
+            "text": "特定の個人を識別できるかどうかはデータ全体の組合せで判断され、単に一部項目を削除すればよいわけではない。",
+            "reference": "https://www.ipa.go.jp/security/keihatsu/privacy.html",
+            "reference_label": "IPA 個人情報保護関連解説"
+          }
+        },
+        {
+          "key": "D",
+          "text": "匿名加工情報は、アクセス制御を行わなくてもよい",
+          "explanation": {
+            "text": "匿名加工情報であっても不適切な取り扱いによるリスクはあり、適切なアクセス制御が求められる。",
+            "reference": "https://www.ipa.go.jp/security/keihatsu/privacy.html",
+            "reference_label": "IPA 個人情報保護関連解説"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "匿名加工情報を設計する際は、再識別ができないように加工し、復元に使える情報を厳格に管理することが重要である。",
+        "reference": "https://www.ipa.go.jp/security/keihatsu/privacy.html",
+        "reference_label": "IPA 個人情報保護関連解説"
+      }
+    },
+    {
+      "id": "it-arc-48",
+      "question": "情報システムのアクセシビリティ要件を定義する目的として、最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "画面デザインのブランドイメージを統一するため",
+          "explanation": {
+            "text": "ブランドイメージはUIガイドラインの範囲であり、アクセシビリティの主目的ではない。",
+            "reference": "https://www.ipa.go.jp/jinzai/ikusei/acc.html",
+            "reference_label": "IPA アクセシビリティ関連情報"
+          }
+        },
+        {
+          "key": "B",
+          "text": "障害の有無や利用環境にかかわらず、多様な利用者がシステムを利用できるようにするため",
+          "explanation": {
+            "text": "アクセシビリティは、視覚・聴覚などに制約のある利用者や様々な環境からの利用を可能にすることを目的とする。",
+            "reference": "https://www.ipa.go.jp/jinzai/ikusei/acc.html",
+            "reference_label": "IPA アクセシビリティ関連情報"
+          }
+        },
+        {
+          "key": "C",
+          "text": "開発者の作業効率を高めるためにUIコンポーネントを減らすため",
+          "explanation": {
+            "text": "コンポーネント数はアクセシビリティの主目的とは直接関係しない。",
+            "reference": "https://www.ipa.go.jp/jinzai/ikusei/acc.html",
+            "reference_label": "IPA アクセシビリティ関連情報"
+          }
+        },
+        {
+          "key": "D",
+          "text": "システム利用時間帯を制限してサーバ負荷を抑えるため",
+          "explanation": {
+            "text": "利用時間帯は性能・運用の問題であり、アクセシビリティとは無関係である。",
+            "reference": "https://www.ipa.go.jp/shiken/syllabus/gaiyou.html",
+            "reference_label": "IPA シラバス（システムアーキテクト試験）"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "アクセシビリティ要件は、多様な利用者が等しくシステムを利用できるようにするために定義される非機能要件である。",
+        "reference": "https://www.ipa.go.jp/jinzai/ikusei/acc.html",
+        "reference_label": "IPA アクセシビリティ関連情報"
+      }
+    },
+    {
+      "id": "it-arc-49",
+      "question": "アーキテクチャ決定記録（ADR: Architecture Decision Record）を残す主な目的として、最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ソースコードの詳細なアルゴリズムを記述するため",
+          "explanation": {
+            "text": "アルゴリズムは設計・実装レベルのドキュメントであり、ADRの主題ではない。",
+            "reference": "https://www.ipa.go.jp/publish/wp-dx/000108047.pdf",
+            "reference_label": "IPA DX白書2023 アーキテクチャ解説"
+          }
+        },
+        {
+          "key": "B",
+          "text": "いつ・誰が・どのような選択肢を比較検討した結果として、どのアーキテクチャを採用したかを後から追跡できるようにするため",
+          "explanation": {
+            "text": "ADRはアーキテクチャ上の重要な意思決定の経緯と理由を記録し、後続の保守や変更時に参照可能にすることが目的である。",
+            "reference": "https://www.ipa.go.jp/publish/wp-dx/000108047.pdf",
+            "reference_label": "IPA DX白書2023 アーキテクチャ解説"
+          }
+        },
+        {
+          "key": "C",
+          "text": "開発プロジェクトの予算執行状況を記録するため",
+          "explanation": {
+            "text": "予算はプロジェクトマネジメントの領域であり、ADRとは別である。",
+            "reference": "https://www.ipa.go.jp/archive/publish/qv6pgp00000010m3-att/000053554.pdf",
+            "reference_label": "IPA プロジェクトマネジメントガイド"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザ部門との個人間のメールのやり取りをすべて保存するため",
+          "explanation": {
+            "text": "ADRは意思決定の要約を構造化して残すものであり、個別のメール履歴を保存することが目的ではない。",
+            "reference": "https://www.ipa.go.jp/digital/kaihatsu/system-youkyu.html",
+            "reference_label": "IPA システム要求策定ガイド"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "アーキテクチャ決定記録は、アーキテクチャ上の重要な意思決定の理由・選択肢・影響範囲などを明文化し、将来の変更やレビューに活用するためのものである。",
+        "reference": "https://www.ipa.go.jp/publish/wp-dx/000108047.pdf",
+        "reference_label": "IPA DX白書2023 アーキテクチャ解説"
+      }
+    },
+    {
+      "id": "it-arc-50",
+      "question": "システム更改時に、段階的に新旧システムを切り替える「カナリアリリース方式」を採用する主な利点として、最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "新システムへの切り替えを一度に行うため、移行期間中の運用コストを削減できる",
+          "explanation": {
+            "text": "カナリアリリースは一部のユーザやトラフィックから段階的に切り替える方式であり、一括切替ではない。",
+            "reference": "https://www.ipa.go.jp/digital/kaihatsu/devops.html",
+            "reference_label": "IPA DevOps活用ガイド"
+          }
+        },
+        {
+          "key": "B",
+          "text": "一部のユーザやトラフィックで新システムを試行し、不具合があれば影響を限定したまま旧システムに戻せる",
+          "explanation": {
+            "text": "カナリアリリースは、限定的な範囲でリリースして問題を早期検知し、影響を小さく抑えたロールバックを可能にする手法である。",
+            "reference": "https://www.ipa.go.jp/digital/kaihatsu/devops.html",
+            "reference_label": "IPA DevOps活用ガイド"
+          }
+        },
+        {
+          "key": "C",
+          "text": "新旧システムを同時に利用することがないため、データ連携の複雑さを解消できる",
+          "explanation": {
+            "text": "カナリアリリースでは新旧システムが並行稼働する期間があり、データ整合性の設計が重要になる。",
+            "reference": "https://www.ipa.go.jp/archive/files/000051041.pdf",
+            "reference_label": "IPA 情報処理システム高信頼化教訓活用ガイドブック(ITサービス編)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "移行リスクは高くなるが、性能テストは不要にできる",
+          "explanation": {
+            "text": "本番リリース方式にかかわらず性能テストは重要であり、カナリアリリースが性能テストを不要にすることはない。",
+            "reference": "https://www.ipa.go.jp/archive/files/000072716.pdf",
+            "reference_label": "IPA 改訂版「非機能要求グレード2018」の紹介"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "カナリアリリースは限定的な範囲で新システムを導入して問題の有無を確認し、必要に応じて影響範囲を小さく抑えたロールバックを可能にすることで、移行リスクを低減できる。",
+        "reference": "https://www.ipa.go.jp/digital/kaihatsu/devops.html",
+        "reference_label": "IPA DevOps活用ガイド"
+      }
+    }
+  ]
+}

@@ -1,0 +1,2514 @@
+{
+  "exam": {
+    "id": "linuc_level1_102",
+    "title": "LinuC レベル1 102試験",
+    "description": "この試験は、Linuxシステムの運用・管理における実践的な知識を評価するもので、スクリプト、ネットワーク、システムサービス、セキュリティ、オープンソース文化など幅広く出題されます。試験時間は90分（実質約85分）、出題数およそ60問、CBT方式（マウス選択＋キーボード入力問題）で実施されます。",
+    "version": "10.0",
+    "price": "16,500円",
+    "difficulty": "易しい",
+    "official-site": "https://linuc.org/linuc1",
+    "category": {
+      "id": "linux",
+      "name": "Linux技術者認定"
+    }
+  },
+  "questions": [
+
+    {
+      "id": "linuc-level1-102-1",
+      "question": "systemd 環境において、デフォルトのターゲット（実行レベル相当）を確認する正しいコマンドはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "systemctl get-default",
+          "explanation": {
+            "text": "現在設定されている default.target を確認する正しいコマンド。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+            "reference_label": "systemctl(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "systemctl show-default",
+          "explanation": {
+            "text": "show-default というサブコマンドは存在しない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+            "reference_label": "systemctl(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "systemctl status default",
+          "explanation": {
+            "text": "default.target の状態は見られるがデフォルト設定の確認コマンドではない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+            "reference_label": "systemctl(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "systemctl list-targets default",
+          "explanation": {
+            "text": "list-targets はすべてのターゲット一覧表示であり、default を確認するコマンドではない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+            "reference_label": "systemctl(1)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "systemctl get-default は systemd の default.target を確認する専用コマンドである。",
+        "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+        "reference_label": "systemctl(1)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-2",
+      "question": "ユーザのパスワード有効期限を確認するコマンドとして正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "chage -l ユーザ名",
+          "explanation": {
+            "text": "chage -l はパスワード期限情報を一覧表示する。",
+            "reference": "https://man7.org/linux/man-pages/man1/chage.1.html",
+            "reference_label": "chage(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "passwd -l ユーザ名",
+          "explanation": {
+            "text": "-l はアカウントロックであり期限確認ではない。",
+            "reference": "https://man7.org/linux/man-pages/man1/passwd.1.html",
+            "reference_label": "passwd(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "usermod -e ユーザ名",
+          "explanation": {
+            "text": "-e は有効期限設定であり確認ではない。",
+            "reference": "https://man7.org/linux/man-pages/man8/usermod.8.html",
+            "reference_label": "usermod(8)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "loginctl user-status",
+          "explanation": {
+            "text": "loginctlにはパスワード期限を確認する機能はない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/loginctl.html",
+            "reference_label": "loginctl(1)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "chage -l によりパスワードの期限・最終変更日などを確認できる。",
+        "reference": "https://man7.org/linux/man-pages/man1/chage.1.html",
+        "reference_label": "chage(1)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-3",
+      "question": "Debian系 Linux でパッケージを完全に削除し、設定ファイルも含めて消去するコマンドとして正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "apt purge パッケージ名",
+          "explanation": {
+            "text": "purge は設定ファイルも含めて削除する。",
+            "reference": "https://manpages.debian.org/apt",
+            "reference_label": "apt(8)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "apt remove パッケージ名",
+          "explanation": {
+            "text": "remove は設定ファイルを残す。",
+            "reference": "https://manpages.debian.org/apt",
+            "reference_label": "apt(8)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "apt delete パッケージ名",
+          "explanation": {
+            "text": "delete サブコマンドはない。",
+            "reference": "https://manpages.debian.org/apt",
+            "reference_label": "apt(8)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "dpkg --erase パッケージ名",
+          "explanation": {
+            "text": "--erase は dpkg のオプションとして存在しない。",
+            "reference": "https://man7.org/linux/man-pages/man1/dpkg.1.html",
+            "reference_label": "dpkg(1)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "apt purge は設定ファイルごとパッケージを消去する際に使用する。",
+        "reference": "https://manpages.debian.org/apt",
+        "reference_label": "apt(8)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-4",
+      "question": "systemdにおいて、サービスの自動起動を無効化するコマンドとして正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "systemctl disable サービス名",
+          "explanation": {
+            "text": "disable は自動起動設定を無効化する。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+            "reference_label": "systemctl(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "systemctl stop サービス名",
+          "explanation": {
+            "text": "stop は現在の動作のみ停止し、自動起動設定は変更しない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+            "reference_label": "systemctl(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "systemctl kill サービス名",
+          "explanation": {
+            "text": "kill はプロセスを終了させるのみで、自動起動設定は無関係。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+            "reference_label": "systemctl(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "systemctl unstart サービス名",
+          "explanation": {
+            "text": "unstart というサブコマンドは存在しない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+            "reference_label": "systemctl(1)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "自動起動の無効化には systemctl disable を使用する。",
+        "reference": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+        "reference_label": "systemctl(1)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-5",
+      "question": "cronで、ユーザ単位のジョブを編集するための正しいコマンドはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "crontab -e",
+          "explanation": {
+            "text": "ユーザ専用の crontab 編集を行う。",
+            "reference": "https://man7.org/linux/man-pages/man1/crontab.1.html",
+            "reference_label": "crontab(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "cronedit",
+          "explanation": {
+            "text": "cronedit というコマンドは存在しない。",
+            "reference": "https://man7.org/linux/man-pages/",
+            "reference_label": "linux man-pages"
+          }
+        },
+        {
+          "key": "C",
+          "text": "/etc/crontabを直接編集",
+          "explanation": {
+            "text": "これはシステム全体設定であり、ユーザ専用ではない。",
+            "reference": "https://man7.org/linux/man-pages/man5/crontab.5.html",
+            "reference_label": "crontab(5)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "crond -e",
+          "explanation": {
+            "text": "crondにcron編集機能はない。",
+            "reference": "https://man7.org/linux/man-pages/man8/crond.8.html",
+            "reference_label": "crond(8)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ユーザごとのジョブ編集には crontab -e を使用する。",
+        "reference": "https://man7.org/linux/man-pages/man1/crontab.1.html",
+        "reference_label": "crontab(1)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-6",
+      "question": "実行中プロセスの優先度（nice値）を確認する正しいコマンドはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ps -o pid,ni,comm",
+          "explanation": {
+            "text": "ps の -o オプションで nice 値（ni）を表示できる。",
+            "reference": "https://man7.org/linux/man-pages/man1/ps.1.html",
+            "reference_label": "ps(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "nice -l",
+          "explanation": {
+            "text": "nice に一覧表示オプションはない。",
+            "reference": "https://man7.org/linux/man-pages/man1/nice.1.html",
+            "reference_label": "nice(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "renice -s",
+          "explanation": {
+            "text": "renice は優先度変更であり確認はできない。",
+            "reference": "https://man7.org/linux/man-pages/man1/renice.1.html",
+            "reference_label": "renice(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "top -n",
+          "explanation": {
+            "text": "-n は更新回数指定であり表示項目変更ではない。",
+            "reference": "https://man7.org/linux/man-pages/man1/top.1.html",
+            "reference_label": "top(1)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ps -o ni で nice値を確認できる。",
+        "reference": "https://man7.org/linux/man-pages/man1/ps.1.html",
+        "reference_label": "ps(1)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-7",
+      "question": "journalctl で最新ログのみをリアルタイムで追跡する方法として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "journalctl -f",
+          "explanation": {
+            "text": "-f は tail -f と同様にログを追跡表示する。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/journalctl.html",
+            "reference_label": "journalctl(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "journalctl --recent",
+          "explanation": {
+            "text": "--recent は存在しないオプション。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/journalctl.html",
+            "reference_label": "journalctl(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "journalctl -t",
+          "explanation": {
+            "text": "-t は syslog識別子指定でありリアルタイム追跡ではない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/journalctl.html",
+            "reference_label": "journalctl(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "journalctl --now",
+          "explanation": {
+            "text": "--now は存在しない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/journalctl.html",
+            "reference_label": "journalctl(1)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "journalctl -f でログをリアルタイム表示できる。",
+        "reference": "https://www.freedesktop.org/software/systemd/man/journalctl.html",
+        "reference_label": "journalctl(1)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-8",
+      "question": "PATH 変数を一時的に変更し、現在のシェルのみに適用する場合の正しい操作はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "export PATH=/new/bin:$PATH",
+          "explanation": {
+            "text": "export は現在のシェル環境にのみ反映される（ログアウトすれば消える）。",
+            "reference": "https://man7.org/linux/man-pages/man1/bash.1.html",
+            "reference_label": "bash(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "/etc/profile を編集",
+          "explanation": {
+            "text": "これは全ユーザに永続的な変更となる。",
+            "reference": "https://man7.org/linux/man-pages/man5/profile.5.html",
+            "reference_label": "profile(5)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "~/.bash_profile を編集",
+          "explanation": {
+            "text": "ユーザ単位だが永続的な変更となる。",
+            "reference": "https://man7.org/linux/man-pages/man1/bash.1.html",
+            "reference_label": "bash(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "PATH=/new/bin:$PATH を /usr/bin に保存",
+          "explanation": {
+            "text": "PATH をファイルとして保存する仕組みではない。",
+            "reference": "https://man7.org/linux/man-pages/man1/bash.1.html",
+            "reference_label": "bash(1)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "シェル内で export すれば一時的に PATH を変更できる。",
+        "reference": "https://man7.org/linux/man-pages/man1/bash.1.html",
+        "reference_label": "bash(1)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-9",
+      "question": "アクセス権限の表記 -rw-r--r-- のファイルに関して正しい説明はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "所有者は読み書きでき、グループとその他は読み取りのみ可能",
+          "explanation": {
+            "text": "rw-（所有者）、r--（グループ）、r--（その他）に対応する。",
+            "reference": "https://man7.org/linux/man-pages/man1/ls.1.html",
+            "reference_label": "ls(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "所有者は読み取りのみ可能",
+          "explanation": {
+            "text": "rw- があるため書き込み可能。",
+            "reference": "https://man7.org/linux/man-pages/man1/ls.1.html",
+            "reference_label": "ls(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "グループは書き込み可能",
+          "explanation": {
+            "text": "グループは r-- のため書けない。",
+            "reference": "https://man7.org/linux/man-pages/man1/ls.1.html",
+            "reference_label": "ls(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "その他は読み書き可能",
+          "explanation": {
+            "text": "その他は r-- のため読み取りのみ。",
+            "reference": "https://man7.org/linux/man-pages/man1/ls.1.html",
+            "reference_label": "ls(1)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "所有者は rw、その他は r のみという一般的な権限設定である。",
+        "reference": "https://man7.org/linux/man-pages/man1/ls.1.html",
+        "reference_label": "ls(1)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-10",
+      "question": "システム時刻の確認に使用するコマンドとして正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "timedatectl",
+          "explanation": {
+            "text": "systemd環境で時刻・タイムゾーンの確認に使う標準コマンド。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/timedatectl.html",
+            "reference_label": "timedatectl(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "timectl",
+          "explanation": {
+            "text": "timectl は存在しない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/",
+            "reference_label": "systemd documentation"
+          }
+        },
+        {
+          "key": "C",
+          "text": "clockctl",
+          "explanation": {
+            "text": "clockctl という標準コマンドはない。",
+            "reference": "https://man7.org/linux/man-pages/",
+            "reference_label": "linux man-pages"
+          }
+        },
+        {
+          "key": "D",
+          "text": "/etc/time を cat",
+          "explanation": {
+            "text": "/etc/time という設定ファイルは存在しない。",
+            "reference": "https://man7.org/linux/man-pages/",
+            "reference_label": "linux man-pages"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "timedatectl は systemd 系ディストリビューションで時刻確認の標準コマンドである。",
+        "reference": "https://www.freedesktop.org/software/systemd/man/timedatectl.html",
+        "reference_label": "timedatectl(1)"
+      }
+    },
+    {
+      "id": "linuc-level1-102-11",
+      "question": "tar コマンドでディレクトリを圧縮せずアーカイブだけ作成する正しいコマンドはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "tar cf archive.tar dir/",
+          "explanation": {
+            "text": "c=作成、f=ファイル指定で標準的なアーカイブ作成。",
+            "reference": "https://man7.org/linux/man-pages/man1/tar.1.html",
+            "reference_label": "tar(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "tar zcf archive.tar.gz dir/",
+          "explanation": {
+            "text": "z は gzip 圧縮が有効になるため圧縮付き。",
+            "reference": "https://man7.org/linux/man-pages/man1/tar.1.html",
+            "reference_label": "tar(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "tar xf dir/ archive.tar",
+          "explanation": {
+            "text": "抽出（x）であり作成ではない。",
+            "reference": "https://man7.org/linux/man-pages/man1/tar.1.html",
+            "reference_label": "tar(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "tar cc archive.tar dir/",
+          "explanation": {
+            "text": "cc のようなオプション構成はない。",
+            "reference": "https://man7.org/linux/man-pages/man1/tar.1.html",
+            "reference_label": "tar(1)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "tar cf は圧縮なしの標準的なアーカイブ作成方法である。",
+        "reference": "https://man7.org/linux/man-pages/man1/tar.1.html",
+        "reference_label": "tar(1)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-12",
+      "question": "cut コマンドで区切り文字を “:” として 1 番目のフィールドを表示する正しい指定はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "cut -d: -f1",
+          "explanation": {
+            "text": "-d で区切り文字、-f でフィールド番号を指定する。",
+            "reference": "https://man7.org/linux/man-pages/man1/cut.1.html",
+            "reference_label": "cut(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "cut -f: 1",
+          "explanation": {
+            "text": "このようなオプション構成はない。",
+            "reference": "https://man7.org/linux/man-pages/man1/cut.1.html",
+            "reference_label": "cut(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "cut --field 1 :",
+          "explanation": {
+            "text": "cut に --field は存在しない。",
+            "reference": "https://man7.org/linux/man-pages/man1/cut.1.html",
+            "reference_label": "cut(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "cut -c1:",
+          "explanation": {
+            "text": "-c は文字位置の抽出であり区切り文字とは関係ない。",
+            "reference": "https://man7.org/linux/man-pages/man1/cut.1.html",
+            "reference_label": "cut(1)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "cut -d: -f1 は最も基本的なフィールド抽出形式である。",
+        "reference": "https://man7.org/linux/man-pages/man1/cut.1.html",
+        "reference_label": "cut(1)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-13",
+      "question": "grep で検索文字列を大文字小文字を無視して検索するオプションとして正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "-i",
+          "explanation": {
+            "text": "-i は ignore-case の略で大文字小文字を無視する。",
+            "reference": "https://man7.org/linux/man-pages/man1/grep.1.html",
+            "reference_label": "grep(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "-I",
+          "explanation": {
+            "text": "-I はバイナリファイルを無視する設定であり大小無視とは別。",
+            "reference": "https://man7.org/linux/man-pages/man1/grep.1.html",
+            "reference_label": "grep(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "-c",
+          "explanation": {
+            "text": "-c はマッチ数のカウント。",
+            "reference": "https://man7.org/linux/man-pages/man1/grep.1.html",
+            "reference_label": "grep(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "-s",
+          "explanation": {
+            "text": "-s はエラーメッセージ抑止。",
+            "reference": "https://man7.org/linux/man-pages/man1/grep.1.html",
+            "reference_label": "grep(1)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "-i を付けることで case-insensitive 検索が可能。",
+        "reference": "https://man7.org/linux/man-pages/man1/grep.1.html",
+        "reference_label": "grep(1)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-14",
+      "question": "プロセスをバックグラウンドで実行する正しい方法はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "コマンドの末尾に & を付ける",
+          "explanation": {
+            "text": "& はバックグラウンド実行の標準的な記法。",
+            "reference": "https://man7.org/linux/man-pages/man1/bash.1.html",
+            "reference_label": "bash(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "bg コマンドを単独で実行",
+          "explanation": {
+            "text": "bg は停止中ジョブをバックグラウンドに戻すコマンドであり単独では使えない。",
+            "reference": "https://man7.org/linux/man-pages/man1/bg.1p.html",
+            "reference_label": "bg(1p)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "start コマンドを使う",
+          "explanation": {
+            "text": "start という標準シェルコマンドはない。",
+            "reference": "https://man7.org/linux/man-pages/",
+            "reference_label": "linux man-pages"
+          }
+        },
+        {
+          "key": "D",
+          "text": "nohup コマンド単体で使用",
+          "explanation": {
+            "text": "nohup は HUP 無視だがバックグラウンドにはならない。",
+            "reference": "https://man7.org/linux/man-pages/man1/nohup.1.html",
+            "reference_label": "nohup(1)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "バックグラウンド実行の基本はコマンド&。",
+        "reference": "https://man7.org/linux/man-pages/man1/bash.1.html",
+        "reference_label": "bash(1)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-15",
+      "question": "find コマンドで /var/log 配下の拡張子 .log を持つファイルを検索する正しい例はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "find /var/log -name \"*.log\"",
+          "explanation": {
+            "text": "name パターンに *.log を指定した標準的な検索。",
+            "reference": "https://man7.org/linux/man-pages/man1/find.1.html",
+            "reference_label": "find(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "find /var/log *.log",
+          "explanation": {
+            "text": "name を指定していないため誤り。",
+            "reference": "https://man7.org/linux/man-pages/man1/find.1.html",
+            "reference_label": "find(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "find -d \"/var/log/*.log\"",
+          "explanation": {
+            "text": "-d はディレクトリ指定でありパターン検索ではない。",
+            "reference": "https://man7.org/linux/man-pages/man1/find.1.html",
+            "reference_label": "find(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "find /var/log -file \"*.log\"",
+          "explanation": {
+            "text": "file オプションは存在しない。",
+            "reference": "https://man7.org/linux/man-pages/man1/find.1.html",
+            "reference_label": "find(1)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "*.log の検索には -name を用いる。",
+        "reference": "https://man7.org/linux/man-pages/man1/find.1.html",
+        "reference_label": "find(1)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-16",
+      "question": "ユーザのデフォルトグループを変更する正しいコマンドはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "usermod -g グループ名 ユーザ名",
+          "explanation": {
+            "text": "-g はユーザの主グループ変更に使う。",
+            "reference": "https://man7.org/linux/man-pages/man8/usermod.8.html",
+            "reference_label": "usermod(8)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "usermod -G グループ名 ユーザ名",
+          "explanation": {
+            "text": "-G は補助グループの設定であり主グループではない。",
+            "reference": "https://man7.org/linux/man-pages/man8/usermod.8.html",
+            "reference_label": "usermod(8)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "groupmod -u ユーザ名",
+          "explanation": {
+            "text": "-u はユーザIDに関するオプションで誤り。",
+            "reference": "https://man7.org/linux/man-pages/man8/groupmod.8.html",
+            "reference_label": "groupmod(8)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "chgrp -d ユーザ名",
+          "explanation": {
+            "text": "chgrpはファイルのグループを変更するコマンド。",
+            "reference": "https://man7.org/linux/man-pages/man1/chgrp.1.html",
+            "reference_label": "chgrp(1)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "-g オプションで主グループを変更できる。",
+        "reference": "https://man7.org/linux/man-pages/man8/usermod.8.html",
+        "reference_label": "usermod(8)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-17",
+      "question": "スワップ領域の使用状況を確認するコマンドとして正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "free",
+          "explanation": {
+            "text": "free でメモリとスワップの使用状況が確認できる。",
+            "reference": "https://man7.org/linux/man-pages/man1/free.1.html",
+            "reference_label": "free(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "vmctl",
+          "explanation": {
+            "text": "vmctl は標準コマンドではない。",
+            "reference": "https://man7.org/linux/man-pages/",
+            "reference_label": "linux man-pages"
+          }
+        },
+        {
+          "key": "C",
+          "text": "df -s",
+          "explanation": {
+            "text": "df はディスク使用量でありスワップではない。",
+            "reference": "https://man7.org/linux/man-pages/man1/df.1.html",
+            "reference_label": "df(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "swap --status",
+          "explanation": {
+            "text": "swap コマンドは存在しない。",
+            "reference": "https://man7.org/linux/man-pages/",
+            "reference_label": "linux man-pages"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "freeコマンドはスワップの現状把握に使用する基本コマンド。",
+        "reference": "https://man7.org/linux/man-pages/man1/free.1.html",
+        "reference_label": "free(1)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-18",
+      "question": "hostnamectl コマンドでホスト名を変更するために必要なオプションはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "set-hostname",
+          "explanation": {
+            "text": "hostnamectl set-hostname NAME でホスト名を変更する。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/hostnamectl.html",
+            "reference_label": "hostnamectl(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "--modify-host",
+          "explanation": {
+            "text": "このようなオプションはない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/hostnamectl.html",
+            "reference_label": "hostnamectl(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "--set",
+          "explanation": {
+            "text": "--set オプションは存在しない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/hostnamectl.html",
+            "reference_label": "hostnamectl(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "hostnamectl name",
+          "explanation": {
+            "text": "name サブコマンドはない。",
+            "reference": "https://www.freedesktop.org/software/systemd/man/hostnamectl.html",
+            "reference_label": "hostnamectl(1)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "hostnamectl set-hostname を使ってホスト名を変更するのが正しい。",
+        "reference": "https://www.freedesktop.org/software/systemd/man/hostnamectl.html",
+        "reference_label": "hostnamectl(1)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-19",
+      "question": "環境変数 LANG の正しい用途はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "システムのデフォルトロケール（言語）を定義する",
+          "explanation": {
+            "text": "LANG はロケール設定の基本となる環境変数。",
+            "reference": "https://man7.org/linux/man-pages/man7/locale.7.html",
+            "reference_label": "locale(7)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "PATH のデフォルト値を定義する",
+          "explanation": {
+            "text": "PATH は実行パスであり LANG とは無関係。",
+            "reference": "https://man7.org/linux/man-pages/man1/bash.1.html",
+            "reference_label": "bash(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "システムの文字コードのみを定義する",
+          "explanation": {
+            "text": "LANG は言語・地域情報全体を扱う。",
+            "reference": "https://man7.org/linux/man-pages/man7/locale.7.html",
+            "reference_label": "locale(7)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザのデフォルトシェルを設定する",
+          "explanation": {
+            "text": "シェルは /etc/passwd などで定義され、LANG とは関係ない。",
+            "reference": "https://man7.org/linux/man-pages/man5/passwd.5.html",
+            "reference_label": "passwd(5)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "LANG でロケール全体のデフォルト言語設定が決定される。",
+        "reference": "https://man7.org/linux/man-pages/man7/locale.7.html",
+        "reference_label": "locale(7)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-20",
+      "question": "df コマンドの説明として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ファイルシステムの空き容量を表示する",
+          "explanation": {
+            "text": "df はディスクの使用量・空き容量を確認するためのコマンド。",
+            "reference": "https://man7.org/linux/man-pages/man1/df.1.html",
+            "reference_label": "df(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ディレクトリごとの使用量を再帰的に表示する",
+          "explanation": {
+            "text": "これは du コマンドの役割。",
+            "reference": "https://man7.org/linux/man-pages/man1/du.1.html",
+            "reference_label": "du(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "開いているファイルの一覧を表示する",
+          "explanation": {
+            "text": "open ファイル一覧は lsof が使用される。",
+            "reference": "https://man7.org/linux/man-pages/",
+            "reference_label": "linux man-pages"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ファイルの種類を識別する",
+          "explanation": {
+            "text": "file コマンドの役割。",
+            "reference": "https://man7.org/linux/man-pages/man1/file.1.html",
+            "reference_label": "file(1)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "df の主目的はファイルシステムの使用量と空き容量の確認である。",
+        "reference": "https://man7.org/linux/man-pages/man1/df.1.html",
+        "reference_label": "df(1)"
+      }
+    },
+    {
+      "id": "linuc-level1-102-21",
+      "question": "NICのリンク状態や速度などを確認するために使用されるコマンドとして最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ip link show",
+          "explanation": {
+            "text": "ip link show でインタフェースの状態（UP/DOWN）などを確認できる。",
+            "reference": "https://man7.org/linux/man-pages/man8/ip-link.8.html",
+            "reference_label": "ip-link(8)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "route -n",
+          "explanation": {
+            "text": "route はルーティングテーブル表示でありインタフェース状態とは別。",
+            "reference": "https://man7.org/linux/man-pages/man8/route.8.html",
+            "reference_label": "route(8)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "host インタフェース名",
+          "explanation": {
+            "text": "host コマンドは名前解決に使用される。",
+            "reference": "https://man7.org/linux/man-pages/man1/host.1.html",
+            "reference_label": "host(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "netcat -l",
+          "explanation": {
+            "text": "netcat はTCP/UDP接続確認ツールでありNIC状態は表示しない。",
+            "reference": "https://nc110.sourceforge.io/",
+            "reference_label": "netcat ドキュメント"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ip link show はインタフェースの状態・MACアドレスなどの情報を確認する基本コマンドである。",
+        "reference": "https://man7.org/linux/man-pages/man8/ip-link.8.html",
+        "reference_label": "ip-link(8)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-22",
+      "question": "IPv4 のデフォルトゲートウェイを一時的に追加する正しいコマンドはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ip route add default via 192.168.1.1",
+          "explanation": {
+            "text": "ip route add default via アドレス でデフォルトルートを追加できる。",
+            "reference": "https://man7.org/linux/man-pages/man8/ip-route.8.html",
+            "reference_label": "ip-route(8)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "route add 0.0.0.0 192.168.1.1",
+          "explanation": {
+            "text": "旧式のrouteコマンドの書式であり、現在は ip route が推奨される。",
+            "reference": "https://man7.org/linux/man-pages/man8/route.8.html",
+            "reference_label": "route(8)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ip addr add default 192.168.1.1",
+          "explanation": {
+            "text": "ip addr はアドレス設定でありルート設定ではない。",
+            "reference": "https://man7.org/linux/man-pages/man8/ip-address.8.html",
+            "reference_label": "ip-address(8)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "netstat -r default 192.168.1.1",
+          "explanation": {
+            "text": "netstat はルート表示でありルート追加機能はない。",
+            "reference": "https://man7.org/linux/man-pages/man8/netstat.8.html",
+            "reference_label": "netstat(8)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ip コマンドは現在の標準であり、default via アドレス でデフォルトゲートウェイを指定する。",
+        "reference": "https://man7.org/linux/man-pages/man8/ip-route.8.html",
+        "reference_label": "ip-route(8)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-23",
+      "question": "DNS リゾルバの設定ファイルとして正しいものはどれか。ただし NetworkManager などの上位ツールによる生成は考慮しないものとする。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "/etc/resolv.conf",
+          "explanation": {
+            "text": "伝統的なDNSリゾルバ設定ファイルで、nameserver などを指定する。",
+            "reference": "https://man7.org/linux/man-pages/man5/resolv.conf.5.html",
+            "reference_label": "resolv.conf(5)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "/etc/hosts",
+          "explanation": {
+            "text": "/etc/hosts はローカルの名前とIPの対応表であり、DNSサーバ設定ではない。",
+            "reference": "https://man7.org/linux/man-pages/man5/hosts.5.html",
+            "reference_label": "hosts(5)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "/etc/nsswitch.conf",
+          "explanation": {
+            "text": "名前解決に利用するソース順を決める設定ファイルであり、DNSサーバ自体は書かない。",
+            "reference": "https://man7.org/linux/man-pages/man5/nsswitch.conf.5.html",
+            "reference_label": "nsswitch.conf(5)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "/etc/network/dns.conf",
+          "explanation": {
+            "text": "標準的なDNS設定ファイルではない。",
+            "reference": "https://man7.org/linux/man-pages/",
+            "reference_label": "linux man-pages"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "DNSサーバの指定は /etc/resolv.conf に記述するのが基本である。",
+        "reference": "https://man7.org/linux/man-pages/man5/resolv.conf.5.html",
+        "reference_label": "resolv.conf(5)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-24",
+      "question": "ping コマンドの役割として最も適切な説明はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ICMP Echo要求を送信し、到達性と応答時間を確認する",
+          "explanation": {
+            "text": "ping はICMP Echoを用いてホストの疎通を確認する。",
+            "reference": "https://man7.org/linux/man-pages/man8/ping.8.html",
+            "reference_label": "ping(8)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "TCPポートの開閉状態を確認する",
+          "explanation": {
+            "text": "TCPポート確認には nmap や nc などが使われる。",
+            "reference": "https://nmap.org/book/man.html",
+            "reference_label": "nmap ドキュメント"
+          }
+        },
+        {
+          "key": "C",
+          "text": "DNS名からIPアドレスを解決する",
+          "explanation": {
+            "text": "名前解決は dig や host などが主に使用される。",
+            "reference": "https://man7.org/linux/man-pages/man1/host.1.html",
+            "reference_label": "host(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ネットワーク経路上の各ルータを一覧表示する",
+          "explanation": {
+            "text": "経路表示は traceroute や tracepath の役割である。",
+            "reference": "https://man7.org/linux/man-pages/man8/traceroute.8.html",
+            "reference_label": "traceroute(8)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ping はICMP Echoを利用して疎通確認・応答遅延の測定を行う基本コマンドである。",
+        "reference": "https://man7.org/linux/man-pages/man8/ping.8.html",
+        "reference_label": "ping(8)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-25",
+      "question": "ss コマンドの説明として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ソケットに関する情報（TCP/UDP の接続状態など）を表示する",
+          "explanation": {
+            "text": "ss は netstat の後継的ツールとしてソケット情報を高速に表示する。",
+            "reference": "https://man7.org/linux/man-pages/man8/ss.8.html",
+            "reference_label": "ss(8)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "CPUやメモリの統計情報のみを表示する",
+          "explanation": {
+            "text": "CPU/メモリ統計は vmstat 等が担当する。",
+            "reference": "https://man7.org/linux/man-pages/man8/vmstat.8.html",
+            "reference_label": "vmstat(8)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "プロセスの優先度を変更する",
+          "explanation": {
+            "text": "優先度変更は renice などで行う。",
+            "reference": "https://man7.org/linux/man-pages/man1/renice.1.html",
+            "reference_label": "renice(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "システムコールの一覧を表示する",
+          "explanation": {
+            "text": "システムコールのトレース等には strace が用いられる。",
+            "reference": "https://man7.org/linux/man-pages/man1/strace.1.html",
+            "reference_label": "strace(1)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ss はネットワークソケットの状態を詳細に表示するための標準ツールである。",
+        "reference": "https://man7.org/linux/man-pages/man8/ss.8.html",
+        "reference_label": "ss(8)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-26",
+      "question": "ssh 公開鍵認証で、クライアント側に保存される秘密鍵ファイルの典型的なパスとして正しいものはどれか（ed25519 以外の従来例とする）。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "~/.ssh/id_rsa",
+          "explanation": {
+            "text": "RSA秘密鍵のデフォルトファイル名として広く利用される。",
+            "reference": "https://man.openbsd.org/ssh-keygen",
+            "reference_label": "ssh-keygen(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "~/.ssh/authorized_keys",
+          "explanation": {
+            "text": "これはサーバ側で公開鍵を登録するファイルであり秘密鍵ではない。",
+            "reference": "https://man.openbsd.org/sshd_config",
+            "reference_label": "sshd_config(5)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "/etc/ssh/sshd_config",
+          "explanation": {
+            "text": "SSHサーバの設定ファイル。",
+            "reference": "https://man.openbsd.org/sshd_config",
+            "reference_label": "sshd_config(5)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "/var/log/secure",
+          "explanation": {
+            "text": "認証関連ログが保存されるファイルであり鍵ファイルではない。",
+            "reference": "https://man7.org/linux/man-pages/man5/rsyslog.conf.5.html",
+            "reference_label": "rsyslog.conf(5)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "クライアント秘密鍵は通常 ~/.ssh/id_rsa などに保存される（鍵種によりファイル名は異なる）。",
+        "reference": "https://man.openbsd.org/ssh-keygen",
+        "reference_label": "ssh-keygen(1)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-27",
+      "question": "ファイアウォールとして firewalld を利用している環境で、現在有効なゾーンとインタフェースの対応を確認するコマンドはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "firewall-cmd --get-active-zones",
+          "explanation": {
+            "text": "有効なゾーンと、各ゾーンに属するインタフェース名が表示される。",
+            "reference": "https://firewalld.org/documentation/man-pages/firewall-cmd.html",
+            "reference_label": "firewall-cmd(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "firewall-cmd --list-all",
+          "explanation": {
+            "text": "現在のデフォルトゾーンの詳細設定のみを表示する。",
+            "reference": "https://firewalld.org/documentation/man-pages/firewall-cmd.html",
+            "reference_label": "firewall-cmd(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "firewalld --status",
+          "explanation": {
+            "text": "firewalld というコマンドはなく、daemon名である。",
+            "reference": "https://firewalld.org/",
+            "reference_label": "firewalld ドキュメント"
+          }
+        },
+        {
+          "key": "D",
+          "text": "iptables -L",
+          "explanation": {
+            "text": "iptablesのルールは表示できるが、firewalldのゾーン情報とは直接一致しない。",
+            "reference": "https://man7.org/linux/man-pages/man8/iptables.8.html",
+            "reference_label": "iptables(8)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "firewalld のゾーンとインタフェースの関連は firewall-cmd --get-active-zones で確認する。",
+        "reference": "https://firewalld.org/documentation/man-pages/firewall-cmd.html",
+        "reference_label": "firewall-cmd(1)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-28",
+      "question": "SELinux の現在の動作モード（enforcing, permissive など）を確認する最も簡単なコマンドはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "getenforce",
+          "explanation": {
+            "text": "getenforce は現在の SELinux モードを文字列で表示する。",
+            "reference": "https://man7.org/linux/man-pages/man8/getenforce.8.html",
+            "reference_label": "getenforce(8)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "setenforce",
+          "explanation": {
+            "text": "setenforce はモード切り替えコマンドであり確認専用ではない。",
+            "reference": "https://man7.org/linux/man-pages/man8/setenforce.8.html",
+            "reference_label": "setenforce(8)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "sestatus --mode-only",
+          "explanation": {
+            "text": "sestatus は状態表示だが、--mode-only オプションはない。",
+            "reference": "https://man7.org/linux/man-pages/man8/sestatus.8.html",
+            "reference_label": "sestatus(8)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ls -Z /",
+          "explanation": {
+            "text": "ls -Z はコンテキスト表示でありモード確認ではない。",
+            "reference": "https://man7.org/linux/man-pages/man1/ls.1.html",
+            "reference_label": "ls(1)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "現在モードを見るだけなら getenforce が最も簡潔である。",
+        "reference": "https://man7.org/linux/man-pages/man8/getenforce.8.html",
+        "reference_label": "getenforce(8)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-29",
+      "question": "sudo による権限委譲設定ファイルについて、推奨される編集方法として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "visudo コマンドを使用する",
+          "explanation": {
+            "text": "visudo は構文チェックを行い、/etc/sudoers の破損を防ぐ。",
+            "reference": "https://man7.org/linux/man-pages/man8/visudo.8.html",
+            "reference_label": "visudo(8)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "任意のエディタで /etc/sudoers を直接編集する",
+          "explanation": {
+            "text": "構文エラー時にsudoが使えなくなる危険が高い。",
+            "reference": "https://man7.org/linux/man-pages/man5/sudoers.5.html",
+            "reference_label": "sudoers(5)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "sudo --edit-config",
+          "explanation": {
+            "text": "sudo にこのようなオプションはない。",
+            "reference": "https://www.sudo.ws/docs/man/",
+            "reference_label": "sudo マニュアル"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ユーザごとに ~/.sudoers を作成する",
+          "explanation": {
+            "text": "sudoers ファイルは /etc/sudoers と sudoers.d ディレクトリ配下で管理する。",
+            "reference": "https://man7.org/linux/man-pages/man5/sudoers.5.html",
+            "reference_label": "sudoers(5)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "sudoers の編集には visudo を利用することが公式に推奨されている。",
+        "reference": "https://man7.org/linux/man-pages/man8/visudo.8.html",
+        "reference_label": "visudo(8)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-30",
+      "question": "ログイン失敗などの認証関連メッセージを主に出力するログファイルとして、RHEL系ディストリビューションで一般的なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "/var/log/secure",
+          "explanation": {
+            "text": "RHEL系では認証・セキュリティ関連ログが /var/log/secure に出力されることが多い。",
+            "reference": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/system_design_guide/assembly_monitoring-and-managing-logs_system-design-guide",
+            "reference_label": "Red Hat System Design Guide"
+          }
+        },
+        {
+          "key": "B",
+          "text": "/var/log/messages",
+          "explanation": {
+            "text": "システム全般のメッセージが記録されるが、認証専用ではない。",
+            "reference": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/system_design_guide/assembly_monitoring-and-managing-logs_system-design-guide",
+            "reference_label": "Red Hat System Design Guide"
+          }
+        },
+        {
+          "key": "C",
+          "text": "/var/log/dmesg",
+          "explanation": {
+            "text": "dmesg は主にカーネルブートメッセージ用である。",
+            "reference": "https://man7.org/linux/man-pages/man1/dmesg.1.html",
+            "reference_label": "dmesg(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "/var/log/wtmp",
+          "explanation": {
+            "text": "wtmp はバイナリ形式のログイン履歴であり、テキストメッセージのログファイルではない。",
+            "reference": "https://man7.org/linux/man-pages/man5/wtmp.5.html",
+            "reference_label": "wtmp(5)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "RHEL系では /var/log/secure が認証関連のテキストメッセージ出力に使われるのが一般的である。",
+        "reference": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/system_design_guide/assembly_monitoring-and-managing-logs_system-design-guide",
+        "reference_label": "Red Hat System Design Guide"
+      }
+    },
+    {
+      "id": "linuc-level1-102-31",
+      "question": "ln コマンドを利用してシンボリックリンクを作成する正しい形式はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ln -s target linkname",
+          "explanation": {
+            "text": "-s を付けることでシンボリックリンクを作成する形式となる。",
+            "reference": "https://man7.org/linux/man-pages/man1/ln.1.html",
+            "reference_label": "ln(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ln target linkname",
+          "explanation": {
+            "text": "これはハードリンクを作成する形式でありシンボリックリンクではない。",
+            "reference": "https://man7.org/linux/man-pages/man1/ln.1.html",
+            "reference_label": "ln(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ln --soft target linkname",
+          "explanation": {
+            "text": "--soft というオプションは存在しない。",
+            "reference": "https://man7.org/linux/man-pages/man1/ln.1.html",
+            "reference_label": "ln(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ln -L target linkname",
+          "explanation": {
+            "text": "L は参照方法のオプションであり作成種別ではない。",
+            "reference": "https://man7.org/linux/man-pages/man1/ln.1.html",
+            "reference_label": "ln(1)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "シンボリックリンク作成には ln -s を使用する。",
+        "reference": "https://man7.org/linux/man-pages/man1/ln.1.html",
+        "reference_label": "ln(1)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-32",
+      "question": "ファイルのアクセス時刻を更新するためのtouchコマンドの正しい使い方はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "touch filename",
+          "explanation": {
+            "text": "touch はデフォルトでアクセス時刻と更新時刻を現在時刻に変更する。",
+            "reference": "https://man7.org/linux/man-pages/man1/touch.1.html",
+            "reference_label": "touch(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "touch -c filename",
+          "explanation": {
+            "text": "-c は存在しない場合に新規作成しないオプションであり時刻更新の本質ではない。",
+            "reference": "https://man7.org/linux/man-pages/man1/touch.1.html",
+            "reference_label": "touch(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "touch --no-update filename",
+          "explanation": {
+            "text": "--no-update は存在しないオプション。",
+            "reference": "https://man7.org/linux/man-pages/man1/touch.1.html",
+            "reference_label": "touch(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "touch -t filename",
+          "explanation": {
+            "text": "-t は時刻指定であり引数順が異なる。",
+            "reference": "https://man7.org/linux/man-pages/man1/touch.1.html",
+            "reference_label": "touch(1)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "touch filename でアクセス・更新時刻を現在に変更できる。",
+        "reference": "https://man7.org/linux/man-pages/man1/touch.1.html",
+        "reference_label": "touch(1)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-33",
+      "question": "umask の役割として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "新規作成ファイル・ディレクトリのデフォルト権限を制限する",
+          "explanation": {
+            "text": "umask はパーミッションの禁止ビットを定義する仕組みである。",
+            "reference": "https://man7.org/linux/man-pages/man1/umask.1.html",
+            "reference_label": "umask(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "既存ファイルのパーミッションを変更する",
+          "explanation": {
+            "text": "既存ファイル変更は chmod の役割である。",
+            "reference": "https://man7.org/linux/man-pages/man1/chmod.1.html",
+            "reference_label": "chmod(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "所有者・グループ関係を変更する",
+          "explanation": {
+            "text": "所有者設定は chown/chgrp を利用する。",
+            "reference": "https://man7.org/linux/man-pages/man1/chown.1.html",
+            "reference_label": "chown(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ファイルタイプを識別する",
+          "explanation": {
+            "text": "file コマンドなどで判別する。",
+            "reference": "https://man7.org/linux/man-pages/man1/file.1.html",
+            "reference_label": "file(1)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "umask は作成時のパーミッションを制御する重要な設定である。",
+        "reference": "https://man7.org/linux/man-pages/man1/umask.1.html",
+        "reference_label": "umask(1)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-34",
+      "question": "dpkg -l コマンドの役割として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "インストール済みパッケージ一覧の表示",
+          "explanation": {
+            "text": "-l は dpkg のパッケージ一覧表示オプション。",
+            "reference": "https://man7.org/linux/man-pages/man1/dpkg.1.html",
+            "reference_label": "dpkg(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "パッケージの再インストール",
+          "explanation": {
+            "text": "再インストールには -i や --configure が使用される。",
+            "reference": "https://man7.org/linux/man-pages/man1/dpkg.1.html",
+            "reference_label": "dpkg(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "リポジトリ情報の更新",
+          "explanation": {
+            "text": "これは apt update の役割。",
+            "reference": "https://manpages.debian.org/apt",
+            "reference_label": "apt(8)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "すべてのパッケージを最新版へ更新",
+          "explanation": {
+            "text": "apt upgrade の役割。",
+            "reference": "https://manpages.debian.org/apt",
+            "reference_label": "apt(8)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "dpkg -l はインストール済みパッケージ一覧の確認に用いる基本形式。",
+        "reference": "https://man7.org/linux/man-pages/man1/dpkg.1.html",
+        "reference_label": "dpkg(1)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-35",
+      "question": "/etc/fstab に記述する項目として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ファイルシステムのデバイス、マウントポイント、タイプ、オプションなど",
+          "explanation": {
+            "text": "fstabの行はデバイス・マウント先・fstype・オプション・dump・pass を含む。",
+            "reference": "https://man7.org/linux/man-pages/man5/fstab.5.html",
+            "reference_label": "fstab(5)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "動作中プロセスの優先順位リスト",
+          "explanation": {
+            "text": "プロセスは ps/top 等で確認するものであり fstab とは無関係。",
+            "reference": "https://man7.org/linux/man-pages/man1/ps.1.html",
+            "reference_label": "ps(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "SELinux のモード設定",
+          "explanation": {
+            "text": "SELinux設定は /etc/selinux/config 等で行う。",
+            "reference": "https://man7.org/linux/man-pages/man8/sestatus.8.html",
+            "reference_label": "sestatus(8)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "カーネルモジュールのロード順",
+          "explanation": {
+            "text": "modprobe.d の設定などが使われる。",
+            "reference": "https://man7.org/linux/man-pages/man5/modprobe.d.5.html",
+            "reference_label": "modprobe.d(5)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "fstab は自動マウント設定を行う基本ファイルである。",
+        "reference": "https://man7.org/linux/man-pages/man5/fstab.5.html",
+        "reference_label": "fstab(5)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-36",
+      "question": "chmod 754 file のパーミッション設定として正しい説明はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "所有者はrwx、グループはr-x、その他はr--となる",
+          "explanation": {
+            "text": "7=rwx、5=r-x、4=r-- に対応する。",
+            "reference": "https://man7.org/linux/man-pages/man1/chmod.1.html",
+            "reference_label": "chmod(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "所有者はrw、グループはr、その他はx のみ",
+          "explanation": {
+            "text": "754 の構成と一致しない。",
+            "reference": "https://man7.org/linux/man-pages/man1/chmod.1.html",
+            "reference_label": "chmod(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "すべてのユーザに読み書き実行権限を与える",
+          "explanation": {
+            "text": "これは 777 の設定。",
+            "reference": "https://man7.org/linux/man-pages/man1/chmod.1.html",
+            "reference_label": "chmod(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "その他は実行権のみを持つ",
+          "explanation": {
+            "text": "4 は読み取りのみであるため誤り。",
+            "reference": "https://man7.org/linux/man-pages/man1/chmod.1.html",
+            "reference_label": "chmod(1)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "754 は一般的なスクリプトの配置権限設定としても使われる形式。",
+        "reference": "https://man7.org/linux/man-pages/man1/chmod.1.html",
+        "reference_label": "chmod(1)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-37",
+      "question": "passwd コマンドにおいて、ユーザアカウントをロックするオプションとして正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "passwd -l ユーザ名",
+          "explanation": {
+            "text": "-l はアカウントロック（パスワード無効化）。",
+            "reference": "https://man7.org/linux/man-pages/man1/passwd.1.html",
+            "reference_label": "passwd(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "passwd -u ユーザ名",
+          "explanation": {
+            "text": "-u はロック解除であり逆の操作。",
+            "reference": "https://man7.org/linux/man-pages/man1/passwd.1.html",
+            "reference_label": "passwd(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "passwd --block ユーザ名",
+          "explanation": {
+            "text": "--block は存在しない。",
+            "reference": "https://man7.org/linux/man-pages/man1/passwd.1.html",
+            "reference_label": "passwd(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "passwd --disable-passwd ユーザ名",
+          "explanation": {
+            "text": "そのようなオプションはない。",
+            "reference": "https://man7.org/linux/man-pages/man1/passwd.1.html",
+            "reference_label": "passwd(1)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "-l でアカウントロックを行うことができる。",
+        "reference": "https://man7.org/linux/man-pages/man1/passwd.1.html",
+        "reference_label": "passwd(1)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-38",
+      "question": "PID とプロセス名の対応を確認する基本コマンドとして正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ps aux",
+          "explanation": {
+            "text": "ps aux で全プロセスの一覧とPIDが確認できる。",
+            "reference": "https://man7.org/linux/man-pages/man1/ps.1.html",
+            "reference_label": "ps(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "kill -l",
+          "explanation": {
+            "text": "kill -l はシグナル一覧の表示でありプロセス確認ではない。",
+            "reference": "https://man7.org/linux/man-pages/man1/kill.1.html",
+            "reference_label": "kill(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "jobs -p",
+          "explanation": {
+            "text": "jobs はシェルのジョブ管理でありシステム全体のプロセスではない。",
+            "reference": "https://man7.org/linux/man-pages/man1/bash.1.html",
+            "reference_label": "bash(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "nice -l",
+          "explanation": {
+            "text": "nice は実行優先度設定でPID確認には使用しない。",
+            "reference": "https://man7.org/linux/man-pages/man1/nice.1.html",
+            "reference_label": "nice(1)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "プロセス一覧を見る標準的な方法は ps aux である。",
+        "reference": "https://man7.org/linux/man-pages/man1/ps.1.html",
+        "reference_label": "ps(1)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-39",
+      "question": "shutdown コマンドで 1 分後にシステムを再起動する正しい構文はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "shutdown -r +1",
+          "explanation": {
+            "text": "+1 は1分後を意味し、-r で再起動を指定する。",
+            "reference": "https://man7.org/linux/man-pages/man8/shutdown.8.html",
+            "reference_label": "shutdown(8)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "shutdown +1",
+          "explanation": {
+            "text": "再起動ではなくシャットダウンになる。",
+            "reference": "https://man7.org/linux/man-pages/man8/shutdown.8.html",
+            "reference_label": "shutdown(8)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "shutdown 1 -r",
+          "explanation": {
+            "text": "引数順が無効。",
+            "reference": "https://man7.org/linux/man-pages/man8/shutdown.8.html",
+            "reference_label": "shutdown(8)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "shutdown --restart 1m",
+          "explanation": {
+            "text": "そのようなオプションはない。",
+            "reference": "https://man7.org/linux/man-pages/man8/shutdown.8.html",
+            "reference_label": "shutdown(8)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "-r +1 で1分後に再起動できる。",
+        "reference": "https://man7.org/linux/man-pages/man8/shutdown.8.html",
+        "reference_label": "shutdown(8)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-40",
+      "question": "logger コマンドの用途として正しい説明はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "任意のメッセージを syslog に送信する",
+          "explanation": {
+            "text": "logger はユーザメッセージを syslog に送るユーティリティである。",
+            "reference": "https://man7.org/linux/man-pages/man1/logger.1.html",
+            "reference_label": "logger(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ログをリアルタイムで追跡表示する",
+          "explanation": {
+            "text": "リアルタイム追跡は tail -f や journalctl -f。",
+            "reference": "https://man7.org/linux/man-pages/man1/tail.1.html",
+            "reference_label": "tail(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ログローテーションを管理する",
+          "explanation": {
+            "text": "logrotate が管理する。",
+            "reference": "https://man7.org/linux/man-pages/man8/logrotate.8.html",
+            "reference_label": "logrotate(8)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "システムログを全て削除する",
+          "explanation": {
+            "text": "削除する機能はない。",
+            "reference": "https://man7.org/linux/man-pages/man1/logger.1.html",
+            "reference_label": "logger(1)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "logger は syslog へのメッセージ送信専用ツールである。",
+        "reference": "https://man7.org/linux/man-pages/man1/logger.1.html",
+        "reference_label": "logger(1)"
+      }
+    },
+    {
+      "id": "linuc-level1-102-41",
+      "question": "bash の特殊変数 \"$?\" の意味として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "直前に終了したコマンドの終了ステータス",
+          "explanation": {
+            "text": "$? は直前に実行したコマンドの終了コードを表す。",
+            "reference": "https://www.gnu.org/software/bash/manual/bash.html#Special-Parameters",
+            "reference_label": "Bash Reference Manual - Special Parameters"
+          }
+        },
+        {
+          "key": "B",
+          "text": "現在のシェルのPID",
+          "explanation": {
+            "text": "シェルのPIDは $$ で参照する。",
+            "reference": "https://www.gnu.org/software/bash/manual/bash.html#Special-Parameters",
+            "reference_label": "Bash Reference Manual - Special Parameters"
+          }
+        },
+        {
+          "key": "C",
+          "text": "スクリプトに渡された引数の数",
+          "explanation": {
+            "text": "引数の数は $# で参照する。",
+            "reference": "https://www.gnu.org/software/bash/manual/bash.html#Special-Parameters",
+            "reference_label": "Bash Reference Manual - Special Parameters"
+          }
+        },
+        {
+          "key": "D",
+          "text": "スクリプト名",
+          "explanation": {
+            "text": "スクリプト名は $0 に格納される。",
+            "reference": "https://www.gnu.org/software/bash/manual/bash.html#Special-Parameters",
+            "reference_label": "Bash Reference Manual - Special Parameters"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "$? は直前のコマンドが成功したかどうかを条件分岐などで判定するためによく用いられる。",
+        "reference": "https://www.gnu.org/software/bash/manual/bash.html#Special-Parameters",
+        "reference_label": "Bash Reference Manual - Special Parameters"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-42",
+      "question": "シェルスクリプトの先頭に記述する「#!/bin/bash」の意味として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "スクリプトを /bin/bash で解釈して実行する指定",
+          "explanation": {
+            "text": "#! で始まる行はシバンと呼ばれ、使用するインタプリタを指定する。",
+            "reference": "https://man7.org/linux/man-pages/man2/execve.2.html",
+            "reference_label": "execve(2)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "コメント行であり意味はない",
+          "explanation": {
+            "text": "先頭の #! はカーネルが解釈する特別な記法で単なるコメントではない。",
+            "reference": "https://man7.org/linux/man-pages/man2/execve.2.html",
+            "reference_label": "execve(2)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "bash のバージョンを指定する記述",
+          "explanation": {
+            "text": "バージョン指定機能はなく、単に使用するプログラムのパスを示すだけである。",
+            "reference": "https://man7.org/linux/man-pages/man2/execve.2.html",
+            "reference_label": "execve(2)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "実行権限を付与するための記述",
+          "explanation": {
+            "text": "実行権限は chmod で設定し、シバンでは設定されない。",
+            "reference": "https://man7.org/linux/man-pages/man1/chmod.1.html",
+            "reference_label": "chmod(1)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "シバンにより execve が指定されたインタプリタにスクリプトを渡して実行する。",
+        "reference": "https://man7.org/linux/man-pages/man2/execve.2.html",
+        "reference_label": "execve(2)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-43",
+      "question": "標準出力と標準エラー出力の両方を同じファイルに追記モードでリダイレクトする bash の記法として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "command >> logfile 2>&1",
+          "explanation": {
+            "text": ">> で追記し、2>&1 で標準エラーを標準出力に結合して同じファイルに書き込む。",
+            "reference": "https://www.gnu.org/software/bash/manual/bash.html#Redirections",
+            "reference_label": "Bash Reference Manual - Redirections"
+          }
+        },
+        {
+          "key": "B",
+          "text": "command > logfile 2> logfile",
+          "explanation": {
+            "text": "標準出力とエラー出力が別々に開かれるため、上書きのタイミングによって内容が壊れる可能性がある。",
+            "reference": "https://www.gnu.org/software/bash/manual/bash.html#Redirections",
+            "reference_label": "Bash Reference Manual - Redirections"
+          }
+        },
+        {
+          "key": "C",
+          "text": "command 2>>1 > logfile",
+          "explanation": {
+            "text": "2>>1 はファイル記述子1をファイル名として扱う誤った記法である。",
+            "reference": "https://www.gnu.org/software/bash/manual/bash.html#Redirections",
+            "reference_label": "Bash Reference Manual - Redirections"
+          }
+        },
+        {
+          "key": "D",
+          "text": "command &>> logfile",
+          "explanation": {
+            "text": "&>> は bash 固有の構文で標準出力とエラーを追記するが、移植性の観点から問題文の記述としては一般的でない。",
+            "reference": "https://www.gnu.org/software/bash/manual/bash.html#Redirections",
+            "reference_label": "Bash Reference Manual - Redirections"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "POSIX互換の書き方として最も一般的なのは command >> file 2>&1 の形式である。",
+        "reference": "https://www.gnu.org/software/bash/manual/bash.html#Redirections",
+        "reference_label": "Bash Reference Manual - Redirections"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-44",
+      "question": "grep と正規表現を用いて行頭が「#」で始まる行のみを抽出するコマンドとして正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "grep '^#' file",
+          "explanation": {
+            "text": "正規表現の ^ は行頭を表し、# で始まる行だけにマッチする。",
+            "reference": "https://man7.org/linux/man-pages/man1/grep.1.html",
+            "reference_label": "grep(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "grep '#$' file",
+          "explanation": {
+            "text": "$ は行末を表すため、末尾が # の行にマッチする。",
+            "reference": "https://man7.org/linux/man-pages/man1/grep.1.html",
+            "reference_label": "grep(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "grep '*#' file",
+          "explanation": {
+            "text": "* は直前の文字の繰り返しであり、行頭を意味しない。",
+            "reference": "https://man7.org/linux/man-pages/man7/regex.7.html",
+            "reference_label": "regex(7)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "grep '#.*' file",
+          "explanation": {
+            "text": "行内のどこかに # を含む行がすべてマッチし、行頭限定にはならない。",
+            "reference": "https://man7.org/linux/man-pages/man7/regex.7.html",
+            "reference_label": "regex(7)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "行頭マッチには ^ を使用するのが正しい正規表現の使い方である。",
+        "reference": "https://man7.org/linux/man-pages/man7/regex.7.html",
+        "reference_label": "regex(7)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-45",
+      "question": "シェル変数 VAR の内容を、環境変数として子プロセスにも引き継げるようにする正しい操作はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "export VAR",
+          "explanation": {
+            "text": "export により VAR が環境変数テーブルに追加され、子プロセスに引き継がれる。",
+            "reference": "https://man7.org/linux/man-pages/man1/bash.1.html",
+            "reference_label": "bash(1)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "set VAR",
+          "explanation": {
+            "text": "set はシェル変数一覧の操作であり export とは異なる。",
+            "reference": "https://man7.org/linux/man-pages/man1/bash.1.html",
+            "reference_label": "bash(1)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "env VAR",
+          "explanation": {
+            "text": "env は環境を指定してコマンドを実行するが、現在のシェルの環境変数定義を変更しない。",
+            "reference": "https://man7.org/linux/man-pages/man1/env.1.html",
+            "reference_label": "env(1)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "declare VAR",
+          "explanation": {
+            "text": "declare は変数属性の設定だが export の代わりではない。",
+            "reference": "https://man7.org/linux/man-pages/man1/bash.1.html",
+            "reference_label": "bash(1)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "環境変数として子プロセスに引き継ぐためには export が必要である。",
+        "reference": "https://man7.org/linux/man-pages/man1/bash.1.html",
+        "reference_label": "bash(1)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-46",
+      "question": "メール配送エージェント（MTA）の一つである Postfix のメイン設定ファイルとして正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "/etc/postfix/main.cf",
+          "explanation": {
+            "text": "Postfix の主要な設定は main.cf に記述する。",
+            "reference": "http://www.postfix.org/BASIC_CONFIGURATION_README.html",
+            "reference_label": "Postfix Basic Configuration"
+          }
+        },
+        {
+          "key": "B",
+          "text": "/etc/postfix/postfix.conf",
+          "explanation": {
+            "text": "標準では postfix.conf という設定ファイルは利用しない。",
+            "reference": "http://www.postfix.org/STANDARD_CONFIGURATION_README.html",
+            "reference_label": "Postfix Standard Configuration"
+          }
+        },
+        {
+          "key": "C",
+          "text": "/etc/mail/sendmail.cf",
+          "explanation": {
+            "text": "sendmail の設定ファイルであり Postfix とは別製品。",
+            "reference": "https://www.sendmail.org/~ca/email/doc8.12/op.html",
+            "reference_label": "sendmail Configuration"
+          }
+        },
+        {
+          "key": "D",
+          "text": "/var/spool/postfix/master.cf",
+          "explanation": {
+            "text": "master.cf はサービスプロセス定義だが、メイン設定ファイルではない。",
+            "reference": "http://www.postfix.org/master.5.html",
+            "reference_label": "master(5) - Postfix configuration"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Postfix の基本設定（ホスト名やリレー先など）は /etc/postfix/main.cf で行う。",
+        "reference": "http://www.postfix.org/BASIC_CONFIGURATION_README.html",
+        "reference_label": "Postfix Basic Configuration"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-47",
+      "question": "公的認証局が発行したサーバ証明書を HTTPS サーバで利用する主な目的として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "サーバとの通信内容の暗号化とサーバ認証を行う",
+          "explanation": {
+            "text": "TLS 証明書により暗号化チャネルを確立し、サーバの真正性を検証できる。",
+            "reference": "https://datatracker.ietf.org/doc/html/rfc8446",
+            "reference_label": "RFC 8446 (TLS 1.3)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "クライアントの OS を自動更新する",
+          "explanation": {
+            "text": "証明書は更新機能とは無関係である。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc5280",
+            "reference_label": "RFC 5280"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Web アプリケーションのソースコードを保護する",
+          "explanation": {
+            "text": "証明書は通信を保護するのであり、サーバ内部のソースコード保護ではない。",
+            "reference": "https://datatracker.ietf.org/doc/html/rfc8446",
+            "reference_label": "RFC 8446 (TLS 1.3)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "クライアントの IP アドレスを隠蔽する",
+          "explanation": {
+            "text": "TLS は IP アドレスを秘匿しない。",
+            "reference": "https://datatracker.ietf.org/doc/html/rfc8446",
+            "reference_label": "RFC 8446 (TLS 1.3)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "HTTPS では TLS により暗号化とサーバ認証を提供し、中間者攻撃や盗聴のリスクを下げる。",
+        "reference": "https://datatracker.ietf.org/doc/html/rfc8446",
+        "reference_label": "RFC 8446 (TLS 1.3)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-48",
+      "question": "SSH サーバの設定で、パスワード認証を無効化し公開鍵認証のみ許可したい。sshd_config で設定すべきディレクティブの組み合わせとして最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "PasswordAuthentication no と PubkeyAuthentication yes",
+          "explanation": {
+            "text": "PasswordAuthentication を無効化し、公開鍵認証を有効化する一般的な設定である。",
+            "reference": "https://man.openbsd.org/sshd_config",
+            "reference_label": "sshd_config(5)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "PermitRootLogin no と AllowUsers",
+          "explanation": {
+            "text": "root ログインやユーザ制限の設定であり、認証方式の制御とは別である。",
+            "reference": "https://man.openbsd.org/sshd_config",
+            "reference_label": "sshd_config(5)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "PermitEmptyPasswords no と MaxAuthTries 1",
+          "explanation": {
+            "text": "空パスワード禁止や試行回数であり、パスワード認証の完全禁止にはならない。",
+            "reference": "https://man.openbsd.org/sshd_config",
+            "reference_label": "sshd_config(5)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "UsePAM no と ChallengeResponseAuthentication no",
+          "explanation": {
+            "text": "PAM やチャレンジレスポンス認証の設定で、パスワード認証全体の無効化設定とは異なる。",
+            "reference": "https://man.openbsd.org/sshd_config",
+            "reference_label": "sshd_config(5)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "パスワードを禁止し鍵認証のみとするには PasswordAuthentication no と PubkeyAuthentication yes を組み合わせるのが基本である。",
+        "reference": "https://man.openbsd.org/sshd_config",
+        "reference_label": "sshd_config(5)"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-49",
+      "question": "rsync コマンドの説明として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "差分のみを転送して高速にディレクトリ同期を行うためのコマンド",
+          "explanation": {
+            "text": "rsync は差分転送アルゴリズムを用いて効率的なバックアップ・同期を行う。",
+            "reference": "https://download.samba.org/pub/rsync/rsync.html",
+            "reference_label": "rsync documentation"
+          }
+        },
+        {
+          "key": "B",
+          "text": "暗号化トンネルを確立するためのコマンド",
+          "explanation": {
+            "text": "暗号化トンネルは通常 ssh などで確立する。rsync は転送プロトコル。",
+            "reference": "https://download.samba.org/pub/rsync/rsync.html",
+            "reference_label": "rsync documentation"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ファイルシステムの整合性チェックのみを行うコマンド",
+          "explanation": {
+            "text": "整合性チェックには fsck などが使われる。",
+            "reference": "https://man7.org/linux/man-pages/man8/fsck.8.html",
+            "reference_label": "fsck(8)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "任意のプロセスのメモリダンプを取得するコマンド",
+          "explanation": {
+            "text": "メモリダンプは gcore などを用いる。",
+            "reference": "https://man7.org/linux/man-pages/man1/gcore.1.html",
+            "reference_label": "gcore(1)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "rsync はバックアップ・ミラーリングで頻繁に利用される差分同期ツールである。",
+        "reference": "https://download.samba.org/pub/rsync/rsync.html",
+        "reference_label": "rsync documentation"
+      }
+    },
+
+    {
+      "id": "linuc-level1-102-50",
+      "question": "システムの起動時に自動的にファイルシステムの整合性検査（fsck）を行うかどうかを制御する設定として、/etc/fstab の各エントリで指定するフィールドのうち正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "6番目のフィールド（fs_passno）",
+          "explanation": {
+            "text": "fs_passno が 0 以外なら fsck の対象となり、数値によってチェック順序が決まる。",
+            "reference": "https://man7.org/linux/man-pages/man5/fstab.5.html",
+            "reference_label": "fstab(5)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "4番目のフィールド（mount options）",
+          "explanation": {
+            "text": "マウントオプションは挙動を制御するが、fsck の実行順序とは直接関係しない。",
+            "reference": "https://man7.org/linux/man-pages/man5/fstab.5.html",
+            "reference_label": "fstab(5)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "5番目のフィールド（dump 頻度）",
+          "explanation": {
+            "text": "5番目は dump コマンドによるバックアップの対象かどうかを示す。",
+            "reference": "https://man7.org/linux/man-pages/man5/fstab.5.html",
+            "reference_label": "fstab(5)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "3番目のフィールド（fs_type）",
+          "explanation": {
+            "text": "fs_type はファイルシステム種別であり、fsck 実行の有無を直接制御しない。",
+            "reference": "https://man7.org/linux/man-pages/man5/fstab.5.html",
+            "reference_label": "fstab(5)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "fs_passno に 0 を指定すると fsck 対象外となり、1 や 2 を指定すると起動時に整合性検査が行われる。",
+        "reference": "https://man7.org/linux/man-pages/man5/fstab.5.html",
+        "reference_label": "fstab(5)"
+      }
+    }
+
+  ]
+}

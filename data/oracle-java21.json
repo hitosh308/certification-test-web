@@ -1,0 +1,2467 @@
+{
+  "exam": {
+    "id": "java21_developer",
+    "title": "Java SE 21 Developer Professional",
+    "description": "Java SE 21 開発者向けのこのプロフェッショナル認定試験は、Java SE 21プラットフォーム上での開発スキルを証明するもので、オブジェクト指向と関数型プログラミング、並行処理、モジュール化、最新の言語機能（例：仮想スレッド、シーケンスト・コレクション、パターンマッチング）などを含む幅広いJava 21の知識と実践力を問います。",
+    "version": "2024年7月",
+    "price": "245 USD",
+    "difficulty": "難しい",
+    "official-site": "https://education.oracle.com/java-se-21-developer-professional/pexam_1Z0-830",
+    "category": {
+      "id": "oracle",
+      "name": "Oracle"
+    }
+  },
+  "questions": [
+    {
+      "id": "oracle-java21-q1",
+      "question": "Java 21で導入されたVirtual Threadsの特徴として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "OSカーネルスレッドと1対1でマッピングされる。",
+          "explanation": {
+            "text": "これは従来のPlatform Threadの特徴であり、Virtual Threadではない。",
+            "reference": "https://openjdk.org/jeps/444",
+            "reference_label": "JEP 444: Virtual Threads"
+          }
+        },
+        {
+          "key": "B",
+          "text": "軽量であり、大量に生成可能である。",
+          "explanation": {
+            "text": "Virtual Threadは軽量で、数百万単位のスレッドを生成できるように設計されている。",
+            "reference": "https://openjdk.org/jeps/444",
+            "reference_label": "JEP 444: Virtual Threads"
+          }
+        },
+        {
+          "key": "C",
+          "text": "常にデーモンスレッドとして動作する。",
+          "explanation": {
+            "text": "Virtual Threadはデーモンである必要はなく、通常のスレッドと同様に扱える。",
+            "reference": "https://openjdk.org/jeps/444",
+            "reference_label": "JEP 444: Virtual Threads"
+          }
+        },
+        {
+          "key": "D",
+          "text": "従来のExecutorServiceでは利用できない。",
+          "explanation": {
+            "text": "Executors.newVirtualThreadPerTaskExecutor()など、ExecutorService経由で利用可能である。",
+            "reference": "https://openjdk.org/jeps/444",
+            "reference_label": "JEP 444: Virtual Threads"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Java 21のVirtual Threadsは軽量スレッドで、大量に生成可能な点が特徴であり、従来のPlatform Threadsと比較してスケーラブルな並行処理を可能にする。",
+        "reference": "https://openjdk.org/jeps/444",
+        "reference_label": "JEP 444: Virtual Threads"
+      }
+    },
+    {
+      "id": "oracle-java21-q2",
+      "question": "Java 21のRecord Patternsにおいて正しい利用方法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "switch文でレコードの分解ができる。",
+          "explanation": {
+            "text": "Record Patternsを使うとswitch文やinstanceofでレコードを分解できる。",
+            "reference": "https://openjdk.org/jeps/440",
+            "reference_label": "JEP 440: Record Patterns"
+          }
+        },
+        {
+          "key": "B",
+          "text": "レコードのコンストラクタを省略できる。",
+          "explanation": {
+            "text": "Record Patternsは分解に関する機能であり、コンストラクタとは無関係。",
+            "reference": "https://openjdk.org/jeps/440",
+            "reference_label": "JEP 440: Record Patterns"
+          }
+        },
+        {
+          "key": "C",
+          "text": "enum型の要素を直接分解できる。",
+          "explanation": {
+            "text": "Record Patternsはレコード専用であり、enumには適用されない。",
+            "reference": "https://openjdk.org/jeps/440",
+            "reference_label": "JEP 440: Record Patterns"
+          }
+        },
+        {
+          "key": "D",
+          "text": "抽象クラスの分解にも利用できる。",
+          "explanation": {
+            "text": "Record Patternsは抽象クラスには利用できない。",
+            "reference": "https://openjdk.org/jeps/440",
+            "reference_label": "JEP 440: Record Patterns"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Record Patternsはswitch文やinstanceofを使ったパターンマッチでレコードを分解できるようにする。",
+        "reference": "https://openjdk.org/jeps/440",
+        "reference_label": "JEP 440: Record Patterns"
+      }
+    },
+    {
+      "id": "oracle-java21-q3",
+      "question": "Java 21で追加されたSequenced Collectionsの主な利点はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Collectionに順序操作の標準APIを追加する。",
+          "explanation": {
+            "text": "Sequenced Collectionは最初や最後の要素操作など順序付きをサポートするAPIを追加する。",
+            "reference": "https://openjdk.org/jeps/431",
+            "reference_label": "JEP 431: Sequenced Collections"
+          }
+        },
+        {
+          "key": "B",
+          "text": "すべてのCollectionが自動的にソートされる。",
+          "explanation": {
+            "text": "ソートは自動ではなく、明示的に操作する必要がある。",
+            "reference": "https://openjdk.org/jeps/431",
+            "reference_label": "JEP 431: Sequenced Collections"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ListとSetが同じインタフェースを実装するようになる。",
+          "explanation": {
+            "text": "ListやSetが共通で実装するのはSequencedCollectionであり、同じデータ構造になるわけではない。",
+            "reference": "https://openjdk.org/jeps/431",
+            "reference_label": "JEP 431: Sequenced Collections"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Mapに影響はない。",
+          "explanation": {
+            "text": "MapにもSequencedMapインタフェースが追加され、順序操作が可能になった。",
+            "reference": "https://openjdk.org/jeps/431",
+            "reference_label": "JEP 431: Sequenced Collections"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Sequenced CollectionsはCollectionに順序操作を統一的に導入し、最初や最後の要素を簡単に扱えるようにした。",
+        "reference": "https://openjdk.org/jeps/431",
+        "reference_label": "JEP 431: Sequenced Collections"
+      }
+    },
+    {
+      "id": "oracle-java21-q4",
+      "question": "Pattern Matching for switch (Java 21)の特徴として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "switch式でnullを安全に扱える。",
+          "explanation": {
+            "text": "Pattern Matching for switchではnullを扱うパターンを定義できる。",
+            "reference": "https://openjdk.org/jeps/441",
+            "reference_label": "JEP 441: Pattern Matching for switch"
+          }
+        },
+        {
+          "key": "B",
+          "text": "switch文で文字列しか使えなくなった。",
+          "explanation": {
+            "text": "Java 21ではむしろ型に基づいたswitchが拡張されている。",
+            "reference": "https://openjdk.org/jeps/441",
+            "reference_label": "JEP 441: Pattern Matching for switch"
+          }
+        },
+        {
+          "key": "C",
+          "text": "instanceof演算子が不要になる。",
+          "explanation": {
+            "text": "完全に不要になるわけではないが、switch式内で型チェックとキャストをまとめて行える。",
+            "reference": "https://openjdk.org/jeps/441",
+            "reference_label": "JEP 441: Pattern Matching for switch"
+          }
+        },
+        {
+          "key": "D",
+          "text": "switch式の戻り値は常にObject型になる。",
+          "explanation": {
+            "text": "switch式の戻り値型はケースごとに一致するよう型推論される。",
+            "reference": "https://openjdk.org/jeps/441",
+            "reference_label": "JEP 441: Pattern Matching for switch"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Pattern Matching for switchにより、nullを含むより安全なswitch式の記述が可能になった。",
+        "reference": "https://openjdk.org/jeps/441",
+        "reference_label": "JEP 441: Pattern Matching for switch"
+      }
+    },
+    {
+      "id": "oracle-java21-q5",
+      "question": "Unnamed Patterns and Variables (Java 21)の用途として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "不要な変数を\"_\"で表現して無視できる。",
+          "explanation": {
+            "text": "Unnamed Patterns/Variablesは\"_\"で不要な値を無視する用途に使う。",
+            "reference": "https://openjdk.org/jeps/443",
+            "reference_label": "JEP 443: Unnamed Patterns and Variables"
+          }
+        },
+        {
+          "key": "B",
+          "text": "匿名クラスの別名として利用できる。",
+          "explanation": {
+            "text": "匿名クラスとは関係がない。",
+            "reference": "https://openjdk.org/jeps/443",
+            "reference_label": "JEP 443: Unnamed Patterns and Variables"
+          }
+        },
+        {
+          "key": "C",
+          "text": "変数スコープを拡張する。",
+          "explanation": {
+            "text": "スコープとは関係なく、使わない変数をシンプルに無視する仕組み。",
+            "reference": "https://openjdk.org/jeps/443",
+            "reference_label": "JEP 443: Unnamed Patterns and Variables"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ラムダ式の戻り値を自動生成する。",
+          "explanation": {
+            "text": "ラムダ式の戻り値とは関係がない。",
+            "reference": "https://openjdk.org/jeps/443",
+            "reference_label": "JEP 443: Unnamed Patterns and Variables"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Unnamed Patterns and Variablesは使わない変数を\"_\"で表記し、可読性を高める。",
+        "reference": "https://openjdk.org/jeps/443",
+        "reference_label": "JEP 443: Unnamed Patterns and Variables"
+      }
+    },
+    {
+      "id": "oracle-java21-q6",
+      "question": "Structured Concurrency (Java 21, Preview)の目的として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "複数タスクを1つのスコープで管理し、キャンセルやエラー処理を統一する。",
+          "explanation": {
+            "text": "Structured Concurrencyはタスクをスコープ単位で管理し、エラー処理やキャンセルを整理する。",
+            "reference": "https://openjdk.org/jeps/453",
+            "reference_label": "JEP 453: Structured Concurrency (Preview)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "スレッドプールのサイズを自動調整する。",
+          "explanation": {
+            "text": "これはStructured Concurrencyの機能ではない。",
+            "reference": "https://openjdk.org/jeps/453",
+            "reference_label": "JEP 453: Structured Concurrency (Preview)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "非同期処理を強制的に同期処理に変換する。",
+          "explanation": {
+            "text": "Structured Concurrencyは非同期を無理に同期化する仕組みではない。",
+            "reference": "https://openjdk.org/jeps/453",
+            "reference_label": "JEP 453: Structured Concurrency (Preview)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ラムダ式を自動的に並列実行する。",
+          "explanation": {
+            "text": "ラムダ式の並列化はStructured Concurrencyの目的ではない。",
+            "reference": "https://openjdk.org/jeps/453",
+            "reference_label": "JEP 453: Structured Concurrency (Preview)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Structured Concurrencyはタスクをスコープ単位で扱うことでエラーやキャンセル処理を簡潔にする仕組み。",
+        "reference": "https://openjdk.org/jeps/453",
+        "reference_label": "JEP 453: Structured Concurrency (Preview)"
+      }
+    },
+    {
+      "id": "oracle-java21-q7",
+      "question": "Scoped Values (Java 21, Preview)の特徴として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ThreadLocalの代替として、一時的な値のスレッド間共有を可能にする。",
+          "explanation": {
+            "text": "Scoped ValuesはThreadLocalの代替として、値をスレッド内スコープに閉じ込めて扱える。",
+            "reference": "https://openjdk.org/jeps/446",
+            "reference_label": "JEP 446: Scoped Values (Preview)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "スレッド間の値をグローバルに共有する。",
+          "explanation": {
+            "text": "Scoped Valuesはグローバル共有ではなくスコープに閉じた値を扱う。",
+            "reference": "https://openjdk.org/jeps/446",
+            "reference_label": "JEP 446: Scoped Values (Preview)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "GCを無効化する。",
+          "explanation": {
+            "text": "Scoped ValuesはGCとは無関係。",
+            "reference": "https://openjdk.org/jeps/446",
+            "reference_label": "JEP 446: Scoped Values (Preview)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ラムダ式のキャプチャ変数を自動的に最適化する。",
+          "explanation": {
+            "text": "Scoped Valuesはラムダ式最適化とは関係がない。",
+            "reference": "https://openjdk.org/jeps/446",
+            "reference_label": "JEP 446: Scoped Values (Preview)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Scoped ValuesはThreadLocalに代わる仕組みとして、一時的な値をスレッドのスコープ内に渡す機能を提供する。",
+        "reference": "https://openjdk.org/jeps/446",
+        "reference_label": "JEP 446: Scoped Values (Preview)"
+      }
+    },
+    {
+      "id": "oracle-java21-q8",
+      "question": "Java 21のString Templates (Preview)の目的として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "文字列連結をより安全かつ簡潔に行う。",
+          "explanation": {
+            "text": "String Templatesは文字列内に直接変数や式を埋め込める仕組みで、安全性と可読性を高める。",
+            "reference": "https://openjdk.org/jeps/430",
+            "reference_label": "JEP 430: String Templates (Preview)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "正規表現のマッチングを高速化する。",
+          "explanation": {
+            "text": "String Templatesは正規表現の最適化とは無関係。",
+            "reference": "https://openjdk.org/jeps/430",
+            "reference_label": "JEP 430: String Templates (Preview)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "文字列の暗号化を自動化する。",
+          "explanation": {
+            "text": "暗号化とは関係がない。",
+            "reference": "https://openjdk.org/jeps/430",
+            "reference_label": "JEP 430: String Templates (Preview)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "StringBuilderを常に内部で利用する。",
+          "explanation": {
+            "text": "内部実装はコンパイラ依存であり、必ずしもStringBuilderではない。",
+            "reference": "https://openjdk.org/jeps/430",
+            "reference_label": "JEP 430: String Templates (Preview)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "String Templatesは文字列に直接式を埋め込み、安全かつ簡潔に記述するための仕組みである。",
+        "reference": "https://openjdk.org/jeps/430",
+        "reference_label": "JEP 430: String Templates (Preview)"
+      }
+    },
+    {
+      "id": "oracle-java21-q9",
+      "question": "Java 21で導入されたswitchパターンマッチングにおいて、型ごとに安全に分岐できる利点はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "キャスト処理を明示的に書かなくてもよい。",
+          "explanation": {
+            "text": "switch内で型を指定すると自動的にキャストされるため、明示的なキャストが不要になる。",
+            "reference": "https://openjdk.org/jeps/441",
+            "reference_label": "JEP 441: Pattern Matching for switch"
+          }
+        },
+        {
+          "key": "B",
+          "text": "switchに使える型が制限される。",
+          "explanation": {
+            "text": "Java 21ではむしろswitchの対象型が拡張された。",
+            "reference": "https://openjdk.org/jeps/441",
+            "reference_label": "JEP 441: Pattern Matching for switch"
+          }
+        },
+        {
+          "key": "C",
+          "text": "nullが自動的に許容される。",
+          "explanation": {
+            "text": "nullは明示的に扱わないと例外が発生する。",
+            "reference": "https://openjdk.org/jeps/441",
+            "reference_label": "JEP 441: Pattern Matching for switch"
+          }
+        },
+        {
+          "key": "D",
+          "text": "例外処理が不要になる。",
+          "explanation": {
+            "text": "例外処理は引き続き必要である。",
+            "reference": "https://openjdk.org/jeps/441",
+            "reference_label": "JEP 441: Pattern Matching for switch"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "switchの型パターンマッチングにより、明示的なキャストを書く必要がなくなり、安全に型分岐ができる。",
+        "reference": "https://openjdk.org/jeps/441",
+        "reference_label": "JEP 441: Pattern Matching for switch"
+      }
+    },
+    {
+      "id": "oracle-java21-q10",
+      "question": "Java 21のVirtual Threadsを使った場合の利点として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "I/O待ちの際に効率的にスレッドリソースを解放できる。",
+          "explanation": {
+            "text": "Virtual ThreadsはブロッキングI/O中にスレッドを効率的に解放し、大規模な同時接続に対応できる。",
+            "reference": "https://openjdk.org/jeps/444",
+            "reference_label": "JEP 444: Virtual Threads"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ガーベジコレクションを高速化する。",
+          "explanation": {
+            "text": "Virtual ThreadsはGCとは無関係。",
+            "reference": "https://openjdk.org/jeps/444",
+            "reference_label": "JEP 444: Virtual Threads"
+          }
+        },
+        {
+          "key": "C",
+          "text": "必ずExecutorServiceを経由しなければ使えない。",
+          "explanation": {
+            "text": "Executorを使わずにThread.ofVirtual().start(...)でも利用可能。",
+            "reference": "https://openjdk.org/jeps/444",
+            "reference_label": "JEP 444: Virtual Threads"
+          }
+        },
+        {
+          "key": "D",
+          "text": "常にデーモンスレッドとして動作する。",
+          "explanation": {
+            "text": "Virtual Threadsはデーモンスレッドである必要はない。",
+            "reference": "https://openjdk.org/jeps/444",
+            "reference_label": "JEP 444: Virtual Threads"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Virtual ThreadsはI/O待ち時に効率的にリソースを解放できるため、大規模な並行処理で有効。",
+        "reference": "https://openjdk.org/jeps/444",
+        "reference_label": "JEP 444: Virtual Threads"
+      }
+    },
+    {
+      "id": "oracle-java21-q11",
+      "question": "Java 21のSequencedMapで利用できる新しい操作はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "firstEntry()とlastEntry()",
+          "explanation": {
+            "text": "SequencedMapは最初や最後の要素を直接扱うメソッドを提供する。",
+            "reference": "https://openjdk.org/jeps/431",
+            "reference_label": "JEP 431: Sequenced Collections"
+          }
+        },
+        {
+          "key": "B",
+          "text": "自動ソート機能",
+          "explanation": {
+            "text": "SequencedMapはソートを自動で行わない。",
+            "reference": "https://openjdk.org/jeps/431",
+            "reference_label": "JEP 431: Sequenced Collections"
+          }
+        },
+        {
+          "key": "C",
+          "text": "暗号化された格納",
+          "explanation": {
+            "text": "暗号化は関係がない。",
+            "reference": "https://openjdk.org/jeps/431",
+            "reference_label": "JEP 431: Sequenced Collections"
+          }
+        },
+        {
+          "key": "D",
+          "text": "キーの型推論",
+          "explanation": {
+            "text": "キーの型推論は従来のジェネリクスで行われるものであり、SequencedMap固有の機能ではない。",
+            "reference": "https://openjdk.org/jeps/431",
+            "reference_label": "JEP 431: Sequenced Collections"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "SequencedMapは最初や最後の要素操作のためにfirstEntry(), lastEntry()を提供する。",
+        "reference": "https://openjdk.org/jeps/431",
+        "reference_label": "JEP 431: Sequenced Collections"
+      }
+    },
+    {
+      "id": "oracle-java21-q12",
+      "question": "Java 21でのUnnamed Variablesの利用例として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "拡張for文で不要なループ変数を無視する。",
+          "explanation": {
+            "text": "Unnamed Variableを使って不要なループ変数を`for (var _ : list)`のように無視できる。",
+            "reference": "https://openjdk.org/jeps/443",
+            "reference_label": "JEP 443: Unnamed Patterns and Variables"
+          }
+        },
+        {
+          "key": "B",
+          "text": "クラス名の省略に使う。",
+          "explanation": {
+            "text": "Unnamed Variablesはクラス名省略には使えない。",
+            "reference": "https://openjdk.org/jeps/443",
+            "reference_label": "JEP 443: Unnamed Patterns and Variables"
+          }
+        },
+        {
+          "key": "C",
+          "text": "例外キャッチで不要な例外オブジェクトを無視する。",
+          "explanation": {
+            "text": "try-catchで `catch (Exception _) { ... }` のように使える。",
+            "reference": "https://openjdk.org/jeps/443",
+            "reference_label": "JEP 443: Unnamed Patterns and Variables"
+          }
+        },
+        {
+          "key": "D",
+          "text": "AとCの両方。",
+          "explanation": {
+            "text": "Unnamed Variablesはfor文とcatch句の両方で利用できる。",
+            "reference": "https://openjdk.org/jeps/443",
+            "reference_label": "JEP 443: Unnamed Patterns and Variables"
+          }
+        }
+      ],
+      "answer": "D",
+      "explanation": {
+        "text": "Unnamed Variablesは拡張for文やcatch句などで不要な変数を無視する用途に使える。",
+        "reference": "https://openjdk.org/jeps/443",
+        "reference_label": "JEP 443: Unnamed Patterns and Variables"
+      }
+    },
+    {
+      "id": "oracle-java21-q13",
+      "question": "Scoped Valuesを利用するメリットはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "値をスレッドスコープに閉じ込めて扱えるため、ThreadLocalより安全。",
+          "explanation": {
+            "text": "Scoped ValuesはThreadLocalの代替として、一時的な値を安全に扱える。",
+            "reference": "https://openjdk.org/jeps/446",
+            "reference_label": "JEP 446: Scoped Values (Preview)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "値をJVM全体で共有できる。",
+          "explanation": {
+            "text": "Scoped Valuesはグローバル共有ではなく、あくまでスレッドスコープ内での利用。",
+            "reference": "https://openjdk.org/jeps/446",
+            "reference_label": "JEP 446: Scoped Values (Preview)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ガーベジコレクションを制御できる。",
+          "explanation": {
+            "text": "GC制御機能はない。",
+            "reference": "https://openjdk.org/jeps/446",
+            "reference_label": "JEP 446: Scoped Values (Preview)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ラムダ式を高速化する。",
+          "explanation": {
+            "text": "Scoped Valuesとラムダ式のパフォーマンスは無関係。",
+            "reference": "https://openjdk.org/jeps/446",
+            "reference_label": "JEP 446: Scoped Values (Preview)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Scoped ValuesはThreadLocalの代替として、値をスレッド内のスコープに限定して安全に渡せる。",
+        "reference": "https://openjdk.org/jeps/446",
+        "reference_label": "JEP 446: Scoped Values (Preview)"
+      }
+    },
+    {
+      "id": "oracle-java21-q14",
+      "question": "Structured Concurrencyを使った場合に得られる効果はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "複数タスクをまとめてキャンセルやエラー処理できる。",
+          "explanation": {
+            "text": "Structured Concurrencyはタスクをスコープ単位で管理し、キャンセルやエラー処理を統一的に行える。",
+            "reference": "https://openjdk.org/jeps/453",
+            "reference_label": "JEP 453: Structured Concurrency (Preview)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "スレッドプールサイズを自動調整する。",
+          "explanation": {
+            "text": "これはStructured Concurrencyの機能ではない。",
+            "reference": "https://openjdk.org/jeps/453",
+            "reference_label": "JEP 453: Structured Concurrency (Preview)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "非同期処理を強制的に逐次実行に変換する。",
+          "explanation": {
+            "text": "非同期処理を逐次化する仕組みではない。",
+            "reference": "https://openjdk.org/jeps/453",
+            "reference_label": "JEP 453: Structured Concurrency (Preview)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ラムダ式を暗黙的に並列実行する。",
+          "explanation": {
+            "text": "ラムダ式の並列実行はStructured Concurrencyの目的ではない。",
+            "reference": "https://openjdk.org/jeps/453",
+            "reference_label": "JEP 453: Structured Concurrency (Preview)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Structured Concurrencyを使うと、複数タスクをまとめてスコープで管理し、エラーやキャンセル処理を一元化できる。",
+        "reference": "https://openjdk.org/jeps/453",
+        "reference_label": "JEP 453: Structured Concurrency (Preview)"
+      }
+    },
+    {
+      "id": "oracle-java21-q15",
+      "question": "Java 21で導入されたRecord Patternsを使うと、どのような処理が簡潔になるか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "レコードオブジェクトの分解とフィールド抽出",
+          "explanation": {
+            "text": "Record Patternsはレコードのフィールドを簡潔に分解して取り出せる。",
+            "reference": "https://openjdk.org/jeps/440",
+            "reference_label": "JEP 440: Record Patterns"
+          }
+        },
+        {
+          "key": "B",
+          "text": "クラスの継承階層の自動生成",
+          "explanation": {
+            "text": "Record Patternsはクラス継承の自動生成とは関係がない。",
+            "reference": "https://openjdk.org/jeps/440",
+            "reference_label": "JEP 440: Record Patterns"
+          }
+        },
+        {
+          "key": "C",
+          "text": "enumの定数定義",
+          "explanation": {
+            "text": "enum定数の定義とは関係がない。",
+            "reference": "https://openjdk.org/jeps/440",
+            "reference_label": "JEP 440: Record Patterns"
+          }
+        },
+        {
+          "key": "D",
+          "text": "匿名クラスの簡略化",
+          "explanation": {
+            "text": "Record Patternsは匿名クラスの表記とは関係がない。",
+            "reference": "https://openjdk.org/jeps/440",
+            "reference_label": "JEP 440: Record Patterns"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Record Patternsを使うと、レコード型の分解とフィールド取り出しが簡潔に記述できる。",
+        "reference": "https://openjdk.org/jeps/440",
+        "reference_label": "JEP 440: Record Patterns"
+      }
+    },
+    {
+      "id": "oracle-java21-q16",
+      "question": "Virtual Threadsと従来のPlatform Threadsの違いとして正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Virtual ThreadsはOSカーネルスレッドと1対1でマッピングされる。",
+          "explanation": {
+            "text": "これはPlatform Threadsの特徴であり、Virtual Threadsは複数が1つのカーネルスレッド上で実行される。",
+            "reference": "https://openjdk.org/jeps/444",
+            "reference_label": "JEP 444: Virtual Threads"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Virtual Threadsは軽量で、数百万単位で作成可能。",
+          "explanation": {
+            "text": "Virtual Threadsは軽量で、大量に生成可能なのが特徴。",
+            "reference": "https://openjdk.org/jeps/444",
+            "reference_label": "JEP 444: Virtual Threads"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Platform Threadsは常にデーモンスレッドとして動作する。",
+          "explanation": {
+            "text": "Platform Threadsも通常スレッドとデーモンスレッドを区別できる。",
+            "reference": "https://openjdk.org/jeps/444",
+            "reference_label": "JEP 444: Virtual Threads"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Virtual ThreadsはExecutorServiceから利用できない。",
+          "explanation": {
+            "text": "Executors.newVirtualThreadPerTaskExecutor()から利用可能である。",
+            "reference": "https://openjdk.org/jeps/444",
+            "reference_label": "JEP 444: Virtual Threads"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Virtual Threadsは軽量で、数百万単位で生成できる点が従来のPlatform Threadsと大きく異なる。",
+        "reference": "https://openjdk.org/jeps/444",
+        "reference_label": "JEP 444: Virtual Threads"
+      }
+    },
+    {
+      "id": "oracle-java21-q17",
+      "question": "Java 21でのString Templatesの構文において正しい例はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "STR.\"Hello, {name}\"",
+          "explanation": {
+            "text": "String Templatesはテンプレートプロセッサを指定し、`STR.\"Hello, {name}\"`のように書く。",
+            "reference": "https://openjdk.org/jeps/430",
+            "reference_label": "JEP 430: String Templates (Preview)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "\"Hello, $name\"",
+          "explanation": {
+            "text": "これはJavaScript風の表記であり、Javaの構文ではない。",
+            "reference": "https://openjdk.org/jeps/430",
+            "reference_label": "JEP 430: String Templates (Preview)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "f\"Hello, {name}\"",
+          "explanation": {
+            "text": "これはPythonのf-string構文であり、Javaではない。",
+            "reference": "https://openjdk.org/jeps/430",
+            "reference_label": "JEP 430: String Templates (Preview)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "`Hello, {name}`",
+          "explanation": {
+            "text": "バッククォートはJavaの文字列構文として使われない。",
+            "reference": "https://openjdk.org/jeps/430",
+            "reference_label": "JEP 430: String Templates (Preview)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Java 21のString Templatesでは、`STR.\"Hello, {name}\"`のようにプロセッサとテンプレートを組み合わせる。",
+        "reference": "https://openjdk.org/jeps/430",
+        "reference_label": "JEP 430: String Templates (Preview)"
+      }
+    },
+    {
+      "id": "oracle-java21-q18",
+      "question": "Pattern Matching for switchでsealedクラスを扱う場合の利点はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "全てのサブタイプを網羅するswitchが書ける。",
+          "explanation": {
+            "text": "sealedクラスとswitchを組み合わせると、全サブタイプをカバーしないとコンパイルエラーになる。",
+            "reference": "https://openjdk.org/jeps/441",
+            "reference_label": "JEP 441: Pattern Matching for switch"
+          }
+        },
+        {
+          "key": "B",
+          "text": "抽象クラスも自動的にインスタンス化される。",
+          "explanation": {
+            "text": "抽象クラスのインスタンス化は不可能であり、この機能は提供されない。",
+            "reference": "https://openjdk.org/jeps/441",
+            "reference_label": "JEP 441: Pattern Matching for switch"
+          }
+        },
+        {
+          "key": "C",
+          "text": "switch式の結果は常にString型になる。",
+          "explanation": {
+            "text": "戻り値型はケースごとに一致する必要があり、常にString型になるわけではない。",
+            "reference": "https://openjdk.org/jeps/441",
+            "reference_label": "JEP 441: Pattern Matching for switch"
+          }
+        },
+        {
+          "key": "D",
+          "text": "nullが自動的に許容される。",
+          "explanation": {
+            "text": "nullは別途扱わないと例外が発生する。",
+            "reference": "https://openjdk.org/jeps/441",
+            "reference_label": "JEP 441: Pattern Matching for switch"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "sealedクラスとswitchを組み合わせると、すべてのサブタイプを網羅する安全なコードが書ける。",
+        "reference": "https://openjdk.org/jeps/441",
+        "reference_label": "JEP 441: Pattern Matching for switch"
+      }
+    },
+    {
+      "id": "oracle-java21-q19",
+      "question": "Unnamed Patternsを使うと、どのようなコード改善が期待できるか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "不要なパラメータや変数を明示的に無視できる。",
+          "explanation": {
+            "text": "Unnamed Patternsは使わない変数を`_`で表記して無視できる。",
+            "reference": "https://openjdk.org/jeps/443",
+            "reference_label": "JEP 443: Unnamed Patterns and Variables"
+          }
+        },
+        {
+          "key": "B",
+          "text": "匿名クラスの名前付けを省略できる。",
+          "explanation": {
+            "text": "匿名クラスとは無関係。",
+            "reference": "https://openjdk.org/jeps/443",
+            "reference_label": "JEP 443: Unnamed Patterns and Variables"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ラムダ式を自動的に最適化する。",
+          "explanation": {
+            "text": "ラムダ式の最適化はUnnamed Patternsの目的ではない。",
+            "reference": "https://openjdk.org/jeps/443",
+            "reference_label": "JEP 443: Unnamed Patterns and Variables"
+          }
+        },
+        {
+          "key": "D",
+          "text": "例外処理が不要になる。",
+          "explanation": {
+            "text": "例外処理は引き続き必要。",
+            "reference": "https://openjdk.org/jeps/443",
+            "reference_label": "JEP 443: Unnamed Patterns and Variables"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Unnamed Patternsは不要な変数を`_`で無視でき、コードの可読性と意図の明確化に役立つ。",
+        "reference": "https://openjdk.org/jeps/443",
+        "reference_label": "JEP 443: Unnamed Patterns and Variables"
+      }
+    },
+    {
+      "id": "oracle-java21-q20",
+      "question": "Structured Concurrencyを利用する際のコード上の特徴はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "try-with-resources構文でタスクスコープを管理できる。",
+          "explanation": {
+            "text": "Structured Concurrencyではtry-with-resourcesでスコープを表し、その中でタスクを管理する。",
+            "reference": "https://openjdk.org/jeps/453",
+            "reference_label": "JEP 453: Structured Concurrency (Preview)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "必ずsynchronizedを使う必要がある。",
+          "explanation": {
+            "text": "synchronizedは不要で、タスクスコープで自動的に管理される。",
+            "reference": "https://openjdk.org/jeps/453",
+            "reference_label": "JEP 453: Structured Concurrency (Preview)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Futureを直接返す仕組みのみを提供する。",
+          "explanation": {
+            "text": "Futureだけでなく、StructuredTaskScopeを通して複数タスクの管理ができる。",
+            "reference": "https://openjdk.org/jeps/453",
+            "reference_label": "JEP 453: Structured Concurrency (Preview)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "タスク終了を明示的に待つ必要がない。",
+          "explanation": {
+            "text": "スコープ終了時にタスクの完了を待つ仕組みがある。",
+            "reference": "https://openjdk.org/jeps/453",
+            "reference_label": "JEP 453: Structured Concurrency (Preview)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Structured Concurrencyではtry-with-resourcesでタスクスコープを定義し、スコープ内のタスクを管理できる。",
+        "reference": "https://openjdk.org/jeps/453",
+        "reference_label": "JEP 453: Structured Concurrency (Preview)"
+      }
+    },
+    {
+      "id": "oracle-java21-q21",
+      "question": "Scoped Valuesを使う場合の正しい記述はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ScopedValue.where(...) を使って一時的な値をスコープにバインドできる。",
+          "explanation": {
+            "text": "Scoped ValuesはScopedValue.where(...)で値をスコープに一時的に関連付ける。",
+            "reference": "https://openjdk.org/jeps/446",
+            "reference_label": "JEP 446: Scoped Values (Preview)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "値は自動的に全スレッドで共有される。",
+          "explanation": {
+            "text": "Scoped Valuesはスレッド間でグローバル共有されない。",
+            "reference": "https://openjdk.org/jeps/446",
+            "reference_label": "JEP 446: Scoped Values (Preview)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "値はガーベジコレクションされない。",
+          "explanation": {
+            "text": "Scoped Valuesの値も通常通りGCの対象になる。",
+            "reference": "https://openjdk.org/jeps/446",
+            "reference_label": "JEP 446: Scoped Values (Preview)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ThreadLocalのインスタンスを内部的に利用している。",
+          "explanation": {
+            "text": "Scoped ValuesはThreadLocalの代替であり、内部実装も異なる。",
+            "reference": "https://openjdk.org/jeps/446",
+            "reference_label": "JEP 446: Scoped Values (Preview)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Scoped ValuesはScopedValue.where(...)で一時的な値をスコープに渡して安全に利用する。",
+        "reference": "https://openjdk.org/jeps/446",
+        "reference_label": "JEP 446: Scoped Values (Preview)"
+      }
+    },
+    {
+      "id": "oracle-java21-q22",
+      "question": "Java 21で導入されたSequencedCollectionの代表的なメソッドはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "getFirst() と getLast()",
+          "explanation": {
+            "text": "SequencedCollectionは最初や最後の要素を取得するgetFirst(), getLast()を提供する。",
+            "reference": "https://openjdk.org/jeps/431",
+            "reference_label": "JEP 431: Sequenced Collections"
+          }
+        },
+        {
+          "key": "B",
+          "text": "sort()",
+          "explanation": {
+            "text": "sortはListインタフェースのメソッドであり、SequencedCollection固有ではない。",
+            "reference": "https://openjdk.org/jeps/431",
+            "reference_label": "JEP 431: Sequenced Collections"
+          }
+        },
+        {
+          "key": "C",
+          "text": "toMap()",
+          "explanation": {
+            "text": "toMapはSequencedCollectionには存在しない。",
+            "reference": "https://openjdk.org/jeps/431",
+            "reference_label": "JEP 431: Sequenced Collections"
+          }
+        },
+        {
+          "key": "D",
+          "text": "computeIfAbsent()",
+          "explanation": {
+            "text": "computeIfAbsentはMapのメソッドであり、SequencedCollectionにはない。",
+            "reference": "https://openjdk.org/jeps/431",
+            "reference_label": "JEP 431: Sequenced Collections"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "SequencedCollectionは順序付き操作を標準化し、getFirst()やgetLast()を提供する。",
+        "reference": "https://openjdk.org/jeps/431",
+        "reference_label": "JEP 431: Sequenced Collections"
+      }
+    },
+    {
+      "id": "oracle-java21-q23",
+      "question": "Virtual Threadsを利用した場合の典型的なユースケースはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "数百万単位の同時接続を扱うサーバーアプリケーション",
+          "explanation": {
+            "text": "Virtual Threadsは軽量であり、大量の同時接続を扱うI/Oバウンド処理に適している。",
+            "reference": "https://openjdk.org/jeps/444",
+            "reference_label": "JEP 444: Virtual Threads"
+          }
+        },
+        {
+          "key": "B",
+          "text": "CPUバウンドな機械学習処理",
+          "explanation": {
+            "text": "CPUバウンド処理ではVirtual Threadsの利点は少ない。",
+            "reference": "https://openjdk.org/jeps/444",
+            "reference_label": "JEP 444: Virtual Threads"
+          }
+        },
+        {
+          "key": "C",
+          "text": "メモリ管理の最適化",
+          "explanation": {
+            "text": "Virtual Threadsはメモリ管理の最適化とは直接関係がない。",
+            "reference": "https://openjdk.org/jeps/444",
+            "reference_label": "JEP 444: Virtual Threads"
+          }
+        },
+        {
+          "key": "D",
+          "text": "暗号化アルゴリズムの実装",
+          "explanation": {
+            "text": "暗号化アルゴリズムはVirtual Threadsの主要ユースケースではない。",
+            "reference": "https://openjdk.org/jeps/444",
+            "reference_label": "JEP 444: Virtual Threads"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Virtual ThreadsはI/Oバウンドな大量同時接続処理に最も効果を発揮する。",
+        "reference": "https://openjdk.org/jeps/444",
+        "reference_label": "JEP 444: Virtual Threads"
+      }
+    },
+    {
+      "id": "oracle-java21-q24",
+      "question": "String Templates (Preview)で安全性を高める仕組みとして導入されたのはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "テンプレートプロセッサによる検証",
+          "explanation": {
+            "text": "String Templatesではプロセッサが埋め込み式を検証し、安全な文字列生成を実現する。",
+            "reference": "https://openjdk.org/jeps/430",
+            "reference_label": "JEP 430: String Templates (Preview)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "自動エスケープ無効化",
+          "explanation": {
+            "text": "安全性を下げる機能は提供されていない。",
+            "reference": "https://openjdk.org/jeps/430",
+            "reference_label": "JEP 430: String Templates (Preview)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "正規表現の自動適用",
+          "explanation": {
+            "text": "正規表現とは無関係である。",
+            "reference": "https://openjdk.org/jeps/430",
+            "reference_label": "JEP 430: String Templates (Preview)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "常にSQL文に変換される",
+          "explanation": {
+            "text": "SQL変換は特定のプロセッサに依存し、常に行われるわけではない。",
+            "reference": "https://openjdk.org/jeps/430",
+            "reference_label": "JEP 430: String Templates (Preview)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "String Templatesはプロセッサが検証を行い、安全な文字列生成を可能にする。",
+        "reference": "https://openjdk.org/jeps/430",
+        "reference_label": "JEP 430: String Templates (Preview)"
+      }
+    },
+    {
+      "id": "oracle-java21-q25",
+      "question": "Pattern Matching for switchを使うと、instanceofとキャストを組み合わせた従来のコードと比べてどう改善されるか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "キャストの明示が不要になる。",
+          "explanation": {
+            "text": "switch内で型を判定すると同時にキャストが自動的に行われる。",
+            "reference": "https://openjdk.org/jeps/441",
+            "reference_label": "JEP 441: Pattern Matching for switch"
+          }
+        },
+        {
+          "key": "B",
+          "text": "nullが自動的に許容される。",
+          "explanation": {
+            "text": "nullは明示的に扱わなければ例外が発生する。",
+            "reference": "https://openjdk.org/jeps/441",
+            "reference_label": "JEP 441: Pattern Matching for switch"
+          }
+        },
+        {
+          "key": "C",
+          "text": "switchの対象は文字列に限定される。",
+          "explanation": {
+            "text": "むしろ対象型が拡張されている。",
+            "reference": "https://openjdk.org/jeps/441",
+            "reference_label": "JEP 441: Pattern Matching for switch"
+          }
+        },
+        {
+          "key": "D",
+          "text": "例外処理が不要になる。",
+          "explanation": {
+            "text": "例外処理は必要である。",
+            "reference": "https://openjdk.org/jeps/441",
+            "reference_label": "JEP 441: Pattern Matching for switch"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Pattern Matching for switchにより、型判定とキャストを同時に行えるため、キャストの明示が不要になる。",
+        "reference": "https://openjdk.org/jeps/441",
+        "reference_label": "JEP 441: Pattern Matching for switch"
+      }
+    },
+    {
+      "id": "oracle-java21-q26",
+      "question": "Unnamed Variablesを例外処理で利用する場合の正しい例はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "catch (Exception _) { System.out.println(\"エラー\"); }",
+          "explanation": {
+            "text": "不要な例外変数を`_`で表記することで無視できる。",
+            "reference": "https://openjdk.org/jeps/443",
+            "reference_label": "JEP 443: Unnamed Patterns and Variables"
+          }
+        },
+        {
+          "key": "B",
+          "text": "catch (_) { System.out.println(\"エラー\"); }",
+          "explanation": {
+            "text": "Javaの構文では型指定が必要であり、この書き方は不正。",
+            "reference": "https://openjdk.org/jeps/443",
+            "reference_label": "JEP 443: Unnamed Patterns and Variables"
+          }
+        },
+        {
+          "key": "C",
+          "text": "catch {}",
+          "explanation": {
+            "text": "例外型を省略することはできない。",
+            "reference": "https://openjdk.org/jeps/443",
+            "reference_label": "JEP 443: Unnamed Patterns and Variables"
+          }
+        },
+        {
+          "key": "D",
+          "text": "catch (Exception e, _) { ... }",
+          "explanation": {
+            "text": "複数のキャッチ変数は許容されない。",
+            "reference": "https://openjdk.org/jeps/443",
+            "reference_label": "JEP 443: Unnamed Patterns and Variables"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Unnamed Variablesは不要な例外オブジェクトを`_`で無視する用途に使える。",
+        "reference": "https://openjdk.org/jeps/443",
+        "reference_label": "JEP 443: Unnamed Patterns and Variables"
+      }
+    },
+    {
+      "id": "oracle-java21-q27",
+      "question": "Scoped ValuesとThreadLocalの違いとして正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Scoped Valuesは値をスレッドスコープに限定して安全に扱える。",
+          "explanation": {
+            "text": "Scoped Valuesは一時的な値をスレッドスコープ内に閉じ込める点でThreadLocalより安全。",
+            "reference": "https://openjdk.org/jeps/446",
+            "reference_label": "JEP 446: Scoped Values (Preview)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ThreadLocalは常にガーベジコレクションされない。",
+          "explanation": {
+            "text": "ThreadLocalも適切に解放されればGC対象となる。",
+            "reference": "https://openjdk.org/jeps/446",
+            "reference_label": "JEP 446: Scoped Values (Preview)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Scoped Valuesはグローバル変数として利用できる。",
+          "explanation": {
+            "text": "Scoped Valuesはスコープ内に限定され、グローバルではない。",
+            "reference": "https://openjdk.org/jeps/446",
+            "reference_label": "JEP 446: Scoped Values (Preview)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ThreadLocalとScoped Valuesは内部的に同じ実装である。",
+          "explanation": {
+            "text": "Scoped ValuesはThreadLocalの代替であり、内部実装は異なる。",
+            "reference": "https://openjdk.org/jeps/446",
+            "reference_label": "JEP 446: Scoped Values (Preview)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Scoped ValuesはThreadLocalに比べて値をスコープ内に閉じ込め、安全性が高い。",
+        "reference": "https://openjdk.org/jeps/446",
+        "reference_label": "JEP 446: Scoped Values (Preview)"
+      }
+    },
+    {
+      "id": "oracle-java21-q28",
+      "question": "Structured Concurrencyを導入する主な目的はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "複数タスクのエラーやキャンセルをスコープ単位で一元管理する。",
+          "explanation": {
+            "text": "Structured Concurrencyは複数タスクをスコープでまとめて扱い、エラー処理やキャンセルを統一する。",
+            "reference": "https://openjdk.org/jeps/453",
+            "reference_label": "JEP 453: Structured Concurrency (Preview)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "スレッドプールを削除する。",
+          "explanation": {
+            "text": "スレッドプールを削除する機能はない。",
+            "reference": "https://openjdk.org/jeps/453",
+            "reference_label": "JEP 453: Structured Concurrency (Preview)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "同期処理を完全に排除する。",
+          "explanation": {
+            "text": "同期処理を排除するものではなく、タスク管理を整理する仕組み。",
+            "reference": "https://openjdk.org/jeps/453",
+            "reference_label": "JEP 453: Structured Concurrency (Preview)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ラムダ式を並列実行に変換する。",
+          "explanation": {
+            "text": "ラムダ式の並列実行とは関係がない。",
+            "reference": "https://openjdk.org/jeps/453",
+            "reference_label": "JEP 453: Structured Concurrency (Preview)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Structured Concurrencyは複数タスクをまとめてスコープ単位で扱い、キャンセルやエラー処理を統合できる。",
+        "reference": "https://openjdk.org/jeps/453",
+        "reference_label": "JEP 453: Structured Concurrency (Preview)"
+      }
+    },
+    {
+      "id": "oracle-java21-q29",
+      "question": "Java 21のSequencedMapにおける逆順ビューを取得する方法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "reversed() メソッドを呼び出す",
+          "explanation": {
+            "text": "SequencedMapにはreversed()メソッドがあり、逆順ビューを取得できる。",
+            "reference": "https://openjdk.org/jeps/431",
+            "reference_label": "JEP 431: Sequenced Collections"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Collections.reverseOrder() を使う",
+          "explanation": {
+            "text": "これはComparator用のメソッドであり、SequencedMap専用ではない。",
+            "reference": "https://openjdk.org/jeps/431",
+            "reference_label": "JEP 431: Sequenced Collections"
+          }
+        },
+        {
+          "key": "C",
+          "text": "descendingMap() を呼び出す",
+          "explanation": {
+            "text": "descendingMapはNavigableMapのメソッドであり、SequencedMapの標準ではない。",
+            "reference": "https://openjdk.org/jeps/431",
+            "reference_label": "JEP 431: Sequenced Collections"
+          }
+        },
+        {
+          "key": "D",
+          "text": "逆順ビューはサポートされていない",
+          "explanation": {
+            "text": "SequencedMapは逆順ビューをサポートしている。",
+            "reference": "https://openjdk.org/jeps/431",
+            "reference_label": "JEP 431: Sequenced Collections"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "SequencedMapはreversed()メソッドで逆順ビューを取得できる。",
+        "reference": "https://openjdk.org/jeps/431",
+        "reference_label": "JEP 431: Sequenced Collections"
+      }
+    },
+    {
+      "id": "oracle-java21-q30",
+      "question": "Virtual Threadsを利用する際の注意点として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "CPUバウンドな処理では性能向上が限定的である。",
+          "explanation": {
+            "text": "Virtual ThreadsはI/Oバウンド処理に特に有効で、CPUバウンド処理では効果が小さい。",
+            "reference": "https://openjdk.org/jeps/444",
+            "reference_label": "JEP 444: Virtual Threads"
+          }
+        },
+        {
+          "key": "B",
+          "text": "必ずForkJoinPoolで実行される。",
+          "explanation": {
+            "text": "Virtual ThreadsはForkJoinPool専用ではない。",
+            "reference": "https://openjdk.org/jeps/444",
+            "reference_label": "JEP 444: Virtual Threads"
+          }
+        },
+        {
+          "key": "C",
+          "text": "例外処理をサポートしていない。",
+          "explanation": {
+            "text": "Virtual Threadsも通常スレッドと同様に例外処理をサポートする。",
+            "reference": "https://openjdk.org/jeps/444",
+            "reference_label": "JEP 444: Virtual Threads"
+          }
+        },
+        {
+          "key": "D",
+          "text": "常にデーモンスレッドとして動作する。",
+          "explanation": {
+            "text": "Virtual Threadsはデーモンにも非デーモンにもできる。",
+            "reference": "https://openjdk.org/jeps/444",
+            "reference_label": "JEP 444: Virtual Threads"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Virtual ThreadsはI/Oバウンドなアプリケーションに適しているが、CPUバウンド処理にはあまり効果がない。",
+        "reference": "https://openjdk.org/jeps/444",
+        "reference_label": "JEP 444: Virtual Threads"
+      }
+    },
+    {
+      "id": "oracle-java21-q31",
+      "question": "String TemplatesのテンプレートプロセッサSTRの役割はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "文字列に埋め込まれた式を評価して展開する。",
+          "explanation": {
+            "text": "STRは文字列テンプレートを処理し、埋め込まれた式を展開する。",
+            "reference": "https://openjdk.org/jeps/430",
+            "reference_label": "JEP 430: String Templates (Preview)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SQL文を生成する専用のプロセッサである。",
+          "explanation": {
+            "text": "SQL生成は可能だが、STRは汎用の文字列展開用プロセッサである。",
+            "reference": "https://openjdk.org/jeps/430",
+            "reference_label": "JEP 430: String Templates (Preview)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "常に正規表現マッチングを行う。",
+          "explanation": {
+            "text": "正規表現とは無関係。",
+            "reference": "https://openjdk.org/jeps/430",
+            "reference_label": "JEP 430: String Templates (Preview)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "JSONフォーマットに変換する。",
+          "explanation": {
+            "text": "JSON変換はSTRの責務ではない。",
+            "reference": "https://openjdk.org/jeps/430",
+            "reference_label": "JEP 430: String Templates (Preview)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "STRプロセッサは文字列テンプレートを処理し、式を展開して最終文字列を生成する。",
+        "reference": "https://openjdk.org/jeps/430",
+        "reference_label": "JEP 430: String Templates (Preview)"
+      }
+    },
+    {
+      "id": "oracle-java21-q32",
+      "question": "Pattern Matching for switchでnullを扱う場合の正しい記述はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "case null: を明示的に指定する。",
+          "explanation": {
+            "text": "Pattern Matching for switchではcase null: を明示してnullを扱える。",
+            "reference": "https://openjdk.org/jeps/441",
+            "reference_label": "JEP 441: Pattern Matching for switch"
+          }
+        },
+        {
+          "key": "B",
+          "text": "switch文は自動的にnullを許容する。",
+          "explanation": {
+            "text": "nullを自動的に扱うことはない。",
+            "reference": "https://openjdk.org/jeps/441",
+            "reference_label": "JEP 441: Pattern Matching for switch"
+          }
+        },
+        {
+          "key": "C",
+          "text": "nullは常に例外を発生させる。",
+          "explanation": {
+            "text": "明示的にcase nullを記述すれば処理できる。",
+            "reference": "https://openjdk.org/jeps/441",
+            "reference_label": "JEP 441: Pattern Matching for switch"
+          }
+        },
+        {
+          "key": "D",
+          "text": "nullはサポートされない。",
+          "explanation": {
+            "text": "nullもcase nullで扱えるようにサポートされる。",
+            "reference": "https://openjdk.org/jeps/441",
+            "reference_label": "JEP 441: Pattern Matching for switch"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Pattern Matching for switchではnullを扱うためにcase nullを明示的に指定できる。",
+        "reference": "https://openjdk.org/jeps/441",
+        "reference_label": "JEP 441: Pattern Matching for switch"
+      }
+    },
+    {
+      "id": "oracle-java21-q33",
+      "question": "Unnamed Variablesをfor文で使う場合の正しい例はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "for (var _ : list) { System.out.println(\"処理\"); }",
+          "explanation": {
+            "text": "不要なループ変数を`_`で無視できる。",
+            "reference": "https://openjdk.org/jeps/443",
+            "reference_label": "JEP 443: Unnamed Patterns and Variables"
+          }
+        },
+        {
+          "key": "B",
+          "text": "for (_) { ... }",
+          "explanation": {
+            "text": "Javaの構文では型と変数宣言が必要であり、この形式は不正。",
+            "reference": "https://openjdk.org/jeps/443",
+            "reference_label": "JEP 443: Unnamed Patterns and Variables"
+          }
+        },
+        {
+          "key": "C",
+          "text": "for (Object : list) { ... }",
+          "explanation": {
+            "text": "Objectだけでは変数宣言にならない。",
+            "reference": "https://openjdk.org/jeps/443",
+            "reference_label": "JEP 443: Unnamed Patterns and Variables"
+          }
+        },
+        {
+          "key": "D",
+          "text": "for (; list;) { ... }",
+          "explanation": {
+            "text": "これは不正な構文である。",
+            "reference": "https://openjdk.org/jeps/443",
+            "reference_label": "JEP 443: Unnamed Patterns and Variables"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Unnamed Variablesを使うと、不要なループ変数を`_`で無視できる。",
+        "reference": "https://openjdk.org/jeps/443",
+        "reference_label": "JEP 443: Unnamed Patterns and Variables"
+      }
+    },
+    {
+      "id": "oracle-java21-q34",
+      "question": "Scoped Valuesを利用して一時的な値をスコープに渡す正しい方法はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ScopedValue.where(key, value, runnable)",
+          "explanation": {
+            "text": "ScopedValue.where(...)を使って値を一時的にスコープに関連付けて処理を実行する。",
+            "reference": "https://openjdk.org/jeps/446",
+            "reference_label": "JEP 446: Scoped Values (Preview)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ThreadLocal.set(value)",
+          "explanation": {
+            "text": "ThreadLocalはScoped Valuesの代替であり、異なる仕組みである。",
+            "reference": "https://openjdk.org/jeps/446",
+            "reference_label": "JEP 446: Scoped Values (Preview)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ScopedValue.run(value)",
+          "explanation": {
+            "text": "このようなメソッドは存在しない。",
+            "reference": "https://openjdk.org/jeps/446",
+            "reference_label": "JEP 446: Scoped Values (Preview)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ScopedValue.bind(value)",
+          "explanation": {
+            "text": "bindメソッドは存在しない。",
+            "reference": "https://openjdk.org/jeps/446",
+            "reference_label": "JEP 446: Scoped Values (Preview)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "ScopedValue.where(key, value, runnable)を使うと、その処理のスコープで値を利用できる。",
+        "reference": "https://openjdk.org/jeps/446",
+        "reference_label": "JEP 446: Scoped Values (Preview)"
+      }
+    },
+    {
+      "id": "oracle-java21-q35",
+      "question": "Structured ConcurrencyのStructuredTaskScopeにおいて、サブタスクをすべて成功するまで待機するメソッドはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "join()",
+          "explanation": {
+            "text": "StructuredTaskScope.join()を呼び出すと、サブタスクの完了を待機する。",
+            "reference": "https://openjdk.org/jeps/453",
+            "reference_label": "JEP 453: Structured Concurrency (Preview)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "awaitAll()",
+          "explanation": {
+            "text": "awaitAllは存在せず、join()が正しい。",
+            "reference": "https://openjdk.org/jeps/453",
+            "reference_label": "JEP 453: Structured Concurrency (Preview)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "waitForCompletion()",
+          "explanation": {
+            "text": "このようなメソッドは存在しない。",
+            "reference": "https://openjdk.org/jeps/453",
+            "reference_label": "JEP 453: Structured Concurrency (Preview)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "synchronize()",
+          "explanation": {
+            "text": "synchronizeはキーワードであり、メソッドではない。",
+            "reference": "https://openjdk.org/jeps/453",
+            "reference_label": "JEP 453: Structured Concurrency (Preview)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "StructuredTaskScope.join()を使うと、サブタスクがすべて完了するまで待機できる。",
+        "reference": "https://openjdk.org/jeps/453",
+        "reference_label": "JEP 453: Structured Concurrency (Preview)"
+      }
+    },
+    {
+      "id": "oracle-java21-q36",
+      "question": "Foreign Function & Memory (FFM) API（Java 21・Third Preview）の主目的として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "JNIを使わずにネイティブ関数を呼び出し、ネイティブメモリへ安全にアクセスできるようにする。",
+          "explanation": {
+            "text": "FFM APIはネイティブ関数呼び出しとネイティブメモリアクセスを安全・高性能に提供することを目的とする。",
+            "reference": "https://openjdk.org/jeps/442",
+            "reference_label": "JEP 442: Foreign Function & Memory API (Third Preview)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "JVM外部プロセスの起動と監視を標準化する。",
+          "explanation": {
+            "text": "FFMはプロセス管理APIではない。",
+            "reference": "https://openjdk.org/jeps/442",
+            "reference_label": "JEP 442: Foreign Function & Memory API (Third Preview)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Javaヒープ上のオブジェクトを常にオフヒープに移動する。",
+          "explanation": {
+            "text": "FFMはオフヒープの操作を可能にするが、ヒープからの強制移動を行うものではない。",
+            "reference": "https://docs.oracle.com/en/java/javase/21/core/foreign-function-and-memory-api.html",
+            "reference_label": "Java 21 ドキュメント: Foreign Function and Memory API"
+          }
+        },
+        {
+          "key": "D",
+          "text": "GCを無効化してメモリ管理を完全手動にする。",
+          "explanation": {
+            "text": "FFMはArena等でライフサイクルを管理するが、GCを無効化するAPIではない。",
+            "reference": "https://docs.oracle.com/en/java/javase/21/core/foreign-function-and-memory-api.html",
+            "reference_label": "Java 21 ドキュメント: Foreign Function and Memory API"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "FFM APIは、JNIの脆さを避けつつ、リンク（Linker）・メモリ（MemorySegment/Arena）・レイアウト（MemoryLayout）を通じてネイティブとの相互運用を提供する。",
+        "reference": "https://openjdk.org/jeps/442",
+        "reference_label": "JEP 442: Foreign Function & Memory API (Third Preview)"
+      }
+    },
+    {
+      "id": "oracle-java21-q37",
+      "question": "Key Encapsulation Mechanism (KEM) API（JEP 452）の目的として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "公開鍵暗号を用いて対称鍵を安全に共有するためのAPIを導入する。",
+          "explanation": {
+            "text": "KEMは“鍵包封”を行い、受信側が復号（decapsulate）して対称鍵を得る仕組みをAPIで提供する。",
+            "reference": "https://openjdk.org/jeps/452",
+            "reference_label": "JEP 452: Key Encapsulation Mechanism API"
+          }
+        },
+        {
+          "key": "B",
+          "text": "TLSの実装をJVM内で完全に置き換える。",
+          "explanation": {
+            "text": "KEM APIはTLS置換ではなく、鍵共有のための暗号プリミティブを標準APIとして提供する。",
+            "reference": "https://openjdk.org/jeps/452",
+            "reference_label": "JEP 452: Key Encapsulation Mechanism API"
+          }
+        },
+        {
+          "key": "C",
+          "text": "RSA/ECの鍵生成のみに特化したAPIである。",
+          "explanation": {
+            "text": "KEMは鍵“包封”・“開封”の抽象を導入するもので、鍵生成専用ではない。",
+            "reference": "https://openjdk.org/jeps/452",
+            "reference_label": "JEP 452: Key Encapsulation Mechanism API"
+          }
+        },
+        {
+          "key": "D",
+          "text": "古いCipher APIを非推奨化する。",
+          "explanation": {
+            "text": "Cipher APIの非推奨化を行うJEPではない。",
+            "reference": "https://openjdk.org/jeps/452",
+            "reference_label": "JEP 452: Key Encapsulation Mechanism API"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "KEM APIは公開鍵を使って一時的な対称鍵を“包封（encapsulate）/開封（decapsulate）”する操作を標準化し、安全な鍵配送を容易にする。",
+        "reference": "https://openjdk.org/jeps/452",
+        "reference_label": "JEP 452: Key Encapsulation Mechanism API"
+      }
+    },
+    {
+      "id": "oracle-java21-q38",
+      "question": "Generational ZGC（JEP 439）がJDK 21で導入した改善点として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "若い世代と老年世代を分け、世代ごとに独立して収集できるようにした。",
+          "explanation": {
+            "text": "Generational ZGCは若い/老いたオブジェクトを分離し、それぞれを独立に収集してパフォーマンスを向上させる。",
+            "reference": "https://openjdk.org/jeps/439",
+            "reference_label": "JEP 439: Generational ZGC"
+          }
+        },
+        {
+          "key": "B",
+          "text": "STW（停止時間）を意図的に増やしてスループットを上げる。",
+          "explanation": {
+            "text": "ZGCは低遅延を重視し、不要な停止時間増大は目的ではない。",
+            "reference": "https://inside.java/2023/11/28/gen-zgc-explainer/",
+            "reference_label": "Inside Java: Introducing Generational ZGC"
+          }
+        },
+        {
+          "key": "C",
+          "text": "CMS GCの実装を完全に置き換える。",
+          "explanation": {
+            "text": "Generational ZGCはZGCの進化であり、CMS置換のJEPではない。",
+            "reference": "https://openjdk.org/jeps/439",
+            "reference_label": "JEP 439: Generational ZGC"
+          }
+        },
+        {
+          "key": "D",
+          "text": "アプリケーションが明示的に世代サイズを管理する必要がある。",
+          "explanation": {
+            "text": "世代管理はGC側の責務であり、アプリが直接管理するものではない。",
+            "reference": "https://docs.oracle.com/en/java/javase/24/migrate/significant-changes-jdk-21.html",
+            "reference_label": "Oracle Migration Guide: Significant Changes in JDK 21"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "JDK 21のGenerational ZGCは、若いオブジェクトをより頻繁に回収できるようにして低遅延を保ちつつパフォーマンスを改善する。",
+        "reference": "https://inside.java/2023/11/28/gen-zgc-explainer/",
+        "reference_label": "Inside Java: Introducing Generational ZGC"
+      }
+    },
+    {
+      "id": "oracle-java21-q39",
+      "question": "JEP 451（動的エージェントのロードを将来デフォルトで禁止する準備）に関する説明として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "JDK 21で警告が出る場合、動的エージェントロードを許可するには `-XX:+EnableDynamicAgentLoading` を付与する。",
+          "explanation": {
+            "text": "JEP 451の方針により、将来の禁止に備えつつ、必要時はフラグで明示許可できる。",
+            "reference": "https://openjdk.org/jeps/451",
+            "reference_label": "JEP 451: Prepare to Disallow the Dynamic Loading of Agents"
+          }
+        },
+        {
+          "key": "B",
+          "text": "JDK 21で既に動的ロードは完全に禁止されており回避不能である。",
+          "explanation": {
+            "text": "JDK 21時点では“準備”であり、完全禁止ではない。",
+            "reference": "https://openjdk.org/jeps/451",
+            "reference_label": "JEP 451: Prepare to Disallow the Dynamic Loading of Agents"
+          }
+        },
+        {
+          "key": "C",
+          "text": "この変更はテストツールには影響しないため警告は出ない。",
+          "explanation": {
+            "text": "Mockito等のツール使用時に警告が出る事例が報告されている。",
+            "reference": "https://stackoverflow.com/questions/77951485/getting-a-java-agent-has-been-loaded-dynamically-warning-in-intellij-after-upg",
+            "reference_label": "Stack Overflow: JDK 21 での動的エージェント警告"
+          }
+        },
+        {
+          "key": "D",
+          "text": "`-javaagent:` オプションは削除された。",
+          "explanation": {
+            "text": "削除されていない。JEP 451は将来の既定値変更に備える提案である。",
+            "reference": "https://openjdk.org/jeps/451",
+            "reference_label": "JEP 451: Prepare to Disallow the Dynamic Loading of Agents"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "JDK 21では将来の既定変更に備えて警告が出る。必要であれば `-XX:+EnableDynamicAgentLoading` を指定して明示許可できる。",
+        "reference": "https://openjdk.org/jeps/451",
+        "reference_label": "JEP 451: Prepare to Disallow the Dynamic Loading of Agents"
+      }
+    },
+    {
+      "id": "oracle-java21-q40",
+      "question": "Unnamed Classes と Instance Main Methods（JEP 445, Preview）について正しい説明はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "無名のクラス（unnamed class）は名前で参照できず、`void main()` のインスタンスメソッドをエントリポイントとして起動できる。",
+          "explanation": {
+            "text": "JEP 445では学習用に簡潔なエントリポイントを提供し、無名クラスは他から名前参照できない。",
+            "reference": "https://openjdk.org/jeps/445",
+            "reference_label": "JEP 445: Unnamed Classes and Instance Main Methods (Preview)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "`public static void main(String[] args)` が完全廃止される。",
+          "explanation": {
+            "text": "従来のstatic mainは引き続き使用できる。JEP 445は追加の選択肢を提供するだけである。",
+            "reference": "https://docs.oracle.com/en/java/javase/21/language/implicitly-declared-classes-and-instance-main-methods.html",
+            "reference_label": "Java 21 言語仕様（プレビュー機能の概要）"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Unnamed class は任意の場所からインスタンス化して再利用できる。",
+          "explanation": {
+            "text": "無名のため直接参照・再利用は想定されない。",
+            "reference": "https://openjdk.org/jeps/445",
+            "reference_label": "JEP 445: Unnamed Classes and Instance Main Methods (Preview)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "プレビュー機能ではないため、`--enable-preview` は不要である。",
+          "explanation": {
+            "text": "JDK 21のJEP 445はプレビュー機能として提供される。",
+            "reference": "https://openjdk.org/jeps/445",
+            "reference_label": "JEP 445: Unnamed Classes and Instance Main Methods (Preview)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "JEP 445により、学習・試作用途で無名クラス＋インスタンスmainのエントリが用意され、他コードから名前参照はできない。",
+        "reference": "https://openjdk.org/jeps/445",
+        "reference_label": "JEP 445: Unnamed Classes and Instance Main Methods (Preview)"
+      }
+    },
+    {
+      "id": "oracle-java21-q41",
+      "question": "Vector API（JEP 448, Sixth Incubator）が提供する利点として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データ並列計算をベクタ命令へ最適にコンパイルし、スカラ計算より高性能を狙える表現を提供する。",
+          "explanation": {
+            "text": "Vector APIはSIMD命令にマッピングされる表現を提供し、`jdk.incubator.vector` モジュールとして再インキュベートされた。",
+            "reference": "https://openjdk.org/jeps/448",
+            "reference_label": "JEP 448: Vector API (Sixth Incubator)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ガーベジコレクタを置き換える。",
+          "explanation": {
+            "text": "Vector APIは計算表現のAPIであり、GCとは無関係。",
+            "reference": "https://openjdk.org/jeps/448",
+            "reference_label": "JEP 448: Vector API (Sixth Incubator)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Java 21で標準（非インキュベート）APIとして確定した。",
+          "explanation": {
+            "text": "JDK 21では“第6回インキュベータ”として提供される。",
+            "reference": "https://openjdk.org/projects/jdk/21/jeps-since-jdk-17",
+            "reference_label": "OpenJDK: JDK 21 に統合されたJEP一覧"
+          }
+        },
+        {
+          "key": "D",
+          "text": "GPU向けカーネルを自動生成する。",
+          "explanation": {
+            "text": "Vector APIはCPUのSIMD命令を対象とし、GPU自動生成は対象外。",
+            "reference": "https://openjdk.org/jeps/448",
+            "reference_label": "JEP 448: Vector API (Sixth Incubator)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Vector APIはデータ並列計算を安全・移植可能に表現し、対応CPUで最適なベクタ命令へコンパイルすることを狙う。",
+        "reference": "https://openjdk.org/jeps/448",
+        "reference_label": "JEP 448: Vector API (Sixth Incubator)"
+      }
+    },
+    {
+      "id": "oracle-java21-q42",
+      "question": "FFM API（Third Preview）におけるメモリライフサイクル管理の正しい説明はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Arenaを使って確保したMemorySegmentの寿命をスコープ単位で管理できる。",
+          "explanation": {
+            "text": "Arenaはスコープを閉じると関連するオフヒープメモリをまとめて解放できる仕組みを提供する。",
+            "reference": "https://docs.oracle.com/en/java/javase/21/core/foreign-function-and-memory-api.html",
+            "reference_label": "Java 21 ドキュメント: Foreign Function and Memory API"
+          }
+        },
+        {
+            "key": "B",
+            "text": "MemorySegmentは必ずGCによって自動解放されるため明示解放は不要。",
+            "explanation": {
+              "text": "オフヒープ領域はGCの対象外。FFMではArenaやスコープで寿命を管理する。",
+              "reference": "https://openjdk.org/jeps/442",
+              "reference_label": "JEP 442: Foreign Function & Memory API (Third Preview)"
+            }
+        },
+        {
+          "key": "C",
+          "text": "Linkerはメモリ解放専用のAPIである。",
+          "explanation": {
+            "text": "Linkerはネイティブ関数呼び出しのリンクを担い、解放専用ではない。",
+            "reference": "https://openjdk.org/jeps/442",
+            "reference_label": "JEP 442: Foreign Function & Memory API (Third Preview)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Arenaは仮想スレッドでは使用できない。",
+          "explanation": {
+            "text": "仮想スレッドに限定した制約はなく、正しくスコープを管理すれば併用可能である。",
+            "reference": "https://docs.oracle.com/en/java/javase/21/core/foreign-function-and-memory-api.html",
+            "reference_label": "Java 21 ドキュメント: Foreign Function and Memory API"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "FFMのArenaは“スコープを閉じる=関連メモリを解放”というモデルを提供し、ネイティブメモリの安全なライフサイクル管理を可能にする。",
+        "reference": "https://docs.oracle.com/en/java/javase/21/core/foreign-function-and-memory-api.html",
+        "reference_label": "Java 21 ドキュメント: Foreign Function and Memory API"
+      }
+    },
+    {
+      "id": "oracle-java21-q43",
+      "question": "Java 21のPattern Matching for switchでsealedクラスを扱う場合、どのような安全性が確保されるか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "すべてのサブクラスを網羅するswitchを書かないとコンパイルエラーになる。",
+          "explanation": {
+            "text": "sealedクラスとswitchを組み合わせると、型安全な網羅チェックが行われる。",
+            "reference": "https://openjdk.org/jeps/441",
+            "reference_label": "JEP 441: Pattern Matching for switch"
+          }
+        },
+        {
+          "key": "B",
+          "text": "sealedクラスの継承制限が自動的に解除される。",
+          "explanation": {
+            "text": "sealedの継承制限は保持される。",
+            "reference": "https://openjdk.org/jeps/441",
+            "reference_label": "JEP 441: Pattern Matching for switch"
+          }
+        },
+        {
+          "key": "C",
+          "text": "switch式は常にObject型を返す。",
+          "explanation": {
+            "text": "戻り値型はケースごとに一致しなければならず、Object型固定ではない。",
+            "reference": "https://openjdk.org/jeps/441",
+            "reference_label": "JEP 441: Pattern Matching for switch"
+          }
+        },
+        {
+          "key": "D",
+          "text": "nullは自動的に許可される。",
+          "explanation": {
+            "text": "nullは明示的にcase nullで扱わないと例外になる。",
+            "reference": "https://openjdk.org/jeps/441",
+            "reference_label": "JEP 441: Pattern Matching for switch"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "sealedクラスをswitchで扱う場合、すべてのサブタイプを網羅する必要があり、不足するとコンパイルエラーになる。",
+        "reference": "https://openjdk.org/jeps/441",
+        "reference_label": "JEP 441: Pattern Matching for switch"
+      }
+    },
+    {
+      "id": "oracle-java21-q44",
+      "question": "Generational ZGCが従来のZGCに比べて改善した点はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "短命オブジェクトを効率的に回収できる。",
+          "explanation": {
+            "text": "Generational ZGCは若い世代を頻繁に回収する仕組みを導入し、効率を高めている。",
+            "reference": "https://openjdk.org/jeps/439",
+            "reference_label": "JEP 439: Generational ZGC"
+          }
+        },
+        {
+          "key": "B",
+          "text": "古いCMS GCを削除する。",
+          "explanation": {
+            "text": "CMS削除は別の変更であり、Generational ZGCの目的ではない。",
+            "reference": "https://openjdk.org/jeps/439",
+            "reference_label": "JEP 439: Generational ZGC"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Stop-The-Worldを長くして安定性を上げる。",
+          "explanation": {
+            "text": "ZGCの目的は低遅延であり、停止時間を増やすものではない。",
+            "reference": "https://openjdk.org/jeps/439",
+            "reference_label": "JEP 439: Generational ZGC"
+          }
+        },
+        {
+          "key": "D",
+          "text": "アプリケーションが世代を手動で管理する。",
+          "explanation": {
+            "text": "世代の管理はGCが自動的に行う。",
+            "reference": "https://openjdk.org/jeps/439",
+            "reference_label": "JEP 439: Generational ZGC"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Generational ZGCは若い世代を分離して頻繁に回収することで、短命オブジェクトの効率的な回収を可能にしている。",
+        "reference": "https://openjdk.org/jeps/439",
+        "reference_label": "JEP 439: Generational ZGC"
+      }
+    },
+    {
+      "id": "oracle-java21-q45",
+      "question": "JEP 451に関連して、JDK 21で動的エージェントロードを許可する方法はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "JVM起動時に -XX:+EnableDynamicAgentLoading を指定する。",
+          "explanation": {
+            "text": "JEP 451により、明示的にフラグを付けることで動的エージェントロードを許可できる。",
+            "reference": "https://openjdk.org/jeps/451",
+            "reference_label": "JEP 451: Prepare to Disallow the Dynamic Loading of Agents"
+          }
+        },
+        {
+          "key": "B",
+          "text": "JVM起動時に --allow-agents を指定する。",
+          "explanation": {
+            "text": "このオプションは存在しない。",
+            "reference": "https://openjdk.org/jeps/451",
+            "reference_label": "JEP 451: Prepare to Disallow the Dynamic Loading of Agents"
+          }
+        },
+        {
+          "key": "C",
+          "text": "標準で常に許可されるため設定は不要。",
+          "explanation": {
+            "text": "JDK 21以降は警告が出るため、明示設定が推奨される。",
+            "reference": "https://openjdk.org/jeps/451",
+            "reference_label": "JEP 451: Prepare to Disallow the Dynamic Loading of Agents"
+          }
+        },
+        {
+          "key": "D",
+          "text": "完全に禁止されており回避不可能。",
+          "explanation": {
+            "text": "JDK 21では完全禁止ではなく、警告とオプション指定で制御可能。",
+            "reference": "https://openjdk.org/jeps/451",
+            "reference_label": "JEP 451: Prepare to Disallow the Dynamic Loading of Agents"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "JDK 21では動的エージェントロードに警告が出るが、`-XX:+EnableDynamicAgentLoading` を指定することで許可できる。",
+        "reference": "https://openjdk.org/jeps/451",
+        "reference_label": "JEP 451: Prepare to Disallow the Dynamic Loading of Agents"
+      }
+    },
+    {
+      "id": "oracle-java21-q46",
+      "question": "Unnamed Classes (JEP 445)の利用目的として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "学習や小規模プログラムのエントリポイントを簡単に記述できるようにする。",
+          "explanation": {
+            "text": "Unnamed Classesとインスタンスmainは学習者が簡単にJavaを始められるよう設計された。",
+            "reference": "https://openjdk.org/jeps/445",
+            "reference_label": "JEP 445: Unnamed Classes and Instance Main Methods (Preview)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "既存のpublic static void mainを完全に置き換える。",
+          "explanation": {
+            "text": "従来のmainも引き続き利用可能である。",
+            "reference": "https://openjdk.org/jeps/445",
+            "reference_label": "JEP 445: Unnamed Classes and Instance Main Methods (Preview)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "匿名クラスの構文糖衣を提供する。",
+          "explanation": {
+            "text": "匿名クラスとは別の機能である。",
+            "reference": "https://openjdk.org/jeps/445",
+            "reference_label": "JEP 445: Unnamed Classes and Instance Main Methods (Preview)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "モジュールシステムを削除する。",
+          "explanation": {
+            "text": "モジュールシステムの変更はない。",
+            "reference": "https://openjdk.org/jeps/445",
+            "reference_label": "JEP 445: Unnamed Classes and Instance Main Methods (Preview)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Unnamed ClassesはJavaを学ぶ初心者や簡単なプログラム作成を対象に導入された。",
+        "reference": "https://openjdk.org/jeps/445",
+        "reference_label": "JEP 445: Unnamed Classes and Instance Main Methods (Preview)"
+      }
+    },
+    {
+      "id": "oracle-java21-q47",
+      "question": "Vector API（JEP 448）が対象とする最適化はどのようなものか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "CPUのSIMD命令を活用したデータ並列処理の最適化。",
+          "explanation": {
+            "text": "Vector APIはデータ並列処理を安全かつ移植可能に記述し、SIMD命令にコンパイルされる。",
+            "reference": "https://openjdk.org/jeps/448",
+            "reference_label": "JEP 448: Vector API (Sixth Incubator)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "GPUへの自動オフロード。",
+          "explanation": {
+            "text": "GPUは対象外で、CPUのSIMDを利用する。",
+            "reference": "https://openjdk.org/jeps/448",
+            "reference_label": "JEP 448: Vector API (Sixth Incubator)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ガーベジコレクションの効率化。",
+          "explanation": {
+            "text": "Vector APIは計算APIであり、GCとは無関係。",
+            "reference": "https://openjdk.org/jeps/448",
+            "reference_label": "JEP 448: Vector API (Sixth Incubator)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "スレッドスケジューリングの改善。",
+          "explanation": {
+            "text": "スレッド制御ではなくデータ並列処理の表現に関わる。",
+            "reference": "https://openjdk.org/jeps/448",
+            "reference_label": "JEP 448: Vector API (Sixth Incubator)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Vector APIはSIMD最適化を狙い、ベクタ計算をJavaコードで安全に表現できる。",
+        "reference": "https://openjdk.org/jeps/448",
+        "reference_label": "JEP 448: Vector API (Sixth Incubator)"
+      }
+    },
+    {
+      "id": "oracle-java21-q48",
+      "question": "FFM APIにおけるLinkerの役割はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ネイティブ関数をJavaメソッドとして呼び出せる形に結びつける。",
+          "explanation": {
+            "text": "LinkerはC関数ポインタ等をMethodHandleに変換し、Javaから安全に呼び出せるようにする。",
+            "reference": "https://openjdk.org/jeps/442",
+            "reference_label": "JEP 442: Foreign Function & Memory API (Third Preview)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "メモリ解放を行う専用のAPI。",
+          "explanation": {
+            "text": "メモリ解放はArenaで管理され、Linkerは関数呼び出しに関わる。",
+            "reference": "https://openjdk.org/jeps/442",
+            "reference_label": "JEP 442: Foreign Function & Memory API (Third Preview)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "JavaバイトコードをJITに渡す。",
+          "explanation": {
+            "text": "Linkerはバイトコード処理ではなく、ネイティブ呼び出しの橋渡しを担う。",
+            "reference": "https://openjdk.org/jeps/442",
+            "reference_label": "JEP 442: Foreign Function & Memory API (Third Preview)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "GCの対象オブジェクトを監視する。",
+          "explanation": {
+            "text": "GC監視はLinkerの責務ではない。",
+            "reference": "https://openjdk.org/jeps/442",
+            "reference_label": "JEP 442: Foreign Function & Memory API (Third Preview)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "FFM APIのLinkerはネイティブ関数ポインタをJavaのMethodHandleに結びつけ、安全に呼び出せるようにする。",
+        "reference": "https://openjdk.org/jeps/442",
+        "reference_label": "JEP 442: Foreign Function & Memory API (Third Preview)"
+      }
+    },
+    {
+      "id": "oracle-java21-q49",
+      "question": "KEM API（JEP 452）で導入された2つの主要操作はどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "encapsulate と decapsulate",
+          "explanation": {
+            "text": "KEMは公開鍵で一時鍵をカプセル化(encapsulate)し、秘密鍵で復号(decapsulate)する操作を提供する。",
+            "reference": "https://openjdk.org/jeps/452",
+            "reference_label": "JEP 452: Key Encapsulation Mechanism API"
+          }
+        },
+        {
+          "key": "B",
+          "text": "encrypt と decrypt",
+          "explanation": {
+            "text": "これらは従来の暗号化操作であり、KEM固有の用語ではない。",
+            "reference": "https://openjdk.org/jeps/452",
+            "reference_label": "JEP 452: Key Encapsulation Mechanism API"
+          }
+        },
+        {
+          "key": "C",
+          "text": "wrap と unwrap",
+          "explanation": {
+            "text": "Cipher APIではwrap/unwrapを使うが、KEMはencapsulate/decapsulateを導入する。",
+            "reference": "https://openjdk.org/jeps/452",
+            "reference_label": "JEP 452: Key Encapsulation Mechanism API"
+          }
+        },
+        {
+          "key": "D",
+          "text": "sign と verify",
+          "explanation": {
+            "text": "これはデジタル署名に関する操作であり、KEM APIの範囲外。",
+            "reference": "https://openjdk.org/jeps/452",
+            "reference_label": "JEP 452: Key Encapsulation Mechanism API"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "KEM APIはencapsulate（鍵の包封）とdecapsulate（鍵の開封）の2つの主要操作を導入する。",
+        "reference": "https://openjdk.org/jeps/452",
+        "reference_label": "JEP 452: Key Encapsulation Mechanism API"
+      }
+    },
+    {
+      "id": "oracle-java21-q50",
+      "question": "Java 21のScoped Values（JEP 446）がThreadLocalに比べて優れている点はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "値をスレッドスコープ内で安全に一時利用でき、ガーベジコレクションのリーク問題を避けられる。",
+          "explanation": {
+            "text": "Scoped Valuesはスコープが閉じると値が解放されるため、ThreadLocalにありがちなリークを防げる。",
+            "reference": "https://openjdk.org/jeps/446",
+            "reference_label": "JEP 446: Scoped Values (Preview)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "常に全スレッドで共有される。",
+          "explanation": {
+            "text": "Scoped Valuesはスレッドスコープ内に限定され、グローバル共有されない。",
+            "reference": "https://openjdk.org/jeps/446",
+            "reference_label": "JEP 446: Scoped Values (Preview)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ThreadLocalを完全に置き換えて削除する。",
+          "explanation": {
+            "text": "ThreadLocalは引き続き存在しており、Scoped Valuesは代替の選択肢を提供する。",
+            "reference": "https://openjdk.org/jeps/446",
+            "reference_label": "JEP 446: Scoped Values (Preview)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "例外処理が不要になる。",
+          "explanation": {
+            "text": "Scoped Valuesは例外処理に影響を与えない。",
+            "reference": "https://openjdk.org/jeps/446",
+            "reference_label": "JEP 446: Scoped Values (Preview)"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Scoped ValuesはThreadLocalの弱点である値のライフサイクル管理の難しさを改善し、スコープ内でのみ有効な安全な値の伝搬を提供する。",
+        "reference": "https://openjdk.org/jeps/446",
+        "reference_label": "JEP 446: Scoped Values (Preview)"
+      }
+    }
+  ]
+}

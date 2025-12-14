@@ -1,0 +1,2367 @@
+{
+  "exam": {
+    "id": "network_specialist",
+    "title": "ネットワークスペシャリスト試験",
+    "description": "ネットワークスペシャリスト試験は、ネットワークの固有技術からネットワークサービスの動向まで広範な知識を備え、大規模かつ堅牢なネットワークシステムを企画・設計・構築・運用できるネットワークエンジニアおよびインフラ系技術者を対象とする国家試験です。試験は午前Ⅰ・午前Ⅱ・午後Ⅰ・午後Ⅱの4区分で構成され、午前は多肢選択式、午後は記述式・論述式で実施。企業・組織のネットワーク要求を的確に理解し、論理設計・物理設計を行う能力も問われます。",
+    "version": "5.4",
+    "price": "7,500円",
+    "difficulty": "難しい",
+    "official-site": "https://www.ipa.go.jp/shiken/kubun/nw.html",
+    "category": {
+      "id": "it",
+      "name": "情報処理技術者"
+    }
+  },
+  "questions": [
+    {
+      "id": "it-nw-1",
+      "question": "OSI参照モデルにおいて、トランスポート層が担う役割として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "データをビット列に変換して伝送媒体を通す。",
+          "explanation": {
+            "text": "これは物理層の役割であり、トランスポート層とは異なる。",
+            "reference": "https://ja.wikipedia.org/wiki/OSI参照モデル"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ネットワーク間での経路選択を行う。",
+          "explanation": {
+            "text": "これはネットワーク層（第3層）の役割である。",
+            "reference": "https://ja.wikipedia.org/wiki/OSI参照モデル"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アプリケーションが要求する通信のために信頼性や順序制御を提供する。",
+          "explanation": {
+            "text": "これはトランスポート層の典型的な役割であり、正しい。",
+            "reference": "https://ja.wikipedia.org/wiki/OSI参照モデル"
+          }
+        },
+        {
+          "key": "D",
+          "text": "暗号化、認証などセキュリティ機能を提供する。",
+          "explanation": {
+            "text": "これは通常、セッション層やアプリケーション層、セキュリティプロトコルの役割であり、トランスポート層の本質ではない。",
+            "reference": "https://ja.wikipedia.org/wiki/OSI参照モデル"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "トランスポート層は、アプリケーション間の通信において、信頼性確保（再送制御・エラー検出）や順序制御、フロー制御などを提供します。",
+        "reference": "https://ja.wikipedia.org/wiki/OSI参照モデル"
+      }
+    },
+    {
+      "id": "it-nw-2",
+      "question": "IPv6アドレスに関して、以下のうちグローバルユニキャストアドレスとして正しい記述はどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "2001:0db8::/32 はグローバルユニキャストアドレスである。",
+          "explanation": {
+            "text": "2001:0db8::/32はドキュメント用途のアドレスレンジであり、実運用のグローバルユニキャストではない。",
+            "reference": "https://www.iana.org/assignments/ipv6-address-space/ipv6-address-space.xhtml"
+          }
+        },
+        {
+          "key": "B",
+          "text": "fe80::/10 はグローバルユニキャストアドレスである。",
+            "explanation": {
+              "text": "fe80::/10 はリンカローカルユニキャストアドレスであり、グローバルではない。",
+              "reference": "https://www.iana.org/assignments/ipv6-address-space/ipv6-address-space.xhtml"
+            }
+        },
+        {
+          "key": "C",
+          "text": "2000::/3 はグローバルユニキャストアドレスの範囲である。",
+          "explanation": {
+            "text": "2000::/3 は一般的なグローバルユニキャストアドレス範囲であり、正しい。",
+            "reference": "https://www.iana.org/assignments/ipv6-address-space/ipv6-address-space.xhtml"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ff00::/8 はグローバルユニキャストアドレスである。",
+          "explanation": {
+            "text": "ff00::/8 はマルチキャストアドレス範囲であり、ユニキャストではない。",
+            "reference": "https://www.iana.org/assignments/ipv6-address-space/ipv6-address-space.xhtml"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "IPv6のグローバルユニキャストアドレスは2000::/3が割り当て範囲であり、運用上広く使用されます。",
+        "reference": "https://www.iana.org/assignments/ipv6-address-space/ipv6-address-space.xhtml"
+      }
+    },
+    {
+      "id": "it-nw-3",
+      "question": "次のうち、ルーティングプロトコル OSPF の特徴として正しいものを選べ。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "距離ベクトル型プロトコルであり、定期的に全ルートを送信する。",
+          "explanation": {
+            "text": "OSPFはリンクステート型プロトコルであり、距離ベクトル型ではない。",
+            "reference": "https://en.wikipedia.org/wiki/Open_Shortest_Path_First"
+          }
+        },
+        {
+          "key": "B",
+          "text": "エリア分割をサポートし、LSDB（リンクステートデータベース）を各ルータが保持する。",
+          "explanation": {
+              "text": "これはOSPFの典型的な特徴であり、正しい。",
+              "reference": "https://en.wikipedia.org/wiki/Open_Shortest_Path_First"
+          }
+        },
+        {
+            "key": "C",
+            "text": "BGPのようにAS間ルーティングに主に使用される。",
+            "explanation": {
+                "text": "OSPFはAS内部ルーティング（IGP）プロトコルであり、AS間にはBGPが使用される。",
+                "reference": "https://en.wikipedia.org/wiki/Open_Shortest_Path_First"
+            }
+        },
+        {
+          "key": "D",
+          "text": "マルチキャスト配信のため専用設計されたプロトコルである。",
+          "explanation": {
+            "text": "OSPFはマルチキャストを扱うことはあるが、マルチキャスト専用ではない。",
+            "reference": "https://en.wikipedia.org/wiki/Open_Shortest_Path_First"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "OSPFはリンクステート型ルーティングプロトコルで、エリア構成・LSDB保持・最短パス計算を特徴とします。",
+        "reference": "https://en.wikipedia.org/wiki/Open_Shortest_Path_First"
+      }
+    },
+    {
+      "id": "it-nw-4",
+      "question": "次のTCPヘッダに関する記述のうち、誤っているものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Sequence Number フィールドは、送信されたデータのバイト数を示す。",
+          "explanation": {
+            "text": "Sequence Numberは送信した最初のデータバイトの次のバイト番号を示すため、厳密には「送信されたデータのバイト数を示す」とは言えない。",
+            "reference": "https://en.wikipedia.org/wiki/Transmission_Control_Protocol"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Acknowledgment Number フィールドは、受信側が次に受け取りたいバイトの番号を示す。",
+            "explanation": {
+              "text": "これは正しいTCPの仕様です。",
+              "reference": "https://en.wikipedia.org/wiki/Transmission_Control_Protocol"
+            }
+          },
+        {
+            "key": "C",
+            "text": "Window フィールドは、受信可能なバイト数（ウィンドウサイズ）を示す。",
+            "explanation": {
+              "text": "これは正しい仕様です。",
+              "reference": "https://en.wikipedia.org/wiki/Transmission_Control_Protocol"
+            }
+          },
+        {
+            "key": "D",
+            "text": "Urgent Pointer フィールドは、緊急データが存在する場合にその最後のデータバイトの次のバイト位置を示す。",
+            "explanation": {
+              "text": "Urgent Pointerは、緊急データの最後のバイトの「次のバイト」ではなく、緊急データの最後のバイトそのものの位置を示します。",
+              "reference": "https://en.wikipedia.org/wiki/Transmission_Control_Protocol"
+            }
+          }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Sequence Numberフィールドは「最初のデータバイトのシーケンス番号」を示すため、「送信されたデータのバイト数を示す」との記述が誤りです。",
+        "reference": "https://en.wikipedia.org/wiki/Transmission_Control_Protocol"
+      }
+    },
+    {
+      "id": "it-nw-5",
+      "question": "次のうち、VPN技術においてトンネルモードで使われることが多いプロトコルとして正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "L2TP over IPSec",
+          "explanation": {
+            "text": "L2TP over IPSecは典型的なトンネル型VPNの実装であり、正しい選択です。",
+            "reference": "https://datatracker.ietf.org/doc/html/rfc3193"
+          }
+        },
+        {
+          "key": "B",
+            "text": "SSL/TLS を用ない PPTP",
+            "explanation": {
+              "text": "PPTPは古い技術であり、現在ほとんど利用されていません。トンネルモードとして適切ではない。",
+              "reference": "https://en.wikipedia.org/wiki/Point-to-Point_Tunneling_Protocol"
+            }
+          },
+        {
+            "key": "C",
+            "text": "IPsec トランスポートモード",
+            "explanation": {
+              "text": "トランスポートモードはホスト間暗号化用であり、トンネルモードほどネットワーク全体を覆う用途には用いられません。",
+              "reference": "https://en.wikipedia.org/wiki/Internet_Protocol_Security"
+            }
+          },
+        {
+            "key": "D",
+            "text": "GRE 単体（暗号化なし）",
+            "explanation": {
+              "text": "GRE単体では暗号化がなされておらず、セキュリティ意図のVPN“トンネル”としては不十分です。",
+              "reference": "https://en.wikipedia.org/wiki/Generic_Routing_Encapsulation"
+            }
+          }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "L2TP over IPSecはトンネルモードを用いた典型的なVPN方式で、ネットワーク全体を覆う仮想プライベートネットワークに用いられます。",
+        "reference": "https://datatracker.ietf.org/doc/html/rfc3193"
+      }
+    },
+    {
+      "id": "it-nw-6",
+      "question": "次のEthernet規格に関して、正しい組み合わせはどれか。\nⅠ．100BASE-TX\nⅡ．1000BASE-LX\nⅢ．10GBASE-SR\nⅣ．10BASE-T",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Ⅰ・Ⅱは銅線、Ⅲは光ファイバ、Ⅳは銅線である。",
+          "explanation": {
+            "text": "100BASE-TXと10BASE-Tは銅線媒体、1000BASE-LXおよび10GBASE-SRは光ファイバ媒体ですが、1000BASE-LXは長波長光ファイバ、10GBASE-SRは短波長です。よって“I・IIは銅線”は誤り。",
+            "reference": "https://en.wikipedia.org/wiki/Ethernet_over_fiber"
+          }
+        },
+        {
+          "key": "B",
+            "text": "Ⅰ・Ⅳは銅線、Ⅱ・Ⅲは光ファイバである。",
+            "explanation": {
+              "text": "これは正しい組み合わせです。",
+              "reference": "https://en.wikipedia.org/wiki/Ethernet_over_fiber"
+            }
+          },
+        {
+            "key": "C",
+            "text": "Ⅰ・Ⅱ・Ⅲ・Ⅳすべて銅線媒体である。",
+            "explanation": {
+              "text": "Ⅲ・Ⅱは光ファイバ媒体ですので誤りです。",
+              "reference": "https://en.wikipedia.org/wiki/Ethernet_over_fiber"
+            }
+          },
+        {
+            "key": "D",
+            "text": "Ⅱ・Ⅲは銅線、Ⅰ・Ⅳは光ファイバである。",
+            "explanation": {
+              "text": "これは逆であり誤りです。",
+              "reference": "https://en.wikipedia.org/wiki/Ethernet_over_fiber"
+            }
+          }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "100BASE-TXと10BASE-Tは銅線媒体、1000BASE-LXと10GBASE-SRは光ファイバ媒体なので、選択肢Bが正しい。",
+        "reference": "https://en.wikipedia.org/wiki/Ethernet_over_fiber"
+      }
+    },
+    {
+      "id": "it-nw-7",
+      "question": "次のうち、スパニングツリープロトコル（STP）において「ルートブリッジ」を決定する際の基準として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ブリッジIDが最も大きいスイッチがルートブリッジになる。",
+          "explanation": {
+            "text": "STPではブリッジIDが小さい（優先度＋MACアドレス）がルートブリッジになります。",
+            "reference": "https://en.wikipedia.org/wiki/Spanning_Tree_Protocol"
+          }
+        },
+        {
+          "key": "B",
+            "text": "ルートポートのコストが最も高いポートを持つスイッチがルートブリッジになる。",
+            "explanation": {
+              "text": "ルートブリッジはコストではなくブリッジIDで決定されます。",
+              "reference": "https://en.wikipedia.org/wiki/Spanning_Tree_Protocol"
+            }
+          },
+        {
+            "key": "C",
+            "text": "ブリッジIDが最も小さいスイッチがルートブリッジになる。",
+            "explanation": {
+              "text": "これは正しい基準です。",
+              "reference": "https://en.wikipedia.org/wiki/Spanning_Tree_Protocol"
+            }
+          },
+        {
+          "key": "D",
+            "text": "ポートIDが最も大きいスイッチがルートブリッジになる。",
+          "explanation": {
+              "text": "ポートIDではルートブリッジは決定されません。",
+              "reference": "https://en.wikipedia.org/wiki/Spanning_Tree_Protocol"
+            }
+          }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "STPでは各スイッチのブリッジID（優先値＋MACアドレス）が小さい機器がルートブリッジに選定されます。",
+        "reference": "https://en.wikipedia.org/wiki/Spanning_Tree_Protocol"
+      }
+    },
+    {
+      "id": "it-nw-8",
+      "question": "次のうち、ネットワークNAT（Network Address Translation）の説明として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "プライベートアドレスをグローバルアドレスに変換し、ローカルネットワーク外と通信可能にする技術。",
+            "explanation": {
+              "text": "これはNATの基本的な役割です。",
+              "reference": "https://en.wikipedia.org/wiki/Network_address_translation"
+            }
+          },
+        {
+            "key": "B",
+              "text": "物理アドレス（MACアドレス）を論理アドレス（IPアドレス）に変換する技術。",
+              "explanation": {
+                "text": "それはARPの役割であり、NATではありません。",
+                "reference": "https://en.wikipedia.org/wiki/Address_Resolution_Protocol"
+              }
+            },
+        {
+              "key": "C",
+                "text": "暗号化されたIPパケットをトンネル内に送るために使用される技術。",
+                "explanation": {
+                  "text": "それはVPNやIPsecトンネルの説明であり、NATではありません。",
+                  "reference": "https://en.wikipedia.org/wiki/IPsec"
+                }
+              },
+        {
+                "key": "D",
+                  "text": "OSIモデルのセッション層に対応するネットワーク機能の略称である。",
+                  "explanation": {
+                    "text": "NATはセッション層の機能ではなく、ネットワーク層以上で動作する翻訳技術です。",
+                    "reference": "https://en.wikipedia.org/wiki/NAT"
+                  }
+                }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "NATはプライベートアドレス（私的IP）をグローバルアドレスに変換して、インターネットとの通信を可能にする技術です。",
+        "reference": "https://en.wikipedia.org/wiki/Network_address_translation"
+      }
+    },
+    {
+      "id": "it-nw-9",
+      "question": "次のうち、ネットワーク冗長化技術に該当するものとして最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "単一路かつ1スイッチ構成",
+            "explanation": {
+              "text": "単一路1スイッチ構成では冗長化がないため、誤り。",
+              "reference": ""
+            }
+          },
+        {
+            "key": "B",
+              "text": "リンクアグリゲーション（LAG）を用いて複数リンクを束ねる。",
+              "explanation": {
+                "text": "リンクアグリゲーションにより、冗長化と帯域の向上を図ることができる。",
+                "reference": "https://en.wikipedia.org/wiki/Link_aggregation"
+              }
+            },
+        {
+                "key": "C",
+                  "text": "シングルルータ1台構成で運用する。",
+                  "explanation": {
+                    "text": "1台構成では冗長性がないため誤り。",
+                    "reference": ""
+                  }
+                },
+        {
+                  "key": "D",
+                    "text": "1本の光ファイバだけをバックアップ用に残すが、運用上常に片方が停止している。",
+                    "explanation": {
+                      "text": "バックアップ用がある構成ではあるが「運用上常に片方が停止している」構成は実質的な冗長化とは言い難い。",
+                      "reference": ""
+                    }
+                  }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "リンクアグリゲーション(LAG)によって複数の物理リンクを論理的に束ね、冗長性と帯域の向上を同時に実現可能なネットワーク冗長化技術です。",
+        "reference": "https://en.wikipedia.org/wiki/Link_aggregation"
+      }
+    },
+    {
+      "id": "it-nw-10",
+      "question": "次のうち、ネットワークセキュリティにおける侵入検知システム（IDS）と侵入防止システム（IPS）の説明として、正しいものの組み合わせはどれか。\nⅠ．IDSは通信内容を監視し、不正があれば管理者に通知する。\nⅡ．IPSは通信を遮断または変更して不正を防ぐ機能を持つ。\nⅢ．IDSは通信を遮断できる装置である。\nⅣ．IPSは通信内容を改ざんして正常通信に見せかける装置である。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Ⅰ・Ⅱ",
+          "explanation": {
+            "text": "ⅠとⅡはそれぞれIDSとIPSの標準的機能を表しており、正しい組み合わせです。",
+            "reference": "https://en.wikipedia.org/wiki/Intrusion_detection_system"
+          }
+        },
+        {
+            "key": "B",
+              "text": "Ⅰ・Ⅲ",
+              "explanation": {
+                "text": "Ⅲの「IDSは通信を遮断できる」という記述は誤りです。",
+                "reference": "https://en.wikipedia.org/wiki/Intrusion_detection_system"
+              }
+            },
+        {
+                "key": "C",
+                  "text": "Ⅲ・Ⅳ",
+                  "explanation": {
+                    "text": "ⅢもⅣも誤りの説明です。",
+                    "reference": ""
+                  }
+                },
+        {
+                  "key": "D",
+                    "text": "Ⅱ・Ⅳ",
+                    "explanation": {
+                      "text": "Ⅳの記述が誤りであるためこの組み合わせは誤りです。",
+                      "reference": ""
+                    }
+                  }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "IDSは監視・通知を行い、IPSは検知後に遮断など能動的防御を行う点が典型的な違いです。",
+        "reference": "https://en.wikipedia.org/wiki/Intrusion_detection_system"
+      }
+    },
+    {
+      "id": "it-nw-11",
+      "question": "BGPにおいて、経路選択時に最優先で比較される項目はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "AS Path 長",
+          "explanation": {
+            "text": "AS PathはBGP経路選択で重要だが、最優先ではない。",
+            "reference": "https://en.wikipedia.org/wiki/Border_Gateway_Protocol"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Local Preference",
+          "explanation": {
+            "text": "Local PreferenceはAS内部での最優先評価項目であり正しい。",
+            "reference": "https://en.wikipedia.org/wiki/Border_Gateway_Protocol"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Origin Type",
+          "explanation": {
+            "text": "Origin Typeは後段の要素であり最優先ではない。",
+            "reference": "https://en.wikipedia.org/wiki/Border_Gateway_Protocol"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Multi Exit Discriminator (MED)",
+          "explanation": {
+            "text": "MEDは優先順位が低く、最初に比較する項目ではない。",
+            "reference": "https://en.wikipedia.org/wiki/Border_Gateway_Protocol"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "BGPの経路選択では、AS内部ではLocal Preferenceが最初に比較される。",
+        "reference": "https://en.wikipedia.org/wiki/Border_Gateway_Protocol"
+      }
+    },
+    {
+      "id": "it-nw-12",
+      "question": "IEEE 802.1Q VLANタグの構造に関して正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "VLAN ID は 8 ビットのフィールドである。",
+          "explanation": {
+            "text": "VLAN IDは12ビットで、4096通りある。",
+            "reference": "https://en.wikipedia.org/wiki/IEEE_802.1Q"
+          }
+        },
+        {
+          "key": "B",
+          "text": "VLANタグはEthernetフレームの末尾に追加される。",
+          "explanation": {
+            "text": "802.1QタグはMACアドレス直後に挿入される。",
+            "reference": "https://en.wikipedia.org/wiki/IEEE_802.1Q"
+          }
+        },
+        {
+          "key": "C",
+          "text": "VLAN ID は 12 ビットで構成される。",
+          "explanation": {
+            "text": "正しい。4094個のVLANを扱える。",
+            "reference": "https://en.wikipedia.org/wiki/IEEE_802.1Q"
+          }
+        },
+        {
+          "key": "D",
+          "text": "VLANタグ挿入により最大フレーム長は減少する。",
+          "explanation": {
+            "text": "タグ挿入でフレーム長は4バイト増加する。",
+            "reference": "https://en.wikipedia.org/wiki/IEEE_802.1Q"
+          }
+        }
+      ],
+      "answer": "C",
+      "explanation": {
+        "text": "802.1QタグのVLAN IDは12ビットで構成され、4096通り（0と4095は予約）。",
+        "reference": "https://en.wikipedia.org/wiki/IEEE_802.1Q"
+      }
+    },
+    {
+      "id": "it-nw-13",
+      "question": "DNSにおける権威サーバの役割として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "名前解決のキャッシュ結果を提供する。",
+          "explanation": {
+            "text": "これはリゾルバやキャッシュDNSの役割。",
+            "reference": "https://en.wikipedia.org/wiki/Domain_Name_System"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ゾーン情報の正式な回答を返す。",
+          "explanation": {
+            "text": "権威サーバの本来の機能で正しい。",
+            "reference": "https://en.wikipedia.org/wiki/Domain_Name_System"
+          }
+        },
+        {
+          "key": "C",
+          "text": "クライアントに代わって再帰的検索を行う。",
+          "explanation": {
+            "text": "再帰問い合わせを行うのは通常リゾルバ。",
+            "reference": "https://en.wikipedia.org/wiki/Domain_Name_System"
+          }
+        },
+        {
+          "key": "D",
+          "text": "DNSSEC署名を検証する。",
+          "explanation": {
+            "text": "署名検証はリゾルバ側の機能。",
+            "reference": "https://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "権威DNSサーバはゾーン情報の正式な回答を返す役割を持つ。",
+        "reference": "https://en.wikipedia.org/wiki/Domain_Name_System"
+      }
+    },
+    {
+      "id": "it-nw-14",
+      "question": "無線LAN規格 IEEE 802.11ax（Wi-Fi 6）の特徴として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "MU-MIMOをサポートしない。",
+          "explanation": {
+            "text": "11axはMU-MIMOを上り下りでサポートする。",
+            "reference": "https://en.wikipedia.org/wiki/IEEE_802.11ax"
+          }
+        },
+        {
+          "key": "B",
+          "text": "OFDMAにより多端末環境で効率が向上する。",
+          "explanation": {
+            "text": "Wi-Fi 6 の主要特徴の一つ。",
+            "reference": "https://en.wikipedia.org/wiki/IEEE_802.11ax"
+          }
+        },
+        {
+          "key": "C",
+          "text": "2.4GHz帯をサポートせず、5GHz専用である。",
+          "explanation": {
+            "text": "11axは2.4GHzも5GHzもサポートする。",
+            "reference": "https://en.wikipedia.org/wiki/IEEE_802.11ax"
+          }
+        },
+        {
+          "key": "D",
+          "text": "チャネル幅は最大20MHzまでに制限される。",
+          "explanation": {
+            "text": "11axは最大160MHz幅をサポートする。",
+            "reference": "https://en.wikipedia.org/wiki/IEEE_802.11ax"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Wi-Fi 6ではOFDMAが導入され、多端末の同時通信効率が大幅に改善される。",
+        "reference": "https://en.wikipedia.org/wiki/IEEE_802.11ax"
+      }
+    },
+    {
+      "id": "it-nw-15",
+      "question": "IPパケット断片化に関する説明として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "DFビットが1の場合は断片化が許可される。",
+          "explanation": {
+            "text": "DF=1 は断片化禁止。",
+            "reference": "https://en.wikipedia.org/wiki/IP_fragmentation"
+          }
+        },
+        {
+          "key": "B",
+          "text": "MFビットが0であればそれが最後のフラグメントである。",
+          "explanation": {
+            "text": "MF=0 は最後のフラグメントを示すため正しい。",
+            "reference": "https://en.wikipedia.org/wiki/IP_fragmentation"
+          }
+        },
+        {
+          "key": "C",
+          "text": "フラグメントオフセットは1バイト単位で指定される。",
+          "explanation": {
+            "text": "8バイト単位で指定される。",
+            "reference": "https://en.wikipedia.org/wiki/IP_fragmentation"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IPv6ではIPv4と同じ手順で中継ルータが断片化を行う。",
+          "explanation": {
+            "text": "IPv6はルータ断片化を禁止している。",
+            "reference": "https://en.wikipedia.org/wiki/IPv6_packet"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "MF=0 は最後のフラグメントを示し、IP断片化再構築の指標となる。",
+        "reference": "https://en.wikipedia.org/wiki/IP_fragmentation"
+      }
+    },
+    {
+      "id": "it-nw-16",
+      "question": "SDN（Software Defined Networking）の特徴として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "制御プレーンを各スイッチに分散配置する。",
+          "explanation": {
+            "text": "SDNは制御プレーンを集中制御する。",
+            "reference": "https://en.wikipedia.org/wiki/Software-defined_networking"
+          }
+        },
+        {
+          "key": "B",
+          "text": "OpenFlow はSDN実現技術の一つである。",
+          "explanation": {
+            "text": "OpenFlowは代表的プロトコルで正しい。",
+            "reference": "https://en.wikipedia.org/wiki/OpenFlow"
+          }
+        },
+        {
+          "key": "C",
+          "text": "データプレーンが中央集約される。",
+          "explanation": {
+            "text": "集約されるのは制御プレーンである。",
+            "reference": "https://en.wikipedia.org/wiki/Software-defined_networking"
+          }
+        },
+        {
+          "key": "D",
+          "text": "SDNはL2スイッチのみで利用可能であり、ルータでは利用できない。",
+          "explanation": {
+            "text": "SDNはL2/L3を問わず利用可能。",
+            "reference": "https://en.wikipedia.org/wiki/Software-defined_networking"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "SDNは制御プレーンの集中化を特徴とし、OpenFlowはその主要技術の一つである。",
+        "reference": "https://en.wikipedia.org/wiki/Software-defined_networking"
+      }
+    },
+    {
+      "id": "it-nw-17",
+      "question": "ネットワーク管理プロトコルSNMPに関して正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "SNMPv1は暗号化と認証を完全サポートしている。",
+          "explanation": {
+            "text": "SNMPv1は暗号化をサポートしない。",
+            "reference": "https://en.wikipedia.org/wiki/Simple_Network_Management_Protocol"
+          }
+        },
+        {
+          "key": "B",
+          "text": "SNMPv3は認証と暗号化をサポートする。",
+          "explanation": {
+            "text": "SNMPv3はセキュリティ機能が強化されている。",
+            "reference": "https://en.wikipedia.org/wiki/Simple_Network_Management_Protocol"
+          }
+        },
+        {
+          "key": "C",
+          "text": "MIBは監視対象データの送受信用プロトコルである。",
+          "explanation": {
+            "text": "MIBはデータ構造定義であってプロトコルではない。",
+            "reference": "https://en.wikipedia.org/wiki/Management_information_base"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Trapは管理者が要求しない限り送信されない。",
+          "explanation": {
+            "text": "Trapは非同期通知であり要求不要。",
+            "reference": "https://en.wikipedia.org/wiki/Simple_Network_Management_Protocol"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "SNMPv3は暗号化・認証などのセキュリティ機能を標準で備える。",
+        "reference": "https://en.wikipedia.org/wiki/Simple_Network_Management_Protocol"
+      }
+    },
+    {
+      "id": "it-nw-18",
+      "question": "ファイアウォールのパケットフィルタ型の特徴として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "アプリケーションの内容まで詳細に検査できる。",
+          "explanation": {
+            "text": "それはアプリケーションゲートウェイ型の特徴。",
+            "reference": "https://en.wikipedia.org/wiki/Firewall_(computing)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "IPアドレスやポート番号などヘッダ情報に基づき通信を制御する。",
+          "explanation": {
+            "text": "パケットフィルタ型の基本機能で正しい。",
+            "reference": "https://en.wikipedia.org/wiki/Firewall_(computing)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ユーザ認証を必須とする。",
+          "explanation": {
+            "text": "パケットフィルタ型はユーザレベルを扱わない。",
+            "reference": "https://en.wikipedia.org/wiki/Firewall_(computing)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "プロキシ機能を通して通信を中継する。",
+          "explanation": {
+            "text": "プロキシ動作はアプリケーションゲートウェイ型。",
+            "reference": "https://en.wikipedia.org/wiki/Firewall_(computing)"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "パケットフィルタ型はIP・TCP/UDPヘッダ情報を基に通信を許可/拒否する。",
+        "reference": "https://en.wikipedia.org/wiki/Firewall_(computing)"
+      }
+    },
+    {
+      "id": "it-nw-19",
+      "question": "QoS技術 DiffServ の特徴として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "エンドトゥエンドでフロー単位の状態を保持する。",
+          "explanation": {
+            "text": "これはIntServの特徴。",
+            "reference": "https://en.wikipedia.org/wiki/Differentiated_services"
+          }
+        },
+        {
+          "key": "B",
+          "text": "DSCPフィールドによりパケット分類を行う。",
+          "explanation": {
+            "text": "DiffServではDSCPを使用して分類するため正しい。",
+            "reference": "https://en.wikipedia.org/wiki/Differentiated_services"
+          }
+        },
+        {
+          "key": "C",
+          "text": "すべてのルータが予約状態を保持する。",
+          "explanation": {
+            "text": "予約状態を持つのはIntServ。",
+            "reference": "https://en.wikipedia.org/wiki/Integrated_services"
+          }
+        },
+        {
+          "key": "D",
+          "text": "RSVP を必須とする。",
+          "explanation": {
+            "text": "RSVP はIntServ向けであり、DiffServとは別。",
+            "reference": "https://en.wikipedia.org/wiki/Resource_Reservation_Protocol"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "DiffServではパケットにDSCP値を付与し、ルータが分類・優先制御を行う。",
+        "reference": "https://en.wikipedia.org/wiki/Differentiated_services"
+      }
+    },
+    {
+      "id": "it-nw-20",
+      "question": "ネットワークケーブルカテゴリに関して、Cat6A の特徴として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "最大帯域幅は100MHzである。",
+          "explanation": {
+            "text": "100MHzはCat5eの帯域。Cat6Aではない。",
+            "reference": "https://en.wikipedia.org/wiki/Twisted_pair"
+          }
+        },
+        {
+          "key": "B",
+          "text": "10GBASE-Tに対応し、最大帯域幅は500MHzである。",
+          "explanation": {
+            "text": "Cat6Aは10GBASE-Tに正式対応し、500MHz帯域を持つ。",
+            "reference": "https://en.wikipedia.org/wiki/Twisted_pair"
+          }
+        },
+        {
+          "key": "C",
+          "text": "Cat7より性能が高い。",
+          "explanation": {
+            "text": "Cat7の方が帯域が広く、性能は上。",
+            "reference": "https://en.wikipedia.org/wiki/Twisted_pair"
+          }
+        },
+        {
+          "key": "D",
+          "text": "UTPとして規格化されていない。",
+          "explanation": {
+            "text": "Cat6AにはUTP/STP両方の規格がある。",
+            "reference": "https://en.wikipedia.org/wiki/Twisted_pair"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Cat6Aは10GBASE-T対応で、最大帯域幅は500MHz。",
+        "reference": "https://en.wikipedia.org/wiki/Twisted_pair"
+      }
+    },
+    {
+      "id": "it-nw-21",
+      "question": "MPLS（Multi-Protocol Label Switching）の特徴として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "IPヘッダのTTLを利用して経路制御を行う。",
+          "explanation": {
+            "text": "TTLはIPヘッダのフィールドだが、MPLSではラベルに基づきスイッチングを行う。",
+            "reference": "https://en.wikipedia.org/wiki/Multiprotocol_Label_Switching",
+            "reference_label": "Wikipedia - Multiprotocol Label Switching"
+          }
+        },
+        {
+          "key": "B",
+          "text": "LSP上ではラベルに基づいて転送が行われる。",
+          "explanation": {
+            "text": "MPLSはラベルスイッチパス(LSP)を構築し、ラベルに基づく高速転送を行う。",
+            "reference": "https://en.wikipedia.org/wiki/Multiprotocol_Label_Switching",
+            "reference_label": "Wikipedia - Multiprotocol Label Switching"
+          }
+        },
+        {
+          "key": "C",
+          "text": "アドレス解決プロトコルとして動作し、IPアドレスからMACアドレスを解決する。",
+          "explanation": {
+            "text": "IPからMACアドレスの解決はARPの機能であり、MPLSの役割ではない。",
+            "reference": "https://en.wikipedia.org/wiki/Address_Resolution_Protocol",
+            "reference_label": "Wikipedia - Address Resolution Protocol"
+          }
+        },
+        {
+          "key": "D",
+          "text": "アプリケーション層で動作し、セッション確立を行う。",
+          "explanation": {
+            "text": "MPLSはレイヤ2.5に位置づけられる転送技術であり、アプリケーション層では動作しない。",
+            "reference": "https://en.wikipedia.org/wiki/Multiprotocol_Label_Switching",
+            "reference_label": "Wikipedia - Multiprotocol Label Switching"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "MPLSでは、LSP（Label Switched Path）上でラベルに基づいてパケットを転送することで、高速かつ柔軟な経路制御を実現している。",
+        "reference": "https://en.wikipedia.org/wiki/Multiprotocol_Label_Switching",
+        "reference_label": "Wikipedia - Multiprotocol Label Switching"
+      }
+    },
+    {
+      "id": "it-nw-22",
+      "question": "ルーティングプロトコルEIGRPの特徴として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "リンクステート型プロトコルであり、LSAを交換する。",
+          "explanation": {
+            "text": "リンクステート型でLSAを交換するのはOSPFであり、EIGRPは距離ベクトルを拡張したハイブリッド型に分類される。",
+            "reference": "https://en.wikipedia.org/wiki/Enhanced_Interior_Gateway_Routing_Protocol",
+            "reference_label": "Wikipedia - EIGRP"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Cisco独自プロトコルであり、DUALアルゴリズムを用いる。",
+          "explanation": {
+            "text": "EIGRPはCiscoによるプロトコルで、DUAL（Diffusing Update Algorithm）による経路計算を行う。",
+            "reference": "https://en.wikipedia.org/wiki/Enhanced_Interior_Gateway_Routing_Protocol",
+            "reference_label": "Wikipedia - EIGRP"
+          }
+        },
+        {
+          "key": "C",
+          "text": "OSPFと同様にエリア0をバックボーンとする必要がある。",
+          "explanation": {
+            "text": "エリア0を必須とするのはOSPFであり、EIGRPにはエリアの概念はない。",
+            "reference": "https://en.wikipedia.org/wiki/Open_Shortest_Path_First",
+            "reference_label": "Wikipedia - OSPF"
+          }
+        },
+        {
+          "key": "D",
+          "text": "BGP同様にAS間ルーティング用に設計されたEGPである。",
+          "explanation": {
+            "text": "EIGRPはAS内部の経路制御に用いるIGPであり、EGPではない。",
+            "reference": "https://en.wikipedia.org/wiki/Enhanced_Interior_Gateway_Routing_Protocol",
+            "reference_label": "Wikipedia - EIGRP"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "EIGRPはCiscoが開発したIGPで、DUALアルゴリズムによりループフリーで収束性の高い経路制御を行う。",
+        "reference": "https://en.wikipedia.org/wiki/Enhanced_Interior_Gateway_Routing_Protocol",
+        "reference_label": "Wikipedia - EIGRP"
+      }
+    },
+    {
+      "id": "it-nw-23",
+      "question": "IPv6のNeighbor Discovery（ND）プロトコルに関する説明として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "IPv4のARPに相当する機能をICMPv6メッセージで実現している。",
+          "explanation": {
+            "text": "NDはICMPv6を用いてアドレス解決や近隣ルータ探索などを提供し、ARPに相当する機能も含む。",
+            "reference": "https://datatracker.ietf.org/doc/html/rfc4861",
+            "reference_label": "RFC 4861 - Neighbor Discovery for IP version 6"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ルータだけがNDメッセージを送信でき、ホストは受信のみ行う。",
+          "explanation": {
+            "text": "ホストもNeighbor SolicitationなどのNDメッセージを送信する。",
+            "reference": "https://datatracker.ietf.org/doc/html/rfc4861",
+            "reference_label": "RFC 4861 - Neighbor Discovery for IP version 6"
+          }
+        },
+        {
+          "key": "C",
+          "text": "IPv6におけるDNSの問い合わせメッセージ仕様を定めたものである。",
+          "explanation": {
+            "text": "DNS仕様は別のRFCで定義されており、NDはDNSとは直接関係しない。",
+            "reference": "https://datatracker.ietf.org/doc/html/rfc3596",
+            "reference_label": "RFC 3596 - DNS Extensions to Support IPv6"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IPv6におけるTCPの輻輳制御アルゴリズムを規定する。",
+          "explanation": {
+            "text": "輻輳制御はTCPの仕様であり、NDの範囲外である。",
+            "reference": "https://datatracker.ietf.org/doc/html/rfc5681",
+            "reference_label": "RFC 5681 - TCP Congestion Control"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "Neighbor DiscoveryはICMPv6メッセージを用いて、アドレス解決（ARP相当）や近隣ルータ探索、プレフィックス情報の取得などを提供する。",
+        "reference": "https://datatracker.ietf.org/doc/html/rfc4861",
+        "reference_label": "RFC 4861 - Neighbor Discovery for IP version 6"
+      }
+    },
+    {
+      "id": "it-nw-24",
+      "question": "ネットワーク設計において、スーパーネット（集約ルート）の利用目的として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "サブネット内でのブロードキャストドメイン分割のため。",
+          "explanation": {
+            "text": "ブロードキャストドメイン分割はVLANやサブネット化などで行う。",
+            "reference": "https://en.wikipedia.org/wiki/Subnetwork",
+            "reference_label": "Wikipedia - Subnetwork"
+          }
+        },
+        {
+          "key": "B",
+          "text": "複数の連続したプレフィックスを1つの経路情報にまとめ、ルーティングテーブルを小さくするため。",
+          "explanation": {
+            "text": "スーパーネット（ルート集約）の主目的は経路数削減によるルーティングテーブルの縮小である。",
+            "reference": "https://en.wikipedia.org/wiki/Route_aggregation",
+            "reference_label": "Wikipedia - Route aggregation"
+          }
+        },
+        {
+          "key": "C",
+          "text": "DHCPサーバがIPアドレスを重複して配布するため。",
+          "explanation": {
+            "text": "DHCPの重複配布は障害であり、スーパーネットとは無関係。",
+            "reference": "https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol",
+            "reference_label": "Wikipedia - DHCP"
+          }
+        },
+        {
+          "key": "D",
+          "text": "MACアドレスを短縮表現するため。",
+          "explanation": {
+            "text": "スーパーネットはIPのプレフィックス集約であり、MACアドレスには関係しない。",
+            "reference": "https://en.wikipedia.org/wiki/Route_aggregation",
+            "reference_label": "Wikipedia - Route aggregation"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "スーパーネットは、連続した複数のプレフィックスを1つの経路として集約し、ルーティングテーブルを小さくしてスケーラビリティを高めるために用いられる。",
+        "reference": "https://en.wikipedia.org/wiki/Route_aggregation",
+        "reference_label": "Wikipedia - Route aggregation"
+      }
+    },
+    {
+      "id": "it-nw-25",
+      "question": "TCPの輻輳制御アルゴリズムに関する説明として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "スロースタートでは輻輳ウィンドウ(cwnd)は1RTTごとに一定量ずつ増加する。",
+          "explanation": {
+            "text": "スロースタートではcwndは指数関数的（ほぼ倍々）に増加する。",
+            "reference": "https://datatracker.ietf.org/doc/html/rfc5681",
+            "reference_label": "RFC 5681 - TCP Congestion Control"
+          }
+        },
+        {
+          "key": "B",
+          "text": "輻輳回避フェーズではcwndは線形に増加する。",
+          "explanation": {
+            "text": "RFC5681で定義されるTCPでは、輻輳回避フェーズにおいてcwndは1RTTあたりおおよそ1MSSずつ線形に増加する。",
+            "reference": "https://datatracker.ietf.org/doc/html/rfc5681",
+            "reference_label": "RFC 5681 - TCP Congestion Control"
+          }
+        },
+        {
+          "key": "C",
+          "text": "輻輳検出時には常に接続を強制的に切断する。",
+          "explanation": {
+            "text": "パケットロスなどの輻輳検出時にはcwndやしきい値を調整するが、接続を切断するわけではない。",
+            "reference": "https://datatracker.ietf.org/doc/html/rfc5681",
+            "reference_label": "RFC 5681 - TCP Congestion Control"
+          }
+        },
+        {
+          "key": "D",
+          "text": "輻輳制御はUDPでも同じ仕組みで必須となっている。",
+          "explanation": {
+            "text": "UDP自体には輻輳制御は定義されておらず、アプリケーション側で実装する必要がある。",
+            "reference": "https://en.wikipedia.org/wiki/User_Datagram_Protocol",
+            "reference_label": "Wikipedia - UDP"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "標準的なTCP輻輳制御では、スロースタート後の輻輳回避フェーズにおいてcwndを線形に増加させることで、輻輳を起こしにくくする。",
+        "reference": "https://datatracker.ietf.org/doc/html/rfc5681",
+        "reference_label": "RFC 5681 - TCP Congestion Control"
+      }
+    },
+    {
+      "id": "it-nw-26",
+      "question": "ネットワーク監視において、フローベースのトラフィック可視化技術として最も代表的なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "NetFlow",
+          "explanation": {
+            "text": "NetFlowはCiscoが開発したフローベースのトラフィック計測技術であり代表的である。",
+            "reference": "https://en.wikipedia.org/wiki/NetFlow",
+            "reference_label": "Wikipedia - NetFlow"
+          }
+        },
+        {
+          "key": "B",
+          "text": "RADIUS",
+          "explanation": {
+            "text": "RADIUSは認証・認可・課金プロトコルであり、フロー可視化技術ではない。",
+            "reference": "https://en.wikipedia.org/wiki/RADIUS",
+            "reference_label": "Wikipedia - RADIUS"
+          }
+        },
+        {
+          "key": "C",
+          "text": "NTP",
+          "explanation": {
+            "text": "NTPは時刻同期用プロトコルであり、トラフィック可視化技術ではない。",
+            "reference": "https://en.wikipedia.org/wiki/Network_Time_Protocol",
+            "reference_label": "Wikipedia - Network Time Protocol"
+          }
+        },
+        {
+          "key": "D",
+          "text": "TFTP",
+          "explanation": {
+            "text": "TFTPは簡易ファイル転送プロトコルであり、フロー可視化とは無関係。",
+            "reference": "https://en.wikipedia.org/wiki/Trivial_File_Transfer_Protocol",
+            "reference_label": "Wikipedia - TFTP"
+          }
+        }
+      ],
+      "answer": "A",
+      "explanation": {
+        "text": "NetFlowはルータ等からフロー情報をエクスポートし、トラフィックの可視化や分析に広く利用される代表的な技術である。",
+        "reference": "https://en.wikipedia.org/wiki/NetFlow",
+        "reference_label": "Wikipedia - NetFlow"
+      }
+    },
+    {
+      "id": "it-nw-27",
+      "question": "無線LANにおけるWPA3の特徴として、WPA2との比較で正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "WPA3ではPSK方式のみが定義されている。",
+          "explanation": {
+            "text": "WPA3-PersonalではSAEを用いた認証が導入されており、従来のPSKとは異なる。",
+            "reference": "https://en.wikipedia.org/wiki/Wi-Fi_Protected_Access",
+            "reference_label": "Wikipedia - Wi-Fi Protected Access"
+          }
+        },
+        {
+          "key": "B",
+          "text": "WPA3-PersonalではSAEによりオフライン辞書攻撃への耐性が向上している。",
+          "explanation": {
+            "text": "WPA3ではDragonflyハンドシェイク(SAE)を採用し、オフライン推測攻撃に強くなっている。",
+            "reference": "https://en.wikipedia.org/wiki/Wi-Fi_Protected_Access#WPA3",
+            "reference_label": "Wikipedia - Wi-Fi Protected Access (WPA3)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "暗号化方式としてWEPが再導入された。",
+          "explanation": {
+            "text": "WEPは脆弱な方式として廃止されており、WPA3では使用されない。",
+            "reference": "https://en.wikipedia.org/wiki/Wired_Equivalent_Privacy",
+            "reference_label": "Wikipedia - WEP"
+          }
+        },
+        {
+          "key": "D",
+          "text": "WPA3ではエンタープライズモードが廃止され、パーソナルモードのみとなった。",
+          "explanation": {
+            "text": "WPA3にもEnterpriseモードが存在し、より強い暗号要件が課されている。",
+            "reference": "https://en.wikipedia.org/wiki/Wi-Fi_Protected_Access#WPA3",
+            "reference_label": "Wikipedia - Wi-Fi Protected Access (WPA3)"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "WPA3-PersonalではSAE(Dragonfly)が導入され、WPA2-PSKの弱点であったオフライン辞書攻撃への耐性が強化されている。",
+        "reference": "https://en.wikipedia.org/wiki/Wi-Fi_Protected_Access#WPA3",
+        "reference_label": "Wikipedia - Wi-Fi Protected Access (WPA3)"
+      }
+    },
+    {
+      "id": "it-nw-28",
+      "question": "Webアクセスのパフォーマンス向上のために用いられるHTTP/2の特徴として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "テキストベースのヘッダフォーマットを使用し、人間が読みやすい形にしている。",
+          "explanation": {
+            "text": "HTTP/2ではバイナリフレーミングを採用しており、テキストベースではない。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc7540",
+            "reference_label": "RFC 7540 - Hypertext Transfer Protocol Version 2 (HTTP/2)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "1本のTCPコネクション上で複数のストリームを多重化し、HOLブロッキングを軽減する。",
+          "explanation": {
+            "text": "HTTP/2では単一TCP接続上でのストリーム多重化により、リクエスト毎に新規接続を張る必要を減らし、効率化している。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc7540",
+            "reference_label": "RFC 7540 - Hypertext Transfer Protocol Version 2 (HTTP/2)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "サーバプッシュ機能はHTTP/3から導入されたため、HTTP/2では利用できない。",
+          "explanation": {
+            "text": "サーバプッシュはHTTP/2で導入された機能である。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc7540",
+            "reference_label": "RFC 7540 - Hypertext Transfer Protocol Version 2 (HTTP/2)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ヘッダ圧縮はサポートされておらず、HTTP/1.1と同等のオーバーヘッドである。",
+          "explanation": {
+            "text": "HTTP/2ではHPACKによるヘッダ圧縮が導入されている。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc7541",
+            "reference_label": "RFC 7541 - HPACK: Header Compression for HTTP/2"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "HTTP/2はバイナリフレーミングとストリーム多重化により、1本のTCPコネクション上で複数のリクエスト・レスポンスを効率的に処理できるように設計されている。",
+        "reference": "https://www.rfc-editor.org/rfc/rfc7540",
+        "reference_label": "RFC 7540 - Hypertext Transfer Protocol Version 2 (HTTP/2)"
+      }
+    },
+    {
+      "id": "it-nw-29",
+      "question": "ゼロトラストネットワークの考え方として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "社内ネットワークは全面的に信頼し、社外からのアクセスのみを厳格に制御する。",
+          "explanation": {
+            "text": "これは従来の境界型防御モデルの考え方であり、ゼロトラストとは逆である。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-207/final",
+            "reference_label": "NIST SP 800-207 - Zero Trust Architecture"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ネットワークの内外に関係なく、すべてのアクセスを検証し継続的に信頼を評価する。",
+          "explanation": {
+            "text": "ゼロトラストは「決して信頼せず常に検証する」という考え方に基づき、場所に依存しないアクセス制御を行う。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-207/final",
+            "reference_label": "NIST SP 800-207 - Zero Trust Architecture"
+          }
+        },
+        {
+          "key": "C",
+          "text": "VPN接続を利用しているユーザは常に完全に信頼する。",
+          "explanation": {
+            "text": "ゼロトラストではVPN接続であっても認証・認可・端末状態などを継続的に評価する。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-207/final",
+            "reference_label": "NIST SP 800-207 - Zero Trust Architecture"
+          }
+        },
+        {
+          "key": "D",
+          "text": "DMZ内のサーバはインターネットに公開されているため、アクセス制御は行わない。",
+          "explanation": {
+            "text": "ゼロトラストに限らず、DMZ内サーバにも厳格なアクセス制御が必要である。",
+            "reference": "https://csrc.nist.gov/publications/detail/sp/800-207/final",
+            "reference_label": "NIST SP 800-207 - Zero Trust Architecture"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "ゼロトラストではネットワークの内外を問わず、ユーザ・デバイス・アプリケーション等の状態を継続的に検証し、最小権限に基づいてアクセスを制御する。",
+        "reference": "https://csrc.nist.gov/publications/detail/sp/800-207/final",
+        "reference_label": "NIST SP 800-207 - Zero Trust Architecture"
+      }
+    },
+    {
+      "id": "it-nw-30",
+      "question": "ログ収集・分析基盤として用いられるSIEM(Security Information and Event Management)の主な目的として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ネットワーク機器のファームウェアを自動的にアップデートする。",
+          "explanation": {
+            "text": "ファームウェア更新は別の管理ツールの役割であり、SIEMの目的ではない。",
+            "reference": "https://en.wikipedia.org/wiki/Security_information_and_event_management",
+            "reference_label": "Wikipedia - Security information and event management"
+          }
+        },
+        {
+          "key": "B",
+          "text": "複数の機器やシステムからログを集中管理し、相関分析によりセキュリティインシデントを検知する。",
+          "explanation": {
+            "text": "SIEMはログ管理とイベント相関分析によって、異常な振る舞いやインシデントの検知・可視化を行う。",
+            "reference": "https://en.wikipedia.org/wiki/Security_information_and_event_management",
+            "reference_label": "Wikipedia - Security information and event management"
+          }
+        },
+        {
+          "key": "C",
+          "text": "IDS/IPSに代わってネットワークトラフィックをリアルタイムに遮断する。",
+          "explanation": {
+            "text": "トラフィック遮断はIPSなどの役割であり、SIEMは主に監視と分析を担う。",
+            "reference": "https://en.wikipedia.org/wiki/Intrusion_prevention_system",
+            "reference_label": "Wikipedia - Intrusion prevention system"
+          }
+        },
+        {
+          "key": "D",
+          "text": "マルウェアを自動解析し、シグネチャを生成する専用基盤である。",
+          "explanation": {
+            "text": "マルウェア解析・シグネチャ生成はサンドボックス製品やアンチウイルスエンジンの役割であり、SIEMの中心機能ではない。",
+            "reference": "https://en.wikipedia.org/wiki/Security_information_and_event_management",
+            "reference_label": "Wikipedia - Security information and event management"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "SIEMは多様なシステム・ネットワーク機器からのログを集中管理し、相関分析によりセキュリティインシデントの検知や対応を支援する基盤である。",
+        "reference": "https://en.wikipedia.org/wiki/Security_information_and_event_management",
+        "reference_label": "Wikipedia - Security information and event management"
+      }
+    },
+    {
+      "id": "it-nw-31",
+      "question": "DNSSECの目的として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "DNSクエリを暗号化し内容を秘匿する。",
+          "explanation": {
+            "text": "DNSSECは暗号化ではなく、応答の改ざん検知を目的とする。",
+            "reference": "https://en.wikipedia.org/wiki/DNSSEC",
+            "reference_label": "Wikipedia - DNSSEC"
+          }
+        },
+        {
+          "key": "B",
+          "text": "DNS応答に署名を付与し、なりすましや改ざんを防ぐ。",
+          "explanation": {
+            "text": "DNSSECは公開鍵署名により応答の正当性を検証する仕組みであり正しい。",
+            "reference": "https://en.wikipedia.org/wiki/DNSSEC",
+            "reference_label": "Wikipedia - DNSSEC"
+          }
+        },
+        {
+          "key": "C",
+          "text": "DNSサーバの負荷を軽減するキャッシュ技術である。",
+          "explanation": {
+            "text": "キャッシュはDNSSECとは別の機能。",
+            "reference": "https://en.wikipedia.org/wiki/Domain_Name_System",
+            "reference_label": "Wikipedia - DNS"
+          }
+        },
+        {
+          "key": "D",
+          "text": "DNSクエリをIPv6のみで処理するための拡張仕様である。",
+          "explanation": {
+            "text": "IPv6対応拡張は別のRFCでありDNSSECとは関係ない。",
+            "reference": "https://en.wikipedia.org/wiki/DNSSEC",
+            "reference_label": "Wikipedia - DNSSEC"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "DNSSECは署名付き応答により、改ざんや偽装を防ぎ、応答の信頼性を高める技術である。",
+        "reference": "https://en.wikipedia.org/wiki/DNSSEC",
+        "reference_label": "Wikipedia - DNSSEC"
+      }
+    },
+    {
+      "id": "it-nw-32",
+      "question": "VXLAN（Virtual Extensible LAN）の特徴として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "レイヤ2フレームをGREでカプセル化して転送する。",
+          "explanation": {
+            "text": "VXLANはUDPベースのカプセル化を用いる。",
+            "reference": "https://datatracker.ietf.org/doc/html/rfc7348",
+            "reference_label": "RFC 7348 - VXLAN"
+          }
+        },
+        {
+          "key": "B",
+          "text": "24ビットのVNIにより最大1600万規模の仮想ネットワークを作成可能である。",
+          "explanation": {
+            "text": "VXLANのVNIは24ビットで約1677万通りあり正しい。",
+            "reference": "https://datatracker.ietf.org/doc/html/rfc7348",
+            "reference_label": "RFC 7348 - VXLAN"
+          }
+        },
+        {
+          "key": "C",
+          "text": "MTUを縮小するためオーバーヘッドは小さく設計されている。",
+          "explanation": {
+            "text": "VXLANではUDPカプセル化によりオーバーヘッドが増える。",
+            "reference": "https://datatracker.ietf.org/doc/html/rfc7348",
+            "reference_label": "RFC 7348 - VXLAN"
+          }
+        },
+        {
+          "key": "D",
+          "text": "L3ネットワーク上では動作できず、L2延伸用途に限定される。",
+          "explanation": {
+            "text": "VXLANはL3ネットワークを跨いでL2を拡張できる点がメリット。",
+            "reference": "https://datatracker.ietf.org/doc/html/rfc7348",
+            "reference_label": "RFC 7348 - VXLAN"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "VXLANは24ビットのVNIを利用し、従来のVLANの4096制限を大幅に超える規模を実現する。",
+        "reference": "https://datatracker.ietf.org/doc/html/rfc7348",
+        "reference_label": "RFC 7348 - VXLAN"
+      }
+    },
+    {
+      "id": "it-nw-33",
+      "question": "BFD（Bidirectional Forwarding Detection）の特徴として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "リンクの物理断のみ検知可能で、経路障害は検知できない。",
+          "explanation": {
+            "text": "BFDは物理断だけでなくIPレベルのフォワーディング障害も高速検知する。",
+            "reference": "https://datatracker.ietf.org/doc/html/rfc5880",
+            "reference_label": "RFC 5880 - BFD"
+          }
+        },
+        {
+          "key": "B",
+          "text": "OSPFやBGPなどと連携して経路ダウン検知を高速化できる。",
+          "explanation": {
+            "text": "BFDは多くのルーティングプロトコルと連携し高速な障害検出を実現する。",
+            "reference": "https://datatracker.ietf.org/doc/html/rfc5880",
+            "reference_label": "RFC 5880 - BFD"
+          }
+        },
+        {
+          "key": "C",
+          "text": "TCP上で動作するため信頼性が高い。",
+          "explanation": {
+            "text": "BFDはUDP上で動作し低遅延を重視する。",
+            "reference": "https://datatracker.ietf.org/doc/html/rfc5881",
+            "reference_label": "RFC 5881 - BFD for IPv4/IPv6"
+          }
+        },
+        {
+          "key": "D",
+          "text": "L2スイッチ専用の障害検出技術である。",
+          "explanation": {
+            "text": "BFDはL3ルータやMPLS環境など幅広く利用可能。",
+            "reference": "https://datatracker.ietf.org/doc/html/rfc5880",
+            "reference_label": "RFC 5880 - BFD"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "BFDはルーティングプロトコルと連携して高速な経路障害検知を実現する仕組みである。",
+        "reference": "https://datatracker.ietf.org/doc/html/rfc5880",
+        "reference_label": "RFC 5880 - BFD"
+      }
+    },
+    {
+      "id": "it-nw-34",
+      "question": "QoSのキュー制御方式であるWFQ（Weighted Fair Queuing）の特徴として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "各フローに同等の帯域を割り当てる完全公平方式である。",
+          "explanation": {
+            "text": "WFQは重みづけによりフローごとに帯域配分を調整できる。",
+            "reference": "https://en.wikipedia.org/wiki/Fair_queuing",
+            "reference_label": "Wikipedia - Fair queuing"
+          }
+        },
+        {
+          "key": "B",
+          "text": "重み値に応じてフローごとの帯域を調整する。",
+          "explanation": {
+            "text": "WFQは重みづけにより優先制御を行うため正しい。",
+            "reference": "https://en.wikipedia.org/wiki/Fair_queuing",
+            "reference_label": "Wikipedia - Fair queuing"
+          }
+        },
+        {
+          "key": "C",
+          "text": "最も優先度の低いキューから処理する方式である。",
+          "explanation": {
+            "text": "低優先度から処理する方式ではなく、優先度制御は重み付けで行う。",
+            "reference": "https://en.wikipedia.org/wiki/Fair_queuing",
+            "reference_label": "Wikipedia - Fair queuing"
+          }
+        },
+        {
+          "key": "D",
+          "text": "帯域保証は不可能である。",
+          "explanation": {
+            "text": "WFQは重み付けに基づく帯域保証的制御が可能である。",
+            "reference": "https://en.wikipedia.org/wiki/Fair_queuing",
+            "reference_label": "Wikipedia - Fair queuing"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "WFQは重み値に基づいてフローごとに帯域を調整する仕組みであり、転送制御の公平性を確保する。",
+        "reference": "https://en.wikipedia.org/wiki/Fair_queuing",
+        "reference_label": "Wikipedia - Fair queuing"
+      }
+    },
+    {
+      "id": "it-nw-35",
+      "question": "IEEE 802.1X におけるEAPOLの役割として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "無線LAN接続における暗号化アルゴリズムを規定する。",
+          "explanation": {
+            "text": "暗号化方式はWPA/WPA2等で規定され、EAPOL自体の役割ではない。",
+            "reference": "https://en.wikipedia.org/wiki/IEEE_802.1X",
+            "reference_label": "Wikipedia - IEEE 802.1X"
+          }
+        },
+        {
+          "key": "B",
+          "text": "認証フレーム（EAP）をLAN上でカプセル化して転送する。",
+          "explanation": {
+            "text": "EAPOLはEAPメッセージをLAN上で運ぶためのプロトコル。",
+            "reference": "https://en.wikipedia.org/wiki/IEEE_802.1X",
+            "reference_label": "Wikipedia - IEEE 802.1X"
+          }
+        },
+        {
+          "key": "C",
+          "text": "RADIUSサーバ間で転送されるアカウンティング情報を管理する。",
+          "explanation": {
+            "text": "アカウンティングはRADIUSの役割。",
+            "reference": "https://en.wikipedia.org/wiki/RADIUS",
+            "reference_label": "Wikipedia - RADIUS"
+          }
+        },
+        {
+          "key": "D",
+          "text": "鍵更新処理をPAP方式で実施する。",
+          "explanation": {
+            "text": "PAPはPPP認証方式の一つでありEAPOLとは無関係。",
+            "reference": "https://en.wikipedia.org/wiki/Password_authentication_protocol",
+            "reference_label": "Wikipedia - PAP"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "EAPOLはEAPメッセージをLAN内で運ぶためのL2プロトコルであり、802.1X認証の基盤となる。",
+        "reference": "https://en.wikipedia.org/wiki/IEEE_802.1X",
+        "reference_label": "Wikipedia - IEEE 802.1X"
+      }
+    },
+    {
+      "id": "it-nw-36",
+      "question": "ネットワークの冗長化プロトコルHSRP（Hot Standby Router Protocol）の特徴として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "標準化されたオープンプロトコルで複数ベンダ間で互換性がある。",
+          "explanation": {
+            "text": "HSRPはCisco独自プロトコルであり標準化はされていない。",
+            "reference": "https://en.wikipedia.org/wiki/Hot_Standby_Router_Protocol",
+            "reference_label": "Wikipedia - HSRP"
+          }
+        },
+        {
+          "key": "B",
+          "text": "仮想IPアドレスを共有し、アクティブルータが切替わる。",
+          "explanation": {
+            "text": "HSRPは仮想IPとMACを共有し、Active/Standbyを切り替えて冗長性を確保する。",
+            "reference": "https://en.wikipedia.org/wiki/Hot_Standby_Router_Protocol",
+            "reference_label": "Wikipedia - HSRP"
+          }
+        },
+        {
+          "key": "C",
+          "text": "STPと同じIDを用いてルートブリッジを決定する。",
+          "explanation": {
+            "text": "STPのルートブリッジ選定とは無関係である。",
+            "reference": "https://en.wikipedia.org/wiki/Spanning_Tree_Protocol",
+            "reference_label": "Wikipedia - STP"
+          }
+        },
+        {
+          "key": "D",
+          "text": "L2スイッチ専用の冗長化プロトコルである。",
+          "explanation": {
+            "text": "HSRPはL3ルータ冗長化プロトコルである。",
+            "reference": "https://en.wikipedia.org/wiki/Hot_Standby_Router_Protocol",
+            "reference_label": "Wikipedia - HSRP"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "HSRPはCiscoのL3冗長化プロトコルで、仮想IP/MAC共有によりActive/Standby切替を実施する。",
+        "reference": "https://en.wikipedia.org/wiki/Hot_Standby_Router_Protocol",
+        "reference_label": "Wikipedia - HSRP"
+      }
+    },
+    {
+      "id": "it-nw-37",
+      "question": "IPマルチキャストにおけるPIM-SM（Sparse Mode）の特徴として正しいものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "送信元から全ルータに自動的に拡散されるフラッディング方式である。",
+          "explanation": {
+            "text": "フラッディングはDense Modeの特徴。",
+            "reference": "https://en.wikipedia.org/wiki/Protocol_Independent_Multicast",
+            "reference_label": "Wikipedia - PIM"
+          }
+        },
+        {
+          "key": "B",
+          "text": "RP（ランデブーポイント）を用いてトラフィックを集約する。",
+          "explanation": {
+            "text": "PIM-SMはSparse環境向けでRPを用いる点が特徴。",
+            "reference": "https://en.wikipedia.org/wiki/Protocol_Independent_Multicast",
+            "reference_label": "Wikipedia - PIM"
+          }
+        },
+        {
+          "key": "C",
+          "text": "受信者が1人しかいない場合、マルチキャストは利用できない。",
+          "explanation": {
+            "text": "受信者が1人でもマルチキャスト送信は可能である。",
+            "reference": "https://en.wikipedia.org/wiki/Multicast",
+            "reference_label": "Wikipedia - Multicast"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IGMP不要で動作できる。",
+          "explanation": {
+            "text": "LAN上の加入管理はIGMPが必要。",
+            "reference": "https://en.wikipedia.org/wiki/Internet_Group_Management_Protocol",
+            "reference_label": "Wikipedia - IGMP"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "PIM-SMはRPを利用し、Sparseな環境で効率よくマルチキャスト転送を行う。",
+        "reference": "https://en.wikipedia.org/wiki/Protocol_Independent_Multicast",
+        "reference_label": "Wikipedia - PIM"
+      }
+    },
+    {
+      "id": "it-nw-38",
+      "question": "SIEMにおける相関分析の目的として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "すべてのログを単一の形式に自動変換する。",
+          "explanation": {
+            "text": "形式統一だけが目的ではない。",
+            "reference": "https://en.wikipedia.org/wiki/Security_information_and_event_management",
+            "reference_label": "Wikipedia - SIEM"
+          }
+        },
+        {
+          "key": "B",
+          "text": "複数イベントの関連性を解析し、単体では見えない攻撃兆候を検知する。",
+          "explanation": {
+            "text": "SIEMの中核機能は相関分析による異常検知である。",
+            "reference": "https://en.wikipedia.org/wiki/Security_information_and_event_management",
+            "reference_label": "Wikipedia - SIEM"
+          }
+        },
+        {
+          "key": "C",
+          "text": "ログを安全に暗号化して保存する。",
+          "explanation": {
+            "text": "暗号化は付随機能であり、相関分析の目的ではない。",
+            "reference": "https://en.wikipedia.org/wiki/Security_information_and_event_management",
+            "reference_label": "Wikipedia - SIEM"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ログの保存期間を自動的に短縮する。",
+          "explanation": {
+            "text": "保存期間はポリシーで管理されるもので相関分析とは別。",
+            "reference": "https://en.wikipedia.org/wiki/Security_information_and_event_management",
+            "reference_label": "Wikipedia - SIEM"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "相関分析は複数ログイベントの関連性を見つけ、単体では検知できない攻撃を明らかにする。",
+        "reference": "https://en.wikipedia.org/wiki/Security_information_and_event_management",
+        "reference_label": "Wikipedia - SIEM"
+      }
+    },
+    {
+      "id": "it-nw-39",
+      "question": "NAT越え通信で利用されるSTUNの役割として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "UDPパケットを暗号化し盗聴を防止する。",
+          "explanation": {
+            "text": "STUNは暗号化を提供しない。",
+            "reference": "https://en.wikipedia.org/wiki/STUN",
+            "reference_label": "Wikipedia - STUN"
+          }
+        },
+        {
+          "key": "B",
+          "text": "クライアントのグローバルIPアドレスとポートを外部サーバで確認する。",
+          "explanation": {
+            "text": "STUNはNAT配下の端末が外部から見えるアドレス/ポートを取得する仕組み。",
+            "reference": "https://en.wikipedia.org/wiki/STUN",
+            "reference_label": "Wikipedia - STUN"
+          }
+        },
+        {
+          "key": "C",
+          "text": "NATルータの設定を自動で変更し、ポート解放を行う。",
+          "explanation": {
+            "text": "NAT設定変更はUPnPやNAT-PMPで行う。",
+            "reference": "https://en.wikipedia.org/wiki/Port_control_protocol",
+            "reference_label": "Wikipedia - PCP"
+          }
+        },
+        {
+          "key": "D",
+          "text": "SIPの代替として音声通話の制御を行う。",
+          "explanation": {
+            "text": "SIPはセッション制御、STUNはNAT越え支援であり用途が異なる。",
+            "reference": "https://en.wikipedia.org/wiki/Session_Initiation_Protocol",
+            "reference_label": "Wikipedia - SIP"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "STUNはNAT配下クライアントが自身の外部から見えるグローバルIPとポートを知るための仕組みである。",
+        "reference": "https://en.wikipedia.org/wiki/STUN",
+        "reference_label": "Wikipedia - STUN"
+      }
+    },
+    {
+      "id": "it-nw-40",
+      "question": "IPヘッダのDifferentiated Services Code Point（DSCP）の役割として正しいものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "暗号化方式を指定するフィールドである。",
+          "explanation": {
+            "text": "暗号化指定はIPsec等の別仕様。",
+            "reference": "https://en.wikipedia.org/wiki/Differentiated_services",
+            "reference_label": "Wikipedia - DiffServ"
+          }
+        },
+        {
+          "key": "B",
+          "text": "パケットの優先制御・QoS制御の分類情報として利用される。",
+          "explanation": {
+            "text": "DSCPはパケットの優先度やクラスを示すためのビット値である。",
+            "reference": "https://en.wikipedia.org/wiki/Differentiated_services",
+            "reference_label": "Wikipedia - DiffServ"
+          }
+        },
+        {
+          "key": "C",
+          "text": "送信元IPアドレスを短縮表記するフィールドである。",
+          "explanation": {
+            "text": "そのような機能は存在しない。",
+            "reference": "https://en.wikipedia.org/wiki/Internet_Protocol",
+            "reference_label": "Wikipedia - IP"
+          }
+        },
+        {
+          "key": "D",
+          "text": "TTLの代わりにホップ数制限を定義するフィールドである。",
+          "explanation": {
+            "text": "TTLは別フィールド。",
+            "reference": "https://en.wikipedia.org/wiki/Time_to_live",
+            "reference_label": "Wikipedia - TTL"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "DSCPはDiffServで用いられ、QoS制御のための優先度・クラス分類として利用される。",
+        "reference": "https://en.wikipedia.org/wiki/Differentiated_services",
+        "reference_label": "Wikipedia - DiffServ"
+      }
+    },
+    {
+      "id": "it-nw-41",
+      "question": "HTTP/3 の特徴として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "TCP上に構築されており、HTTP/2と同じトランスポートを利用する。",
+          "explanation": {
+            "text": "HTTP/3 は TCP ではなく QUIC（UDPベース）をトランスポートとして利用する。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc9114.html",
+            "reference_label": "RFC 9114 - HTTP/3"
+          }
+        },
+        {
+          "key": "B",
+          "text": "QUIC上でHTTPセマンティクスを実装し、1本の接続内で複数ストリームを多重化する。",
+          "explanation": {
+            "text": "HTTP/3 は QUIC を用い、ストリーム多重化や低遅延な接続確立などにより性能改善を図る。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc9114.html",
+            "reference_label": "RFC 9114 - HTTP/3"
+          }
+        },
+        {
+          "key": "C",
+          "text": "HTTP/1.1 と同様にテキストベースのヘッダをそのまま送信する。",
+          "explanation": {
+            "text": "HTTP/3 では HTTP/2 同様にバイナリフレーミングを用いており、テキストそのものではない。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc9114.html",
+            "reference_label": "RFC 9114 - HTTP/3"
+          }
+        },
+        {
+          "key": "D",
+          "text": "TLS を利用せず、アプリケーション層で暗号化を行う。",
+          "explanation": {
+            "text": "QUIC は TLS 1.3 と統合されており、トランスポート層で暗号化を行う。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc9000.html",
+            "reference_label": "RFC 9000 - QUIC: A UDP-Based Multiplexed and Secure Transport"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "HTTP/3 は QUIC をトランスポートとして用い、QUIC のストリーム多重化・低遅延な接続確立などの特性を活かして HTTP セマンティクスを提供する。",
+        "reference": "https://www.rfc-editor.org/rfc/rfc9114.html",
+        "reference_label": "RFC 9114 - HTTP/3"
+      }
+    },
+    {
+      "id": "it-nw-42",
+      "question": "OSPFv3（OSPF for IPv6）の特徴として、OSPFv2 と比較して正しい説明はどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "OSPFv3 では、ルータIDとして IPv6 アドレスそのものを利用する。",
+          "explanation": {
+            "text": "OSPFv3 でもルータIDは 32ビット値であり、IPv4形式の値が用いられる。",
+            "reference": "https://www.rfc-editor.org/info/rfc5340",
+            "reference_label": "RFC 5340 - OSPF for IPv6"
+          }
+        },
+        {
+          "key": "B",
+          "text": "OSPFv3 ではリンクローカルアドレスをネイバー確立に利用する。",
+          "explanation": {
+            "text": "OSPFv3 は IPv6 を前提とし、ネイバーの確立や Hello の送信にリンクローカルアドレスを利用する。",
+            "reference": "https://www.rfc-editor.org/info/rfc5340",
+            "reference_label": "RFC 5340 - OSPF for IPv6"
+          }
+        },
+        {
+          "key": "C",
+          "text": "OSPFv3 ではエリアの概念が廃止され、すべてバックボーンエリアで動作する。",
+          "explanation": {
+            "text": "OSPFv3 でもエリア構造は維持されており、0 番エリアは依然としてバックボーンである。",
+            "reference": "https://www.rfc-editor.org/info/rfc5340",
+            "reference_label": "RFC 5340 - OSPF for IPv6"
+          }
+        },
+        {
+          "key": "D",
+          "text": "OSPFv3 は IPv4 のみをサポートし、IPv6 には対応しない。",
+          "explanation": {
+            "text": "OSPFv3 は IPv6 対応のために拡張された OSPF であり、IPv6 を主対象としている。",
+            "reference": "https://www.rfc-editor.org/info/rfc5340",
+            "reference_label": "RFC 5340 - OSPF for IPv6"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "OSPFv3 では、IPv6 の特徴に合わせ、ネイバー確立や Hello 送信にリンクローカルアドレスを利用するなどの変更が行われているが、基本的な SPF 算出やエリア構造は維持されている。",
+        "reference": "https://www.rfc-editor.org/info/rfc5340",
+        "reference_label": "RFC 5340 - OSPF for IPv6"
+      }
+    },
+    {
+      "id": "it-nw-43",
+      "question": "インターネットルーティングのセキュリティ向上のために導入されている RPKI（Resource Public Key Infrastructure）の主な目的として最も適切なものはどれか。",
+      "difficulty": "hard",
+      "choices": [
+        {
+          "key": "A",
+          "text": "IPsec の鍵交換を効率化する。",
+          "explanation": {
+            "text": "RPKI は IPsec の鍵管理ではなく、ルーティング情報の正当性検証を目的とする。",
+            "reference": "https://www.rfc-editor.org/info/rfc6480",
+            "reference_label": "RFC 6480 - An Infrastructure to Support Secure Internet Routing"
+          }
+        },
+        {
+          "key": "B",
+          "text": "IPアドレスと AS 番号の正当な割り当てを証明し、BGP 経路の正当性検証に利用する。",
+          "explanation": {
+            "text": "RPKI は IP プレフィックスと AS 番号の割当階層を PKI で表現し、ROA などにより BGP 経路の正当性を検証できるようにする。",
+            "reference": "https://www.rfc-editor.org/info/rfc6480",
+            "reference_label": "RFC 6480 - An Infrastructure to Support Secure Internet Routing"
+          }
+        },
+        {
+          "key": "C",
+          "text": "DNS 名前解決に対して電子署名を付与する。",
+          "explanation": {
+            "text": "DNS 応答への署名は DNSSEC によるものであり、RPKI とは別の技術である。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4033",
+            "reference_label": "RFC 4033 - DNS Security Introduction"
+          }
+        },
+        {
+          "key": "D",
+          "text": "Web サーバ証明書の失効情報を配布する。",
+          "explanation": {
+            "text": "Web サーバ証明書は一般的な PKI/CA によるものであり、RPKI はルーティングリソースに特化している。",
+            "reference": "https://www.rfc-editor.org/info/rfc6480",
+            "reference_label": "RFC 6480 - An Infrastructure to Support Secure Internet Routing"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "RPKI は IP アドレス空間と AS 番号の割当階層を PKI で表現し、ROA などのオブジェクトを通じて BGP 経路が正当な経路かどうかを検証することで、ルーティングのセキュリティ向上を図る。",
+        "reference": "https://www.rfc-editor.org/info/rfc6480",
+        "reference_label": "RFC 6480 - An Infrastructure to Support Secure Internet Routing"
+      }
+    },
+    {
+      "id": "it-nw-44",
+      "question": "PPP over Ethernet（PPPoE）の説明として適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "Ethernet フレームを PPP フレーム内にカプセル化して送信する技術である。",
+          "explanation": {
+            "text": "PPPoE は PPP フレームを Ethernet フレーム内にカプセル化する方式であり、記述が逆である。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc2516",
+            "reference_label": "RFC 2516 - A Method for Transmitting PPP Over Ethernet (PPPoE)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Ethernet 上に PPP セッションを張ることで、ユーザ認証や課金など PPP の機能を利用できる。",
+          "explanation": {
+            "text": "PPPoE は Ethernet を物理媒体として PPP のリンク確立・認証・課金機能を利用するための方式であり、正しい説明である。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc2516",
+            "reference_label": "RFC 2516 - A Method for Transmitting PPP Over Ethernet (PPPoE)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "UDP を用いて PPP フレームをトンネルし、L3 ネットワークを横断する技術である。",
+          "explanation": {
+            "text": "UDP を用いたトンネリングは L2TP などの技術であり、PPPoE の説明ではない。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc2661",
+            "reference_label": "RFC 2661 - Layer Two Tunneling Protocol (L2TP)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IPv6 では利用できないため、IPv4 専用のアクセス方式である。",
+          "explanation": {
+            "text": "PPPoE は IPv4/IPv6 のいずれのネットワーク層プロトコルとも組み合わせて利用できる。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc2516",
+            "reference_label": "RFC 2516 - A Method for Transmitting PPP Over Ethernet (PPPoE)"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "PPPoE は PPP フレームを Ethernet でカプセル化して伝送する方式であり、既存の Ethernet インフラ上で PPP 認証・課金などの機能を利用できる。",
+        "reference": "https://www.rfc-editor.org/rfc/rfc2516",
+        "reference_label": "RFC 2516 - A Method for Transmitting PPP Over Ethernet (PPPoE)"
+      }
+    },
+    {
+      "id": "it-nw-45",
+      "question": "Syslog の特徴として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "TCP ポート 80 を利用してログを送信するプロトコルである。",
+          "explanation": {
+            "text": "Syslog の標準ポートは UDP 514（および TCP 514）であり、ポート 80 ではない。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc5424",
+            "reference_label": "RFC 5424 - The Syslog Protocol"
+          }
+        },
+        {
+          "key": "B",
+          "text": "facility と severity によりログの種類と重要度を表現することができる。",
+          "explanation": {
+            "text": "Syslog メッセージは facility と severity を持ち、発生元種別や重要度による分類が可能である。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc5424",
+            "reference_label": "RFC 5424 - The Syslog Protocol"
+          }
+        },
+        {
+          "key": "C",
+          "text": "暗号化と完全な信頼性を前提としており、UDP では利用できない。",
+          "explanation": {
+            "text": "Syslog は従来 UDP で利用されることが多く、信頼性や暗号化は別途 TLS 等で補完する。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc5425",
+            "reference_label": "RFC 5425 - Transport Layer Security (TLS) Transport Mapping for Syslog"
+          }
+        },
+        {
+          "key": "D",
+          "text": "ログは必ず JSON 形式で送信される。",
+          "explanation": {
+            "text": "Syslog メッセージのフォーマットはテキスト中心であり、JSON 固定ではない。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc5424",
+            "reference_label": "RFC 5424 - The Syslog Protocol"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "Syslog は facility・severity によりログの種別と重要度を表現し、ネットワーク機器やサーバからのログを一元的に収集・分析する基礎となる。",
+        "reference": "https://www.rfc-editor.org/rfc/rfc5424",
+        "reference_label": "RFC 5424 - The Syslog Protocol"
+      }
+    },
+    {
+      "id": "it-nw-46",
+      "question": "NTP（Network Time Protocol）の説明として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "クライアント間で P2P 方式のみを利用し、階層（ストラタム）という概念はない。",
+          "explanation": {
+            "text": "NTP には Stratum 1〜15 の階層概念があり、上位サーバから下位へと時刻を配布する。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc5905",
+            "reference_label": "RFC 5905 - Network Time Protocol Version 4"
+          }
+        },
+        {
+          "key": "B",
+          "text": "Stratum 1 サーバは通常、外部の正確な時刻源（GPS など）と同期している。",
+          "explanation": {
+            "text": "Stratum 1 は基準クロックと直接同期するサーバであり、GPS や原子時計などを参照する。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc5905",
+            "reference_label": "RFC 5905 - Network Time Protocol Version 4"
+          }
+        },
+        {
+          "key": "C",
+          "text": "NTP は UDP ではなく TCP でのみ動作する。",
+          "explanation": {
+            "text": "NTP のトランスポートは UDP 123 が標準である。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc5905",
+            "reference_label": "RFC 5905 - Network Time Protocol Version 4"
+          }
+        },
+        {
+          "key": "D",
+          "text": "時刻同期は1日に1回のみ行われ、リアルタイムの補正は行わない。",
+          "explanation": {
+            "text": "NTP は定期的にパケットを交換し、ドリフト補正や平滑化を行う。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc5905",
+            "reference_label": "RFC 5905 - Network Time Protocol Version 4"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "NTP では Stratum 1 が基準クロックと直接同期し、Stratum 2 以降へ階層的に時刻を配布する。Stratum 1 は GPS など高精度な時刻源と接続されることが多い。",
+        "reference": "https://www.rfc-editor.org/rfc/rfc5905",
+        "reference_label": "RFC 5905 - Network Time Protocol Version 4"
+      }
+    },
+    {
+      "id": "it-nw-47",
+      "question": "IPv6 ネットワークにおいて、SLAAC（Stateless Address Autoconfiguration）の特徴として正しいものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "DHCPv6 サーバから配布されるアドレス情報にのみ依存してアドレスを設定する方式である。",
+          "explanation": {
+            "text": "SLAAC はルータ広告（RA）から得たプレフィックスと自身の識別子を組み合わせてアドレスを自動生成する方式であり、DHCPv6 に依存しない。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4862",
+            "reference_label": "RFC 4862 - IPv6 Stateless Address Autoconfiguration"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ルータからの RA メッセージに基づき、ノードが自ら IPv6 アドレスを構成する方式である。",
+          "explanation": {
+            "text": "SLAAC は RA からプレフィックス情報を受け取り、ノードが自律的にアドレスを構成する仕組みであり、正しい説明である。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4862",
+            "reference_label": "RFC 4862 - IPv6 Stateless Address Autoconfiguration"
+          }
+        },
+        {
+          "key": "C",
+          "text": "必ず DHCPv6-PD を利用し、プレフィックスを下位ルータへ再配布する方式である。",
+          "explanation": {
+            "text": "DHCPv6-PD はプレフィックス委譲の仕組みであり、SLAAC とは別概念である。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc8415",
+            "reference_label": "RFC 8415 - DHCPv6"
+          }
+        },
+        {
+          "key": "D",
+          "text": "IPv4 の DHCP と同等であり、特に IPv6 固有の仕組みではない。",
+          "explanation": {
+            "text": "SLAAC は IPv6 固有のアドレス自動設定方式であり、IPv4 に直接対応する機能は存在しない。",
+            "reference": "https://www.rfc-editor.org/rfc/rfc4862",
+            "reference_label": "RFC 4862 - IPv6 Stateless Address Autoconfiguration"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "SLAAC は IPv6 ルータの RA を基にノードが自律的にアドレスを構成する方式であり、ステートレスにアドレス設定を行える点が特徴である。",
+        "reference": "https://www.rfc-editor.org/rfc/rfc4862",
+        "reference_label": "RFC 4862 - IPv6 Stateless Address Autoconfiguration"
+      }
+    },
+    {
+      "id": "it-nw-48",
+      "question": "L4 ロードバランサと L7 ロードバランサの違いに関する説明として適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "L4 ロードバランサは HTTP ヘッダを解析して振り分けるが、L7 ロードバランサは TCP ポートのみを見る。",
+          "explanation": {
+            "text": "説明が逆であり、HTTP ヘッダなどアプリケーション情報を見るのは L7 ロードバランサである。",
+            "reference": "https://www.nginx.com/resources/glossary/load-balancing/",
+            "reference_label": "NGINX - What is Load Balancing?"
+          }
+        },
+        {
+          "key": "B",
+          "text": "L4 ロードバランサは IP アドレス・ポートなどトランスポート層情報に基づき転送先を決定する。",
+          "explanation": {
+            "text": "L4 はトランスポート層までを対象とし、IP/ポートなどの情報に基づいて負荷分散を行うため正しい。",
+            "reference": "https://www.nginx.com/resources/glossary/load-balancing/",
+            "reference_label": "NGINX - What is Load Balancing?"
+          }
+        },
+        {
+          "key": "C",
+          "text": "L7 ロードバランサは暗号化通信を扱えないため、HTTPS では利用できない。",
+          "explanation": {
+            "text": "L7 ロードバランサは TLS 終端を行い、HTTPS の中身に基づいて振り分ける構成が一般的である。",
+            "reference": "https://www.nginx.com/resources/glossary/load-balancing/",
+            "reference_label": "NGINX - What is Load Balancing?"
+          }
+        },
+        {
+          "key": "D",
+          "text": "L4 ロードバランサは必ずアプリケーションごとに個別の設定が必要になる。",
+          "explanation": {
+            "text": "L4 はアプリケーション非依存であり、L7 より汎用的な設定となるのが通常である。",
+            "reference": "https://www.nginx.com/resources/glossary/load-balancing/",
+            "reference_label": "NGINX - What is Load Balancing?"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "L4 ロードバランサは IP アドレスや TCP/UDP ポートなどトランスポート層情報に基づいて負荷分散を行い、L7 ロードバランサは HTTP ヘッダや URL などアプリケーション情報に基づく高度な制御を行う。",
+        "reference": "https://www.nginx.com/resources/glossary/load-balancing/",
+        "reference_label": "NGINX - What is Load Balancing?"
+      }
+    },
+    {
+      "id": "it-nw-49",
+      "question": "NFV（Network Functions Virtualization）の説明として最も適切なものはどれか。",
+      "difficulty": "normal",
+      "choices": [
+        {
+          "key": "A",
+          "text": "ネットワーク機器の設定を自動化するための API 仕様である。",
+          "explanation": {
+            "text": "設定自動化 API は NETCONF/RESTCONF などであり、NFV の定義とは異なる。",
+            "reference": "https://www.etsi.org/technologies/nfv",
+            "reference_label": "ETSI - Network Functions Virtualisation (NFV)"
+          }
+        },
+        {
+          "key": "B",
+          "text": "ファイアウォールやロードバランサなどのネットワーク機能を仮想マシンやコンテナ上で実装・提供するアーキテクチャである。",
+          "explanation": {
+            "text": "NFV は従来専用ハードウェアで提供していたネットワーク機能を汎用サーバ上の仮想化基盤で提供することを目指したアーキテクチャであり、正しい説明である。",
+            "reference": "https://www.etsi.org/technologies/nfv",
+            "reference_label": "ETSI - Network Functions Virtualisation (NFV)"
+          }
+        },
+        {
+          "key": "C",
+          "text": "SDN コントローラの北向き API を規定したプロトコルの総称である。",
+          "explanation": {
+            "text": "SDN の北向き API は OpenFlow とは別のレイヤで扱われ、NFV の定義とは異なる。",
+            "reference": "https://www.etsi.org/technologies/nfv",
+            "reference_label": "ETSI - Network Functions Virtualisation (NFV)"
+          }
+        },
+        {
+          "key": "D",
+          "text": "レイヤ2 スイッチ機能を ASIC から CPU に移すことのみを目的とした技術である。",
+          "explanation": {
+            "text": "NFV は L2/L3、セキュリティ、トランスポートなど多様なネットワーク機能を対象とし、特定レイヤに限定されない。",
+            "reference": "https://www.etsi.org/technologies/nfv",
+            "reference_label": "ETSI - Network Functions Virtualisation (NFV)"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "NFV はネットワーク機能を汎用サーバ上で仮想化し、柔軟なスケーリングやサービス展開を行うアーキテクチャであり、従来の専用機器依存からの脱却を目指す。",
+        "reference": "https://www.etsi.org/technologies/nfv",
+        "reference_label": "ETSI - Network Functions Virtualisation (NFV)"
+      }
+    },
+    {
+      "id": "it-nw-50",
+      "question": "リモートアクセス VPN と 拠点間 VPN（サイト間 VPN）の違いに関する説明として最も適切なものはどれか。",
+      "difficulty": "easy",
+      "choices": [
+        {
+          "key": "A",
+          "text": "リモートアクセス VPN は常に IPsec を使用し、拠点間 VPN は必ず SSL/TLS を使用する。",
+          "explanation": {
+            "text": "どちらの方式でも IPsec や SSL/TLS を利用する構成が存在し、プロトコルで一意に区別されるわけではない。",
+            "reference": "https://datatracker.ietf.org/doc/html/rfc6071",
+            "reference_label": "RFC 6071 - IPsec and TLS: Comparison of Security Protocols"
+          }
+        },
+        {
+          "key": "B",
+          "text": "リモートアクセス VPN は個々のクライアント端末から企業ネットワークへの接続を提供し、拠点間 VPN はルータやゲートウェイ同士を接続してネットワーク同士を相互接続する。",
+          "explanation": {
+            "text": "リモートアクセスはユーザ端末単位、拠点間 VPN は拠点ネットワーク同士の接続を提供するという区別が一般的であり、正しい説明である。",
+            "reference": "https://datatracker.ietf.org/doc/html/rfc6071",
+            "reference_label": "RFC 6071 - IPsec and TLS: Comparison of Security Protocols"
+          }
+        },
+        {
+          "key": "C",
+          "text": "拠点間 VPN ではユーザ認証が不要であり、リモートアクセス VPN でのみ認証が必要となる。",
+          "explanation": {
+            "text": "拠点間 VPN でもゲートウェイ間の認証が行われ、ユーザ認証と役割は異なるが、認証が不要というわけではない。",
+            "reference": "https://datatracker.ietf.org/doc/html/rfc6071",
+            "reference_label": "RFC 6071 - IPsec and TLS: Comparison of Security Protocols"
+          }
+        },
+        {
+          "key": "D",
+          "text": "リモートアクセス VPN ではクライアントソフトウェアは不要であり、拠点間 VPN では必ずクライアントソフトウェアが必要となる。",
+          "explanation": {
+            "text": "リモートアクセス VPN では一般にクライアントソフトや OS の VPN 機能が必要であり、拠点間 VPN はルータ間でトンネルを張る構成が多い。",
+            "reference": "https://datatracker.ietf.org/doc/html/rfc6071",
+            "reference_label": "RFC 6071 - IPsec and TLS: Comparison of Security Protocols"
+          }
+        }
+      ],
+      "answer": "B",
+      "explanation": {
+        "text": "リモートアクセス VPN は個々のユーザ端末から社内ネットワークへの安全な接続を提供し、拠点間 VPN はルータやゲートウェイ間でトンネルを張り、拠点ネットワーク同士を透過的に接続するために用いられる。",
+        "reference": "https://datatracker.ietf.org/doc/html/rfc6071",
+        "reference_label": "RFC 6071 - IPsec and TLS: Comparison of Security Protocols"
+      }
+    }
+  ]
+}
